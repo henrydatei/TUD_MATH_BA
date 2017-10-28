@@ -213,4 +213,151 @@
 				\item zu jeder Menge $X$ gibt es die Abbildung \\ $f: X \times X \to \mathbb R, (x,y) \mapsto
 				\delta_{x,y} \begin{cases} 1 \quad (x=y) \\ 0 \quad (x \neq y) \end{cases}$
 			\end{compactitem}
+			$\newline$
+			
+			\textbf{Eigenschaften von Funktionen:} \\
+			\begin{compactitem}
+				\item injektiv: Zuordnung ist eindeutig: $F(m_1) = F(m_2) \Rightarrow m_1=m_2$ \\
+				Bsp: $x^2$ ist nicht injektiv, da $F(-2)=F(2)=4$
+				\item surjektiv: $F(M)=N$ ($\forall n \in N \; \exists m \in M \mid F(m)=n$) \\
+				Bsp: $sin(x)$ ist nicht surjektiv, da es kein $x$ f\"ur $y=27$ gibt
+				\item bijektiv: injektiv und surjektiv
+			\end{compactitem}
+			
+			\begin{framed}
+				\textbf{Definition Einschr\"ankung:} Sei $f: x \mapsto y$ eine Abbildung. F\"ur $A \subset X$
+				definiert man die Einschr\"ankung/Restrikton von $f$ auf $A$ als die Abbildung $f \mid_A 
+				A \to Y, a \mapsto f(a)$. \\
+				Das Bild von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
+				Das Urbild einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
+				Man nennt $Image(f) := f(X)$ das Bild von $f$.
+			\end{framed}
+			
+			\textbf{Bemerkungen zur abstrakteren Betrachtungsweise:} \\
+			Man ordnet der Abbildung $f: X \to Y$ auch die Abbildungen $\mathcal P(X) \to \mathcal P(Y)$ und
+			$\mathcal P(Y) \to \mathcal P(X)$ auf den Potenzmengen zu. Man benutzt hier das gleiche 
+			Symbol $f(…)$ sowohl für die Abbildung $f: X \to Y$ als auch f\"ur $f: P(X) \to P(Y)$, was 
+			unvorsichtig ist, aber keine Probleme bereiten sollte. \\
+			In anderen Vorlesungen wird f\"ur $y \in Y$ auch $f^{-1}(y)$ statt $f^{-1}(\{y\})$ geschrieben. \\
+			$\newline$
+			
+			\textbf{Bemerkungen:} \\
+			Genau dann ist $f: X \to Y$ surjektiv, wenn $Image(f)=Y$ \\
+			Genau dann ist $f: X \to Y \begin{cases} $injektiv$ \\ $surjektiv$ \\ $bijektiv$ \end{cases}$, wenn
+			$|f^{-1}(\{y\})| = \begin{cases} \le 1 \\ \ge 1 \\ =1  \end{cases} \quad \forall y \in Y$ \\
+			
+			\begin{framed}
+				\textbf{Definition Komposition:} Sind $f: X \to Y$ und $g: Y \to Z$ Abbildungen, so ist die
+				Komposition $g \circ f$ die Abbildung $g \circ f := X \to Z, x \mapsto g(f(x))$. Man kann 
+				die Komposition auffassen als eine Abbildung $\circ: Abb(Y,Z) \times Abb(X,Y) \to Abb(X,Z)$.
+			\end{framed}
+			
+			\begin{framed}
+				\textbf{Satz:} Die Abbildung von Kompositionen ist assotiativ, d.h. es gilt: $h \circ (g 
+				\circ f) = (h \circ g)\circ f$.
+			\end{framed}
+			
+			\begin{framed}
+				\textbf{Definition Umkehrabbildung:} Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
+				genau ein $x_y \in X$ mit $f(x_y)=y$, durch $f^{-1}: Y \to X, y \mapsto x_y$ wird also eine 
+				Abbildung definiert, die Umkehrabbildung zu $f$. 
+			\end{framed}
+			
+			\begin{framed}
+				\textbf{Satz:} Ist die Abbildung $f: X \to Y$ bijektiv, so gilt $f^{-1} \circ f = id_x$ und
+				$f \circ f^{-1} = id_y$.
+			\end{framed}
+			
+			\textbf{Bemerkung:} \\
+			Achtung, wir verwenden hier das selbe Symbol $f^{-1}$ f\"ur zwei verschiedene Dinge: Die Abbildung
+			$f^{-1}: \mathcal P(X) \to \mathcal P(Y)$ existiert f\"ur jede Abbildung $f: X \to Y$, aber die
+			Umkehrabbildung $f^{-1}: Y \to X$ existiert nur f\"ur bijektive Abbildungen $f: X \to Y$. \\
+			
+			\begin{framed}
+				\textbf{Definition Familie:} Seien $I$ und $X$ Mengen. Eine Abbildung $x: I \to X, i \mapsto
+				x_i$ nennt man Familie von Elementen von $X$ mit einer Indexmenge I (oder I-Tupel von 
+				Elementen von $X$) und schreibt diese auch als $(x_i)_{i \in I}$. Im Fall $I=\{1,2,...,n\}$
+				identifiziert man die I-Tupel auch mit den n-Tupeln. Ist $(x_i)_{i \in I}$ eine Familie von
+				Teilmengen einer Menge $X$, so ist 
+				\begin{compactitem}
+					\item $\bigcup X_i = \{x \in X \mid \exists i \in I(x \in X)\}$
+					\item $\bigcap X_i = \{x \in X \mid \forall i \in I(x \in X)\}$
+					\item $\prod X_i = \{f \in Abb(I,X) \mid \forall i \in I(f(i) \in X_i)\}$
+				\end{compactitem}
+				Die Elemente von $\prod X_i$ schreibt man in der Regel als Familien $(x_i)_{i \in I}$.
+			\end{framed}
+			
+			\textbf{Beispiel: } Eine Folge ist eine Familie $(x_i)_{i \in I}$ mit der Indexmenge $\mathbb N_0$.
+			
+			\begin{framed}
+				\textbf{Definition Graph:} Der Graph einer Abbildung $f: X \to Y$ ist die Menge $\Gamma f: 
+				\{(x,y) \in X \times Y \mid y=f(x)\}$.
+			\end{framed}
+			
+			\textbf{Bemerkung: Formal korrekte Definition einer Abbildung:} \\
+			Eine Abbildung $f$ ist ein Tripel $(X,Y,\Gamma)$, wobei $\Gamma \subset X \times Y \quad \forall
+			x \in X$ genau ein Paar $(x,y)$ mit $y \in Y$ enth\"alt. Die Abbildungsvorschrift schickt dann
+			$x \in X$ auf das eindeutig bestimmte $y \in Y$ mit $(x,y) \in \Gamma$. Es ist dann $\Gamma =
+			\Gamma_f$.
+			
+	\subsection{Gruppen}
+		\begin{framed}
+			\textbf{Definition Gruppe:} Sei $G$ eine Menge. Eine (innere, zweistellige) Verkn\"upfung
+			auf $G$ ist eine Abbildung $*: G \times G \to G, (x,y) \mapsto x*y$. Das Paar $(G,*)$ ist eine
+			Halbgruppe, wenn das folgende Axiom erf\"ullt ist: \\
+			(G1) F\"ur $x,y,z \in G$ ist $(x*y)*z=x*(y*z)$. \\
+			Eine Halbgruppe $(G,*)$ ist ein Monoid, wenn zus\"atzlich das folgende Axiom gilt: \\
+			(G2) Es gibt ein Element $e \in G$, welches f\"ur alle $x \in G$ die Gleichung $x*e=e*x=x$
+			erf\"ullt. Dieses Element hei{\ss}t dann neutrales Element der Verkn\"upfung $*$.  
+		\end{framed}
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item F\"ur jede Menge $X$ ist $(Abb(X,Y), \circ)$ eine Halbgruppe mit dem neutralen Element
+			$id_x$, also ein Monoid.
+			\item $\mathbb N$ bildet mit der Addition eine Halbgruppe $(\mathbb N,+)$, aber kein Monoid,
+			da die 0 nicht in Fehm's Definition der nat\"urlichen Zahlen geh\"orte
+			\item $\mathbb N_0$ bildet mit der Addition ein Monoid $(\mathbb N_0,+)$
+			\item $\mathbb N$ bildet mit der Multiplikation ein Monoid $(\mathbb N, \cdot)$
+			\item $\mathbb Z$ bildet mit der Multiplikation ein Monoid $(\mathbb Z, \cdot)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz: (Eindeutigkeit des neutralen Elements)} Ein Monoid $(G,*)$ hat genau ein neutrales
+			Element. 
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Definition abelsche Gruppe:} Eine Gruppe ist ein Monoid $(G,*)$ mit dem neutralen Element
+			$e$, in dem zus\"atzlich das folgende Axiom gilt: \\
+			(G3) F\"ur jedes $x \in G$ gibt es ein $x' \in G$ mit $x'*x=x*x'=e$. \\
+			Gilt weiterhin \\
+			(G4) F\"ur alle $x,y \in G$ gilt $x*y=y*x$, so hei{\ss}t diese Gruppel abelsch.
+		\end{framed}
+		
+		Ein $x'$ hei{\ss}t inverses Element zu $x$. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item $\mathbb N_0$ bildet mit der Addition keine Gruppe $(\mathbb N_=,+)$
+			\item $\mathbb Z$ bildet mit der Addition eine abelsche Gruppe $(\mathbb Z,+)$
+			\item Auch $(\mathbb Q,+)$ und $(\mathbb R,+)$ sind abelsche Gruppen
+			\item $(\mathbb Q,\cdot)$ ist keine Gruppe, aber $(\mathbb Q\backslash\{0\},\cdot)$ schon
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz: (Eindeutigkeit des Inversen)} Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$
+			genau ein inverses Element.
+		\end{framed}
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item Eine triviale Gruppe besteht nur aus ihrem neutralen Element. Tats\"achlich ist $G=\{e\}$ mit
+			$e*e=e$ eine Gruppe.
+			\item Sei $X$ eine Menge. Die Menge $Sym(X) := \{f \in Abb(X,X) \mid f$ ist bijektiv$\}$ der
+			Permutationen von $X$ bildet mit der Komposition eine Gruppe $(Sym(X),\circ)$, die 
+			symmetrsiche Gruppe auf $X$. F\"ur $n \in \mathbb N$ schreibt man $S_n := Sym(\{1,2,...,n\})$. 
+			F\"ur $n \ge 3$ ist $S_n$ nicht abelsch.
+		\end{compactitem}
 \end{document}
