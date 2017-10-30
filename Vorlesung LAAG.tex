@@ -5,6 +5,7 @@
 \usepackage{paralist}
 \usepackage{amssymb}
 \usepackage{framed}
+\usepackage{booktabs}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -12,6 +13,7 @@
 \begin{document}
 
 \maketitle
+\renewcommand*{\arraystretch}{1.4}
 
 \raggedright 
 \section{Grundgegriffe der Linearen Algebra}
@@ -527,4 +529,120 @@
 		\end{compactitem}
 		
 	\subsection{Ringe}
+		\begin{framed}
+			\textbf{Definition Ring:} Ein Ring ist ein Tripel $(R,+,\cdot)$ bestehend aus einer Menge
+			$R$, einer Verkn\"upfung $+: R \times R \to R$ (Addition) und einer anderen Verkn\"upfung
+			$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
+			erf\"ullen: \\
+			(R1) $(R,+)$ ist eine abelsche Gruppe \\
+			(R2) $(R,\cdot)$ ist eine Halbgruppe \\
+			(R3) F\"ur $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$. \\
+			Ein Ring hei{\ss}t kommutativ, wenn $xy=yx$ f\"ur alle $x,y \in R$.\\
+			Ein neutrales Element der Multiplikation hei{\ss}t Einselement von $R$.\\
+			Ein Unterrrig eines Rings $(R,+,\cdot)$ ist eine Teilmenge, die mit der geeigneten
+			Einschr\"ankung von Addition und Multiplikation wieder ein Ring ist.
+		\end{framed}
+		
+		\textbf{Bemerkungen:} \\
+		Hat ein Ring ein Einselement, so ist dieses eindeutig bestimmt. Notationelle Konfektionen: Das 
+		neutrale Element der Addition wird h\"aufig mit 0 bezeichnet; die Multiplikation wird nicht immer
+		notiert; Multiplikation bindet st\"arker als die Addition. \\
+		Wenn die Verkn\"upfungen aus dem Kontext klar sind, schreibt ma $R$ statt $(R,+,\cdot)$. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item Der Nullring ist $R=\{0\}$ mit den einzig m\"oglichen Verkn\"upfungen $+$ und $\cdot$
+			auf $R$. Der Nullring ist sogar kommutativ und hat ein Einselement, n\"amlich die 0.
+			\item $(\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring mit Einselement 1, ebenso
+			$(\mathbb{Q},+,\cdot)$ und $(\mathbb{R},+,\cdot)$. 
+			\item $(2\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring, aber ohne Einselement.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkungen:} Ist $R$ ein Ring, dann gelten die folgenden Aussagen f\"ur $x,y \in R$\\
+		\begin{compactitem}
+			\item $0 \cdot x=x \cdot 0 = 0$
+			\item $x \cdot (-y) = (-x) \cdot y = -xy$
+			\item $(-x) \cdot (-y) = xy$
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkung:} \\
+		Wir f\"uhren eine wichtige Klassen endlicher Ringe ein. Hierf\"ur erinnern wir uns eine der Grundlagen
+		der Arithmetik in $\mathbb{Z}$. \\
+		
+		\begin{framed}
+			\textbf{Theorem:} Sei $b \neq 0 \in \mathbb{Z}$. F\"ur jedes $a \in \mathbb{Z}$ gibt es 
+			eindeutig bestimmte $q,r \in \mathbb{Z}$ ($r$ ist "Rest"), mit $a=qb+r$ und $0 \le r < |b|$.
+		\end{framed}
+		\textit{Beweis: Existenz und Eindeutigkeit \\
+		Existenz: oBdA nehmen wir an, dass $b>0$ (denn ist $a=qb+r$, so ist auch $a=(-q)(-b)+r$). Sei $q \in
+		\mathbb{Z}$ die gr\"o{\ss}te Zahl mit $q \le \frac{a}{b}$, und sei $r=a-qb \in \mathbb{Z}$. Dann ist
+		$a \le \frac{a}{b}-q < 1$, woraus $0 \le r < b$ folgt. \\
+		Eindeutigkeit: Sei $a=qb+r=q'b+r'$ mit $q,q',r,r' \in \mathbb{Z}$ und $0 \le r,r' < |b|$. Dann ist
+		$(q-q')b=r-r'$ und $|r-r'|<|b|$. Da $q-q' \in \mathbb{Z}$ ist, folgt $r-r'=0$ und daraus wegen 
+		$b \neq 0$, dann $q-q'=0$.}\\
+		$\newline$
+		
+		\textbf{Beispiel (Restklassenring):} Wir fixieren $n \in \mathbb{N}$. F\"ur $a \in \mathbb{Z}$ sei
+		$\overline(a) := a+n\mathbb{Z} := \{a+nx \mid x \in \mathbb{Z}\}$ die Restklasse von "$a \bmod n$". 
+		F\"ur $a,a' \in \mathbb{Z}$ sind \"aquivalent:
+		\begin{compactitem}
+			\item $a+n\mathbb{Z}=a'+n\mathbb{Z}$
+			\item $a' \in a+n\mathbb{Z}$
+			\item $n$ teilt $a'-a$ (in Zeichen $n|a'-a$), d.h. $a'=a+nk$ f\"ur $k \in \mathbb{Z}$
+		\end{compactitem}
+		\textit{Beweis: \\
+		$1) \Rightarrow 2)$: klar, denn $0 \in \mathbb{Z}$ \\
+		$2) \Rightarrow 3)$: $a' \in a+n\mathbb{Z} \Rightarrow a'=a+nk$ mit $k \in \mathbb{Z}$ \\
+		$3) \Rightarrow 1)$: $a'=a+nk$ mit $k \in \mathbb{Z} \Rightarrow a+n\mathbb{Z}=\{a+nk+nx \mid 
+		x \in \mathbb{Z}\}=\{a+n(k+x) \mid x \in \mathbb{Z}\}=a+n\mathbb{Z}$ \\
+		Insbesondere besteht $a+n\mathbb{Z}$ nur aus den ganzen Zahlen, die bei der Division durch $n$ den
+		selben Rest lassen wie $a$.}\\
+		$\newline$
+		
+		Aus dem Theorem folgt weiter, dass $\mathbb{Z}/n\mathbb{Z} := \{\overline{a} \mid a \in \mathbb{Z}\}
+		= \{\overline{0}, \overline{1},..., \overline{n-1}\}$ eine Menge der M\"achtigkeit n ist (sprich: 
+		"$\mathbb{Z} \bmod n\mathbb{Z}$"). \\
+		$\newline$
+		
+		Wir definieren Verkn\"upfungen auf $\mathbb{Z}/n\mathbb{Z}$ durch $\overline{a}+\overline{b} :=
+		\overline{a+b}$, $\overline{a} \cdot \overline{b} := \overline{ab}$ $a,b \in \mathbb{Z}$. Hierbei
+		muss man zeigen, dass diese Verkn\"upfungen wohldefiniert sind, also nicht von den gew\"ahlten
+		Vertretern $a,b$ der Restklassen $\overline{a}$ und $\overline{b}$ abh\"angen. Ist etwa $\overline{a}
+		= \overline{a'}$ und $\overline{b}= \overline{b'}$, also $a'=a+nk_1$ und $b'=b+nk_2$ mit $k_1,k_2 \in
+		\mathbb{Z}$, so ist \\
+		$a'+b' = a+b+n(k_1+k_2)$, also $\overline{a'+b'} = \overline{a+b}$ \\
+		$a' \cdot b' = ab+n(bk_1+ak_2+nk_1k_2)$, also $\overline{a'b'} = \overline{ab}$ \\
+		Man pr\"uft nun leicht nach, dass $\mathbb{Z}/n\mathbb{Z}$ mit diesen Verkn\"upfungen ein kommutativer
+		Ring mit Einselement ist, da dies auch f\"ur $(\mathbb{Z},+,\cdot)$ gilt. Das neutrale Element der
+		Addition ist $\overline{0}$, das Einselement ist $\overline{1}$. \\
+		$\newline$
+		
+		\textbf{Beispiel:} Im Fall $n=2$ ergeben sich die folgenden Verkn\"upfungstafeln f\"ur $\mathbb{Z}
+		/2\mathbb{Z} = \{\overline{0}, \overline{1}\}$ \\
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$+$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{0}$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{1}$ & $\overline{1}$ & $\overline{2}=\overline{0}$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$\cdot$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{0}$ & $\overline{0}$ & $\overline{0}$\\
+				\hline
+				$\overline{1}$ & $\overline{0}$ & $\overline{1}$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+
 \end{document}
