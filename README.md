@@ -27,18 +27,8 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 1. Grundlagen der Linearen Algebra ... fertig
 
    1.1 Logik und Mengen ... fertig
-   
-      1.1.1 Überblick über die Aussagenlogik ... fertig
-       
-      1.1.2 Überblick über die Prädikatenlogik ... fertig
-       
-      1.1.3 Überblick über Beweise ... fertig
-       
-      1.1.4 Überblick über die Mengenlehre ... fertig
        
    1.2 Abbildungen ... fertig
-   
-       1.2.1 Überblick über Abbildungen ... fertig
    
    1.3 Gruppen ... fertig
    
