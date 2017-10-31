@@ -16,6 +16,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
 
 2. Zahlenbereiche
+
    2.1 natürliche Zahlen ... fertig
   
    2.2 ganze und rationale Zahlen ... wird bearbeitet
