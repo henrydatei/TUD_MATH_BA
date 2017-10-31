@@ -19,9 +19,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 
    2.1 natürliche Zahlen ... fertig
   
-   2.2 ganze und rationale Zahlen ... wird bearbeitet
+   2.2 ganze und rationale Zahlen ... fertig
   
-   2.3 reelle Zahlen ... noch nicht bearbeitet
+   2.3 reelle Zahlen ... wird bearbeitet
   
 ### Fortschritt Lineare Algebra
 1. Grundlagen der Linearen Algebra ... fertig
