@@ -514,4 +514,136 @@ Mathematik besitzt eine Sonderrolle unter den Wissenschaften, da
 			\item $m+k=n+k \Rightarrow m=n$ (K\"urzungsregel der Addition)
 			\item $m \cdot k=n \cdot k \Rightarrow m=n$ (K\"urzungsregel der Multiplikation)
 		\end{compactitem}
+		$\newline$
+		
+		Ordnung auf $\mathbb N:$ Relation $R := \{(m,n) \in \mathbb N \times \mathbb N \mid m \le n\}$ \\
+		wobei $m \le n \iff n}m+k$ f\"ur ein $k \in \mathbb N$ \\
+		
+		\begin{framed}
+			\textbf{Satz:} Es gilt auf $\mathbb N:$
+			\begin{compactitem}
+				\item $m \le n \Rightarrow \exists ! k \in \mathbb N: n=m+k$, nenne $n-m:=k$ (Differenz)
+				\item Relation $R$ (bzw. $\le$) ist eine Totalordnung auf $\mathbb N$
+				\item Ordnung $\le$ ist vertr\"aglich mit der Addition und Multiplikation
+			\end{compactitem}
+		\end{framed}
+		
+		\textit{Bweis: \\
+		\begin{compactitem}
+			\item Sei $n=m+k=m+k' \Rightarrow k=k'$
+			\item Sei $n=n+0 \Rightarrow n \le n \Rightarrow$ reflexiv \\
+			sei $k\le m, m \le n \Rightarrow \exists l,j: m=k+l, n=m+j=(k+l)+j=k+(l+j) \Rightarrow
+			 k \le n \Rightarrow$ transitiv \\
+			sei nun $m \le n und n \le m \Rightarrow n=m+j=n+l+j \Rightarrow 0=l+j \Rightarrow j=0 
+			\Rightarrow n=m \Rightarrow$ antisymmetrisch \\
+			Totalordnung, d.h. $\forall m,n \in \mathbb N: m\le n$ oder $n\le m$ \\
+			IA: $m=0$ wegen $0=n+0$ folgt $0 \le n \forall n$ \\
+			IS: gelte $m\le n$ oder $n \le m$ mit festem $m$ und $\forall n \in \mathbb N$, dann \\
+			falls $n \le m \Rightarrow n \le m+1$ \\
+			falls $m < n \Rightarrow \exists k \in \mathbb N: n=m+(k+1)=(m+)1+k \Rightarrow m+1 \le n$ \\
+			$m\le n$ oder $n \le m$ gilt für $m+1$ und $\forall n \in \mathbb N$, also $\forall n,m \in 
+			\mathbb N$
+			\item sei $m \le n \Rightarrow \exists j: n=m+j \Rightarrow n+k=m+j+k \Rightarrow m+k \le n+k$
+		\end{compactitem}}
+		
+	\subsection{Ganze und rationale Zahlen}
+		\textbf{Frage:} Existiert eine natürliche Zahl $x$ mit  $n=n'+x$ für ein gegebenes $n$ und $n'$? \\
+		\textbf{Antwort:} Das geht nur falls $n \le n'$, dann ist $x=n-n'$ \\
+		\textbf{Ziel:} Zahlenbereichserweiterung, sodass die Gleichung immer l\"osbar ist. Ordne jedem Paar
+		$(n,n') \in \mathbb N \times \mathbb N$ eine neue Zahl als L\"osung zu. Gewisse Paare liefern die
+		gleiche L\"osung, z.B. $(6,4),(5,3),(7,5)$. Diese m\"ussen mittels Relation identifiziert werden. \\
+		$\newline$
+		
+		$\mathbb Q := \{(n_1,n_1'),(n_2,n_2') \in (\mathbb N \times \mathbb N) \times (\mathbb N \times 
+		\mathbb N) \mid n_1+n_2'=n_1'+n_2\}$ \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} $\mathbb Q$ ist die \"Aquivalenzrelation auf $\mathbb N \times \mathbb N$
+		\end{framed}
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+				\item $(5,3) \sim (6,4) \sim (7,5)$ bzw. $(5-3) \sim (6-4) \sim (7-5)$
+				\item $(3,6) \sim (5,8)$ bzw. $(3-6) \sim (5-8)$
+		\end{compactitem}
+		$\newline$
+		
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item offenbar $((n,n'),(n,n')) \in \mathbb Q \Rightarrow$ reflexiv
+			\item falls $((n_1,n_1'),(n_2,n_2')) \in \mathbb Q \Rightarrow (n_2,n_2'),(n_1,n_1')) \in
+			\mathbb Q \Rightarrow$ symmetrisch
+			\item sei $((n_1,n_1'),(n_2,n_2')) \in \mathbb Q$ und $((n_2,n_2'),(n_3,n_3')) \in \mathbb Q
+			 \Rightarrow n_1+n_2'=n_1'+n_2, n_2+n_3'=n_2'+n_3 \Rightarrow n_1+n_3'=n_1'+n_3 \Rightarrow
+			  ((n_1,n_1'),(n_3,n_3')) \in \mathbb Q \Rightarrow$ transitiv
+		\end{compactitem}
+		} \\
+		$\newline$
+		
+		setze $\overline \mathbb Z := \{[(n,n')] \mid n,n' \in \mathbb N\}$ Menge der ganzen Zahlen, 
+		[ganze Zahl] \\
+		Kurzschreibweise: $\overline m := [(m,m')]$ oder $\overline n := [(n,n')]$ \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $[(n,n')] \in \overline \mathbb Z$. Dann existiert eindeutig $n* \in 
+			\mathbb N$ mit 
+			$(n*,0) \in [(n,n')]$, falls $n \ge n'$ bzw. $(0,n*) \in [(n,n')]$ falls $n < n'$.
+		\end{framed}
+		
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $n \ge n' \Rightarrow \exists ! n* \in \mathbb N: n=n'+n* \Rightarrow (n*,0) \sim (n,n')$
+			\item $n < n' \Rightarrow \exists ! n* \in \mathbb N: n+n*=n' \Rightarrow (0,n*) \sim (n,n')$
+		\end{compactitem}}\\
+		$\newline$
+		
+		\textbf{Frage:} Was hat $\overline \mathbb Z$ mit $\mathbb Z$ zu tun?\\
+		\textbf{Antwort:} identifiziere $(n,0)$ bzw. $(n-0)$ mit $n \in \mathbb N$ und identifiziere $(0,n)$ 
+		bzw. $(0-n)$ mit Symbol $-n$ \\
+		$\Rightarrow$ ganze Zahlen kann man eindeutig den Elementen folgender Mengen zuordnen: $\mathbb Z :=
+		\mathbb N \cup \{(-n) \mid n \in \mathbb N\}$ \\
+		$\newline$
+		
+		\textbf{Rechenoperationen auf $\overline \mathbb Z$:} \\
+		\begin{compactitem}
+			\item Addition: $\overline m + \overline n = [(m,m')]+[(n,n')]=[(m+n,m'+n')]$
+			\item Multiplikation: $\overline m \cdot \overline n = [(m,m')] \cdot [(n,n')]=[(mn+m'n',mn'+m'n)]$
+		\end{compactitem}
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} Addition und Multiplikation sind eindeutig definiert, d.h. unabh\"angig von 
+			Repr\"asentant bez\"uglich $\mathbb Q$
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $(m_1,m_1') \sim (m_2,m_2'), (n_1,n_1') \sim (n_2,n_2') \Rightarrow m_1+m_2'=m_1'+m_2, n_1
+		+n_2'=n_1'+n_2 \Rightarrow m_1+n_1+m_2'+n_2'=m_1'+n_1'+m_2+n_2 \Rightarrow (m_1,m_1')+(n_1,n_1')
+		 \sim (m_2,m_2')+(n_2,n_2')$} \\
+		 $\newline$
+		 
+		 \begin{framed}
+			\textbf{Satz:} F\"ur Addition und Multiplikation auf $\mathbb Z$ gilt $\forall \overline m, 
+			\overline n \in \overline \mathbb Z$:
+			\begin{compactitem}
+				\item es existiert eine neutrales Element: $0:=[(0,0)]$, $1:=[(1,0)]$
+				\item jeweils kommutativ, assoziativ und gemeinsam distributiv
+				\item $- \overline n := [(n',n)] \in \mathbb Z$ ist invers bez\"uglich der Addition zu 
+				$[(n,n')] = \overline n$
+				\item $(-1) \cdot \overline n = - \overline n$
+				\item $\overline m \cdot \overline n = 0 \iff \overline m =0 \lor \overline n=0$
+			\end{compactitem}
+		\end{framed}
+		
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item offenbar $\overline n +0=0+\overline n=\overline n$ und $\overline n \cdot 1 = 1 \cdot 
+			\overline n = \overline n$
+			\item Flei{\ss}arbeit
+			\item offenbar $\overline n+(- \overline n) = (- \overline n)+\overline n=[(n+n',m+m')]=0$
+			\item $(-1)\cdot \overline n = [(0,1)]\cdot [n,n']=[n',n]=-\overline n$
+			\item \"Ubungsaufgabe
+		\end{compactitem}}
 \end{document}
