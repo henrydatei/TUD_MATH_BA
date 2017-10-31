@@ -646,4 +646,118 @@ Mathematik besitzt eine Sonderrolle unter den Wissenschaften, da
 			\item $(-1)\cdot \overline n = [(0,1)]\cdot [n,n']=[n',n]=-\overline n$
 			\item \"Ubungsaufgabe
 		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} F\"ur $\overline m, \overline n \in \mathbb Z$ hat die Gleichung $\overline m=
+			\overline n + \overline x$ die L\"osung $\overline x=\overline m+(-\overline n)$
+		\end{framed}
+		$\newline$
+		
+		Ordnung auf $\overline \mathbb Z:$ betrachte Relation $R := \{(\overline m,\overline n) \in 
+		\overline \mathbb Z \times \overline \mathbb Z\ \mid \overline m \le \overline n}$
+		
+		\begin{framed}
+			\textbf{Satz:} $R$ ist Totalordnung auf $\mathbb Z$ und vertr\"aglich mit Addition und 
+			Multiplikation
+		\end{framed}
+		$\newline$
+		
+		Ordnung vertr\"aglich mit Addition: $\overline n < 0 \iff 0=\overline n+(-\overline n) < -\overline n
+		= (-1) \cdot \overline n$ \\
+		$\newline$
+		
+		beachte: $\mathbb Z := \mathbb N \cup \{(-n) \mid n \in \mathbb N_{>0}\}$ \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} $\mathbb Z$ und $\overline \mathbb Z$ sind isomorph bez\"uglich Addition, 
+			Multiplikation und Ordnung.
+		\end{framed}
+		
+		\textit{Beweis: \\
+		betrachte Abbildung $I: \mathbb Z \to \overline \mathbb Z$ mit $I(k):=[(k,0)]$ und $I(-k):=[(0,k)]
+		\quad \forall k \in \mathbb N \Rightarrow$ \"Ubungsaufgabe}
+		$\newline$
+		
+		Notation: verwende stets $\mathbb Z$, schreibe $m,n,...$ statt $\overline m, \overline n,...$ f\"ur
+		ganze Zahlen in $\mathbb Z$ \\
+		$\newline$
+		
+		\textbf{Frage:} Existiert eine ganze Zahl mit $n=n' \cdot x$ f\"ur $n,n' \in \mathbb Z, n' \neq 0$ \\
+		\textbf{Antwort:} im Allgemeinen nicht
+		\textbf{Ziel:} Zahlbereichserweiterung analog zu $\mathbb N \to \mathbb Z$ \\
+		ordne jedem Paar $(n,n') \in \mathbb Z \times \mathbb Z$ neue Zahl $x$ zu \\
+		schreibe $(n,n')$ auch als $\frac{n}{n'}$ oder $n:n'$ \\
+		identifiziere Paare wie z.B. $\frac 4 2, \frac 6 3, \frac 8 4$ durch Relation \\
+		$\mathbb Q := {(\frac{n_1}{n'_2}, \frac{n_2}{n'_2}) \in (\mathbb Z \times \mathbb Z_{\neq 0}) 
+		\times (\mathbb Z \times \mathbb Z_{\neq 0}) \mid n_1n'_2=n'_1n_2}$ \\
+		$\Rightarrow \mathbb Q$ ist eine \"Aquivalenzrelation auf $\mathbb Z \times \mathbb Z_{\neq 0}$ \\
+		$\newline$
+		
+		setze $\mathbb Q := {[\frac{n}{n'}] \mid (n,n') \in \mathbb Z \times \mathbb Z_{\neq 0}}$ Menge der
+		rationalen Zahlen \\
+		beachte: unendlich viele Symbole $\frac{n}{n'}$ f\"ur gleiche Zahl $[\frac{n}{n'}]$ \\
+		wir schreiben sp\"ater $\frac{n}{n'}$ f\"ur die Zahl $[\frac{n}{n'}]$ \\
+		$\newline$
+		
+		offenbar gilt die K\"urzungsregel: $[\frac{n}{n'}]=[\frac{kn}{kn'}] \quad \forall k \in 
+		\mathbb Z_{\neq 0}$ \\
+		$\newline$
+		
+		\textbf{Rechenoperationen auf $\mathbb Q$:} \\
+		\begin{compactitem}
+			\item Addition: $[\frac{m}{m'}]+[\frac{n}{n'}] := [\frac{mn'+m'n}{m'n'}]$
+			\item Multiplikation: $[\frac{m}{m'}] \cdot [\frac{n}{n'}] := [\frac{mn}{m'n'}]$
+		\end{compactitem}
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} Mit Addition und Multiplikation ist $\mathbb Q$ ein K\"orper mit
+			\begin{compactitem}
+				\item neutralen Elementen: $0=[\frac{0_{\mathbb Z}}{1_{\mathbb Z}}]=
+				[\frac{0_{\mathbb Z}}{n_{\mathbb Z}}], 1:=[\frac{1_{\mathbb Z}}{1_{\mathbb Z}}]=[\frac n n]
+				\neq 0$
+				\item inversen Elementen: $-[\frac{n}{n'}]=[\frac{-n}{n}], [\frac{n}{n'}]^{-1}=[\frac{n'}{n}]$
+			\end{compactitem}
+		\end{framed}
+		$\newline$
+		
+		Ordnung auf $\mathbb Q:$ f\"ur $[\frac{n}{n'}] \in \mathbb Q$ kann man stets $n'>0$ annehmen \\
+		Realtion: $R:=\{([\frac{m}{m'}],[\frac{n}{n'}]) \in \mathbb Q \times \mathbb Q \mid mn' \le m'n, 
+		m',n' > 0\}$ gibt Ordnung $\le$ \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} $\mathbb Q$ ist ein angeordneter K\"orper (d.h. $\le$ ist eine Totalordnung und
+			vertr\"aglich mit Addition und Multiplikation)
+		\end{framed}
+		$\newline$
+		
+		Notation: schreibe vereinfacht nur noch $\frac{n}{n'}$ f\"ur die Zahl $[\frac{n}{n'}] \in \mathbb Q$
+		und verwende auch Symbole $p,q,...$ f\"ur Elemente aus $\mathbb Q$ \\
+		$\newline$
+		
+		Gleichung $p \cdot x = q$ hat stets eindeutige L\"osung: $x=q \cdot p^{-1}$ ($p,q \in \mathbb Q, 
+		p \neq 0$) \\
+		$\nwline$
+		
+		\textbf{Frage:} $\mathbb N \subset \mathbb Z \to \mathbb Z \subset \mathbb Q$?
+		\textbf{Antwort:} Sei $\mathbb Z_{\mathbb Q} := {\frac n 1 \in \mathbb Q \mid n \mathbb Z}, I:
+		\mathbb Z \to \mathbb Z_{\mathbb Q}$ mit $I(n)=\frac n 1$ \\
+		$\Rightarrow I$ ist Isomorphismus bez\"uglich Addition, Multiplikation und Ordnung. \\
+		In diesem Sinn: $\mathbb N \subset \mathbb Z \subset \mathbb Q$ \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Folgerung:} K\"orper $\mathbb Q$ ist archimedisch angeordnet, d.h. f\"ur alle $q \in 
+			\mathbb Q \exists n \in \mathbb N: q<_{\mathbb Q} n$
+		\end{framed}
+		
+		\textit{Beweis: \\
+		Sei $q = [\frac{k}{k'}]$ mit $k'>0$ \\
+		$n := 0$ falls $k<0 \Rightarrow q=[\frac{k}{k'}] < [\frac{0}{k'}]=0=n$ \\
+		$n := k+1$ falls $k \ge 0 \Rightarrow q=[\frac{k}{k'}] < [\frac{k+1}{k'}]=n$}
+		$\newline$
+		
+	\subsection{reelle Zahlen}
 \end{document}
