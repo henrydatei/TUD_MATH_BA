@@ -32,4 +32,6 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    1.3 Gruppen ... fertig
    
-   1.4 Ringe ... fertig
+   1.4 Ringe ... wird bearbeitet
+   
+   1.5 Körper ... noch nicht bearbeitet
