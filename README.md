@@ -24,7 +24,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    2.3 reelle Zahlen ... wird bearbeitet
   
 ### Fortschritt Lineare Algebra
-1. Grundlagen der Linearen Algebra ... fertig
+1. Grundlagen der Linearen Algebra ... wird bearbeitet
 
    1.1 Logik und Mengen ... fertig
        
@@ -38,6 +38,6 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    1.6 Polynome ... noch nicht bearbeitet
    
-2. Vektorräume
+2. Vektorräume ... noch nicht bearbeitet
 
-   2.1 Definitionen und Beispiele
+   2.1 Definitionen und Beispiele ... noch nicht bearbeitet
