@@ -37,3 +37,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    1.5 Körper ... noch nicht bearbeitet
    
    1.6 Polynome ... noch nicht bearbeitet
+   
+2. Vektorräume
+
+   2.1 Definitionen und Beispiele
