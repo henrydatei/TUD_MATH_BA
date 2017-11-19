@@ -644,5 +644,201 @@
 				\hline
 			\end{tabular}
 		\end{center}
-
+		
+		\begin{framed}
+			\textbf{Definition Charakteristik:} Sei $R$ ein Ring mit Einselement. Man definiert die Charakteristik von
+			$R$ als die kleinste nat\"urliche Zahl $n$ mit $1+1+...+1=0$, falls so ein $n$ existiert, andernfalls
+			ist die Charakteristik $0$.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Definition Nullteiler:} Sei $R$ ein Ring mit Einselement. Ein $0 \neq x \in R$ ist ein Nullteiler von 
+			$R$, wenn er ein $0 \neq y \in R$ mit $xy=0$ oder $yx=0$ gibt. Ein Ring ohne Nullteiler ist
+			nullteilerfrei.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Definition Einheit:} Sei $R$ ein Ring mit Einselement. Ein $x \in R$ hei{\ss}t invertierbar (oder
+			 Einheit von $R$), wenn es ein $x' \in R$ mit $xx'=x'x=1$ gibt. Wir bezeichnen die invertierten
+			 Elemente von $R$ mit $R^{\times}$
+		\end{framed}
+		
+		\textbf{Beispiele:}\\
+		\begin{compactitem}
+			\item reelle Zahlen ist ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb R^{\times}=
+			\mathbb R\backslash\{0\}$
+			\item $\mathbb Z$ ist ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb Z^{\times}=
+			\{1,-1\}$
+			\item $\mathbb Z/n \mathbb Z$ ist ein Ring der Charakteristik $n$. Ist $n$ keine Primzahl, so
+			ist $\mathbb Z$ nicht nullteilerfrei.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $R$ ein Ring mit Einselement. 
+			\begin{compactitem}
+				\item Ist $x \in R$ invertierbar, so ist $x$ kein Nullteiler in $R$
+				\item Die invertierbaren Elemente von $R$ bilden mit der Multiplikation eine Gruppe
+			\end{compactitem}
+		\end{framed}
+		
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Ist $xx'=x'x=1$ und $xy=0$ mit $x',y \in R$, so ist $0=x'\cdot 0=x\cdot xy=1\cdot y=y$, aber
+			$y \neq 0$ f\"ur Nullteiler
+			\item Sind $x,y \in R^{\times}$, also $xx'=x'x=yy'=y'y=1$. Dann ist $(xy)(y'x')=x\cdot 1\cdot x'=1$
+			und $(y'x')(xy)=y'\cdot 1\cdot y=1$, somit $R^{\times}$ abgeschlossen unter der Multiplikation. Da 
+			$1 \cdot 1=1$ gilt, ist auch $1 \in R^{\times}$. Nach Definition von $R^{\times}$ hat jedes $x \in 
+			R^{\times}$ ein Inverses $x' \in R^{\times}$.
+		\end{compactitem}}
+		$\newline$
+		
+	\subsubsection{K\"orper}
+		\begin{framed}
+			\textbf{Definition K\"orper:} Ein K\"orper ist ein kommutativer Ring $(K,+,\cdot)$ mit Einselement 
+			$1 \neq 0$, in dem jedes Element $x \neq x \in K$ invertierbar ist.
+		\end{framed}
+		
+		\textbf{Bemerkungen:} Ein K\"orper ist stets nullteilerfrei und $(K\backslash\{0\}, \cdot)$ ist eine abelsche
+		Gruppe. Ein k\"orper ist also ein Tripel $(K,+,\cdot)$ bestehend aus einer Menge $K$ und 2 Verkn\"upfungen
+		$+: K \times K \to K$ und $\cdot: K \times K \to K$, f\"ur die gelten: \\
+		(K1): $(K,+)$ ist eine abelsche Gruppe \\
+		(K2): $(K\backslash\{0\}, \cdot)$ ist eine abelsche Gruppe, deren neutrales Element wir mit 1 bezeichnen \\
+		(K3): Es gelten die Distributivgesetze. \\
+		$\newline$
+		
+		\textbf{Bemerkungen:} Sei $K$ ein K\"orper und $a,x,y \in K$. Ist $ax=ay$ und $a \neq 0$, so ist $x=y$. \\
+		
+		\begin{framed}
+			\textbf{Definition Teilk\"orper:} Ein Teilk\"orper eines K\"orpers $(K,+,\cdot)$ ist die Teilemenge $L 
+			\subset K$, die mit der geeigneten Einschr\"ankung von Addition und Multiplikation wieder ein
+			K\"orper ist.
+		\end{framed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Der Nullring ist kein K\"orper.
+			\item Der K\"orper $\mathbb Q$ der rationalen Zahlen ist ein Teilk\"orper des K\"orpers $\mathbb R$ der
+			reellen Zahlen.
+			\item $(\mathbb Z, + ,\cdot)$ ist kein K\"orper
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Beispiel (Komplexe Zahlen)} \\
+		Wir definieren die Menge $\mathbb C = \mathbb R \times \mathbb R$ und darauf Verkn\"upfungen wie folgt:
+		F\"ur $(x_1,y_1), (x_2,y_2) \in \mathbb C$ ist: \\
+		\begin{compactitem}
+			\item$(x_1,y_1)+(x_2,y_2) := (x_1+x_2,y_1+y_2)$
+			\item$(x_1,y_1)\cdot (x_2,y_2) := (x_1x_2-y_1y_2,x_1y_2+x_2y_1)$
+		\end{compactitem}
+		Wie man nachpr\"ufen kann, ist $(\mathbb C,+,\cdot)$ ein K\"orper, genannt K\"orper der komplexen Zahlen.
+		Da $(x_1,0)+(x_2,0)=(x_1+x_2,0)$ und $(x_1,0)\cdot (x_2,0)=(x_1x_2,0)$, k\"onnen wir $\mathbb R$ durch
+		"$x=(x,0)$" mit dem Teilk\"orper $\mathbb R \times \{0\}$ von $\mathbb C$ identifizieren. \\
+		Die imagin\"are Einheit $i=(0,1)$ erf\"ullt $i^2=-1$ und jedes $z \in \mathbb C$ kann eindeutig geschrieben
+		werden als $z=x+iy$ mit $x,y \in \mathbb R$
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $a \in \mathbb Z$ und sei $p$ eine Primzahl, die $a$ nicht teilt. Dann gibt es $b,k \in
+			 \mathbb Z$ mit $ab+kp=1$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $n \in \mathbb N$ die kleinste nat\"urliche Zahl der Form $n=ab+kp$. Angenommen, $n \ge 2$. Schreibe
+		$a=qp+r$ mit $q,r \in \mathbb Z$ und $0 \le r < p$. Aus der Nichtteilbarkeit von $a$ folgt $r \neq 0$, also 
+		$r \in \mathbb N$. Wegen $r=a\cdot 1-qp$ ist $n\le r$. Da $p$ Primzahl ist und $2\le n\le r < p$, gilt $n$ teilt
+		nicht $p$. Schreibe $p=c\cdot n+m$ mit $c,m \in \mathbb Z$ und $0 \le m<n$. Aus $n$ teilt nicht $p$ folgt
+		$m \neq 0$, also $m \in \mathbb N$. Da $m=p-cn=-abc+(1-kc)p$, ist $m<n$ ein Widerspruch zur Minimalit\"at
+		 von $n$. Die Annahme $n \ge 2$ war somit falsch. Es gilt $n=1$.} \\
+		$\newline$
+		
+		\textbf{Beispiel (Endliche Primk\"orper)} \\
+		F\"ur jede Primzahl $p$ ist $\mathbb Z /p \mathbb Z$ ein K\"orper. Ist $\overline{a}\neq \overline{0}$, so gilt 
+		$p$ teilt nicht $a$ und somit gibt es $b,k \in \mathbb Z$ mit \\
+		$ab+kp=1$ \\
+		$\overline{(ab+kp)}=\overline{1} = \overline{(ab)} = \overline{a} \cdot \overline{b}$ \\
+		und somit ist $\overline{a}$ invertierbar in $\mathbb Z /p \mathbb Z$. Somit sind f\"ur $n \in \mathbb N$
+		\"aquivalent:
+		\begin{compactitem}
+			\item $\mathbb Z /n \mathbb Z$ ist ein K\"orper
+			\item $\mathbb Z /n \mathbb Z$ ist nullteilerfrei
+			\item $n$ ist Primzahl
+		\end{compactitem}
+		\textit{Beweis: 1 $\to$ 2: 4.13; 2 $\to$ 3: 4.12; 3 $\to$ 1: gegeben} \\
+		Insbesondere ist $\mathbb Z /p \mathbb Z$ nullteilerfrei, d.h. aus $p$ teilt $ab$ folgt $p$ teilt $a$ oder
+		$p$ teilt $b$
+		
+	\subsubsection{Polynome}
+		In diesem Abschnitt sei $R$ ein kommutativer Ring mit Einselement. \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Unter einem Polynom in der "Unbekannte" $x$ versteht man einen Ausdruck der Form
+		$f(x)=a_0+a_1x+a_2x^2+...+a_nx^n = \sum \limits_{k=0}^{n} a_kx^k$ mit $a_0,...,a_n \in R$. Fasst man $x$
+		als ein beliebiges Element von $R$ auf, gelten einige offensichtliche Rechenregeln: \\
+		Ist $f(x)=\sum \limits_{k=0}^{n} a_kx^k$ und $g(x)=\sum \limits_{k=0}^{n} b_kx^k$ so ist
+		\begin{compactitem}
+			\item $f(x)+g(x)=\sum \limits_{k=0}^{n} (a_k+b_k)x^k$
+			\item $f(x)\cdot g(x)=\sum \limits_{k=0}^{2n} c_kx^k$ mit $c_k=\sum \limits_{j=0}^{k} a_jb_{k-j}$
+		\end{compactitem}
+		Dies motiviert die folgende pr\"azise Definition f\"ur den Ring der Polynome \"uber $R$ in einer "Unbestimmten"
+		$x$.
+		
+		\begin{framed}
+			\textbf{Definition Polynom:} Sei $R[X]$ die Menge der Folgen in $R$, die fast \"uberall 0 sind, also
+			$R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\}$
+		\end{framed}
+		
+		Wir definieren Addition und Multiplikation auf $R[X]$:
+		\begin{compactitem}
+			\item $(a_k)_{k \in \mathbb N_0}+(b_k)_{k \in \mathbb N_0}=(a_k+b_k)_{k \in \mathbb N_0}$
+			\item $(a_k)_{k \in \mathbb N_0}\cdot (b_k)_{k \in \mathbb N_0}=(c_k)_{k \in \mathbb N_0}$ mit 
+			$c_k = \sum \limits_{j=0}^{k} a_jb_{k-j}$
+		\end{compactitem}
+		$\newline$
+		
+		Mit diesen Verkn\"upfungen wird $R[X]$ zu einem kommutativen Ring mit Einselement. Diesen Ring nennt man
+		Polynomring (in einer Variablen $X$) \"uber $R$. Ein $(a_k)_{k \in \mathbb N_0} \in R[X]$ hei{\ss}t Polynom mit
+		den Koeffizienten $a_0,...,a_n$. Wenn wir $a \in R$ mit der Folge $(a,0,0,...,0) := (a,\delta_{k,0})_{k \in \mathbb N_0}$
+		identifizieren, wird $R$ zu einem Unterrring von $R[X]$. 
+		$\newline$
+		
+		Definiert man $X$ als die Folge $(0,1,0,..,0) := (\delta_{k,1})_{k \in \mathbb N_0}$ (die Folge hat an der $k$-ten 
+		Stelle eine 1, sonst nur Nullen). Jedes $f(a_k)_{k \in \mathbb N_0}$ mit $a_k=0$ f\"ur $k>n_0$ l\"asst sich eindeutig
+		schreiben als $f(X)=\sum \limits_{k=0}^{n_0} a_kX^k$.\\
+		Alternativ schreiben wir auch $f=\sum \limits_{k \ge 0} a_kX^k$ mit dem Verst\"andnis, dass diese unendliche
+		Summe nur endlich von 0 verschiedene Summanden enth\"alt.
+		$\newline$
+		
+		Sei $0 \neq f(X)=\sum \limits_{k \ge 0} a_kX^k \in R[X]$. Der Grad von $f$ ist das gr\"o{\ss}te $k$ mit $a_k
+		\neq 0$, geschrieben $deg(f):= max\{k \in \mathbb N_0 \mid a_k \neq 0\}$. Man definiert den Grad des
+		Nullpolynoms als $deg(0)=-\infty$, wobei $-\infty < k \forall k \in \mathbb N_0$ gelten soll. Man nennt $a_0$
+		den konstanten Term und $a_{deg(f)}$ den Leitkoeffizienten von $f$. Hat $f$ den Grad 0, 1 oder 2, so nennt
+		man $f$ konstant, linear bzw. quadratisch.
+		$\newline$
+		
+		\textbf{Beispiel:} Das lineare Polynom $f(X)=X-2 \in R[X]$ hat den Leitkoeffizent 1 und den konstanten Term $-2$.
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $f,g \in R[X]$
+			\begin{compactitem}
+				\item Es ist $deg(f+g)\le max\{deg(f), deg(g)\}$
+				\item Es ist $deg(f\cdot g) \le deg(f)+deg(g)$
+				\item Ist $R$ nullteilerfrei, so ist $deg(f\cdot g) = deg(f)+deg(g)$ und auch $R[X]$ ist nullteilerfrei.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item offenbar
+			\item Ist $deg(f)=n$ und $deh(g)=m$, $f=\sum \limits_{i \ge 0} f_iX^i$, $g=\sum \limits_{ij\ge 0} g_jX^j$, 
+			so ist auch $h=fg=\sum \limits_{k \ge 0} h_kX^k$ mit $h_k=\sum \limits_{i+j=k} f_i\cdot g_j$ f\"ur alle $k \ge 0$.
+			Ist  $k>n+m$ und $i+j=k$, so ist $i>n$ oder $j>m$, somit $f_i=0$ oder $g_k=0$ und somit $h_k=0$. 
+			Folglich ist $deg(h) \le n+m$.
+			\item Ist $f=0$ oder $g=0$, so ist die Aussage klar, wir nehmen als $n,m \ge 0$ an. Nach b) ist $deg(h) \le 
+			n+m$ und $h_{m+n}=\sum \limits_{i+j=n+m} f_ig_j=f_ng_m$. Ist $R$ nullteilerfrei, so folgt aus $f_n \neq 0$
+			und $g_m\neq 0$ schon $f_ng_m\neq 0$, und somit $deg(h)=n+m$.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Theorem (Polynomdivision):} Sei $K$ ein K\"orper und sei $0 \neq g \in K[X]$. F\"ur jedes Polynom
+			 $f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $deg(r)<deg(g)$. 
+		\end{framed}
+		\textit{Beweis: \\
+		}
 \end{document}
