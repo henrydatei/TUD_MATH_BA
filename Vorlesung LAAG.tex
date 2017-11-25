@@ -839,6 +839,40 @@
 			\textbf{Theorem (Polynomdivision):} Sei $K$ ein K\"orper und sei $0 \neq g \in K[X]$. F\"ur jedes Polynom
 			 $f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $deg(r)<deg(g)$. 
 		\end{framed}
-		\textit{Beweis: \\
-		}
+		\textit{Beweis: Existenz und Eindeutigkeit\\
+		Existenz: Sei $n=deg(f)$, $m=deg(g)$, $f=\sum \limits_{k=0}^{n} a_kX^k$, $g=\sum \limits_{k=0}^{m} b_kX^k$ \\
+		Induktion nach $n$ bei festem $g$. \\
+		IA: Ist $n<m$, so w\"ahlt man $h=0$ und $r=f$.\\
+		IB: Wir nehmen an, dass die Aussage f\"ur alle Polynome vom Grad kleiner als $n$ gilt.\\
+		IS: Ist $n \ge m$, so betrachtet man $f_1=f-\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)$. Da $\frac{a_n}{b_m}\cdot 
+		X^{n-m}\cdot g(X)$ ein Polynom vom Grad $n-m+deg(g)=n$ mit Leitkoeffizient $\frac{a_n}{b_m}\cdot b_m=a_n$ ist, ist
+		$deg(f_1)<n$. Nach IB gibt es also $h_1, r_1 \in K[X]$ mit $f_1=gh_1+r_1$ und $deg(r)<deg(g)$. Somit ist 
+		$f(X)=f_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)=gh+r$ mit $h(X)=h_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}, r=r_1$. \\
+		Eindeutigkeit: Sei $n=deg(f), m=deg(g)$. Ist $f=gh+r=gh'+r'$ und $deg(r),deg(r')<m$, so ist $(h-h')g=r'-r$ und
+		$deg(r'-r)<m$. Da $deg(h-h')=deg(h'-h)+m$ muss $deg(h-h')<0$, also $h'-h=0$ sein. Somit $h'=h$ und $r'=r$} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Der Existenzbeweis durch Induktion liefert uns ein konstruktives Verfahren, diese sogenannte
+		 Polynomdivision durchzuf\"uhren. \\
+		$\newline$
+		
+		\textbf{Beispiel:} in $\mathbb Q[X]$: $(x^3+x^2+1):(x^2+1)=x+1$ Rest $-x$ \\
+		
+		\begin{framed}
+			\textbf{Definition Nullstelle:} Sei $f(X)=\sum \limits_{k \ge 0} a_kX^k \in \mathbb R[X]$. F\"ur $\lambda \in
+			\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k
+			\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tile f: \mathbb R \to \mathbb R$ und
+			$\lambda \mapsto f(\lambda)$. \\
+			Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine Nullstelle von $f$
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Lemma:} F\"ur $f,g \in \mathbb R[X]$ und $\lambda \in \mathbb R$i ist $(f+g)(\lambda)=f(\lambda)+
+			g(\lambda)$ und $(fg)(\lambda)=f(\lambda) \cdot g(\lambda)$.
+		\end{framed}
+		\textit{Beweis: Ist $f=\sum \limits_{k \ge 0} a_kX^k$ und $g=\sum \limits_{k\ge 0} b_kX^k$, so ist \\
+		$f(\lambda)+g(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k + \sum \limits_{k\ge 0} b_k\lambda^k = \sum 
+		\limits_{k\ge 0} (a_k+b_k)\lambda^k=(f+g)(\lambda)$ \\
+		$f(\lambda)\cdot g(\lambda)= \sum \limits_{k\ge 0} a_k\lambda^k \cdot \sum \limits_{k\ge 0} b_k\lambda^k = 
+		\sum \limits_{k \ge 0} \sum \limits{i+j=k} (a_i+b_j)\lambda^k = (fg)(\lambda)$)}
 \end{document}
