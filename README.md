@@ -32,12 +32,14 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    1.3 Gruppen ... fertig
    
-   1.4 Ringe ... wird bearbeitet
+   1.4 Ringe ... fertig
    
-   1.5 Körper ... noch nicht bearbeitet
+   1.5 Körper ... fertig
    
-   1.6 Polynome ... noch nicht bearbeitet
+   1.6 Polynome ... wird bearbeitet
    
 2. Vektorräume ... noch nicht bearbeitet
 
    2.1 Definitionen und Beispiele ... noch nicht bearbeitet
+   
+   2.2 Linearkombinationen und lineare Abhängigkeit ... noch nicht bearbeitet
