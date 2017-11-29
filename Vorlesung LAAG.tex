@@ -875,4 +875,39 @@
 		\limits_{k\ge 0} (a_k+b_k)\lambda^k=(f+g)(\lambda)$ \\
 		$f(\lambda)\cdot g(\lambda)= \sum \limits_{k\ge 0} a_k\lambda^k \cdot \sum \limits_{k\ge 0} b_k\lambda^k = 
 		\sum \limits_{k \ge 0} \sum \limits_{i+j=k} (a_i+b_j)\lambda^k = (fg)(\lambda)$)}
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $K$ ein K\"orper und $\lambda \in K$ eine Nullstelle von $f \in K[X]$ so gibt es ein
+			eindeutig bestimmtes $h \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)$
+		\end{framed}
+		\textit{Beweis: \\
+		Es gibt $h,r \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)+r(x)$ und $deg(r)<deg(X-\lambda)=1$, also $r \in
+		K$. Da $\lambda$ Nullstelle von $f$ ist, gilt $0=f(\lambda)=(\lambda-\lambda)*h(\lambda)+r(\lambda)=
+		r(\lambda)$. Hieraus folgt $r=0$. Eindeutigkeit folgt aus Eindeutigkeit der Polynomdivision.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $K$ ein K\"orper. Ein Polynom $0\neq f \in K[X]$ hat h\"ochstens $deg(f)$ viele
+			Nullstellen.
+		\end{framed}
+		\textit{Beweis: \\
+		Induktion nach $deg(f)=n$ \\
+		Ist $n=0$, so ist $f \in K^{\times}$ und hat somit keine Nullstellen. \\
+		Ist $n>0$ und hat f eine Nullstelle $\lambda \in K$, so ist $f(X)=(X-\lambda)*h(x)$ mit $h(x) \in K[X]$ und
+		$deg(f)=deg(X-\lambda)+deg(h)=n-1$. Nach IV besitzt $h$ h\"ochstens $deg(h)=n-1$ viele Nullstellen. Ist
+		$\lambda'$ eine Nullstelle von $f$, so ist $0=f(\lambda’)=(\lambda’-\lambda)*h(\lambda’)$, also $\lamba'=
+		\lambda$ oder $\lambda'$ ist Nullstelle von $h$. Somit hat $f$ h\"ochstens $n$ viele Nullstellen in $K$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $K$ ein unendlicher K\"orper, so ist die Abbildung $K[X] \to Abb(K,K)$ und $f \mapsto
+			\tilde f$ injektiv.
+		\end{framed}
+		\textit{Beweis: \\
+		Sind $f,g \in K[X]$ mit $\tilde f = \tilde g$, also $f(\lambda)=g(\lambda)$ f\"ur jedes $\lambda \in K$, so ist
+		jedes $\lambda$ Nullstelle von $h:= f-g \in K[X]$. Da $|K|=\infty$ ist, so ist $h=0$, also $f=g$.}
+		$\newline$
+		
+		\textbf{Bemerkung:} Dieses Korollar besagt uns, dass man \"uber einem unendlichen K\"orper Polynome als
+		polynomiale Abbildungen auffassen kann. Ist $K$ aber endlich, so ist dies im Allgemeinen nicht richtig.
+		Beispiel: $K=\mathbb Z\backslash 2\mathbb Z$, $f(X)=X$, $g(X)=X^2 \Rightarrow f \neq g$, aber 
+		$\tilde f=\tilde g$.
 \end{document}
