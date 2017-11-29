@@ -45,3 +45,5 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    2.2 Linearkombinationen und lineare Abhängigkeit ... noch nicht bearbeitet
    
    2.3 Basis und Dimension ... noch nicht bearbeitet
+   
+   2.4 Summen von Vektorräumen ... noch nicht bearbeitet
