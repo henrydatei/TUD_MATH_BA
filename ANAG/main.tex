@@ -1,0 +1,126 @@
+\documentclass[11pt]{book}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{paralist}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+% math/enviroments
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[autostyle]{csquotes}
+\usepackage{lipsum}
+\usepackage{enumerate}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}      % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\funk}{f(z)} % f(z)
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\series}{(a_n)_{n\in\natur}} % series a_n€|N
+\newcommand{\seriesa}{(a_n)} % short for \seriesa
+\newcommand{\seriesb}{(b_n)} % with b
+\newcommand{\seriesc}{(c_n)} % with c
+\newcommand{\seriesk}{(a_k)} % a with k
+\newcommand{\varepz}{\varepsilon > 0}
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\| \cdot \|}
+\newcommand{\limn}{\lim\limits_{n\to\infty}}
+\newcommand{\limk}{\lim\limits_{k\to\infty}}
+\newcommand{\half}{\frac{1}{2}} % 1/2
+\newcommand{\halfn}{\frac{1}{n}} % 1/n
+\newcommand{\halftri}{\frac{1}{3}} % 1/3
+
+\newcommand{\sumkk}{\sum_{k=0}^{\infty}} % sum from k=0 to \infty
+\newcommand{\sumkkone}{\sum_{k=0}^{\infty}} % sum from k=1 to \infty
+\newcommand{\sumk}{\textstyle \sum_{k}} % shortform of k=0 to \infty
+
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\metric}{(X,d)} % metric space symbol
+\newcommand{\metricsym}{|\cdot|} % |*|
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Lightarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\rangen}{1,\dots,n} % 1,...,n
+\newcommand{\dotsco}{,\dots,} % ,...,
+\newcommand{\expon}{\mathrm{exp}}
+
+\begin{document}
+
+\title{\textbf{Analysis 1. Semester (WS2017/18)}}
+\author{Dozent: Prof. Dr. Friedemann Schuricht\\
+	Kursassistenz: Moritz Schönherr}
+\date{\today}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\newpage
+\paragraph{Literatur}
+\begin{compactitem}
+	\item Forster: Analysis 1 + 2, Vieweg
+	\item Königsberger: Analysis 1 + 2, Springer
+	\item Hildebrandt: Analysis 1 + 2, Springer
+	\item Walter: Analysis 1 + 2, Springer
+	\item Escher/Amann: Analysis 1 + 2, Birkhäuser
+	\item Ebbinghaus: Einfühung in die Mengenlehre, BI-Wissenschaftsverlag
+	\item Teubner-Taschenbuch der Mathematik, Teubner 1996
+	\item Springer-Taschenbuch der Mathematik, Springer 2012
+\end{compactitem}
+
+\mainmatter
+\part{Grundlagen der Mathematik}
+\include{./TeX_files/chapter01_grundbegriffe_aus_mengenlehre_und_logik}
+\include{./TeX_files/chapter02_aufbau_einer_math_theorie}
+\part{Zahlenbereiche}
+\include{./TeX_files/chapter03_nat_zahlen}
+\include{./TeX_files/chapter04_ganze_u_rat_zahlen}
+\include{./TeX_files/chapter05_reelle_zahlen}
+\include{./TeX_files/chapter06_komplexe_zahlen}
+\part{Metrische Räume und Konvergenz}
+\include{./TeX_files/chapter07_grundl_ungleichungen}
+\include{./TeX_files/chapter08_metr_raeume}
+\include{./TeX_files/chapter09_konvergenz}
+\include{./TeX_files/chapter10_vollst}
+\include{./TeX_files/chapter11_kompaktheit}
+\include{./TeX_files/chapter12_reihen}
+\part{Funktionen und Stetigkeit}
+\include{./TeX_files/chapter13_funktionen}
+
+\backmatter
+% bibliography, glossary and index would go here.
+
+\end{document}
