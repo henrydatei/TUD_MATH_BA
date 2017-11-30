@@ -22,6 +22,26 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    2.2 ganze und rationale Zahlen ... fertig
   
    2.3 reelle Zahlen ... wird bearbeitet
+   
+   2.4 komplexe Zahlen ... noch nicht bearbeitet
+   
+3. Metrische Räume und Konvergenz ... noch nicht bearbeitet
+   
+   3.1 grundlegende Ungleichungen ... noch nicht bearbeitet
+   
+   3.2 Metrische Räume ... noch nicht bearbeitet
+   
+   3.3 Konvergenz ... noch nicht bearbeitet
+   
+   3.4 Vollständigkeit ... noch nicht bearbeitet
+   
+   3.5 Kompaktheit ... noch nicht berbeitet
+   
+   3.6 Reihen ... noch nicht bearbeitet
+   
+4. Funktionen und Stetigkeit ... noch nicht bearbeitet
+   
+   4.1 Funktionen ... noch nicht bearbeitet
   
 ### Fortschritt Lineare Algebra
 1. Grundlagen der Linearen Algebra ... wird bearbeitet
