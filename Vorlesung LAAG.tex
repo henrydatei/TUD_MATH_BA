@@ -911,4 +911,109 @@
 		polynomiale Abbildungen auffassen kann. Ist $K$ aber endlich, so ist dies im Allgemeinen nicht richtig.
 		Beispiel: $K=\mathbb Z\backslash 2\mathbb Z$, $f(X)=X$, $g(X)=X^2 \Rightarrow f \neq g$, aber 
 		$\tilde f=\tilde g$.
+		$\newline$
+		
+		\textbf{Beispiel:} Sei $f(X)=X^2+1 \in \mathbb R[X] \subset \mathbb C[X]$ \\
+		In $K=\mathbb R$ hat $f$ keine Nullstelle: Für $\lambda \in \mathbb R f(\lambda)=\lambda^2+1 \ge1 >0$. \\
+		In $K=\mathbb C$ hat $f$ die beiden Nullstellen $\lambda_1=i$ und $\lambda_2=-i$ und zerfällt dort in Linearfaktoren:
+		 $f(X)=(X-i)(X+i)$.
+		
+		\begin{framed}
+			\textbf{Satz:} Für einen Körper $K$ sind äquivalent:
+			\begin{compactitem}
+				\item Jedes Polynom $f \in K[X]$ mit $deg(f)>0$ hat eine Nullstelle in $K$.
+				\item Jedes Polynom $f \in K[X]$ zerfällt in Linearfaktoren, also $f(X)=a\cdot \prod \limits_{i=1}^n 
+				(X-\lambda_i)$ mit $n=deg(f), a, \lambda_i \in K$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1 \Rightarrow 2:$ Induktion nach $n=deg(f)$ \\
+		Ist $n\le0$, so ist nichts zu zeigen. \\
+		Ist $n>0$, so hat $f$ eine Nullstelle $\lambda_n \in K$, somit $f(X)=(X-\lambda_n)\cdot g(X)$ mit $g(X) \in K[X]$
+		 und $deg(g)=n-1$, Nach IV ist $g(X)=a\cdot \prod \limits_{i=1}^n (X-\lambda_i)$. Somit ist $f(X)=a\cdot \prod 
+		\limits_{i=1}^n (X-\lambda_i)$. \\
+		$2 \Rightarrow 1:$ Sei $f \in K[X]$ mit $n=deg(f)>0$. Damit gilt $f(X)=a\cdot \prod \limits_{i=1}^n (X-\lambda_i)$.
+		Da $n>0$, hat $f$ z.B. die Nullstelle $\lambda_1$.}
+		
+		\begin{framed}
+			\textbf{Definition algebraisch abgeschlossen:} Ein Körper $K$ heißt algebraisch abgeschlossen, wenn er eine 
+			der äquivalenten Bedingungen erfüllt. 
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Theorem (Fundamentalsatz der Algebra):} Der Körper $\mathbb C$ ist algebraisch abgeschlossen.
+		\end{framed}
+		
+		\textbf{Bemerkung:} Wir werden das Theorem zwar benutzen, aber nicht beweisen.
+		
+\section{Vektorräume}
+	In diesem Kapitel sei $K$ ein Körper.
+	\subsection{Definition und Beispiele}
+		\textbf{Beispiel:} Ist $K=\mathbb R$, so haben wir für $K^3=\mathbb R^3=\mathbb R \times \mathbb R \times \mathbb R=
+		\{(a,b,c) | a,b,c \in \mathbb R\}$ eine geometrische Anschauung, nämlich den euklidischen Raum. Welche algebraische 
+		Struktur können wir hierauf sinnvollerweise definieren? \\
+		
+		\begin{framed}
+			\textbf{Definition $K$-Vektorraum:} Ein $K$-Vektorraum (auch Vektorraum über $K$) ist ein Tripel $(V,+,\cdot)$ 
+			bestehend aus einer Menge $V$, einer Verknüpfung $+: V \times V \to V$, genannt Addition, und einer Abbildung 
+			$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten: \\
+			(V1): $(V,+)$ ist eine abelsche Gruppe \\
+			(V2): Addition und Skalarmultiplikation sind verträglich:
+			\begin{compactitem}
+				\item $\lambda(x+y)=(\lambda\cdot x)+(\lambda\cdot y)$
+				\item $(\lambda+\mu)\cdot x = (\lambda\cdot x)+(\mu\cdot x)$
+				\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
+				\item $1\cdot x = x$
+			\end{compactitem}
+		\end{framed}
+		
+		\textbf{Bemerkung:} Wir haben sowohl im Körper $K$ als auch im Vektorraum $V$ eine Addition definiert, die wir mit 
+		dem selben Symbol $+$ notieren. Ebenso benutzen wir das Symbol $\cdot$ sowohl für die Multiplikation im Körper $K$ 
+		als auch für die Skalarmultiplikation. Zur Unterscheidung nennt man die Elemente von $V$ Vektoren und die Elemente 
+		von $K$ Skalare. Wir werden bald auch den Nullvektor mit 0 bezeichnen, also mit dem selben Symbol wie das neutrale 
+		Element im Körper $K$. Auch für Vektorräume gibt es notationelle Konvektionen: So bindet die Skalarmultiplikation 
+		stärker als die Addition und wird manchmal nicht notiert. \\
+		$\newline$
+		
+		\textbf{Beispiel:} Für $n \in \mathbb N$ ist $V=K^n := \prod \limits_{i=1}^n K = \{(x_1,x_2,...,x_n) \mid x_1,x_2,..,
+		x_n \in K\}$ mit komponentenweiser Addition und Skalarmultiplikation $\lambda(x_1,...,x_n)=(\lambda\cdot x_1,...,
+		\lambda\cdot x_n)$ ein $K$-Vektorraum, genannt der (n-dimensionale) Standardraum über $K$. \\ 
+		Insbesondere (Spezialfall $n=1$) ist $K$ ein $K$-Vektorraum. \\
+		Für $n=0$ definiert man $K^0$ als Nullraum $V=\{0\}$, der einzig möglichen Addition und Skalarmultiplikation einen 
+		$K$-Vektorraum bildet.
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $V$ ein $K$-Vektorraum, so gelten für $\lambda \in K$ und $x \in V$:
+			\begin{compactitem}
+				\item $0\cdot x =0$
+				\item $\lambda\cdot =0$
+				\item $(-\lambda)\cdot x = \lambda\cdot(-x) = -\lambda\cdot x$. Insbesondere $(-1)x=-x$
+				\item Ist $\lambda\cdot x=0$, so ist $\lambda=0$ oder $x=0$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Es ist $0\cdot x=(0+0)\cdot x=0\cdot x+0\cdot x$, woraus $0=0\cdot x$
+			\item Es ist $\lambda\cdot 0=\lambda(0+0)=\lambda\cdot 0+0\cdot \lambda$, woraus $0=\lambda\cdot 0$
+			\item Es ist $\lambda\cdot x+(-\lambda\cdot x)=(\lambda+(-\lambda))\cdot x=0\cdot x=0$, also $(-\lambda)x=-(\lambda 
+			x)$
+			\item Ist $\lambda\cdot x=0$ und $\lambda\neq 0$, so ist $0=\lambda^{-1}\cdot\lambda\cdot x=1\cdot x=x$ 
+		\end{compactitem}} 
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Schränkt man die Multiplikation im Polynomring $K[X] \times K[X] \to K[X]$ zu einer Abbildung $K \times K[X]
+			\to K[X]$ ein, so wird $K[X]$ mit dieser Skalarmultipliaktion zu einem $K$-VR. Die Skalarmultiplikation ist also
+			gegen $\lambda\cdot \sum \limits_{k\ge 0} a_k\cdot X^k = \sum \limits_{k\ge 0} \lambda\cdot a_k\cdot X^k$ ersetzt
+			wurden.
+			\item Schränkt man die komplexe MUltiplikation $\mathbb C \times \mathbb C \to \mathbb C$ zu einer Abbildung 
+			$\mathbb R \times \mathbb C \to \mathbb C$ ein, so wird $\mathbb C$ mit dieser Skalarmultipliaktion zu einem
+			$\mathbb R$-VR. Die Skalarmultipliaktion ist gegeben durch $\lambda(x+iy)=\lambda\cdot x + i\cdot\lambda\cdot y$.
+			\item Verallgemeinerung von 1 und 2: Ist der Körper $K$ ein Unterring eines kommutativen Rings $R$ mit Einselement 
+			$1_K \in K$, so wird $R$ durch Einschränkung der Multiplikation $R \times R \to R$ zu einer Abbildung $K \times R
+			\to R$ zu einem $K$-VR.
+			\item Ist $X$ eine Menge, so wird die Menge der Abbildungen $Abb(X,K)$ durch punktweise Addition $(f+g)(x)=f(x)+
+			g(x)$ und die Skalarmultiplikation $(\lambda\cdot f)(x)=\lambda\cdot f(x)$ zu einem $K$-VR. Im Spezialfall
+			$X=\{1,2,...,n\}$ erhält man den Standardraum $K^n$.
+		\end{compactitem}
 \end{document}
