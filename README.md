@@ -44,7 +44,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    4.1 Funktionen ... noch nicht bearbeitet
   
 ### Fortschritt Lineare Algebra
-1. Grundlagen der Linearen Algebra ... wird bearbeitet
+1. Grundlagen der Linearen Algebra ... fertig
 
    1.1 Logik und Mengen ... fertig
        
@@ -56,11 +56,11 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    1.5 Körper ... fertig
    
-   1.6 Polynome ... wird bearbeitet
+   1.6 Polynome ... fertig
    
-2. Vektorräume ... noch nicht bearbeitet
+2. Vektorräume ... wird bearbeitet
 
-   2.1 Definitionen und Beispiele ... noch nicht bearbeitet
+   2.1 Definitionen und Beispiele ... wird bearbeitet
    
    2.2 Linearkombinationen und lineare Abhängigkeit ... noch nicht bearbeitet
    
