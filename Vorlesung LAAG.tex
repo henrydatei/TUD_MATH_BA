@@ -7,6 +7,14 @@
 \usepackage{framed}
 \usepackage{booktabs}
 \usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[autostyle]{csquotes}
+\usepackage{lipsum}
+\usepackage{enumerate}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -998,7 +1006,7 @@
 			\item Es ist $\lambda\cdot x+(-\lambda\cdot x)=(\lambda+(-\lambda))\cdot x=0\cdot x=0$, also $(-\lambda)x=-(\lambda 
 			x)$
 			\item Ist $\lambda\cdot x=0$ und $\lambda\neq 0$, so ist $0=\lambda^{-1}\cdot\lambda\cdot x=1\cdot x=x$ 
-		\end{compactitem}} \\
+		\end{compactitem}}
 		$\newline$
 		
 		\textbf{Beispiele:}
@@ -1017,4 +1025,85 @@
 			g(x)$ und die Skalarmultiplikation $(\lambda\cdot f)(x)=\lambda\cdot f(x)$ zu einem $K$-VR. Im Spezialfall
 			$X=\{1,2,...,n\}$ erhält man den Standardraum $K^n$.
 		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Definition Untervektorraum:} Sei $V$ ein $K$-VR. Ein Untervektorraum (UVR) von $V$ ist eine nichtleere
+			Teilmenge $W \subset V$ mit: \\
+			(UV1): Für $x,y \in W$ ist $x+y\in W$ \\
+			(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $V$ ein $K$-VR und $W \subset V$. Genau dann ist $W$ ein UVR von $V$, wenn $W$ mit geeigneter
+			Einschränkung der Addition und Skalarmultiplikation wieder ein $K$-VR ist.
+		\end{framed}
+		\textit{Beweis: \\
+		Rückrichtung: Lassen sich $+$: $V \times V \to V$ und $\cdot$: $K \times V \to V$ einschränken zur Abbildung $+_w$: $W
+		\times W \to W$, $\cdot_w$: $K \times W \to W$ so gilt für $x,y \in W$ und $\lambda \in K$: $x+y=x +_w y \in W$ und
+		$\lambda\cdot x?\lambda \cdot_w x \in W$. ISt $(W,+_w,\cdot_w)$ ein $K$-VR, so ist insbesodere $W$ nicht leer. Somit
+		ist $W$ ein UVR. \\
+		Hinrichtung: Nach (UV1) und (UV2) lassen sich $+$ und $\cdot$ einchränken zu Abbildungen $+_w$: $W \times W \to W$ und 
+		$\cdot_w$: $K \times W \to W$. Nach (UV1) ist abgeschlossen und unter der Addition und für $x \in W$ ist auch $-x=
+		(-1)x \in W$ nach (UV2), $W$ ist somit Untergruppe von $(V,+)$. Insbesondere ist $(W,+)$ eine abelsche Gruppe, erfüllt 
+		also (V1). Die Verträglichkeit (V2) ist für $\lambda,\mu \in K$ und $x,y \in W$ gegeben, da sie auch für $x,y \in V$ 
+		erfüllt ist. Somit ist $(W,+_w,\cdot_w)$ ein $K$-VR.}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Jder $K$-VR hat triviale UVR $W=\{0\}$ und $W=V$
+			\item Ist $V$ ein $K$-VR und $x \in V$, so ist $W=K\cdot x=\{\lambda\cdot x \mid \lambda \in K\}$ ein UVR von $V$. 
+			Insbesondere besitzt z.B. der $\mathbb R$-VR $\mathbb R^2$ unendlich viele UVR, nämlich alle Ursprungsgeraden. Hieran 
+			sehen wir auch, dass die Vereinigung zweier UVR im Allgemeinen kein UVR ist. $\mathbb R\cdot (1,0) \cup \mathbb 
+			R\cdot (1,0) \subset \mathbb R^2$ verletzt (UV1).
+			\item Der $K$-VR $K[X]$ hat unter anderem die folgenden UVR: \\
+			- Den Raum $K$ der konstanten Polynome \\
+			- Den Raum $K[X]_{\le 1}=\{aX+b \mid a,b \in K\}$ der linearen (oder konstanten) Polynome \\
+			- allgemeiner den Raum $K[X]_{\le n}=\{f \in K[X] \mid deg(f) \le n\}$ der Polynome von höchstens Grad $n$
+			\item In der Analysis werden Sie verschiedene UVR des $\mathbb R$-VR $Abb(\mathbb R,\mathbb R)$ kennenlernen, etwa
+			den Raum $\mathcal C(\mathbb R,\mathbb R)$ der stetigen Funktionen und den Raum $\mathcal C^{-1}(\mathbb R,\mathbb 
+			R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynofunktionen $\{\tilde f: f\in \mathbb R[X]\}$ bildet
+			einen UVR des $\mathbb R$-VR $\mathcal C^{-1}(\mathbb R,\mathbb R)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $V$ ein Vektorraum und $(W_i)_{i \in I}$ eine Familie von UVR von $V$, so ist auch $W=\bigcap W_i$ 
+			ein UVR von $V$
+		\end{framed}
+		\textit{Beweis: \\
+		Da $0 \in W_i$ ist auch $0 \in W$, insbesondere $W\neq\emptyset$.
+		\begin{compactitem}
+			\item (UV1): Sind $x,y \in W$, so ist auch $x,y \in W_i$ und deshalb $x+y\in \bigcap W_i = W$
+			\item (UV2): Ist $x \in W$ und $\lambda \in K$, so ist auch $x \in W_i$ und somit $\lambda x\in \bigcap W_i=W$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $V$ ein $K$-VR und $X \subset V$, so gibt es einen eindeutig bestimmten kleinsten UVR $W$ von $V$
+			mit $X \subset W$.
+		\end{framed}
+		\textit{Beweis: \\ Sei $\mathcal V$ die Menge aller UVR von $X$, die $X$ enthalten. Sei $W=\bigcap \mathcal V$. Damit ist 
+		$W$ ein UVR von $V$ der $X$ enthält.}
+		
+		\begin{framed}
+			\textbf{Definition Erzeugendensystem:} Ist $V$ ein $K$-VR und $X\subset V$, so nennt man den kleinsten UVR von 
+			$V$, der $X$ enthält den von $X$ erzeugten UVR von $V$ und bezeichnet diesen mit $<X>$. Eine Mengen $X\subset V$ 
+			mit $<X>=V$ heißt Erzeugendensystem von $V$. Der VR $V$ heißt endlich erzeugt, wenn er ein endliches Erzeugendensystem 
+			besitzt.
+		\end{framed}
+		
+	\subsection{Linearkombination und lineare Abhängigkeit}
+		Sei $V$ ein $K$-VR.
+		
+		\begin{framed}
+			\textbf{Definition Linearkombination:}
+			\begin{compactitem}
+				\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine Linearkombination eines n-Tupels $(x_1,...,x_n)$ von 
+				Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot
+				x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
+				\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb
+				N_0$ und $i_1,...,i_n \in I$ gibt, für die x Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
+				\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $span_K(\mathcal F)$ 
+				bezeichnet.
+			\end{compactitem}
+		\end{framed}
 \end{document}
