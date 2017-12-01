@@ -60,9 +60,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
 2. Vektorräume ... wird bearbeitet
 
-   2.1 Definitionen und Beispiele ... wird bearbeitet
+   2.1 Definitionen und Beispiele ... fertig
    
-   2.2 Linearkombinationen und lineare Abhängigkeit ... noch nicht bearbeitet
+   2.2 Linearkombinationen und lineare Abhängigkeit ... wird bearbeitet
    
    2.3 Basis und Dimension ... noch nicht bearbeitet
    
