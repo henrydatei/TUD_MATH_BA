@@ -1,2 +1,55 @@
 \chapter{Reelle Zahlen}
+\begin{description}
+	\item[Frage:] Frage: algebraische Gleichung $a_0+a_1x+\dots+a_x^k=0\;(a_j\in \whole)$\\
+	i.A nur für $k=1$ lösbar (d.h. lin. Gl.)
+\end{description}
+\begin{exmpn}
+	$x^2 - 2 = 0$ keine Lösung in $\ratio$. Angenommen es existiert eine Lösung $x = \frac{m}{n} \in \ratio$, o.B.d.A. höchstens eine der Zahlen $m,n$ gerade $\Rightarrow \frac{m^2}{n^2} = 2 \Rightarrow m^2 = 2n^2 \Rightarrow m$ gerade $\overset{m=2k}{\Rightarrow} 4k^2 = 2n^2 \Rightarrow 2n^2 \Rightarrow 2k^2 = n^2 \Rightarrow n$ gerade $\Rightarrow \lightning$.
+\end{exmpn}
+
+\noindent Offenbar $1,4^2 < 2 < 1,5^2,\; 1,41^2 < 2 < 1,42^2,\;\dots,$ falls es $\sqrt{2}$ gibt, kann diese in $\ratio$ beliebig genau approximiert werden. Es folgt, dass $\ratio$ anscheinend "`Lücken"' hat.
+\textbf{Fläche auf dem Einheitskreis} kann durch rationale Zahlen beliebig genau approximiert werden. Falls "`Flächenzahl"' $\pi$ existiert, ist das \textbf{nicht} Lösung einer algebraischen Gleichung (Lindemann 1882).\\
+
+\begin{description}
+	\item[Ziel:] Konstruktion eines angeordneten Körpers, der diese Lücken füllt.
+\end{description} 
+
+\section{Struktur von archimedisch angeordneten Körper (allg.)}
+$\field$ sei ein (bel.) Körper  mit bel. Elementen $0, 1$ bzw. $0_K, 1_K$. 
+\begin{satz}
+	Sei $\field$ Körper. Dann gilt $\forall a,b \in \field$:
+	\begin{enumerate}[1)]
+		\item $0,1, (-a), b^{-1}$ sind eindeutig bestimmt
+		\item $(-0) = 0$, $1^{-1} = 1$
+		\item $-(-a) = a$, $(b^{-1})^{-1} = b$ $(b \neq 0)$
+		\item $-(a + b) = (-a) + (-b)$, $(a^{-1}b^{-1}) = (a^{-1}b^{-1})$ $(a,\neq 0)$
+		\item $-a = (-1)\cdot a$, $(-a)(-b)=ab$, $a \cdot 0 = 0$
+		\item $ab=0 \iff a=0 \text{ oder } b=0$
+		\item $a + x = b \text{ hat eindeutige Lösung } x = b + (-a) =:b-a$ Differenz\\
+		$ax=b \text{ hat eindeutige Lösung } x = a^{-1}b:=\frac{b}{a}$ Quotient 
+	\end{enumerate}
+\end{satz}
+
+\begin{proof}
+	\begin{enumerate}[zu 1)]
+		\item vgl. lin. Algebra
+		\item betrachte $0 + 0 = 0$ bzw. $1 \cdot 1 = 1$
+		\item $(-a) + a = 0 \overset{komm}{\Rightarrow} a = -(-a)$ Rest analog
+		\item $a+b = ((-a) + (-b)) \Rightarrow$ Behauptung, Addition und Multiplikation analog
+		\item $a\cdot 0 = 0$ vgl. lin. Algebra\\
+		$1a + (-1)a = 0 \Leftrightarrow (1-1)a=0 \Rightarrow (-1)a=-1$, $(-a)(-b)=(-1)(-a)b\overset{3,5}{=}ab$
+		\item ($\Leftarrow$): nach 5)\\
+		($\Rightarrow$) sei $a\neq0$ (sonst klar) $\Rightarrow 0 = a^{-1}\cdot 0 \overset{ab=0}{=} a^{-1}ab = b \Rightarrow$ Beh.
+		\item $a+x=b \Leftrightarrow x = (-a) + a \neq x = (-a) + b$, für $ax=b$ analog \QEDA
+	\end{enumerate}
+\end{proof}
+
+\noindent Setze für alle $a, \dots a_k \in \field,n\in \natur_{\geq 1}$
+\begin{description}
+	\item[Vielfache] $n\cdot a$ (kein Produkt in $\field$!)
+	\item[Potenzen] $a^n=\prod_{k=1}^{n} a_k \text{für } n \in N_{\geq 1}$ damit $(-n)a:=n(-a) \text{, } 0_{\natur}a=0_{\natur} \text{ für } n\in\natur_{\geq1}\\
+	a^{-n}=(a^-1)^n \text{, }a^{0_{\natur}}:=1_{\field} \text{ für } n \in \natur_{\geq 1}, a \neq 0\\
+	beachte: 0^0 = (0_\natur)^{0_{\natur}} \text{ \underline{nicht} definiert!}$
+	\item[Rechenregeln] $\forall\;a,b\in \field\text{, } m,n\in \whole \text{ (sofern Potenz definiert) } $
+\end{description}
 %TODO

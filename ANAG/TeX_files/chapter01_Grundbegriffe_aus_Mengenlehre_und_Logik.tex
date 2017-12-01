@@ -2,47 +2,50 @@
 \textbf{Mengenlehre:} Universalität von Aussagen \\
 \textbf{Logik:} Regeln des Folgerns, wahre/falsche Aussagen
 
-\begin{framed}
-	\textbf{Definition Aussage:} Sachverhalt, dem man entweder den Wahrheitswert "wahr" oder "falsch" 				zuordnen kann, aber nichts anders.
-\end{framed}
+
+\begin{mydef}[Definition Aussage]
+	Sachverhalt, dem man entweder den Wahrheitswert "wahr" oder "falsch" zuordnen kann, aber nichts anders.
+\end{mydef}
 
 Beispiele:
-\begin{compactitem}
+\begin{exmp}
 	\item 5 ist eine Quadratzahl $\to$ falsch (Aussage)
 	\item Die Elbe flie{\ss}t durch Dresden $\to$ wahr (Aussage)
 	\item Mathematik ist rot $\to$ ??? (keine Aussage)
-\end{compactitem}
+\end{exmp}
 
-\begin{framed}
-	\textbf{Definition Menge:} Zusammenfassung von bestimmten wohlunterscheidbaren Objekten der Anschauung oder des Denkens, welche die Elemente der Menge genannt werden, zu einem Ganzen. (\textsc{Cantor}, 1877)
-\end{framed}
+\begin{mydef}[Menge]
+	Zusammenfassung von bestimmten wohlunterscheidbaren Objekten der Anschauung oder des Denkens, welche die Elemente der Menge genannt werden, zu einem Ganzen.\\ (\textsc{Cantor}, 1877)
+\end{mydef}
 
 Beispiele:
 \begin{compactitem}
-	\item $M_1 :=$ Menge aller St\"adte in Deutschland
+	\item $M_1 :=$ Menge aller Städte in Deutschland
 	\item $M_2 := \{1;2;3\}$ 
 \end{compactitem}
 
 $\newline$ 
-F\"ur ein Objekt $m$ und eine Menge $M$ gilt stets $m \in M$ oder $m \notin M$ \\
-F\"ur die Mengen $M$ und $N$ gilt $M=N$, falls dieselben Elemente enthalten sind 
+Für ein Objekt $m$ und eine Menge $M$ gilt stets $m \in M$ oder $m \notin M$ \\
+Für die Mengen $M$ und $N$ gilt $M=N$, falls dieselben Elemente enthalten sind 
 $\{1;2;3\} = \{3;2;1\} = \{1;2;2;3\}$ \\
-- $N \subseteq M$, falls $n \in M$ f\"ur jedes $n \in N$ \\
-- $N \subset M$, falls zus\"atzlich $M \neq N$ \\
+- $N \subseteq M$, falls $n \in M$ für jedes $n \in N$ \\
+- $N \subset M$, falls zusätzlich $M \neq N$ \\
 
-\begin{framed}
-	\textbf{Definition Aussageform:} Sachverhalt mit Variablen, der durch geeignete Ersetzung der 				Variablen zur Aussage wird.
-\end{framed}
+\begin{mydef}[Aussageform]
+	Sachverhalt mit Variablen, der durch geeignete Ersetzung der Variablen zur Aussage wird.
+\end{mydef}
 
-Beispiele:
-\begin{compactitem}
-	\item $A(X) := $ Die Elbe flie{\ss}t durch X
-	\item $B(X;Y;Z) := X + Y = Z$ 
-\end{compactitem}
-- aber $A(Dresden) ,B(2;3;4)$ sind Aussagen, $A(Mathematik)$ ist keine Aussage  \\
-- $A(X)$ ist eine Aussage f\"u jedes $X \in M_1$ $\to$ Generalisierung von Aussagen durch Mengen
+\begin{exmpn}
+	\begin{itemize}
+		\item $A(X) := $ Die Elbe fließt durch X
+		\item $B(X;Y;Z) := X + Y = Z$
+		\item aber $A(Dresden) ,B(2;3;4)$ sind Aussagen, $A(Mathematik)$ ist keine Aussage
+		\item $A(X)$ ist eine Aussage f\"u jedes $X \in M_1$ $\to$ Generalisierung von Aussagen durch Mengen
+	\end{itemize}
+\end{exmpn}
 
-\paragraph{Bildung und Verkn\"upfung von Aussagen}
+\paragraph{Bildung und Verknüpfung von Aussagen}
+
 \begin{tabular}{|c|c|c|c|c|c|c|}
 	\hline
 	$A$ & $B$ & $\lnot A$ & $A \land B$ & $A \lor B$ & $A \Rightarrow B$ & $A \iff B$\\
@@ -57,58 +60,57 @@ Beispiele:
 	\hline
 \end{tabular}
 
-$\newline$
-Beispiele:
-\begin{compactitem}
-	\item $\lnot$(3 ist gerade) $\to$ w
-	\item (4 ist gerade) $\land$ (4 ist Primzahl) $\to$ f
-	\item (3 ist gerade) $\lor$ (3 ist Primzahl) $\to$ w
-	\item (3 ist gerade) $\Rightarrow$ (Mond ist W\"urfel) $\to$ w
-	\item (Die Sonne ist hei{\ss}) $\Rightarrow$ (es gibt Primzahlen) $\to$ w
-\end{compactitem}
-$\newline$
-Auschlie{\ss}endes oder: (entweder $A$ oder $B$) wird realisiert durch $\lnot(A \iff B)$.
+\begin{exmpn}
+	\begin{itemize}
+		\item $\lnot$(3 ist gerade) $\to$ w
+		\item (4 ist gerade) $\land$ (4 ist Primzahl) $\to$ f
+		\item (3 ist gerade) $\lor$ (3 ist Primzahl) $\to$ w
+		\item (3 ist gerade) $\Rightarrow$ (Mond ist Würfel) $\to$ w
+		\item (Die Sonne ist heiß) $\Rightarrow$ (es gibt Primzahlen) $\to$ w
+	\end{itemize}
+\end{exmpn}
 
-$\newline$
+\noindent Auschließendes oder: (entweder $A$ oder $B$) wird realisiert durch $\lnot(A \iff B)$.\\
 Aussageform $A(X)$ sei f\"ur jedes $X \in M$ Aussage: neue Aussage mittels Quantoren
+
 \begin{compactitem}
-	\item $\forall$: "f\"ur alle"
+	\item $\forall$: "für alle"
 	\item $\exists$: "es existiert"
 \end{compactitem}
 
-Beispiele:
-\begin{compactitem}
-	\item $\forall n \in \mathbb{N}: n$ ist gerade $\to$ f
-	\item $\exists n \in \mathbb{N}: n$ ist gerade $\to$ w 
-\end{compactitem}
+\begin{exmpn}
+	$\forall n \in \mathbb{N}: n$ ist gerade $\to$ f\\
+	$\exists n \in \mathbb{N}: n$ ist gerade $\to$ w 
+\end{exmpn}
 
-\begin{framed}
-	\textbf{Definition Tautologie bzw. Kontraduktion/Widerspruch:} zusammengesetzte Aussage, die 
-	unabh\"angig vom Wahrheitsgehalt der Teilaussagen stest wahr bzw. falsch ist.
-\end{framed}
+\begin{mydef}[Tautologie bzw. Kontraduktion/Widerspruch]
+	Zusammengesetzte Aussage, die unabhängig vom Wahrheitsgehalt der Teilaussagen stest wahr bzw. falsch ist.
+\end{mydef}
 
-Beispiele:
-\begin{compactitem}
-	\item Tautologie (immer wahr): 
-	$(A) \lor (\lnot A), \lnot (A  \land (\lnot A)), (A \land B) \Rightarrow A$
-	\item Widerspruch (immer falsch): $A \land (\lnot A), A \iff \lnot A$  
-	\item besondere Tautologie: $(A \Rightarrow B) \iff (\lnot B \Rightarrow \lnot A)$
-\end{compactitem}
+\newpage
+\begin{exmpn}
+	\begin{itemize}
+		\item Tautologie (immer wahr): 
+		$(A) \lor (\lnot A), \lnot (A  \land (\lnot A)), (A \land B) \Rightarrow A$
+		\item Widerspruch (immer falsch): $A \land (\lnot A), A \iff \lnot A$  
+		\item besondere Tautologie: $(A \Rightarrow B) \iff (\lnot B \Rightarrow \lnot A)$
+	\end{itemize}
+\end{exmpn}
 
-\begin{framed}
-	\textbf{Satz (de Morgansche Regeln):} Folgende Aussagen sind Tautologien:
-	\begin{compactitem}
-		\item $\lnot(A \land B) \iff \lnot A \lor \lnot B$ 
-		\item $\lnot(A \lor B) \iff \lnot A \land \lnot B$ 
-	\end{compactitem}
-\end{framed}
+\begin{satz}[Morgansche Regeln]
+	Folgende Aussagen sind Tautologien:
+	\begin{itemize}{ }
+		\item $\lnot(A \land B) \iff \lnot A \lor \lnot B$
+		\item $\lnot(A \lor B) \iff \lnot A \land \lnot B$
+	\end{itemize}
+\end{satz}
 
 \paragraph{Bildung von Mengen}
 Seien $M$ und $N$ Mengen
 \begin{compactitem}
-	\item Aufz\"ahlung der Elemente: $\{1;2;3\}$
+	\item Aufzählung der Elemente: $\{1;2;3\}$
 	\item mittels Eigenschaften: $\{X \in M \mid A(X)\}$
-	\item $\emptyset:=$ Menge, die keine Elemente enth\"alt
+	\item $\emptyset:=$ Menge, die keine Elemente enthält
 	\begin{compactitem}
 		\item leere Menge ist immer Teilmenge jeder Menge $M$
 		\item \textbf{Warnung:} $\{\emptyset\} \neq \emptyset$
@@ -116,20 +118,20 @@ Seien $M$ und $N$ Mengen
 	\item Verkn\"upfung von Mengen wie bei Aussagen
 \end{compactitem}
 
-\begin{framed}
-	\textbf{Definition Mengensystem:} Ein Mengensystem $\mathcal M$ ist eine Menge, bestehend aus 				anderen Mengen.
+\begin{mydef}[Mengensystem]
+	Ein Mengensystem $\mathcal M$ ist eine Menge, bestehend aus anderen Mengen.
 	\begin{compactitem}
 		\item $\bigcup M := \{X \mid \exists M \in \mathcal M: X \in M\}$ (Vereinigung aller Mengen in 
 		$\mathcal M$)
 		\item $\bigcap M := \{X \mid \forall M \in \mathcal M: X \in M\}$ (Durchschnitt aller Mengen in 
 		$\mathcal M$)
 	\end{compactitem}
-\end{framed}
+\end{mydef}
 
-\begin{framed}
-	\textbf{Definition Potenzmenge:} Die Potenzmenge $\mathcal P$ enth\"alt alle Teilmengen einer 				Menge $M$. \\
+\begin{mydef}[Potenzmenge]
+	Die Potenzmenge $\mathcal P$ enth\"alt alle Teilmengen einer Menge $M$. \\
 	$\mathcal P(X) := \{\tilde M \mid \tilde M \subset M\}$ 
-\end{framed}
+\end{mydef}
 
 Beispiel:
 \begin{compactitem}
@@ -145,18 +147,17 @@ Beispiel:
 	\end{compactitem}
 \end{framed}
 
-\begin{framed}
-	\textbf{Definition Kartesisches Produkt:} 
+\begin{mydef}[Kartesisches Produkt]
 	$M \times N := \{m,n \mid m \in M \land n \in N\}$ \\
 	$(m,n)$ hei{\ss}t geordnetes Paar (Reihenfolge wichtig!) \\
 	allgemeiner: $M_1 \times ... \times M_k := \{(m_1,...,m_k) \mid m_j \in M_j, j=1, .., k\}$ \\
 	$M^k := M \times ... \times M := \{(m_1,...,m_k) \mid m_j \in M_j, j=1, .., k\}$ 
-\end{framed}
+\end{mydef}
 
-\begin{framed}
-	\textbf{Satz (Auswahlaxiom): } Sei $\mathcal M$ ein Mengensystem nichtleerer paarweise disjunkter Mengen $M$.
+\begin{satz}[Auswahlaxiom]
+	Sei $\mathcal M$ ein Mengensystem nichtleerer paarweise disjunkter Mengen $M$.
 	\begin{compactitem}
 		\item Es existiert eine Auswahlmenge $\tilde M$, die mit jedem $M \in \mathcal M$ genau 1 Element 				gemeinsam hat.
 		\item beachte: Die Auswahl ist nicht konstruktiv!
 	\end{compactitem}
-\end{framed}
+\end{satz}

@@ -2,24 +2,25 @@
 \contentsline {paragraph}{Literatur}{iv}
 \contentsline {part}{I\hspace {1em}Grundlagen der Mathematik}{1}
 \contentsline {chapter}{\numberline {1}Grundbegriffe aus Mengelehre und Logik}{3}
-\contentsline {paragraph}{Bildung und Verkn\"upfung von Aussagen}{4}
-\contentsline {paragraph}{Bildung von Mengen}{4}
+\contentsline {paragraph}{Bildung und Verkn\IeC {\"u}pfung von Aussagen}{4}
+\contentsline {paragraph}{Bildung von Mengen}{5}
 \contentsline {chapter}{\numberline {2}Aufbau einer mathematischen Theorie}{7}
 \contentsline {paragraph}{Formulierung mathematischer Aussagen}{7}
 \contentsline {paragraph}{Mathematische Beweise}{7}
 \contentsline {subsection}{\numberline {2.0.1}Relationen und Funktionen}{7}
 \contentsline {subsection}{\numberline {2.0.2}Bemerkungen zum Fundament der Mathematik}{10}
-\contentsline {part}{II\hspace {1em}Zahlenbereiche}{11}
-\contentsline {chapter}{\numberline {3}Nat\IeC {\"u}rliche Zahlen}{13}
-\contentsline {chapter}{\numberline {4}Ganze und rationale Zahlen}{17}
-\contentsline {chapter}{\numberline {5}Reelle Zahlen}{21}
-\contentsline {chapter}{\numberline {6}komplexe Zahlen}{23}
-\contentsline {part}{III\hspace {1em}Metrische R\IeC {\"a}ume und Konvergenz}{25}
-\contentsline {chapter}{\numberline {7}Grundlegen Ungleichungen}{27}
-\contentsline {chapter}{\numberline {8}Metrische R\IeC {\"a}ume}{29}
-\contentsline {chapter}{\numberline {9}Konvergenz}{31}
-\contentsline {chapter}{\numberline {10}Vollst\IeC {\"a}ndigkeit}{33}
-\contentsline {chapter}{\numberline {11}Kompaktheit}{35}
-\contentsline {chapter}{\numberline {12}Reihen}{37}
-\contentsline {part}{IV\hspace {1em}Funktionen und Stetigkeit}{39}
-\contentsline {chapter}{\numberline {13}Funktionen}{41}
+\contentsline {part}{II\hspace {1em}Zahlenbereiche}{13}
+\contentsline {chapter}{\numberline {3}Nat\IeC {\"u}rliche Zahlen}{15}
+\contentsline {chapter}{\numberline {4}Ganze und rationale Zahlen}{19}
+\contentsline {chapter}{\numberline {5}Reelle Zahlen}{23}
+\contentsline {section}{\numberline {5.1}Struktur von archimedisch angeordneten K\IeC {\"o}rper (allg.)}{23}
+\contentsline {chapter}{\numberline {6}Komplexe Zahlen(\IeC {\"U}berblick)}{25}
+\contentsline {part}{III\hspace {1em}Metrische R\IeC {\"a}ume und Konvergenz}{27}
+\contentsline {chapter}{\numberline {7}Grundlegen Ungleichungen}{29}
+\contentsline {chapter}{\numberline {8}Metrische R\IeC {\"a}ume}{31}
+\contentsline {chapter}{\numberline {9}Konvergenz}{33}
+\contentsline {chapter}{\numberline {10}Vollst\IeC {\"a}ndigkeit}{35}
+\contentsline {chapter}{\numberline {11}Kompaktheit}{37}
+\contentsline {chapter}{\numberline {12}Reihen}{39}
+\contentsline {part}{IV\hspace {1em}Funktionen und Stetigkeit}{41}
+\contentsline {chapter}{\numberline {13}Funktionen}{43}

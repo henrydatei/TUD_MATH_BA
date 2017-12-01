@@ -39,18 +39,18 @@ Beispiel
 \end{compactitem}
 
 \subsection{Relationen und Funktionen}
-\begin{framed}
-	\textbf{Definition Relation:} Seien $M$ und $N$ Mengen. Dann ist jede Teilmenge $R$ von 
+\begin{mydef}[Relation]
+	Seien $M$ und $N$ Mengen. Dann ist jede Teilmenge $R$ von 
 	$M \times N$ eine Relation. \\
 	$(x,y) \in R$ hei{\ss}t: $x$ und $y$ stehen in Relation zueinander
-\end{framed}
+\end{mydef}
 Beispiele
-\begin{compactitem}
-	\item $M$ ist die Menge aller Menschen. Die Liebesbeziehung $x$ liebt $y$ sieht als geordnetes Paar
+\begin{exmp}
+	$M$ ist die Menge aller Menschen. Die Liebesbeziehung $x$ liebt $y$ sieht als geordnetes Paar
 	geschrieben so aus: $(x,y)$. Das hei{\ss}t die Menge der Liebespaare ist das: $L := \{(x,y) \mid
 	x \; liebt \; y\}$. Und es gilt: $L \subset M \times M$.
-\end{compactitem}
-$\newline$
+\end{exmp}
+
 Die Relation $R \subset M \times N$ hei{\ss}t \textbf{Ordnungsrelation} (kurz. Ordnung) auf M, falls 			f\"ur alle $a,b,c \in M$ gilt:
 \begin{compactitem}
 	\item $(a,a) \in R$ (reflexiv)
@@ -65,7 +65,7 @@ Eine Ordnungsrelation hei{\ss}t \textbf{Totalordnung}, wenn zus\"atzlich gilt: $
 
 $\newline$
 Beispiel \\
-Seien $m$, $n$ und $o$ nat\"urliche Zahlen, dann ist $R = \{(m,n) \in \mathbb{N} \times \mathbb{N}
+Seien $m$, $n$ und $o$ natürliche Zahlen, dann ist $R = \{(m,n) \in \mathbb{N} \times \mathbb{N}
 \mid x \le y\}$ eine Totalordnung, da
 \begin{compactitem}
 	\item $m \le m$ (reflexiv)
@@ -75,7 +75,7 @@ Seien $m$, $n$ und $o$ nat\"urliche Zahlen, dann ist $R = \{(m,n) \in \mathbb{N}
 \end{compactitem}
 
 $\newline$
-Eine Relation auf $M$ hei{\ss}t \textbf{\"Aquivalenzrelation}, wenn f\"ur alle $a,b,c \in M$ gilt:
+Eine Relation auf $M$ heißt \textbf{Äquivalenzrelation}, wenn für alle $a,b,c \in M$ gilt:
 \begin{compactitem}
 	\item $(a,a) \in R$ (reflexiv)
 	\item $(a,b),(b,a) \in R$ (symetrisch)
@@ -83,76 +83,75 @@ Eine Relation auf $M$ hei{\ss}t \textbf{\"Aquivalenzrelation}, wenn f\"ur alle $
 \end{compactitem}
 
 $\newline$
-Obwohl Ordnungs- und \"Aquivalenzrelation die gleichen Eigenschaften haben, haben sie
+Obwohl Ordnungs- und Äquivalenzrelation die gleichen Eigenschaften haben, haben sie
 unterschiedliche Zwecke: Ordnungsrelationen ordnen Elemente in einer Menge (z.B. das Zeichen $\le$ 
-ordnet die Menge der nat\"urlichen Zahlen), w\"ahrend \"Aquivalenzrelationen eine Menge in disjunkte
-Teilmengen (\"Aquivalenzklassen) ohne Rest aufteilen. \\
+ordnet die Menge der natürlichen Zahlen), während Äquivalenzrelationen eine Menge in disjunkte
+Teilmengen (Äquivalenzklassen) ohne Rest aufteilen. \\
 $\newline$
 
-Wenn $R$ eine Ordnung auf M ist, so wird h\"aufig geschrieben: \\
+Wenn $R$ eine Ordnung auf M ist, so wird häufig geschrieben: \\
 \noindent\hspace*{5mm} $a \le b$ bzw. $a \ge b$ falls $(a,b) \in \mathbb R$ \\
 \noindent\hspace*{5mm} $a < b$ bzw. $a > b$ falls zus\"atzlich $a \neq b$ \\
 
-\begin{framed}
-	\textbf{Definition Abbildung/Funktion:} Eine Funktion $F$ von $M$ nach $N$ 
-	(kurz: $F: M \mapsto N$), ist eine Vorschrift, die jedem Argument/Urbild $m \in M$ genau einen
+\begin{mydef}[Abbildung/Funktion]
+	Eine Funktion $F$ von $M$ nach $N$ 
+	(kurz: $F: M \to N$), ist eine Vorschrift, die jedem Argument/Urbild $m \in M$ genau einen
 	Wert/Bild $F(m) \in N$ zuordnet. \\
-	$D(F) := M$ hei{\ss}t Definitionsbereich/Urbildmenge \\
-	\noindent\hspace*{15mm} $N$ hei{\ss}t Zielbild \\
+	$D(F) := M$ heißt Definitionsbereich/Urbildmenge \\
+	\noindent\hspace*{15mm} $N$ heißt Zielbild \\
 	$F(M') := \{n \in N \mid n=F(m)$ f\"ur ein $m \in M' \}$ ist Bild von $M' \subset M$ \\
-	$F^{-1}(N') := \{m \in M \mid n=F(m)$ f\"ur ein $N' \}$ ist Urbild von $N' \subset N$ \\
-	$R(F) := F(M)$ hei{\ss}t Wertebereich/Bildmenge \\
-	$graph(F) := \{(m,n) \in M \times N \mid n=F(m)\}$ hei{\ss}t Graph von $F$ \\
-	$F_{\mid M'}$ ist Einchr\"ankungvon $F$ auf $M' \subset M$
-\end{framed}
+	$F^{-1}(N') := \{m \in M \mid n=F(m)$ für ein $N' \}$ ist Urbild von $N' \subset N$ \\
+	$R(F) := F(M)$ heißt Wertebereich/Bildmenge \\
+	$graph(F) := \{(m,n) \in M \times N \mid n=F(m)\}$ heißt Graph von $F$ \\
+	$F_{\mid M'}$ ist Einschränkung von $F$ auf $M' \subset M$
+\end{mydef}
 
-Unterschied Zielmenge und Wertebereich: $f(x) = sin(x):$ \\
+Unterschied Zielmenge und Wertebereich: $f(x) = \sin(x):$ \\
 \noindent\hspace*{5mm} Zielmenge: $\mathbb R$ \\
 \noindent\hspace*{5mm} Wertebereich: $[-1;1]$ \\
-$\newline$
 
 Funktionen $F$ und $G$ sind gleich, wenn
 \begin{compactitem}
 	\item $D(F) = D(G)$
 	\item $F(m) = G(m) \quad \forall m \in D(F)$
 \end{compactitem}
-$\newline$
 
-Manchaml wird auch die vereinfachende Schreibweise benutzt: \\
-- $F: M \mapsto N$, obwohl $D(F) \subsetneq M$ (z.B. $tan: \mathbb R \mapsto \mathbb R$, Probleme
-bei $\frac{\pi} {2}$) \\
-- gelegentlich spricht man auch von "Funktion $F(m)$" statt Funktion $F$ \\
+\noindent Manchmal wird auch die vereinfachende Schreibweise benutzt:
+\begin{itemize}[-]
+	\item $F: M \to N$, obwohl $D(F) \subsetneq M$ (z.B. $\tan: \mathbb R \to \mathbb R$, Probleme
+	bei $\frac{\pi}{2}$)
+	\item gelegentlich spricht man auch von "Funktion $F(m)$" statt Funktion $F$
+\end{itemize}
 
-\begin{framed}
-	\textbf{Definition Komposition/Verkn\"upfung:} Die Funktionen $F: M \mapsto N$ und $G: N \mapsto P$
-	sind verkn\"upft, wenn \\
-	$F \circ G: M \mapsto P$ mit $(F \circ G)(m) := G(F(m))$
-\end{framed}
+\begin{mydef}[Komposition/Verknüpfung]
+	Die Funktionen $F: M \to N$ und $G: N \to P$
+	sind verknüpft, wenn \\
+	$F \circ G: M \to P$ mit $(F \circ G)(m) := G(F(m))$
+\end{mydef}
 
 \textbf{Eigenschaften von Funktionen:} \\
 \begin{compactitem}
 	\item injektiv: Zuordnung ist eineindeutig $\to F(m_1) = F(m_2) \Rightarrow m_1=m_2$
 	\item Beispiel: $x^2$ ist nicht injektiv, da $F(2)=F(-2)=4$
 	\item surjektiv: $F(M) = N \quad \forall n \in N \; \exists m \in M: F(m)=n$
-	\item Beispiel: $sin(x)$ ist nicht surjektiv, da es kein $x$ f\"ur $y=27$ gibt
+	\item Beispiel: $\sin(x)$ ist nicht surjektiv, da es kein $x$ für $y=27$ gibt
 	\item bijektiv: injektiv und surjektiv
 \end{compactitem}
 $\newline$
-
-F\"ur bijektive Abbildung $F: M \mapsto N$ ist Umkehrabbildung/inverse Abbildung $F^{-1}: N \mapsto M$
+Für bijektive Abbildung $F: M \mapsto N$ ist Umkehrabbildung/inverse Abbildung $F^{-1}: N \mapsto M$
 definiert durch: $F^{-1}(n) = m \iff F(m)=n$ \\
 Hinweis: Die Notation $F^{-1}(N')$ f\"ur Urbild bedeutet nicht, dass die inverse Abbildung $F^{-1}$
 existiert.
 
-\begin{framed}
-	\textbf{Satz:} Sei $F: M \mapsto N$ surjektiv. Dann existiert die Abbildung $G: N \mapsto M$,
+\begin{satz}
+	Sei $F: M \to N$ surjektiv. Dann existiert die Abbildung $G: N \to M$,
 	sodass $F \circ G = id_N$ (d.h. $F(G(n))=n \quad \forall n \in N$)
-\end{framed}
+\end{satz}
 
-\begin{framed}
-	\textbf{Definition Rechenoperation/Verkn\"upfung:} Eine Rechenoperation auf einer Menge $M$ ist
-	die Abbildung $*: M \times M \mapsto M$ d.h. $(m,n) \in M$ wird das Ergbnis $m*n \in M$ zugeordnet.
-\end{framed}
+\begin{mydef}[Rechenoperation/Verknüpfung]
+	Eine Rechenoperation auf einer Menge $M$ ist
+	die Abbildung $*: M \times M \to M$ d.h. $(m,n) \in M$ wird das Ergbnis $m*n \in M$ zugeordnet.
+\end{mydef}
 
 \textbf{Eigenschaften von Rechenoperationen:}
 \begin{compactitem}
@@ -162,70 +161,68 @@ existiert.
 	\item hat ein inverses Element $m' \in M$ zu $m \in M: m*m'=e$ 
 \end{compactitem}
 $e$ ist stets eindeutig, $m'$ ist eindeutig, wenn die Operation $*$ assoziativ ist. \\
-$\newline$
 
 Beispiele:
 \begin{compactitem}
-	\item Addition $+$: $(m,n) \mapsto m+n$ Summe, neutrales Element hei{\ss}t Nullelement, inverses
+	\item Addition $+$: $(m,n) \mapsto m+n$ Summe, neutrales Element heißt Nullelement, inverses
 	Element $-m$
 	\item Multiplikation $\cdot$: $(m,n) \mapsto m \cdot n$ Produkt, neutrales Element Eins, inverses
 	Element $m^{-1}$
 \end{compactitem}
 Addition und Multiplikation sind distributiv, falls $k(m+n) = k \cdot m + k \cdot n$
 
-\begin{framed}
-	\textbf{Definition K\"orper:} Eine Menge $M$ ist ein K\"orper $K$, wenn man auf $K$ eine Addition
-	und eine Multiplikation mit folgenden Eigenschaften durchf\"uhren kann:
+\begin{mydef}[Körper]
+	Eine Menge $M$ ist ein Körper $K$, wenn man auf $K$ eine Addition
+	und eine Multiplikation mit folgenden Eigenschaften durchführen kann:
 	\begin{compactitem}
 		\item es gibt neutrale Elemente 0 und 1 $\in K$
 		\item Addition und Multiplikation sind jeweils kommutativ und assoziativ
 		\item Addition und Multiplikation sind distributiv
 		\item es gibt Inverse $-k$ und $k^{-1} \in K$ \\
-		$\to$ die reellen Zahlen sind ein solcher K\"orper
+		$\to$ die reellen Zahlen sind ein solcher Körper
 	\end{compactitem}
-\end{framed}
+\end{mydef}
 
-Eine Menge $M$ habe die Ordnung "$\le$" und diese erlaubt die Addition und Multiplikation, wenn
+Eine Menge $M$ habe die Ordnung ``$\leq$'' und diese erlaubt die Addition und Multiplikation, wenn
 \begin{compactitem}
 	\item $a \le b \iff a+c \le b+c$
-	\item $a \le b \iff a \cdot c \le b \cdot c \quad c >0$ \\
+	\item $a \le b \iff a \cdot c \le b \cdot c \quad c > 0$ \\
 	$\to$ Man kann die Gleichungen in gewohnter Weise umformen.
 \end{compactitem}
 $\newline$
 
-Ein K\"orper $K$ hei{\ss}t angeordnet, wenn er eine Totalordnung besitzt, die mit Addition 
-und Multiplikation vertr\"aglich ist. \\
+Ein Körper $K$ heißt angeordnet, wenn er eine Totalordnung besitzt, die mit Addition 
+und Multiplikation verträglich ist. \\
 $\newline$
 
-\textbf{Isomorphismus} bez\"uglich einer Struktur ist die bijektive Abbildung $I: M_1 
-\mapsto M_2$, die die vorhandene Struktur auf $M_1$ und $M_2$ erh\"alt, z.B.
+\textbf{Isomorphismus} bezüglich einer Struktur ist die bijektive Abbildung $I: M_1 
+\mapsto M_2$, die die vorhandene Struktur auf $M_1$ und $M_2$ erhält, z.B.
 \begin{compactitem}
 	\item Ordnung $\le_1$ auf $M_1$, falls $a \le_1 b \iff I(a) \le_2 I(b)$
-	\item Abbildung $F_i: M_i \mapsto M_i$, falls $I(F_1(a)) = F_2(I(a))$
-	\item Rechenoperation $*_i: M_i \times M_i \mapsto M_i$, falls $I(a*_1b) = I(a) *_2 I(b)$
+	\item Abbildung $F_i: M_i \to M_i$, falls $I(F_1(a)) = F_2(I(a))$
+	\item Rechenoperation $*_i: M_i \times M_i \to M_i$, falls $I(a*_1b) = I(a) *_2 I(b)$
 	\item spezielles Element $a_i \in M_i$, falls $I(a_1) = a_2$
 \end{compactitem}
 $\newline$
 
 \textit{"Es gibt 2 verschiedene Arten von reellen Zahlen, meine und Prof. Schurichts. Wenn wir einen
 	Isomorphismus finden, dann bedeutet das, dass unsere Zahlen strukturell die selben sind."}\\
-$\newline$
 
 Beispiele: $M_1 = \mathbb N$ und $M_2 = \{$gerade Zahlen$\}$, jeweils mit Addition, Multiplikation
 und Ordnung \\
-$\to I: M_2 \mapsto M_2$ mit $I(k)=2k \quad \forall k \in \mathbb N$ \\
+$\to I: M_2 \to M_2$ mit $I(k)=2k \quad \forall k \in \mathbb N$ \\
 $\to$ Isomorphismus, der die Addition, Ordnung und die Null, aber nicht die Multiplikation erh\"alt
 
 \subsection{Bemerkungen zum Fundament der Mathematik}
 Forderungen an eine mathematische Theorie:
 \begin{compactitem}
 	\item widerspruchsfrei: Satz und Negation nicht gleichzeitig herleitbar
-	\item vollst\"andig: alle Aussagen innerhalb der Theorie sind als wahr oder falsch beweisbar
+	\item vollständig: alle Aussagen innerhalb der Theorie sind als wahr oder falsch beweisbar
 \end{compactitem} 
 $\newline$
 
-2 Unvollst\"andigkeitss\"atze:
+zwei Unvollständigkeitssätze:
 \begin{compactitem}
-	\item jedes System ist nicht gleichzeitig widerspruchsfrei und vollst\"andig
+	\item jedes System ist nicht gleichzeitig widerspruchsfrei und vollständig
 	\item in einem System kann man nicht die eigene Widerspruchsfreiheit zeigen
 \end{compactitem}

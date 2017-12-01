@@ -5,7 +5,6 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
 % math/enviroments
 \usepackage{mathtools,bm}
 \usepackage{stmaryrd} % Widerspruch symbol
@@ -16,6 +15,27 @@
 \usepackage[autostyle]{csquotes}
 \usepackage{lipsum}
 \usepackage{enumerate}
+
+%theorem enviroment
+%theorem
+\newframedtheorem{theorem}{Theorem}[chapter]
+% example
+\theoremstyle{break}
+\newtheorem*{exmp}{Beispiel}
+\theoremstyle{break}
+\newtheorem{exmpn}[theorem]{Beispiel}
+% defintion
+\newframedtheorem{mydef}[theorem]{Definition}
+% corollary
+\newframedtheorem{folg}[theorem]{Folgerung}
+% remark
+\newtheorem*{remark}{Bemerkung}
+% satz
+\newframedtheorem{satz}[theorem]{Satz}
+% beweis
+\newtheorem*{proof}{Beweis}
+% lemma
+\newframedtheorem{lem}[theorem]{Lemma}
 
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
@@ -82,7 +102,7 @@
 \title{\textbf{Analysis 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
 	Kursassistenz: Moritz Schönherr}
-\date{\today}
+\date{Stand: \today}
 
 \frontmatter
 \maketitle

@@ -1,16 +1,16 @@
 \chapter{Natürliche Zahlen}
-$\mathbb N$ sei diejenige Menge, die die \textbf{Peano-Axiome} erf\"ullt, das hei{\ss}t
+$\mathbb N$ sei diejenige Menge, die die \textbf{Peano-Axiome} erfüllt, das heißt
 \begin{compactitem}
 	\item $\mathbb N$ sei induktiv, d.h. es existiert ein Nullelement und eine injektive Abbildung
-	$\mathbb N \mapsto \mathbb N$ mit $\nu(n) \neq 0 \quad \forall n$
+	$\mathbb N to \mathbb N$ mit $\nu(n) \neq 0 \quad \forall n$
 	\item Falls $N \subset \mathbb N$ induktiv in $\mathbb N$ (0, $\nu(n) \in N$ falls $n \in N
 	\Rightarrow N = \mathbb N$
 \end{compactitem}
 $\to \mathbb N$ ist die kleinste induktive Menge \\
 $\newline$
 
-Nach der Mengenlehre ZF (Zermelo-Fraenkel) existiert eine solche Menge $\mathbb N$ der nat\"urlichen
-Zahlen. Mit den \"ublichen Symbolen hat man:
+Nach der Mengenlehre ZF (Zermelo-Fraenkel) existiert eine solche Menge $\mathbb N$ der natürlichen
+Zahlen. Mit den üblichen Symbolen hat man:
 \begin{compactitem}
 	\item $0 := \emptyset$
 	\item $1 := \nu(0) := \{\emptyset\}$
@@ -20,34 +20,34 @@ Zahlen. Mit den \"ublichen Symbolen hat man:
 Damit ergibt sich in gewohnter Weise $\mathbb N = \{1; 2; 3; ...\}$ \\
 anschauliche Notation $\nu(n) = n+1$ (beachte: noch keine Addition definiert!) \\
 
-\begin{framed}
-	\textbf{Theorem:} Falls $\mathbb N$ und $\mathbb N'$ die Peano-Axiome erf\"ullen, sind sie 
+\begin{theorem}
+	Falls $\mathbb N$ und $\mathbb N'$ die Peano-Axiome erfüllen, sind sie 
 	isomorph bez\"uglich Nachfolgerbildung und Nullelement. Das hei{\ss}t alle solche $\mathbb N'$
 	sind strukturell gleich und k\"onnen mit obigem $\mathbb N$ identifiziert werden.
-\end{framed}
+\end{theorem}
 
-\begin{framed}
-	\textbf{Satz (Prinzip der vollst\"andigen Induktion):} Sei $\{A_n \mid n \in N\}$ eine Menge 
-	von Aussagen $A_n$ mit der Eigenschaft \\
-	\noindent\hspace*{5mm}IA: $A_0$ ist wahr \\
-	\noindent\hspace*{5mm}IS: $\forall n \in \mathbb N$ gilt $A_n \Rightarrow A_{n+1}$ \\
-	$A_n$ ist wahr f\"ur alle $n \in \mathbb N$
-\end{framed}
+\begin{satz}[Prinzip der vollständigen Induktion]
+	Sei $\{A_n \mid n \in N\}$ eine Menge 
+	von Aussagen $A_n$ mit der Eigenschaft:
+	\begin{enumerate}[ ]
+		\item IA: $A_0$ ist wahr
+		\item IS: $\forall n \in \mathbb N$ gilt $A_n \Rightarrow A_{n+1}$
+	\end{enumerate}
+	$A_n$ ist wahr für alle $n \in \mathbb N$
+\end{satz}
 
-\begin{framed}
-	\textbf{Lemma:} Es gilt:
-	\begin{compactitem}
+\begin{lem} Es gilt:
+	\begin{enumerate}
 		\item $\nu(n) \cup \{0\} = \mathbb N$
 		\item $\nu(n) \neq n \quad \forall n \in \mathbb N$
-	\end{compactitem}
-\end{framed}
+	\end{enumerate}
+\end{lem}
 
-\begin{framed}
-	\textbf{Satz (rekursive Definition/Rekursion):} Sei $B$ eine Menge und $b \in B$. Sei $F$ eine 
-	Abbildung mit $F: B \times \mathbb N \mapsto B$. Dann liefert nach Vorschrift: $f(0) := b$  und
+\begin{satz}{(rekursive Definition/Rekursion)} Sei $B$ eine Menge und $b \in B$. Sei $F$ eine 
+	Abbildung mit $F: B \times \mathbb N \mapsto B$. Dann liefert nach Vorschrift: $f(0):= b$ und
 	$f(n+1) = F(f(n),n) \quad \forall n \in \mathbb N$ genau eine Abbildung $f: \mathbb N \mapsto B$. 
-	Das hei{\ss}t eine solche Abbildung exstiert und ist eindeutig.
-\end{framed}
+	Das heißt eine solche Abbildung exstiert und ist eindeutig.
+\end{satz}
 $\newline$
 
 \textbf{Rechenoperationen:}
@@ -58,7 +58,7 @@ $\newline$
 	N$ auf $\mathbb N$ durch $n \cdot 0 := 0$, $n \cdot \nu(m) := n \cdot m + n \quad \forall 
 	n,m \in \mathbb N$
 \end{compactitem}
-F\"ur jedes feste $n \in \mathbb N$ sind beide Definitionen rekursiv und eindeutig definiert. \\
+Für jedes feste $n \in \mathbb N$ sind beide Definitionen rekursiv und eindeutig definiert. \\
 $\forall n \in \mathbb N$ gilt: $n+1=n+\nu(0)=\nu(n+0) = \nu(n)$
 
 \begin{framed}
@@ -76,37 +76,37 @@ Es gilt $\forall k,m,n \in \mathbb N$:
 \begin{compactitem}
 	\item $m \neq 0 \Rightarrow m+n \neq 0$
 	\item $m \cdot n = 0 \Rightarrow n=0$ oder $m=0$
-	\item $m+k=n+k \Rightarrow m=n$ (K\"urzungsregel der Addition)
-	\item $m \cdot k=n \cdot k \Rightarrow m=n$ (K\"urzungsregel der Multiplikation)
+	\item $m+k=n+k \Rightarrow m=n$ (Kürzungsregel der Addition)
+	\item $m \cdot k=n \cdot k \Rightarrow m=n$ (Kürzungsregel der Multiplikation)
 \end{compactitem}
 $\newline$
 
 Ordnung auf $\mathbb N:$ Relation $R := \{(m,n) \in \mathbb N \times \mathbb N \mid m \le n\}$ \\
 wobei $m \le n \iff n=m+k$ f\"ur ein $k \in \mathbb N$ \\
 
-\begin{framed}
-	\textbf{Satz:} Es gilt auf $\mathbb N:$
+\begin{satz}
+	Es gilt auf $\mathbb N:$
 	\begin{compactitem}
 		\item $m \le n \Rightarrow \exists ! k \in \mathbb N: n=m+k$, nenne $n-m:=k$ (Differenz)
 		\item Relation $R$ (bzw. $\le$) ist eine Totalordnung auf $\mathbb N$
 		\item Ordnung $\le$ ist vertr\"aglich mit der Addition und Multiplikation
 	\end{compactitem}
-\end{framed}
+\end{satz}
 
-\textit{Bweis: \\
-	\begin{compactitem}
-		\item Sei $n=m+k=m+k' \Rightarrow k=k'$
-		\item Sei $n=n+0 \Rightarrow n \le n \Rightarrow$ reflexiv \\
-		sei $k\le m, m \le n \Rightarrow \exists l,j: m=k+l, n=m+j=(k+l)+j=k+(l+j) \Rightarrow
-		k \le n \Rightarrow$ transitiv \\
-		sei nun $m \le n und n \le m \Rightarrow n=m+j=n+l+j \Rightarrow 0=l+j \Rightarrow j=0 
-		\Rightarrow n=m \Rightarrow$ antisymmetrisch \\
-		Totalordnung, d.h. $\forall m,n \in \mathbb N: m\le n$ oder $n\le m$ \\
-		IA: $m=0$ wegen $0=n+0$ folgt $0 \le n \forall n$ \\
-		IS: gelte $m\le n$ oder $n \le m$ mit festem $m$ und $\forall n \in \mathbb N$, dann \\
-		falls $n \le m \Rightarrow n \le m+1$ \\
-		falls $m < n \Rightarrow \exists k \in \mathbb N: n=m+(k+1)=(m+)1+k \Rightarrow m+1 \le n$ \\
-		$m\le n$ oder $n \le m$ gilt für $m+1$ und $\forall n \in \mathbb N$, also $\forall n,m \in 
-		\mathbb N$
-		\item sei $m \le n \Rightarrow \exists j: n=m+j \Rightarrow n+k=m+j+k \Rightarrow m+k \le n+k$
-\end{compactitem}}
+\begin{proof}
+	\item Sei $n=m+k=m+k' \Rightarrow k=k'$
+	\item Sei $n=n+0 \Rightarrow n \le n \Rightarrow$ reflexiv \\
+	sei $k\le m, m \le n \Rightarrow \exists l,j: m=k+l, n=m+j=(k+l)+j=k+(l+j) \Rightarrow
+	k \le n \Rightarrow$ transitiv \\
+	sei nun $m \le n und n \le m \Rightarrow n=m+j=n+l+j \Rightarrow 0=l+j \Rightarrow j=0 
+	\Rightarrow n=m \Rightarrow$ antisymmetrisch \\
+	Totalordnung, d.h. $\forall m,n \in \mathbb N: m\le n$ oder $n\le m$ \\
+	IA: $m=0$ wegen $0=n+0$ folgt $0 \le n \forall n$ \\
+	IS: gelte $m\le n$ oder $n \le m$ mit festem $m$ und $\forall n \in \mathbb N$, dann \\
+	falls $n \le m \Rightarrow n \le m+1$ \\
+	falls $m < n \Rightarrow \exists k \in \mathbb N: n=m+(k+1)=(m+)1+k \Rightarrow m+1 \le n$ \\
+	$m\le n$ oder $n \le m$ gilt für $m+1$ und $\forall n \in \mathbb N$, also $\forall n,m \in 
+	\mathbb N$
+	\item sei $m \le n \Rightarrow \exists j: n=m+j \Rightarrow n+k=m+j+k \Rightarrow m+k \le n+k$
+	\QEDA
+\end{proof}
