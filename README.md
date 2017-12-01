@@ -23,7 +23,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
    2.3 reelle Zahlen ... wird bearbeitet
    
-   2.4 komplexe Zahlen ... noch nicht bearbeitet
+   2.4 komplexe Zahlen ... fertig
    
 3. Metrische Räume und Konvergenz ... noch nicht bearbeitet
    

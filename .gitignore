@@ -160,3 +160,7 @@ TSWLatexianTemp*
 *~[0-9]*
 # auto folder when using emacs and auctex
 /auto/*
+*.aux
+*.thm
+*.gz
+*.toc
