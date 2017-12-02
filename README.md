@@ -62,7 +62,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 
    2.1 Definitionen und Beispiele ... fertig
    
-   2.2 Linearkombinationen und lineare Abhängigkeit ... wird bearbeitet
+   2.2 Linearkombinationen und lineare Abhängigkeit ... fertig
    
    2.3 Basis und Dimension ... noch nicht bearbeitet
    
