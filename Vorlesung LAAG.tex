@@ -1245,4 +1245,78 @@
 		\end{compactitem}
 		
 	\subsection{Basis und Dimension}
+		\begin{framed}
+			\textbf{Definition Basis:} Eine Familie $(x_i)$ von Elementen von $V$ ist eine Basis von $V$, wenn gilt: \\
+			(B1): Die Familie ist linear unabhängig \\
+			(B2): Die Familie erzeugt $V$, also $span_K(x_i) = V$
+		\end{framed}
+		
+		\textbf{Bemerkung:} Kurz gesagt ist eine Basis ein linear unabhängiges Erzeugendensystem. \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(x_i)$ eine Familie von Elementen von $V$. Genau dann ist $(x_i)$ eine Basis von $V$, 
+			wenn sich jedes $x \in V$ auf eindeutige Weise als Linearkombination der $(x_i)$ schreiben lässt.
+		\end{framed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die leere Familie ist eine Basis des Nullraums.
+			\item Die Standardbasis $(e_1,...,e_n)$ ist eine Basis des Standardraums.
+			\item Die Monome $(X^i)$ bilden eine Basis des $K$-VR $K[X]$.
+			\item Die Basis des $\mathbb R$-VR $\mathbb C$ ist gegeben durch $(1,i)$, eine Basis des $\mathbb C$-
+			VR $\mathbb C$ ist gegeben durch $(1)$
+			\item Der $\mathbb C$-VR $\mathbb C$ hat viele weitere Basen.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Für eine Familie $(x_i)$ von Elementen von $V$ sind äquivalent:
+			\begin{compactitem}
+				\item $B$ ist eine Basis von $V$
+				\item $B$ ist ein minimales Erzeugendensystem
+				\item $B$ ist maximal linear unabhängig, d.h. $B$ ist linear unabhängig, aber wenn Elemente zur Basis 
+				hinzugefügt werden, ist diese nicht mehr linear unabhängig.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1 \Rightarrow 2$: Sei $B$ eine Basis von $V$ und $J$ eine echte Teilmenge von $I$. Nach Definition ist $B$ ein 
+		Erzeugendensystem. Wähle $i_0 \in I\backslash J. Da $(x_i)$ linear unabhängig ist, ist $x_{i_0}$ keine Element 
+		$span_K((x_i)_{i \in I\backslash \{i_0\}}) \ge span_K((x_i)_{i \in J})$. Insbesondere ist $(x_i)_{i\in J}$ kein 
+		Erzeugendensystem von $V$. \\
+		$2 \Rightarrow 3$: Sei $B$ ein minimales Erzeugendensystem und $(x_i)_{i \in J}$ eine Familie mit $J$ echter 
+		Obermenge von $I$. Wäre $(x_i)$ linear abhängig, so gäbe es ein $i_0$ mit $span_K((x_i)_{i \in I\backslash 
+		\{i_0\}}) = span_K((x_i)_{i \in I})=V$ im Widerspruch zur Minimalität von $B$. Also ist $B=(x_i)$ linear 
+		unabhängig. Wähle $j_0 \in J\backslash I$. Dann ist $x_{j_0} \in V=span_K(x_i) \le span_K((x_i)_{i \in 
+		J\backslash \{j_0\}})$ und somit ist $(x_i)_{i\in J}$ linear abhängig. \\
+		$3 \Rightarrow 1$: Sei $B$ nun maximal linear unabhängig. Angenommen $B$ wäre kein Erzeugendensystem. 
+		Dann gibt es ein $x\in V \backslash span_K(x_i)$. Definiere $J=I \cup \{j_0\}$ mit $j_0 \notin I$ und $x_{j_0}:=x$. 
+		Aufgrund der Maximalität von $B$ ist $(x_i)$ linear abhängig, es gibt als Skalare $\lambda$, $(\lambda_i)$, nicht 
+		alle gleich 0, mit $\lambda\cdot x+\sum\limits_{i \inn I} \lambda_i\cdot x_i=0$. Da $(x_i)$ linear abhängig ist, 
+		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \inn I} \lambda_i\cdot x_i
+		\in span_K(x_i)$. Somit ist $B$ ein Erzeugendensystem.} \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Theorem (Basisauswahlsatz):} Jedes endliche Erzeugendensystem von $V$ besitzt eine Basis  als 
+			Teilfamilie: Ist $(x_i)$ ein endliches Erzeugendensystem von $V$, so gibt es eine Teilmenge $J\subset I$, 
+			für die $(x_i)_{i\in J}$ eine Basis von $V$ ist. 
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J} 
+		\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
+		Erzeugendensystem ist, ist $I\in J$, insbesondere $\mathcal J\neq\emptyset$. Es gibt deshalb ein bezüglich 
+		Inklusion minimales $J_0\in \mathcal J$, d.h. $J_1 \in \mathcal J$ so gilt nicht $J_1 \subsetneq J_0$. Deshalb 
+		ist $(x_i)_{i\in J_0}$ eine Basis von $V$.} \\
+		$\newline$
+		
+		\begin{framed}
+			\textbf{Korollar:} Jeder endlich erzeugte $K$-VR besitzt eine endliche Basis.
+		\end{framed}
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item Der Beweis des Theorems liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
+			Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in span_K(x_1,...x_{i_0-1}, 
+			x_{i_0+1},...,x_n)$ gibt.
+		\end{compactitem}
 \end{document}
