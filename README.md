@@ -21,7 +21,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
    2.2 ganze und rationale Zahlen ... fertig
   
-   2.3 reelle Zahlen ... wird bearbeitet
+   2.3 reelle Zahlen ... noch nicht bearbeitet
    
    2.4 komplexe Zahlen ... fertig
    
@@ -64,10 +64,14 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.2 Linearkombinationen und lineare Abhängigkeit ... fertig
    
-   2.3 Basis und Dimension ... noch nicht bearbeitet
+   2.3 Basis und Dimension ... wird bearbeitet
    
    2.4 Summe von Vektorräumen ... noch nicht bearbeitet
    
 3. Lineare Abbildungen ... noch nicht bearbeitet
 
    3.1 Matrizen ... noch nicht bearbeitet
+   
+   3.2 Homomorphismen
+   
+   3.3 Homomorphismen von Gruppen
