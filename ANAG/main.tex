@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[11pt, oneside]{book}
 \usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{paralist}
@@ -15,10 +15,11 @@
 \usepackage[autostyle]{csquotes}
 \usepackage{lipsum}
 \usepackage{enumerate}
+\usepackage{titlesec} % remove page break
 
 %theorem enviroment
 %theorem
-\newframedtheorem{theorem}{Theorem}[chapter]
+\newframedtheorem{theorem}{Theorem}[section]
 % example
 \theoremstyle{break}
 \newtheorem*{exmp}{Beispiel}
@@ -97,6 +98,17 @@
 \newcommand{\dotsco}{,\dots,} % ,...,
 \newcommand{\expon}{\mathrm{exp}}
 
+% Hack page break on part page.
+
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+
 \setlength\parindent{0pt} % noindent whole file!
 
 \begin{document}
@@ -124,23 +136,23 @@
 \end{compactitem}
 
 \mainmatter
-\part{Grundlagen der Mathematik}
+% PArt 1 Grundlagen der Mathematik
 \include{./TeX_files/chapter01_grundbegriffe_aus_mengenlehre_und_logik}
 \include{./TeX_files/chapter02_aufbau_einer_math_theorie}
-\part{Zahlenbereiche}
+% Part 2 Zahlenbereiche
 \include{./TeX_files/chapter03_nat_zahlen}
 \include{./TeX_files/chapter04_ganze_u_rat_zahlen}
 \include{./TeX_files/chapter05_reelle_zahlen}
 \include{./TeX_files/chapter06_komplexe_zahlen}
-\part{Metrische Räume und Konvergenz}
+% Part 3 Metrische Räume und Konvergenz
 \include{./TeX_files/chapter07_grundl_ungleichungen}
 \include{./TeX_files/chapter08_metr_raeume}
-\include{./TeX_files/chapter09_konvergenz}
-\include{./TeX_files/chapter10_vollst}
-\include{./TeX_files/chapter11_kompaktheit}
-\include{./TeX_files/chapter12_reihen}
-\part{Funktionen und Stetigkeit}
-\include{./TeX_files/chapter13_funktionen}
+%\include{./TeX_files/chapter09_konvergenz}
+%\include{./TeX_files/chapter10_vollst}
+%\include{./TeX_files/chapter11_kompaktheit}
+%\include{./TeX_files/chapter12_reihen}
+%\part{Funktionen und Stetigkeit}
+%\include{./TeX_files/chapter13_funktionen}
 
 \backmatter
 % bibliography, glossary and index would go here.
