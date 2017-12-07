@@ -2,9 +2,10 @@
 \usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{paralist}
-\usepackage{booktabs}
-\usepackage{graphicx}
+%\usepackage{booktabs}
+%\usepackage{graphicx}
 \usepackage[ngerman]{babel}
+\usepackage{hyperref} % link chapters over name and page number
 % math/enviroments
 \usepackage{mathtools,bm}
 \usepackage{stmaryrd} % Widerspruch symbol
@@ -18,25 +19,35 @@
 \usepackage{titlesec} % remove page break
 
 %theorem enviroment
+
 %theorem
 \newframedtheorem{theorem}{Theorem}[chapter]
 % example
 \theoremstyle{break}
+\theorembodyfont{\upshape} % no italics!
 \newtheorem*{exmp}{Beispiel}
 \theoremstyle{break}
+\theorembodyfont{\upshape}
 \newtheorem{exmpn}[theorem]{Beispiel}
 % defintion
+\theorembodyfont{\upshape}
 \newframedtheorem{mydef}[theorem]{Definition}
 % corollary
+\theorembodyfont{\upshape}
 \newtheorem{folg}[theorem]{Folgerung}
 % remark
+\theorembodyfont{\upshape}
 \newtheorem*{remark}{Bemerkung}
 % satz
 \newframedtheorem{satz}[theorem]{Satz}
 % beweis
+\theorembodyfont{\upshape}
 \newtheorem*{proof}{Beweis}
 % lemma
+\theorembodyfont{\upshape}
 \newtheorem{lem}[theorem]{Lemma}
+%\let\olddefinition\lem
+%\renewcommand{\lem}{\olddefinition\normalfont}
 
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
@@ -134,12 +145,12 @@
 % Part 3 Metrische Räume und Konvergenz
 \include{./TeX_files/chapter07_grundl_ungleichungen}
 \include{./TeX_files/chapter08_metr_raeume}
-%\include{./TeX_files/chapter09_konvergenz}
-%\include{./TeX_files/chapter10_vollst}
-%\include{./TeX_files/chapter11_kompaktheit}
-%\include{./TeX_files/chapter12_reihen}
-%\part{Funktionen und Stetigkeit}
-%\include{./TeX_files/chapter13_funktionen}
+\include{./TeX_files/chapter09_konvergenz}
+\include{./TeX_files/chapter10_vollst}
+\include{./TeX_files/chapter11_kompaktheit}
+\include{./TeX_files/chapter12_reihen}
+% Part 4 Funktionen und Stetigkeit
+\include{./TeX_files/chapter13_funktionen}
 
 \backmatter
 % bibliography, glossary and index would go here.
