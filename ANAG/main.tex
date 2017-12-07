@@ -19,7 +19,7 @@
 
 %theorem enviroment
 %theorem
-\newframedtheorem{theorem}{Theorem}[section]
+\newframedtheorem{theorem}{Theorem}[chapter]
 % example
 \theoremstyle{break}
 \newtheorem*{exmp}{Beispiel}
@@ -28,7 +28,7 @@
 % defintion
 \newframedtheorem{mydef}[theorem]{Definition}
 % corollary
-\newframedtheorem{folg}[theorem]{Folgerung}
+\newtheorem{folg}[theorem]{Folgerung}
 % remark
 \newtheorem*{remark}{Bemerkung}
 % satz
@@ -36,7 +36,7 @@
 % beweis
 \newtheorem*{proof}{Beweis}
 % lemma
-\newframedtheorem{lem}[theorem]{Lemma}
+\newtheorem{lem}[theorem]{Lemma}
 
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
@@ -121,19 +121,6 @@
 \frontmatter
 \maketitle
 \tableofcontents
-
-\newpage
-\paragraph{Literatur}
-\begin{compactitem}
-	\item Forster: Analysis 1 + 2, Vieweg
-	\item Königsberger: Analysis 1 + 2, Springer
-	\item Hildebrandt: Analysis 1 + 2, Springer
-	\item Walter: Analysis 1 + 2, Springer
-	\item Escher/Amann: Analysis 1 + 2, Birkhäuser
-	\item Ebbinghaus: Einfühung in die Mengenlehre, BI-Wissenschaftsverlag
-	\item Teubner-Taschenbuch der Mathematik, Teubner 1996
-	\item Springer-Taschenbuch der Mathematik, Springer 2012
-\end{compactitem}
 
 \mainmatter
 % PArt 1 Grundlagen der Mathematik

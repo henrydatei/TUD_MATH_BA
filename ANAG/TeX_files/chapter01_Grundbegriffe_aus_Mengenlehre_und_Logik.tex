@@ -1,17 +1,34 @@
 \part{Grundlagen der Mathematik}
+
+Mathematik besitzt eine Sonderrolle unter den Wissenschaften, da
+\begin{compactitem}
+	\item Resultate nicht empirisch gezeigt werden müssen
+	\item Resultate nicht durch Experimente widerlegt werden können
+\end{compactitem}
+
+\paragraph{Literatur}
+\begin{compactitem}
+	\item Forster: Analysis 1 + 2, Vieweg
+	\item Königsberger: Analysis 1 + 2, Springer
+	\item Hildebrandt: Analysis 1 + 2, Springer
+	\item Walter: Analysis 1 + 2, Springer
+	\item Escher/Amann: Analysis 1 + 2, Birkhäuser
+	\item Ebbinghaus: Einfühung in die Mengenlehre, BI-Wissenschaftsverlag
+	\item Teubner-Taschenbuch der Mathematik, Teubner 1996
+	\item Springer-Taschenbuch der Mathematik, Springer 2012
+\end{compactitem}
+
 \chapter{Grundbegriffe aus Mengelehre und Logik}
 \textbf{Mengenlehre:} Universalität von Aussagen \\
 \textbf{Logik:} Regeln des Folgerns, wahre/falsche Aussagen
-
 
 \begin{mydef}[Definition Aussage]
 	Sachverhalt, dem man entweder den Wahrheitswert "wahr" oder "falsch" zuordnen kann, aber nichts anders.
 \end{mydef}
 
-Beispiele:
 \begin{exmp}
 	\item 5 ist eine Quadratzahl $\to$ falsch (Aussage)
-	\item Die Elbe flie{\ss}t durch Dresden $\to$ wahr (Aussage)
+	\item Die Elbe fließt durch Dresden $\to$ wahr (Aussage)
 	\item Mathematik ist rot $\to$ ??? (keine Aussage)
 \end{exmp}
 
@@ -19,13 +36,11 @@ Beispiele:
 	Zusammenfassung von bestimmten wohlunterscheidbaren Objekten der Anschauung oder des Denkens, welche die Elemente der Menge genannt werden, zu einem Ganzen.\\ (\textsc{Cantor}, 1877)
 \end{mydef}
 
-Beispiele:
-\begin{compactitem}
+\begin{exmp}
 	\item $M_1 :=$ Menge aller Städte in Deutschland
-	\item $M_2 := \{1;2;3\}$ 
-\end{compactitem}
-
-$\newline$ 
+	\item $M_2 := \{1;2;3\}$
+\end{exmp}
+ 
 Für ein Objekt $m$ und eine Menge $M$ gilt stets $m \in M$ oder $m \notin M$ \\
 Für die Mengen $M$ und $N$ gilt $M=N$, falls dieselben Elemente enthalten sind 
 $\{1;2;3\} = \{3;2;1\} = \{1;2;2;3\}$ \\
@@ -36,14 +51,14 @@ $\{1;2;3\} = \{3;2;1\} = \{1;2;2;3\}$ \\
 	Sachverhalt mit Variablen, der durch geeignete Ersetzung der Variablen zur Aussage wird.
 \end{mydef}
 
-\begin{exmpn}
+\begin{exmp}
 	\begin{itemize}
 		\item $A(X) := $ Die Elbe fließt durch X
 		\item $B(X;Y;Z) := X + Y = Z$
 		\item aber $A(Dresden) ,B(2;3;4)$ sind Aussagen, $A(Mathematik)$ ist keine Aussage
 		\item $A(X)$ ist eine Aussage f\"u jedes $X \in M_1$ $\to$ Generalisierung von Aussagen durch Mengen
 	\end{itemize}
-\end{exmpn}
+\end{exmp}
 
 \section*{Bildung und Verknüpfung von Aussagen}
 
@@ -88,7 +103,6 @@ Aussageform $A(X)$ sei f\"ur jedes $X \in M$ Aussage: neue Aussage mittels Quant
 	Zusammengesetzte Aussage, die unabhängig vom Wahrheitsgehalt der Teilaussagen stest wahr bzw. falsch ist.
 \end{mydef}
 
-\newpage
 \begin{exmpn}
 	\begin{itemize}
 		\item Tautologie (immer wahr): 
