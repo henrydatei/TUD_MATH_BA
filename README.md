@@ -64,9 +64,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.2 Linearkombinationen und lineare Abhängigkeit ... fertig
    
-   2.3 Basis und Dimension ... wird bearbeitet
+   2.3 Basis und Dimension ... fertig
    
-   2.4 Summe von Vektorräumen ... noch nicht bearbeitet
+   2.4 Summe von Vektorräumen ... wird bearbeitet
    
 3. Lineare Abbildungen ... noch nicht bearbeitet
 
