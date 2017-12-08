@@ -1280,7 +1280,7 @@
 		\end{framed}
 		\textit{Beweis: \\
 		$1 \Rightarrow 2$: Sei $B$ eine Basis von $V$ und $J$ eine echte Teilmenge von $I$. Nach Definition ist $B$ ein 
-		Erzeugendensystem. Wähle $i_0 \in I\backslash J. Da $(x_i)$ linear unabhängig ist, ist $x_{i_0}$ keine Element 
+		Erzeugendensystem. Wähle $i_0 \in I\backslash J$. Da $(x_i)$ linear unabhängig ist, ist $x_{i_0}$ keine Element 
 		$span_K((x_i)_{i \in I\backslash \{i_0\}}) \ge span_K((x_i)_{i \in J})$. Insbesondere ist $(x_i)_{i\in J}$ kein 
 		Erzeugendensystem von $V$. \\
 		$2 \Rightarrow 3$: Sei $B$ ein minimales Erzeugendensystem und $(x_i)_{i \in J}$ eine Familie mit $J$ echter 
@@ -1291,8 +1291,8 @@
 		$3 \Rightarrow 1$: Sei $B$ nun maximal linear unabhängig. Angenommen $B$ wäre kein Erzeugendensystem. 
 		Dann gibt es ein $x\in V \backslash span_K(x_i)$. Definiere $J=I \cup \{j_0\}$ mit $j_0 \notin I$ und $x_{j_0}:=x$. 
 		Aufgrund der Maximalität von $B$ ist $(x_i)$ linear abhängig, es gibt als Skalare $\lambda$, $(\lambda_i)$, nicht 
-		alle gleich 0, mit $\lambda\cdot x+\sum\limits_{i \inn I} \lambda_i\cdot x_i=0$. Da $(x_i)$ linear abhängig ist, 
-		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \inn I} \lambda_i\cdot x_i
+		alle gleich 0, mit $\lambda\cdot x+\sum\limits_{i \in I} \lambda_i\cdot x_i=0$. Da $(x_i)$ linear abhängig ist, 
+		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \in I} \lambda_i\cdot x_i 
 		\in span_K(x_i)$. Somit ist $B$ ein Erzeugendensystem.} \\
 		$\newline$
 		
