@@ -1316,7 +1316,117 @@
 		\textbf{Bemerkungen:}
 		\begin{compactitem}
 			\item Der Beweis des Theorems liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
-			Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in span_K(x_1,...x_{i_0-1}, 
-			x_{i_0+1},...,x_n)$ gibt.
+			Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in span_K((x_i)_{i\neq i_0})$ gibt. 
+			Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}}),
+			...,x_n$ weiter.
+			\item Man kann jedoch zeigen, dass jeder Vektorraum eine Basis besitzt. Die Gültigkeit der Aussage hängt jedoch 
+			von bestimmten mengentheoretischen Axoimen ab, auf die wir an dieser Stele nicht eingegehen werden. Siehe dazu 
+			LAAG 2. Semester
 		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{(Austausch-)Lemma:} Sei $B=(x_1,...,x_n)$  eine Basis von $V$. Sind $\lambda_1,...,\lambda_n \in K$ und 
+			$y=\sum\limits_{i=1}^n \lambda_i\cdot x_i$, so ist für jedes $j\in \{1,2,...,n\}$ mit $\lambda_j\neq 0$ auch 
+			$B'=(x_1,...,x_{j-1},y,x_{j+1},...,x_n)$ eine Basis von $V$.
+		\end{framed}
+		\textit{Beweis: \\
+		o.B.d.A. sei $j=1$, also $B'=(y,x_2,...,x_n)$. Wegen $\lambda_1\neq 0$ ist $x_1=\lambda_1^{-1}\cdot y - \sum
+		\limits_{i=2}^n \lambda_i\cdot x_i \in span_K(y,x_2,...,x_n)$ und somit ist $B'$ ein Erzeugendensystem. Sind 
+		$\mu_1,...,\mu_n \in K$ mit $\mu_1\cdot y - \sum\limits_{i=2}^n \mu_i\cdot x_i=0$, so folgt $0=\mu_1(\sum
+		\limits_{i=1}^n \lambda_i\cdot x_i + \sum\limits_{i=2}^n \mu_i\cdot x_i)=\mu_1\cdot \lambda_1\cdot x_1 + \sum
+		\limits_{i=2}^n (\mu_1\cdot \lambda_i + \mu_i)x_i$ und aus der linearen Unabhängigkeit von $B$ somit $\mu_1\cdot 
+		\lambda_1=0$, $\mu_1\cdot \lambda_2 + \mu_2 =0$, ..., $\mu_1\cdot\lambda_n + \mu_n=0$. Wegen $\lambda_1\neq 0$ folgt 
+		$\mu_1=0$ und daraus $\mu_i=0$. Folglich ist $B'$ linear unabhängig.} \\
+		
+		\begin{framed}
+			\textbf{Theorem (Steinitz'scher Austauschsatz):} Sei $B=(x_1,...,x_n)$ eine Basis von $V$ und $\mathcal F=(y_1,...
+			,y_r)$ eine linear unabhängige Familie in $V$. Dann ist $r\le n$ und es gibt $i_1,...,i_{n-r} \in \{1,...,n\}$, für 
+			die $B'=(y_1,...,y_r,x_{i_1},...,x_{i_{n-r}})$ eine Basis von $V$ ist. 
+		\end{framed}
+		\textit{Beweis: Induktion nach $r$\\
+		Für $r=0$ ist nichts zu zeigen. \\
+		Sei nun $r\ge 1$ und gelte die Aussage für $(y_1,...,y_{r-1})$. Insbesondere ist $r-1\le n$ und es gibt $i_1,..,
+		i_{n-(r-1)} \in \{1,...,n\}$ für die $B'=(y_1,...,y_r,x_{i_1},...,x_{i_{n-(r-1)}})$ eine Basis von $V$ ist. Da $y_r
+		\in V=span_K(B')$ ist $y_r=\sum\limits_{i=1}^{r-1} \lambda_i\cdot y_1 + \sum\limits_{j=0}^{n-(r-1)} \mu_j\cdot 
+		x_{i_j}$. Da $(y_1,...,y_r)$ linear unabhängig, ist $y_r \notin span_K(y_1,...,y_{r-1})$. Folglich gibt es $j_0 \in 
+		\{1,...,n-(r-1)\}$ mit $\mu_{j_0}\neq 0$. Insbesondere ist $n-(r-1)\ge 1$, also $r\le n$. o.B.d.A. $j_0=1$, dann 
+		ergibt sich mit dem Austasuchlemma, dass auch $(y_1,...,y_{r-1},y_r,x_{i_2},...,x_{i_{n-(r-1)}})$ eine Basis von 
+		$V$ ist.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $V$ endlich erzeugt, so lässt sich jede linear unabhängige Familie zu einer Basis ergänzen: 
+			Ist $(x_1,...,x_n)$ linear unabhängig, so gibt es $m\ge n$ und $x_{n+1},x_{n+2},...,x_m$ für die $(x_1,...,x_n,
+			x_{n+1},...,x_m)$ eine Basis von $V$ ist.
+		\end{framed}
+		\textit{Beweis: \\
+		Nach dem Basisauswahlsatz besitzt $V$ eine endliche Basis, die Behauptung folgt somit aus dem Steinitz'schen 
+		Austauschsatz.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Sind $(x_i)$ und $(x_j)$ Basen von $V$ und ist $I$ endlich, so ist $|I|=|J|$.
+		\end{framed}
+		\textit{Beweis: \\
+		Da $(y_r)$ linear unabhängig ist, ist $|J|\le |I|$ nach dem Steinitz'schen Austauschsatz. Insbesondere ist $J$ 
+		endlich, also $|I|\le |J|$ nach dem Austauschsatz.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $V$ endlich erzeugt, so haben alle Basen von $V$ die gleiche Mächtigkeit.
+		\end{framed}
+		\textit{Beweis: \\
+		Besitzt $V$ eine endliche Basis, so folgt deshalb die Behauptung aus dem vorherigen Korollar.} \\
+		
+		\begin{framed}
+			\textbf{Definition Dimension:} Ist $V$ endlich erzeugt, so ist die Dimension des VR $V$ die Mächtigkeit $dim_K(V)$ 
+			einer Basis von $V$. Anderfalls sagt man, dass $V$ unendliche Dimensionen hat und schreibt $dim_K(V)= \infty$. 
+		\end{framed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $dim_K(K^n)=n$
+			\item $dim_K(K[X])=\infty$
+			\item $dim_K(K[X]_{\le n})=n+1$
+			\item $dim_{\mathbb R}(\mathbb C)=2$
+			\item $dim_{\mathbb C}(\mathbb C)=2$
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item $V$ ist genau dann endlich erzeugt, wenn $dim_K(V)< \infty$.
+			\item $dim_K(V)=min\{|B| \mid span_K(B)=V\}=max\{|B| \mid \text{B linear unabhängig}\}$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $V$ endlich erzeugt und $W\le V$ ein UVR.
+			\begin{compactitem}
+				\item Es ist $dim_K(W)\le dim_K(V)$. Insbesondere ist $W$ endlich erzeugt.
+				\item Ist $dim_K(W)=dim_K(V)$, so ist auch $W=V$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Ist $F$ eine linear unabhängige Familie in $W$, so ist auch $F$ linear unabhängig in $V$ und somit $|F|\le 
+			dim_K(V)$. Insbesondere gibt es eine maximal linear unabhängige Familie $B$ in $W$ und es folgt $dim_K(W)=|B|
+			 \le dim_K(V)$.
+			\item Sei $B$ eine Basis von $W$. Dann ist $B$ auch in $V$ linear unabhängig. Ist $dim_K(W)=dim_K(V)$, so muss 
+			auch $B$ in $V$ maximal linear unabhängig sein. Insbesondere ist $W=span_K(B)=V$.
+		\end{compactitem}}
+		
+	\subsection{Summen von Vektorräumen}
+		Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
+		
+		\begin{framed}
+			\textbf{Definition Summe von VR:} Die Summe der $W_i$ ist der UVR $\sum\limits_{i\in I} W_i := span_K(\bigcup W_i)$. 
+			Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1+...+W_n$ für $\sum\limits_{i=1}^n W_i$. 
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Es ist $\sum\limits_{i\in I} W_i = \{\sum\limits_{i\in I} x_i \mid x_i\in W_i\text{, fast alle 
+			gleich 0}\}$. 
+		\end{framed}
+		\textit{Beweis: \\
+		$"\ge"$: klar, $\sum x_i \in span_K(\bigcup W_i)$ \\
+		$"\le"$: Die rechte Seite enthält jedes $W_i$ und ist ein UVR von $V$: \\
+		Für $x_i,x'_i \in W$, fast alle gleich 0 und $\lambda \in K$ ist $\sum x_i + \sum x'_i = \sum (x_i+x'_i)$, $\lambda
+		\cdot \sum x_i = \sum \lambda\cdot x_i$ $\to$ UVR}
 \end{document}
