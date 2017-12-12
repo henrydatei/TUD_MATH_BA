@@ -58,7 +58,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    1.6 Polynome ... fertig
    
-2. Vektorräume ... wird bearbeitet
+2. Vektorräume ... fertig
 
    2.1 Definitionen und Beispiele ... fertig
    
@@ -66,9 +66,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.3 Basis und Dimension ... fertig
    
-   2.4 Summe von Vektorräumen ... wird bearbeitet
+   2.4 Summe von Vektorräumen ... fertig
    
-3. Lineare Abbildungen ... noch nicht bearbeitet
+3. Lineare Abbildungen ... wird bearbeitet
 
    3.1 Matrizen ... noch nicht bearbeitet
    
