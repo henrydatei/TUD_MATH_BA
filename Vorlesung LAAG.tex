@@ -1520,4 +1520,48 @@
 \section{Lineare Abbildungen}
 	Sei $K$ ein Körper.
 	\subsection{Matrizen}
+		\begin{framed}
+			\textbf{Definition Matrix:} Seien $m,n \in \mathbb N_0$. Eine $m\times n$-Matrix über $K$ ist ein rechteckiges 
+			Schema:
+			\begin{center}
+			$\begin{pmatrix}
+				a_{11} & ... & a_{1n}\\
+				... &  & ...\\
+				a_{m1} & ... & a_{mn}\\
+			\end{pmatrix}$
+			\end{center}
+			Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \newline j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
+			aus dem Kontext hervorgehen. Die $a_{ij}$ heißen die Koeffizienten der Matrix $A$ und wir definieren $A_{i,j}=
+			a_{ij}$. Die Menge der $m\times n$-Matrizen über $K$ wird mit $Mat_{m\times n}(K)$ oder $K^{m\times n}$ 
+			bezeichnet. Man nennt das Paar $(m,n)$ auch den Typ von $A$. Ist $m=n$, so spricht man von quadratischen 
+			Matrizen und schreibt $Mat_n(K)$. Zu einer Matrix $A=(a_ij) \in Mat_{m\times n}(K)$ definiert man die zu $A$ 
+			transponierte Matrix $A^t := (a_ij)_{j,i} \in Mat_{n\times m}(K)$.
+		\end{framed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die Nullmatrix ist $0=(0)_{i,j} \in Mat_{m\times n}(K)$.
+			\item Für $k,l \in \{1,...,n\}$ ist die $(k,l)$-Basismatrix gegeben durch $E_{kl}=(\delta_{jk}\delta_{jl})\in 
+			Mat_{m\times n}(K)$.
+			\item Die Einheitsmatrix ist $1_n=(\delta_{ii})\in Mat_n(K)$.
+			\item Für $a_i,...,a_n \in K$ definiert man eine Diagonalmatrix $diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$
+			\item Für eine Permutation $\sigma\in S_n$ definiert man die Permutationsmatrix $P_\sigma := (\delta_{\sigma
+			(i),j})$
+			\item Für $a_1,...,a_n$ definiert man einen Zeilenvektor $(a_1,...,a_n)\in Mat_{1\times n}(K)$ bzw. einen 
+			Spaltenvektor $(a_1,...,a_n)^t$.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Definition Addition und Skalarmultiplikation:} Seien $A=(a_{ij})$ und $B=(b_{ij})$ desselben Typs und 
+			$\lambda \in K$. Man definiert auf $Mat_{m\times n}(K)$ eine koeffizientenweise Addition und Skalarmultiplikation.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Satz:} $(Mat_{m\times n},+,\cdot)$ ist ein $K$-VR der Dimension $dim_K(Mat_{m\times n})=n\cdot m$ mit 
+			Basismatrix als Basis.
+		\end{framed}
+		\textit{Beweis: \\
+		Dies ist klar, weil wir $Mat_{m\times n}$ mit dem Standardraum $K^{mn}$ identifizieren können. Wir haben die 
+		Elemente nur als $m\times n$-Matrix statt als $mn$-Tupel geschrieben.} \\
+		$\newline$
 \end{document}
