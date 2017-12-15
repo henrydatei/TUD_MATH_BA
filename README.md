@@ -70,7 +70,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
 3. Lineare Abbildungen ... wird bearbeitet
 
-   3.1 Matrizen ... noch nicht bearbeitet
+   3.1 Matrizen ... fertig
    
    3.2 Homomorphismen von Gruppen ... noch nicht bearbeitet
    
