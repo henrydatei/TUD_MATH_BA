@@ -72,9 +72,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 
    3.1 Matrizen ... fertig
    
-   3.2 Homomorphismen von Gruppen ... noch nicht bearbeitet
+   3.2 Homomorphismen von Gruppen ... fertig
    
-   3.3 Homomorphismen von Ringen ... noch nicht bearbeitet
+   3.3 Homomorphismen von Ringen ... fertig
    
    3.4 Homomorphismen von Vektorräumen ... noch nicht bearbeitet
    
