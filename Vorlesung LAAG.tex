@@ -1651,4 +1651,213 @@
 		Aus $AA^{-1}=1$ folgt, dass $(A^{-1})^tA^t=1_n^t=1_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.} \\
 	
 	\subsection{Homomorphismen von Gruppen}
+		Seien $G,H$ zwei multiplikativ geschriebene Gruppen. \\
+		
+		\begin{framed}
+			\textbf{Definition Gruppenhomomorphismus:} Eine Abbildung $f: G \to H$ ist ein Gruppenhomomorphismus, wenn gilt: \\
+			(GH): $f(xy)=f(x)\cdot f(y)$ \\
+			Die Menge der Homomorphismen $f:G\to H$ bezeichnet man mit $Hom(G,H)$.
+		\end{framed}
+		
+		\textbf{Bemerkung:} Ein Gruppenhomomorphismus ist also eine Abbildung, welche mit der Verknüpfung, also der Struktur 
+		der Gruppe, verträglich ist. Man beachte: für additiv geschriebe Gruppen lautet die Bedingung: $f(x+y)=f(x)+f(y)$. \\
+		$\newline$
+		
+		\textbf{Beispiele von Gruppenhomomorphismen:}
+		\begin{compactitem}
+			\item $id_G: G \to G$
+			\item $c_1:G\to H$ mit $x\mapsto 1_H$
+			\item $G_0\le G$ Untergruppe, $\iota:G_0\to G$
+			\item $(A,+)$ abelsche Gruppe, $k\in \mathbb Z$, $A\to A$ mit $a\mapsto ka$
+			\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a \mapsto a+n\mathbb Z$
+			\item $\mathbb R \to \mathbb R^{\times}$ mit $x\mapsto e^x$
+			\item $Mat_n(K)\to Mat_n(K)$ mit $A\mapsto A^t$
+			\item $\mathbb C\to \mathbb R^{\times}$ mit $z\mapsto |z|$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(G,H)$. Dann gilt: 
+			\begin{compactitem}
+				\item $f(1_G)\to 1_H$
+				\item Für $x\in G$ ist $f(x^{-1})=(f(x))^{-1}$
+				\item Für $x_1,...,x_n\in G$ ist $f(x_1,...,x_n)=f(x_1)\cdot ... \cdot f(x_n)$
+				\item Ist $G_0\le G$, so ist $f(G_0)\le H$
+				\item Ist $H_0\le H$, so ist $f^{-1}(H_0)\le G$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: 
+		\begin{compactitem}
+			\item $f(1)=f(1\cdot 1)=f(1)\cdot f(1) \Rightarrow$ kürzen, weil $H$ Gruppe $\Rightarrow 1=f(1)$
+			\item $f(x)\cdot f(x^{-1})=f(x\cdot x^{-1})=f(1)=1$
+			\item Induktion nach $n$
+			\item $x,y\in G_0\Rightarrow f(x)\cdot f(y)=f(xy)\in f(G_0)$, $f^{-1}(x)=f(x^{-1})\in f(G_0)$
+			\item $x,y\in f^{-1}(H_0)\Rightarrow f(x)\cdot f(y)=f(xy)\in H_0\Rightarrow xy\in f^{-1}(H_0)$, $f(x^{-1})=(f(x))
+			^{-1}\in H_0\Rightarrow x^{-1}\in f^{-1}(H_0)$, $f(1)=1\in H_0\Rightarrow 1\in f^{-1}(H_0)$, insbesondere 
+			$f^{-1}(H_0)\neq \emptyset$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $G_1,G_2,G_3$ Gruppen. Sind $f_1:G_1\to G_2$, $f_2:G_2\to G_3$ Homomorphismen, so ist auch 
+			$f_2\circ f_1:G_1\to G_3$
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x,y\in G_1$ ist $(f_2\circ f_1)(xy)=f_2(f_1(xy))=f_2(f_1(x)\cdot f_1(y))=f_2(f_1(x))\cdot f_2(f_1(y))=(f_2
+		\circ f_1)(x)\cdot (f_2\circ f_1)(y)$} \\
+		
+		\begin{framed}
+			\textbf{Definition Arten von Homomorphismen:} Ein Homomorphismus ist \\
+			ein Monomorphismus, wenn $f$ injektiv ist, \\
+			ein Epimorphismus, wenn $f$ surjektiv ist, \\
+			ein Isomorphismus, wenn $f$ bijektiv ist. Die Gruppen $G$ und $H$ heißen isomorph, in Zeichen $G\cong H$, wenn 
+			es einen Isomorphismus $G\to H$ gibt.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:G\to H$ ein Isomorphismus, so ist auch $f^{-1}:H\to G$ ein Isomorphismus.
+		\end{framed}
+		\textit{Beweis: \\
+		Da $f^{-1}$ wieder bijektiv ist, müssen wir nur zeigen, dass $f^{-1}$ ein Homomorphismus ist. Seien $x,y\in H$. Dann 
+		ist $f(f^{-1}(x)\cdot f^{-1}(y))=f(f^{-1}(x))\cdot f(f^{-1}(y))=xy$, somit $f^{-1}(xy)=f^{-1}(x)\cdot f^{-1}(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f:G\to H$ ein Homomorphismus. Genau dann ist $f$ ein Isomorphismus, wenn es einen Homomorphismus 
+			$f':H\to G$ mit $f'\circ f=id_G$ und $f\circ f'=id_H$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f$ ein Isomorphismus, so erfüllt $f':=f^{-1}$ das Gewünschte. Ist umgekehrt $f'$ wie angegeben, so muss $f$ 
+		bijektiv sein:
+		\begin{compactitem}
+			\item $f'\circ f=id_G$ injektiv $\Rightarrow f$ injektiv
+			\item $f\circ f'=id_H$ surjektiv $\Rightarrow f$ surjektiv
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Isomorphie von Gruppen ist eine Äquivalenzrelation: Sind $G,G_1,G_2,G_3$ Gruppen, so gilt:
+			\begin{compactitem}
+				\item $G\cong G$ (Reflexivität)
+				\item Ist $G_1\cong G_2$, so ist auch $G_2\cong G_1$ (Symmetrie)
+				\item Ist $G_1\cong G_2$ und $G_2\cong G_3$, dann ist auch $G_1\cong G_3$ (Transitivität)
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: 
+		\begin{compactitem}
+			\item $id_G$ ist ein Isomorphismus
+			\item vorheriges Lemma
+			\item vorletzer Satz und A18
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Der letzte Satz erklärt die Bedeutung des Isomorphismus: Eine mit der Struktur verträgliche 
+		Abbildung, die eine mit der Struktur verträgliche Umkehrabbildung besitzt, also eine strukturerhaltende Abbildung. 
+		Tatsächlich können wir uns einen Isomorphismus $f: G\to H$ so vorstellen, dass wir nur die Elemente von $G$ umbenennen. 
+		Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr. Zum Beispiel: Ist $G\cong H$ und ist 
+		$G$ abelsch, so auch $H$ und umgekehrt. \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Es ist $\mathbb Z^{\times} = \mu_2 \cong \mathbb Z\backslash 2\mathbb Z\cong (\mathbb Z\backslash 3\mathbb Z)
+			^{\times}\cong S_2$. Je zwei beliebige Gruppen der Ordnung 2 sind zueinander isomorph.
+			\item $e: \mathbb R \to \mathbb R_{>0}$, $x\mapsto e^x$ liefert einen Isomorphismus, da $(\mathbb R,+)\to 
+			(\mathbb R,\cdot)$.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Definition Kern:} Der Kern eines Gruppenhomomorphismus $f:G\to H$ ist $Ker(f):= f^{-1}(\{1\})=\{x\in G \mid
+			f(x)=1_H\}$
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:G\to H$ ein Homomorphismus, so ist $N:=Ker(f)$ eine Untergruppe von $G$ mit $x\cdot y\cdot 
+			x^{-1}\in N$ für alle $x\in G$ und $y\in N$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es ist $N\le G$. Für $x\in G$ und $y\in N$ ist $f(xyx^{-1})=f(x)\cdot f(y)\cdot f(x^{-1})=f(x)\cdot f(x^{-1}) \cdot 1=
+		f(x)\cdot f(x^{-1})=1$, also $xyx^{-1}\in N$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(G,H)$. Genau dann ist $f$ injektiv, wenn $Ker(f)=\{1_G\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $N=Ker(f)$. \\
+		Hinrichtung: Ist $f$ injetiv, so ist $N\le G$ mit $|N|\le 1$, also $N=\{1_G\}$. \\
+		Rückrichtung: Sei $N=\{1_G\}$. Sind $x,y\in G$ mir $f(x)=f(y)$, so ist $1=(f(x))^{-1}\cdot f(y)=f(x^{-1}\cdot y)$, 
+		also $x^{-1}\cdot y\in N=\{1\}$ und somit $x=y$. Folglich ist $f$ injetiv.} \\
+		
+		\begin{framed}
+			\textbf{Definition Normalteiler:} Ist $N\le G$ mit $x^{-1}y\in N$ für alle $x\in G$ und $y\in N$, so nennt man $N$ 
+			einen Normalteiler von $G$ und schreibt $N\vartriangleleft G$.
+		\end{framed}
+		
+	\subsection{Homomorphismen von Ringen}
+		Seien $R,S$ und $T$ Ringe.
+		
+		\begin{framed}
+			\textbf{Definition Ringhomomorphismus:} Eine Abbildung $f:R\to S$ ist ein Ringhomomorphismus, wenn für $x,y\in R$ 
+			gilt: \\
+			(RH1:) $f(x+y)=f(x)+f(y)$ \\
+			(RH2:) $f(xy)=f(x)\cdot f(y)$ \\
+			Die Menge der Ringhomomorhismen $f:R\to R$ wird mit $Hom(R,S)$ bezeichnet. Ein Homomorphismus $f:R\to S$ ist ein 
+			Mono-, Epi- oder Isomorphismus, wenn $f$ injektiv, surjektiv oder bijektiv ist. Gibt es einen Isomorphismus 
+			$f:R\to S$, so nennt man $R$ und $S$ isomorph und schreibt $R\cong S$. Die Elemente von $End(R):= Hom(R,R)$ nennt 
+			man Endomorphismen. Der Kern eines Ringhomorphismus $f:R\to S$ ist $Ker(f):= f^{-1}(\{0\})$.
+		\end{framed}
+		
+		\textbf{Bemerkung:} Ein Ringhomomorphismus $f:R\to S$ ist ein Gruppenhomomorphismus der abelschen Gruppen $(R,+)$ und 
+		$(S,+)$, der mit der Multiplikation verträglich ist, also eine strukturverträgliche Abbildung zwischen Ringen. \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $id_R:R\to R$ ist ein Ringisomorphismus
+			\item Ist $R_0\le R$ ein Unterring von $R$, so ist $\iota: R_0 \to R$ ein Ringmonomorphismus
+			\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a\mapsto a+n\mathbb Z$ it ein Ringepimorphismus
+			\item Sei $R$ kommutativ mit Einselement. Für $\lambda\in R$ ist die Auswertungsabbildung $R[X]\to R$ mit $f\mapsto 
+			f(\lambda)$ ein Ringepimorphismus.
+			\item $\mathbb C \to \mathbb C$ mit $z\mapsto \overline z$ ist ein Ringisomorphismus
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sind $f:R\to S$ und $g:S\to T$ Ringhomomorphismen, so auch $g\circ f:R\to T$.
+		\end{framed}
+		\textit{Beweis: \\
+		Übung, analog zu Gruppen} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:R\to S$ ein Ringisomorphismus, so auch $f^{-1}: S\to R$.
+		\end{framed}
+		\textit{Beweis: \\
+		Von den Gruppen wissen wir: $f^{-1}$ ist ein Isomorphismus der abelschen Gruppen $(S,+)\to (R,+)$. Die Verträglichkeit 
+		mit der Multiplikation zeigt man analog.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(R,S)$. Genau dann ist $f$ ein Ringisomorphismus, wenn es $f'\in Hom(S,R)$ mit $f'\circ 
+			f=id_R$ und $f\circ f'=id_S$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		analog zu Gruppen} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Der Kern $I:=Ker(f)$ eines Ringhomomorphismus $f:R\to S$ ist eine Untergruppe von $(R,+)$ mit 
+			$x\cdot a, a\cdot x \in I$ für alle $a\in I$ und $x\in R$.
+		\end{framed}
+		\textit{Beweis: \\
+		Von den Gruppen wissen wir: $I$ ist eine Untergruppe von $(R,+)$. Für $x\in R$ und $a \in I$ ist $f(xa)=f(x)\cdot 
+		f(a)=f(x)\cdot 0=0$. Somit ist $xa\in I$. Analog ist $ax\in I$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(R,S)$. Genau dann ist $f$ injektiv, wenn $Ker(f)=\{0\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Die Aussage folgt aus dem entsprechenden Satz für Gruppen, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.} \\
+		
+		\begin{framed}
+			\textbf{Definition Ideal:} Ist $I$ eine Untergruppe von $(R,+)$ und $xa,ax\in I$ mit $x\in R$ und $a\in I$, so nennt 
+			man $I$ ein Ideal von $R$ und schreibt $I\vartriangleleft R$.
+		\end{framed}
+		
+		\textbf{Beispiel:} Der Kern des Ringhomomorphismus $\mathbb Z\to \mathbb Z\backslash n\mathbb Z$ mit $a\mapsto 
+		\overline a$ ist das Ideal $I=n\mathbb Z\vartriangleleft \mathbb Z$.
+		
+	\subsection{Homomorphismen von Vektorräumen}
 \end{document}
