@@ -76,6 +76,6 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.3 Homomorphismen von Ringen ... fertig
    
-   3.4 Homomorphismen von Vektorräumen ... noch nicht bearbeitet
+   3.4 Homomorphismen von Vektorräumen ... fertig
    
    3.5 Der Vektorraum der linearen Abbildungen ... noch nicht bearbeitet
