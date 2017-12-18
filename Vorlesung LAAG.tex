@@ -1860,4 +1860,117 @@
 		\overline a$ ist das Ideal $I=n\mathbb Z\vartriangleleft \mathbb Z$.
 		
 	\subsection{Homomorphismen von Vektorräumen}
+		Seien $U,V,W$ drei $K$-VR. \\
+		
+		\begin{framed}
+			\textbf{Definition $K$-linear:} Eine Abbildung $f: V \to W$ heißt $K$-linear Homomorphismus von $K$-VR, wenn für 
+			alle $x,y\in V$ und $\lambda\in K$ gilt: \\
+			(L1): $f(x+y)=f(x)+f(y)$ \\
+			(L2): $f(\lambda x)=\lambda \cdot f(x)$ \\
+			Die Menge der $K$-linearen Abbildungen $f: V\to W$ wird mit $Hom_K(V,W)$ bezeichnet. Die Elemente von $End_K(V,W)
+			:= Hom_K(V,V)$ nennt man die Endomorphismen von $V$. Ein $f\in Hom_K(V,W)$ ist ein Mono-, Epi- bzw. Isomorphismus, 
+			falls $f$ injektiv, surjektiv bzw. bijektiv ist. Einen Endomorphismus der auch ein Isomorphismus ist, nennt man 
+			Automorphismus von $V$ und bezeichnet die Menge der Automorphismen von $V$ mit $Aut_K(V)$. Der Kern einer linearen 
+			Abbildung $f: V\to W$ ist $Ker(f):= f^{-1}(\{0\})$.
+		\end{framed}
+		
+		\textbf{Bemerkung:} Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abeslchen Gruppen $(V,+) 
+		\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen VR. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Eine Abbildung $f: V\to W$ ist genau dann $K$-linear, wenn für alle $x,y\in V$ und $\lambda,
+			\mu\in K$ gilt: \\
+			(L): $f(\lambda x +\mu y)=\lambda f(x) + \mu f(y)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: $f(\lambda x +\mu y)=f(\lambda x) + f(\mu y)=\lambda f(x) + \mu f(y)$ \\
+		Rückrichtung: (L1): $f(x+y)=f(1x+1y)=1f(x)+1f(y)$, (L2): $f(\lambda x)=f(\lambda x+0y)=\lambda f(x)$.} \\
+		
+		\textbf{Beispiele:} 
+		\begin{compactitem}
+			\item $id_V: V\to V$ ist ein Automorphismus von $V$
+			\item $c_0:V\to W$ mit $x\mapsto 0$ ist $K$-linear
+			\item Für einen UVR $V_0\le V$ ist $\iota: V_0\to V$ ein Monomorphismus
+			\item Im $K$-VR $K[X]$ kann man die (formale) Ableitung definieren: $(\sum\limits_{i=0}^n a_iX^i)' := \sum\limits
+			_{i=1}^n ia_iX^{i-1}$. Diese Abbildung $K[X]\to K[X]$ mit $f\mapsto f'$ ist ein $K$-Endomorphismus von $K[X]$.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Beispiel:} Sei $V=K^n$ und $W=K^m$. Wir fassen die Elemente von $V$ und $W$ als Spaltenvektoren auf. Zu einer 
+		Matrix $A\in Mat_{m\times n}(K)$ definieren wir die Abbildung $f_A:V\to W$ mit $x\mapsto Ax$. \\
+		Ausgeschrieben: Ist $A=(a_{ij})$ und $x=(x_1,...,x_n)^t$ so ist $f_A=Ax=
+		\begin{pmatrix}
+		a_{11} & ... & a_{1n}\\
+		... &  & ...\\
+		a_{m1} & ... & a_{mn}\\
+		\end{pmatrix} \cdot \begin{pmatrix} x_1 \\ ... \\ x_n\end{pmatrix} = 
+		\begin{pmatrix}
+		a_{11}\cdot x_1 + ... + a_{1n}\cdot x_n\\
+		...\\
+		a_{1n}\cdot x_1 + ... + a_{mn}\cdot x_n\\
+		\end{pmatrix}$. Diese Abbildung ist $K$-linear. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Für ein $f\in Hom_K(V,W)$. Dann gilt:
+			\begin{compactitem}
+				\item $f(0)=0$
+				\item Für $x,y\in V$ ist $f(x-y)=f(x)-f(y)$.
+				\item Sind $(x_1)$ aus $V$, $(\lambda_i)$ aus $K$. fast alle gleich 0, so ist $f(\sum\limits_{i\in I} \lambda_i
+				\cdot x_i)=\sum\limits_{i\in I} \lambda_i\cdot f(x)$
+				\item Ist $(x_i)$ linear abhängig in $V$, so ist $f(x_i)$ linear abhängig in $W$.
+				\item Ist $V_0\le V$ ein UVR von $V$, so ist $f(V_0)\le W$ ein UVR.
+				\item Ist $W_0\le W$ ein UVR von $W$, so ist $f^{-1}(W_0)\le V$ ein UVR.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis:
+		\begin{compactitem}
+			\item klar
+			\item klar
+			\item Induktion
+			\item $\sum \lambda_i\cdot x_i=0\Rightarrow 0=f(0)=f(\sum \lambda_i\cdot x_i)=\sum \lambda_i\cdot f(x_i)$
+			\item $x,y\in V_0\Rightarrow f(x)+f(y)=f(x+y)\in f(V_0)$ \\ 
+			$x\in V_0,\lambda\in K\Rightarrow f(x\cdot \lambda= f(\lambda x)\in f(V_0))$
+			\item $f(0)=0\in W_0\Rightarrow 0\in f^{-1}(W_0)$, insbesondere ist $f^{-1}(W_0)\neq \emptyset$ \\ 
+			$x,y\in f^{-1}(W_0)\Rightarrow f(x+y)=f(x)+f(y)\in W_0$, also $x+y\in f^{-1}(W_0)$ \\
+			$x\in f^{-1}(W_0)$ und $\lambda\in K\Rightarrow f(\lambda x)=\lambda f(x)\in W_0$, also $\lambda x\in f^{-1}(W_0)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Sind $f:V\to W$ und $g:W\to U$ $K$-linear, so auch $g\circ f: V\to U$.
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(g\circ f)(\lambda x + \mu y)=g(f(\lambda x + \mu y))=g(\lambda f(x) + 
+		\mu f(y))=\lambda (g\circ f)(x) + \mu (g\circ f)(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:V\to W$ ein Isomorphismus, so auch $f^{-1}:W\to V$.
+		\end{framed}
+		\textit{Beweis: \\
+		Wir müssen nur zeigen, dass $f^{-1}$ linear ist. Für $x,y\in V$ und $\lambda,\mu\in K$ ist $f(\lambda f^{-1}(x) + 
+		\mu f^{-1}(y))=\lambda (f\circ f^{-1})(x) + \mu (f\circ f^{-1})(y)=\lambda x + \mu y$, also $f^{-1}(\lambda x + 
+		\mu y)=\lambda f^{-1}(x) + \mu f^{-1}(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f:V\to W$ linear. Genau dann ist $f$ ein Isomorphismus, wenn es eine lineare Abbildung $f':W
+			\to V$ gibt mit $(f'\circ f)=id_V$ und $(f\circ f')=id_W$.
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f$ ein Isomorphismus, so erfüllt $f'=f^{-1}$ die Behauptung. Existiert umgekehrt $f'$ wie angegeben, so muss 
+		$f$ bijektiv sein.} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Wie auch bei Gruppen sehen wir hier bei VR, dass Isomorphismen genau die strukturerhaltenden 
+		Abbildungen sind. Wieder können wir uns einen Isomorphismus $f:V\to W$ so vorstellen, dass wir nur die Elemente von 
+		$V$ umbennen. Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr, wie z.B. $dim_K(V)=
+		dim_K(W)\iff V=W$. Insbesondere ist $K^n \cong K^m$ für $n\neq m$. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $f:V\to W$ eine lineare Abbildung, so ist $Ker(f)$ ein UVR von $V$. Genau dann ist $f$ ein 
+			Monomorphismus, wenn $Ker(f)=\{0\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Der erste Teil folgt aus dem letzten Beispiel, der zweite folgt aus den Gruppen, da $f:(V,+)\to (W,+)$ ein 
+		Gruppenhomomorphismus ist.} \\
+		
+	\subsection{Der Vektorraum der linearen Abbildungen}
 \end{document}
