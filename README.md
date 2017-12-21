@@ -68,7 +68,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.4 Summe von Vektorräumen ... fertig
    
-3. Lineare Abbildungen ... wird bearbeitet
+3. Lineare Abbildungen ... wird bearbeitet/up-to-date
 
    3.1 Matrizen ... fertig
    
@@ -78,6 +78,6 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.4 Homomorphismen von Vektorräumen ... fertig
    
-   3.5 Der Vektorraum der linearen Abbildungen ... noch nicht bearbeitet
+   3.5 Der Vektorraum der linearen Abbildungen ... fertig
    
-   3.6 Koordinatendarstellug linearer Abbildungen ... noch nicht bearbeitet
+   3.6 Koordinatendarstellug linearer Abbildungen ... fertig
