@@ -15,6 +15,8 @@
 \usepackage[autostyle]{csquotes}
 \usepackage{lipsum}
 \usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -1974,4 +1976,155 @@
 		Gruppenhomomorphismus ist.} \\
 		
 	\subsection{Der Vektorraum der linearen Abbildungen}
+		Seien $V$ und $W$ zwei $K$-VR.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(x_i)$ eine Basis von $V$ und $(y_i)$ eine Familie in $W$. Dann gibt es genau eine lineare 
+			Abbildung $f:V\to W$ mit $f(x_i)=y_i$. Diese Abbildung ist durch $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$ 
+			(*) ($\lambda_i\in K$, fast alle gleich 0) gegeben und erfüllt
+			\begin{compactitem}
+				\item $Image(f)=span_K(y_i)$
+				\item genau dann ist $f$ injektiv, wenn $(y_i)$ linear unabhängig ist
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f:V\to W$ linear mit $f(x_i)=y_i$, so folgt $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$. Da sich jedes 
+		$x\in V$ als $x=\sum  \lambda_ix_i$ schreiben lässt, ist $f$ dadurch schon eindeutig bestimmt. Andererseits wird 
+		durch (*) eine wohldefinierte Abbildung beschrieben, da die Darstellung von $x$ eindeutig ist (denn $x_i$ sind 
+		linear unabhängig). Es bleibt zu zeigen, dass die durch (*) definierte Abbildung $f:V\to W$ tatsächlich linear ist. 
+		Ist $x=\sum \lambda_ix_i$ und $x'=\sum \lambda'_ix_i$ so ist $f(x+x')=f(\sum (\lambda_i+\lambda'_i)x_i)=
+		\sum (\lambda_i+\lambda'_i)y_i=\sum \lambda_iy_i+\sum \lambda'_iy_i=f(x)+f(x')$. $f(\lambda x)=f(\sum \lambda
+		\lambda_ix_i)=\sum \lambda\lambda_iy_i=\lambda\sum\lambda_iy_i=\lambda f(x)$.
+		\begin{compactitem}
+			\item $Image(f)$ ist ein UVR von $W$ und $\{y_i\}\subset Image(f)\subset span_K(y_i)$, somit $Image(f)=span_K(y_i)$
+			\item $f$ ist injektiv $\iff Ker(f)=\{0\}$ \\ 
+			$\iff \lambda_i\in K$ gilt: $f(\sum \lambda_ix_i)=0\Rightarrow \sum \lambda_ix_i=0$ \\ 
+			$\iff \lambda_i\in K$ gilt: $\sum\lambda_iy_i=0\Rightarrow \lambda_i=0$ \\ 
+			$\iff (y_i)$ linear unabhängig.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $dim_K<\infty$. Ist $(x_1,...,x_n)$ eine linear unabhängige Familie in $V$ und $(y_1,...,y_n)$ 
+			eine Familie in $W$, so gibt es eine lineare Abbildung $f:V\to W$ mit $f(x_i)=y_i$
+		\end{framed}
+		\textit{Beweis: \\
+		Nach dem Basisergänzungssatz können wir die Familie $(x_i)$ zu einer Basis $x_1,...,x_m$ ergänzen. Die Behauptung 
+		folgt aus dem vorherigen Satz für beliebige $y_{n+1},...,y_m\in W$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $(x_i)$ eine Basis von $V$ und $(y_i)$ eine Basis in $W$, so gibt es genau einen Isomorphismus 
+			$f:V\to W$ mit $f(x_i)=y_i$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $f$ wie im ersten Satz. $(y_i)$ ist Erzeugendensystem $\Rightarrow Image(f)=span_K(y_i)=W$, also $f$ surjektiv. 
+		$(y_i)$ linear abhängig $\Rightarrow f$ ist injektiv.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Zwei endlichdimensionale $K$-VR sind genau dann isomorph, wenn sie dieselbe Dimension haben.
+		\end{framed}
+		\textit{Beweis: \\
+		letztes Korllar und letztes Kapitel} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $B=(v_1,...,v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_B:K^n\to 
+			V$ mit $f(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
+			$K^n$ für $n=dim_K(V)$.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Definition Koordinatensystem:} Die Abbildung $\Phi_B$ heißt Koordinatensystem zu $B$. Für $v\in V$ ist 
+			$(x_1,...,x_n)^t=\Phi^{-1}_B(v)\in K^n$ der Koordinatenvekor zu $v$ bezüglich $B$ und $(x_1,...,x_n)$ sind die 
+			Koordinaten von $v$ bezüglich $B$.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Satz:} Die Menge $Hom_K(V,W)$ ist eine UVR des $K$-VR $Abb(V,W)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Seien $f,g\in Hom_K(V,W)$ und $\eta \in K$.
+		\begin{compactitem}
+			\item $f+g\in Hom_K(V,W)$: Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(f+g)(\lambda x+\mu y)=f(\lambda x+\mu y)+
+			g(\lambda x+\mu y)=\lambda f(x)+\mu f(y)+\lambda g(x)+\mu g(y)=\lambda(f+g)(x)+\mu(f+g)(y)$
+			\item $\eta f\in Hom_K(V,W)$: Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(\eta f)(\lambda x+\mu y)=\eta\cdot 
+			f(\lambda x+\mu y)=\eta(\lambda f(x)+\mu f(y))=\lambda(\eta f)(x)+\mu(\eta f)(y)$
+			\item $Hom_K(V,W)\neq\emptyset$: $c_0\in Hom_K(V,W)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $U$ ein weiterer $K$-VR. Sind $f,f_1,f_2\in Hom_K(V,W)$ und $g,g_1,g_2\in Hom_K(U,V)$, so ist 
+			$f\circ (g_1+g_2)=f\circ g_1+f\circ g_2$ und $(f_1+f_2)\circ g=f_1\circ g+f_2\circ g$.
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x\in U$ ist
+		\begin{compactitem}
+			\item $(f\circ(g_1+g_2))(x)=f((g_1+g_2)(x))=f(g_1(x)+g_2(x))=f(g_1(x))+f(g_2(x))=(f\circ g_1+f\circ g_2)(x)$
+			\item $((f_1+f_2)\circ g)(x)=(f_1+f_2)(g(x))=f_1(g(x))+f_2(g(x))=(f_1\circ g+f_2\circ g)(x)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Unter der Komposition wird $End_K(V)$ zu einem Ring mit Einselement $id_V$ und $End_K(V)^{\times}=
+			Aut_K(V)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$(End_K(V),+)$ ist eine abelsche Gruppe, die Komposition eine Verknüpfung auf $End_K(V)$ ist assoziativ und die 
+		Distributivgesetze gelten (vorheriges Lemma).} \\
+		
+		\textbf{Bemerkung:} Die Menge der strukturverträglichen Abbildungen zwischen $K$-VR trägt also wieder die Struktur 
+		eines $K$-VR. Wir können diesen mit unseren Mitteln untersuchen und z.B. nach Dimension und Basis fragen. \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $m,n,r\in \mathbb N$, $A\in Mat_{m\times n}(K)$, $B\in Mat_{n\times r}(K)$. Für die linearen 
+			Abbildungn $f_A\in Hom_K(K^n,K^m)$, $f_B\in Hom_K(K^r,K^n)$ gilt dann $f_{AB}=f_A\circ f_B$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sind $A=(a_{ij})$ und $B=(b_{jk})$, so ist $(f_A\circ f_B)(e_k)=f_A(f_B(e_k))=f_A(Be_k)=f_A(b_{1k},...,b_{nk})^t=
+		A\cdot (b_{1k},...,b_{nk})^t=(\sum\limits_{j=1}^n a_{ij}b_{jk},...,\sum\limits_{j=1}^n a_{mj}b_{jk})^t=AB\cdot e_k=
+		f_{AB}(e_k)$ für $k=1,...,r$, also $f_A\circ f_B=f_{AB}$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Die Abbildung $A\to f_A$ liefert einen Isomorphismus von $K$-VR $F_{m\times n}: Mat_{m\times n}(K)
+			\to Hom_K(K^n,K^m)$ sowie einen Ringisomorphismus $F_n:Mat_n(F)\to End_K(K^n)$ der $GL_n(K)$ auf $Aut_K(K^n)$ 
+			abbildet.
+		\end{framed}
+		\textit{Beweis: Wir schreiben $F$ für $F_{m\times n}$\\
+		\begin{compactitem}
+			\item $F$ ist linear: Sind $A,B\in Mat-{n\times m}(K)$ und $\lambda,\mu\in K$, so ist $F(\lambda A+\mu B)(x)=
+			f_{\lambda A+\mu B}(x)=(\lambda A+\mu B)x=\lambda Ax+\mu Bx=\lambda f_A(x)+\mu f_B(x)=(\lambda F(A)+\mu F(B))(x)$, 
+			also ist $F$ linear.
+			\item $F$ ist injektiv: Es genügt zu zeigen, dass $Ker(f)=\{0\}$. Ist $A=(a_{ij})\in Mat_{n\times m}(K)$ mit $F(A)=0$, 
+			so insbesondere $0=F(A)(e_j)=f_A(e_j)=Ae_j=(a_{1j},...,a_{mj})^t$, also $A=0$.
+			\item $F$ ist surjektiv: Sei $f\in Hom_K(V,W)$. Schreibe $f(e_j)=(a_{1j},...,a_{mj})^t$ und setze $A=(a_{ij})\in 
+			Mat_{n\times m}(K)$. Dann ist $f_A\in Hom_K(K^n,K^m)$ mit $f_A(e_j)=Ae_j=f(e_j)$, also $f=f_A=F(A)\in Image(f)$.
+			\item $F_n$ ist eine Ringhomomorphismus: \\
+			(RH1) aus (L1) \\
+			(RH2) aus $f_{AB}=f_A\circ f_B$.
+			\item Somit ist $F_n$ eine Ringisomorphismus $\Rightarrow F_n(Mat_n(K)^{\times})=End_K(V)^{\times}$, also $F_n(
+			GL_n(K))=Aut_K(V)$.
+		\end{compactitem}}
+		
+	\subsection{Koordinatendarstellung linearer Abbildungen}
+		Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
+		
+		\begin{framed}
+			\textbf{Definition darstellende Matrix:} Sei $f\in Hom_K(V,W)$. Für $j=1,...,n$ schreiben wir $f(x_j)=\sum\limits_{
+			i=1}^m a_{ij}y_i$ mit eindeutig bestimmten $a_{ij}\in K$. Die Matrix $M_C^B(f)=(a_{ij})\in Mat_{m\times n}(K)$ 
+			heißt die darstellende Matrix von $f$ bezüglich der Basen $B$ und $C$.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom_K(V,W)$. Die darstellende Matrix $M_C^B(f)$ ist die eindeutig bestimmte Matrix $A\in 
+			Mat_{n\times m}(K)$, für die das folgenden Diagramm kommutiert: \\
+			\begin{center}\begin{tikzpicture}
+  				\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  				{K^n & K^m \\ V & W \\};
+  				\path[-stealth]
+    			(m-1-1) edge node [left] {$\Phi_B$} (m-2-1)
+            			edge node [above] {$f_A$} (m-1-2)
+    			(m-2-1) edge node [below] {$f$} (m-2-2)
+    			(m-1-2) edge node [right] {$\Phi_C$} (m-2-2);
+			\end{tikzpicture}\end{center}
+			d.h. $f\circ \Phi_B=\Phi_C\circ f_A$.
+		\end{framed}
+		\textit{Beweis: \\
+		kommt nach Weihnachten} \\
 \end{document}
