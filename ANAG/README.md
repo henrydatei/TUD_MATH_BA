@@ -1,5 +1,5 @@
 # TUD_MATH_BA
-Script zu den Vorlesungen ANAG, LAAG und PROG in Latex
+Skript zur Vorlesung ANAG.
 
 Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 
@@ -25,9 +25,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.4 komplexe Zahlen ... fertig
    
-3. Metrische Räume und Konvergenz ... noch nicht bearbeitet
+3. Metrische Räume und Konvergenz ... wird bearbeitet
    
-   3.1 grundlegende Ungleichungen ... noch nicht bearbeitet
+   3.1 grundlegende Ungleichungen ... wird bearbeitet
    
    3.2 Metrische Räume ... noch nicht bearbeitet
    
@@ -42,32 +42,6 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 4. Funktionen und Stetigkeit ... noch nicht bearbeitet
    
    4.1 Funktionen ... noch nicht bearbeitet
-  
-### Fortschritt Lineare Algebra
-1. Grundlagen der Linearen Algebra ... wird bearbeitet
 
-   1.1 Logik und Mengen ... fertig
-       
-   1.2 Abbildungen ... fertig
-   
-   1.3 Gruppen ... fertig
-   
-   1.4 Ringe ... fertig
-   
-   1.5 Körper ... fertig
-   
-   1.6 Polynome ... wird bearbeitet
-   
-2. Vektorräume ... noch nicht bearbeitet
 
-   2.1 Definitionen und Beispiele ... noch nicht bearbeitet
-   
-   2.2 Linearkombinationen und lineare Abhängigkeit ... noch nicht bearbeitet
-   
-   2.3 Basis und Dimension ... noch nicht bearbeitet
-   
-   2.4 Summe von Vektorräumen ... noch nicht bearbeitet
-   
-3. Lineare Abbildungen ... noch nicht bearbeitet
-
-   3.1 Matrizen ... noch nicht bearbeitet
+### Kapitel befinden sich im TeX folder, diese sind eingebunden via main.tex!!!
