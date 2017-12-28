@@ -21,15 +21,15 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
    2.2 ganze und rationale Zahlen ... fertig
   
-   2.3 reelle Zahlen ... noch nicht bearbeitet
+   2.3 reelle Zahlen ... wird bearbeitet
    
    2.4 komplexe Zahlen ... fertig
    
-3. Metrische Räume und Konvergenz ... noch nicht bearbeitet
+3. Metrische Räume und Konvergenz ... wird bearbeitet
    
-   3.1 grundlegende Ungleichungen ... noch nicht bearbeitet
+   3.1 grundlegende Ungleichungen ... fertig
    
-   3.2 Metrische Räume ... noch nicht bearbeitet
+   3.2 Metrische Räume ... wird bearbeitet
    
    3.3 Konvergenz ... noch nicht bearbeitet
    

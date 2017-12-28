@@ -27,9 +27,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
 3. Metrische Räume und Konvergenz ... wird bearbeitet
    
-   3.1 grundlegende Ungleichungen ... wird bearbeitet
+   3.1 grundlegende Ungleichungen ... fertig
    
-   3.2 Metrische Räume ... noch nicht bearbeitet
+   3.2 Metrische Räume ... wird bearbeitet
    
    3.3 Konvergenz ... noch nicht bearbeitet
    
@@ -44,4 +44,4 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    4.1 Funktionen ... noch nicht bearbeitet
 
 
-### Kapitel befinden sich im TeX folder, diese sind eingebunden via main.tex!!!
+### Kapitel befinden sich im TeX folder, diese sind eingebunden via Vorlesung_ANAG.tex!!!

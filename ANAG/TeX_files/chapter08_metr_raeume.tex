@@ -1,2 +1,127 @@
 \chapter{Metrische Räume}
-%TODO
+\begin{mydefn}[Metrik]
+    Sei $X$ Menge und Abbildung $d: X \times X \to \real$ heißt \underline{Metrik} auf $X$ falls $\forall x,y,z \in X$
+    \begin{enumerate}[label={\alph*)}]
+    \item $d(x,y) = 0 \Leftrightarrow x=y$ 
+    \item $d(x,y) = d(y,x)$ (Symmetrie)
+    \item $d(x,z) \leq d(x,y) + d(y,z)$ ($\Delta$-Ungleichung)
+    \end{enumerate}
+    $(X,d)$ heißt metrischer Raum.
+\end{mydefn}
+Man hat $d(x,y) = 0 \forall x,y \in X$, dann
+
+\begin{align}
+    0 &= d(x,x) = d(x,y) + d(y,x) & \text{a), c)}\nonumber\\
+    & = 2d(x,y) \forall x,y & \text{b)}\nonumber\\
+    \text{nach } & \text{b), c) } &\nonumber\\
+    & \vert d(x,y) -d(z,y)\vert \leq d(x,y) \forall x,y,z \in X &
+\end{align}
+
+\begin{exmpn}[Standardmetrik]\label{8_1_exmp_metrik}
+	$d(x,y) := \vert x-y\vert$ ist Metrik auf $X=\real$ bzw. $X=\comp$
+    \begin{align*}
+        \text{Eig. a), b), c) klar}& &\\
+        \text{c) } \vert x-z\vert& \vert (x+y)-(x-z)\vert &\\
+        &\leq \vert x+y\vert + \vert y+z\vert & \Delta\text{-Ungleichung für }\real\text{, }\comp\text{-Betrag}
+    \end{align*} 
+\end{exmpn}
+
+\begin{exmpn}[diskrete Metrik]
+	Diskrete Metrik auf beliebiger Menge $X$.\\
+    \[d(x,y) = 
+    \begin{dcases*}
+        0 & x = y\\
+        1 & $x \neq y$
+    \end{dcases*}\]
+    ist offenbar eine Metrik.
+\end{exmpn}
+
+\begin{exmpn}[induzierte Metrik]
+	Sei $(X,d)$ metrischer Raum, $Y \subset X$\\
+    $\Rightarrow (Y,d)$ ist metrischer Raum mit \underline{induzierter Metrik} $\tilde{d}(x,y):=d(x,y)\forall x,y \in Y$
+\end{exmpn}
+
+wichtiger Spezialfall: normierte Vektorraum(VR)
+
+\begin{mydefn}[Norm]
+    Sei $X$ Vektorraum über $K=\real$ oder $K=\comp$.\\
+    Abbildung $\Vert \cdot \Vert: X \to \real$ heißt \underline{Norm} auf $X$ falls $\forall x,y \in X, \forall \lambda \in \real$ gilt:
+    \begin{enumerate}[label={\alph*)}]
+    \item $\Vert x\Vert = \Leftrightarrow x=0$
+    \item $\Vert \lambda x\Vert = \vert \lambda \vert \Vert x\Vert$ (Homogenität)
+    \item $\Vert x+y\Vert \leq \Vert x\Vert + \Vert y\Vert$ ($\Delta$-Ungleichung)
+    \end{enumerate}
+    $(X,\Vert \cdot\Vert)$ heißt \underline{normierter Raum}.
+\end{mydefn}
+
+\begin{align*}
+    \text{Metrik} &\leftarrow \text{Norm}&\\
+    \text{Abbildung} & \not \rightarrow \text{VR, Abstand } x,0\\
+    \text{man hat } \Vert x \Vert &\leq 0 \forall x \in X \text{, denn } 0 = \Vert x-x\Vert \leq \Vert x\Vert + \Vert -x\Vert = 2\Vert x\Vert & \text{a), c), b)}\\   
+\end{align*}
+Analog Satz 5.5 folgt\\
+\begin{align}
+    \vert \Vert x \Vert - \Vert y \Vert\vert &\leq \Vert x-y\Vert \forall x,y \in X
+\end{align}
+$\Vert \cdot\Vert: X \to \real_{\geq0}$ heißt \underline{Halbraum} falls nur b), c) gelten analog Beispiel \ref{8_1_exmp_metrik} folgt.
+
+\begin{satz}
+    Sei $(X,\Vert\cdot \Vert)$ normierter Raum, dann $X$ metrischer Raum mit Metrik $d(x,y):=\Vert x-y \Vert\forall x,y \in X$.
+\end{satz}
+
+\begin{exmpn}\label{8_5_exmp_Norm}
+    $X=\real^n$ ist Vektorraum über $\real$, Elemente in $\real^n$\\ $x=(x_1,\dots,x_n), y=(y_1, \dots, y_n)$,\\ man hat unter anderem folgende Normen auf $\real^n$
+    \begin{align*}
+        p\text{-Norm}: \vert x \vert_p& := \Bigg( \sum_{i=0}^{n} \vert x_i \vert^p \Bigg)^{\frac{1}{p}} & (1\leq p < \infty)\\
+        \text{Maximum-Norm}: \vert x \vert_p& := \max\{\vert x_i \vert \mid i=1,\dots n\} &\\
+        \text{a), b) jeweils klar, c) für } & 
+        \begin{cases*}
+            \vert \cdot \vert_p & \text{ist Minkowski-Ungleichung}\\
+            \vert \cdot \vert_{\infty} & \text{wegen } $\vert x_i + y_i \vert \leq \vert x_i \vert + \vert y_i \vert \forall i$
+        \end{cases*}
+    \end{align*}
+    Standardnorm in $\real^n$:
+	$\vert \cdot \vert = \vert \cdot \vert_{p=2}$ heißt \underline{eukldische Norm}.\\
+\end{exmpn}
+
+\begin{mydefn}[Skalarprodukt]
+    $\langle x,y \rangle = \sum_{i=1}^{n}$ heißt \underline{Skalarprodukt} (inneres Produkt) von $x,y \in \real^n$ offenbar $\langle x,y \rangle = \vert x \vert_2 \forall x \in comp$ nur für euklidische Räume gibt es Skalarprodukt (nur für euklische Norm!).\\
+    Man hat $\vert \langle x,y\rangle \vert \leq \vert x \vert_2 \cdot \vert y \vert_2 \forall x,y \in \real^n$ Cauchy-Schwarsche Ungleichung (CSU), denn
+    \begin{align*}
+        \vert \langle x,z \rangle \vert &= \vert \sum_{i=1}^{n} x_i y_i \vert \leq  \sum_{i=1}^{n}\vert x_i y_i\vert & \Delta\text{-Ungleichung in } \real\\
+        & \leq \vert x \vert_2 \cdot\vert y \vert_2 & \text{Hölder-Ungleichung mit } p=q=2
+    \end{align*}
+\end{mydefn}
+
+\begin{exmpn}
+	$X=\comp^n$ ist Vektorraum über $\comp$, $x=(x_1,\dots,x_n) \in\comp^n, x_i \in \comp$\\
+    analog zum Bsp. \ref{8_5_exmp_Norm} sind $\vert \cdot \vert_{p} \text{ und } \vert \cdot \vert_{\infty}$ Normen auf $\comp^n$\\
+    $\langle x,y\rangle = \sum_{i=1}^{n} \bar{x}_i y_i\forall x_i, y_i \in \comp$ heißt \underline{Skalarprodukt} von $x,y \in \comp^n$ (beachte $\langle x,y\rangle \in \comp, \langle x,x \rangle=\vert x \vert^2$) \\
+    $\overset{\text{wie oben}}{\Rightarrow} \vert \langle x,y\rangle \vert \leq \vert x \vert\cdot \vert y \vert \forall x,y \in \comp^n$
+\end{exmpn}
+
+\begin{mydefn}[Orthogonalität]
+    $x,y \in \real^n(\comp^n)$ heißen \underline{orthogonal} falls $\langle x,y\rangle =0$
+\end{mydefn}
+
+\begin{exmpn}
+    Sei $M$ beliebige Menge, $f: M \to \real$\\
+    $\Vert f\Vert:= \sup\{\vert f(x) \vert \mid x\in M\}$. Dann ist \\
+    \[\mathcal{B}(M):= \{f: M \to \real \mid \Vert f\Vert < \infty\}\]
+    \underline{Menge der beschränkte Funktionen} auf $M$\\
+    $\mathcal{B}(M)$ ist Vektorraum auf $\real$
+    \begin{enumerate}[label={\alph*)}]
+        \item $((f+g)(x) = f(x) + g(x)$
+        \item $(\lambda f)(x) = \lambda f(x)$
+        \item Nullelement ist Nullfunktion $f(x)=0 \forall x \in M$
+    \end{enumerate}
+    $\Vert \cdot\Vert$ ist Norm auf $\mathcal{B}(M)$, denn a), b) klar\\
+    \begin{align*}
+        \Vert f+g\Vert:=&\sup\{\vert f(x)+g(x) \vert\mid x \in M\}&\\
+        &\leq \sup\{\vert f(x) \vert + \vert g(x) \vert\mid x\in M \} & \Delta\text{-Ungleichung in }\real\\
+        &\leq \sup\{\vert f(x) \vert \}
+    \end{align*}
+\end{exmpn}
+
+
+
