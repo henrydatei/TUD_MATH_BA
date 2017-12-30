@@ -29,9 +29,9 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.1 grundlegende Ungleichungen ... fertig
    
-   3.2 Metrische Räume ... wird bearbeitet
+   3.2 Metrische Räume ... fertig
    
-   3.3 Konvergenz ... noch nicht bearbeitet
+   3.3 Konvergenz ... wird bearbeitet
    
    3.4 Vollständigkeit ... noch nicht bearbeitet
    
