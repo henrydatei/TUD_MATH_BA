@@ -1,4 +1,4 @@
-\documentclass[11pt, oneside]{book}
+\documentclass[12pt, oneside]{book}
 \usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{paralist}
@@ -10,11 +10,12 @@
 \usepackage{mathtools,bm}
 \usepackage{stmaryrd} % Widerspruch symbol
 \usepackage{amssymb}
+\usepackage{amsfonts}
 \usepackage{framed}
 \usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage[autostyle]{csquotes}
-\usepackage{lipsum}
+%\usepackage{lipsum}
 \usepackage{enumerate}
 \usepackage{enumitem} % compress enumerate env
 \setlist{nolistsep}
@@ -65,7 +66,6 @@
 \newcommand{\s}{\,\,}      % space after the function in the intergral
 \newcommand{\cont}{\mathcal{C}} % Contour C
 \newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
-\newcommand{\funk}{f(z)} % f(z)
 \newcommand{\diffz}{\s\diff z}
 \newcommand{\subint}{\int\limits} % lower boundaries for the integral
 \newcommand{\poly}{\mathcal{P}} % special P - polygon
@@ -79,41 +79,28 @@
 \newcommand{\prop}{\,|\,}
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
 \newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
-\newcommand{\series}{(a_n)_{n\in\natur}} % series a_n€|N
-\newcommand{\seriesa}{(a_n)} % short for \seriesa
-\newcommand{\seriesb}{(b_n)} % with b
-\newcommand{\seriesc}{(c_n)} % with c
-\newcommand{\seriesk}{(a_k)} % a with k
-\newcommand{\varepz}{\varepsilon > 0}
 \newcommand{\realpos}{\real_{>0}}
 \newcommand{\realposr}{\real_{\geq0}}
 \newcommand{\naturpos}{\natur_{>0}}
 \newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
 \newcommand{\Realz}{\operatorname{Re}} % Real symbol
-\newcommand{\norm}{\| \cdot \|}
-\newcommand{\limn}{\lim\limits_{n\to\infty}}
-\newcommand{\limk}{\lim\limits_{k\to\infty}}
-\newcommand{\half}{\frac{1}{2}} % 1/2
-\newcommand{\halfn}{\frac{1}{n}} % 1/n
-\newcommand{\halftri}{\frac{1}{3}} % 1/3
-
-\newcommand{\sumkk}{\sum_{k=0}^{\infty}} % sum from k=0 to \infty
-\newcommand{\sumkkone}{\sum_{k=0}^{\infty}} % sum from k=1 to \infty
-\newcommand{\sumk}{\textstyle \sum_{k}} % shortform of k=0 to \infty
-
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
 \newcommand{\foralln}{\forall n} %all n
 \newcommand{\forallnset}{\forall n \in \natur} %all n € |N
 \newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
-\newcommand{\metric}{(X,d)} % metric space symbol
-\newcommand{\metricsym}{|\cdot|} % |*|
 \newcommand{\conjz}{\overline{z}} % conjugated z
 \newcommand{\tildz}{\tilde{z}} % different z
 \newcommand{\lproofar}{"`$ \Lightarrow $"'} % "`<="'
 \newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
-\newcommand{\rangen}{1,\dots,n} % 1,...,n
-\newcommand{\dotsco}{,\dots,} % ,...,
-\newcommand{\expon}{\mathrm{exp}}
 \newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+
+
+% Math Operators
+\DeclareMathOperator{\inter}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
 
 % Hack page break on part page.
 

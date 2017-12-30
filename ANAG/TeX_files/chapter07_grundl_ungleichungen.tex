@@ -21,9 +21,14 @@ Gleichheit gdw $x_1 = \dots = x_n$.
 	\end{align}
 	\begin{itemize}
 		\item (IA) $n = 1$ klar
-	    \item (IS) (\ref{7_1_ind}) gelte für $n$, zeige (\ref{7_1_ind}) für $n+1$ d.h. $\prod_{i=1}^{n+1} = 1$, falls alle $x_i=1 \beha$ Sonst oBdA $x_n < 1$, $x_{n+1} > 1:$ mit $y_n:=x_n x_{n+1}$ gilt $x_1\cdot\dots\cdot x_{n-1}\cdot y_n=1$
-	    \begin{align*}\nonumber
-	        \Rightarrow x_1 + \dots + x_{n+1} &= \underbrace{x_1+\dots+x_{n-1}}_{\geq \text{ (IV)}} + y_n - y_n + x_n+x_{n+1}\\ &\geq n + \underbrace{(x_{n+1} -1)}_{>n}\underbrace{(1-x_n)}_{>n}\\ &\overset{voll. Ind.}{\Rightarrow} (\ref{7_1_ind}) \forall n \in \natur\\ \text{allg. sei nun } g:=\big( \prod_{i=1}^{n} x_i \big)^{\frac{1}{n}} \Rightarrow \prod_{i=1}^{n} \frac{x_i}{g} = 1 \\& \overset{(\ref{7_1_ind})}{\Rightarrow} \sum_{i=1}^{n} \frac{x_i}{g} \geq n \beha\\ \text{Aussage über Gleichheit nach nochmaliger Durchsicht.}
+	    \item (IS) (\ref{7_1_ind}) gelte für $n$, zeige (\ref{7_1_ind}) für $n+1$ d.h. $\prod_{i=1}^{n+1} = 1$, falls alle $x_i=1 \beha$ Sonst oBdA $x_n < 1$, $x_{n+1} > 1:$\\ mit $y_n:=x_n x_{n+1}$ gilt $x_1\cdot\dots\cdot x_{n-1}\cdot y_n=1$
+	    \begin{align*}
+	        \Rightarrow x_1 + \dots + x_{n+1} &= \underbrace{x_1+\dots+x_{n-1}}_{\geq \text{ (IV)}} + y_n - y_n + x_n+x_{n+1}\\ 
+            &\geq n + \underbrace{(x_{n+1} -1)}_{>n}\underbrace{(1-x_n)}_{>n}\\ 
+            &\Rightarrow (\ref{7_1_ind}) \forall n \in \natur& \text{vollständige Induktion}\\ 
+            \shortintertext{allgemein sei nun $g:=\big( \prod_{i=1}^{n} x_i \big)^{\frac{1}{n}} \Rightarrow \prod_{i=1}^{n} \frac{x_i}{g} = 1$}
+            &\Rightarrow \sum_{i=1}^{n} \frac{x_i}{g} \geq n \beha& \text{Satz \ref{7_1_ind}}\\ 
+            \shortintertext{Aussage über Gleichheit nach nochmaliger Durchsicht.}
 	    \end{align*}
 	\end{itemize} 
 	\QEDA
@@ -38,19 +43,29 @@ Gleichheit gdw $x_1 = \dots = x_n$.
 \end{satz}
 
 \begin{proof} % fix alignment
-	\begin{align*}
-	\text{zu 2) Sei }\alpha =\frac{m}{n} \in \ratio_{<1}\text{, d.h. } m\leq n& &\\
-	\Rightarrow (1+x)^\frac{m}{n} = \sqrt[n]{(1+x)^m\cdot1^{n-m}}& \text{Definition}\\ &\leq \frac{m(1+x)+(n-m)\cdot1}{n}&\\ =\frac{n + mx}{n} = 1 + \frac{m}{n}x
-	\text{, für } \alpha \in \ratio \beha\\
-	\text{Sei } \alpha \in \real \text{ angenommen} (1+x)^{\alpha} > 1 + \alpha x\; (x\neq 0 \text{, sonst klar!})\\ \overset{Satz 5.8}{\Rightarrow} \exists \in \ratio_{<1} 
-	\begin{cases*}
-	x > 0\;\alpha<q< \frac{(1+x)^{\alpha}-1}{x}\\
-	x < 0 \alpha q 
-	\end{cases*} 
-	\Rightarrow\\ 1+qx < (1+x)^{\alpha} \overset{Satz 5.20}{\leq} (1+x)^q \Rightarrow \lightning \beha\\ %error?
-	\text{zu 1) Sei } 1+\alpha x \geq 0 \text{, sonst klar}\\
-	\Rightarrow \alpha x \geq -1 \overset{2)}{\Rightarrow} (1+\alpha x)^{\frac{1}{\alpha}} \geq\\ 1 +\frac{1}{\alpha}\alpha x = 1 +x \Rightarrow \text{ Behauptung und Gleichheit ist Selbststudium.}
-	\end{align*}\QEDA
+    \begin{enumerate}
+    \item[2)] Sei $\alpha =\frac{m}{n} \in \ratio_{<1}\text{, d.h. } m\leq n$
+        \begin{align*}
+            &\Rightarrow (1+x)^\frac{m}{n} = \sqrt[n]{(1+x)^m\cdot1^{n-m}}& \text{Definition} \\
+            &\leq \frac{m(1+x)+(n-m)\cdot1}{n}&\\ 
+            &=\frac{n + mx}{n} = 1 + \frac{m}{n}x \text{, für } \alpha \in \ratio \beha&
+            \shortintertext{Sei $\alpha \in \real$ angenommen $(1+x)^{\alpha} > 1 + \alpha x$ ($x\neq 0$ sonst klar!)}
+            & \Rightarrow \exists \in \ratio_{<1} 
+            	\begin{cases*}
+            	x > 0&$\alpha<q< \frac{(1+x)^{\alpha}-1}{x}$\\
+            	x < 0&$\alpha < q$
+            	\end{cases*} &\text{Satz 5.8 } \\
+            &\Rightarrow 1+qx < (1+x)^{\alpha} \leq (1+x)^q \Rightarrow \lightning \beha& \text{Satz 5.20}
+        \end{align*}
+    \item[1)] Sei $1+\alpha x \geq 0$, sonst klar
+        \begin{align*}
+            &\Rightarrow \alpha x \geq -1 \overset{2)}{\Rightarrow} (1+\alpha x)^{\frac{1}{\alpha}}& \text{mit 2)}\\
+            &\geq 1 +\frac{1}{\alpha}\alpha x = 1 +x &\\
+            &\Rightarrow \text{ Behauptung und Gleichheit ist Selbststudium.}&
+        \end{align*}
+    \end{enumerate}
+	 
+%    
 \end{proof}
 
 \begin{satz}[Young'sche Ungleichung]
@@ -60,10 +75,11 @@ Gleichheit gdw $x_1 = \dots = x_n$.
 
 \begin{proof} %fix formating
 	\begin{align*}
-	   \text{Sei } a,b > 0 \text{ (sonst klar!)}
-       &\Rightarrow \big(\frac{b^q}{a^p}\big)^{\frac{p}{q}} = \big(1+\big(\frac{b^q}{a^p} -1\big)\big)^{\frac{p}{q}} \overset{Bern. Ungleichung}{\leq} 1+ \frac{1}{q}\big(\frac{b^q}{a^p} -1\big)\\ 
+	   \shortintertext{Sei $a,b > 0$ (sonst klar!)}
+       &\Rightarrow \big(\frac{b^q}{a^p}\big)^{\frac{p}{q}} = \big(1+\big(\frac{b^q}{a^p} -1\big)\big)^{\frac{p}{q}}&\\ 
+       &\leq 1+ \frac{1}{q}\big(\frac{b^q}{a^p} -1\big)& \text{Bernoulli-Ungleichung}\\ 
        &=\frac{1}{p}+\frac{1}{q}+\frac{1}{q}\frac{b^q}{a^p}-\frac{1}{q}\\
-       &\overset{\cdot a^p}{\Rightarrow}a^p\frac{b}a^{\frac{p}{q}} = a^{p(1-\frac{1}{q})}b = ab \leq \frac{a^p}{p} + \frac{b^q}{q} 
+       &\Rightarrow a^p\frac{b}a^{\frac{p}{q}} = a^{p(1-\frac{1}{q})}b = ab \leq \frac{a^p}{p} + \frac{b^q}{q}& \cdot a^p 
 	\end{align*}\QEDA
 \end{proof}
 
@@ -82,13 +98,14 @@ Gleichheit gdw $x_1 = \dots = x_n$.
 \begin{proof}
 	Faktoren rechts seien $\mathcal{X} \text{ und } \mathcal{Y}$ d.h.
     \begin{align*}
-        \mathcal{X}^p = \sum_{i=1}^{n} \vert x_i \vert^{\frac{1}{p}}, \mathcal{Y}^p = \sum_{i=1}^{n} \vert y_i \vert^{\frac{1}{q}}\text{, falls } \mathcal{X}=0 \Rightarrow x_i = 0\;\forall i \beha \text{, analog für } \mathcal{Y} =0\\
-        \text{Seien } \mathcal{X}, \mathcal{Y} > 0 \overset{Satz 7.3}{\Rightarrow} \frac{\vert x_i y_i \vert}{\mathcal{XY}} \leq \frac{1}{p}\frac{\vert x_i \vert^p}{\mathcal{X}^p}+\frac{1}{q}\frac{\vert y_i \vert^q}{\mathcal{Y}^p} \forall i\\
-        \Rightarrow \frac{1}{\mathcal{XY}}\sum_{i=1}^{n}\vert x_i y_i \vert \leq \frac{1}{p}\frac{\mathcal{X}^p}{\mathcal{X}^p}+\frac{1}{q}\frac{\mathcal{Y}^p}{\mathcal{Y}^p} = 1 \overset{\cdot \mathcal{XY}}{\Rightarrow} \text{ Behauptung.}
+        \mathcal{X}^p &= \sum_{i=1}^{n} \vert x_i \vert^{\frac{1}{p}}, \mathcal{Y}^p = \sum_{i=1}^{n} \vert y_i \vert^{\frac{1}{q}}\text{, falls } \mathcal{X}=0&\\ &\Rightarrow x_i = 0\;\forall i \beha \text{, analog für } \mathcal{Y} =0&\\
+        \shortintertext{Seien $\mathcal{X}, \mathcal{Y} > 0$} 
+        &\Rightarrow \frac{\vert x_i y_i \vert}{\mathcal{XY}} \leq \frac{1}{p}\frac{\vert x_i \vert^p}{\mathcal{X}^p}+ \frac{1}{q}\frac{\vert y_i \vert^q}{\mathcal{Y}^p} \forall i& \text{Satz 7.3}\\
+        &\Rightarrow \frac{1}{\mathcal{XY}}\sum_{i=1}^{n}\vert x_i y_i \vert \leq \frac{1}{p}\frac{\mathcal{X}^p}{\mathcal{X}^p}+\frac{1}{q}\frac{\mathcal{Y}^p}{\mathcal{Y}^p} = 1 \beha & \cdot \mathcal{XY}
     \end{align*}\QEDA
 \end{proof}
 
-\begin{satz}[MInkowski-Ungleichung]
+\begin{satz}[Minkowski-Ungleichung]
     Sei $p\in \real, p \geq 1 \Rightarrow \big(\sum_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\forall x,y\in \real$
 \end{satz}
 
