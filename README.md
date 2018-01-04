@@ -80,4 +80,4 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.5 Der Vektorraum der linearen Abbildungen ... fertig
    
-   3.6 Koordinatendarstellug linearer Abbildungen ... fertig
+   3.6 Koordinatendarstellug linearer Abbildungen ... up-to-date
