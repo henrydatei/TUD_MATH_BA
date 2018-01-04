@@ -21,7 +21,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
    2.2 ganze und rationale Zahlen ... fertig
   
-   2.3 reelle Zahlen ... wird bearbeitet
+   2.3 reelle Zahlen ... halbfertig
    
    2.4 komplexe Zahlen ... fertig
    
