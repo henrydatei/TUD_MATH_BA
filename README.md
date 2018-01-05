@@ -21,7 +21,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
    2.2 ganze und rationale Zahlen ... fertig
   
-   2.3 reelle Zahlen ... wird bearbeitet
+   2.3 reelle Zahlen ... halbfertig
    
    2.4 komplexe Zahlen ... fertig
    
@@ -80,4 +80,4 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.5 Der Vektorraum der linearen Abbildungen ... fertig
    
-   3.6 Koordinatendarstellug linearer Abbildungen ... fertig
+   3.6 Koordinatendarstellug linearer Abbildungen ... up-to-date
