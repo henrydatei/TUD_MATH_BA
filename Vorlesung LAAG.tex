@@ -33,11 +33,11 @@
 		\subsubsection{\"Uberblick \"uber die Aussagenlogik}
 			Jede mathematisch sinnvolle Aussage ist entweder wahr oder falsch, aber nie beides!
 			\begin{compactitem}
-				\item "$1+1=2$" $\to$ wahr
-				\item "$1+1=3$" $\to$ falsch
-				\item "Es gibt unendlich viele Primzahlen" $\to$ wahr
+				\item "'$1+1=2$"' $\to$ wahr
+				\item "'$1+1=3$"' $\to$ falsch
+				\item "'Es gibt unendlich viele Primzahlen"' $\to$ wahr
 			\end{compactitem}
-			Man ordnet jeder mathematischen Aussage $A$ einen Wahrheitswert "wahr" oder "falsch" zu. Aussagen
+			Man ordnet jeder mathematischen Aussage $A$ einen Wahrheitswert "'wahr"' oder "'falsch"' zu. Aussagen
 			lassen sich mit logischen Verkn\"upfungen zu neuen Aussagen zusammensetzen.
 			\begin{compactitem}
 				\item $\lor \to$ oder
@@ -51,8 +51,8 @@
 			eindeutig bestimmt durch die Wahrheitswerte ihrer Einzelaussagen.
 			\begin{compactitem}
 				\item $\lnot (1+1=3) \to$ wahr
-				\item "2 ist ungerade" $\Rightarrow$ "3 ist gerade" $\to$ wahr
-				\item "2 ist gerade" $\Rightarrow$ "Es gibt unendlich viele Primzahlen" $\to$ wahr
+				\item "'2 ist ungerade"' $\Rightarrow$ "'3 ist gerade"' $\to$ wahr
+				\item "'2 ist gerade"' $\Rightarrow$ "'Es gibt unendlich viele Primzahlen"' $\to$ wahr
 			\end{compactitem}
 			$\newline$
 			\begin{center}
@@ -74,8 +74,8 @@
 		\subsubsection{\"Uberblick \"uber die Pr\"adikatenlogik}
 			Wir werden die Quantoren
 			\begin{compactitem}
-				\item $\forall$ (Allquantor, "f\"ur alle") und
-				\item $\exists$ (Existenzquantor, "es gibt") verwenden.
+				\item $\forall$ (Allquantor, "'f\"ur alle"') und
+				\item $\exists$ (Existenzquantor, "'es gibt"') verwenden.
 			\end{compactitem}
 			Ist $P(x)$ eine Aussage, deren Wahrheitswert von einem unbestimmten $x$ abh\"angt, so ist \\
 			$\forall x: P(x)$ genau dann wahr, wenn $P(x)$ f\"ur alle $x$ wahr ist, \\
@@ -118,7 +118,7 @@
 			
 			\textbf{Beispiel: endliche Mengen} \\
 			Eine Menge hei{\ss}t endlich, wenn sie nur endlich viele Elemente enth\"alt. Endliche Mengen
-			notiert man oft in aufz\"ahlender Form: $M = \{1;23;4;5;6\}$. Hierbei ist die Reihenfolge
+			notiert man oft in aufz\"ahlender Form: $M = \{1;2;3;4;5;6\}$. Hierbei ist die Reihenfolge
 			der Elemente nicht relevant, auch nicht die H\"aufigkeit eines Elements. \\
 			Sind die Elemente paarweise verschieden, dann ist die Anzahl der Elemente die M\"achtigkeit
 			(oder Kardinalit\"at) der Menge, die wir mit $|M|$ bezeichnen. \\
@@ -135,7 +135,7 @@
 			Ist $M$ eine Menge, so gilt $|M|=\infty$ \\
 			$\newline$
 			
-			\textbf{Beispiel: leere Mengen} \\
+			\textbf{Beispiel: leer Menge} \\
 			Es gibt genau eine Menge, die keine Elemente hat, die leere Menge $0 := \{\}$.
 			
 			\begin{framed}
@@ -217,7 +217,7 @@
 				$\iota_A: A \to X, x \mapsto x$
 				\item zu je zwei Mengen $X$ und $Y$ und einem festen $y_0 \in Y$ gibt es die konstante
 				Abbildung $c_{y_0}: X \to Y x \mapsto y_0$
-				\item zu jder Menge $X$ und Teilmenge $A \subset X$ definiert man die charackteristische 
+				\item zu jder Menge $X$ und Teilmenge $A \subset X$ definiert man die charakteristische 
 				Funktion\\ $\chi_A: X \to \mathbb R,
 				\begin{cases}
 					x \mapsto 1 \quad(x \in A) \\ x \mapsto 0 \quad(x \notin A)
@@ -336,7 +336,7 @@
 		\end{compactitem}
 		
 		\begin{framed}
-			\textbf{Satz: (Eindeutigkeit des neutralen Elements)} Ein Monoid $(G,*)$ hat genau ein neutrales
+			\textbf{Satz (Eindeutigkeit des neutralen Elements):} Ein Monoid $(G,*)$ hat genau ein neutrales
 			Element. 
 		\end{framed}
 		
@@ -353,14 +353,14 @@
 		
 		\textbf{Beispiele:} \\
 		\begin{compactitem}
-			\item $\mathbb N_0$ bildet mit der Addition keine Gruppe $(\mathbb N_=,+)$
+			\item $\mathbb N_0$ bildet mit der Addition keine Gruppe $(\mathbb N_0,+)$
 			\item $\mathbb Z$ bildet mit der Addition eine abelsche Gruppe $(\mathbb Z,+)$
 			\item Auch $(\mathbb Q,+)$ und $(\mathbb R,+)$ sind abelsche Gruppen
 			\item $(\mathbb Q,\cdot)$ ist keine Gruppe, aber $(\mathbb Q\backslash\{0\},\cdot)$ schon
 		\end{compactitem}
 		
 		\begin{framed}
-			\textbf{Satz: (Eindeutigkeit des Inversen)} Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$
+			\textbf{Satz (Eindeutigkeit des Inversen):} Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$
 			genau ein inverses Element.
 		\end{framed}
 		
@@ -380,7 +380,7 @@
 			\item In der multiplikativen Notation schreibt man $\cdot$ statt $*$ (oft auch $xy$ statt 
 			$x \cdot y$), bezeichnet das neutrale Element mit $1$ oder $1_G$ und das Inverse zu $x$ mit
 			$x^{-1}$.
-			\item In der additiven Notation schreibt man $x$ f\"ur $*$, bezeichnet das neutrale Element
+			\item In der additiven Notation schreibt man $+$ f\"ur $*$, bezeichnet das neutrale Element
 			mit $0$ oder $0_G$ und das Inverse zu $x$ mit $-x$. Die additive Notation wird nur verwendet,
 			wenn die Gruppe abelsch ist.
 		\end{compactitem}
@@ -402,8 +402,8 @@
 		
 		\textit{Beweis: \\
 		Es ist $a \cdot a^{-1} \cdot b = 1b=b$, also ist $x=a^{-1} \cdot b$ eine L\"osung. Ist umgekehrt
-		$ax=b$ mit $x \in G$, so ist $a^{-1} \cdot b = a^{-1]} \cdot ax = 1x = x$ die L\"osung und somit
-		eindeutig. F\"ur die zweite Gleichung argumentiert man analog. Den "Insbesondere"-Fall erh\"alt
+		$ax=b$ mit $x \in G$, so ist $a^{-1} \cdot b = a^{-1} \cdot ax = 1x = x$ die L\"osung und somit
+		eindeutig. F\"ur die zweite Gleichung argumentiert man analog. Den "'Insbesondere"'-Fall erh\"alt
 		man durch Einsetzen von $b=ay$ bzw. $b=xa$.} \\
 		$\newline$
 		
@@ -453,8 +453,8 @@
 		\begin{framed}
 			\textbf{Definition Untergruppe:} Eine Untergruppe einer Gruppe $(G,\cdot)$ ist eine 
 			nichtleere Teilmenge $H \subset G$, f\"ur die gilt: \\
-			(UG1) F\"ur alle $x,y \in H$ ist $x \cdot y \in H$ (Abgeschlossenheit unter Multiplikation) \\
-			(UG2) F\"ur alle $x \in H$ ist $x^{-1} \in H$ (Abgeschlossenheit unter Inversen)
+			(UG1) F\"ur alle $x,y \in H$ ist $x \cdot y \in H$ (Abgeschlossenheit unter Multiplikation). \\
+			(UG2) F\"ur alle $x \in H$ ist $x^{-1} \in H$ (Abgeschlossenheit unter Inversen).
 		\end{framed}
 		
 		\begin{framed}
@@ -545,8 +545,8 @@
 			$R$, einer Verkn\"upfung $+: R \times R \to R$ (Addition) und einer anderen Verkn\"upfung
 			$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
 			erf\"ullen: \\
-			(R1) $(R,+)$ ist eine abelsche Gruppe \\
-			(R2) $(R,\cdot)$ ist eine Halbgruppe \\
+			(R1) $(R,+)$ ist eine abelsche Gruppe. \\
+			(R2) $(R,\cdot)$ ist eine Halbgruppe. \\
 			(R3) F\"ur $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$. \\
 			Ein Ring hei{\ss}t kommutativ, wenn $xy=yx$ f\"ur alle $x,y \in R$.\\
 			Ein neutrales Element der Multiplikation hei{\ss}t Einselement von $R$.\\
@@ -580,7 +580,7 @@
 		$\newline$
 		
 		\textbf{Bemerkung:} \\
-		Wir f\"uhren eine wichtige Klassen endlicher Ringe ein. Hierf\"ur erinnern wir uns eine der Grundlagen
+		Wir f\"uhren eine wichtige Klasse endlicher Ringe ein. Hierf\"ur erinnern wir uns an eine der Grundlagen
 		der Arithmetik in $\mathbb{Z}$. \\
 		
 		\begin{framed}
@@ -671,12 +671,12 @@
 		\begin{framed}
 			\textbf{Definition Einheit:} Sei $R$ ein Ring mit Einselement. Ein $x \in R$ hei{\ss}t invertierbar (oder
 			 Einheit von $R$), wenn es ein $x' \in R$ mit $xx'=x'x=1$ gibt. Wir bezeichnen die invertierten
-			 Elemente von $R$ mit $R^{\times}$
+			 Elemente von $R$ mit $R^{\times}$.
 		\end{framed}
 		
 		\textbf{Beispiele:}\\
 		\begin{compactitem}
-			\item reelle Zahlen ist ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb R^{\times}=
+			\item reelle Zahlen sind ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb R^{\times}=
 			\mathbb R\backslash\{0\}$
 			\item $\mathbb Z$ ist ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb Z^{\times}=
 			\{1,-1\}$
@@ -687,8 +687,8 @@
 		\begin{framed}
 			\textbf{Satz:} Sei $R$ ein Ring mit Einselement. 
 			\begin{compactitem}
-				\item Ist $x \in R$ invertierbar, so ist $x$ kein Nullteiler in $R$
-				\item Die invertierbaren Elemente von $R$ bilden mit der Multiplikation eine Gruppe
+				\item Ist $x \in R$ invertierbar, so ist $x$ kein Nullteiler in $R$.
+				\item Die invertierbaren Elemente von $R$ bilden mit der Multiplikation eine Gruppe.
 			\end{compactitem}
 		\end{framed}
 		
@@ -780,7 +780,7 @@
 		In diesem Abschnitt sei $R$ ein kommutativer Ring mit Einselement. \\
 		$\newline$
 		
-		\textbf{Bemerkung:} Unter einem Polynom in der "Unbekannte" $x$ versteht man einen Ausdruck der Form
+		\textbf{Bemerkung:} Unter einem Polynom in der "'Unbekannte"' $x$ versteht man einen Ausdruck der Form
 		$f(x)=a_0+a_1x+a_2x^2+...+a_nx^n = \sum \limits_{k=0}^{n} a_kx^k$ mit $a_0,...,a_n \in R$. Fasst man $x$
 		als ein beliebiges Element von $R$ auf, gelten einige offensichtliche Rechenregeln: \\
 		Ist $f(x)=\sum \limits_{k=0}^{n} a_kx^k$ und $g(x)=\sum \limits_{k=0}^{n} b_kx^k$ so ist
@@ -788,12 +788,12 @@
 			\item $f(x)+g(x)=\sum \limits_{k=0}^{n} (a_k+b_k)x^k$
 			\item $f(x)\cdot g(x)=\sum \limits_{k=0}^{2n} c_kx^k$ mit $c_k=\sum \limits_{j=0}^{k} a_jb_{k-j}$
 		\end{compactitem}
-		Dies motiviert die folgende pr\"azise Definition f\"ur den Ring der Polynome \"uber $R$ in einer "Unbestimmten"
+		Dies motiviert die folgende pr\"azise Definition f\"ur den Ring der Polynome \"uber $R$ in einer "'Unbestimmten"'
 		$x$.
 		
 		\begin{framed}
 			\textbf{Definition Polynom:} Sei $R[X]$ die Menge der Folgen in $R$, die fast \"uberall 0 sind, also
-			$R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\}$
+			$R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\}$.
 		\end{framed}
 		
 		Wir definieren Addition und Multiplikation auf $R[X]$:
@@ -829,17 +829,17 @@
 		\begin{framed}
 			\textbf{Satz:} Seien $f,g \in R[X]$
 			\begin{compactitem}
-				\item Es ist $deg(f+g)\le max\{deg(f), deg(g)\}$
-				\item Es ist $deg(f\cdot g) \le deg(f)+deg(g)$
+				\item Es ist $deg(f+g)\le max\{deg(f), deg(g)\}$.
+				\item Es ist $deg(f\cdot g) \le deg(f)+deg(g)$.
 				\item Ist $R$ nullteilerfrei, so ist $deg(f\cdot g) = deg(f)+deg(g)$ und auch $R[X]$ ist nullteilerfrei.
 			\end{compactitem}
 		\end{framed}
 		\textit{Beweis: \\
 		\begin{compactitem}
 			\item offenbar
-			\item Ist $deg(f)=n$ und $deh(g)=m$, $f=\sum \limits_{i \ge 0} f_iX^i$, $g=\sum \limits_{ij\ge 0} g_jX^j$, 
+			\item Ist $deg(f)=n$ und $deg(g)=m$, $f=\sum \limits_{i \ge 0} f_iX^i$, $g=\sum \limits_{j\ge 0} g_jX^j$, 
 			so ist auch $h=fg=\sum \limits_{k \ge 0} h_kX^k$ mit $h_k=\sum \limits_{i+j=k} f_i\cdot g_j$ f\"ur alle $k \ge 0$.
-			Ist  $k>n+m$ und $i+j=k$, so ist $i>n$ oder $j>m$, somit $f_i=0$ oder $g_k=0$ und somit $h_k=0$. 
+			Ist  $k>n+m$ und $i+j=k$, so ist $i>n$ oder $j>m$, somit $f_i=0$ oder $g_j=0$ und somit $h_k=0$. 
 			Folglich ist $deg(h) \le n+m$.
 			\item Ist $f=0$ oder $g=0$, so ist die Aussage klar, wir nehmen als $n,m \ge 0$ an. Nach b) ist $deg(h) \le 
 			n+m$ und $h_{m+n}=\sum \limits_{i+j=n+m} f_ig_j=f_ng_m$. Ist $R$ nullteilerfrei, so folgt aus $f_n \neq 0$
@@ -874,7 +874,7 @@
 			\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k
 			\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tilde f: \mathbb R \to \mathbb R$ und
 			$\lambda \mapsto f(\lambda)$. \\
-			Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine Nullstelle von $f$
+			Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine Nullstelle von $f$.
 		\end{framed}
 		
 		\begin{framed}
@@ -885,15 +885,15 @@
 		$f(\lambda)+g(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k + \sum \limits_{k\ge 0} b_k\lambda^k = \sum 
 		\limits_{k\ge 0} (a_k+b_k)\lambda^k=(f+g)(\lambda)$ \\
 		$f(\lambda)\cdot g(\lambda)= \sum \limits_{k\ge 0} a_k\lambda^k \cdot \sum \limits_{k\ge 0} b_k\lambda^k = 
-		\sum \limits_{k \ge 0} \sum \limits_{i+j=k} (a_i+b_j)\lambda^k = (fg)(\lambda)$)}
+		\sum \limits_{k \ge 0} \sum \limits_{i+j=k} (a_i+b_j)\lambda^k = (fg)(\lambda)$}
 		
 		\begin{framed}
 			\textbf{Satz:} Ist $K$ ein K\"orper und $\lambda \in K$ eine Nullstelle von $f \in K[X]$ so gibt es ein
-			eindeutig bestimmtes $h \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)$
+			eindeutig bestimmtes $h \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)$.
 		\end{framed}
 		\textit{Beweis: \\
 		Es gibt $h,r \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)+r(x)$ und $deg(r)<deg(X-\lambda)=1$, also $r \in
-		K$. Da $\lambda$ Nullstelle von $f$ ist, gilt $0=f(\lambda)=(\lambda-\lambda)*h(\lambda)+r(\lambda)=
+		K$. Da $\lambda$ Nullstelle von $f$ ist, gilt $0=f(\lambda)=(\lambda-\lambda)\cdot h(\lambda)+r(\lambda)=
 		r(\lambda)$. Hieraus folgt $r=0$. Eindeutigkeit folgt aus Eindeutigkeit der Polynomdivision.}
 		
 		\begin{framed}
@@ -924,7 +924,7 @@
 		$\newline$
 		
 		\textbf{Beispiel:} Sei $f(X)=X^2+1 \in \mathbb R[X] \subset \mathbb C[X]$ \\
-		In $K=\mathbb R$ hat $f$ keine Nullstelle: Für $\lambda \in \mathbb R f(\lambda)=\lambda^2+1 \ge1 >0$. \\
+		In $K=\mathbb R$ hat $f$ keine Nullstelle: Für $\lambda \in \mathbb R\; f(\lambda)=\lambda^2+1 \ge1 >0$. \\
 		In $K=\mathbb C$ hat $f$ die beiden Nullstellen $\lambda_1=i$ und $\lambda_2=-i$ und zerfällt dort in Linearfaktoren:
 		 $f(X)=(X-i)(X+i)$.
 		
@@ -933,7 +933,7 @@
 			\begin{compactitem}
 				\item Jedes Polynom $f \in K[X]$ mit $deg(f)>0$ hat eine Nullstelle in $K$.
 				\item Jedes Polynom $f \in K[X]$ zerfällt in Linearfaktoren, also $f(X)=a\cdot \prod \limits_{i=1}^n 
-				(X-\lambda_i)$ mit $n=deg(f), a, \lambda_i \in K$
+				(X-\lambda_i)$ mit $n=deg(f), a, \lambda_i \in K$.
 			\end{compactitem}
 		\end{framed}
 		\textit{Beweis: \\
@@ -987,7 +987,7 @@
 		
 		\textbf{Beispiel:} Für $n \in \mathbb N$ ist $V=K^n := \prod \limits_{i=1}^n K = \{(x_1,x_2,...,x_n) \mid x_1,x_2,..,
 		x_n \in K\}$ mit komponentenweiser Addition und Skalarmultiplikation $\lambda(x_1,...,x_n)=(\lambda\cdot x_1,...,
-		\lambda\cdot x_n)$ ein $K$-Vektorraum, genannt der (n-dimensionale) Standardraum über $K$. \\ 
+		\lambda\cdot x_n)$ ein $K$-Vektorraum, genannt der ($n$-dimensionale) Standardraum über $K$. \\ 
 		Insbesondere (Spezialfall $n=1$) ist $K$ ein $K$-Vektorraum. \\
 		Für $n=0$ definiert man $K^0$ als Nullraum $V=\{0\}$, der einzig möglichen Addition und Skalarmultiplikation einen 
 		$K$-Vektorraum bildet.
@@ -996,7 +996,7 @@
 			\textbf{Satz:} Ist $V$ ein $K$-Vektorraum, so gelten für $\lambda \in K$ und $x \in V$:
 			\begin{compactitem}
 				\item $0\cdot x =0$
-				\item $\lambda\cdot =0$
+				\item $\lambda\cdot 0=0$
 				\item $(-\lambda)\cdot x = \lambda\cdot(-x) = -\lambda\cdot x$. Insbesondere $(-1)x=-x$
 				\item Ist $\lambda\cdot x=0$, so ist $\lambda=0$ oder $x=0$
 			\end{compactitem}
@@ -1017,7 +1017,7 @@
 			\to K[X]$ ein, so wird $K[X]$ mit dieser Skalarmultipliaktion zu einem $K$-VR. Die Skalarmultiplikation ist also
 			gegen $\lambda\cdot \sum \limits_{k\ge 0} a_k\cdot X^k = \sum \limits_{k\ge 0} \lambda\cdot a_k\cdot X^k$ ersetzt
 			wurden.
-			\item Schränkt man die komplexe MUltiplikation $\mathbb C \times \mathbb C \to \mathbb C$ zu einer Abbildung 
+			\item Schränkt man die komplexe Multiplikation $\mathbb C \times \mathbb C \to \mathbb C$ zu einer Abbildung 
 			$\mathbb R \times \mathbb C \to \mathbb C$ ein, so wird $\mathbb C$ mit dieser Skalarmultipliaktion zu einem
 			$\mathbb R$-VR. Die Skalarmultipliaktion ist gegeben durch $\lambda(x+iy)=\lambda\cdot x + i\cdot\lambda\cdot y$.
 			\item Verallgemeinerung von 1 und 2: Ist der Körper $K$ ein Unterring eines kommutativen Rings $R$ mit Einselement 
@@ -1031,8 +1031,8 @@
 		\begin{framed}
 			\textbf{Definition Untervektorraum:} Sei $V$ ein $K$-VR. Ein Untervektorraum (UVR) von $V$ ist eine nichtleere
 			Teilmenge $W \subset V$ mit: \\
-			(UV1): Für $x,y \in W$ ist $x+y\in W$ \\
-			(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$
+			(UV1): Für $x,y \in W$ ist $x+y\in W$. \\
+			(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
 		\end{framed}
 		
 		\begin{framed}
@@ -1042,7 +1042,7 @@
 		\textit{Beweis: \\
 		Rückrichtung: Lassen sich $+$: $V \times V \to V$ und $\cdot$: $K \times V \to V$ einschränken zur Abbildung $+_w$: $W
 		\times W \to W$, $\cdot_w$: $K \times W \to W$ so gilt für $x,y \in W$ und $\lambda \in K$: $x+y=x +_w y \in W$ und
-		$\lambda\cdot x?\lambda \cdot_w x \in W$. ISt $(W,+_w,\cdot_w)$ ein $K$-VR, so ist insbesodere $W$ nicht leer. Somit
+		$\lambda\cdot x=\lambda \cdot_w x \in W$. Ist $(W,+_w,\cdot_w)$ ein $K$-VR, so ist insbesodere $W$ nicht leer. Somit
 		ist $W$ ein UVR. \\
 		Hinrichtung: Nach (UV1) und (UV2) lassen sich $+$ und $\cdot$ einchränken zu Abbildungen $+_w$: $W \times W \to W$ und 
 		$\cdot_w$: $K \times W \to W$. Nach (UV1) ist abgeschlossen und unter der Addition und für $x \in W$ ist auch $-x=
@@ -1064,19 +1064,19 @@
 			- allgemeiner den Raum $K[X]_{\le n}=\{f \in K[X] \mid deg(f) \le n\}$ der Polynome von höchstens Grad $n$
 			\item In der Analysis werden Sie verschiedene UVR des $\mathbb R$-VR $Abb(\mathbb R,\mathbb R)$ kennenlernen, etwa
 			den Raum $\mathcal C(\mathbb R,\mathbb R)$ der stetigen Funktionen und den Raum $\mathcal C^{-1}(\mathbb R,\mathbb 
-			R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynofunktionen $\{\tilde f: f\in \mathbb R[X]\}$ bildet
+			R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynomfunktionen $\{\tilde f\mid \tilde f\in \mathbb R[X]\}$ bildet
 			einen UVR des $\mathbb R$-VR $\mathcal C^{-1}(\mathbb R,\mathbb R)$
 		\end{compactitem}
 		
 		\begin{framed}
 			\textbf{Lemma:} Ist $V$ ein Vektorraum und $(W_i)_{i \in I}$ eine Familie von UVR von $V$, so ist auch $W=\bigcap W_i$ 
-			ein UVR von $V$
+			ein UVR von $V$.
 		\end{framed}
 		\textit{Beweis: \\
 		Da $0 \in W_i$ ist auch $0 \in W$, insbesondere $W\neq\emptyset$.
 		\begin{compactitem}
-			\item (UV1): Sind $x,y \in W$, so ist auch $x,y \in W_i$ und deshalb $x+y\in \bigcap W_i = W$
-			\item (UV2): Ist $x \in W$ und $\lambda \in K$, so ist auch $x \in W_i$ und somit $\lambda x\in \bigcap W_i=W$
+			\item (UV1): Sind $x,y \in W$, so ist auch $x,y \in W_i$ und deshalb $x+y\in \bigcap W_i = W$.
+			\item (UV2): Ist $x \in W$ und $\lambda \in K$, so ist auch $x \in W_i$ und somit $\lambda x\in \bigcap W_i=W$.
 		\end{compactitem}}
 		
 		\begin{framed}
@@ -1103,7 +1103,7 @@
 				Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot
 				x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
 				\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb
-				N_0$ und $i_1,...,i_n \in I$ gibt, für die x Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
+				N_0$ und $i_1,...,i_n \in I$ gibt, für die $x$ Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
 				\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $span_K(\mathcal F)$ 
 				bezeichnet.
 			\end{compactitem}
@@ -1145,8 +1145,8 @@
 		\end{compactitem}}
 		$\newline$
 		
-		\textbf{Bemerkung:} Wir erhalten $span_K(X)=<X>$ auf 2 verschiedenen Wegen. Erstens "von oben" als Schnitt über alle UVR 
-		von $V$, die $X$ enthalten und zweitens "von unten" als Menge der Linearkombinationen. Man nennt $span_K(X)$ auch den 
+		\textbf{Bemerkung:} Wir erhalten $span_K(X)=<X>$ auf 2 verschiedenen Wegen. Erstens "'von oben"' als Schnitt über alle UVR 
+		von $V$, die $X$ enthalten und zweitens "'von unten"' als Menge der Linearkombinationen. Man nennt $span_K(X)$ auch den 
 		von $X$ aufgespannten UVR oder die lineare Hülle von $X$. \\
 		$\newline$
 		
@@ -1154,7 +1154,7 @@
 		\begin{compactitem}
 			\item Sei $V=K^n$ der Standardraum. Für $i=1,...,n$ sei $e_i=(\delta_{i,1},...,\delta_{i,n})$, also $e_1=(1,0,...0)$, 
 			$e_2=(0,1,0,...,0),...,e_n=(0,...,1)$. Für $x=(x_1,...,x_n) \in V$ ist $x=\sum\limits_{i=1}^n x_i\cdot e_1$, folglich 
-			$span_K(_1,..,e_n)=V$. Insbesondere ist $K^n$ eindeutig erzeugt. Man nennt $(e_1,...,e_n)$ die Standardbasis des 
+			$span_K(e_1,..,e_n)=V$. Insbesondere ist $K^n$ eindeutig erzeugt. Man nennt $(e_1,...,e_n)$ die Standardbasis des 
 			Standardraums $K^n$.
 			\item Sei $V=K[X]$ Polynomring über $K$. Da $f=\sum\limits_{i=1}^n a_i\cdot X^i$ ist $span_K((X^i)_{i \in I})=K[X]$. 
 			Genauer ist $span_K(1,X,X^2,...,X^n)=K[X]_{\le n}$. Tatsächlich ist der $K$-VR $K[X]$ nicht endlich erzeugt. Sind 
@@ -1224,10 +1224,10 @@
 		\textbf{Beispiele:}
 		\begin{compactitem}
 			\item Die Standardbasis $(e_1,...,e_n)$ des $K^n$ ist linear unabhängig. Es ist $\sum\limits_{i=1}^n \lambda_i\cdot 
-			e_i=(\lambda_i,...,\lambda_n)$
+			e_i=(\lambda_1,...,\lambda_n)$
 			\item Im $K$-VR $K[X]$ sind die Monome $(X^i)$ linear unabhängig.
 			\item Ein einzelner Vektor $x\in V$ ist genau dann linear abhängig, wenn $x=0$.
-			\item Ein Paar $(x_1,x_2)$ von Elementen von $V$, wenn es ein skalares Vielfaches des anderen ist, also z.B. $x_1=
+			\item Ein Paar $(x_1,x_2)$ von Elementen von $V$ ist linear abhängig, wenn es ein skalares Vielfaches des anderen ist, also z.B. $x_1=
 			\lambda\cdot x_2$.
 			\item Im $\mathbb R$-VR $\mathbb R^2$ sind die beiden Vektoren $(1,2)$ und $(2,1)$ linear unabhängig. \\
 			Im $\mathbb Z\backslash 3\mathbb Z$-VR $(\mathbb Z\backslash 3\mathbb Z)^2$ sind diese Vektoren linear unabhängig, da 
@@ -1241,7 +1241,7 @@
 		\begin{compactitem}
 			\item Ist $x_{i_0}=0$, ist $(x_i)$ linear abhängig: $1\cdot x_{i_0}=0$
 			\item Gibt es $i,j\in I$ mit $i\neq j$, aber $x_i=x_j$, so ist $(x_i)$ linear abhängig: $x_i-x_j=0$
-			\item Dennoch sagt man auch "die Teilmenge $X\subset V$ ist linear abhängig" und meint damit, dass die Familie $(x_x)
+			\item Dennoch sagt man auch "'die Teilmenge $X\subset V$ ist linear abhängig"' und meint damit, dass die Familie $(x_x)
 			_{x\in X}$ linear abhängig ist, d.h. es gibt ein $n\in \mathbb N_0$, $x_1,...,x_n \in X$ paarweise verschieden, mit 
 			$\sum\limits_{i=1}^n \lambda_i\cdot x_i=0$.
 		\end{compactitem}
@@ -1249,12 +1249,11 @@
 	\subsection{Basis und Dimension}
 		\begin{framed}
 			\textbf{Definition Basis:} Eine Familie $(x_i)$ von Elementen von $V$ ist eine Basis von $V$, wenn gilt: \\
-			(B1): Die Familie ist linear unabhängig \\
-			(B2): Die Familie erzeugt $V$, also $span_K(x_i) = V$
+			(B1): Die Familie ist linear unabhängig. \\
+			(B2): Die Familie erzeugt $V$, also $span_K(x_i) = V$.
 		\end{framed}
 		
 		\textbf{Bemerkung:} Kurz gesagt ist eine Basis ein linear unabhängiges Erzeugendensystem. \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Satz:} Sei $(x_i)$ eine Familie von Elementen von $V$. Genau dann ist $(x_i)$ eine Basis von $V$, 
@@ -1274,8 +1273,8 @@
 		\begin{framed}
 			\textbf{Satz:} Für eine Familie $(x_i)$ von Elementen von $V$ sind äquivalent:
 			\begin{compactitem}
-				\item $B$ ist eine Basis von $V$
-				\item $B$ ist ein minimales Erzeugendensystem
+				\item $B$ ist eine Basis von $V$.
+				\item $B$ ist ein minimales Erzeugendensystem.
 				\item $B$ ist maximal linear unabhängig, d.h. $B$ ist linear unabhängig, aber wenn Elemente zur Basis 
 				hinzugefügt werden, ist diese nicht mehr linear unabhängig.
 			\end{compactitem}
@@ -1296,7 +1295,6 @@
 		alle gleich 0, mit $\lambda\cdot x+\sum\limits_{i \in I} \lambda_i\cdot x_i=0$. Da $(x_i)$ linear abhängig ist, 
 		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \in I} \lambda_i\cdot x_i 
 		\in span_K(x_i)$. Somit ist $B$ ein Erzeugendensystem.} \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Theorem (Basisauswahlsatz):} Jedes endliche Erzeugendensystem von $V$ besitzt eine Basis  als 
@@ -1304,12 +1302,11 @@
 			für die $(x_i)_{i\in J}$ eine Basis von $V$ ist. 
 		\end{framed}
 		\textit{Beweis: \\
-		Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J} 
+		Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J}\; 
 		\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
 		Erzeugendensystem ist, ist $I\in J$, insbesondere $\mathcal J\neq\emptyset$. Es gibt deshalb ein bezüglich 
 		Inklusion minimales $J_0\in \mathcal J$, d.h. $J_1 \in \mathcal J$ so gilt nicht $J_1 \subsetneq J_0$. Deshalb 
 		ist $(x_i)_{i\in J_0}$ eine Basis von $V$.} \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Korollar:} Jeder endlich erzeugte $K$-VR besitzt eine endliche Basis.
@@ -1319,11 +1316,11 @@
 		\begin{compactitem}
 			\item Der Beweis des Theorems liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
 			Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in span_K((x_i)_{i\neq i_0})$ gibt. 
-			Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}}),
-			...,x_n$ weiter.
+			Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}},
+			...,x_n)$ weiter.
 			\item Man kann jedoch zeigen, dass jeder Vektorraum eine Basis besitzt. Die Gültigkeit der Aussage hängt jedoch 
-			von bestimmten mengentheoretischen Axoimen ab, auf die wir an dieser Stele nicht eingegehen werden. Siehe dazu 
-			LAAG 2. Semester
+			von bestimmten mengentheoretischen Axoimen ab, auf die wir an dieser Stelle nicht eingegehen werden. Siehe dazu 
+			LAAG 2. Semester.
 		\end{compactitem}
 		
 		\begin{framed}
@@ -1402,7 +1399,7 @@
 			\textbf{Satz:} Sei $V$ endlich erzeugt und $W\le V$ ein UVR.
 			\begin{compactitem}
 				\item Es ist $dim_K(W)\le dim_K(V)$. Insbesondere ist $W$ endlich erzeugt.
-				\item Ist $dim_K(W)=dim_K(V)$, so ist auch $W=V$
+				\item Ist $dim_K(W)=dim_K(V)$, so ist auch $W=V$.
 			\end{compactitem}
 		\end{framed}
 		\textit{Beweis: \\
@@ -1434,7 +1431,7 @@
 		
 		\begin{framed}
 			\textbf{Definition direkte Summe:} Ist jedes $x\in \sum W_i$ eindeutig als Summe von $x_i$ mit $x_i\in W_i$ 
-			darstellbar,m so sagt man, dass $\sum W_i$ die direkte Summe der UVR $W_i$ ist und schreibt $\oplus W_i$ für 
+			darstellbar, so sagt man, dass $\sum W_i$ die direkte Summe der UVR $W_i$ ist und schreibt $\oplus W_i$ für 
 			$\sum W_i$. Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1\oplus W_2 \oplus ... \oplus W_n$ für $\oplus W_i$.
 		\end{framed}
 		
@@ -1503,12 +1500,11 @@
 		
 		\begin{framed}
 			\textbf{Definition (externe) Summe:} Die (externe) Summe einer Familie $(V_i)$ von $K$-VR ist der UVR 
-			$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{für fast alle }i\}$ des $K$-VR $\prod V_i$.
+			$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{; für fast alle }i\}$ des $K$-VR $\prod V_i$.
 		\end{framed}
 		
 		\textbf{Bemerkung:} Man prüft sofort nach, dass $\prod V_i$ ein $K$-VR ist und $\oplus V_i$ ein UVR davon ist. Für 
 		endliche Indexmengen ist $\prod V_i = \oplus V_i$, z.B. $K^n = \prod\limits_{i=1}^n K = \oplus K$. \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Lemma:} Sei $(V_i)$ eine Familie von $K$-VR und sei $V=\oplus V_i$. Für jedes $j\in I$ ist $\tilde V_j :=
@@ -1532,12 +1528,12 @@
 				a_{m1} & ... & a_{mn}\\
 			\end{pmatrix}$
 			\end{center}
-			Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \newline j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
+			Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \; j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
 			aus dem Kontext hervorgehen. Die $a_{ij}$ heißen die Koeffizienten der Matrix $A$ und wir definieren $A_{i,j}=
 			a_{ij}$. Die Menge der $m\times n$-Matrizen über $K$ wird mit $Mat_{m\times n}(K)$ oder $K^{m\times n}$ 
 			bezeichnet. Man nennt das Paar $(m,n)$ auch den Typ von $A$. Ist $m=n$, so spricht man von quadratischen 
-			Matrizen und schreibt $Mat_n(K)$. Zu einer Matrix $A=(a_ij) \in Mat_{m\times n}(K)$ definiert man die zu $A$ 
-			transponierte Matrix $A^t := (a_ij)_{j,i} \in Mat_{n\times m}(K)$.
+			Matrizen und schreibt $Mat_n(K)$. Zu einer Matrix $A=(a_{ij}) \in Mat_{m\times n}(K)$ definiert man die zu $A$ 
+			transponierte Matrix $A^t := (a_{ij})_{j,i} \in Mat_{n\times m}(K)$.
 		\end{framed}
 		
 		\textbf{Beispiele:}
@@ -1546,9 +1542,9 @@
 			\item Für $k,l \in \{1,...,n\}$ ist die $(k,l)$-Basismatrix gegeben durch $E_{kl}=(\delta_{jk}\delta_{jl})\in 
 			Mat_{m\times n}(K)$.
 			\item Die Einheitsmatrix ist $1_n=(\delta_{ii})\in Mat_n(K)$.
-			\item Für $a_i,...,a_n \in K$ definiert man eine Diagonalmatrix $diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$
+			\item Für $a_i,...,a_n \in K$ definiert man eine Diagonalmatrix $diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$.
 			\item Für eine Permutation $\sigma\in S_n$ definiert man die Permutationsmatrix $P_\sigma := (\delta_{\sigma
-			(i),j})$
+			(i),j})$.
 			\item Für $a_1,...,a_n$ definiert man einen Zeilenvektor $(a_1,...,a_n)\in Mat_{1\times n}(K)$ bzw. einen 
 			Spaltenvektor $(a_1,...,a_n)^t$.
 		\end{compactitem}
@@ -1565,12 +1561,11 @@
 		\textit{Beweis: \\
 		Dies ist klar, weil wir $Mat_{m\times n}$ mit dem Standardraum $K^{mn}$ identifizieren können. Wir haben die 
 		Elemente nur als $m\times n$-Matrix statt als $mn$-Tupel geschrieben.} \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Definition Matrizenmultiplikation:} Seien $m,n,r \in \mathbb N_0$. Sind $A=(a_{ij})\in Mat_{m\times n}(K)$, 
 			$B=(b_{jk})\in Mat_{n\times r}(K)$ so definieren wir $C=AB$ als die Matrix $C=(c_{ik})\in Mat_{m\times r}(K)$ mit 
-			$c_{ik}=\sum\limits_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschreiben "Zeile $\cdot$ Spalte".
+			$c_{ik}=\sum\limits_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
 		\end{framed}
 		
 		\textbf{Beispiele:}
@@ -1579,7 +1574,6 @@
 			\item Für $\sigma \in S_n$ und $A\in Mat_{n\times r}(K)$ geht $P_{\sigma}\cdot A$ aus $A$ durch Permutation der 
 			Zeilen hervor.
 		\end{compactitem}
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Lemma:} Für $m,n,r \in \mathbb N_0$ und $A=(a_{ij})\in Mat_{m\times n}(K)$, $B=(b_{jk})\in Mat_
@@ -1621,7 +1615,6 @@
 			insbesondere ist er kommutativ.
 			\item Für $n\ge 2$ ist $Mat_n(K)$ nicht kommutativ.
 		\end{compactitem}
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Definition invertierbar:} Eine Matrix $A\in Mat_n(K)$ heißt invertierbar oder regulär, wenn sie im Ring 
@@ -1633,7 +1626,6 @@
 		\begin{pmatrix}d & -b\\-c & a\\\end{pmatrix}\in Mat_2(K)$. Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
 		(ad-bc)\cdot 1_2$. Definiert man nun $det(A)=ad-bc$ so sieht man: Ist $det(A)\neq 0$, so ist $A$ invertierbar mit 
 		$A^{-1}=det(A)^{-1}\cdot \tilde A$. Ist $det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar. \\
-		$\newline$
 		
 		\begin{framed}
 			\textbf{Lemma:} Für $A,A_1,A_2\in Mat_{m\times n}(K)$ und $B=Mat_{n\times r}(K)$ ist 
@@ -1681,10 +1673,10 @@
 			\textbf{Satz:} Sei $f\in Hom(G,H)$. Dann gilt: 
 			\begin{compactitem}
 				\item $f(1_G)\to 1_H$
-				\item Für $x\in G$ ist $f(x^{-1})=(f(x))^{-1}$
-				\item Für $x_1,...,x_n\in G$ ist $f(x_1,...,x_n)=f(x_1)\cdot ... \cdot f(x_n)$
-				\item Ist $G_0\le G$, so ist $f(G_0)\le H$
-				\item Ist $H_0\le H$, so ist $f^{-1}(H_0)\le G$
+				\item Für $x\in G$ ist $f(x^{-1})=(f(x))^{-1}$.
+				\item Für $x_1,...,x_n\in G$ ist $f(x_1,...,x_n)=f(x_1)\cdot ... \cdot f(x_n)$.
+				\item Ist $G_0\le G$, so ist $f(G_0)\le H$.
+				\item Ist $H_0\le H$, so ist $f^{-1}(H_0)\le G$.
 			\end{compactitem}
 		\end{framed}
 		\textit{Beweis: 
@@ -1700,7 +1692,7 @@
 		
 		\begin{framed}
 			\textbf{Satz:} Seien $G_1,G_2,G_3$ Gruppen. Sind $f_1:G_1\to G_2$, $f_2:G_2\to G_3$ Homomorphismen, so ist auch 
-			$f_2\circ f_1:G_1\to G_3$
+			$f_2\circ f_1:G_1\to G_3$.
 		\end{framed}
 		\textit{Beweis: \\
 		Für $x,y\in G_1$ ist $(f_2\circ f_1)(xy)=f_2(f_1(xy))=f_2(f_1(x)\cdot f_1(y))=f_2(f_1(x))\cdot f_2(f_1(y))=(f_2
@@ -1747,7 +1739,6 @@
 			\item vorheriges Lemma
 			\item vorletzer Satz und A18
 		\end{compactitem}}
-		$\newline$
 		
 		\textbf{Bemerkung:} Der letzte Satz erklärt die Bedeutung des Isomorphismus: Eine mit der Struktur verträgliche 
 		Abbildung, die eine mit der Struktur verträgliche Umkehrabbildung besitzt, also eine strukturerhaltende Abbildung. 
@@ -1766,7 +1757,7 @@
 		
 		\begin{framed}
 			\textbf{Definition Kern:} Der Kern eines Gruppenhomomorphismus $f:G\to H$ ist $Ker(f):= f^{-1}(\{1\})=\{x\in G \mid
-			f(x)=1_H\}$
+			f(x)=1_H\}$.
 		\end{framed}
 		
 		\begin{framed}
@@ -1865,18 +1856,18 @@
 		Seien $U,V,W$ drei $K$-VR. \\
 		
 		\begin{framed}
-			\textbf{Definition $K$-linear:} Eine Abbildung $f: V \to W$ heißt $K$-linear Homomorphismus von $K$-VR, wenn für 
+			\textbf{Definition $K$-linear:} Eine Abbildung $f: V \to W$ heißt $K$-linearer Homomorphismus von $K$-VR, wenn für 
 			alle $x,y\in V$ und $\lambda\in K$ gilt: \\
 			(L1): $f(x+y)=f(x)+f(y)$ \\
 			(L2): $f(\lambda x)=\lambda \cdot f(x)$ \\
-			Die Menge der $K$-linearen Abbildungen $f: V\to W$ wird mit $Hom_K(V,W)$ bezeichnet. Die Elemente von $End_K(V,W)
+			Die Menge der $K$-linearen Abbildungen $f: V\to W$ wird mit $Hom_K(V,W)$ bezeichnet. Die Elemente von $End_K(V)
 			:= Hom_K(V,V)$ nennt man die Endomorphismen von $V$. Ein $f\in Hom_K(V,W)$ ist ein Mono-, Epi- bzw. Isomorphismus, 
 			falls $f$ injektiv, surjektiv bzw. bijektiv ist. Einen Endomorphismus der auch ein Isomorphismus ist, nennt man 
 			Automorphismus von $V$ und bezeichnet die Menge der Automorphismen von $V$ mit $Aut_K(V)$. Der Kern einer linearen 
 			Abbildung $f: V\to W$ ist $Ker(f):= f^{-1}(\{0\})$.
 		\end{framed}
 		
-		\textbf{Bemerkung:} Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abeslchen Gruppen $(V,+) 
+		\textbf{Bemerkung:} Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abelschen Gruppen $(V,+) 
 		\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen VR. \\
 		
 		\begin{framed}
@@ -1901,7 +1892,7 @@
 		
 		\textbf{Beispiel:} Sei $V=K^n$ und $W=K^m$. Wir fassen die Elemente von $V$ und $W$ als Spaltenvektoren auf. Zu einer 
 		Matrix $A\in Mat_{m\times n}(K)$ definieren wir die Abbildung $f_A:V\to W$ mit $x\mapsto Ax$. \\
-		Ausgeschrieben: Ist $A=(a_{ij})$ und $x=(x_1,...,x_n)^t$ so ist $f_A=Ax=
+		Ausgeschrieben: Ist $A=(a_{ij})$ und $x=(x_1,...,x_n)^t$ so ist $f_A(x)=Ax=
 		\begin{pmatrix}
 		a_{11} & ... & a_{1n}\\
 		... &  & ...\\
@@ -1910,7 +1901,7 @@
 		\begin{pmatrix}
 		a_{11}\cdot x_1 + ... + a_{1n}\cdot x_n\\
 		...\\
-		a_{1n}\cdot x_1 + ... + a_{mn}\cdot x_n\\
+		a_{m1}\cdot x_1 + ... + a_{mn}\cdot x_n\\
 		\end{pmatrix}$. Diese Abbildung ist $K$-linear. \\
 		
 		\begin{framed}
@@ -1918,8 +1909,8 @@
 			\begin{compactitem}
 				\item $f(0)=0$
 				\item Für $x,y\in V$ ist $f(x-y)=f(x)-f(y)$.
-				\item Sind $(x_1)$ aus $V$, $(\lambda_i)$ aus $K$. fast alle gleich 0, so ist $f(\sum\limits_{i\in I} \lambda_i
-				\cdot x_i)=\sum\limits_{i\in I} \lambda_i\cdot f(x)$
+				\item Sind $(x_1)$ aus $V$, $(\lambda_i)$ aus $K$, fast alle gleich 0, so ist $f(\sum\limits_{i\in I} \lambda_i
+				\cdot x_i)=\sum\limits_{i\in I} \lambda_i\cdot f(x)$.
 				\item Ist $(x_i)$ linear abhängig in $V$, so ist $f(x_i)$ linear abhängig in $W$.
 				\item Ist $V_0\le V$ ein UVR von $V$, so ist $f(V_0)\le W$ ein UVR.
 				\item Ist $W_0\le W$ ein UVR von $W$, so ist $f^{-1}(W_0)\le V$ ein UVR.
@@ -2068,13 +2059,14 @@
 		\textit{Beweis: \\
 		$(End_K(V),+)$ ist eine abelsche Gruppe, die Komposition eine Verknüpfung auf $End_K(V)$ ist assoziativ und die 
 		Distributivgesetze gelten (vorheriges Lemma).} \\
+		$\newline$
 		
 		\textbf{Bemerkung:} Die Menge der strukturverträglichen Abbildungen zwischen $K$-VR trägt also wieder die Struktur 
 		eines $K$-VR. Wir können diesen mit unseren Mitteln untersuchen und z.B. nach Dimension und Basis fragen. \\
 		
 		\begin{framed}
 			\textbf{Lemma:} Seien $m,n,r\in \mathbb N$, $A\in Mat_{m\times n}(K)$, $B\in Mat_{n\times r}(K)$. Für die linearen 
-			Abbildungn $f_A\in Hom_K(K^n,K^m)$, $f_B\in Hom_K(K^r,K^n)$ gilt dann $f_{AB}=f_A\circ f_B$.
+			Abbildungen $f_A\in Hom_K(K^n,K^m)$, $f_B\in Hom_K(K^r,K^n)$ gilt dann $f_{AB}=f_A\circ f_B$.
 		\end{framed}
 		\textit{Beweis: \\
 		Sind $A=(a_{ij})$ und $B=(b_{jk})$, so ist $(f_A\circ f_B)(e_k)=f_A(f_B(e_k))=f_A(Be_k)=f_A(b_{1k},...,b_{nk})^t=
