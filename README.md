@@ -42,6 +42,8 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 4. Funktionen und Stetigkeit ... noch nicht bearbeitet
    
    4.1 Funktionen ... noch nicht bearbeitet
+   
+   4.2 Stetigkeit ... noch nicht bearbeitet
   
 ### Fortschritt Lineare Algebra
 1. Grundlagen der Linearen Algebra ... fertig
