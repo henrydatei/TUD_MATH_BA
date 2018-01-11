@@ -70,7 +70,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    2.4 Summe von Vektorräumen ... fertig
    
-3. Lineare Abbildungen ... wird bearbeitet/up-to-date
+3. Lineare Abbildungen ... wird bearbeitet
 
    3.1 Matrizen ... fertig
    
@@ -82,4 +82,4 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.5 Der Vektorraum der linearen Abbildungen ... fertig
    
-   3.6 Koordinatendarstellug linearer Abbildungen ... up-to-date
+   3.6 Koordinatendarstellug linearer Abbildungen ... wird bearbeitet
