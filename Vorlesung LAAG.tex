@@ -17,6 +17,8 @@
 \usepackage{enumerate}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
+\usepackage{mdframed}
+\usepackage{xcolor}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -138,11 +140,11 @@
 			\textbf{Beispiel: leere Menge} \\
 			Es gibt genau eine Menge, die keine Elemente hat, die leere Menge $0 := \{\}$.
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Teilmenge:} Sind $X$ und $Y$ zwei Mengen, so heißt $X$ eine Teilmenge von 
 				$Y$, wenn jedes Element von $X$ auch Element von $Y$ ist, dass heißt wenn für alle 
 				$x$ $(x \in X \Rightarrow x \in Y)$ gilt.
-			\end{framed}
+			\end{mdframed}
 			
 			Da eine Menge durch ihre Elemente bestimmt ist, gilt $X = Y \Rightarrow (X \subset Y)\land
 			(Y \subset X)$. Will man Mengengleichheit beweisen, so gen\"ugt es, die beiden Inklusionen
@@ -152,7 +154,7 @@
 			Ist $X$ eine Menge und $P(x)$ ein Pr\"adikat, so bezeichnet man mit $Y:= \{x \in X \mid
 			P(x)\}$ die Teilmenge von $X$, die das Pr\"adikat $P(x)$ erf\"ullen. \\
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Mengenoperationen:} Seien $X$ und $Y$ Mengen. Man definiert daraus 
 				weitere Mengen wie folgt:
 				\begin{compactitem}
@@ -162,7 +164,7 @@
 					\item $X \times Y := \{(x,y) \mid x \in X \land y \in Y\}$
 					\item $\mathcal P(X) := \{Y \mid Y \subset X\}$
 				\end{compactitem}
-			\end{framed}
+			\end{mdframed}
 			
 			Neben den offensichtlichen Mengengesetzen, wie dem Kommutaivgesetz, gibt es auch weniger 
 			offensichtliche Gesetze, wie die Gesetze von de Morgan: F\"ur $X_1, X_2 \subset X$ gilt:
@@ -237,14 +239,14 @@
 				\item bijektiv: injektiv und surjektiv
 			\end{compactitem}
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Einschr\"ankung:} Sei $f: x \mapsto y$ eine Abbildung. F\"ur $A \subset X$
 				definiert man die Einschr\"ankung/Restrikton von $f$ auf $A$ als die Abbildung $f \mid_A 
 				A \to Y, a \mapsto f(a)$. \\
 				Das Bild von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
 				Das Urbild einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
 				Man nennt $Image(f) := f(X)$ das Bild von $f$.
-			\end{framed}
+			\end{mdframed}
 			
 			\textbf{Bemerkungen zur abstrakteren Betrachtungsweise:} \\
 			Man ordnet der Abbildung $f: X \to Y$ auch die Abbildungen $\mathcal P(X) \to \mathcal P(Y)$ und
@@ -259,22 +261,22 @@
 			Genau dann ist $f: X \to Y \begin{cases} $injektiv$ \\ $surjektiv$ \\ $bijektiv$ \end{cases}$, wenn
 			$|f^{-1}(\{y\})| = \begin{cases} \le 1 \\ \ge 1 \\ =1  \end{cases} \quad \forall y \in Y$ \\
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Komposition:} Sind $f: X \to Y$ und $g: Y \to Z$ Abbildungen, so ist die
 				Komposition $g \circ f$ die Abbildung $g \circ f := X \to Z, x \mapsto g(f(x))$. Man kann 
 				die Komposition auffassen als eine Abbildung $\circ: Abb(Y,Z) \times Abb(X,Y) \to Abb(X,Z)$.
-			\end{framed}
+			\end{mdframed}
 			
 			\begin{framed}
 				\textbf{Satz:} Die Abbildung von Kompositionen ist assotiativ, d.h. es gilt: $h \circ (g 
 				\circ f) = (h \circ g)\circ f$.
 			\end{framed}
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Umkehrabbildung:} Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
 				genau ein $x_y \in X$ mit $f(x_y)=y$, durch $f^{-1}: Y \to X, y \mapsto x_y$ wird also eine 
 				Abbildung definiert, die Umkehrabbildung zu $f$. 
-			\end{framed}
+			\end{mdframed}
 			
 			\begin{framed}
 				\textbf{Satz:} Ist die Abbildung $f: X \to Y$ bijektiv, so gilt $f^{-1} \circ f = id_x$ und
@@ -286,7 +288,7 @@
 			$f^{-1}: \mathcal P(X) \to \mathcal P(Y)$ existiert f\"ur jede Abbildung $f: X \to Y$, aber die
 			Umkehrabbildung $f^{-1}: Y \to X$ existiert nur f\"ur bijektive Abbildungen $f: X \to Y$. \\
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Familie:} Seien $I$ und $X$ Mengen. Eine Abbildung $x: I \to X, i \mapsto
 				x_i$ nennt man Familie von Elementen von $X$ mit einer Indexmenge I (oder I-Tupel von 
 				Elementen von $X$) und schreibt diese auch als $(x_i)_{i \in I}$. Im Fall $I=\{1,2,...,n\}$
@@ -298,14 +300,14 @@
 					\item $\prod X_i = \{f \in Abb(I,X) \mid \forall i \in I(f(i) \in X_i)\}$
 				\end{compactitem}
 				Die Elemente von $\prod X_i$ schreibt man in der Regel als Familien $(x_i)_{i \in I}$.
-			\end{framed}
+			\end{mdframed}
 			
 			\textbf{Beispiel: } Eine Folge ist eine Familie $(x_i)_{i \in I}$ mit der Indexmenge $\mathbb N_0$.
 			
-			\begin{framed}
+			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Graph:} Der Graph einer Abbildung $f: X \to Y$ ist die Menge $\Gamma f: 
 				\{(x,y) \in X \times Y \mid y=f(x)\}$.
-			\end{framed}
+			\end{mdframed}
 			
 			\textbf{Bemerkung: Formal korrekte Definition einer Abbildung:} \\
 			Eine Abbildung $f$ ist ein Tripel $(X,Y,\Gamma)$, wobei $\Gamma \subset X \times Y \quad \forall
@@ -314,7 +316,7 @@
 			\Gamma_f$.
 			
 	\subsection{Gruppen}
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Gruppe:} Sei $G$ eine Menge. Eine (innere, zweistellige) Verkn\"upfung
 			auf $G$ ist eine Abbildung $*: G \times G \to G, (x,y) \mapsto x*y$. Das Paar $(G,*)$ ist eine
 			Halbgruppe, wenn das folgende Axiom erf\"ullt ist: \\
@@ -322,7 +324,7 @@
 			Eine Halbgruppe $(G,*)$ ist ein Monoid, wenn zus\"atzlich das folgende Axiom gilt: \\
 			(G2) Es gibt ein Element $e \in G$, welches f\"ur alle $x \in G$ die Gleichung $x*e=e*x=x$
 			erf\"ullt. Dieses Element hei{\ss}t dann neutrales Element der Verkn\"upfung $*$.  
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:} \\
 		\begin{compactitem}
@@ -340,13 +342,13 @@
 			Element. 
 		\end{framed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition abelsche Gruppe:} Eine Gruppe ist ein Monoid $(G,*)$ mit dem neutralen Element
 			$e$, in dem zus\"atzlich das folgende Axiom gilt: \\
 			(G3) F\"ur jedes $x \in G$ gibt es ein $x' \in G$ mit $x'*x=x*x'=e$. \\
 			Gilt weiterhin \\
 			(G4) F\"ur alle $x,y \in G$ gilt $x*y=y*x$, so hei{\ss}t diese Gruppel abelsch.
-		\end{framed}
+		\end{mdframed}
 		
 		Ein $x'$ hei{\ss}t inverses Element zu $x$. \\
 		$\newline$
@@ -450,12 +452,12 @@
 			\end{tabular}
 		\end{center}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Untergruppe:} Eine Untergruppe einer Gruppe $(G,\cdot)$ ist eine 
 			nichtleere Teilmenge $H \subset G$, f\"ur die gilt: \\
 			(UG1) F\"ur alle $x,y \in H$ ist $x \cdot y \in H$ (Abgeschlossenheit unter Multiplikation). \\
 			(UG2) F\"ur alle $x \in H$ ist $x^{-1} \in H$ (Abgeschlossenheit unter Inversen).
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe und $\emptyset \neq H \subset G$. Genau dann ist
@@ -522,13 +524,13 @@
 		enhalten.} \\
 		$\newline$
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition erzeugte Untergruppe:} Ist $G$ eine Gruppe und $X \le G$, so nennt man diese
 			kleinste Untergruppe von $G$, die $X$ enth\"alt, die von $X$ erzeugte Untergruppe von $G$ und
 			bezeichnet diese mit $<X>$, falls $X = \{x_1,x_2,...,x_n\}$ enth\"alt auch mit $<x_1,x_2,
 			...,x_n>$. Gibt es eine endliche Menge $X \subset G$ mit $G=<X>$, so nennt man $G$ endlich
 			erzeugt.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}
 		\begin{compactitem}
@@ -540,7 +542,7 @@
 		\end{compactitem}
 		
 	\subsection{Ringe}
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Ring:} Ein Ring ist ein Tripel $(R,+,\cdot)$ bestehend aus einer Menge
 			$R$, einer Verkn\"upfung $+: R \times R \to R$ (Addition) und einer anderen Verkn\"upfung
 			$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
@@ -552,7 +554,7 @@
 			Ein neutrales Element der Multiplikation hei{\ss}t Einselement von $R$.\\
 			Ein Unterrrig eines Rings $(R,+,\cdot)$ ist eine Teilmenge, die mit der geeigneten
 			Einschr\"ankung von Addition und Multiplikation wieder ein Ring ist.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkungen:} \\
 		Hat ein Ring ein Einselement, so ist dieses eindeutig bestimmt. Notationelle Konfektionen: Das 
@@ -583,10 +585,10 @@
 		Wir f\"uhren eine wichtige Klasse endlicher Ringe ein. Hierf\"ur erinnern wir uns an eine der Grundlagen
 		der Arithmetik in $\mathbb{Z}$. \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem:} Sei $b \neq 0 \in \mathbb{Z}$. F\"ur jedes $a \in \mathbb{Z}$ gibt es 
 			eindeutig bestimmte $q,r \in \mathbb{Z}$ ($r$ ist "Rest"), mit $a=qb+r$ und $0 \le r < |b|$.
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: Existenz und Eindeutigkeit \\
 		Existenz: oBdA nehmen wir an, dass $b>0$ (denn ist $a=qb+r$, so ist auch $a=(-q)(-b)+r$). Sei $q \in
 		\mathbb{Z}$ die gr\"o{\ss}te Zahl mit $q \le \frac{a}{b}$, und sei $r=a-qb \in \mathbb{Z}$. Dann ist
@@ -656,23 +658,23 @@
 			\end{tabular}
 		\end{center}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Charakteristik:} Sei $R$ ein Ring mit Einselement. Man definiert die Charakteristik von
 			$R$ als die kleinste nat\"urliche Zahl $n$ mit $1+1+...+1=0$, falls so ein $n$ existiert, andernfalls
 			ist die Charakteristik $0$.
-		\end{framed}
+		\end{mdframed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Nullteiler:} Sei $R$ ein Ring mit Einselement. Ein $0 \neq x \in R$ ist ein Nullteiler von 
 			$R$, wenn er ein $0 \neq y \in R$ mit $xy=0$ oder $yx=0$ gibt. Ein Ring ohne Nullteiler ist
 			nullteilerfrei.
-		\end{framed}
+		\end{mdframed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Einheit:} Sei $R$ ein Ring mit Einselement. Ein $x \in R$ hei{\ss}t invertierbar (oder
 			 Einheit von $R$), wenn es ein $x' \in R$ mit $xx'=x'x=1$ gibt. Wir bezeichnen die invertierten
 			 Elemente von $R$ mit $R^{\times}$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}\\
 		\begin{compactitem}
@@ -704,10 +706,10 @@
 		$\newline$
 		
 	\subsection{K\"orper}
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition K\"orper:} Ein K\"orper ist ein kommutativer Ring $(K,+,\cdot)$ mit Einselement 
 			$1 \neq 0$, in dem jedes Element $x \neq x \in K$ invertierbar ist.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkungen:} Ein K\"orper ist stets nullteilerfrei und $(K\backslash\{0\}, \cdot)$ ist eine abelsche
 		Gruppe. Ein k\"orper ist also ein Tripel $(K,+,\cdot)$ bestehend aus einer Menge $K$ und 2 Verkn\"upfungen
@@ -719,11 +721,11 @@
 		
 		\textbf{Bemerkungen:} Sei $K$ ein K\"orper und $a,x,y \in K$. Ist $ax=ay$ und $a \neq 0$, so ist $x=y$. \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Teilk\"orper:} Ein Teilk\"orper eines K\"orpers $(K,+,\cdot)$ ist die Teilemenge $L 
 			\subset K$, die mit der geeigneten Einschr\"ankung von Addition und Multiplikation wieder ein
 			K\"orper ist.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}
 		\begin{compactitem}
@@ -791,10 +793,10 @@
 		Dies motiviert die folgende pr\"azise Definition f\"ur den Ring der Polynome \"uber $R$ in einer "'Unbestimmten"'
 		$x$.
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Polynom:} Sei $R[X]$ die Menge der Folgen in $R$, die fast \"uberall 0 sind, also
 			$R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\}$.
-		\end{framed}
+		\end{mdframed}
 		
 		Wir definieren Addition und Multiplikation auf $R[X]$:
 		\begin{compactitem}
@@ -846,10 +848,10 @@
 			und $g_m\neq 0$ schon $f_ng_m\neq 0$, und somit $deg(h)=n+m$.
 		\end{compactitem}}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem (Polynomdivision):} Sei $K$ ein K\"orper und sei $0 \neq g \in K[X]$. F\"ur jedes Polynom
 			 $f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $deg(r)<deg(g)$. 
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: Existenz und Eindeutigkeit\\
 		Existenz: Sei $n=deg(f)$, $m=deg(g)$, $f=\sum \limits_{k=0}^{n} a_kX^k$, $g=\sum \limits_{k=0}^{m} b_kX^k$ \\
 		Induktion nach $n$ bei festem $g$. \\
@@ -869,13 +871,13 @@
 		
 		\textbf{Beispiel:} in $\mathbb Q[X]$: $(x^3+x^2+1):(x^2+1)=x+1$ Rest $-x$ \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Nullstelle:} Sei $f(X)=\sum \limits_{k \ge 0} a_kX^k \in \mathbb R[X]$. F\"ur $\lambda \in
 			\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k
 			\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tilde f: \mathbb R \to \mathbb R$ und
 			$\lambda \mapsto f(\lambda)$. \\
 			Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine Nullstelle von $f$.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Lemma:} F\"ur $f,g \in \mathbb R[X]$ und $\lambda \in \mathbb R$i ist $(f+g)(\lambda)=f(\lambda)+
@@ -945,14 +947,14 @@
 		$2 \Rightarrow 1:$ Sei $f \in K[X]$ mit $n=deg(f)>0$. Damit gilt $f(X)=a\cdot \prod \limits_{i=1}^n (X-\lambda_i)$.
 		Da $n>0$, hat $f$ z.B. die Nullstelle $\lambda_1$.}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition algebraisch abgeschlossen:} Ein Körper $K$ heißt algebraisch abgeschlossen, wenn er eine 
 			der äquivalenten Bedingungen erfüllt. 
-		\end{framed}
+		\end{mdframed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem (Fundamentalsatz der Algebra):} Der Körper $\mathbb C$ ist algebraisch abgeschlossen.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Wir werden das Theorem zwar benutzen, aber nicht beweisen.
 		
@@ -963,7 +965,7 @@
 		\{(a,b,c) | a,b,c \in \mathbb R\}$ eine geometrische Anschauung, nämlich den euklidischen Raum. Welche algebraische 
 		Struktur können wir hierauf sinnvollerweise definieren? \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition $K$-Vektorraum:} Ein $K$-Vektorraum (auch Vektorraum über $K$) ist ein Tripel $(V,+,\cdot)$ 
 			bestehend aus einer Menge $V$, einer Verknüpfung $+: V \times V \to V$, genannt Addition, und einer Abbildung 
 			$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten: \\
@@ -975,7 +977,7 @@
 				\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
 				\item $1\cdot x = x$
 			\end{compactitem}
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Wir haben sowohl im Körper $K$ als auch im Vektorraum $V$ eine Addition definiert, die wir mit 
 		dem selben Symbol $+$ notieren. Ebenso benutzen wir das Symbol $\cdot$ sowohl für die Multiplikation im Körper $K$ 
@@ -1028,12 +1030,12 @@
 			$X=\{1,2,...,n\}$ erhält man den Standardraum $K^n$.
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Untervektorraum:} Sei $V$ ein $K$-VR. Ein Untervektorraum (UVR) von $V$ ist eine nichtleere
 			Teilmenge $W \subset V$ mit: \\
 			(UV1): Für $x,y \in W$ ist $x+y\in W$. \\
 			(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Satz:} Sei $V$ ein $K$-VR und $W \subset V$. Genau dann ist $W$ ein UVR von $V$, wenn $W$ mit geeigneter
@@ -1086,17 +1088,17 @@
 		\textit{Beweis: \\ Sei $\mathcal V$ die Menge aller UVR von $X$, die $X$ enthalten. Sei $W=\bigcap \mathcal V$. Damit ist 
 		$W$ ein UVR von $V$ der $X$ enthält.}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Erzeugendensystem:} Ist $V$ ein $K$-VR und $X\subset V$, so nennt man den kleinsten UVR von 
 			$V$, der $X$ enthält den von $X$ erzeugten UVR von $V$ und bezeichnet diesen mit $<X>$. Eine Mengen $X\subset V$ 
 			mit $<X>=V$ heißt Erzeugendensystem von $V$. Der VR $V$ heißt endlich erzeugt, wenn er ein endliches Erzeugendensystem 
 			besitzt.
-		\end{framed}
+		\end{mdframed}
 		
 	\subsection{Linearkombination und lineare Abhängigkeit}
 		Sei $V$ ein $K$-VR.
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Linearkombination:}
 			\begin{compactitem}
 				\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine Linearkombination eines n-Tupels $(x_1,...,x_n)$ von 
@@ -1107,7 +1109,7 @@
 				\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $span_K(\mathcal F)$ 
 				bezeichnet.
 			\end{compactitem}
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkungen:}
 		\begin{compactitem}
@@ -1166,7 +1168,7 @@
 			$\mathbb C$ ist $span_{\mathbb C}(1)=\mathbb C\cdot 1=\mathbb C$
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition linear (un)abhängig:}
 			\begin{compactitem}
 				\item Sei $n\in \mathbb N_0$. Ein $n$-Tupel $(x_1,...,x_n)$ von Elementen von $V$ ist linear abhängig, wenn es 
@@ -1176,7 +1178,7 @@
 				verschiedene $i_1,...,i_n \in I$ gibt, für die $(x_{i_1},...,x_{i_n})$ linear abhängig ist. Andernfalls linear 
 				unabhängig.
 			\end{compactitem}
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkungen:}
 		\begin{compactitem}
@@ -1247,11 +1249,11 @@
 		\end{compactitem}
 		
 	\subsection{Basis und Dimension}
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Basis:} Eine Familie $(x_i)$ von Elementen von $V$ ist eine Basis von $V$, wenn gilt: \\
 			(B1): Die Familie ist linear unabhängig. \\
 			(B2): Die Familie erzeugt $V$, also $span_K(x_i) = V$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Kurz gesagt ist eine Basis ein linear unabhängiges Erzeugendensystem. \\
 		
@@ -1296,11 +1298,11 @@
 		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \in I} \lambda_i\cdot x_i 
 		\in span_K(x_i)$. Somit ist $B$ ein Erzeugendensystem.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem (Basisauswahlsatz):} Jedes endliche Erzeugendensystem von $V$ besitzt eine Basis  als 
 			Teilfamilie: Ist $(x_i)$ ein endliches Erzeugendensystem von $V$, so gibt es eine Teilmenge $J\subset I$, 
 			für die $(x_i)_{i\in J}$ eine Basis von $V$ ist. 
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: \\
 		Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J}\; 
 		\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
@@ -1323,11 +1325,11 @@
 			LAAG 2. Semester.
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{(Austausch-)Lemma:} Sei $B=(x_1,...,x_n)$  eine Basis von $V$. Sind $\lambda_1,...,\lambda_n \in K$ und 
 			$y=\sum\limits_{i=1}^n \lambda_i\cdot x_i$, so ist für jedes $j\in \{1,2,...,n\}$ mit $\lambda_j\neq 0$ auch 
 			$B'=(x_1,...,x_{j-1},y,x_{j+1},...,x_n)$ eine Basis von $V$.
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: \\
 		o.B.d.A. sei $j=1$, also $B'=(y,x_2,...,x_n)$. Wegen $\lambda_1\neq 0$ ist $x_1=\lambda_1^{-1}\cdot y - \sum
 		\limits_{i=2}^n \lambda_i\cdot x_i \in span_K(y,x_2,...,x_n)$ und somit ist $B'$ ein Erzeugendensystem. Sind 
@@ -1337,11 +1339,11 @@
 		\lambda_1=0$, $\mu_1\cdot \lambda_2 + \mu_2 =0$, ..., $\mu_1\cdot\lambda_n + \mu_n=0$. Wegen $\lambda_1\neq 0$ folgt 
 		$\mu_1=0$ und daraus $\mu_i=0$. Folglich ist $B'$ linear unabhängig.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem (Steinitz'scher Austauschsatz):} Sei $B=(x_1,...,x_n)$ eine Basis von $V$ und $\mathcal F=(y_1,...
 			,y_r)$ eine linear unabhängige Familie in $V$. Dann ist $r\le n$ und es gibt $i_1,...,i_{n-r} \in \{1,...,n\}$, für 
 			die $B'=(y_1,...,y_r,x_{i_1},...,x_{i_{n-r}})$ eine Basis von $V$ ist. 
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: Induktion nach $r$\\
 		Für $r=0$ ist nichts zu zeigen. \\
 		Sei nun $r\ge 1$ und gelte die Aussage für $(y_1,...,y_{r-1})$. Insbesondere ist $r-1\le n$ und es gibt $i_1,..,
@@ -1374,10 +1376,10 @@
 		\textit{Beweis: \\
 		Besitzt $V$ eine endliche Basis, so folgt deshalb die Behauptung aus dem vorherigen Korollar.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Dimension:} Ist $V$ endlich erzeugt, so ist die Dimension des VR $V$ die Mächtigkeit $dim_K(V)$ 
 			einer Basis von $V$. Anderfalls sagt man, dass $V$ unendliche Dimensionen hat und schreibt $dim_K(V)= \infty$. 
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}
 		\begin{compactitem}
@@ -1414,10 +1416,10 @@
 	\subsection{Summen von Vektorräumen}
 		Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Summe von VR:} Die Summe der $W_i$ ist der UVR $\sum\limits_{i\in I} W_i := span_K(\bigcup W_i)$. 
 			Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1+...+W_n$ für $\sum\limits_{i=1}^n W_i$. 
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Lemma:} Es ist $\sum\limits_{i\in I} W_i = \{\sum\limits_{i\in I} x_i \mid x_i\in W_i\text{, fast alle 
@@ -1429,11 +1431,11 @@
 		Für $x_i,x'_i \in W$, fast alle gleich 0 und $\lambda \in K$ ist $\sum x_i + \sum x'_i = \sum (x_i+x'_i)$, $\lambda
 		\cdot \sum x_i = \sum \lambda\cdot x_i$ $\to$ UVR}\\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition direkte Summe:} Ist jedes $x\in \sum W_i$ eindeutig als Summe von $x_i$ mit $x_i\in W_i$ 
 			darstellbar, so sagt man, dass $\sum W_i$ die direkte Summe der UVR $W_i$ ist und schreibt $\oplus W_i$ für 
 			$\sum W_i$. Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1\oplus W_2 \oplus ... \oplus W_n$ für $\oplus W_i$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiel:} Ist $(x_1,...,x_n)$ eine Basis von $V$, so ist $V=Kx_1\oplus ... \oplus Kx_n$. \\
 		$\newline$
@@ -1476,10 +1478,10 @@
 		\textbf{Bemerkung:} Ist $dim_K(V)<\infty$, so folgt aus $W_1\cap W_2=\{0\}$ also insbesondere $dim_K(W_1+W_2)=
 		dim_K(W_1)+dim_K(W_2)$. \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Theorem (Dimensionsformel):} Sei $dim_K(V)<\infty$. Für UVR $W_1,W_2$ von $V$ gilt: $dim_K(W_1+W_2) + 
 			dim_K(W_1 \cap W_2) = dim_K(W_1) + dim_K(W_2)$.
-		\end{framed}
+		\end{mdframed}
 		\textit{Beweis: \\
 		Da $dim_K(V)<\infty$ haben alle UVR von $V$ Basen. Sei also $B_0=(X_1,...,x_n)$ eine Basis von $W_1\cap W_2$. Nach 
 		dem Basisergänzungssatz können wir $B_0$ zu den Basen $B_1=(x_1,...,x_n,y_1,...,y_p)$ von $W_1$ und $B_2=(x_1,...,
@@ -1492,16 +1494,16 @@
 		Somit ist $B$ linear unabhängig. Wir haben gezeigt, dass $B$ eine Basis von $W_1+W_2$ ist. \\
 		$\Rightarrow dim_K(W_1)+dim_K(W_2)=|B_1|+|B_2|=(n+p)+(n-q)=(n+p+q)+n=|B|+|B_0|=dim_K(W_1+W_2)+dim_K(W_1\cap W_2)$.}\\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition (externes) Produkt:} Das (externe) Produkt einer Familie $(V_i)$ von $K$-VR ist der $K$-VR 
 			$\prod V_i$ bestehend aus dem kartesischen Produkt der $V_i$ mit komponentenweiser Addition und 
 			Skalarmultiplikation, $(x_i)+(x'_i) := (x_i+x'_i)$ und $\lambda(x_i) := (\lambda x_i).$
-		\end{framed}
+		\end{mdframed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition (externe) Summe:} Die (externe) Summe einer Familie $(V_i)$ von $K$-VR ist der UVR 
 			$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{; für fast alle }i\}$ des $K$-VR $\prod V_i$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Man prüft sofort nach, dass $\prod V_i$ ein $K$-VR ist und $\oplus V_i$ ein UVR davon ist. Für 
 		endliche Indexmengen ist $\prod V_i = \oplus V_i$, z.B. $K^n = \prod\limits_{i=1}^n K = \oplus K$. \\
@@ -1518,7 +1520,7 @@
 \section{Lineare Abbildungen}
 	Sei $K$ ein Körper.
 	\subsection{Matrizen}
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Matrix:} Seien $m,n \in \mathbb N_0$. Eine $m\times n$-Matrix über $K$ ist ein rechteckiges 
 			Schema:
 			\begin{center}
@@ -1534,7 +1536,7 @@
 			bezeichnet. Man nennt das Paar $(m,n)$ auch den Typ von $A$. Ist $m=n$, so spricht man von quadratischen 
 			Matrizen und schreibt $Mat_n(K)$. Zu einer Matrix $A=(a_{ij}) \in Mat_{m\times n}(K)$ definiert man die zu $A$ 
 			transponierte Matrix $A^t := (a_{ij})_{j,i} \in Mat_{n\times m}(K)$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}
 		\begin{compactitem}
@@ -1549,10 +1551,10 @@
 			Spaltenvektor $(a_1,...,a_n)^t$.
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Addition und Skalarmultiplikation:} Seien $A=(a_{ij})$ und $B=(b_{ij})$ desselben Typs und 
 			$\lambda \in K$. Man definiert auf $Mat_{m\times n}(K)$ eine koeffizientenweise Addition und Skalarmultiplikation.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Satz:} $(Mat_{m\times n},+,\cdot)$ ist ein $K$-VR der Dimension $dim_K(Mat_{m\times n})=n\cdot m$ mit 
@@ -1562,11 +1564,11 @@
 		Dies ist klar, weil wir $Mat_{m\times n}$ mit dem Standardraum $K^{mn}$ identifizieren können. Wir haben die 
 		Elemente nur als $m\times n$-Matrix statt als $mn$-Tupel geschrieben.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Matrizenmultiplikation:} Seien $m,n,r \in \mathbb N_0$. Sind $A=(a_{ij})\in Mat_{m\times n}(K)$, 
 			$B=(b_{jk})\in Mat_{n\times r}(K)$ so definieren wir $C=AB$ als die Matrix $C=(c_{ik})\in Mat_{m\times r}(K)$ mit 
 			$c_{ik}=\sum\limits_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiele:}
 		\begin{compactitem}
@@ -1616,11 +1618,11 @@
 			\item Für $n\ge 2$ ist $Mat_n(K)$ nicht kommutativ.
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition invertierbar:} Eine Matrix $A\in Mat_n(K)$ heißt invertierbar oder regulär, wenn sie im Ring 
 			$Mat_n(K)$ invertierbar ist, sonst singulär. Die Gruppe $GL_n(K)=Mat_n(K)^{\times}$ der invertierbaren $n\times n$
 			-Matrizen heißt allgemeine Gruppe.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiel:} Sei $n=2$. Zu $A=\begin{pmatrix}a & b\\c & d\\\end{pmatrix} \in Mat_2(K)$ definiert man $\tilde A=
 		\begin{pmatrix}d & -b\\-c & a\\\end{pmatrix}\in Mat_2(K)$. Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
@@ -1647,11 +1649,11 @@
 	\subsection{Homomorphismen von Gruppen}
 		Seien $G,H$ zwei multiplikativ geschriebene Gruppen. \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Gruppenhomomorphismus:} Eine Abbildung $f: G \to H$ ist ein Gruppenhomomorphismus, wenn gilt: \\
 			(GH): $f(xy)=f(x)\cdot f(y)$ \\
 			Die Menge der Homomorphismen $f:G\to H$ bezeichnet man mit $Hom(G,H)$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Ein Gruppenhomomorphismus ist also eine Abbildung, welche mit der Verknüpfung, also der Struktur 
 		der Gruppe, verträglich ist. Man beachte: für additiv geschriebe Gruppen lautet die Bedingung: $f(x+y)=f(x)+f(y)$. \\
@@ -1755,10 +1757,10 @@
 			(\mathbb R,\cdot)$.
 		\end{compactitem}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Kern:} Der Kern eines Gruppenhomomorphismus $f:G\to H$ ist $Ker(f):= f^{-1}(\{1\})=\{x\in G \mid
 			f(x)=1_H\}$.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Lemma:} Ist $f:G\to H$ ein Homomorphismus, so ist $N:=Ker(f)$ eine Untergruppe von $G$ mit $x\cdot y\cdot 
@@ -1777,15 +1779,15 @@
 		Rückrichtung: Sei $N=\{1_G\}$. Sind $x,y\in G$ mir $f(x)=f(y)$, so ist $1=(f(x))^{-1}\cdot f(y)=f(x^{-1}\cdot y)$, 
 		also $x^{-1}\cdot y\in N=\{1\}$ und somit $x=y$. Folglich ist $f$ injetiv.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Normalteiler:} Ist $N\le G$ mit $x^{-1}y\in N$ für alle $x\in G$ und $y\in N$, so nennt man $N$ 
 			einen Normalteiler von $G$ und schreibt $N\vartriangleleft G$.
-		\end{framed}
+		\end{mdframed}
 		
 	\subsection{Homomorphismen von Ringen}
 		Seien $R,S$ und $T$ Ringe.
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Ringhomomorphismus:} Eine Abbildung $f:R\to S$ ist ein Ringhomomorphismus, wenn für $x,y\in R$ 
 			gilt: \\
 			(RH1:) $f(x+y)=f(x)+f(y)$ \\
@@ -1794,7 +1796,7 @@
 			Mono-, Epi- oder Isomorphismus, wenn $f$ injektiv, surjektiv oder bijektiv ist. Gibt es einen Isomorphismus 
 			$f:R\to S$, so nennt man $R$ und $S$ isomorph und schreibt $R\cong S$. Die Elemente von $End(R):= Hom(R,R)$ nennt 
 			man Endomorphismen. Der Kern eines Ringhomorphismus $f:R\to S$ ist $Ker(f):= f^{-1}(\{0\})$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Ein Ringhomomorphismus $f:R\to S$ ist ein Gruppenhomomorphismus der abelschen Gruppen $(R,+)$ und 
 		$(S,+)$, der mit der Multiplikation verträglich ist, also eine strukturverträgliche Abbildung zwischen Ringen. \\
@@ -1844,10 +1846,10 @@
 		\textit{Beweis: \\
 		Die Aussage folgt aus dem entsprechenden Satz für Gruppen, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Ideal:} Ist $I$ eine Untergruppe von $(R,+)$ und $xa,ax\in I$ mit $x\in R$ und $a\in I$, so nennt 
 			man $I$ ein Ideal von $R$ und schreibt $I\vartriangleleft R$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Beispiel:} Der Kern des Ringhomomorphismus $\mathbb Z\to \mathbb Z\backslash n\mathbb Z$ mit $a\mapsto 
 		\overline a$ ist das Ideal $I=n\mathbb Z\vartriangleleft \mathbb Z$.
@@ -1855,7 +1857,7 @@
 	\subsection{Homomorphismen von Vektorräumen}
 		Seien $U,V,W$ drei $K$-VR. \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition $K$-linear:} Eine Abbildung $f: V \to W$ heißt $K$-linearer Homomorphismus von $K$-VR, wenn für 
 			alle $x,y\in V$ und $\lambda\in K$ gilt: \\
 			(L1): $f(x+y)=f(x)+f(y)$ \\
@@ -1865,7 +1867,7 @@
 			falls $f$ injektiv, surjektiv bzw. bijektiv ist. Einen Endomorphismus der auch ein Isomorphismus ist, nennt man 
 			Automorphismus von $V$ und bezeichnet die Menge der Automorphismen von $V$ mit $Aut_K(V)$. Der Kern einer linearen 
 			Abbildung $f: V\to W$ ist $Ker(f):= f^{-1}(\{0\})$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abelschen Gruppen $(V,+) 
 		\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen VR. \\
@@ -2022,11 +2024,11 @@
 			$K^n$ für $n=dim_K(V)$.
 		\end{framed}
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Koordinatensystem:} Die Abbildung $\Phi_B$ heißt Koordinatensystem zu $B$. Für $v\in V$ ist 
 			$(x_1,...,x_n)^t=\Phi^{-1}_B(v)\in K^n$ der Koordinatenvekor zu $v$ bezüglich $B$ und $(x_1,...,x_n)$ sind die 
 			Koordinaten von $v$ bezüglich $B$.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Satz:} Die Menge $Hom_K(V,W)$ ist eine UVR des $K$-VR $Abb(V,W)$.
@@ -2097,11 +2099,11 @@
 	\subsection{Koordinatendarstellung linearer Abbildungen}
 		Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition darstellende Matrix:} Sei $f\in Hom_K(V,W)$. Für $j=1,...,n$ schreiben wir $f(x_j)=\sum\limits_{
 			i=1}^m a_{ij}y_i$ mit eindeutig bestimmten $a_{ij}\in K$. Die Matrix $M_C^B(f)=(a_{ij})\in Mat_{m\times n}(K)$ 
 			heißt die darstellende Matrix von $f$ bezüglich der Basen $B$ und $C$.
-		\end{framed}
+		\end{mdframed}
 		
 		\begin{framed}
 			\textbf{Satz:} Sei $f\in Hom_K(V,W)$. Die darstellende Matrix $M_C^B(f)$ ist die eindeutig bestimmte Matrix $A\in 
@@ -2179,10 +2181,10 @@
 		\textit{Beweis: \\
 		Die vorherigen Korollare und das Lemma.} \\
 		
-		\begin{framed}
+		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Transformationsmatrix:} Sind $B$ und $B'$ Basen von $V$, so nennt man $T_{B'}^B:=M_{B'}^B(id_V)\in 
 			GL_n(K)$ die Transformationsmatrix des Basiswechsels von $B$ nach $B'$.
-		\end{framed}
+		\end{mdframed}
 		
 		\textbf{Bemerkung:} Nach dem letzen Satz ist $T_{B'}^B$, also die Matrix $A$, die $f_A=\Phi_B^{-1}\circ \Phi_B$ 
 		erfüllt. Ist $x=\Phi_B^{-1}(v)\in K^n$ der Koordinatenvektor von $v$ bezüglich $B$, so ist $T_{B'}^B\cdot 
