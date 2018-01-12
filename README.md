@@ -82,8 +82,8 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    3.5 Der Vektorraum der linearen Abbildungen ... fertig
    
-   3.6 Koordinatendarstellug linearer Abbildungen ... wird bearbeitet
+   3.6 Koordinatendarstellug linearer Abbildungen ... fertig
 
-   3.7 Quotientenräume ... noch nicht bearbeitet
+   3.7 Quotientenräume ... wird bearbeitet
    
    3.8 Rang ... noch nicht bearbeitet
