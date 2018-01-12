@@ -1,7 +1,7 @@
 # TUD_MATH_BA
-Script zu den Vorlesungen Analysis (Prof. Dr. Schuricht) und Lineare Algebra (Prof. Dr. Arno Fehm) der TU Dresden
+Skript zu den Vorlesungen Analysis (Prof. Dr. Schuricht) und Lineare Algebra (Prof. Dr. Arno Fehm) der TU Dresden
 
-Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
+Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
 
 ### Fortschritt Analysis (1. Semester, WS2017/18)
 1. Grundlagen der Mathematik ... fertig
