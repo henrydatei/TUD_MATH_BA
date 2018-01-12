@@ -19,6 +19,7 @@
 \usetikzlibrary{matrix}
 \usepackage{mdframed}
 \usepackage{xcolor}
+\newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -2204,6 +2205,98 @@
 			\textbf{Korollar:} Sind $B$ und $B'$ Basen von $V$ und $f\in End_K(V)$, so gilt $M_{B'}(f)=T_{B'}^B \cdot M_B(f)
 			\cdot (T_{B'}^B)^{-1}$.
 		\end{framed}
+		
+	\subsection{Quotientenräume}
+		Seien $V,W$ $K$-VR und $U\subset V$ ein UVR.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition affiner Unterraum:} Ein affiner Unterrraum von $V$ ist eine Teilmenge der Form $x+U:=\{x+u\mid u \in U\}\subset 
+			V$, wobei $U\subset V$ ein beliebiger UVR von $V$ ist und $x\in V$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $x,x'\in V$ sind äquivalent:
+			\begin{compactitem}
+				\item $x+U=x'+U$
+				\item $x'\in x+U$
+				\item $x'-x\in U$
+			\end{compactitem}
+		\end{framed}
 		\textit{Beweis: \\
-		später} \\
+		$1\Rightarrow 2$: $x'=x'+0\in x'+U=x+U$ \\
+		$2\Rightarrow 3$: $x'\in x+U \Rightarrow x'=x+u$ mit $u\in U\Rightarrow x'-x=u\in U$ \\
+		$3\Rightarrow 1$: Sei $u_0:=x'-x\in U$. Für $u\in U$ ist \\
+		$x+u=x'-u_0+u\in x'+U$, also $x'+U\subset x+U$, \\
+		$x'+u=x+u_0+u\in x+U$, also $x+U\subset x'+U$.}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $f\in Hom_K(V,W)$ und $U=Ker(f)$. Für $y\in f(V)$ ist die Faser $f^{-1}(y)=f^{-1}(\{y\})$ von $f$ der affine 
+			Unterraum $x_0+U$ für ein beliebiges $x_0\in f^{-1}(y)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$f^{-1}(y)=\{x\in V \mid f(x)=f(x_0)\}=\{x\in V \mid f(x-x_0)=0\} = \{x\in V \mid x-x_0\in U\}=x_0+U$} \\
+		$\newline$
+		
+		\textbf{Beispiel:} Sind $K=\mathbb R$, $V=\mathbb R^2$, $W=\mathbb R$ und $f(x,y)=x-2y$ so sind die Fasern von $f$ die Geraden $L\subset 
+		\mathbb R^2$ der Steigung $\frac 1 2$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $x_1,x'_1,x_2,x'_2\in V$ und $\lambda \in K$. Ist $x_1+U=x'_1+U$ und $x_2+U=x'_2+U$, so ist $(x_1+x_2)+U=
+			(x'_1+x'_2)+U$, und $\lambda x_1+U=\lambda x'_1+U$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $x_1+U=x'_1+U$, $x_2+U=x'_2+U\Rightarrow x'_1-x_1,x'_2-x_2\in U\Rightarrow (x'_1+x'_2)-(x_1+x_2)=(x'_1-x_1)-(x'_2-x_2)\in U
+			\Rightarrow (x_1+x_2)+U=(x'_1+x'_2)+U$
+			\item $x_1+U=x'_1+U\Rightarrow x'_1-x_1\in U\Rightarrow \lambda x'_1-\lambda x_1\in U\Rightarrow \lambda x'_1+U=\lambda x_1+U$
+		\end{compactitem}}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Quotientenraum:} Der Quotientenraum von $V$ modulo $U$ ist die Menge der affinen Unterräume \qraum{$V$}{$U$} 
+			$:=\{x+U\mid x\in V\}$ mit der Addition $(x_1+U)+(x_2+U)=(x_1+x_2)+U$ und der Multiplikation $\lambda(x+U)=\lambda x+U$. Dies ist 
+			wohldefiniert nach dem letzten Lemma. \\
+			Wir definieren die Abbildung $\pi_U:V\to$ \qraum{$V$}{$U$} durch $\pi_U(x)=x+U$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Der Quotientenraum \qraum{$V$}{$U$} ist ein $K$-VR und $\pi_U$ ein Epimorphismus mit Kern $U$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $($\qraum{$V$}{$U$}$,+)$ ist eine abelsche Gruppe: \\
+			Assoziativität un Kommutativität: überträgt sich von $(V,+)$ \\
+			neutrales Element: $0+U=U$ \\
+			inverses Element: $-(x+U)=(-x)+U$
+			\item $($\qraum{$V$}{$U$}$,+)$ ist $K$-VR: (V2) überträgt sich von $(V,+,\cdot)$
+			\item $\pi_U$ surjektiv: nach Definition von \qraum{$V$}{$U$}
+			\item $\pi_U$ linear: nach Definition von $+$ und $\cdot$ auf \qraum{$V$}{$U$}
+			\item $Ker(\pi_U)=\{x\in V \mid x+U=U\}=\{x\in V \mid x\in 0+U\}=U$
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Die UVR sind also genau die Kerne linearer Abbildungen! Ist $f:V\to W$ linear, so ist $Ker(f)\subset V$ ein UVR. 
+		Ist $U\subset V$ ein UVR, so ist $\pi_U:V\to$\qraum{$V$}{$U$} linear mit Kern $U$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Homomorphiesatz):} Sei $f\in Hom_K(V,W)$ mit $U\subset Ker(f)$. Dann gibt es genau eine lineare Abbildung $\tilde f:$
+			\qraum{$V$}{$U$}$\to W$ mit $f=\tilde f \circ \pi_U$, d.h. es kommutiert: \\
+			\begin{center}
+			\begin{tikzpicture}
+   				\node (V) at (0,0) {$V$};
+    			\node (W) at (3,0) {$W$};
+    			\node (R) at (1.5,-1.5) {\qraum{$V$}{$U$}};
+    			\draw[->, above] (V) to node {$f$} (W);
+    			\draw[->, below] (V)  to node {$\pi_U$} (R);
+    			\draw[->, right, dashed] (W)  to node {$\tilde f$} (R);
+			\end{tikzpicture}
+			\end{center}
+			Diese erfüllt $Ker(\tilde f)=$\qraum{$Ker(f)$}{U}$=\{x+U\mid x\in Ker(f)\}\subset$\qraum{$V$}{$U$}.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Ist $f=\tilde f\circ \pi_U$, so gilt $\tilde f(x+U)=\tilde f(\pi_U)=f(x)\; (*)$, somit ist $\tilde f$ dann eindeutig bestimmt. Umgekehrt 
+		wird durch $(*)$ eine wohldefinierte Abbildung $\tilde f$ erklärt: Sind $x,x'\in V$ mit $x+U=x'+U$, so ist $x-x'\in U\subset Ker(f)$ und 
+		deshalb $f(x)=f(x')$. \\
+		Linearität: Für $x,y\in V$ und $\lambda\in K$ ist $\tilde f(\lambda(x+U)+\mu(y+U))=\tilde f(\lambda\pi_U(x)+\mu\pi_U(y))=\lambda\tilde f
+		(x+U)+\mu\tilde f(y+U)$. \\
+		Kern: $\tilde f(x+U)=0\iff f(x)=0 \iff x\in Ker(f)$.}
 \end{document}
