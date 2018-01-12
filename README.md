@@ -1,9 +1,9 @@
 # TUD_MATH_BA
-Script zu den Vorlesungen ANAG und LAAG in Latex
+Script zu den Vorlesungen Analysis (Prof. Dr. Schuricht) und Lineare Algebra (Prof. Dr. Arno Fehm) der TU Dresden
 
 Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 
-### Fortschritt Analysis
+### Fortschritt Analysis (1. Semester, WS2017/18)
 1. Grundlagen der Mathematik ... fertig
 
    1.1 Grundbegriffe der Mengenlehre und Logik ... fertig
@@ -45,7 +45,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
    
    4.2 Stetigkeit ... noch nicht bearbeitet
   
-### Fortschritt Lineare Algebra
+### Fortschritt Lineare Algebra (1. Semester, WS2017/18)
 1. Grundlagen der Linearen Algebra ... fertig
 
    1.1 Logik und Mengen ... fertig
