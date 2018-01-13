@@ -2299,4 +2299,127 @@
 		Linearität: Für $x,y\in V$ und $\lambda\in K$ ist $\tilde f(\lambda(x+U)+\mu(y+U))=\tilde f(\lambda\pi_U(x)+\mu\pi_U(y))=\lambda\tilde f
 		(x+U)+\mu\tilde f(y+U)$. \\
 		Kern: $\tilde f(x+U)=0\iff f(x)=0 \iff x\in Ker(f)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $f\in Hom_K(V,W)$ ist $Image(f)\cong $\qraum{$V$}{$Ker(f)$}. Insbesondere gilt: Ist $f$ ein Epimorphismus, so 
+			ist $W\cong $\qraum{$V$}{$Ker(f)$}.
+		\end{framed}
+		\textit{Beweis: \\
+		Betrachte $\tilde f:$\qraum{$V$}{$Ker(f)$}$\to W$. Nach dem Homomorphiesatz ist $Ker(\tilde f)=$\qraum{$Ker(f)$}{$Ker(f)$}$=\{Ker(f)\}$, 
+		also $\tilde f$ injektiv. Nach Definition ist $\tilde f($\qraum{$V$}{$Ker(f)$}$)=f(V)=Image(f)$. Somit ist $\tilde f:$\qraum{$V$}
+		{$Ker(f)$}$\to Image(f)$ ein Isomorphismus.}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $U,U'$ UVR von $V$. Genau dann ist $V=U\oplus U'$, wenn $\pi_U|_{U'}: U'\to$\qraum{$V$}{$U$} ein Isomorphismus 
+			ist.
+		\end{framed}
+		\textit{Beweis: \\
+		$\pi_U|_{U'}$ injektiv $\iff Ker(\pi_U|_{U'})=\{0\}\iff Ker(\pi_U)\cap U'=\{0\}\iff U\cap U'=\{0\}$ \\
+		$\pi_U|_{U'}$ surjektiv $\iff \forall x\in V \exists u'\in U: \pi_U(u')=\pi_U(x)\iff u'-x\in Ker(\pi_U)=U\iff x=u+u'\iff V=U+U'$}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$, so ist $dim_K($\qraum{$V$}{$U$}$)=dim_K(V)-dim_K(U)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es exisitert ein lineares Komplement $U'$ zu $U$ in $V$ (d.h. $V=U\oplus U'$) und $dim_K(U')=dim_K(V)-dim_K(U)$. Es gilt \qraum{$V$}
+		{$U$}=$U'$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$ und $f\in Hom_K(V,W)$, so ist $dim_K(V)=dim_K(Ker(f))+dim_K(Image(f))$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und letztes Korollar}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$ und $f\in End_K(V)$, so sind äquivalent:
+			\begin{compactitem}
+				\item $f\in Aut_K(V)$
+				\item $f$ ist injektiv
+				\item $f$ ist surjektiv
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $2\iff dim_K(Ker(f))=0$
+			\item $3\iff dim_K(Image(f))=dim_K(V)$
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Analog zu dem Quotientenräumen kann man definieren:
+		\begin{compactitem}
+			\item Quotientengruppen \qraum{$G$}{$N$}, wobei $N$ Normalteiler von $G$ ist
+			\item Quotientenringe \qraum{$R$}{$I$}, wobei $I$ ein Ideal von $R$ ist (z.B. \qraum{$\mathbb Z$}{$n\mathbb Z$})
+		\end{compactitem}
+		Diese werden in der Vorlesung \textit{Algebra und Zahlentheorie} behandelt.
+		
+	\subsection{Rang}
+		Seien $V,W$ zwei endlichdimensionale $K$-VR und $f\in Hom_K(V,W)$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Rang:} Der Rang von $f$ ist $rk(f)=dim_K(Image(f))$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Es ist $rk(f)=dim_K(V)-dim_K(Ker(f))$. Also ist $f$ genau dann injektiv, wenn $rk(f)=dim_K(V)$. Auch sehen wir, 
+		dass $rk(f)\le min\{dim_K(V),dim_K(W)\}$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $U$ ein weiterer endlichdimensionaler $K$-VR und $g\in Hom_K(U,V)$.
+			\begin{compactitem}
+				\item Ist $g$ surjektiv, dann ist $rk(f\circ g)=rk(f)$.
+				\item Ist $f$ injektiv, dann ist $rk(f\circ g)=rk(g)$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		Dies folgt sofort aus $Image(f\circ g)=f(Image(g))$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $r\in \mathbb N_0$. Genau dann ist $rk(f)=r$, wenn es $B$ von $V$ und $C$ vo $W$ gibt, für die $M_C^B(f)=E_r=
+			\sum\limits_{i=1}^r E_{ii}$. \\ $E_r=$
+			$\begin{pmatrix}
+				1 & \quad & \quad & \quad & \quad & \quad\\
+				\quad & \ddots & \quad & \quad & \quad & \quad\\
+				\quad & \quad & 1 & \quad & \quad & \quad\\
+				\quad & \quad & \quad & 0 & \quad & \quad\\
+				\quad & \quad & \quad & \quad & \ddots & \quad\\
+				\quad & \quad & \quad & \quad & \quad & 0\\
+			\end{pmatrix}$
+		\end{framed}
+		\textit{Beweis: \\
+		Rückrichtung: Ist $M_C^B(f)=E_r$ und $C=(y_1,...,y_n)$, so ist $Image(f)=span_K(y_1,...,y_r)$, also $rk(f)=r$. \\
+		Hinrichtung: Sei $r=rk(f)$. Setze $U=KJer(f)$ und $W=Image(f)$. Wähle Basis $(y_1,...,y_r)$ und ergänze diese zu einer Basis $C$ von 
+		$W$. Wähle für $i=1,...,r$ ein $x_i\in f^{-1}(y_i)$. Dann ist $(x_1,...,x_r)$ linear unabhängig und mit $U'=span_K(x_1,...,x_r)$ ist
+		$f|_{U'}:U'\to W_0$ ein Isomorphismus. Insbesondere ist $U\cap U'=\{0\}$ und es folgt $V=U\oplus U'$. Ist also $(x_{r+1},...,x_n)$ 
+		eine Basis von $U$, so ist $B=(x_1,...,x_n)$ eine Basis von $V$. Diese Basis erfüllt $M_C^B(f)=E_r$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Rang einer Matrix:} Der Rang einer Matrix $A\in Mat_{m\times n}(K)$ ist $rk(A)=rk(f_A)$, wobei $f_A:K^n\to K^m$ 
+			die durch $A$ bschriebene lineare Abbildung ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Sei $A=(a_{ij})\in Mat_{m\times n}(K)$. Man fasst die Spalten $a_j=(a_{1j},...,a_{mj})^t$ als Elemente des $K^m$ auf 
+		und definiert den Spaltenraum $SR(A)=span_K(a_1,...,a_n)\subset K^m$. Entsprechend definiert man den Zeilenraum $ZR(A)=span_K(
+		\tilde a_1^t,..,\tilde a_m^t)\subset K^n$. Es ist $Image(f_A)=SR(A)$ und folglich $rk(A)=dim_K(SR(A))$. Außerdem ist $SR(A^t)=ZR(A)$ 
+		und deshalb $rk(A^t)=dim_K(ZR(A))$. Man nennt $rk(A)$ deshalb auch den Spaltenrang von $A$ und $rk(A^t)$ den Zeilenrang von $A$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $A\in Mat_{m\times n}(K)$, $S\in GL_m(K)$, $T\in Gl_n(K)$, so ist $rk(SAT)=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$rk(SAT)=rk(f_{SAT})=rk(f_S\circ f_A\circ f_T)=rk(f_A)=rk(A)$, da $f_S$ und $f_T$ bijektiv sind.}
+		
+		\begin{framed}
+			\textbf{Satz:} Für jedes $A\in Mat_{m\times n}(K)$ gibt es $S\in Gl_m(K)$ und $T\in GL_n(K)$ mit $SAT=E_r$, wobei $r=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es gibt Basen $B$ von $K^n$ und $C$ von $K^m$ mit $M_C^B(f_A)=E_r$. Mit den Standardbasen $E_n$ bzw. $E_m$ gilt: $M_C^B(f_A)=T_C^{E_m}
+		\cdot M_{E_m}^{E_n}(f_A)\cdot (T_B^{E_n})^{-1}=SAT$ mit $S=T_C^{E_m}\in GL_m(K)$ und $T=(T_B^{E_n})^{-1}\in GL_n(K)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Seien $A,B\in Mat_{m\times n}(K)$. Genau dann gibt es $S\in GL_m(K)$ und $T\in GL_n(K)$ mit $B=SAT$, wenn 
+			$rk(A)=rk(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: letztes Lemma \\
+		Rückrichtung: $r=rk(A)=rk(B)\Rightarrow$ es gibt $S_1,S_2\in GL_m(K)$ und $T_1,T_2\in Gl_n(K)$ mit $S_1AT_1=E_r=S_2BT_2 \Rightarrow 
+		B=S_2^{-1}\cdot SAT_1\cdot T_2^{-1}$.}
 \end{document}
