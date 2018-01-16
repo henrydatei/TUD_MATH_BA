@@ -44,6 +44,8 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    4.1 Funktionen ... noch nicht bearbeitet
    
    4.2 Stetigkeit ... noch nicht bearbeitet
+   
+   4.3 Anwendungen ... noch nicht bearbeitet
   
 ### Fortschritt Lineare Algebra (1. Semester, WS2017/18)
 1. Grundlagen der Linearen Algebra ... fertig
