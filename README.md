@@ -91,3 +91,7 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    3.8 Rang ... wird bearbeitet
    
    3.9 Lineare Gleichungssysteme ... noch nicht bearbeitet
+   
+4. Determinanten ... noch nicht bearbeitet
+
+   4.1 Das Vorzeichen einer Permutation ... noch nicht bearbeitet
