@@ -2422,4 +2422,111 @@
 		Hinrichtung: letztes Lemma \\
 		Rückrichtung: $r=rk(A)=rk(B)\Rightarrow$ es gibt $S_1,S_2\in GL_m(K)$ und $T_1,T_2\in Gl_n(K)$ mit $S_1AT_1=E_r=S_2BT_2 \Rightarrow 
 		B=S_2^{-1}\cdot SAT_1\cdot T_2^{-1}$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $A\in Mat_{m\times n}(K)$ ist $rk(A)=rk(A^t)$, anders gesagt: $dim_K(SR(A))=dim_K(ZR(A))$.
+		\end{framed}
+		\textit{Beweis: \\
+		Mit dem letzten Satz ergibt sich: $SAT=E_r$ mit $r=rk(A)$, $S\in Gl_m(K)$ und $T\in Gl_n(K)$. Aus $E_r^t=(SAT)^t=T^tA^tS^t$, folgt, 
+		dass $rk(A^t)=rk(E_r^t)=rk(A)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $A\in Mat_n(K)$ sind äquivalent:
+			\begin{compactitem}
+				\item $A\in GL_n(K)$, d.h. es gibt $S\in GL_n(K)$ mit $SA=AS=1_n$
+				\item $rk(A)=n$
+				\item Die Spalten von $A$ sind linear unabhängig.
+				\item Die Zeilen von $A$ sind linear unabhängig.
+				\item Es gibt $S\in GL_n(K)$ mit $SA=1_n$.
+				\item Es gibt $T\in GL_n(K)$ mit $AT=1_n$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1\iff 2$: $A\in GL_n(K)\iff f_A\in Aut_K(K^n)\iff f_A$ surjektiv $\iff rk(f_A)=n\iff rk(A)=n$ \\
+		$4\iff 2 \iff 3$ \\
+		$1\Rightarrow 5,6 \Rightarrow 2$}
+		
+	\subsection{Lineare Gleichungssysteme}
+		Sei $A\in Mat_{m\times n}(K)$ und $b\in K^m$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Lineares Gleichungssystem:} Unter einem Linearen Gleichungssystem verstehen wir eine Gleichung der Form $Ax=b$. 
+			Diese heißt homogen, wenn $b=0$, sonst inhomogen und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein Lösungsraum.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Ist $A=(a_{ij})$, $b=(b_1,...,b_m)^t$, so schreibt man das Lineare Gleichungssystem $Ax=b$ auch
+		\begin{center}$\begin{vmatrix}
+			a_{11}x_1 + ... + a_{1n}x_n & = & b_1\\
+			\vdots & \vdots & \vdots\\
+			a_{m1}x_1 + ... + a_{mn}x_n & = & b_m\\
+		\end{vmatrix}$\end{center}
+		$\newline$
+		
+		\textbf{Bemerkung:} Das homogene System $Ax=0$ hat als Lösungsraum den UVR $L(A,0)=Ker(f_A)$ der Dimension $dim_K(L(A,0))=n-rk(A)$. Das 
+		inhomogene System hat entweder $L(A,b)=\emptyset$ oder der Lösungsraum ist der affine Unterraum $L(A,b)=f^{-1}(b)=x_0+L(A,0)$, wobei 
+		$x_0\in L(A,b)$ beliebig. Man erhält so alle Lösungen des inhomogenen Systems, wenn man eine Lösung und die Lösungen des homogenen 
+		Systems kennt.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Zeilenstufenform:} Die Matrix $A=(a_{ij})$ hat Zeilenstufenform, wenn es ganze Zahlen $0\le r \le m$ und $1\le 
+			k_1<...<k_r\le n$ gibt mit:
+			\begin{compactitem}
+				\item für $1\le i \le r$ und $1\le j < k_i$ ist $a_{ij}=0$
+				\item für $1\le i \le r$ ist $a_{ik_{i}}\neq 0$ (sogenannte Pivotelemente)
+				\item für $r<i\le m$ und $1\le j\le n$ ist $a_{ij}=0$
+			\end{compactitem}
+			\begin{center}
+				$\begin{pmatrix}
+					0 & ... & 0 & a_{1k_{1}} & * & ... & ... & *\\
+					0 & ... & ... & 0 & a_{2k_{2}} & * & ... & *\\
+					\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+					0 & ... & ... & ... & ... & ... & ... & a_{rk_{r}}\\
+					0 & ... & ... & ... & ... & ... & ... & 0\\
+					\vdots & \; & \; & \; & \; & \; & \; & \vdots\\
+					0 & ... & ... & ... & ... & ... & ... & 0\\
+				\end{pmatrix}$
+			\end{center}
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $A$ in Zeilenstufenform. Dann ist $rk(A)=r$.
+		\end{framed}
+		\textit{Beweis: \\
+		Wegen $rk(A)=rk(A^t)=dim_K(ZR)$ genügt es zu zeigen, dass die ersten $r$ Zeilen $a_1,...,a_r$ linear unabhängig sind. Ist $\sum
+		\limits_{i=1}^r \lambda a_i=0$, so ist insbesondere $0=\sum\limits_{i=1}^r \lambda_i a_{ik_{i}}=\lambda_1 a_{1k_{1}}$, also $\lambda_1
+		=0$, und dann immer so weiter.}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $A$ in Zeilenstufenform.
+			\begin{compactitem}
+				\item Ist $b_i\neq 0$ für ein $r<i\le m$, so ist $L(A,b)=\emptyset$.
+				\item Ist $b_i=0$ für alle $r<i\le m$, so erhält man alle $x\in L(A,b)$, indem man erst $x_j\in K$ für $j\in \{1,..,n\}
+				\backslash \{k_1,...,k_r\}$ beliebig wählt und dann für $i=r,r-1,...,1$ rekursiv $x_{k_{i}}=a_{1k_{i}}^{-1}\cdot (b_i-\sum
+				\limits_{j=k_i+1}^n a_{ij}\cdot x_j)\quad (*)$ setzt.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis:
+		\begin{compactitem}
+			\item Klar.
+			\item Sicher erhält man auf diese Weise Lösungen $x\in L(A,b)$. Umgekehrt muss jede solche Lösung $(*)$ erfüllen, man erhält auf 
+			diese Weise also alle.
+		\end{compactitem}}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Elementarmatrizen:} Für $i,j\in \{1,...,m\}$, $\lambda \in K^{\times}$ und $\mu\in K$ definieren wir 
+			$m\times m$-Matrizen:
+			\begin{compactitem}
+				\item $S_i(\lambda):=1_m + (\lambda-1)E_{ii}$
+				\item $Q_{ij}(\mu):= 1_m + \mu E_{ij}$
+				\item $P_{ij}:= 1_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Multiplikation einer dieser Matrizen von links an die Matrix $A$ hat folgende Wirkung:
+		\begin{compactitem}
+			\item $S_i(\lambda)\cdot A$: Multiplikation der $i$-ten Zeile mit $\lambda$
+			\item $Q_{ij}(\mu)\cdot A$: Addition des $\mu$-fachen der $j$-ten Zeile zur $i$-ten Zeile
+			\item $P_{ij}$: Vertauschung von $i$-ter und $j$-ter Zeile
+		\end{compactitem}
+		Man spricht dann von sogenannten elementaren Zeilenumformungen der Matrix $A$ von Typ I, II oder III.
 \end{document}
