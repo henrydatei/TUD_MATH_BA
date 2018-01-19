@@ -88,9 +88,9 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
 
    3.7 Quotientenräume ... fertig
    
-   3.8 Rang ... wird bearbeitet
+   3.8 Rang ... fertig
    
-   3.9 Lineare Gleichungssysteme ... noch nicht bearbeitet
+   3.9 Lineare Gleichungssysteme ... wird bearbeitet
    
 4. Determinanten ... noch nicht bearbeitet
 
