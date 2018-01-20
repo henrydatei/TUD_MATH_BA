@@ -72,7 +72,7 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    
    2.4 Summe von Vektorräumen ... fertig
    
-3. Lineare Abbildungen ... wird bearbeitet
+3. Lineare Abbildungen ... fertig
 
    3.1 Matrizen ... fertig
    
@@ -90,8 +90,8 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    
    3.8 Rang ... fertig
    
-   3.9 Lineare Gleichungssysteme ... wird bearbeitet
+   3.9 Lineare Gleichungssysteme ... fertig
    
-4. Determinanten ... noch nicht bearbeitet
+4. Determinanten ... wid bearbeitet
 
-   4.1 Das Vorzeichen einer Permutation ... noch nicht bearbeitet
+   4.1 Das Vorzeichen einer Permutation ... wird bearbeitet/up-to-date
