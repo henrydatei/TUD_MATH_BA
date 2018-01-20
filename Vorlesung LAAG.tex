@@ -20,6 +20,7 @@
 \usepackage{mdframed}
 \usepackage{xcolor}
 \newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
+\usepackage{color}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -27,6 +28,7 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 \renewcommand*{\arraystretch}{1.4}
 
 \raggedright 
@@ -2529,4 +2531,87 @@
 			\item $P_{ij}$: Vertauschung von $i$-ter und $j$-ter Zeile
 		\end{compactitem}
 		Man spricht dann von sogenannten elementaren Zeilenumformungen der Matrix $A$ von Typ I, II oder III.
+		
+		\begin{framed}
+			\textbf{Lemma:} Es sind $S_i(\lambda),Q_{ij}(\mu),P_{ij}\in Gl_m(K)$. Dann ist $S_i(\lambda)^{-1}=S_i(\lambda^{-1}), Q_{ij}(\mu)
+			^{-1}=Q_{ij}(-\mu),P_{ij}^{-1}=P_{ij}$. Insbesondere gilt: Ist $E$ eine der Elementarmatrizen, so ist $ZR(EA)=ZR(A)$ und $L(EA,0)=
+			L(A,0)$. Weiterhin ist $rk(EA)=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Inverse nachprüfen. Da $E\in Gl_m(K)$ sind $f_E,f_{E^t}\in Aut_K(K^m)$, also $ZR(EA)=SR((EA)^t)=Image(f_{A^tE^t})=Image(f_{A^t}\circ
+		f_{E^t})=Image(f_{A^t})=ZR(A)$ und $L(EA,0)=Ker(f_{EA})=Ker(f_E\circ f_A)=Ker(f_A)=L(A,0)$.}
+		$\newline$
+		
+		\textbf{Bemerkung:} Anders gesagt: Elementare Zeilenumformungen verändern den Lösungsraum eines homogenen linearen Gleichungssystems 
+		nicht.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Eliminierungsverfahren nach Gauß):} Zu jeder Matrix $A\in Mat_{m\times n}(K)$ gibt es $l\in \mathbb N_0$ und 
+			Elementarmatrizen $E_1,...,E_l$ vom Typ II und III für die $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform ist. 
+		\end{mdframed}
+		\textit{Beweis: \\
+		Seien $a_1,...,a_n$ die Spalten von $A$. \\
+		Ist $A=0$ so ist nichts zu tun. \\
+		Sei nun $A\neq 0$ und sei $k_1$ minimal mit $a_{k_1}\neq 0$. Es gibt also ein $i$ mit $a_{ik_1}\neq 0$. Durch Vertauschen der ersten 
+		und der $i$-ten Zeile erreichen wir, dass $a_{1k_1}=0$, d.h. wir multiplizieren $A$ mit $E_1=P_{1i}$. Nun addieren wir für $i=2,..,m$ 
+		ein geeignetes Vielfaches der ersten Zeile zur $i$-ten Zeile, um $a_{ik_1}=0$, d.h. wir multiplizieren $A$ mit $E_i=Q_{i1}(\mu_i)$ für 
+		$\mu_i=\frac{a_{ik_1}}{a_{1k_1}}$. Nach diesen Umformungen haben wir eine Matrix der Form: \\
+		\begin{center}$\begin{pmatrix}
+			0 & ... & 0 & a_{1k_1} & * & ... & *\\
+			0 & ... & ... & 0 & \textcolor{red}{*} & \textcolor{red}{...} & \textcolor{red}{*}\\
+			\vdots & \vdots & \vdots & \vdots & \textcolor{red}{\vdots} & \textcolor{red}{\vdots} & \textcolor{red}{\vdots}\\
+			0 & ... & ... & 0 & \textcolor{red}{*} & \textcolor{red}{...} & \textcolor{red}{*}\\
+		\end{pmatrix}$\end{center}
+		und können nun mit dem \textcolor{red}{Rest der Matrix $A=:A'$} von vorne beginnen. Die nun folgenden Zeilenumformungen werden die 
+		erste Zeile und die ersten $k_1$ Spalten nicht mehr ändern, und weil $A'$ weniger Zeilen und Spalten als $A$ hat, bricht das Verfahren 
+		nach endlich vielen Schritten ab.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Zu jeder Matrix $A$ gibt es eine invertierbare Matrix $S\in GL_n(K)$ für die $SA$ in Zeilenstufenform ist.
+		\end{framed}
+		\textit{Beweis: \\
+		folgt direkt aus dem Eliminierungsverfahren mit $S=E_l\cdot ... \cdot E_1$}
+		$\newline$
+		
+		\textbf{Bemerkung:} Der Beweis für das Eliminierungsverfahren liefert ein Verfahren, die Elementarmatrizen $E_1,...,E_l$ zu finden. 
+		Damit erhält man ein Verfahren ein lineares Gleichungssystem zu lösen. Setzt man $S=E_l\cdot ... \cdot E_1$, $A'=SA$ und $b'=Sb$, so 
+		ist $L(A,b)=L(A',b')$: $Ax=b\Rightarrow SAx=Sb$ bzw. $A'x=b' \Rightarrow S^{-1}A'x=S^{-1}b'$. \\
+		Das Gleichungssystem kann dann gelöst werden. Praktisch führt man die elementaren Zeilenumformungen an $A$ parallel dazu auch an $b$ 
+		durch. \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Es gibt von diesem Verfahren verschiedene Varianten und weitere Anwendungen: So kann man z.B. die Invertierbarkeit 
+		einer Matrix $A\in Mat_n(K)$ prüfen und ggf. das Inverse bestimmen: Ist $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform, so ist $A$ 
+		genau dann invertierbar, wenn alle Zeilen von Null verschieden sind. Ist dies der Fall, so ist $r=n$ und $k_i=i$ für alle $i$, 
+		und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=1_n$. Dann ist 
+		$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$. Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
+		auch an $1_n$ ausführt.
+		
+		\begin{framed}
+			\textbf{Korollar:} Jedes $A\in GL_m(K)$ ist ein Produkt von Elementarmatrizen.
+		\end{framed}
+		\textit{Beweis: \\
+		$A^{-1}=S'=E_s\cdot ... \cdot E_1 \Rightarrow A=(E_s\cdot ... \cdot E_1)^{-1}=E_1^{-1}\cdot ... \cdot E_s^{-1}$}
+		
+\section{Determinanten}
+	In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselement.
+	
+	\subsection{Das Vorzeichen einer Permutation}
+		\textbf{Bemerkung:} Wir erinnern uns an die symmetrische Gruppe $S_n$, die aus den Permutationen der Menge $X=\{1,..,n\}$ (also den 
+		bijektiven Abbildungen $X\to X$) mit der Kompostion als Verknüpfung. Es ist $|S_n|=n!$ und $S_2\cong \mathbb Z\backslash 2 \mathbb Z$, 
+		doch für $n\ge 3$ ist $S_n$ nicht abelsch. Wir schreiben $\sigma_1\sigma_2$ für $\sigma_1\circ \sigma_2$ und notieren $\sigma\in S_n$ 
+		auch als \\
+		\begin{center}$\sigma=\begin{pmatrix}
+			1 & 2 & ... & n\\
+			\sigma(1) & \sigma(2) & ... & \sigma(n)\\
+		\end{pmatrix}$.\end{center}
+		$\newline$
+		
+		\textbf{Beispiel:} Für $i,j\in \{1,...,n\}$ mit $i\neq j$ bezeichne $\tau_{ij}\in S_n$ die Transposition 
+		\begin{equation*}
+			\tau_{ij}(k)=
+			\begin{cases}
+				j\quad \text{falls }$k=i$ \\ i\quad \text{falls }$k=j$ \\ k\quad \text{sonst}
+			\end{cases}
+		\end{equation*} Offenbar gilt $\tau_{ij}^2=id$, also $\tau_{ij}^{-1}=\tau_{ij}=\tau_{ji}$.
 \end{document}
