@@ -92,6 +92,6 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    
    3.9 Lineare Gleichungssysteme ... fertig
    
-4. Determinanten ... wid bearbeitet
+4. Determinanten ... wird bearbeitet
 
    4.1 Das Vorzeichen einer Permutation ... wird bearbeitet/up-to-date
