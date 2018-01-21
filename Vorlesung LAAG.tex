@@ -273,6 +273,10 @@
 				\textbf{Satz:} Die Abbildung von Kompositionen ist assotiativ, d.h. es gilt: $h \circ (g 
 				\circ f) = (h \circ g)\circ f$.
 			\end{framed}
+			\textit{Beweis: \\
+			Sowohl $h\circ (g\circ f)$ als auch $(h\circ g)\circ f$ haben die Definitionsmenge $X$ und die Zielmenge 
+			$W$ und für jedes $x\in X$ ist $(h\circ (g\circ f))(x)=h((g\circ f)(x))=h(g(f(x)))=(h\circ g)(f(x)) = 
+			((h\circ g)\circ f)(x)$.}
 			
 			\begin{mdframed}[backgroundcolor=blue!20]
 				\textbf{Definition Umkehrabbildung:} Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
@@ -284,6 +288,11 @@
 				\textbf{Satz:} Ist die Abbildung $f: X \to Y$ bijektiv, so gilt $f^{-1} \circ f = id_x$ und
 				$f \circ f^{-1} = id_y$.
 			\end{framed}
+			\textit{Beweis: \\
+			Es ist $f^{-1}\in Abb(X,X)$ und $f\circ f^{-1}\in Abb(Y,Y)$. Für $y\in Y$ ist $(f\circ f^{-1})(x)=
+			f(f^{-1}(y))=y=id_Y$. Für $x\in X$ ist deshalb $f((f^{-1}\circ f)(x))=(f\circ (f^{-1}\circ f))(x)=
+			((f\circ f^{-1})\circ f)(x)=(id_Y \circ f)(x)=f(x)$. Da $f$ injektiv, folgt $f^{-1}\circ f=id_X$.}
+			$\newline$
 			
 			\textbf{Bemerkung:} \\
 			Achtung, wir verwenden hier das selbe Symbol $f^{-1}$ f\"ur zwei verschiedene Dinge: Die Abbildung
@@ -343,6 +352,9 @@
 			\textbf{Satz (Eindeutigkeit des neutralen Elements):} Ein Monoid $(G,*)$ hat genau ein neutrales
 			Element. 
 		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition besitzt $(G,*)$ mindestens ein neutrales Element. Seien $e_1,e_2\in G$ neutrale Elemente. Dann 
+		ist $e_1=e_1 * e_2=e_2$. Damit besitzt $(G,*)$ höchstens ein neutrales Element, also genau ein neutrales Element.}
 		
 		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition abelsche Gruppe:} Eine Gruppe ist ein Monoid $(G,*)$ mit dem neutralen Element
@@ -367,6 +379,10 @@
 			\textbf{Satz (Eindeutigkeit des Inversen):} Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$
 			genau ein inverses Element.
 		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition hat jedes $x\in G$ mindestens ein Inverses. Seien $x',x''\in G$ inverse Elemente zu $x$. Dann ist 
+		$x'=x'*e=x'*(x*x'')=(x'*x)*x''=e*x''=x''$. Es gibt also genau ein Inverses zu $x$.}
+		$\newline$
 		
 		\textbf{Beispiele:} \\
 		\begin{compactitem}
@@ -396,6 +412,10 @@
 			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe. F\"ur $x,y \in G$ gelten $(x^{-1})^{-1}=x$ und
 			$(xy)^{-1}=x^{-1} \cdot x^{-1}$.
 		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition erfüllt $z=x$ die Identitäten $x^{-1}z=zx^{-1}=1$ und somit ist $(x^{-1})^{-1}=z=x$. Ebenso ist 
+		$(y^{-1}x^{-1})\cdot (xy)=y^{-1}(x^{-1}x)y=1$ und $(xy)\cdot (x^{-1}y^{-1})=x(yy^{-1})x^{-1}=1$, also $y^{-1}
+		x^{-1}=(xy)^{-1}$.}
 		
 		\begin{framed}
 			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe. F\"ur $a,b \in G$ haben die Gleichungen $ax=b$ und
@@ -403,7 +423,6 @@
 			Insbesondere gelten die folgenden K\"urzungsregeln: $ax=ay \Rightarrow x=y$ und $xa=ya 
 			\Rightarrow x=y$.
 		\end{framed}
-		
 		\textit{Beweis: \\
 		Es ist $a \cdot a^{-1} \cdot b = 1b=b$, also ist $x=a^{-1} \cdot b$ eine L\"osung. Ist umgekehrt
 		$ax=b$ mit $x \in G$, so ist $a^{-1} \cdot b = a^{-1} \cdot ax = 1x = x$ die L\"osung und somit
@@ -468,7 +487,6 @@
 			\iota_H \circ \cdot_H$, wobei $\iota_H \cdot \cdot_H \to G$ die Inklusionsabbildung ist) und
 			$(H,\cdot_H)$ eine Gruppe ist.
 		\end{framed}
-		
 		\textit{Beweis: \\
 		Hinrichtung: Sei $H$ eine Untergruppe von $G$. Nach (UG1) ist $Image(\cdot|_{H \times H}) \subset H$
 		und somit l\"asst sich $\cdot$ zu einer Abbildung $\cdot_H: H \times H \ to H$ einschr\"anken. Wir 
@@ -501,7 +519,6 @@
 			\textbf{Lemma:} Ist $G$ eine Gruppe und $(H_i)_{i \in I}$ eine Familie von Untergruppen von $G$,
 			so ist auch $H := \bigcap H_i$ eine Untergruppe von $G$.
 		\end{framed}
-		
 		\textit{Beweis: Wir haben 3 Dinge zu zeigen\\
 		\begin{compactitem}
 			\item $H \neq \emptyset:$ F\"ur jedes $i \in I$ ist $e_G \in H$, also auch $e_G \in \bigcap
@@ -510,15 +527,13 @@
 			da $H_i \le G$. Folglich ist $xy \in \bigcap H_i=H$.
 			\item (UG2): Sei $x \in H$. F\"ur jedes $i \in I$ ist $x \in H_i$, somit $x^{-1} \in H_i$,
 			da $H_i \le G$. Folglich ist $x^{-1} \in \bigcap H_i=H$.
-		\end{compactitem}
-		}
+		\end{compactitem}}
 		
 		\begin{framed}
 			\textbf{Satz:} Ist $G$ eine Gruppe und $X \subset G$. so gibt es eine eindeutig bestimmte
 			kleinste Untergruppe $H$ von $G$, die $X$ enth\"alt, d.h. $H$ enth\"alt $X$ und ist $H'$
 			eine weitere Untergruppe von $G$, die $X$ enth\"alt, so ist $H \subset H'$.
 		\end{framed}
-		
 		\textit{Beweis: \\
 		Sei $\mathcal{H}$ die Menge aller Untergruppen von $G$, die $X$ enthalten. Nach dem Lemma ist $H:=
 		\bigcap \mathcal{H} := \bigcap H$ eine Untergruppe von $G$. Da $X \subset H'$ f\"ur jedes $H' \in 
