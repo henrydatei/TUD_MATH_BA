@@ -15,13 +15,15 @@
 \usepackage[autostyle]{csquotes}
 \usepackage{lipsum}
 \usepackage{enumerate}
-\usepackage{tikz}
+\usepackage{pgf,tikz}
 \usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
 \usepackage{mdframed}
 \usepackage{xcolor}
 \newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
 \usepackage{color}
 \renewcommand*{\arraystretch}{1.4}
+\usepackage{mathrsfs}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -2717,6 +2719,39 @@
 		
 		\textbf{Bemerkung:} Wir hatten bereits definiert: $det(A)=ad-bc$ mit $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in Mat_2(K)$ und hatten 
 		festgestellt: $det(A)\neq 0 \iff A\in GL_2(K)$. Interpreation im $K=\mathbb R$:\\
+		\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
+		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+		\definecolor{qqqqff}{rgb}{0,0,1}
+		\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+			\clip(-10.24,-7.15) rectangle (10.24,7.15);
+			\fill[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-7.8,-4.49) -- (-4.66,2.77) -- (1.02,-3.37) -- cycle;
+			\draw [shift={(-7.8,-4.49)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (0:5.6) arc (0:7.236922025968005:5.6) -- cycle;
+			\draw [shift={(-7.8,-4.49)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.45] (0,0) -- (0:3.6) arc (0:66.61118515369776:3.6) -- cycle;
+			\draw [line width=2pt] (-7.8,-7.15) -- (-7.8,7.15);
+			\draw [line width=2pt,domain=-10.24:10.24] plot(\x,{(-46.8756-0*\x)/10.44});
+			\draw [-latex,line width=2pt] (-7.8,-4.49) -- (-4.66,2.77);
+			\draw [-latex,line width=2pt] (-7.8,-4.49) -- (1.02,-3.37);
+			\draw [-latex,line width=2pt] (1.02,-3.37) -- (4.16,3.89);
+			\draw [-latex,line width=2pt] (-4.66,2.77) -- (4.16,3.89);
+			\draw [line width=2pt,color=zzttqq] (-7.8,-4.49)-- (-4.66,2.77);
+			\draw [line width=2pt,color=zzttqq] (-4.66,2.77)-- (1.02,-3.37);
+			\draw [line width=2pt,color=zzttqq] (1.02,-3.37)-- (-7.8,-4.49);
+			\draw [line width=2pt,color=qqqqff] (-7.8,-4.49)-- (1.02,-3.37);
+			\draw [line width=2pt,color=qqqqff] (-4.66,2.77)-- (-3.5966674931812537,-3.9562434911976196);
+			\begin{scriptsize}
+				\draw[color=ududff] (-3.78,3.2) node {$x_2 = (c,a)$};
+				\draw[color=ududff] (1.9,-2.94) node {$x_1 = (a,b)$};
+				\draw[color=ududff] (4.8,4.32) node {$x_1 + x_2$};
+				\draw[color=zzttqq] (-3.42,-1.46) node {$\Delta$};
+				\draw[color=qqqqff] (-3.28,-4.2) node {$g_{\Delta}$};
+				\draw [fill=xdxdff] (-3.5966674931812537,-3.9562434911976196) circle (2.5pt);
+				\draw[color=qqqqff] (-4.38,-0.4) node {$h_{\Delta}$};
+				\draw[color=qqwuqq] (-3,-4.82) node {$\alpha_1$};
+				\draw[color=qqwuqq] (-4.74,-1.84) node {$\alpha_2$};
+			\end{scriptsize}
+		\end{tikzpicture}
 		Parallelogramm hat die Fläche $|det A|$. Polarkoordianten: $x_i=\lambda_i(cos a_i, sin a_i)$. Ohne Einschränkung: $0\le a_1 \le a_2
 		\le \pi$
 		\begin{align}
