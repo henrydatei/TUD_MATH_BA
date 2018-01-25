@@ -21,6 +21,7 @@
 \usepackage{xcolor}
 \newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
 \usepackage{color}
+\renewcommand*{\arraystretch}{1.4}
 
 \title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -28,7 +29,6 @@
 \begin{document}
 
 \maketitle
-\renewcommand*{\arraystretch}{1.4}
 
 \raggedright 
 \section{Grundgegriffe der Linearen Algebra}
@@ -2628,4 +2628,93 @@
 				j\quad \text{falls }$k=i$ \\ i\quad \text{falls }$k=j$ \\ k\quad \text{sonst}
 			\end{cases}
 		\end{equation*} Offenbar gilt $\tau_{ij}^2=id$, also $\tau_{ij}^{-1}=\tau_{ij}=\tau_{ji}$.
+		
+		\begin{framed}
+			\textbf{Satz:} Für jedes $\sigma \i S_n$ gibt es ein $r\in \mathbb N_0$ und die Transpositionen $\tau_1,...,\tau_r\in S_n$ mit 
+			$\sigma=\tau_1\circ ... \circ \tau_r$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $1\le k \le n$ maximal mit $\sigma(i)=i$ für $i\le k$. Induktion nach $n-k$. \\
+		Ist $n-k=0$, so ist $\sigma=id$ und wir sind fertig. \\
+		Andernfalls ist $l=k+1\le n$ und $\sigma(l)>l$. Für $\sigma'=\tau_{l,\sigma(l)}\circ \sigma$ ist $\sigma(l)=l$ und somit $\sigma'(i)=i$ 
+		für $1\le i \le k+1$. Nach Induktionshypothese gibt es Transpositionen $\tau_1,...,\tau_r$ mit $\sigma'=\tau_1\circ ...\circ \tau_r$. 
+		Es folgt $\sigma=\tau_{l,\sigma(l)}^{-1}\circ \sigma^{-1}=\tau_{l,\sigma(l)}\circ \tau_1\circ ... \circ \tau_r$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Fehlstand, Vorzeichen:} Sei $\sigma\in S_n$.
+			\begin{compactitem}
+				\item Ein Fehlstand von $\sigma$ ist ein Paar $(i,j)$ mit $1\le i<j\le n$ und $\sigma(i)>\sigma(j)$.
+				\item Das Vorzeichen (oder Sigmum) von $\sigma$ ist $sgn(\sigma)=(-1)^{f(\sigma)}\in \{-1,1\}$, wobei $f(\sigma)$ die 
+				Anzahl der Fehlstände von $\sigma$ ist.
+				\item Man nennt $\sigma$ gerade, wenn $sgn(\sigma)=1$, sonst ungerade.
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Genau dann hat $\sigma$ keine Fehlstände, wenn $\sigma=id$. Insbesondere $sgn(id)=1$.
+			\item Die Permutation $\sigma=\begin{pmatrix}1 & 2 & 3\\2 & 3 & 1\\\end{pmatrix}$ hat die Fehlstände $(1,3)$ und $(2,3)$, somit 
+			$sgn(\sigma)=1$.
+			\item Die Transposition $\tau_{13}=\begin{pmatrix}1 & 2 & 3\\3 & 2 & 1\\\end{pmatrix}$ hat die Fehlstände $(1,2)$, $(2,3)$ und 
+			$(3,1)$, somit $sgn(\tau_{13})=-1$.
+			\item Eine Transposition $\tau_{ij}\in S_n$ ist ungerade: Ist $i<j$, so sind die Fehlstände $(i,i+1),...,(i,j)$ und $(j+1,j)...
+			(j-1,j)$, also $j-(i+1)+1+(j-1)-(i-1)+1=2(j-1)-1$ viele.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $\sigma\in S_n$ ist $sgn(\sigma)=\prod\limits_{1\le i<j\le n} \frac{\sigma(j)-\sigma(i)}{j-i}\in \mathbb Q$.
+		\end{framed}
+		\textit{Beweis: \\
+		Durchläuft $(i,j)$ alle Paare $1\le i<j\le n$, so durchläuft $\{\sigma(i),\sigma(j)\}$ alle zweielementigen Teilmengen von $\{1,...,
+		n\}$. Das Produkt $\prod\limits_{i<j} \sigma(j)-\sigma(i)$ hat also bis auf das Vorzeichen die selben Faktoren wie das Produkt 
+		$\prod\limits_{i<j} j-i=\prod\limits_{i<j} |j-i|$ und $\prod\limits_{i<j} \sigma(j)-\sigma(i)=\prod\limits_{i<j,\sigma(i)<\sigma(j)} 
+		\sigma(j)-\sigma(i) \cdot \prod\limits_{i<j,\sigma(i)>\sigma(j)} \sigma(j)-\sigma(i)=(-1)^{f(\sigma)}\cdot \prod\limits_{i<j} 
+		|\sigma(j)-\sigma(i)|=sgn(\sigma)\cdot \prod\limits_{i<j} j-i$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Die Abbildung $sgn: S_n \to \mathbb Z^{\times}=\mu_2$ ist ein Gruppenhomomorphismus.
+		\end{framed}
+		\textit{Beweis: Seien $\sigma,\tau\in S_n$. Dann ist\\
+		$sgn(\sigma\tau)=\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{j-i}=\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(
+		\tau(i))}{\tau(j)-\tau(i)}\cdot \prod\limits_{i<j} \frac{\tau(j)-\tau(i)}{j-i}$. Da mit $\{i,j\}$ auch $\{\tau(i),\tau(j)\}$ alle 
+		zweielementigen Teilmengen von $\{1,...,n\}$ und $\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\frac{\sigma(\tau(i))-
+		\sigma(\tau(j))}{\tau(i)-\tau(j)}$ ist $\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\prod\limits_
+		{i<j} \frac{\sigma(j)-\sigma(i)}{j-i}=sgn(\sigma)$ und $\prod\limits_{i<j} \frac{\tau(j)-\tau(i)}{j-i}=sng(\tau)$. \\
+		Somit ist $sgn(\sigma\tau)=sgn(\sigma)\cdot sgn(\tau)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $\sigma\in S_n$ ist $sgn(\sigma^{-1})=sgn(\sigma)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$sgn(\sigma^{-1})=sgn(\sigma)^{-1}=sgn(\sigma)$}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $\sigma\in S_n$. Sind $\tau_1,...,\tau_r$ Transpositionen mit $\sigma=\tau_1\circ ... \circ \tau_r$, so ist 
+			$sgn(\sigma)=(-1)^r$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und letztes Beispiel}
+		
+		\begin{framed}
+			\textbf{Korollar:} Die geraden Permutationen $A_n=\{\sigma \in S_n \mid sgn(\sigma)=1\}$ bilden einen Normateiler von $S_n$, 
+			genannt die alternierende Gruppe. Ist $\tau\in S_n$ mit $sgn(\tau)=-1$, so gilt für $A_n\tau=\{\sigma\tau \mid \sigma\in A_n\}$: 
+			$A_n \cup A_n\tau = S_n$ und $A_n \cap A_n\tau=\emptyset$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es ist $A_n=Ker(sgn)$ und damit ist dieser auch ein Normalteiler. Ist $\sigma\in S_n\backslash A_n$, so ist $sgn(\sigma\tau^{-1})=
+		sgn(\sigma)\cdot sgn(\tau)^{-1}=(-1)(-1)^{-1}=1$, also $\sigma=\sigma\tau^{-1}\in A_n\tau$, somit $A_n\cup A_n\tau=S_n$. Ist 
+		$\sigma\in A_n$, so ist $sgn(\sigma\tau)=-1$, also $A_n\cap A_n\tau=\emptyset$.}
+		
+	\subsection{Die Determinante einer Matrix}
+		\textbf{Bemerkung:} Wir werden nun auch Matrizen mit Keoffizienten in Ring $R$ anstatt $K$ betrachten. Mit der gewohnten Addition und 
+		Multiplikation bilden die $n\times n$-Matrizen einen Ring $Mat_n(R)$, und wir definieren wieder $GL_n(R)=Mat_n(R)^{\times}$.
+		$\newline$
+		
+		\textbf{Bemerkung:} Seien $a_1,...,a_n\in R^m$ Spaltenvektoren, so bezeichnen wir mit $A=(a_1,...,a_n)\in Mat_{m\times n}(R)$ die 
+		Matrix mit den Spalten $a_1,...,a_n$. Sind $\tilde{a_1},...,\tilde{a_m}\in R^n$ Zeilenvektoren, so bezeichnen wir mit $\tilde A=(
+		\tilde{a_1},...,\tilde{a_m})\in Mat_{m\times n}(R)$ die Matrix mit den Zeilen $\tilde{a_1},...,\tilde{a_m}$.
+		$\newline$
+		
+		\textbf{Bemerkung:} Wir hatten bereits definiert: $det(A)=ad-bc$ mit $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in Mat_2(K)$ und hatten 
+		festgestellt: $det(A)\neq 0 \iff A\in GL_2(K)$. Interpreation im $K=\mathbb R$:\\
 \end{document}
