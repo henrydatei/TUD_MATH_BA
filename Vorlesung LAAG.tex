@@ -2717,4 +2717,127 @@
 		
 		\textbf{Bemerkung:} Wir hatten bereits definiert: $det(A)=ad-bc$ mit $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in Mat_2(K)$ und hatten 
 		festgestellt: $det(A)\neq 0 \iff A\in GL_2(K)$. Interpreation im $K=\mathbb R$:\\
+		Parallelogramm hat die Fläche $|det A|$. Polarkoordianten: $x_i=\lambda_i(cos a_i, sin a_i)$. Ohne Einschränkung: $0\le a_1 \le a_2
+		\le \pi$
+		\begin{align}
+			F_{P} &= 2\cdot F_{\Delta} = 2\cdot \frac 1 2 \cdot g_{\Delta} \cdot h_{\Delta} \notag \\
+			g_{\Delta} &= \lambda_1 \notag \\
+			h_{\Delta} &= \lambda_2 \cdot sin(a_2-a_1) \notag \\
+			F_{P} &= \lambda_1\lambda_2(cos a_1 sin a_2 - sin a_1 cos a_2) = det(\begin{pmatrix}\lambda_1 cos a_1 & 
+			\lambda_1 sin a_1 \\ \lambda_2 cos a_2 & \lambda_2 sin a_2 \end{pmatrix}) \notag \\
+			&= det A \notag
+		\end{align}
+		Insbesondere erfüllt $det$ die folgenden Eigenschaften: 
+		\begin{compactitem}
+			\item Für $\lambda\in R$ ist $det(\lambda x_1,x_2)=det(x_1,\lambda x_2)=\lambda\cdot det(x_1,x_2)$
+			\item Für $x_i=x'_i+x''_i$ ist $det(x_1,x_2)=det(x'_1,x_2) + det(x''_1,x_2)$
+			\item Ist $x_1=x_2$, so ist $det A=0$
+			\item $det(1_2)=1$
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Determinantenabbildung:} Eine Abbildung $\delta:Mat_n(R)\to R$ heißt Determinantenabbildung, wenn gilt: \\
+			(D1): $\delta$ ist linear in jeder Zeile: Sind $a_1,...,a_n$ die Zeilen von $A$ und ist $i\in \{1,...,n\}$ und $a_i=\lambda'a'_i + 
+			\lambda''a''_i$ mit $\lambda',\lambda''\in R$ und den Zeilenvektoren $a'_i,a''_i$, so ist $\delta(A)=\lambda'\cdot \delta(a_1,...,
+			a'_i,...,a_n) + \lambda''\cdot det(a_1,...,a''_i,...,a_n)$. \\
+			(D2): $\delta$ ist alternierend: Sind $a_1,...,a_n$ die Zeilen von $A$ und $i,j\in \{1,...,n\}$, $i\neq j$ mit $a_i=a_j$, so ist 
+			$\delta(A)=0$. \\
+			(D3): $\delta$ ist normiert: $\delta(1_n)=1$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Sei $\delta:Mat_n(K)\to K$ eine Determinantenabbildung. Ist $A\in Mat_n(K)$ nicht invertierbar, so sind die Zeilen 
+		$a_1,...,a_n$ von $A$ linear abhängig, es gibt also ein $i$ mit $a_i=\sum\limits_{j\neq i} \lambda_j\cdot a_j$. Es folgt $\delta(A)=
+		\delta(a_1,...,a_n)=\sum\limits_{j\neq i} \lambda_j\cdot \delta(a_1,...,a_j,...,a_n)$ mit $a_i=a_j$ mit D2: $\sum\limits_{j\neq i} 
+		\lambda_j\cdot 0=0=\delta(A)$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Erfüllt $\delta:Mat_n(R) \to R$ die Axiome D1 und D2, so gilt für jedes $\sigma\in S_n$ und die Zeilenvektoren 
+			$a_1,...,a_n$: $\delta(a_{\sigma(1)},...,a_{\sigma(n)})=sgn(\sigma)\cdot \delta(a_1,...,a_n)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen. \\
+		$0=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n)=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
+		...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n}=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)})=0$. Mit $sgn(\sigma)=
+		sgn(\tau_{ij})=-1$ folgt die Behauptung.}
+		
+		\begin{framed}
+			\textbf{Lemma:} Erfüllt $\delta:Mat_n(R)\to R$ die Axiome D1 und D2, so gilt für $A=(a_{ij})\in Mat_n(R)$: $\delta(A)=\delta(1_n)
+			\cdot \sum\limits_{\sigma\in S_n} \left( \prod\limits_{i=1}^n a_{i,\sigma(i)} \right)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $a_i=(a_{j_1},...,a_{in})=\sum\limits_{j=1}^n a_{ij}\cdot e_j$. Wiederholtes Anwenden von D1 gibt $\delta(A)=\delta(
+		a_1,...,a_n)=\sum\limits_{j_1=1}^n a_{1j_1}\cdot \delta(e_{j_1},a_2,...,a_n)=\sum\limits_{j_1=1}^n ... \sum\limits_{j_n=1}^n \delta(
+		e_{j_1},...,e_{j_n})\cdot \prod\limits_{i=1}^n a_{ij_i}$. Wegen D2 ist $\delta(e_{j_1},...,e_{j_n})=0$ falls $j_i=j_{i'}$ für ein $i\neq i'$. 
+		Andernfalls ist $\sigma(i)=j_i$ einer Permutation von $\{1,...,n\}$ und $\delta(e_{j_1},...,e_{j_n})=\delta(e_{\sigma(1)},...,e_{\sigma(n)})=
+		sgn(\sigma)\cdot \delta(e_1,...,e_n)=sgn(\sigma)\cdot \delta(1_n)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem:} Es gibt genau eine Determinantenabbildung $\delta:Mat_n(R)\to R$ und diese ist gegeben durch die 
+			Leibnitzformel $det(a_{ij})=\sum\limits_{\sigma\in S_n} sgn(\sigma)\cdot \prod\limits_{i=1}^n a_{i,\sigma(i)} = \sum\limits_{\sigma
+			\in A_n}\prod\limits_{i=1}^n a_{i,\sigma(i)} - \sum\limits_{\sigma\in S_n\backslash A_n}\prod\limits_{i=1}^n a_{i,\sigma(i)}$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Eindeutigkeit der Abbildung folgt wegen D3. Bleibt nur noch zu zeigen, dass $det$ auch die Axiome D1 bis D3 erfüllt. \\
+		D1: klar \\
+		D3: klar \\
+		D2: Seien $\mu\neq v$ mit $a_{\mu}=a_v$. Mit $\tau=\tau_{\mu v}$ ist $S_n\backslash A_n = A_n\tau$, somit $det(a_{ij})=
+		\sum\limits_{\sigma\in A_n} \prod\limits_{i=1}^n a_{i,\sigma(i)}-\sum\limits_{\sigma\in A_n\tau} \prod\limits_{i=1}^n a_{i,\sigma\tau(i)}=
+		\sum\limits_{\sigma\in A_n} \left( \prod\limits_{i=1}^n a_{i,\sigma(i)} - \prod\limits_{i=1}^n a_{i,\sigma\tau(i)} \right). Da a_{ij}=a_{\tau(i),j}$ 
+		für alle $i,j$ ist $\prod\limits_{i=1}^n a_{i,\sigma(i)}=\prod\limits_{i=1}^n a_{\tau(i),\sigma\tau(i)}=\prod\limits_{i=1}^n a_{i,\sigma\tau(i)}$ 
+		für jedes $\sigma\in S_n$, woraus $det(a_{ij})=0$ folgt.}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $n=2$, $S_2=\{id, \tau_{12}\}$, $det(\begin{pmatrix}a_{11} & a_{12} \\ a_{21}  & a_{22}\end{pmatrix})=\sum\limits_{\sigma\in
+			S_2} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}=a_11\cdot a_22 - a_12\cdot a_21$
+			\item $n=3$, $S_3=\{id,\tau_{12}, \tau_{23}, \tau_{13}, \text{2 zyklische Vertauschungen}\}$, $A_3=\{id, \text{2 zyklische 
+			Vertauschungen}\}$, $S_3\backslash A_3=\{\tau_{12},\tau_{23},\tau_{13}\}$ und \\
+			\begin{center}$A=\begin{pmatrix}
+				a_{11} & a_{12} & a_{13} \\
+				a_{21} & a_{22} & a_{23} \\
+				a_{31} & a_{32} & a_{33} \\
+			\end{pmatrix}$\end{center}
+			ergibt sich: $det(A)=\sum\limits_{\sigma\in A_3} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}\cdot a_{3,\sigma(3)} - \sum\limits_
+			{\sigma\in S_3\backslash A_3} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}\cdot a_{3,\sigma(3)}= a_{11}a_{22}a_{33} + a_{12}a_{23}
+			a_{31} + a_{13}a_{21}a_{32} - a_{12}a_{21}a_{33} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32}$
+			\item Ist $A=(a_{ij})$ eine obere Dreiecksmatrix, so ist $det(A)=\prod\limits_{i=1}^n a_{ii}$
+			\item Für $i\neq j$, $\lambda\in K^{\times}$, $\mu\in K$ ist $det(S_i(\lambda))=\lambda$, $det(Q_{ij}(\mu))=1$, $det(P_{ij})=-1$
+			\item Ist $A$ eine Blockmatrix der Gestalt $\begin{pmatrix}A_1 & C \\ 0 & A_2\end{pmatrix}$ mit quadratischen Matrizen $A_1,
+			A_2,C$, so ist $det(A)=det(A_1)\cdot det(A_2)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $A\in Mat_n(R)$ ist $det(A)=det(A^t)$. Insbesondere erfüllt $det$ die Axiome D1 und D2 auch für Spalten 
+			anstatt Zeilen.
+		\end{framed}
+		\textit{Beweis: \\
+		Mit $\rho=\sigma^{-1}$ gilt $sgn(\rho)=sgn(\sigma)$ und somit $det(A)=\sum\limits_{\sigma\in S_n} sgn(\sigma) \cdot \prod\limits_
+		{i=1}^n a_{i,\sigma(i)}=\sum\limits_{\rho\in S_n} sgn(\rho)\cdot \prod\limits_{i=1}^n a_{\rho(i),i}=det(A^t)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Determinantenmultiplikationssatz):} Für $A,B\in Mat_n(R)$ ist $det(AB)=det(A)\cdot det(B)$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		später}
+		
+		\begin{framed}
+			\textbf{Platzhalter:} 
+		\end{framed}
+		\textit{Beweis: \\
+		}
+		
+		\begin{framed}
+			\textbf{Platzhalter:} 
+		\end{framed}
+		\textit{Beweis: \\
+		}
+		
+		\begin{framed}
+			\textbf{Korollar:} Elementare Zeilenumformungen vom Typ II ändern die Determinante nicht, elementare Zeilenumformungen vom 
+			Typ III ändern nur das Vorzeichen der Determinante.
+		\end{framed}
+		\textit{Beweis: \\
+		$det(Q_{ij}(\mu)A)=det(Q_{ij}(\mu)) \cdot det(A)= 1\cdot det(A) = det(A)$, Rest analog.}
+
 \end{document}
