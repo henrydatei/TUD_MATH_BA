@@ -2938,5 +2938,52 @@
 		\end{framed}
 		\textit{Beweis: \\
 		letzter Satz und 1. Korollar des Determinantenmultiplikationssatzes}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Korollar (Laplace'scher Entwicklungssatz):} Sei $A=(a_{ij})\in Mat_n(R)$. Für jedes $i,j\in \{1,..,n\}$ gilt die 
+			Formel für die Entwicklung nach der $i$-ten Zeile: \\
+			\begin{align*}det(A)=\sum\limits_{j=1}^n (-1)^{i+j}\cdot a_{ij}\cdot det(A'_{ij}).\end{align*}
+			Gleiches gilt auch für Spalten.
+		\end{mdframed}
+		\textit{Beweis: \\
+		$det(A)=(AA^\#)_{ij}=\sum\limits_{j=1}^n a_{ij}\cdot a^\#_{ij} = \sum\limits_{j=1}^n a_{ij}\cdot det(A_{ij})=\sum\limits_
+		{j=1}^n a_{ij}\cdot (-1)^{i+j}\cdot det(A'_{ij})$. Analog auch für Spalten.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Korollar (Cramer'sche Regel):} Sei $A\in GL_n(R)$ mit Spalten $a_1,...,a_n$ und sei $b\in R^n$. Weiter sei 
+			$x=(x_1,...,x_n)^t\in R^n$ die eindeutige Lösung des Linearen Gleichungssystems $Ax=b$. Dann ist für $i=1,...,n$ 
+			$x_i=\frac{det(a_1,...,a_{i-1},b,a_{i+1},...,a_n)}{det(A)}$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		$x_i=(A^{-1}b)_i=\sum\limits_{j=1}^n (A^{-1})_{ij}\cdot b_j=\frac{1}{det(A)}\cdot \sum\limits_{j=1}^n a^\#_{ij}\cdot b_j = 
+		\frac{1}{det(A)}\cdot \sum\limits_{j=1}^n b_j\cdot det(a_1,...,a_{i-1},e_i,a_{i+1},...,a_n)=\frac{1}{det(A)}\cdot det(a_1,...,
+		a_{i-1},b_j,a_{i+1},...,a_n)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Minor:} Sei $A=(a_{ij})\in Mat_{m\times n}(R)$ und $1\le r \le m$, $1\le s \le n$. Eine $r\times s$-
+			Teilmatrix von $A$ ist eine Matrix der Form $(a_{i\mu,iv})_{\mu,v}\in Mat_{r\times s}(R)$ mit $1\le i_1<...<i_r\le m$ 
+			und $1\le j_1<...<j_s\le n$. Ist $A'$ eine $r\times r$-Teilmatrix von $A$, so bezeichnet man $det(A')$ als einen 
+			$r$-Minor von $A$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Ist $A\in Mat_n(R)$ und $i,j\in \{1,...,n\}$, so ist $A'_{ij}$ eine Teilmatrix und $det(A'_{ij})=(-1)^{i+j}
+		\cdot a^\#_{ji}$ ein $(n-1)$-Minor von $A$.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $A\in Mat_n(R)$ und $r\in \mathbb N$. Genau dann ist $rk(A)\ge r$, wenn es eine $r\times r$-
+			Teilmatrix $A'$ von $A$ mit $det(A)\neq 0$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: Ist $rk(A)\ge r$, so hat $A$ $r$ linear unabhängige Spalten $a_1,...,a_r$. Die Matrix $\tilde A=(a_1,...,a_r)$ 
+		hat den Rang $r$ und deshalb $r$ linear unabhängige Zeilen $\tilde{a_1},...,\tilde{a_r}$. Die $r\times r$-Matrix $A$ hat 
+		dann Rang $r$, ist also invertierbar, und $det(A)\neq 0$. \\
+		Rückrichtung: Ist $A'$ eine $r\times r$-Teilmatrix von $A$ mit $det(A')\neq 0$, so ist $rk(A)\ge rk(A')=r$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $A\in Mat_{m\times n}(K)$. Der Rang von $A$ ist das größte $r\in \mathbb N$, für das 
+			$A$ einen von Null verschiedenen $r$-Minor hat.
+		\end{framed}
+		\textit{Beweis: \\
+		}
 
 \end{document}
