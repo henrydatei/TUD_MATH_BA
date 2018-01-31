@@ -98,4 +98,4 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    
    4.2 Die Determinante einer Matrix ... fertig
    
-   4.3 Minoren ... wird bearbeitet
+   4.3 Minoren ... wird bearbeitet/up-to-date
