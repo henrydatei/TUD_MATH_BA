@@ -2853,19 +2853,25 @@
 			\textbf{Theorem (Determinantenmultiplikationssatz):} Für $A,B\in Mat_n(R)$ ist $det(AB)=det(A)\cdot det(B)$.
 		\end{mdframed}
 		\textit{Beweis: \\
+		Fixiere $A$ und betrachte die Abbildung $\delta: Mat_n(R)\to R$ mit $B\mapsto det(AB^{-1})$. Diese Abbildung erfüllt die Axiome 
+		D1 und D2. Sind $b_1,...,b_n$ die Zeilen von $B$, so hat $AB^{-1}$ die Spalten $Ab_1^t,...,Ab_n^t$, es werden die Eigenschaften 
+		von $det$ auf $\delta$ übertragen. \\
+		$\Rightarrow det(AB)=\delta(B^t)=\delta(1_n)\cdot det(B^t)=det(A)\cdot det(B)$.
 		später}
 		
 		\begin{framed}
-			\textbf{Platzhalter:} 
+			\textbf{Korollar:} Die Abbildung $det:Mat_n(R)\to R$ schränkt sich zu einem Gruppenhomomorphismus $GL_n(R)\to 
+			R^{\times}$ ein. Ist $R=K$ ein Körper, so ist $A\in Mat_n(K)$ also genau dann invertierbar, wenn $det(A)\neq 0$ und in 
+			diesem Fall ist $det(A^{-1})=det(A)^{-1}$.
 		\end{framed}
 		\textit{Beweis: \\
-		}
+		Aus $AA^{-1}=1_n$ folgt $det(A^{-1})*det(A)=det(1_n)=1$, insbesondere $det(A)\in R^{\times}$. Der zweite Teil folgt wegen 
+		$K^{\times}=K\backslash \{0\}$.}
 		
 		\begin{framed}
-			\textbf{Platzhalter:} 
+			\textbf{Korollar:} Die Matrizen mit Determinante 1 bilden einen Normalteiler $SL_n(K)=\{A\in GL_n \mid det(A)=1\}$ der 
+			allgemeinen linearen Gruppe, die sogenannte spezielle lineare Gruppe.
 		\end{framed}
-		\textit{Beweis: \\
-		}
 		
 		\begin{framed}
 			\textbf{Korollar:} Elementare Zeilenumformungen vom Typ II ändern die Determinante nicht, elementare Zeilenumformungen vom 
@@ -2873,5 +2879,64 @@
 		\end{framed}
 		\textit{Beweis: \\
 		$det(Q_{ij}(\mu)A)=det(Q_{ij}(\mu)) \cdot det(A)= 1\cdot det(A) = det(A)$, Rest analog.}
+		
+	\subsection{Minoren}
+		Seien $m,n\in \mathbb N$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition adjungierte Matrix:} Sei $A=(a_{ij})\in Mat_n(R)$. Für $i,j\in \{1,...,n\}$ definieren wir die $n\times n$-Matrix: \\
+			\begin{center}$A_{ij}=\begin{pmatrix}
+				a_{11} & ... & a_{1,j-1} & 0 & a_{1,j+1} & ... & a_{1n} \\
+				\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+				a_{i-1,1} & ... & a_{i-1,j.1} & 0 & a_{i-1,j+1} & ... & a_{i-1,n} \\
+				0 & ... & 0 & 1 & 0 & ... & 0 \\
+				a_{i+1,1} & ... & a_{i+1,j.1} & 0 & a_{i+1,j+1} & ... & a_{i+1,n} \\
+				\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+				a_{n1} & ... & a_{n,j-1} & 0 & a_{n,j+1} & ... & a_{nn} \\
+			\end{pmatrix}$\end{center}
+			die durch Ersetzen der $i$-ten Zeile und der $j$-ten Spalte durch $e_j$ aus $A$ hervorgeht, sowie die $(n-1)\times(n-1)$-
+			Matrix: \\
+			\begin{center}$A_{ij}=\begin{pmatrix}
+				a_{11} & ... & a_{1,j-1} & a_{1,j+1} & ... & a_{1n} \\
+				\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+				a_{i-1,1} & ... & a_{i-1,j.1} & a_{i-1,j+1} & ... & a_{i-1,n} \\
+				a_{i+1,1} & ... & a_{i+1,j.1} & a_{i+1,j+1} & ... & a_{i+1,n} \\
+				\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+				a_{n1} & ... & a_{n,j-1} & a_{n,j+1} & ... & a_{nn} \\
+			\end{pmatrix}$\end{center}
+			die durch Streichen der $i$-ten Zeile und der $j$-ten Spalten entsteht. Weiterhin definieren wir die zu $A$ adjungierte Matrix 
+			als $A^\#=(a_{ij}^\#)\in Mat_n(R)$, wobei $a_{ij}^\#=det(A_{ji})$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:}  Sei $A\in Mat_n(R)$ mit Spalten $a_1,...,a_n$. Für $i,j\in \{1,..,n\}$ gilt:
+			\begin{compactitem}
+				\item $det(A_{ij})=(-1)^{i+j}\cdot det(A'_{ij})$
+				\item $det(A_{ij})=det(a_1,...,a_{j-1},e_i,a_{j+1},...,a_n)$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Durch geeignete Permutation der ersten $i$ Zeilen und der ersten $j$ Zeilen erhält man $det(A_{ij})=(-1)^{(i-1)+
+			(j-1)} \cdot det(\begin{pmatrix}1&0&...&0 \\ 0 & \; & \; & \; \\ \vdots & \; & A'_{ij} & \; \\ 0 & \; & \; & \; \\ \end{pmatrix})=
+			(-1)^{i+j}\cdot det(1_n)\cdot det(A'_{ij})$.
+			\item Man erhält $A_{ij}$ aus $(a_1,...,e_i,...,a_n)$ durch elementare Spaltenumformungen vom Typ II.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $A\in Mat_n(R)$ ist $A^\#\cdot A=A\cdot A^\#=det(A)\cdot 1_n$.
+		\end{framed}
+		\textit{Beweis: \\
+		$(A^\#A)_{ij}=\sum\limits_{k=1}^n a^\#_{ik}\cdot a_{kj}=\sum\limits_{k=1}^n a_{kj}\cdot det(A_{kj})=\sum\limits_{k=1}^n a_{kj}\cdot 
+		det(a_1,...,a_{i-1},a_j,a_{i+1},...,a_n)=det(a_1,...,a_{i-1},\sum\limits_{k=1}^n a_{kj}e_k,a_{i+1},...,a_n) = det(a_1,...,a_{i-1},a_j,
+		a_{i+1},...,a_n)=\delta_{ij}\cdot det(A)=(det(A)\cdot 1_n)_{ij}$. Analog bestimmt man die Koeffizienten von $AA^\#$, wobei man 
+		$det(A_{jk})=det(A_{jk}^t)=det((A^t)_{kj})$ benutzt.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Es ist $GL_n(R)=\{A\in Mat_n(R) \mid det(A)\in R^{\times}\}$ und für $A\in GL_n(R)$ ist $A^{-1}=
+			\frac{1}{det(A)}\cdot A^\#$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und 1. Korollar des Determinantenmultiplikationssatzes}
 
 \end{document}
