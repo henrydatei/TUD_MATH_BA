@@ -96,4 +96,6 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
 
    4.1 Das Vorzeichen einer Permutation ... fertig
    
-   4.2 Die Determinante einer Matrix ... wird bearbeitet/up-to-date
+   4.2 Die Determinante einer Matrix ... wird bearbeitet
+   
+   4.3 Minoren ... noch nicht bearbeitet
