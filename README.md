@@ -92,10 +92,12 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
    
    3.9 Lineare Gleichungssysteme ... fertig
    
-4. Determinanten ... wird bearbeitet
+4. Determinanten ... fertig
 
    4.1 Das Vorzeichen einer Permutation ... fertig
    
    4.2 Die Determinante einer Matrix ... fertig
    
-   4.3 Minoren ... wird bearbeitet/up-to-date
+   4.3 Minoren ... fertig
+   
+   4.4 Determinante und Spur von Endomorphismen ... fertig
