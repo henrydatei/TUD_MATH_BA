@@ -127,8 +127,8 @@
 \begin{definition}[Eigenschaften Abbildung]
 	Mit $f: X \rightarrow Y$ Abbildung:
 	\begin{enumerate}
-		\item $f$ \begriff[Abbildung!]{surjektiv}, falls $\forall x, x' \in X: f(x) = f(x') \Rightarrow x = x'$
-		\item $f$ \begriff[Abbildung!]{injektiv}, falls $\forall y\in Y \,\exists x\in X: f(x) = y$
+		\item $f$ \begriff[Abbildung!]{injektiv}, falls $\forall x, x' \in X: f(x) = f(x') \Rightarrow x = x'$
+		\item $f$ \begriff[Abbildung!]{surjektiv}, falls $\forall y\in Y \,\exists x\in X: f(x) = y$
 		\item $f$ \begriff[Abbildung!]{bijektiv}, falls $f$ surjektiv und injektiv
 	\end{enumerate}
 \end{definition}
@@ -357,8 +357,7 @@
 	Sei $a\in\mathbb{Z}$ eine ganze Zahl und $p\in\mathbb{Z}$ eine Primzahl, die $a$ nicht teilt. Dann gibt es $b,k\in\mathbb{Z}$ mit $ab+kp = 1$.
 \end{lemma}
 
-\begin{example}[\index{Endlicher Primzahlkörper}Endlicher Primzahlkörper]
-    % TODO fix Label!
+\begin{example}[\index{Endlicher Primzahlkörper!Körper}Endlicher Primzahlkörper]
     Für jede Primzahl $p\in\mathbb{Z}$ ist $\mathbb{Z}\slash p\mathbb{Z}$ ein Körper. Ist $\bar{a}\neq \bar{0}$, so gilt $p \nmid a$, und somit gibt es nach \ref{Teiler} $b,k \in \mathbb{Z}$ mit
     \[
     \bar{1}=\overline{ab + kp} = \bar{a} + \bar{b}.
@@ -956,7 +955,6 @@ Seien $V, W$ zwei $K$-Vektorräume.
 \end{corollar}
 
 \begin{corollar}
-%TODO fix \Phi_B(e_i) = v_i
 	Ist $\mathcal{B}=(v_1, \dotsc, v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_{\mathcal{B}}: K^n\rightarrow V$ mit $\Phi_{\mathcal{B}}(e_i) = v_i$ für $i=1,\dotsc, n$. Insbesondere ist jeder endlich dimensionale $K$-Vektorraum $V$ isomorph zu einem Standardvektorraum $K^n$, nämlich für $n = \dim(V)$.
 \end{corollar}
 
@@ -1311,10 +1309,10 @@ Sei $A \in \Mat_{m\times n}(K)$ und $b\in K^m$.
     Jedes $A\in \GL_n(K)$ ist ein Produkt von Elementarmatrizen.
 \end{corollar}
 
-\chapter{Determinanten}%TODO fix!
+\chapter{Determinanten}
 Sei $n \in \mathbb{N}$.
 
-\addtocounter{section}{1}
+\section{Das Vorzeichen einer Permutation}
 
 \begin{example}
     Für $i,j \in \{1,\dots,n\}$ mit $i\neq j$ bezeichne $\tau_{ij} \in S_n$ die \begriff{Transposition}
@@ -1401,7 +1399,7 @@ Sei $n \in \mathbb{N}$.
     \end{itemize}
 \end{remark}
 
-\begin{remark}%TODO add ref
+\begin{remark}\label{geo_int_det}
     Wir hatten in III.\ref{Normalteiler} definiert:
     \[
     \det A = ad - bc, A = 
@@ -1506,7 +1504,7 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
     die sogenannte \begriff{Regel von Sarrus}.
     \item Ist $A=(a_{ij})_{i,j}$ eine \begriff{obere Dreiecksmatrix} (siehe A108), also $a_{ij} = 0$ für $i=j$, so ist
     \[
-    \det A = \det %TODO fix dots
+    \det A = \det
     \begin{pmatrix}
         a_{ii} & \cdots \\
         0 & \ddots a_{nn}\\
@@ -1514,8 +1512,8 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
     \]
     \item Für $i\neq j,\lambda\in K^{\times},\mu \in K$ ist $\det(S_i(\lambda)) = \lambda,\det(Q_{ij}(\mu))
     = 1,\det(P_{ij})=-1$\\
-    (gibt nur eine Permutation $\sigma_{ij} = -1 \text{ und } \sgn(\sigma_{ij}) = -1$) %TODO verify!
-    \item Ist $A$ \text{\begriff{Blockmatrix}[Matrix]} der Gestalt
+    %(gibt nur eine Permutation $\sigma_{ij} = -1 \text{ und } \sgn(\sigma_{ij}) = -1$) %TODO verify!
+    \item Ist $A$ \text{\begriff[!Matrix]{Blockmatrix}} der Gestalt
     \[
     A = \begin{bmatrix}
     A_1 & C \\
@@ -1530,7 +1528,7 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
     Für $A\in \Mat_n(R)$ ist $\det(A) = \det(A^t)$. Insbesondere erfüllt $\det$ die Axiome (D1) und (D2) auch für Spalten statt Zeilen.
 \end{corollar}
 
-\begin{theorem}[\index{Determinantenmultiplikationssatz}Determinantenmultiplikationssatz]
+\begin{theorem}[\index{Determinantenmultiplikationssatz!Determinate}Determinantenmultiplikationssatz]
     Für $A,B\in \Mat_n(R)$ ist $\det(AB) = \det(A)\cdot\det(B)$.
 \end{theorem}
 
@@ -1539,7 +1537,7 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
 \end{corollar}
 
 \begin{corollar}
-    Die Matrizen von Determinanten $1$ bilden einen Normalteiler $\SL_n(K) = \{ A \in \GL_n(K)\colon \det(A) \}$ der allgemeinen linearen Gruppe, die sog. \begriff{spezielle lineare Gruppe}.
+    Die Matrizen von Determinanten $1$ bilden einen Normalteiler $\SL_n(K) = \{ A \in \GL_n(K)\colon \det(A) \}$ der allgemeinen linearen Gruppe, die sog. \begriff[!Matrix]{spezielle lineare Gruppe}.
 \end{corollar}
 
 \begin{corollar}
@@ -1548,8 +1546,6 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
 
 \section{Minoren}
 Sei $m,n \in \mathbb{N}$.
-
-\addtocounter{section}{1}
 
 \begin{definition}
     Sei $A = (a_{ij})_{i,j} \in \Mat_n(R)$. Für $i,j \in \{ 1,\dots,n \}$ definiere die $n\times n$-Matrix
@@ -1638,7 +1634,7 @@ Sei $m,n \in \mathbb{N}$.
 \section{Determinanten und Spur von Endomorphismen}
 Sei $n \in \mathbb{N}$ und $V$ ein $K$-Vektorraum mit $\dim_K(V) = n$.
 
-\begin{satz}
+\begin{satz}\label{Eindeutigkeit_Transmatrix}
     Sei $f \in \End(K)\text{, } \mathcal{A}$ eine Basis von $V$ und $A \in M_{\mathcal{A}}(f)$. 
     Sei weiter $B \in \Mat_n(K)$. Genau dann gibt es eine Basis $\mathcal{B}$ von $V$ mit $B=M_{\mathcal{B}}(f)$, wenn es $S\in \GL_n(K)$ mit $B=SAS^{-1}$gibt.
 \end{satz}
@@ -1651,12 +1647,12 @@ Zwei Matrizen $A,B \in \Mat_n(R)$ zwei solche Matrizen heißen \highlight{ähnli
     Ähnlichkeit ist eine Äquivalenzrelation auf $\Mat_n(R)$.
 \end{satz}
 
-\begin{satz}
+\begin{satz}\label{Ahnlich_det_mat}
     Seien $A,B \in \Mat_{1\times n}(R)$. Ist $A\sim B$, so ist $\det(A) = \det(B)$.
 \end{satz}
 
-\begin{definition}%TODO add ref
-    Die \begriff[Determinante]{Determinante eines Endomorphismus} $f\in \End(V)$ ist $\det(f):=\det(M_{\mathcal{B}}(f))$, wobei  $\mathcal{B}$ eine Basis von $V$ ist. (nach 4.1 ist $\det(f)$ wohldefiniert.)
+\begin{definition}
+    Die \begriff[!Determinante]{Determinante eines Endomorphismus} $f\in \End(V)$ ist $\det(f):=\det(M_{\mathcal{B}}(f))$, wobei  $\mathcal{B}$ eine Basis von $V$ ist. (nach \ref{Eindeutigkeit_Transmatrix} ist $\det(f)$ wohldefiniert.)
 \end{definition}
 
 \begin{satz}
@@ -1668,7 +1664,7 @@ Zwei Matrizen $A,B \in \Mat_n(R)$ zwei solche Matrizen heißen \highlight{ähnli
     \end{enumerate}
 \end{satz}
 
-\begin{definition}[\index{Spur}[Matrix]Spur]
+\begin{definition}[\index{Spur!Matrix}Spur]
     Die Spur einer Matrix $A=(a_{ij})_{i,j} \in \Mat_n(R)$ ist $\Tr(A) = \sum_{i=1}^{n}a_{ii}$.
 \end{definition}
 
@@ -1681,16 +1677,16 @@ Zwei Matrizen $A,B \in \Mat_n(R)$ zwei solche Matrizen heißen \highlight{ähnli
     \end{enumerate}
 \end{lemma}
 
-\begin{satz}
+\begin{satz}\label{ahnlich_spur_mat}
     Sei $A,B \in \Mat_n(R)$. Ist $A\sim B$, so ist $\Tr(A) = \Tr(B)$.
 \end{satz}
 
-\begin{definition}%TODO add ref
-    \highlight{Spur} eines Endomorpshimus $f \in \End_K(V)$ ist $\Tr(f) = \Tr(M_{\mathcal{B}}(f))$, wobei $\mathcal{B}$ eine Basis von $V$ ist. (Nach 4.1 und 4.9 ist $\Tr(f)$ wohldefiniert.)
+\begin{definition}
+    \highlight{Spur} eines Endomorpshimus $f \in \End_K(V)$ ist $\Tr(f) = \Tr(M_{\mathcal{B}}(f))$, wobei $\mathcal{B}$ eine Basis von $V$ ist. (Nach \ref{Eindeutigkeit_Transmatrix} und \ref{ahnlich_spur_mat} ist $\Tr(f)$ wohldefiniert.)
 \end{definition}
 
-\begin{remark}%TODO add ref
-    Im Fall $K=R$ kan wie in 2.3 den Absolutbetrag der Determinante eines $f\in \End_K(K^n)$ geometrisch intepretieren, nähmlich als das Volumen von $f(\mathcal{Q})$, wobei $\mathcal{Q} = [0,1]^n$ der Einheitsquader ist und somit als \highlight{Volumenänderung} dur $f$. Auch das Vorzeichen von $\det(f)$ hat eine Bedeutung. Es gibt an, ob $f$ \begriff{orientierungserhaltend} ist. Für eine erste Intepretation der Spur siehe A100.
+\begin{remark}
+    Im Fall $K=R$ kan wie in \ref{geo_int_det} den Absolutbetrag der Determinante eines $f\in \End_K(K^n)$ geometrisch intepretieren, nähmlich als das Volumen von $f(\mathcal{Q})$, wobei $\mathcal{Q} = [0,1]^n$ der Einheitsquader ist und somit als \highlight{Volumenänderung} dur $f$. Auch das Vorzeichen von $\det(f)$ hat eine Bedeutung. Es gibt an, ob $f$ \begriff{orientierungserhaltend} ist. Für eine erste Intepretation der Spur siehe A100.
 \end{remark}
 
 \printindex
