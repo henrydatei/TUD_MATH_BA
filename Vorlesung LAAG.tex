@@ -2039,7 +2039,7 @@
 		
 		\begin{framed}
 			\textbf{Korollar:} Ist $B=(v_1,...,v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_B:K^n\to 
-			V$ mit $f(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
+			V$ mit $\Phi_B(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
 			$K^n$ für $n=dim_K(V)$.
 		\end{framed}
 		
@@ -2896,7 +2896,7 @@
 			\end{pmatrix}$\end{center}
 			die durch Ersetzen der $i$-ten Zeile und der $j$-ten Spalte durch $e_j$ aus $A$ hervorgeht, sowie die $(n-1)\times(n-1)$-
 			Matrix: \\
-			\begin{center}$A_{ij}=\begin{pmatrix}
+			\begin{center}$A'_{ij}=\begin{pmatrix}
 				a_{11} & ... & a_{1,j-1} & a_{1,j+1} & ... & a_{1n} \\
 				\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 				a_{i-1,1} & ... & a_{i-1,j.1} & a_{i-1,j+1} & ... & a_{i-1,n} \\
@@ -2961,7 +2961,7 @@
 		
 		\begin{mdframed}[backgroundcolor=blue!20]
 			\textbf{Definition Minor:} Sei $A=(a_{ij})\in Mat_{m\times n}(R)$ und $1\le r \le m$, $1\le s \le n$. Eine $r\times s$-
-			Teilmatrix von $A$ ist eine Matrix der Form $(a_{i\mu,iv})_{\mu,v}\in Mat_{r\times s}(R)$ mit $1\le i_1<...<i_r\le m$ 
+			Teilmatrix von $A$ ist eine Matrix der Form $(a_{i\mu,jv})_{\mu,v}\in Mat_{r\times s}(R)$ mit $1\le i_1<...<i_r\le m$ 
 			und $1\le j_1<...<j_s\le n$. Ist $A'$ eine $r\times r$-Teilmatrix von $A$, so bezeichnet man $det(A')$ als einen 
 			$r$-Minor von $A$.
 		\end{mdframed}
@@ -2983,7 +2983,88 @@
 			\textbf{Korollar:} Sei $A\in Mat_{m\times n}(K)$. Der Rang von $A$ ist das größte $r\in \mathbb N$, für das 
 			$A$ einen von Null verschiedenen $r$-Minor hat.
 		\end{framed}
+		
+		\subsection{Determinante und Spur von Endomorphismen}
+	
+		Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $dim_K(V)=m$.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom_K(V,W)$, $A'$ eine Basis von $V$ und $A=M_{A'}(f)$. Sei weiter $B\in Mat_n(K)$. Genau 
+			dann gibt es eine Basis $B'$ von $V$ mit $B=M_{B'}(f)$, wenn es $S\in GL_n(K)$ mit $B=SAS^{-1}$ gibt.
+		\end{framed}
 		\textit{Beweis: \\
-		}
+		Ist $B'$ eine Basis von $V$ mit $B=M_{B'}(f)$, so ist $B=SAS^{-1}$ mit $S=T^{A'}_{B'}$. Sei umgekehrt $B=SAS^{-1}$ mit 
+		$S\in GL_n(K)$. Es gibt eine Basis $B'$ von $V$ mit $T^{A'}_{B'}=S$, also $M_{B'}(f)=T^{A'}_{B'}\cdot M_{A'}(f)\cdot (
+		T^{A'}_{B'})^{-1}=SAS^{-1}=B$: Mit $B'=(\Phi_{A'}(f_s^{-1}(e_1)),...,\Phi_{A'}(f_s^{-1}(e_n)))$ ist $\Phi_{A'}\circ f_s^{-1}=
+		id_V\circ \Phi_{B'}$, also $T^{A'}_{B'}=M_{A'}^{A'}(id_V)=S^{-1}$. Folglich ist $T^{A'}_{B'}=(T_{A'}^{B'})^{-1}=(S^{-1})^{-1}
+		=S$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Ähnlichkeit:} Zwei Matrizen $A,B\in Mat_n(R)$ heißen ähnlich, wenn (in Zeichen $A\tilde B$) es 
+			$S\in GL_n(R)$ mit $B=SAS^{-1}$ gibt.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Ähnlichkeit von Matrizen ist eine Äquivalenzrelation auf $Mat_n(R)$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Reflexivität: $A=1_n\cdot A \cdot (1_n)^{-1}$
+			\item Symmetrie: $B=SAS^{-1}\Rightarrow A=S^{-1}BS=S^{-1}B(S^{-1})^{-1}$
+			\item Transitivität: $B=SAS^{-1}$, $C=TBT^{-1}\Rightarrow C=TSAS^{-1}T^{-1}=(TS)A(ST)^{-1}$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $A,B\in Mat_n(R)$. Ist $A\tilde B$, so ist $det(A)=det(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$B=SAS^{-1}$, $S\in GL_n(R)$, $det(B)=det(S)\cdot det(A)\cdot det(S)^{-1}=det(A)$}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Determinante eines Endomorhismus:} Die Determinante eines Endomorphimus $f\in End_K(V)$ ist 
+			$det(f)=det(M_B(f))$, wobei $B$ eine Basis von $V$ ist.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $f,g\in End_K(V)$ gilt:
+			\begin{compactitem}
+				\item $det(id_V)=1$
+				\item $det(f\circ g)=det(f)\cdot det(g)$
+				\item Genau dann ist $det(f)\neq 0$, wenn $f\in Aut_K(V)$. In diesem Fall ist $det(f^{-1})=det(f)^{-1}$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		sollte klar sein, evtl. mit Determinantenmultiplikationssatz}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Spur:} Die Spur einer Matrix $A=(a_{ij})\in Mat_n(R)$ ist $tr(A)=\sum\limits_{i=1}^n a_{ii}$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $A,B\in Mat_n(R)$
+			\begin{compactitem}
+				\item $tr: Mat_n(R)\to R$ ist $R$-linear
+				\item $tr(A^t)=tr(A)$
+				\item $tr(AB)=tr(BA)$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		in den Übungen bereits behandelt}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $A,B\in Mat_n(R)$. Ist $A\tilde B$, so ist $tr(A)=tr(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$B=SAS^{-1}$, $S\in GL_n(R)\Rightarrow tr(B)=tr(SAS^{-1})=tr(AS^{-1}S)=tr(A)$}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Spur eines Endomorphismus:} Die Spur eines Endomorphismus $f\in End_K(V)$ ist $tr(f)=tr(M_B(f))$ 
+			wobei $B$ eine Basis von $V$ ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Im Fall $K=\mathbb R$ kann man den Absolutbetrag der Determinante eines $f\in End_K(K^n)$ 
+		geometrisch interpretieren, nämlich als das Volumen von $f(Q)$, wobei $Q=[0,1]^n$ der Einheitsquader ist, und somit 
+		als Volumenänderung durch $f$. Auch das Vorzeichen von $det(f)$ hat eine Bedeutung: Es gibt an, ob $f$ 
+		orientierungserhaltend ist. Für erste Interpretationen der Spur siehe A100.
 
 \end{document}
