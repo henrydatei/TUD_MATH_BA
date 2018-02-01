@@ -80,6 +80,7 @@
 \DeclareMathOperator{\ZR}{ZR}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Tr}{Tr}
 
 \pagestyle{plain}
 
@@ -955,11 +956,12 @@ Seien $V, W$ zwei $K$-Vektorräume.
 \end{corollar}
 
 \begin{corollar}
-	Ist $\mathcal{B}=(v_1, \dotsc, v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_\mathcal{B}: K^n\rightarrow V$ mit $f(e_i) = v_i$ für $i=1,\dotsc, n$. Insbesondere ist jeder endlich dimensionale $K$-Vektorraum $V$ isomorph zu einem Standardvektorraum $K^n$, nämlich für $n = \dim(V)$.
+%TODO fix \Phi_B(e_i) = v_i
+	Ist $\mathcal{B}=(v_1, \dotsc, v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_{\mathcal{B}}: K^n\rightarrow V$ mit $\Phi_{\mathcal{B}}(e_i) = v_i$ für $i=1,\dotsc, n$. Insbesondere ist jeder endlich dimensionale $K$-Vektorraum $V$ isomorph zu einem Standardvektorraum $K^n$, nämlich für $n = \dim(V)$.
 \end{corollar}
 
 \begin{definition}
-	Die Abbildung $\Phi_\mathcal\mathcal{B}$ heißt \begriff{Koordinatensystem} zu $\mathcal{B}$. Für $v\in V$ ist $(x_1, \dotsc, x_n)^t = \Phi_\mathcal\mathcal{B}^{-1}(v)\in K^n$ der \begriff{Koordinatenvektor} zu $v$ bezüglich $\mathcal{B}$, und $x_1, \dotsc, x_n$ sind die \begriff{Koordinaten} von $v$ bezüglich $\mathcal{B}$.
+	Die Abbildung $\Phi_{\mathcal{B}}$ heißt \begriff{Koordinatensystem} zu $\mathcal{B}$. Für $v\in V$ ist $(x_1, \dotsc, x_n)^t = \Phi_{\mathcal{B}}^{-1}(v)\in K^n$ der \begriff{Koordinatenvektor} zu $v$ bezüglich $\mathcal{B}$, und $x_1, \dotsc, x_n$ sind die \begriff{Koordinaten} von $v$ bezüglich $\mathcal{B}$.
 \end{definition}
 
 \begin{satz}
@@ -1309,7 +1311,7 @@ Sei $A \in \Mat_{m\times n}(K)$ und $b\in K^m$.
     Jedes $A\in \GL_n(K)$ ist ein Produkt von Elementarmatrizen.
 \end{corollar}
 
-\chapter{Determinanten}
+\chapter{Determinanten}%TODO fix!
 Sei $n \in \mathbb{N}$.
 
 \addtocounter{section}{1}
@@ -1428,7 +1430,7 @@ Sei $n \in \mathbb{N}$.
 Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
 
 \begin{definition}
-    Eine Abbildung $\delta: \Mat_n(R) \to R$ heißt \begriff{Determinantenabbildung}, wenn gilt:
+    Eine Abbildung $\delta: \Mat_n(R) \to R$ heißt \begriff[Determinate]{Determinantenabbildung}, wenn gilt:
         \begin{enumerate}[(D1)]
         \item $\delta$ ist \highlight{linear in jeder Zeile}:\\
         Sind $a_1,\dots,a_n$ die Zeilen von $A\in\Mat_n(R)$ und ist $i\in\{1,\dots,n\}$ und $a_i = \lambda^{'} a^{'} + \lambda^{''}a^{''} \text{ mit } \lambda^{'},\lambda^{''} \in R$ und Zeilenvektoren $a_i^{'},a_i^{''}$, so ist 
@@ -1544,7 +1546,7 @@ Sei $R$ kommutativer Ring mit Einselement, $K$ Körper und $n \in \mathbb{N}$.
     Elementare Zeilenumformungen von \highlight{Typ II} ändern die Determinante der Matrix $A$ nicht. Elementare Zeilenumformungen von \highlight{Typ III} ändern nur das Vorzeichen.
 \end{corollar}
 
-\chapter{Minoren}
+\section{Minoren}
 Sei $m,n \in \mathbb{N}$.
 
 \addtocounter{section}{1}
@@ -1632,6 +1634,64 @@ Sei $m,n \in \mathbb{N}$.
 \begin{corollar}
     Sei $A\in \Mat_{m\times n}(K)$. Der Rang von $A$ ist das größte $r \in \mathbb{N}$, für das $A$ eine von Null verschiedenen $r$-Minor hat.
 \end{corollar}
+
+\section{Determinanten und Spur von Endomorphismen}
+Sei $n \in \mathbb{N}$ und $V$ ein $K$-Vektorraum mit $\dim_K(V) = n$.
+
+\begin{satz}
+    Sei $f \in \End(K)\text{, } \mathcal{A}$ eine Basis von $V$ und $A \in M_{\mathcal{A}}(f)$. 
+    Sei weiter $B \in \Mat_n(K)$. Genau dann gibt es eine Basis $\mathcal{B}$ von $V$ mit $B=M_{\mathcal{B}}(f)$, wenn es $S\in \GL_n(K)$ mit $B=SAS^{-1}$gibt.
+\end{satz}
+
+\begin{definition}[\index{Ähnlichkeit!Matrix}Ähnlichkeit von Matrizen]
+Zwei Matrizen $A,B \in \Mat_n(R)$ zwei solche Matrizen heißen \highlight{ähnlich} (in Zeichen $A \sim B$), wenn es $S\in \GL_n(R)\text{ mit } B=SAS^{^-1}$ gibt.
+\end{definition}
+
+\begin{satz}
+    Ähnlichkeit ist eine Äquivalenzrelation auf $\Mat_n(R)$.
+\end{satz}
+
+\begin{satz}
+    Seien $A,B \in \Mat_{1\times n}(R)$. Ist $A\sim B$, so ist $\det(A) = \det(B)$.
+\end{satz}
+
+\begin{definition}%TODO add ref
+    Die \begriff[Determinante]{Determinante eines Endomorphismus} $f\in \End(V)$ ist $\det(f):=\det(M_{\mathcal{B}}(f))$, wobei  $\mathcal{B}$ eine Basis von $V$ ist. (nach 4.1 ist $\det(f)$ wohldefiniert.)
+\end{definition}
+
+\begin{satz}
+    Für $f,g\in\End(V)$ gilt:
+    \begin{enumerate}[(a)]
+        \item $\det(\id_V) = 1$
+        \item $\det(f\circ g) = \det(f)\cdot \det(g)$
+        \item Genau dann ist $\det(f)\neq 0$, wenn $f\in \aut_K(V)$. In diesem Fall ist $\det(f^{-1}) = (\det(f))^{-1}$
+    \end{enumerate}
+\end{satz}
+
+\begin{definition}[\index{Spur}[Matrix]Spur]
+    Die Spur einer Matrix $A=(a_{ij})_{i,j} \in \Mat_n(R)$ ist $\Tr(A) = \sum_{i=1}^{n}a_{ii}$.
+\end{definition}
+
+\begin{lemma}
+    Seien $A,B \in \Mat_n(R)$, dann
+    \begin{enumerate}[(a)]
+    \item $\Tr: \Mat_n(R) \to R$ ist $R$-linear, d.h. für $A,B \in \Mat_n(R), \lambda, \mu \in R$ is $\Tr(\lambda A + \mu B) = \lambda \Tr(A) + \mu \Tr(B)$
+    \item $\Tr(A^t) = \Tr(A)$
+    \item $\Tr(AB) = \Tr(BA)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{satz}
+    Sei $A,B \in \Mat_n(R)$. Ist $A\sim B$, so ist $\Tr(A) = \Tr(B)$.
+\end{satz}
+
+\begin{definition}%TODO add ref
+    \highlight{Spur} eines Endomorpshimus $f \in \End_K(V)$ ist $\Tr(f) = \Tr(M_{\mathcal{B}}(f))$, wobei $\mathcal{B}$ eine Basis von $V$ ist. (Nach 4.1 und 4.9 ist $\Tr(f)$ wohldefiniert.)
+\end{definition}
+
+\begin{remark}%TODO add ref
+    Im Fall $K=R$ kan wie in 2.3 den Absolutbetrag der Determinante eines $f\in \End_K(K^n)$ geometrisch intepretieren, nähmlich als das Volumen von $f(\mathcal{Q})$, wobei $\mathcal{Q} = [0,1]^n$ der Einheitsquader ist und somit als \highlight{Volumenänderung} dur $f$. Auch das Vorzeichen von $\det(f)$ hat eine Bedeutung. Es gibt an, ob $f$ \begriff{orientierungserhaltend} ist. Für eine erste Intepretation der Spur siehe A100.
+\end{remark}
 
 \printindex
 
