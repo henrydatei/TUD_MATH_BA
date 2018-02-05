@@ -1,5 +1,5 @@
 # TUD_MATH_BA
-Zusammenfassung ANAG:
+Zusammenfassung LAAG:
 
 Definitionen, Theoreme, Sätze, Lemmas, Korollars - alles ohne Beweis
 als Übersicht mit Index.
