@@ -36,6 +36,8 @@
 
 \usepackage{titlesec}%customize titles
 
+% template by Daniel Graeveling and modified by Pascal Lehmann TUD
+
 \usepackage{xparse}%better macros
 
 \usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
@@ -206,7 +208,7 @@
 
 \begin{example}
 	\begin{itemize}
-		\item Für Aussagen $A,B,C$: $A\land B \Rightarrow B$
+		\item Für Aussagen $A,B,C$: $A\land C \Rightarrow B$
 		\begin{itemize}
 			\item $B$ ist \begriff{notwendig} für $A$
 			\item $A$ ist \begriff{hinreichend} für $B$
@@ -218,7 +220,7 @@
 \begin{definition}
 	\begin{enumerate}
 		\item \begriff[Beweis!]{direkt}\highlight{er Beweis}: $(A\Rightarrow A_1)\land(A_1\Rightarrow A_2)\land\dotsc\land(A_n\Rightarrow B)$ wahr für $A\Rightarrow B$
-		\item \begriff[Beweis!]{indirekt}\highlight{er Beweis} durch Tautologie $(A\Rightarrow B)\Leftrightarrow (\neg B\rightarrow \not A)$
+		\item \begriff[Beweis!]{indirekt}\highlight{er Beweis} durch Tautologie $(A\Rightarrow B)\Leftrightarrow (\neg B\rightarrow \neg A)$
 	\end{enumerate}
 \end{definition}
 
@@ -239,7 +241,7 @@
 			\item $(a,b)\in R \Rightarrow (b,a)\in R$ (\begriff[Ordnung!]{symmetrisch})
 			\item $(a,b),(b,c)\in R \Rightarrow (a,c)\in R$ (\begriff[Ordnung!]{transitiv})
 		\end{enumerate}
-		\item \mathsymbol{[a]}{$[a]$}$:=\{b\in M| (a,b)\in R\}$ heißt \begriff{Äquivalenzklasse} von $a\in M$ bzgl. $R$
+		\item \mathsymbol{[a]}{$[a]$}$:=\{b\in M\mid (a,b)\in R\}$ heißt \begriff{Äquivalenzklasse} von $a\in M$ bzgl. $R$
 		
 		Jedes $b\in [a]$ ist ein \begriff{Repräsentant} von $[a]$
 	\end{itemize}
@@ -251,8 +253,8 @@
 	\begin{itemize}
 		\item \mathsymbol{D}{$\mathcal{D}$}$(F):=M$ heißt \begriff{Definitionsbereich} / \begriff{Urbildmenge}
 		\item $N$ heißt \begriff{Zielbereich}
-		\item $(M'):=\{n\in M | n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $m'$}$\in M$
-		\item $F^{-1}(N'):=\{ m\in M| n=F(m)$ für ein $N' \}$ ist \begriff{Urbild}\highlight{ von $N'$}$\subset N$
+		\item $(M'):=\{n\in M \mid n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $M'$}$\in M$
+		\item $F^{-1}(N'):=\{ m\in M\mid n=F(m)$ für ein $N' \}$ ist \begriff{Urbild}\highlight{ von $N'$}$\subset N$
 		\item \mathsymbol{R}{$\mathcal{R}$}$(F):= F(M)$ heißt \begriff{Wertebereich} / \begriff{Bildmenge}
 		\item \mathsymbol{graph}{$\graph$}$(F) :=\{ (mn,)\in M\times N | n = F(m)\}$ heißt \begriff{Graph}\highlight{von $F$}
 		\item \mathsymbol{fm}{$F|_{M'}$} ist \begriff{Einschränkung}\highlight{der Funktion} von $F$ auf $M'\subset M$
@@ -344,7 +346,7 @@ $\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
 	\end{itemize}
 	\item (Induktionsaxiom)
 	
-	Falls $N\subset\mathbb{N}$ inuktiv in $\mathbb{N}$ (d.h. $0,\nu(n)\in\mathbb{N}$ falls $n\in\mathbb{N}$)\\
+	Falls $N\subset\mathbb{N}$ induktiv in $\mathbb{N}$ (d.h. $0,\nu(n)\in\mathbb{N}$ falls $n\in\mathbb{N}$)\\
 	$\Rightarrow N=\mathbb{N}$ ($N$ ist die kleinste indutkive Menge)
 \end{enumerate}
 
@@ -435,7 +437,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{satz}
 
 \begin{satz}
-	Sei $[(n,n')]\in\overline{\mathbb{Z}}$. Dann ex. eindeutige $n'\in\mathbb{N}:(n',0)\in[(n,n')]$ falls $n\ge n'$ bzw. $(0,n')\in[(n,n')]$ falls $n<n'$.
+	Sei $[(n,n')]\in\overline{\mathbb{Z}}$. Dann ex. eindeutige $n'\in\mathbb{N}:(n^{*},0)\in[(n,n')]$ falls $n\geq n'$ bzw. $(0,n^{*})\in[(n,n')]$ falls $n\leq n'$.
 \end{satz}
 
 \subsection*{Rechenoperationen}
@@ -512,7 +514,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{definition}
 
 \begin{satz}
-	$\mathbb{Q}$ ist angeordneter Körper ("$\le$" ist Totalordnung verträglich mit Addition und Multiplikation).
+	$\mathbb{Q}$ ist angeordneter Körper (``$\leq$'') ist Totalordnung verträglich mit Addition und Multiplikation).
 \end{satz}
 \begin{conclusion}
 	Körper $\mathbb{Q}$ ist \begriff{archimedisch angeordnet}, d.h. $\forall q\in\mathbb{Q} \exists n\in\mathbb{N}: q < n$.
@@ -527,7 +529,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 		\item $(-0) = 0, 1^{-1} = 1$
 		\item $-(-a) = a, (b^{-1})^{-1} = b (b\neq 0)$
 		\item $-(a+b) = (-a) + (-b), (ab)^{-1} = a^{-1}b^{-1} (a,b\neq 0)$
-		\item $-a = (-1) a, (-a)(-b) = ab, a\cdot 0 = 0$
+		\item $-a = (-1) a, (-a)(-b) = ab,\;a\cdot 0 = 0$
 		\item $ab = 0 \Leftrightarrow a=0\lor b = 0$
 		\item $a+x = b$ hat eindeutige Lösung $x = b+(-a) =: b-a$ \begriff{Differenz}
 		
@@ -555,8 +557,8 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\item \begriff{Fakkultät} für $n\in\mathbb{N}:$\mathsymbol*{n}{$n"!$} $n!:=\prod_{k=1}^n k, 0!=1$
 	\item \begriff{Binomialkoeffizient} \mathsymbol{noverm}{$\binom{n}{k}$}$:=\frac{n!}{k!(n-k)!}\in\mathbb{N}$ $\forall k,n\in\mathbb{N}, 0\le k\le n$
 	\begin{itemize}
-		\item $\binom{k+1}{n+1} = \binom{n}{k} + \binom{n}{k+1}$
-		\item Rechenregel fürht auf \begriff{\person{Pascal}'sches Dreieck}
+		\item $\binom{k+1}{n+1} = \binom{n}{k-1} + \binom{n}{k+1}$
+		\item Rechenregel führt auf \begriff{\person{Pascal}'sches Dreieck}
 	\end{itemize}
 	\end{itemize}
 \end{definition}
@@ -612,7 +614,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	$\Rightarrow$ $f:\mathbb{Q}\rightarrow K$ ist injektiv und $f$ erhält die Körperstruktur und Ordnung, d.h. $\forall p,q\in\mathbb{Q}$:
 	\begin{itemize}
 		\item $f(p+q) = f(p) + f(q), f(0) = 0_K, f(-p) = -f(p)$
-		\item $f(p\cdot q) = f(q)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
+		\item $f(p\cdot q) = f(p)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
 		\item $p \le_\mathbb{Q} q \Leftrightarrow f(p) \le_K f(q)$
 	\end{itemize}
 \end{satz}
@@ -672,7 +674,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele $n$ falsch.
 
 \begin{definition}[Intervallschachtelung]
-	Folge $\{x_n\}_{n\in\mathbb{N}} =:\mathcal{X}$ von abgeschlossenen Intervallen $X_N[x_n, x_n']\subset K (x_n, x_n'\in K)$ heißt \begriff{Intervallschachtelung} (im angeordneten Körper K), falls
+	Folge $\{x_n\}_{n\in\mathbb{N}} =:\mathcal{X}$ von abgeschlossenen Intervallen $X_n[x_n, x_n']\subset K$.\\ $(x_n, x_n')\in K$ heißt \begriff{Intervallschachtelung} (im angeordneten Körper K), falls
 	\begin{enumerate}[label={\alph*)}]
 		\item $X_n\neq \emptyset$ und $X_{n+1}\subset X_n\;\forall n\in\mathbb{N}$
 		\item $\forall\epsilon > 0$ in $K$ existiert $n\in\mathbb{N}: l(X_n):= x_n' - x_n < \epsilon$, mit $l$ \begriff{Intervalllänge}
@@ -700,7 +702,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	setze $\mathbb{R} := \{ [\mathcal{X}] \mid \mathcal{X}\in I_\mathbb{Q} \}$ Menge der \begriff{reellen Zahlen}.
 	
 	\begin{itemize}
-		\item $\bigcap_{n\in\mathbb{N}} x_n\neq 0 \rightarrow [\mathcal{X}]$ ist ``neue'' sog. \begriff{irrationale Zahl}
+		\item $\bigcap_{n\in\mathbb{N}} X_n \neq 0 \rightarrow [\mathcal{X}]$ ist ``neue'' sog. \begriff{irrationale Zahl}
 	\end{itemize}
 \end{definition}
 
@@ -710,7 +712,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\begin{itemize}
 		\item $X + Y := \{\xi + y \mid \xi \in X, y\in Y\} = [x + y, x' + y']$
 		\item $X\cdot Y :=\{\xi \cdot y \mid \xi \in X, y\in Y\} = [\tilde{x}\tilde{y}, \tilde{x}'\tilde{y}'], x,x'\in\{x,x'\},y,y'\in\{y,y'\}$
-		\item $-x := [-x,-x']$, $x^{-1}:=[\frac{1}{x'}, \frac{1}{x}]$ falls $0\in X$
+		\item $-X := [-x,-x']$, $X^{-1}:=[\frac{1}{x'}, \frac{1}{x}]$ falls $0\in X$
 	\end{itemize}
 
 	Für relle Zahl $[\mathcal{X}] = [\{x_n\}], [\mathcal{Y}]=[\{y_n\}]$ sei
@@ -953,8 +955,8 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \begin{definition}[Skalarprodukt]
 	$\langle x,y\rangle:=\sum_{i=1}^n x_i y_i$ heißt \begriff{Skalarprodukt}[!$\mathbb{R}$] (\begriff{inneres Produkt}) von $x,y\in\mathbb{R}^n$.
 	
-	Offenbar ist $\langle x,y\rangle = |x|^2\;\forall x\in\mathbb{R}^n$ (\highlight{ausschließlich für Euklidische Norm})\\
-	Man hat $|\langle x,y\rangle | \le |x|\cdot |x|\;\forall x,y\in\mathbb{R}^n$ (\begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung})
+	Offenbar ist $\langle x,x\rangle = |x|^2\;\forall x\in\mathbb{R}^n$ (\highlight{ausschließlich für Euklidische Norm})\\
+	Man hat $|\langle x,y\rangle | \le |x|\cdot |y|\;\forall x,y\in\mathbb{R}^n$ (\begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung})
 \end{definition}
 \begin{example}
 	$X=\mathbb{C}^n$ ist Vektorraum über $\mathbb{C}$, $x=(x_1,\dotsc,x_n)\in\mathbb{C}^n, x_i\in\mathbb{C}$.
@@ -997,7 +999,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
         \item \mathsymbol{int}{$\Int$}$ M:=$ Menge aller inneren Punkte von $M$, heißt \begriff{Inneres} von $M$
         \item \mathsymbol{ext}{$\Ext$}$M:=$ Menge aller äußeren Punkte von $M$, heißt \begriff{Äußeres} von $M$.
         \item \mathsymbol{p}{$\partial$}$M:=$ Menge der Randpunkte von $M$, heißt \begriff{Rand} von $M$
-        \item \mathsymbol{cl}{$\cl$}$:=\overline{M} = \int M \cup \partial M$ heißt \begriff{Abschluss} von $M$
+        \item \mathsymbol{cl}{$\cl$}$:=\overline{M} = \Int M \cup \partial M$ heißt \begriff{Abschluss} von $M$
         \item $M\subset X$ heißt \begriff{beschränkt}[!Menge], falls $\exists a\in X, r>0: M\subset B_r(a)$
         \item $x\in X$ heißt \gls{hp} von $M$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(x)$ unendlich viele Elemente aus $M$
         \item $x\in M$ heißt \begriff{isolierter Punkt} von $M$, falls $x$ kein Häufungspunkt
@@ -1065,8 +1067,8 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	Sei $(X,d)$ metr. Raum, $\{x_n\}$ Folge in $X$. Dann \[ x,x' \text{ Grenzwert von $\{x_n\}$} \;\Rightarrow\; x = x' \]
 \end{satz}
 \begin{satz}
-	Sei $(X,d)$ metrischer Raum\\
-	$\Rightarrow$ konvergente Folge $\{x_n\}$ ist stets beschränkt
+	Sei $(X,d)$ metrischer Raum, $\{x_n\}$ konvergente Folge in $X$\\
+    $\Rightarrow$ $\{x_n\}$ ist beschränkt.
 \end{satz}
 \addtocounter{theorem}{4}
 \begin{definition}
@@ -1091,8 +1093,8 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \begin{satz}
 	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X$, $\{\lambda_n\}$ in $K$ mit $\lim x_n = x, \lim y_n = y$. Dann
 	\begin{enumerate}[label={\arabic*)}]
-		\item $\{x_n \pm y_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty}x_n + y_n = \lim\limits_{n\rightarrow\infty} x_n + \lim\limits_{n\rightarrow\infty} y_n$
-		\item $\{\lambda_n x_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty} \lambda_n x_n = \lim\limits_{n\rightarrow\infty} x_n \cdot \lim\limits_{n\rightarrow\infty}x_n$
+		\item $\{x_n \pm y_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty}x_n \pm y_n = \lim\limits_{n\rightarrow\infty} x_n \pm \lim\limits_{n\rightarrow\infty} y_n$
+		\item $\{\lambda_n x_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty} \lambda_n x_n = \lim\limits_{n\rightarrow\infty} \lambda_n \cdot \lim\limits_{n\rightarrow\infty}x_n$
 		\item $\lambda\neq 0 \;\Rightarrow\;\lim\limits_{n\rightarrow\infty} \frac{1}{\lambda_n} = \frac{1}{\lambda}$ (in $K$) für $\{\frac{1}{\lambda_n}\}_{n\ge\tilde{n}}$ ($\lambda_n\neq 0\;\forall n\ge\tilde{n}$)
 	\end{enumerate}
 \end{satz}
@@ -1108,7 +1110,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\begin{enumerate}[label={\arabic*)}]
 		\item Im metrischen Raum $X$ gilt:$x_n\rightarrow x$ in $X$ $\Leftrightarrow\;d(x_n,x)\rightarrow 0$ in $\mathbb{R}$
 		\item Sei $0\le \alpha_n\le\beta_n\;\forall n\in\mathbb{N}, \alpha_n, \beta_n\in\mathbb{R}, \beta_n\rightarrow 0$\\
-		$\Rightarrow \alpha_n\rightarrow 0$ \begriff{Sandwitch-Prinzip}
+		$\Rightarrow \alpha_n\rightarrow 0$ \begriff{Sandwich-Prinzip}
 	\end{enumerate}
 \end{lemma}
 \begin{satz}
@@ -1192,7 +1194,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \stepcounter{theorem}
 \section*{Uneigentliche Konvergenz}
 \begin{definition}[Uneigentliche Konvergenz]
-	Folge $\{x_n\}$ in $\mathbb{R}$ \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\;\forall n\ge n_0$
+	Folge $\{x_n\}$ in $\mathbb{R}$ konvergiert \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\;\forall n\ge n_0$
 	
 	(heißt auch \begriff{bestimmt divergent}) gegen $\infty$, "uneigentlich" wird meist weggelassen.
 	
@@ -1206,18 +1208,21 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \stepcounter{theorem}
 \begin{satz}
 	Sei $\{x_n\}$ mit $x_n\rightarrow x$ im normierten Raum $X$.\\
-	$\Rightarrow\frac{1}{n}\sum_{j=1}^n x_j \rightarrow n\rightarrow\infty x$
+	$\Rightarrow\frac{1}{n}\sum_{j=1}^n x_j \overset{n\rightarrow\infty}{\longrightarrow} x$
 \end{satz}
 
 \section{Vollständigkeit}
 \begin{definition}[\person{Cauchy}-Folge]
-	Folge $\{x_n\}$ im metrischen Raum $(X,d)$ heißt \gls{cf} (Fundamentalfolge), falls $\forall\epsilon > 0 \,\exists n_0\in\mathbb{N}: d(x_n, x_m) < \epsilon\;\forall n,m\ge n_0$
+	Folge $\{x_n\}$ im metrischen Raum $(X,d)$ heißt \gls{cf} (Fundamentalfolge), falls
+    \[
+    \forall\epsilon > 0 \,\exists n_0\in\mathbb{N}: d(x_n, x_m) < \epsilon\;\forall n,m\ge n_0.
+    \]
 \end{definition}
 \begin{satz}
 	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $x_n\rightarrow x \Rightarrow \{x_n\}$ ist \person{Cauchy}-Folge
-		\item $\{x_n\}$ \gls{cf} $\Rightarrow \{x_n\}$ ist beschränkt und hat maximal 1 \gls{hw}.
+		\item $\{x_n\}$ \gls{cf} $\Rightarrow \{x_n\}$ ist beschränkt und hat maximal einen \gls{hw}.
 	\end{enumerate}
 \end{satz}
 \begin{definition}[Durchmesser]
@@ -1229,7 +1234,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	Sei $M\subset X$ beschränkt, $\neq 0\;\Rightarrow\;\diam M = \diam (\cl M)$.
 \end{lemma}
 \begin{theorem}
-	Sei $(X,d)$ metrischer Raum. Dann: für jede Schachtelung $A_n$ in $X$ gilt:\[ \bigcap_{n\in\mathbb{N}}\in\mathbb{N} A_n\neq \emptyset \;\Leftrightarrow \; \text{jede \gls{cf} in $\{x_n\}$ in $X$ ist konvergent} \]
+	Sei $(X,d)$ metrischer Raum. Dann: für jede Schachtelung $A_n$ in $X$ gilt:\[ \bigcap_{n\in\mathbb{N}} A_n\neq \emptyset \;\Leftrightarrow \; \text{jede \gls{cf} in $\{x_n\}$ in $X$ ist konvergent} \]
 \end{theorem}
 \begin{lemma}
 	In $\mathbb{R}$ gilt:
@@ -1299,8 +1304,8 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{satz}[\person{Cauchy}-Kriterium]
 	Sei $X$ normierter Raum, $\{x_k\}$ Folge in $X$. Dann
 	\begin{enumerate}[label={\arabic*)}]
-		\item $\sum_k x_k$ konvergiert $\Rightarrow\;\forall \epsilon > 0\,\exists n_0: \left|\left|\sum_{k=n}^n x_k\right|\right| < \epsilon\;\forall k\ge n\ge n_0$
-		\item falls $x$ vollständiger, normierter Raum, gilt $\Leftarrow$ oben.
+		\item $\sum_k x_k$ konvergiert $\Rightarrow\;\forall \epsilon > 0\,\exists n_0: \left|\left|\sum_{k=n}^m x_k\right|\right| < \epsilon\;\forall m\ge n\ge n_0$
+		\item falls $x$ vollständiger, normierter Raum, gilt $\Leftarrow$ auch oben.
 	\end{enumerate}
 \end{satz}
 \begin{conclusion}
@@ -1355,9 +1360,9 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 	\end{enumerate}
 \end{satz}
 \begin{example}
-	\begriff{Exponentialreihe} $\exp z := \sum_{k=0}^\infty \frac{z^k}{n!}$ absolut konvergent $\forall z\in \mathbb{C}$.
+	\begriff{Exponentialreihe} $\exp z := \sum_{k=0}^\infty \frac{z^k}{k!}$ absolut konvergent $\forall z\in \mathbb{C}$.
 	
-	\mathsymbol{e}{$e$}$:=\exp 1$ \begriff{\person{Euler}'sche Zahl}
+	\mathsymbol{e}{$e$}$:=\exp(1)$ \begriff{\person{Euler}'sche Zahl}
 \end{example}
 \begin{example}
 	\begriff{Potenzreihe}: $\sum_{k=0}^\infty a_k(z-z_0)^k$ für $z\in\mathbb{C}, a_k\in\mathbb{C}, z_0\in\mathbb{C}$.
@@ -1468,7 +1473,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{definition}
 	$M\subset X, X$ normierter Raum heißt \begriff{konvex}, falls $x,y\in M \,\Rightarrow \,tx+(1-t)y \in M\;\forall t\in(0,1)$
 	
-	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} f(x) + (1-t)f(y)\;\forall x,y\in D, t\in(0,1)$
+	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\;\forall x,y\in D, t\in(0,1)$
 	
 	$f$ heißt \begriff{konkav} (bzw. \begriff[konkav!]{strikt}), falls $-f$ (strikt) konvex.
 \end{definition}
@@ -1535,7 +1540,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 	\begriff{Trigonometrische Funktion}:
 	\begin{itemize}
 		\item $\sin z := \frac{e^{iz} - e^{-iz}}{2i} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k+1}}{(2k+1)!} = z - \frac{z^3}{3!} + \frac{z^5}{5!}+ \dotsc \;\forall z\in\mathbb{C}$
-		\item $\cos z := \frac{e^{iz}+e^{-iz}}{z} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k}}{(2k)!} = 1 - \frac{z^2}{4} + \frac{z^4}{24}+\dotsc \;\forall z\in\mathbb{C}$
+		\item $\cos z := \frac{e^{iz}+e^{-iz}}{2} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k}}{(2k)!} = 1 - \frac{z^2}{4} + \frac{z^4}{24}+\dotsc \;\forall z\in\mathbb{C}$
 	\end{itemize}
 \end{definition}
 
@@ -1547,7 +1552,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 		\item $\sin(-z) = -\sin z, \cos z = \cos(-z)$
 		\item (\begriff{Additionstheoreme})
 		\begin{itemize}
-			\item $\sin(z+w) = \sin z \cos w - \sin w \cos z \;\forall z,w\in\mathbb{C}$
+			\item $\sin(z+w) = \sin z \cos w + \sin w \cos z \;\forall z,w\in\mathbb{C}$
 			\item $\cos (z+w) = \cos z \cos w - \sin z \sin w \;\forall z,w\in\mathbb{C}$
 		\end{itemize}
 		\item $\sin(2z) = 2\sin z \cos z, \cos(2z) = \cos^2 z - \sin^2 z\;\forall z\in\mathbb{C}$
@@ -1659,7 +1664,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \subsection*{Hyperbolische Funktionen}
 \begin{definition}
 	\begin{itemize}
-		\item $\sinh (z) = \frac{e^z - e^{iz}}{2} = \sum_{k=0}^\infty \frac{z^{2k+1}}{(2k+1)!}\;\forall z\in\mathbb{C}$ (\begriff{Sinus Hyperbolicus})
+		\item $\sinh (z) = \frac{e^z - e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k+1}}{(2k+1)!}\;\forall z\in\mathbb{C}$ (\begriff{Sinus Hyperbolicus})
 		\item $\cosh (z) = \frac{e^z+e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k}}{(2k+1)!}\;\forall z\in\mathbb{C}$ (\begriff{Cosinus Hyperbolicus})
 		\item $\tanh (z) = \frac{\sinh (z)}{\cosh (z)}\;\forall z\in\mathbb{C}\setminus\left\lbrace \left.\frac{\pi}{2} + k\pi  \right| k\in\mathbb{Z} \right\rbrace$ (\begriff{Tangens Hyperbolicus})
 		\item $\coth(z) = \frac{\cosh(z)}{\sinh(z)} \;\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$ (\begriff{Cotangens Hyperbolicus})
@@ -1724,7 +1729,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{satz}[$\epsilon\delta$-Kriterium]
 	Sei $f:D\subset X\to Y, x_0\in\overline{D}$. Dann
 	\begin{center}
-	$\lim\limits_{x\rightarrow x_0} f(x) = y_0 \,\Leftrightarrow \, \forall\epsilon > 0\,\exists \delta > 0: f(B_\delta(x_0)\cap D)\subset B_\epsilon(x_0)$
+	$\lim\limits_{x\rightarrow x_0} f(x) = x_0 \,\Leftrightarrow \, \forall\epsilon > 0\,\exists \delta > 0: f(B_\delta(x_0)\cap D)\subset B_\epsilon(x_0)$
 	\end{center}
 \end{satz}
 
