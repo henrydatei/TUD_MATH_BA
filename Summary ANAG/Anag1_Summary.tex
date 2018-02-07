@@ -135,10 +135,11 @@
 	
 %\tableofcontents
 	
+\chapter{Grundlagen der Mathematik}
 \section{Grundbegriffe aus Logik und Mengenlehre}
 
 \begin{definition}[Aussage]
-	\begriff{Aussage} ist ein Schverhalt, dem man entweder den Warheitswert wahr ($w$) oder falsch ($f$) zuordnen kann (und nichts anderes).
+	\begriff{Aussage} ist ein Sachverhalt, dem man entweder den Warheitswert wahr ($w$) oder falsch ($f$) zuordnen kann (und nichts anderes).
 \end{definition}
 
 \addtocounter{theorem}{1}
@@ -191,13 +192,13 @@
 			\item $\bigcup_{M\in\mathcal{M}} M := \{x \mid \exists M\in\mathcal{M}: x\in M\}$
 			\item $\bigcap_{M\in\mathcal{M}} M:= \{ x\mid\forall M\in\mathcal{M}: x\in M \}$
 		\end{itemize}
-		\item \begriff{Potenzmenge}: \mathsymbol{p}{$\mathcal{P}$}$(XM):=\{\tilde{M} | \tilde{M}\in M\}$
+		\item \begriff{Potenzmenge}: \mathsymbol{p}{$\mathcal{P}$}$(M):=\{\tilde{M} \mid \tilde{M}\subset M\}$
 		\item \begriff{\person{de Morgan}'sche Regeln} (für $\mathcal{N}\subset\mathcal{P}(M)$)
 		\begin{itemize}
 			\item $\left(\bigcup_{N\in\mathcal{N}} N\right)^C = \bigcap_{N\in\mathcal{N}} N^C$
 			\item $\left(\bigcap_{N\in\mathcal{N}} N\right)^C = \bigcup_{N\in\mathcal{N}} N^C$
 		\end{itemize}
-		\item \begriff{kartesisches Produkt} $M$\mathsymbol{x}{$\times$}$N:=\{(m,n) | m\in M \text{ und } n\in N\}$
+		\item \begriff{kartesisches Produkt} $M$\mathsymbol{x}{$\times$}$N:=\{(m,n) \mid m\in M \text{ und } n\in N\}$
 		\item $(m_1, \dotsc, m_n)$ ist \begriff{n-Tupel}
 		\item \begriff{Auswahlaxiom} (AC / axiom of choice)
 		
@@ -1477,7 +1478,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{definition}
 	$M\subset X, X$ normierter Raum heißt \begriff{konvex}, falls $x,y\in M \,\Rightarrow \,tx+(1-t)y \in M\,\forall t\in(0,1)$
 	
-	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\.\forall x,y\in D, t\in(0,1)$
+	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\,\forall x,y\in D, t\in(0,1)$
 	
 	$f$ heißt \begriff{konkav} (bzw. \begriff[konkav!]{strikt}), falls $-f$ (strikt) konvex.
 \end{definition}
