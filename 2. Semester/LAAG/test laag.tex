@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
+\usepackage{scrpage2}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[autostyle]{csquotes}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
+\usepackage{color}
+\renewcommand*{\arraystretch}{1.4}
+\usepackage{mathrsfs}
+
+\setlength{\parindent}{0pt}
+\newcounter{Nummer}
+\newcounter{Kapitel}
+
+\newenvironment {satz} {\stepcounter{Nummer}\begin{mdframed}[innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Satz:} } {\end{mdframed}}
+\newenvironment {korollar} {\stepcounter{Nummer}\begin{mdframed}[innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Korollar:} } {\end{mdframed}}
+\newenvironment {lemma} {\stepcounter{Nummer}\begin{mdframed}[innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Lemma:} } {\end{mdframed}}
+
+\newenvironment {satzname} [1] {\stepcounter{Nummer}\begin{mdframed}[backgroundcolor=blue!20,innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Satz #1:} } {\end{mdframed}}
+\newenvironment {korollarname} [1] {\stepcounter{Nummer}\begin{mdframed}[backgroundcolor=blue!20,innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Korollar #1:} } {\end{mdframed}}
+\newenvironment {lemmaname} [1] {\stepcounter{Nummer}\begin{mdframed}[backgroundcolor=blue!20,innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Lemma #1:} } {\end{mdframed}}
+
+\newenvironment {definition} [1] {\stepcounter{Nummer}\begin{mdframed}[backgroundcolor=blue!20,innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Definition #1:} } {\end{mdframed}}
+\newenvironment {theorem} [1] {\stepcounter{Nummer}\begin{mdframed}[backgroundcolor=blue!20,innertopmargin=10,innerbottommargin=10,innerleftmargin=25,
+innerrightmargin=25,skipabove=20] \textbf{\arabic{Kapitel}.\arabic{Nummer} Theorem #1:} } {\end{mdframed}}
+
+\newenvironment {beweis} {\begin{itshape} Beweis: \\} {\end{itshape}} 
+
+\newenvironment {beispiel} {\stepcounter{Nummer}\textbf{Beispiel: }} {}
+\newenvironment {bemerkung} {\stepcounter{Nummer}\textbf{Bemerkung: }} {}
+
+\begin{document}
+
+\section{Test}
+\subsection{noch mehr Test}
+\stepcounter{Kapitel}
+\setcounter{Nummer}{0}
+
+\begin{satz}
+	richtig wichtiger Satz.
+\end{satz}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\begin{definition} {Fehlstand}
+	Ein Fehlstand ist ...
+\end{definition}
+
+\begin{korollar}
+	richtig wichtiges Korolar.
+\end{korollar}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\subsection{Test Nummer 2}
+\stepcounter{Kapitel}
+\setcounter{Nummer}{0}
+
+$\newline$
+\begin{beispiel}
+	Beispiel zur Visualisierung des vorherigen Contents
+\end{beispiel}
+
+\begin{theorem} {Gauss'sches Elimierungsverfahren}
+	ganz wichtiges Verfahren um lineare Gleichungssysteme zu lösen. Noch etwas Fülltext: bla bla bla bla bla bla bla bla 
+	bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+\end{theorem}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\begin{lemma}
+	richtig wichtiges lemma.
+\end{lemma}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\begin{lemmaname} {extrem wichtig}
+	muss ich für die Prüfung lernen
+\end{lemmaname}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\begin{theorem} {}
+	noch ein Theorem, aber diesmal ohne Namen
+\end{theorem}
+\begin{beweis}
+	klar
+\end{beweis}
+
+\end{document}
