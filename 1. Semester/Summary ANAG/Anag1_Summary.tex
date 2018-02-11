@@ -253,7 +253,7 @@
 	\begin{itemize}
 		\item \mathsymbol{D}{$\mathcal{D}$}$(F):=M$ heißt \begriff{Definitionsbereich} / \begriff{Urbildmenge}
 		\item $N$ heißt \begriff{Zielbereich}
-		\item $(M'):=\{n\in M \mid n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $M'$}$\in M$
+		\item $F(M'):=\{n\in N \mid n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $M'$}$\subset M$
 		\item $F^{-1}(N'):=\{ m\in M\mid n=F(m)$ für ein $N' \}$ ist \begriff{Urbild}\highlight{ von $N'$}$\subset N$
 		\item \mathsymbol{R}{$\mathcal{R}$}$(F):= F(M)$ heißt \begriff{Wertebereich} / \begriff{Bildmenge}
 		\item \mathsymbol{graph}{$\graph$}$(F) :=\{ (mn,)\in M\times N | n = F(m)\}$ heißt \begriff{Graph}\highlight{von $F$}
@@ -1551,7 +1551,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{satz}
 	Es gilt:
 	\begin{enumerate}[label={\arabic*)}]
-		\item \begriff{\person{Euler}'sche Formel}: $e^{iz} ? \cos z + i \sin z$
+		\item \begriff{\person{Euler}'sche Formel}: $e^{iz} = \cos z + i \sin z$
 		\item $\sin^2 z + \cos^2 z = 1\,\forall z\in\mathbb{C}$ (beachte: $\cancel{\rightarrow}\;|\sin z|\le1, |\cos z| \le 1$, $\sin, \cos$ unbeschränkt auf $\mathbb{C}$)
 		\item $\sin(-z) = -\sin z, \cos z = \cos(-z)$
 		\item (\begriff{Additionstheoreme})
@@ -1575,7 +1575,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\cos$ streng fallend auf $[0,2]$
 		\item $\cos 2 < 0$ und $\sin x > 0\,\forall x\in (0,2]$
-		\item $\phi(x) 0 \phi(1) \,\forall x\in [0,2]$ und $45 < \phi(x) < 90$ (d.h. $\phi(x)$ proportional zu $x$)
+		\item $\phi(x) = \phi(1) \,\forall x\in [0,2]$ und $45 < \phi(x) < 90$ (d.h. $\phi(x)$ proportional zu $x$)
 		\item $\cos \frac{\pi}{2} = 0$ für $\pi := \frac{180°}{\phi(1)}$ ($=3,1415\dotsc$), $\frac{\pi}{2}$ einzige Nulsltelle in $[0,2]$
 	\end{enumerate}
 \end{lemma}
@@ -1583,7 +1583,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{satz}
 	Für alle $z\in\mathbb{C}, k\in\mathbb{Z}$ gilt:
 	\begin{enumerate}[label={\arabic*)}]
-		\item $^{z+2k\pi i} = e^z$, d.h. Periode $2\pi i$\\
+		\item $e^{z+2k\pi i} = e^z$, d.h. Periode $2\pi i$\\
 		$\sin(z+2k\pi) = \sin z$ (d.h. Periode $2\pi$)\\
 		$\cos(z+2k\pi) = \cos z$ (d.h. Periode $2\pi$)
 		\item $e^{z+i\sfrac{\pi}{2}} = ie^z, e^{z+i\pi} = -e^z$
@@ -1595,7 +1595,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \begin{satz}
 	Auf $\mathbb{C}$ gilt:
 	\begin{itemize}
-		\item $eez = 1 \,\Leftrightarrow\,z=2k\pi i,\;k\in\mathbb{Z}$
+		\item $e^z = 1 \,\Leftrightarrow\,z=2k\pi i,\;k\in\mathbb{Z}$
 		\item $\sin z = 0\,\Leftrightarrow\,z=k\pi,\;k\in\mathbb{Z}$
 		\item $\cos z = 0\,\Leftrightarrow\,z =k\pi + \frac{\pi}{2},\;k\in\mathbb{Z}$
 	\end{itemize}
@@ -1878,7 +1878,7 @@ Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ au
 \end{satz}
 \rule{4cm}{0.4pt}
 \begin{definition}
-	Funktion $f:D\subset X\to Y, X,Y$ metrische Räume, heißt \begriff{gleichmäßig stetig} auf $M\subset D$, falls \[ \forall \epsilon > 0 \,\exists \delta > 0: d(f(x), f(\tilde{X})) < \epsilon\quad \forall x,\tilde{x}\in M \text{ mit $d(x,\tilde{x}) < \delta$}, \]
+	Funktion $f:D\subset X\to Y, X,Y$ metrische Räume, heißt \begriff{gleichmäßig stetig} auf $M\subset D$, falls \[ \forall \epsilon > 0 \,\exists \delta > 0: d(f(x), f(\tilde{x})) < \epsilon\quad \forall x,\tilde{x}\in M \text{ mit $d(x,\tilde{x}) < \delta$}, \]
 	d.h. $f$ ist $\epsilon\delta$-stetig in jedem $\tilde{x}\in M$ \highlight{und} $\delta > 0$ kann unabhängig von $x\in M$ gewählt werden.
 \end{definition}
 
