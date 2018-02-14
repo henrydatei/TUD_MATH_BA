@@ -1,0 +1,151 @@
+\documentclass[12pt, oneside]{book}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{paralist}
+%\usepackage{booktabs}
+%\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref} % link chapters over name and page number
+% math/enviroments
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{framed}
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[autostyle]{csquotes}
+%\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{enumitem} % compress enumerate env
+\setlist{nolistsep}
+\usepackage{titlesec} % remove page break
+
+%theorem enviroment
+
+%theorem
+\newframedtheorem{theorem}{Theorem}[chapter]
+% example
+\theoremstyle{break}
+\theorembodyfont{\upshape} % no italics!
+\newtheorem*{exmp}{Beispiel}
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\newtheorem{exmpn}[theorem]{Beispiel}
+% defintion
+\theorembodyfont{\upshape}
+\newtheorem{mydef}[theorem]{Definition}
+% definition no numbering
+\theorembodyfont{\upshape}
+\newtheorem*{mydefn}{Definition}
+% corollary
+\theorembodyfont{\upshape}
+\newtheorem{folg}[theorem]{Folgerung}
+% remark
+\theorembodyfont{\upshape}
+\newtheorem*{remark}{Bemerkung}
+% satz
+\newtheorem{satz}[theorem]{Satz}
+% beweis
+\theorembodyfont{\upshape}
+\newtheorem*{proof}{Beweis}
+% lemma
+\theorembodyfont{\upshape}
+\newtheorem{lem}[theorem]{Lemma}
+%\let\olddefinition\lem
+%\renewcommand{\lem}{\olddefinition\normalfont}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}      % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Lightarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+
+
+% Math Operators
+\DeclareMathOperator{\inter}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
+
+% Hack page break on part page.
+
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+
+\setlength\parindent{0pt} % noindent whole file!
+
+\begin{document}
+
+\title{\textbf{Analysis 1. Semester (WS2017/18)}}
+\author{Dozent: Prof. Dr. Friedemann Schuricht\\
+	Kursassistenz: Moritz Schönherr}
+\date{Stand: \today}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+% PArt 1 Grundlagen der Mathematik
+\include{./TeX_files/chapter01_grundbegriffe_aus_mengenlehre_und_logik}
+\include{./TeX_files/chapter02_aufbau_einer_math_theorie}
+% Part 2 Zahlenbereiche
+\include{./TeX_files/chapter03_nat_zahlen}
+\include{./TeX_files/chapter04_ganze_u_rat_zahlen}
+\include{./TeX_files/chapter05_reelle_zahlen}
+\include{./TeX_files/chapter06_komplexe_zahlen}
+% Part 3 Metrische Räume und Konvergenz
+\include{./TeX_files/chapter07_grundl_ungleichungen}
+\include{./TeX_files/chapter08_metr_raeume}
+\include{./TeX_files/chapter09_konvergenz}
+\include{./TeX_files/chapter10_vollst}
+\include{./TeX_files/chapter11_kompaktheit}
+\include{./TeX_files/chapter12_reihen}
+% Part 4 Funktionen und Stetigkeit
+\include{./TeX_files/chapter13_funktionen}
+
+\backmatter
+% bibliography, glossary and index would go here.
+
+\end{document}

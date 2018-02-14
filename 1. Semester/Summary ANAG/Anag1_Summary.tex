@@ -1,0 +1,2134 @@
+\documentclass[ngerman,a4paper]{report}
+\usepackage[table]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{ marvosym } %lighning
+\usepackage{graphicx}
+%\usepackage{fontspec} %ß, Umlaute etc.
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{url} 
+\usepackage[top=1cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{bbm} %unitary matrix 1
+
+\usepackage[texindy]{imakeidx}
+\makeindex
+\makeindex[name=symbols,title=Symbolverzeichnis]
+
+\usepackage{enumerate}
+\usepackage{enumitem} %customize label
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
+\usepackage{parskip}%split paragraphs by vspace instead of intendations
+
+\usepackage{cancel}
+
+\usepackage{chngcntr}
+
+\usepackage{ulem} %better underlines
+
+\usepackage{titlesec}%customize titles
+
+% template by ... and modified by Pascal Lehmann TUD
+
+\usepackage{xparse}%better macros
+
+\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+
+\usepackage[xindy,acronym]{glossaries}
+\makeglossaries
+
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=green,
+	linkcolor=blue,
+	urlcolor=green
+}
+\usepackage{bookmark}
+
+\renewcommand{\mvchr}[1]{\mbox{\mvs\symbol{#1}}} %change the use of lightning symbol globally
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{15pt}{\huge\bfseries}
+\titlespacing{\chapter}{0pt}{0pt}{0pt}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+
+\theoremstyle{break}
+\theorembodyfont{}
+\theorempostskip{15pt}
+\theorempreskip{10pt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{*example}{Beispiel}
+\newtheorem{example}[theorem]{Beispiel}
+\newtheorem{corollar}[theorem]{Korollar}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{satz}[theorem]{Satz}
+\newtheorem{overview}[theorem]{Überblick}
+\newtheorem*{definition}{Definition}
+\newtheorem{remark}[theorem]{Bemerkung}
+\newtheorem*{*remark}{Bemerkung} % removed counter
+\newtheorem{conclusion}[theorem]{Folgerung}
+
+\NewDocumentCommand{\begriff}{s O{} m O{}}{
+	\IfBooleanTF{#1}
+		{\index{#2#3#4}}
+		{\uline{#3}\index{#2#3#4}}
+}
+\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{
+	\IfBooleanTF{#1}
+		{\index[symbols]{#2#3@\detokenize{#4}#5}}
+		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
+}
+
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+
+%\numberwithin{theorem}{section}
+%\counterwithout{section}{chapter}
+%\counterwithout{theorem}{section}
+
+
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\spank}{span_\mathbb{K}}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ext}{ext}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\grad}{grad}
+
+\newacronym{gdw}{gdw.}{genau dann wenn}
+\newacronym{fa}{fa.}{fast alle}
+\newacronym{obda}{oBdA}{ohne Beschränkung der Allgemeinheit}
+\newacronym{tf}{TF}{\begriff{Teilfolge}}
+\newacronym{hw}{Hw}{\begriff{Häufungswert}}
+\newacronym{cf}{CF}{\begriff{\person{Cauchy}-Folge}}
+\newacronym{hp}{HP}{\begriff{Häufungspunkt}}
+
+\pagestyle{plain}
+
+\begin{document}
+	
+%\tableofcontents
+	
+\section{Grundbegriffe aus Logik und Mengenlehre}
+
+\begin{definition}[Aussage]
+	\begriff{Aussage} ist ein Schverhalt, dem man entweder den Warheitswert wahr ($w$) oder falsch ($f$) zuordnen kann (und nichts anderes).
+\end{definition}
+
+\addtocounter{theorem}{1}
+	
+\begin{definition}[Menge]
+	\begriff{Menge} ist (nach Cantor 1877) eine Zusammenfassung von bestimmten, wohlunterschiedenen Objekten der Anschauung oder des Denkens, welche die \begriff{Elemente} der Menge genannt werden, zu einem Ganzen.
+\end{definition}
+
+\addtocounter{theorem}{1}
+
+\begin{definition}
+	\begin{itemize}
+		\item $M=N$, falls dieselben Elemente enthalten sind
+		\item $N$\mathsymbol{c}{$\subset$}$M$ (\begriff{Teilmenge}), falls $n\in M$für jedes $n\in\mathbb{N}$
+		\item $N$\mathsymbol{c=}{$\subsetneqq$}$M$ (\begriff{echte Teilmenge}), falls zusätzlich $N\neq M$.
+		\item \begriff{Aussageform}: Sachverhalt mit Variablen, der durch geeignete Ersetzung der Variablen zur Aussage führt
+	\end{itemize}
+\end{definition}
+
+\addtocounter{theorem}{1}
+
+\begin{definition}[Quantoren]
+	\begriff{Quantoren}
+	\begin{itemize}
+		\item $\forall x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für jedes $x\in M$
+		\item $\exists x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für mindestens ein $x\in M$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	\begriff{Tautologie} bzw. \begriff{Kontradiktion}\slash\begriff{Widerspruch} ($\Lightning$) ist zusätzlich gesetzte Aussage, die unabhängig vom Wahrheitswert der Teilaussagen stets wahr bzw. falsch ist.
+\end{definition}
+
+\begin{satz}[\person{de Morgan}'sche Regeln]
+	Folgende Aussagen sind stets Tautologien
+	\begin{enumerate}[label={\alph*)}]
+		\item $\neg(A\land B) \Leftrightarrow \neg A \lor \neg B$
+		\item $\neg(A\lor B) \Leftrightarrow \neg A\land \neg B$
+		\item $\neg (\forall x\in M: A(x)) \;\Leftrightarrow \; \exists x\in M:\neg A(x)$
+		\item $\neg (\exists x\in M: A(x)) \;\Leftrightarrow \;\forall x\in M:\neg A(x)$
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}
+	\begin{itemize}
+		\item \begriff{leere Menge} \mathsymbol{o}{$\emptyset$}$=:$ Menge, die kein Element enthält
+		\item $M,N$ sind \begriff[Menge!]{disjunkt}, falls $M\cap N = \emptyset$
+		\item Sei $\mathcal{M}$ \begriff{Mengensystem}, d.h. Mengen von Mengen, dann
+		\begin{itemize}
+			\item $\bigcup_{M\in\mathcal{M}} M := \{x \mid \exists M\in\mathcal{M}: x\in M\}$
+			\item $\bigcap_{M\in\mathcal{M}} M:= \{ x\mid\forall M\in\mathcal{M}: x\in M \}$
+		\end{itemize}
+		\item \begriff{Potenzmenge}: \mathsymbol{p}{$\mathcal{P}$}$(XM):=\{\tilde{M} | \tilde{M}\in M\}$
+		\item \begriff{\person{de Morgan}'sche Regeln} (für $\mathcal{N}\subset\mathcal{P}(M)$)
+		\begin{itemize}
+			\item $\left(\bigcup_{N\in\mathcal{N}} N\right)^C = \bigcap_{N\in\mathcal{N}} N^C$
+			\item $\left(\bigcap_{N\in\mathcal{N}} N\right)^C = \bigcup_{N\in\mathcal{N}} N^C$
+		\end{itemize}
+		\item \begriff{kartesisches Produkt} $M$\mathsymbol{x}{$\times$}$N:=\{(m,n) | m\in M \text{ und } n\in N\}$
+		\item $(m_1, \dotsc, m_n)$ ist \begriff{n-Tupel}
+		\item \begriff{Auswahlaxiom} (AC / axiom of choice)
+		
+		Sei $\mathcal{M}$ Menge nichtleerer, paarweise disjunkter Mengen $M$\\
+		$\Rightarrow$ es gibt immer (Auswahl-) Menge $\tilde{M}$, die mit jedem $M\in\mathcal{M}$ genau ein Element gemein hat.
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Für Aussagen $A,B,C$: $A\land C \Rightarrow B$
+		\begin{itemize}
+			\item $B$ ist \begriff[Bedingung!]{notwendig} für $A$
+			\item $A$ ist \begriff[Bedingung!]{hinreichend} für $B$
+		\end{itemize}
+	\end{itemize}
+\end{example}
+
+\subsection*{Mathematische Beweise}
+\begin{definition}
+	\begin{enumerate}
+		\item \begriff[Beweis!]{direkt}\highlight{er Beweis}: $(A\Rightarrow A_1)\land(A_1\Rightarrow A_2)\land\dotsc\land(A_n\Rightarrow B)$ wahr für $A\Rightarrow B$
+		\item \begriff[Beweis!]{indirekt}\highlight{er Beweis} durch Tautologie $(A\Rightarrow B)\Leftrightarrow (\neg B\rightarrow \neg A)$
+	\end{enumerate}
+\end{definition}
+
+\subsection*{Relation und Funktion}
+\begin{definition}[Relation]
+	\begin{itemize}
+		\item \begriff{Relation} ist Teilmenge $R\subset M\times N$. $(x,y)\in R$ heißt: $x$ und $y$ stehen in Relation zueinander.
+		\item Relation $R\subset M\times N$ heißt \begriff{Ordnungsrelation} (kurz \begriff{Ordnung}) auf $M$, falls $\forall a,b,c\in M$:
+		\begin{enumerate}[label={\alph*)}]
+			\item $(a,a)\in R$ (\begriff[Ordnung!]{reflexiv})
+			\item $(a,b),(b,a)\in R \rightarrow a=b$ (\begriff[Ordnung!]{antisymmetrisch})
+			\item $(a,b),(b,c)\in R \rightarrow (a,c)\in R$ (\begriff[Ordnung!]{transitiv})
+		\end{enumerate}
+		\item Ordnungsrelation $R$ auf $M$ heißt \begriff{Totalordnung}, falls $\forall a,b\in M: (a,b)\in R \lor (b,a)\in R$
+		\item Relation auf $M$ heißt \begriff{Äquivalenzrelation}, falls $\forall a,b,c\in M$:
+		\begin{enumerate}[label={\alph*)}]
+			\item $(a,a)\in R$ (\begriff[Ordnung!]{reflexiv})
+			\item $(a,b)\in R \Rightarrow (b,a)\in R$ (\begriff[Ordnung!]{symmetrisch})
+			\item $(a,b),(b,c)\in R \Rightarrow (a,c)\in R$ (\begriff[Ordnung!]{transitiv})
+		\end{enumerate}
+		\item \mathsymbol{[a]}{$[a]$}$:=\{b\in M\mid (a,b)\in R\}$ heißt \begriff{Äquivalenzklasse} von $a\in M$ bzgl. $R$
+		
+		Jedes $b\in [a]$ ist ein \begriff{Repräsentant} von $[a]$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Abbildung]
+	\begriff{Abbildung}/\begriff{Funktion} von $M$ nach $N$, kurz: $F:M\rightarrow N$ ist Vorschrift, die jedem \begriff{Argument} / \begriff{Urbild} $m\in M$ genau einen \begriff{Wert} / \begriff{Bild} $F(m)\in N$ zuordnet.
+	
+	\begin{itemize}
+		\item \mathsymbol{D}{$\mathcal{D}$}$(F):=M$ heißt \begriff{Definitionsbereich} / \begriff{Urbildmenge}
+		\item $N$ heißt \begriff{Zielbereich}
+		\item $F(M'):=\{n\in N \mid n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $M'$}$\subset M$
+		\item $F^{-1}(N'):=\{ m\in M\mid n=F(m)$ für ein $N' \}$ ist \begriff{Urbild}\highlight{ von $N'$}$\subset N$
+		\item \mathsymbol{R}{$\mathcal{R}$}$(F):= F(M)$ heißt \begriff{Wertebereich} / \begriff{Bildmenge}
+		\item \mathsymbol{graph}{$\graph$}$(F) :=\{ (mn,)\in M\times N | n = F(m)\}$ heißt \begriff{Graph}\highlight{von $F$}
+		\item \mathsymbol{fm}{$F|_{M'}$} ist \begriff{Einschränkung}\highlight{der Funktion} von $F$ auf $M'\subset M$
+		\item \begriff{Komposition} von $F:M\rightarrow N$ und $G:N\rightarrow P$ ist Abbildung $G$\mathsymbol{o}{$\circ$}$F:M\rightarrow P$ mit $(G\circ F)(m):=G(F(m))$
+		\item $Abbildung F:M\rightarrow N$ heißt
+		\begin{itemize}
+			\item \begriff[Abbildung!]{injektiv}, falls eineindeutig (d.h. $F(m_1) = F(m_2) \Rightarrow m_1 = m_2$)
+			\item \begriff[Abbildung!]{surjektiv}, falls $F(M) = N$, d.h. $\forall n\in N\,\exists m\in M: F(m) = n$
+			\item \begriff[Abbildung!]{bijektiv}, falls injektiv und surjektiv
+		\end{itemize}
+		\item Für bijektive Abb. $F:M\rightarrow N$ ist \begriff{Umkehrabbildung} / \begriff{inverse Abbildung} \mathsymbol{f-1}{$F^{-1}$}$:N\rightarrow M$ definiert durch $F^{-1}(n) = m \Leftrightarrow F(m) = n$
+	\end{itemize}
+\end{definition}
+
+\stepcounter{theorem}
+\begin{satz}
+	Sei $F:M\rightarrow N$ surjektiv. Dann existiert Abbildung $G:N\rightarrow M$, sodass $F\circ G = \id_N$ (d.h. $F(G(n)) = n\,\forall n\in N$)
+\end{satz}
+
+\begin{definition}[Verknüpfung]
+	Eine \begriff{Rechenoperation} / \begriff{Verknüpfung} auf $M$ ist Abb. $*:M\times M\rightarrow M$, d.h. $m,n\in M$ wird \begriff{Ergebnis} $m*n\in M$
+	
+	Rechenoperation
+	\begin{itemize}
+		\item hat \begriff[Verknüpfung!]{neutrales Element} $e\in M$, falls $m*e = e*m = m\,\forall m\in M$
+		\item ist \begriff[Verknüpfung!]{kommutativ}, falls $m*n = n*m$
+		\item ist \begriff[Verknüpfung!]{assoziativ}, falls $k*(m*n) = (k*m)*n\,\forall k,m,n\in M$
+		\item hat \begriff[Verknüpfung!]{inverses Element} $m'\in M$ zu $m\in M$, falls $m*m' = m'*m = e$
+	\end{itemize}
+\end{definition}
+
+\begin{*example}
+	\begin{enumerate}[label={\alph*)}]
+		\item \begriff{Addition}: $(m,n)\mapsto: m+n$ \begriff{Summe},
+		\begin{itemize}
+			\item neutrales Element heißt \begriff{Null} / \begriff{Nullelement}
+			\item Inverses Element: \mathsymbol{-}{$-m$}
+		\end{itemize}
+		\item \begriff{Multiplikation} $\cdot:(m,n)\mapsto: m\cdot n$ \begriff{Produkt}
+		\begin{itemize}
+			\item neutrales Element heißt \begriff{Eins} / \begriff{Einselement}
+			\item Inverses Element:\mathsymbol{-1}{$m^{-1}$}
+		\end{itemize}
+	\end{enumerate}
+\end{*example}
+
+\begin{definition}
+	Addition und Multiplikation heißen \begriff{distributiv}, falls $k\cdot(m+n) = k\cdot m + k\cdot n\,\forall k,m,n\in M$
+\end{definition}
+
+\begin{definition}[Körper]
+	Menge $K$ heißt \begriff{Körper}, falls auf $K$ eine Addition und Multiplikation existiert mit
+	\begin{enumerate}[label={\alph*}]
+		\item es existieren neutrale Elemente $0\in K$ und $1\in K_{\neg 0}$
+		\item Addition und Multiplikation sind distributiv
+		\item Es gibt Inverse
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Menge $M$ habe Ordnung "`$\le$"', sowie Addition und Multiplikation.
+	
+	Ordnung ist \begriff[Ordnung!]{verträglich}\highlight{mit Addition und Multiplikation}, wenn $\forall a,b,c\in M$
+	\begin{enumerate}[label={(\alph*)}]
+		\item $a\le b \Leftrightarrow a+c \le b+c$
+		\item $a\le b \Leftrightarrow a\cdot c \le b\cdot c$ mit $c > 0$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Körper $K$ heißt \begriff[Körper!]{angeordnet}, falls mit Addition und Multiplikation verträgliche Totalordnung existert.
+\end{definition}
+
+\begin{definition}[Isomorphismus]
+	\begriff{Isomorphismus} bezüglich einer Struktur ist bijektive Abbildung $I:M_1\rightarrow M_2$, die auf $M_1$ und $M_2$ vorhandene Struktur erhält.
+	
+	Mengen $M_1$ und $M_2$ heißen \begriff[Menge!]{isomorph}.
+\end{definition}
+\addtocounter{section}{2}
+
+\chapter{Zahlenbereiche}
+\section{Natürliche Zahlen}
+\begin{definition}
+$\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
+\begin{enumerate}[label={P\arabic*)}]
+	\item $\mathbb{N}$ sei indutkiv, d.h. es ex.
+	\begin{itemize}
+		\item Nullelement $0\in \mathbb{N}$ und
+		\item injektive (Nachfolger-) Abb. \mathsymbol{nu}{$\nu$}$:\mathbb{N}\rightarrow\mathbb{N}$ mit $\nu(n)\neq 0\,\forall n\in \mathbb{N}$
+	\end{itemize}
+	\item (Induktionsaxiom)
+	
+	Falls $N\subset\mathbb{N}$ induktiv in $\mathbb{N}$ (d.h. $0,\nu(n)\in\mathbb{N}$ falls $n\in\mathbb{N}$)\\
+	$\Rightarrow N=\mathbb{N}$ ($N$ ist die kleinste indutkive Menge)
+\end{enumerate}
+
+Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen} mit üblichen Symbolen.
+\end{definition}
+
+\begin{theorem}
+	Falls $\mathbb{N}$ und $\mathbb{N}*$ \person{Peano}-Axiome erfüllen, dann sind sie isomorph bezüglich Nachfolger-Abbildung und Nullelement (Anfangselement).
+\end{theorem}
+
+\begin{satz}[Prinzip der vollständigen Induktion]
+	\begriff*{vollständigen Induktion}
+	Sei $\{A_n | n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
+	\begin{itemize}
+		\item[(IA)] $A_0$ ist wahr (\begriff{Induktionsanfang})
+		\item[(IS)] $\forall n\in\mathbb{N}$ gilt: $A_n$ (wahr) $\Rightarrow A_{n+1}$
+	\end{itemize}
+	$\Rightarrow A_n$ ist wahr $\forall n\in\mathbb{N}$
+\end{satz}
+
+\begin{lemma}
+	Es gilt:
+	\begin{enumerate}[label={\alph*)}]
+		\item $\nu(\mathbb{N})\cup \{0\}=\mathbb{N}$
+		\item $\nu(n)\neq n\,\forall n\in\mathbb{N}$
+	\end{enumerate}
+\end{lemma}
+
+\begin{satz}[Rekusrive Definition / Rekursion]
+	\begriff*{Rekursion}
+	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align*}
+		f(0) &:= b,\\f(n+1):=F(f(n),n)\quad\forall n\in \mathbb{N}
+	\end{align*}
+	genau eine Abbildung für $f:\mathbb{N}\rightarrow B$ (d.h. solche Abbildung ist eindeutig)
+\end{satz}
+
+\subsection*{Rechenoperationen}
+\begin{definition}
+	Definiere \begriff{Addition}[!natürliche Zahlen] $+:\mathbb{N}\times\mathbb{N}\rightarrow \mathbb{N}$ auf $\mathbb{N}$ durch $n+0:=n, n+\nu(m) :=\nu(n+m)\,\forall n,m\in\mathbb{N}$
+	
+	Definiere \begriff{Multiplikation}[!natürliche Zahlen] $\cdot:\mathbb{N}\times\mathbb{N} \rightarrow\mathbb{N}$ auf $\mathbb{N}$ durch $n\cdot 0 = 0, n\cdot\nu(m) = n\cdot m+n\,\forall m,n\in\mathbb{N}$
+\end{definition}
+
+\begin{satz}
+	Addition und Multiplikation haben folgende Eigenschaften, d.h. $\forall k,m,n\in\mathbb{N}$ gilt:
+	
+	\begin{tabular}{clll}
+		\toprule
+		&& Addition & Multiplikation\\
+		\midrule
+		a)& $\exists$ neutrales Element & $n+0=n$ & $n\cdot 1 =  n$\\
+		b)& kommutativ & $m+n=n+m$ & $m\cdot n = n\cdot m$ \\
+		c)& assoziativ & $(k+m)+n = k+(m+n)$ & $(k\cdot m)\cdot n = k\cdot (m\cdot n)$ \\
+		d)&distributiv & \multicolumn{2}{c}{$k(m+n) = k\cdot m + k\cdot n$} \\
+		\bottomrule
+	\end{tabular}
+\end{satz}
+
+\begin{conclusion}
+	Es gilt $\forall k,m,n\in\mathbb{N}$:
+	\begin{enumerate}[label={\alph*)}]
+		\item $m\neg 0 \Rightarrow m+n \neg 0$
+		\item $m\cdot n = 0 \Leftrightarrow m = 0 \lor n = 0$
+		\item $m + k = n + k \Leftrightarrow m = n$ (Kürzungsregel Addition)
+		\item $k\neg 0: m\cdot k = n\cdot k \Leftrightarrow m = n$ (Kürzungsregel Multiplikation)
+	\end{enumerate}
+\end{conclusion}
+
+\subsection*{Ordnung auf $\boldsymbol{\mathbb{N}}$}
+\begin{definition}
+	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N}|m \le n\}$
+\end{definition}
+\begin{satz}
+	Es gilt auf $\mathbb{N}$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $m\le n \;\Rightarrow \;\exists!k\in\mathbb{N}: n = m + k$, nenne $n - m=:k$ \begriff{Differenz}
+		\item Relation $R$ (bzw. "`$\le$"') ist Totalordnung auf $\mathbb{N}$
+		\item Ordnung "`$\leq$"' ist verträglich mit Addition und Multiplikation
+	\end{enumerate}
+\end{satz}
+
+\section{Ganze und rationale Zahlen}
+\begin{definition}
+	Definiere Äquivalenzrelation $Q:=\{ ((n_1,n_1'),(n_2,n_2'))\in((\mathbb{N}\times\mathbb{N})\times(\mathbb{N}\times\mathbb{N})) | n_1+n_2' = n_1' + n_2 \}$
+\end{definition}
+\begin{satz}
+	$Q$ ist Äquivalenzrelation auf $\mathbb{N}\times\mathbb{N}$.
+\end{satz}
+
+\begin{satz}
+	Sei $[(n,n')]\in\overline{\mathbb{Z}}$. Dann ex. eindeutige $n^{*}\in\mathbb{N}:(n^{*},0)\in[(n,n')]$ falls $n\geq n'$ bzw. $(0,n^{*})\in[(n,n')]$ falls $n\leq n'$.
+\end{satz}
+
+\subsection*{Rechenoperationen}
+\begin{definition}
+	\begriff{Addition}[!ganze Zahlen]: $\overline{m}+\overline{n} = [(m,n')] + [(n,n')] :=[(m+n,m'+n')]$
+	
+	\begriff{Multiplikation}[!ganze Zahlen]: $\overline{m}\cdot\overline{n} = \overline{m}\overline{n} = [(m,m')]\cdot[(n,n')]:=[(mn+m'n',mn'+m'n)]$
+\end{definition}
+
+\begin{satz}
+	Addition und Multiplikation sind eindeutig definiert, d.h. unabhängig vom Repräsentanten bzgl. $Q$.
+\end{satz}
+
+\begin{satz}
+	Für Addition und Multiplikation auf $Z$ gilt $\forall \overline{m},\overline{n}\in\overline{\mathbb{Z}}$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item Es ex. neutrales Element $0:=[(0,0)]$ (Add.), $1:=[(1,0)]$ (Mult., $=[(k,k)]$)
+		\item Jeweils kommutativ, assoziativ und gemeinsam distributiv
+		\item $-\overline{n} := [(n',n)]\in\overline{\mathbb{Z}}$ ist Inverses bzgl. Addition von $[(n,n')]=\overline{n}$
+		\item $(-1)\cdot \overline{n} = -\overline{n}$
+		\item $\overline{m}\cdot\overline{n} = 0 \Leftrightarrow \overline{m} = 0 \lor \overline{n} = 0$
+	\end{enumerate}
+\end{satz}
+
+\begin{satz}
+	Für $\overline{m},\overline{n}\in\overline{\mathbb{Z}}$ hat Gleichung $\overline{m} = \overline{n} + \overline{x}$ eindeutige Lösung $\overline{x} = \overline{m} + (-\overline{n}) = [(m+n'),(m'+n)]$.
+\end{satz}
+
+\subsection*{Ordnung auf $\overline{\mathbb{Z}}$}
+\begin{definition}
+	Betr. Relation $R:=\{(\overline{m},\overline{n})\in\overline{\mathbb{Z}}\times\overline{\mathbb{Z}} | \overline{m} \le \overline{n}\}$, wobei $\overline{m} = [(m,m')] \le [(n,n')]$ \gls{gdw} $(m+n'\le m'+n)$
+\end{definition}
+
+\begin{satz}
+	$R$ ist Totalordnung auf $\overline{\mathbb{Z}}$, die verträglich ist mit Addition und Multiplikation.
+\end{satz}
+
+\begin{definition}
+	Betr. $\mathbb{Z} = \mathbb{Z}\cup\{ (-k) | k\in\mathbb{N}_{>0} \}$ mit üblicher Addition, Multiplikation und Ordnung "`$\ge$"'.
+\end{definition}
+\begin{satz}
+	$\mathbb{Z},\overline{\mathbb{Z}}$ sind isomorph bzgl. Addition, Multiplikation, Ordnung.
+\end{satz}
+
+\subsection*{Rationale Zahlen}
+\begin{definition}
+	Betr. Relation $Q:=\left\lbrace \left. \left( \frac{n_1}{n_1'},\frac{n_2}{n_2'}\right) \in \left( \mathbb{Z}\times\mathbb{Z}_{\neq 0}\right)\times\left(\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right) \right| n_1n_2' = n_1'n_2\right\rbrace$
+	
+	Setzte $\mathbb{Q} := \left\lbrace \left[ \left. \frac{n}{n'}\right] \right| (n,n')\in\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right\rbrace$ Menge der \begriff{rationale Zahlen}.
+	
+	Offenbar gilt \begriff{Kürzungsregel}[!rationale Zahlen] $\left[ \frac{n}{n'}\right] = \left[ \frac{k\cdot n}{k\cdot n'}\right]\quad\forall k\in\mathbb{Z}_{\neq 0}$.
+\end{definition}
+
+\subsection*{Rechenoperationen auf $\mathbb{Q}$}
+\begin{definition}
+	\begriff{Addition}[!rationale Zahlen]: $\left[ \frac{m}{m'}\right] + \left[ \frac{n}{n'}\right] := \left[ \frac{mn' + m'n}{m'+n'}\right]$
+	
+	\begriff{Multiplikation}[!rationale Zahlen]: $\left[\frac{m}{m'}\right]\cdot\left[\frac{n}{n'}\right]:=\left[\frac{m\cdot n}{m'\cdot n'}\right]$
+	
+	Addition und Multiplikation sind unabhängig vom Repräsentanten bzgl. $Q$ $\Rightarrow$ Operationen auf $Q$ eindeutig definiert.
+\end{definition}
+
+\begin{satz}
+	Mit Addition und Multiplikation ist $\mathbb{Q}$ Körper mit
+	\begin{itemize}
+	\item neutralem Element $0:=\left[\frac{0_\mathbb{Z}}{1_\mathbb{Z}}\right] = \left[\frac{0_\mathbb{Z}}{n}\right], 1 :=\left[\frac{1_\mathbb{Z}}{1_\mathbb{Z}}\right] = \left[ \frac{n}{n}\right] \neq 0\;n\neq 0$
+	\item Inverse Elemente $-\left[\frac{n}{n'}\right] = \left[ \frac{-n}{n'}\right], \left[\frac{n}{n'}\right]^{-1} = \left[\frac{n'}{n}\right]$
+	\end{itemize}
+\end{satz}
+
+\subsection*{Ordnung auf $\mathbb{Q}$}
+\begin{definition}
+	Relation $R:=\left\lbrace \left. \left( \left[\frac{m}{m'}\right],\left[\frac{n}{n'}\right]\right)\in\mathbb{Q}\times\mathbb{Q} \right| mn'\le m'n'; m',n'>0\right\rbrace$ gibt Ordnung "`$\le$"'.
+\end{definition}
+
+\begin{satz}
+	$\mathbb{Q}$ ist angeordneter Körper ("`$\leq$"') ist Totalordnung verträglich mit Addition und Multiplikation).
+\end{satz}
+\begin{conclusion}
+	Körper $\mathbb{Q}$ ist \begriff[Körper!]{archimedisch angeordnet}, d.h. $\forall q\in\mathbb{Q} \, \exists n\in\mathbb{N}: q < n$.
+\end{conclusion}
+
+\section{Reelle Zahlen}
+\stepcounter{theorem}%Example 1 is missing (not important)
+\subsection*{Struktur von archimedisch angeordneten Körpern}
+\begin{satz}
+	Sei $K$ Körper. Dann gilt $\forall a,b\in K$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $0,1,(-a),b^{-1} (b\neq 0)$ sind eindeutig bestimmt
+		\item $(-0) = 0, 1^{-1} = 1$
+		\item $-(-a) = a, (b^{-1})^{-1} = b (b\neq 0)$
+		\item $-(a+b) = (-a) + (-b), (ab)^{-1} = a^{-1}b^{-1} (a,b\neq 0)$
+		\item $-a = (-1) a, (-a)(-b) = ab,\;a\cdot 0 = 0$
+		\item $ab = 0 \Leftrightarrow a=0\lor b = 0$
+		\item $a+x = b$ hat eindeutige Lösung $x = b+(-a) =: b-a$ \begriff{Differenz}
+		
+		$ax=b (a\neq 0)$ hat eindeutige Lösung $x=a^{-1}b =:\frac{b}{a}$ \begriff{Quotient}
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}
+	\begin{itemize}
+	\item \begriff{Vielfache}: $na := \sum_{k=1}^{n}a$
+	
+	Damit:
+	\begin{itemize}
+		\item $(-n)a := n(-a), 0_\mathbb{N} a := a_K$ für $n\in\mathbb{N}_{\ge 1}$
+		\item $ma + na = (m+n)a, na + nb = n(a+b)$
+		\item $(ma)\cdot(na) = (mn)a^2, (-n)a = -(na)$
+	\end{itemize}
+	\item \begriff{Potenz}: $a^n$ von $a\in K, n\in\mathbb{Z}:=\prod_{k=1}^{n} a$
+	
+	Damit
+	\begin{itemize}
+		\item $a^{-n} :=(a^{-1})^n, a^{0_K}:=1_K$ für $n\in\mathbb{N}_{\ge 1}, a\neq 0$
+		\item $a^m a^n = a^{m+n}, (a^m)^n = a^{mn}, a^nb^n = (ab)^n, a^{-n} = (a^n)^{-1}$
+	\end{itemize}
+	\item \begriff{Fakkultät} für $n\in\mathbb{N}:$\mathsymbol*{n}{$n"!$} $n!:=\prod_{k=1}^n k, 0!=1$
+	\item \begriff{Binomialkoeffizient} \mathsymbol{noverm}{$\binom{n}{k}$}$:=\frac{n!}{k!(n-k)!}\in\mathbb{N}$ $\forall k,n\in\mathbb{N}, 0\le k\le n$
+	\begin{itemize}
+		\item $\binom{k+1}{n+1} = \binom{n}{k} + \binom{n}{k+1}$
+		\item Rechenregel führt auf \begriff{\person{Pascal}'sches Dreieck}
+	\end{itemize}
+	\end{itemize}
+\end{definition}
+
+\begin{satz}[Binomischer Satz]
+	In Körper $K$ gilt: $(a+b)^n = \sum_{k=0}^n\binom{n}{k}a^n b^{n-k}, ,b\in K, n\in\mathbb{N}$
+\end{satz}
+\begin{satz}
+	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b,c,d\in K$:
+	\begin{enumerate}[label={\alph*)}]
+		\item $a < b \Leftrightarrow 0 < b-a$
+		\item $a < b, c < d \Leftrightarrow a+c < b+d$
+		
+		$0 \le a < b, 0 \le c < d \Leftrightarrow a\cdot c < b\cdot d$
+		\item $a < b \Leftrightarrow -b < -a$ (insbes. $a > 0 \Leftrightarrow -a < 0$)
+		
+		$a < b, c < 0 \Leftrightarrow a\cdot c > b \cdot c$
+		\item $a\neq 0 \Leftrightarrow a^2 > 0$ (insbes. 1 > 0)
+		\item $a > 0 \Leftrightarrow a^{-1} > 0$
+		\item $0 < a < b \Leftrightarrow b^{-1} < a^{-1}$
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}
+	\begriff{Absolutbetrag} $\vert\cdot\vert:K\rightarrow K$ (auf angeordneten Körper $K$) \[\vert a \vert:=\begin{cases}
+	a&\text{für }a \ge 0 \\ -a& \text{für }a < 0\end{cases}\]
+\end{definition}
+
+\begin{satz}
+	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b\in K$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\vert a\vert\ge 0, \vert a\vert\ge a$
+		\item $\vert a\vert = 0$ \gls{gdw} $a=0$
+		\item $\vert a\vert = \vert -a\vert$
+		\item $\vert a\vert\cdot\vert b\vert = \vert a\cdot b\vert$
+		\item $\left\vert \frac{a}{b}\right\vert = \frac{\vert a\vert}{\vert b\vert} (b\neq 0)$
+		\item \begriff{Dreiecksungleichung}
+		
+		$\vert a+b\vert \le \vert a\vert + \vert b\vert$ ($\vert a-b\vert = \vert a+(-b)\vert \le \vert a\vert + \vert b\vert$)
+		\item $\left\vert a\vert - \vert b\right\vert \le \vert a+b\vert$
+		\item \begriff{\person{Bernoulli}-Ungleichung}
+		
+		$(1+a)^n \ge 1 + n\cdot a \,\forall a\ge -1, n\in\mathbb{N} (a\neq -1 \text{ bei }n = 0)$
+		
+		(Gleichheit \gls{gdw} $n=0,1$ oder $a=0$)
+	\end{enumerate}
+\end{satz}
+\begin{definition}
+	Betr. $f:\mathbb{Q}\rightarrow K$ mit $f\left(\frac{m}{n}\right):= \frac{m\cdot 1_K}{n\cdot 1_K}=(m 1_k)(n 1_K)^{-1}\,\forall m\in\mathbb{Z},k\in\mathbb{Z}_{\neq 0}$
+\end{definition}
+\begin{satz}
+	Sei $K$ angeordneter Körper\\
+	$\Rightarrow$ $f:\mathbb{Q}\rightarrow K$ ist injektiv und $f$ erhält die Körperstruktur und Ordnung, d.h. $\forall p,q\in\mathbb{Q}$:
+	\begin{itemize}
+		\item $f(p+q) = f(p) + f(q), f(0) = 0_K, f(-p) = -f(p)$
+		\item $f(p\cdot q) = f(p)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
+		\item $p \le_\mathbb{Q} q \Leftrightarrow f(p) \le_K f(q)$
+	\end{itemize}
+\end{satz}
+
+\begin{conclusion}
+	Es gilt im angeordneten Körper:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\mathbb{Q}_K = f(\mathbb{Q})$ ist mit Addition, Multiplikation und Ordnung von $K$ selbst angeordneter Körper
+		\item $\mathbb{Q}_K$ ist isomorph zu $\mathbb{Q}$ bzgl. Körperstruktur und Ordnung.
+	\end{enumerate}
+\end{conclusion}
+
+\begin{definition}
+	Angeordneter Körper heißt \begriff[Körper!]{archimedisch}, falls $\forall a\in K\,\exists n\in\mathbb{N}\subset K: a < n$.
+\end{definition}
+\begin{satz}
+	Sei $K$ archimedisch angeordneter Körper. Dann\begin{enumerate}[label={\arabic*)}]
+		\item $\forall a,b\in K$ mit $a,b>0\,\exists n\in\mathbb{N}: n\cdot a > b$
+		\item $\forall a\in K\,\exists!\,[a]\in\mathbb{Z}: [a]\le a \le [a] +1$, \mathsymbol{a}{$[a]$} heißt \begriff{ganzer Anteil} von $a$
+		\item $\forall \epsilon \in K$ mit $\epsilon > 0\,\exists n\in\mathbb{N}_{\neq 0}: \frac{1}{n}< \epsilon$ (beachte: $0 < \frac{1}{n}$)
+		\item $\forall a,b\in K$ mit $a>1\,\exists n\in\mathbb{N}: a^n > b$
+		\item $\forall a,\epsilon > 0\,\exists p,q\in\mathbb{Q}: p \le a  q$ und $q - p < \epsilon$
+		
+		(d.h. $a\in K$ kann auch rationale Zahlen beliebig genau approximiert werden, $\mathbb{Q}$ "`dicht"' in $K$)
+		\item $\forall a,b\in K, a < b\,\exists q\in\mathbb{Q}:a < q < b$.
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}[Intervall]
+	\begriff{Intervall} für angeordneten Körper $K$: Sei $a,b\in K$:
+	\begin{itemize}
+		\item \begriff{beschränktes Intervall}
+		\begin{itemize}
+			\item $[a,b]:=\{ x\in K | a \le x \le b \}$ \begriff[Intervall!]{abgeschlossen}
+			\item $(a,b):=\{a < x < b\}$ \begriff[Intervall!]{offen}
+			\item $[a,b) := \{a \le x < b\}, (a,b]:=\{a < x \le b\}$ \begriff[Intervall!]{halboffen}
+		\end{itemize}
+		\item \begriff{unbeschränktes Intervall}
+		\begin{itemize}
+			\item $[a,\infty]:=\{x\in K\mid a \le x\}$
+			\item $(a,\infty):=\{x\in K\mid a > x\}$
+            \item $(-\infty, b]:= \{x \in K \mid x< a\}$
+            \item $(-\infty, b) := \{x\in K\mid x \leq b\}$
+		\end{itemize}
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Folge]
+    Eine \begriff{Folge} in Menge $M$ ist eine Abbildung $\alpha:\mathbb{N}\rightarrow M$ (evtl. $\alpha:\mathbb{N}_{\ge n}\rightarrow M$), $\alpha_n := \alpha(n)$ heißen \begriff{Folgenglieder}, und \begriff{Folgenindex}.
+    
+	Notation: $\{a_n\}_{n\in\mathbb{N}}, \{\alpha_n\}_{k=1}^\infty$ bzw. $\alpha_0, \alpha_1, \dotsc$\\
+	kurz: $\{\alpha_n\}_n, \{\alpha_n \}$
+		
+	Hinweis: $\{x\}_n$ ist \begriff{konstante Folge}, d.h. $\alpha_n = \alpha\,\forall n$
+\end{definition}
+
+Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele $n$ falsch.
+
+\begin{definition}[Intervallschachtelung]
+	Folge $\{x_n\}_{n\in\mathbb{N}} =:\mathcal{X}$ von abgeschlossenen Intervallen $X_n=[x_n, x_n']\subset K$ $(x_n, x_n'\in K)$ heißt \begriff{Intervallschachtelung} (im angeordneten Körper K), falls
+	\begin{enumerate}[label={\alph*)}]
+		\item $X_n\neq \emptyset$ und $X_{n+1}\subset X_n\,\forall n\in\mathbb{N}$
+		\item $\forall\epsilon > 0$ in $K$ existiert $n\in\mathbb{N}: l(X_n):= x_n' - x_n < \epsilon$, mit $l$ \begriff{Intervalllänge}
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	Sei $\mathcal{X} = \{X_n\}_{n\in\mathbb{N}}$ Intervallschachtelung im angeordneten Körper $K$\\
+	$\Rightarrow \bigcap_{n\in\mathbb{N}} X_n$ enthält höchstens ein Element.
+\end{lemma}
+
+\begin{definition}
+	Archimedisch angeordneter Körper heißt \begriff[Körper]{vollständig}, falls $\bigcap_{n\in\mathbb{N}} X_n\neq \emptyset$ für jede Intervallschachtelung $\mathcal{X} = \{x_n\}$ in $K$.
+\end{definition}
+
+\begin{definition}
+	$Q:=\{ (\{x_n\}, \{y_n\})\in I_\mathbb{Q}\times I_\mathbb{Q} \}$ ist Relation auf $I_\mathbb{Q}$, $I_\mathbb{Q}:=$ Menge aller Intervallschachtelungen $\mathcal{X}=\{x_n\} \in \mathbb{Q}$.
+\end{definition}
+
+\begin{satz}
+	$Q$ ist Äquivalenzrelation auf $I_\mathbb{Q}$.
+\end{satz}
+
+\begin{definition}
+	setze $\mathbb{R} := \{ [\mathcal{X}] \mid \mathcal{X}\in I_\mathbb{Q} \}$ Menge der \begriff{reellen Zahlen}.
+	
+	\begin{itemize}
+		\item $\bigcap_{n\in\mathbb{N}} X_n \neq 0 \rightarrow [\mathcal{X}]$ ist "`neue"' sog. \begriff{irrationale Zahl}
+	\end{itemize}
+\end{definition}
+
+\subsection*{Rechenoperationen}
+\begin{definition}
+	Für Intervalle $X=[x,x'], Y=[y,y']$ in $\mathbb{Q}$ defineren wir Intervall in $\mathbb{Q}$:
+	\begin{itemize}
+		\item $X + Y := \{\xi + \eta \mid \xi \in X, \eta\in Y\} = [x + y, x' + y']$
+		\item $X\cdot Y :=\{\xi \cdot \eta \mid \xi \in X, \eta\in Y\} = [\tilde{x}\tilde{y}, \tilde{x}'\tilde{y}']$, wobei $\tilde{x},\tilde{x}'\in\{x,x'\},\tilde{y},\tilde{y}'\in\{y,y'\}$
+		\item $-X := [-x,-x']$, $X^{-1}:=[\frac{1}{x'}, \frac{1}{x}]$ falls $0\in X$
+	\end{itemize}
+
+	Für relle Zahl $[\mathcal{X}] = [\{x_n\}], [\mathcal{Y}]=[\{y_n\}]$ sei
+	\begin{itemize}
+		\item $[\mathcal{X}]+\mathcal{Y} :=[\{x_n + y_n\}]$
+		\item $[\mathcal{X}]\cdot[\mathcal{Y}] :=[\{x_n\cdot y_n\}]$
+		\item $-[\mathcal{X}]:=[\{-x_n\}]$
+			
+			$[\mathcal{X}]^{-1} := [\{x_n^{-1}\}]$ falls $[\mathcal{X}]\neq 0_\mathbb{R}$
+	\end{itemize}
+\end{definition}
+
+\begin{satz}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Addition, Multiplikation und Inverse sind in $\mathbb{R}$ eindeutig definiert
+		\item $\mathbb{R}$ ist damit und neutralen Elementen ein Körper.
+	\end{enumerate}
+\end{satz}
+
+\subsection*{Ordnung auf $\mathbb{R}$}
+\begin{definition}
+	Betr. Relation "`$\le$"': $R:=\{ ([\{x_n\}],[\{y_n\}])\in\mathbb{R}\times\mathbb{R} | x_n \le y_n\,\forall n\in\mathbb{N}\}$
+\end{definition}
+\begin{satz}
+	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper.
+\end{satz}
+\begin{satz}
+	$\mathbb{R}$ ist archimedisch angeordneter Körper.
+\end{satz}
+\begin{theorem}
+	$\mathbb{R}$ ist vollständiger, archimedisch angeordneter Körper.
+\end{theorem}
+\begin{theorem}
+	Sei $K$ vollständiger, archimedisch angeordneter Körper\\
+	$\Rightarrow K$ ist isomorph zu $\mathbb{R}$ bzgl. Körperstruktur und Ordnung.
+\end{theorem}
+
+\begin{definition}
+	Sei $M\subset K$, $K$ angeordneter Körper.
+	\begin{itemize}
+		\item $s\in K$ ist \begriff[Schranke!]{obere} / \begriff[Schranke!]{untere} \begriff{Schranke} von $M$, falls $x \le s (x \ge s)\,\forall x\in M$
+		
+		$M$ ist nach \begriff[beschränkt!]{oben} / \begriff[beschränkt!]{unten} \highlight{beschränkt}, falls obere ( untere ) Schranke existiert.
+		\item $M$ \begriff{beschränkt}[!Menge im Körper], falls $M$ nach oben und unten beschränkt.
+		\item kleinste obere (größte untere) Schranke $\tilde{s}$ von $M$ ist \begriff{Supremum} (\begriff{Infimum}) von $M$, d.h. \\
+		\mathsymbol{sup}{$\sup$}$ M:= \tilde{s} \le s ($\mathsymbol{inf}{$\inf$}$ M = s \ge \tilde{s}) \;$ obere (untere) Schranken $s\in M$.
+		\item Falls $\sup M \in M (\inf M\in M)$ nennt man dies auch \begriff{Maximum} (\begriff{Minimum}) von $M$.
+		
+		kurz: \mathsymbol{max}{$\max$}$M = \sup M ($\mathsymbol{min}{$\min$}$M = \inf M)$
+		\item falls $M$ nach oben (unten) \begriff[Menge!]{unbeschränkt}, d.h. nicht beschränkt, schreibt man auch $\sup M = \infty (\inf M = -\infty)$
+	\end{itemize}
+
+	Man hat
+	\begin{align*}
+	\sup M &= \min\{s \mid s \text{ obere Schranke von } M\}\\
+	\inf M &= \max\{s \mid s \text{ untere Schranke von } M\}
+	\end{align*}
+\end{definition}
+\stepcounter{theorem}
+\begin{satz}
+	Sei $K$ angeordneter Körper, $M\subset K$. Falls $\sup M\;(\inf M)$ existiert, dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\sup M\;(\inf M)$ eindeutig
+		\item $\forall \epsilon > 0\,\exists y\in M: \sup M < y + \epsilon\;(\inf M > y - \epsilon)$
+	\end{enumerate}
+\end{satz}
+
+\begin{theorem}
+	Sei $K$ archimedisch angeordneter Körper. Dann
+	\[ K \text{ vollständig } \Leftrightarrow \sup M \slash \inf M \text{ ex. }\forall M\in K, M\neq \emptyset \text{ nach oben \slash unten beschränkt} \]
+\end{theorem}
+
+\subsection*{Anwendung: Wurzeln, Potenzen, Logarithmen in $\mathbb{R}$}
+\begin{satz}[Wurzeln]
+	Sei $a\in\mathbb{R}_{>0}, k\in\mathbb{N}_{>0} \;\Rightarrow \; \exists ! x\in \mathbb{R}_{>0}: x^k = a, \sqrt[k]{a}:=a^{\frac{1}{k}} = x$ heißt \highlight{k-te} \begriff{Wurzel} von $a$.
+\end{satz}
+\begin{definition}[Potenz]
+	$n$-te \begriff{Potenz} von $a\in\mathbb{R}_{>0}, r\in\mathbb{R}$:
+	
+	Zunächst $r=\frac{m}{n}\in\mathbb{Q}$ (\gls{obda}) $n\in\mathbb{N}_{>0}$): $ a^{\frac{m}{n}}:= (a^m)^{\frac{1}{n}}$
+	Allgemein für $a\ge 0, a > : a^r := \sup \{ a^q \mid 0 \le q \le r,q\in\mathbb{Q} \}$
+	offenbar eindeutig definiert und allgemeine Definition konsistent mit Definition für $\frac{m}{n}\in\mathbb{Q}$.
+	Damit: \begriff{Exponentialfunktion}
+\end{definition}
+\begin{satz}\label{satz_potenz_r}
+	Seien $a,b\in\mathbb{R}_{>0}, r,s\in\mathbb{R}. Dann$
+	\begin{enumerate}[label={\arabic*)}]
+		\item $a^r b^r = (ab)^r, (a^r)^s = a^{rs}, a^ra^s = a^{r+s}$
+		\item f. $r > 0: a < b \Leftrightarrow a^r < b^r$
+		\item für $a > 1: r < s \Leftrightarrow a^r < a^s$
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}[Logarithmus]
+	Sei $a,b\in\mathbb{R}_{<0}, a\neq 1$: \begriff{Logarithmus}\highlight{von $b$ zur Basis $a$} ist \begin{align*}
+	 \log_a b :=\begin{cases}
+	 \sup \{ r \in \mathbb{R} \mid a^r \le b\}& a > 1\\
+ 	\sup \{r\in\mathbb{R}\mid a^r \ge b\}& 0 < a < 1
+	 \end{cases}
+	\end{align*}
+\end{definition}
+\begin{satz}\label{satz_logarithmus_r}
+	Se $a,b,c\in\mathbb{R}_{>0}, a\neq 1$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $log_a b$ ist eindeutige Lösung von $a^x = b$, d.h. $a^{log_a b} = b$
+		\item $\log_a a = 1, log_a 1 = 0$
+		\item $\log_a b^\gamma = \gamma \log_a b \,\forall \gamma\in\mathbb{R}$
+		\item $\log_a(bc) = \log_a b + \log_a c, \log_a \frac{b}{c} = \log_a b - \log_a c$
+		\item $\log_a b = \frac{\log_\alpha b}{\log_\alpha a}\,\forall \alpha\in\mathbb{R}_{>0},\alpha\neq 1$
+	\end{enumerate}
+\end{satz}
+
+\subsection*{Mächtigkeit von Mengen}
+\begin{definition}
+	$M$ \begriff[Mächtigkeit!]{endlich}, falls $M$ endlich viele Elemente hat, sonst \begriff[Mächtigkeit!]{unendlich}.
+	
+	Unendliches $M$ ist \begriff[Mächtigkeit!]{abzählbar}, falls bijektive Abbildung $f:\mathbb{N}\rightarrow M$ existiert, sonst ist $M$ \begriff[Mächtigkeit!]{überabzählbar}.
+\end{definition}
+\begin{satz}
+	Es gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\mathbb{Z},\mathbb{Q}$ abzählbar
+		\item $M$ abzählbar, $n\in\mathbb{N}_{>0} \Rightarrow M^n$ abzählbar ($\Rightarrow \mathbb{Z}^n, \mathbb{Q}^n$ abzählbar)
+		\item Ein offenes Intervall $I\in\mathbb{R}\neq \emptyset $ ist überabzählbar
+		\item $\mathcal{P}(\mathbb{N})$ ist überabzählbar.
+	\end{enumerate}
+\end{satz}
+
+\section{Komplexe Zahlen}
+\begin{definition}
+	Betr. Menge der \begriff{komplexen Zahlen} $\mathbb{C}:=\mathbb{R}\times\mathbb{R} = \mathbb{R}^2$ mit Addition und Multiplikation:
+	
+	$(x,x') + (y,y') := (x+y, x'+y')$\\
+	$(x,x')\cdot(y,y') :=(xy - x'y', xy' + x'y)$
+	
+	$\mathbb{C}$ ist ein Körper mit $0_\mathbb{C} = (0,0), 1_\mathbb{C} = (1,0), -(x,y)= (-x,-y), (x,y)^{-1} = \left(\frac{x}{x^2 + y^2}, \frac{-y}{x^2 + y^2}\right)$ mit \begriff[Komplexe Zahl!]{imaginäre Einheit}\mathsymbol{i}{$i$}$:=(0,1)$ schreibt man auch $z=x+iy$ statt $z = (x,y)$
+	
+	Nenne $x:=\realz(z)$ \begriff[Komplexe Zahl!]{Realteil}, $y:=\imagz(z)$ \begriff[Komplexe Zahl!]{Imaginärteil} von $z$.\\
+	$\overline{z}:= x - iy$ zu $z$ \begriff[Komplexe Zahl!]{konjungiert}\highlight{komplexe Zahl}
+	
+	Komplexe Zahl $Z = x+i0 = x$ wird mit reellen Zahl $x\in\mathbb{R}$ identifiziert. Offenbar ist $i^2 = (0,1)^2 = -1$, d.h. $z = i\in\mathbb{C}$ löst Gleichung $z^2 = -1$.
+	
+	Betrag $\vert\cdot\vert:\mathbb{C}\rightarrow \mathbb{R}_{>0}$ mit $\vert z\vert :=\sqrt{x^2 + y^2}$ ist Beträg / Länge des Vektors.
+	
+	Es gilt:
+	\begin{enumerate}[label={\alph*)}]
+		\item $\Re z = \frac{z+\overline{z}}{z}, \im z = \frac{z - \overline{z}}{z}$
+		\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}, \overline{z_1 \cdot z_2} = \overline{z_1}\cdot \overline{z_2}$
+		\item $|z| = 0 \Leftrightarrow z = 0$
+		\item $|z | = |\overline{z}|$
+		\item $|z_1 \cdot z_2 | = |z_1| \cdot |z_2|$
+	\end{enumerate}
+\end{definition}
+
+\chapter{Metrische Räume und Konvergenz}\addtocounter{section}{6}
+\section{Grundlegende Ungleichungen}
+\begin{satz}[geoemtrisches / arithemtisches Mittel]
+	Seien $x_1, \dotsc, x_n\in\mathbb{R}_{>0}$.\\
+	\[\Rightarrow \underbrace{\sqrt[n]{x_1\cdot x_2\cdot \dotsc \cdot x_n}}_{\text{\begriff{geometrisches Mittel}}} \le \underbrace{\frac{x_1 + \dotsc + x_n}{n}}_{\text{\begriff{arithmetisches Mittel}}}\]
+\end{satz}
+\begin{satz}[allgemeine \person{Bernoulli}-Ungleichung]
+	Seien $\alpha,x\in\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $(1+x)^\alpha \ge 1 + \alpha x\,\forall x\ge -1, \alpha > 1$
+		\item $(1+x)^\alpha \le 1+\alpha x \,\forall x\ge -1, 0 < \alpha < 1$
+	\end{enumerate}
+\end{satz}
+\begin{satz}[\person{Young}-sche Ungleichung]
+	Seien $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$.\\
+	$\Rightarrow a\cdot b \le \frac{a^p}{p} + \frac{b^q}{q}\,\forall a,b\ge 0$
+	
+	\uline{Spezialfall:} $p=q=2: ab \le \frac{a^2+b^2}{2} \,\forall a,b\in \mathbb{R}$
+\end{satz}
+\begin{satz}[\person{Hölder}'sche Ungleichung]
+	Sei $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p} + \frac{1}{q} = 1$\\
+	$\Rightarrow \sum_{i=1}^{n} |x_i y_i| \le \left(\sum_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}\left(\sum_{i=1}^n |y_i|^q\right)^{\frac{1}{q}}\,\forall x,y\in\mathbb{R}$
+	
+	Für $p=q=2$ heißt die Ungleichung \begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung}
+\end{satz}
+\begin{satz}[\person{Minkowski}-Ungleichung]
+	Sei $p\in\mathbb{R}, p>1$\\
+%	$\Rightarrow \big(\sum_{i=1}\^n|x_i + y_i|^p\big)^{\frac{1}{p}} \le \big( \sum_{i=1}^n |x_i|^p \big)^{\frac{1}{p}}+\big( \sum_{i=1}^n |y_i|^p \big)^\frac{1}{p}$
+    $\Rightarrow \big(\sum_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}$
+\end{satz}
+
+\begin{remark}
+	\begin{enumerate}[label={\arabic*)}]
+    \item Ungleichung gilt auch für $x_i, y_i \in \mathbb{C}$
+    \item ist $\Delta$-Ungleichung für $p$-Normen
+    \end{enumerate}
+\end{remark}
+
+\section{Metrische Räume}
+\begin{definition}[Metrik]
+	Sei $X$ Menge, Abbildung $d:X\times X\rightarrow \mathbb{R}$ heißt \begriff{Metrik} auf $X$, falls $\forall x,y,z\in X$:
+	\begin{enumerate}[label={\alph*)}]
+		\item $d(x,y) = 0 \Leftrightarrow x=y$
+		\item $d(x,y) = d(y,x)$ \begriff[Metrik!]{Symmetrie}\index{Symmetrie!Metrik}
+		\item $d(x,z)\le d(x,y) + d(y,z)$ \begriff{Dreiecksungleichung}[!Metrik]
+	\end{enumerate}
+
+	$(X,d)$ heißt \begriff{metrischer Raum}.
+\end{definition}
+\stepcounter{theorem}
+\begin{example}
+	\begriff{Diskrete Metrik} auf bel. Menge $X$ ist \[ d(x,y) = \begin{cases}0& x=y \\ 1 & x\neq y \end{cases} \] ist offenbar Metrik.
+\end{example}
+\begin{example}
+	Sei $(X,d)$ metrischer Raum, $Y\subset X$\\
+	$\Rightarrow (Y,\tilde{d})$ ist metrischer Raum mit \begriff{induzierte Metrik} $\tilde{d}(x,y) := d(x,y)\,\forall x,y\in X$.
+\end{example}
+
+\begin{definition}[Norm]
+	Sei $X$ Vektorraum über $K=\mathbb{R}$ bzw. $K=\mathbb{C}$.
+	
+	Abbildung \mathsymbol{.}{$\Vert.\Vert$}$: X\rightarrow\mathbb{R}$ heißt \begriff{Norm} auf $X$, falls $\forall x,y\in X$
+	\begin{enumerate}[label={\alph*)}]
+		\item $\Vert x\Vert = 0$ \gls{gdw} $x = 0$
+		\item \label{norm_2} $\Vert \lambda\cdot x\Vert = |\lambda| \cdot \Vert x \Vert\,\forall \lambda\in K$ (\begriff{Homogenität})
+		\item \label{norm_3} $\Vert x + y\Vert \le \Vert x \Vert + \Vert y \Vert$ \begriff{Dreiecksungleichung}[!Vektorraum]
+	\end{enumerate}
+
+	$(X,\Vert . \Vert)$ heißt \begriff{normierter Raum}
+\end{definition}
+\begin{definition}[Halbnorm]
+	$\Vert . \Vert:X\rightarrow\mathbb{R}_{\ge0}$ heißt \begriff{Halbnorm}, falls nur \ref{norm_2} und \ref{norm_3} gelten.
+\end{definition}
+\begin{satz}
+	Sei $(X,\Vert .\Vert)$ normierter Raum.\\
+	$\Rightarrow X$ ist metrischer Raum mit Metrik $d(x,y):=\Vert x - y \Vert\,\forall x,y\in X$.
+\end{satz}
+\begin{example}
+	\label{norm_r}
+	Man hat u.a. folgende Normen auf $\mathbb{R}^n$:
+	\begin{description}
+		\item[\begriff{$p$-Norm}] $\vert x\vert_p:=\left(\sum_{i=1}^n |x_i|^p\right)^\frac{1}{p}\;(1\le p<\infty)$
+		\item[\begriff{Maximum-Norm}] $|x|_\infty :=\max\{|x_i| \mid i=1,\dots,n\}$
+	\end{description}
+
+	Standardnorm im $\mathbb{R}^n: \vert \cdot \vert:=\vert \cdot \vert_{p=2}$ heißt \begriff{euklidische Norm}
+\end{example}
+\begin{definition}[Skalarprodukt]
+	$\langle x,y\rangle:=\sum_{i=1}^n x_i y_i$ heißt \begriff{Skalarprodukt}[!$\mathbb{R}$] (\begriff{inneres Produkt}) von $x,y\in\mathbb{R}^n$.
+	
+	Offenbar ist $\langle x,x\rangle = |x|^2\,\forall x\in\mathbb{R}^n$ (\highlight{ausschließlich für Euklidische Norm})\\
+	Man hat $|\langle x,y\rangle | \le |x|\cdot |y|\,\forall x,y\in\mathbb{R}^n$ (\begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung})
+\end{definition}
+\begin{example}
+	$X=\mathbb{C}^n$ ist Vektorraum über $\mathbb{C}$, $x=(x_1,\dotsc,x_n)\in\mathbb{C}^n, x_i\in\mathbb{C}$.
+	
+	Analog zu \ref{norm_r} sind $\vert\cdot\vert_p$ und $\vert\cdot\vert_\infty$ Normen auf $\mathbb{C}^n$
+	
+	$\langle x,y\rangle :=\sum_{i=1}^n \overline{x_i} y_i \,\forall x,y\in\mathbb{C}$ heißt \begriff{Skalarprodukt}[!$\mathbb{C}$] von $x,y\in\mathbb{C}^n$.
+	
+	$x,y\in\mathbb{R}^n (\mathbb{C}^n)$ heißen \begriff{orthogonal}, falls $\langle x,y\rangle = 0$.
+\end{example}
+\begin{example}
+	Sei $M$ beliebige Menge, $f:M\rightarrow \mathbb{R}$.
+	\begin{itemize}
+		\item $\Vert f \Vert :=\sup\{ \vert f(x)\vert \mid x\in M\}$ \begriff{Supremumsnorm}
+		\item \mathsymbol{B}{$B$}$(M):=\{ f:M\rightarrow \mathbb{R} \mid\; \Vert f \Vert < \infty \}$ \begriff{Menge der beschränkten Funktionen}
+	\end{itemize}
+\end{example}
+\stepcounter{theorem}
+\stepcounter{theorem}
+\begin{definition}
+	Normen $\Vert .\Vert_1, \Vert .\Vert_2$ auf $X$ heißen \begriff[Norm!]{äquivalent}, falls $\exists \alpha,\beta > 0:\alpha \Vert x \Vert_1 \le \Vert x\Vert_2 \le \beta \Vert x\Vert_1 \,\forall x\in X$
+\end{definition}
+\begin{conclusion}
+	$\vert\cdot\vert_p, \vert\cdot\vert_q$ sind äquivalent auf $\mathbb{R}^n\,\forall p,q\ge 1$.
+\end{conclusion}
+
+\begin{definition}
+    \begin{itemize}
+    \item $B_r(a):=\{ x\in X \mid d(a,x) < r \}$ heißt (offene)\begriff{Kugel} um $a$ mit Radius $r > 0$
+    \item $B_r[a]:=\bar{B}_r(a):=\{ x\in X \mid d(a,x) \le r \}$ heißt (abgeschlossene)\begriff{Kugel} um $a$ mit Radius $r > 0$
+    \end{itemize}
+    Hinweis: muss keine "`übliche"' Kugel sein, zum Beispiel $\{ x\in \mathbb{R}^n \mid d(0,x) = \Vert x\Vert_{\infty} < 1 \}$ hat die Form eines "`üblichen"' Quadrats.
+    \begin{itemize}
+        \item Menge $M\subset X$ heißt \begriff[Menge!]{offen}, falls $\forall x\in M\,\exists \epsilon > 0: B_\epsilon(x) \subset M$
+        \item Menge $M\subset X$ ist \begriff[Menge!]{abgeschlossen}, falls $X\setminus M$ offen
+        \item $U\subset X$ \begriff{Umgebung} von $M$, falls $\exists V\subset X$ offen mit $M\subset V\subset U$
+        \item $x\in M$ \begriff{innerer Punkt}, von $M$, falls $\exists \epsilon > 0: B_\epsilon(x)\subset M$
+        \item $x\in X\setminus M$ \begriff{äußerer Punkt} von $M$, falls $\exists \epsilon > 0: B_\epsilon(x)\subset X\setminus M$
+        \item $x\in X$ heißt \begriff{Randpunkt}, von $M$, wenn $x$ weder innerer noch äußerer Punkt
+        \item \mathsymbol{int}{$\Int$}$ M:=$ Menge aller inneren Punkte von $M$, heißt \begriff{Inneres} von $M$
+        \item \mathsymbol{ext}{$\Ext$}$M:=$ Menge aller äußeren Punkte von $M$, heißt \begriff{Äußeres} von $M$.
+        \item \mathsymbol{p}{$\partial$}$M:=$ Menge der Randpunkte von $M$, heißt \begriff{Rand} von $M$
+        \item \mathsymbol{cl}{$\cl$}$:=\overline{M} = \Int M \cup \partial M$ heißt \begriff{Abschluss} von $M$
+        \item $M\subset X$ heißt \begriff{beschränkt}[!Menge], falls $\exists a\in X, r>0: M\subset B_r(a)$
+        \item $x\in X$ heißt \gls{hp} von $M$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(x)$ unendlich viele Elemente aus $M$
+        \item $x\in M$ heißt \begriff{isolierter Punkt} von $M$, falls $x$ kein Häufungspunkt
+        \end{itemize}
+\end{definition}
+\stepcounter{theorem}
+
+\begin{lemma}
+	Sei $(X,d)$ metrischer Raum. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $B_r(a)$ offene Menge $\forall r>0,a\in X$
+		\item $M\subset X$ beschränkt $\Rightarrow\; \forall a\in X\,\exists r>0: M\subset B_r(a)$
+	\end{enumerate}
+\end{lemma}
+
+\begin{satz}\label{satz_topologie}
+	Sei $(X,d)$ metrischer Raum, $\tau:=\{U\subset X \mid U \text{ offen}\}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item \label{topologie_1} $X,\emptyset\in \tau$ offen
+		\item \label{topologie_2} $\bigcap_{i=1}^n U_i\subset \tau$ falls $U_i\in\tau$ für $i=1,\dotsc,n$
+		\item \label{topologie_3} $\bigcup_{U\in\tau'} U\in\tau$ falls $\tau'\in\tau$ 
+	\end{enumerate}
+\end{satz}
+\begin{conclusion}
+	Sei $(X,d)$ metrischer Raum, $\sigma :=\{ V\subset X \mid  V \text{ abgeschlossen}\}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $X,\emptyset \in \sigma$ abgeschlossen
+		\item $\bigcup_{i=1}^n V_i\subset\sigma$ falls $V_i\in\sigma_i$ für $i=1,\dotsc, n$
+		\item $\bigcap_{V\in\sigma'} V\in\sigma$ falls $\sigma'\subset\sigma$
+	\end{enumerate}
+\end{conclusion}
+
+\begin{definition}[Topologie]
+	Sei $X$ Menge, und $\tau$ Menge von Teilmengen von $X$, d.h. $\tau\subset\mathcal{P}(X)$.\\
+	$\tau$ ist \begriff{Topologie} und $(X,\tau)$ \begriff{topologischer Raum}, falls \ref{topologie_1},\ref{topologie_2},\ref{topologie_3} aus \ref{satz_topologie} gelten.
+\end{definition}
+\begin{satz}
+	Seien $\Vert.\Vert_1, \Vert.\Vert_2$ äquivalente Normen in $X$ und $U\subset X$. Dann \[ U\text{ offen bezüglich } \Vert .\Vert_1\; \Leftrightarrow\; U\text{ offen bzgl. } \Vert .\Vert_2 \]
+\end{satz}
+\begin{satz}
+	Sei $(X,d)$ metrischer Raum und $M\subset X$: Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\Int M, \Ext M$ offen
+		\item $\partial M, \cl M$ abgeschlossen
+		\item $M = \Int M$, falls $M$ offen, $M=\cl M$ falls $M$ abgeschlossen
+	\end{enumerate}
+\end{satz}
+
+\section{Konvergenz}\setcounter{theorem}{0}
+\begin{definition}[konvergent]
+	Sei $(X,d)$ metrischer Raum. Folge $\{x_n\}_{n\in\mathbb{N}}$ in $X$, (d.h. $x_n\in X\,\forall n$) heißt \begriff[Folge!]{konvergent}, falls $x\in X$ existiert mit \[\forall \epsilon > 0 \,\exists n_0=n_0(\epsilon)\in\mathbb{N}: d(x_n, x) < \epsilon\quad \forall n\ge n_0\]
+	
+	$x$ heißt dann \begriff{Grenzwert} (auch Limes) der Folge.
+	
+	Notation: $x=$\mathsymbol{lim}{$\lim\limits_{n\rightarrow\infty}$}, $x_n\rightarrow x$ für $n\rightarrow\infty$, $x_n \overset{n\rightarrow\infty}{\longrightarrow}x$
+	
+	Folge heißt \begriff[Folge!]{divergent}, falls nicht konvergent.
+\end{definition}
+
+\begin{conclusion}
+	Für Folge $\{x_n\}$ gilt: \[ x=\lim\limits_{n\rightarrow\infty}x_n \;\Leftrightarrow \text{Jede Kugel $B_\epsilon(x)$ enthält fast alle $x_n$} \]
+\end{conclusion}
+\addtocounter{theorem}{4}
+\begin{satz}[Eindeutigkeit des Grenzwertes]
+	Sei $(X,d)$ metr. Raum, $\{x_n\}$ Folge in $X$. Dann \[ x,x' \text{ Grenzwert von $\{x_n\}$} \;\Rightarrow\; x = x' \]
+\end{satz}
+\begin{satz}
+	Sei $(X,d)$ metrischer Raum, $\{x_n\}$ konvergente Folge in $X$\\
+    $\Rightarrow$ $\{x_n\}$ ist beschränkt.
+\end{satz}
+\addtocounter{theorem}{4}
+\begin{definition}
+	Sei $\{x_n\}$ beliebige Folge in $X$, $\{n_k\}_{k\in\mathbb{N}}$ Folge in $\mathbb{N}$ mit $n_{k+1} > n_k\,\forall k\in\mathbb{N}$. Dann heißt $\{x_{n_k}\}_{k\in\mathbb{N}}$ \gls{tf} von $\{x_n\}_{n\in\mathbb{N}}$.
+	
+	$\gamma\in X$ heißt \gls{hw} (auch Häufungspunkt) der Folge $\{x_n\}$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(\gamma)$ unendlich viele $x_n$.
+\end{definition}
+\begin{satz}\label{tfprinzip}
+	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x_n\rightarrow x \;\Rightarrow\; x_{n_k} \overset{n\rightarrow\infty}{\longrightarrow} x$ für jede \gls{tf} $\{x_{n_k}\}_k$
+		\item $\gamma$ ist \gls{hw} der Folge $\{x_n\}$ $\Leftrightarrow$ $\exists$\gls{tf} $\{x_{n_k}\}: x_{n_k} \overset{n\rightarrow\infty}{\longrightarrow} \gamma$
+		\item \begriff{Teilfolgenprinzip}: Jede \gls{tf} $\{x_{k'}\}$ von $\{x_n\}$ hat \gls{tf} $\{x_{k''}\}$ mit $x_{n''}\rightarrow x$ $\Rightarrow$ $x_n \rightarrow x$
+	\end{enumerate}
+\end{satz}
+\begin{satz}
+	Sei $(X,d)$ metrischer Raum, $M\subset X$ Teilmenge. Dann
+	\[ M\text{ abgeschlossen} \quad\Leftrightarrow\quad \text{für jede konv. Folge $\{x_n\}$ in $M$ gilt: }\lim\limits_{n\rightarrow\infty} x_n\in M \]
+\end{satz}
+
+\subsection*{Konvergenz im normierten Raum $X$}
+\begin{satz}
+	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X$, $\{\lambda_n\}$ in $K$ mit $\lim x_n = x, \lim y_n = y$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\{x_n \pm y_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty}x_n \pm y_n = \lim\limits_{n\rightarrow\infty} x_n \pm \lim\limits_{n\rightarrow\infty} y_n$
+		\item $\{\lambda_n x_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty} \lambda_n x_n = \lim\limits_{n\rightarrow\infty} \lambda_n \cdot \lim\limits_{n\rightarrow\infty}x_n$
+		\item $\lambda\neq 0 \;\Rightarrow\;\lim\limits_{n\rightarrow\infty} \frac{1}{\lambda_n} = \frac{1}{\lambda}$ (in $K$) für $\{\frac{1}{\lambda_n}\}_{n\ge\tilde{n}}$ ($\lambda_n\neq 0\,\forall n\ge\tilde{n}$)
+	\end{enumerate}
+\end{satz}
+\begin{conclusion}
+	Seien $\{\lambda_n\}, \{\mu_n\}$ Folgen in $K$ mit $\lambda_n\rightarrow\lambda,\mu_n\rightarrow\mu$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\lambda_n + \mu_n\rightarrow \lambda + \mu, \lambda_n \mu_n\rightarrow\lambda \mu$
+		\item falls $\lambda\neq 0$ (\gls{obda} $\lambda_n\neq 0$): $\frac{\mu_n}{\lambda_n}\rightarrow\frac{\mu}{\lambda}$
+	\end{enumerate}
+\end{conclusion}
+\stepcounter{theorem}
+\begin{lemma}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Im metrischen Raum $X$ gilt:$x_n\rightarrow x$ in $X$ $\Leftrightarrow\;d(x_n,x)\rightarrow 0$ in $\mathbb{R}$
+		\item Sei $0\le \alpha_n\le\beta_n\,\forall n\in\mathbb{N}, \alpha_n, \beta_n\in\mathbb{R}, \beta_n\rightarrow 0$\\
+		$\Rightarrow \alpha_n\rightarrow 0$ \begriff{Sandwich-Prinzip}
+	\end{enumerate}
+\end{lemma}
+\begin{satz}
+	Sei $X$ normierter Raum, $\{x_n\}$ in $X$. Dann\\
+	$x_n\rightarrow x$ in $X$ $\Rightarrow$ $\Vert x_n\Vert \rightarrow\Vert x\Vert$ in $\mathbb{R}$
+\end{satz}
+\begin{satz}
+	Seien $(X,\Vert .\Vert_1)$, $(X,\Vert.\Vert_2)$ normierte Räume mit äquivalenten Normen. Dann
+	
+	$x_n\rightarrow x$ in $(X,\Vert.\Vert_1)$ $\Leftrightarrow$ $x_n\rightarrow x$ in $(X,\Vert.\Vert_2)$
+\end{satz}
+\stepcounter{theorem}
+\begin{satz}[Konvergenz in $\mathbb{R}^n$/$\mathbb{C}^n$ bzgl. Norm]
+	Sei $\{x_n\}$ Folge mit $x_n = (x_n^1, \dotsc, x_n^n)\in\mathbb{R} (\mathbb{C}^n)$, $x=(x^1, \dotsc,x^n)\in\mathbb{R}^n (\mathbb{C}^n)$.
+	
+	$\lim\limits_{n\rightarrow\infty} x_n = x$ in $\mathbb{R}^n (\mathbb{C}^n)$ $\Leftrightarrow$ $\lim\limits_{n\rightarrow\infty} x_k^j = xj$ in $\mathbb{R}$ bzw. $\mathbb{C}\,\forall j=1,\dotsc,n$
+\end{satz}
+\addtocounter{theorem}{3}
+\subsection*{Konvergenz in $\mathbb{R}$}
+\begin{satz}
+	Seien $\{x_n\},\{y_n\},\{z_n\}$ Folgen in $\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x_n \le y_n\,\forall n\ge n_0, x_n\rightarrow x, y_n\rightarrow y\;\Rightarrow x\le y$
+		\item $x_n\le y_n\le z_n\,\forall n\ge n_0, x_n\rightarrow c,z_n\rightarrow c \;\Rightarrow y_n\rightarrow c$ (\begriff{Sandwich-Prinzip})
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}[monoton]
+	Folge $\{x_n\}$ heißt \begriff[monoton!]{wachsend} / \begriff[monoton!]{fallend}, falls gilt:
+	
+	$x_n \le x_{n-1}\;(x_n\ge x_{n+1})\,\forall n\in\mathbb{N}$ (in beiden Fällen heißt Folge \begriff{monoton}).
+	
+	Falls stets "`$<$"' ("`$>$"') ist $\{x_n\}$ \begriff[monoton!]{strikt}
+\end{definition}
+\begin{satz}
+	Sei $\{x_n\}$ in $\mathbb{R}$ monoton und beschränkt.\[
+	\{x_n\}\text{ konvergiert gegen }x:=
+	\left\lbrace
+		\begin{aligned}
+			&\sup \{x_n \mid n\in\mathbb{N}\}, \\
+			&\inf\{x_n \mid n\in\mathbb{N}\}, \\
+		\end{aligned}
+	\right.
+	\text{ falls monoton }\;
+	\begin{aligned}
+		&\text{wachsend}\\
+		&\text{fallend}
+	\end{aligned}
+	\]
+\end{satz}
+\addtocounter{theorem}{2}
+\begin{theorem}[\person{Bolzano}-\person{Weierstraß}]\label{bolzano_weierstrass}
+	$\{x_n\}$ beschränkte Folge in $\mathbb{R}$ $\Rightarrow$ $\{x_n\}$ hat konvergente \gls{tf}.
+\end{theorem}
+\stepcounter{theorem}
+
+\subsection*{Oberer \slash Unterer Limes}
+\begin{definition}
+	Seien $\{x_n\}$ beschränkte Folgen in $\mathbb{R}$.\\
+	$H:=\{ \gamma\in\mathbb{R} \mid \gamma \text{ ist \gls{hw} von }\{x_n\}\}$ ($\neq \emptyset$ nach \ref{bolzano_weierstrass})
+	
+	\begin{tabularx}{\textwidth}{ll}
+		\mathsymbol*{limsup}{$\limsup$} $\limsup\limits_{n\rightarrow\infty} x_n := \overline{\lim}_{n\rightarrow\infty} x_n =:\sup H$ & \begriff{Limes superior} von $\{x_n\}$ \\[0.5cm]
+		\mathsymbol*{liminf}{$\liminf$} $\liminf\limits_{n\rightarrow\infty} x_n = \underline{\lim}_{n\rightarrow\infty} x_n :=\inf H$  & \begriff{Limes inferior} von $\{x_n\}$
+	\end{tabularx}
+\end{definition}
+
+\begin{satz}
+	Sei $\{x_n\}$ beschränkte Folge in $\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $\{x_{n'}\}$ \gls{tf} mit $x_{n'}\rightarrow\gamma \;\Rightarrow \;\liminf\limits_{n\rightarrow\infty} x_n \le \gamma \le \limsup\limits_{n\rightarrow\infty} x_n$
+		\item $\gamma' :=\liminf\limits_{n\rightarrow\infty} x_n$ und $\gamma'' := \limsup\limits_{n\rightarrow\infty} x_n$ sind \gls{hw} von $\{x_n\}$
+		
+		\begin{tabular}{ll}
+		(folglich)& $\inf H = \min H, \sup H = \max H$ und \\
+		& $\exists$ \gls{tf} $\{x_{n'}\}, \{x_{n''}\}, x_{n'}\rightarrow \gamma', x_{n''}\rightarrow\gamma''$
+		\end{tabular}
+		\item $x_n\rightarrow \alpha \;\Leftrightarrow \;\alpha = \liminf\limits_{n\rightarrow\infty} x_n = \limsup\limits_{n\rightarrow\infty} x_n$
+	\end{enumerate}
+\end{satz}
+\stepcounter{theorem}
+\section*{Uneigentliche Konvergenz}
+\begin{definition}[Uneigentliche Konvergenz]
+	Folge $\{x_n\}$ in $\mathbb{R}$ konvergiert \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\,\forall n\ge n_0$
+	
+	(heißt auch \highlight{bestimmt divergent}) gegen $\infty$, "`uneigentlich"' wird meist weggelassen.
+	
+	Notation: $\lim\limits_{n\rightarrow\infty} x_n = \pm \infty$ bzw. $\xi_n\rightarrow \pm \infty$
+\end{definition}
+\stepcounter{theorem}
+\begin{satz}[Satz von \person{Stolz}]
+	Sei $\{x_n\},\{y_n\}$ Folgen in $\mathbb{R}, \{y_n\}$ sei stren monoton wachsend, $\{y_n\}\rightarrow\infty$\\
+	$\Rightarrow \lim\limits_{n\rightarrow\infty} \frac{x_n}{y_n} = \lim\limits_{n\rightarrow\infty} \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$, falls rechter Grenzwert existiert (endlich oder unendlich)
+\end{satz}
+\stepcounter{theorem}
+\begin{satz}
+	Sei $\{x_n\}$ mit $x_n\rightarrow x$ im normierten Raum $X$.\\
+	$\Rightarrow\frac{1}{n}\sum_{j=1}^n x_j \overset{n\rightarrow\infty}{\longrightarrow} x$
+\end{satz}
+
+\section{Vollständigkeit}
+\begin{definition}[\person{Cauchy}-Folge]
+	Folge $\{x_n\}$ im metrischen Raum $(X,d)$ heißt \gls{cf} (Fundamentalfolge), falls
+    \[
+    \forall\epsilon > 0 \,\exists n_0\in\mathbb{N}: d(x_n, x_m) < \epsilon\quad\forall n,m\ge n_0.
+    \]
+\end{definition}
+\begin{satz}
+	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x_n\rightarrow x \Rightarrow \{x_n\}$ ist \person{Cauchy}-Folge
+		\item $\{x_n\}$ \gls{cf} $\Rightarrow \{x_n\}$ ist beschränkt und hat maximal einen \gls{hw}.
+	\end{enumerate}
+\end{satz}
+\begin{definition}[Durchmesser]
+	\begriff{Durchmesser} von $M\subset X$ beschränkt, $\neq 0$, $(X,d)$ metrischer Raum ist \mathsymbol{diam}{$\diam$}$M:=\sup\{d(x,y) | x,y\in M\}$
+	
+	Folge $\{A_n\}$ von abgeschlossenen Mengen heißt \begriff{Schachtelung} falls $A_n\neq\emptyset, A_{n+1}\subset A_n\,\forall n\in\mathbb{N}$ und $\diam A_n\overset{n\rightarrow\infty}{\longrightarrow}0$.
+\end{definition}
+\begin{lemma}
+	Sei $M\subset X$ beschränkt, $\neq 0\;\Rightarrow\;\diam M = \diam (\cl M)$.
+\end{lemma}
+\begin{theorem}
+	Sei $(X,d)$ metrischer Raum. Dann: für jede Schachtelung $A_n$ in $X$ gilt:\[ \bigcap_{n\in\mathbb{N}} A_n\neq \emptyset \;\Leftrightarrow \; \text{jede \gls{cf} in $\{x_n\}$ in $X$ ist konvergent} \]
+\end{theorem}
+\begin{lemma}
+	In $\mathbb{R}$ gilt:
+	\begin{center}
+		\begin{tabular}{lcl}
+			$\bigcap_{n\in\mathbb{N}} A_n\neq \emptyset$ & $\Leftrightarrow$ & $\bigcap_{n\in\mathbb{N}} X_n\neq \emptyset$ \\[5pt]
+			$\forall$ Schachtelungen $\{A_n\}$ && $\forall$ Intervallschachtelungen $\{x_n\}$
+		\end{tabular}
+	\end{center}
+\end{lemma}
+\begin{definition}[Vollständigkeit]
+	Metrischer Raum $(X,d)$ heißt \begriff{Vollständig}, falls jede \person{Cauchy}-Folge $\{x_n\}$ in $X$ konvergiert.
+	
+	Vollständiger, normierter Raum $(X,\Vert .\Vert)$ heißt \begriff{\person{Banach}-Raum}.
+\end{definition}
+\begin{conclusion}
+	Sei $\{x_n\}$ Folge im vollständigen metrischen Raum $(X,d)$. Dann:\[ \{x_n\}\text{ konvergent}\;\Leftrightarrow\; \{x_n\} \text{ \person{Cauchy}-Folge} \]
+\end{conclusion}
+\begin{theorem}
+	$\mathbb{R}^n$ und $\mathbb{C}^n$ mit $|.|_p$ ($1\le p \le \infty$) sind vollständige, normierte Räume (d.h. \person{Banach}-Räume).
+\end{theorem}
+
+\section{Kompaktheit}
+\begin{definition}
+Sei $(X,d)$ metrischer Raum, Mengensystem $\mathcal{U}\subset \{ U\subset X | U \text{ offen }\}$ heißt \begriff{offene Überdeckung} von $M\subset X$, falls $M\subset \bigcup_{U\in\mathcal{U}} U$.
+
+Überdeckung $\mathcal{U}$ heißt endlich, falls $\mathcal{U}$ endlich (d.h. $\mathcal{U} = \{U_1,\dotsc,U_n\}$).
+
+Menge $M\subset X$ heißt \highlight{(überdeckungs-)}\begriff[Menge!]{kompakt}, falls jede Überdeckung $\mathcal{U}$ eine endliche Überdeckung $\tilde{\mathcal{U}}\subset \mathcal{U}$ endhält (d.h. $\exists U_1,\dotsc, U_n\subset\mathcal{U}$ mit $M\subset\bigcup_{i=1}^n U_n$).
+
+Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ aus $M$ (d.h. $x_n\in M\,\forall M$) eine konvergente Teilfolge $\{x_{n'}\}$ mit Grenzwert in $M$ bessitzt (d.h. $\{x_n\}$ hat \gls{hw} in $M$ nach \ref{tfprinzip}).
+\end{definition}
+
+\begin{theorem}
+	Sei $(X,d)$ metrischer Raum, $M\subset X$. Dann:\[M\text{ kompakt} \;\Leftrightarrow\; M\text{ folgenkompakt}\]
+\end{theorem}
+
+\begin{satz}
+	Sei $(X,d)$ metrischer Raum, $M\subset X$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $M$ folgenkompakt $\Rightarrow$ $M$ beschränkt und abgeschlossen
+		\item $M$ folgenkompakt, $A\subset M$ abgeschlossen $\Rightarrow$ $A$ folgenkompakt.
+	\end{enumerate}
+\end{satz}
+\begin{theorem}[\person{Heine}-\person{Borell} kompakt, \person{Bolzano}-\person{Weierstraß} folgenkompakt]
+	Sei $X=\mathbb{R}^n$ (bzw. $\mathbb{C}^n$) mit beliebiger Norm, $M\subset X$. Dann \[ M \text{ kompakt} \;\Leftrightarrow\; M \text{ abgeschlossen und beschränkt} \]
+\end{theorem}
+\begin{conclusion}
+	Sei $\{x_n\}$ Folge in $X=\mathbb{R}^n$ (bzw. $\mathbb{C}^n$). Dann \[ \{x_n\}\text{ beschränkt} \;\Rightarrow \; \{x_n\} \text{ hat konvergente \gls{tf}}\]
+\end{conclusion}
+\begin{satz}
+	Je 2 Normen aus $\mathbb{R}^n$ bzw. $\mathbb{C}^n$ sind äquivalent.
+\end{satz}
+
+\section{Reihen}
+\begin{definition}[Partialsumme]
+	Sei $X$ normierter Raum. $\{x_n\}$ Folge im normierten Raum.\\
+	$s_n :=\sum_{k=1}^n x_k = x_0 + \dotsc + x_n$ heißt \begriff{Partialsumme}.
+	
+	Folge $\{s_n\}$ der Partialsumme heißt \highlight{(unendliche)}\begriff{Reihe} mit Gliedern $x_k$.\\
+	Notation: durch Symbol $\sum_{k=0}^\infty x_k = x_0 + \dotsc = \sum_k x_k = \{s_k\}_{k\in\mathbb{N}}$
+	
+	Existiert der Grenzwert $s = \lim\limits_{n\rightarrow\infty} s_n$, so heißt der \begriff[Reihe!]{Summe} der Reihe.\\
+	Notation: $s = \sum_{k=0}^\infty x_n$.
+\end{definition}
+
+\begin{satz}[\person{Cauchy}-Kriterium]
+	Sei $X$ normierter Raum, $\{x_k\}$ Folge in $X$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\sum_k x_k$ konvergiert $\Rightarrow\;\forall \epsilon > 0\,\exists n_0: \left|\left|\sum_{k=n}^m x_k\right|\right| < \epsilon\,\forall m\ge n\ge n_0$
+		\item falls $x$ vollständiger, normierter Raum, gilt auch $\Leftarrow$ oben.
+	\end{enumerate}
+\end{satz}
+\begin{conclusion}
+	Sei $X$ normierter Raum, $\{x_n\}$ Folge in $X$. Dann:\\
+	$\sum_k x_k$ konvergiert $\Rightarrow$ $x_k\overset{k\rightarrow \infty}{\longrightarrow}0$
+\end{conclusion}
+\begin{example}
+	\begriff{geometrische Reihe} $X=\mathbb{C}, a_k:= z^k, z\in\mathbb{C}$ fest.
+	
+	$\sum_{k=0}^\infty z^k = \frac{1}{1-z}\,\forall z\in\mathbb{C}$ mit $|z|<1$
+	$\sum_{k=0}^\infty z^k$ divergent, falls $|z|>1$
+\end{example}
+\begin{example}
+	\begriff{harmonische Reihe} $X=\mathbb{R}, x_k := \frac{1}{k}\;(k>1)$. Reihe divergiert.
+\end{example}
+\stepcounter{theorem}
+\begin{example}
+	$X=\mathbb{R}$:\[ \sum_{k=1}^\infty \frac{1}{k^s}\;\begin{cases}
+	\text{konvergiert},& \text{für }s > 1\\ \text{divergiert},& \text{für }s \le 1
+	\end{cases} \]
+	Summe heißt \begriff{\person{Riemann}'sche Zetafunktion}\mathsymbol{zeta}{$\zeta(s)$} (für $s > 1$). Diese ist beschränkt und konvergent.
+\end{example}
+\begin{satz}
+	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X, \lambda,\mu\in K$ ($\mathbb{R}$ oder $\mathbb{C}$). Dann:\\
+	$\sum_k x_k, \sum_k y_k$ konvergernt $\Rightarrow\;\sum_{k=0}^\infty \lambda x_k + \mu x_k$ konvergent gegen $\lambda\sum_k x_k + \mu \sum_k y_k$.
+\end{satz}
+\begin{definition}
+	Reihe $\sum_k x_k$ heißt \begriff[Reihe!]{absolut konvergent}, falls $\sum_k \Vert x_k\Vert$ konvergiert.
+\end{definition}
+\begin{satz}
+	Sei $X$ vollständiger, normierter Raum. Dann:\\
+	$\sum_k x_k$ absolut konvergent $\Rightarrow\;\sum_k x_k$ konvergent
+\end{satz}
+\begin{satz}[Konvergenzkriterien für Reihen]
+	Sei $X$ normierter Raum, $\{x_k\}$ in $X, k_0\in\mathbb{N}$
+	\begin{enumerate}[label={\alph*)}]
+		\item Sei $\{x_k\}$ Folge in $\mathbb{R}$ \hfill\begriff{Majorantenkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+			\item $0 \le \alpha_k \le \Vert x_k\Vert\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\sum_k\Vert x_k\Vert$ divergent.
+		\end{enumerate}
+		\item Sei $x_k\neq 0\,\forall k\ge k_0$\hfill\begriff{Quotientenkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert}\,\forall k\ge k_0\;\Rightarrow \sum_k\Vert x_k\Vert$ divergiert.
+		\end{enumerate}
+		\item \hfill\begriff{Wurzelkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+			\item $\sqrt[k]{\Vert x_k\Vert} \ge 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent.
+		\end{enumerate}
+	\end{enumerate}
+\end{satz}
+\begin{example}
+	\begriff{Exponentialreihe} $\exp z := \sum_{k=0}^\infty \frac{z^k}{k!}$ absolut konvergent $\forall z\in \mathbb{C}$.
+	
+	\mathsymbol{e}{$e$}$:=\exp(1)$ \begriff{\person{Euler}'sche Zahl}
+\end{example}
+\begin{example}
+	\begriff{Potenzreihe}: $\sum_{k=0}^\infty a_k(z-z_0)^k$ für $z\in\mathbb{C}, a_k\in\mathbb{C}, z_0\in\mathbb{C}$.
+	
+	Sei \[L:=\begin{cases} \limsup\limits_{n\rightarrow\infty} \sqrt[k]{|a_k|},&\text{falls existiert}\\ \infty,&\text{sonst}\end{cases}\qquad R:=\frac{1}{L} \;(\text{mit }0 = \frac{1}{\infty}, \frac{1}{0} = \infty)\]
+	
+	$ |z - z_0| < R$: absolute Konvergenz,\\
+	$|z-z_0| > R$: Divergenz,\\
+	$|z-z_0| = R$: i.A. keine Aussage möglich.
+	
+	$B_R(z_0)$ heißt \begriff{Konvergenzkreis}, $R$ \begriff{Konvergenzradius}
+\end{example}
+\begin{example}
+	\begriff{$p$-adische Brüche}. Sei $p\in\mathbb{N}_{\ge 2}$: betrachte $0,x_1x_2x_3\dotsc :=\sum_{k=1}^\infty x_k\cdot p^{-k}$ für $x_k\in\{0,1,\dotsc,p-1\}\,\forall k\in\mathbb{N}$.
+\end{example}
+\begin{satz}[\person{Leibnitz}-Kriterium für alternierende Reihen in $\mathbb{R}$]
+	Sei $\{x_n\}$ monoton fallende Nullfolge in $\mathbb{R}$. Dann:\\
+	alternierende Reihe $\sum_{k=0}^\infty (-1)^k x_k = x_0 - x_1 + x_2 - \dotsc$ ist konvergent.
+\end{satz}
+\stepcounter{theorem}
+\begin{definition}[Umordnung]
+	Sei $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektive Abbildung: $\sum_{k=0}^\infty x_{\beta(k)}$ heißt \begriff{Umordnung} der Reihe $\sum_k x_k$.
+\end{definition}
+\begin{satz}
+	Sei $X$ normierter Raum. Dann:\\
+	$\sum_{k=0}^\infty x_k = x$ absolut konvergent $\Rightarrow\;\sum_{k=0}\infty x_{\beta(k)}$ absolut konvergent für jede Umordnung.
+\end{satz}
+\begin{satz}
+	Sei $\sum_{k=0}^\infty x_k$ konvergierende Reihe in $\mathbb{R}$, die nicht absolut konvergent ist. Dann:\\
+	$\forall s\in\mathbb{R}\cup \{\pm\infty\}$ existiert $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektiv mit $s=\sum_{k=0}^\infty x_{\beta_k}$
+\end{satz}
+\begin{satz}[\person{Cauchy}-Produkt]
+	Sei $X$ normierter Raum über $\mathbb{K}$, $\sum_j x_j$ und $\sum_i \lambda_i$ absolut konvergent in $X$ bzw. $\mathbb{K}$. $\beta:\mathbb{N}\times \mathbb{N}\rightarrow \mathbb{N}$ bijektiv, $Y_{\beta(i,j)} = \lambda_i x_i\,\forall i,j\in\mathbb{N}$
+	
+	$\Rightarrow \sum_{l=0}^\infty Y_l = \sum_{i=0}^\infty \lambda_i \sum_{j=0}^\infty x_j$, wobei linke Reihe absolut konvergiert in $X$.
+	
+	\begin{tabular}{ll}
+		\highlight{Spezialfall:} & $\beta(i,j) = \frac{(i+j)(i+j+1)}{2} + i$ liefert\\[5pt]
+		& $\sum_{k=0}^\infty \sum_{l=0}^k \lambda_k x_{k-l} = \sum_{i=0}^\infty \lambda_i \sum_{j=0}^\infty x_j$
+	\end{tabular}
+\end{satz}
+\stepcounter{theorem}
+\begin{satz}[Doppelreihensatz]
+	Sei $\{x_{k,l}\}_{k,l\in\mathbb{N}}$ Doppelfolge im \person{Banach}-Raum $X$ und mögen $\sum_{l=0}^\infty \Vert x_{k,l}\Vert =:\alpha_k\,\forall k$ und $\sum_{k=0}^\infty x_k =: \alpha$ existieren.
+	
+	$\Rightarrow \sum_{k=0}^\infty \left(\sum_{l=0}^\infty x_{k,l}\right) = \sum_{l=0}^{\infty}\left( \sum_{k=0}^\infty x_{k,l}\right)$, wobei alle Reihen absolut konvergent sind.
+\end{satz}
+
+\chapter{Funktionen und Stetigkeit}\addtocounter{section}{12}
+\section{Funktionen}
+\begin{definition}
+	$f:\mathbb{R}\to \mathbb{R}$ \begriff{monoton}\begriff[monoton!]{falled}/\begriff[monoton!]{wachsend}, falls $x < y, x,y\in M \,\Rightarrow \,f(x) \le f(y)$ bzw. $f(x) \ge f(y)$
+	
+	Falls rechts stets $<$ bzw. $>$, sagt man auch \begriff[monoton!]{streng} monoton.
+\end{definition}
+
+\begin{satz}
+	Sei $f:\mathbb{R}\rightarrow \mathbb{R}$ streng monoton fallend / wachsend.\\
+	$\Rightarrow$ inverse Funktion $f^{-1}:\mathcal{R}\rightarrow M$ existiert und ist streng monoton wachsend / fallend.
+\end{satz}
+\begin{example}
+	\begriff{Allgemeine Potenzfunktion} in $\mathbb{R}$:\\
+	$f:\mathbb{R}_{>0} \to \mathbb{R}$ mit $f(x) = x^r$ für $r\in\mathbb{R}$ fest.
+	
+	\begin{itemize}
+		\item $r > 0:$ Satz \ref{satz_potenz_r} $\Rightarrow$ $f$ streng monoton wachsend
+		\item $r < 0$: $x^r = \frac{1}{x^{-r}}$ $\Rightarrow$ $f$ streng monoton fallend
+	\end{itemize}
+	$\overset{\text{Satz 1}}{\Rightarrow}$ $f^{-1}$ existiert für $r\neq 0$ auf $(0,\infty)$, wegen $ y = (r^{\frac{1}{r}})^r$ ist $f^{-1}(y) = y^{\frac{1}{r}}$
+\end{example}
+\begin{example}
+	\begriff{Allgemeine Exponentialfunktion} in $\mathbb{R}$:\\
+	$f:\mathbb{R}\rightarrow\mathbb{R}$ mit $f(x) = a^x$ für $a\in\mathbb{R}_{>0}$ fest.
+	
+	\ref{satz_potenz_r} $\Rightarrow$ streng monoton wachsend für $a > 1$ bzw. fallend für $a < 1$ (benutze $\frac{1}{a} > 1$)\\
+	$\overset{\text{Satz 1}}{\Rightarrow}$ $f^{-1}$ existiert auf $(0,\infty)$ für $a \neq 1$. Wegen $y = a^{\log_a y}$ (\ref{satz_logarithmus_r}) ist $f^{-1} (y) = \log_a y$.
+\end{example}
+\begin{example}
+	\begriff{Polynom} in $\mathbb{C}$:\\
+	Abbidlung $f:\mathbb{C}\rightarrow\mathbb{C}$ heißt \highlight{Polynom}, falls $f(z) = a_n z^n + \dotsc + a_1 z + a_0$ für $a_0,\dotsc, a_n\in\mathbb{C}$ fest.
+	\begin{itemize}
+		\item \mathsymbol{grad}{$grad$}$f = n$ falls $a_n\neq 0$
+		\item $f$ ist \begriff{Nullpolynom}, falls $f(z) = 0\,\forall z\in\mathbb{C}$
+		
+		Notation: $f=0$
+		
+		(Menge der Polynome in $\mathbb{C}$ ist ein Vektorraum über $\mathbb{C}$)
+	\end{itemize}
+\end{example}
+\begin{satz}\label{Polynomdiv}
+	Seien $f,g$ Polynome mit $f(z) = \sum_{k=0}^n a_k z^k, g(z) = \sum_{k=0}^m a_k z^k$. Dann:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $f,g\neq 0$, $\grad f\ge \grad g$\\
+		$\Rightarrow$ existieren eindeutig bestimmte Polynome $q,r$ mit $f = q\cdot g + r$, wobei $r\neq 0$ oder $\grad r < \grad g$
+		\item $z_0\in\mathbb{C}$ Nullstelle von $f\neq 0$ $\Leftrightarrow$ $f(z) = (z - z_0)q(z)$ für ein Plynom $q\neq 0$ mit $\grad q = \grad f -1$
+		\item $f$ hat höchstens $\grad f$ Nullstellen falls $f\neq 0$
+		\item $f(z_i) = g(z_j)$ für $n+1$ paarweise verschiedene Punkte $z_0, \dotsc, z_n\in\mathbb{C}, n = \grad f \ge \grad g$\\
+		$\Rightarrow$ $f(z) = g(z) \,\forall z\in\mathbb{C}$ (d.hz. $a_k = b_k\,\forall k$)
+	\end{enumerate}
+\end{satz}
+\stepcounter{theorem}
+\begin{definition}
+	Abbildung $f:X\rightarrow Y, Y$ metrischer Raum heißt \begriff{beschränkt}[!Funktion] auf $M\subset X$ , falls Menge $f(M)$ beschränkt in $Y$ ist, sonst unbeschränkt.
+\end{definition}
+\begin{definition}
+	$f:X\to Y$ heißt \begriff{konstante Funktion}, falls $f(x) = a\,\forall x\in X$ und $a\in Y$ fest.
+\end{definition}
+\begin{definition}
+	$M\subset X, X$ normierter Raum heißt \begriff{konvex}, falls $x,y\in M \,\Rightarrow \,tx+(1-t)y \in M\,\forall t\in(0,1)$
+	
+	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\forall x,y\in D, t\in(0,1)$
+	
+	$f$ heißt \begriff{konkav} (bzw. \begriff[konkav!]{strikt}), falls $-f$ (strikt) konvex.
+\end{definition}
+\stepcounter{theorem}
+
+\subsection*{Lineare Funktionen}
+\begin{definition}
+	Seien $X,Y$ normierte Räume über $K$.\\
+	$f: X\rightarrow Y$ heißt \begriff[Abbildung!]{linear}, falls
+	\begin{itemize}
+		\item $f$ \begriff[Abbildung!linear!]{additiv}, d.h. $f(a+b) = f(a) + f(b) \,\forall a,b\in X$ und
+		\item $f$ \begriff[Abbildung!linear!]{homogen}, d.h. $f(\lambda a) = \lambda f(a)\,\forall a\in X,\lambda\in K$
+	\end{itemize}
+
+	$f:X\to Y$ heißt \begriff[Abbildung!linear!]{affin}\highlight{linear}, falls $f+f_0$ linear für eine konstante Funktion $f_0$
+	
+	Offenbar $f$ linear $\Rightarrow\;f(0) = 0$
+\end{definition}
+\stepcounter{theorem}
+\begin{definition}
+	Lineare Abbildung $f:X\to Y$ heißt \begriff{beschränkt}[!lineare Funktion], falls $f$ beschränkt auf $\overline{B_1(0)}$, d.h. \begin{align}
+		\tag{1}\exists\text{ konstante }c > 0: \Vert f(x)\Vert \le c\,\forall x: \Vert x\Vert \le 1
+	\end{align}
+	Wegen $\Vert f\left( \frac{x}{\Vert x \Vert}\right) = \frac{1}{\Vert x \Vert} \Vert f(x) \Vert$ ist (1) äquivalent zu
+	\begin{align}
+		\tag{1'} \Vert f(x) \Vert = \sup \{ \Vert f(x) \Vert | x \in \overline{B_1(0)}\}
+	\end{align}
+\end{definition}
+\begin{satz}
+	Seien $X,Y$ normierte Räume über $K$, dann:\\
+	\mathsymbol{L}{$L$}$(X,Y):= \{ f:X\to Y \,|\, f \text{ linear und beschränkt} \}$ ist normierter Raum über $K$ mit $\Vert f \Vert = \sup \{ \Vert f(x) \Vert | x\in \overline{B_1(0)} \}$
+\end{satz}
+
+\subsection*{Exponentialfunktion}
+\begin{definition}
+	$\exp:\mathbb{C}\to \mathbb{C}$ mit $\exp(z) = \sum_{k=0}^\infty \frac{z^k}{k!}$
+\end{definition}
+
+\begin{satz}
+	Sei $\{z_n\}$ Folge in $\mathbb{C}$ mit $z_n\to z$. Dann: $\lim\limits_{n\rightarrow\infty} \left( 1 + \frac{z_n}{n}\right)^n = \exp (z)$
+\end{satz}
+
+\begin{lemma}
+	Sei $z_n\to 0$ in $\mathbb{C}\;\Rightarrow\; \lim \frac{\exp(z_n) - 1}{z^n} = 1$
+\end{lemma}
+
+\begin{satz}
+	Sei $f:\mathbb{C}\rightarrow\mathbb{C}$ mit $f(z_1 + z_2) = f(z_1) \cdot f(z_2) \,\forall z_1, z_2\in\mathbb{C}$ und $\lim\limits_{n\rightarrow\infty} \dfrac{f\left( \frac{z}{n}\right) - 1}{\frac{z}{n}} = \gamma\in\mathbb{C}\,\forall z\in\mathbb{C}$ \\
+	$\Rightarrow \;f(z) = \exp(\gamma z)\,\forall z\in\mathbb{C}$
+\end{satz}
+
+\begin{conclusion}
+	Funktion $\exp$ ist durch obiges Lemma und Satz eindeutig definiert.
+\end{conclusion}
+\begin{satz}
+	Es gilt: $e^x = \exp (x) \,\forall x\in \mathbb{R}$
+	
+	Definiert (!) in $\mathbb{C}:\; e^z := \exp(z) \,\forall z\in\mathbb{C}$ (als Potenz nicht erklärt)
+\end{satz}
+
+\begin{definition}
+	\begriff{natürlicher Logarithmus}: $\ln x = \log_e x\,\forall x\in\mathbb{R}_{>0}$
+	
+	\begriff{Trigonometrische Funktion}:
+	\begin{itemize}
+		\item $\sin z := \frac{e^{iz} - e^{-iz}}{2i} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k+1}}{(2k+1)!} = z - \frac{z^3}{3!} + \frac{z^5}{5!}+ \dotsc \,\forall z\in\mathbb{C}$
+		\item $\cos z := \frac{e^{iz}+e^{-iz}}{2} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k}}{(2k)!} = 1 - \frac{z^2}{4} + \frac{z^4}{24}+\dotsc \,\forall z\in\mathbb{C}$
+	\end{itemize}
+\end{definition}
+
+\begin{satz}
+	Es gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item \begriff{\person{Euler}'sche Formel}: $e^{iz} = \cos z + i \sin z$
+		\item $\sin^2 z + \cos^2 z = 1\,\forall z\in\mathbb{C}$ (beachte: $\cancel{\rightarrow}\;|\sin z|\le1, |\cos z| \le 1$, $\sin, \cos$ unbeschränkt auf $\mathbb{C}$)
+		\item $\sin(-z) = -\sin z, \cos z = \cos(-z)$
+		\item (\begriff{Additionstheoreme})
+		\begin{itemize}
+			\item $\sin(z+w) = \sin z \cos w + \sin w \cos z \,\forall z,w\in\mathbb{C}$
+			\item $\cos (z+w) = \cos z \cos w - \sin z \sin w \,\forall z,w\in\mathbb{C}$
+		\end{itemize}
+		\item $\sin(2z) = 2\sin z \cos z, \cos(2z) = \cos^2 z - \sin^2 z\,\forall z\in\mathbb{C}$
+		\item $\sin z - \sin w = 2\cos \frac{z+w}{2} - \sin \frac{z+w}{2}$\\
+			  $\cos z - \cos w = -2\sin\frac{z+2}{2}\sin\frac{z-w}{2}$
+	\end{enumerate}
+\end{satz}
+
+\begin{satz}
+	Es gilt $\forall x\in \mathbb{R}:$\\
+	$\,\left| e^{ix}\right| = 1, \sin x = \Im e^{ix}, \cos = \Re e^{ix}$ (insbesondere $\sin x,\cos x \in\mathbb{R}$), somit $e^{ix} = \cos x + i \sin x$
+\end{satz}
+
+\begin{lemma}
+	Es gilt in $\mathbb{R}$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\cos$ streng fallend auf $[0,2]$
+		\item $\cos 2 < 0$ und $\sin x > 0\,\forall x\in (0,2]$
+		\item $\phi(x) = \phi(1) \,\forall x\in [0,2]$ und $45 < \phi(x) < 90$ (d.h. $\phi(x)$ proportional zu $x$)
+		\item $\cos \frac{\pi}{2} = 0$ für $\pi := \frac{180°}{\phi(1)}$ ($=3,1415\dotsc$), $\frac{\pi}{2}$ einzige Nulsltelle in $[0,2]$
+	\end{enumerate}
+\end{lemma}
+\stepcounter{theorem}
+\begin{satz}
+	Für alle $z\in\mathbb{C}, k\in\mathbb{Z}$ gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $e^{z+2k\pi i} = e^z$, d.h. Periode $2\pi i$\\
+		$\sin(z+2k\pi) = \sin z$ (d.h. Periode $2\pi$)\\
+		$\cos(z+2k\pi) = \cos z$ (d.h. Periode $2\pi$)
+		\item $e^{z+i\sfrac{\pi}{2}} = ie^z, e^{z+i\pi} = -e^z$
+		\item $\sin(z+\pi) = -\sin z, \cos(z+\pi) = -\cos z$\\
+		$\sin\left(z+\frac{\pi}{2}\right) = \cos z, \cos\left(z+\frac{\pi}{2}\right) = -\sin z$
+	\end{enumerate}
+\end{satz}
+
+\begin{satz}
+	Auf $\mathbb{C}$ gilt:
+	\begin{itemize}
+		\item $e^z = 1 \,\Leftrightarrow\,z=2k\pi i,\;k\in\mathbb{Z}$
+		\item $\sin z = 0\,\Leftrightarrow\,z=k\pi,\;k\in\mathbb{Z}$
+		\item $\cos z = 0\,\Leftrightarrow\,z =k\pi + \frac{\pi}{2},\;k\in\mathbb{Z}$
+	\end{itemize}
+\end{satz}
+\subsection*{$\sin$ / $\cos$ in $\mathbb{R}$}
+\begin{centering}
+	\begin{tabular}{c|ccccc}
+		\toprule
+		$x$ & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ \\
+		\midrule
+		$\sin x$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ \\
+		$\cos x$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ \\
+		\bottomrule
+	\end{tabular}
+\end{centering}
+
+\begin{definition}
+	$\sin\left[ -\frac{\pi}{2},\frac{\pi}{2}\right]\to [-1,1]$ streng monoton und surjektiv,\\
+	$\cos[0,\pi]\to[-1,1]$ streng monoton und surjektiv\\
+	$\Rightarrow$ Umkehrfunktion existiert: \begriff{Arcussinus}, \begriff{Arcuscosinus}:
+	\begin{itemize}
+		\item $\arcsin := \sin^{-1}: [-1,1]\to\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$
+		\item $\arccos := \cos^{-1}: [-1,1]\to [0,\pi]$
+	\end{itemize}
+\end{definition}
+
+\subsection*{Tangens und Cotangents}
+\begin{definition}
+	$\tan z z := \frac{\sin z}{\cos z}\,\forall z\in\mathbb{C}\setminus\{ \left.\frac{\pi}{2} + k\pi \right| k\in\mathbb{Z}\}$\\
+	$\cot z := \frac{\cos z}{\sin z}\,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$
+	
+	$\left.\begin{aligned}
+		\text{Offenbar }\tan (z+\pi) &= \frac{\sin (z+\pi)}{\cos(z+\pi)} = \frac{-\sin z}{-\cos z} = \tan z\\
+		\cot(z+\pi) &= \cot (z)
+	\end{aligned}\right\rbrace
+	\begin{gathered}
+		\forall z\in\mathbb{C}, \text{ d.h. Periode $\pi$}
+	\end{gathered}
+	$
+\end{definition}
+
+\subsection*{Tangens auf $\mathbb{R}$}
+\begin{definition}
+	$0 \le x_1 < x_2 < \sfrac{\pi}{2} \,\Rightarrow\,\tan x_1 = \frac{\sin x_1}{\cos x_1} < \frac{\sin x_2}{\cos x_2} = \tan x_2$ \\
+	$\Rightarrow\,\tan (-x) = - \tan(x) $ $\Rightarrow$ streng wachsend auf $\left( \frac{\pi}{2},\frac{\pi}{2}\right)$ \\
+	$\Rightarrow\,\arctan = \tan^{-1}: \mathbb{R}\to \left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ existiert.
+\end{definition}
+\begin{satz}
+	Es gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\Re(exp) = \mathbb{C}\setminus\{0\}$
+		\item (\begriff{Polarkoordinaten} auf $\mathbb{C}$)
+		
+		Für $z\in\mathbb{C}\setminus\{0\}$ existiert eindeutiges $\gamma\in[0,2\pi] mit z = |z|e^{i\gamma} = |z|\left( \cos \gamma + i\sin \gamma\right)$ (auch $[-\pi,\pi]$)
+		\item (Wurzeln)
+		
+		Für $Z=|z|e^{i\gamma}\in\mathbb{C}\setminus\{0\}, n\ge 2$ gilt:\\
+		$w^n = z \,\Leftrightarrow\, w\in\left\{ \left. \sqrt[n]{z} e^{i \frac{k}{n} + \frac{2k\pi}{n}} =: w_k \right| k=1,\dotsc,n\right\}$ (Lösungen bilden ein regelmäßiges $N$-Eck auf dem Kreis mit dem Radius $\sqrt[n]{|z|}$)
+	\end{enumerate}
+\end{satz}
+
+\subsection*{Logarithmen in $\mathbb{C}$} (sog. Hauptzweig)
+\begin{definition}
+	$exp\left( \{ z\in\mathbb{C}\,|\, \Im z < \pi \}\right) \to \mathbb{C}\setminus (\infty, 0]$ ist bijektiv \\
+	$\Rightarrow$ Umkehrabbildung $\ln:\mathbb{C}\setminus(-\infty,0]$ gilt: $e^{\ln |z| + i\gamma} = |z|e^{i\gamma} = z$\\
+	$\Rightarrow\,\ln z = \ln |z| + i\gamma \,\forall z=|z|e^{i\gamma}\in\mathbb{C}\setminus(-\infty,0)$\\
+	$\Rightarrow \,\ln z$ stimmt auf $\mathbb{R}_{>0}$ mit rellen $\ln$ überein.
+\end{definition}
+
+\subsection*{Hyperbolische Funktionen}
+\begin{definition}
+	\begin{itemize}
+		\item $\sinh (z) = \frac{e^z - e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k+1}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Sinus Hyperbolicus})
+		\item $\cosh (z) = \frac{e^z+e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Cosinus Hyperbolicus})
+		\item $\tanh (z) = \frac{\sinh (z)}{\cosh (z)}\,\forall z\in\mathbb{C}\setminus\left\lbrace \left.\frac{\pi}{2} + k\pi  \right| k\in\mathbb{Z} \right\rbrace$ (\begriff{Tangens Hyperbolicus})
+		\item $\coth(z) = \frac{\cosh(z)}{\sinh(z)} \,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$ (\begriff{Cotangens Hyperbolicus})
+	\end{itemize}
+\end{definition}
+
+\begin{satz}
+	Es gilt $\forall z,w\in\mathbb{C}$
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\sin h = -i\sin(z), \cos (z) = \cosh(iz), \sinh(-z) = -\sinh(z), \cosh(-z) = \cosh(x)$ (gibt auch Nullstellen vom $\sinh / \cosh$)
+		\item $\sinh, \cosh$ haben Periode $2\pi i$, $\tanh, \coth$ haben Periode $\pi i$
+		\item $\cosh^2 z - \sin^2 z = 1$
+		\item $\sinh(z+w) = \sinh z \cosh w + \sinh w \cosh z$\\
+		$\cosh (z+w) = \cosh z \cosh w + \sinh z \sin w$
+	\end{enumerate}
+\end{satz}
+\rule{4cm}{0.4pt}
+\begin{definition}
+	Sei $f_n X\to Y$, $Y$ metrischer Raum ($X$ beliebige Menge), $n\in\mathbb{N}$. $\{f_n\}_{n\in\mathbb{N}}$ heißt \begriff{Funktionenfolge}.
+	
+	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{punktweise} gegen $f:X\to Y$ auf $M\subset X$, falls $f_n(x) \overset{n\rightarrow\infty}{\longrightarrow} f(x) \,\forall x\in M$
+	
+	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{gleichmäßig} gegen $f:X\to Y$ auf $M\subset X$, falls \[ \forall \epsilon > 0 \,\exists n_0\in\mathbb{N}: d(f_n(x), f(x)) < \epsilon\quad \forall n\ge n_0\,\forall x\in M \]
+	Notation: \mathsymbol*{->}{$\rightrightarrows$} $f_n(x) \overset{n\rightarrow\infty}{\rightrightarrows} f(x)$ bzw. $f_n\overset{n\rightarrow\infty}{\longrightarrow}f$ gleichmäßig auf $M$.
+\end{definition}
+
+\begin{lemma}
+	$f_n\to f$ gleichmäßig auf $M$ $\Rightarrow$ $f_n(x)\to f(x)\,\forall x\in M$ (d.h. punktweise auf $M$)
+\end{lemma}
+
+\begin{satz}
+	Seien $f_n, f\in B(X,Y)$. Dann ($X$ metrischer Raum):
+	\begin{center}
+		$f_n \to f$ gleichmäßig auf $X$ $\Leftrightarrow$ $f_n \to f$ in $(B(X,Y),\Vert.\Vert_1\infty)$
+	\end{center}
+\end{satz}
+
+\begin{definition}
+	Sei $f_n.:X\to Y$, $Y$ normierter Raum ($X$ beliebige Menge), $n\in\mathbb{N}$: $\sum_{n=0}^\infty f_n$ heißt \begriff{Funktionenreihe}
+	
+	Reihe $\sum_n f_n$ heißt \begriff[Konvergenz!]{punktweise}[!Funktionenreihe] (\begriff[Konvergenz!]{gleichmäßig}[!Funktionenreihe]) konvergent gegen $f:X\to Y$ auf $M\subset X$, falls dies für die zugehörige Folge (Partialsumme!) $\{s_n\}$ gilt.
+\end{definition}
+
+\begin{satz}
+	Sei $\sum_{k=0}^\infty a_k(z-z_0)^k$ Potenzreihe in $\mathbb{C}$ mit Konvergenzradius $R\in(0,\infty]$ und sei $M\subset B_R(z_0)$ kompakt\\
+	$\Rightarrow$ Potenzreihe konvergiert gleichmäßig auf $M$.
+\end{satz}
+
+\section{Stetigkeit}
+\begin{definition}
+	Sei stets $f:D\subset X\rightarrow Y$, $X,Y$ metrischer Raum, $D=\mathcal{D}(f)\neq \emptyset, y_0\in Y$ heißt \begriff{Grenzwert}[!Funktion] der Funktion $f$ im Punkt $x_0\in \overline{D}$, falls gilt:
+	\begin{center}
+		$\{x_n\}$ Folge in $D$ mit $x_n\to x_0$ $\Rightarrow$ $f(x_n)\to y_0$
+	\end{center}
+	Notaton: $\lim\limits_{x\rightarrow x_0} = y_0, f(x)\overset{x\to x_0}{\longrightarrow } y_0$
+\end{definition}
+\stepcounter{theorem}
+\begin{remark}
+	Falls $x_0\in D$ \begriff{isolierter Punkt} von $D$, d.h. kein \gls{hp} von $D$, dann ist stets $\lim\limits_{x\rightarrow x_0} f(x) = f(x_0)$.
+\end{remark}
+
+\begin{satz}[$\epsilon\delta$-Kriterium]
+	Sei $f:D\subset X\to Y, x_0\in\overline{D}$. Dann
+	\begin{center}
+	$\lim\limits_{x\rightarrow x_0} f(x) = y_0 \;\Leftrightarrow \; \forall\epsilon > 0\,\exists \delta > 0: f(B_\delta(x_0)\cap D)\subset B_\epsilon(y_0)$
+	\end{center}
+\end{satz}
+
+\begin{satz}[Rechenregeln] \label{satz:rechenregel_stetigkeit}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $Y$ normierter Raum über $\mathbb{R}, f,g:D\subset X\to Y,\lambda: D\to K, x_0\in\overline{D}, f(x)\overset{x\to x_0}{\longrightarrow} y, g(x) \overset{x\to x_0}{\longrightarrow} \tilde{y}, \lambda(x)\overset{x\to x_0}{\longrightarrow} \alpha$. Dann:
+		\begin{itemize}
+			\item $(f+g)(x) \overset{x\to x_0}{\longrightarrow} y+\tilde{y}$
+			\item $(\lambda \cdot f)(x) \overset{x\to x_0}{\longrightarrow} \alpha\cdot y$
+			\item $\left(\frac{1}{\lambda}\right)(x) \overset{x\to x_0}{\longrightarrow} \frac{1}{\alpha}$ falls $\alpha\neq 0$
+		\end{itemize}
+		\item Sei $f: D\subset X\to Y, g:\tilde{D}\subset Y\to Z, \Re(f)\subset\tilde{D}, X,Y,Z$ metrische Räume, $x\in\overline{D}, f(x)\overset{x\to x_0}{\longrightarrow}y, g(y)\overset{y\to y_0}{\longrightarrow} z_0$. Dann:\\
+		$g(f(x)) \overset{x\to x_0}{\longrightarrow} z_0$
+	\end{enumerate}
+\end{satz}
+
+\begin{definition}
+	Für $f:D\subset X\to Y$ mit $X=\mathbb{R}$ definieren wir einen \begriff{einseitiger Grenzwert} $y_0\in Y$ heißt \begriff[einseitiger Grenzwert!]{linksseitig} bzw. \begriff[einseitiger Grenzwert!]{rechtsseitig} von $f$ im \gls{hp} $x_0$ von $D\cap(-\infty, x_0)$ bzw. $D\cap(x_0,\infty)$, falls gilt: $x_n\in D\cap(-\infty, x_0)$ bzw. $x_n\in D\cap (x_0,\infty)$ mit $x_n\to x_0\,\Rightarrow \,f(x_n)\to y_0$
+	
+	$\begin{aligned}
+		\text{Notation: } \lim\limits_{x\uparrow x_0} f(x) &= y_0 =: f(x_0^-)& f(x)&\overset{x\uparrow x_0}{\longrightarrow} y_0 \\
+		\lim\limits_{x\downarrow x_0}f(x) &= y_0 =:f(x_0^+) & f(x) &\overset{x\downarrow x_0}{\longrightarrow} y_0
+	\end{aligned}$
+\end{definition}
+
+\begin{remark}
+	Satz \ref{satz:rechenregel_stetigkeit} gilt sinngemäß auch für einseitige Grenzwerte.
+	
+	Für $f:D\subset X\to Y$ mit $X=\mathbb{R}$ bzw. $Y=\mathbb{R}$ heißt der Grenzwert \begriff[Grenzwert!]{uneigentlich}\begriff*[Konvergenz!]{uneigentlich}[!Funktion]: \[\lim\limits_{x\to \pm \infty} f(x) = y_0, \lim\limits_{x\rightarrow x_0} f(x) = \pm \infty, \lim\limits_{x\to \pm \infty} f(x) = \pm \infty,\] indem wir einen Grenzwert definiert als $x_0=\pm \infty$ bzw. $y_0=\pm\infty$ wählen und bestimmte divergenzte Folgen $x_n\to \pm \infty$ mit $x_n\in D$) bzw. $f(x_n)\to \pm \infty$ betrachten.
+\end{remark}
+\stepcounter{theorem}
+\subsection*{Landau-Symbole} (Vgl. von "`Konvergenzgeschwindigkeiten"')
+\begin{definition}
+	Sei $f:D\subset X\to Y, X$ metrischer Raum, $Y$ normierter Raum, $g:D\subset X\to \mathbb{R}$, $x_0\in \overline{D}$.
+	\begin{itemize}
+		\item $f(x)$ ist "`\begriff{klein o}"' von $g(x)$ für $x\to x_0$, falls \[ \lim\limits_{\stackrel{x\to x_0}{x\neq x_0}} \frac{\Vert f(x)\Vert}{g(x)} = 0 \]
+		Notation: $f(x) = o(g(x))$\mathsymbol*{o}{$o$} (meist $x\neq x_0$ im "`$\lim$"' weggelassen)
+		\item $f(x)$ ist "`\begriff{groß O}"' von $g(x)$ für $x\to x_0$, falls \[ \exists \delta > 0, c \ge 0: \frac{\Vert f(x)\Vert}{|g(x)|} \le c \quad \forall x\in (B_\delta(x_0) \setminus \{x_0\})\cap D \]
+		Notation: $f(x) = \mathcal{O}(g(x))$\mathsymbol*{O}{$\mathcal{O}$} für $x\to x_0$
+	\end{itemize}
+\end{definition}
+\stepcounter{theorem}
+\stepcounter{theorem}
+\subsection*{Relativtopologie}
+\begin{definition}
+	Sei $(X,d)$ metrischer Raum, für $D\subset X$ ist $(D,d)$ ein metrischer Raum mit der induzierten Metrik.
+	\begin{itemize}
+		\item $M\subset D$ heißt \begriff[Relativtopologie!]{offen} bzw. \begriff[Relativtopologie!]{abgeschlossen} \highlight{relativ zu $D$}, falls $M$ offen bzw. abgeschlossen im metrischen Raum $(D,d)$.
+		\item $M\subset D$ heißt \begriff[Relativtopologie!]{Umgebung} von $x\in D$ relativ zu $D$, falls $M$ Umgebung von $x$ im metrischen Raum $(D,d)$.
+	\end{itemize}
+\end{definition}
+\stepcounter{theorem}
+\rule{4cm}{0.4pt}
+\begin{definition}
+	Sei $f:D\subset X\to Y$ metrischer Raum, $D=\mathcal{D}(f)$, Fkt. $f$ heißt \begriff{folgenstetig} im Punkt $x_0\in D$, falls \[ f(x_n)\to f(x_0) \forall \text{ Folgen $x_n\to x_0$ in $D$} \]
+\end{definition}
+\stepcounter{theorem}
+\begin{definition}
+	Funktion $f$ heißt \begriff{stetig} im Punkt $x_0\in D$, falls $\forall $ Umgebungen $V$ von $f(x_0)\,\exists $ Umgebung $U$ von $x_0$ in $D:\,f(U)\subset V$.
+	
+	\begin{tabularx}{\textwidth}{lX}
+		\noindent\highlight{Interpretation:} & Input / Output Steuerung besteht Forderung, dass beliebig kleine Output-Toleranzen $\epsilon$ stets durch hinreichend kleine Input-Toleranzen $\delta$ erreicht werden können.
+	\end{tabularx}
+\end{definition}
+
+\begin{satz}
+	Sei $f:D\subset X\to Y$, $X,Y$ metrischer Raum, $x_0\in D$. Dann:
+	\begin{center}
+		$f$ stetig in $x_0$ $\Leftrightarrow$ $f \,\epsilon\delta$-Stetig in $x_0$ $\Leftrightarrow$ $f$ folgenstetig in $x_0$
+	\end{center}
+\end{satz}
+
+\begin{definition}
+	Funktion $f$ heißt stetig (folgen- / $\epsilon\delta$-stetig) auf $M\subset D$, falls $f$ stetig (folgen-/$\epsilon\delta$-stetig) in jedem Punkt $x_0\in M$.
+\end{definition}
+\stepcounter{theorem}
+\begin{satz}
+	Sei $f:D\subset X\to Y, X,Y$ metrische Räume, dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $f$ stetig auf $D$
+		\item $f^{-1}(V)$ offen in $D$ $\forall V\subset Y$ offen
+		\item $f^{-1}(A)$ abgeschlossen in $D$ $\forall A\subset Y$ abgeschlossen
+	\end{enumerate}
+\end{satz}
+\begin{satz}[Rechenregeln]
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $Y$ normierter Raum über $K$, $f,g:D\subset X\to Y, \lambda: D\to U, f,g, ,y $ stetig in $x_0\in D$\\
+		$\Rightarrow$ $f+g, \lambda\cdot f$ stetig in $x_0$, $\frac{1}{\lambda}$ stetig in $x_0$ falls $\lambda(x_0) \neq 0$
+		\item Sei $f:D\subset X\to Y, y:\tilde{D}\subset Y\to Z, X, Y, Z$ metrischer Raum, $f$ stetig in $x_0$, $g$ stetig in $f(x_0)\in \tilde{D}$\\
+		$\Rightarrow \,g\circ f$ stetig in $x_0$ 
+	\end{enumerate}
+\end{satz}
+\addtocounter{theorem}{3}
+\begin{example}[\person{Dirichlet}-Funktion]
+	$f:\mathbb{R}\to \mathbb{R}$ mit \[f(x) = \begin{cases}
+	 1,&x\in\mathbb{Q}\\ 0,&\text{sonst}
+	\end{cases} \] in keinem $x_0\in\mathbb{R}$ stetig.
+\end{example}
+\begin{satz}
+	Sei $f_n, f:D\subset X\to X, f_n$ stetig in $x_0\in D$, $\forall n\in\mathbb{N}, f_n\to f$ gleichmäßig\\
+	$\Rightarrow \, f$ stetig in $x_0$
+\end{satz}
+
+\begin{conclusion}
+	Falls alle $f_n$ stetig auf $M\subset D$ und $f_n\to f$ gleichmäßig auf $M$ \\
+	$\Rightarrow\, f$ stetig auf $M$.
+\end{conclusion}
+
+\begin{satz}
+	Sei $f(z) := \sum_{k=0}^\infty a_k(z-z_0)^k\,\forall z\in B_r(z_0), R\in(0,\infty]$ Konvergrenzkreis, $a_k\in\mathbb{Z}\, \forall k\in \mathbb{N}$\\
+	$\Rightarrow\, f:B_r(z_0) \to \mathbb{C}$ stetig auf $B_R(z_0)$
+\end{satz}
+\addtocounter{theorem}{2}
+\begin{definition}
+	Bijektive Abbildung $f:D\subset X\to R\subset Y, X,Y$ metrische Räume, $D=\mathcal{D}(f), R=\mathcal{R}(f)$ heißt \begriff{Homöomorphismus}, falls $f$ und $f^{-1}$ stetig.
+	
+	Mengen $D$ und $R$ heißen \begriff[Menge!]{homöomorph} zueinander, falls es einen Homöomorphismus $f:D\to R$ mit $D=\mathcal{D}(f), R=\mathcal{R}(f)$ gibt.
+	
+	\highlight{beachte:} Homöomorphismus bildet offene (abgeschlossene) Mengen auf offene (abgeschlossene) Mengen ab.
+\end{definition}
+\stepcounter{theorem}
+\begin{example}
+	\begriff{stereographische Projektion}
+	
+	$X=\mathbb{R}^{n+1}, X_0 := \{(x_0, \dotsc, x_n{n+1}) \in\mathbb{R}^{n+1} \,|\, x_{n+1}=0\}, N = (0,\dotsc, 0,1)$ (Nordpol), $S_n = \{ x\in\mathbb{R}^{n+1} \,|\, |x|=1\}$ $n$-dimensionale Einheitsspäre.
+	
+	Betrachte $\sigma: \mathbb{R}^{n+1} \setminus\{ N\} \rightarrow \mathbb{R}^{n+1}$ mit $\sigma(x) = N \frac{2}{(x-N)^2}\langle x-N\rangle$ stetig. $\sigma$ ist Homöomorphismus mit $\sigma^{-1}(y) = N - \frac{2}{(y-N)^2}\langle Y-N\rangle$
+\end{example}
+\rule{4cm}{0.4pt}
+\begin{satz}
+	Sei $f:D\subset \mathbb{R}\to \mathbb{R}$ streng monoton und stetig, $D$ Intervall \\
+	$\Rightarrow f^{-1}$ existiert und ist stetig auf $\mathcal{R}(f)$.
+\end{satz}
+\stepcounter{theorem}
+\begin{satz}
+	Sei $f:X\to Y$ linear, $X,Y$ normierte Räume, $X=\mathcal{D}(f)$. Dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $f$ stetig in $x_0$
+		\item $f$ ist stetig auf $X$
+		\item $f$ ist beschränkt
+	\end{enumerate}
+\end{satz}
+\rule{4cm}{0.4pt}
+\begin{definition}
+	Funktion $f:D\subset X\to Y, X,Y$ metrische Räume, heißt \begriff{gleichmäßig stetig} auf $M\subset D$, falls \[ \forall \epsilon > 0 \,\exists \delta > 0: d(f(x), f(\tilde{x})) < \epsilon\quad \forall x,\tilde{x}\in M \text{ mit $d(x,\tilde{x}) < \delta$}, \]
+	d.h. $f$ ist $\epsilon\delta$-stetig in jedem $\tilde{x}\in M$ \highlight{und} $\delta > 0$ kann unabhängig von $x\in M$ gewählt werden.
+\end{definition}
+
+\begin{satz}
+	Sei $f:D\subset X\to Y, X,Y$ metrischer Raum, $f$ stetig auf kompakten $M\subset D$ \\
+	$\Rightarrow \,f$ gleichmäßig stetig auf $M$
+\end{satz}
+
+\begin{definition}
+	Funktion $f:D\subset X\to Y, X,Y$ metrischer Raum, heißt \begriff{\person{Lipschitz}-stetig} auf $M\subset D$, falls \begriff{\person{Lipschitz}-Konstante} $L>0$ existiert mit \begin{align}
+		\tag{L} d(f(x), f(\tilde{x})) \le Ld(x,\tilde{x})
+	\end{align}
+	
+	\highlight{Spezialfall:} $X,Y$ normierte Räume, dann hat $L$ die Form \begin{align}
+		\tag{L'} \Vert f(x) - f(\tilde{x})\Vert \le L\Vert x - \tilde{x}\Vert \quad\forall x,\tilde{x}\in M
+	\end{align}
+	
+	\highlight{Interpretation:} für $X=Y=\mathbb{R}$ fixiere $\tilde{x}$
+	\begin{itemize}
+		\item Graph von $f$ liegt im schraffierten Kegel
+		\item muss $\forall \tilde{x}\in M$ gelten mit gleichem $L$
+	\end{itemize}
+\end{definition}
+
+\begin{satz}
+	Sei $f:D\subset X\to Y$ \person{lipschitz}-stetig auf $M,X,Y$ metrische Räume\\
+	$\Rightarrow$ $f$ gleichmäßig stetig auf $M$ (und damit auch stetig)
+\end{satz}
+
+\addtocounter{theorem}{2}
+
+\begin{definition}[Fortsetzung, Einschränkung]
+    Funktion $\tilde{f}: D(\tilde{f}) \to Y$ heißt Fortsetzung (bzw. Einschränkung) von $f \mathcal{D}(f) \to Y$ auf $\mathcal{D}(f)$ falls $\mathcal{D} \subset \mathcal{D}(\tilde{f})$ (bzw. $\mathcal{D}(\tilde{f}) \subset \mathcal{D}(f)$) und $\tilde{f}(x) = f(x) \,\forall x \in \mathcal{D}$ (bzw. $\forall x \in \mathcal{D}(\tilde{f}$). Für eine eingeschränkte Funktion $f$ auf $\mathcal{D}(\tilde{f})$, schreibe $\tilde{f} = f_{\vert \mathcal{D}(\tilde{f})}$.
+\end{definition}
+
+\begin{satz}
+    Sei $f: D \subset X \to Y$ gleichmäßig stetig auf $D$, wobei $X,Y$  sind metrische Räume , $Y$ ist vollständig $\Rightarrow$ es existiert eindeutige stetige Fortsetzung $\tilde{f}$ von $f$ auf $\bar{D}$ und $\tilde{f}$ ist auf gleichmäßige stetige auf $\bar{D}$.
+\end{satz}
+
+\begin{*remark}
+    Falls $x_0$ kein Häufungspukt von $D$ ist, so kann man stets stetig auf $D\cup \{x_0\}$ fortsetzen (aber nicht eindeutig).
+\end{*remark}
+
+\addtocounter{theorem}{6}
+
+\begin{conclusion}
+    Sei $f: D \subset X \to Y$ linear, stetig, $Y$ vollständig $\Rightarrow$ es existiert eindeutig stetige Fortsetzung von $f$ auf $\bar{D}$.
+\end{conclusion}
+
+\section{Anwendung}
+
+Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
+
+\begin{satz}
+    Sei $f: D \subset Y \to Y$ stetig, $M \subset D$ kompakt $\Rightarrow f(M)$ ist kompakt.
+\end{satz}
+
+\begin{satz}
+    Sei $f; D \subset X \to Y$ stetig, injektiv, $D$ kompakt $\Rightarrow f^{-1}:f(D) \to D$ ist stetig.
+\end{satz}
+
+\begin{theorem}[\index{Weierstraß}Weierstraß]\label{weierstrass}
+    Sei $f: D \subset X \to Y$ stetig, $X$ metrischer Raum, $M \subset D$ kompakt, $M \neq \emptyset$
+    \begin{align}
+	    \Rightarrow \; \exists x_{min}, x_{max} : \left\{
+	%\begin{cases}
+       \begin{alignedat}{3}
+	        f(x_{min}) &= \min&\{f(x)\mid x \in M\} &= \min_{x\in M} f(x),\\
+		f(x_{max}) &= \max&\{f(x)\mid x \in M\} &= \max_{x\in M} f(x)
+        %\end{cases}
+	\end{alignedat}\right.
+    \end{align}
+    %TODO Fix x \in M under \max und \min
+\end{theorem}
+
+\begin{remark}
+    Theorem \ref{weierstrass} ist wichtiger Satz für Existenz von Optimallösungen (stetige Funktion beseitzt auf kompakter Menge eine Minimum und Maximum). Folglich sind stetige Funktionen auf kompakten Mengen.
+\end{remark}
+
+\begin{satz}
+    Sei $f: \mathbb{R}^n \to Y$ linear, $Y$ normierter Raum $\Rightarrow f$ ist stetig auf $\mathbb{R}^n$.\\
+    Hinweis: Etwas allgemeiner hat man sogar $f: X \to Y$ linear, $X,Y$ normierte Räume, $\dim X < \infty \Rightarrow f $ ist stetig. (Ist i.a nicht richtig für $\dim X = \infty$.)
+\end{satz}
+
+\begin{definition}[\index{Kurve}Kurve]
+    Eine stetige Abbildung $f: I \subset X \to Y$, wobei $I$ Intervall und $Y$ metrischer Raum ist heißt Kurve in $Y$ (gelegentlich wird auch Mange $f(I)$ als Kurve und $f$ also zugehörige Parametrisierung bezeichnet).
+\end{definition}
+
+\begin{definition}[bogenzusammenhängende Menge]
+    Menge $M \subset X$, wobei $X$ ist metrische Raum, heißt \begriff[Menge!]{bogenzusammenhängend} (bogenweise zusammenhängend) falls $\forall a,b \in M \,\exists$ Kurve $f: [a,b] \to M$ mit $f(\alpha) = a, f(\beta) = b$.\\
+    Bemerkung: Eigentlich ist das die Definition für Wegzusammenhängend, leider ist das in der Literatur nicht eindeutig und manchmal wird zwischen Wegzusammenhängend und zusammenhängend noch das "`echt"' bogenzusammenhängend unterschieden. %TODO definition echt bogenzusammenhängend hinzufügen.
+\end{definition}
+
+\begin{definition}[\index{zusammenhängende Menge}zusammenhängende Menge]
+    Menge $M \subset X$ heißt zusammenhängend, falls
+    \begin{align}
+        A, B \subset M \text{ sind offen in }M\text{, disjunkt, }\emptyset \Rightarrow M \neq A \cup B.
+    \end{align}
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}[label={\arabic*)}]
+    \item $x \in [0,2\pi] \to (x,\sin x) \in \mathbb{R}^2$ ist Kurve in $\mathbb{R}^2$
+    \item $x \in [0,1] \to e^{î\pi x} \in \mathbb{C}$ oder $x \in [0,\pi]\to e^{i\pi} \in \mathbb{C}$ sind Kurven in $\mathbb{C}$
+    \item Sei $Y$ normierter Raum, $a,b \in Y,f:[0,1] \to Y$ mit $f(t) = (1-t)\cdot a + t\cdot b$ ist Kurve (Strecke von $a$ nach $b$)
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    Sei $X=\mathbb{R}^2, M = \{(x,\sin x) \mid x \in (0,1]\} \cup \{(0,0)\}$. Dann ist $M$ zusammenhängend aber nicht bogenzusammenhängend.
+\end{example}
+
+\addtocounter{theorem}{1}
+\begin{satz}
+    Sei $X$ metrischer Raum, $M \subset X$. Dann
+    \begin{enumerate}[label={\arabic*)}]
+    \item $X = \mathbb{R}: M$ ist zusammenhängend $\Leftrightarrow M$ ist Intervall (offen, abgeschlossen, halboffen, beschränkt, unbeschränkt).
+    \item $M$ ist bogenzusammenhängend $\Rightarrow M$ ist zusammenhängend.
+    \item Sei $X$ normierter Raum, dann: $M$ ist offen, zusammenhängend $\Rightarrow M$ ist bogenzusammenhängend.
+    \end{enumerate}
+\end{satz}
+
+\begin{definition}[\index{Gebiet}Gebiet]
+    Sei $X$ metrischer Raum, $M \subset X$ heißt \begriff{Gebiet} falls $M$ offen und zusammenhängend ist.\\
+    Beachte: Gebiet in einem normiertem Raum ist sogar bogenzusammenhängend.\\
+    Offenbar: $M \subset X$ ist konvex $\Rightarrow M$ ist bogenzusammenhängend.
+\end{definition}
+
+\begin{satz}
+    Sei $f: D\subset X\to Y$ stetig, wobei $X,Y$ metrische Räume sind, dann gilt: $M \subset D$ ist zusammenhängend $\Rightarrow f(M)$ ist zusammenhängend.
+\end{satz}
+
+\begin{theorem}[\index{Zwischenwertsatz}Zwischenwertsatz]
+    Sei $f: D \subset X \to \mathbb{R}, M \subset D$ zusammenhängend, $a,b \in M \Rightarrow f$ nimmt auf $M$ jeden Wert zwischen $f(a)$ und $f(b)$ an.
+\end{theorem}
+
+\addtocounter{theorem}{1}
+%TODO add the example here or not?
+
+\begin{example}
+    $f:[a,b] \to \mathbb{R}$ sei stetig mit $f([a,b]) \subset [a,b] \Rightarrow$ besitzt \begriff{Fixpunkt}, d.h. $\exists x \in [a,b]\colon f(x)=x$.
+\end{example}
+
+\begin{theorem}[\index{Fundamentalsatz der Algebra}Fundamentalsatz der Algebra]\label{Fundam_algebra}
+    Sei $f: \mathbb{C} \to \mathbb{C}$ Polynom vom Grad $n\geq 1$ (d.h $f(z) = a_n z^n + \dots + a_1 z + a_0,a_j \in \mathbb{C}, a_n \neq 0, n\geq 1$) $\Rightarrow f$ besitzt (mindestens eine) Nullstelle $z_0 \in \mathbb{C}$ (d.h. $f(z_0) = 0$).
+\end{theorem}
+
+\begin{conclusion}
+    Jedes Polynom $f: \mathbb{C} \to \mathbb{C}$ von Grad $n, f\neq 0$ besitzt genau $n$ Nullstellen in $\mathbb{C}$ gezählt mit Vielfachen, d.h. $\exists z_1,\dots,z_l \in \mathbb{C}$, paarweise verschieden (=verschieden) $k_1,\dots, k_l \in \mathbb{N}_{\geq 0}$, $a_n \in \mathbb{C}\setminus\{0\}$ mit $k_1 + \dots + k_l = n$ und $f(z) = a_n \cdot (z-z_1)^{k_1}\cdot\dots\cdot(z-z_l)^{l}\,\forall z \in \mathbb{C}$. Hier heißt $k_j$ Vielfachheit der Nullstelle $z_j$.\\
+    Hinweis: In dem Satz \ref{Polynomdiv} wurde gezeigt, das $f$ höchstens $n$ Nullstellen besitzt.
+\end{conclusion}
+
+\begin{definition}[\index{analytische Funktion}analytische Funktion]
+    Abbildung $f:\mathbb{C} \to \mathbb{C}$ heißt analytisch auf $B_R(z_0)\subset \mathbb{C}$ falls $f$ auf $B_R(z_0)$ durch Potenzreihe in $z_0$ darstellbar ist, d.h.
+    \[
+    f(z)=\sum_{k=0}^{\infty} a_k(z-z_0)^k \quad \forall z \in B_R(z_0).
+    \]
+\end{definition}
+
+\begin{satz}
+    Sei $f:\mathbb{C}\to\mathbb{C}$ analytisch auf $B_R(z_0)$ und sei $B_r(z_1) \subset B_R(z_0)$ für $z_1 \in B_R(z_0),r>0 \Rightarrow f$ ist analytisch auf $B_r(z_1)$.
+\end{satz}
+
+\begin{satz}[\index{Identitätssatz}Identitätssatz]
+    Seien $f,g:\mathbb{C} \to \mathbb{C}$ analytisch auf $B_R(z_0)$, sei $z_n \to \tilde{z},z_n\in B_R(z_0)\setminus\{\tilde{z}\}$ und $f(z_n) = g(z_n)\,\forall n \in \mathbb{N} \Rightarrow f(f) = g(z)\,\forall z \in B_R(z_0)$.
+\end{satz}
+
+\begin{remark}
+    Analytische Funktionen sind durch Werte auf "`sehr kleinen"' Mengen bereits festgelegt (z.B $\exp,\sin\cos$ sind auf $\mathbb{C}$ eindeutig durch Werte auf $\mathbb{R}$ festgelgt).
+\end{remark}
+
+\begin{overview}
+    Sei $X$ metrischer Raum, $Y$ normierter Raum.
+    \begin{itemize}
+    \item $B(X,Y):=\{f:X\to Y\mid \Vert f\Vert_{\infty} < \infty\}$ ist normierter Raum der beschränkten Funktionen mit $\Vert f\Vert_{\infty}=\sup\{\Vert f \Vert_{Y} \mid x \in X\}$.
+    \item $C_b(X,Y):=\{f:X\to Y\mid \Vert f \Vert_{\infty} < \infty, f \text{ ist stetig}\}$ ist Menge der beschränkten stetigen Funktionen und offenbar eine linearer Unterraum von $B(X,Y)$ und damit auch Kern von $R \text{ mit } \Vert \cdot \Vert_{\infty}$.
+    \item $C(X,Y):= \{f: X\to Y\mid f \text{ ist steig}\}$, Menge der stetigen Funktionen ist offenbar ein Vektorraum (enthält unbeschränkte Funktionen, z.B. $f(x)=\frac{1}{x} \text{ mit } x \in X = (0,1)$).
+    \end{itemize}
+\end{overview}
+
+\begin{remark}
+	Falls $X$ kompakt ist, dann kann man den Ausdruck $\Vert f \Vert_{\infty} < \infty$ in der Definition von $C_b(X,Y)$ weglassen (vgl. Theorem \ref{weierstrass}), d.h. $C_b(X,Y) = C(X,Y),f \text{ stetig }\Rightarrow X \to \Vert f(x)\Vert$ ist stetig $\overset{\text{Theorem 15.3}}{\Rightarrow} f$ ist beschränkt auf $X$. In diesem Fall ist auch $C(X,Y)$ mit $\Vert \cdot \Vert_{\infty}$ normierter Raum und $\Vert f\Vert_{\infty} = \max_{x\in M}\Vert f(x)\Vert_{Y}$.
+\end{remark}
+
+\begin{satz}
+    Sei $X$ metrischer Raum, $Y$ Banachraum $\Rightarrow B(X,Y)$ und $C_b(X,Y)$ und Banachräume (mit $\Vert \cdot \Vert_{\infty}$).
+\end{satz}
+
+\begin{definition}[\index{Kontraktion}Kontraktion]
+    Funktion $f: D \subset X \to X$, wobei $X$ metrischer Raum ist, heißt \begriff{Kontraktion} (bzw. kontraktiv) auf $M \subset D$ falls
+    \[
+    \exists L, 0 \leq L < 1\colon d(f(x),f(y)) \leq L\cdot d(x,y) \quad \forall x,y \in M.
+    \]
+    D.h. $f$ ist Lipschitz-stetig mit Lipschitzkonstante $L < 1$, folglich ist $f$ auch stetig.
+\end{definition}
+
+\begin{theorem}[\begriff*{Banacherscher Fixpunktsatz}Banacherscher Fixpunktsatz]\label{Banach_Fixpunkt}
+    Sei $f : D\subset X \to Y$ Kontraktion auf $M \subset D, X$ vollständiger metrischer Raum (z.B. Banachraum), $M$ abgeschlossen und $f(M) \subset M$. Dann
+    \begin{enumerate}
+	    \item[(1)] $f$ besitzt genau einen Fixpunkt $\tilde{x}$ auf $M$ (d.h. $\exists$ genau ein $\tilde{x} \in M\colon f(\tilde{x}) = \tilde{x}$).
+        \item[(2)] Für $\{x_n\}$ in $M$ mit $x_{n+1}=f(x_n),x_0 \in M$ (beliebig) gilt:
+            \[
+            x_n \to x \text{ und } d(x_n,\tilde{x}) \leq \frac{L^n}{1-L}\cdot d(x_0,x_1) \quad \forall n \in \mathbb{N}.
+            \]
+        \end{enumerate}
+        Hinweis: Theorem \ref{Banach_Fixpunkt} ist eine wichtige Grundlage für Iterationsverfahren in der Numerik.
+\end{theorem}
+
+\subsection*{Partialbruchzerlegung}
+
+\begin{definition}[\index{Pol der Ordnung $k$}Pol der Ordnung $k$]
+    Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, d.h. $R(z) = \frac{f(z)}{g(z)}$ für Polynome $f,g$ existieren mit
+    \[
+    R(z) = \frac{\tilde{f}(z)}{(z-z_0)^k\cdot \tilde{g}} \text{ und } \tilde{f}(z_0) \neq 0, \tilde{g}(z_0) \neq 0.
+    \]
+    Motivation: Gelgentlich ist gewisse additive Zerlegung von rationalen Funktionen wichtig (Integration) z.B.
+    \[
+    \frac{2x}{x^2 - 1} = \frac{2x}{(x-1)(x+1)} = \frac{1}{x+1}+\frac{1}{x-1}.
+    \]
+\end{definition}
+
+\begin{lemma}
+    Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, $z_0 \in \mathbb{C}$ Pol der Ordnung $k\geq 1 \Rightarrow \,\exists ! a_1,\dots,a_k \in \mathbb{C},a_k\neq 0$ und $\exists !$ Polynom $\tilde{p}$ mit 
+    \[
+    R(z) = \sum_{i=1}^{k}
+    \frac{a_i}{(z-z_0)^{î}} + \frac{\tilde{p}(z)}{\tilde{g}(z)} = H(z) +\frac{\tilde{p}(z)}{\tilde{g}(z)}
+    \]
+    $H(z)$ heißt Hauptteil von $R \text{ in } z_0$. Beachte das $\frac{\tilde{p}}{\tilde{g}}$ keine Pole in $z_0$ hat.
+\end{lemma}
+
+\begin{satz}[\index{Partialbruchzerlegung}Partialbruchzerlegung]
+    Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, $R(z)=\frac{f(z)}{g(z)}$ für Polynome $f,g$. Sei $g(z) = \prod_{i=1}^{l}(z-z_i)^{k_i}$ gemäß Fundamentalsatz der Algebra(Theorem \ref{Fundam_algebra}). Seien $z_1,\dots,z_l$ keine Nullstellen von $f$ und seien $H_1,\dots,H_l$ Hauptteile von $R$ in $z_1,\dots,z_l \Rightarrow$
+    \[
+    \exists \text{ Polynom } p:R(z)=H_1(z)+\dots+H_l(z)+p(z) \quad\forall z \neq z_j \,\forall j = 1,\dots,l
+    \]
+    wobei $f(z) = p(z)\cdot g(z) + r(z)\,\forall z$ für Polynom $r$. $p=0$ falls $\grad(f) < \grad(g)$ (vgl Satz \ref{Polynomdiv} Polynomdivision)
+\end{satz}
+
+\chapter*{Liste der Theoreme}
+\addcontentsline{toc}{chapter}{Liste der Theoreme}
+\theoremlisttype{allname}
+\listtheorems{theorem}
+\chapter*{Liste der benannten Sätze}
+\addcontentsline{toc}{chapter}{Liste der benannten Sätze}
+\theoremlisttype{optname}
+\listtheorems{satz}
+\printglossary[type=\acronymtype]
+\addcontentsline{toc}{chapter}{Akronyme}
+\printindex
+\addcontentsline{toc}{chapter}{Index}
+\printindex[symbols]
+\addcontentsline{toc}{chapter}{Symbolverzeichnis}
+\end{document}

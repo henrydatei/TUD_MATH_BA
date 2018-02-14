@@ -1,0 +1,327 @@
+\RequirePackage{ifluatex}
+\documentclass[ngerman,a4paper]{report}
+\usepackage[table]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{ marvosym } %lighning
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{url} 
+\usepackage[top=1cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{bbm} %unitary matrix 1
+
+\usepackage[texindy]{imakeidx}
+\makeindex
+\makeindex[name=symbols,title=Symbolverzeichnis]
+
+\usepackage{enumerate}
+\usepackage{enumitem} %customize label
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
+\usepackage{parskip}%split paragraphs by vspace instead of intendations
+
+\usepackage{cancel}
+
+\usepackage{chngcntr}
+
+\usepackage{ulem} %better underlines
+
+\usepackage{titlesec}%customize titles
+
+\usepackage{xparse}%better macros
+
+
+\ifluatex
+\usepackage{fontspec}
+\fi
+
+\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+\usepackage[ntheorem,framemethod=TikZ]{mdframed}
+
+\usepackage[xindy,acronym]{glossaries}
+\makeglossaries
+
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=green,
+	linkcolor=blue,
+	urlcolor=green
+}
+\usepackage{bookmark}
+
+\newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+
+\theoremstyle{break}
+\theorembodyfont{}
+
+\definecolor{lightgrey}{gray}{0.91}
+\definecolor{lightred}{rgb}{1,0.6,0.6}
+\definecolor{darkgrey}{gray}{0.6}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+%\def\theoremframecommand{\colorbox{lightgrey}}
+%\theoremprework{\vspace*{5pt}\coloredRule[lightred]{\textwidth}{5pt}\vspace*{-6pt}}
+%\theorempostwork{\vspace*{-6pt}\coloredRule[lightred]{\textwidth}{5pt}\vspace*{5pt}}
+
+\newcounter{dummy}
+\renewcommand{\thedummy}{\relax}
+
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=black,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truetheorem}[dummy]{Theorem}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueproposition}[dummy]{Satz}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemmaName}[dummy]{Lemma}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	%backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemma}[dummy]{Lemma}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truedefinition}[dummy]{Definition}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueconclusion}[dummy]{Folgerung}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueremark}[dummy]{Bemerkung}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueexample}[dummy]{Beispiel}
+
+
+\NewDocumentCommand{\begriff}{s O{} m O{}}{
+	\IfBooleanTF{#1}
+		{\index{#2#3#4}}
+		{\uline{#3}\index{#2#3#4}}
+}
+\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{
+	\IfBooleanTF{#1}
+		{\index[symbols]{#2#3@\detokenize{#4}#5}}
+		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
+}
+
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\numberwithin{dummy}{section}
+\counterwithout{section}{chapter}
+%\counterwithout{theorem}{section} 
+
+\author{Dozent: Prof. F Schuricht}
+\title{Analysis Grundlagen 1 \& 2} % add WS & SS
+\date{Updated: \today}
+
+\pagestyle{plain}
+
+% for splitting file
+%\include{./TeX_files/chapter01}
+%\include{./TeX_files/chapter02}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Funktionen und Stetigkeit}
+
+\section{Anwendungen}
+
+\begin{truetheorem}[Mit Titel]
+    test
+\end{truetheorem}
+
+\begin{trueproposition}[Incl. Titel]
+    Und Inhalt.
+\end{trueproposition}
+
+\subsection{Partialbruchzerlegung}
+	
+\begin{truetheorem}[Mit Titel]
+	test
+\end{truetheorem}
+	
+\begin{trueproposition}[Incl. Titel]
+	Und Inhalt.
+\end{trueproposition}
+
+\section{noch mehr Anwendungen}
+
+\begin{truedefinition}[Und Name]
+	Tada
+\end{truedefinition}
+
+\begin{trueexample}[Einschließlich Überschrift]
+	Verständnisfördernd...
+\end{trueexample}
+
+\begin{trueconclusion}[Ergänzung]
+	Einfache Schlussfolgerung
+\end{trueconclusion}
+
+\begin{truelemma}
+	nur Müll
+\end{truelemma}
+
+\begin{truelemmaName}[Kurze, aber wichtige, Aussage]
+	Klein aber fein.
+\end{truelemmaName}
+
+\begin{trueremark}[Hossa]
+	Dumdidum
+\end{trueremark}
+
+\begin{trueexample}[Test]
+	Ohne Nummer
+\end{trueexample}
+
+\begin{proof}
+	Ein Beweis.
+	
+	\begin{align}
+		f = f(x) \text{ (mit Formelnnummer)}
+	\end{align}
+	und inline-math $\hbar$.
+\end{proof}
+
+\chapter{its you}
+
+\section{or me?}
+
+\begin{truetheorem}[Mit Titel]
+    test
+\end{truetheorem}
+
+\begin{trueproposition}[Incl. Titel]
+    Und Inhalt.
+\end{trueproposition}
+
+\begin{truedefinition}[Und Name]
+    Tada
+\end{truedefinition}
+
+\begin{trueexample}[Einschließlich Überschrift]
+    Verständnisfördernd...
+\end{trueexample}
+
+\begin{trueconclusion}[Ergänzung]
+    Einfache Schlussfolgerung
+\end{trueconclusion}
+
+\begin{truelemma}[Kurze Aussage]
+    Klein aber fein.
+\end{truelemma}
+
+\begin{trueremark}[Hossa]
+    Dumdidum
+\end{trueremark}
+
+\begin{trueexample}[Test]
+    Ohne Nummer
+\end{trueexample}
+
+\begin{proof}
+    Ein Beweis.
+    
+    \begin{align}
+    f = f(x) \text{ (mit Formelnnummer)}
+    \end{align}
+    und inline-math $\hbar$.
+\end{proof}
+
+\theoremlisttype{allname}
+\listtheorems{truetheorem}
+
+\end{document}

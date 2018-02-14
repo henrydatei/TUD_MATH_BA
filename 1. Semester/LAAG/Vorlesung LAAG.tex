@@ -1,0 +1,3070 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
+\usepackage{scrpage2}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage[framed, hyperref, thmmarks, amsmath]{ntheorem}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[autostyle]{csquotes}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\newcommand{\qraum}[2]{\textsuperscript{#1}/\textsubscript{#2}}
+\usepackage{color}
+\renewcommand*{\arraystretch}{1.4}
+\usepackage{mathrsfs}
+
+\title{\textbf{Lineare Algebra 1. Semester (WS2017/18)}}
+\author{Dozent: Prof. Dr. Arno Fehm}
+\date{}
+\begin{document}
+
+\maketitle
+
+\raggedright 
+\section{Grundgegriffe der Linearen Algebra}
+	\subsection{Logik und Mengen}
+		Wir werden die Grundlagen der Logik und der Mengenlehre kurz ansprechen.
+		\subsubsection{\"Uberblick \"uber die Aussagenlogik}
+			Jede mathematisch sinnvolle Aussage ist entweder wahr oder falsch, aber nie beides!
+			\begin{compactitem}
+				\item "'$1+1=2$"' $\to$ wahr
+				\item "'$1+1=3$"' $\to$ falsch
+				\item "'Es gibt unendlich viele Primzahlen"' $\to$ wahr
+			\end{compactitem}
+			Man ordnet jeder mathematischen Aussage $A$ einen Wahrheitswert "'wahr"' oder "'falsch"' zu. Aussagen
+			lassen sich mit logischen Verkn\"upfungen zu neuen Aussagen zusammensetzen.
+			\begin{compactitem}
+				\item $\lor \to$ oder
+				\item $\land \to$ und
+				\item $\lnot \to$ nicht
+				\item $\Rightarrow \to$ impliziert
+				\item $\iff \to$ \"aquivalent
+			\end{compactitem}
+			Sind also $A$ und $B$ zwei Aussagen, so ist auch $A \lor B$, $A \land B$, $\lnot A$, 
+			$A \Rightarrow B$ und $A \iff B$ Aussagen. Der Wahrheitswert einer zusammengesetzen Aussage ist
+			eindeutig bestimmt durch die Wahrheitswerte ihrer Einzelaussagen.
+			\begin{compactitem}
+				\item $\lnot (1+1=3) \to$ wahr
+				\item "'2 ist ungerade"' $\Rightarrow$ "'3 ist gerade"' $\to$ wahr
+				\item "'2 ist gerade"' $\Rightarrow$ "'Es gibt unendlich viele Primzahlen"' $\to$ wahr
+			\end{compactitem}
+			$\newline$
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|}
+					\hline
+						$A$ & $B$ & $A \lor B$ & $A \land B$ & $\lnot A$ & $A \Rightarrow B$ & $A \iff B$\\
+					\hline
+						w & w & w & w & f & w & w\\
+					\hline
+						w & f & w & f & f & f & f\\
+					\hline
+						f & w & w & f & w & w & f\\
+					\hline
+						f & f & f & f & w & w & w\\
+					\hline
+				\end{tabular}
+			\end{center}
+			
+		\subsubsection{\"Uberblick \"uber die Pr\"adikatenlogik}
+			Wir werden die Quantoren
+			\begin{compactitem}
+				\item $\forall$ (Allquantor, "'f\"ur alle"') und
+				\item $\exists$ (Existenzquantor, "'es gibt"') verwenden.
+			\end{compactitem}
+			Ist $P(x)$ eine Aussage, deren Wahrheitswert von einem unbestimmten $x$ abh\"angt, so ist \\
+			$\forall x: P(x)$ genau dann wahr, wenn $P(x)$ f\"ur alle $x$ wahr ist, \\
+			$\exists x: P(x)$ genau dann wahr, wenn $P(x)$ f\"ur mindestens ein $x$ wahr ist. \\
+			$\newline$
+			Insbesondere ist $\lnot \forall x: P(x)$ genau dann wahr, wenn $\exists x: \lnot P(x)$ wahr ist. \\
+			Analog ist $\lnot \exists x: P(x)$ genau dann wahr, wenn $\forall x: \lnot P(x)$ wahr ist.
+			
+		\subsubsection{\"Uberblick \"uber die Beweise}
+			Unter einem Beweis verstehen wir die l\"uckenlose Herleitung einer mathematischen Aussage aus einer
+			Menge von Axiomen, Vorraussetzungen und schon fr\"uher bewiesenen Aussagen. \\
+			Einige Beweismethoden:
+			\begin{compactitem}
+				\item \textbf{Widerspruchsbeweis} \\
+				Man nimmt an, dass eine zu beweisende Aussage $A$ falsch sei und leitet daraus ab, dass eine 
+				andere Aussage sowohl falsch als auch wahr ist. Formal nutzt man die G\"ultigkeit der Aussage
+				$\lnot A \Rightarrow (B \land \lnot B) \Rightarrow A$.
+				\item \textbf{Kontraposition} \\
+				Ist eine Aussage $A \Rightarrow B$ zu beweisen, kann man stattdessen die Implikation 
+				$\lnot B \Rightarrow \lnot A$ beweisen.
+				\item \textbf{vollst\"andige Induktion} \\
+				Will man eine Aussage $P(n)$ f\"ur alle nat\"urlichen Zahlen zeigen, so gen\"ugt es, zu zeigen,
+				dass $P(1)$ gilt und dass unter der Induktionsbehauptung $P(n)$ stets auch $P(n+1)$ gilt 
+				(Induktionschritt). Dann gilt $P(n)$ f\"ur alle $n$. \\
+				Es gilt also das Induktionsschema: $P(1) \land \forall n: (P(n) \Rightarrow P(n+1)) \Rightarrow
+				\forall n: P(n)$.
+			\end{compactitem}
+			
+		\subsubsection{\"Uberblick \"uber die Mengenlehre}
+			Jede Menge ist eine Zusammenfassung bestimmter wohlunterscheidbarer Objekte zu einem Ganzen. Eine
+			Menge enth\"alt also solche Objekte, die Elemente der Menge. Die Menge ist durch ihre Elemente
+			vollst\"andig bestimmt. Diese Objekte k\"onnen f\"ur uns verschiedene mathematische Objekte, wie
+			Zahlen, Funktionen oder andere Mengen sein. Man schreibt $x \in M$ bzw. $x \notin M$, wenn x ein
+			bzw. kein Element der Menge ist. \\
+			$\newline$
+			Ist $P(x)$ ein Pr\"adikat, so bezeichnet man eine Menge mit $X := \{x \mid P(x)\}$. Hierbei muss
+			man vorsichtig sein, denn nicht immer lassen sich alle $x$ f\"ur die $P(x)$ gilt, widerspruchsfrei
+			zu einer Menge zusammenfassen. \\
+			$\newline$
+			
+			\textbf{Beispiel: endliche Mengen} \\
+			Eine Menge hei{\ss}t endlich, wenn sie nur endlich viele Elemente enth\"alt. Endliche Mengen
+			notiert man oft in aufz\"ahlender Form: $M = \{1;2;3;4;5;6\}$. Hierbei ist die Reihenfolge
+			der Elemente nicht relevant, auch nicht die H\"aufigkeit eines Elements. \\
+			Sind die Elemente paarweise verschieden, dann ist die Anzahl der Elemente die M\"achtigkeit
+			(oder Kardinalit\"at) der Menge, die wir mit $|M|$ bezeichnen. \\
+			$\newline$
+			\textbf{Beispiel: unendliche Mengen} \\
+			\begin{compactitem}
+				\item Menge der nat\"urlichen Zahlen: $\mathbb N := \{1,2,3,4,...\}$
+				\item Menge der nat\"urlichen Zahlen mit der 0: $\mathbb N_0 := \{0,1,2,3,4,...\}$
+				\item Menge der ganzen Zahlen: $\mathbb Z := \{...,-2,-1,0,1,2,...\}$
+				\item Menge der rationalen Zahlen: $\mathbb Q := \{\frac p q \mid p,q \in \mathbb Z, q 
+				\neq 0\}$
+				\item Menge der reellen Zahlen: $\mathbb R := \{x \mid x$ ist eine reelle Zahl$\}$
+			\end{compactitem}
+			Ist $M$ eine Menge, so gilt $|M|=\infty$ \\
+			$\newline$
+			
+			\textbf{Beispiel: leere Menge} \\
+			Es gibt genau eine Menge, die keine Elemente hat, die leere Menge $0 := \{\}$.
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Teilmenge:} Sind $X$ und $Y$ zwei Mengen, so heißt $X$ eine Teilmenge von 
+				$Y$, wenn jedes Element von $X$ auch Element von $Y$ ist, dass heißt wenn für alle 
+				$x$ $(x \in X \Rightarrow x \in Y)$ gilt.
+			\end{mdframed}
+			
+			Da eine Menge durch ihre Elemente bestimmt ist, gilt $X = Y \Rightarrow (X \subset Y)\land
+			(Y \subset X)$. Will man Mengengleichheit beweisen, so gen\"ugt es, die beiden Inklusionen
+			$X \subset Y$ und $Y \subset X$ zu beweisen. \\
+			$\newline$
+			
+			Ist $X$ eine Menge und $P(x)$ ein Pr\"adikat, so bezeichnet man mit $Y:= \{x \in X \mid
+			P(x)\}$ die Teilmenge von $X$, die das Pr\"adikat $P(x)$ erf\"ullen. \\
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Mengenoperationen:} Seien $X$ und $Y$ Mengen. Man definiert daraus 
+				weitere Mengen wie folgt:
+				\begin{compactitem}
+					\item $X \cup Y := \{x \mid x \in X \lor x \in Y\}$
+					\item $X \cap Y := \{x \mid x \in X \land x \in Y\}$
+					\item $X \backslash Y := \{x \in X \mid x \notin Y\}$
+					\item $X \times Y := \{(x,y) \mid x \in X \land y \in Y\}$
+					\item $\mathcal P(X) := \{Y \mid Y \subset X\}$
+				\end{compactitem}
+			\end{mdframed}
+			
+			Neben den offensichtlichen Mengengesetzen, wie dem Kommutaivgesetz, gibt es auch weniger 
+			offensichtliche Gesetze, wie die Gesetze von de Morgan: F\"ur $X_1, X_2 \subset X$ gilt:
+			\begin{compactitem}
+				\item $X \backslash (X_1 \cup X_2) = (X \backslash X_1) \cap (X \backslash X_2)$
+				\item $X \backslash (X_1 \cap X_2) = (X \backslash X_1) \cup (X \backslash X_2)$
+			\end{compactitem}
+			$\newline$
+			
+			Sind $X$ und $Y$ endliche Mengen, so gilt:
+			\begin{compactitem}
+				\item $|X \times Y| = |X| \cdot |Y|$
+				\item $|\mathcal P(X)| = 2^{|X|}$
+			\end{compactitem}
+			
+	\subsection{Abbildungen}
+		\subsubsection{\"Uberblick \"uber Abbildungen}
+			Eine Abbildung $f$ von eine Menge $X$ in einer Menge $Y$ ist eine Vorschrift, die jedem $x \in X$
+			auf eindeutige Weise genau ein Element $f(x) \in Y$ zuordnet. Man schreibt dies als 
+			\begin{equation*}
+			f:
+				\begin{cases}
+					X \to Y \\ x \mapsto y
+				\end{cases}
+			\end{equation*}
+			oder $f: X \to Y, x \mapsto y$ oder noch einfacher $f: X \to Y$. Dabei hei{\ss}t $X$ die
+			Definitions- und $Y$ die Zielmenge von $f$. Zwei Abbildungen heißen gleich, wenn ihre
+			Definitionsmengen und Zielmengen gleich sind und sie jedem $x \in X$ das selbe Element
+			$y \in Y$ zuordnen. Die Abbildungen von $X$ nach $Y$ bilden wieder eine Menge, welche wir 
+			mit \textbf{Abb($X$,$Y$)} bezeichnen. \\
+			$\newline$
+			
+			Beispiele: \\
+			\begin{compactitem}
+				\item Abbildungen mit Zielmenge $\mathbb R$ nennt man Funktion: $f: \mathbb R \to \mathbb
+				R, x \mapsto x^2$
+				\item Abbildungen mit Zielmenge $\subset$ Definitionsmenge: $f: \mathbb R \to \mathbb
+				R_{\le 0}, x \mapsto x^2$ \\
+				$\to$ Diese Abbildungen sind verschieden, da sie nicht die selbe Zielmenge haben.
+				\item $f: \{0,1\} \to \mathbb R, x \mapsto x^2$
+				\item $f: \{0,1\} \to \mathbb R, x \mapsto x$ \\
+				$\to$ Diese Funktionen sind gleich. Sie haben die gleichen Definitions- und Zielmengen 
+				und sie ordnen jedem Element der Definitionsmenge das gleiche Element der Zielmenge zu.
+			\end{compactitem}
+			$\newline$
+			
+			Beispiele: \\
+			\begin{compactitem}
+				\item auf jeder Menge $X$ gibt es die identische Abbildung (Identit\"at) \\ $id: X \to X, x 
+				\mapsto x$
+				\item allgemein kann man zu jeder Teilmenge $A \subset X$ die Inklusionsabbildung zuordnen
+				$\iota_A: A \to X, x \mapsto x$
+				\item zu je zwei Mengen $X$ und $Y$ und einem festen $y_0 \in Y$ gibt es die konstante
+				Abbildung $c_{y_0}: X \to Y x \mapsto y_0$
+				\item zu jder Menge $X$ und Teilmenge $A \subset X$ definiert man die charakteristische 
+				Funktion\\ $\chi_A: X \to \mathbb R,
+				\begin{cases}
+					x \mapsto 1 \quad(x \in A) \\ x \mapsto 0 \quad(x \notin A)
+				\end{cases}
+				$
+				\item zu jeder Menge $X$ gibt es die Abbildung \\ $f: X \times X \to \mathbb R, (x,y) \mapsto
+				\delta_{x,y} \begin{cases} 1 \quad (x=y) \\ 0 \quad (x \neq y) \end{cases}$
+			\end{compactitem}
+			$\newline$
+			
+			\textbf{Eigenschaften von Funktionen:} \\
+			\begin{compactitem}
+				\item injektiv: Zuordnung ist eindeutig: $F(m_1) = F(m_2) \Rightarrow m_1=m_2$ \\
+				Bsp: $x^2$ ist nicht injektiv, da $F(-2)=F(2)=4$
+				\item surjektiv: $F(M)=N$ ($\forall n \in N \; \exists m \in M \mid F(m)=n$) \\
+				Bsp: $sin(x)$ ist nicht surjektiv, da es kein $x$ f\"ur $y=27$ gibt
+				\item bijektiv: injektiv und surjektiv
+			\end{compactitem}
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Einschr\"ankung:} Sei $f: x \mapsto y$ eine Abbildung. F\"ur $A \subset X$
+				definiert man die Einschr\"ankung/Restrikton von $f$ auf $A$ als die Abbildung $f \mid_A 
+				A \to Y, a \mapsto f(a)$. \\
+				Das Bild von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
+				Das Urbild einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
+				Man nennt $Image(f) := f(X)$ das Bild von $f$.
+			\end{mdframed}
+			
+			\textbf{Bemerkungen zur abstrakteren Betrachtungsweise:} \\
+			Man ordnet der Abbildung $f: X \to Y$ auch die Abbildungen $\mathcal P(X) \to \mathcal P(Y)$ und
+			$\mathcal P(Y) \to \mathcal P(X)$ auf den Potenzmengen zu. Man benutzt hier das gleiche 
+			Symbol $f(…)$ sowohl für die Abbildung $f: X \to Y$ als auch f\"ur $f: P(X) \to P(Y)$, was 
+			unvorsichtig ist, aber keine Probleme bereiten sollte. \\
+			In anderen Vorlesungen wird f\"ur $y \in Y$ auch $f^{-1}(y)$ statt $f^{-1}(\{y\})$ geschrieben. \\
+			$\newline$
+			
+			\textbf{Bemerkungen:} \\
+			Genau dann ist $f: X \to Y$ surjektiv, wenn $Image(f)=Y$ \\
+			Genau dann ist $f: X \to Y \begin{cases} $injektiv$ \\ $surjektiv$ \\ $bijektiv$ \end{cases}$, wenn
+			$|f^{-1}(\{y\})| = \begin{cases} \le 1 \\ \ge 1 \\ =1  \end{cases} \quad \forall y \in Y$ \\
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Komposition:} Sind $f: X \to Y$ und $g: Y \to Z$ Abbildungen, so ist die
+				Komposition $g \circ f$ die Abbildung $g \circ f := X \to Z, x \mapsto g(f(x))$. Man kann 
+				die Komposition auffassen als eine Abbildung $\circ: Abb(Y,Z) \times Abb(X,Y) \to Abb(X,Z)$.
+			\end{mdframed}
+			
+			\begin{framed}
+				\textbf{Satz:} Die Abbildung von Kompositionen ist assotiativ, d.h. es gilt: $h \circ (g 
+				\circ f) = (h \circ g)\circ f$.
+			\end{framed}
+			\textit{Beweis: \\
+			Sowohl $h\circ (g\circ f)$ als auch $(h\circ g)\circ f$ haben die Definitionsmenge $X$ und die Zielmenge 
+			$W$ und für jedes $x\in X$ ist $(h\circ (g\circ f))(x)=h((g\circ f)(x))=h(g(f(x)))=(h\circ g)(f(x)) = 
+			((h\circ g)\circ f)(x)$.}
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Umkehrabbildung:} Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
+				genau ein $x_y \in X$ mit $f(x_y)=y$, durch $f^{-1}: Y \to X, y \mapsto x_y$ wird also eine 
+				Abbildung definiert, die Umkehrabbildung zu $f$. 
+			\end{mdframed}
+			
+			\begin{framed}
+				\textbf{Satz:} Ist die Abbildung $f: X \to Y$ bijektiv, so gilt $f^{-1} \circ f = id_x$ und
+				$f \circ f^{-1} = id_y$.
+			\end{framed}
+			\textit{Beweis: \\
+			Es ist $f^{-1}\in Abb(X,X)$ und $f\circ f^{-1}\in Abb(Y,Y)$. Für $y\in Y$ ist $(f\circ f^{-1})(x)=
+			f(f^{-1}(y))=y=id_Y$. Für $x\in X$ ist deshalb $f((f^{-1}\circ f)(x))=(f\circ (f^{-1}\circ f))(x)=
+			((f\circ f^{-1})\circ f)(x)=(id_Y \circ f)(x)=f(x)$. Da $f$ injektiv, folgt $f^{-1}\circ f=id_X$.}
+			$\newline$
+			
+			\textbf{Bemerkung:} \\
+			Achtung, wir verwenden hier das selbe Symbol $f^{-1}$ f\"ur zwei verschiedene Dinge: Die Abbildung
+			$f^{-1}: \mathcal P(X) \to \mathcal P(Y)$ existiert f\"ur jede Abbildung $f: X \to Y$, aber die
+			Umkehrabbildung $f^{-1}: Y \to X$ existiert nur f\"ur bijektive Abbildungen $f: X \to Y$. \\
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Familie:} Seien $I$ und $X$ Mengen. Eine Abbildung $x: I \to X, i \mapsto
+				x_i$ nennt man Familie von Elementen von $X$ mit einer Indexmenge I (oder I-Tupel von 
+				Elementen von $X$) und schreibt diese auch als $(x_i)_{i \in I}$. Im Fall $I=\{1,2,...,n\}$
+				identifiziert man die I-Tupel auch mit den n-Tupeln. Ist $(x_i)_{i \in I}$ eine Familie von
+				Teilmengen einer Menge $X$, so ist 
+				\begin{compactitem}
+					\item $\bigcup X_i = \{x \in X \mid \exists i \in I(x \in X)\}$
+					\item $\bigcap X_i = \{x \in X \mid \forall i \in I(x \in X)\}$
+					\item $\prod X_i = \{f \in Abb(I,X) \mid \forall i \in I(f(i) \in X_i)\}$
+				\end{compactitem}
+				Die Elemente von $\prod X_i$ schreibt man in der Regel als Familien $(x_i)_{i \in I}$.
+			\end{mdframed}
+			
+			\textbf{Beispiel: } Eine Folge ist eine Familie $(x_i)_{i \in I}$ mit der Indexmenge $\mathbb N_0$.
+			
+			\begin{mdframed}[backgroundcolor=blue!20]
+				\textbf{Definition Graph:} Der Graph einer Abbildung $f: X \to Y$ ist die Menge $\Gamma f: 
+				\{(x,y) \in X \times Y \mid y=f(x)\}$.
+			\end{mdframed}
+			
+			\textbf{Bemerkung: Formal korrekte Definition einer Abbildung:} \\
+			Eine Abbildung $f$ ist ein Tripel $(X,Y,\Gamma)$, wobei $\Gamma \subset X \times Y \quad \forall
+			x \in X$ genau ein Paar $(x,y)$ mit $y \in Y$ enth\"alt. Die Abbildungsvorschrift schickt dann
+			$x \in X$ auf das eindeutig bestimmte $y \in Y$ mit $(x,y) \in \Gamma$. Es ist dann $\Gamma =
+			\Gamma_f$.
+			
+	\subsection{Gruppen}
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Gruppe:} Sei $G$ eine Menge. Eine (innere, zweistellige) Verkn\"upfung
+			auf $G$ ist eine Abbildung $*: G \times G \to G, (x,y) \mapsto x*y$. Das Paar $(G,*)$ ist eine
+			Halbgruppe, wenn das folgende Axiom erf\"ullt ist: \\
+			(G1) F\"ur $x,y,z \in G$ ist $(x*y)*z=x*(y*z)$. \\
+			Eine Halbgruppe $(G,*)$ ist ein Monoid, wenn zus\"atzlich das folgende Axiom gilt: \\
+			(G2) Es gibt ein Element $e \in G$, welches f\"ur alle $x \in G$ die Gleichung $x*e=e*x=x$
+			erf\"ullt. Dieses Element hei{\ss}t dann neutrales Element der Verkn\"upfung $*$.  
+		\end{mdframed}
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item F\"ur jede Menge $X$ ist $(Abb(X,Y), \circ)$ eine Halbgruppe mit dem neutralen Element
+			$id_x$, also ein Monoid.
+			\item $\mathbb N$ bildet mit der Addition eine Halbgruppe $(\mathbb N,+)$, aber kein Monoid,
+			da die 0 nicht in Fehm's Definition der nat\"urlichen Zahlen geh\"orte
+			\item $\mathbb N_0$ bildet mit der Addition ein Monoid $(\mathbb N_0,+)$
+			\item $\mathbb N$ bildet mit der Multiplikation ein Monoid $(\mathbb N, \cdot)$
+			\item $\mathbb Z$ bildet mit der Multiplikation ein Monoid $(\mathbb Z, \cdot)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz (Eindeutigkeit des neutralen Elements):} Ein Monoid $(G,*)$ hat genau ein neutrales
+			Element. 
+		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition besitzt $(G,*)$ mindestens ein neutrales Element. Seien $e_1,e_2\in G$ neutrale Elemente. Dann 
+		ist $e_1=e_1 * e_2=e_2$. Damit besitzt $(G,*)$ höchstens ein neutrales Element, also genau ein neutrales Element.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition abelsche Gruppe:} Eine Gruppe ist ein Monoid $(G,*)$ mit dem neutralen Element
+			$e$, in dem zus\"atzlich das folgende Axiom gilt: \\
+			(G3) F\"ur jedes $x \in G$ gibt es ein $x' \in G$ mit $x'*x=x*x'=e$. \\
+			Gilt weiterhin \\
+			(G4) F\"ur alle $x,y \in G$ gilt $x*y=y*x$, so hei{\ss}t diese Gruppel abelsch.
+		\end{mdframed}
+		
+		Ein $x'$ hei{\ss}t inverses Element zu $x$. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item $\mathbb N_0$ bildet mit der Addition keine Gruppe $(\mathbb N_0,+)$
+			\item $\mathbb Z$ bildet mit der Addition eine abelsche Gruppe $(\mathbb Z,+)$
+			\item Auch $(\mathbb Q,+)$ und $(\mathbb R,+)$ sind abelsche Gruppen
+			\item $(\mathbb Q,\cdot)$ ist keine Gruppe, aber $(\mathbb Q\backslash\{0\},\cdot)$ schon
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz (Eindeutigkeit des Inversen):} Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$
+			genau ein inverses Element.
+		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition hat jedes $x\in G$ mindestens ein Inverses. Seien $x',x''\in G$ inverse Elemente zu $x$. Dann ist 
+		$x'=x'*e=x'*(x*x'')=(x'*x)*x''=e*x''=x''$. Es gibt also genau ein Inverses zu $x$.}
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item Eine triviale Gruppe besteht nur aus ihrem neutralen Element. Tats\"achlich ist $G=\{e\}$ mit
+			$e*e=e$ eine Gruppe.
+			\item Sei $X$ eine Menge. Die Menge $Sym(X) := \{f \in Abb(X,X) \mid f$ ist bijektiv$\}$ der
+			Permutationen von $X$ bildet mit der Komposition eine Gruppe $(Sym(X),\circ)$, die 
+			symmetrsiche Gruppe auf $X$. F\"ur $n \in \mathbb N$ schreibt man $S_n := Sym(\{1,2,...,n\})$. 
+			F\"ur $n \ge 3$ ist $S_n$ nicht abelsch.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkung:} H\"aufig benutzte Notationen f\"ur die Gruppenverkn\"upfung $\cdot$:\\
+		\begin{compactitem}
+			\item In der multiplikativen Notation schreibt man $\cdot$ statt $*$ (oft auch $xy$ statt 
+			$x \cdot y$), bezeichnet das neutrale Element mit $1$ oder $1_G$ und das Inverse zu $x$ mit
+			$x^{-1}$.
+			\item In der additiven Notation schreibt man $+$ f\"ur $*$, bezeichnet das neutrale Element
+			mit $0$ oder $0_G$ und das Inverse zu $x$ mit $-x$. Die additive Notation wird nur verwendet,
+			wenn die Gruppe abelsch ist.
+		\end{compactitem}
+		$\newline$
+		
+		In abelschen Gruppen notiert man Ausdr\"ucke auch mit dem Summen- und Produktzeichen. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe. F\"ur $x,y \in G$ gelten $(x^{-1})^{-1}=x$ und
+			$(xy)^{-1}=x^{-1} \cdot x^{-1}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Nach Definition erfüllt $z=x$ die Identitäten $x^{-1}z=zx^{-1}=1$ und somit ist $(x^{-1})^{-1}=z=x$. Ebenso ist 
+		$(y^{-1}x^{-1})\cdot (xy)=y^{-1}(x^{-1}x)y=1$ und $(xy)\cdot (x^{-1}y^{-1})=x(yy^{-1})x^{-1}=1$, also $y^{-1}
+		x^{-1}=(xy)^{-1}$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe. F\"ur $a,b \in G$ haben die Gleichungen $ax=b$ und
+			$ya=b$ eindeutige L\"osungen in $G$, n\"amlich $x=a^{-1} \cdot b$ und $y=b \cdot a^{-1}$. 
+			Insbesondere gelten die folgenden K\"urzungsregeln: $ax=ay \Rightarrow x=y$ und $xa=ya 
+			\Rightarrow x=y$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es ist $a \cdot a^{-1} \cdot b = 1b=b$, also ist $x=a^{-1} \cdot b$ eine L\"osung. Ist umgekehrt
+		$ax=b$ mit $x \in G$, so ist $a^{-1} \cdot b = a^{-1} \cdot ax = 1x = x$ die L\"osung und somit
+		eindeutig. F\"ur die zweite Gleichung argumentiert man analog. Den "'Insbesondere"'-Fall erh\"alt
+		man durch Einsetzen von $b=ay$ bzw. $b=xa$.} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} \\
+		Wenn aus dem Kontext klar ist, welche Verkn\"upfung gemeint ist, schreibt man auch einfach
+		$G$ anstatt $(G, \cdot)$ bzw. $(G,+)$. Eine Gruppe $G$ hei{\ss}t endlich, wenn die Menge $G$ endlich
+		ist. Die Mächtigkeit $|G|$ von $G$ nennt man dann die Ordnung von $G$. Eine endliche Gruppe kann 
+		durch ihre Verkn\"upfungstafel vollst\"andig beschrieben werden. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		a) die triviale Gruppe $G=\{e\}$
+		\begin{center}
+			\begin{tabular}{|c|c|}
+				\hline
+				$\cdot$ & $e$\\
+				\hline
+				$e$ & $e$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		b) die Gruppe $\mu_2 = \{1,-1\}$ der Ordnung 2
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$\cdot$ & $1$ & $-1$\\
+				\hline
+				$1$ & $1$ & $-1$ \\
+				\hline
+				$-1$ & $-1$ & $1$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		c) die Gruppe $S_2= Sym(\{1,2\}) = \{id_{\{1,2\}},f\}$, wobei $f(1)=2$ und $f(2)=1$
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$\circ$ & $id_{\{1,2\}}$ & $f$\\
+				\hline
+				$id_{\{1,2\}}$ & $id_{\{1,2\}}$ & $f$ \\
+				\hline
+				$f$ & $f$ & $id_{\{1,2\}}$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Untergruppe:} Eine Untergruppe einer Gruppe $(G,\cdot)$ ist eine 
+			nichtleere Teilmenge $H \subset G$, f\"ur die gilt: \\
+			(UG1) F\"ur alle $x,y \in H$ ist $x \cdot y \in H$ (Abgeschlossenheit unter Multiplikation). \\
+			(UG2) F\"ur alle $x \in H$ ist $x^{-1} \in H$ (Abgeschlossenheit unter Inversen).
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(G,\cdot)$ eine Gruppe und $\emptyset \neq H \subset G$. Genau dann ist
+			$H$ eine Untergruppe von $G$, wenn sich die Verkn\"upfung $\cdot: G \times G \to G$ zu einer
+			Abbildung $\cdot_H: H \times H \to H$ einschr\"anken l\"asst (d.h. $\cdot|_{H \times H}=
+			\iota_H \circ \cdot_H$, wobei $\iota_H \cdot \cdot_H \to G$ die Inklusionsabbildung ist) und
+			$(H,\cdot_H)$ eine Gruppe ist.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: Sei $H$ eine Untergruppe von $G$. Nach (UG1) ist $Image(\cdot|_{H \times H}) \subset H$
+		und somit l\"asst sich $\cdot$ zu einer Abbildung $\cdot_H: H \times H \ to H$ einschr\"anken. Wir 
+		betrachten jetzt $H$ mit dieser Verkn\"upfung. Da $G$ (G1) erf\"ullt, erf\"ullt auch H (G1). Da
+		$H \neq \emptyset$ existiert ein $x \in H$. Nach (UG1) und (UG2) ist $x \cdot x^{-1}=e \in H$. Da 
+		$e_G \cdot y=y \cdot e_G=y$ f\"ur alle $y \in G$, insbesondere auch f\"ur alle $y \in H$ (G2). Wegen
+		(UG2) erf\"ullt $H$ auch das Axiom (G3). $H$ ist somit eine Gruppe. \\
+		R\"uckrichtung: Sei nun umgekehrt $(H,\cdot_H)$ eine Gruppe. F\"ur $x,y \in H$ ist dann $xy=x \cdot_H
+		y \in H$, also er\"ullt $H$ (UG1). Aus $e_H \cdot e_H=e_H=e_H \cdot e_G$ folgt $e_H=e_G$. Ist also
+		$x'$ das Inverse zu $x$ aus der Gruppe $H$, so ist $x'x=xx'=e_G=e_H$, also $x^{-1}=x' \in H$ und
+		somit erf\"ullt $H$ auch (UG2). Wir haben gezeigt, dass $H$ eine Untergruppe von $G$ ist.} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} \\
+		Wir nennen nicht nur die Menge $H$ eine Untergruppe von $G$, sondern auch die Gruppe $(H,\cdot_H)$.
+		Wir schreiben $H \le G$. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item Jede Gruppe $G$ hat die triviale Untergruppe $H=\{e_G\}$ und $H=G$
+			\item Ist $H \le G$ und $K \le H$, so ist $K \le G$ (Transitivit\"at)
+			\item Unter Addition ist $\mathbb{Z} \le \mathbb{Q} \le \mathbb{R}$ eine Kette von Untergruppen
+			\item Unter Multiplikation ist $\mu_2 \le \mathbb{Q}^+ \le \mathbb{R}^+$ eine Kette von 
+			Untergruppen
+			\item F\"ur $n \in \mathbb{N}_0$ ist $n\mathbb{Z} := \{nx \mid x \in \mathbb{Z}\} \le \mathbb{Z}$ 
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $G$ eine Gruppe und $(H_i)_{i \in I}$ eine Familie von Untergruppen von $G$,
+			so ist auch $H := \bigcap H_i$ eine Untergruppe von $G$.
+		\end{framed}
+		\textit{Beweis: Wir haben 3 Dinge zu zeigen\\
+		\begin{compactitem}
+			\item $H \neq \emptyset:$ F\"ur jedes $i \in I$ ist $e_G \in H$, also auch $e_G \in \bigcap
+			H_i =H$
+			\item (UG1): Seien $x,y \in H$. F\"ur jedes $i \in I$ ist $x,y \in H_i$, somit $xy \in H_i$,
+			da $H_i \le G$. Folglich ist $xy \in \bigcap H_i=H$.
+			\item (UG2): Sei $x \in H$. F\"ur jedes $i \in I$ ist $x \in H_i$, somit $x^{-1} \in H_i$,
+			da $H_i \le G$. Folglich ist $x^{-1} \in \bigcap H_i=H$.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $G$ eine Gruppe und $X \subset G$. so gibt es eine eindeutig bestimmte
+			kleinste Untergruppe $H$ von $G$, die $X$ enth\"alt, d.h. $H$ enth\"alt $X$ und ist $H'$
+			eine weitere Untergruppe von $G$, die $X$ enth\"alt, so ist $H \subset H'$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $\mathcal{H}$ die Menge aller Untergruppen von $G$, die $X$ enthalten. Nach dem Lemma ist $H:=
+		\bigcap \mathcal{H} := \bigcap H$ eine Untergruppe von $G$. Da $X \subset H'$ f\"ur jedes $H' \in 
+		\mathcal H$ ist auch $X \subset H$. Nach Definition ist $H$ in jedem $H' \le G$ mit $X \subset H'$
+		enhalten.} \\
+		$\newline$
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition erzeugte Untergruppe:} Ist $G$ eine Gruppe und $X \le G$, so nennt man diese
+			kleinste Untergruppe von $G$, die $X$ enth\"alt, die von $X$ erzeugte Untergruppe von $G$ und
+			bezeichnet diese mit $<X>$, falls $X = \{x_1,x_2,...,x_n\}$ enth\"alt auch mit $<x_1,x_2,
+			...,x_n>$. Gibt es eine endliche Menge $X \subset G$ mit $G=<X>$, so nennt man $G$ endlich
+			erzeugt.
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die leere Menge $X=\emptyset \le G$ erzeugt stets die trivale Untergruppe $<\emptyset>
+			=\{e\} \le G$
+			\item Jede endliche Gruppe $G$ ist endlich erzeugt $G=<G>$
+			\item F\"ur $n \in \mathbb{N}_0$ ist $n\mathbb{Z}=<n> \le \mathbb{Z}$. Ist $H \le \mathbb{Z}$
+			mit $n \in H$, so ist auch $kn=nk=n+n+...+n \in H$ und somit auch $n\mathbb{Z} \le H$.
+		\end{compactitem}
+		
+	\subsection{Ringe}
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Ring:} Ein Ring ist ein Tripel $(R,+,\cdot)$ bestehend aus einer Menge
+			$R$, einer Verkn\"upfung $+: R \times R \to R$ (Addition) und einer anderen Verkn\"upfung
+			$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
+			erf\"ullen: \\
+			(R1) $(R,+)$ ist eine abelsche Gruppe. \\
+			(R2) $(R,\cdot)$ ist eine Halbgruppe. \\
+			(R3) F\"ur $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$. \\
+			Ein Ring hei{\ss}t kommutativ, wenn $xy=yx$ f\"ur alle $x,y \in R$.\\
+			Ein neutrales Element der Multiplikation hei{\ss}t Einselement von $R$.\\
+			Ein Unterrrig eines Rings $(R,+,\cdot)$ ist eine Teilmenge, die mit der geeigneten
+			Einschr\"ankung von Addition und Multiplikation wieder ein Ring ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkungen:} \\
+		Hat ein Ring ein Einselement, so ist dieses eindeutig bestimmt. Notationelle Konfektionen: Das 
+		neutrale Element der Addition wird h\"aufig mit 0 bezeichnet; die Multiplikation wird nicht immer
+		notiert; Multiplikation bindet st\"arker als die Addition. \\
+		Wenn die Verkn\"upfungen aus dem Kontext klar sind, schreibt ma $R$ statt $(R,+,\cdot)$. \\
+		$\newline$
+		
+		\textbf{Beispiele:} \\
+		\begin{compactitem}
+			\item Der Nullring ist $R=\{0\}$ mit den einzig m\"oglichen Verkn\"upfungen $+$ und $\cdot$
+			auf $R$. Der Nullring ist sogar kommutativ und hat ein Einselement, n\"amlich die 0.
+			\item $(\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring mit Einselement 1, ebenso
+			$(\mathbb{Q},+,\cdot)$ und $(\mathbb{R},+,\cdot)$. 
+			\item $(2\mathbb{Z},+,\cdot)$ ist ein kommutativer Ring, aber ohne Einselement.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkungen:} Ist $R$ ein Ring, dann gelten die folgenden Aussagen f\"ur $x,y \in R$\\
+		\begin{compactitem}
+			\item $0 \cdot x=x \cdot 0 = 0$
+			\item $x \cdot (-y) = (-x) \cdot y = -xy$
+			\item $(-x) \cdot (-y) = xy$
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkung:} \\
+		Wir f\"uhren eine wichtige Klasse endlicher Ringe ein. Hierf\"ur erinnern wir uns an eine der Grundlagen
+		der Arithmetik in $\mathbb{Z}$. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem:} Sei $b \neq 0 \in \mathbb{Z}$. F\"ur jedes $a \in \mathbb{Z}$ gibt es 
+			eindeutig bestimmte $q,r \in \mathbb{Z}$ ($r$ ist "Rest"), mit $a=qb+r$ und $0 \le r < |b|$.
+		\end{mdframed}
+		\textit{Beweis: Existenz und Eindeutigkeit \\
+		Existenz: oBdA nehmen wir an, dass $b>0$ (denn ist $a=qb+r$, so ist auch $a=(-q)(-b)+r$). Sei $q \in
+		\mathbb{Z}$ die gr\"o{\ss}te Zahl mit $q \le \frac{a}{b}$, und sei $r=a-qb \in \mathbb{Z}$. Dann ist
+		$a \le \frac{a}{b}-q < 1$, woraus $0 \le r < b$ folgt. \\
+		Eindeutigkeit: Sei $a=qb+r=q'b+r'$ mit $q,q',r,r' \in \mathbb{Z}$ und $0 \le r,r' < |b|$. Dann ist
+		$(q-q')b=r-r'$ und $|r-r'|<|b|$. Da $q-q' \in \mathbb{Z}$ ist, folgt $r-r'=0$ und daraus wegen 
+		$b \neq 0$, dann $q-q'=0$.}\\
+		$\newline$
+		
+		\textbf{Beispiel (Restklassenring):} Wir fixieren $n \in \mathbb{N}$. F\"ur $a \in \mathbb{Z}$ sei
+		$\overline{a} := a+n\mathbb{Z} := \{a+nx \mid x \in \mathbb{Z}\}$ die Restklasse von "$a \bmod n$". 
+		F\"ur $a,a' \in \mathbb{Z}$ sind \"aquivalent:
+		\begin{compactitem}
+			\item $a+n\mathbb{Z}=a'+n\mathbb{Z}$
+			\item $a' \in a+n\mathbb{Z}$
+			\item $n$ teilt $a'-a$ (in Zeichen $n|a'-a$), d.h. $a'=a+nk$ f\"ur $k \in \mathbb{Z}$
+		\end{compactitem}
+		\textit{Beweis: \\
+		$1) \Rightarrow 2)$: klar, denn $0 \in \mathbb{Z}$ \\
+		$2) \Rightarrow 3)$: $a' \in a+n\mathbb{Z} \Rightarrow a'=a+nk$ mit $k \in \mathbb{Z}$ \\
+		$3) \Rightarrow 1)$: $a'=a+nk$ mit $k \in \mathbb{Z} \Rightarrow a+n\mathbb{Z}=\{a+nk+nx \mid 
+		x \in \mathbb{Z}\}=\{a+n(k+x) \mid x \in \mathbb{Z}\}=a+n\mathbb{Z}$ \\
+		Insbesondere besteht $a+n\mathbb{Z}$ nur aus den ganzen Zahlen, die bei der Division durch $n$ den
+		selben Rest lassen wie $a$.}\\
+		$\newline$
+		
+		Aus dem Theorem folgt weiter, dass $\mathbb{Z}/n\mathbb{Z} := \{\overline{a} \mid a \in \mathbb{Z}\}
+		= \{\overline{0}, \overline{1},..., \overline{n-1}\}$ eine Menge der M\"achtigkeit n ist (sprich: 
+		"$\mathbb{Z} \bmod n\mathbb{Z}$"). \\
+		$\newline$
+		
+		Wir definieren Verkn\"upfungen auf $\mathbb{Z}/n\mathbb{Z}$ durch $\overline{a}+\overline{b} :=
+		\overline{a+b}$, $\overline{a} \cdot \overline{b} := \overline{ab}$ $a,b \in \mathbb{Z}$. Hierbei
+		muss man zeigen, dass diese Verkn\"upfungen wohldefiniert sind, also nicht von den gew\"ahlten
+		Vertretern $a,b$ der Restklassen $\overline{a}$ und $\overline{b}$ abh\"angen. Ist etwa $\overline{a}
+		= \overline{a'}$ und $\overline{b}= \overline{b'}$, also $a'=a+nk_1$ und $b'=b+nk_2$ mit $k_1,k_2 \in
+		\mathbb{Z}$, so ist \\
+		$a'+b' = a+b+n(k_1+k_2)$, also $\overline{a'+b'} = \overline{a+b}$ \\
+		$a' \cdot b' = ab+n(bk_1+ak_2+nk_1k_2)$, also $\overline{a'b'} = \overline{ab}$ \\
+		Man pr\"uft nun leicht nach, dass $\mathbb{Z}/n\mathbb{Z}$ mit diesen Verkn\"upfungen ein kommutativer
+		Ring mit Einselement ist, da dies auch f\"ur $(\mathbb{Z},+,\cdot)$ gilt. Das neutrale Element der
+		Addition ist $\overline{0}$, das Einselement ist $\overline{1}$. \\
+		$\newline$
+		
+		\textbf{Beispiel:} Im Fall $n=2$ ergeben sich die folgenden Verkn\"upfungstafeln f\"ur $\mathbb{Z}
+		/2\mathbb{Z} = \{\overline{0}, \overline{1}\}$ \\
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$+$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{0}$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{1}$ & $\overline{1}$ & $\overline{2}=\overline{0}$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				$\cdot$ & $\overline{0}$ & $\overline{1}$\\
+				\hline
+				$\overline{0}$ & $\overline{0}$ & $\overline{0}$\\
+				\hline
+				$\overline{1}$ & $\overline{0}$ & $\overline{1}$ \\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Charakteristik:} Sei $R$ ein Ring mit Einselement. Man definiert die Charakteristik von
+			$R$ als die kleinste nat\"urliche Zahl $n$ mit $1+1+...+1=0$, falls so ein $n$ existiert, andernfalls
+			ist die Charakteristik $0$.
+		\end{mdframed}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Nullteiler:} Sei $R$ ein Ring mit Einselement. Ein $0 \neq x \in R$ ist ein Nullteiler von 
+			$R$, wenn er ein $0 \neq y \in R$ mit $xy=0$ oder $yx=0$ gibt. Ein Ring ohne Nullteiler ist
+			nullteilerfrei.
+		\end{mdframed}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Einheit:} Sei $R$ ein Ring mit Einselement. Ein $x \in R$ hei{\ss}t invertierbar (oder
+			 Einheit von $R$), wenn es ein $x' \in R$ mit $xx'=x'x=1$ gibt. Wir bezeichnen die invertierten
+			 Elemente von $R$ mit $R^{\times}$.
+		\end{mdframed}
+		
+		\textbf{Beispiele:}\\
+		\begin{compactitem}
+			\item reelle Zahlen sind ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb R^{\times}=
+			\mathbb R\backslash\{0\}$
+			\item $\mathbb Z$ ist ein nullteilerfreier Ring der Charakteristik $0$ mit $\mathbb Z^{\times}=
+			\{1,-1\}$
+			\item $\mathbb Z/n \mathbb Z$ ist ein Ring der Charakteristik $n$. Ist $n$ keine Primzahl, so
+			ist $\mathbb Z$ nicht nullteilerfrei.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $R$ ein Ring mit Einselement. 
+			\begin{compactitem}
+				\item Ist $x \in R$ invertierbar, so ist $x$ kein Nullteiler in $R$.
+				\item Die invertierbaren Elemente von $R$ bilden mit der Multiplikation eine Gruppe.
+			\end{compactitem}
+		\end{framed}
+		
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Ist $xx'=x'x=1$ und $xy=0$ mit $x',y \in R$, so ist $0=x'\cdot 0=x\cdot xy=1\cdot y=y$, aber
+			$y \neq 0$ f\"ur Nullteiler
+			\item Sind $x,y \in R^{\times}$, also $xx'=x'x=yy'=y'y=1$. Dann ist $(xy)(y'x')=x\cdot 1\cdot x'=1$
+			und $(y'x')(xy)=y'\cdot 1\cdot y=1$, somit $R^{\times}$ abgeschlossen unter der Multiplikation. Da 
+			$1 \cdot 1=1$ gilt, ist auch $1 \in R^{\times}$. Nach Definition von $R^{\times}$ hat jedes $x \in 
+			R^{\times}$ ein Inverses $x' \in R^{\times}$.
+		\end{compactitem}}
+		$\newline$
+		
+	\subsection{K\"orper}
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition K\"orper:} Ein K\"orper ist ein kommutativer Ring $(K,+,\cdot)$ mit Einselement 
+			$1 \neq 0$, in dem jedes Element $x \neq x \in K$ invertierbar ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkungen:} Ein K\"orper ist stets nullteilerfrei und $(K\backslash\{0\}, \cdot)$ ist eine abelsche
+		Gruppe. Ein k\"orper ist also ein Tripel $(K,+,\cdot)$ bestehend aus einer Menge $K$ und 2 Verkn\"upfungen
+		$+: K \times K \to K$ und $\cdot: K \times K \to K$, f\"ur die gelten: \\
+		(K1): $(K,+)$ ist eine abelsche Gruppe \\
+		(K2): $(K\backslash\{0\}, \cdot)$ ist eine abelsche Gruppe, deren neutrales Element wir mit 1 bezeichnen \\
+		(K3): Es gelten die Distributivgesetze. \\
+		$\newline$
+		
+		\textbf{Bemerkungen:} Sei $K$ ein K\"orper und $a,x,y \in K$. Ist $ax=ay$ und $a \neq 0$, so ist $x=y$. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Teilk\"orper:} Ein Teilk\"orper eines K\"orpers $(K,+,\cdot)$ ist die Teilemenge $L 
+			\subset K$, die mit der geeigneten Einschr\"ankung von Addition und Multiplikation wieder ein
+			K\"orper ist.
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Der Nullring ist kein K\"orper.
+			\item Der K\"orper $\mathbb Q$ der rationalen Zahlen ist ein Teilk\"orper des K\"orpers $\mathbb R$ der
+			reellen Zahlen.
+			\item $(\mathbb Z, + ,\cdot)$ ist kein K\"orper
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Beispiel (Komplexe Zahlen)} \\
+		Wir definieren die Menge $\mathbb C = \mathbb R \times \mathbb R$ und darauf Verkn\"upfungen wie folgt:
+		F\"ur $(x_1,y_1), (x_2,y_2) \in \mathbb C$ ist: \\
+		\begin{compactitem}
+			\item$(x_1,y_1)+(x_2,y_2) := (x_1+x_2,y_1+y_2)$
+			\item$(x_1,y_1)\cdot (x_2,y_2) := (x_1x_2-y_1y_2,x_1y_2+x_2y_1)$
+		\end{compactitem}
+		Wie man nachpr\"ufen kann, ist $(\mathbb C,+,\cdot)$ ein K\"orper, genannt K\"orper der komplexen Zahlen.
+		Da $(x_1,0)+(x_2,0)=(x_1+x_2,0)$ und $(x_1,0)\cdot (x_2,0)=(x_1x_2,0)$, k\"onnen wir $\mathbb R$ durch
+		"$x=(x,0)$" mit dem Teilk\"orper $\mathbb R \times \{0\}$ von $\mathbb C$ identifizieren. \\
+		Die imagin\"are Einheit $i=(0,1)$ erf\"ullt $i^2=-1$ und jedes $z \in \mathbb C$ kann eindeutig geschrieben
+		werden als $z=x+iy$ mit $x,y \in \mathbb R$
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $a \in \mathbb Z$ und sei $p$ eine Primzahl, die $a$ nicht teilt. Dann gibt es $b,k \in
+			 \mathbb Z$ mit $ab+kp=1$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $n \in \mathbb N$ die kleinste nat\"urliche Zahl der Form $n=ab+kp$. Angenommen, $n \ge 2$. Schreibe
+		$a=qp+r$ mit $q,r \in \mathbb Z$ und $0 \le r < p$. Aus der Nichtteilbarkeit von $a$ folgt $r \neq 0$, also 
+		$r \in \mathbb N$. Wegen $r=a\cdot 1-qp$ ist $n\le r$. Da $p$ Primzahl ist und $2\le n\le r < p$, gilt $n$ teilt
+		nicht $p$. Schreibe $p=c\cdot n+m$ mit $c,m \in \mathbb Z$ und $0 \le m<n$. Aus $n$ teilt nicht $p$ folgt
+		$m \neq 0$, also $m \in \mathbb N$. Da $m=p-cn=-abc+(1-kc)p$, ist $m<n$ ein Widerspruch zur Minimalit\"at
+		 von $n$. Die Annahme $n \ge 2$ war somit falsch. Es gilt $n=1$.} \\
+		$\newline$
+		
+		\textbf{Beispiel (Endliche Primk\"orper)} \\
+		F\"ur jede Primzahl $p$ ist $\mathbb Z /p \mathbb Z$ ein K\"orper. Ist $\overline{a}\neq \overline{0}$, so gilt 
+		$p$ teilt nicht $a$ und somit gibt es $b,k \in \mathbb Z$ mit \\
+		$ab+kp=1$ \\
+		$\overline{(ab+kp)}=\overline{1} = \overline{(ab)} = \overline{a} \cdot \overline{b}$ \\
+		und somit ist $\overline{a}$ invertierbar in $\mathbb Z /p \mathbb Z$. Somit sind f\"ur $n \in \mathbb N$
+		\"aquivalent:
+		\begin{compactitem}
+			\item $\mathbb Z /n \mathbb Z$ ist ein K\"orper
+			\item $\mathbb Z /n \mathbb Z$ ist nullteilerfrei
+			\item $n$ ist Primzahl
+		\end{compactitem}
+		\textit{Beweis: 1 $\to$ 2: 4.13; 2 $\to$ 3: 4.12; 3 $\to$ 1: gegeben} \\
+		Insbesondere ist $\mathbb Z /p \mathbb Z$ nullteilerfrei, d.h. aus $p$ teilt $ab$ folgt $p$ teilt $a$ oder
+		$p$ teilt $b$
+		
+	\subsection{Polynome}
+		In diesem Abschnitt sei $R$ ein kommutativer Ring mit Einselement. \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Unter einem Polynom in der "'Unbekannte"' $x$ versteht man einen Ausdruck der Form
+		$f(x)=a_0+a_1x+a_2x^2+...+a_nx^n = \sum \limits_{k=0}^{n} a_kx^k$ mit $a_0,...,a_n \in R$. Fasst man $x$
+		als ein beliebiges Element von $R$ auf, gelten einige offensichtliche Rechenregeln: \\
+		Ist $f(x)=\sum \limits_{k=0}^{n} a_kx^k$ und $g(x)=\sum \limits_{k=0}^{n} b_kx^k$ so ist
+		\begin{compactitem}
+			\item $f(x)+g(x)=\sum \limits_{k=0}^{n} (a_k+b_k)x^k$
+			\item $f(x)\cdot g(x)=\sum \limits_{k=0}^{2n} c_kx^k$ mit $c_k=\sum \limits_{j=0}^{k} a_jb_{k-j}$
+		\end{compactitem}
+		Dies motiviert die folgende pr\"azise Definition f\"ur den Ring der Polynome \"uber $R$ in einer "'Unbestimmten"'
+		$x$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Polynom:} Sei $R[X]$ die Menge der Folgen in $R$, die fast \"uberall 0 sind, also
+			$R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\}$.
+		\end{mdframed}
+		
+		Wir definieren Addition und Multiplikation auf $R[X]$:
+		\begin{compactitem}
+			\item $(a_k)_{k \in \mathbb N_0}+(b_k)_{k \in \mathbb N_0}=(a_k+b_k)_{k \in \mathbb N_0}$
+			\item $(a_k)_{k \in \mathbb N_0}\cdot (b_k)_{k \in \mathbb N_0}=(c_k)_{k \in \mathbb N_0}$ mit 
+			$c_k = \sum \limits_{j=0}^{k} a_jb_{k-j}$
+		\end{compactitem}
+		$\newline$
+		
+		Mit diesen Verkn\"upfungen wird $R[X]$ zu einem kommutativen Ring mit Einselement. Diesen Ring nennt man
+		Polynomring (in einer Variablen $X$) \"uber $R$. Ein $(a_k)_{k \in \mathbb N_0} \in R[X]$ hei{\ss}t Polynom mit
+		den Koeffizienten $a_0,...,a_n$. Wenn wir $a \in R$ mit der Folge $(a,0,0,...,0) := (a,\delta_{k,0})_{k \in \mathbb N_0}$
+		identifizieren, wird $R$ zu einem Unterrring von $R[X]$. 
+		$\newline$
+		
+		Definiert man $X$ als die Folge $(0,1,0,..,0) := (\delta_{k,1})_{k \in \mathbb N_0}$ (die Folge hat an der $k$-ten 
+		Stelle eine 1, sonst nur Nullen). Jedes $f(a_k)_{k \in \mathbb N_0}$ mit $a_k=0$ f\"ur $k>n_0$ l\"asst sich eindeutig
+		schreiben als $f(X)=\sum \limits_{k=0}^{n_0} a_kX^k$.\\
+		Alternativ schreiben wir auch $f=\sum \limits_{k \ge 0} a_kX^k$ mit dem Verst\"andnis, dass diese unendliche
+		Summe nur endlich von 0 verschiedene Summanden enth\"alt.
+		$\newline$
+		
+		Sei $0 \neq f(X)=\sum \limits_{k \ge 0} a_kX^k \in R[X]$. Der Grad von $f$ ist das gr\"o{\ss}te $k$ mit $a_k
+		\neq 0$, geschrieben $deg(f):= max\{k \in \mathbb N_0 \mid a_k \neq 0\}$. Man definiert den Grad des
+		Nullpolynoms als $deg(0)=-\infty$, wobei $-\infty < k \forall k \in \mathbb N_0$ gelten soll. Man nennt $a_0$
+		den konstanten Term und $a_{deg(f)}$ den Leitkoeffizienten von $f$. Hat $f$ den Grad 0, 1 oder 2, so nennt
+		man $f$ konstant, linear bzw. quadratisch.
+		$\newline$
+		
+		\textbf{Beispiel:} Das lineare Polynom $f(X)=X-2 \in R[X]$ hat den Leitkoeffizent 1 und den konstanten Term $-2$.
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $f,g \in R[X]$
+			\begin{compactitem}
+				\item Es ist $deg(f+g)\le max\{deg(f), deg(g)\}$.
+				\item Es ist $deg(f\cdot g) \le deg(f)+deg(g)$.
+				\item Ist $R$ nullteilerfrei, so ist $deg(f\cdot g) = deg(f)+deg(g)$ und auch $R[X]$ ist nullteilerfrei.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item offenbar
+			\item Ist $deg(f)=n$ und $deg(g)=m$, $f=\sum \limits_{i \ge 0} f_iX^i$, $g=\sum \limits_{j\ge 0} g_jX^j$, 
+			so ist auch $h=fg=\sum \limits_{k \ge 0} h_kX^k$ mit $h_k=\sum \limits_{i+j=k} f_i\cdot g_j$ f\"ur alle $k \ge 0$.
+			Ist  $k>n+m$ und $i+j=k$, so ist $i>n$ oder $j>m$, somit $f_i=0$ oder $g_j=0$ und somit $h_k=0$. 
+			Folglich ist $deg(h) \le n+m$.
+			\item Ist $f=0$ oder $g=0$, so ist die Aussage klar, wir nehmen als $n,m \ge 0$ an. Nach b) ist $deg(h) \le 
+			n+m$ und $h_{m+n}=\sum \limits_{i+j=n+m} f_ig_j=f_ng_m$. Ist $R$ nullteilerfrei, so folgt aus $f_n \neq 0$
+			und $g_m\neq 0$ schon $f_ng_m\neq 0$, und somit $deg(h)=n+m$.
+		\end{compactitem}}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Polynomdivision):} Sei $K$ ein K\"orper und sei $0 \neq g \in K[X]$. F\"ur jedes Polynom
+			 $f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $deg(r)<deg(g)$. 
+		\end{mdframed}
+		\textit{Beweis: Existenz und Eindeutigkeit\\
+		Existenz: Sei $n=deg(f)$, $m=deg(g)$, $f=\sum \limits_{k=0}^{n} a_kX^k$, $g=\sum \limits_{k=0}^{m} b_kX^k$ \\
+		Induktion nach $n$ bei festem $g$. \\
+		IA: Ist $n<m$, so w\"ahlt man $h=0$ und $r=f$.\\
+		IB: Wir nehmen an, dass die Aussage f\"ur alle Polynome vom Grad kleiner als $n$ gilt.\\
+		IS: Ist $n \ge m$, so betrachtet man $f_1=f-\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)$. Da $\frac{a_n}{b_m}\cdot 
+		X^{n-m}\cdot g(X)$ ein Polynom vom Grad $n-m+deg(g)=n$ mit Leitkoeffizient $\frac{a_n}{b_m}\cdot b_m=a_n$ ist, ist
+		$deg(f_1)<n$. Nach IB gibt es also $h_1, r_1 \in K[X]$ mit $f_1=gh_1+r_1$ und $deg(r)<deg(g)$. Somit ist 
+		$f(X)=f_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)=gh+r$ mit $h(X)=h_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}, r=r_1$. \\
+		Eindeutigkeit: Sei $n=deg(f), m=deg(g)$. Ist $f=gh+r=gh'+r'$ und $deg(r),deg(r')<m$, so ist $(h-h')g=r'-r$ und
+		$deg(r'-r)<m$. Da $deg(h-h')=deg(h'-h)+m$ muss $deg(h-h')<0$, also $h'-h=0$ sein. Somit $h'=h$ und $r'=r$} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Der Existenzbeweis durch Induktion liefert uns ein konstruktives Verfahren, diese sogenannte
+		 Polynomdivision durchzuf\"uhren. \\
+		$\newline$
+		
+		\textbf{Beispiel:} in $\mathbb Q[X]$: $(x^3+x^2+1):(x^2+1)=x+1$ Rest $-x$ \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Nullstelle:} Sei $f(X)=\sum \limits_{k \ge 0} a_kX^k \in \mathbb R[X]$. F\"ur $\lambda \in
+			\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k
+			\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tilde f: \mathbb R \to \mathbb R$ und
+			$\lambda \mapsto f(\lambda)$. \\
+			Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine Nullstelle von $f$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} F\"ur $f,g \in \mathbb R[X]$ und $\lambda \in \mathbb R$i ist $(f+g)(\lambda)=f(\lambda)+
+			g(\lambda)$ und $(fg)(\lambda)=f(\lambda) \cdot g(\lambda)$.
+		\end{framed}
+		\textit{Beweis: Ist $f=\sum \limits_{k \ge 0} a_kX^k$ und $g=\sum \limits_{k\ge 0} b_kX^k$, so ist \\
+		$f(\lambda)+g(\lambda)=\sum \limits_{k \ge 0} a_k\lambda^k + \sum \limits_{k\ge 0} b_k\lambda^k = \sum 
+		\limits_{k\ge 0} (a_k+b_k)\lambda^k=(f+g)(\lambda)$ \\
+		$f(\lambda)\cdot g(\lambda)= \sum \limits_{k\ge 0} a_k\lambda^k \cdot \sum \limits_{k\ge 0} b_k\lambda^k = 
+		\sum \limits_{k \ge 0} \sum \limits_{i+j=k} (a_i+b_j)\lambda^k = (fg)(\lambda)$}
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $K$ ein K\"orper und $\lambda \in K$ eine Nullstelle von $f \in K[X]$ so gibt es ein
+			eindeutig bestimmtes $h \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es gibt $h,r \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)+r(x)$ und $deg(r)<deg(X-\lambda)=1$, also $r \in
+		K$. Da $\lambda$ Nullstelle von $f$ ist, gilt $0=f(\lambda)=(\lambda-\lambda)\cdot h(\lambda)+r(\lambda)=
+		r(\lambda)$. Hieraus folgt $r=0$. Eindeutigkeit folgt aus Eindeutigkeit der Polynomdivision.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $K$ ein K\"orper. Ein Polynom $0\neq f \in K[X]$ hat h\"ochstens $deg(f)$ viele
+			Nullstellen.
+		\end{framed}
+		\textit{Beweis: \\
+		Induktion nach $deg(f)=n$ \\
+		Ist $n=0$, so ist $f \in K^{\times}$ und hat somit keine Nullstellen. \\
+		Ist $n>0$ und hat f eine Nullstelle $\lambda \in K$, so ist $f(X)=(X-\lambda)*h(x)$ mit $h(x) \in K[X]$ und
+		$deg(f)=deg(X-\lambda)+deg(h)=n-1$. Nach IV besitzt $h$ h\"ochstens $deg(h)=n-1$ viele Nullstellen. Ist
+		$\lambda'$ eine Nullstelle von $f$, so ist $0=f(\lambda’)=(\lambda’-\lambda)*h(\lambda’)$, also $\lambda'=
+		\lambda$ oder $\lambda'$ ist Nullstelle von $h$. Somit hat $f$ h\"ochstens $n$ viele Nullstellen in $K$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $K$ ein unendlicher K\"orper, so ist die Abbildung $K[X] \to Abb(K,K)$ und $f \mapsto
+			\tilde f$ injektiv.
+		\end{framed}
+		\textit{Beweis: \\
+		Sind $f,g \in K[X]$ mit $\tilde f = \tilde g$, also $f(\lambda)=g(\lambda)$ f\"ur jedes $\lambda \in K$, so ist
+		jedes $\lambda$ Nullstelle von $h:= f-g \in K[X]$. Da $|K|=\infty$ ist, so ist $h=0$, also $f=g$.}
+		$\newline$
+		
+		\textbf{Bemerkung:} Dieses Korollar besagt uns, dass man \"uber einem unendlichen K\"orper Polynome als
+		polynomiale Abbildungen auffassen kann. Ist $K$ aber endlich, so ist dies im Allgemeinen nicht richtig.
+		Beispiel: $K=\mathbb Z\backslash 2\mathbb Z$, $f(X)=X$, $g(X)=X^2 \Rightarrow f \neq g$, aber 
+		$\tilde f=\tilde g$.
+		$\newline$
+		
+		\textbf{Beispiel:} Sei $f(X)=X^2+1 \in \mathbb R[X] \subset \mathbb C[X]$ \\
+		In $K=\mathbb R$ hat $f$ keine Nullstelle: Für $\lambda \in \mathbb R\; f(\lambda)=\lambda^2+1 \ge1 >0$. \\
+		In $K=\mathbb C$ hat $f$ die beiden Nullstellen $\lambda_1=i$ und $\lambda_2=-i$ und zerfällt dort in Linearfaktoren:
+		 $f(X)=(X-i)(X+i)$.
+		
+		\begin{framed}
+			\textbf{Satz:} Für einen Körper $K$ sind äquivalent:
+			\begin{compactitem}
+				\item Jedes Polynom $f \in K[X]$ mit $deg(f)>0$ hat eine Nullstelle in $K$.
+				\item Jedes Polynom $f \in K[X]$ zerfällt in Linearfaktoren, also $f(X)=a\cdot \prod \limits_{i=1}^n 
+				(X-\lambda_i)$ mit $n=deg(f), a, \lambda_i \in K$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1 \Rightarrow 2:$ Induktion nach $n=deg(f)$ \\
+		Ist $n\le0$, so ist nichts zu zeigen. \\
+		Ist $n>0$, so hat $f$ eine Nullstelle $\lambda_n \in K$, somit $f(X)=(X-\lambda_n)\cdot g(X)$ mit $g(X) \in K[X]$
+		 und $deg(g)=n-1$, Nach IV ist $g(X)=a\cdot \prod \limits_{i=1}^n (X-\lambda_i)$. Somit ist $f(X)=a\cdot \prod 
+		\limits_{i=1}^n (X-\lambda_i)$. \\
+		$2 \Rightarrow 1:$ Sei $f \in K[X]$ mit $n=deg(f)>0$. Damit gilt $f(X)=a\cdot \prod \limits_{i=1}^n (X-\lambda_i)$.
+		Da $n>0$, hat $f$ z.B. die Nullstelle $\lambda_1$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition algebraisch abgeschlossen:} Ein Körper $K$ heißt algebraisch abgeschlossen, wenn er eine 
+			der äquivalenten Bedingungen erfüllt. 
+		\end{mdframed}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Fundamentalsatz der Algebra):} Der Körper $\mathbb C$ ist algebraisch abgeschlossen.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Wir werden das Theorem zwar benutzen, aber nicht beweisen.
+		
+\section{Vektorräume}
+	In diesem Kapitel sei $K$ ein Körper.
+	\subsection{Definition und Beispiele}
+		\textbf{Beispiel:} Ist $K=\mathbb R$, so haben wir für $K^3=\mathbb R^3=\mathbb R \times \mathbb R \times \mathbb R=
+		\{(a,b,c) | a,b,c \in \mathbb R\}$ eine geometrische Anschauung, nämlich den euklidischen Raum. Welche algebraische 
+		Struktur können wir hierauf sinnvollerweise definieren? \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition $K$-Vektorraum:} Ein $K$-Vektorraum (auch Vektorraum über $K$) ist ein Tripel $(V,+,\cdot)$ 
+			bestehend aus einer Menge $V$, einer Verknüpfung $+: V \times V \to V$, genannt Addition, und einer Abbildung 
+			$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten: \\
+			(V1): $(V,+)$ ist eine abelsche Gruppe \\
+			(V2): Addition und Skalarmultiplikation sind verträglich:
+			\begin{compactitem}
+				\item $\lambda(x+y)=(\lambda\cdot x)+(\lambda\cdot y)$
+				\item $(\lambda+\mu)\cdot x = (\lambda\cdot x)+(\mu\cdot x)$
+				\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
+				\item $1\cdot x = x$
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Wir haben sowohl im Körper $K$ als auch im Vektorraum $V$ eine Addition definiert, die wir mit 
+		dem selben Symbol $+$ notieren. Ebenso benutzen wir das Symbol $\cdot$ sowohl für die Multiplikation im Körper $K$ 
+		als auch für die Skalarmultiplikation. Zur Unterscheidung nennt man die Elemente von $V$ Vektoren und die Elemente 
+		von $K$ Skalare. Wir werden bald auch den Nullvektor mit 0 bezeichnen, also mit dem selben Symbol wie das neutrale 
+		Element im Körper $K$. Auch für Vektorräume gibt es notationelle Konvektionen: So bindet die Skalarmultiplikation 
+		stärker als die Addition und wird manchmal nicht notiert. \\
+		$\newline$
+		
+		\textbf{Beispiel:} Für $n \in \mathbb N$ ist $V=K^n := \prod \limits_{i=1}^n K = \{(x_1,x_2,...,x_n) \mid x_1,x_2,..,
+		x_n \in K\}$ mit komponentenweiser Addition und Skalarmultiplikation $\lambda(x_1,...,x_n)=(\lambda\cdot x_1,...,
+		\lambda\cdot x_n)$ ein $K$-Vektorraum, genannt der ($n$-dimensionale) Standardraum über $K$. \\ 
+		Insbesondere (Spezialfall $n=1$) ist $K$ ein $K$-Vektorraum. \\
+		Für $n=0$ definiert man $K^0$ als Nullraum $V=\{0\}$, der einzig möglichen Addition und Skalarmultiplikation einen 
+		$K$-Vektorraum bildet.
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $V$ ein $K$-Vektorraum, so gelten für $\lambda \in K$ und $x \in V$:
+			\begin{compactitem}
+				\item $0\cdot x =0$
+				\item $\lambda\cdot 0=0$
+				\item $(-\lambda)\cdot x = \lambda\cdot(-x) = -\lambda\cdot x$. Insbesondere $(-1)x=-x$
+				\item Ist $\lambda\cdot x=0$, so ist $\lambda=0$ oder $x=0$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Es ist $0\cdot x=(0+0)\cdot x=0\cdot x+0\cdot x$, woraus $0=0\cdot x$
+			\item Es ist $\lambda\cdot 0=\lambda(0+0)=\lambda\cdot 0+0\cdot \lambda$, woraus $0=\lambda\cdot 0$
+			\item Es ist $\lambda\cdot x+(-\lambda\cdot x)=(\lambda+(-\lambda))\cdot x=0\cdot x=0$, also $(-\lambda)x=-(\lambda 
+			x)$
+			\item Ist $\lambda\cdot x=0$ und $\lambda\neq 0$, so ist $0=\lambda^{-1}\cdot\lambda\cdot x=1\cdot x=x$ 
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Schränkt man die Multiplikation im Polynomring $K[X] \times K[X] \to K[X]$ zu einer Abbildung $K \times K[X]
+			\to K[X]$ ein, so wird $K[X]$ mit dieser Skalarmultipliaktion zu einem $K$-VR. Die Skalarmultiplikation ist also
+			gegen $\lambda\cdot \sum \limits_{k\ge 0} a_k\cdot X^k = \sum \limits_{k\ge 0} \lambda\cdot a_k\cdot X^k$ ersetzt
+			wurden.
+			\item Schränkt man die komplexe Multiplikation $\mathbb C \times \mathbb C \to \mathbb C$ zu einer Abbildung 
+			$\mathbb R \times \mathbb C \to \mathbb C$ ein, so wird $\mathbb C$ mit dieser Skalarmultipliaktion zu einem
+			$\mathbb R$-VR. Die Skalarmultipliaktion ist gegeben durch $\lambda(x+iy)=\lambda\cdot x + i\cdot\lambda\cdot y$.
+			\item Verallgemeinerung von 1 und 2: Ist der Körper $K$ ein Unterring eines kommutativen Rings $R$ mit Einselement 
+			$1_K \in K$, so wird $R$ durch Einschränkung der Multiplikation $R \times R \to R$ zu einer Abbildung $K \times R
+			\to R$ zu einem $K$-VR.
+			\item Ist $X$ eine Menge, so wird die Menge der Abbildungen $Abb(X,K)$ durch punktweise Addition $(f+g)(x)=f(x)+
+			g(x)$ und die Skalarmultiplikation $(\lambda\cdot f)(x)=\lambda\cdot f(x)$ zu einem $K$-VR. Im Spezialfall
+			$X=\{1,2,...,n\}$ erhält man den Standardraum $K^n$.
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Untervektorraum:} Sei $V$ ein $K$-VR. Ein Untervektorraum (UVR) von $V$ ist eine nichtleere
+			Teilmenge $W \subset V$ mit: \\
+			(UV1): Für $x,y \in W$ ist $x+y\in W$. \\
+			(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $V$ ein $K$-VR und $W \subset V$. Genau dann ist $W$ ein UVR von $V$, wenn $W$ mit geeigneter
+			Einschränkung der Addition und Skalarmultiplikation wieder ein $K$-VR ist.
+		\end{framed}
+		\textit{Beweis: \\
+		Rückrichtung: Lassen sich $+$: $V \times V \to V$ und $\cdot$: $K \times V \to V$ einschränken zur Abbildung $+_w$: $W
+		\times W \to W$, $\cdot_w$: $K \times W \to W$ so gilt für $x,y \in W$ und $\lambda \in K$: $x+y=x +_w y \in W$ und
+		$\lambda\cdot x=\lambda \cdot_w x \in W$. Ist $(W,+_w,\cdot_w)$ ein $K$-VR, so ist insbesodere $W$ nicht leer. Somit
+		ist $W$ ein UVR. \\
+		Hinrichtung: Nach (UV1) und (UV2) lassen sich $+$ und $\cdot$ einchränken zu Abbildungen $+_w$: $W \times W \to W$ und 
+		$\cdot_w$: $K \times W \to W$. Nach (UV1) ist abgeschlossen und unter der Addition und für $x \in W$ ist auch $-x=
+		(-1)x \in W$ nach (UV2), $W$ ist somit Untergruppe von $(V,+)$. Insbesondere ist $(W,+)$ eine abelsche Gruppe, erfüllt 
+		also (V1). Die Verträglichkeit (V2) ist für $\lambda,\mu \in K$ und $x,y \in W$ gegeben, da sie auch für $x,y \in V$ 
+		erfüllt ist. Somit ist $(W,+_w,\cdot_w)$ ein $K$-VR.}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Jder $K$-VR hat triviale UVR $W=\{0\}$ und $W=V$
+			\item Ist $V$ ein $K$-VR und $x \in V$, so ist $W=K\cdot x=\{\lambda\cdot x \mid \lambda \in K\}$ ein UVR von $V$. 
+			Insbesondere besitzt z.B. der $\mathbb R$-VR $\mathbb R^2$ unendlich viele UVR, nämlich alle Ursprungsgeraden. Hieran 
+			sehen wir auch, dass die Vereinigung zweier UVR im Allgemeinen kein UVR ist. $\mathbb R\cdot (1,0) \cup \mathbb 
+			R\cdot (1,0) \subset \mathbb R^2$ verletzt (UV1).
+			\item Der $K$-VR $K[X]$ hat unter anderem die folgenden UVR: \\
+			- Den Raum $K$ der konstanten Polynome \\
+			- Den Raum $K[X]_{\le 1}=\{aX+b \mid a,b \in K\}$ der linearen (oder konstanten) Polynome \\
+			- allgemeiner den Raum $K[X]_{\le n}=\{f \in K[X] \mid deg(f) \le n\}$ der Polynome von höchstens Grad $n$
+			\item In der Analysis werden Sie verschiedene UVR des $\mathbb R$-VR $Abb(\mathbb R,\mathbb R)$ kennenlernen, etwa
+			den Raum $\mathcal C(\mathbb R,\mathbb R)$ der stetigen Funktionen und den Raum $\mathcal C^{-1}(\mathbb R,\mathbb 
+			R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynomfunktionen $\{\tilde f\mid \tilde f\in \mathbb R[X]\}$ bildet
+			einen UVR des $\mathbb R$-VR $\mathcal C^{-1}(\mathbb R,\mathbb R)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $V$ ein Vektorraum und $(W_i)_{i \in I}$ eine Familie von UVR von $V$, so ist auch $W=\bigcap W_i$ 
+			ein UVR von $V$.
+		\end{framed}
+		\textit{Beweis: \\
+		Da $0 \in W_i$ ist auch $0 \in W$, insbesondere $W\neq\emptyset$.
+		\begin{compactitem}
+			\item (UV1): Sind $x,y \in W$, so ist auch $x,y \in W_i$ und deshalb $x+y\in \bigcap W_i = W$.
+			\item (UV2): Ist $x \in W$ und $\lambda \in K$, so ist auch $x \in W_i$ und somit $\lambda x\in \bigcap W_i=W$.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $V$ ein $K$-VR und $X \subset V$, so gibt es einen eindeutig bestimmten kleinsten UVR $W$ von $V$
+			mit $X \subset W$.
+		\end{framed}
+		\textit{Beweis: \\ Sei $\mathcal V$ die Menge aller UVR von $X$, die $X$ enthalten. Sei $W=\bigcap \mathcal V$. Damit ist 
+		$W$ ein UVR von $V$ der $X$ enthält.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Erzeugendensystem:} Ist $V$ ein $K$-VR und $X\subset V$, so nennt man den kleinsten UVR von 
+			$V$, der $X$ enthält den von $X$ erzeugten UVR von $V$ und bezeichnet diesen mit $<X>$. Eine Mengen $X\subset V$ 
+			mit $<X>=V$ heißt Erzeugendensystem von $V$. Der VR $V$ heißt endlich erzeugt, wenn er ein endliches Erzeugendensystem 
+			besitzt.
+		\end{mdframed}
+		
+	\subsection{Linearkombination und lineare Abhängigkeit}
+		Sei $V$ ein $K$-VR.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Linearkombination:}
+			\begin{compactitem}
+				\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine Linearkombination eines n-Tupels $(x_1,...,x_n)$ von 
+				Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot
+				x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
+				\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb
+				N_0$ und $i_1,...,i_n \in I$ gibt, für die $x$ Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
+				\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $span_K(\mathcal F)$ 
+				bezeichnet.
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item Offenbar hängt die Menge der Linearkombinationen von $(x_1,...,x_n)$ nicht von der Reihenfolge der $x_i$ ab. 
+			Wegen (V2)(ii) hängt sie sogar nur von der Menge $\{x_1,...,x_n\}$ ab.
+			\item Deshalb stimmt 2. für endliche Familien $(x_1,...,x_n)$ mit 1. überein.
+			\item Auch die Menge der Linearkombinationen einer Familie $\mathcal F=(x_1,...,x_n)$ hängt nur von der Menge $X=
+			\{x_i \mid i \in I\}$ ab. Man sagt deshalb auch, $x$ ist Linearkombination von $X$ und schreibt $span_K(X)=span_K(
+			\mathcal F)$, also $span_K(X)=\{\sum \limits_{i=1}^n \lambda_i\cdot n_i \mid n \in \mathbb N_0, x_i \in X, \lambda_1,
+			...,\lambda_n \in K\}$. Nach Definition in $0 \in span_K(X)$ auch für $X=\emptyset$.
+			\item Wie schon bei Polynomen schreibt man hier gerne formal unendliche Summen $x=\sum\limits_{i \in I} \lambda_i
+			\cdot x_i$, bei denen nur endlich viele $\lambda_i$ von 0 verschieden sind.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für jede Teilmenge $X \subset V$ ist $span_K(X)$ ein UVR von $V$.
+		\end{framed}
+		\textit{Beweis: \\ 
+		\begin{compactitem}
+			\item Sei $W=span_K(X)$. Nach Definition ist $0 \in W$, insbesondere $W\neq\emptyset$
+			\item (UV1): Sind $x,y \in W$, also $x=\lambda_1\cdot x+...+\lambda_n\cdot x_n$ und $y=\mu_1\cdot x+...+
+			\mu_n\cdot x_n$, so ist $x+y=(\lambda_1+\mu_1)x_1+...+(\lambda_n+\mu_n)x_n \in W$
+			\item (UV2): Ist $\lambda \in K$ und $x \in W$, so ist $\lambda x=\lambda\cdot\sum\limits_{i=1}^n \lambda_i\cdot x_i=
+			\sum\limits_{i=1}^n (\lambda\cdot\lambda_i)x_i \in W$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Für jede Teilmenge $X \subset V$ ist $span_K(X)=<X>$.
+		\end{framed}
+		\textit{Beweis: \\ 
+		\begin{compactitem}
+			\item $span_K(X)$ ist UVR von $V$, der wegen $x=x\cdot 1$ die Menge $X$ enthält, und $<X>$ ist der kleinste solche.
+			\item Ist $W\subset V$ ein UVR von $V$, der $X$ enthält, so enthält er auch wegen (UV2) alle Elemente der Form 
+			$\lambda\cdot x$, und wegen (UV1) dann auch alle Linearkombinationen aus $X$. Insbesondere gilt dies auch für $W=<X>$
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Wir erhalten $span_K(X)=<X>$ auf 2 verschiedenen Wegen. Erstens "'von oben"' als Schnitt über alle UVR 
+		von $V$, die $X$ enthalten und zweitens "'von unten"' als Menge der Linearkombinationen. Man nennt $span_K(X)$ auch den 
+		von $X$ aufgespannten UVR oder die lineare Hülle von $X$. \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Sei $V=K^n$ der Standardraum. Für $i=1,...,n$ sei $e_i=(\delta_{i,1},...,\delta_{i,n})$, also $e_1=(1,0,...0)$, 
+			$e_2=(0,1,0,...,0),...,e_n=(0,...,1)$. Für $x=(x_1,...,x_n) \in V$ ist $x=\sum\limits_{i=1}^n x_i\cdot e_1$, folglich 
+			$span_K(e_1,..,e_n)=V$. Insbesondere ist $K^n$ eindeutig erzeugt. Man nennt $(e_1,...,e_n)$ die Standardbasis des 
+			Standardraums $K^n$.
+			\item Sei $V=K[X]$ Polynomring über $K$. Da $f=\sum\limits_{i=1}^n a_i\cdot X^i$ ist $span_K((X^i)_{i \in I})=K[X]$. 
+			Genauer ist $span_K(1,X,X^2,...,X^n)=K[X]_{\le n}$. Tatsächlich ist der $K$-VR $K[X]$ nicht endlich erzeugt. Sind 
+			$f_1,...,f_r \in K[X]$ und ist $d=max\{deg(f_1),...,deg(f_r)\}$, so sind $f_1,...,f_r \in K[X]_{\le d}$ und somit 
+			$span_K(f_1,...,f_r) \subset K[X]_{\le d}$, aber es gibt Polynome, deren Grad größer $d$ ist.
+			\item Für $x \in V$ ist $<x>=span_K(x)=K\cdot x$. Im Fall $K=\mathbb R$, $V=\mathbb R^3$, $x\neq 0$ ist dies eine 
+			Ursprungsgerade.
+			\item Im $\mathbb R$-VR $\mathbb C$ ist $span_{\mathbb R}(1)=\mathbb R\cdot 1=\mathbb R$, aber im $\mathbb C$-VR 
+			$\mathbb C$ ist $span_{\mathbb C}(1)=\mathbb C\cdot 1=\mathbb C$
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition linear (un)abhängig:}
+			\begin{compactitem}
+				\item Sei $n\in \mathbb N_0$. Ein $n$-Tupel $(x_1,...,x_n)$ von Elementen von $V$ ist linear abhängig, wenn es 
+				$\lambda_1,...,\lambda_n \in K$ gibt, die nicht alle 0 sind und $\lambda_1\cdot x_1+...+\lambda_n\cdot x_n=0$ (*) 
+				erfüllen. Andernfalls heißt das Tupel linear unabhängig.
+				\item Eine Familie $(x_i)$ von Elementen von $V$ ist linear abhängig, wenn es $n\in \mathbb N_0$ und paarweise 
+				verschiedene $i_1,...,i_n \in I$ gibt, für die $(x_{i_1},...,x_{i_n})$ linear abhängig ist. Andernfalls linear 
+				unabhängig.
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item Offenbar hängt die Bedingung (*) nicht von der Reihenfolge der $x_1,...,x_n$ ab und ist $(x_1,...,x_k)$ linear 
+			abhängig für ein $k \le n$, so ist auch $(x_1,...,x_n)$ linear abhängig. Deshalb stimmt die 2. Definition für 
+			endliche Familien mit der 1. überein und $(x_i)$ ist genau dann linear abhängig, wenn es eine endliche Teilmenge 
+			$J \subset I$ gibt, für die $(x_j)$ linear abhängig ist.
+			\item Eine Familie ist genau dann linear unabhängig, wenn für jede endliche Teilmenge $J\subset I$ und für jede 
+			Wahl an Skalaren $(\lambda_i)_{i\in J}$ aus $\sum \lambda_i\cdot x_i=0$ schon $\lambda_i=0$ folgt, also wenn sich 
+			der Nullvektor nur trivial linear kombinieren lässt. 
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Genau dann ist $(x_i)$ linear abhängig, wenn es $i_0 \in I$ gibt mit $x_{i_0} \in span_K((x_i)_{i\in 
+			I\backslash\{i_0\}})$. In diesem Fall ist $span_K((x_i)_{i\in I})=span_K((x_i)_{i\in I\backslash\{i_0\}})$.
+		\end{framed}
+		\textit{Beweis: Es reicht, die Aussage für $I=\{1,...,n\}$ zu beweisen.\\
+		Hinrichtung: Ist $(x_1,...,x_n)$ linear anhängig, so existieren $\lambda_1,...,\lambda_n$ mit $\sum\limits_{i=1}^n 
+		\lambda_i\cdot x_i=0$. oBdA sei $\lambda_n\neq 0$. Dann ist $x_n=\lambda_n^{-1}\cdot\sum\limits_{i=1}^{n-1} \lambda_i
+		\cdot x_i=\sum\limits_{i=1}^{n-1} \lambda_n^{-1}\cdot\lambda_i\cdot x_i \in span_K(x_1,...,x_n)$. \\
+		Rückrichtung: oBdA. $i_0=n$, also $\sum\limits_{i=0}^{n-1} \lambda_i\cdot x_i$. Mit $\lambda_n=-1$ ist $\sum
+		\limits_{i=1}^n \lambda_i\cdot x_i=0$, was zeigt, dass $(x_1,...,x_n)$ linear abhängig ist. \\
+		Sei nun $x_n=\sum\limits_{i=1}^{n-1} \lambda_i\cdot x_i \in span_K(x_1,...,x_{n-1})$. Wir zeigen, dass $span_K(x_1,...,
+		x_{n-1})=span_K(x_1,...,x_n)$
+		\begin{compactitem}
+			\item klar, da bei mehr Elementen die Anzahl der Linearkombinationen nicht abnimmt
+			\item Ist $y=\sum\limits_{i=1}^n \mu_i\cdot x_i \in span_K(x_1,...,x_n)$, so ist $y=\sum\limits_{i=1}^{n-1} \mu_i+
+			\mu_n\cdot \lambda_i\cdot x_i \in span_K(x_1,...,x_n)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Genau dann ist $(x_i)$ linear unabhängig, wenn sich jedes $x\in span_K((x_i))$ in eindeutiger Weise 
+			als Linearkombination der $(x_i)$ schreiben lässt, d.h. $x=\sum\limits_{i\in I} \lambda_i\cdot x_i=\sum\limits_{i
+			\in I} \lambda'_i\cdot x_i$, so ist $\lambda_i=\lambda'_i$
+		\end{framed}
+		\textit{Beweis: Es reicht, die Aussage für $I=\{1,...,n\}$ zu beweisen.\\
+		Hinrichtung:  Ist $(x_,...,x_n)$ linear unabhängig und $x=\sum\limits_{i\in I} \lambda_i\cdot x_i=\sum\limits_{i\in I}
+		 \lambda'_i\cdot x_i$, so folgt daraus $\sum\limits_{i\in I} (\lambda_i-\lambda'_i)x_i=0$ wegen der linearen 
+		 Unabhängigkeit der $x_i$, dass $\lambda_i=\lambda'_i=0$\\
+		Rückrichtung: Lässt sich jedes $x\in span_K(x_1,...,x_n)$ in eindeutiger Weise als Linearkombination der $x_i$ schreiben, 
+		so gilt dies insbesondere für $x=0$. Ist also $\sum\limits_{i=1}^n \lambda_i\cdot x_i=0$, so folgt schon $\sum\limits_{
+		i=1}^n 0\cdot x_i=0$ schon $\lambda_i=0$}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die Standardbasis $(e_1,...,e_n)$ des $K^n$ ist linear unabhängig. Es ist $\sum\limits_{i=1}^n \lambda_i\cdot 
+			e_i=(\lambda_1,...,\lambda_n)$
+			\item Im $K$-VR $K[X]$ sind die Monome $(X^i)$ linear unabhängig.
+			\item Ein einzelner Vektor $x\in V$ ist genau dann linear abhängig, wenn $x=0$.
+			\item Ein Paar $(x_1,x_2)$ von Elementen von $V$ ist linear abhängig, wenn es ein skalares Vielfaches des anderen ist, also z.B. $x_1=
+			\lambda\cdot x_2$.
+			\item Im $\mathbb R$-VR $\mathbb R^2$ sind die beiden Vektoren $(1,2)$ und $(2,1)$ linear unabhängig. \\
+			Im $\mathbb Z\backslash 3\mathbb Z$-VR $(\mathbb Z\backslash 3\mathbb Z)^2$ sind diese Vektoren linear unabhängig, da 
+			$x_1+x_2=(1,2)+(2,1)=(3,3)=(0,0)=0$. 
+			\item Im $\mathbb R$-VR $\mathbb C$ ist $(1,i)$ linear unabhängig, aber im $\mathbb C$-VR $\mathbb C$ ist $(1,i)$ 
+			linear abhängig, denn $\lambda_1\cdot 1+\lambda_2\cdot i =0$ für $\lambda_1=1$ und $\lambda_2=i$.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item Ist $x_{i_0}=0$, ist $(x_i)$ linear abhängig: $1\cdot x_{i_0}=0$
+			\item Gibt es $i,j\in I$ mit $i\neq j$, aber $x_i=x_j$, so ist $(x_i)$ linear abhängig: $x_i-x_j=0$
+			\item Dennoch sagt man auch "'die Teilmenge $X\subset V$ ist linear abhängig"' und meint damit, dass die Familie $(x_x)
+			_{x\in X}$ linear abhängig ist, d.h. es gibt ein $n\in \mathbb N_0$, $x_1,...,x_n \in X$ paarweise verschieden, mit 
+			$\sum\limits_{i=1}^n \lambda_i\cdot x_i=0$.
+		\end{compactitem}
+		
+	\subsection{Basis und Dimension}
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Basis:} Eine Familie $(x_i)$ von Elementen von $V$ ist eine Basis von $V$, wenn gilt: \\
+			(B1): Die Familie ist linear unabhängig. \\
+			(B2): Die Familie erzeugt $V$, also $span_K(x_i) = V$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Kurz gesagt ist eine Basis ein linear unabhängiges Erzeugendensystem. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(x_i)$ eine Familie von Elementen von $V$. Genau dann ist $(x_i)$ eine Basis von $V$, 
+			wenn sich jedes $x \in V$ auf eindeutige Weise als Linearkombination der $(x_i)$ schreiben lässt.
+		\end{framed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die leere Familie ist eine Basis des Nullraums.
+			\item Die Standardbasis $(e_1,...,e_n)$ ist eine Basis des Standardraums.
+			\item Die Monome $(X^i)$ bilden eine Basis des $K$-VR $K[X]$.
+			\item Die Basis des $\mathbb R$-VR $\mathbb C$ ist gegeben durch $(1,i)$, eine Basis des $\mathbb C$-
+			VR $\mathbb C$ ist gegeben durch $(1)$
+			\item Der $\mathbb C$-VR $\mathbb C$ hat viele weitere Basen.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Für eine Familie $(x_i)$ von Elementen von $V$ sind äquivalent:
+			\begin{compactitem}
+				\item $B$ ist eine Basis von $V$.
+				\item $B$ ist ein minimales Erzeugendensystem.
+				\item $B$ ist maximal linear unabhängig, d.h. $B$ ist linear unabhängig, aber wenn Elemente zur Basis 
+				hinzugefügt werden, ist diese nicht mehr linear unabhängig.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1 \Rightarrow 2$: Sei $B$ eine Basis von $V$ und $J$ eine echte Teilmenge von $I$. Nach Definition ist $B$ ein 
+		Erzeugendensystem. Wähle $i_0 \in I\backslash J$. Da $(x_i)$ linear unabhängig ist, ist $x_{i_0}$ keine Element 
+		$span_K((x_i)_{i \in I\backslash \{i_0\}}) \ge span_K((x_i)_{i \in J})$. Insbesondere ist $(x_i)_{i\in J}$ kein 
+		Erzeugendensystem von $V$. \\
+		$2 \Rightarrow 3$: Sei $B$ ein minimales Erzeugendensystem und $(x_i)_{i \in J}$ eine Familie mit $J$ echter 
+		Obermenge von $I$. Wäre $(x_i)$ linear abhängig, so gäbe es ein $i_0$ mit $span_K((x_i)_{i \in I\backslash 
+		\{i_0\}}) = span_K((x_i)_{i \in I})=V$ im Widerspruch zur Minimalität von $B$. Also ist $B=(x_i)$ linear 
+		unabhängig. Wähle $j_0 \in J\backslash I$. Dann ist $x_{j_0} \in V=span_K(x_i) \le span_K((x_i)_{i \in 
+		J\backslash \{j_0\}})$ und somit ist $(x_i)_{i\in J}$ linear abhängig. \\
+		$3 \Rightarrow 1$: Sei $B$ nun maximal linear unabhängig. Angenommen $B$ wäre kein Erzeugendensystem. 
+		Dann gibt es ein $x\in V \backslash span_K(x_i)$. Definiere $J=I \cup \{j_0\}$ mit $j_0 \notin I$ und $x_{j_0}:=x$. 
+		Aufgrund der Maximalität von $B$ ist $(x_i)$ linear abhängig, es gibt als Skalare $\lambda$, $(\lambda_i)$, nicht 
+		alle gleich 0, mit $\lambda\cdot x+\sum\limits_{i \in I} \lambda_i\cdot x_i=0$. Da $(x_i)$ linear abhängig ist, 
+		muss $\lambda \neq 0$ sein, woraus der Widerspruch $x=\lambda^{-1}\cdot\sum\limits_{i \in I} \lambda_i\cdot x_i 
+		\in span_K(x_i)$. Somit ist $B$ ein Erzeugendensystem.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Basisauswahlsatz):} Jedes endliche Erzeugendensystem von $V$ besitzt eine Basis  als 
+			Teilfamilie: Ist $(x_i)$ ein endliches Erzeugendensystem von $V$, so gibt es eine Teilmenge $J\subset I$, 
+			für die $(x_i)_{i\in J}$ eine Basis von $V$ ist. 
+		\end{mdframed}
+		\textit{Beweis: \\
+		Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J}\; 
+		\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
+		Erzeugendensystem ist, ist $I\in J$, insbesondere $\mathcal J\neq\emptyset$. Es gibt deshalb ein bezüglich 
+		Inklusion minimales $J_0\in \mathcal J$, d.h. $J_1 \in \mathcal J$ so gilt nicht $J_1 \subsetneq J_0$. Deshalb 
+		ist $(x_i)_{i\in J_0}$ eine Basis von $V$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Jeder endlich erzeugte $K$-VR besitzt eine endliche Basis.
+		\end{framed}
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item Der Beweis des Theorems liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
+			Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in span_K((x_i)_{i\neq i_0})$ gibt. 
+			Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}},
+			...,x_n)$ weiter.
+			\item Man kann jedoch zeigen, dass jeder Vektorraum eine Basis besitzt. Die Gültigkeit der Aussage hängt jedoch 
+			von bestimmten mengentheoretischen Axoimen ab, auf die wir an dieser Stelle nicht eingegehen werden. Siehe dazu 
+			LAAG 2. Semester.
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{(Austausch-)Lemma:} Sei $B=(x_1,...,x_n)$  eine Basis von $V$. Sind $\lambda_1,...,\lambda_n \in K$ und 
+			$y=\sum\limits_{i=1}^n \lambda_i\cdot x_i$, so ist für jedes $j\in \{1,2,...,n\}$ mit $\lambda_j\neq 0$ auch 
+			$B'=(x_1,...,x_{j-1},y,x_{j+1},...,x_n)$ eine Basis von $V$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		o.B.d.A. sei $j=1$, also $B'=(y,x_2,...,x_n)$. Wegen $\lambda_1\neq 0$ ist $x_1=\lambda_1^{-1}\cdot y - \sum
+		\limits_{i=2}^n \lambda_i\cdot x_i \in span_K(y,x_2,...,x_n)$ und somit ist $B'$ ein Erzeugendensystem. Sind 
+		$\mu_1,...,\mu_n \in K$ mit $\mu_1\cdot y - \sum\limits_{i=2}^n \mu_i\cdot x_i=0$, so folgt $0=\mu_1(\sum
+		\limits_{i=1}^n \lambda_i\cdot x_i + \sum\limits_{i=2}^n \mu_i\cdot x_i)=\mu_1\cdot \lambda_1\cdot x_1 + \sum
+		\limits_{i=2}^n (\mu_1\cdot \lambda_i + \mu_i)x_i$ und aus der linearen Unabhängigkeit von $B$ somit $\mu_1\cdot 
+		\lambda_1=0$, $\mu_1\cdot \lambda_2 + \mu_2 =0$, ..., $\mu_1\cdot\lambda_n + \mu_n=0$. Wegen $\lambda_1\neq 0$ folgt 
+		$\mu_1=0$ und daraus $\mu_i=0$. Folglich ist $B'$ linear unabhängig.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Steinitz'scher Austauschsatz):} Sei $B=(x_1,...,x_n)$ eine Basis von $V$ und $\mathcal F=(y_1,...
+			,y_r)$ eine linear unabhängige Familie in $V$. Dann ist $r\le n$ und es gibt $i_1,...,i_{n-r} \in \{1,...,n\}$, für 
+			die $B'=(y_1,...,y_r,x_{i_1},...,x_{i_{n-r}})$ eine Basis von $V$ ist. 
+		\end{mdframed}
+		\textit{Beweis: Induktion nach $r$\\
+		Für $r=0$ ist nichts zu zeigen. \\
+		Sei nun $r\ge 1$ und gelte die Aussage für $(y_1,...,y_{r-1})$. Insbesondere ist $r-1\le n$ und es gibt $i_1,..,
+		i_{n-(r-1)} \in \{1,...,n\}$ für die $B'=(y_1,...,y_r,x_{i_1},...,x_{i_{n-(r-1)}})$ eine Basis von $V$ ist. Da $y_r
+		\in V=span_K(B')$ ist $y_r=\sum\limits_{i=1}^{r-1} \lambda_i\cdot y_1 + \sum\limits_{j=0}^{n-(r-1)} \mu_j\cdot 
+		x_{i_j}$. Da $(y_1,...,y_r)$ linear unabhängig, ist $y_r \notin span_K(y_1,...,y_{r-1})$. Folglich gibt es $j_0 \in 
+		\{1,...,n-(r-1)\}$ mit $\mu_{j_0}\neq 0$. Insbesondere ist $n-(r-1)\ge 1$, also $r\le n$. o.B.d.A. $j_0=1$, dann 
+		ergibt sich mit dem Austasuchlemma, dass auch $(y_1,...,y_{r-1},y_r,x_{i_2},...,x_{i_{n-(r-1)}})$ eine Basis von 
+		$V$ ist.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $V$ endlich erzeugt, so lässt sich jede linear unabhängige Familie zu einer Basis ergänzen: 
+			Ist $(x_1,...,x_n)$ linear unabhängig, so gibt es $m\ge n$ und $x_{n+1},x_{n+2},...,x_m$ für die $(x_1,...,x_n,
+			x_{n+1},...,x_m)$ eine Basis von $V$ ist.
+		\end{framed}
+		\textit{Beweis: \\
+		Nach dem Basisauswahlsatz besitzt $V$ eine endliche Basis, die Behauptung folgt somit aus dem Steinitz'schen 
+		Austauschsatz.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Sind $(x_i)$ und $(x_j)$ Basen von $V$ und ist $I$ endlich, so ist $|I|=|J|$.
+		\end{framed}
+		\textit{Beweis: \\
+		Da $(y_r)$ linear unabhängig ist, ist $|J|\le |I|$ nach dem Steinitz'schen Austauschsatz. Insbesondere ist $J$ 
+		endlich, also $|I|\le |J|$ nach dem Austauschsatz.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $V$ endlich erzeugt, so haben alle Basen von $V$ die gleiche Mächtigkeit.
+		\end{framed}
+		\textit{Beweis: \\
+		Besitzt $V$ eine endliche Basis, so folgt deshalb die Behauptung aus dem vorherigen Korollar.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Dimension:} Ist $V$ endlich erzeugt, so ist die Dimension des VR $V$ die Mächtigkeit $dim_K(V)$ 
+			einer Basis von $V$. Anderfalls sagt man, dass $V$ unendliche Dimensionen hat und schreibt $dim_K(V)= \infty$. 
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $dim_K(K^n)=n$
+			\item $dim_K(K[X])=\infty$
+			\item $dim_K(K[X]_{\le n})=n+1$
+			\item $dim_{\mathbb R}(\mathbb C)=2$
+			\item $dim_{\mathbb C}(\mathbb C)=1$
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Bemerkungen:}
+		\begin{compactitem}
+			\item $V$ ist genau dann endlich erzeugt, wenn $dim_K(V)< \infty$.
+			\item $dim_K(V)=min\{|B| \mid span_K(B)=V\}=max\{|B| \mid \text{B linear unabhängig}\}$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $V$ endlich erzeugt und $W\le V$ ein UVR.
+			\begin{compactitem}
+				\item Es ist $dim_K(W)\le dim_K(V)$. Insbesondere ist $W$ endlich erzeugt.
+				\item Ist $dim_K(W)=dim_K(V)$, so ist auch $W=V$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Ist $F$ eine linear unabhängige Familie in $W$, so ist auch $F$ linear unabhängig in $V$ und somit $|F|\le 
+			dim_K(V)$. Insbesondere gibt es eine maximal linear unabhängige Familie $B$ in $W$ und es folgt $dim_K(W)=|B|
+			 \le dim_K(V)$.
+			\item Sei $B$ eine Basis von $W$. Dann ist $B$ auch in $V$ linear unabhängig. Ist $dim_K(W)=dim_K(V)$, so muss 
+			auch $B$ in $V$ maximal linear unabhängig sein. Insbesondere ist $W=span_K(B)=V$.
+		\end{compactitem}}
+		
+	\subsection{Summen von Vektorräumen}
+		Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Summe von VR:} Die Summe der $W_i$ ist der UVR $\sum\limits_{i\in I} W_i := span_K(\bigcup W_i)$. 
+			Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1+...+W_n$ für $\sum\limits_{i=1}^n W_i$. 
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Es ist $\sum\limits_{i\in I} W_i = \{\sum\limits_{i\in I} x_i \mid x_i\in W_i\text{, fast alle 
+			gleich 0}\}$. 
+		\end{framed}
+		\textit{Beweis: \\
+		$"\ge"$: klar, $\sum x_i \in span_K(\bigcup W_i)$ \\
+		$"\le"$: Die rechte Seite enthält jedes $W_i$ und ist ein UVR von $V$: \\
+		Für $x_i,x'_i \in W$, fast alle gleich 0 und $\lambda \in K$ ist $\sum x_i + \sum x'_i = \sum (x_i+x'_i)$, $\lambda
+		\cdot \sum x_i = \sum \lambda\cdot x_i$ $\to$ UVR}\\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition direkte Summe:} Ist jedes $x\in \sum W_i$ eindeutig als Summe von $x_i$ mit $x_i\in W_i$ 
+			darstellbar, so sagt man, dass $\sum W_i$ die direkte Summe der UVR $W_i$ ist und schreibt $\oplus W_i$ für 
+			$\sum W_i$. Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1\oplus W_2 \oplus ... \oplus W_n$ für $\oplus W_i$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Ist $(x_1,...,x_n)$ eine Basis von $V$, so ist $V=Kx_1\oplus ... \oplus Kx_n$. \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Wir wollen uns näher mit dem wichtigen Spezialfall $I=\{1,2\}$ beschäftigen und schreiben noch 
+		mal auf: 
+		\begin{compactitem}
+			\item $V=W_1\oplus W_2$
+			\item $V=W_1 + W_2$ und $W_1 \cap W_2 = \{0\}$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sind $W_1,W_2$ UVR von $V$ mit Basen $(x_i)_{i\in I_1}$ bzw. $(x_i)_{i\in I_2}$, wobei $I_1 \cap 
+			I_2 = \emptyset$, so sind äquivalent:
+			\begin{compactitem}
+				\item $V=W_1 \oplus W_2$
+				\item $(x_i)_{i\in I_1 \cap I_2}$ ist eine Basis von $V$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: Sei $I=I_1 \cup I_2$\\
+		$1\Rightarrow 2$: Da $span_K((x_i)_{i\in I_1})=W_1$ und $span_K((x_i)_{i\in I_2})=W_2$ ist $span_K((x_i)
+		_{i\in I})=W_1+W_2=V$. Ist $\sum \lambda_ix_i=0$, so ist $\sum\limits_{i\in I_1} \lambda_ix_i = -\sum
+		\limits_{i\in I_2} \lambda_ix_i \in W_1 \cap W_2 = \{0\}$. Da $(x_i)_{i\in I_1}$ linear unabhängig ist, ist 
+		$\lambda_i=0$, analog für $i\in I_2$.\\
+		$2\Rightarrow 1$: $W_1+W_2=span_K((x_i)_{i\in I_1})+span_K((x_i)_{i\in I_2})=span_K((x_i)_{i\in I})=V$. Ist 
+		$x\in W_1 \cap W_2$, so ist $x=\sum\limits_{i\in I_1} \lambda_ix_i = \sum\limits_{i\in I_2} \lambda_ix_i$. Somit 
+		$0=\sum\limits_{i\in I_1} \lambda_ix_i - \sum\limits_{i\in I_2} \lambda_ix_i$, woraus wegen $(x_i)_{i\in I}$ 
+		linear unabhängig schon $\lambda_i=0$ folgt. Somit ist $x=0$.}\\
+		
+		\begin{framed}
+			\textbf{Korllar:} Ist $dim_K(V)<\infty$, so ist jeder UVR ein direkter Summand: Ist $W$ ein UVR von $V$, so 
+			gibt es einen UVR $W'$ von $V$ mit $V=W\oplus W'$ ($W'$ heißt das \textbf{lineare Komplement} von $W$ in $V$). Es 
+			ist $dim_K(W')=dim_K(V)-dim_K(W)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $(x_1,...,x_m)$ eine Basis von $W$. Nach dem Basisergänzungssatz lässt sich diese zu einer Basis $(x_1,...,x_n)$ 
+		von $V$ ergänzen. Mit $W':= span_K(x_{m+1},...,x_n)$ ist dann $V=W\oplus W'$.}\\
+		$\newline$
+		
+		\textbf{Bemerkung:} Ist $dim_K(V)<\infty$, so folgt aus $W_1\cap W_2=\{0\}$ also insbesondere $dim_K(W_1+W_2)=
+		dim_K(W_1)+dim_K(W_2)$. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Dimensionsformel):} Sei $dim_K(V)<\infty$. Für UVR $W_1,W_2$ von $V$ gilt: $dim_K(W_1+W_2) + 
+			dim_K(W_1 \cap W_2) = dim_K(W_1) + dim_K(W_2)$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Da $dim_K(V)<\infty$ haben alle UVR von $V$ Basen. Sei also $B_0=(X_1,...,x_n)$ eine Basis von $W_1\cap W_2$. Nach 
+		dem Basisergänzungssatz können wir $B_0$ zu den Basen $B_1=(x_1,...,x_n,y_1,...,y_p)$ von $W_1$ und $B_2=(x_1,...,
+		x_n,z_1,...,z_q)$ von $W_2$ ergänzen. Wir behaupten, dass $B=(x_1,...,x_n,y_1,...,y_p,z_1,...,z_q)$ eine Basis von 
+		$W_1+W_2$ ist. Offenbar ist $B$ ein Erzeugendensystem von $W_1+W_2$. Seien nun $\lambda_1,...,\lambda_n,\mu_1,...,
+		\mu_p,\eta_1,...,\eta_q \in K$ mit $\sum\limits_{i=1}^n \lambda_ix_i + \sum\limits_{j=1}^p \mu_jy_j + \sum
+		\limits_{k=1}^q \eta_kz_k=0$. Dann ist $\sum\limits_{i=1}^n \lambda_ix_i + \sum\limits_{j=1}^p \mu_jy_j = -\sum
+		\limits_{k=1}^q \eta_kz_k \in W_1 \cap W_2$. Da $span_K(B_0)=W_1\cap W_2$ und $B_1$ linear unabhängig ist, ist 
+		$\mu_j=0$. Analog zeigt man auch, dass $\eta_k=0$. Aus $B_0$ linear unabhängig folgt dann auch, dass $\lambda_i=0$. 
+		Somit ist $B$ linear unabhängig. Wir haben gezeigt, dass $B$ eine Basis von $W_1+W_2$ ist. \\
+		$\Rightarrow dim_K(W_1)+dim_K(W_2)=|B_1|+|B_2|=(n+p)+(n-q)=(n+p+q)+n=|B|+|B_0|=dim_K(W_1+W_2)+dim_K(W_1\cap W_2)$.}\\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition (externes) Produkt:} Das (externe) Produkt einer Familie $(V_i)$ von $K$-VR ist der $K$-VR 
+			$\prod V_i$ bestehend aus dem kartesischen Produkt der $V_i$ mit komponentenweiser Addition und 
+			Skalarmultiplikation, $(x_i)+(x'_i) := (x_i+x'_i)$ und $\lambda(x_i) := (\lambda x_i).$
+		\end{mdframed}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition (externe) Summe:} Die (externe) Summe einer Familie $(V_i)$ von $K$-VR ist der UVR 
+			$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{; für fast alle }i\}$ des $K$-VR $\prod V_i$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Man prüft sofort nach, dass $\prod V_i$ ein $K$-VR ist und $\oplus V_i$ ein UVR davon ist. Für 
+		endliche Indexmengen ist $\prod V_i = \oplus V_i$, z.B. $K^n = \prod\limits_{i=1}^n K = \oplus K$. \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $(V_i)$ eine Familie von $K$-VR und sei $V=\oplus V_i$. Für jedes $j\in I$ ist $\tilde V_j :=
+			V \times \prod\limits_{i\in I\backslash\{j\}} \{0\}$ ein UVR von $V$ und $V=\oplus \tilde V_j$
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $x=(x_i)\in V$ mit $x_i\in V_i$, fast alle $x_i=0$, so ist $x=\sum \tilde x_i$ mit $\tilde x:=(x_i\delta_{ij})
+		\in \tilde V_j$. Somit ist $V=\sum \tilde V_i$. Die Gleichung $\tilde V_i \cap \sum\limits_{j\neq i} \tilde V_j 
+		=\{0\}$ folgt aus Definition der $\tilde V_i.$}\\
+		
+\section{Lineare Abbildungen}
+	Sei $K$ ein Körper.
+	\subsection{Matrizen}
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Matrix:} Seien $m,n \in \mathbb N_0$. Eine $m\times n$-Matrix über $K$ ist ein rechteckiges 
+			Schema:
+			\begin{center}
+			$\begin{pmatrix}
+				a_{11} & ... & a_{1n}\\
+				... &  & ...\\
+				a_{m1} & ... & a_{mn}\\
+			\end{pmatrix}$
+			\end{center}
+			Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \; j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
+			aus dem Kontext hervorgehen. Die $a_{ij}$ heißen die Koeffizienten der Matrix $A$ und wir definieren $A_{i,j}=
+			a_{ij}$. Die Menge der $m\times n$-Matrizen über $K$ wird mit $Mat_{m\times n}(K)$ oder $K^{m\times n}$ 
+			bezeichnet. Man nennt das Paar $(m,n)$ auch den Typ von $A$. Ist $m=n$, so spricht man von quadratischen 
+			Matrizen und schreibt $Mat_n(K)$. Zu einer Matrix $A=(a_{ij}) \in Mat_{m\times n}(K)$ definiert man die zu $A$ 
+			transponierte Matrix $A^t := (a_{ij})_{j,i} \in Mat_{n\times m}(K)$.
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Die Nullmatrix ist $0=(0)_{i,j} \in Mat_{m\times n}(K)$.
+			\item Für $k,l \in \{1,...,n\}$ ist die $(k,l)$-Basismatrix gegeben durch $E_{kl}=(\delta_{jk}\delta_{jl})\in 
+			Mat_{m\times n}(K)$.
+			\item Die Einheitsmatrix ist $1_n=(\delta_{ii})\in Mat_n(K)$.
+			\item Für $a_i,...,a_n \in K$ definiert man eine Diagonalmatrix $diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$.
+			\item Für eine Permutation $\sigma\in S_n$ definiert man die Permutationsmatrix $P_\sigma := (\delta_{\sigma
+			(i),j})$.
+			\item Für $a_1,...,a_n$ definiert man einen Zeilenvektor $(a_1,...,a_n)\in Mat_{1\times n}(K)$ bzw. einen 
+			Spaltenvektor $(a_1,...,a_n)^t$.
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Addition und Skalarmultiplikation:} Seien $A=(a_{ij})$ und $B=(b_{ij})$ desselben Typs und 
+			$\lambda \in K$. Man definiert auf $Mat_{m\times n}(K)$ eine koeffizientenweise Addition und Skalarmultiplikation.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} $(Mat_{m\times n},+,\cdot)$ ist ein $K$-VR der Dimension $dim_K(Mat_{m\times n})=n\cdot m$ mit 
+			Basismatrix als Basis.
+		\end{framed}
+		\textit{Beweis: \\
+		Dies ist klar, weil wir $Mat_{m\times n}$ mit dem Standardraum $K^{mn}$ identifizieren können. Wir haben die 
+		Elemente nur als $m\times n$-Matrix statt als $mn$-Tupel geschrieben.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Matrizenmultiplikation:} Seien $m,n,r \in \mathbb N_0$. Sind $A=(a_{ij})\in Mat_{m\times n}(K)$, 
+			$B=(b_{jk})\in Mat_{n\times r}(K)$ so definieren wir $C=AB$ als die Matrix $C=(c_{ik})\in Mat_{m\times r}(K)$ mit 
+			$c_{ik}=\sum\limits_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Für $A\in Mat_n(K)$ ist $0\cdot A=0$ und $1\cdot A=A$.
+			\item Für $\sigma \in S_n$ und $A\in Mat_{n\times r}(K)$ geht $P_{\sigma}\cdot A$ aus $A$ durch Permutation der 
+			Zeilen hervor.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $m,n,r \in \mathbb N_0$ und $A=(a_{ij})\in Mat_{m\times n}(K)$, $B=(b_{jk})\in Mat_
+			{n\times r}(K)$ und $\lambda\in K$ gilt: $A(\lambda B)=(\lambda A)B=\lambda(AB)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $A=(a_{ij})$, $B=(b_{jk})$. Dann ist $A(\lambda B)=\sum\limits_{j=1}^n a_{ij}\cdot \lambda b_{jk}=\sum
+		\limits_{j=1}^n \lambda a_{ij} \cdot b_{jk}=(\lambda A)B=\lambda \cdot \sum\limits_{j=1}^n a_{ij}b_{jk}=\lambda
+		(AB)$.} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Matrizenmultiplikation ist assoziativ: $A(BC)=(AB)C$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $D=BC\in Mat_{n\times s}(K)$, $E=AB \in Mat_{m\times r}(K)$. Schreibe $A=(a_{ij})$ usw. Für $i,l$ ist $(AD)=
+		\sum\limits_{j=1}^n a_{ij}d_{jl}=\sum\limits_{j=1}^n a_{ij}\cdot \sum\limits_{k=1}^r b_{jk}c_{kl}=\sum
+		\limits_{j=1}^n \sum\limits_{k=1}^n a_{ij}b_{jk}c_{kl}$. \\
+		$(EC)=\sum\limits_{k=1}^n e_{ik}c_{kl}=\sum\limits_{k=1}^r \sum\limits_{j=1}^n a_{ij}b_{jk}c_{kl}$. Also ist 
+		$AD=EC$.} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $m,n,r\in \mathbb N_0$ und $A,A'\in Mat_{m\times n}(K)$, $B,B'\in Mat_{n\times r}(K)$ ist 
+			$(A+A')B=AB+A'B$ und $A(B'+B)=AB'+AB$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $A=(a_{ij})$ etc. Dann ist $(A+A')B=\sum\limits_{j=1}^n (a_{ij}+a'{ij})b_{jk}=\sum\limits_{j=1}^n 
+		a_{ij}+b_{jk} + \sum\limits_{j=1}^n a'_{ij}+b_{jk}=(AB+A'B)$. Rest analog.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Mit der Matrizenmultiplikation wird $Mat_n(K)$ zu einem Ring mit Einselement $1$.
+		\end{framed}
+		\textit{Beweis: \\
+		Die vorherigen Sätze und Lemmas.} \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Für $n=1$ können wir dem Ring $Mat_n(K)$ mit $K$ identifizieren, der Ring ist also ein Körper, 
+			insbesondere ist er kommutativ.
+			\item Für $n\ge 2$ ist $Mat_n(K)$ nicht kommutativ.
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition invertierbar:} Eine Matrix $A\in Mat_n(K)$ heißt invertierbar oder regulär, wenn sie im Ring 
+			$Mat_n(K)$ invertierbar ist, sonst singulär. Die Gruppe $GL_n(K)=Mat_n(K)^{\times}$ der invertierbaren $n\times n$
+			-Matrizen heißt allgemeine Gruppe.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Sei $n=2$. Zu $A=\begin{pmatrix}a & b\\c & d\\\end{pmatrix} \in Mat_2(K)$ definiert man $\tilde A=
+		\begin{pmatrix}d & -b\\-c & a\\\end{pmatrix}\in Mat_2(K)$. Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
+		(ad-bc)\cdot 1_2$. Definiert man nun $det(A)=ad-bc$ so sieht man: Ist $det(A)\neq 0$, so ist $A$ invertierbar mit 
+		$A^{-1}=det(A)^{-1}\cdot \tilde A$. Ist $det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar. \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $A,A_1,A_2\in Mat_{m\times n}(K)$ und $B=Mat_{n\times r}(K)$ ist 
+			\begin{compactitem}
+				\item $(A^t)^t=A$
+				\item $(A_1+A_2)^t=A_1^t + A_2^t$
+				\item $(AB)^t=B^tA^t$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		Übung} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Für $A\in Gl_n(K)$ ist $A^t\in GL_n(K)$ und $(A^{-1})^t = (A^t)^{-1}$
+		\end{framed}
+		\textit{Beweis: \\
+		Aus $AA^{-1}=1$ folgt, dass $(A^{-1})^tA^t=1_n^t=1_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.} \\
+	
+	\subsection{Homomorphismen von Gruppen}
+		Seien $G,H$ zwei multiplikativ geschriebene Gruppen. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Gruppenhomomorphismus:} Eine Abbildung $f: G \to H$ ist ein Gruppenhomomorphismus, wenn gilt: \\
+			(GH): $f(xy)=f(x)\cdot f(y)$ \\
+			Die Menge der Homomorphismen $f:G\to H$ bezeichnet man mit $Hom(G,H)$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Ein Gruppenhomomorphismus ist also eine Abbildung, welche mit der Verknüpfung, also der Struktur 
+		der Gruppe, verträglich ist. Man beachte: für additiv geschriebe Gruppen lautet die Bedingung: $f(x+y)=f(x)+f(y)$. \\
+		$\newline$
+		
+		\textbf{Beispiele von Gruppenhomomorphismen:}
+		\begin{compactitem}
+			\item $id_G: G \to G$
+			\item $c_1:G\to H$ mit $x\mapsto 1_H$
+			\item $G_0\le G$ Untergruppe, $\iota:G_0\to G$
+			\item $(A,+)$ abelsche Gruppe, $k\in \mathbb Z$, $A\to A$ mit $a\mapsto ka$
+			\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a \mapsto a+n\mathbb Z$
+			\item $\mathbb R \to \mathbb R^{\times}$ mit $x\mapsto e^x$
+			\item $Mat_n(K)\to Mat_n(K)$ mit $A\mapsto A^t$
+			\item $\mathbb C\to \mathbb R^{\times}$ mit $z\mapsto |z|$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(G,H)$. Dann gilt: 
+			\begin{compactitem}
+				\item $f(1_G)\to 1_H$
+				\item Für $x\in G$ ist $f(x^{-1})=(f(x))^{-1}$.
+				\item Für $x_1,...,x_n\in G$ ist $f(x_1,...,x_n)=f(x_1)\cdot ... \cdot f(x_n)$.
+				\item Ist $G_0\le G$, so ist $f(G_0)\le H$.
+				\item Ist $H_0\le H$, so ist $f^{-1}(H_0)\le G$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: 
+		\begin{compactitem}
+			\item $f(1)=f(1\cdot 1)=f(1)\cdot f(1) \Rightarrow$ kürzen, weil $H$ Gruppe $\Rightarrow 1=f(1)$
+			\item $f(x)\cdot f(x^{-1})=f(x\cdot x^{-1})=f(1)=1$
+			\item Induktion nach $n$
+			\item $x,y\in G_0\Rightarrow f(x)\cdot f(y)=f(xy)\in f(G_0)$, $f^{-1}(x)=f(x^{-1})\in f(G_0)$
+			\item $x,y\in f^{-1}(H_0)\Rightarrow f(x)\cdot f(y)=f(xy)\in H_0\Rightarrow xy\in f^{-1}(H_0)$, $f(x^{-1})=(f(x))
+			^{-1}\in H_0\Rightarrow x^{-1}\in f^{-1}(H_0)$, $f(1)=1\in H_0\Rightarrow 1\in f^{-1}(H_0)$, insbesondere 
+			$f^{-1}(H_0)\neq \emptyset$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $G_1,G_2,G_3$ Gruppen. Sind $f_1:G_1\to G_2$, $f_2:G_2\to G_3$ Homomorphismen, so ist auch 
+			$f_2\circ f_1:G_1\to G_3$.
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x,y\in G_1$ ist $(f_2\circ f_1)(xy)=f_2(f_1(xy))=f_2(f_1(x)\cdot f_1(y))=f_2(f_1(x))\cdot f_2(f_1(y))=(f_2
+		\circ f_1)(x)\cdot (f_2\circ f_1)(y)$} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Arten von Homomorphismen:} Ein Homomorphismus ist \\
+			ein Monomorphismus, wenn $f$ injektiv ist, \\
+			ein Epimorphismus, wenn $f$ surjektiv ist, \\
+			ein Isomorphismus, wenn $f$ bijektiv ist. Die Gruppen $G$ und $H$ heißen isomorph, in Zeichen $G\cong H$, wenn 
+			es einen Isomorphismus $G\to H$ gibt.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:G\to H$ ein Isomorphismus, so ist auch $f^{-1}:H\to G$ ein Isomorphismus.
+		\end{framed}
+		\textit{Beweis: \\
+		Da $f^{-1}$ wieder bijektiv ist, müssen wir nur zeigen, dass $f^{-1}$ ein Homomorphismus ist. Seien $x,y\in H$. Dann 
+		ist $f(f^{-1}(x)\cdot f^{-1}(y))=f(f^{-1}(x))\cdot f(f^{-1}(y))=xy$, somit $f^{-1}(xy)=f^{-1}(x)\cdot f^{-1}(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f:G\to H$ ein Homomorphismus. Genau dann ist $f$ ein Isomorphismus, wenn es einen Homomorphismus 
+			$f':H\to G$ mit $f'\circ f=id_G$ und $f\circ f'=id_H$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f$ ein Isomorphismus, so erfüllt $f':=f^{-1}$ das Gewünschte. Ist umgekehrt $f'$ wie angegeben, so muss $f$ 
+		bijektiv sein:
+		\begin{compactitem}
+			\item $f'\circ f=id_G$ injektiv $\Rightarrow f$ injektiv
+			\item $f\circ f'=id_H$ surjektiv $\Rightarrow f$ surjektiv
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Isomorphie von Gruppen ist eine Äquivalenzrelation: Sind $G,G_1,G_2,G_3$ Gruppen, so gilt:
+			\begin{compactitem}
+				\item $G\cong G$ (Reflexivität)
+				\item Ist $G_1\cong G_2$, so ist auch $G_2\cong G_1$ (Symmetrie)
+				\item Ist $G_1\cong G_2$ und $G_2\cong G_3$, dann ist auch $G_1\cong G_3$ (Transitivität)
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: 
+		\begin{compactitem}
+			\item $id_G$ ist ein Isomorphismus
+			\item vorheriges Lemma
+			\item vorletzer Satz und A18
+		\end{compactitem}}
+		
+		\textbf{Bemerkung:} Der letzte Satz erklärt die Bedeutung des Isomorphismus: Eine mit der Struktur verträgliche 
+		Abbildung, die eine mit der Struktur verträgliche Umkehrabbildung besitzt, also eine strukturerhaltende Abbildung. 
+		Tatsächlich können wir uns einen Isomorphismus $f: G\to H$ so vorstellen, dass wir nur die Elemente von $G$ umbenennen. 
+		Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr. Zum Beispiel: Ist $G\cong H$ und ist 
+		$G$ abelsch, so auch $H$ und umgekehrt. \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Es ist $\mathbb Z^{\times} = \mu_2 \cong \mathbb Z\backslash 2\mathbb Z\cong (\mathbb Z\backslash 3\mathbb Z)
+			^{\times}\cong S_2$. Je zwei beliebige Gruppen der Ordnung 2 sind zueinander isomorph.
+			\item $e: \mathbb R \to \mathbb R_{>0}$, $x\mapsto e^x$ liefert einen Isomorphismus, da $(\mathbb R,+)\to 
+			(\mathbb R,\cdot)$.
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Kern:} Der Kern eines Gruppenhomomorphismus $f:G\to H$ ist $Ker(f):= f^{-1}(\{1\})=\{x\in G \mid
+			f(x)=1_H\}$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:G\to H$ ein Homomorphismus, so ist $N:=Ker(f)$ eine Untergruppe von $G$ mit $x\cdot y\cdot 
+			x^{-1}\in N$ für alle $x\in G$ und $y\in N$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es ist $N\le G$. Für $x\in G$ und $y\in N$ ist $f(xyx^{-1})=f(x)\cdot f(y)\cdot f(x^{-1})=f(x)\cdot f(x^{-1}) \cdot 1=
+		f(x)\cdot f(x^{-1})=1$, also $xyx^{-1}\in N$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(G,H)$. Genau dann ist $f$ injektiv, wenn $Ker(f)=\{1_G\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $N=Ker(f)$. \\
+		Hinrichtung: Ist $f$ injetiv, so ist $N\le G$ mit $|N|\le 1$, also $N=\{1_G\}$. \\
+		Rückrichtung: Sei $N=\{1_G\}$. Sind $x,y\in G$ mir $f(x)=f(y)$, so ist $1=(f(x))^{-1}\cdot f(y)=f(x^{-1}\cdot y)$, 
+		also $x^{-1}\cdot y\in N=\{1\}$ und somit $x=y$. Folglich ist $f$ injetiv.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Normalteiler:} Ist $N\le G$ mit $x^{-1}y\in N$ für alle $x\in G$ und $y\in N$, so nennt man $N$ 
+			einen Normalteiler von $G$ und schreibt $N\vartriangleleft G$.
+		\end{mdframed}
+		
+	\subsection{Homomorphismen von Ringen}
+		Seien $R,S$ und $T$ Ringe.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Ringhomomorphismus:} Eine Abbildung $f:R\to S$ ist ein Ringhomomorphismus, wenn für $x,y\in R$ 
+			gilt: \\
+			(RH1:) $f(x+y)=f(x)+f(y)$ \\
+			(RH2:) $f(xy)=f(x)\cdot f(y)$ \\
+			Die Menge der Ringhomomorhismen $f:R\to R$ wird mit $Hom(R,S)$ bezeichnet. Ein Homomorphismus $f:R\to S$ ist ein 
+			Mono-, Epi- oder Isomorphismus, wenn $f$ injektiv, surjektiv oder bijektiv ist. Gibt es einen Isomorphismus 
+			$f:R\to S$, so nennt man $R$ und $S$ isomorph und schreibt $R\cong S$. Die Elemente von $End(R):= Hom(R,R)$ nennt 
+			man Endomorphismen. Der Kern eines Ringhomorphismus $f:R\to S$ ist $Ker(f):= f^{-1}(\{0\})$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Ein Ringhomomorphismus $f:R\to S$ ist ein Gruppenhomomorphismus der abelschen Gruppen $(R,+)$ und 
+		$(S,+)$, der mit der Multiplikation verträglich ist, also eine strukturverträgliche Abbildung zwischen Ringen. \\
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $id_R:R\to R$ ist ein Ringisomorphismus
+			\item Ist $R_0\le R$ ein Unterring von $R$, so ist $\iota: R_0 \to R$ ein Ringmonomorphismus
+			\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a\mapsto a+n\mathbb Z$ it ein Ringepimorphismus
+			\item Sei $R$ kommutativ mit Einselement. Für $\lambda\in R$ ist die Auswertungsabbildung $R[X]\to R$ mit $f\mapsto 
+			f(\lambda)$ ein Ringepimorphismus.
+			\item $\mathbb C \to \mathbb C$ mit $z\mapsto \overline z$ ist ein Ringisomorphismus
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Satz:} Sind $f:R\to S$ und $g:S\to T$ Ringhomomorphismen, so auch $g\circ f:R\to T$.
+		\end{framed}
+		\textit{Beweis: \\
+		Übung, analog zu Gruppen} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:R\to S$ ein Ringisomorphismus, so auch $f^{-1}: S\to R$.
+		\end{framed}
+		\textit{Beweis: \\
+		Von den Gruppen wissen wir: $f^{-1}$ ist ein Isomorphismus der abelschen Gruppen $(S,+)\to (R,+)$. Die Verträglichkeit 
+		mit der Multiplikation zeigt man analog.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(R,S)$. Genau dann ist $f$ ein Ringisomorphismus, wenn es $f'\in Hom(S,R)$ mit $f'\circ 
+			f=id_R$ und $f\circ f'=id_S$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		analog zu Gruppen} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Der Kern $I:=Ker(f)$ eines Ringhomomorphismus $f:R\to S$ ist eine Untergruppe von $(R,+)$ mit 
+			$x\cdot a, a\cdot x \in I$ für alle $a\in I$ und $x\in R$.
+		\end{framed}
+		\textit{Beweis: \\
+		Von den Gruppen wissen wir: $I$ ist eine Untergruppe von $(R,+)$. Für $x\in R$ und $a \in I$ ist $f(xa)=f(x)\cdot 
+		f(a)=f(x)\cdot 0=0$. Somit ist $xa\in I$. Analog ist $ax\in I$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom(R,S)$. Genau dann ist $f$ injektiv, wenn $Ker(f)=\{0\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Die Aussage folgt aus dem entsprechenden Satz für Gruppen, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Ideal:} Ist $I$ eine Untergruppe von $(R,+)$ und $xa,ax\in I$ mit $x\in R$ und $a\in I$, so nennt 
+			man $I$ ein Ideal von $R$ und schreibt $I\vartriangleleft R$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Der Kern des Ringhomomorphismus $\mathbb Z\to \mathbb Z\backslash n\mathbb Z$ mit $a\mapsto 
+		\overline a$ ist das Ideal $I=n\mathbb Z\vartriangleleft \mathbb Z$.
+		
+	\subsection{Homomorphismen von Vektorräumen}
+		Seien $U,V,W$ drei $K$-VR. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition $K$-linear:} Eine Abbildung $f: V \to W$ heißt $K$-linearer Homomorphismus von $K$-VR, wenn für 
+			alle $x,y\in V$ und $\lambda\in K$ gilt: \\
+			(L1): $f(x+y)=f(x)+f(y)$ \\
+			(L2): $f(\lambda x)=\lambda \cdot f(x)$ \\
+			Die Menge der $K$-linearen Abbildungen $f: V\to W$ wird mit $Hom_K(V,W)$ bezeichnet. Die Elemente von $End_K(V)
+			:= Hom_K(V,V)$ nennt man die Endomorphismen von $V$. Ein $f\in Hom_K(V,W)$ ist ein Mono-, Epi- bzw. Isomorphismus, 
+			falls $f$ injektiv, surjektiv bzw. bijektiv ist. Einen Endomorphismus der auch ein Isomorphismus ist, nennt man 
+			Automorphismus von $V$ und bezeichnet die Menge der Automorphismen von $V$ mit $Aut_K(V)$. Der Kern einer linearen 
+			Abbildung $f: V\to W$ ist $Ker(f):= f^{-1}(\{0\})$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abelschen Gruppen $(V,+) 
+		\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen VR. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Eine Abbildung $f: V\to W$ ist genau dann $K$-linear, wenn für alle $x,y\in V$ und $\lambda,
+			\mu\in K$ gilt: \\
+			(L): $f(\lambda x +\mu y)=\lambda f(x) + \mu f(y)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: $f(\lambda x +\mu y)=f(\lambda x) + f(\mu y)=\lambda f(x) + \mu f(y)$ \\
+		Rückrichtung: (L1): $f(x+y)=f(1x+1y)=1f(x)+1f(y)$, (L2): $f(\lambda x)=f(\lambda x+0y)=\lambda f(x)$.} \\
+		$\newline$
+		
+		\textbf{Beispiele:} 
+		\begin{compactitem}
+			\item $id_V: V\to V$ ist ein Automorphismus von $V$
+			\item $c_0:V\to W$ mit $x\mapsto 0$ ist $K$-linear
+			\item Für einen UVR $V_0\le V$ ist $\iota: V_0\to V$ ein Monomorphismus
+			\item Im $K$-VR $K[X]$ kann man die (formale) Ableitung definieren: $(\sum\limits_{i=0}^n a_iX^i)' := \sum\limits
+			_{i=1}^n ia_iX^{i-1}$. Diese Abbildung $K[X]\to K[X]$ mit $f\mapsto f'$ ist ein $K$-Endomorphismus von $K[X]$.
+		\end{compactitem}
+		$\newline$
+		
+		\textbf{Beispiel:} Sei $V=K^n$ und $W=K^m$. Wir fassen die Elemente von $V$ und $W$ als Spaltenvektoren auf. Zu einer 
+		Matrix $A\in Mat_{m\times n}(K)$ definieren wir die Abbildung $f_A:V\to W$ mit $x\mapsto Ax$. \\
+		Ausgeschrieben: Ist $A=(a_{ij})$ und $x=(x_1,...,x_n)^t$ so ist $f_A(x)=Ax=
+		\begin{pmatrix}
+		a_{11} & ... & a_{1n}\\
+		... &  & ...\\
+		a_{m1} & ... & a_{mn}\\
+		\end{pmatrix} \cdot \begin{pmatrix} x_1 \\ ... \\ x_n\end{pmatrix} = 
+		\begin{pmatrix}
+		a_{11}\cdot x_1 + ... + a_{1n}\cdot x_n\\
+		...\\
+		a_{m1}\cdot x_1 + ... + a_{mn}\cdot x_n\\
+		\end{pmatrix}$. Diese Abbildung ist $K$-linear. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Für ein $f\in Hom_K(V,W)$. Dann gilt:
+			\begin{compactitem}
+				\item $f(0)=0$
+				\item Für $x,y\in V$ ist $f(x-y)=f(x)-f(y)$.
+				\item Sind $(x_1)$ aus $V$, $(\lambda_i)$ aus $K$, fast alle gleich 0, so ist $f(\sum\limits_{i\in I} \lambda_i
+				\cdot x_i)=\sum\limits_{i\in I} \lambda_i\cdot f(x)$.
+				\item Ist $(x_i)$ linear abhängig in $V$, so ist $f(x_i)$ linear abhängig in $W$.
+				\item Ist $V_0\le V$ ein UVR von $V$, so ist $f(V_0)\le W$ ein UVR.
+				\item Ist $W_0\le W$ ein UVR von $W$, so ist $f^{-1}(W_0)\le V$ ein UVR.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis:
+		\begin{compactitem}
+			\item klar
+			\item klar
+			\item Induktion
+			\item $\sum \lambda_i\cdot x_i=0\Rightarrow 0=f(0)=f(\sum \lambda_i\cdot x_i)=\sum \lambda_i\cdot f(x_i)$
+			\item $x,y\in V_0\Rightarrow f(x)+f(y)=f(x+y)\in f(V_0)$ \\ 
+			$x\in V_0,\lambda\in K\Rightarrow f(x\cdot \lambda= f(\lambda x)\in f(V_0))$
+			\item $f(0)=0\in W_0\Rightarrow 0\in f^{-1}(W_0)$, insbesondere ist $f^{-1}(W_0)\neq \emptyset$ \\ 
+			$x,y\in f^{-1}(W_0)\Rightarrow f(x+y)=f(x)+f(y)\in W_0$, also $x+y\in f^{-1}(W_0)$ \\
+			$x\in f^{-1}(W_0)$ und $\lambda\in K\Rightarrow f(\lambda x)=\lambda f(x)\in W_0$, also $\lambda x\in f^{-1}(W_0)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Sind $f:V\to W$ und $g:W\to U$ $K$-linear, so auch $g\circ f: V\to U$.
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(g\circ f)(\lambda x + \mu y)=g(f(\lambda x + \mu y))=g(\lambda f(x) + 
+		\mu f(y))=\lambda (g\circ f)(x) + \mu (g\circ f)(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $f:V\to W$ ein Isomorphismus, so auch $f^{-1}:W\to V$.
+		\end{framed}
+		\textit{Beweis: \\
+		Wir müssen nur zeigen, dass $f^{-1}$ linear ist. Für $x,y\in V$ und $\lambda,\mu\in K$ ist $f(\lambda f^{-1}(x) + 
+		\mu f^{-1}(y))=\lambda (f\circ f^{-1})(x) + \mu (f\circ f^{-1})(y)=\lambda x + \mu y$, also $f^{-1}(\lambda x + 
+		\mu y)=\lambda f^{-1}(x) + \mu f^{-1}(y)$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f:V\to W$ linear. Genau dann ist $f$ ein Isomorphismus, wenn es eine lineare Abbildung $f':W
+			\to V$ gibt mit $(f'\circ f)=id_V$ und $(f\circ f')=id_W$.
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f$ ein Isomorphismus, so erfüllt $f'=f^{-1}$ die Behauptung. Existiert umgekehrt $f'$ wie angegeben, so muss 
+		$f$ bijektiv sein.} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Wie auch bei Gruppen sehen wir hier bei VR, dass Isomorphismen genau die strukturerhaltenden 
+		Abbildungen sind. Wieder können wir uns einen Isomorphismus $f:V\to W$ so vorstellen, dass wir nur die Elemente von 
+		$V$ umbennen. Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr, wie z.B. $dim_K(V)=
+		dim_K(W)\iff V=W$. Insbesondere ist $K^n \cong K^m$ für $n=m$. \\
+		
+		\begin{framed}
+			\textbf{Satz:} Ist $f:V\to W$ eine lineare Abbildung, so ist $Ker(f)$ ein UVR von $V$. Genau dann ist $f$ ein 
+			Monomorphismus, wenn $Ker(f)=\{0\}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Der erste Teil folgt aus dem letzten Beispiel, der zweite folgt aus den Gruppen, da $f:(V,+)\to (W,+)$ ein 
+		Gruppenhomomorphismus ist.} \\
+		
+	\subsection{Der Vektorraum der linearen Abbildungen}
+		Seien $V$ und $W$ zwei $K$-VR.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $(x_i)$ eine Basis von $V$ und $(y_i)$ eine Familie in $W$. Dann gibt es genau eine lineare 
+			Abbildung $f:V\to W$ mit $f(x_i)=y_i$. Diese Abbildung ist durch $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$ 
+			(*) ($\lambda_i\in K$, fast alle gleich 0) gegeben und erfüllt
+			\begin{compactitem}
+				\item $Image(f)=span_K(y_i)$
+				\item genau dann ist $f$ injektiv, wenn $(y_i)$ linear unabhängig ist
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $f:V\to W$ linear mit $f(x_i)=y_i$, so folgt $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$. Da sich jedes 
+		$x\in V$ als $x=\sum  \lambda_ix_i$ schreiben lässt, ist $f$ dadurch schon eindeutig bestimmt. Andererseits wird 
+		durch (*) eine wohldefinierte Abbildung beschrieben, da die Darstellung von $x$ eindeutig ist (denn $x_i$ sind 
+		linear unabhängig). Es bleibt zu zeigen, dass die durch (*) definierte Abbildung $f:V\to W$ tatsächlich linear ist. 
+		Ist $x=\sum \lambda_ix_i$ und $x'=\sum \lambda'_ix_i$ so ist $f(x+x')=f(\sum (\lambda_i+\lambda'_i)x_i)=
+		\sum (\lambda_i+\lambda'_i)y_i=\sum \lambda_iy_i+\sum \lambda'_iy_i=f(x)+f(x')$. $f(\lambda x)=f(\sum \lambda
+		\lambda_ix_i)=\sum \lambda\lambda_iy_i=\lambda\sum\lambda_iy_i=\lambda f(x)$.
+		\begin{compactitem}
+			\item $Image(f)$ ist ein UVR von $W$ und $\{y_i\}\subset Image(f)\subset span_K(y_i)$, somit $Image(f)=span_K(y_i)$
+			\item $f$ ist injektiv $\iff Ker(f)=\{0\}$ \\ 
+			$\iff \lambda_i\in K$ gilt: $f(\sum \lambda_ix_i)=0\Rightarrow \sum \lambda_ix_i=0$ \\ 
+			$\iff \lambda_i\in K$ gilt: $\sum\lambda_iy_i=0\Rightarrow \lambda_i=0$ \\ 
+			$\iff (y_i)$ linear unabhängig.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $dim_K<\infty$. Ist $(x_1,...,x_n)$ eine linear unabhängige Familie in $V$ und $(y_1,...,y_n)$ 
+			eine Familie in $W$, so gibt es eine lineare Abbildung $f:V\to W$ mit $f(x_i)=y_i$
+		\end{framed}
+		\textit{Beweis: \\
+		Nach dem Basisergänzungssatz können wir die Familie $(x_i)$ zu einer Basis $x_1,...,x_m$ ergänzen. Die Behauptung 
+		folgt aus dem vorherigen Satz für beliebige $y_{n+1},...,y_m\in W$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $(x_i)$ eine Basis von $V$ und $(y_i)$ eine Basis in $W$, so gibt es genau einen Isomorphismus 
+			$f:V\to W$ mit $f(x_i)=y_i$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $f$ wie im ersten Satz. $(y_i)$ ist Erzeugendensystem $\Rightarrow Image(f)=span_K(y_i)=W$, also $f$ surjektiv. 
+		$(y_i)$ linear abhängig $\Rightarrow f$ ist injektiv.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Zwei endlichdimensionale $K$-VR sind genau dann isomorph, wenn sie dieselbe Dimension haben.
+		\end{framed}
+		\textit{Beweis: \\
+		letztes Korllar und letztes Kapitel} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $B=(v_1,...,v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_B:K^n\to 
+			V$ mit $\Phi_B(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
+			$K^n$ für $n=dim_K(V)$.
+		\end{framed}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Koordinatensystem:} Die Abbildung $\Phi_B$ heißt Koordinatensystem zu $B$. Für $v\in V$ ist 
+			$(x_1,...,x_n)^t=\Phi^{-1}_B(v)\in K^n$ der Koordinatenvekor zu $v$ bezüglich $B$ und $(x_1,...,x_n)$ sind die 
+			Koordinaten von $v$ bezüglich $B$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Die Menge $Hom_K(V,W)$ ist eine UVR des $K$-VR $Abb(V,W)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Seien $f,g\in Hom_K(V,W)$ und $\eta \in K$.
+		\begin{compactitem}
+			\item $f+g\in Hom_K(V,W)$: Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(f+g)(\lambda x+\mu y)=f(\lambda x+\mu y)+
+			g(\lambda x+\mu y)=\lambda f(x)+\mu f(y)+\lambda g(x)+\mu g(y)=\lambda(f+g)(x)+\mu(f+g)(y)$
+			\item $\eta f\in Hom_K(V,W)$: Für $x,y\in V$ und $\lambda,\mu\in K$ ist $(\eta f)(\lambda x+\mu y)=\eta\cdot 
+			f(\lambda x+\mu y)=\eta(\lambda f(x)+\mu f(y))=\lambda(\eta f)(x)+\mu(\eta f)(y)$
+			\item $Hom_K(V,W)\neq\emptyset$: $c_0\in Hom_K(V,W)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $U$ ein weiterer $K$-VR. Sind $f,f_1,f_2\in Hom_K(V,W)$ und $g,g_1,g_2\in Hom_K(U,V)$, so ist 
+			$f\circ (g_1+g_2)=f\circ g_1+f\circ g_2$ und $(f_1+f_2)\circ g=f_1\circ g+f_2\circ g$.
+		\end{framed}
+		\textit{Beweis: \\
+		Für $x\in U$ ist
+		\begin{compactitem}
+			\item $(f\circ(g_1+g_2))(x)=f((g_1+g_2)(x))=f(g_1(x)+g_2(x))=f(g_1(x))+f(g_2(x))=(f\circ g_1+f\circ g_2)(x)$
+			\item $((f_1+f_2)\circ g)(x)=(f_1+f_2)(g(x))=f_1(g(x))+f_2(g(x))=(f_1\circ g+f_2\circ g)(x)$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Korollar:} Unter der Komposition wird $End_K(V)$ zu einem Ring mit Einselement $id_V$ und $End_K(V)^{\times}=
+			Aut_K(V)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$(End_K(V),+)$ ist eine abelsche Gruppe, die Komposition eine Verknüpfung auf $End_K(V)$ ist assoziativ und die 
+		Distributivgesetze gelten (vorheriges Lemma).} \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Die Menge der strukturverträglichen Abbildungen zwischen $K$-VR trägt also wieder die Struktur 
+		eines $K$-VR. Wir können diesen mit unseren Mitteln untersuchen und z.B. nach Dimension und Basis fragen. \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $m,n,r\in \mathbb N$, $A\in Mat_{m\times n}(K)$, $B\in Mat_{n\times r}(K)$. Für die linearen 
+			Abbildungen $f_A\in Hom_K(K^n,K^m)$, $f_B\in Hom_K(K^r,K^n)$ gilt dann $f_{AB}=f_A\circ f_B$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sind $A=(a_{ij})$ und $B=(b_{jk})$, so ist $(f_A\circ f_B)(e_k)=f_A(f_B(e_k))=f_A(Be_k)=f_A(b_{1k},...,b_{nk})^t=
+		A\cdot (b_{1k},...,b_{nk})^t=(\sum\limits_{j=1}^n a_{ij}b_{jk},...,\sum\limits_{j=1}^n a_{mj}b_{jk})^t=AB\cdot e_k=
+		f_{AB}(e_k)$ für $k=1,...,r$, also $f_A\circ f_B=f_{AB}$.} \\
+		
+		\begin{framed}
+			\textbf{Satz:} Die Abbildung $A\to f_A$ liefert einen Isomorphismus von $K$-VR $F_{m\times n}: Mat_{m\times n}(K)
+			\to Hom_K(K^n,K^m)$ sowie einen Ringisomorphismus $F_n:Mat_n(F)\to End_K(K^n)$ der $GL_n(K)$ auf $Aut_K(K^n)$ 
+			abbildet.
+		\end{framed}
+		\textit{Beweis: Wir schreiben $F$ für $F_{m\times n}$\\
+		\begin{compactitem}
+			\item $F$ ist linear: Sind $A,B\in Mat-{n\times m}(K)$ und $\lambda,\mu\in K$, so ist $F(\lambda A+\mu B)(x)=
+			f_{\lambda A+\mu B}(x)=(\lambda A+\mu B)x=\lambda Ax+\mu Bx=\lambda f_A(x)+\mu f_B(x)=(\lambda F(A)+\mu F(B))(x)$, 
+			also ist $F$ linear.
+			\item $F$ ist injektiv: Es genügt zu zeigen, dass $Ker(f)=\{0\}$. Ist $A=(a_{ij})\in Mat_{n\times m}(K)$ mit $F(A)=0$, 
+			so insbesondere $0=F(A)(e_j)=f_A(e_j)=Ae_j=(a_{1j},...,a_{mj})^t$, also $A=0$.
+			\item $F$ ist surjektiv: Sei $f\in Hom_K(V,W)$. Schreibe $f(e_j)=(a_{1j},...,a_{mj})^t$ und setze $A=(a_{ij})\in 
+			Mat_{n\times m}(K)$. Dann ist $f_A\in Hom_K(K^n,K^m)$ mit $f_A(e_j)=Ae_j=f(e_j)$, also $f=f_A=F(A)\in Image(f)$.
+			\item $F_n$ ist eine Ringhomomorphismus: \\
+			(RH1) aus (L1) \\
+			(RH2) aus $f_{AB}=f_A\circ f_B$.
+			\item Somit ist $F_n$ eine Ringisomorphismus $\Rightarrow F_n(Mat_n(K)^{\times})=End_K(V)^{\times}$, also $F_n(
+			GL_n(K))=Aut_K(V)$.
+		\end{compactitem}}
+		
+	\subsection{Koordinatendarstellung linearer Abbildungen}
+		Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition darstellende Matrix:} Sei $f\in Hom_K(V,W)$. Für $j=1,...,n$ schreiben wir $f(x_j)=\sum\limits_{
+			i=1}^m a_{ij}y_i$ mit eindeutig bestimmten $a_{ij}\in K$. Die Matrix $M_C^B(f)=(a_{ij})\in Mat_{m\times n}(K)$ 
+			heißt die darstellende Matrix von $f$ bezüglich der Basen $B$ und $C$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom_K(V,W)$. Die darstellende Matrix $M_C^B(f)$ ist die eindeutig bestimmte Matrix $A\in 
+			Mat_{n\times m}(K)$, für die das folgenden Diagramm kommutiert: \\
+			\begin{center}\begin{tikzpicture}
+  				\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  				{K^n & K^m \\ V & W \\};
+  				\path[-stealth]
+    			(m-1-1) edge node [left] {$\Phi_B$} (m-2-1)
+            			edge node [above] {$f_A$} (m-1-2)
+    			(m-2-1) edge node [below] {$f$} (m-2-2)
+    			(m-1-2) edge node [right] {$\Phi_C$} (m-2-2);
+			\end{tikzpicture}\end{center}
+			d.h. $f\circ \Phi_B=\Phi_C\circ f_A$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei zunächst $A=M_C^B(f)$. Für $j=1,...,n$ ist $\Phi_C(f_A(e_j))=\Phi_C((a_{1j},...,a_{mj})^t)=\sum\limits_{i=1}^m 
+		a_{ij}\cdot y_i=f(x_j)=f(\Phi_B(e_j))$, also $\Phi_C\circ f_A=f \circ \Phi_B$. \\
+		Sei umgekehrt $A\in Mat_{m\times n}(K)$ mit $\Phi_C\circ f_A=f\circ\Phi_B$. Da $\Phi_B$ und $\Phi_C$ Isomorphismen 
+		sind, ist $f_A$ eindeutig bestimmt: $f_A=\Phi_C^{-1}\circ f \circ \Phi_B$ und deshalb auch $A$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Die Abbildung $M_C^B$: $Hom_K(V,W)\to Mat_{m\times n}(K)$ ist ein Isomorphismus von $K$-VR.
+		\end{framed}
+		\textit{Beweis: \\
+		Definiere $A$: $Hom_K(V,W)\to Mat_{m\times n}(K)$ mit $f\mapsto \Phi_C^{-1}\circ f \circ \Phi_B$. $A(f)=F_{m\times n}
+		(M_C^B(f))$, also $A=F_{m\times n}\circ M_C^B$. Die Abbildung ist bijektiv, da $\Phi_B$ und $\Phi_C$ bijektiv sind, 
+		und linear, da $\Phi_B$ und $\Phi_C$ linear sind. Also ist $A$ ein Isomorphismus. Da auch $F_{m\times n}^{-1}$ ein 
+		Isomorphismus ist, ist folglich auch $M_C^B=F_{m\times n}^{-1}\circ A$.} \\
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $U$ ein weitere $K$-VR mit endlicher Basis $D$. Für $f\in Hom_K(V,W)$ und $g\in Hom_K(U,V)$ ist 
+			$M_C^B(f)\cdot M_B^D(g)=M_C^D(f\circ g)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $r=dim_K(U)$ und $A=M_B^D(g)$ und $B=M_C^B(f)$. Nach dem letzen Satz kommutieren die beiden kleinen Quadrate in: }\\
+		\begin{center}\begin{tikzpicture}
+  				\matrix (n) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  				{K^r & K^n & K^m \\ U & V & W \\};
+  				\path[-stealth]
+    			(n-1-1) edge node [left] {$\Phi_D$} (n-2-1)
+            			edge node [above] {$f_A$} (n-1-2)
+    			(n-2-1) edge node [below] {$g$} (n-2-2)
+    			(n-2-2) edge node [below] {$f$} (n-2-3)
+    			(n-1-2) edge node [right] {$\Phi_B$} (n-2-2)
+    			(n-1-2) edge node [above] {$f_B$} (n-1-3)
+    			(n-1-3) edge node [right] {$\Phi_C$} (n-2-3);
+		\end{tikzpicture}\end{center}
+		\textit{Deshalb kommutiert auch:} \\
+		\begin{center}\begin{tikzpicture}
+  				\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  				{K^r & K^m \\ U & W \\};
+  				\path[-stealth]
+    			(m-1-1) edge node [left] {$\Phi_D$} (m-2-1)
+            			edge node [above] {$f_B \circ f_A$} (m-1-2)
+    			(m-2-1) edge node [below] {$f\circ g$} (m-2-2)
+    			(m-1-2) edge node [right] {$\Phi_C$} (m-2-2);
+		\end{tikzpicture}\end{center}
+		\textit{Die Eindeutigkeit impliziert deshalb, dass $F_{m\times n}(M_C^B(f))\circ F_{r\times m}(M_B^D(g))=F_{r\times n}
+		(M_C^D(f\circ g))$. Da $F_{r\times n}$ injektiv ist, folgt $M_C^B(f)\cdot M_B^D(g)=M_C^D(f\circ g)$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $f\in Hom_K(V,W)$. Genau dann ist $f$ ein Isomorphismus, wenn $m=n$ und $M_C^B(f)=GL_n(K)$. In 
+			diesem Fall ist $M_B^C(f^{-1})=M_C^B(f)^{-1}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $A=M_C^B(f)$. $f$ ist genau dann ein Isomorphismus, wenn $f_A$ einer ist, und in diesem Fall ist $m=n$. Zudem ist 
+		$f_A$ genau dann ein Isomorphimus, wenn $A\in GL_n(K)$. Ist $f$ ein Isomorphismus, so ist $M_B^C(f^{-1})\cdot 
+		M_C^B(f)=M_C^C(f^{-1}\circ f)=1_n$, also $M_B^C(f^{-1})=M_C^B(f)^{-1}$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Die Abbildung $M_B:=M_B^B$: $End_K(V)\to Mat_n(K)$ ist ein Ringisomorphismus, der $Aut_K(V)$ auf 
+			$GL_n(K)$ abbildet.
+		\end{framed}
+		\textit{Beweis: \\
+		Die vorherigen Korollare und das Lemma.} \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Transformationsmatrix:} Sind $B$ und $B'$ Basen von $V$, so nennt man $T_{B'}^B:=M_{B'}^B(id_V)\in 
+			GL_n(K)$ die Transformationsmatrix des Basiswechsels von $B$ nach $B'$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Nach dem letzen Satz ist $T_{B'}^B$, also die Matrix $A$, die $f_A=\Phi_B^{-1}\circ \Phi_B$ 
+		erfüllt. Ist $x=\Phi_B^{-1}(v)\in K^n$ der Koordinatenvektor von $v$ bezüglich $B$, so ist $T_{B'}^B\cdot 
+		x=f_{T_{B'}^B}(x)=(\Phi_{B'}\circ \Phi_B)(\Phi_B^{-1}(v))=\Phi_{B'}^{-1}(v)$ der Koordinatenvektor von $v$ 
+		bezüglich $B'$. \\
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Satz (Transformationsformel):} Seien $B,B'$ Basen von $V$ und $C,C'$ Basen von $W$. Für $f\in Hom_K(V,W)$ ist 
+			$M_{C'}^B(f)=T_{C'}^C\cdot M_C^B(f)\cdot (T_{B'}^B)^{-1}$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		$f=id_W\circ f \circ id_V$ mit den Basen $B',B,C,C'$ und erhält $M_{C'}^{B'}(f)=M_{C'}^C(id_W)\cdot M_C^B(f)\cdot
+		M_B^{B'}(id_V)=T_{C'}^C\cdot M_C^B(f)\cdot T_B^{B'}$ und $T_B^{B'}=M_B^{B'}(id_V)=M_B^{B'}(id_V^{-1})=M_{B'}^B(id_V)^
+		{-1}=(T_{B'}^B)^{-1}$.} \\
+		
+		\begin{framed}
+			\textbf{Korollar:} Sind $B$ und $B'$ Basen von $V$ und $f\in End_K(V)$, so gilt $M_{B'}(f)=T_{B'}^B \cdot M_B(f)
+			\cdot (T_{B'}^B)^{-1}$.
+		\end{framed}
+		
+	\subsection{Quotientenräume}
+		Seien $V,W$ $K$-VR und $U\subset V$ ein UVR.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition affiner Unterraum:} Ein affiner Unterrraum von $V$ ist eine Teilmenge der Form $x+U:=\{x+u\mid u \in U\}\subset 
+			V$, wobei $U\subset V$ ein beliebiger UVR von $V$ ist und $x\in V$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $x,x'\in V$ sind äquivalent:
+			\begin{compactitem}
+				\item $x+U=x'+U$
+				\item $x'\in x+U$
+				\item $x'-x\in U$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1\Rightarrow 2$: $x'=x'+0\in x'+U=x+U$ \\
+		$2\Rightarrow 3$: $x'\in x+U \Rightarrow x'=x+u$ mit $u\in U\Rightarrow x'-x=u\in U$ \\
+		$3\Rightarrow 1$: Sei $u_0:=x'-x\in U$. Für $u\in U$ ist \\
+		$x+u=x'-u_0+u\in x'+U$, also $x'+U\subset x+U$, \\
+		$x'+u=x+u_0+u\in x+U$, also $x+U\subset x'+U$.}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $f\in Hom_K(V,W)$ und $U=Ker(f)$. Für $y\in f(V)$ ist die Faser $f^{-1}(y)=f^{-1}(\{y\})$ von $f$ der affine 
+			Unterraum $x_0+U$ für ein beliebiges $x_0\in f^{-1}(y)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$f^{-1}(y)=\{x\in V \mid f(x)=f(x_0)\}=\{x\in V \mid f(x-x_0)=0\} = \{x\in V \mid x-x_0\in U\}=x_0+U$} \\
+		$\newline$
+		
+		\textbf{Beispiel:} Sind $K=\mathbb R$, $V=\mathbb R^2$, $W=\mathbb R$ und $f(x,y)=x-2y$ so sind die Fasern von $f$ die Geraden $L\subset 
+		\mathbb R^2$ der Steigung $\frac 1 2$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $x_1,x'_1,x_2,x'_2\in V$ und $\lambda \in K$. Ist $x_1+U=x'_1+U$ und $x_2+U=x'_2+U$, so ist $(x_1+x_2)+U=
+			(x'_1+x'_2)+U$, und $\lambda x_1+U=\lambda x'_1+U$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $x_1+U=x'_1+U$, $x_2+U=x'_2+U\Rightarrow x'_1-x_1,x'_2-x_2\in U\Rightarrow (x'_1+x'_2)-(x_1+x_2)=(x'_1-x_1)-(x'_2-x_2)\in U
+			\Rightarrow (x_1+x_2)+U=(x'_1+x'_2)+U$
+			\item $x_1+U=x'_1+U\Rightarrow x'_1-x_1\in U\Rightarrow \lambda x'_1-\lambda x_1\in U\Rightarrow \lambda x'_1+U=\lambda x_1+U$
+		\end{compactitem}}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Quotientenraum:} Der Quotientenraum von $V$ modulo $U$ ist die Menge der affinen Unterräume \qraum{$V$}{$U$} 
+			$:=\{x+U\mid x\in V\}$ mit der Addition $(x_1+U)+(x_2+U)=(x_1+x_2)+U$ und der Multiplikation $\lambda(x+U)=\lambda x+U$. Dies ist 
+			wohldefiniert nach dem letzten Lemma. \\
+			Wir definieren die Abbildung $\pi_U:V\to$ \qraum{$V$}{$U$} durch $\pi_U(x)=x+U$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Der Quotientenraum \qraum{$V$}{$U$} ist ein $K$-VR und $\pi_U$ ein Epimorphismus mit Kern $U$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $($\qraum{$V$}{$U$}$,+)$ ist eine abelsche Gruppe: \\
+			Assoziativität un Kommutativität: überträgt sich von $(V,+)$ \\
+			neutrales Element: $0+U=U$ \\
+			inverses Element: $-(x+U)=(-x)+U$
+			\item $($\qraum{$V$}{$U$}$,+)$ ist $K$-VR: (V2) überträgt sich von $(V,+,\cdot)$
+			\item $\pi_U$ surjektiv: nach Definition von \qraum{$V$}{$U$}
+			\item $\pi_U$ linear: nach Definition von $+$ und $\cdot$ auf \qraum{$V$}{$U$}
+			\item $Ker(\pi_U)=\{x\in V \mid x+U=U\}=\{x\in V \mid x\in 0+U\}=U$
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Die UVR sind also genau die Kerne linearer Abbildungen! Ist $f:V\to W$ linear, so ist $Ker(f)\subset V$ ein UVR. 
+		Ist $U\subset V$ ein UVR, so ist $\pi_U:V\to$\qraum{$V$}{$U$} linear mit Kern $U$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Homomorphiesatz):} Sei $f\in Hom_K(V,W)$ mit $U\subset Ker(f)$. Dann gibt es genau eine lineare Abbildung $\tilde f:$
+			\qraum{$V$}{$U$}$\to W$ mit $f=\tilde f \circ \pi_U$, d.h. es kommutiert: \\
+			\begin{center}
+			\begin{tikzpicture}
+   				\node (V) at (0,0) {$V$};
+    			\node (W) at (3,0) {$W$};
+    			\node (R) at (1.5,-1.5) {\qraum{$V$}{$U$}};
+    			\draw[->, above] (V) to node {$f$} (W);
+    			\draw[->, below] (V)  to node {$\pi_U$} (R);
+    			\draw[->, right, dashed] (W)  to node {$\tilde f$} (R);
+			\end{tikzpicture}
+			\end{center}
+			Diese erfüllt $Ker(\tilde f)=$\qraum{$Ker(f)$}{U}$=\{x+U\mid x\in Ker(f)\}\subset$\qraum{$V$}{$U$}.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Ist $f=\tilde f\circ \pi_U$, so gilt $\tilde f(x+U)=\tilde f(\pi_U)=f(x)\; (*)$, somit ist $\tilde f$ dann eindeutig bestimmt. Umgekehrt 
+		wird durch $(*)$ eine wohldefinierte Abbildung $\tilde f$ erklärt: Sind $x,x'\in V$ mit $x+U=x'+U$, so ist $x-x'\in U\subset Ker(f)$ und 
+		deshalb $f(x)=f(x')$. \\
+		Linearität: Für $x,y\in V$ und $\lambda\in K$ ist $\tilde f(\lambda(x+U)+\mu(y+U))=\tilde f(\lambda\pi_U(x)+\mu\pi_U(y))=\lambda\tilde f
+		(x+U)+\mu\tilde f(y+U)$. \\
+		Kern: $\tilde f(x+U)=0\iff f(x)=0 \iff x\in Ker(f)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $f\in Hom_K(V,W)$ ist $Image(f)\cong $\qraum{$V$}{$Ker(f)$}. Insbesondere gilt: Ist $f$ ein Epimorphismus, so 
+			ist $W\cong $\qraum{$V$}{$Ker(f)$}.
+		\end{framed}
+		\textit{Beweis: \\
+		Betrachte $\tilde f:$\qraum{$V$}{$Ker(f)$}$\to W$. Nach dem Homomorphiesatz ist $Ker(\tilde f)=$\qraum{$Ker(f)$}{$Ker(f)$}$=\{Ker(f)\}$, 
+		also $\tilde f$ injektiv. Nach Definition ist $\tilde f($\qraum{$V$}{$Ker(f)$}$)=f(V)=Image(f)$. Somit ist $\tilde f:$\qraum{$V$}
+		{$Ker(f)$}$\to Image(f)$ ein Isomorphismus.}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $U,U'$ UVR von $V$. Genau dann ist $V=U\oplus U'$, wenn $\pi_U|_{U'}: U'\to$\qraum{$V$}{$U$} ein Isomorphismus 
+			ist.
+		\end{framed}
+		\textit{Beweis: \\
+		$\pi_U|_{U'}$ injektiv $\iff Ker(\pi_U|_{U'})=\{0\}\iff Ker(\pi_U)\cap U'=\{0\}\iff U\cap U'=\{0\}$ \\
+		$\pi_U|_{U'}$ surjektiv $\iff \forall x\in V \exists u'\in U: \pi_U(u')=\pi_U(x)\iff u'-x\in Ker(\pi_U)=U\iff x=u+u'\iff V=U+U'$}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$, so ist $dim_K($\qraum{$V$}{$U$}$)=dim_K(V)-dim_K(U)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es exisitert ein lineares Komplement $U'$ zu $U$ in $V$ (d.h. $V=U\oplus U'$) und $dim_K(U')=dim_K(V)-dim_K(U)$. Es gilt \qraum{$V$}
+		{$U$}=$U'$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$ und $f\in Hom_K(V,W)$, so ist $dim_K(V)=dim_K(Ker(f))+dim_K(Image(f))$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und letztes Korollar}
+		
+		\begin{framed}
+			\textbf{Korollar:} Ist $dim_K(V)<\infty$ und $f\in End_K(V)$, so sind äquivalent:
+			\begin{compactitem}
+				\item $f\in Aut_K(V)$
+				\item $f$ ist injektiv
+				\item $f$ ist surjektiv
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item $2\iff dim_K(Ker(f))=0$
+			\item $3\iff dim_K(Image(f))=dim_K(V)$
+		\end{compactitem}}
+		$\newline$
+		
+		\textbf{Bemerkung:} Analog zu dem Quotientenräumen kann man definieren:
+		\begin{compactitem}
+			\item Quotientengruppen \qraum{$G$}{$N$}, wobei $N$ Normalteiler von $G$ ist
+			\item Quotientenringe \qraum{$R$}{$I$}, wobei $I$ ein Ideal von $R$ ist (z.B. \qraum{$\mathbb Z$}{$n\mathbb Z$})
+		\end{compactitem}
+		Diese werden in der Vorlesung \textit{Algebra und Zahlentheorie} behandelt.
+		
+	\subsection{Rang}
+		Seien $V,W$ zwei endlichdimensionale $K$-VR und $f\in Hom_K(V,W)$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Rang:} Der Rang von $f$ ist $rk(f)=dim_K(Image(f))$.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Es ist $rk(f)=dim_K(V)-dim_K(Ker(f))$. Also ist $f$ genau dann injektiv, wenn $rk(f)=dim_K(V)$. Auch sehen wir, 
+		dass $rk(f)\le min\{dim_K(V),dim_K(W)\}$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $U$ ein weiterer endlichdimensionaler $K$-VR und $g\in Hom_K(U,V)$.
+			\begin{compactitem}
+				\item Ist $g$ surjektiv, dann ist $rk(f\circ g)=rk(f)$.
+				\item Ist $f$ injektiv, dann ist $rk(f\circ g)=rk(g)$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		Dies folgt sofort aus $Image(f\circ g)=f(Image(g))$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $r\in \mathbb N_0$. Genau dann ist $rk(f)=r$, wenn es $B$ von $V$ und $C$ vo $W$ gibt, für die $M_C^B(f)=E_r=
+			\sum\limits_{i=1}^r E_{ii}$. \\ $E_r=$
+			$\begin{pmatrix}
+				1 & \quad & \quad & \quad & \quad & \quad\\
+				\quad & \ddots & \quad & \quad & \quad & \quad\\
+				\quad & \quad & 1 & \quad & \quad & \quad\\
+				\quad & \quad & \quad & 0 & \quad & \quad\\
+				\quad & \quad & \quad & \quad & \ddots & \quad\\
+				\quad & \quad & \quad & \quad & \quad & 0\\
+			\end{pmatrix}$
+		\end{framed}
+		\textit{Beweis: \\
+		Rückrichtung: Ist $M_C^B(f)=E_r$ und $C=(y_1,...,y_n)$, so ist $Image(f)=span_K(y_1,...,y_r)$, also $rk(f)=r$. \\
+		Hinrichtung: Sei $r=rk(f)$. Setze $U=KJer(f)$ und $W=Image(f)$. Wähle Basis $(y_1,...,y_r)$ und ergänze diese zu einer Basis $C$ von 
+		$W$. Wähle für $i=1,...,r$ ein $x_i\in f^{-1}(y_i)$. Dann ist $(x_1,...,x_r)$ linear unabhängig und mit $U'=span_K(x_1,...,x_r)$ ist
+		$f|_{U'}:U'\to W_0$ ein Isomorphismus. Insbesondere ist $U\cap U'=\{0\}$ und es folgt $V=U\oplus U'$. Ist also $(x_{r+1},...,x_n)$ 
+		eine Basis von $U$, so ist $B=(x_1,...,x_n)$ eine Basis von $V$. Diese Basis erfüllt $M_C^B(f)=E_r$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Rang einer Matrix:} Der Rang einer Matrix $A\in Mat_{m\times n}(K)$ ist $rk(A)=rk(f_A)$, wobei $f_A:K^n\to K^m$ 
+			die durch $A$ bschriebene lineare Abbildung ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Sei $A=(a_{ij})\in Mat_{m\times n}(K)$. Man fasst die Spalten $a_j=(a_{1j},...,a_{mj})^t$ als Elemente des $K^m$ auf 
+		und definiert den Spaltenraum $SR(A)=span_K(a_1,...,a_n)\subset K^m$. Entsprechend definiert man den Zeilenraum $ZR(A)=span_K(
+		\tilde a_1^t,..,\tilde a_m^t)\subset K^n$. Es ist $Image(f_A)=SR(A)$ und folglich $rk(A)=dim_K(SR(A))$. Außerdem ist $SR(A^t)=ZR(A)$ 
+		und deshalb $rk(A^t)=dim_K(ZR(A))$. Man nennt $rk(A)$ deshalb auch den Spaltenrang von $A$ und $rk(A^t)$ den Zeilenrang von $A$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Ist $A\in Mat_{m\times n}(K)$, $S\in GL_m(K)$, $T\in Gl_n(K)$, so ist $rk(SAT)=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$rk(SAT)=rk(f_{SAT})=rk(f_S\circ f_A\circ f_T)=rk(f_A)=rk(A)$, da $f_S$ und $f_T$ bijektiv sind.}
+		
+		\begin{framed}
+			\textbf{Satz:} Für jedes $A\in Mat_{m\times n}(K)$ gibt es $S\in Gl_m(K)$ und $T\in GL_n(K)$ mit $SAT=E_r$, wobei $r=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es gibt Basen $B$ von $K^n$ und $C$ von $K^m$ mit $M_C^B(f_A)=E_r$. Mit den Standardbasen $E_n$ bzw. $E_m$ gilt: $M_C^B(f_A)=T_C^{E_m}
+		\cdot M_{E_m}^{E_n}(f_A)\cdot (T_B^{E_n})^{-1}=SAT$ mit $S=T_C^{E_m}\in GL_m(K)$ und $T=(T_B^{E_n})^{-1}\in GL_n(K)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Seien $A,B\in Mat_{m\times n}(K)$. Genau dann gibt es $S\in GL_m(K)$ und $T\in GL_n(K)$ mit $B=SAT$, wenn 
+			$rk(A)=rk(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: letztes Lemma \\
+		Rückrichtung: $r=rk(A)=rk(B)\Rightarrow$ es gibt $S_1,S_2\in GL_m(K)$ und $T_1,T_2\in Gl_n(K)$ mit $S_1AT_1=E_r=S_2BT_2 \Rightarrow 
+		B=S_2^{-1}\cdot SAT_1\cdot T_2^{-1}$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $A\in Mat_{m\times n}(K)$ ist $rk(A)=rk(A^t)$, anders gesagt: $dim_K(SR(A))=dim_K(ZR(A))$.
+		\end{framed}
+		\textit{Beweis: \\
+		Mit dem letzten Satz ergibt sich: $SAT=E_r$ mit $r=rk(A)$, $S\in Gl_m(K)$ und $T\in Gl_n(K)$. Aus $E_r^t=(SAT)^t=T^tA^tS^t$, folgt, 
+		dass $rk(A^t)=rk(E_r^t)=rk(A)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $A\in Mat_n(K)$ sind äquivalent:
+			\begin{compactitem}
+				\item $A\in GL_n(K)$, d.h. es gibt $S\in GL_n(K)$ mit $SA=AS=1_n$
+				\item $rk(A)=n$
+				\item Die Spalten von $A$ sind linear unabhängig.
+				\item Die Zeilen von $A$ sind linear unabhängig.
+				\item Es gibt $S\in GL_n(K)$ mit $SA=1_n$.
+				\item Es gibt $T\in GL_n(K)$ mit $AT=1_n$.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		$1\iff 2$: $A\in GL_n(K)\iff f_A\in Aut_K(K^n)\iff f_A$ surjektiv $\iff rk(f_A)=n\iff rk(A)=n$ \\
+		$4\iff 2 \iff 3$ \\
+		$1\Rightarrow 5,6 \Rightarrow 2$}
+		
+	\subsection{Lineare Gleichungssysteme}
+		Sei $A\in Mat_{m\times n}(K)$ und $b\in K^m$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Lineares Gleichungssystem:} Unter einem Linearen Gleichungssystem verstehen wir eine Gleichung der Form $Ax=b$. 
+			Diese heißt homogen, wenn $b=0$, sonst inhomogen und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein Lösungsraum.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Ist $A=(a_{ij})$, $b=(b_1,...,b_m)^t$, so schreibt man das Lineare Gleichungssystem $Ax=b$ auch
+		\begin{center}$\begin{vmatrix}
+			a_{11}x_1 + ... + a_{1n}x_n & = & b_1\\
+			\vdots & \vdots & \vdots\\
+			a_{m1}x_1 + ... + a_{mn}x_n & = & b_m\\
+		\end{vmatrix}$\end{center}
+		$\newline$
+		
+		\textbf{Bemerkung:} Das homogene System $Ax=0$ hat als Lösungsraum den UVR $L(A,0)=Ker(f_A)$ der Dimension $dim_K(L(A,0))=n-rk(A)$. Das 
+		inhomogene System hat entweder $L(A,b)=\emptyset$ oder der Lösungsraum ist der affine Unterraum $L(A,b)=f^{-1}(b)=x_0+L(A,0)$, wobei 
+		$x_0\in L(A,b)$ beliebig. Man erhält so alle Lösungen des inhomogenen Systems, wenn man eine Lösung und die Lösungen des homogenen 
+		Systems kennt.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Zeilenstufenform:} Die Matrix $A=(a_{ij})$ hat Zeilenstufenform, wenn es ganze Zahlen $0\le r \le m$ und $1\le 
+			k_1<...<k_r\le n$ gibt mit:
+			\begin{compactitem}
+				\item für $1\le i \le r$ und $1\le j < k_i$ ist $a_{ij}=0$
+				\item für $1\le i \le r$ ist $a_{ik_{i}}\neq 0$ (sogenannte Pivotelemente)
+				\item für $r<i\le m$ und $1\le j\le n$ ist $a_{ij}=0$
+			\end{compactitem}
+			\begin{center}
+				$\begin{pmatrix}
+					0 & ... & 0 & a_{1k_{1}} & * & ... & ... & *\\
+					0 & ... & ... & 0 & a_{2k_{2}} & * & ... & *\\
+					\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+					0 & ... & ... & ... & ... & ... & ... & a_{rk_{r}}\\
+					0 & ... & ... & ... & ... & ... & ... & 0\\
+					\vdots & \; & \; & \; & \; & \; & \; & \vdots\\
+					0 & ... & ... & ... & ... & ... & ... & 0\\
+				\end{pmatrix}$
+			\end{center}
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Sei $A$ in Zeilenstufenform. Dann ist $rk(A)=r$.
+		\end{framed}
+		\textit{Beweis: \\
+		Wegen $rk(A)=rk(A^t)=dim_K(ZR)$ genügt es zu zeigen, dass die ersten $r$ Zeilen $a_1,...,a_r$ linear unabhängig sind. Ist $\sum
+		\limits_{i=1}^r \lambda a_i=0$, so ist insbesondere $0=\sum\limits_{i=1}^r \lambda_i a_{ik_{i}}=\lambda_1 a_{1k_{1}}$, also $\lambda_1
+		=0$, und dann immer so weiter.}
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $A$ in Zeilenstufenform.
+			\begin{compactitem}
+				\item Ist $b_i\neq 0$ für ein $r<i\le m$, so ist $L(A,b)=\emptyset$.
+				\item Ist $b_i=0$ für alle $r<i\le m$, so erhält man alle $x\in L(A,b)$, indem man erst $x_j\in K$ für $j\in \{1,..,n\}
+				\backslash \{k_1,...,k_r\}$ beliebig wählt und dann für $i=r,r-1,...,1$ rekursiv $x_{k_{i}}=a_{1k_{i}}^{-1}\cdot (b_i-\sum
+				\limits_{j=k_i+1}^n a_{ij}\cdot x_j)\quad (*)$ setzt.
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis:
+		\begin{compactitem}
+			\item Klar.
+			\item Sicher erhält man auf diese Weise Lösungen $x\in L(A,b)$. Umgekehrt muss jede solche Lösung $(*)$ erfüllen, man erhält auf 
+			diese Weise also alle.
+		\end{compactitem}}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Elementarmatrizen:} Für $i,j\in \{1,...,m\}$, $\lambda \in K^{\times}$ und $\mu\in K$ definieren wir 
+			$m\times m$-Matrizen:
+			\begin{compactitem}
+				\item $S_i(\lambda):=1_m + (\lambda-1)E_{ii}$
+				\item $Q_{ij}(\mu):= 1_m + \mu E_{ij}$
+				\item $P_{ij}:= 1_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Multiplikation einer dieser Matrizen von links an die Matrix $A$ hat folgende Wirkung:
+		\begin{compactitem}
+			\item $S_i(\lambda)\cdot A$: Multiplikation der $i$-ten Zeile mit $\lambda$
+			\item $Q_{ij}(\mu)\cdot A$: Addition des $\mu$-fachen der $j$-ten Zeile zur $i$-ten Zeile
+			\item $P_{ij}$: Vertauschung von $i$-ter und $j$-ter Zeile
+		\end{compactitem}
+		Man spricht dann von sogenannten elementaren Zeilenumformungen der Matrix $A$ von Typ I, II oder III.
+		
+		\begin{framed}
+			\textbf{Lemma:} Es sind $S_i(\lambda),Q_{ij}(\mu),P_{ij}\in Gl_m(K)$. Dann ist $S_i(\lambda)^{-1}=S_i(\lambda^{-1}), Q_{ij}(\mu)
+			^{-1}=Q_{ij}(-\mu),P_{ij}^{-1}=P_{ij}$. Insbesondere gilt: Ist $E$ eine der Elementarmatrizen, so ist $ZR(EA)=ZR(A)$ und $L(EA,0)=
+			L(A,0)$. Weiterhin ist $rk(EA)=rk(A)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Inverse nachprüfen. Da $E\in Gl_m(K)$ sind $f_E,f_{E^t}\in Aut_K(K^m)$, also $ZR(EA)=SR((EA)^t)=Image(f_{A^tE^t})=Image(f_{A^t}\circ
+		f_{E^t})=Image(f_{A^t})=ZR(A)$ und $L(EA,0)=Ker(f_{EA})=Ker(f_E\circ f_A)=Ker(f_A)=L(A,0)$.}
+		$\newline$
+		
+		\textbf{Bemerkung:} Anders gesagt: Elementare Zeilenumformungen verändern den Lösungsraum eines homogenen linearen Gleichungssystems 
+		nicht.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Eliminierungsverfahren nach Gauß):} Zu jeder Matrix $A\in Mat_{m\times n}(K)$ gibt es $l\in \mathbb N_0$ und 
+			Elementarmatrizen $E_1,...,E_l$ vom Typ II und III für die $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform ist. 
+		\end{mdframed}
+		\textit{Beweis: \\
+		Seien $a_1,...,a_n$ die Spalten von $A$. \\
+		Ist $A=0$ so ist nichts zu tun. \\
+		Sei nun $A\neq 0$ und sei $k_1$ minimal mit $a_{k_1}\neq 0$. Es gibt also ein $i$ mit $a_{ik_1}\neq 0$. Durch Vertauschen der ersten 
+		und der $i$-ten Zeile erreichen wir, dass $a_{1k_1}=0$, d.h. wir multiplizieren $A$ mit $E_1=P_{1i}$. Nun addieren wir für $i=2,..,m$ 
+		ein geeignetes Vielfaches der ersten Zeile zur $i$-ten Zeile, um $a_{ik_1}=0$, d.h. wir multiplizieren $A$ mit $E_i=Q_{i1}(\mu_i)$ für 
+		$\mu_i=\frac{a_{ik_1}}{a_{1k_1}}$. Nach diesen Umformungen haben wir eine Matrix der Form: \\
+		\begin{center}$\begin{pmatrix}
+			0 & ... & 0 & a_{1k_1} & * & ... & *\\
+			0 & ... & ... & 0 & \textcolor{red}{*} & \textcolor{red}{...} & \textcolor{red}{*}\\
+			\vdots & \vdots & \vdots & \vdots & \textcolor{red}{\vdots} & \textcolor{red}{\vdots} & \textcolor{red}{\vdots}\\
+			0 & ... & ... & 0 & \textcolor{red}{*} & \textcolor{red}{...} & \textcolor{red}{*}\\
+		\end{pmatrix}$\end{center}
+		und können nun mit dem \textcolor{red}{Rest der Matrix $A=:A'$} von vorne beginnen. Die nun folgenden Zeilenumformungen werden die 
+		erste Zeile und die ersten $k_1$ Spalten nicht mehr ändern, und weil $A'$ weniger Zeilen und Spalten als $A$ hat, bricht das Verfahren 
+		nach endlich vielen Schritten ab.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Zu jeder Matrix $A$ gibt es eine invertierbare Matrix $S\in GL_n(K)$ für die $SA$ in Zeilenstufenform ist.
+		\end{framed}
+		\textit{Beweis: \\
+		folgt direkt aus dem Eliminierungsverfahren mit $S=E_l\cdot ... \cdot E_1$}
+		$\newline$
+		
+		\textbf{Bemerkung:} Der Beweis für das Eliminierungsverfahren liefert ein Verfahren, die Elementarmatrizen $E_1,...,E_l$ zu finden. 
+		Damit erhält man ein Verfahren ein lineares Gleichungssystem zu lösen. Setzt man $S=E_l\cdot ... \cdot E_1$, $A'=SA$ und $b'=Sb$, so 
+		ist $L(A,b)=L(A',b')$: $Ax=b\Rightarrow SAx=Sb$ bzw. $A'x=b' \Rightarrow S^{-1}A'x=S^{-1}b'$. \\
+		Das Gleichungssystem kann dann gelöst werden. Praktisch führt man die elementaren Zeilenumformungen an $A$ parallel dazu auch an $b$ 
+		durch. \\
+		$\newline$
+		
+		\textbf{Bemerkung:} Es gibt von diesem Verfahren verschiedene Varianten und weitere Anwendungen: So kann man z.B. die Invertierbarkeit 
+		einer Matrix $A\in Mat_n(K)$ prüfen und ggf. das Inverse bestimmen: Ist $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform, so ist $A$ 
+		genau dann invertierbar, wenn alle Zeilen von Null verschieden sind. Ist dies der Fall, so ist $r=n$ und $k_i=i$ für alle $i$, 
+		und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=1_n$. Dann ist 
+		$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$. Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
+		auch an $1_n$ ausführt.
+		
+		\begin{framed}
+			\textbf{Korollar:} Jedes $A\in GL_m(K)$ ist ein Produkt von Elementarmatrizen.
+		\end{framed}
+		\textit{Beweis: \\
+		$A^{-1}=S'=E_s\cdot ... \cdot E_1 \Rightarrow A=(E_s\cdot ... \cdot E_1)^{-1}=E_1^{-1}\cdot ... \cdot E_s^{-1}$}
+		
+\section{Determinanten}
+	In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselement.
+	
+	\subsection{Das Vorzeichen einer Permutation}
+		\textbf{Bemerkung:} Wir erinnern uns an die symmetrische Gruppe $S_n$, die aus den Permutationen der Menge $X=\{1,..,n\}$ (also den 
+		bijektiven Abbildungen $X\to X$) mit der Kompostion als Verknüpfung. Es ist $|S_n|=n!$ und $S_2\cong \mathbb Z\backslash 2 \mathbb Z$, 
+		doch für $n\ge 3$ ist $S_n$ nicht abelsch. Wir schreiben $\sigma_1\sigma_2$ für $\sigma_1\circ \sigma_2$ und notieren $\sigma\in S_n$ 
+		auch als \\
+		\begin{center}$\sigma=\begin{pmatrix}
+			1 & 2 & ... & n\\
+			\sigma(1) & \sigma(2) & ... & \sigma(n)\\
+		\end{pmatrix}$.\end{center}
+		$\newline$
+		
+		\textbf{Beispiel:} Für $i,j\in \{1,...,n\}$ mit $i\neq j$ bezeichne $\tau_{ij}\in S_n$ die Transposition 
+		\begin{equation*}
+			\tau_{ij}(k)=
+			\begin{cases}
+				j\quad \text{falls }$k=i$ \\ i\quad \text{falls }$k=j$ \\ k\quad \text{sonst}
+			\end{cases}
+		\end{equation*} Offenbar gilt $\tau_{ij}^2=id$, also $\tau_{ij}^{-1}=\tau_{ij}=\tau_{ji}$.
+		
+		\begin{framed}
+			\textbf{Satz:} Für jedes $\sigma \i S_n$ gibt es ein $r\in \mathbb N_0$ und die Transpositionen $\tau_1,...,\tau_r\in S_n$ mit 
+			$\sigma=\tau_1\circ ... \circ \tau_r$.
+		\end{framed}
+		\textit{Beweis: \\
+		Sei $1\le k \le n$ maximal mit $\sigma(i)=i$ für $i\le k$. Induktion nach $n-k$. \\
+		Ist $n-k=0$, so ist $\sigma=id$ und wir sind fertig. \\
+		Andernfalls ist $l=k+1\le n$ und $\sigma(l)>l$. Für $\sigma'=\tau_{l,\sigma(l)}\circ \sigma$ ist $\sigma(l)=l$ und somit $\sigma'(i)=i$ 
+		für $1\le i \le k+1$. Nach Induktionshypothese gibt es Transpositionen $\tau_1,...,\tau_r$ mit $\sigma'=\tau_1\circ ...\circ \tau_r$. 
+		Es folgt $\sigma=\tau_{l,\sigma(l)}^{-1}\circ \sigma^{-1}=\tau_{l,\sigma(l)}\circ \tau_1\circ ... \circ \tau_r$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Fehlstand, Vorzeichen:} Sei $\sigma\in S_n$.
+			\begin{compactitem}
+				\item Ein Fehlstand von $\sigma$ ist ein Paar $(i,j)$ mit $1\le i<j\le n$ und $\sigma(i)>\sigma(j)$.
+				\item Das Vorzeichen (oder Sigmum) von $\sigma$ ist $sgn(\sigma)=(-1)^{f(\sigma)}\in \{-1,1\}$, wobei $f(\sigma)$ die 
+				Anzahl der Fehlstände von $\sigma$ ist.
+				\item Man nennt $\sigma$ gerade, wenn $sgn(\sigma)=1$, sonst ungerade.
+			\end{compactitem}
+		\end{mdframed}
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item Genau dann hat $\sigma$ keine Fehlstände, wenn $\sigma=id$. Insbesondere $sgn(id)=1$.
+			\item Die Permutation $\sigma=\begin{pmatrix}1 & 2 & 3\\2 & 3 & 1\\\end{pmatrix}$ hat die Fehlstände $(1,3)$ und $(2,3)$, somit 
+			$sgn(\sigma)=1$.
+			\item Die Transposition $\tau_{13}=\begin{pmatrix}1 & 2 & 3\\3 & 2 & 1\\\end{pmatrix}$ hat die Fehlstände $(1,2)$, $(2,3)$ und 
+			$(3,1)$, somit $sgn(\tau_{13})=-1$.
+			\item Eine Transposition $\tau_{ij}\in S_n$ ist ungerade: Ist $i<j$, so sind die Fehlstände $(i,i+1),...,(i,j)$ und $(j+1,j)...
+			(j-1,j)$, also $j-(i+1)+1+(j-1)-(i-1)+1=2(j-1)-1$ viele.
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Lemma:} Für $\sigma\in S_n$ ist $sgn(\sigma)=\prod\limits_{1\le i<j\le n} \frac{\sigma(j)-\sigma(i)}{j-i}\in \mathbb Q$.
+		\end{framed}
+		\textit{Beweis: \\
+		Durchläuft $(i,j)$ alle Paare $1\le i<j\le n$, so durchläuft $\{\sigma(i),\sigma(j)\}$ alle zweielementigen Teilmengen von $\{1,...,
+		n\}$. Das Produkt $\prod\limits_{i<j} \sigma(j)-\sigma(i)$ hat also bis auf das Vorzeichen die selben Faktoren wie das Produkt 
+		$\prod\limits_{i<j} j-i=\prod\limits_{i<j} |j-i|$ und $\prod\limits_{i<j} \sigma(j)-\sigma(i)=\prod\limits_{i<j,\sigma(i)<\sigma(j)} 
+		\sigma(j)-\sigma(i) \cdot \prod\limits_{i<j,\sigma(i)>\sigma(j)} \sigma(j)-\sigma(i)=(-1)^{f(\sigma)}\cdot \prod\limits_{i<j} 
+		|\sigma(j)-\sigma(i)|=sgn(\sigma)\cdot \prod\limits_{i<j} j-i$.}
+		
+		\begin{framed}
+			\textbf{Satz:} Die Abbildung $sgn: S_n \to \mathbb Z^{\times}=\mu_2$ ist ein Gruppenhomomorphismus.
+		\end{framed}
+		\textit{Beweis: Seien $\sigma,\tau\in S_n$. Dann ist\\
+		$sgn(\sigma\tau)=\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{j-i}=\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(
+		\tau(i))}{\tau(j)-\tau(i)}\cdot \prod\limits_{i<j} \frac{\tau(j)-\tau(i)}{j-i}$. Da mit $\{i,j\}$ auch $\{\tau(i),\tau(j)\}$ alle 
+		zweielementigen Teilmengen von $\{1,...,n\}$ und $\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\frac{\sigma(\tau(i))-
+		\sigma(\tau(j))}{\tau(i)-\tau(j)}$ ist $\prod\limits_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\prod\limits_
+		{i<j} \frac{\sigma(j)-\sigma(i)}{j-i}=sgn(\sigma)$ und $\prod\limits_{i<j} \frac{\tau(j)-\tau(i)}{j-i}=sng(\tau)$. \\
+		Somit ist $sgn(\sigma\tau)=sgn(\sigma)\cdot sgn(\tau)$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $\sigma\in S_n$ ist $sgn(\sigma^{-1})=sgn(\sigma)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$sgn(\sigma^{-1})=sgn(\sigma)^{-1}=sgn(\sigma)$}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $\sigma\in S_n$. Sind $\tau_1,...,\tau_r$ Transpositionen mit $\sigma=\tau_1\circ ... \circ \tau_r$, so ist 
+			$sgn(\sigma)=(-1)^r$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und letztes Beispiel}
+		
+		\begin{framed}
+			\textbf{Korollar:} Die geraden Permutationen $A_n=\{\sigma \in S_n \mid sgn(\sigma)=1\}$ bilden einen Normateiler von $S_n$, 
+			genannt die alternierende Gruppe. Ist $\tau\in S_n$ mit $sgn(\tau)=-1$, so gilt für $A_n\tau=\{\sigma\tau \mid \sigma\in A_n\}$: 
+			$A_n \cup A_n\tau = S_n$ und $A_n \cap A_n\tau=\emptyset$.
+		\end{framed}
+		\textit{Beweis: \\
+		Es ist $A_n=Ker(sgn)$ und damit ist dieser auch ein Normalteiler. Ist $\sigma\in S_n\backslash A_n$, so ist $sgn(\sigma\tau^{-1})=
+		sgn(\sigma)\cdot sgn(\tau)^{-1}=(-1)(-1)^{-1}=1$, also $\sigma=\sigma\tau^{-1}\in A_n\tau$, somit $A_n\cup A_n\tau=S_n$. Ist 
+		$\sigma\in A_n$, so ist $sgn(\sigma\tau)=-1$, also $A_n\cap A_n\tau=\emptyset$.}
+		
+	\subsection{Die Determinante einer Matrix}
+		\textbf{Bemerkung:} Wir werden nun auch Matrizen mit Keoffizienten in Ring $R$ anstatt $K$ betrachten. Mit der gewohnten Addition und 
+		Multiplikation bilden die $n\times n$-Matrizen einen Ring $Mat_n(R)$, und wir definieren wieder $GL_n(R)=Mat_n(R)^{\times}$.
+		$\newline$
+		
+		\textbf{Bemerkung:} Seien $a_1,...,a_n\in R^m$ Spaltenvektoren, so bezeichnen wir mit $A=(a_1,...,a_n)\in Mat_{m\times n}(R)$ die 
+		Matrix mit den Spalten $a_1,...,a_n$. Sind $\tilde{a_1},...,\tilde{a_m}\in R^n$ Zeilenvektoren, so bezeichnen wir mit $\tilde A=(
+		\tilde{a_1},...,\tilde{a_m})\in Mat_{m\times n}(R)$ die Matrix mit den Zeilen $\tilde{a_1},...,\tilde{a_m}$.
+		$\newline$
+		
+		\textbf{Bemerkung:} Wir hatten bereits definiert: $det(A)=ad-bc$ mit $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in Mat_2(K)$ und hatten 
+		festgestellt: $det(A)\neq 0 \iff A\in GL_2(K)$. Interpreation im $K=\mathbb R$:\\
+		\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
+		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+		\definecolor{qqqqff}{rgb}{0,0,1}
+		\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+		\begin{center}\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, scale=0.6]
+			\clip(-10.24,-7.15) rectangle (10.24,7.15);
+			\fill[line width=1pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-7.8,-4.49) -- (-4.66,2.77) -- (1.02,-3.37) -- cycle;
+			\draw [shift={(-7.8,-4.49)},line width=1pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (0:5.6) arc (0:7.236922025968005:5.6) -- cycle;
+			\draw [shift={(-7.8,-4.49)},line width=1pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.45] (0,0) -- (0:3.6) arc (0:66.61118515369776:3.6) -- cycle;
+			\draw [line width=1pt] (-7.8,-6.15) -- (-7.8,5.15);
+			\draw [line width=1pt,domain=-9.24:7.24] plot(\x,{(-46.8756-0*\x)/10.44});
+			\draw [-latex,line width=1pt] (-7.8,-4.49) -- (-4.66,2.77);
+			\draw [-latex,line width=1pt] (-7.8,-4.49) -- (1.02,-3.37);
+			\draw [-latex,line width=1pt] (1.02,-3.37) -- (4.16,3.89);
+			\draw [-latex,line width=1pt] (-4.66,2.77) -- (4.16,3.89);
+			\draw [line width=1pt,color=zzttqq] (-7.8,-4.49)-- (-4.66,2.77);
+			\draw [line width=1pt,color=zzttqq] (-4.66,2.77)-- (1.02,-3.37);
+			\draw [line width=1pt,color=zzttqq] (1.02,-3.37)-- (-7.8,-4.49);
+			\draw [line width=1pt,color=qqqqff] (-7.8,-4.49)-- (1.02,-3.37);
+			\draw [line width=1pt,color=qqqqff] (-4.66,2.77)-- (-3.5966674931812537,-3.9562434911976196);
+			\begin{scriptsize}
+				\draw[color=ududff] (-3.78,3.6) node {$x_2 = (c,a)$};
+				\draw[color=ududff] (2.5,-3.14) node {$x_1 = (a,b)$};
+				\draw[color=ududff] (5.2,4.32) node {$x_1 + x_2$};
+				\draw[color=zzttqq] (-3.42,-1.46) node {$\Delta$};
+				\draw[color=qqqqff] (-3.28,-4.2) node {$g_{\Delta}$};
+				\draw[color=qqqqff] (-3.38,-0.4) node {$h_{\Delta}$};
+				\draw[color=qqwuqq] (-3,-4.82) node {$\alpha_1$};
+				\draw[color=qqwuqq] (-4.74,-1.84) node {$\alpha_2$};
+			\end{scriptsize}
+		\end{tikzpicture}\end{center}
+		Parallelogramm hat die Fläche $|det A|$. Polarkoordianten: $x_i=\lambda_i(cos a_i, sin a_i)$. Ohne Einschränkung: $0\le a_1 \le a_2
+		\le \pi$
+		\begin{align}
+			F_{P} &= 2\cdot F_{\Delta} = 2\cdot \frac 1 2 \cdot g_{\Delta} \cdot h_{\Delta} \notag \\
+			g_{\Delta} &= \lambda_1 \notag \\
+			h_{\Delta} &= \lambda_2 \cdot sin(a_2-a_1) \notag \\
+			F_{P} &= \lambda_1\lambda_2(cos a_1 sin a_2 - sin a_1 cos a_2) = det(\begin{pmatrix}\lambda_1 cos a_1 & 
+			\lambda_1 sin a_1 \\ \lambda_2 cos a_2 & \lambda_2 sin a_2 \end{pmatrix}) \notag \\
+			&= det A \notag
+		\end{align}
+		Insbesondere erfüllt $det$ die folgenden Eigenschaften: 
+		\begin{compactitem}
+			\item Für $\lambda\in R$ ist $det(\lambda x_1,x_2)=det(x_1,\lambda x_2)=\lambda\cdot det(x_1,x_2)$
+			\item Für $x_i=x'_i+x''_i$ ist $det(x_1,x_2)=det(x'_1,x_2) + det(x''_1,x_2)$
+			\item Ist $x_1=x_2$, so ist $det A=0$
+			\item $det(1_2)=1$
+		\end{compactitem}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Determinantenabbildung:} Eine Abbildung $\delta:Mat_n(R)\to R$ heißt Determinantenabbildung, wenn gilt: \\
+			(D1): $\delta$ ist linear in jeder Zeile: Sind $a_1,...,a_n$ die Zeilen von $A$ und ist $i\in \{1,...,n\}$ und $a_i=\lambda'a'_i + 
+			\lambda''a''_i$ mit $\lambda',\lambda''\in R$ und den Zeilenvektoren $a'_i,a''_i$, so ist $\delta(A)=\lambda'\cdot \delta(a_1,...,
+			a'_i,...,a_n) + \lambda''\cdot det(a_1,...,a''_i,...,a_n)$. \\
+			(D2): $\delta$ ist alternierend: Sind $a_1,...,a_n$ die Zeilen von $A$ und $i,j\in \{1,...,n\}$, $i\neq j$ mit $a_i=a_j$, so ist 
+			$\delta(A)=0$. \\
+			(D3): $\delta$ ist normiert: $\delta(1_n)=1$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Sei $\delta:Mat_n(K)\to K$ eine Determinantenabbildung. Ist $A\in Mat_n(K)$ nicht invertierbar, so sind die Zeilen 
+		$a_1,...,a_n$ von $A$ linear abhängig, es gibt also ein $i$ mit $a_i=\sum\limits_{j\neq i} \lambda_j\cdot a_j$. Es folgt $\delta(A)=
+		\delta(a_1,...,a_n)=\sum\limits_{j\neq i} \lambda_j\cdot \delta(a_1,...,a_j,...,a_n)$ mit $a_i=a_j$ mit D2: $\sum\limits_{j\neq i} 
+		\lambda_j\cdot 0=0=\delta(A)$.
+		
+		\begin{framed}
+			\textbf{Lemma:} Erfüllt $\delta:Mat_n(R) \to R$ die Axiome D1 und D2, so gilt für jedes $\sigma\in S_n$ und die Zeilenvektoren 
+			$a_1,...,a_n$: $\delta(a_{\sigma(1)},...,a_{\sigma(n)})=sgn(\sigma)\cdot \delta(a_1,...,a_n)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen. \\
+		$0=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n)=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
+		...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n}=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)})=0$. Mit $sgn(\sigma)=
+		sgn(\tau_{ij})=-1$ folgt die Behauptung.}
+		
+		\begin{framed}
+			\textbf{Lemma:} Erfüllt $\delta:Mat_n(R)\to R$ die Axiome D1 und D2, so gilt für $A=(a_{ij})\in Mat_n(R)$: $\delta(A)=\delta(1_n)
+			\cdot \sum\limits_{\sigma\in S_n} \left( \prod\limits_{i=1}^n a_{i,\sigma(i)} \right)$.
+		\end{framed}
+		\textit{Beweis: \\
+		Schreibe $a_i=(a_{j_1},...,a_{in})=\sum\limits_{j=1}^n a_{ij}\cdot e_j$. Wiederholtes Anwenden von D1 gibt $\delta(A)=\delta(
+		a_1,...,a_n)=\sum\limits_{j_1=1}^n a_{1j_1}\cdot \delta(e_{j_1},a_2,...,a_n)=\sum\limits_{j_1=1}^n ... \sum\limits_{j_n=1}^n \delta(
+		e_{j_1},...,e_{j_n})\cdot \prod\limits_{i=1}^n a_{ij_i}$. Wegen D2 ist $\delta(e_{j_1},...,e_{j_n})=0$ falls $j_i=j_{i'}$ für ein $i\neq i'$. 
+		Andernfalls ist $\sigma(i)=j_i$ einer Permutation von $\{1,...,n\}$ und $\delta(e_{j_1},...,e_{j_n})=\delta(e_{\sigma(1)},...,e_{\sigma(n)})=
+		sgn(\sigma)\cdot \delta(e_1,...,e_n)=sgn(\sigma)\cdot \delta(1_n)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem:} Es gibt genau eine Determinantenabbildung $\delta:Mat_n(R)\to R$ und diese ist gegeben durch die 
+			Leibnitzformel $det(a_{ij})=\sum\limits_{\sigma\in S_n} sgn(\sigma)\cdot \prod\limits_{i=1}^n a_{i,\sigma(i)} = \sum\limits_{\sigma
+			\in A_n}\prod\limits_{i=1}^n a_{i,\sigma(i)} - \sum\limits_{\sigma\in S_n\backslash A_n}\prod\limits_{i=1}^n a_{i,\sigma(i)}$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Eindeutigkeit der Abbildung folgt wegen D3. Bleibt nur noch zu zeigen, dass $det$ auch die Axiome D1 bis D3 erfüllt. \\
+		D1: klar \\
+		D3: klar \\
+		D2: Seien $\mu\neq v$ mit $a_{\mu}=a_v$. Mit $\tau=\tau_{\mu v}$ ist $S_n\backslash A_n = A_n\tau$, somit $det(a_{ij})=
+		\sum\limits_{\sigma\in A_n} \prod\limits_{i=1}^n a_{i,\sigma(i)}-\sum\limits_{\sigma\in A_n\tau} \prod\limits_{i=1}^n a_{i,\sigma\tau(i)}=
+		\sum\limits_{\sigma\in A_n} \left( \prod\limits_{i=1}^n a_{i,\sigma(i)} - \prod\limits_{i=1}^n a_{i,\sigma\tau(i)} \right). Da a_{ij}=a_{\tau(i),j}$ 
+		für alle $i,j$ ist $\prod\limits_{i=1}^n a_{i,\sigma(i)}=\prod\limits_{i=1}^n a_{\tau(i),\sigma\tau(i)}=\prod\limits_{i=1}^n a_{i,\sigma\tau(i)}$ 
+		für jedes $\sigma\in S_n$, woraus $det(a_{ij})=0$ folgt.}
+		$\newline$
+		
+		\textbf{Beispiele:}
+		\begin{compactitem}
+			\item $n=2$, $S_2=\{id, \tau_{12}\}$, $det(\begin{pmatrix}a_{11} & a_{12} \\ a_{21}  & a_{22}\end{pmatrix})=\sum\limits_{\sigma\in
+			S_2} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}=a_11\cdot a_22 - a_12\cdot a_21$
+			\item $n=3$, $S_3=\{id,\tau_{12}, \tau_{23}, \tau_{13}, \text{2 zyklische Vertauschungen}\}$, $A_3=\{id, \text{2 zyklische 
+			Vertauschungen}\}$, $S_3\backslash A_3=\{\tau_{12},\tau_{23},\tau_{13}\}$ und \\
+			\begin{center}$A=\begin{pmatrix}
+				a_{11} & a_{12} & a_{13} \\
+				a_{21} & a_{22} & a_{23} \\
+				a_{31} & a_{32} & a_{33} \\
+			\end{pmatrix}$\end{center}
+			ergibt sich: $det(A)=\sum\limits_{\sigma\in A_3} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}\cdot a_{3,\sigma(3)} - \sum\limits_
+			{\sigma\in S_3\backslash A_3} a_{1,\sigma(1)}\cdot a_{2,\sigma(2)}\cdot a_{3,\sigma(3)}= a_{11}a_{22}a_{33} + a_{12}a_{23}
+			a_{31} + a_{13}a_{21}a_{32} - a_{12}a_{21}a_{33} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32}$
+			\item Ist $A=(a_{ij})$ eine obere Dreiecksmatrix, so ist $det(A)=\prod\limits_{i=1}^n a_{ii}$
+			\item Für $i\neq j$, $\lambda\in K^{\times}$, $\mu\in K$ ist $det(S_i(\lambda))=\lambda$, $det(Q_{ij}(\mu))=1$, $det(P_{ij})=-1$
+			\item Ist $A$ eine Blockmatrix der Gestalt $\begin{pmatrix}A_1 & C \\ 0 & A_2\end{pmatrix}$ mit quadratischen Matrizen $A_1,
+			A_2,C$, so ist $det(A)=det(A_1)\cdot det(A_2)$
+		\end{compactitem}
+		
+		\begin{framed}
+			\textbf{Korollar:} Für $A\in Mat_n(R)$ ist $det(A)=det(A^t)$. Insbesondere erfüllt $det$ die Axiome D1 und D2 auch für Spalten 
+			anstatt Zeilen.
+		\end{framed}
+		\textit{Beweis: \\
+		Mit $\rho=\sigma^{-1}$ gilt $sgn(\rho)=sgn(\sigma)$ und somit $det(A)=\sum\limits_{\sigma\in S_n} sgn(\sigma) \cdot \prod\limits_
+		{i=1}^n a_{i,\sigma(i)}=\sum\limits_{\rho\in S_n} sgn(\rho)\cdot \prod\limits_{i=1}^n a_{\rho(i),i}=det(A^t)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Theorem (Determinantenmultiplikationssatz):} Für $A,B\in Mat_n(R)$ ist $det(AB)=det(A)\cdot det(B)$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		Fixiere $A$ und betrachte die Abbildung $\delta: Mat_n(R)\to R$ mit $B\mapsto det(AB^{-1})$. Diese Abbildung erfüllt die Axiome 
+		D1 und D2. Sind $b_1,...,b_n$ die Zeilen von $B$, so hat $AB^{-1}$ die Spalten $Ab_1^t,...,Ab_n^t$, es werden die Eigenschaften 
+		von $det$ auf $\delta$ übertragen. \\
+		$\Rightarrow det(AB)=\delta(B^t)=\delta(1_n)\cdot det(B^t)=det(A)\cdot det(B)$.
+		später}
+		
+		\begin{framed}
+			\textbf{Korollar:} Die Abbildung $det:Mat_n(R)\to R$ schränkt sich zu einem Gruppenhomomorphismus $GL_n(R)\to 
+			R^{\times}$ ein. Ist $R=K$ ein Körper, so ist $A\in Mat_n(K)$ also genau dann invertierbar, wenn $det(A)\neq 0$ und in 
+			diesem Fall ist $det(A^{-1})=det(A)^{-1}$.
+		\end{framed}
+		\textit{Beweis: \\
+		Aus $AA^{-1}=1_n$ folgt $det(A^{-1})*det(A)=det(1_n)=1$, insbesondere $det(A)\in R^{\times}$. Der zweite Teil folgt wegen 
+		$K^{\times}=K\backslash \{0\}$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Die Matrizen mit Determinante 1 bilden einen Normalteiler $SL_n(K)=\{A\in GL_n \mid det(A)=1\}$ der 
+			allgemeinen linearen Gruppe, die sogenannte spezielle lineare Gruppe.
+		\end{framed}
+		
+		\begin{framed}
+			\textbf{Korollar:} Elementare Zeilenumformungen vom Typ II ändern die Determinante nicht, elementare Zeilenumformungen vom 
+			Typ III ändern nur das Vorzeichen der Determinante.
+		\end{framed}
+		\textit{Beweis: \\
+		$det(Q_{ij}(\mu)A)=det(Q_{ij}(\mu)) \cdot det(A)= 1\cdot det(A) = det(A)$, Rest analog.}
+		
+	\subsection{Minoren}
+		Seien $m,n\in \mathbb N$.
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition adjungierte Matrix:} Sei $A=(a_{ij})\in Mat_n(R)$. Für $i,j\in \{1,...,n\}$ definieren wir die $n\times n$-Matrix: \\
+			\begin{center}$A_{ij}=\begin{pmatrix}
+				a_{11} & ... & a_{1,j-1} & 0 & a_{1,j+1} & ... & a_{1n} \\
+				\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+				a_{i-1,1} & ... & a_{i-1,j.1} & 0 & a_{i-1,j+1} & ... & a_{i-1,n} \\
+				0 & ... & 0 & 1 & 0 & ... & 0 \\
+				a_{i+1,1} & ... & a_{i+1,j.1} & 0 & a_{i+1,j+1} & ... & a_{i+1,n} \\
+				\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+				a_{n1} & ... & a_{n,j-1} & 0 & a_{n,j+1} & ... & a_{nn} \\
+			\end{pmatrix}$\end{center}
+			die durch Ersetzen der $i$-ten Zeile und der $j$-ten Spalte durch $e_j$ aus $A$ hervorgeht, sowie die $(n-1)\times(n-1)$-
+			Matrix: \\
+			\begin{center}$A'_{ij}=\begin{pmatrix}
+				a_{11} & ... & a_{1,j-1} & a_{1,j+1} & ... & a_{1n} \\
+				\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+				a_{i-1,1} & ... & a_{i-1,j.1} & a_{i-1,j+1} & ... & a_{i-1,n} \\
+				a_{i+1,1} & ... & a_{i+1,j.1} & a_{i+1,j+1} & ... & a_{i+1,n} \\
+				\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+				a_{n1} & ... & a_{n,j-1} & a_{n,j+1} & ... & a_{nn} \\
+			\end{pmatrix}$\end{center}
+			die durch Streichen der $i$-ten Zeile und der $j$-ten Spalten entsteht. Weiterhin definieren wir die zu $A$ adjungierte Matrix 
+			als $A^\#=(a_{ij}^\#)\in Mat_n(R)$, wobei $a_{ij}^\#=det(A_{ji})$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:}  Sei $A\in Mat_n(R)$ mit Spalten $a_1,...,a_n$. Für $i,j\in \{1,..,n\}$ gilt:
+			\begin{compactitem}
+				\item $det(A_{ij})=(-1)^{i+j}\cdot det(A'_{ij})$
+				\item $det(A_{ij})=det(a_1,...,a_{j-1},e_i,a_{j+1},...,a_n)$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Durch geeignete Permutation der ersten $i$ Zeilen und der ersten $j$ Zeilen erhält man $det(A_{ij})=(-1)^{(i-1)+
+			(j-1)} \cdot det(\begin{pmatrix}1&0&...&0 \\ 0 & \; & \; & \; \\ \vdots & \; & A'_{ij} & \; \\ 0 & \; & \; & \; \\ \end{pmatrix})=
+			(-1)^{i+j}\cdot det(1_n)\cdot det(A'_{ij})$.
+			\item Man erhält $A_{ij}$ aus $(a_1,...,e_i,...,a_n)$ durch elementare Spaltenumformungen vom Typ II.
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $A\in Mat_n(R)$ ist $A^\#\cdot A=A\cdot A^\#=det(A)\cdot 1_n$.
+		\end{framed}
+		\textit{Beweis: \\
+		$(A^\#A)_{ij}=\sum\limits_{k=1}^n a^\#_{ik}\cdot a_{kj}=\sum\limits_{k=1}^n a_{kj}\cdot det(A_{kj})=\sum\limits_{k=1}^n a_{kj}\cdot 
+		det(a_1,...,a_{i-1},a_j,a_{i+1},...,a_n)=det(a_1,...,a_{i-1},\sum\limits_{k=1}^n a_{kj}e_k,a_{i+1},...,a_n) = det(a_1,...,a_{i-1},a_j,
+		a_{i+1},...,a_n)=\delta_{ij}\cdot det(A)=(det(A)\cdot 1_n)_{ij}$. Analog bestimmt man die Koeffizienten von $AA^\#$, wobei man 
+		$det(A_{jk})=det(A_{jk}^t)=det((A^t)_{kj})$ benutzt.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Es ist $GL_n(R)=\{A\in Mat_n(R) \mid det(A)\in R^{\times}\}$ und für $A\in GL_n(R)$ ist $A^{-1}=
+			\frac{1}{det(A)}\cdot A^\#$.
+		\end{framed}
+		\textit{Beweis: \\
+		letzter Satz und 1. Korollar des Determinantenmultiplikationssatzes}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Korollar (Laplace'scher Entwicklungssatz):} Sei $A=(a_{ij})\in Mat_n(R)$. Für jedes $i,j\in \{1,..,n\}$ gilt die 
+			Formel für die Entwicklung nach der $i$-ten Zeile: \\
+			\begin{align*}det(A)=\sum\limits_{j=1}^n (-1)^{i+j}\cdot a_{ij}\cdot det(A'_{ij}).\end{align*}
+			Gleiches gilt auch für Spalten.
+		\end{mdframed}
+		\textit{Beweis: \\
+		$det(A)=(AA^\#)_{ij}=\sum\limits_{j=1}^n a_{ij}\cdot a^\#_{ij} = \sum\limits_{j=1}^n a_{ij}\cdot det(A_{ij})=\sum\limits_
+		{j=1}^n a_{ij}\cdot (-1)^{i+j}\cdot det(A'_{ij})$. Analog auch für Spalten.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Korollar (Cramer'sche Regel):} Sei $A\in GL_n(R)$ mit Spalten $a_1,...,a_n$ und sei $b\in R^n$. Weiter sei 
+			$x=(x_1,...,x_n)^t\in R^n$ die eindeutige Lösung des Linearen Gleichungssystems $Ax=b$. Dann ist für $i=1,...,n$ 
+			$x_i=\frac{det(a_1,...,a_{i-1},b,a_{i+1},...,a_n)}{det(A)}$.
+		\end{mdframed}
+		\textit{Beweis: \\
+		$x_i=(A^{-1}b)_i=\sum\limits_{j=1}^n (A^{-1})_{ij}\cdot b_j=\frac{1}{det(A)}\cdot \sum\limits_{j=1}^n a^\#_{ij}\cdot b_j = 
+		\frac{1}{det(A)}\cdot \sum\limits_{j=1}^n b_j\cdot det(a_1,...,a_{i-1},e_i,a_{i+1},...,a_n)=\frac{1}{det(A)}\cdot det(a_1,...,
+		a_{i-1},b_j,a_{i+1},...,a_n)$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Minor:} Sei $A=(a_{ij})\in Mat_{m\times n}(R)$ und $1\le r \le m$, $1\le s \le n$. Eine $r\times s$-
+			Teilmatrix von $A$ ist eine Matrix der Form $(a_{i\mu,jv})_{\mu,v}\in Mat_{r\times s}(R)$ mit $1\le i_1<...<i_r\le m$ 
+			und $1\le j_1<...<j_s\le n$. Ist $A'$ eine $r\times r$-Teilmatrix von $A$, so bezeichnet man $det(A')$ als einen 
+			$r$-Minor von $A$.
+		\end{mdframed}
+		
+		\textbf{Beispiel:} Ist $A\in Mat_n(R)$ und $i,j\in \{1,...,n\}$, so ist $A'_{ij}$ eine Teilmatrix und $det(A'_{ij})=(-1)^{i+j}
+		\cdot a^\#_{ji}$ ein $(n-1)$-Minor von $A$.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $A\in Mat_n(R)$ und $r\in \mathbb N$. Genau dann ist $rk(A)\ge r$, wenn es eine $r\times r$-
+			Teilmatrix $A'$ von $A$ mit $det(A)\neq 0$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		Hinrichtung: Ist $rk(A)\ge r$, so hat $A$ $r$ linear unabhängige Spalten $a_1,...,a_r$. Die Matrix $\tilde A=(a_1,...,a_r)$ 
+		hat den Rang $r$ und deshalb $r$ linear unabhängige Zeilen $\tilde{a_1},...,\tilde{a_r}$. Die $r\times r$-Matrix $A$ hat 
+		dann Rang $r$, ist also invertierbar, und $det(A)\neq 0$. \\
+		Rückrichtung: Ist $A'$ eine $r\times r$-Teilmatrix von $A$ mit $det(A')\neq 0$, so ist $rk(A)\ge rk(A')=r$.}
+		
+		\begin{framed}
+			\textbf{Korollar:} Sei $A\in Mat_{m\times n}(K)$. Der Rang von $A$ ist das größte $r\in \mathbb N$, für das 
+			$A$ einen von Null verschiedenen $r$-Minor hat.
+		\end{framed}
+		
+		\subsection{Determinante und Spur von Endomorphismen}
+	
+		Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $dim_K(V)=m$.
+		
+		\begin{framed}
+			\textbf{Satz:} Sei $f\in Hom_K(V,W)$, $A'$ eine Basis von $V$ und $A=M_{A'}(f)$. Sei weiter $B\in Mat_n(K)$. Genau 
+			dann gibt es eine Basis $B'$ von $V$ mit $B=M_{B'}(f)$, wenn es $S\in GL_n(K)$ mit $B=SAS^{-1}$ gibt.
+		\end{framed}
+		\textit{Beweis: \\
+		Ist $B'$ eine Basis von $V$ mit $B=M_{B'}(f)$, so ist $B=SAS^{-1}$ mit $S=T^{A'}_{B'}$. Sei umgekehrt $B=SAS^{-1}$ mit 
+		$S\in GL_n(K)$. Es gibt eine Basis $B'$ von $V$ mit $T^{A'}_{B'}=S$, also $M_{B'}(f)=T^{A'}_{B'}\cdot M_{A'}(f)\cdot (
+		T^{A'}_{B'})^{-1}=SAS^{-1}=B$: Mit $B'=(\Phi_{A'}(f_s^{-1}(e_1)),...,\Phi_{A'}(f_s^{-1}(e_n)))$ ist $\Phi_{A'}\circ f_s^{-1}=
+		id_V\circ \Phi_{B'}$, also $T^{A'}_{B'}=M_{A'}^{A'}(id_V)=S^{-1}$. Folglich ist $T^{A'}_{B'}=(T_{A'}^{B'})^{-1}=(S^{-1})^{-1}
+		=S$.}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Ähnlichkeit:} Zwei Matrizen $A,B\in Mat_n(R)$ heißen ähnlich, wenn (in Zeichen $A\tilde B$) es 
+			$S\in GL_n(R)$ mit $B=SAS^{-1}$ gibt.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Ähnlichkeit von Matrizen ist eine Äquivalenzrelation auf $Mat_n(R)$.
+		\end{framed}
+		\textit{Beweis: \\
+		\begin{compactitem}
+			\item Reflexivität: $A=1_n\cdot A \cdot (1_n)^{-1}$
+			\item Symmetrie: $B=SAS^{-1}\Rightarrow A=S^{-1}BS=S^{-1}B(S^{-1})^{-1}$
+			\item Transitivität: $B=SAS^{-1}$, $C=TBT^{-1}\Rightarrow C=TSAS^{-1}T^{-1}=(TS)A(ST)^{-1}$
+		\end{compactitem}}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $A,B\in Mat_n(R)$. Ist $A\tilde B$, so ist $det(A)=det(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$B=SAS^{-1}$, $S\in GL_n(R)$, $det(B)=det(S)\cdot det(A)\cdot det(S)^{-1}=det(A)$}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Determinante eines Endomorhismus:} Die Determinante eines Endomorphimus $f\in End_K(V)$ ist 
+			$det(f)=det(M_B(f))$, wobei $B$ eine Basis von $V$ ist.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Satz:} Für $f,g\in End_K(V)$ gilt:
+			\begin{compactitem}
+				\item $det(id_V)=1$
+				\item $det(f\circ g)=det(f)\cdot det(g)$
+				\item Genau dann ist $det(f)\neq 0$, wenn $f\in Aut_K(V)$. In diesem Fall ist $det(f^{-1})=det(f)^{-1}$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		sollte klar sein, evtl. mit Determinantenmultiplikationssatz}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Spur:} Die Spur einer Matrix $A=(a_{ij})\in Mat_n(R)$ ist $tr(A)=\sum\limits_{i=1}^n a_{ii}$.
+		\end{mdframed}
+		
+		\begin{framed}
+			\textbf{Lemma:} Seien $A,B\in Mat_n(R)$
+			\begin{compactitem}
+				\item $tr: Mat_n(R)\to R$ ist $R$-linear
+				\item $tr(A^t)=tr(A)$
+				\item $tr(AB)=tr(BA)$
+			\end{compactitem}
+		\end{framed}
+		\textit{Beweis: \\
+		in den Übungen bereits behandelt}
+		
+		\begin{framed}
+			\textbf{Satz:} Seien $A,B\in Mat_n(R)$. Ist $A\tilde B$, so ist $tr(A)=tr(B)$.
+		\end{framed}
+		\textit{Beweis: \\
+		$B=SAS^{-1}$, $S\in GL_n(R)\Rightarrow tr(B)=tr(SAS^{-1})=tr(AS^{-1}S)=tr(A)$}
+		
+		\begin{mdframed}[backgroundcolor=blue!20]
+			\textbf{Definition Spur eines Endomorphismus:} Die Spur eines Endomorphismus $f\in End_K(V)$ ist $tr(f)=tr(M_B(f))$ 
+			wobei $B$ eine Basis von $V$ ist.
+		\end{mdframed}
+		
+		\textbf{Bemerkung:} Im Fall $K=\mathbb R$ kann man den Absolutbetrag der Determinante eines $f\in End_K(K^n)$ 
+		geometrisch interpretieren, nämlich als das Volumen von $f(Q)$, wobei $Q=[0,1]^n$ der Einheitsquader ist, und somit 
+		als Volumenänderung durch $f$. Auch das Vorzeichen von $det(f)$ hat eine Bedeutung: Es gibt an, ob $f$ 
+		orientierungserhaltend ist. Für erste Interpretationen der Spur siehe A100.
+
+\end{document}
