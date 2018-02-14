@@ -1,0 +1,279 @@
+\RequirePackage{ifluatex}
+\usepackage[ngerman,a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{marvosym} %lighning
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url} 
+\usepackage[top=1cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{bbm} %unitary matrix 1
+
+\usepackage[texindy]{imakeidx}
+\makeindex
+\makeindex[name=symbols,title=Symbolverzeichnis]
+
+\usepackage{enumerate}
+\usepackage{enumitem} %customize label
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{cleveref}
+\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
+\usepackage{parskip}%split paragraphs by vspace instead of intendations
+\usepackage{cancel}
+\usepackage{chngcntr}
+\usepackage{ulem} %better underlines
+\usepackage{titlesec}%customize titles
+\usepackage{xparse}%better macros
+\usepackage{scrpage2}
+\usepackage{paralist}
+\usepackage{mathtools,bm}
+\usepackage{stmaryrd} % Widerspruch symbol
+\usepackage[autostyle]{csquotes}
+\usepackage{lipsum}
+\usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usepackage{color}
+\usepackage{mathrsfs}
+
+\ifluatex
+\usepackage{fontspec}
+\fi
+
+\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+\usepackage[ntheorem,framemethod=TikZ]{mdframed}
+\usepackage[xindy,acronym]{glossaries}
+\makeglossaries
+
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=green,
+	linkcolor=blue,
+	urlcolor=green
+}
+\usepackage{bookmark}
+
+\newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+
+\theoremstyle{break}
+\theorembodyfont{}
+
+\definecolor{lightgrey}{gray}{0.91}
+\definecolor{lightred}{rgb}{1,0.6,0.6}
+\definecolor{darkgrey}{gray}{0.6}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\newcounter{dummy}
+\renewcommand{\thedummy}{\relax}
+
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=black,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truetheorem}[dummy]{Theorem}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueproposition}[dummy]{Satz}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemmaName}[dummy]{Lemma}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	%backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemma}[dummy]{Lemma}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truedefinition}[dummy]{Definition}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueconclusion}[dummy]{Folgerung}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueremark}[dummy]{Bemerkung}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{trueexample}[dummy]{Beispiel}
+
+
+\NewDocumentCommand{\begriff}{s O{} m O{}}{
+	\IfBooleanTF{#1}
+		{\index{#2#3#4}}
+		{\uline{#3}\index{#2#3#4}}
+}
+\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{
+	\IfBooleanTF{#1}
+		{\index[symbols]{#2#3@\detokenize{#4}#5}}
+		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
+}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}     % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+\renewcommand{\epsilon}{\varepsilon}
+
+% Math Operators
+\DeclareMathOperator{\inn}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\deg}{deg}
+\DeclareMathOperator{\L}{L} % for ANAG Homomorphism
+
+% Hacks
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+\setlength\parindent{0pt} % noindent whole file!
+\renewcommand*{\arraystretch}{1.4}
+
+\numberwithin{dummy}{section}
+\counterwithout{section}{chapter}
+
+\title{\textbf{Analysis 2. Semester (SS2018)}}
+\author{Dozent: Prof. Dr. Friedemann Schuricht\\
+	Kursassistenz: Moritz Schönherr}
+
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmetter
+\include{./TeX_files/Differentiation}
+\include{./TeX_files/Integration}
+\include{./TeX_files/Differentiation_2}
+
+\backmatter
+% bibliography, glossary and index would go here.
+
+\end{document}
