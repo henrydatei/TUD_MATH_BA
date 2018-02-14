@@ -1,5 +1,5 @@
+\documentclass[ngerman,a4paper]{report}
 \RequirePackage{ifluatex}
-\usepackage[ngerman,a4paper,left=2cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm]{geometry}
 \usepackage[table]{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -83,7 +83,7 @@
 	innerbottommargin=\topskip,%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{truetheorem}[dummy]{Theorem}
+]{theorem}[dummy]{Theorem}
 \newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=darkgrey,%
@@ -96,7 +96,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueproposition}[dummy]{Satz}
+]{satz}[dummy]{Satz}
 \newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=darkgrey,%
@@ -109,7 +109,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{truelemmaName}[dummy]{Lemma}
+]{lemmaName}[dummy]{Lemma}
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=darkgrey,%
@@ -123,7 +123,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{truelemma}[dummy]{Lemma}
+]{lemma}[dummy]{Lemma}
 \newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=red,%
@@ -135,7 +135,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{truedefinition}[dummy]{Definition}
+]{definition}[dummy]{Definition}
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
@@ -148,7 +148,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueconclusion}[dummy]{Folgerung}
+]{folgerung}[dummy]{Folgerung}
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
@@ -161,7 +161,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueremark}[dummy]{Bemerkung}
+]{bemerkung}[dummy]{Bemerkung}
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
@@ -174,7 +174,21 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueexample}[dummy]{Beispiel}
+]{beispiel}[dummy]{Beispiel}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+	backgroundcolor=lightgrey,%
+]{ueberblick}{Überblick}
 
 
 \NewDocumentCommand{\begriff}{s O{} m O{}}{
@@ -233,14 +247,17 @@
 \newcommand{\realz}{\mathfrak{Re}}
 \newcommand{\imagz}{\mathfrak{Im}}
 \renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{15pt}{\huge\bfseries}
+\titlespacing{\chapter}{0pt}{0pt}{0pt}
+\titlespacing{\section}{0pt}{0pt}{0pt}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
 \DeclareMathOperator{\ext}{ext} % Set of outer points
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\deg}{deg}
-\DeclareMathOperator{\L}{L} % for ANAG Homomorphism
 
 % Hacks
 \titleclass{\part}{top}
@@ -264,16 +281,12 @@
 
 \begin{document}
 
-\frontmatter
 \maketitle
 \tableofcontents
 
-\mainmetter
 \include{./TeX_files/Differentiation}
 \include{./TeX_files/Integration}
 \include{./TeX_files/Differentiation_2}
 
-\backmatter
-% bibliography, glossary and index would go here.
 
 \end{document}
