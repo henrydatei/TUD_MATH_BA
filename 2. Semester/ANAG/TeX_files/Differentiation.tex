@@ -1,0 +1,53 @@
+\setcounter{dummy}{16}
+\addtocounter{section}{15}
+\addtocounter{chapter}{4}
+
+\chapter{Differentiation}
+	Differentiation ist lokale Linearisierung.
+
+\section{Wiederholung und Motivation}
+	\begin{ueberblick}
+	$K^n$ ist ein $n$-dimensionaler VR über dem vollständigen Körper $K=\real$ 
+	oder $K=\comp$. Die Elemente sind $x=(x_1,...,x_n)\in K^n$ mit 
+	$x_1,...,x_n\in K$. Basis ist die Standardbasis $(e_1,...,e_n)$. \\
+	$\newline$
+	
+	Alle Normen sind auf $K^n$ äquivalent $\Rightarrow$ Konvergenz ist 
+	unabhängig von der Norm. Trotzdem verwenden wir die euklidische Norm: 
+	$|x|=\sqrt{\sum\limits_{j=1}^n |x_j|^2}$. \\
+	$\newline$
+	
+	Skalarprodukt: $\langle x,y \rangle=\sum\limits_{j=1}^n x_j\cdot y_j$ in 
+	$\real$ bzw. $\langle x,y \rangle=\sum\limits_{j=1}^n \overline{x_j}
+	\cdot y_j$ in $\comp$. \\
+	$\newline$
+	
+	\person{Cauchy}-\person{Schwarz}-Ungleichung: $|\langle x,y \rangle| \le
+	|x|\cdot |y|$. \\
+	$\newline$
+	
+	lineare Abbildung: $A:K^n \to K^m$, Darstellung mittels $m\times n$-Matrix 
+	bezüglich Standardbasen in $K^n$ und $K^m$. Beachte: $A$ steht für die 
+	lineare Abbildung und die Matrix, die die lineare Abbildung beschreibt. 
+	Lineare Abbildungen sind stets stetig (unabhängig von der Norm). Hinweis: 
+	$x=(x_1,...,x_n)$ in der Regel als Zeilenvektor geschrieben, aber bei 
+	Matrixmultiplikation ist $x$ Spaltenvektor und $x^t$ Zeilenvektor, d.h. \\
+	$x^t\cdot y=\langle x,y \rangle$, falls $m=n$ \\
+	$x\cdot y^t=x\otimes y$, sogenanntes Tensor-Produkt \\
+	$\newline$
+	
+	$L(K^n,K^m)=\{A: K^n \to K^m \mid A \text{ linear}\}$ Menge aller 
+	linearen Abbildungen mit $||A||=\sup\{|Ax| \mid |x|\le 1\} \to$ Norm 
+	hängt im Allgemeinen von Normen auf $K^n$ und $K^m$ ab. \\
+	$L(K^n,K^m)$ ist isomorph zu $Mat_{m\times n}(K)$ ist isomorph zu $K^{mn}$ 
+	jeweils als VR $\Rightarrow$ $L(K^n,K^m)$ ist ein $m\cot n$-dimensionaler 
+	VR $\Rightarrow$ alle Normen sind äquivalent $\Rightarrow$ Konvergenz von 
+	$\{A_n\}$ in $L(K^n,K^m)$ unabhängig von Norm, nehme in der Regel statt 
+	$||A||$ die euklidische Norm $|A|=\sqrt{\sum\limits_{k=1}^n \sum\limits_
+	{l=1}^n |a_{kl}|^2} \Rightarrow$ es gilt: $|Ax|\le ||A||\cdot |x|$ und 
+	$|Ax|\le |A|\cdot |x|$. \\
+	$\newline$
+	
+	Abbildung $f:K^n\to K^m$ heißt affin linear falls $f(x)=Ax+a$ für eine 
+	lineare Abbildung $A:K^n\to K^m$.
+	\end{ueberblick}
