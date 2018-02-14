@@ -83,7 +83,7 @@
 	innerbottommargin=\topskip,%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{truetheorem}{Theorem}
+]{truetheorem}[dummy]{Theorem}
 \newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=darkgrey,%
@@ -96,21 +96,35 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueproposition}[truetheorem]{Satz}
+]{trueproposition}[dummy]{Satz}
 \newmdtheoremenv[%
-outerlinewidth=3pt,%
-linecolor=darkgrey,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-backgroundcolor=lightgrey,%
-innertopmargin=\topskip,%
-innerbottommargin=\topskip,%
-frametitlefont=\normalfont\bfseries\color{black},%
-skipabove=5pt,%
-skipbelow=5pt,%
-]{truelemma}[truetheorem]{Lemma}
-\mdtheorem[%
+	outerlinewidth=3pt,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemmaName}[dummy]{Lemma}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,%
+	%backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{truelemma}[dummy]{Lemma}
+\newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=red,%
 	topline=false,%
@@ -123,53 +137,45 @@ skipbelow=5pt,%
 	skipbelow=5pt,%
 ]{truedefinition}[dummy]{Definition}
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=black,%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
+	leftline=false,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueconclusion}[truetheorem]{Folgerung}
+]{trueconclusion}[dummy]{Folgerung}
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=black,%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
+	leftline=false,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueremark}[truetheorem]{Bemerkung}
-\mdtheorem[%
-	outerlinewidth=3pt,%
-	linecolor=darkgreen,%
+]{trueremark}[dummy]{Bemerkung}
+\newmdtheoremenv[%
+	%outerlinewidth=3pt,%
+	%linecolor=black,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
+	leftline=false,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{trueexample}[truetheorem]{Beispiel}
-\mdtheorem[%
-	outerlinewidth=3pt,%
-	linecolor=darkgreen,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{*trueexample}[dummy]{Beispiel}
+]{trueexample}[dummy]{Beispiel}
+
 
 \NewDocumentCommand{\begriff}{s O{} m O{}}{
 	\IfBooleanTF{#1}
@@ -191,7 +197,7 @@ skipbelow=5pt,%
 \renewcommand{\epsilon}{\varepsilon}
 
 \numberwithin{dummy}{section}
-%\counterwithout{section}{chapter}
+\counterwithout{section}{chapter}
 %\counterwithout{theorem}{section} 
 
 \author{Dozent: Prof. F Schuricht}
@@ -209,9 +215,9 @@ skipbelow=5pt,%
 \maketitle
 \tableofcontents
 
-\chapter{ohh look a bunch of theorems}
+\chapter{Funktionen und Stetigkeit}
 
-\section{nahh more examples}
+\section{Anwendungen}
 
 \begin{truetheorem}[Mit Titel]
     test
@@ -221,7 +227,7 @@ skipbelow=5pt,%
     Und Inhalt.
 \end{trueproposition}
 
-\subsection{eine coralle}
+\subsection{Partialbruchzerlegung}
 	
 \begin{truetheorem}[Mit Titel]
 	test
@@ -230,6 +236,8 @@ skipbelow=5pt,%
 \begin{trueproposition}[Incl. Titel]
 	Und Inhalt.
 \end{trueproposition}
+
+\section{noch mehr Anwendungen}
 
 \begin{truedefinition}[Und Name]
 	Tada
@@ -243,17 +251,21 @@ skipbelow=5pt,%
 	Einfache Schlussfolgerung
 \end{trueconclusion}
 
-\begin{truelemma}[Kurze Aussage]
-	Klein aber fein.
+\begin{truelemma}
+	nur Müll
 \end{truelemma}
+
+\begin{truelemmaName}[Kurze, aber wichtige, Aussage]
+	Klein aber fein.
+\end{truelemmaName}
 
 \begin{trueremark}[Hossa]
 	Dumdidum
 \end{trueremark}
 
-\begin{*trueexample}[Test]
+\begin{trueexample}[Test]
 	Ohne Nummer
-\end{*trueexample}
+\end{trueexample}
 
 \begin{proof}
 	Ein Beweis.
@@ -296,9 +308,9 @@ skipbelow=5pt,%
     Dumdidum
 \end{trueremark}
 
-\begin{*trueexample}[Test]
+\begin{trueexample}[Test]
     Ohne Nummer
-\end{*trueexample}
+\end{trueexample}
 
 \begin{proof}
     Ein Beweis.
