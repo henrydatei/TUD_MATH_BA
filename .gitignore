@@ -166,3 +166,4 @@ TSWLatexianTemp*
 *.toc
 Vorlesung LAAG.tex
 *.pdf
+.DS_Store
