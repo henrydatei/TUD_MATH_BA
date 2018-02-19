@@ -6,11 +6,11 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
 ### Fortschritt Analysis
 5. Differentiation ... wird bearbeitet
   
-    16. Wiederholung und Motivation ... wird bearbeitet
+    16. Wiederholung und Motivation ... fertig
     
-    17. Ableitung ... noch nicht bearbeitet
+    17. Ableitung ... wird bearbeitet
     
-    18. Richtungsableitung und partielle Ableitungen ... noch nicht bearbeitet
+    18. Richtungsableitung und partielle Ableitungen ... wird bearbeitet
     
     19. Mittelwertsatz und Anwendung ... noch nicht bearbeitet
     
