@@ -1,53 +1,55 @@
 \RequirePackage{ifluatex}
 \documentclass[ngerman,a4paper]{report}
-\usepackage[table]{xcolor}
-
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{latexsym}
-\usepackage{ marvosym } %lighning
-\usepackage{graphicx}
+%\usepackage[top=2cm,bottom=2cm,left=1cm,right=1cm]{geometry}
 \usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-%\usepackage{url} 
-\usepackage[top=1cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
-\usepackage{bbm} %unitary matrix 1
+%\usepackage[utf8]{inputenc} %not recommended with lualatex
 
-\usepackage[texindy]{imakeidx}
-\makeindex
-\makeindex[name=symbols,title=Symbolverzeichnis]
-
-\usepackage{enumerate}
-\usepackage{enumitem} %customize label
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{cleveref}
-\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
-\usepackage{parskip}%split paragraphs by vspace instead of intendations
-
-\usepackage{cancel}
-
+\usepackage{etoolbox}
+\usepackage{xparse}%better macros
 \usepackage{chngcntr}
 
-\usepackage{ulem} %better underlines
-
-\usepackage{titlesec}%customize titles
-
-\usepackage{xparse}%better macros
-
-
+\usepackage[T1]{fontenc}
 \ifluatex
 \usepackage{fontspec}
 \fi
 
-\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
-\usepackage[ntheorem,framemethod=TikZ]{mdframed}
+\usepackage[texindy]{imakeidx}
+\makeindex[name=semester1,title={Symbolverzeichnis (1. Semester)}]
+\makeindex[name=semester2,title={Symbolverzeichnis (2. Semester)}]
+\makeindex[name=symbols,title=Symbolverzeichnis]
 
 \usepackage[xindy,acronym]{glossaries}
 \makeglossaries
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{marvosym} %lighning
+\usepackage{bbm} %unitary matrix 1
+\usepackage{cancel}
+\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
+
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+
+\usepackage{enumerate}
+\usepackage{enumitem} %customize label
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{ulem} %better underlines
+
+\usepackage{parskip}%split paragraphs by vspace instead of intendations
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{cleveref}
+\usepackage{titlesec}%customize titles
+
+\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+\usepackage[ntheorem,framemethod=TikZ]{mdframed}
 
 \usepackage[bookmarks=true]{hyperref}
 \hypersetup{
@@ -59,133 +61,103 @@
 }
 \usepackage{bookmark}
 
-\newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
-
-\theoremstyle{break}
-\theorembodyfont{}
-
 \definecolor{lightgrey}{gray}{0.91}
 \definecolor{lightred}{rgb}{1,0.6,0.6}
 \definecolor{darkgrey}{gray}{0.6}
 \definecolor{darkgreen}{rgb}{0,0.6,0}
-%\def\theoremframecommand{\colorbox{lightgrey}}
-%\theoremprework{\vspace*{5pt}\coloredRule[lightred]{\textwidth}{5pt}\vspace*{-6pt}}
-%\theorempostwork{\vspace*{-6pt}\coloredRule[lightred]{\textwidth}{5pt}\vspace*{5pt}}
 
-\newcounter{dummy}
-\renewcommand{\thedummy}{\relax}
+\newlength{\blacktrianglewidth}
+\settowidth{\blacktrianglewidth}{$\blacktriangleright$}
 
-\newmdtheoremenv[%
+%numbered theorems
+\theoremstyle{break}
+\theorembodyfont{}
+
+\mdfdefinestyle{boxedtheorem}{%
 	outerlinewidth=3pt,%
-	linecolor=black,%
-	backgroundcolor=lightgrey,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	skipabove=5pt,%
-	skipbelow=5pt,%
-]{truetheorem}[dummy]{Theorem}
+	skipbelow=10pt,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+}
+
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
+	style=boxedtheorem,%
+	linecolor=darkgrey,%
+	backgroundcolor=lightgrey,%
+]{truetheorem}{Theorem}[section]
+\newmdtheoremenv[%
+	style=boxedtheorem,%
 	linecolor=darkgrey,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
 	backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{trueproposition}[dummy]{Satz}
+]{trueproposition}[truetheorem]{Satz}
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
+	style=boxedtheorem,%
 	linecolor=darkgrey,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
 	backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{truelemmaName}[dummy]{Lemma}
+]{truelemma}[truetheorem]{Lemma}
 \newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=darkgrey,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	%backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{truelemma}[dummy]{Lemma}
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
+	style=boxedtheorem,%
 	linecolor=red,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{truedefinition}[dummy]{Definition}
+]{truedefinition}[truetheorem]{Definition}
 \newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
+	outerlinewidth=3pt,%
+	linecolor=black,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
-	leftline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
+	innertopmargin=0pt,%
+	innerbottommargin=-3pt,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
-	skipbelow=5pt,%
-]{trueconclusion}[dummy]{Folgerung}
+	skipbelow=10pt,%
+]{trueconclusion}[truetheorem]{Folgerung}
 \newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
+	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=0pt,%
 	skipabove=5pt,%
-	skipbelow=5pt,%
-]{trueremark}[dummy]{Bemerkung}
+	innerleftmargin=10pt,%
+]{trueremark}[truetheorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
 \newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
+	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{trueexample}[dummy]{Beispiel}
+	innerleftmargin=10pt,%
+]{trueexample}[truetheorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+%unnumbered theorems
+\theoremstyle{nonumberbreak}
+\theoremindent0cm
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=10pt,%
+]{*trueexample}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
 
-\NewDocumentCommand{\begriff}{s O{} m O{}}{
-	\IfBooleanTF{#1}
-		{\index{#2#3#4}}
-		{\uline{#3}\index{#2#3#4}}
+\NewDocumentCommand{\begriff}{s O{} m O{}}{%
+	\IfBooleanTF{#1}%
+	{\index{#2#3#4}}%
+	{%
+		\uline{#3}%
+		\ifnumcomp{\value{chapter}}{<}{16}%
+			{\index[semester1]{#2#3#4}}%
+			{\index[semester2]{#2#3#4}}%
+	}%
 }
-\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{
-	\IfBooleanTF{#1}
-		{\index[symbols]{#2#3@\detokenize{#4}#5}}
-		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
+\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{%
+	\IfBooleanTF{#1}%
+	{\index[symbols]{#2#3@\detokenize{#4}#5}}%
+	{#4\index[symbols]{#2#3@\detokenize{#4}#5}}%
 }
 
 \newcommand{\person}[1]{\textsc{#1}}
@@ -196,24 +168,48 @@
 
 \renewcommand{\epsilon}{\varepsilon}
 
-\numberwithin{dummy}{section}
+%change headings:
+\titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
 \counterwithout{section}{chapter}
-%\counterwithout{theorem}{section} 
+\renewcommand{\thechapter}{\Roman{chapter}}
+%italic chapters (due to titlesec package some more stuff)
+\titleformat{\chapter}[display]{\huge\bfseries\itshape}{\chaptername\;\thechapter}{5pt}{\huge\bfseries}
+\titlespacing{\chapter}{0pt}{0pt}{10pt}
+\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{9pt}{\Large\bfseries}
+
+%change header:
+\renewcommand{\headrulewidth}{0.75pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\lhead{\rightmark}%left: section-number. section-title
+\rhead{\leftmark}%right: chapter chapternumber: chapter-title
+
+%change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
+\renewcommand{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
+
+%change numbering of equations to be section by section
+\counterwithout{equation}{section}
 
 \author{Dozent: Prof. F Schuricht}
 \title{Analysis Grundlagen 1 \& 2} % add WS & SS
 \date{Updated: \today}
 
-\pagestyle{plain}
-
-% for splitting file
-%\include{./TeX_files/chapter01}
-%\include{./TeX_files/chapter02}
-
+\pagenumbering{roman}
 \begin{document}
 
 \maketitle
 \tableofcontents
+
+\pagebreak
+\pagestyle{fancy}
+\pagenumbering{arabic}
+%remember chapter-title in \leftmark and \rightmark
+\renewcommand{\chaptermark}[1]{%
+	\markboth{\chaptername
+		\ \thechapter:\ #1}{}}
+%remember section title in \leftmark
+\renewcommand{\sectionmark}[1]{%
+	\markright{\thesection.\ #1}{}}
 
 \chapter{Funktionen und Stetigkeit}
 
@@ -237,7 +233,7 @@
 	Und Inhalt.
 \end{trueproposition}
 
-\section{noch mehr Anwendungen}
+\section{Noch mehr Anwendungen}
 
 \begin{truedefinition}[Und Name]
 	Tada
@@ -255,16 +251,16 @@
 	nur Müll
 \end{truelemma}
 
-\begin{truelemmaName}[Kurze, aber wichtige, Aussage]
+\begin{truelemma}[Kurze, aber wichtige, Aussage]
 	Klein aber fein.
-\end{truelemmaName}
+\end{truelemma}
 
 \begin{trueremark}[Hossa]
 	Dumdidum
 \end{trueremark}
 
 \begin{trueexample}[Test]
-	Ohne Nummer
+	LOhne Nummer
 \end{trueexample}
 
 \begin{proof}
@@ -276,9 +272,9 @@
 	und inline-math $\hbar$.
 \end{proof}
 
-\chapter{its you}
+\chapter{Its you}
 
-\section{or me?}
+\section{Or me?}
 
 \begin{truetheorem}[Mit Titel]
     test
@@ -308,9 +304,9 @@
     Dumdidum
 \end{trueremark}
 
-\begin{trueexample}[Test]
+\begin{*trueexample}[Test]
     Ohne Nummer
-\end{trueexample}
+\end{*trueexample}
 
 \begin{proof}
     Ein Beweis.
