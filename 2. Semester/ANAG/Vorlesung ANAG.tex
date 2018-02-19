@@ -127,18 +127,6 @@
 	skipbelow=5pt,%
 ]{lemma}[dummy]{Lemma}
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=red,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{definition}[dummy]{Definition}
-\newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
 	topline=false,%
@@ -177,6 +165,7 @@
 	skipabove=5pt,%
 	skipbelow=5pt,%
 ]{beispiel}[dummy]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+\newenvironment{beweis}{\begin{itshape} Beweis:}{\end{itshape}}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
@@ -197,6 +186,18 @@
 	skipbelow=5pt,%
 	backgroundcolor=lightgrey,%
 ]{ueberblick}{Überblick}
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	skipbelow=5pt,%
+]{definition}{Definition}
 
 
 \NewDocumentCommand{\begriff}{s O{} m O{}}{
