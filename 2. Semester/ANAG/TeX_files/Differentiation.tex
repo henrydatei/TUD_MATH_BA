@@ -100,3 +100,144 @@
 		Vielleicht hatten Sie bisher eine andere Vorstellung von "'anschmiegen"', aber wir machen hier 
 		Mathematik!
 	\end{definition}
+
+\section{Ableitung}
+	Sei $f:D\subset K^n \to K^m$, $D$ offen.
+	
+	\begin{definition}[differenzierbar im Punkt]
+		$f$ heißt differenzierbar im Punkt $x_0\in D$ falls es eine lineare Abbildung $A\in L(K^n,K^m)$ gibt,
+		mit der Eigenschaft $f(x)=f(x_0)+A(x-x_0)+o(|x-x_0|)$ , $x\to x_0$.
+	\end{definition}
+
+	\begin{definition}[Ableitung]
+		$A$ heißt Ableitung von $f$ an der Stelle $x=x_0$ und wird mit $f'(x_0)=A$ bzw. $Df(x_0)$ 
+		bezeichnet. Man kann auch totales Differential, Fréchet-Ableitung, Jacobimatrix oder 
+		Funktionalmatrix sagen. \\
+		Andere Bezeichnungen sind: $\frac{\partial f}{\partial x}(x_0)$, $\frac{\partial f(x)}{\partial x}\vert_
+		{x=x_0}$, d$f(x_0)$,... \\
+		Somit gilt: $f(x)=f(x_0)+f'(x_0)(x-x_0)+o(|x-x_0|)$, $x\to x_0$
+	\end{definition}
+
+	\begin{bemerkung}
+		$f'(x_0)$ ist im Allgemeinen eine von $x_0$ abhängige Matrix! \\
+		$\Rightarrow$ lineare Funktion $\tilde A(x)=f(x_0)+f'(x_0)(x-x_0)$ appromximiert Funktion $f$ 
+		in der Nähe von $x_0$ und heißt Linearisierung von $f$ in $x_0$.
+	\end{bemerkung}
+
+	\begin{satz}
+		Sei $f:D\subset K^n \to K^m$, $D$ offen. $f$ ist differenzierbar in $x_0\in D$ mit Abbildung $f'(x_0)\in L(K^n,K^m)$ genau dann, wenn die folgenden Bedingungen erfüllt sind:
+		\begin{compactitem}
+			\item für ein $r:D\to K^m$ mit $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} 
+			\frac{r(x)}{|x-x_0|}=0$ \\
+			$f(x)=f(x_0)+f'(x_0)(x-x_0)+r(x)\quad\forall x\in D$
+			\item für ein $R:D\to L(K^n,K^m)$ mit $\lim\limits_{x\to x_0} R(x)=0$ \\
+			$f(x)=f(x_0)+f'(x_0)(x-x_0)+R(x)(x-x_0)\quad\forall x\in D$
+			\item für ein $Q:D\to L(K^n,K^m)$ mit $\lim\limits_{x\to x_0} Q(x)=f'(x_0)$ \\
+			$f(x)=f(x_0)+Q(x)(x-x_0)\quad\forall x\in D$
+		\end{compactitem}
+	\end{satz}
+	\begin{beweis}
+		\begin{compactitem}
+			\item offenbar ist $r(x)=o(|x-x_0|)$, $x\to x_0$, folglich ist dies äquivalent zu: $f$ 
+			differenzierbar in $x_0$ mit Abbildung $f'(x_0)$
+			\item $1\Rightarrow 2$: Sei $R:D\to K^{m\times n}$ gegeben durch $R(x_0)=0$, $R(x)=
+			\frac{r(x)}{|x-x_0|^2}\cdot (x-x_0)^t$, $x\neq x_0 \Rightarrow R(x)(x-x_0)=\frac{r(x)}
+			{|x-x_0|^2}\langle x-x_0,x-x_0\rangle=r(x)$ \\
+			wegen $0=r(x_0)=R(x_0)(x-x_0)$ folgt $r(x)=R(x)(x-x_0)\quad\forall x\in D\Rightarrow 2$ \\
+			wegen $|r(x)(x-x_0)^t|=|r(x)||x-x_0|$ folgt $\lim\limits_{x\to x_0} |R(x)|=\lim\limits_
+			{\substack{x\to x_0 \\ x\neq x_0}} \frac{|r(x)\cdot (x-x_0)^t|}{|x-x_0|^2}=\lim\limits_
+			{\substack{x\to x_0 \\ x\neq x_0}} \frac{|r(x)||x-x_0|}{|x-x_0|^2}=0\Rightarrow 2$
+			\item $2\Rightarrow 3$: setze $Q(x)=f'(x_0)+R(x)\quad\forall x\in D\Rightarrow 3$ \\
+			wegen $\lim\limits_{x\to x_0} Q(x)=f'(x_0)$ folgt 3
+			\item $3\Rightarrow 1$: setze $r(x)=(Q(x)-f'(x))(x-x_0)$ wegen $|r(x)|\le |Q(x)-f'(x)||x-x_0|$ 
+			folgt $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{|r(x)|}{|x-x_0|}=\lim\limits_{x\to x_0} 
+			|Q(x)-f'(x_0)|=0\Rightarrow$ Definition Ableitung
+		\end{compactitem}
+	\end{beweis}
+
+	\begin{satz}
+		Sei $f:D\subset K^n \to K^m$, $D$ offen, $f$ differenzierbar in $x_0\in D$. Dann:
+		\begin{compactitem}
+			\item $f$ ist stetig in $x_0$.
+			\item Ableitung $f'(x_0)$ ist eindeutig bestimmt.
+		\end{compactitem}
+	\end{satz}
+	\begin{beweis}
+		\begin{compactitem}
+			\item $\lim\limits_{x\to x_0} f(x)=\lim\limits_{x\to x_0} (f(x_0)+f'(x_0)(x-x_0)+R(x)(x-x_0))=f(x_0)
+			\Rightarrow$ Behauptung
+			\item angenommen $A_1,A_2\in L(K^n,K^m)$ sind Ableitungen von $f$ in $x_0$. Seien $R_1,R_2$ 
+			zugehörige Terme. Dann gilt für $x=x_0+ty$: $|(A_1-A_2)(ty)|=|R_1(x_0+ty)(ty)|+|R_2(x_0+ty)
+			(ty)| \le |R_1(x+ty)||ty|+|R_2(x_0+ty)||ty|\Rightarrow 0\le |(A_1-A_2)(y)|\le (|R_1(x_0+ty)|+|R_2
+			(x_0+ty)|)|y|\to 0\Rightarrow (A_1-A_2)(y)=0\Rightarrow A_1=A_2\Rightarrow$ Behauptung
+		\end{compactitem}
+	\end{beweis}
+
+\subsection{Spezialfälle für $K=\real$:}
+	\begin{compactitem}
+		\item $m=1$, $f:D\subset \real^n\to \real$ \\
+		$f'(x_0)\in \real^{1\times n}$ ist Zeilenvektor, $f'(x_0)$ betrachtet als Vektor in $\real^n$ heißt auch 
+		Gradient. Offenbar $f'(x_0)y=\langle f'(x_0),y\rangle \quad\forall y\in \real^n\Rightarrow f(x)=
+		f(x_0)+\langle f'(x_0),x-x_0 \rangle + o(|x-x_0|)$
+		\item $n=1$, $f:D\subset \real\to \real^m$, z.B. $D=(a,b)$ \\
+		$f$ bzw. Bild $D(f)$ ist Kurve in $\real^m$, $f'(x_0)$ ist Spaltenvektor im $\real^m$. Man kann 
+		schreiben: $f(x_0+t)=f(x_0)+tf'(x_0)+o(|t|)$ \\
+		$\iff \underbrace{\frac{f(x_0+t)-f(x_0)}{t}}_{\text{heißt Differenzenquotient von
+		 }f\text{ in }x_0}=f'(x_0)+o(1)$, $t\to 0\quad \frac{o(t)}{t}=o(1)$ \\
+	 	$\iff \underbrace{\lim\limits_{t\to 0}\frac{f(x_0+t)-f(x_0)}{t}}_{\text{heißt Differentialquotient von
+	 		}f\text{ in }x_0}=f'(x_0)$ \\
+ 		\textbf{Bemerkungen:} $f$ differentierbar $\iff$ Diffentialquotient existiert in $x_0$, aber nicht 
+ 		erklärt für den Fall $n>1$! \\
+ 		\textbf{Interpretation für $m>1$:} \begin{compactitem}
+ 			\item Tangente an Kurve: Bild von $\tilde A(\real)$ ist Gerade und heißt Tangente an Kurve 
+ 			$f(x_0)$
+ 			\item Tangentenvektor an Kurve in $f(x_0)$ ist $f'(x)$ \\
+ 			Falls $f$ nicht differenzierbar in $x_0$ bzw. $x_0$ Randpunkt von $D$ und $f(x_0)$ 
+ 			definiert, betrachtet man einseitige Grenzwerte.
+ 			\item rechtsseitige Ableitung: $\lim\limits_{t\downarrow 0}\frac{f(x_0+t)-f(x_0)}{t}=f'_r(x_0)$ 
+ 			heißt rechtsseitige Ableitung von $f$ in $x_0$ (falls existent), analog linksseitige Ableitung
+ 		\end{compactitem}
+ 		\item $n=m=1$, $f:D\subset \real\to \real$ \\
+ 		$f'(x_0)\in \real$ ist Zahl und es gilt: \begin{compactitem}
+ 			\item Graph von $f$ ist Kurve in $\real^2$
+ 			\item Graph von $\tilde{A}$ ist Tangente an Graph von $f$ in $(x_0,f(x_0))$ und hat Anstieg 
+ 			$f'(x_0)$
+ 		\end{compactitem}
+	\end{compactitem}
+
+	\begin{folgerung}
+		Sei $f:D\subset K\to K^m$, $D$ offen. Dann: \\
+		$f$ ist differenzierbar in $x_0\in D$ mit Ableitung $f'(x_0)\in L(K,K^m)\iff \exists f'(x_0)\in 
+		L(K,K^m):\lim\limits_{y\to 0} \frac{f(x_0+t)-f(x_0)}{y}=f'(x_0)$.
+	\end{folgerung}
+
+\subsection{einfache Beispiele für Ableitungen}
+	\begin{beispiel}[$f:K^n\to K^m$ affin linear]
+		Für beliebige $x_0\in K^n$ gilt: $f(x)=Ax_0+a+A(x-x_0)=f(x_0)+A(x-x_0)+0\Rightarrow f$ ist 
+		differenzierbar in $x_0$ mit $f'(x_0)=A$
+	\end{beispiel}
+
+	\begin{beispiel}[$f:\real^n\to \real$ mit $f(x)=|x|^2$]
+		$|x-x_0|^2=\langle x-x_0,x-x_0\rangle=|x|^2-2\langle x_0,x\rangle+2\langle x_0,x_0\rangle-|x_0|^2=
+		|x|^2-2\langle x_0,x-x_0\rangle-|x_0|^2\Rightarrow f(x)=f(x_0)+2\langle x_0,x-x_0\rangle+
+		\underbrace{|x-x_0|^2}_{o(|x-x_0|)}$ \\
+		wegen $2x_0\in L(\real^n,\real)$ folgt $f=|\cdot |^2$ ist differenzierbar in $x_0$ mit $f'(x_0)=2x_0
+		\quad\forall x_0\in \real^n$
+	\end{beispiel}
+
+	\begin{beispiel}[$f:K\to K$ mit $f(x)=x^k$]
+		\begin{compactitem}
+			\item $k=0$: $f(x)=1\Rightarrow f'(x)=0$
+			\item $k=1$: $f(x_0+y)=(x_0+y)^k=\sum\limits_{j=0}^{k} \binom{k}{j} x_0^{k-j}y^j=x_0^k+
+			kx_0^{k-1}y+o(y)=f(x_0)+k\cdot f(x_0)y+o(y)$, $y\to 0\Rightarrow f'(x_0)=kx_0^{k-1} 
+			\quad\forall x_0\in K$
+		\end{compactitem}
+	\end{beispiel}
+
+	\begin{beispiel}[$f:\real^n\to\real$ mit $f(x)=|x|$]
+		$f$ ist nicht differenzierbar in $x_0=0$, denn, angenommen Ableitung $f'(0)\in \real^n$ existiert, 
+		fixiere $x\in \real^n$ mit $|x|=1\Rightarrow |tx|=0+\langle f'(0),tx\rangle+o(t)$, $t\to 0\Rightarrow
+		\frac{|t|}{t}=\langle f'(x),x \rangle + \frac{o(t)}{t}=\pm 1 \Rightarrow$ Widerspruch \\
+		anschaulich: es gibt keine Tangentialebene an Graph von $f$ in $(0,|0|)\in \real^{n+1}$ \\
+		folglich: $f$ ist stetig in $x_0\not\Rightarrow f$ ist differenzierbar in $x_0$.
+	\end{beispiel}
