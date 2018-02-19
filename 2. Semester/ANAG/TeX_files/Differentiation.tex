@@ -49,5 +49,54 @@
 	
 	
 	Abbildung $f:K^n\to K^m$ heißt affin linear falls $f(x)=Ax+a$ für eine 
-	lineare Abbildung $A:K^n\to K^m$.
+	lineare Abbildung $A:K^n\to K^m$. \\
+	
+	\underline{\person{Landau}-Symbole}: Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n\to K$, 
+	$x_0\in \overline{D}$
+	\begin{compactitem}
+		\item $f(x)=o(g(x))$ für $x\to x_0$ genau dann, wenn $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{|f(x)|}{g(x)}=0$
+		\item $f(x)=O(g(x))$ für $x\to x_0$ genau dann, wenn $\exists\delta>0$, $0\le c<\infty$ mit 
+		$\frac{|f(x)|}{|g(x)|}\le c \quad \forall x\in (B_{\delta}(x_0)\backslash \{x_0\})\cap D$
+	\end{compactitem}
 	\end{ueberblick}
+
+	%TODO was soll der wichtige Spezialfall im Skript? Ist der wichtig?
+
+	\begin{beispiel}[$f: D\subset K^n \to K^m$]
+		$x_0\in D$, $x_0$ Häufungspunkt von $D$. Dann: $f$ stetig in $x_0 \iff \lim\limits_{x\to x_0} f(x)
+		=f(x_0)\iff \lim\limits_{x\to x_0} \frac{|f(x)-f(x_0)|}{1}=0 \iff f(x)=f(x_0)+o(1)$ für $x\to x_0$ \\
+		Interpretation: Setze $r(x)=f(x)-f(x_0)\Rightarrow r(x)=o(1)$ für $x\to x_0\Rightarrow r(x)\to 0$, 
+		d.h. $o(1)$ ersetzt die Restfunktion $f(x)-f(x_0)$. Wegen $o(1)=o(|x-x_0|^0)$ sagt man auch, 
+		dass $f(x)=f(x_0)+o(1)$ die Approximation 0-ter Ordnung der Funktion $f$ in der Nähe von $x_0$.
+	\end{beispiel}
+
+	\begin{beispiel}[$f:D\subset \real^n \to \real$]
+		$x_0\in D$, $D$ offen, das bedeutet: $f(x)=f(x_0)+o(|x-x_0|)$, $x\to x_0 \quad (*)$
+		\begin{compactitem}
+			\item betrachte $f$ auf Strahl $x=x_0+ty$, $y\in \real^n$ fest, $|y|=1$, $t\in \real$ \\
+			$(*)\Rightarrow 0=\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{|f(x)-f(x_0)|}{|x-x_0|}=
+			\lim\limits_{\substack{t\to 0 \\ t\neq 0}} \frac{|f(x_0+ty)-f(x_0)|}{|t|} \Rightarrow \frac
+			{|\Delta f|}{|t|}=|\text{Anstieg der Sekante}|\to 0$
+			\item $(*)\Rightarrow f(x)=f(x_0)+\underbrace{\frac{o(|x-x_0|)}{|x-x_0|}}_{o(1)}|x-x_0|
+			\Rightarrow f(x)=f(x_0)+o(1)|x-x_0| \Rightarrow f(x)=f(x_0)+r(x)|x-x_0|\Rightarrow 
+			|f(x)-f(x_0)| \le \varrho(t)|x-x_0|$ falls $|x-x_0|\le t$ mit $\varrho(t)=\sup\limits_{|x-x_0|\le t} 
+			|r(x)|\to 0$ \\
+			Graph von $f$ liegt nahe $x_0$ in "'immer flacheren kegelförmigen Mengen"' $\Rightarrow$ 
+			Graph "'schmiegt sich"' an horizontale Ebene durch Punkt $(x_0,f(x_0))$
+			\item $(*)$ erfüllt offenbar nicht die Beobachtung: horizontale Ebene ist Graph einer affin 
+			linearen Funktion $\tilde A: \real^n \to \real$
+		\end{compactitem}
+	\end{beispiel}
+
+	\textbf{zentrale Frage:} Gibt es zur Funktion $f:D\subset K^n \to K^m$, $x_0\in D$, eine affin 
+	lineare Funktion $\tilde A:K^n\to K^m$, so dass sich in der Nähe von $x_0$ der Graph von $f$ 
+	an den Graph von $\tilde A$ "'anschmiegt"'? \\
+	\textbf{Antwort:} Ja, wegen $f(x_0)=\tilde A|x_0|$ folgt $\tilde Ax=A(x-x_0)+f(x_0)$
+	
+	\begin{definition}[Anschmiegen]
+		$f(x_0)-(f(x_0)+A(x-x_0))=o(|x-x_0|)$ \\
+		d.h. die Abweichung wird schneller kleiner als $|x-x_0|$! \\
+		
+		Vielleicht hatten Sie bisher eine andere Vorstellung von "'anschmiegen"', aber wir machen hier 
+		Mathematik!
+	\end{definition}
