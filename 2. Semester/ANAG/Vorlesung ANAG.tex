@@ -63,6 +63,8 @@
 \usepackage{bookmark}
 
 \newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+\newlength{\blacktrianglewidth}
+\settowidth{\blacktrianglewidth}{$\blacktriangleright$}
 
 \theoremstyle{break}
 \theorembodyfont{}
@@ -161,7 +163,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{bemerkung}[dummy]{Bemerkung}
+]{bemerkung}[dummy]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
@@ -174,7 +176,11 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
-]{beispiel}[dummy]{Beispiel}
+]{beispiel}[dummy]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+%unnumbered theorems
+\theoremstyle{nonumberbreak}
+\theoremindent0cm
 \newmdtheoremenv[%
 	%outerlinewidth=3pt,%
 	%linecolor=black,%
@@ -182,8 +188,10 @@
 	rightline=false,%
 	bottomline=false,%
 	leftline=false,%
+	hidealllines=true,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
+	innerleftmargin=10pt,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=5pt,%
