@@ -96,10 +96,9 @@
 	\begin{definition}[Anschmiegen]
 		$f(x_0)-(f(x_0)+A(x-x_0))=o(|x-x_0|)$ \\
 		d.h. die Abweichung wird schneller kleiner als $|x-x_0|$! \\
-		
-		Vielleicht hatten Sie bisher eine andere Vorstellung von "'anschmiegen"', aber wir machen hier 
-		Mathematik!
 	\end{definition}
+
+	\smiley{} Vielleicht hatten Sie bisher eine andere Vorstellung von "'anschmiegen"', aber wir machen hier Mathematik! \smiley{}
 
 \section{Ableitung}
 	Sei $f:D\subset K^n \to K^m$, $D$ offen.
@@ -244,7 +243,7 @@
 
 	\begin{bemerkung}
 		Es gibt stetige Funktionen $f:\real\to \real$ die in keinem Punkt differenzierbar sind! \\
-		$\sum\limits_{k=1}^{\infty} f_n$
+		z.B. $\sum\limits_{k=1}^{\infty} f_n$
 	\end{bemerkung}
 
 	\begin{beispiel}[$f:K\to K$ mit $f(x)=e^x$]
@@ -301,29 +300,183 @@
 		\end{compactitem}
 	\end{beweis}
 
+	\begin{folgerung}
+		Seien $\lambda, \mu:D\to K$ differenzierbar in $x_0\in K$, $D\subset K^n$ offen, $\lambda(x_0)
+		\neq 0$ \\
+		$\Rightarrow \left( \frac{\mu}{\lambda} \right):D\to K$ differenzierbar in $x_0$ mit $\left( 
+		\frac{\mu}{\lambda}\right)'(x_0)=\frac{\lambda(x_0)\mu'(x_0)-\lambda'(x_0)-\mu(x_0)}
+		{\lambda(x_0)^2}$
+	\end{folgerung}
+	\begin{beweis}
+		Setze in 17.12 $f=\mu$ (d.h. $m=1$) und betrachte das Produkt $\frac{1}{\lambda}\cdot \mu$.
+	\end{beweis}
+
+	\begin{beispiel}[Konstanten]
+		$f:D\subset K^n\to K^m$, $c\in K$, $f$ differenzierbar in $x_0\in D$ \\
+		$\Rightarrow (cf)'(x_0)=cf'(x_0)$
+	\end{beispiel}
+
+	\begin{beispiel}[Polynome]
+		$f:K\to K$ Polynom $f(x)=\sum\lim\limits_{l=0}^k a_kx^l \Rightarrow f$ differenzierbar 
+		$\forall x\in K$ mit $f'(x_0)=\sum\limits_{l=1}^k la_lx^{l-1}$
+	\end{beispiel}
+
+	\begin{beispiel}[rationale Funktionen]
+		Sei $f=\frac{f_1}{f_2}$ rationale Funktion auf $K \Rightarrow f$ ist differenzierbar auf 
+		$K\backslash${Nullstellen von $f_2$}
+	\end{beispiel}
+
+	\begin{beispiel}[$\tan$ und $\cot$]
+		$\tan:K\backslash\left\lbrace \frac{\pi}{2} + k\pi \mid k\in\whole \right\rbrace\to K$ \\
+		$\cot:K\backslash\left\lbrace k\pi \mid k\in\whole\right\rbrace\to K$ \\
+		$\Rightarrow \tan'(x_0)=\frac{\sin'(x_0)-\cos(x_0)\sin(x_0)}{\cos^2(x_0)}=\frac{\cos^2(x_0)+
+		\sin^2(x_0)}{\cos^2(x_0)}=\frac{1}{\cos^2(x_0)}$ \\
+		$\Rightarrow \cot'(x_0)=-\frac{1}{\sin^2(x_0)}$
+	\end{beispiel}
+
+	\begin{satz}[Kettenregel]
+		Sei $f:D\subset K^n\to K^m$, $g:\tilde{D}\subset K^n\to K^m$, $D,\tilde D$ offen. Sei $f$ 
+		differenzierbar in $x_0\in D$ und $g$ differenzierbar in $f(x_0)\subset \tilde D$ \\
+		$\Rightarrow g\circ f:D\to K^l$ differenzierbar in $x_0$ mit $(g\circ f)'(x_0)=g'(f(x_0))\cdot 
+		f'(x_0)$. 
+	\end{satz}
+	\begin{beweis}
+		INach Satz 17.2 existieren $P:D\to L(K^n,K^m)$ und $Q:\tilde{D}\to L(K^m,K^l)$ mit \\
+		$f(x)=f(x_0)+P(x)(x-x_0)$, $\lim\limits_{x\to x_0}P(x)=f'(x_0)$ \\
+		$g(x)=g(x_0)+Q(x)(x-x_0)$, $\lim\limits_{x\to x_0}Q(x)=g'(x_0)$ \\
+		$(g\circ f)(x)=g(f(x))=g(f(x_0))+Q(f(x))(f(x)-f(x_0))=(g\circ f)(x_0)+\underbrace{Q(f(x))\cdot P(x)}
+		_{\to g'(f(x_0))\cdot f'(x_0)}(x-x_0)\Rightarrow$ Behauptung
+	\end{beweis}
+
+	\begin{beispiel}[$f:\real\to\real$ mit $f(x)=a^x$]
+		$a\in\real_{>0}, a\neq 1$ \\
+		offenbar $a^x=\left( e^{\ln a} \right)^x=e^{x\ln a}\Rightarrow f(x)=g(h(x))$ mit $g(y)=e^y$ und 
+		$h(x)=x\ln a$ \\
+		Satz 17.18 liefert: $f'(x_0)=g'\left( e^{x_0\ln a}\right)h'(x)=e^{x_0\ln a}\cdot \ln a=a^{x_0}\ln a$
+	\end{beispiel}
+
+	\begin{beispiel}[$f:\real_{>0}\to \real$ mit $f(x)=\log_a x$]
+		$a\in\real_{>0}, a\neq 1$ \\
+		fixiere $x_0\in \real_{>0}$, sei $\{x_n\}$ beliebige Folge in $\real_{>0}$ mit $x_n\to x_0\Rightarrow
+		y_n = \log_a x_n\to \log_a x_0 = y_0$ \\
+		$\Rightarrow \lim\limits_{n\to \infty} \frac{f(x_n)-f(x_0)}{x_n-x_0}=\lim\limits_{n\to\infty} 
+		\frac{\log_a x_n - \log_a x_0}{a^{\log_a x_n}-a^{\log_a x_0}}=\lim\limits_{n\to\infty}\frac{1}
+		{\frac{a^{y_n}-a^{y_0}}{y_n-y_0}}=\frac{1}{a^{y_0}\ln a}$ \\
+		$f'(x_0)=\frac{1}{x_0\ln a}$ \\
+		\textbf{Spezialfall:} $(\ln x)'=\frac{1}{x}$
+	\end{beispiel}
+
+	\begin{beispiel}[$f:\real_{>0}\to\real$ mit $f(x)=x^r$]
+		$r\in \real$ \\
+		wegen $x^r=e^{r\ln x}$ liefert Kettenregel $f'(x_0)=\frac{re^{r\ln x_0}}{x_0}=\frac{rx_0^r}{x_0}=
+		rx_0^{r-1}$ \\
+		\textbf{Spezialfall:} $f(x)=\frac{1}{x^k}\Rightarrow f'(x)=-\frac{k}{x^{k+1}}$
+	\end{beispiel}
+
+	\begin{satz}[Reduktion]
+		Sei $f=(f_1,f_2):D\subset K^n \to K^k\times K^l$, $D$ offen, $x_0\in D$. Dann: \\
+		$f$ differenzierbar in $x_0\iff f_1:D\to K^k$ und $f_2:D\to K^l$ differenzierbar in $x_0$. Dann gilt:
+		\begin{equation}
+			f'(x_0)=\begin{pmatrix}f'_1(x_0) \\ f'_2(x_0)\end{pmatrix} 
+		\end{equation}
+	\end{satz}
+	\smiley{} Wenn Sie das nächste mal aus der Disko kommen, zuviel getrunken haben und den Namen 
+	ihrer Freundin nicht mehr kennen, sollten sie sich daran aber noch erinnern: \smiley{} \\
+	\begin{beweis}
+		\begin{compactitem}
+			\item Hinrichtung: man hat $f(x)=f(x_0)+f'(x_0)(x-x_0)+R(x)(x-x_0)$ mit $R(x)\to 0$, da 
+			$f'(x_0),R(x)\in L(K^n,K^k\times K^l) \Rightarrow f'(x_0)y=(A_1y,A_2y)$, $R(x)y=(R_1(x)y,
+			R_2(x)y)$ mit $A_1,R_1\in L(K^n,K^k)$, $A_2,R_2\in L(K^n,K^l)$ \\
+			$\Rightarrow f_j(x)=f_j(x_0)+A_j(x-x_0)+R_j(x-x_0)$ mit $R_j\to 0$ und $j=\{1,2\}\quad (*)$ \\
+			$\Rightarrow  f_j$ ist differenzierbar in $x_0$ it $f'_j(x_0)=A_j\Rightarrow$ Behauptung
+			\item Rückrichtung: es gilt $(*)$ mit $A_j=f'_j(x_0)$. Setze $A=\begin{pmatrix}f'_1(x_0) \\ f'_2(x_0)\end{pmatrix}$ und $R(x)=\begin{pmatrix}R_1(x) \\ R_2(x)\end{pmatrix} \Rightarrow
+			AR(x)\in L(K^n,K^k\times K^l)$ \\
+			$\Rightarrow f(x)=f(x_0)+A(x-x_0)+R(x)(x-x_0)$, $R(x)\to 0\Rightarrow f$ differenzierbar in 
+			$x_0\Rightarrow$ Behauptung
+		\end{compactitem}
+	\end{beweis}
+
+	\begin{folgerung}
+		Sei $f=(f_1,...,f_m):D\subset K^n\to K^m$, $D$ offen, $x_0\in D$. Dann: \\
+		$f$ differenzierbar in $x_0\iff f_j:D\to K$ differenzierbar in $x_0$ $\forall j=1,...,m$. Dann gilt:
+		\begin{equation}
+			f'(x_0)=\begin{pmatrix}f'_1(x_0) \\ \vdots \\ f'_m(x_0)\end{pmatrix}
+		\end{equation}
+	\end{folgerung}
+	\begin{beweis}
+		mehrfache Anwendung von Satz 17.22
+	\end{beweis}
+
+	\begin{bemerkung}
+		Mit Folgerung 17.23 kann man Berechnungen der Ableitung stets auf Funktion $\tilde f:D\subset
+		K^n\to K$ zurückführen!
+	\end{bemerkung}
+
+	\begin{beispiel}[$f:\real\to\real^2$ mit $f(t)=\begin{pmatrix}t\cos (2\pi t) \\ t\sin(2\pi t) \end{pmatrix}$]
+		$f'(t)=\begin{pmatrix}\cos(2\pi t)-t(\sin(2\pi t)2\pi) \\ \sin(2\pi t)-t(\cos(2\pi t)2\pi)\end{pmatrix}$ \\
+		Reduktion, Kettenregel, Produktregel, $f'(0)=(1,0)^t$, $f'(1)=(1,2\pi)^t$
+	\end{beispiel}
+
+	\begin{definition}[differenzierbar auf $D$, Ableitung, stetig differenzierbar]
+		Sei $f:D\subset K^n\to K^m$, $D$ offen. Falls $f$ differenzierbar in allen $x_0\in D$, dann 
+		heißt $f$ differenzierbar bzw. differenzierbar auf $D$ und die Funktion $f':D\to L(K^n,K^m)$ 
+		heißt Ableitung von $f$. \\
+		Ist die Funktion $f':D\to L(K^n,K^m)$ stetig auf $D$, dann heißt $f$ stetig differenzierbar auf 
+		$D$ bzw. $C^1$-Funktion auf $D$.
+	\end{definition}
+
+	\begin{ueberblick}
+		\begin{compactitem}
+			\item $f'$ stetig in $x_0\iff \lim\limits_{x\to x_0}f'(x)=f'(x_0)$
+			\item Konvergenz von Matrix $\iff$ alle Einträge konvergieren
+			\item $C^1(D,K^m)=\{f:D\to K^m \mid f \text{ stetig differenzierbar auf }D\}$
+		\end{compactitem}
+	\end{ueberblick}
+
+	\begin{beispiel}
+		\begin{compactitem}
+			\item $f(x)=x^k\Rightarrow f'(x)=kx^{k-1}\Rightarrow f\in C^1(\real,\real)$
+			\item $f(x)=e^x\Rightarrow f'(x)=e^x\Rightarrow f\in C^1(\comp,\comp)$
+			\item $f(x)=|x|^2\Rightarrow f'(x)=2x\Rightarrow f\in C^1(\real^n,\real)$
+		\end{compactitem}
+	\end{beispiel}
+
+	\begin{beispiel}[zusammengesetze Funktion]
+		$\newline$ %TODO: Funktion etwas, aber nicht zu viel nach oben schieben
+		$f:\real\to\real$ mit $f(x)=\begin{cases}x^2\sin(\frac{1}{x}) & x\neq 0 \\ 0 & x=0\end{cases}$ \\
+		wegen $\frac{|x^2\sin(\frac 1 x)|}{|x|}\le |x|\to 0$ folgt $f(x)=o(|x|)$, $x\to 0$ \\
+		$\Rightarrow f(x)=f(0)+0\cdot (x-0)+o(|x-0|)$, $x\to 0 \Rightarrow f$ ist differenzierbar in 
+		$x=0$ mit $f'(0)=0$ \\
+		Rechenregeln liefern für $x\neq 0$: $f'(x)=2x\sin(\frac 1 x)-\cos x$ \\
+		für $x_k=\frac{1}{k\pi}$ gilt: $\lim\limits_{k\to\infty} 2x_k\sin(\frac{1}{x_k})=0$ und 
+		$\lim\limits_{x\to\infty} \cos(\frac{1}{x_k})\pm 1\Rightarrow \lim\limits_{x\to 0} f'(x)$ existiert nicht 
+		$\Rightarrow f\notin C^1(\real,\real)$! \\
+		\textbf{Das heißt, dass die Ableitung nicht stetig sein muss!}
+	\end{beispiel}
+
 \section{Richtungsableitung und partielle Ableitung}
 
 Sei $f:D \subset K^n \to K^m$, $D$ offen, $x\in D$.\\
-\underline{Ziel:} Zurückführung der Berechnung der Ableitung $f^{'}(x)$ auf Berechnung der Ableitung der Funktion $\tilde{f} : \tilde{D} \subset \mathbb{K} \to \mathbb{K}$. Bisher:
+\textbf{Ziel:} Zurückführung der Berechnung der Ableitung $f^{'}(x)$ auf Berechnung der Ableitung der Funktion $\tilde{f} : \tilde{D} \subset \mathbb{K} \to \mathbb{K}$. Bisher:
 
 \begin{compactitem}
     \item Reduktionsansatz $\Longrightarrow$ man kann sich bereits auf $m=1$ beschränken
     \item für Berechnung der Ableitung von $\tilde{f}$ ist dann neben Rechenregeln auch Differentialquotient (mit leistungsfähigen Grenzwertkalkül!) verfügbar
 \end{compactitem}
 
-\underline{Idee:} Betrachte Funktion $f$ auf Gerade $t \to x + tz$ durch $x$ ($z$ Richtungsvektor) $\Longrightarrow$ skalares Argument $t \in \mathbb{K} \longrightarrow$ Differentialquotient\\
-\underline{Spezialfälle:} $z=e_j \Rightarrow$ partielle Ableitung
+\textbf{Idee:} Betrachte Funktion $f$ auf Gerade $t \to x + tz$ durch $x$ ($z$ Richtungsvektor) $\Longrightarrow$ skalares Argument $t \in \mathbb{K} \longrightarrow$ Differentialquotient\\
+\textbf{Spezialfälle:} $z=e_j \Rightarrow$ partielle Ableitung
 Sei $f:D \subset K^n \to K^m$, $D$ offen, $x \in D$, $z \in K^n$. Falls $a \in \LinAbb(K,K^m)\;(\sim K^m)$ existiert mit
 \begin{align}
 f(x+tz) = f(x) +ta + o(t), t \to 0, t \in K\\
 \end{align}
 
-dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ heißt \begriff{Richtungableitung} $f$ in $x$ in Richtung $z$ andere Bezeichnungen $\partial_z f(x), \frac{\partial f(x)}{\partial_z}(x), \delta f(x;z), f^{'}(x;z), \dots$
+dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ heißt \begriff{Richtungsableitung} $f$ in $x$ in Richtung $z$ andere Bezeichnungen $\partial_z f(x), \frac{\partial f(x)}{\partial_z}(x), \delta f(x;z), f^{'}(x;z), \dots$
 
 \begin{bemerkung}
     \begin{compactitem}
         \item wegen $B_{\epsilon}(x) \subset D$ für ein $\epsilon > 0$ existiert ein $\tilde{\epsilon} > 0$ mit $x+tz \in D \forall t \in B_{\epsilon}(0) \in K$
-        \item $\Diff_z f(x)$ existiert offebar stets für $z=0$ mit $\Diff_0 f(x) = 0$
+        \item $\Diff_z f(x)$ existiert offenbar stets für $z=0$ mit $\Diff_0 f(x) = 0$
     \end{compactitem}
 \end{bemerkung}
 
@@ -337,28 +490,30 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
 \end{folgerung}
 
 \begin{beispiel}
-    Sei $f: \mathbb{R}^2 \to \mathbb{R}, f(x_1,x_2) = x_1^2 + \vert x_2\vert$. Existiert Richtungsableitung in $x=(x_1,0)$? Sei $\phi(t) = f(x + tz) = (x_1 + tz_1)^2 + \vert tz_2\vert = \underbrace{x_1^2 + 2tx_1 z_1 +  t^2 z_1^2}_{:= \varphi_1(t)} + \underbrace{\vert t \vert \vert z \vert}_{=: \varphi_2(t)} \Rightarrow \varphi^{\prime}(0) = 2x_1z_1\;\forall x_1, z_1 \in \mathbb{R}, \varphi(\prime)(0) = 0$ existiert \textbf{nur} für $z_2 = 0$ (vgl Bsp 5.1.4) %TODO set ref.\\
+    Sei $f: \mathbb{R}^2 \to \mathbb{R}, f(x_1,x_2) = x_1^2 + \vert x_2\vert$. Existiert Richtungsableitung in $x=(x_1,0)$? Sei $\phi(t) = f(x + tz) = (x_1 + tz_1)^2 + \vert tz_2\vert = \underbrace{x_1^2 + 2tx_1 z_1 +  t^2 z_1^2}_{:= \varphi_1(t)} + \underbrace{\vert t \vert \vert z \vert}_{=: \varphi_2(t)} \Rightarrow \varphi^{\prime}(0) = 2x_1z_1\;\forall x_1, z_1 \in \mathbb{R}, \varphi(\prime)(0) = 0$ existiert \textbf{nur} für $z_2 = 0$ (vgl. Bsp 5.1.4) %TODO set ref.\\
     $\Rightarrow \varphi^{\prime}(0) = 2x_1 z_1$ existiert \textbf{nur} für $x_1, z_1 \in \mathbb{R}, z_2 = 0 \overset{5.8}{\Rightarrow}$ Richtungsableitung von $f$ existiert für alle $x=(x_1,0)$ \textbf{nur} in Richtung $z=(z_1,0)$ mit $\Diff_z f(x) = 2x_1 z_1$
 \end{beispiel}
 
-\underline{Frage:} Existiert $\Diff_z f(x)\; \forall z$ falls $f$ differenzierbar in $x$?
+\textbf{Frage:} Existiert $\Diff_z f(x)\; \forall z$ falls $f$ differenzierbar in $x$?
 
 \begin{satz}\label{satz:Richtungsableitung_linear}
     Sei $f : D \subset K^m \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D \Rightarrow$ Richtungsableitung $\Diff_z f(x)$ existiert $\forall z \in K^n$ und 
     \begin{align}
     \Diff_z f(x) = f^{\prime}(x)\cdot z
-    \end{align}
-    \textit{Bemerkung:}\\
-    Richtungableitung ist \textbf{linear} in $z$!
+    \end{align}    
 \end{satz}
 
 \begin{proof}
     $f$ differenzierbar in $x \Rightarrow f(y) = f(x) + f^{\prime}(x)(y-x) + o(\vert y-x\vert) \overset{y=x+tz}{\Rightarrow} f(x+tz) = f(x) t(f^{\prime}(x)z + o(t), t \to 0, y \to x \overset{5.7}{\Rightarrow}$ Behauptung.
 \end{proof}
 
+\begin{bemerkung}
+	Richtungsableitung ist \textbf{linear} in $z$!
+\end{bemerkung}
+
 \begin{beispiel}
     Betrachte $f: \mathbb{R}^n \to \mathbb{R}$ mit $f(x) = \vert x \vert^2$
-    \begin{compactitem}
+    \begin{compactitem}%TODO: Referenz zu Beispiel 5.1.2
         \item[a)] (5.8) liefert $\varphi(t) = \vert x + tz\vert^2 = \sum_{i=1}^{n} (x_i t z_i)^2 = \sum_{i=1}^{n} x_i^2 + 2t x_i z_i + t^2 z_i^2 \Rightarrow \varphi^{\prime}(t) = \sum_{i=1}^{n} 2x_i z_i + 2t z_i^2 \overset{(5.8)}{\Rightarrow} \varphi^{\prime}(0) = 2 \sum_{i=1}^{n} x_i z_i = \langle x,z \rangle = \Diff_z  f(x)\; \forall x,z \in \mathbb{R}^n$
         \item[b)] Beispiel 5.1.2 liefert $f^{\prime}(x) = 2x \forall x \in \mathbb{R}^n \overset{(5.10)}{\Rightarrow} \Diff_z f(x) = 2x \cdot z = 2 \langle x,z \rangle \forall x,z \in \mathbb{R}^n$ folglich gilt für $\vert z \vert = 1$ und $x \in \mathbb{R}^n$ fest:
         \begin{compactitem}[\textbullet]
@@ -368,13 +523,13 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
     \end{compactitem}
 \end{beispiel}
 
-\subsection{Anwendung: Eigenscht des Gradienten}
+\subsection{Anwendung: Eigenschaft des Gradienten}
 
 Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x\in D$.\\
 
-\begin{definition}
+\begin{definition}[Niveaumenge, Tangentialvektor]
     $N_c := \{x \in D \mid f(x) = c\}$  heißt \begriff{Niveaumenge} von f.\\
-    Sei $\gamma := (-\delta, \delta) \to N_c(\delta > 0)$ Kurve mit $\gamma(0) = x$ (*), $\gamma$ differenizierbar in $0$.\\
+    Sei $\gamma := (-\delta, \delta) \to N_c(\delta > 0)$ Kurve mit $\gamma(0) = x$ (*), $\gamma$ differenzierbar in $0$.\\
     Ein $z \in \mathbb{R}^n\setminus\{0\}$  mit $z = \gamma^{\prime}$ für eine Kurve $\gamma$ gemäß (*) heißt \begriff{Tangentialvektor} an $N_c$ in $x_0$.
 \end{definition}
 
@@ -383,7 +538,7 @@ Offenbar $\varphi(t) := f(\gamma(t)) = c \forall t \in (-\delta, \delta)\\ \over
 \begin{satz}
     Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x \in D$. Dann
     \begin{compactitem}
-        \item[1)] Gradient $f^{\prime}(x)$ steht senkrecht auf Niveaumenge $N_{f(x)}$, d.h. $\langle f^{\prime}(x), z\rangle = 0 \forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
+        \item[1)] Gradient $f^{\prime}(x)$ steht senkrecht auf Niveaumenge $N_{f(x)}$, d.h. $\langle f^{\prime}(x), z\rangle = 0 \quad\forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
         \item[2)] Richtungsableitung $\Diff_z f(x) = 0 \forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
         \item[3)] Gradient $f^{\prime}(x)$ zeigt in Richtung des ``steilsten Anstiegs'' von $f$ in $x$, d.h. falls $f^{\prime}(x) \neq 0$ gilt für die Richtung $\bar{z} = \frac{f(x)}{\vert f(x) \vert} \Diff_z f(x) = \max\{\Diff_z f(x) \in \mathbb{R} \mid z \in \mathbb{R}^n \text{ und } \vert z \vert = 1\} = \vert f^{\prime}(x)\vert.$
     \end{compactitem}
