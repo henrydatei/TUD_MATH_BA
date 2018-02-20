@@ -8,7 +8,7 @@ Wer mithelfen möchte, dieses Script zu vervollständigen, bitte melden.
   
     16. Wiederholung und Motivation ... fertig
     
-    17. Ableitung ... wird bearbeitet
+    17. Ableitung ... fertig
     
     18. Richtungsableitung und partielle Ableitungen ... wird bearbeitet
     
