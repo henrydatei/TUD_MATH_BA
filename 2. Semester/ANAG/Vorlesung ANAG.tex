@@ -187,18 +187,17 @@
 	backgroundcolor=lightgrey,%
 ]{ueberblick}{Überblick}
 \newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=red,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
+    outerlinewidth=3pt,%
+    linecolor=red,%
+    topline=false,%
+    rightline=false,%
+    bottomline=false,%
+    innertopmargin=\topskip,%
+    innerbottommargin=\topskip,%
+    frametitlefont=\normalfont\bfseries\color{black},%
+    skipabove=5pt,%
+    skipbelow=5pt,%
 ]{definition}{Definition}
-
 
 \NewDocumentCommand{\begriff}{s O{} m O{}}{
 	\IfBooleanTF{#1}
@@ -267,6 +266,8 @@
 \DeclareMathOperator{\ext}{ext} % Set of outer points
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\LinAbb}{L}
+\DeclareMathOperator{\Diff}{D}
 
 % Hacks
 \titleclass{\part}{top}

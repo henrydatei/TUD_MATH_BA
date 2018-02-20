@@ -241,3 +241,96 @@
 		anschaulich: es gibt keine Tangentialebene an Graph von $f$ in $(0,|0|)\in \real^{n+1}$ \\
 		folglich: $f$ ist stetig in $x_0\not\Rightarrow f$ ist differenzierbar in $x_0$.
 	\end{beispiel}
+
+\section{Richtungsableitung und partielle Ableitung}
+
+Sei $f:D \subset K^n \to K^m$, $D$ offen, $x\in D$.\\
+\underline{Ziel:} Zurückführung der Berechnung der Ableitung $f^{'}(x)$ auf Berechnung der Ableitung der Funktion $\tilde{f} : \tilde{D} \subset \mathbb{K} \to \mathbb{K}$. Bisher:
+
+\begin{compactitem}
+    \item Reduktionsansatz $\Longrightarrow$ man kann sich bereits auf $m=1$ beschränken
+    \item für Berechnung der Ableitung von $\tilde{f}$ ist dann neben Rechenregeln auch Differentialquotient (mit leistungsfähigen Grenzwertkalkül!) verfügbar
+\end{compactitem}
+
+\underline{Idee:} Betrachte Funktion $f$ auf Gerade $t \to x + tz$ durch $x$ ($z$ Richtungsvektor) $\Longrightarrow$ skalares Argument $t \in \mathbb{K} \longrightarrow$ Differentialquotient\\
+\underline{Spezialfälle:} $z=e_j \Rightarrow$ partielle Ableitung
+Sei $f:D \subset K^n \to K^m$, $D$ offen, $x \in D$, $z \in K^n$. Falls $a \in \LinAbb(K,K^m)\;(\sim K^m)$ existiert mit
+\begin{align}
+f(x+tz) = f(x) +ta + o(t), t \to 0, t \in K\\
+\end{align}
+
+dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ heißt \begriff{Richtungableitung} $f$ in $x$ in Richtung $z$ andere Bezeichnungen $\partial_z f(x), \frac{\partial f(x)}{\partial_z}(x), \delta f(x;z), f^{'}(x;z), \dots$
+
+\begin{bemerkung}
+    \begin{compactitem}
+        \item wegen $B_{\epsilon}(x) \subset D$ für ein $\epsilon > 0$ existiert ein $\tilde{\epsilon} > 0$ mit $x+tz \in D \forall t \in B_{\epsilon}(0) \in K$
+        \item $\Diff_z f(x)$ existiert offebar stets für $z=0$ mit $\Diff_0 f(x) = 0$
+    \end{compactitem}
+\end{bemerkung}
+
+\begin{folgerung}
+    Sei $f: D \subset K^n \to K^m$, $D$ offen, $x\in D$, $z \in K^n$. Dann
+    \begin{align} %TODO Add numbering!
+    &f \text{ ist differenzierbar in } x \text{ in Richtung } z \text{ mit } \Diff_z f(x) \in \LinAbb(K, K^m)\;(\sim K^m)\\
+    &\Leftrightarrow \text{ für } \varphi(t) = f(x + tz) \text{ existiert } \varphi^{\prime}(0) \text{ und } \Diff_z f(x) = \varphi^{\prime}(0)\\
+    &\Leftrightarrow \lim_{t \to 0} \frac{f(x + tz) - f(x)}{t} = a \in \LinAbb(K,K^m) \text{ existiert und } \Diff_z f(x) = a
+    \end{align}
+\end{folgerung}
+
+\begin{beispiel}
+    Sei $f: \mathbb{R}^2 \to \mathbb{R}, f(x_1,x_2) = x_1^2 + \vert x_2\vert$. Existiert Richtungsableitung in $x=(x_1,0)$? Sei $\phi(t) = f(x + tz) = (x_1 + tz_1)^2 + \vert tz_2\vert = \underbrace{x_1^2 + 2tx_1 z_1 +  t^2 z_1^2}_{:= \varphi_1(t)} + \underbrace{\vert t \vert \vert z \vert}_{=: \varphi_2(t)} \Rightarrow \varphi^{\prime}(0) = 2x_1z_1\;\forall x_1, z_1 \in \mathbb{R}, \varphi(\prime)(0) = 0$ existiert \textbf{nur} für $z_2 = 0$ (vgl Bsp 5.1.4) %TODO set ref.\\
+    $\Rightarrow \varphi^{\prime}(0) = 2x_1 z_1$ existiert \textbf{nur} für $x_1, z_1 \in \mathbb{R}, z_2 = 0 \overset{5.8}{\Rightarrow}$ Richtungsableitung von $f$ existiert für alle $x=(x_1,0)$ \textbf{nur} in Richtung $z=(z_1,0)$ mit $\Diff_z f(x) = 2x_1 z_1$
+\end{beispiel}
+
+\underline{Frage:} Existiert $\Diff_z f(x)\; \forall z$ falls $f$ differenzierbar in $x$?
+
+\begin{satz}\label{satz:Richtungsableitung_linear}
+    Sei $f : D \subset K^m \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D \Rightarrow$ Richtungsableitung $\Diff_z f(x)$ existiert $\forall z \in K^n$ und 
+    \begin{align}
+    \Diff_z f(x) = f^{\prime}(x)\cdot z
+    \end{align}
+    \textit{Bemerkung:}\\
+    Richtungableitung ist \textbf{linear} in $z$!
+\end{satz}
+
+\begin{proof}
+    $f$ differenzierbar in $x \Rightarrow f(y) = f(x) + f^{\prime}(x)(y-x) + o(\vert y-x\vert) \overset{y=x+tz}{\Rightarrow} f(x+tz) = f(x) t(f^{\prime}(x)z + o(t), t \to 0, y \to x \overset{5.7}{\Rightarrow}$ Behauptung.
+\end{proof}
+
+\begin{beispiel}
+    Betrachte $f: \mathbb{R}^n \to \mathbb{R}$ mit $f(x) = \vert x \vert^2$
+    \begin{compactitem}
+        \item[a)] (5.8) liefert $\varphi(t) = \vert x + tz\vert^2 = \sum_{i=1}^{n} (x_i t z_i)^2 = \sum_{i=1}^{n} x_i^2 + 2t x_i z_i + t^2 z_i^2 \Rightarrow \varphi^{\prime}(t) = \sum_{i=1}^{n} 2x_i z_i + 2t z_i^2 \overset{(5.8)}{\Rightarrow} \varphi^{\prime}(0) = 2 \sum_{i=1}^{n} x_i z_i = \langle x,z \rangle = \Diff_z  f(x)\; \forall x,z \in \mathbb{R}^n$
+        \item[b)] Beispiel 5.1.2 liefert $f^{\prime}(x) = 2x \forall x \in \mathbb{R}^n \overset{(5.10)}{\Rightarrow} \Diff_z f(x) = 2x \cdot z = 2 \langle x,z \rangle \forall x,z \in \mathbb{R}^n$ folglich gilt für $\vert z \vert = 1$ und $x \in \mathbb{R}^n$ fest:
+        \begin{compactitem}[\textbullet]
+            \item $\Diff_z f(x) \Longleftrightarrow x \perp z$
+            \item $\Diff_z f(x)$ maximal $\Longleftrightarrow z = \frac{x}{\vert x \vert}$
+        \end{compactitem}
+    \end{compactitem}
+\end{beispiel}
+
+\subsection{Anwendung: Eigenscht des Gradienten}
+
+Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x\in D$.\\
+
+\begin{definition}
+    $N_c := \{x \in D \mid f(x) = c\}$  heißt \begriff{Niveaumenge} von f.\\
+    Sei $\gamma := (-\delta, \delta) \to N_c(\delta > 0)$ Kurve mit $\gamma(0) = x$ (*), $\gamma$ differenizierbar in $0$.\\
+    Ein $z \in \mathbb{R}^n\setminus\{0\}$  mit $z = \gamma^{\prime}$ für eine Kurve $\gamma$ gemäß (*) heißt \begriff{Tangentialvektor} an $N_c$ in $x_0$.
+\end{definition}
+
+Offenbar $\varphi(t) := f(\gamma(t)) = c \forall t \in (-\delta, \delta)\\ \overset{Kettenregel}{\Longrightarrow} \varphi^{\prime}(0) = f^{\prime}(\gamma(0))\cdot \gamma^{\prime}(0) = 0 \overset{Satz \ref{satz:Richtungsableitung_linear}}{\Longrightarrow} \Diff_{\gamma^{\prime}(0)}f(x) = \langle f^{\prime}(x),\gamma^{\prime}(0)\rangle =0$ (**)
+
+\begin{satz}
+    Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x \in D$. Dann
+    \begin{compactitem}
+        \item[1)] Gradient $f^{\prime}(x)$ steht senkrecht auf Niveaumenge $N_{f(x)}$, d.h. $\langle f^{\prime}(x), z\rangle = 0 \forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
+        \item[2)] Richtungsableitung $\Diff_z f(x) = 0 \forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
+        \item[3)] Gradient $f^{\prime}(x)$ zeigt in Richtung des ``steilsten Anstiegs'' von $f$ in $x$, d.h. falls $f^{\prime}(x) \neq 0$ gilt für die Richtung $\bar{z} = \frac{f(x)}{\vert f(x) \vert} \Diff_z f(x) = \max\{\Diff_z f(x) \in \mathbb{R} \mid z \in \mathbb{R}^n \text{ und } \vert z \vert = 1\} = \vert f^{\prime}(x)\vert.$
+    \end{compactitem}
+\end{satz}
+
+\begin{proof}
+    1), 2) folgen direkt aus (**) und 5.10\\
+    zu 3) für $\vert z \vert = 1$ gilt $\Diff_z f(x) \overset{5.10}{=} \langle f^{\prime}(x), z \rangle$ $\overset{\text{Def. } \bar{z}}{=} \vert f^{\prime}(x)\vert \langle \tilde{z}, z\rangle \overset{\text{CSU}}{\leq} \vert f^{\prime}(x)\vert \vert \tilde{z}\vert \vert z\vert = \vert f^{\prime}(x)\vert = \frac{\langle f^{\prime}(x),f^{\prime}(x)}{\vert f^{\prime}(x) \vert} = \langle f^{\prime}(x), \tilde{z}\rangle \Diff_z f(x) \Rightarrow$ Behauptung. %TODO validate proof!
+\end{proof}
