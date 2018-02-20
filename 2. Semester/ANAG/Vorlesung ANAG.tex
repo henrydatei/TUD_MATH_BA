@@ -42,6 +42,7 @@
 \usetikzlibrary{arrows}
 \usepackage{color}
 \usepackage{mathrsfs}
+\usepackage{wasysym}
 
 \ifluatex
 \usepackage{fontspec}
@@ -65,6 +66,77 @@
 \newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
 \newlength{\blacktrianglewidth}
 \settowidth{\blacktrianglewidth}{$\blacktriangleright$}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}     % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{15pt}{\huge\bfseries}
+\titlespacing{\chapter}{0pt}{0pt}{0pt}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+
+% Math Operators
+\DeclareMathOperator{\inn}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\LinAbb}{L}
+\DeclareMathOperator{\Diff}{D}
+
+% Hacks
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+\setlength\parindent{0pt} % noindent whole file!
+\renewcommand*{\arraystretch}{1.4}
 
 \theoremstyle{break}
 \theorembodyfont{}
@@ -164,7 +236,7 @@
 	skipabove=5pt,%
 	skipbelow=5pt,%
 ]{beispiel}[dummy]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
-\newenvironment{beweis}{\begin{itshape} Beweis:}{\end{itshape}}
+\newenvironment{beweis}{\begin{itshape} Beweis:}{\QEDA\end{itshape}}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
@@ -208,77 +280,6 @@
 		{\index[symbols]{#2#3@\detokenize{#4}#5}}
 		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
 }
-
-%General newcommands!
-\newcommand{\comp}{\mathbb{C}} % complex set C
-\newcommand{\real}{\mathbb{R}} % real set R
-\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
-\newcommand{\natur}{\mathbb{N}} % natural number Symbol
-\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
-\newcommand{\field}{\mathbb{K}} % general field for the others above!
-\newcommand{\diff}{\mathrm{d}} % differential d
-\newcommand{\s}{\,\,}     % space after the function in the intergral
-\newcommand{\cont}{\mathcal{C}} % Contour C
-\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
-\newcommand{\diffz}{\s\diff z}
-\newcommand{\subint}{\int\limits} % lower boundaries for the integral
-\newcommand{\poly}{\mathcal{P}} % special P - polygon
-\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
-\newcommand{\cover}{\mathcal{U}} % cover for a set
-\newcommand{\setsys}{\mathcal{M}} % set system M
-\newcommand{\setnys}{\mathcal{N}} % set system N
-\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
-\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
-\newcommand{\bocirc}{S_r(z)}
-\newcommand{\prop}{\,|\,}
-\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
-\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
-\newcommand{\realpos}{\real_{>0}}
-\newcommand{\realposr}{\real_{\geq0}}
-\newcommand{\naturpos}{\natur_{>0}}
-\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
-\newcommand{\Realz}{\operatorname{Re}} % Real symbol
-\newcommand{\norm}{\Vert \cdot \Vert}
-\newcommand{\metric}{\vert \cdot \vert}
-\newcommand{\foralln}{\forall n} %all n
-\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
-\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
-\newcommand{\conjz}{\overline{z}} % conjugated z
-\newcommand{\tildz}{\tilde{z}} % different z
-\newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
-\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
-\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
-\newcommand{\powerset}{\mathcal{P}}
-\newcommand{\person}[1]{\textsc{#1}}
-\newcommand{\highlight}[1]{\emph{#1}}
-\newcommand{\realz}{\mathfrak{Re}}
-\newcommand{\imagz}{\mathfrak{Im}}
-\renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thechapter}{\Roman{chapter}}
-\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{15pt}{\huge\bfseries}
-\titlespacing{\chapter}{0pt}{0pt}{0pt}
-\titlespacing{\section}{0pt}{0pt}{0pt}
-
-% Math Operators
-\DeclareMathOperator{\inn}{int} % Set of inner points
-\DeclareMathOperator{\ext}{ext} % Set of outer points
-\DeclareMathOperator{\cl}{cl} % Closure
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\LinAbb}{L}
-\DeclareMathOperator{\Diff}{D}
-
-% Hacks
-\titleclass{\part}{top}
-\titleformat{\part}[display]
-{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
-\titlespacing*{\part}{0pt}{50pt}{40pt}
-\titleclass{\chapter}{straight}
-\titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
-\titlespacing*{\chapter} {0pt}{50pt}{40pt}
-\setlength\parindent{0pt} % noindent whole file!
-\renewcommand*{\arraystretch}{1.4}
 
 \numberwithin{dummy}{section}
 \counterwithout{section}{chapter}
