@@ -242,6 +242,65 @@
 		folglich: $f$ ist stetig in $x_0\not\Rightarrow f$ ist differenzierbar in $x_0$.
 	\end{beispiel}
 
+	\begin{bemerkung}
+		Es gibt stetige Funktionen $f:\real\to \real$ die in keinem Punkt differenzierbar sind! \\
+		$\sum\limits_{k=1}^{\infty} f_n$
+	\end{bemerkung}
+
+	\begin{beispiel}[$f:K\to K$ mit $f(x)=e^x$]
+		$f$ ist differenzierbar mit $f'(x_0)=e^{x_0}\quad\forall x_0\in K$. Denn es ist $\lim\limits_{y\to 0} 
+		\frac{e^y-1}{y}=1$ in $\comp \Rightarrow \lim\limits_{y\to 0} \frac{e^{x_0+y}-e^{x_0}}{y}=
+		\lim\limits_{y\to 0} e^{x_0}\frac{e^y-1}{y}=e^{x_0}$
+	\end{beispiel}
+
+	\begin{beispiel}[$\sin,\cos:K\to K$ für $\real$ und $\comp$]
+		$\sin'(x_0)=\cos(x_0)$ und $\cos'(x_0)=-\sin(x_0)$ \\
+		Denn: $\frac{\sin y}{y}=\frac{e^{iy}-e^{-iy}}{2iy}=\frac{1}{2}\left( \frac{e^{iy}-1}{iy}+
+		\frac{e^{iy}-1}{-iy}\right) \to 1$ \\
+		$\Rightarrow \lim\limits_{y\to 0} \frac{\sin(x_0+y)-\sin(x_0)}{y}=\lim\limits_{y\to 0} \left(
+		 \frac{1}{y}2\sin(\frac{y}{2})\cos(x_0+\frac{y}{2}) \right) =\cos(x_0)$ \\
+		 analog für $\cos$
+	\end{beispiel}
+
+	\textbf{Schwierigkeit:}
+	\begin{compactitem}
+		\item Spezialfälle 1 und 2 sind häufig ungeeignet zur Bestimmung von $f'(x_0)$
+		\item Spezialfall 3 ist nützlich bei $m=n=1 \Rightarrow$ Zurückführung auf diese einfachen Fälle 
+		durch Rechenregeln und Reduktion
+	\end{compactitem}
+
+	\begin{satz}[Rechenregeln]
+		Sei $D\subset K^n$ offen, $f,g:D\to K^m$, $\lambda:D\to K$ differenzierbar in $x_0\in D
+		\Rightarrow (f\pm g):D\to K^m$ und $(\lambda\cdot f):D\to K^m$ und $(f\cdot g):D\to K^m$ sind 
+		differenzierbar in $x_0$ und $\frac{1}{\lambda}:D\to K$ ist differenzierbar in $x_0$ falls 
+		$\lambda(x_0)\neq 0$ mit:
+		\begin{compactitem}
+			\item $(f\pm g)'(x_0)=f'(x_0)\pm g'(x_0)$
+			\item $(\lambda\cdot f)'(x_0)=\lambda(x_0)f'(x_0)+\lambda'(x_0)f(x_0)$
+			\item $(f\cdot g)'(x_0)=f(x_0)^tg'(x_0)+f'(x_0)g(x_0)^t$
+			\item $\left( \frac{1}{y}\right)'(x_0)=-\frac{1}{\lambda(x)^2}\cdot\lambda'(x_0) $
+		\end{compactitem}
+	\end{satz}
+	\begin{beweis}
+		Nach Satz 17.2 existieren $P,Q:D\to L(K^n,K^m), \Lambda:D\to L(K^n,K)$ mit \\
+		$f(x)=f(x_0)+P(x)(x-x_0)$, $\lim\limits_{x\to x_0} P(x)=f'(x_0)$ \\
+		$g(x)=g(x_0)+Q(x)(x-x_0)$, $\lim\limits_{x\to x_0} Q(x)=g'(x_0)$ \\
+		$\lambda(x)=\lambda(x_0)+\Lambda(x)(x-x_0)$, $\lim\limits_{x\to x_0} \Lambda(x)=\lambda'(x_0)$ \\
+		mit Satz 17.2 ergibt sich die Behauptung wie folgt:
+		\begin{compactitem}
+			\item $f(x)\pm g(x)=f(x_0)\pm g(x_0)+\underbrace{(P(x)\pm Q(x))}_{\to f'(x_0)\pm g(x_0) \in 
+			L(K^n,K^m)}(x-x_0)\Rightarrow$ Behauptung
+			\item $\lambda(x)\cdot f(x)=\lambda(x_0)f(x_0)+\underbrace{\left(\lambda(x_0)P(x)+
+			f(x_0)\Lambda(x)+\Lambda(x)(x-x_0)P(x) \right)}_{\to \lambda(x_0)f'(x_0)+\lambda'(x_0)
+			f(x_0)\in L(K^n,K^m)}(x-x_0)\Rightarrow$ Behauptung
+			\item analog
+			\item $\frac{1}{\lambda(x)}=\frac{1}{\lambda(x_0)}-\frac{\lambda(x)-\lambda(x_0)}
+			{\lambda(x)\lambda(x_0)}=\frac{1}{\lambda(x_0)}+\underbrace{\left( -\frac{1}
+			{\lambda(x_0)\lambda(x)}\cdot\Lambda(x) \right)}_{\to -\frac{1}{\lambda(x_0)^2}\lambda'(x_0)}
+			(x-x_0)\Rightarrow$ Behauptung
+		\end{compactitem}
+	\end{beweis}
+
 \section{Richtungsableitung und partielle Ableitung}
 
 Sei $f:D \subset K^n \to K^m$, $D$ offen, $x\in D$.\\
