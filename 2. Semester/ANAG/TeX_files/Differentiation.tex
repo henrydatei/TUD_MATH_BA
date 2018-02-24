@@ -123,7 +123,7 @@
 		in der Nähe von $x_0$ und heißt Linearisierung von $f$ in $x_0$.
 	\end{bemerkung}
 
-	\begin{satz}
+	\begin{satz}\label{satz:diffbar_abb}
 		Sei $f:D\subset K^n \to K^m$, $D$ offen. $f$ ist differenzierbar in $x_0\in D$ mit Abbildung $f'(x_0)\in L(K^n,K^m)$ genau dann, wenn die folgenden Bedingungen erfüllt sind:
 		\begin{compactitem}
 			\item für ein $r:D\to K^m$ mit $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} 
@@ -154,7 +154,7 @@
 		\end{compactitem}
 	\end{beweis}
 
-	\begin{satz}
+	\begin{satz}\label{satz:eindeutig_x}
 		Sei $f:D\subset K^n \to K^m$, $D$ offen, $f$ differenzierbar in $x_0\in D$. Dann:
 		\begin{compactitem}
 			\item $f$ ist stetig in $x_0$.
@@ -480,7 +480,7 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
     \end{compactitem}
 \end{bemerkung}
 
-\begin{folgerung}
+\begin{folgerung}{\label{folg:äquiv_richtungsableit}}
     Sei $f: D \subset K^n \to K^m$, $D$ offen, $x\in D$, $z \in K^n$. Dann
     \begin{align} %TODO Add numbering!
     &f \text{ ist differenzierbar in } x \text{ in Richtung } z \text{ mit } \Diff_z f(x) \in \LinAbb(K, K^m)\;(\sim K^m)\\
@@ -500,7 +500,7 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
     Sei $f : D \subset K^m \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D \Rightarrow$ Richtungsableitung $\Diff_z f(x)$ existiert $\forall z \in K^n$ und 
     \begin{align}
     \Diff_z f(x) = f^{\prime}(x)\cdot z
-    \end{align}    
+    \end{align}
 \end{satz}
 
 \begin{proof}
@@ -513,7 +513,7 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
 
 \begin{beispiel}
     Betrachte $f: \mathbb{R}^n \to \mathbb{R}$ mit $f(x) = \vert x \vert^2$
-    \begin{compactitem}%TODO: Referenz zu Beispiel 5.1.2
+    \begin{compactitem}
         \item[a)] (5.8) liefert $\varphi(t) = \vert x + tz\vert^2 = \sum_{i=1}^{n} (x_i t z_i)^2 = \sum_{i=1}^{n} x_i^2 + 2t x_i z_i + t^2 z_i^2 \Rightarrow \varphi^{\prime}(t) = \sum_{i=1}^{n} 2x_i z_i + 2t z_i^2 \overset{(5.8)}{\Rightarrow} \varphi^{\prime}(0) = 2 \sum_{i=1}^{n} x_i z_i = \langle x,z \rangle = \Diff_z  f(x)\; \forall x,z \in \mathbb{R}^n$
         \item[b)] Beispiel 5.1.2 liefert $f^{\prime}(x) = 2x \forall x \in \mathbb{R}^n \overset{(5.10)}{\Rightarrow} \Diff_z f(x) = 2x \cdot z = 2 \langle x,z \rangle \forall x,z \in \mathbb{R}^n$ folglich gilt für $\vert z \vert = 1$ und $x \in \mathbb{R}^n$ fest:
         \begin{compactitem}[\textbullet]
@@ -527,7 +527,7 @@ dann heißt $f$ differenzierbar in $x$ in Richtung $z$ und $\Diff_z f(x):= a$ he
 
 Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x\in D$.\\
 
-\begin{definition}[Niveaumenge, Tangentialvektor]
+\begin{definition}
     $N_c := \{x \in D \mid f(x) = c\}$  heißt \begriff{Niveaumenge} von f.\\
     Sei $\gamma := (-\delta, \delta) \to N_c(\delta > 0)$ Kurve mit $\gamma(0) = x$ (*), $\gamma$ differenzierbar in $0$.\\
     Ein $z \in \mathbb{R}^n\setminus\{0\}$  mit $z = \gamma^{\prime}$ für eine Kurve $\gamma$ gemäß (*) heißt \begriff{Tangentialvektor} an $N_c$ in $x_0$.
@@ -535,7 +535,7 @@ Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar i
 
 Offenbar $\varphi(t) := f(\gamma(t)) = c \forall t \in (-\delta, \delta)\\ \overset{Kettenregel}{\Longrightarrow} \varphi^{\prime}(0) = f^{\prime}(\gamma(0))\cdot \gamma^{\prime}(0) = 0 \overset{Satz \ref{satz:Richtungsableitung_linear}}{\Longrightarrow} \Diff_{\gamma^{\prime}(0)}f(x) = \langle f^{\prime}(x),\gamma^{\prime}(0)\rangle =0$ (**)
 
-\begin{satz}
+\begin{satz}[Eigenschaften Gradienten]\label{satz:egs_grad}
     Sei $f: D \subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ differenzierbar in $x \in D$. Dann
     \begin{compactitem}
         \item[1)] Gradient $f^{\prime}(x)$ steht senkrecht auf Niveaumenge $N_{f(x)}$, d.h. $\langle f^{\prime}(x), z\rangle = 0 \quad\forall$ Tangentialebenen $z$ an $N_{f(x)}$ in $x$.
@@ -548,3 +548,114 @@ Offenbar $\varphi(t) := f(\gamma(t)) = c \forall t \in (-\delta, \delta)\\ \over
     1), 2) folgen direkt aus (**) und 5.10\\
     zu 3) für $\vert z \vert = 1$ gilt $\Diff_z f(x) \overset{5.10}{=} \langle f^{\prime}(x), z \rangle$ $\overset{\text{Def. } \bar{z}}{=} \vert f^{\prime}(x)\vert \langle \tilde{z}, z\rangle \overset{\text{CSU}}{\leq} \vert f^{\prime}(x)\vert \vert \tilde{z}\vert \vert z\vert = \vert f^{\prime}(x)\vert = \frac{\langle f^{\prime}(x),f^{\prime}(x)}{\vert f^{\prime}(x) \vert} = \langle f^{\prime}(x), \tilde{z}\rangle \Diff_z f(x) \Rightarrow$ Behauptung. %TODO validate proof!
 \end{proof}
+
+    \underline{Feststellung:} für $f: D \subset K^n \to K^m$:
+    \begin{definition}[partiell differenzierbar und partielle Ableitung]
+        lineare Abbildung $f^{\prime}(x): K^n \to K^m$ durch Kenntnis für $n$ lineare unabhängiger Vektoren bestimmt $\overset{5.10}{\Rightarrow} f^{\prime}(x)$ eindeutig bestimmt durch Kenntnis von $\Diff_{e_j}f(x) = f^{\prime}(x)\cdot e_j (\subset K^{^m\times n})$ für $j = 1,\dots,n$. Sei $f: D\subset K^n \to K^m$, $D$ offen, $x \in D$ (nicht notwendigerweise differenzierbar in $x$!).\\
+        Falls Richtungsabbleitung $\Diff_{e_j}f(x)$ existiert heißt $f$ \highlight{partiell differenzierbar bzgl.} $x_j$ \highlight{im Punkt} $x$ und $D_{e_j}f(x)$ heißt \begriff{partielle Ableitung} \highlight{von} $f$ bzgl. $x_j$ in $x$.
+        Andere Bezeichnungen: $\frac{\partial}{\partial x_j}f(x),\frac{\partial f}{\partial x_j}(x), \Diff_j f(x),f_{x_j}(x),\dots$
+    \end{definition}
+
+    Wegen $f(x+te_j) = f(x_1,\dots,x_{j-1},x_j+t,x_{j+1},\dots,x_n)$ liefert Folgerung \ref{folg:äquiv_richtungsableit}:
+    
+    \begin{folgerung}
+        Sei $f: D\subset K^n \to K^m$, $D$ offen. Dann 
+        \begin{align}
+        &f \text{ partiell differenzierbar bzgl. } x_j \text{ in } x \text{ mit Ableitung } \frac{\partial}{\partial x_j}f(x) \nonumber\\ 
+        &\Longleftrightarrow \lim_{t\to 0} \frac{f(x_1,\dots,x_{j-1},x_j+t),\dots,x_n)-f(x_1,\dots,x_{j}+t,\dots,x_n)}{t}\label{eq:equiv_richtungsabl}\\ 
+        &a \in K^{m\times n} \text{ existiert und } \frac{\partial}{\partial x_j}f(x) = a.
+        \end{align} 
+    \end{folgerung}
+    \begin{beispiel}\label{beis:beispiel_1}
+        $f: \mathbb{R}^3 \to \mathbb{R}, f(x_1,x_2,x_3) = x_1^{^2}\sin x_2^2 + e^{x_3-x_1}$
+        \begin{compactitem}
+            \item $\frac{\partial}{\partial x_1}f(x) = 2x_1 \sin x_2 - e^{x_3 -x_1}$
+            \item $\frac{\partial}{\partial x_2}f(x) = x_1^2 \cos x_2$
+            \item $\frac{\partial}{\partial x_3}f(x) = e^{x_3 -x_1}$
+        \end{compactitem}
+    \end{beispiel}
+    \begin{folgerung}\label{folg:diffbar_x}
+        Sei $f: D \subset K^n \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D$.
+        \begin{align}
+            \Rightarrow D: zf(x) = \sum_{j=1}^{n} z_j \frac{\partial}{\partial x_j}f(x)\quad \forall z \in (z_1,\dots, z_n) \in \mathbb{R}^n \label{eq:diffbar_x}
+        \end{align}
+    \end{folgerung}
+    \begin{proof}
+        Folgerung \ref{satz:Richtungsableitung_linear} liefert: $\Diff_z f(x) = f^{\prime}(x) = \sum_{j=1}^{n}z_je_j = \sum_{j=1}^{n}z_j(f^{\prime}(x)\cdot e_j) = \sum_{j=1}^{n} z_j \frac{\partial}{\partial x_j}f(x).$
+    \end{proof}
+    \begin{beispiel}%TODO fix equationref!
+        $f: \mathbb{R}^n \to \mathbb{R}, f(x) = \vert x \vert^2 = \sum_{j=1}^{n}x_j^2, f$ differenzierbar nach Beispiel \ref{beis:beispiel_1} $\frac{\partial f(x)}{\partial x_j}= 2x_j, j = 1, \dots,n \overset{\text{\eqref{eq:diffbar_x}}}{\Longrightarrow} \Diff_z f(x) = \sum_{j=!}^{n}2 x_j \cdot z_j = 2 \langle x,z \rangle \; \forall x,z \in \mathbb{R}^n$ (vgl. Beispiel \ref{beis:beispiel_1})
+    \end{beispiel}
+    \begin{theorem}[vollständige Reduktion]\label{theo:voll_redukt}
+        Sei $f = (f_1,\dots,f_m): D \subset K^n \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D$. Dann
+        \begin{align}%TODO check indices!!!
+            f^{\prime}(x) \overset{\text{(a)}}{=} 
+            \begin{pmatrix}
+                f_1^{\prime}(x) \\ \vdots \\ f_m^{\prime}(x)
+            \end{pmatrix}
+            \overset{\text{(b)}}{=}
+            (\sfrac{\partial}{\partial x_1}f(x), \dots, \sfrac{\partial}{\partial x_n}f(x)) \overset{\text{(c)}}{=}
+            \begin{pmatrix}
+                \frac{\partial}{\partial x_1}f_1(x) & \hdots & \frac{\partial}{\partial x_n}f_1(x) \\ \vdots & & \vdots \\ \frac{\partial}{\partial x_1}f_m(x) & \hdots & \frac{\partial}{\partial x_n}f_m(x)
+            \end{pmatrix} \in K^{m\times n}
+        \end{align}
+        (Jacobimatrix)
+    \text{Bemerkung:} Falls $f$ differenzierbar in $x$, dann reduziert Theorem \ref{theo:voll_redukt} die Berechung von $f^{\prime}(x)$ auf Ableitung von skalaren Funktionen $\tilde{f}: D\subset K \to K$!
+    \end{theorem}
+    \begin{proof}
+        \begin{compactitem}
+            \item[a)] Folgerung 5.1.8
+            \item[b)] benutze $f^{\prime}(x)\cdot z = \Diff_z f(x)$ und Folgerung \ref{folg:diffbar_x}
+            \item[c)] entweder $\frac{\partial}{\partial x_j}f(x) 
+            \begin{pmatrix}
+            \sfrac{\partial}{\partial x_j}f_1(x) \\ \hdots \\ \sfrac{\partial}{\partial x_j}f_n(x)
+            \end{pmatrix}^T$ analog zu a) oder $f^{\prime}(x) = (\sfrac{\partial}{\partial x_1}f_j(x)) \dots \sfrac{\partial}{\partial x_n}f_j(x))^T$
+        \end{compactitem}
+    \end{proof}
+    \textbf{Frage:} Gilt Umkehrung von Theorem \ref{theo:voll_redukt} und Satz \ref{satz:egs_grad}? D.h. falls alle partiellen Ableitungen $\sfrac{\partial}{\partial x_j}f_i(x)$ bzw. alle Richtungsableitungen $\Diff_zf(x)$ existieren, ist dann $f$ differenzierbar in $x$? Nein!
+    \begin{beispiel}
+        $f: \mathbb{R}^2 \to \mathbb{R}, f(x_1,x_2) = 
+        \begin{cases}
+            \frac{x_2^2}{x_1} & \text{, } x_1 \neq 0 \\
+            0 & \text{, } x_1 = 0
+        \end{cases}$\\
+        Brechne alle Richtungsableitungen in $x=0$ mittels \ref{folg:äquiv_richtungsableit}:\\
+        $\Diff_zf(0) = \lim_{t \to 0} \frac{f(0 + tz) - f(0)}{t} = \lim_{t \to 0}\frac{f(tz)}{t} \Rightarrow \Diff_z f(0) = \lim_{t\to 0} \frac{t^2 z_2^2}{t^2 z_1} = \frac{z_2^2}{z_1} \forall z \in \mathbb{R}^2, z_1 \neq 0$\\
+        $\Diff_{0,z_2}f(0) = \lim_{t\to 0} \frac{0}{t} = 0 \Rightarrow \Diff_z f(0)$ existiert $\forall z \in \mathbb{R}^2$\\
+        \textbf{aber:} $\lim_{n\to \infty} f\Big(\frac{1}{n^2}\frac{1}{n}\Big) = \lim_{n\to \infty} \frac{\frac{1}{n^2}}{\frac{1}{n^2}}=1 \neq 0 f(0) \Rightarrow f$ stetig in $0 \overset{\text{Satz \ref{satz:eindeutig_x}}}{\Rightarrow} f$ nicht differenzierbar in $x = 0$.
+    \end{beispiel}
+    \begin{folgerung}
+        Sei $f: D\subset K^n \to K^m$, $D$ offen, $f$ differenzierbar in $x \in D$
+            \begin{align}
+                \Rightarrow \Diff_z f(x) = \sum_{j=1}^{n}z_j\frac{\partial}{\partial x_j}f(x) \quad \forall z = (z_1,\dots, z_m) \in \mathbb{R}^n
+            \end{align}
+    \end{folgerung}
+\subsection{$\mathbb{R}$-differenzierbar und $\mathbb{C}$-differenzierbar}
+    $\mathbf{A}(x_1+x_2) = \mathbf{A}(x_1) + \mathbf{A}(x_1), \mathbf{A}(\alpha x) = \alpha\mathbf{A}(x)$
+    \begin{definition}[$K$-differenzierbar]
+        $f: D \subset K^n \to K^m$ ist differenzierbar in $z_0 \in D$ (offen) gdw. $\exists K$-lineare Abbildung $\mathbf{A} : K^n \to K^m$ die Funktion $f$ in $z_0$ ``lokal approximieren'' (d.h. Satz \ref{satz:diffbar_abb} gilt). Man müsste genauer sagen: $f$ ist \begriff{$K$-differenzierbar} in $z_0$.
+    \end{definition}
+    Wegen $\mathbb{R} \subset \mathbb{C}$: jeder Vektorraum über $\mathbb{C}$ kann als Vektorraum über $\mathbb{R}$ betrachtet werden (nicht umgekehrt!) und jede $\mathbb{C}$-lineare Abbildung zwischen $\mathbb{C}$-Vektorraum kann als $\mathbb{R}$-linear betrachtet werden $\Rightarrow$ jede $\mathbb{C}$-differenzierbare Abbildung $f: D \subset \mathbb{C}^n \to \mathbb{C}^m$ ist auch $\mathbb{R}$-differenzierbar, Umkehrung gilt i.A. nicht!
+    \begin{beispiel}
+        Sei $f: \mathbb{C} \to \mathbb{C}$ mit $f(z) = \bar{z}$
+        \begin{compactitem}
+            \item[a)] $f$ ist additiv (d.h. $f(z_1 + z_2) = f(z_1) + f(z_2))$ und $f(tz) = tf(z)\forall t \in \mathbb{R} \Rightarrow f$ ist $\mathbb{R}$-linear wegen $f(z) = \bar{z} = \bar{z}_0 + \overline{z - z_0} = f(z_0) + f(z-z_0) \Rightarrow f$ $\mathbb{R}$-differenzierbar in $z_0 \forall z_0 \in \mathbb{C}$
+            \item[b)] angenommen $f$ $\mathbb{C}$-differenzierbar in $z_0 \in \mathbb{C} \Rightarrow f^{\prime}(z_0) = \lim_{z\to 0}\frac{\overline{z_0 + z} - \bar{z}_0}{z} = \lim_{z\to 0} \frac{\bar{z}}{z}$ (``$=$''$\{1,-1\}$) existiert nicht! $f$ nicht $\mathbb{C}$-differenzierbar
+        \end{compactitem}
+    \end{beispiel}
+    \textbf{Allgemein:} $f: D \subset X \to Y$, $D$ offen, $(X,Y) = (\mathbb{R}^n,\mathbb{C}^m)$ oder $(\mathbb{C}^n,\mathbb{R}^n)$ oder $(\mathbb{C}^n,\mathbb{C}^m)$ heißt $\mathbb{R}$-differenzierbar in $z_0$ falls \ref{satz:eindeutig_x} mit entsprechender $\mathbb{R}$-linearen Abbildung $\mathbf{A}: X \to Y$ gilt (beachte: falls $X,Y$ nur Vektorraum über $\mathbb{R}$, dann $\mathbb{C}$-differenzierbar nicht erklärt!)
+    \textbf{Spezialfall:} $f: D \subset \mathbb{C} \to \mathbb{C}$, $D$ offen, $z_0 \in D$, vergleiche $\real$-differenzierbar und $\comp$-differenzierbar:
+    \begin{compactitem}
+        \item Sei $f$ $\real$-differenzierbar in $z_0$, d.h. $\exists \real$-lineare Abbildung $\mathbf{A}: \comp \to \comp$ mit
+            \begin{align}
+                f(z_0 + z) = f(z_0) + \mathbf{A}z + o(\vert z \vert), z \to z_0
+            \end{align}
+            \begin{align}
+                \begin{rcases}
+                    &\text{für } z = x,x \in \real\colon \mathbf{A}(1) = \lim\limits_{\substack{x\to 0 \\ x\in \real}} \frac{f(z_0 + x) - f(z_0)}{x} =: f_x(z_0)\\
+                    &\text{für } z = iy,y \in \real\colon \mathbf{A}(i) = \lim\limits_{\substack{y\to 0 \\ y\in \real}} \frac{f(z_0 + x) - f(z_0)}{x} =: f_y(z_0) \label{eq:R-diffbar}
+                \end{rcases}
+                \text{nenne } f_x(z_0),f_y(z_0) \text{ \highlight{partielle Ableitung} von } f \text{ in } x_0
+            \end{align}
+            \item Sei $f$ $\comp$-differenzierbar in $z_0$, d.h. $f(z_0 +z) = f(z_0) +\underbrace{}$
+    \end{compactitem}
