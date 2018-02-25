@@ -1,0 +1,179 @@
+\section{Ableitung} \setcounter{equation}{0}
+
+\begin{*definition}
+	Sei $f: D\subset \mathbb{R}^n \to K^m$, $D$ offfen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in L(K^n, K^m)$ gibt mit \begin{align}
+		\proplbl{definition_ableitung}
+		\Aboxed{f(x) &= f(x_0) + A(x-x_0) + o(\vert x-x_0 \vert), x\to x_0}
+	\end{align}
+	
+	Abbildung $A$ heißt dann \begriff{Ableitung} von $f$ in $x_0$ und wird mit $f'(x_0)$ bzw. $\mathrm{D}f(x_0)$ bezeichnet (statt dem Terminus Ableitung auch (totales) Differential, \person{Frechet}-Abbildung, \person{Jacobi}-Matrix, Funktionalmatrix).
+	
+	Andere Schreibweisen: $\frac{\partial f}{\partial x}(x_0), \left.\frac{\partial f(x)}{\partial x}\right|_{x=x_0}, \mathrm{d}f(x_0), \dotsc$
+	
+	Somit ist \propref{definition_ableitung} gleichwertig mit \begin{align}
+		\proplbl{definition_ableitung_zwei}\Aboxed{f(x) &= f(x_0) + f'(x_0) \cdot (x - x_0) + o(x - x_0), \text{ für } x\to x_0}
+	\end{align}
+\end{*definition}
+
+\begin{*remark}
+	Affin lineare Abbildung $\tilde{A}(x) := f(x_0) + f'(x_0)\cdot(x-x_0)$ approximiert die Funktion $f$ in der Nähe von $x_0$ und heißt \begriff{Linearisierung} von $f$ in $x_0$ (man nennt \propref{definition_ableitung} auch Approximation 1. Ordnung von $f$ in der Nähe von $x_0$).
+\end{*remark}
+
+\begin{proposition}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen. Dann: \\
+	$f$ ist differenzierbar in $x_0\in D$ mit Ableitung $f'(x_0) \in L(K^n, K^m)$ \gls{gdw} eine der folgenden Bedingungen erfüllt ist:
+	\begin{enumerate}[label={\alph*)},mode=unboxed]
+		\item \label{satz_equivalenz_ableitungen_a} \itemEq{\proplbl{definition_ableitung_eins}f(x) &= f(x_0) + f'(x_0) \cdot (x-x_0) + r(x) \quad \forall x\in D}
+		für ein $r: D\to K^m$ mit $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r(x)}{\vert x - x_0 \vert} = 0$
+		\item \itemEq{f(x) =f(x_0) + f'(x_0) \cdot (x-x_0) + R(x) (x-x_0)\quad\forall x\in D\proplbl{definition_ableitung_zwei}}
+		für ein $R:D \to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} R(x) = 0$ (d.h. Matrizen $R(x) \xrightarrow{x\to x_0}$ Nullmatrix in $K^{m\times n}$)
+		\item \label{satz_equivalenz_ableitungen_c} \itemEq{\proplbl{definition_ableitung_drei}f(x) = f(x_0) + Q(x) (x - x_0) \quad \forall x\in D} für ein $Q:D\to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} Q(x) = f'(x_0)$ (d.h. Matrizen $Q(x) \xrightarrow{x\to x_0}$ Matrix $f'(x_0)$ in $K^{m\times n}$)
+	\end{enumerate}
+\end{proposition}
+
+\begin{*remark}
+	Es gilt:
+	\begin{align*}
+	\text{\propref{definition_ableitung_eins}}\; \Leftrightarrow\; \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{f(x) - f(x_0) - f'(x_0) (x - x_0)}{\vert x - x_0 \vert} = 0
+	\end{align*}
+\end{*remark}
+
+\begin{proof}
+	\NoEndMark
+	Aussage \ref{satz_equivalenz_ableitungen_a} ist leicht zu zeigen, anschließend erfolgt per Ringschluss die Äquivalenz der anderen Definitionen.
+	\begin{enumerate}[label={zu \alph*)},leftmargin=\widthof{\ zu a)\ }]
+		\item Offensichtlich ist $r(x) = o(\vert x - x_0 \vert ),$ $x\to x_0$ \\
+		$\Rightarrow\;$ \ref{satz_equivalenz_ableitungen_a} $\Leftrightarrow$ $f$ ist differenzierbar in $x_0$ mit Ableitung $f'(x_0)$
+	\end{enumerate}
+	Ringschluss:
+	\begin{itemize}[leftmargin=\widthof{\ a) $\rightarrow$ b):\ },topsep=-5pt]
+		\item[a) $\Rightarrow$ b):] Sei $R: D\to K^{m\times n}$ gegeben durch \marginnote{$\otimes$: Tensorprodukt (siehe \cpageref{definition_tensorprodukt})}\begin{align*}
+			R(x) &= \begin{cases}
+				0, & x = x_0 \\
+				\frac{r(x)}{\vert x - x_0\vert} \otimes (x - x_0)^T, & x\neq x_0
+			\end{cases}\\
+			\Rightarrow \;R(x) (x - x_0) &= \left( \frac{r(x)}{\vert x - x_0\vert^2} \otimes (x - x_0)^T \right) \cdot (x - x_0)\\
+			 &= \frac{r(x)}{\vert x - x_0\vert ^2} \cdot \langle x - x_0 , x - x_0 \rangle = r(x) \quad \forall x\neq x_0
+		\end{align*}
+		Wegen $0 = r(x_0) = R(x_0)\cdot (x - x_0)$ folgt \begin{align*}
+			\lim\limits_{x\to x_0} \vert R(x) \vert = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert r(x) \otimes (x - x_0)^T\vert }{\vert x - x_0 \vert^2} = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert r(x)\vert}{\vert x - x_0\vert} = 0
+			\end{align*}
+			
+		\item[b) $\Rightarrow$ c):] Setzte $Q(x) := f'(x_0) + R(x) \; \forall x\in D$ $\Rightarrow$ \propref{definition_ableitung_drei}. Wegen $\lim\limits_{x\to x_0} Q(x) = f'(x_0)$ folgt \ref{satz_equivalenz_ableitungen_c}.
+			
+		\item[c) $\Rightarrow$ a):] Setzte $r(x) := (Q(x) - f'(x))\cdot (x - x_0) \;\forall x\in D$ $\Rightarrow$ \propref{definition_ableitung_eins}. Wegen $\vert r(x) \vert \le \vert Q(x) - f'(x_0) \vert \cdot \vert x - x_0 \vert $ folgt \zeroAmsmathAlignVSpaces \begin{align*}
+			\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert r(x) \vert}{\vert x - x_0 \vert} =  \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \vert Q(x) - f'(x_0) \vert = 0
+		\end{align*}
+		\hfill$\square$
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Sei $f:D\subset K^n \to K^m$, $D$ offen, differenzierbar in $x_0\in D$. Dann:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $f$ ist stetig in $x_0$
+		\item Die Ableitung $f'(x_0)$ ist eindeutig bestimmt.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\ 
+	\begin{enumerate}[label={zu \arabic*)},topsep=-5pt,leftmargin=\widthof{\ zu\ a)\ :\ }]
+		\item \propref{definition_ableitung_zwei} liefert \begin{align*}
+			& \lim\limits_{x\to x_0} f(x) = \lim\limits_{x\to x_0} \left( f(x_0) + f'(x_0) \cdot \underbrace{(x - x_0)}_{=0} + R(x) \underbrace{(x - x_0)}_{=0} \right) = f(x_0) \\
+			\Rightarrow & \text{ Behauptung}
+		\end{align*}
+		\item Angenommen, $A_1, A_2\in L(K^n, K^m)$ sind Ableitungen von $f$ in $x_0$. Seien $R_1, R_2$ die zugehörigen Terme in \propref{definition_ableitung_zwei}. Dann gilt für $x=x_0 + ty \;\forall y\in K^n, t\in \mathbb{R}$:
+		\begin{align*}
+			\vert (A_1 - A_2)(t\cdot y)\vert &\le \vert R_1(x_0 + ty) \cdot (t y)\vert + \vert R_2(x_0 + ty) \cdot (ty) \vert \\
+			 &\le \vert R_1(x_0 + ty)\vert \cdot \vert ty \vert + \vert R_2(x_0 + ty)\vert \cdot \vert ty\vert \marginnote{$\left|  \cdot \frac{1}{\vert t \vert}\right.$}[-0.4em]\\
+			\xRightarrow{t \neq 0}\quad 0 \le \vert (A_1 - A_2) \cdot y\vert &\le \big( \vert R_1(x_0 + ty) \vert + \vert R_2(x_0 + t y)\vert \big) \cdot \vert y \vert \xrightarrow{t\to 0} 0 \\
+			\Rightarrow (A_1 - A_2) \cdot y &= 0 \quad \forall y\in K^n \\
+			\Rightarrow A_1 &= A_2 \quad \Rightarrow \text{Beh}\tag*{$\square$}
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\subsection*{Spezialfälle für \protect\boldmath{$K=\mathbb{R}$}}
+\begin{enumerate}[label={\arabic*)},leftmargin=\widthof{1)\ },topsep=-5pt]
+	\item \proplbl{spezialfall_ableitung_m1_item} \uline{$m=1\negthickspace:\, f\negthickspace:\mathbb{R}^n\to \mathbb{R}$}\\[0.6ex]
+	$f'(x_0)\in \mathbb{R}^{1\times n}$ ist Zeilenvektor, $f'(x_0)$ betrachtet als Vektor im $\mathbb{R}^n$ auch \begriff{Gradient} genannt.
+	
+	Offenbar gilt $f'(x_0)\cdot y = \langle f'(x_0), y\rangle\;\forall y\in\mathbb{R}^n$ (Matrizenmultiplikation = Skalarprodukt) \\
+	$\Rightarrow$ \propref{definition_ableitung_zwei} hat die Form \begin{align}
+		\proplbl{spezialfall_ableitung_m1}
+		f(x) = \underbrace{f(x_0) + \langle f'(x_0), x - x_0\rangle}_{\mathclap{\text{affin lineare Funktion: }\tilde{A}: \mathbb{R}\to \mathbb{R} \,(\text{in }x)}} + o\big( \vert x - x_0\vert \big)
+	\end{align}
+	Graph von $f$ ist Fläche im $\mathbb{R}^{n\times 1}$, genannt \begriff{Tangentialebene} vom Graphen von $f$ in $\big(x_0, f(x_0)\big)$.
+	
+	\item \proplbl{spezialfall_ableitung_n1} \uline{$n=1\negthickspace: f\negthickspace: D\subset \mathbb{R}\to \mathbb{R}^n$}\ \ (z.B. $D=(a,b)$)\\[0.6ex]
+	$f$ (bzw.  Bild $f[D]$) ist Kurve im $\mathbb{R}^n$ ($\cong \mathbb{R}^{m\times 1}$). \propref{definition_ableitung_zwei} kann man schreiben als \begin{align*}
+		f(x_0 + t) = \underbrace{f(x_0) + t\cdot f'(x_0)}_{\mathclap{\text{Affin lineare Abb. }\tilde{A}:\mathbb{R}\to \mathbb{R}^m \text{ (in $t$)}}} + o(t), t\to 0, t\in\mathbb{R}
+	\end{align*}
+	\zeroAmsmathAlignVSpaces
+	\begin{align}
+		\notag &\Leftrightarrow& \underbrace{\frac{f(x_0 + t) - f(x_0)}{t}}_{\mathclap{\text{\begriff{Differenzenquotient} von $f$ in $x_0$}}} &= f'(x_0) + o(1), t\to 0 \\
+		\proplbl{differentialquotient} &\Leftrightarrow& \underbrace{\lim\limits_{t\to 0} \frac{f(x_0 + t) - f(x_0)}{t}}_{\mathclap{\text{Differentialquotient}}} &= f(x_0)
+	\end{align}
+	
+	\emph{beachte:} \begin{itemize}
+		\item $f$ \gls{diffbar} in $x_0$ $\Leftrightarrow$ Differentialquotient existiert in $x_0$
+		\item \propref{differentialquotient} nicht erklärt im Fall von $n>1$
+	\end{itemize}
+
+	\begin{interpretation}[ für $m > 1$]
+		$f'(x_0)$ heißt \begriff{Tangentenvektor} an die Kurve in $f(x_0)$. Falls $f$ nicht \gls{diffbar} in $x_0$ bzw. $x_0$ Randpunkt in $D$ und ist $f(x_0)$ definiert, so betrachtet man in \propref{differentialquotient} auch einseitige Grenzwerte (vgl. \propref{einseitige_grenzwerte}).
+		
+		$\lim\limits_{t\downarrow 0} \frac{f(x_0 + t) - f(x_0)}{t} = f_r'(x_0)$ heißt \begriff[Ableitung!]{rechtsseitige} \uline{Ableitung} von $f$ in $x_0$ (falls existent), analog \begriff[Ableitung!]{linksseitige} \uline{Ableitung} $f_l'(x_0)$.
+	\end{interpretation}
+
+	\item \uline{$n=m=1\negthickspace:\;f\negthickspace: D\subset \mathbb{R}\to \mathbb{R}$} (vgl. Schule)\\[0.6ex]
+	$f'(x_0)\in \mathbb{R}$ ist Zahl und \propref{differentialquotient} gilt (da Spezialfall von \propref{spezialfall_ableitung_n1}).
+	
+	\emph{Beobachtung:} \propref{spezialfall_ableitung_n1} gilt allgemein für $n=1$, nicht für $n>1$!
+\end{enumerate}
+\vspace*{1.5
+	em}
+
+\begin{conclusion}
+	Sei $f:D\subset K\to K^n$, $D$ offen. Dann:
+	\begin{align}
+		\notag& \text{$f$ ist diffbar in $x_0\in D$ mit Ableitung $f'(x_0)\in L(K, K^m)$} \\
+		\Leftrightarrow\quad
+		& \exists f'(x_0) \in L(K, K^m): \lim\limits_{y\to 0} \frac{f(x_0 + y) - f(x_0)}{y} = f'(x_0) \\
+		\notag 
+		& \text{alternativ: } \lim\limits_{x\to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
+	\end{align}
+\end{conclusion}
+
+\subsection*{Einfache Beispiele für Ableitungen}
+\begin{example}
+	Sei $f:K^n\to K^m$ affin linear, d.h. \begin{align*}
+		f(x) = A\cdot x + a\quad \forall x\in K^n, \text{ mit } A\in L(K^n, K^m), \, a\in K^m \text{ fest}
+	\end{align*}
+	Dann gilt für beliebiges $x_0\in K^n$:
+	\zeroAmsmathAlignVSpaces**
+	\begin{align*}
+		f(x) &= A\cdot x_0 + a + A(x - x_0) \\
+		&=f(x_0) + A(x - x_0)
+	\end{align*}
+	\zeroAmsmathAlignVSpaces
+	\begin{align*}
+		\xRightarrow{(\ref{definition_ableitung})}\;\; \text{$f$ ist \gls{diffbar} in $x_0$ mit } f'(x_0) = A
+	\end{align*}
+	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$
+\end{example}
+\begin{example}
+	Sei $f:\mathbb{R}^n\to \mathbb{R}$, $f(x) = \vert x \vert ^2\;\forall x\in\mathbb{R}^n$
+	
+	Offenbar gilt:
+	\begin{align*}
+		&& \vert x - x_0 \vert ^2 &= \langle x - x_0, x - x_0 \rangle \marginnote{$+\langle x_0, x_0\rangle - \langle x_0, x_0\rangle$} \\
+		&& &= \langle x \rangle^2 - 2 \langle x_0, x\rangle + 2 \langle x_0, x_0 \rangle - \langle x_0, x_0\rangle \\
+		&& &= \vert x \vert ^2 - 2 \langle x_0, x - x_0 \rangle - \vert x_0 \vert ^2 \\
+		&&\Rightarrow \qquad f(x) &= f(x_0) + \langle 2x_0, x - x_0 \rangle + \underbrace{\vert x - x_0\vert^2}_{\mathclap{=o\big( \langle x - x_0 \rangle \big)}}
+ 	\end{align*}
+ 	(vgl. auch \propref{spezialfall_ableitung_m1} im Spezialfall \ref{spezialfall_ableitung_m1_item})
+ 	
+ 	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist \gls{diffbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$
+\end{example}
