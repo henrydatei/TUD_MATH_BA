@@ -4,6 +4,7 @@
 \usepackage[ngerman]{babel}
 %\usepackage[utf8]{inputenc} %not recommended with lualatex
 
+\usepackage{zref-base}
 \usepackage{etoolbox}
 \usepackage{xparse}%better macros
 \usepackage{chngcntr}
@@ -45,8 +46,11 @@
 \usepackage{parskip}%split paragraphs by vspace instead of intendations
 \usepackage{tocloft}
 \usepackage{fancyhdr}
-\usepackage{cleveref}
 \usepackage{titlesec}%customize titles
+\usepackage{marginnote}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
 
 \usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
 \usepackage[ntheorem,framemethod=TikZ]{mdframed}
@@ -59,6 +63,7 @@
 	linkcolor=blue,
 	urlcolor=green
 }
+\usepackage{cleveref}
 \usepackage{bookmark}
 
 \definecolor{lightgrey}{gray}{0.91}
@@ -75,8 +80,6 @@
 
 \mdfdefinestyle{boxedtheorem}{%
 	outerlinewidth=3pt,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
 	skipabove=5pt,%
 	skipbelow=10pt,%
 	frametitlefont=\normalfont\bfseries\color{black},%
@@ -84,9 +87,21 @@
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
 	linecolor=darkgrey,%
 	backgroundcolor=lightgrey,%
-]{truetheorem}{Theorem}[section]
+]{theorem}{Theorem}[section]
+\newmdtheoremenv[%
+	style=boxedtheorem,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	backgroundcolor=lightgrey,%
+]{proposition}[theorem]{Satz}
 \newmdtheoremenv[%
 	style=boxedtheorem,%
 	linecolor=darkgrey,%
@@ -94,22 +109,18 @@
 	rightline=false,%
 	bottomline=false,%
 	backgroundcolor=lightgrey,%
-]{trueproposition}[truetheorem]{Satz}
-\newmdtheoremenv[%
-	style=boxedtheorem,%
-	linecolor=darkgrey,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	backgroundcolor=lightgrey,%
-]{truelemma}[truetheorem]{Lemma}
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+]{lemma}[theorem]{Lemma}
 \newmdtheoremenv[%
 	style=boxedtheorem,%
 	linecolor=red,%
 	topline=false,%
 	rightline=false,%
 	bottomline=false,%
-]{truedefinition}[truetheorem]{Definition}
+	innertopmargin=0,%
+	innerbottommargin=-3pt,%
+]{definition}[theorem]{Definition}
 \newmdtheoremenv[%
 	outerlinewidth=3pt,%
 	linecolor=black,%
@@ -121,28 +132,131 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	skipbelow=10pt,%
-]{trueconclusion}[truetheorem]{Folgerung}
+]{conclusion}[theorem]{Folgerung}
 \newmdtheoremenv[%
 	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=0pt,%
 	skipabove=5pt,%
 	innerleftmargin=10pt,%
-]{trueremark}[truetheorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr \mdflength{innerleftmargin} - \blacktrianglewidth\relax}Bemerkung}
 \newmdtheoremenv[%
 	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=10pt,%
-]{trueexample}[truetheorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+]{example}[theorem]{\hspace*{-\mdflength{innerleftmargin}}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
 \theoremindent0cm
 \newmdtheoremenv[%
+	style=boxedtheorem,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=0,%
+	innerbottommargin=-3pt,%
+]{*definition}{Definition}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=0pt,%
+	skipabove=5pt,%
+	innerleftmargin=10pt,%
+]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr \mdflength{innerleftmargin} - \blacktrianglewidth\relax}Bemerkung}
+\newmdtheoremenv[%
 	hidealllines=true,%
 	innerleftmargin=10pt,%
-]{*trueexample}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+]{*example}{\hspace*{-\mdflength{innerleftmargin}}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
+%Hinweis-Theoremstyle and environment
+%To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
+%to achieve the underlining, this needed to put in the theoremstyle definition
+\theoremheaderfont{\mdseries}
+\theoremseparator{:}
+\theorempostskip{0pt}
+\makeatletter
+\newtheoremstyle{noparentheses}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				\uline{##1}\theorem@separator}\hbox{\strut}}}]}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				\uline{##1\ ##3\theorem@separator}}\hbox{\strut}}}]}
+\newtheoremstyle{underlinedPlain}%
+	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
+	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ (##3)\theorem@separator}]}
+\makeatother
+
+\theoremstyle{noparentheses}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+]{interpretation}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Interpretation}
+\theoremstyle{underlinedPlain}
+\newmdtheoremenv[%
+hidealllines=true,%
+innerleftmargin=1em,%
+innerrightmargin=0,%
+skipbelow=0pt,%
+]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
+
+\theoremheaderfont{\normalfont}
+\theorembodyfont{\itshape\small}
+\theoremseparator{:}
+\theoremsymbol{$\blacksquare$}
+\renewtheorem{proof}{Beweis}
+
+%for \cref: printed environment names
+\crefname{theorem}{Theorem}{Theoreme}
+\crefname{proposition}{Satz}{Sätze}
+\crefname{lemma}{Lemma}{Lemmata}
+\crefname{conclusion}{Folgerung}{Folgerungen}
+\crefname{definition}{Definition}{Definitionen}
+\crefname{remark}{Bemerkung}{Bemerkungen}
+\crefname{example}{Beispiel}{Beispiele}
+\crefname{*definition}{Definition}{Definitionen}
+\crefname{*remark}{Bemerkung}{Bemerkungen}
+\crefname{*example}{Beispiel}{Beispiele}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand*{\proplbl}[1]{%
+	\@bsphack
+	\begingroup
+		\label{#1}%
+		\zref@setcurrent{default}{\arabic{chapter}}%
+		\zref@wrapper@immediate{%
+			\zref@labelbyprops{#1@chapter}{default}
+		}
+	\endgroup
+	\@esphack
+}
+\newcommand*{\propref}[1]{%
+	\zref@refused{#1@chapter}%
+	\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{1}}%
+		{%same chapter
+			\cref{#1}%
+		}%
+		{%otherwise
+			\ifcsdef{r@#1}%in first compilation the label may not be defined yet
+				{%
+					\def\propositionref@current@type{}%
+					\cref@gettype{#1}{\propositionref@current@type}%get the environment's name
+		%example for following line:
+		%\crefformat{truetheorem}{\cref@truetheorem@name~##2\rom{\zref@extractdefault{#1}{#1chapter}{1}}.##1##3}
+		%this changes the format used by \cref to <environtment name> <chapter-number>.<section-number>.<theorem number>
+					\crefformat{\propositionref@current@type}{%
+						\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
+					}%
+					\cref{#1}%
+					\crefformat{\propositionref@current@type}{%
+						\csname cref@\propositionref@current@type @name\endcsname~##2##1##3%
+					}%
+				}%
+				{??}%similar to \ref\cref: question marks in case of undefined labels
+		}%
+}
+\makeatother
 
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\IfBooleanTF{#1}%
@@ -160,6 +274,29 @@
 	{#4\index[symbols]{#2#3@\detokenize{#4}#5}}%
 }
 
+\NewDocumentCommand{\zeroAmsmathAlignVSpaces}{s s O{0 pt} O{0 pt}}{%
+	\IfBooleanTF{#1}%
+	{%
+		\IfBooleanTF{#2}%
+		{\setlength{\belowdisplayskip}{#4}}%
+		{\setlength{\abovedisplayskip}{#3}}%
+	}%
+	{%
+		\setlength{\abovedisplayskip}{#3}%
+		\setlength{\belowdisplayskip}{#4}%
+	}%
+}
+
+\NewDocumentCommand{\itemEq}{s m}{%
+	\begingroup%
+	\setlength{\abovedisplayskip}{\dimexpr -\parskip + 1pt\relax}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\IfBooleanTF{#1}%
+		{\parbox[c]{\linewidth}{\begin{flalign*}#2&&\end{flalign*}}}%
+		{\parbox[c]{\linewidth}{\begin{flalign}#2&&\end{flalign}}}%
+	\endgroup%
+}
+
 \newcommand{\person}[1]{\textsc{#1}}
 \newcommand{\highlight}[1]{\emph{#1}}
 
@@ -173,9 +310,9 @@
 \counterwithout{section}{chapter}
 \renewcommand{\thechapter}{\Roman{chapter}}
 %italic chapters (due to titlesec package some more stuff)
-\titleformat{\chapter}[display]{\huge\bfseries\itshape}{\chaptername\;\thechapter}{5pt}{\huge\bfseries}
+\titleformat{\chapter}[display]{\huge\bfseries\itshape}{\chaptername\;\thechapter:}{-5pt}{\huge\bfseries}
 \titlespacing{\chapter}{0pt}{0pt}{10pt}
-\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{9pt}{\Large\bfseries}
+\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
 
 %change header:
 \renewcommand{\headrulewidth}{0.75pt}
@@ -187,20 +324,6 @@
 \renewcommand{\cftbeforetoctitleskip}{0pt}
 \renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
 
-%change numbering of equations to be section by section
-\counterwithout{equation}{section}
-
-\author{Dozent: Prof. F Schuricht}
-\title{Analysis Grundlagen 1 \& 2} % add WS & SS
-\date{Updated: \today}
-
-\pagenumbering{roman}
-\begin{document}
-
-\maketitle
-\tableofcontents
-
-\pagebreak
 \pagestyle{fancy}
 \pagenumbering{arabic}
 %remember chapter-title in \leftmark and \rightmark
@@ -211,60 +334,90 @@
 \renewcommand{\sectionmark}[1]{%
 	\markright{\thesection.\ #1}{}}
 
+%change numbering of equations to be section by section
+\counterwithout{equation}{section}
+
+\author{Dozent: Prof. F. Schuricht}
+\title{Analysis Grundlagen 1 \& 2} % add WS & SS
+\date{Updated: \today}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+\tableofcontents
+
+\pagebreak
+\pagestyle{fancy}
+\pagenumbering{arabic}
+%remember chapter-title in \leftmark and \rightmark
+%\renewcommand{\chaptermark}[1]{%
+%	\markboth{\chaptername
+%		\ \thechapter:\ #1}{}}
+%remember section title in \leftmark
+%\renewcommand{\sectionmark}[1]{%
+%	\markright{\thesection.\ #1}{}}
+
 \chapter{Funktionen und Stetigkeit}
 
 \section{Anwendungen}
 
-\begin{truetheorem}[Mit Titel]
+\begin{theorem}[Mit Titel]
     test
-\end{truetheorem}
+\end{theorem}
 
-\begin{trueproposition}[Incl. Titel]
+\begin{proposition}[Incl. Titel]
     Und Inhalt.
-\end{trueproposition}
+\end{proposition}
+
+\begin{interpretation}[von Gleichung (1)]
+	Und hier der spannende Text...
+\end{interpretation}
 
 \subsection{Partialbruchzerlegung}
 	
-\begin{truetheorem}[Mit Titel]
+\begin{theorem}[Mit Titel]
+	\proplbl{eintheorem}
 	test
-\end{truetheorem}
+\end{theorem}
 	
-\begin{trueproposition}[Incl. Titel]
-	Und Inhalt.
-\end{trueproposition}
+\begin{proposition}[Incl. Titel]
+	Und Inhalt.\propref{eintheorem}
+\end{proposition}
 
 \section{Noch mehr Anwendungen}
 
-\begin{truedefinition}[Und Name]
+\begin{definition}[Und Name]
 	Tada
-\end{truedefinition}
+\end{definition}
 
-\begin{trueexample}[Einschließlich Überschrift]
+\begin{example}[Einschließlich Überschrift]
 	Verständnisfördernd...
-\end{trueexample}
+\end{example}
 
-\begin{trueconclusion}[Ergänzung]
+\begin{conclusion}[Ergänzung]
 	Einfache Schlussfolgerung
-\end{trueconclusion}
+\end{conclusion}
 
-\begin{truelemma}
+\begin{lemma}
 	nur Müll
-\end{truelemma}
+\end{lemma}
 
-\begin{truelemma}[Kurze, aber wichtige, Aussage]
+\begin{lemma}[Kurze, aber wichtige, Aussage]
 	Klein aber fein.
-\end{truelemma}
+\end{lemma}
 
-\begin{trueremark}[Hossa]
+\begin{remark}[Hossa]
 	Dumdidum
-\end{trueremark}
+\end{remark}
 
-\begin{trueexample}[Test]
+\begin{example}[Test]
 	LOhne Nummer
-\end{trueexample}
+\end{example}
 
 \begin{proof}
-	Ein Beweis.
+	Ein Beweis unter Ausnutzung von \propref{einzweitestheorem}
 	
 	\begin{align}
 		f = f(x) \text{ (mit Formelnnummer)}
@@ -276,48 +429,137 @@
 
 \section{Or me?}
 
-\begin{truetheorem}[Mit Titel]
+\begin{theorem}[Mit Titel]
+	\proplbl{einzweitestheorem}
     test
-\end{truetheorem}
+\end{theorem}
 
-\begin{trueproposition}[Incl. Titel]
+\begin{proposition}[Incl. Titel]
     Und Inhalt.
-\end{trueproposition}
+\end{proposition}
 
-\begin{truedefinition}[Und Name]
+\begin{definition}[Und Name]
     Tada
-\end{truedefinition}
+\end{definition}
 
-\begin{trueexample}[Einschließlich Überschrift]
+\begin{example}[Einschließlich Überschrift]
     Verständnisfördernd...
-\end{trueexample}
+\end{example}
 
-\begin{trueconclusion}[Ergänzung]
+\begin{conclusion}[Ergänzung]
     Einfache Schlussfolgerung
-\end{trueconclusion}
+\end{conclusion}
 
-\begin{truelemma}[Kurze Aussage]
+\begin{lemma}[Kurze Aussage]
     Klein aber fein.
-\end{truelemma}
+\end{lemma}
 
-\begin{trueremark}[Hossa]
+\begin{remark}[Hossa]
     Dumdidum
-\end{trueremark}
+\end{remark}
 
-\begin{*trueexample}[Test]
+\begin{*example}[Test]
     Ohne Nummer
-\end{*trueexample}
+\end{*example}
 
 \begin{proof}
-    Ein Beweis.
-    
+    Ein Beweis. Siehe auch \propref{eintheorem} und \propref{einzweitestheorem}.
     \begin{align}
     f = f(x) \text{ (mit Formelnnummer)}
     \end{align}
     und inline-math $\hbar$.
+    
+    \begin{itemize}
+    	\item \itemEq{f(x) = m\cdot x + n}
+    	Eine Formel auf Höhe des Itemize-Punktes \emph{mit} Numerierung (\verb|\itemEq*{\dotsc}| ohne Nummerierung)
+    \end{itemize}
+
+	Eventuell ist es mal praktisch, \zeroAmsmathAlignVSpaces \begin{align*}
+		f(x) = m\cdot x + n
+	\end{align*}
+	\verb|align| ohne Abstände einzubauen. Das geht auch einseitig mit \verb|\zeroAmsmathAlignVSpaces*| (nur oben Ändern) bzw. \verb|\zeroAmsmathAlignVSpaces**| (nur unten ändern).\marginnote{Hinweis am Rand!}
 \end{proof}
 
+\begin{*definition}[Aber Name]
+	Ohne Nummer
+\end{*definition}
+
+\begin{*remark}
+	Bemerkung sowieso
+\end{*remark}
+
+\renewcommand*\textcircled[1]{\tikz[baseline=(char.base)]{
+		\node [shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\begin{tikzpicture}
+% variables for pn-junction diagram:
+% all parameters are in tikz scale
+% p-side of the junction is here on the right
+
+\def\V{1.5}   % junction polarisation (0=flat band)
+\def\EG{3}    % band gap of semiconductor
+\def\EF{1.5}  % vertical Fermi level position
+\def\EFn{3.3} % pseudo fermi level for electrons
+\def\EFp{1.8} % pseudo fermi level for holes
+\def\DZCE{4}  % start position on the left for space charge region (SCR)
+\def\LZCE{2}  % SCR width
+\def\PN{10}   % total lentgh of the junction
+
+% calculations
+\pgfmathsetmacro\EC{\EG+\V};% conduction band heigth (without polarisation)
+\pgfmathsetmacro\FZCE{\DZCE+\LZCE};% SCR end position
+
+% valence and conduction band drawing: 
+\draw (0,0) node [left]{$E_V$} -- (\DZCE,0)
+to[out=0, in=180, looseness=0.75] (\FZCE,\V) -- (\PN,\V); % EV
+\draw (0,\EG) node [left] {$E_C$} -- (\DZCE,\EG)
+to[out=0, in=180, looseness=0.75] (\FZCE,\EC) -- (\PN,\EC); % EC
+
+% fermi level drawing (if needed):		
+%	\draw [dashed](0,\EF) -- ({\PN-0.5},\EF) node [right]{$E_F$}; % EF
+
+% quasi fermi levels drawing (if needed) :	
+\draw [dashed] (0,\EFn)  -- (\PN,\EFn)
+node [right] {$E_{Fn}$}; % EFn for electron
+\draw [dashed] (0,\EFp)  -- ({\PN},\EFp)
+node [right] {$E_{Fp}$}; % EFp for holes
+
+% electric field in SCR drawing :
+\draw [->] (\DZCE, {\V+\EG+1}) --
+node [above] {$\vec{E}_{ZCE}$} (\FZCE, {\V+\EG+1}) ; % E vector
+
+% excess carriers
+\foreach \x in {1,2,...,7}
+\draw ({\FZCE+1+\x/3},{\EC+0.2}) node {$\bullet$}; % p side : electrons
+\foreach \x in {1,2,...,7}
+\draw ({1+\x/3},{-0.2}) node {$\circ$}; % n side : holes
+
+% photon injection and carrier generation
+% p side : carrier generation:
+\draw [->, loosely dashed] ({\FZCE+3}, \V) --
+node [right] {\textcircled{1}}({\FZCE+3}, \EC);
+% the textcircled{number} option is used in several places
+% to describe the physical mechanisms.
+% It can be safely removed if not needed
+% photon wave injection in the bandgap on p-side :
+\draw [decorate, decoration={snake}, ->] ({\PN+1},{\EC+1}) --
+node [below,sloped]{$h\nu$} ({\FZCE+3}, \EG); 
+
+% excess carriers diffusion, with diffusion length :
+% electrons on p side :
+\draw [->] ({\FZCE+1},{\EC+0.2}) -- node [above] {$L_{Dn}$}
+node [below=6pt] {\textcircled{2}}({\FZCE},{\EC+0.2})
+node [left] {$\bullet$} ;
+\draw [->] ({\FZCE-0.3},{\EC+0.2}) to [out=200, in=0, looseness=0.75]
+node [above left] {\textcircled{3}} ({\DZCE},{\EG+0.2})
+node [left] {$\bullet$} node [above left=3pt] {\textcircled{4}};
+% holes on n side :
+\draw [->] ({1.2+7/3},{-0.2}) -- node [below] {$L_{Dp}$} ({\DZCE},{-0.2})
+node [right]{$\circ$} ;
+\draw [->] ({\DZCE+0.3},-0.2) to [out=20, in=180, looseness=0.75]
+({\FZCE},{\V-0.2}) node [right]{$\circ$};
+\end{tikzpicture}
+
 \theoremlisttype{allname}
-\listtheorems{truetheorem}
+\listtheorems{theorem}
 
 \end{document}

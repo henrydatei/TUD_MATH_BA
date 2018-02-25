@@ -1,57 +1,58 @@
-\documentclass[ngerman,a4paper]{report}
 \RequirePackage{ifluatex}
-\usepackage[table]{xcolor}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{latexsym}
-\usepackage{marvosym} %lighning
-\usepackage{graphicx}
+\documentclass[ngerman,a4paper]{report}
+%\usepackage[top=2cm,bottom=2cm,left=1cm,right=1cm]{geometry}
 \usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{url} 
-\usepackage[top=1cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
-\usepackage{bbm} %unitary matrix 1
+%\usepackage[utf8]{inputenc} %not recommended with lualatex
 
-\usepackage[texindy]{imakeidx}
-\makeindex
-\makeindex[name=symbols,title=Symbolverzeichnis]
-
-\usepackage{enumerate}
-\usepackage{enumitem} %customize label
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{cleveref}
-\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
-\usepackage{parskip}%split paragraphs by vspace instead of intendations
-\usepackage{cancel}
-\usepackage{chngcntr}
-\usepackage{ulem} %better underlines
-\usepackage{titlesec}%customize titles
+\usepackage{zref-base}
+\usepackage{etoolbox}
 \usepackage{xparse}%better macros
-\usepackage{scrpage2}
-\usepackage{paralist}
-\usepackage{mathtools,bm}
-\usepackage{stmaryrd} % Widerspruch symbol
-\usepackage[autostyle]{csquotes}
-\usepackage{lipsum}
-\usepackage{pgf,tikz}
-\usetikzlibrary{matrix}
-\usetikzlibrary{arrows}
-\usepackage{color}
-\usepackage{mathrsfs}
-\usepackage{wasysym}
+\usepackage{chngcntr}
+\usepackage{calc}
 
+\usepackage[T1]{fontenc}
 \ifluatex
 \usepackage{fontspec}
 \fi
 
-\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
-\usepackage[ntheorem,framemethod=TikZ]{mdframed}
+\usepackage[texindy]{imakeidx}
+\makeindex[name=semester1,title={Symbolverzeichnis (1. Semester)}]
+\makeindex[name=semester2,title={Symbolverzeichnis (2. Semester)}]
+\makeindex[name=symbols,title=Symbolverzeichnis]
+
 \usepackage[xindy,acronym]{glossaries}
 \makeglossaries
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{marvosym} %lighning
+\usepackage{bbm} %unitary matrix 1
+\usepackage{cancel}
+\usepackage{xfrac}%sfrac -> fractions e.g. 3/4
+
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+
+\usepackage{enumerate}
+\usepackage{enumitem} %customize label
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{ulem} %better underlines
+
+\usepackage{parskip}%split paragraphs by vspace instead of intendations
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{titlesec}%customize titles
+\usepackage{marginnote}
+
+\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+\usepackage[ntheorem,framemethod=TikZ]{mdframed}
 
 \usepackage[bookmarks=true]{hyperref}
 \hypersetup{
@@ -61,11 +62,236 @@
 	linkcolor=blue,
 	urlcolor=green
 }
+\usepackage{cleveref}
 \usepackage{bookmark}
 
 \newcommand{\coloredRule}[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
 \newlength{\blacktrianglewidth}
 \settowidth{\blacktrianglewidth}{$\blacktriangleright$}
+
+\definecolor{lightgrey}{gray}{0.91}
+\definecolor{lightred}{rgb}{1,0.6,0.6}
+\definecolor{darkgrey}{gray}{0.6}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+%numbered theorems
+\theoremstyle{break}
+\theorembodyfont{}
+
+\mdfdefinestyle{boxedtheorem}{%
+	outerlinewidth=3pt,%
+	skipabove=5pt,%
+	skipbelow=10pt,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+}
+
+\newmdtheoremenv[%
+style=boxedtheorem,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+linecolor=darkgrey,%
+backgroundcolor=lightgrey,%
+]{theorem}{Theorem}[section]
+\newmdtheoremenv[%
+style=boxedtheorem,%
+linecolor=darkgrey,%
+topline=false,%
+rightline=false,%
+bottomline=false,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+backgroundcolor=lightgrey,%
+]{proposition}[theorem]{Satz}
+\newmdtheoremenv[%
+style=boxedtheorem,%
+linecolor=darkgrey,%
+topline=false,%
+rightline=false,%
+bottomline=false,%
+backgroundcolor=lightgrey,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+]{lemma}[theorem]{Lemma}
+\newmdtheoremenv[%
+style=boxedtheorem,%
+linecolor=red,%
+topline=false,%
+rightline=false,%
+bottomline=false,%
+innertopmargin=0,%
+innerbottommargin=-3pt,%
+]{definition}[theorem]{Definition}
+\newmdtheoremenv[%
+outerlinewidth=3pt,%
+linecolor=black,%
+topline=false,%
+rightline=false,%
+bottomline=false,%
+innertopmargin=0pt,%
+innerbottommargin=-3pt,%
+frametitlefont=\normalfont\bfseries\color{black},%
+skipabove=5pt,%
+skipbelow=10pt,%
+]{conclusion}[theorem]{Folgerung}
+\newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=0pt,%
+skipabove=5pt,%
+innerleftmargin=10pt,%
+]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+\newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=10pt,%
+]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+%unnumbered theorems
+\theoremstyle{nonumberbreak}
+\theoremindent0cm
+\newmdtheoremenv[%
+style=boxedtheorem,%
+linecolor=red,%
+topline=false,%
+rightline=false,%
+bottomline=false,%
+innertopmargin=0,%
+innerbottommargin=0pt,%
+]{*definition}{Definition}
+\newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=0pt,%
+skipabove=5pt,%
+innerleftmargin=10pt,%
+]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+\newmdtheoremenv[%
+hidealllines=true,%
+innerleftmargin=10pt,%
+]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+%Hinweis-Theoremstyle and environment
+%To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
+%to achieve the underlining, this needed to put in the theoremstyle definition
+\theoremheaderfont{\mdseries}
+\theoremseparator{:}
+\theorempostskip{0pt}
+\makeatletter
+\newtheoremstyle{noparentheses}%
+	{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+					\uline{##1}\theorem@separator}\hbox{\strut}}}]}%
+	{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+					\uline{##1\ ##3\theorem@separator}}\hbox{\strut}}}]}
+\newtheoremstyle{underlinedPlain}%
+	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
+	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ (##3)\theorem@separator}]}
+\makeatother
+
+\theoremstyle{noparentheses}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+	innerbottommargin=0pt,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{interpretation}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Interpretation}
+\theoremstyle{underlinedPlain}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
+
+%for \cref: printed environment names
+\crefname{theorem}{Theorem}{Theoreme}
+\crefname{proposition}{Satz}{Sätze}
+\crefname{lemma}{Lemma}{Lemmata}
+\crefname{conclusion}{Folgerung}{Folgerungen}
+\crefname{definition}{Definition}{Definitionen}
+\crefname{remark}{Bemerkung}{Bemerkungen}
+\crefname{example}{Beispiel}{Beispiele}
+\crefname{*definition}{Definition}{Definitionen}
+\crefname{*remark}{Bemerkung}{Bemerkungen}
+\crefname{*example}{Beispiel}{Beispiele}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand*{\proplbl}[1]{%
+	\@bsphack
+	\begingroup
+	\label{#1}%
+	\zref@setcurrent{default}{\arabic{chapter}}%
+%		\zref@wrapper@immediate{%
+		\zref@labelbyprops{#1@chapter}{default}
+%		}
+	\endgroup
+	\@esphack
+}
+\newcommand*{\propref}[1]{%
+	\ifcsdef{r@#1}%in first compilation the label may not be defined yet
+	{%
+		\zref@refused{#1@chapter}%
+		\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{0}}%
+		{%same chapter
+			\mbox{\cref{#1}}%
+		}%
+		{%otherwise
+			\def\propositionref@current@type{}%
+			\cref@gettype{#1}{\propositionref@current@type}%get the environment's name
+			%example for following line:
+			%\crefformat{truetheorem}{\cref@truetheorem@name~##2\rom{\zref@extractdefault{#1}{#1chapter}{1}}.##1##3}
+			%this changes the format used by \cref to <environtment name> <chapter-number>.<section-number>.<theorem number>
+			\crefformat{\propositionref@current@type}{%
+				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
+			}%
+			\mbox{\cref{#1}}%
+			\crefformat{\propositionref@current@type}{%
+				\csname cref@\propositionref@current@type @name\endcsname~##2##1##3%
+			}%
+		}%
+	}%
+	{??}%similar to \ref\cref: question marks in case of undefined labels
+}
+\makeatother
+
+\NewDocumentCommand{\begriff}{s O{} m O{}}{%
+	\IfBooleanTF{#1}%
+	{\index{#2#3#4}}%
+	{%
+		\uline{#3}%
+		\ifnumcomp{\value{chapter}}{<}{16}%
+		{\index[semester1]{#2#3#4}}%
+		{\index[semester2]{#2#3#4}}%
+	}%
+}
+\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{%
+	\IfBooleanTF{#1}%
+	{\index[symbols]{#2#3@\detokenize{#4}#5}}%
+	{#4\index[symbols]{#2#3@\detokenize{#4}#5}}%
+}
+\NewDocumentCommand{\zeroAmsmathAlignVSpaces}{s s O{0 pt} O{0 pt}}{%
+	\IfBooleanTF{#1}%
+	{%
+		\IfBooleanTF{#2}%
+			{\setlength{\belowdisplayskip}{#4}}%
+			{\setlength{\abovedisplayskip}{#3}}%
+	}%
+	{%
+		\setlength{\abovedisplayskip}{#3}%
+		\setlength{\belowdisplayskip}{#4}%
+	}%
+}
+
+\NewDocumentCommand{\itemEq}{s m}{%
+	\begingroup%
+	\setlength{\abovedisplayskip}{\dimexpr -\parskip + 1pt\relax}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\IfBooleanTF{#1}%
+		{\parbox[c]{\linewidth}{\begin{flalign*}#2&&\end{flalign*}}}%}
+		{\parbox[c]{\linewidth}{\begin{flalign}#2&&\end{flalign}}}%}
+	\endgroup%
+}
 
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
@@ -112,196 +338,85 @@
 \newcommand{\realz}{\mathfrak{Re}}
 \newcommand{\imagz}{\mathfrak{Im}}
 \renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thechapter}{\Roman{chapter}}
-\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{15pt}{\huge\bfseries}
-\titlespacing{\chapter}{0pt}{0pt}{0pt}
-\titlespacing{\section}{0pt}{0pt}{0pt}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
 \DeclareMathOperator{\ext}{ext} % Set of outer points
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\LinAbb}{L}
-\DeclareMathOperator{\Diff}{D}
 
-% Hacks
-\titleclass{\part}{top}
-\titleformat{\part}[display]
-{\normalfont\huge\bfseries}{\centering\partname\ \thepart}{20pt}{\Huge\centering}
-\titlespacing*{\part}{0pt}{50pt}{40pt}
-\titleclass{\chapter}{straight}
-\titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
-\titlespacing*{\chapter} {0pt}{50pt}{40pt}
-\setlength\parindent{0pt} % noindent whole file!
-\renewcommand*{\arraystretch}{1.4}
-
-\theoremstyle{break}
-\theorembodyfont{}
-
-\definecolor{lightgrey}{gray}{0.91}
-\definecolor{lightred}{rgb}{1,0.6,0.6}
-\definecolor{darkgrey}{gray}{0.6}
-\definecolor{darkgreen}{rgb}{0,0.6,0}
-
-\newcounter{dummy}
-\renewcommand{\thedummy}{\relax}
-
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=black,%
-	backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{theorem}[dummy]{Theorem}
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=darkgrey,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{satz}[dummy]{Satz}
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=darkgrey,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{lemmaName}[dummy]{Lemma}
-\newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=darkgrey,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	%backgroundcolor=lightgrey,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{lemma}[dummy]{Lemma}
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{folgerung}[dummy]{Folgerung}
-\newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{bemerkung}[dummy]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
-\newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-]{beispiel}[dummy]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
-\newenvironment{beweis}{\begin{itshape} Beweis:}{\QEDA\end{itshape}}
-
-%unnumbered theorems
-\theoremstyle{nonumberbreak}
-\theoremindent0cm
-\newmdtheoremenv[%
-	%outerlinewidth=3pt,%
-	%linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,%
-	hidealllines=true,%
-	innertopmargin=\topskip,%
-	innerbottommargin=\topskip,%
-	innerleftmargin=10pt,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%
-	skipbelow=5pt,%
-	backgroundcolor=lightgrey,%
-]{ueberblick}{Überblick}
-\newmdtheoremenv[%
-    outerlinewidth=3pt,%
-    linecolor=red,%
-    topline=false,%
-    rightline=false,%
-    bottomline=false,%
-    innertopmargin=\topskip,%
-    innerbottommargin=\topskip,%
-    frametitlefont=\normalfont\bfseries\color{black},%
-    skipabove=5pt,%
-    skipbelow=5pt,%
-]{definition}{Definition}
-
-
-%right cases:
-%\newenvironment{rcases}
-%{\left.\begin{aligned}}
-%    {\end{aligned}\right\rbrace}
-
-
-\NewDocumentCommand{\begriff}{s O{} m O{}}{
-	\IfBooleanTF{#1}
-		{\index{#2#3#4}}
-		{\uline{#3}\index{#2#3#4}}
-}
-\NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{
-	\IfBooleanTF{#1}
-		{\index[symbols]{#2#3@\detokenize{#4}#5}}
-		{#4\index[symbols]{#2#3@\detokenize{#4}#5}}
-}
-
-\numberwithin{dummy}{section}
+%change headings:
+\titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
 \counterwithout{section}{chapter}
+\renewcommand{\thechapter}{\Roman{chapter}}
+%italic chapters (due to titlesec package some more stuff)
+\titleformat{\chapter}[display]{\huge\bfseries\itshape}{\chaptername\;\thechapter:}{-5pt}{\huge\bfseries}
+\titlespacing{\chapter}{0pt}{0pt}{10pt}
+\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
+\titlespacing{\subsection}{0pt}{*}{0pt}
+
+%change header:
+\renewcommand{\headrulewidth}{0.75pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\lhead{\rightmark}%left: section-number. section-title
+\rhead{\leftmark}%right: chapter chapternumber: chapter-title
+
+%change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
+\renewcommand{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+%remember chapter-title in \leftmark and \rightmark
+\renewcommand{\chaptermark}[1]{%
+	\markboth{\chaptername
+		\ \thechapter:\ #1}{}}
+%remember section title in \leftmark
+\renewcommand{\sectionmark}[1]{%
+	\markright{\thesection.\ #1}{}}
+
+%change numbering of equations to be section by section
+\counterwithout{equation}{section}
+
+\newacronym{gdw}{gdw.}{genau dann wenn}
+\newacronym{fa}{fa.}{fast alle}
+\newacronym{obda}{oBdA}{ohne Beschränkung der Allgemeinheit}
+\newacronym{tf}{TF}{\begriff{Teilfolge}}
+\newacronym{hw}{Hw}{\begriff{Häufungswert}}
+\newacronym{cf}{CF}{\begriff{\person{Cauchy}-Folge}}
+\newacronym{hp}{HP}{\begriff{Häufungspunkt}}
+\newacronym{vr}{VR}{Vektorraum}
+\newacronym{diffbar}{diffbar}{differenzierbar}
 
 \title{\textbf{Analysis 2. Semester (SS2018)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
 	Kursassistenz: Moritz Schönherr}
 
-
 \begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
 
 \maketitle
 \tableofcontents
 
-\include{./TeX_files/Differentiation}
+\pagebreak
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\chapter{Test}
+\begin{proposition}
+\proplbl{aeqv_norm}
+\proplbl{chap_15_5}
+\proplbl{defLinearFunction}
+\proplbl{einseitige_grenzwerte}
+Test für Labels.
+\end{proposition}
+
+\setcounter{section}{15}
+\setcounter{chapter}{4}
+\chapter{Differentiation}
+\include{./TeX_files/Wiederholung_und_Motivation}
+\include{./TeX_files/Ableitung}
 \include{./TeX_files/Integration}
 \include{./TeX_files/Differentiation_2}
 
