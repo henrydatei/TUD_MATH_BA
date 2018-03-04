@@ -183,8 +183,8 @@
 {\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
 				\uline{##1\ ##3\theorem@separator}}\hbox{\strut}}}]}
 \newtheoremstyle{underlinedPlain}%
-	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
-	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ (##3)\theorem@separator}]}
+	{\item[\hskip\labelsep \underline{\theorem@headerfont ##1\theorem@separator}]}%
+	{\item[\hskip\labelsep \underline{\theorem@headerfont ##1\ (##3)\theorem@separator}]}
 \makeatother
 
 \theoremstyle{noparentheses}
@@ -192,6 +192,7 @@
 	hidealllines=true,%
 	innerleftmargin=1em,%
 ]{interpretation}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Interpretation}
+
 \theoremstyle{underlinedPlain}
 \newmdtheoremenv[%
 hidealllines=true,%
@@ -235,7 +236,7 @@ skipbelow=0pt,%
 	\zref@refused{#1@chapter}%
 	\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{1}}%
 		{%same chapter
-			\cref{#1}%
+			\mbox{\cref{#1}}%
 		}%
 		{%otherwise
 			\ifcsdef{r@#1}%in first compilation the label may not be defined yet
@@ -248,7 +249,7 @@ skipbelow=0pt,%
 					\crefformat{\propositionref@current@type}{%
 						\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
 					}%
-					\cref{#1}%
+					\mbox{\cref{#1}}%mbox neccessary due to cleveref <-> ulem
 					\crefformat{\propositionref@current@type}{%
 						\csname cref@\propositionref@current@type @name\endcsname~##2##1##3%
 					}%
@@ -330,7 +331,7 @@ skipbelow=0pt,%
 \renewcommand{\chaptermark}[1]{%
 	\markboth{\chaptername
 		\ \thechapter:\ #1}{}}
-%remember section title in \leftmark
+%remember section title in \leftmark, overwrites chapter-title there
 \renewcommand{\sectionmark}[1]{%
 	\markright{\thesection.\ #1}{}}
 
@@ -342,6 +343,7 @@ skipbelow=0pt,%
 \date{Updated: \today}
 
 \begin{document}
+	
 \pagenumbering{roman}
 \pagestyle{plain}
 
@@ -416,7 +418,8 @@ skipbelow=0pt,%
 	LOhne Nummer
 \end{example}
 
-\begin{proof}
+
+\begin{proof}[\cref{einzweitestheorem}]
 	Ein Beweis unter Ausnutzung von \propref{einzweitestheorem}
 	
 	\begin{align}
@@ -462,7 +465,7 @@ skipbelow=0pt,%
     Ohne Nummer
 \end{*example}
 
-\begin{proof}
+\begin{proof}[]
     Ein Beweis. Siehe auch \propref{eintheorem} und \propref{einzweitestheorem}.
     \begin{align}
     f = f(x) \text{ (mit Formelnnummer)}
