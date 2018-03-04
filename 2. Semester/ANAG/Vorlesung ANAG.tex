@@ -1,6 +1,6 @@
 \RequirePackage{ifluatex}
 \documentclass[ngerman,a4paper]{report}
-\usepackage[left=3cm,right=4cm]{geometry}
+\usepackage[left=2.1cm,right=3.1cm]{geometry}
 \usepackage[ngerman]{babel}
 %\usepackage[utf8]{inputenc} %not recommended with lualatex
 
@@ -9,6 +9,8 @@
 \usepackage{xparse}%better macros
 \usepackage{chngcntr}
 \usepackage{calc}
+
+\usepackage{scalerel,stackengine}
 
 \usepackage[T1]{fontenc}
 \ifluatex
@@ -186,7 +188,7 @@ innerleftmargin=10pt,%
 	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
 	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ \theorem@headerfont(##3)\theorem@separator}]}
 \newtheoremstyle{underlinedEnvironment}{}%
-{\item[\hskip\labelsep \uline{\theorem@headerfont ##3\theorem@separator}]}
+{\item[\hskip\labelsep \uline{##1\theorem@headerfont ##3\theorem@separator}]}
 \makeatother
 
 \theoremstyle{noparentheses}
@@ -208,11 +210,10 @@ innerleftmargin=10pt,%
 \theoremstyle{underlinedEnvironment}
 \newmdtheoremenv[%
 	hidealllines=true,%
-innerleftmargin=1em,%
-innerrightmargin=0,%
-skipbelow=0pt,%
-]{underlinedenvironment}{\hspace*{-\mdflength{innerleftmargin
-}}}
+	innerleftmargin=1em,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{underlinedenvironment}{\hspace*{\dimexpr -\mdflength{innerleftmargin}\relax}}
 
 \theoremstyle{underlinedPlain}
 \theoremheaderfont{\normalfont\bfseries}
@@ -314,6 +315,9 @@ skipbelow=0pt,%
 	\endgroup%
 }
 
+\newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+	\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
 \newcommand{\real}{\mathbb{R}} % real set R
@@ -359,6 +363,7 @@ skipbelow=0pt,%
 \newcommand{\realz}{\mathfrak{Re}}
 \newcommand{\imagz}{\mathfrak{Im}}
 \renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -440,6 +445,7 @@ Test für Labels.
 \chapter{Differentiation}
 \include{./TeX_files/Wiederholung_und_Motivation}
 \include{./TeX_files/Ableitung}
+\include{./TeX_files/Richtungsableitung}
 \include{./TeX_files/Integration}
 \include{./TeX_files/Differentiation_2}
 
