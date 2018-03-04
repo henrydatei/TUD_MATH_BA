@@ -93,7 +93,7 @@ Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 	\end{itemize}
 \end{example}
 
-\subsection*{Anwendung: Eigenschaften des Gradienten}
+\subsection{Anwendung: Eigenschaften des Gradienten}
 \begin{*definition}
 	Sei $f:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ \gls{diffbar} in $x\in D$.
 	
@@ -216,7 +216,7 @@ Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ li
 \end{remark}
 
 \begin{proof}[\propref{richtungsableitung_vollstaendige_reduktion}]\hspace*{0pt}
-\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr -\baselineskip / 2 \relax,itemindent=\widthof{zu b)}]
+\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr -\baselineskip / 2 \relax]
 	\item \propref{ableitung_proposition_reduktion}
 	\item Benutze $f'(x)\cdot z = \mathrm{D}_z f(x)$ und \propref{richtungsableitung_prop_partielle_ableitung_ausrechnen}
 	\item Entweder $\frac{\partial}{\partial x_j} f(x) = \transpose{\left( \frac{\partial}{\partial x_j} f_1(x), \dotsc, \frac{\partial}{\partial x_j} f_n(x)\right)}$ oder $f_j'(x) = \left( \frac{\partial}{\partial x_1} f_j(x), \dotsc, \frac{\partial}{\partial x_n} f_j(x) \right)$, sonst analog zu b)
@@ -252,10 +252,13 @@ Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ li
 	$\Rightarrow$ $f$ \gls{diffbar} in $x$ und \propref{richtungsableitung_vollstaendige_reduktion_eq} gilt.
 \end{underlinedenvironment}
 
-\subsection*{$\mathbf{\mathbb{R}}$-differenzierbar und $\mathbf{\mathbb{C}}$-differenzierbar}
-Sei $f:D\subset K^n\to K^m$ ist \gls{diffbar} in $z_0 \in D$, $D$ offen \\
-$\Leftrightarrow$ eine $k$-lineare Abbildung $A:K^n\to K^m$ existiert, die die Funktion $f$ in $z_0$ "`lokal approximiert"'. \\
-$\rightarrow$ man müsste eigentlich genauer sagen: $f$ ist $k$-\gls{diffbar} in $z_0$ wegen $\mathbb{R}\subset\mathbb{C}$. Jeder \gls{vr} über $\mathbb{C}$ knn auch als \gls{vr} über $\mathbb{R}$ betrachtet werden (nicht umgekehrt!) und jede $\mathbb{C}$-lineare Abbildung zwischen $\mathbb{C}$-\gls{vr} kann auch als $\mathbb{R}$-linear betrachtet werden\\
+\subsection{$\mathbf{\mathbb{R}}$-differenzierbar und $\mathbf{\mathbb{C}}$-differenzierbar}
+Sei $f:D\subset K^n\to K^m$ ist \gls{diffbar} in $z_0 \in D$, $D$ offen
+
+$\Leftrightarrow$ eine $k$-lineare Abbildung $A:K^n\to K^m$ existiert, die die Funktion $f$ in $z_0$ "`lokal approximiert"'.
+
+$\rightarrow$ man müsste eigentlich genauer sagen: $f$ ist $k$-\gls{diffbar} in $z_0$ wegen $\mathbb{R}\subset\mathbb{C}$. Jeder \gls{vr} über $\mathbb{C}$ kann auch als \gls{vr} über $\mathbb{R}$ betrachtet werden (nicht umgekehrt!) und jede $\mathbb{C}$-lineare Abbildung zwischen $\mathbb{C}$-\gls{vr} kann auch als $\mathbb{R}$-linear betrachtet werden
+
 $\Rightarrow$ jede $\mathbb{C}$-\gls{diffbar}e Funktion $f:D\subset \mathbb{C}^n\to \mathbb{C}^m$ ist auch $\mathbb{R}$-\gls{diffbar}.
 
 Die Umkehrung gilt i.A. nicht!
@@ -324,7 +327,7 @@ Die Umkehrung gilt i.A. nicht!
 	\end{itemize}
 \end{proof}
 
-\subsection*{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}
+\subsection{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}
 Identifiziere $f:D\subset\mathbb{C}\to \mathbb{C}$ mit $\tilde{f}:\tilde{D}\subset\mathbb{R}^2\to\mathbb{R}^2$ gemäß $z = x + iy \equalhat \binom{x}{y}$, $f(z) = u(x,y) + iv(x,y) \equalhat \binom{u(x,y)}{v(x,y)} = \tilde{f}(x,y)$
 
 Lineare Algebra: $A:\mathbb{C}\to\mathbb{C}$ linear $\Leftrightarrow$ $\exists w\in\mathbb{C}: Az = wz$ $\forall z\in\mathbb{C}$\marginnote{(Eigenwert)}\\
@@ -346,6 +349,7 @@ Lineare Algebra: $A:\mathbb{C}\to\mathbb{C}$ linear $\Leftrightarrow$ $\exists w
 	$\mathbb{C}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ entspricht \emph{spezieller} $\mathbb{R}$-linearen Abbildung $\mathbb{R}^2\to\mathbb{R}^2$
 \end{underlinedenvironment}
 
+\begin{*definition}
 Falls $\mathbb{R}$-\gls{diffbar} in $z_0$ liefert \eqref{richtungsableitung_differenzierbarkeit_vorform_cauchy_riemann} \begin{align*}
 	f_x(z_0) &= u_x(x_0, y_0) + i v_x(x_0, y_0),& f_y(z_0) &= u_y(x_0, y_0) + iv_y(x_0, y_0)
 \end{align*}
@@ -355,6 +359,7 @@ folglich \begin{align}
 		u_y(x_0, y_0) &=&-&v_x(x_0, y_0)
 	\end{alignedat}}_{\mathclap{\text{\begriff{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}}}}
 \end{align}
+\end{*definition}
 
 \begin{underlinedenvironment}[Somit]
 	$\mathbb{C}$-lineare Abbilung $z \to f'(z_0)$ entspricht $\mathbb{R}$-linearer Abbildung \begin{align*}
