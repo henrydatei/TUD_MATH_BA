@@ -1,0 +1,445 @@
+\section{Mittelwertsatz und Anwendung}\setcounter{equation}{0}
+\begin{*definition}
+	Wir sagen, $f:D\subset \mathbb{R}^n\to \mathbb{R}$ besitzt \begriff{Minimum} bzw. \begriff{Maximum} auf $D$, falls eine \begriff{Minimalstelle} bzw. \begriff{Maximalstelle} $x_0\in D$ existiert mit \begin{align}
+		\proplbl{mittelwertsatz_extremalstellen}
+		f(x_0) &\le f(x) & f(x) &\ge f(x) & \forall x&\in D
+	\end{align}
+	$f$ hat ein lokales Minimum bzw. lokales Maximum in $x_0\in D$ falls\begin{align}
+		\proplbl{mittelwertsatz_lokale_extremstellen}
+		\exists \epsilon > 0: f(x_0) &\le f(x) & f(x_0) &\ge f(x) & \forall x&\in B_{\epsilon}(x_0 \cap D)
+	\end{align}
+	Hat man in \eqref{mittelwertsatz_extremalstellen} bzw. \eqref{mittelwertsatz_lokale_extremstellen} für $x$ und $x_0$ "`$<$"' bzw. "`$>$"', so sagt man \begriff[Maximum!]{strenges} \begriff*[Minimum!]{streng} (lokales) Minimum bzw. Maximum.
+\end{*definition}
+
+\begin{hint}
+	Es gilt:\\
+	\begin{tabularx}{\linewidth}{XcX}
+		\hfill$f$ hat Minimum auf $D$ & $\xLeftrightarrow{\text{vgl. \cref{chap_5}}}$ & $\min\{ f(x) \mid x\in D \}$ existiert (d.h. $\inf \{\dotsc\}$ wird angenommen)
+	\end{tabularx}
+	Analog für Maximum.
+\end{hint}
+
+\begin{theorem}[notwendige Optimalitätsbedingung]
+	\proplbl{mittelwertsatz_optimalitaetsbedingung}
+	Sei $f:D\subset \mathbb{R}^n \to \mathbb{R}$, $D$ offen, $f$ sei \gls{diffbar} in $x\in D$ und habe lokales Minimum bzw. Maximum in $x_0$. Dann:	\begin{align}
+		\proplbl{mittelwertsatz_optimalitaetsbedingung_eq}
+		f'(x_0) &= 0 \quad (\in\mathbb{R}^{1\times n})
+	\end{align}
+\end{theorem}
+
+
+\begin{remark}
+	\vspace*{0pt}
+	\begin{itemize}
+		\item \propref{mittelwertsatz_optimalitaetsbedingung} ist neben dem Satz von Weierstraß (\propref{satz_von_weierstrass}) der wichtigste Satz für Optimierungsprobleme, denn \eqref{mittelwertsatz_optimalitaetsbedingung_eq} dient der Bestimmung von "`Kandidaten"' für Minimal- und Maximalstellen.
+		\item \eqref{mittelwertsatz_optimalitaetsbedingung_eq} besagt, dass die Tangentialebene an den Graphen von $f$ in $(x_0, f(x_0))$ horizontal ist.
+	\end{itemize}
+\end{remark}
+
+\begin{proof}
+	\NoEndMark
+	Für Minimum (Maximum analog) fixiere beliebiges $z\in\mathbb{R}^n$.
+	
+	$D$ offen\\
+	\begin{tabularx}{\linewidth}{rX}
+		\parbox{\widthof{\phantom{$\xRightarrow{t\to 0}$}}}{\hfill$\Rightarrow$} & $\exists \delta > 0: x_0 + t\cdot z\in D$ $\forall t\in (-\delta, \delta)$
+	\end{tabularx}
+	
+	f \gls{diffbar} in $x_0$, Minimum in $x_0$ \\
+	\begin{tabularx}{\linewidth}{rX}
+		$\Rightarrow$ & $ 0\le f(x_0 + t\cdot z) - f(x_0) = t\cdot f'(z_0) \cdot z + o(t)$, $t\to 0$ \marginnote{$\left| \cdot \frac{1}{t}\right.$} \\
+		$\xRightarrow{t>0}$ & $0\le f'(x_0)\cdot z + o(1)$ \\
+		$\xRightarrow{t\to 0}$ & $0 \le f'(x_0)\cdot z$ $\forall z\in\mathbb{R}^n$ \\
+		$\xRightarrow{\pm z}$ & $f'(x_0) \cdot z = 0$ $\forall z\in\mathbb{R}^n$\marginnote{$\pm z$: gilt für $z$ und additiv Inverses} \\
+		$\Rightarrow$ & $f'(x_0) = 0$\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+Einfache, aber wichtige Anwendung:
+\begin{proposition}[Satz von Rolle]
+	\proplbl{mittelwertsatz_rolle}
+	Sei $f:[a,b]\in\mathbb{R}\to\mathbb{R}$ stetig, $-\infty < a < b < \infty$, $f$ \gls{diffbar} auf $(a,b)$ und $f(a) = f(b)$.\\
+	$\Rightarrow$ $\exists \xi\in(a,b): f(\xi) = 0$
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	$f$ stetig, $[a,b]$ kompakt \\
+	$\xRightarrow{\propref{chap_15_3}}$ $\exists x_1, x_2\in [a,b]: f(x_1) \le f(x) \le f(x_2)$ $\forall x$
+	\begin{itemize}
+		\item Angenommen, $f(x_1) = f(x_2) = f(a)$ $\Rightarrow$ $f$ konstante Funktion $\Rightarrow$ $f'(\xi) = 0$ $\forall \xi \in (a,b)$
+		\item Andernfalls sei $f(x_1) < f(a)$ $\Rightarrow$ $\xi := x_1\in(a,b)$ $\xRightarrow{\propref{mittelwertsatz_optimalitaetsbedingung}}$ $f'(\xi) = 0$
+		\item analog $f(x_2) > f(a)$\hfill\csname\InTheoType Symbol\endcsname
+	\end{itemize}
+\end{proof}
+
+\begin{*definition}
+	Setze für $x,y\in K^n$
+	\begin{itemize}
+		\item $[x,y] := \{ x + t(y - x)\in\mathbb{R}^n \mid t\in [0,1] \}$ \begriff[Segment!]{abgeschlossenes} \begriff{Segment} (abgeschlossene Verbindungsstrecke)
+		\item $(x,y) := \{ x + t(y - x)\in\mathbb{R}^n \mid t\in (0,1) \}$ \begriff[Segment!]{offenes} \begriff{Segment} (offene Verbindungsstrecke)
+	\end{itemize}
+\end{*definition}
+
+\begin{theorem}[Mittelwertsatz]
+	\proplbl{mittelwertsatz_mittelwertsatz}
+	Sei $f:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ \gls{diffbar} auf $D$ und seien $x,y\in D$ mit $[x,y]\subset D$. Dann \begin{align}
+		\proplbl{mittelwertsatz_mittelwertsatz_eq}
+		\exists \xi\in(x,y): f(y) - f(x) = f'(\xi) \overset{\star}{\cdot} (y - x)\marginnote{\star: Skalarprodukt}
+	\end{align}
+\end{theorem}
+
+\begin{remark}\vspace*{0pt}
+	\begin{itemize}
+		\item Für $n=1$ schreibt man \eqref{mittelwertsatz_mittelwertsatz_eq} auch als \begin{align*}
+			f'(\xi) = \frac{f(y) - f(x)}{y - x} \quad\text{falls }x\neq y.
+		\end{align*}
+		\item Der \gls{mws} gilt \emph{nicht} für $\mathbb{C}$ oder $m\neq 1$.
+		\item \propref{mittelwertsatz_mittelwertsatz} gilt bereits für $D\subset\mathbb{R}^n$ beliebig, $f$ stetig auf $[x,y]\subset D$, $f$ \gls{diffbar} auf $(x,y) \subset \inn D$.
+	\end{itemize}
+\end{remark}
+
+\begin{proof}
+	\NoEndMark
+	Setzte $\phi(t) = f(x + t(y - x)) - \big( f(y) - f(x) \big) t$ $\forall t\in[0,1]$ \\
+	\begin{tabularx}{\linewidth}{rX}
+	\parbox{\widthof{$\xRightarrow{\propref{mittelwertsatz_rolle}}$}}{\hfill$\xRightarrow{\text{$f$ \gls{diffbar}}}$}& $\phi: [0,1]\to \mathbb{R}$ stetig, $\phi(0) = \phi(1) = f(x)$
+	\end{tabularx}
+
+	$\phi$ \gls{diffbar} auf $(0,1)$ (verwende Kettenregel) mit \begin{align}
+	\proplbl{mittelwertsatz_mittelwertsatz_beweis_eq}
+	\phi'(t) = f'(x + t(y - x)) \cdot (y - x) - \big( f(y) - f(x) \big)
+	\end{align}
+	\begin{tabularx}{\linewidth}{rX@{}}
+	\parbox{\widthof{$\xRightarrow{\propref{mittelwertsatz_rolle}}$}}{$\xRightarrow{\propref{mittelwertsatz_rolle}}$} & $\exists \tau \in (0,1): \phi'(t) = 0$ \\
+	$\xRightarrow{\eqref{mittelwertsatz_mittelwertsatz_beweis_eq}}$ & $f(y) - f(x) = f'(\underbrace{x + \tau (y - x)}_{=: \xi \in (x,y)}) \cdot (y - x)$ \\
+	$\Rightarrow$ & Behauptung\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\begin{proposition}[Verallgemeinerter Mittelwertsatz in $\mathbb{R}$]
+	\proplbl{mittelwertsatz_mittelwertsatz_verallgemeinert}
+	Seien $f,g: [x,y]\subset \mathbb{R}\to\mathbb{R}$ stetig und \gls{diffbar} auf $(x,y)$ ($x,y\in\mathbb{R}$, $x < y$). Dann \begin{align*}
+		\exists \xi\in (x,y): \big( f(y) - f(x) \big)\cdot g'(\xi) = \big( g(y) - g(x) \big) f'(\xi)
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	Sei $h(t) := \big( f(y) - f(x) \big) g(t) - \big( g(y) - g(x) \big) f(t)$ $\forall t\in [x,y]$ \\
+	\begin{tabularx}{\linewidth}{rX@{}}
+		$\Rightarrow$ & $h:[x,y]\to\mathbb{R}$ stetig, \gls{diffbar} auf $(x,y)$, $h(x) = h(y)$ \\
+		$\xRightarrow{\propref{mittelwertsatz_rolle}}$ & $\exists \xi \in(x,y): 0 = h'(\xi) = \big( f(y) - f(x) \big) g'(\xi) - \big( g(y) - g(x) \big) f'(\xi)$ \\
+		$\Rightarrow$ & Behauptung\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\begin{underlinedenvironment}[Frage]
+	Der \gls{mws} gilt für $m=1$. Was ist bei $m > 1$?
+\end{underlinedenvironment}
+\begin{conclusion}
+	Sei $f = (f_1, \dotsc, f_m): D\subset\mathbb{R}^n \to \mathbb{R}^m$, $D$ offen, \gls{diffbar} auf $D$, $[x,y]\subset D$. Dann
+	\begin{align}
+		\proplbl{mittelwertsatz_mittelwertsatz_m_gt_eins_eq}
+		\exists \xi_1, \dotsc, \xi_m \in (x,y): f(y) - f(x) = \left( \begin{matrix}
+			f_1'(\xi_1) \\ \vdots \\ f_m'(\xi_m) 
+		\end{matrix} \right) \cdot (y - x)
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	\propref{mittelwertsatz_mittelwertsatz_m_gt_eins_eq} ist äquivlanet zu $m$ skalaren Gleichungen \begin{align*}
+		f_j(y) - f_j(x) = f_j'(\xi_j) \cdot (y - x), \quad j = 1,\dotsc,m
+	\end{align*}
+	und diese Folgen direkt aus \propref{mittelwertsatz_mittelwertsatz} für $f_j: D\to \mathbb{R}$.
+\end{proof}
+
+\begin{underlinedenvironment}[Frage]
+	Ist in \eqref{mittelwertsatz_mittelwertsatz_m_gt_eins_eq} auch $\xi_1 = \dotsc = \xi_m$ möglich? Im Allgemeinen nein.
+\end{underlinedenvironment}
+
+\begin{example}
+	Sei $f:\mathbb{R}\to\mathbb{R}^2$ mit $f(x) = \binom{\cos x}{\sin x}$ $\forall x\in\mathbb{R}$.
+	
+	Angenommen, $\exists \xi\in (0,2\pi): f(2\pi) - f(0) = f'(\xi) \cdot (2\pi - 0) = 0$ \\
+	\begin{tabularx}{\linewidth}{rX}
+		$\Rightarrow$ & $0 = f'(\xi) = \binom{-\sin \xi}{\cos \xi}$, d.h. $\sin\xi = \cos\xi = 0$ \\
+		$\Rightarrow$ & \Lightning \\
+		$\Rightarrow$ & $\xi_1 = \xi_2$ in \eqref{mittelwertsatz_mittelwertsatz_m_gt_eins_eq} ist nicht möglich.
+	\end{tabularx}
+\end{example}
+
+\begin{underlinedenvironment}[Ausweg]
+	Für $m>1$ gilt statt \eqref{mittelwertsatz_mittelwertsatz_eq} Abschätzung \eqref{mittelwertsatz_schrankensatz_eq}, die meist ausreicht und ebenso richtig ist wie der \gls{mws}.
+\end{underlinedenvironment}
+
+\begin{theorem}[Schrankensatz]
+	\proplbl{mittelwertsatz_schrankensatz}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Seien $x,y\in D$, $[x,y]\subset D$. Dann\begin{align}
+		\proplbl{mittelwertsatz_schrankensatz_eq}
+		\exists \xi\in (x,y): \vert f(y) - f(x) \vert \le \vert f'(\xi) (y - x)\vert \le \Vert f'(\xi) \Vert \cdot \vert y - x\vert 
+	\end{align}
+	\emph{beachte:} \propref{mittelwertsatz_schrankensatz} gilt auch für $K=\mathbb{C}$.
+\end{theorem}
+
+\begin{proof}
+	\NoEndMark
+	Sei $f(x) \neq f(y)$ (sonst klar). Setzte $v:= \frac{f(y) - f(x)}{\vert f(y) - f(x)\vert} \in K^m$, offenbar $\vert v \vert = 1$.
+	
+	Betrachte $\phi: [0,1]  \to\mathbb{R}$ mit $\phi(t) := \Re \langle f(x + t (y - x)), v\rangle\marginnote{$\langle u,v\rangle = \sum_{i=1}^{n}\overline{u_i} v_i$}$
+	Da $f$ \gls{diffbar}, gilt \begin{align*}
+		\langle f(x + s(y - x)), v\rangle = \langle f(x + t(y - x)), v\rangle + \langle f'(x + t(y - x))\cdot (s  - t)(y - x), v \rangle + \underbrace{o(\vert s -  t\vert \cdot \vert y - x\vert)}_{=o(\vert s - t\vert)}, \; s\to t
+	\end{align*} und damit ist auch $\phi$ \gls{diffbar} auf $(0,1)$ mit \begin{align*}
+		\phi'(t) = \Re \langle f'(x + t(y - x))\cdot (y - x), v \rangle \quad \forall t\in (0,1).
+	\end{align*}
+	\propref{mittelwertsatz_mittelwertsatz} liefert: $\exists \tau \in (0,1): \underbrace{\phi(1) - \phi(0)}_{=\Re \langle f(y) - f(x), v\rangle} = \phi(\tau) \cdot (1 - 0)$ \\
+	\begin{alignat*}{8}
+		&\xRightarrow{\xi = x + \tau (y - x)}\;\;& \vert f(y) - f(x) \vert &&\,=\,& \Re \langle f(y) - f(x), v \rangle &&&\,=\,& \phi(1) - \phi(0) &&&\,=\,& \Re \langle f'(\xi) \cdot (y - x), v\rangle& \\
+		&& &&\le& \vert \langle f'(\xi) \cdot (y - x), v \rangle \vert& &&\overset{\star}{\le}&\marginnote{\star: \person{Cauchy}-\person{Schwarz}} \vert f'(\xi) \cdot (y - x)\vert \cdot \underbrace{\vert v \vert}_{=1}&  \\
+		&& &&\le& \Vert f'(\xi) \Vert \cdot \vert y - x\vert&
+	\end{alignat*} \hfill\csname\InTheoType Symbol\endcsname
+\end{proof}
+
+\begin{underlinedenvironment}[Wdh]
+	$M\subset K^n$ heißt konvex, falls $[x,y]\subset M$ $\forall x,y\in M$
+\end{underlinedenvironment}
+
+\begin{proposition}[\person{Lipschitz}-Stetigkeit]
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ stetig \gls{diffbar} auf $D$. Sei $M\subset D$ kompakt und konvex. Dann \begin{align}
+		\proplbl{mittelwertsatz_lipschitzstetigkeit_eq}
+		\vert f(y) - f(x) \vert \le L \cdot \vert y - x\vert \quad \forall x,y\in M
+	\end{align}
+	mit $L = \max\limits_{\xi \in M} \Vert f'(\xi)\Vert \le +\infty$, d.h. $f$ ist \person{Lipschitz}-stetig auf $M$ mit \person{Lipschitz}-Konstante $L$.
+\end{proposition}
+
+\begin{remark}
+	Wegen $\Vert f'(\xi) \Vert \le \vert f'(\xi)\vert$ (vgl. \propref{section_wiederholung_und_motivation}) kann man in \eqref{mittelwertsatz_schrankensatz_eq} und \eqref{mittelwertsatz_lipschitzstetigkeit_eq} auch $\vert f'(y)\vert$ benutzen.
+\end{remark}
+
+\begin{proof}
+	Seien $x,y\in M$ $\xRightarrow{M \text{ konvex}}$ $[x,y]\subset M$
+	
+	$f':M\to L(K^n, K^m)$ stetig, $M$ kompakt \\
+	$\xRightarrow{\propref{chap_15_3}}$ $\Vert f'(\xi)\Vert$ besitzt Maxium auf $M$ und die Behauptung folgt aus \propref{mittelwertsatz_schrankensatz}.
+\end{proof}
+
+\begin{underlinedenvironment}[bekanntlich]
+	$f(x) = \mathrm{const}$ $\forall x$ $\Rightarrow$ $f'(x) = $
+\end{underlinedenvironment}
+
+\begin{proposition}
+	\proplbl{mittelwertsatz_ableitung_null_konstante_funktion}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, und zusammenhängend.
+	
+	\begin{tabularx}{\linewidth}{XcX}
+		\hfill$f$ \gls{diffbar} auf $D$ mit $f'(x) = 0$ $\forall x\in D$ & $\Rightarrow$ & $f(x) = \mathrm{const}$ $\forall x\in D$.
+	\end{tabularx}
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark \hspace*{0pt}
+	\begin{enumerate}[label={\arabic*.},topsep=-\baselineskip]
+		\item 
+	\begin{itemize}
+	\item $D$ offen, zusammenhängend, $K^n$ normierter Raum  $\xRightarrow{\propref{satz_15_8}}$ $D$ bogenzusammenhängend
+	\item Wähle nun $x,y\in D$ $\Rightarrow$ $\exists \phi: [0,1] \to D$ stetig, $\phi(0) = x$, $\phi(1) = y$
+	\item $D$ offen $\Rightarrow$ $\forall t\in [0,1]$ existiert $r(t) > 0: B_{r(t)}(\phi(t)) \subset D$ 
+	\item Nach \propref{satz_15_1} ist $\phi([0,1])$ kompakt und $\{ B_{r(t)}(\phi(t)) \mid t \in [0,1] \}$ ist offene Überdeckung von $\phi([0,1])$ \\
+	$\Rightarrow$ existiert endliche Überdeckung, d.h. $\exists t_1, \dotsc, t_n \in [0,1]$ mit $\phi([0,1]) \subset \bigcup\limits_{i = 1, \dotsc, n} B_{r(t_i)} (\phi(t_i))$.
+	\end{itemize}
+	
+	\item Falls wir noch zeigen, dass $f$ konstant ist auf jeder Kugel $B_r(z)\subset D$ ist, dann wäre $f(x) = f(y)$ \\
+	$\xRightarrow{x,y \text{ bel.}}$ Behauptung.
+	
+	\item 
+	
+	Sei $B_r(z)\subset D$, $x,y\in B_r(z)$
+	
+	\begin{tabularx}{\linewidth}{rX}
+		$\xRightarrow{\propref{mittelwertsatz_schrankensatz}}$ & $\vert f(y) - f(x) \vert \le \underbrace{\Vert f'(\xi) \Vert}_{= 0} \cdot \vert y - x\vert = 0$ \\
+		$\Rightarrow$ & $f(x) = f(y)$ \\
+		$\xRightarrow{x,y\text{ bel.}}$ & $f$ konst. auf $B_r(z)$\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	Sei $f:D = (0,1)\cup (2,3) \to \mathbb{R}$ \gls{diffbar}, sei $f'(x) = 0$ auf $D$ \\
+	\begin{tabularx}{\linewidth}{rX}
+	$\xRightarrow{\footnotesize\propref{mittelwertsatz_ableitung_null_konstante_funktion}}$ & $f(x) = \mathrm{const}$ auf $(0,1)$ und $(2,3)$, aber auf jedem Intervall kann die Konstante anders sein.
+	\end{tabularx}
+\end{example}
+\rule{0.4\linewidth}{0.1pt}
+
+Zurück zur Frage nach 18.11: \\ \begin{tabularx}{\linewidth}{XcX}
+	\hfill part Ableitung existiert & $\Rightarrow$ & Ableitung existiert?
+\end{tabularx}
+Nein! \uline{Aber:}
+
+\begin{theorem}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
+	
+	Falls partielle Ableitung $f_{x_j}(y)$, $j=1,\dotsc,n$ für alle $y\in B_r(x)\subset D$ für ein $r > 0$ existierten und falls $y\to f_{x_j}(y)$ stetig in $x$ für $j=1,\dotsc,n$ \\
+	$\Rightarrow$ $f$ ist differentierbar in $x$ mit $f'(x) = \big( f_{x_1}(x), \dotsc, f_{x_n}(x) \big) \in K^{m\times n}$
+\end{theorem}
+
+\begin{proof}
+	\NoEndMark
+	Fixiere $y = (y_1, \dotsc, y_n)\in B_r(0)$.
+	
+	Betrachte die Eckpunkt eines Quaders in $D$: $a_0 = x, a_k := a_{k - 1} + y_k e_k$ für $k = 1,\dotsc,n$ \\
+	$\Rightarrow$ $a_n = x + y$.
+	
+	Offenbar $\phi_k(t) = f(a_{k-1} + t e_k y_k) - f(a_{k - 1}) - tf_{x_k}(a_{k - 1}) y_k$ stetig auf $[0,1]$, \gls{diffbar} auf $(0,1)$ mit $\phi_k'(t) = f_{x_k}(a_{k - 1} + t e_k y_k) y_k - f_{x_k}(a_{k-1}) y_k$ \\
+	$\xRightarrow{\footnotesize \propref{mittelwertsatz_schrankensatz}}$ $\vert \phi_k(1) - \phi_k(0)\vert = \vert f(a_k) - f(a_{k  - 1}) - f_{x_k} (a_{k  +1}) y_k \vert \le \sup\limits_{t\in (0,1)} \vert \phi_k'(\xi)\vert$, $k = 1,\dotsc,n$
+	
+	Es gilt mit $A := \big( f_1(x), \dotsc, x_{x_n}(x) \big)$:
+	
+	\begin{tabularx}{\linewidth}{r@{$\;$}c@{$\;$}c@{}l}
+		\hfill $\vert f(x + y) - f(x) - Ay\vert$ & $=$ & & $\displaystyle\left\vert \sum_{k=1}^{n} f(a_k) - f(a_{k -1}) - f_{x_k}(x)y_k\right\vert$ \\
+		& $\overset{\footnotesize\triangle\text{-Ungl}}{\le}$& & $\displaystyle\sum_{k=1}^n \big\vert f(a_k) - f(a_{k - 1}) - f_{x_k}(x) y_k \big\vert$ \\
+		& $\underset{\text{Def. $\phi_k$}}{\overset{\footnotesize\triangle\text{-Ungl}}{\le}}$& & $\displaystyle\sum \vert \phi_k(1) - \phi_k(0)\vert + \vert f_{x_k} (a_{k - 1}) y_k - f_{x_k}(x) y_k \vert$ \\
+		& $\le$ & $\vert y \vert$ & $\displaystyle\sum \sup\limits_{t\in(0,1)} \vert f_{x_k}( a_{ k - 1} + t \cdot e_k y_k) - f_{x_k}(a_{k - 1})\vert + \vert f_{x_k}(a_{k - 1}) - f_{x_k}(x) \vert$ \\
+		& $\overset{\footnotesize\triangle\text{-Ungl}}{\le}$ & $\vert y \vert$ & $\displaystyle \underbrace{\sum_{k=1}^n \sup \vert f_{x_k} (a_{k-1} + t e_k y_k ) - f_{x_k}(x) \vert + 2 \vert f_{x_k}\ (a_{k - 1}) - f_{x_k}(x) \vert} _{=:\rho(y) \xrightarrow{y\to 0}0\text{, da part. Ableitung $f_{x_k}$ stetig in $x$}}$
+	\end{tabularx}
+	
+	\begin{tabularx}{\linewidth}{rX@{}}
+	$\Rightarrow$ & $f(x + y) = f(y) + Ay + R(y)$ mit $\frac{\vert R(y)\vert}{y} \le \rho(y) \xrightarrow{y\to 0} 0$ (d.h. $R(y) = o(\vert y)$) \\
+	$\xLeftrightarrow{\propref{definition_ableitung_proposition}}$ & $f$ ist \gls{diffbar} in $x$ mit $f'(x) = A$\hfill\csname\InTheoType Symbol\endcsname
+\end{tabularx}
+\end{proof}
+
+\subsection{Anwendung des Mittelwertsatzes in $\mathbb{R}$}
+\begin{proposition}[Monotonie]
+	\proplbl{mittelwertsatz_anwendung_monotonie}
+	Sei $f:(a,b)\subset\mathbb{R}\to \mathbb{R}$ \gls{diffbar}, dann gilt:
+	\begin{enumerate}[label={\roman*)}]
+		\item \proplbl{mittelwertsatz_anwendung_monotonie_aussage_eins}$f'(x) \ge 0$ ($\le 0$) $\forall x\in (a,b)$ $\Leftrightarrow$ $f$ monoton wachsend (monoton fallend)
+		\item \proplbl{mittelwertsatz_anwendung_monotonie_aussage_zwei} 	$f'(x) > 0$ ($< 0$) $\forall x\in (a,b)$ $\Rightarrow$ $f$ streng monoton wachsend (fallend)
+		\item \proplbl{mittelwertsatz_anwendung_monotonie_aussage_drei} $f'(x) = 0$ $\forall x\in (a,b)$ $\Leftrightarrow$ $f$ konst.
+	\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+	In \ref{mittelwertsatz_anwendung_monotonie_aussage_zwei} gilt die Rückrichtung nicht! (Betr. $f(x) = x^3$ und $f'(0) = 0$)
+\end{remark}
+
+\begin{proof}[jeweils für wachsend, fallend analog]
+	Sei $x,y\in (a,b)$ mit $x < y$.
+	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2 \relax]
+		\item["`$\Rightarrow$"'] in \ref{mittelwertsatz_anwendung_monotonie_aussage_eins}, \ref{mittelwertsatz_anwendung_monotonie_aussage_zwei}, \ref{mittelwertsatz_anwendung_monotonie_aussage_drei}
+		
+		Nach \propref{mittelwertsatz_mittelwertsatz} $\exists \xi\in(a,b): f(y) - (x) = f'(\xi) (y - x) \stackrel{>}{=} 0$ $\xRightarrow{\text{$x,y$ bel.}}$ Behauptung
+		
+		\item["`$\Leftarrow$"'] in \ref{mittelwertsatz_anwendung_monotonie_aussage_eins}, \ref{mittelwertsatz_anwendung_monotonie_aussage_drei}
+		
+		$0 \stackrel{\le}{=} \frac{f(y) - f(x)}{y - x} \xrightarrow{y\to x} f'(x)$ $\Rightarrow$ Behauptung
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Zwischenwertsatz für Ableitungen]
+	Sei $f:(a,b)\subset\mathbb{R}\to\mathbb{R}$ \gls{diffbar}, $a < x_1 < x_2 < b$. Dann
+	
+	\begin{center}
+	\begin{tabular}{r@{$\;\;$}c@{\ \ }l}
+		$f'(x_1) < \gamma < f'(x_2)$ & $\Rightarrow$ & $\exists \tilde{x}\in(x_1,x_2): f'(\tilde{x})=\gamma$
+	\end{tabular}
+	\end{center}
+	(analog $f(x_2) < \gamma < f(x_1)$)
+\end{proposition}
+
+\begin{proof}
+	Sei $g:(a,b)\to \mathbb{R}$ mit $g(x) = f(x) - \gamma x$ ist \gls{diffbar} auf $(a,b)$
+	
+	\begin{tabularx}{\linewidth}{r@{\ \ }X@{}}
+		$\xRightarrow{\text{Weierstraß}}$ & $\exists \tilde{x}\in [x_1,x_2]$ mit $g(\tilde{x}) \le g(x)$ $\forall x\in[x_1,x_2]$ \\
+		\multicolumn{2}{l}{Angenommen, $\tilde{x} = x_1$} \\
+		$\Rightarrow$ & $0 \le \frac{g(x) - g(x_1)}{x - x_1} \xrightarrow{x\to x_1} g'(x_1) = f'(x_1) - \gamma < 0$ \\
+		$\Rightarrow$ & \Lightning (für Minimum: $f'(x) \ge 0$) \\
+		$\Rightarrow$ & $x_1 < \tilde{x}$, analog $\tilde{x} < x_2$
+	\end{tabularx}
+	$\xRightarrow{\propref{mittelwertsatz_optimalitaetsbedingung}}$ $0 = g'(\tilde{x}) = f'(\tilde{x}) - \gamma$ $\Rightarrow$ Behauptung 
+\end{proof}
+
+\rule{0.4\linewidth}{0.1pt}
+
+Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$ der Form $\frac{0}{0}, \frac{\infty}{\infty}$, wie z.B. $\lim\limits_{x\to 0} \frac{x^2}{x} = \lim\limits_{x\to 0} x$, $\lim\limits_{x\to 0} \frac{\sin x}{x}$.
+
+\begin{proposition}[Regeln von \person{de l'Hospital}]
+	\proplbl{mittelwertsatz_krankenhaus}
+	Seien $f,g:(a,b)\subset\mathbb{R}\to\mathbb{R}$ \gls{diffbar}, $g'(x) \neq 0$ $\forall x\in(a,b)$ und entwender
+	\begin{enumerate}[label={\roman*)}]
+		\item $\lim\limits_{x\downarrow a} f(x) = 0$, $\lim\limits_{x\downarrow 0} g(x) = 0$, oder
+		\item $\lim\limits_{x\downarrow a} f(x) =\infty$, $\lim\limits_{x\downarrow a} g(x) = \infty$
+	\end{enumerate}
+
+	Dann gilt:
+	\begin{align}
+		\text{Falls $\lim\limits_{y\downarrow a} \frac{f'(y)}{g'(y)} \in\mathbb{R}\cup \{ \pm\infty \}$ ex.} \;\; \Rightarrow \;\; \lim\limits_{y\downarrow a} \frac{f(y)}{g(y)} \in\mathbb{R}\cup \{ \pm\infty \}\text{ ex. und }\lim\limits_{y\downarrow a} \frac{f(y)}{g(y)} = \lim\limits_{y\to a} \frac{f'(y)}{g'(y)}
+	\end{align}
+	
+	(Analoge Aussagen für $x\uparrow b$, $x\to +\infty$, $x\to-\infty$)
+\end{proposition}
+
+\begin{remark}
+	\vspace*{0pt}
+	\begin{enumerate}[label={\arabic*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Vgl. Analgie zum Satz von Stolz und Folgen (9.34)
+		\item Satz kann auch auf Grenzwerte der Form $0\cdot \infty$, $1^{\infty}$, $0^0$, $\infty^0$, $\infty - \infty$ angewendet werden, falls man folgende Identitäten verwendet: \begin{align*}
+			\alpha\cdot\beta &= \frac{\alpha}{\frac{1}{\beta}} & \alpha^\beta &= e^{\beta \cdot \ln \alpha} & \alpha - \beta &= \alpha \left( 1 - \frac{\beta}{\alpha} \right)
+		\end{align*}
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{enumerate}[topsep=\dimexpr-\baselineskip/2\relax,label={zu \roman*)},leftmargin=\widthof{\texttt{zu ii)}}]
+		\item Mit $f(a) := 0$, $g(a) := 0$ sind $f,g$ stetig auf $[a,b)$] \\
+		$\xRightarrow{\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}$ $\forall x\in(a,b)\;\exists\xi = \xi(x) \in (a,x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}$. Wegen $\xi(x)\to a$ für $x\to a$ folgt die Behauptung
+		\item Sei $\lim\limits_{x\downarrow a} \frac{f'(x)}{g'(x)} =: \gamma\in\mathbb{R}$ ($\gamma = \pm \infty$ ähnlich)
+		
+		Sei \gls{obda} $f(x)\neq 0$, $g(x)\neq 0$ auf $(a,b)$. Sei $\epsilon> 0$ fest \\
+		$\Rightarrow$ $\exists \delta > 0: \left\vert \frac{f'(\xi)}{g'(\xi)} - \gamma \right\vert < \epsilon$ $\forall \xi\in(a,a+\delta)$ und
+		\begin{align*}
+			\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \gamma \right\vert \underset{\exists \xi\in(a,a+\delta)}{\overset{\footnotesize\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}{\le}} \underbrace{\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \frac{f'(\xi)}{g'(\xi)}\right\vert}_{=0} + \left\vert \frac{f'(\xi)}{g'(\xi)} - \gamma\right\vert < \epsilon\quad\forall x,y\in(a,a+\delta),\;g(x)\neq g(y)
+		\end{align*}
+		Fixiere $y\in(a,a+\delta)$, dann $f(x)\neq f(y)$, $g(x) \neq g(y)$ $\forall x\in(a,a+\delta_1)$ für ein $0 < \delta_1 < \delta$ und \begin{align*}
+			\frac{f(x)}{g(x)} = \frac{f(y) - f(x)}{g(y) - g(x)} \cdot \underbrace{\dfrac{1 - \frac{g(y)}{g(x)}}{1 - \frac{f(y)}{f(x)}}}_{\xrightarrow{x\downarrow a} 1}
+		\end{align*}
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\exists \delta_2 > 0: \delta_2 < \delta_1$ und $\left\vert \frac{f(x)}{g(x)} - \frac{f(y) - f(x)}{g(y) - g(x)} \right\vert < \epsilon \quad\forall x\in(a, a+\delta_2)$ \\
+		$\Rightarrow$ & $\left\vert \frac{f(x)}{g(x)} - \gamma\right\vert \le \left\vert \frac{f(x)}{g(x)} - \frac{f(y) - f(x)}{g(y) - g(x)} \right\vert + \left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \gamma \right\vert < 2\epsilon \quad\forall x\in(a, a+ \delta_2)$
+		\end{tabularx}
+		\end{enumerate}
+		$\xRightarrow{\text{$$\epsilon$ > 0$ beliebig}}$ Behauptung
+		
+		andere Fälle:\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
+				\item $x\uparrow b$ analog
+				\item $x\to +\infty$ mittels Transformation $x = \frac{1}{y}$ auf $y\downarrow 0$ zurückführen
+				\item $x\to -\infty$ analog\hfill\csname\InTheoType Symbol\endcsname
+			\end{itemize}
+\end{proof}
+
+\begin{example}
+	\proplbl{mittelwertsatz_beispiel_sinx_x}
+	$\lim\limits_{x\to 0} \frac{\sin x}{x} = 1$, denn $\lim\limits_{x\to 0} \frac{(\sin x)'}{x'} = \lim\limits_{x\to 0} \frac{\cos x}{1} = 1$
+\end{example}
+
+\begin{example}
+	$\lim\limits_{x \to 0} x\cdot \ln x = \lim\limits_{x \to 0} \dfrac{\ln x}{\frac{1}{x}} = 0$, denn $\lim\limits_{x \to 0} \dfrac{(\ln x)'}{\left( \frac{1}{x}\right)'} = \lim\limits_{x \to 0}\dfrac{\frac{1}{x}}{-\frac{1}{x^2}} = 0$
+\end{example}
+
+\begin{example}
+	$\lim\limits_{x \to 0} \frac{2 - 2\cos x}{x^2} = 1$, denn es ist $\lim\limits_{x \to 0} \frac{(2 - 2\cos x)'}{(x^2)'} = \lim\limits_{x \to 0} \frac{2\sin x}{2x} \overset{\footnotesize\propref{mittelwertsatz_beispiel_sinx_x}}{=} 1$.
+	
+	\emph{beachte:} \propref{mittelwertsatz_krankenhaus} wird in Wahrheit zweimal angewendet.
+\end{example}
+
+\begin{example}
+	$\lim\limits_{x\to\infty} \left( 1 + \frac{y}{x}\right) ^x = e^y$ $\forall y\in\mathbb{R}$ mit \begin{align*}
+		\left( 1 + \frac{y}{x}\right)^x &= e^{x\cdot \ln \left( 1 + \frac{y}{x}\right)} = e^{\frac{\ln \left( 1 + \sfrac{y}{x}\right)}{\sfrac{1}{x}}}, &
+		\lim\limits_{x\to\infty} \dfrac{\left(\ln \left( 1 + \frac{y}{x}\right) \right)'}{\left(\frac{1}{x}\right)'} &= \lim\limits_{x\to\infty} \dfrac{yx^2}{\left(1 + \frac{y}{x}\right) x^2} = \lim\limits_{x\to\infty} \dfrac{y}{1 + \frac{y}{x}} = y
+	\end{align*}
+	
+	(vgl. Satz 13.9)
+\end{example}
