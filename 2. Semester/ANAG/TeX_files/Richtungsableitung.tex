@@ -69,10 +69,13 @@ Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 \end{proposition}
 
 \begin{proof}
+	\NoEndMark
 	$f$ \gls{diffbar} in $x$ \\
-	$\Rightarrow$ $f(y) = f(x) + f'(x) (y - x) + o(\vert y - x\vert)$, $y\to x$ \\
-	$\xRightarrow{y=x+t\cdot z}$ $f(x + tz) = f(x) + t\cdot f'(x)\cdot z + o(t)$, $t\to 0$ \\
-	$\xRightarrow{\eqref{richtungsableitung_definition}}$ Behauptung
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ &$f(y) = f(x) + f'(x) (y - x) + o(\vert y - x\vert)$, $y\to x$ \\
+		$\xRightarrow{y=x+t\cdot z}$& $f(x + tz) = f(x) + t\cdot f'(x)\cdot z + o(t)$, $t\to 0$ \\
+		$\xRightarrow{\eqref{richtungsableitung_definition}}$&  Behauptung\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
 \end{proof}
 
 \begin{example}

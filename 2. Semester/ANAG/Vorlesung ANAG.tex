@@ -53,7 +53,7 @@
 \usepackage{titlesec}%customize titles
 \usepackage{marginnote}
 
-\usepackage[amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
+\usepackage[amsmath,amsthm,thmmarks,hyperref]{ntheorem}%customize theorem-environments more effectively
 \usepackage[ntheorem,framemethod=TikZ]{mdframed}
 
 \usepackage[unicode,bookmarks=true]{hyperref}
@@ -181,9 +181,9 @@ innerleftmargin=10pt,%
 \makeatletter
 \newtheoremstyle{noparentheses}%
 	{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
-					\uline{##1}\theorem@separator}\hbox{\strut}}}]}%
+					\underline{##1}\theorem@separator}\hbox{\strut}}}]}%
 	{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
-					\uline{##1\ ##3\theorem@separator}}\hbox{\strut}}}]}
+					\underline{##1\ ##3\theorem@separator}}\hbox{\strut}}}]}
 \newtheoremstyle{underlinedPlain}%
 	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
 	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ \theorem@headerfont(##3)\theorem@separator}]}
@@ -223,6 +223,7 @@ innerleftmargin=10pt,%
 \theorembodyfont{\normalfont\small}
 \theoremseparator{.}
 \theorempreskip{5pt}
+\theorempostskip{5pt}
 \theoremsymbol{$\square$}
 \renewtheorem{proof}{Beweis}
 
@@ -373,6 +374,7 @@ innerleftmargin=10pt,%
 \DeclareMathOperator{\ext}{ext} % Set of outer points
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\D}{d}
 
 %change headings:
 \titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
@@ -385,7 +387,7 @@ innerleftmargin=10pt,%
 \titlespacing{\chapter}{0pt}{0pt}{10pt}
 \titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
 %\titlespacing{command}{left}{before-sep}{after-sep}
-\titlespacing{\subsection}{0pt}{-10pt}{5pt}
+\titlespacing{\subsection}{0pt}{0pt}{5pt}
 
 %change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
 \renewcommand{\cftbeforetoctitleskip}{0pt}
@@ -428,6 +430,7 @@ innerleftmargin=10pt,%
 \newacronym{hp}{HP}{\begriff{Häufungspunkt}}
 \newacronym{vr}{VR}{Vektorraum}
 \newacronym{diffbar}{diffbar}{differenzierbar}
+\newacronym{mws}{MWS}{Mittelwertsatz}
 
 \title{\textbf{Analysis 2. Semester (SS2018)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
@@ -463,6 +466,11 @@ innerleftmargin=10pt,%
 \proplbl{einseitige_grenzwerte}
 \proplbl{lemma_13_10}
 \proplbl{additionstheoreme}
+\proplbl{chap_5}
+\proplbl{satz_von_weierstrass}
+\proplbl{chap_15_3}
+\proplbl{satz_15_8}
+\proplbl{satz_15_1}
 Test für Labels.
 \end{proposition}
 
@@ -474,6 +482,8 @@ Test für Labels.
 \input{./TeX_files/Wiederholung_und_Motivation}
 \include{./TeX_files/Ableitung}
 \include{./TeX_files/Richtungsableitung}
+\include{./TeX_files/Mittelwertsatz}
+\include{./TeX_files/Stammfunktion}
 
 
 \end{document}

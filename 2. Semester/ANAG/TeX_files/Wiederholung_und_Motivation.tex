@@ -61,7 +61,7 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		&\Leftrightarrow \boxed{f(x) = f(x_0) + o(1)} \text{ für }x\to x_0\proplbl{chap15specialCase}
 	\end{align}
 	
-	\begin{interpretation}[von \propref{chap15specialCase}]{}
+	\begin{underlinedenvironment}[Interpretation von \propref{chap15specialCase}]{}
 	
 	Setze $r(x) := f(x) - f(x_0)$
 	\zeroAmsmathAlignVSpaces
@@ -70,7 +70,7 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		&\label{chap15interpretationSpecialCase} \Rightarrow r(x) \overset{x\to x_0}{\longrightarrow} 0,&
 	\end{flalign}
 	d.h. $o(1)$ ersetzt eine "`Rest-Funktion"' $r(x)$ mit Eigenschaft (\ref{chap15interpretationSpecialCase}).
-	\end{interpretation}
+	\end{underlinedenvironment}
 	Wegen $o(1) = o(\vert x-x_0\vert^0)$ (d.h. $k=0$) sagt man auch, \propref{chap15specialCase} ist die Approximation 0. Ordnung der Funktion $f$ in der Nähe von $x_0$.
 \end{example}
 \begin{example}
@@ -85,10 +85,10 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		
 		\item \zeroAmsmathAlignVSpaces[\dimexpr -\baselineskip - \parskip\relax]
 		\begin{flalign*}
-			\text{\propref{chap15meaningSpecialCase}} \;\Rightarrow&\; f(x) = f(x_0) + \underbrace{\frac{o(\vert x - x_0\vert)}{\vert x - x_0\vert}}_{=o(1)} \cdot \vert x - x_0\vert, \;x\to \infty \\
-			\Rightarrow& f(x) = f(x) + \underbrace{o(1)}_{\mathclap{\text{anstatt }r(x)\text{ gemäß (\ref{chap15interpretationSpecialCase})}}}\cdot \vert x-x_0\vert, \;x\to x_0 \\
-			\Rightarrow& f(x) = f(x_0) + r(x) \cdot \vert x - x_0\vert \\
-			\Rightarrow& \vert f(x) - f(x_0)\vert \le \rho(t) \cdot \vert x - x_0\vert,\\
+			\text{\propref{chap15meaningSpecialCase}} \;\Rightarrow&\; f(x) = f(x_0) + \underbrace{\frac{o(\vert x - x_0\vert)}{\vert x - x_0\vert}}_{=o(1)} \cdot \vert x - x_0\vert, \;x\to \infty& \\
+			\Rightarrow& f(x) = f(x) + \underbrace{o(1)}_{\mathclap{\text{anstatt }r(x)\text{ gemäß (\ref{chap15interpretationSpecialCase})}}}\cdot \vert x-x_0\vert, \;x\to x_0 &\\
+			\Rightarrow& f(x) = f(x_0) + r(x) \cdot \vert x - x_0\vert &\\
+			\Rightarrow& \vert f(x) - f(x_0)\vert \le \rho(t) \cdot \vert x - x_0\vert,&\\
 			& \rho(t) := \sup\limits_{\vert x - x_0\vert \le t} \vert r(x)\vert \xrightarrow{t\to\infty} 0
 		\end{flalign*}
 		Der Graph von $f$ liegt in der Nähe von $x_0$ in immer flacheren, kegelförmigen Mengen\\
