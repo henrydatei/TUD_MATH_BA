@@ -130,7 +130,7 @@ topline=false,%
 rightline=false,%
 bottomline=false,%
 innertopmargin=0pt,%
-innerbottommargin=-3pt,%
+innerbottommargin=-0pt,%
 frametitlefont=\normalfont\bfseries\color{black},%
 skipabove=5pt,%
 skipbelow=10pt,%
@@ -322,6 +322,12 @@ innerleftmargin=10pt,%
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 	\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
+\makeatletter
+\newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
+\newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
+\reqnos
+\makeatother
+
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
 \newcommand{\real}{\mathbb{R}} % real set R
@@ -368,6 +374,7 @@ innerleftmargin=10pt,%
 \newcommand{\imagz}{\mathfrak{Im}}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
+\newcommand{\lebesque}{\person{Lebesque}}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -423,6 +430,7 @@ innerleftmargin=10pt,%
 
 \newacronym{gdw}{gdw.}{genau dann wenn}
 \newacronym{fa}{fa.}{fast alle}
+\newacronym{fü}{f.ü.}{fast überall}
 \newacronym{obda}{oBdA}{ohne Beschränkung der Allgemeinheit}
 \newacronym{tf}{TF}{\begriff{Teilfolge}}
 \newacronym{hw}{Hw}{\begriff{Häufungswert}}
@@ -471,6 +479,7 @@ innerleftmargin=10pt,%
 \proplbl{chap_15_3}
 \proplbl{satz_15_8}
 \proplbl{satz_15_1}
+\proplbl{zwischenwertsatz}
 Test für Labels.
 \end{proposition}
 
@@ -485,5 +494,11 @@ Test für Labels.
 \include{./TeX_files/Mittelwertsatz}
 \include{./TeX_files/Stammfunktion}
 
+\chapter{Integration}
+\input{./TeX_files/Integration}
+\include{./TeX_files/Messbarkeit}
+\include{./TeX_files/Integral}
+\include{./TeX_files/Integral_R}
+\include{./TeX_files/Fubini}
 
 \end{document}
