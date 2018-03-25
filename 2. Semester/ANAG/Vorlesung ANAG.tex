@@ -263,7 +263,11 @@ innerleftmargin=10pt,%
 		\zref@refused{#1@chapter}%
 		\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{0}}%
 		{%same chapter
-			\mbox{\cref{#1}}%
+			\ifmmode 
+				\cref{#1}%
+			\else
+				\mbox{\cref{#1}}%
+			\fi
 		}%
 		{%otherwise
 			\def\propositionref@current@type{}%
@@ -274,7 +278,11 @@ innerleftmargin=10pt,%
 			\crefformat{\propositionref@current@type}{%
 				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
 			}%
-			\mbox{\cref{#1}}%
+			\ifmmode 
+				\cref{#1}%
+			\else
+				\mbox{\cref{#1}}%
+			\fi
 			\crefformat{\propositionref@current@type}{%
 				\csname cref@\propositionref@current@type @name\endcsname~##2##1##3%
 			}%
@@ -501,13 +509,14 @@ Test für Labels.
 \pagestyle{fancy}
 \setcounter{section}{15}
 \setcounter{chapter}{4}
+
 \chapter{Differentiation}
 \input{./TeX_files/Wiederholung_und_Motivation}
 \include{./TeX_files/Ableitung}
 \include{./TeX_files/Richtungsableitung}
 \include{./TeX_files/Mittelwertsatz}
 \include{./TeX_files/Stammfunktion}
-%
+
 \chapter{Integration}
 \input{./TeX_files/Integration}
 \include{./TeX_files/Messbarkeit}
@@ -554,12 +563,14 @@ Test für Labels.
 %}
 
 \makeatletter
-\newcommand{\thm@@thmline@name@tmp}{\relax}
 \renewcommand{\thm@@thmline@name}[5]{%
-	\renewcommand{\thm@@thmline@name@tmp}{\relax}
-	\if\relax\detokenize{#3}\relax\else
-		\renewcommand{\thm@@thmline@name@tmp}{:\hspace*{1em}#3}
-	\fi
+	\def\thm@@thmline@name@tmp{%
+		\if\relax\detokenize{#3}\relax%
+			\relax%
+		\else%
+			{:\hspace*{1em}#3}%
+		\fi%
+	}%
 	\ifx\\#5\\%
 		\@dottedtocline{-2}{0em}{2.3em}%
 		{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}%

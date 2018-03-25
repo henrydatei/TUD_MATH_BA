@@ -207,7 +207,7 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 			\Rightarrow\;\; & \phi(x,\,\cdot\,):\overline{B_\rho(y_0)} \to B_\rho(y_0) \quad\forall x\in B_r(x_0) &
 		\end{flalign}}
 		und $\phi(x,\,\cdot\,)$ ist kontraktiv nach \eqref{implizit_funktion_beweis_5} $\forall x\in B_r(x_0)$ \\
-		$\xRightarrow{\propref{chap_15_20}}$ $\forall x\in B_r(x_0)$ $\exists !$ Fixpunkt: $y=\tilde{y}(x)\in\overline{B_\rho(y_0)}$ mit \begin{align}
+		$\xRightarrow{\text{\propref{chap_15_20}}}$ $\forall x\in B_r(x_0)$ $\exists !$ Fixpunkt: $y=\tilde{y}(x)\in\overline{B_\rho(y_0)}$ mit \begin{align}
 			\proplbl{implizit_funktion_beweis_7}
 			\tilde{y}(x) = \phi(x, \tilde{y}(x))
 		\end{align}
@@ -438,7 +438,7 @@ Als Folgerung eine globale Aussage:
 
 \begin{example}
 	Sei $f(x) = a^x$ $\forall x\in \mathbb{R}$ ($a > 0$, $a\neq 1$) \\
-	$\xRightarrow{\propref{ableitung_beispiel_exponentialfunktion}}$ $f'(x) = a^x\cdot\ln a$, $f'$ stetig
+	$\xRightarrow{\text{\propref{ableitung_beispiel_exponentialfunktion}}}$ $f'(x) = a^x\cdot\ln a$, $f'$ stetig
 	
 	Offenbar $f^{-1}(y) = \log_a y$ $\forall y>0$, $f'(x) \neq 0$, d.h. regulär $\forall x\in \mathbb{R}$ \\
 	$\xRightarrow[\text{$f$ injektiv}]{\text{\cref{inverse_funktion_folgerung}}}$ $f:\mathbb{R}\to\mathbb{R}_{<0}$ ist Diffeomorphismus und \begin{align*}
@@ -450,7 +450,7 @@ Als Folgerung eine globale Aussage:
 \begin{example}
 	Sei $f(x) = \tan x$ $\forall x\in \left( -\frac{\pi}{2}, \frac{\pi}{2}\right)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\propref{ableitung_beispiel_tangens}}$ & $(\tan x)' = \frac{1}{\cos^2 x} \neq 0$ $\forall x$, stetig \\
+	$\xRightarrow{\text{\propref{ableitung_beispiel_tangens}}}$ & $(\tan x)' = \frac{1}{\cos^2 x} \neq 0$ $\forall x$, stetig \\
 	$\xRightarrow{\text{\cref{inverse_funktion_folgerung}}}$&  $\arctan: \mathbb{R}\to \left( -\frac{\pi}{2}, \frac{\pi}{2}\right)$ ist Diffeomorphismus und \end{tabularx} \begin{align*}
 		(\arctan y)' = \frac{1}{(\tan x)'} = \cos^2 x = \frac{1}{\tan^2 x + 1} = \frac{1}{1 + y^2}\quad\forall y\in\mathbb{R}
 	\end{align*}

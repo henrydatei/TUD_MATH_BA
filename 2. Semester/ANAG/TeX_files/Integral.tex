@@ -428,9 +428,9 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	
 	Da $\{ \int_M h_k \D x \}$ beschränkt ist in $\mathbb{R}$ da $g$ integrierbar ist \\
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\xRightarrow{\propref{integral_funktion_lemma_majorante}}$ & $\{ h_k\}$ ist $L^1$-Cf zu $\vert f \vert$ \\
+		$\xRightarrow{\text{\propref{integral_funktion_lemma_majorante}}}$ & $\{ h_k\}$ ist $L^1$-Cf zu $\vert f \vert$ \\
 		$\Rightarrow$ & $\vert f \vert$ integrierbar \\
-		$\xRightarrow{\propref{integral_funktion_eigenschaften}}$ & $f$ integrierbar auf $M$\hfill\csname\InTheoType Symbol\endcsname
+		$\xRightarrow{\text{\propref{integral_funktion_eigenschaften}}}$ & $f$ integrierbar auf $M$\hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}}
 \end{proof}
 
@@ -546,7 +546,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	Nach \propref{integral_grenzwertsatz_fatou} gilt:\begin{align*}
 		\int_M 2g \D x = \int_M \liminf\limits_{k\to\infty} \vert 2g - \vert f_k - f\vert \vert \D x \le \liminf\limits_{k\to\infty} \int_M 2g - \vert f_k - f \vert \D x
 	\end{align*}
-	$\Rightarrow$ $0 = \liminf\limits_{k\to\infty} -\int_M \vert f_k - f\vert \D x$ $\Rightarrow$ \eqref{integral_grenzwertsatz_majorisierte_konvergenz_eq} $\xRightarrow{\propref{integral_funktionen_differenz_null_gleichheit}}$ Behauptung
+	$\Rightarrow$ $0 = \liminf\limits_{k\to\infty} -\int_M \vert f_k - f\vert \D x$ $\Rightarrow$ \eqref{integral_grenzwertsatz_majorisierte_konvergenz_eq} $\xRightarrow{\text{\propref{integral_funktionen_differenz_null_gleichheit}}}$ Behauptung
 \end{proof}
 
 \begin{conclusion}

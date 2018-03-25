@@ -65,10 +65,10 @@ Einfache, aber wichtige Anwendung:
 \begin{proof}
 	\NoEndMark
 	$f$ stetig, $[a,b]$ kompakt \\
-	$\xRightarrow{\propref{chap_15_3}}$ $\exists x_1, x_2\in [a,b]: f(x_1) \le f(x) \le f(x_2)$ $\forall x$
+	$\xRightarrow{\text{\propref{chap_15_3}}}$ $\exists x_1, x_2\in [a,b]: f(x_1) \le f(x) \le f(x_2)$ $\forall x$
 	\begin{itemize}
 		\item Angenommen, $f(x_1) = f(x_2) = f(a)$ $\Rightarrow$ $f$ konstante Funktion $\Rightarrow$ $f'(\xi) = 0$ $\forall \xi \in (a,b)$
-		\item Andernfalls sei $f(x_1) < f(a)$ $\Rightarrow$ $\xi := x_1\in(a,b)$ $\xRightarrow{\propref{mittelwertsatz_optimalitaetsbedingung}}$ $f'(\xi) = 0$
+		\item Andernfalls sei $f(x_1) < f(a)$ $\Rightarrow$ $\xi := x_1\in(a,b)$ $\xRightarrow{\text{\propref{mittelwertsatz_optimalitaetsbedingung}}}$ $f'(\xi) = 0$
 		\item analog $f(x_2) > f(a)$\hfill\csname\InTheoType Symbol\endcsname
 	\end{itemize}
 \end{proof}
@@ -103,7 +103,7 @@ Einfache, aber wichtige Anwendung:
 	\NoEndMark
 	Setzte $\phi(t) = f(x + t(y - x)) - \big( f(y) - f(x) \big) t$ $\forall t\in[0,1]$ \\
 	\begin{tabularx}{\linewidth}{rX}
-	\parbox{\widthof{$\xRightarrow{\propref{mittelwertsatz_rolle}}$}}{\hfill$\xRightarrow{\text{$f$ \gls{diffbar}}}$}& $\phi: [0,1]\to \mathbb{R}$ stetig, $\phi(0) = \phi(1) = f(x)$
+	\parbox{\widthof{$\xRightarrow{\text{\propref{mittelwertsatz_rolle}}}$}}{\hfill$\xRightarrow{\text{$f$ \gls{diffbar}}}$}& $\phi: [0,1]\to \mathbb{R}$ stetig, $\phi(0) = \phi(1) = f(x)$
 	\end{tabularx}
 
 	$\phi$ \gls{diffbar} auf $(0,1)$ (verwende Kettenregel) mit \begin{align}
@@ -111,7 +111,7 @@ Einfache, aber wichtige Anwendung:
 	\phi'(t) = f'(x + t(y - x)) \cdot (y - x) - \big( f(y) - f(x) \big)
 	\end{align}
 	\begin{tabularx}{\linewidth}{rX@{}}
-	\parbox{\widthof{$\xRightarrow{\propref{mittelwertsatz_rolle}}$}}{$\xRightarrow{\propref{mittelwertsatz_rolle}}$} & $\exists \tau \in (0,1): \phi'(t) = 0$ \\
+
 	$\xRightarrow{\eqref{mittelwertsatz_mittelwertsatz_beweis_eq}}$ & $f(y) - f(x) = f'(\underbrace{x + \tau (y - x)}_{=: \xi \in (x,y)}) \cdot (y - x)$ \\
 	$\Rightarrow$ & Behauptung\hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}
@@ -129,7 +129,7 @@ Einfache, aber wichtige Anwendung:
 	Sei $h(t) := \big( f(y) - f(x) \big) g(t) - \big( g(y) - g(x) \big) f(t)$ $\forall t\in [x,y]$ \\
 	\begin{tabularx}{\linewidth}{rX@{}}
 		$\Rightarrow$ & $h:[x,y]\to\mathbb{R}$ stetig, \gls{diffbar} auf $(x,y)$, $h(x) = h(y)$ \\
-		$\xRightarrow{\propref{mittelwertsatz_rolle}}$ & $\exists \xi \in(x,y): 0 = h'(\xi) = \big( f(y) - f(x) \big) g'(\xi) - \big( g(y) - g(x) \big) f'(\xi)$ \\
+		$\xRightarrow{\text{\propref{mittelwertsatz_rolle}}}$ & $\exists \xi \in(x,y): 0 = h'(\xi) = \big( f(y) - f(x) \big) g'(\xi) - \big( g(y) - g(x) \big) f'(\xi)$ \\
 		$\Rightarrow$ & Behauptung\hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}
 \end{proof}
@@ -220,7 +220,7 @@ Einfache, aber wichtige Anwendung:
 	Seien $x,y\in M$ $\xRightarrow{M \text{ konvex}}$ $[x,y]\subset M$
 	
 	$f':M\to L(K^n, K^m)$ stetig, $M$ kompakt \\
-	$\xRightarrow{\propref{chap_15_3}}$ $\Vert f'(\xi)\Vert$ besitzt Maxium auf $M$ und die Behauptung folgt aus \propref{mittelwertsatz_schrankensatz}.
+	$\xRightarrow{\text{\propref{chap_15_3}}}$ $\Vert f'(\xi)\Vert$ besitzt Maxium auf $M$ und die Behauptung folgt aus \propref{mittelwertsatz_schrankensatz}.
 \end{proof}
 
 \begin{underlinedenvironment}[bekanntlich]
@@ -241,7 +241,7 @@ Einfache, aber wichtige Anwendung:
 	\begin{enumerate}[label={\arabic*.},topsep=-\baselineskip]
 		\item 
 	\begin{itemize}
-	\item $D$ offen, zusammenhängend, $K^n$ normierter Raum  $\xRightarrow{\propref{satz_15_8}}$ $D$ bogenzusammenhängend
+	\item $D$ offen, zusammenhängend, $K^n$ normierter Raum  $\xRightarrow{\text{\propref{satz_15_8}}}$ $D$ bogenzusammenhängend
 	\item Wähle nun $x,y\in D$ $\Rightarrow$ $\exists \phi: [0,1] \to D$ stetig, $\phi(0) = x$, $\phi(1) = y$
 	\item $D$ offen $\Rightarrow$ $\forall t\in [0,1]$ existiert $r(t) > 0: B_{r(t)}(\phi(t)) \subset D$ 
 	\item Nach \propref{satz_15_1} ist $\phi([0,1])$ kompakt und $\{ B_{r(t)}(\phi(t)) \mid t \in [0,1] \}$ ist offene Überdeckung von $\phi([0,1])$ \\
@@ -256,7 +256,7 @@ Einfache, aber wichtige Anwendung:
 	Sei $B_r(z)\subset D$, $x,y\in B_r(z)$
 	
 	\begin{tabularx}{\linewidth}{rX}
-		$\xRightarrow{\propref{mittelwertsatz_schrankensatz}}$ & $\vert f(y) - f(x) \vert \le \underbrace{\Vert f'(\xi) \Vert}_{= 0} \cdot \vert y - x\vert = 0$ \\
+		$\xRightarrow{\text{\propref{mittelwertsatz_schrankensatz}}}$ & $\vert f(y) - f(x) \vert \le \underbrace{\Vert f'(\xi) \Vert}_{= 0} \cdot \vert y - x\vert = 0$ \\
 		$\Rightarrow$ & $f(x) = f(y)$ \\
 		$\xRightarrow{x,y\text{ bel.}}$ & $f$ konst. auf $B_r(z)$\hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}
@@ -266,7 +266,7 @@ Einfache, aber wichtige Anwendung:
 \begin{example}
 	Sei $f:D = (0,1)\cup (2,3) \to \mathbb{R}$ \gls{diffbar}, sei $f'(x) = 0$ auf $D$ \\
 	\begin{tabularx}{\linewidth}{rX}
-	$\xRightarrow{\propref{mittelwertsatz_ableitung_null_konstante_funktion}}$ & $f(x) = \mathrm{const}$ auf $(0,1)$ und $(2,3)$, aber auf jedem Intervall kann die Konstante anders sein.
+	$\xRightarrow{\text{\propref{mittelwertsatz_ableitung_null_konstante_funktion}}}$ & $f(x) = \mathrm{const}$ auf $(0,1)$ und $(2,3)$, aber auf jedem Intervall kann die Konstante anders sein.
 	\end{tabularx}
 \end{example}
 \rule{0.4\linewidth}{0.1pt}
@@ -293,7 +293,7 @@ Nein! \uline{Aber:}
 	
 	Offenbar $\phi_k(t) = f(a_{k-1} + t e_k y_k) - f(a_{k - 1}) - tf_{x_k}(a_{k - 1}) y_k$ stetig auf $[0,1]$, \gls{diffbar} auf $(0,1)$ mit \begin{align*}\phi_k'(t) = f_{x_k}(a_{k - 1} + t e_k y_k) y_k - f_{x_k}(a_{k-1}) y_k
 	\end{align*}
-	$\xRightarrow{\propref{mittelwertsatz_schrankensatz}}$ $\vert \phi_k(1) - \phi_k(0)\vert = \vert f(a_k) - f(a_{k  - 1}) - f_{x_k} (a_{k  +1}) y_k \vert \le \sup\limits_{t\in (0,1)} \vert \phi_k'(\xi)\vert$, $k = 1,\dotsc,n$
+	$\xRightarrow{\text{\propref{mittelwertsatz_schrankensatz}}}$ $\vert \phi_k(1) - \phi_k(0)\vert = \vert f(a_k) - f(a_{k  - 1}) - f_{x_k} (a_{k  +1}) y_k \vert \le \sup\limits_{t\in (0,1)} \vert \phi_k'(\xi)\vert$, $k = 1,\dotsc,n$
 	
 	Es gilt mit $A := \big( f_1(x), \dotsc, x_{x_n}(x) \big)$:
 	
@@ -360,7 +360,7 @@ Nein! \uline{Aber:}
 		$\Rightarrow$ & \Lightning (für Minimum: $f'(x) \ge 0$) \\
 		$\Rightarrow$ & $x_1 < \tilde{x}$, analog $\tilde{x} < x_2$
 	\end{tabularx}
-	$\xRightarrow{\propref{mittelwertsatz_optimalitaetsbedingung}}$ $0 = g'(\tilde{x}) = f'(\tilde{x}) - \gamma$ $\Rightarrow$ Behauptung 
+	$\xRightarrow{\text{\propref{mittelwertsatz_optimalitaetsbedingung}}}$ $0 = g'(\tilde{x}) = f'(\tilde{x}) - \gamma$ $\Rightarrow$ Behauptung 
 \end{proof}
 
 \rule{0.4\linewidth}{0.1pt}
@@ -397,7 +397,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 	\NoEndMark
 	\begin{enumerate}[topsep=\dimexpr-\baselineskip/2\relax,label={zu \roman*)},leftmargin=\widthof{\texttt{zu ii)}}]
 		\item Mit $f(a) := 0$, $g(a) := 0$ sind $f,g$ stetig auf $[a,b)$] \\
-		$\xRightarrow{\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}$ $\forall x\in(a,b)\;\exists\xi = \xi(x) \in (a,x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}$. Wegen $\xi(x)\to a$ für $x\to a$ folgt die Behauptung
+		$\xRightarrow{\text{\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}}$ $\forall x\in(a,b)\;\exists\xi = \xi(x) \in (a,x): \frac{f(x)}{g(x)} = \frac{f'(\xi)}{g'(\xi)}$. Wegen $\xi(x)\to a$ für $x\to a$ folgt die Behauptung
 		\item Sei $\lim\limits_{x\downarrow a} \frac{f'(x)}{g'(x)} =: \gamma\in\mathbb{R}$ ($\gamma = \pm \infty$ ähnlich)
 		
 		Sei \gls{obda} $f(x)\neq 0$, $g(x)\neq 0$ auf $(a,b)$. Sei $\epsilon> 0$ fest \\

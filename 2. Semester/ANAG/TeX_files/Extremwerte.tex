@@ -60,8 +60,8 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$
 		Sei $S=\{ y\in\mathbb{R}^n \mid \vert y \vert = 1 \}$ ist kompakt \\
 		{\renewcommand{\arraystretch}{1.5}
 		\begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }X}
-		$\xRightarrow{\propref{chap_15_3}}$ & \multicolumn{3}{l}{$\exists\tilde{y}\in S: f^{(k)}(x) y^k \ge f^{(k)}(x)\tilde{y}^k =: \gamma > 0\;\forall y\in S$} \\
-		$\xRightarrow{\propref{taylor_taylor}}$ & $f(x+y)$& = &$f(x) + \frac{1}{k!}f^{(k)}(x) y^k + o(\vert y\vert^k)$\\
+		$\xRightarrow{\text{\propref{chap_15_3}}}$ & \multicolumn{3}{l}{$\exists\tilde{y}\in S: f^{(k)}(x) y^k \ge f^{(k)}(x)\tilde{y}^k =: \gamma > 0\;\forall y\in S$} \\
+		$\xRightarrow{\text{\propref{taylor_taylor}}}$ & $f(x+y)$& = &$f(x) + \frac{1}{k!}f^{(k)}(x) y^k + o(\vert y\vert^k)$\\
 		& & = &$f(x) + \frac{1}{k!}\vert y \vert^k \left(\underbrace{f^{(k)}(x) \left(\frac{y}{\vert y \vert}\right)^k}_{\ge \gamma} + \underbrace{o(1)}_{\mathclap{\ge -\frac{\gamma}{2}}}\right),\;\vert y \vert\to 0$ \\
 		&& $\ge$ & $f(x) + \frac{\gamma}{2k!}\cdot \vert y \vert^k$ $\forall y\in B_r(0)$ falls $y\in B_r(0)$, $r>0$ klein \\
 		$\Rightarrow$ &\multicolumn{3}{l}{$x$ ist strenges, lokales Minimum $\Rightarrow$ Behauptung}
