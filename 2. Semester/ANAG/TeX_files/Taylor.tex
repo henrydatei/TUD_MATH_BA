@@ -148,7 +148,8 @@ Ausdrücke links sind offebar linear in jedem $y_j\in K^n$ separat, $j=1\dotsc,k
 
 \begin{*definition}
 Betrachte \begin{align*}
-X_k := L^k(K^n, K^m) := \{ B: \underbrace{K^n \times \dotsc \times K^n}_{\text{$k$-fach}} \to K^m \mid y_j \to B(y_1, \dotsc, y_k) \text{ linear für jedes $j=1,\dotsc,k$ }\}
+X_k &:= L^k(K^n, K^m) \\
+&:= \{ B: \underbrace{K^n \times \dotsc \times K^n}_{\text{$k$-fach}} \to K^m \mid y_j \to B(y_1, \dotsc, y_k) \text{ linear für jedes $j=1,\dotsc,k$ }\}
 \end{align*}
 $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 \end{*definition}
@@ -244,7 +245,7 @@ Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Stand
 	Partielle Ableitung $f_{x_j} (x) = \frac{\partial}{\partial x_j}f(x) = D_{x_j} f(x)$ ist Richtungsableitung $f'(x, e_j) = D_{e_j} f(x) \in L(K, K^m)$.
 \end{underlinedenvironment}
 \begin{*definition}
-	Nenne $f_{x_1}(x), \dotsc, f_{x_1}(x)$ \begriff{Partielle Ableitung 1. Ordnung} von $f$ in $X$
+	Nenne $f_{x_1}(x), \dotsc, f_{x_1}(x)$ \uline{partielle Ableitung }\begriff[partielle Ableitung!]{1. Ordnung} von $f$ in $X$
 	
 	Für $g:D\to X$ definieren wir die partielle Ableitung $\frac{\partial}{\partial x_j} g(x) = g_{x_j}(x)\in L(K, X)$ analog zu \propref{richtungsableitung}:\begin{align}
 		g(x + t\cdot e_j) &= g(x) + g_{x_j}(x)t + o(t), \;t\to 0,\;t\in K
@@ -254,13 +255,13 @@ Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Stand
 	
 	Andere Notation: $\frac{\partial^2}{\partial x_j x_i} f(x), D_{x_i x_j} f(x), \dotsc$
 	
-	Die $f_{x_i x_j}(x)$ heißen \begriff{partielle Ableitung 2. Ordnung} von $f$ in $x$.
+	Die $f_{x_i x_j}(x)$ heißen \uline{partielle Ableitung} \begriff[partielle Ableitung!]{2. Ordnung} von $f$ in $x$.
 	
 	Mittels Rekursion \begin{align}
 	\proplbl{taylor_partielle_ableitung_definition_10}
 		f_{x_{j_1}\dots x_{j_k}}(x) := \frac{\partial}{\partial x_i} f_{x_{i_1} \dots x_{j_k}}
 	\end{align}
-	erhält man schrittweise die \begriff{partielle Ableitung der Ordnung $k\in\mathbb{N}$} von $f$ in $x$: \begin{align*}
+	erhält man schrittweise die \uline{partielle Ableitung} \begriff[partielle Ableitung!]{der Ordnung $k\in\mathbb{N}$} von $f$ in $x$: \begin{align*}
 		f_{x_{j_1}\dots x_{j_k}}(x) = D_{x_{j_1}\dots x_{j_k}} f(x) = \frac{\partial ^k}{\partial x_{j_k} \dots \partial _{x_{j_1}}} f(x) \in L^k(K, K^m)
 	\end{align*}
 	
@@ -450,24 +451,25 @@ Analoge Rechnung liefert allgemein
 
 \begin{proof}[\propref{taylor_partielle_ableitung_schwarz}]
 	\gls{obda} $m=1$. Fixiere $\epsilon > 0$ $\Rightarrow$ $\exists \delta > 0$ mit \begin{align*}
-		\proplbl{taylor_partielle_ableitung_schwarz_beweis_15}
 		\alpha + s\cdot e_i + t\cdot e_j\in D\quad\forall s,t\in (-\delta,\delta)
 	\end{align*}
 	und
 	\begin{align}
+		\proplbl{taylor_partielle_ableitung_schwarz_beweis_15}
 		\vert f_{x_i x_j}(x + s\cdot e_i + t\cdot e_j) - f_{x_i x_j}(x)\vert < \epsilon \quad\forall s,t\in(-\delta,\delta)
 	\end{align}
 	
 	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{diffbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow{\text{MWS}}$ & $\exists \sigma \in (0,s): \phi(s) - \phi(0) = \phi'(\sigma)s = \left(f_{x_i}(x + \sigma e_i + t e_j) - f_{x_i}(x + \sigma e_i)\right)s$ \marginnote{MWS = Mittelwertsatz, \propref{mittelwertsatz_mittelwertsatz}}\\
-	$\xRightarrow{\text{MWS}}$ & für $t\to f_{x_i}(x + \sigma e_i + t e_j)$: $\exists \tau \in (0,t): \phi(s) - \phi(0) = f_{x_i x_j}(\underbrace{x + \sigma e_i + \tau e_j}_{=: \tilde{x}}) s t$ ($\sigma$, $\tau$ abhängig von $s$, $t$), und es gilt
+	$\xRightarrow{\text{MWS}}$ & für $t\to f_{x_i}(x + \sigma e_i + t e_j)$: $\exists \tau \in (0,t): \phi(s) - \phi(0) = f_{x_i x_j}(\underbrace{x + \sigma e_i + \tau e_j}_{=: \tilde{x}}) s t$ ($\sigma$, $\tau$ abhängig von $s$, $t$)
 	\end{tabularx}
-	{\zeroAmsmathAlignVSpaces*\begin{flalign}
+	Daher gilt:
+	{\zeroAmsmathAlignVSpaces*\begin{align}
 	\proplbl{taylor_partielle_ableitung_schwarz_16}
-	\left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(x)\right\vert \le \underbrace{\left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(\tilde{x})\right\vert}_{=0} + \left\vert f_{x_i x_j}(\tilde{x}) - f_{x_i x_j}(x) \right\vert \overset{\eqref{taylor_partielle_ableitung_schwarz_beweis_15}}{<} \epsilon \quad\forall s,t\in(-\delta,\delta),\; s,t\neq 0
-	\end{flalign}}
-	
+	\notag \left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(x)\right\vert &\le \underbrace{\left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(\tilde{x})\right\vert}_{=0} + \left\vert f_{x_i x_j}(\tilde{x}) - f_{x_i x_j}(x) \right\vert& \\
+	&\overset{\eqref{taylor_partielle_ableitung_schwarz_beweis_15}}{<} \epsilon \quad\forall s,t\in(-\delta,\delta),\; s,t\neq 0&
+	\end{align}}
 	Wegen \begin{align*}
 		\lim\limits_{t\to 0} \frac{\phi(s) - \phi(0)}{t} = \lim\limits_{t\to 0}\frac{f(x + s\cdot e_i + t\cdot e_j) - f(x + s \cdot e_i)}{t} - \frac{f(x + t\cdot e_j) - f(x)}{t} = f_{x_j}(x + s\cdot e_i) - f_{x_j}(x)
 	\end{align*}
@@ -630,9 +632,9 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 \end{proof}
 
 \begin{*definition}
-	Rechte Seite in \eqref{taylor_taylor_eq} ohne Restglied heißt \begriff{Taylorpolynom} von $f$ in $x$ vom Grad $k-1$.
+	Rechte Seite in \eqref{taylor_taylor_eq} ohne Restglied heißt \uline{Taylorpolynom}\begriff*[Taylor-!]{polynom} von $f$ in $x$ vom Grad $k-1$.
 	
-	\eqref{taylor_taylor_eq} heißt \begriff{Taylorentwicklung} von $f$ in $x$.
+	\eqref{taylor_taylor_eq} heißt \uline{Taylorentwicklung}\begriff*[Taylor-!]{entwicklung} von $f$ in $x$.
 \end{*definition}
 
 \begin{conclusion}[\person{Taylor}-Formel mit partiellen Ableitungen]
@@ -691,7 +693,7 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{align}
 \end{underlinedenvironment}
 \begin{*definition}
-	Rechte Seite in \eqref{taylor_taylor_reihe_eq} heißt \begriff{Taylorreihe} von $f$ in $x$.
+	Rechte Seite in \eqref{taylor_taylor_reihe_eq} heißt \uline{Taylorreihe}\begriff*[Taylor-!]{reihe} von $f$ in $x$.
 \end{*definition}
 
 \begin{example}

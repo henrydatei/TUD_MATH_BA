@@ -14,7 +14,7 @@
 \begin{hint}
 	Es gilt:\\
 	\begin{tabularx}{\linewidth}{XcX}
-		\hfill$f$ hat Minimum auf $D$ & $\xLeftrightarrow{\text{vgl. \cref{chap_5}}}$ & $\min\{ f(x) \mid x\in D \}$ existiert (d.h. $\inf \{\dotsc\}$ wird angenommen)
+		\hfill$f$ hat Minimum auf $D$ & $\xLeftrightarrow{\text{vgl. \cref{chap_5}}}$ & $\min\{ f(x) \mid x\in D \}$ existiert (das heißt, $\inf \{\dotsc\}$ wird angenommen)
 	\end{tabularx}
 	Analog für Maximum.
 \end{hint}
@@ -190,7 +190,7 @@ Einfache, aber wichtige Anwendung:
 	Da $f$ \gls{diffbar}, gilt \begin{align*}
 		\langle f(x + s(y - x)), v\rangle = \langle f(x + t(y - x)), v\rangle + \langle f'(x + t(y - x))\cdot (s  - t)(y - x), v \rangle + \underbrace{o(\vert s -  t\vert \cdot \vert y - x\vert)}_{=o(\vert s - t\vert)}, \; s\to t
 	\end{align*} und damit ist auch $\phi$ \gls{diffbar} auf $(0,1)$ mit \begin{align*}
-		\phi'(t) = \Re \langle f'(x + t(y - x))\cdot (y - x), v \rangle \quad \forall t\in (0,1).
+		\phi'(t) &= \Re \langle f'(x + t(y - x))\cdot (y - x), v \rangle \quad \forall t\in (0,1)
 	\end{align*}
 	\propref{mittelwertsatz_mittelwertsatz} liefert: $\exists \tau \in (0,1): \underbrace{\phi(1) - \phi(0)}_{=\Re \langle f(y) - f(x), v\rangle} = \phi(\tau) \cdot (1 - 0)$ \\
 	\begin{alignat*}{8}
@@ -266,7 +266,7 @@ Einfache, aber wichtige Anwendung:
 \begin{example}
 	Sei $f:D = (0,1)\cup (2,3) \to \mathbb{R}$ \gls{diffbar}, sei $f'(x) = 0$ auf $D$ \\
 	\begin{tabularx}{\linewidth}{rX}
-	$\xRightarrow{\footnotesize\propref{mittelwertsatz_ableitung_null_konstante_funktion}}$ & $f(x) = \mathrm{const}$ auf $(0,1)$ und $(2,3)$, aber auf jedem Intervall kann die Konstante anders sein.
+	$\xRightarrow{\propref{mittelwertsatz_ableitung_null_konstante_funktion}}$ & $f(x) = \mathrm{const}$ auf $(0,1)$ und $(2,3)$, aber auf jedem Intervall kann die Konstante anders sein.
 	\end{tabularx}
 \end{example}
 \rule{0.4\linewidth}{0.1pt}
@@ -291,17 +291,18 @@ Nein! \uline{Aber:}
 	Betrachte die Eckpunkt eines Quaders in $D$: $a_0 = x, a_k := a_{k - 1} + y_k e_k$ für $k = 1,\dotsc,n$ \\
 	$\Rightarrow$ $a_n = x + y$.
 	
-	Offenbar $\phi_k(t) = f(a_{k-1} + t e_k y_k) - f(a_{k - 1}) - tf_{x_k}(a_{k - 1}) y_k$ stetig auf $[0,1]$, \gls{diffbar} auf $(0,1)$ mit $\phi_k'(t) = f_{x_k}(a_{k - 1} + t e_k y_k) y_k - f_{x_k}(a_{k-1}) y_k$ \\
-	$\xRightarrow{\footnotesize \propref{mittelwertsatz_schrankensatz}}$ $\vert \phi_k(1) - \phi_k(0)\vert = \vert f(a_k) - f(a_{k  - 1}) - f_{x_k} (a_{k  +1}) y_k \vert \le \sup\limits_{t\in (0,1)} \vert \phi_k'(\xi)\vert$, $k = 1,\dotsc,n$
+	Offenbar $\phi_k(t) = f(a_{k-1} + t e_k y_k) - f(a_{k - 1}) - tf_{x_k}(a_{k - 1}) y_k$ stetig auf $[0,1]$, \gls{diffbar} auf $(0,1)$ mit \begin{align*}\phi_k'(t) = f_{x_k}(a_{k - 1} + t e_k y_k) y_k - f_{x_k}(a_{k-1}) y_k
+	\end{align*}
+	$\xRightarrow{\propref{mittelwertsatz_schrankensatz}}$ $\vert \phi_k(1) - \phi_k(0)\vert = \vert f(a_k) - f(a_{k  - 1}) - f_{x_k} (a_{k  +1}) y_k \vert \le \sup\limits_{t\in (0,1)} \vert \phi_k'(\xi)\vert$, $k = 1,\dotsc,n$
 	
 	Es gilt mit $A := \big( f_1(x), \dotsc, x_{x_n}(x) \big)$:
 	
 	\begin{tabularx}{\linewidth}{r@{$\;$}c@{$\;$}c@{}l}
 		\hfill $\vert f(x + y) - f(x) - Ay\vert$ & $=$ & & $\displaystyle\left\vert \sum_{k=1}^{n} f(a_k) - f(a_{k -1}) - f_{x_k}(x)y_k\right\vert$ \\
-		& $\overset{\footnotesize\triangle\text{-Ungl}}{\le}$& & $\displaystyle\sum_{k=1}^n \big\vert f(a_k) - f(a_{k - 1}) - f_{x_k}(x) y_k \big\vert$ \\
-		& $\underset{\text{Def. $\phi_k$}}{\overset{\footnotesize\triangle\text{-Ungl}}{\le}}$& & $\displaystyle\sum \vert \phi_k(1) - \phi_k(0)\vert + \vert f_{x_k} (a_{k - 1}) y_k - f_{x_k}(x) y_k \vert$ \\
+		& $\overset{\triangle\text{-Ungl}}{\le}$& & $\displaystyle\sum_{k=1}^n \big\vert f(a_k) - f(a_{k - 1}) - f_{x_k}(x) y_k \big\vert$ \\
+		& $\underset{\text{Def. $\phi_k$}}{\overset{\triangle\text{-Ungl}}{\le}}$& & $\displaystyle\sum \vert \phi_k(1) - \phi_k(0)\vert + \vert f_{x_k} (a_{k - 1}) y_k - f_{x_k}(x) y_k \vert$ \\
 		& $\le$ & $\vert y \vert$ & $\displaystyle\sum \sup\limits_{t\in(0,1)} \vert f_{x_k}( a_{ k - 1} + t \cdot e_k y_k) - f_{x_k}(a_{k - 1})\vert + \vert f_{x_k}(a_{k - 1}) - f_{x_k}(x) \vert$ \\
-		& $\overset{\footnotesize\triangle\text{-Ungl}}{\le}$ & $\vert y \vert$ & $\displaystyle \underbrace{\sum_{k=1}^n \sup \vert f_{x_k} (a_{k-1} + t e_k y_k ) - f_{x_k}(x) \vert + 2 \vert f_{x_k}\ (a_{k - 1}) - f_{x_k}(x) \vert} _{=:\rho(y) \xrightarrow{y\to 0}0\text{, da part. Ableitung $f_{x_k}$ stetig in $x$}}$
+		& $\overset{\triangle\text{-Ungl}}{\le}$ & $\vert y \vert$ & $\displaystyle \underbrace{\sum_{k=1}^n \sup \vert f_{x_k} (a_{k-1} + t e_k y_k ) - f_{x_k}(x) \vert + 2 \vert f_{x_k}\ (a_{k - 1}) - f_{x_k}(x) \vert} _{=:\rho(y) \xrightarrow{y\to 0}0\text{, da part. Ableitung $f_{x_k}$ stetig in $x$}}$
 	\end{tabularx}
 	
 	\begin{tabularx}{\linewidth}{rX@{}}
@@ -402,7 +403,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 		Sei \gls{obda} $f(x)\neq 0$, $g(x)\neq 0$ auf $(a,b)$. Sei $\epsilon> 0$ fest \\
 		$\Rightarrow$ $\exists \delta > 0: \left\vert \frac{f'(\xi)}{g'(\xi)} - \gamma \right\vert < \epsilon$ $\forall \xi\in(a,a+\delta)$ und
 		\begin{align*}
-			\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \gamma \right\vert \underset{\exists \xi\in(a,a+\delta)}{\overset{\footnotesize\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}{\le}} \underbrace{\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \frac{f'(\xi)}{g'(\xi)}\right\vert}_{=0} + \left\vert \frac{f'(\xi)}{g'(\xi)} - \gamma\right\vert < \epsilon\quad\forall x,y\in(a,a+\delta),\;g(x)\neq g(y)
+			\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \gamma \right\vert \underset{\exists \xi\in(a,a+\delta)}{\overset{\propref{mittelwertsatz_mittelwertsatz_verallgemeinert}}{\le}} \underbrace{\left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \frac{f'(\xi)}{g'(\xi)}\right\vert}_{=0} + \left\vert \frac{f'(\xi)}{g'(\xi)} - \gamma\right\vert < \epsilon\quad\forall x,y\in(a,a+\delta),\;g(x)\neq g(y)
 		\end{align*}
 		Fixiere $y\in(a,a+\delta)$, dann $f(x)\neq f(y)$, $g(x) \neq g(y)$ $\forall x\in(a,a+\delta_1)$ für ein $0 < \delta_1 < \delta$ und \begin{align*}
 			\frac{f(x)}{g(x)} = \frac{f(y) - f(x)}{g(y) - g(x)} \cdot \underbrace{\dfrac{1 - \frac{g(y)}{g(x)}}{1 - \frac{f(y)}{f(x)}}}_{\xrightarrow{x\downarrow a} 1}
@@ -431,7 +432,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 \end{example}
 
 \begin{example}
-	$\lim\limits_{x \to 0} \frac{2 - 2\cos x}{x^2} = 1$, denn es ist $\lim\limits_{x \to 0} \frac{(2 - 2\cos x)'}{(x^2)'} = \lim\limits_{x \to 0} \frac{2\sin x}{2x} \overset{\footnotesize\propref{mittelwertsatz_beispiel_sinx_x}}{=} 1$.
+	$\lim\limits_{x \to 0} \frac{2 - 2\cos x}{x^2} = 1$, denn es ist $\lim\limits_{x \to 0} \frac{(2 - 2\cos x)'}{(x^2)'} = \lim\limits_{x \to 0} \frac{2\sin x}{2x} \overset{\propref{mittelwertsatz_beispiel_sinx_x}}{=} 1$.
 	
 	\emph{beachte:} \propref{mittelwertsatz_krankenhaus} wird in Wahrheit zweimal angewendet.
 \end{example}

@@ -257,10 +257,10 @@ Eine Menge $M\subset\mathbb{R}^n$ heißt \begriff{messbar}, falls \begin{align}
 		\item Sei $Q\in\mathbb{Q}$ Quader. Für $\tilde{M}\subset\mathbb{R}^n$, $\epsilon > 0$ wähle $Q_j$ mit \begin{align*}
 			\tilde{M} &\subset \bigcup_{j=1}^\infty Q_j,& \sum_{j=1}^\infty \vert Q_j\vert &\le \vert \tilde{M}\vert + \epsilon
 		\end{align*}
-		Aus \eqref{messbarkeit_definition_volumen_eq} folgert man $\vert Q_j\vert = \vert Q_j\cap Q\vert + \vert Q_j\setminus Q\vert$, da man $Q_j\setminus Q$ in endlich viele disjunkte Quader zerlegen kann. \\
-		\begin{tabularx}{\linewidth}{r@{\ \ }l@{\ }l@{\ }l@{\ }l}
-			$\Rightarrow$ & $\vert \tilde{M}\cap Q\vert + \vert \tilde{M}\setminus Q\vert$ & $\overset{\eqref{messbarkeit_sigma_subadditiv_eq}}{\le} \sum_{j=1}^\infty \vert Q_j\cap Q\vert + \sum_{j=1}^\infty \vert Q_j\setminus Q\vert$ & $= \sum_{j=1}^\infty \vert Q_j\vert$ & $\le \vert \tilde{M} \vert + \epsilon$
-		\end{tabularx}
+		Aus \eqref{messbarkeit_definition_volumen_eq} folgert man $\vert Q_j\vert = \vert Q_j\cap Q\vert + \vert Q_j\setminus Q\vert$, da man $Q_j\setminus Q$ in endlich viele disjunkte Quader zerlegen kann.
+		\begin{flalign*}
+		\;\;\Rightarrow\;\; & \vert \tilde{M}\cap Q\vert + \vert \tilde{M}\setminus Q\vert \overset{\eqref{messbarkeit_sigma_subadditiv_eq}}{\le} \sum_{j=1}^\infty \vert Q_j\cap Q\vert + \sum_{j=1}^\infty \vert Q_j\setminus Q\vert = \sum_{j=1}^\infty \vert Q_j\vert\le \vert \tilde{M} \vert + \epsilon &
+		\end{flalign*}
 		Da $\epsilon$ beliebig, $\vert \tilde{M} \vert \ge \vert \tilde{M} \cap Q\vert + \vert \tilde{M} \setminus Q\vert$ und \eqref{messbarkeit_definition_messbar_folgerung}, ergibt sich die Behauptung.
 		
 		\item Sei $M\subset\mathbb{R}^n$ offen. Betrachte die Folge $\{x_n\}_{k=1}^\infty$ aller rationale Punkte in $M$ und $w_k\subset M$ sei jeweils der größte offene Würfel mit dem Mittelpunkt $x_k$ und Kantenlänge $\le 1$.

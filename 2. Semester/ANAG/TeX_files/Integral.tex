@@ -1,4 +1,3 @@
-\section{Integral} \setcounter{equation}{0}
 \subsection{Integral für Treppenfunktionen}
 Sei $h:\mathbb{R}\to \mathbb{R}$ messbare Treppenfunktion mit \begin{align*}
 	h &= \sum_{j=1}^{k} c_j \chi_{M_j}, \text{d.h. $c_j\in\mathbb{R}$, $M_j\subset\mathbb{R}$ messbar}
@@ -96,7 +95,7 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 	Für integrierbare Funktion $f$ heißt eine solche Folge $\{h_k\}$ \begriff{zugehörige $L^1$-CF} auf $M$.
 	
 	Wegen\begin{align}
-		\left\vert\int_M h_k\D x - \int_M h_l\D x\right\vert = \left\vert \int_M (h_k - h_l) \D x\right\vert \overset{\footnotesize\propref{integral_treppenfunktion_grundlegende_folgerung}}{\le} \int_M \vert h_k - h_l\vert \D x
+		\left\vert\int_M h_k\D x - \int_M h_l\D x\right\vert = \left\vert \int_M (h_k - h_l) \D x\right\vert \overset{\propref{integral_treppenfunktion_grundlegende_folgerung}}{\le} \int_M \vert h_k - h_l\vert \D x
 	\end{align}
 	ist $\{\int_M h_k\D x\}$ \person{Cauchy}-Folge in $\mathbb{R}$ und somit konvergent.
 	
@@ -141,7 +140,7 @@ Menge der auf $M$ integrierbaren Funktionen ist \mathsymbol*{L1}{$L^1$} \begin{a
 Vgl. Integral $\int_{M} h \D x$ einer Treppenfunktion gemäß \eqref{integral_treppenfunktion_definition} mit dem in \eqref{integral_lebesque_funktion_definition}:
 
 Offenbar ist konstante Folge $\{ h_k\}$ mit $h_k = h$ $\forall k$ $L^1$-CF zu $h$ \\
-$\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\footnotesize\propref{integral_funktion_unabhaengigkeit_leins_folge}}$ Integral $\int_M h \D x$ in \eqref{integral_lebesque_funktion_definition} stimmt mit elementarem Integral in \eqref{integral_treppenfunktion_definition} überein.
+$\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_funktion_unabhaengigkeit_leins_folge}}$ Integral $\int_M h \D x$ in \eqref{integral_lebesque_funktion_definition} stimmt mit elementarem Integral in \eqref{integral_treppenfunktion_definition} überein.
 
 \begin{conclusion}
 	Für eine Treppenfunktion stimmt das in \eqref{integral_treppenfunktion_definition} definierte elementare Integral mit dem in \eqref{integral_lebesque_funktion_definition} definierte Integral überein. Insbesondere ist der vor \eqref{integral_treppenfunktion_definition} eingeführte Begriff integrierbar mit dem in \eqref{integral_funktion_definition} identisch\\
@@ -296,7 +295,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		\item Sei $f$ integrierbar auf $M$ und sei $\{ h_k \}$ $L^1$-CF zu $f$ \\
 		\ $\Rightarrow$ $\vert h_k \vert\to \vert f \vert$ \gls{fü} auf $M$.
 		
-		Wegen $\int_M \left\vert \vert h_k \vert - \vert h_l \vert\right\vert \D x$\marginnote{$\vert\vert \alpha\vert - \vert\beta\vert\vert \le \vert \alpha - \beta\vert$ $\forall \alpha,\beta\in\mathbb{R}$} $\overset{\footnotesize\cref{integral_treppenfunktion_grundlegende_folgerung}}{\le}$ $\int_M \vert h_k - h_l \vert \D x$ ist $\{ \vert h_k\vert \}$ $L^1$-CF zu $\vert f \vert$ \\
+		Wegen $\int_M \left\vert \vert h_k \vert - \vert h_l \vert\right\vert \D x$\marginnote{$\vert\vert \alpha\vert - \vert\beta\vert\vert \le \vert \alpha - \beta\vert$ $\forall \alpha,\beta\in\mathbb{R}$} $\overset{\cref{integral_treppenfunktion_grundlegende_folgerung}}{\le}$ $\int_M \vert h_k - h_l \vert \D x$ ist $\{ \vert h_k\vert \}$ $L^1$-CF zu $\vert f \vert$ \\
 		\ $\Rightarrow$ $\vert f \vert$ ist integrierbar.
 		
 		\emph{beachte:} andere Richtung später
@@ -307,7 +306,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		Da $\{ \vert h_k \vert \}$ $L^1$-CF zu $\vert f \vert$ ist, folgt die Behauptung durch Grenzübergang.
 		
 		\item Nach den Rechenregeln ist $g - f$ integrierbar, wegen $\vert g - f\vert = g - f$ \gls{fü} auf $M$ folgt \begin{align*}
-			0 \le \left\vert \int_M g - f\D x\right\vert\overset{\ref{integral_funktion_eigenschaften_beschraenktheit}}{\le} \int_M \vert g - f\vert \D x \overset{\footnotesize \cref{integral_funktion_rechenregeln}\;\ref{integral_funktion_rechenregeln_a}}{=} \int_M g \D x - \int_M f \D x
+			0 \le \left\vert \int_M g - f\D x\right\vert\overset{\ref{integral_funktion_eigenschaften_beschraenktheit}}{\le} \int_M \vert g - f\vert \D x \overset{ \cref{integral_funktion_rechenregeln}\;\ref{integral_funktion_rechenregeln_a}}{=} \int_M g \D x - \int_M f \D x
 		\end{align*}
 		$\Rightarrow$ Behauptung
 		
@@ -452,7 +451,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	\item 
 	$\Rightarrow$ \ \ konstante Funktion $f_1 = \alpha$ ist integrierbare Majorante von $\vert f \vert$
 	\item Mit $f_2 = \alpha\cdot \vert g \vert$ ist $f_2$ integrierbare Majorante zu $\vert f\cdot g\vert$ \ \ 
-	$\xRightarrow[\footnotesize kriterium]{\footnotesize Majoranten-}$ Behauptung
+	$\xRightarrow[\text{kriterium}]{\text{Majoranten-}}$ Behauptung
 \end{enumerate}
 \end{proof}
 
@@ -523,7 +522,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	\begin{align*}
 	\Rightarrow\;\;\int_M f - f_1 \D x &\le \lim\limits_{k\to\infty} \int_M f_k - f_1 \D x\\
 	&= \lim\limits_{k\to\infty} \int_M f_k \D x - \int_M f_1 \D x
-	\overset{\footnotesize Monotonie}{\le} \int_M f \D x - \int_M f_1\D x\\
+	\overset{\text{Monotonie}}{\le} \int_M f \D x - \int_M f_1\D x\\
 	&= \int_M f - f_1 \D x
 	\end{align*}
 \end{proof}
@@ -575,8 +574,8 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	
 	Da $f$ stetig auf $M$ kompakt \\
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow[\propref{satz_von_weierstrass}]{Weierstrass}$ & $\exists$ Minimalstelle $x_1\in M$, Maximalstelle $x_2\in M$ und $\displaystyle\gamma := \int_M f \D x$ \\ $\xRightarrow{\cref{integral_funktion_lemma_weitere_eigenschaften}}$ & $f(x_1) \le \frac{\gamma}{\vert M \vert} \le f(x_2)$ \\
-	$\xRightarrow[\propref{zwischenwertsatz}]{Zwischenwertsatz}$ & $\displaystyle\exists \xi\in M: f(\xi) = \frac{\gamma}{\vert M \vert}$ \\
+	$\xRightarrow[\propref{satz_von_weierstrass}]{\text{Weierstrass}}$ & $\exists$ Minimalstelle $x_1\in M$, Maximalstelle $x_2\in M$ und $\displaystyle\gamma := \int_M f \D x$ \\ $\xRightarrow{\text{\cref{integral_funktion_lemma_weitere_eigenschaften}}}$ & $f(x_1) \le \frac{\gamma}{\vert M \vert} \le f(x_2)$ \\
+	$\xRightarrow[\propref{zwischenwertsatz}]{\text{Zwischenwertsatz}}$ & $\displaystyle\exists \xi\in M: f(\xi) = \frac{\gamma}{\vert M \vert}$ \\
 	$\Rightarrow$ & Behauptung
 	\end{tabularx}}
 \end{proof}

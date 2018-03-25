@@ -18,12 +18,18 @@
 \fi
 
 \usepackage[texindy]{imakeidx}
+\indexsetup{
+	level=\chapter*
+}
+\makeindex
 \makeindex[name=semester1,title={Symbolverzeichnis (1. Semester)}]
 \makeindex[name=semester2,title={Symbolverzeichnis (2. Semester)}]
 \makeindex[name=symbols,title=Symbolverzeichnis]
 
 \usepackage[xindy,acronym]{glossaries}
 \makeglossaries
+
+\usepackage[title,titletoc]{appendix}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -132,7 +138,7 @@ bottomline=false,%
 innertopmargin=0pt,%
 innerbottommargin=-0pt,%
 frametitlefont=\normalfont\bfseries\color{black},%
-skipabove=5pt,%
+skipabove=5pt,%	
 skipbelow=10pt,%
 ]{conclusion}[theorem]{Folgerung}
 \newmdtheoremenv[%
@@ -163,7 +169,6 @@ innerbottommargin=1pt,%
 \newmdtheoremenv[%
 hidealllines=true,%
 frametitlefont=\normalfont\bfseries\color{black},%
-innerleftmargin=0pt,%
 skipabove=5pt,%
 innerleftmargin=10pt,%
 ]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
@@ -284,9 +289,10 @@ innerleftmargin=10pt,%
 	{\index{#2#3#4}}%
 	{%
 		\uline{#3}%
-		\ifnumcomp{\value{chapter}}{<}{16}%
+		\ifnumcomp{\value{section}}{<}{16}%
 		{\index[semester1]{#2#3#4}}%
 		{\index[semester2]{#2#3#4}}%
+		\index{#2#3#4}%
 	}%
 }
 \NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{%
@@ -399,6 +405,12 @@ innerleftmargin=10pt,%
 %change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
 \renewcommand{\cftbeforetoctitleskip}{0pt}
 \renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
+%change indentations due to width of capital roman numbers
+\renewcommand{\cftchapnumwidth}{2.5em}
+\renewcommand{\cftsecindent}{2.5em}
+%\renewcommand{\cftsecnumwidth}{3.3em}
+\renewcommand{\cftsubsecindent}{4.8em}
+%\renewcommand{\cftsubsecnumwidth}{4.2em}
 
 %change header:
 \renewcommand{\headrulewidth}{0.75pt}
@@ -508,5 +520,82 @@ Test für Labels.
 \include{./TeX_files/Extremwerte}
 \include{./TeX_files/Inverse_implizite_Funktionen}
 \include{./TeX_files/Funktionsfolgen}
+
+
+\appendix
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
+%\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
+%\titlespacing{command}{left}{before-sep}{after-sep}
+\renewcommand{\chaptername}{Anhang}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\titleformat{\chapter}[hang]{\bfseries}{\LARGE\chaptername\ \thechapter:}{0.5em}{\LARGE\bfseries}
+\titlespacing{\chapter}{0pt}{-0.75cm}{0pt}
+\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+
+%\def\thm@@thmline@name#1#2#3#4#5{%
+%	\ifx\\#5\\%
+%		\@dottedtocline{-2}{0em}{2.3em}%
+%		{#1 \protect\numberline{#2}#3}%
+%		{#4}
+%	\else
+%		\ifHy@linktocpage\relax\relax
+%			\@dottedtocline{-2}{0em}{2.3em}%
+%			{#1 \protect\numberline{#2}#3}%
+%			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+%		\else
+%			\@dottedtocline{-2}{0em}{2.3em}%
+%			{\hyper@linkstart{link}{#5}%
+%			{#1 \protect\numberline{#2}#3}\hyper@linkend}%
+%			{#4}%
+%		\fi
+%	\fi
+%}
+
+\makeatletter
+\newcommand{\thm@@thmline@name@tmp}{\relax}
+\renewcommand{\thm@@thmline@name}[5]{%
+	\renewcommand{\thm@@thmline@name@tmp}{\relax}
+	\if\relax\detokenize{#3}\relax\else
+		\renewcommand{\thm@@thmline@name@tmp}{:\hspace*{1em}#3}
+	\fi
+	\ifx\\#5\\%
+		\@dottedtocline{-2}{0em}{2.3em}%
+		{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}%
+		{#4}
+	\else
+		\ifHy@linktocpage\relax\relax
+			\@dottedtocline{-2}{0em}{2.3em}%
+			{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}%
+			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+		\else
+			\@dottedtocline{-2}{0em}{2.3em}%
+			{%
+			{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}}%
+			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+		\fi
+	\fi
+}
+\makeatother
+
+\chapter{Listen}
+\section{Liste der Theoreme}
+\theoremlisttype{allname}
+\listtheorems{theorem}
+
+\pagebreak
+\section{Liste der benannten Sätze}
+\theoremlisttype{optname}
+\listtheorems{proposition}
+
+\printglossary[type=\acronymtype]
+\addcontentsline{toc}{chapter}{Akronyme}
+
+\printindex
+\addcontentsline{toc}{chapter}{Index}
+
+\printindex[symbols]
+\addcontentsline{toc}{chapter}{Symbolverzeichnis}
 
 \end{document}
