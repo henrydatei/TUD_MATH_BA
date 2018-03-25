@@ -27,7 +27,7 @@
 	\begin{enumerate}[label={\alph*)},mode=unboxed]
 		\item \label{satz_equivalenz_ableitungen_a} \itemEq{\proplbl{definition_ableitung_eins}f(x) &= f(x_0) + f'(x_0) \cdot (x-x_0) + r(x) \quad \forall x\in D}
 		für ein $r: D\to K^m$ mit $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r(x)}{\vert x - x_0 \vert} = 0$
-		\item \itemEq{f(x) =f(x_0) + f'(x_0) \cdot (x-x_0) + R(x) (x-x_0)\quad\forall x\in D\proplbl{definition_ableitung_zwei}}
+		\item \proplbl{satz_equivalenz_ableitungen_b} \itemEq{f(x) =f(x_0) + f'(x_0) \cdot (x-x_0) + R(x) (x-x_0)\quad\forall x\in D\proplbl{definition_ableitung_zwei}}
 		für ein $R:D \to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} R(x) = 0$ (d.h. Matrizen $R(x) \xrightarrow{x\to x_0}$ Nullmatrix in $K^{m\times n}$)
 		\item \label{satz_equivalenz_ableitungen_c} \itemEq{\proplbl{definition_ableitung_drei}f(x) = f(x_0) + Q(x) (x - x_0) \quad \forall x\in D} für ein $Q:D\to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} Q(x) = f'(x_0)$ (d.h. Matrizen $Q(x) \xrightarrow{x\to x_0}$ Matrix $f'(x_0)$ in $K^{m\times n}$)
 	\end{enumerate}
@@ -176,12 +176,12 @@
 	Sei $f:\mathbb{R}^n\to \mathbb{R}$, $f(x) = \vert x \vert ^2\;\forall x\in\mathbb{R}^n$
 	
 	Offenbar gilt:
-	\begin{align*}
-		&& \vert x - x_0 \vert ^2 &= \langle x - x_0, x - x_0 \rangle \marginnote{Erweitert mit $\langle x_0, x_0\rangle$} \\
-		&& &= \langle x \rangle^2 - 2 \langle x_0, x\rangle + 2 \langle x_0, x_0 \rangle - \langle x_0, x_0\rangle \\
-		&& &= \vert x \vert ^2 - 2 \langle x_0, x - x_0 \rangle - \vert x_0 \vert ^2 \\
-		&&\Rightarrow \qquad f(x) &= f(x_0) + \langle 2x_0, x - x_0 \rangle + \underbrace{\vert x - x_0\vert^2}_{\mathclap{=o\big( \langle x - x_0 \rangle \big)}}
- 	\end{align*}
+	\begin{flalign*}
+		 \vert x - x_0 \vert ^2 &= \langle x - x_0, x - x_0 \rangle \marginnote{Erweitert mit $\langle x_0, x_0\rangle$} &\\
+		 &= \langle x \rangle^2 - 2 \langle x_0, x\rangle + 2 \langle x_0, x_0 \rangle - \langle x_0, x_0\rangle& \\
+		 &= \vert x \vert ^2 - 2 \langle x_0, x - x_0 \rangle - \vert x_0 \vert ^2 &\\
+		\qquad\Rightarrow \qquad f(x) &= f(x_0) + \langle 2x_0, x - x_0 \rangle + \underbrace{\vert x - x_0\vert^2}_{\mathclap{=o\big( \langle x - x_0 \rangle \big)}}&
+ 	\end{flalign*}
  	(vgl. auch \propref{spezialfall_ableitung_m1} im Spezialfall \ref{spezialfall_ableitung_m1_item})
  	
  	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist \gls{diffbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$
@@ -369,6 +369,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 \end{example}
 
 \begin{example}
+	\proplbl{ableitung_beispiel_tangens}
 	$\tan: K\setminus \{ \frac{\pi}{2} + k\cdot \pi \mid k\in\mathbb{Z} \}\to K$, $\cot:K\setminus \{ k\cdot \pi \mid k\in\mathbb{Z} \} \to K$ \\[\dimexpr - \baselineskip / 2 \relax]
 	\zeroAmsmathAlignVSpaces \begin{alignat*}{3}
 	\xRightarrow{\text{Quotientenregel}}&\;\;& \tan'(x_0)&= \frac{\sin'(x_0)\cos (x_0) - \cos (x_0) \cdot \sin(x_0)}{\left( \cos(x_0)\right)^2} &&\\
@@ -409,6 +410,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 \end{example}
 
 \begin{example}
+	\proplbl{ableitung_beispiel_logarithmus}
 	Sei $f:\mathbb{R}_{>0} \to \mathbb{R}$, $f(x) = \log_a x$ ($a\in\mathbb{R}_{>0}\setminus\{1\}$)
 	
 	Fixiere $x_0\in \mathbb{R}_{>0}$, sei $\{x_n\}$ beliebige Folge in $\mathbb{R}_{>0}$ mit $x_n\to x_0$
