@@ -1,8 +1,10 @@
-\RequirePackage{ifluatex}
+\RequirePackage{ifluatex,ifpdf}
 \documentclass[ngerman,a4paper]{report}
 \usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
 \usepackage[ngerman]{babel}
-%\usepackage[utf8]{inputenc} %not recommended with lualatex
+\ifpdf
+\usepackage[utf8]{inputenc} %not recommended with lualatex
+\fi
 
 \usepackage{zref-base}
 \usepackage{etoolbox}
@@ -388,7 +390,7 @@ innerleftmargin=10pt,%
 \newcommand{\imagz}{\mathfrak{Im}}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
-\newcommand{\lebesque}{\person{Lebesque}}
+\newcommand{\lebesque}{\person{Lebesgue}}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points

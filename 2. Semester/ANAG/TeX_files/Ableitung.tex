@@ -233,16 +233,16 @@
 \begin{example}
 	$\sin, \cos: K\to K$ ($\mathbb{R}$ bzw. $\mathbb{C}$) $\forall x_0\in K$.
 	
-	Denn:\zeroAmsmathAlignVSpaces
+	Denn:{\zeroAmsmathAlignVSpaces
 	\begin{align*}
 		 \frac{\sin y}{y} = \frac{e^{iy} - e^{-iy}}{2iy} = \frac{1}{2}\cdot \left( \frac{e^{iy} - 1}{iy} + \frac{e^{-iy} - 1}{-iy} \right) \xrightarrow[\text{vgl. \eqref{exp_limit_1}}]{y\to 0} 1,
-	\end{align*}
-	folglich \zeroAmsmathAlignVSpaces*
+	\end{align*}}
+	folglich {\zeroAmsmathAlignVSpaces*
 	\begin{align*}
-		\lim\limits_{y\to 0} \frac{\sin(x_0 + y) - \sin(x_0)}{y} &\overset{\star}{=} \lim\limits_{y\to 0} \frac{2}{y} \cos\left( x_0 + \frac{y}{2}\right) \cdot \sin \left( \frac{y}{2}\right) \marginnote{\star: Additionstheoreme} \\
+		\lim\limits_{y\to 0} \frac{\sin(x_0 + y) - \sin(x_0)}{y} &\overset{\star}{=} \lim\limits_{y\to 0} \frac{2}{y} \cos\left( x_0 + \frac{y}{2}\right) \cdot \sin \left( \frac{y}{2}\right) \marginnote{$\star$: Additionstheoreme} \\
 		&= \lim\limits_{y\to 0} \frac{2}{y}\cdot\sin\left(\frac{y}{2}\right)\cdot\cos\left(x_0 + \frac{y}{2}\right)\\
 		&= \cos x_0 \quad\forall x_0\in K
-		\end{align*}
+		\end{align*}}
 		
 	Analog für den Kosinus.
 \end{example}

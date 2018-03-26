@@ -85,7 +85,7 @@ Einfache, aber wichtige Anwendung:
 	\proplbl{mittelwertsatz_mittelwertsatz}
 	Sei $f:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ \gls{diffbar} auf $D$ und seien $x,y\in D$ mit $[x,y]\subset D$. Dann \begin{align}
 		\proplbl{mittelwertsatz_mittelwertsatz_eq}
-		\exists \xi\in(x,y): f(y) - f(x) = f'(\xi) \overset{\star}{\cdot} (y - x)\marginnote{\star: Skalarprodukt}
+		\exists \xi\in(x,y): f(y) - f(x) = f'(\xi) \overset{\star}{\cdot} (y - x)\marginnote{$\star$: Skalarprodukt}
 	\end{align}
 \end{theorem}
 
@@ -195,7 +195,7 @@ Einfache, aber wichtige Anwendung:
 	\propref{mittelwertsatz_mittelwertsatz} liefert: $\exists \tau \in (0,1): \underbrace{\phi(1) - \phi(0)}_{=\Re \langle f(y) - f(x), v\rangle} = \phi(\tau) \cdot (1 - 0)$ \\
 	\begin{alignat*}{8}
 		&\xRightarrow{\xi = x + \tau (y - x)}\;\;& \vert f(y) - f(x) \vert &&\,=\,& \Re \langle f(y) - f(x), v \rangle &&&\,=\,& \phi(1) - \phi(0) &&&\,=\,& \Re \langle f'(\xi) \cdot (y - x), v\rangle& \\
-		&& &&\le& \vert \langle f'(\xi) \cdot (y - x), v \rangle \vert& &&\overset{\star}{\le}&\marginnote{\star: \person{Cauchy}-\person{Schwarz}} \vert f'(\xi) \cdot (y - x)\vert \cdot \underbrace{\vert v \vert}_{=1}&  \\
+		&& &&\le& \vert \langle f'(\xi) \cdot (y - x), v \rangle \vert& &&\overset{\star}{\le}&\marginnote{$\star$: \person{Cauchy}-\person{Schwarz}} \vert f'(\xi) \cdot (y - x)\vert \cdot \underbrace{\vert v \vert}_{=1}&  \\
 		&& &&\le& \Vert f'(\xi) \Vert \cdot \vert y - x\vert&
 	\end{alignat*} \hfill\csname\InTheoType Symbol\endcsname
 \end{proof}
@@ -413,7 +413,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 		$\Rightarrow$ & $\left\vert \frac{f(x)}{g(x)} - \gamma\right\vert \le \left\vert \frac{f(x)}{g(x)} - \frac{f(y) - f(x)}{g(y) - g(x)} \right\vert + \left\vert \frac{f(y) - f(x)}{g(y) - g(x)} - \gamma \right\vert < 2\epsilon \quad\forall x\in(a, a+ \delta_2)$
 		\end{tabularx}
 		\end{enumerate}
-		$\xRightarrow{\text{$$\epsilon$ > 0$ beliebig}}$ Behauptung
+		$\xRightarrow{\text{$\epsilon > 0$ beliebig}}$ Behauptung
 		
 		andere Fälle:\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
 				\item $x\uparrow b$ analog

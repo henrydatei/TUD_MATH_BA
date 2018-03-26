@@ -80,15 +80,15 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 	\begin{enumerate}[label={\alph*)}]
 		\item Betrachte $f$ auf Strahl $x=x_0 + ty$, $y\in\mathbb{R}^n$ fest, $\vert y \vert = 1$, $t\in\mathbb{R}$.
 		\begin{align*}
-			\text{\propref{chap15meaningSpecialCase}} \Rightarrow& \;0 = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x) - f(x_0)\vert}{\vert x - x_0\vert} = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x_0 + ty) - f(x_0) \vert}{\vert t \vert}
+			\text{\propref{chap15meaningSpecialCase}} \Rightarrow\;& 0 = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x) - f(x_0)\vert}{\vert x - x_0\vert} = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x_0 + ty) - f(x_0) \vert}{\vert t \vert}
 		\end{align*}
 		
 		\item \zeroAmsmathAlignVSpaces[\dimexpr -\baselineskip - \parskip\relax]
 		\begin{flalign*}
-			\text{\propref{chap15meaningSpecialCase}} \;\Rightarrow&\; f(x) = f(x_0) + \underbrace{\frac{o(\vert x - x_0\vert)}{\vert x - x_0\vert}}_{=o(1)} \cdot \vert x - x_0\vert, \;x\to \infty& \\
-			\Rightarrow& f(x) = f(x) + \underbrace{o(1)}_{\mathclap{\text{anstatt }r(x)\text{ gemäß (\ref{chap15interpretationSpecialCase})}}}\cdot \vert x-x_0\vert, \;x\to x_0 &\\
-			\Rightarrow& f(x) = f(x_0) + r(x) \cdot \vert x - x_0\vert &\\
-			\Rightarrow& \vert f(x) - f(x_0)\vert \le \rho(t) \cdot \vert x - x_0\vert,&\\
+			\text{\propref{chap15meaningSpecialCase}} \;\Rightarrow\;& f(x) = f(x_0) + \underbrace{\frac{o(\vert x - x_0\vert)}{\vert x - x_0\vert}}_{=o(1)} \cdot \vert x - x_0\vert, \;x\to \infty& \\
+			\Rightarrow\;& f(x) = f(x) + \underbrace{o(1)}_{\mathclap{\text{anstatt }r(x)\text{ gemäß (\ref{chap15interpretationSpecialCase})}}}\cdot \vert x-x_0\vert, \;x\to x_0 &\\
+			\Rightarrow\;& f(x) = f(x_0) + r(x) \cdot \vert x - x_0\vert &\\
+			\Rightarrow\;& \vert f(x) - f(x_0)\vert \le \rho(t) \cdot \vert x - x_0\vert,&\\
 			& \rho(t) := \sup\limits_{\vert x - x_0\vert \le t} \vert r(x)\vert \xrightarrow{t\to\infty} 0
 		\end{flalign*}
 		Der Graph von $f$ liegt in der Nähe von $x_0$ in immer flacheren, kegelförmigen Mengen\\
