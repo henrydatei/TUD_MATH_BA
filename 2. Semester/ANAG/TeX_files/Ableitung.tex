@@ -1,7 +1,7 @@
 \section{Ableitung} \setcounter{equation}{0}
 \proplbl{section_ableitung}
 
-\begin{*definition}
+\begin{*definition}[differenzierbar, Ableitung]
 	Sei $f: D\subset \mathbb{R}^n \to K^m$, $D$ offen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in L(K^n, K^m)$ gibt mit \begin{align}
 		\proplbl{definition_ableitung}
 		\Aboxed{f(x) &= f(x_0) + A(x-x_0) + o(\vert x-x_0 \vert), x\to x_0}
@@ -124,12 +124,12 @@
 	\end{alignat}
 	
 	\emph{beachte:} \begin{itemize}
-		\item $f$ \gls{diffbar} in $x_0$ $\Leftrightarrow$ Differentialquotient existiert in $x_0$
+		\item $f$  \gls{differenzierbar} in $x_0$ $\Leftrightarrow$ Differentialquotient existiert in $x_0$
 		\item \propref{differentialquotient} nicht erklärt im Fall von $n>1$
 	\end{itemize}
 
 	\begin{interpretation}[ für $m > 1$]
-		$f'(x_0)$ heißt \begriff{Tangentenvektor} an die Kurve in $f(x_0)$. Falls $f$ nicht \gls{diffbar} in $x_0$ bzw. $x_0$ Randpunkt in $D$ und ist $f(x_0)$ definiert, so betrachtet man in \propref{differentialquotient} auch einseitige Grenzwerte (vgl. \propref{einseitige_grenzwerte}).
+		$f'(x_0)$ heißt \begriff{Tangentenvektor} an die Kurve in $f(x_0)$. Falls $f$ nicht  \gls{differenzierbar} in $x_0$ bzw. $x_0$ Randpunkt in $D$ und ist $f(x_0)$ definiert, so betrachtet man in \propref{differentialquotient} auch einseitige Grenzwerte (vgl. \propref{einseitige_grenzwerte}).
 		
 		$\lim\limits_{t\downarrow 0} \frac{f(x_0 + t) - f(x_0)}{t} = f_r'(x_0)$ heißt \begriff[Ableitung!]{rechtsseitige} \uline{Ableitung} von $f$ in $x_0$ (falls existent), analog \begriff[Ableitung!]{linksseitige} \uline{Ableitung} $f_l'(x_0)$.
 	\end{interpretation}
@@ -145,7 +145,7 @@
 \begin{conclusion}
 	Sei $f:D\subset K\to K^n$, $D$ offen. Dann:
 	\begin{align}
-		\notag& \text{$f$ ist diffbar in $x_0\in D$ mit Ableitung $f'(x_0)\in L(K, K^m)$} \\
+		\notag& \text{$f$ ist differenzierbar in $x_0\in D$ mit Ableitung $f'(x_0)\in L(K, K^m)$} \\
 		\Leftrightarrow\quad
 		& \proplbl{differentialquotient_prop} \exists f'(x_0) \in L(K, K^m): \lim\limits_{y\to 0} \frac{f(x_0 + y) - f(x_0)}{y} = f'(x_0) \\
 		\notag 
@@ -154,7 +154,7 @@
 \end{conclusion}
 
 \subsection{Einfache Beispiele für Ableitungen}
-\begin{example}
+\begin{example}[affin lineare Funktionen]
 	\proplbl{ableitung_linear}
 	Sei $f:K^n\to K^m$ affin linear, d.h. \begin{align*}
 		f(x) = A\cdot x + a\quad \forall x\in K^n, \text{ mit } A\in L(K^n, K^m), \, a\in K^m \text{ fest}
@@ -167,11 +167,25 @@
 	\end{align*}
 	\zeroAmsmathAlignVSpaces
 	\begin{align*}
-		\xRightarrow{(\ref{definition_ableitung})}\;\; \text{$f$ ist \gls{diffbar} in $x_0$ mit } f'(x_0) = A
+		\xRightarrow{(\ref{definition_ableitung})}\;\; \text{$f$ ist  \gls{differenzierbar} in $x_0$ mit } f'(x_0) = A
 	\end{align*}
-	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$
+	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$\\
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {2*x};
+		\addlegendentry{$2x$}
+		\addplot+[mark=none, dashed] {2};
+		\addlegendentry{$2$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
-\begin{example}
+\begin{example}[quadratische Funktion]
 	\proplbl{ableitung_beispiel_euklidische_norm}
 	Sei $f:\mathbb{R}^n\to \mathbb{R}$, $f(x) = \vert x \vert ^2\;\forall x\in\mathbb{R}^n$
 	
@@ -184,10 +198,24 @@
  	\end{flalign*}
  	(vgl. auch \propref{spezialfall_ableitung_m1} im Spezialfall \ref{spezialfall_ableitung_m1_item})
  	
- 	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist \gls{diffbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$
+ 	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist  \gls{differenzierbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$\\
+ 	\begin{center}\begin{tikzpicture}
+ 		\begin{axis}[
+ 		xmin=-5, xmax=5, xlabel=$x$,
+ 		ymin=-5, ymax=5, ylabel=$y$,
+ 		samples=400,
+ 		axis y line=middle,
+ 		axis x line=middle,
+ 		]
+ 		\addplot+[mark=none] {abs(x)^2};
+ 		\addlegendentry{$\vert x\vert^2$}
+ 		\addplot+[mark=none, dashed] {2*x};
+ 		\addlegendentry{$2x$}
+ 		\end{axis}
+ 		\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Funktionen mit höhrerem Exponent]
 	Sei $f:K\to K$, $f(x) = x^k$, $k\in\mathbb{N}$.
 	\begin{itemize}[leftmargin=\widthof{$\,k=0$:\ }]
 		\item[$k=0$:] $f(x) = 1\;\forall x$ $\Rightarrow$ $f'(x_0) = 0\;\forall x_0\in\mathbb{C}$ (vgl. \propref{ableitung_linear})
@@ -199,38 +227,80 @@
 			$\xRightarrow{(\ref{definition_ableitung})}$ & $f'(x_0)$ & $= k\cdot x_0^{k-1}$
 		\end{tabularx}
 	\end{itemize}
-	\emph{beachte:} gilt in $\mathbb{C}$ und $\mathbb{R}$.
+	\emph{beachte:} gilt in $\mathbb{C}$ und $\mathbb{R}$. \\
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {x^3};
+		\addlegendentry{$x^3$}
+		\addplot+[mark=none, dashed] {3*x^2};
+		\addlegendentry{$3x^2$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Betragsfunktion]
 	\proplbl{ableitung_beispiel_betrag}
 	Sei $f:\mathbb{R}^n\to \mathbb{R}$, $f(x) = \vert x \vert$ $\forall x\in\mathbb{R}^n$.
 	
-	$f$ ist nicht \gls{diffbar} in $x_0=0$, denn angenommen die Ableitung $f'(0)\in\mathbb{R}^n$ ($\cong \mathbb{R}^{1 \times n}$) existiert, dann fixiere $x\in\mathbb{R}^n$ mit $\vert x \vert = 1$, und
+	$f$ ist nicht \gls{differenzierbar} in $x_0=0$, denn angenommen die Ableitung $f'(0)\in\mathbb{R}^n$ ($\cong \mathbb{R}^{1 \times n}$) existiert, dann fixiere $x\in\mathbb{R}^n$ mit $\vert x \vert = 1$, und
 	\begin{alignat*}{2}
 		&& \vert t\cdot x\vert &= 0 + \langle f'(0), t\cdot x \rangle + o(t),\;t\to 0,\; t\in\mathbb{R}_{\neq 0} \marginnote{$\left| \cdot \frac{1}{t}\right.$} \\
 		\xRightarrow{t\neq 0}\;&& \underbrace{\frac{\vert t \vert \cdot \vert x \vert}{t}}_{=\pm 1} &= \underbrace{\langle f'(0), x\rangle}_{\mathclap{\text{feste Zahl in $\mathbb{R}$}}} + \underbrace{\frac{o(t)}{t}}_{\mathclap{\xrightarrow{t\to 0}0}} \quad\Rightarrow \text{\Lightning}
 	\end{alignat*}
 	
 	\emph{Anschaulich:} Es gibt keine Tangentialebene an den Graph von $f$ in $(0, \vert 0 \vert )\in\mathbb{R}^{n\times 1}$.\\
-	\emph{folglich:} $f$ stetig in $x_0$ $\cancel{\Rightarrow}$ $f$ \gls{diffbar} in $x_0$, d.h. Umkehrung von \propref{diffbar_impl_stetig} gilt i.A. nicht.
+	\emph{folglich:} $f$ stetig in $x_0$ $\cancel{\Rightarrow}$ $f$ \gls{differenzierbar} in $x_0$, d.h. Umkehrung von \propref{diffbar_impl_stetig} gilt i.A. nicht.
 	
 	\begin{hint}
-		Es gibt stetige Funktion $f:\mathbb{R}\to \mathbb{R}$, die in keinem Punkt $x$ \gls{diffbar} ist (siehe Hildebrand, Analysis 1 S. 192 oder Königsberger Analysis 1, Kap. 9.11)
+		Es gibt stetige Funktion $f:\mathbb{R}\to \mathbb{R}$, die in keinem Punkt $x$ \gls{differenzierbar} ist (siehe Hildebrand, Analysis 1 S. 192 oder Königsberger Analysis 1, Kap. 9.11)
 	\end{hint}
+
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {abs(x)};
+		\addlegendentry{$\vert x \vert$}
+		\end{axis}
+	\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Exponentialfunktion]
 	Sei $f:K\to K$ mit $f(x) = e^x\;\forall x\in K$.\\
-	$\Rightarrow$ $f$ ist \gls{diffbar} mit $f'(x_0) = e^{x_0}\;\forall x_0\in K = \mathbb{R}\lor K=\mathbb{C}$.
+	$\Rightarrow$ $f$ ist \gls{differenzierbar} mit $f'(x_0) = e^{x_0}\;\forall x_0\in K = \mathbb{R}\lor K=\mathbb{C}$.
 	
 	Denn: nach \propref{lemma_13_10} ist \begin{align}
 		& \proplbl{exp_limit_1} \lim\limits_{y\to 0} \frac{e^y - 1}{y} = 1 \text{ in } \mathbb{C} \\
 		\notag \Rightarrow\;& \lim\limits_{y\to 0} \frac{e^{x_0 + y} - e^{x_0}}{y} = \lim\limits_{y\to 0} e^{x_0} \cdot \frac{e^y - 1}{y} = e^{x_0} \;\xRightarrow{\eqref{differentialquotient_prop}}\; \text{Beh.}
 	\end{align}
+	
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {e^x};
+		\addlegendentry{$e^x$}
+		\addplot+[mark=none, dashed] {e^x};
+		\addlegendentry{$e^x$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Sinus und Cosinus]
 	$\sin, \cos: K\to K$ ($\mathbb{R}$ bzw. $\mathbb{C}$) $\forall x_0\in K$.
 	
 	Denn:{\zeroAmsmathAlignVSpaces
@@ -245,17 +315,46 @@
 		\end{align*}}
 		
 	Analog für den Kosinus.
+	
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {sin(deg(x))};
+		\addlegendentry{$\sin(x)$}
+		\addplot+[mark=none, dashed] {cos(deg(x))};
+		\addlegendentry{$\cos(x)$}
+		\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {cos(deg(x))};
+		\addlegendentry{$\cos(x)$}
+		\addplot+[mark=none, dashed] {- sin(deg(x))};
+		\addlegendentry{$-\sin(x)$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \subsection{Rechenregeln}
 \begin{*definition}
 	Sei $f:D\subset K^n \to K^m$, $D$ offen.
 	
-	Falls $f$ \gls{diffbar} in allen $x_0\in D$, dann heißt $f$ \begriff{differenzierbar} auf $D$ und Funktion $f':D\to L(K^n, K^m)$ heißt \begriff{Ableitung} von $f$.
+	Falls $f$  \gls{differenzierbar} in allen $x_0\in D$, dann heißt $f$ \begriff{differenzierbar} auf $D$ und Funktion $f':D\to L(K^n, K^m)$ heißt \begriff{Ableitung} von $f$.
 	
 	Ist zusätzlich Funktion $f': D\to L(K^n, K^m)$ stetig, dann heißt Funktion $f$ \begriff{stetig differenzierbar} (auf $D$) bzw. \mathsymbol{C1}{$C^1$}\emph{-Funktion} (auf $D$).
 	
-	$C^1(D, K^m):= \left\lbrace f: D\to K^m \mid f \text{ stetig \gls{diffbar} auf } D \right\rbrace$
+	$C^1(D, K^m):= \left\lbrace f: D\to K^m \mid f \text{ stetig  \gls{differenzierbar} auf } D \right\rbrace$
 \end{*definition}
 
 \begin{example}
@@ -276,7 +375,20 @@
 
 \begin{example}
 	\proplbl{ableitung_beipsiel_unstetige_ableitung}
-	Sei $f:\mathbb{R}\to \mathbb{R}$ mit $f(0) = 0$, $f(x= ) x^2\cdot \sin\left(\frac{1}{x}\right)$ $\forall x\neq 0$.
+	Sei $f:\mathbb{R}\to \mathbb{R}$ mit $f(0) = 0$, $f(x)=x^2\cdot \sin\left(\frac{1}{x}\right)$ $\forall x\neq 0$.
+	
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {x^2*sin(deg(1/x))};
+		\addlegendentry{$x^2\cdot \sin(\frac{1}{x})$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 	
 	Wegen \begin{align*}
 		\frac{\vert x^2 \cdot \sin \frac{1}{x}\vert}{\vert x \vert} \le \vert x \vert \xrightarrow{x\neq 0} 0
@@ -284,7 +396,7 @@
 	folgt{ \zeroAmsmathAlignVSpaces \begin{align*}
 		& f(x) = o(\vert x \vert), x\to 0 \\
 		\Rightarrow\;& f(x) = f(0) + 0\cdot (x - 0) + o(\vert x - 0\vert), x\to 0 \\
-		\Rightarrow\;& f \text{ \gls{diffbar} in $x=0$ mit $f'(0) = 0$}
+		\Rightarrow\;& f \text{  \gls{differenzierbar} in $x=0$ mit $f'(0) = 0$}
 	\end{align*}}
 	
 	Rechenregeln liefern $x\neq 0$: \begin{align*}
@@ -311,8 +423,8 @@
 
 \begin{proposition}[Rechenregeln]
 	\proplbl{ableitung_rechenregeln}
-	Sei $D\in K^n$ offen, $f,g: D\to K^m$, $\lambda: D\to K$ \gls{diffbar} in $x_0\in D$ \\
-	$\Rightarrow$ $(f\pm g): D\to K^m, (\lambda\cdot f):D\to K^m, (f\cdot g):D\to K$ sind \gls{diffbar} in $x_0\in D$ und $\frac{1}{\lambda}:D\to K$ ist \gls{diffbar} in $x_0$, falls $\lambda(x_0)\neq 0$
+	Sei $D\in K^n$ offen, $f,g: D\to K^m$, $\lambda: D\to K$  \gls{differenzierbar} in $x_0\in D$ \\
+	$\Rightarrow$ $(f\pm g): D\to K^m, (\lambda\cdot f):D\to K^m, (f\cdot g):D\to K$ sind  \gls{differenzierbar} in $x_0\in D$ und $\frac{1}{\lambda}:D\to K$ ist  \gls{differenzierbar} in $x_0$, falls $\lambda(x_0)\neq 0$
 	mit
 	\begin{enumerate}[label={\alph*)}]
 		\item $(f\pm g)'(x_0) = f'(x_0) \pm g'(x_0)\in K^{m\times 1}$
@@ -324,8 +436,8 @@
 
 \begin{conclusion}
 	\proplbl{ableitung_quotientenregel}
-	Seien $\lambda$, $\mu:D\to K$ \gls{diffbar} in $x_0$, $D$ offen und $\lambda(x_0)\neq 0$ \\
-	$\Rightarrow$ $\left( \frac{\mu}{\lambda} \right): D\to K$ \gls{diffbar} in $x_0$ mit \begin{align*}
+	Seien $\lambda$, $\mu:D\to K$  \gls{differenzierbar} in $x_0$, $D$ offen und $\lambda(x_0)\neq 0$ \\
+	$\Rightarrow$ $\left( \frac{\mu}{\lambda} \right): D\to K$  \gls{differenzierbar} in $x_0$ mit \begin{align*}
 		\left( \frac{\mu}{\lambda} \right)' (x_0) = \frac{\lambda(x_0)\cdot \mu'(x_0) - \mu(x_0) \cdot \lambda'(x_0)}{\lambda(x_0)^2}\in K^{1\times n}
 	\end{align*}
 \end{conclusion}
@@ -354,21 +466,21 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 \end{proof}
 
 \begin{example}
-	Sei $f:D\in K^n\to K^m$, $c\in K$, $f$ \gls{diffbar} in $x_0\in D$\\
+	Sei $f:D\in K^n\to K^m$, $c\in K$, $f$  \gls{differenzierbar} in $x_0\in D$\\
 	$\xRightarrow{\ref{ableitung_rechenregeln}\ b)} (c\cdot f) = c\cdot f'(x_0)$ (da $c$ konst. Funktion $D\to K$)
 \end{example}
 
 \begin{example}[Polynom]
-	Sei $f:K\to K$, Polynom $f(x) = \sum_{l=0}^{k}a_l x^l$ \\
-	$\Rightarrow$ $f$ \gls{diffbar} $\forall x_0\in K$ mit $f'(x_0) = \sum_{l=1}^k l a_l x_0^{l-1}$
+	Sei $f:K\to K$, Polynom $f(x) = \sum\limits_{l=0}^{k}a_l x^l$ \\
+	$\Rightarrow$ $f$  \gls{differenzierbar} $\forall x_0\in K$ mit $f'(x_0) = \sum\limits_{l=1}^k l a_l x_0^{l-1}$
 \end{example}
 
 \begin{example}
 	Sei $f=\frac{f_1}{f_2}$ rationale Funktion auf $\mathbb{R}$ (d.h. $f_1, f_2:K\to K$ Polynom) \\
-	$\Rightarrow$ $f$ ist \gls{diffbar} auf $K\setminus \{ \text{Nullstellen von }f_2 \}$
+	$\Rightarrow$ $f$ ist  \gls{differenzierbar} auf $K\setminus \{ \text{Nullstellen von }f_2 \}$
 \end{example}
 
-\begin{example}
+\begin{example}[Tangens und Cotangens]
 	\proplbl{ableitung_beispiel_tangens}
 	$\tan: K\setminus \{ \frac{\pi}{2} + k\cdot \pi \mid k\in\mathbb{Z} \}\to K$, $\cot:K\setminus \{ k\cdot \pi \mid k\in\mathbb{Z} \} \to K$ \\[\dimexpr - \baselineskip / 2 \relax]
 	\zeroAmsmathAlignVSpaces \begin{alignat*}{3}
@@ -376,12 +488,42 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 	&& &= \frac{\cos^2(x_0) + \sin^2(x_0)}{\cos^2(x_0)} = \frac{1}{\cos^2(x_0)} && \forall x_0\in \text{ Definitionsbereich} \\
 	&& \cot'(x_0) &= - \frac{1}{\sin^2(x_0)}&&\forall x_0\in\text{ Definitionsbereich}
 	\end{alignat*}
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		restrict y to domain=-5:5
+		]
+		\addplot+[mark=none] {tan(deg(x))};
+		\addlegendentry{$\tan(x)$}
+		\addplot+[mark=none, dashed] {1/(cos(deg(x)))^2};
+		\addlegendentry{$\frac{1}{\cos^2(x)}$}
+		\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		restrict y to domain=-5:5
+		]
+		\addplot+[mark=none] {cot(deg(x))};
+		\addlegendentry{$\cot(x)$}
+		\addplot+[mark=none, dashed] {-1/(sin(deg(x)))^2};
+		\addlegendentry{$-\frac{1}{\sin^2(x)}$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{proposition}[Kettenregel]
 	\proplbl{ableitung_kettenregel}
-	Sei $f:D\subset K^n\to K^m$, $g:\tilde{D}\subset K^m\to K^l$, $D$,$\tilde{D}$ offen, $f$ \gls{diffbar} in $x_0\in D$, $g$ \gls{diffbar} in $f(x_0)\in\tilde{D}$ \\
-	$\Rightarrow$ $g\circ f: D\to K^l$ \gls{diffbar} in $x_0$ mit $(g\circ f)' = g'(f(x))\cdot f'(x)$ ($\in K^{l\times n}$)
+	Sei $f:D\subset K^n\to K^m$, $g:\tilde{D}\subset K^m\to K^l$, $D$,$\tilde{D}$ offen, $f$  \gls{differenzierbar} in $x_0\in D$, $g$  \gls{differenzierbar} in $f(x_0)\in\tilde{D}$ \\
+	$\Rightarrow$ $g\circ f: D\to K^l$  \gls{differenzierbar} in $x_0$ mit $(g\circ f)' = g'(f(x))\cdot f'(x)$ ($\in K^{l\times n}$)
 \end{proposition}
 
 \begin{proof}
@@ -396,7 +538,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 	$\xRightarrow{\ref{definition_ableitung_proposition}\,c)}$ Behauptung
 \end{proof}
 
-\begin{example}
+\begin{example}[$x$ im Exponenten]
 	\proplbl{ableitung_beispiel_exponentialfunktion}
 	Sei $f:\mathbb{R}\to \mathbb{R}$, $f(x) = a^x$ ($a\in\mathbb{R}_{\ge 0}$, $a\neq 1$).
 	
@@ -407,9 +549,23 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 	\zeroAmsmathAlignVSpaces \begin{alignat*}{2}
 	\xRightarrow{\text{\propref{ableitung_kettenregel}}}\quad&& f'(x_0) &= g'(x_0\cdot \ln a)\cdot f'(x_0) = e^{x_0\cdot \ln a}\cdot \ln a = a^x\cdot \ln a \quad\forall x_0\in\mathbb{R}
 	\end{alignat*}
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {2^x};
+		\addlegendentry{$2^x$}
+		\addplot+[mark=none, dashed] {2^x*ln(2)};
+		\addlegendentry{$2^x\cdot \ln(2)$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}
+\begin{example}[Logarithmus]
 	\proplbl{ableitung_beispiel_logarithmus}
 	Sei $f:\mathbb{R}_{>0} \to \mathbb{R}$, $f(x) = \log_a x$ ($a\in\mathbb{R}_{>0}\setminus\{1\}$)
 	
@@ -421,6 +577,20 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 	\end{alignat*}
 	
 	Spezialfall: $(\ln(x))' = \frac{1}{x}$ $\forall x>0$
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {log2(x)};
+		\addlegendentry{$\log_2(x)$}
+		\addplot+[mark=none, dashed] {1/(x*ln(2))};
+		\addlegendentry{$\frac{1}{x\cdot\ln(2)}$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{example}
@@ -440,7 +610,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 \begin{proposition}[Reduktion auf skalare Funktionen]
 	\proplbl{ableitung_proposition_reduktion}
 	Sei $f=(f_1, \dotsc, f_m): D\subset K^n\to K^m$, $D$ offen, $x_0\in D$. Dann gilt:\begin{center}
-		$f$ \gls{diffbar} in $x_0$ $\Leftrightarrow$ alle $f_j$ \gls{diffbar} in $x_0$ $\forall j=1,\dotsc,m$
+		$f$  \gls{differenzierbar} in $x_0$ $\Leftrightarrow$ alle $f_j$  \gls{differenzierbar} in $x_0$ $\forall j=1,\dotsc,m$
 	\end{center}
 
 	Im Fall der Differenzierbarkeit hat man: \begin{align}
@@ -452,7 +622,21 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 		\end{pmatrix} \in K^{m\times n}
 	\end{align}
 \end{proposition}
-
+\smiley{} Wenn Sie das nächste mal aus der Disko kommen, zuviel getrunken haben und den Namen 
+ihrer Freundin nicht mehr kennen, sollten sie sich daran aber noch erinnern: \smiley{} \\
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: man hat $f(x)=f(x_0)+f'(x_0)(x-x_0)+R(x)(x-x_0)$ mit $R(x)\to 0$, da 
+		$f'(x_0),R(x)\in L(K^n,K^k\times K^l) \Rightarrow f'(x_0)y=(A_1y,A_2y)$, $R(x)y=(R_1(x)y,
+		R_2(x)y)$ mit $A_1,R_1\in L(K^n,K^k)$, $A_2,R_2\in L(K^n,K^l)$ \\
+		$\Rightarrow f_j(x)=f_j(x_0)+A_j(x-x_0)+R_j(x-x_0)$ mit $R_j\to 0$ und $j=\{1,2\}\quad (*)$ \\
+		$\Rightarrow  f_j$ ist differenzierbar in $x_0$ it $f'_j(x_0)=A_j\Rightarrow$ Behauptung
+		\item Rückrichtung: es gilt $(*)$ mit $A_j=f'_j(x_0)$. Setze $A=\begin{pmatrix}f'_1(x_0) \\ f'_2(x_0)\end{pmatrix}$ und $R(x)=\begin{pmatrix}R_1(x) \\ R_2(x)\end{pmatrix} \Rightarrow
+		AR(x)\in L(K^n,K^k\times K^l)$ \\
+		$\Rightarrow f(x)=f(x_0)+A(x-x_0)+R(x)(x-x_0)$, $R(x)\to 0\Rightarrow f$ differenzierbar in 
+		$x_0\Rightarrow$ Behauptung
+	\end{itemize}
+\end{proof}
 
 \begin{remark}
 	Mit \propref{ableitung_proposition_reduktion} kann man die Berechnungen der Ableitungen stets auf skalare Funktionen $f:D\subset K^n\to K$ zurückführen. Die Matrix in \propref{ableitung_jacobimatrix} besteht aus $m$ Zeilen $f_j'(x_0)\in K^{1\times m}$.
@@ -473,7 +657,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 	\proplbl{ableitung_spezialfall_reduktion_proposition}
 	Sei $f=(f_1, f_2):D\subset K^n\to K^k\times K^l$, $D$ offen, $x_0\in D$.
 	
-	Funktion $f$ ist \gls{diffbar} in $x_0$ genau dann, wenn $f_1:D\to K^k$ und $f_2 :D\to K^l$ \gls{diffbar} in $x_0$.
+	Funktion $f$ ist  \gls{differenzierbar} in $x_0$ genau dann, wenn $f_1:D\to K^k$ und $f_2 :D\to K^l$  \gls{differenzierbar} in $x_0$.
 	
 	Im Falle der Differenzierbarkeit gilt\begin{align}
 		\proplbl{ableitung_spezialfall_reduktion}
@@ -504,7 +688,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 				\notag\Rightarrow&\;\;& f'(x_0) &= (A_1, A_2), \; R(x) = \big( R_1(x), R_2(x) \big))
 			\intertext{mit $A_1, R_1(x)\in L(K^n, K^k)$, $A_2, R(x)\in L(K^n, K^l)$}
 				\proplbl{ableitung_beweis_lemma_spezialfall_reduktion_einzelableitung} \xRightarrow{\eqref{ableitung_beweis_lemma_spezialfall_reduktion}}&& f_j(x)&= f_j(x_0) + A_j \cdot (x - x_0) + R_j(x) (x - x_0),\;R_j(x)\xrightarrow{x\to x_0}0 \\
-				\notag\Rightarrow&& f_j & \text{ ist \gls{diffbar} in $x_0$ mit $f_j'(x_0) = A_j$, $j=1,2$}
+				\notag\Rightarrow&& f_j & \text{ ist  \gls{differenzierbar} in $x_0$ mit $f_j'(x_0) = A_j$, $j=1,2$}
 		\end{alignat}
 		$\Rightarrow$ Behauptung
 		\item["`$\Leftarrow$"'] (es gilt auch \eqref{ableitung_beweis_lemma_spezialfall_reduktion_einzelableitung} mit $A_j = f_j'(x_0)$)
@@ -518,7 +702,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 		\xRightarrow{\eqref{ableitung_beweis_lemma_spezialfall_reduktion_einzelableitung}}\;& A, R(x)\in L(K^n, K^k\times K^l) \\
 		\xRightarrow{\text{mit }A_j=f_j'(x_0)}\; & f(x)= f(x_0) + A(x - x_0) + R(x)(x - x_0), R(x)\xrightarrow{x\to x_0}0
 		\end{align*}
-		$\Rightarrow$ $f$ \gls{diffbar} in $x_0$ und \eqref{ableitung_spezialfall_reduktion} gilt.\hfill\csname\InTheoType Symbol\endcsname
+		$\Rightarrow$ $f$  \gls{differenzierbar} in $x_0$ und \eqref{ableitung_spezialfall_reduktion} gilt.\hfill\csname\InTheoType Symbol\endcsname
 	\end{itemize}
 \end{proof}
 

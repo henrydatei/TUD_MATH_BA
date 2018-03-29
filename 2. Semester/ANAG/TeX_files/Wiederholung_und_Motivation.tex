@@ -6,13 +6,13 @@ Sei $K^n$ $n$-dim. \gls{vr} über Körper mit $K=\mathbb{R}$ oder $K=\mathbb{C},
 	\item alle Normen auf $K^n$ sind äquivalent (\propref{aeqv_norm}) \\
 	$\Rightarrow$ Kovergenz unabhängig von der Norm
 	
-	Verwende idR euklidische Norm $\vert x \vert_2 = \vert x \vert = \sqrt{\sum_{i}\vert x_i \vert^2}$
+	Verwende in der Regel euklidische Norm $\vert x \vert_2 = \vert x \vert = \sqrt{\sum\limits_{i}\vert x_i \vert^2}$
 	\item \begriff{Skalarprodukt}
 	\begin{itemize}
-		\item $\langle x,y \rangle = \sum_{j=1}^{n} x_j y_j$ in $\mathbb{R}$
-		\item $\langle x,y \rangle = \sum_{j=1}^{n} \overline{x_j} y_j$ in $\mathbb{C}$
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} x_j\cdot y_j$ in $\mathbb{R}$
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} \overline{x}_j\cdot y_j$ in $\mathbb{C}$
 	\end{itemize}
-	\item \textsc{Cauchy}-\text{Schwarz}-Ungleichung ($\vert \langle x,y\rangle \vert \le \vert x \vert + \vert y \vert\,\forall x,y\in K^n$)
+	\item \textsc{Cauchy}-\textsc{Schwarz}-Ungleichung ($\vert \langle x,y\rangle \vert \le \vert x \vert + \vert y \vert\,\quad\forall x,y\in K^n$)
 \end{itemize}
 
 \subsection{Lineare Abbildungen}
@@ -38,8 +38,8 @@ Eine \begriff{lineare Abbildung} ist homogen und additiv (siehe \propref{defLine
 		 \item $L(K^n, K^m)$ ist isomorph zu $K^{m\times n}$ als \gls{vr} \\
 		 $\Rightarrow$ $L(K^n, K^m)$ ist $m\cdot n$-dim. \gls{vr} ($\Rightarrow$ alle Normen äquivalent, $\Rightarrow$ Konvergenz von $\{A_n\}$ von linearer Abbildungen in $L(K^n, K^m)$ ist normunabhängig)
 		 
-		 Nehmen idR statt $\Vert A \Vert$ \person{euklidische} Norm $\vert A \vert = \sqrt{\sum_{k,l} \vert A_{k,l} \vert ^2}$.\\
-		 Es gilt: \[ \vert Ax \vert \le \Vert A \Vert \vert x \vert \text{ und } \vert Ax\vert \le \vert A \vert \vert x \vert \]
+		 Nehmen in der Regel statt $\Vert A \Vert$ \person{euklidische} Norm $\vert A \vert = \sqrt{\sum\limits_{k,l} \vert A_{k,l} \vert ^2}$.\\
+		 Es gilt: \[ \vert Ax \vert \le \Vert A \Vert\cdot \vert x \vert \text{ und } \vert Ax\vert \le \vert A \vert \cdot\vert x \vert \]
 	\end{itemize}
 	\item Abbildung $\tilde{f}: K^n \to K^m$ heißt \begriff[linear!]{affin} \highlight{linear}, falls $\tilde{f}(x) = Ax + a$ für lineare Abbildung $A:K^n\to K^m, a\in K^m$
 \end{itemize}
@@ -93,10 +93,17 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		\end{flalign*}
 		Der Graph von $f$ liegt in der Nähe von $x_0$ in immer flacheren, kegelförmigen Mengen\\
 		$\Rightarrow$ Graph "`schmiegt sich"' an eine horizontale Ebene an den Punkt $(x_0, f(x_0))$ an.
-		
-		\item \emph{Beobachtung:} horizontale Ebene ist Graph einer affin linearen Funktion $\tilde{A}: \mathbb{R}^n\to\mathbb{R}^n$, daher\\
-		\emph{Zentrale Frage:} Existiert zu gesuchter Funktion $f: D\subset\mathbb{R}^n \to K^m$, $x_0\in\mathbb{R}$ eine affin lineare Funktion $\tilde{A}:K^n\to K^m$, sodass sich in der Nähe von $x_0$ der Graph von $f$ an den Graph von $\tilde{A}$ "`anschmiegt"'?
-		
-		Wegen $f(x_0) = \tilde{A}(x_0)$ folgt $\tilde{A}(x) = A(x-x_0) + f(x_0)$. Was heißt "`anschmiegen"'? $f(x) + \underbrace{f(x_0) + A(x-x_0)}_{\tilde{A}(x)} = o(\vert x-x_0\vert)$, d.h. die Abweichung wird schneller klein als $\vert x-x_0\vert$!
 	\end{enumerate}
+		
+		\textbf{Beobachtung:} horizontale Ebene ist Graph einer affin linearen Funktion $\tilde{A}: \mathbb{R}^n\to\mathbb{R}^n$, daher\\
+		\textbf{Zentrale Frage:} Existiert zu gesuchter Funktion $f: D\subset\mathbb{R}^n \to K^m$, $x_0\in\mathbb{R}$ eine affin lineare Funktion $\tilde{A}:K^n\to K^m$, sodass sich in der Nähe von $x_0$ der Graph von $f$ an den Graph von $\tilde{A}$ "`anschmiegt"'?\\
+		\textbf{Antwort} Ja, wegen $f(x_0) = \tilde{A}(x_0)$ folgt $\tilde{A}(x) = A(x-x_0) + f(x_0)$. 
 \end{example}
+
+\begin{*definition}[Anschmiegen]
+	$f(x) + \underbrace{f(x_0) + A(x-x_0)}_{\tilde{A}(x)} = o(\vert x-x_0\vert)$, \\
+	d.h. die Abweichung wird schneller klein als $\vert x-x_0\vert$!
+\end{*definition}
+
+\smiley{} Vielleicht hatten Sie eine andere Vorstellung von "'anschmiegen"', aber wir machen hier 
+Mathematik \smiley{}

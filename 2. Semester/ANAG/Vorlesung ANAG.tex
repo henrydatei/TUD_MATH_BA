@@ -45,6 +45,13 @@
 
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
+\usetikzlibrary{matrix}
+\usepackage{color}
+\usepackage{wasysym}
 
 \usepackage{enumerate}
 \usepackage{enumitem} %customize label
@@ -96,87 +103,95 @@
 }
 
 \newmdtheoremenv[%
-style=boxedtheorem,%
-innertopmargin=\topskip,%
-innerbottommargin=\topskip,%
-linecolor=darkgrey,%
-backgroundcolor=lightgrey,%
+	style=boxedtheorem,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	linecolor=darkgrey,%
+	backgroundcolor=lightgrey,%
 ]{theorem}{Theorem}[section]
+
 \newmdtheoremenv[%
-style=boxedtheorem,%
-linecolor=darkgrey,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-innertopmargin=\topskip,%
-innerbottommargin=\topskip,%
-backgroundcolor=lightgrey,%
+	style=boxedtheorem,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	backgroundcolor=lightgrey,%
 ]{proposition}[theorem]{Satz}
+
 \newmdtheoremenv[%
-style=boxedtheorem,%
-linecolor=darkgrey,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-backgroundcolor=lightgrey,%
-innertopmargin=\topskip,%
-innerbottommargin=\topskip,%
+	style=boxedtheorem,%
+	linecolor=darkgrey,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	backgroundcolor=lightgrey,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
 ]{lemma}[theorem]{Lemma}
+
 \newmdtheoremenv[%
-style=boxedtheorem,%
-linecolor=red,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-innertopmargin=0,%
-innerbottommargin=-3pt,%
+	style=boxedtheorem,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=0,%
+	innerbottommargin=-3pt,%
 ]{definition}[theorem]{Definition}
+
 \newmdtheoremenv[%
-outerlinewidth=3pt,%
-linecolor=black,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-innertopmargin=0pt,%
-innerbottommargin=-0pt,%
-frametitlefont=\normalfont\bfseries\color{black},%
-skipabove=5pt,%	
-skipbelow=10pt,%
+	outerlinewidth=3pt,%
+	linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=0pt,%
+	innerbottommargin=-0pt,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%	
+	skipbelow=10pt,%
 ]{conclusion}[theorem]{Folgerung}
+
 \newmdtheoremenv[%
-hidealllines=true,%
-frametitlefont=\normalfont\bfseries\color{black},%
-innerleftmargin=0pt,%
-skipabove=5pt,%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=0pt,%
+	skipabove=5pt,%
+	innerleftmargin=10pt,%
 ]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+
 \newmdtheoremenv[%
-hidealllines=true,%
-frametitlefont=\normalfont\bfseries\color{black},%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=10pt,%
 ]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
 \theoremindent0cm
 \newmdtheoremenv[%
-style=boxedtheorem,%
-linecolor=red,%
-topline=false,%
-rightline=false,%
-bottomline=false,%
-innertopmargin=1pt,%
-innerbottommargin=1pt,%
+	style=boxedtheorem,%
+	linecolor=red,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	innertopmargin=1pt,%
+	innerbottommargin=1pt,%
 ]{*definition}{Definition}
+
 \newmdtheoremenv[%
-hidealllines=true,%
-frametitlefont=\normalfont\bfseries\color{black},%
-skipabove=5pt,%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%
+	innerleftmargin=10pt,%
 ]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+
 \newmdtheoremenv[%
-hidealllines=true,%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	innerleftmargin=10pt,%
 ]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
 %Hinweis-Theoremstyle and environment
@@ -460,6 +475,7 @@ innerleftmargin=10pt,%
 \newacronym{hp}{HP}{\begriff{Häufungspunkt}}
 \newacronym{vr}{VR}{Vektorraum}
 \newacronym{diffbar}{diffbar}{differenzierbar}
+\newacronym{differenzierbar}{differenzierbar}{differenzierbar}
 \newacronym{mws}{MWS}{Mittelwertsatz}
 
 \title{\textbf{Analysis 2. Semester (SS2018)}}
