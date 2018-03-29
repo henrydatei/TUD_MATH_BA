@@ -1,0 +1,163 @@
+\section{Konvergenz}\setcounter{theorem}{0}
+\begin{definition}[konvergent]
+	Sei $(X,d)$ metrischer Raum. Folge $\{x_n\}_{n\in\mathbb{N}}$ in $X$, (d.h. $x_n\in X\,\forall n$) heißt \begriff[Folge!]{konvergent}, falls $x\in X$ existiert mit \[\forall \epsilon > 0 \,\exists n_0=n_0(\epsilon)\in\mathbb{N}: d(x_n, x) < \epsilon\quad \forall n\ge n_0\]
+	
+	$x$ heißt dann \begriff{Grenzwert} (auch Limes) der Folge.
+	
+	Notation: $x=$\mathsymbol{lim}{$\lim\limits_{n\rightarrow\infty}$}, $x_n\rightarrow x$ für $n\rightarrow\infty$, $x_n \overset{n\rightarrow\infty}{\longrightarrow}x$
+	
+	Folge heißt \begriff[Folge!]{divergent}, falls nicht konvergent.
+\end{definition}
+
+\begin{conclusion}
+	Für Folge $\{x_n\}$ gilt: \[ x=\lim\limits_{n\rightarrow\infty}x_n \;\Leftrightarrow \text{Jede Kugel $B_\epsilon(x)$ enthält fast alle $x_n$} \]
+\end{conclusion}
+\addtocounter{theorem}{4}
+\begin{proposition}[Eindeutigkeit des Grenzwertes]
+	Sei $(X,d)$ metr. Raum, $\{x_n\}$ Folge in $X$. Dann \[ x,x' \text{ Grenzwert von $\{x_n\}$} \;\Rightarrow\; x = x' \]
+\end{proposition}
+\begin{proposition}
+	Sei $(X,d)$ metrischer Raum, $\{x_n\}$ konvergente Folge in $X$\\
+    $\Rightarrow$ $\{x_n\}$ ist beschränkt.
+\end{proposition}
+\addtocounter{theorem}{4}
+\begin{definition}
+	Sei $\{x_n\}$ beliebige Folge in $X$, $\{n_k\}_{k\in\mathbb{N}}$ Folge in $\mathbb{N}$ mit $n_{k+1} > n_k\,\forall k\in\mathbb{N}$. Dann heißt $\{x_{n_k}\}_{k\in\mathbb{N}}$ \gls{tf} von $\{x_n\}_{n\in\mathbb{N}}$.
+	
+	$\gamma\in X$ heißt \gls{hw} (auch Häufungspunkt) der Folge $\{x_n\}$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(\gamma)$ unendlich viele $x_n$.
+\end{definition}
+\begin{proposition}\label{tfprinzip}
+	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x_n\rightarrow x \;\Rightarrow\; x_{n_k} \overset{n\rightarrow\infty}{\longrightarrow} x$ für jede \gls{tf} $\{x_{n_k}\}_k$
+		\item $\gamma$ ist \gls{hw} der Folge $\{x_n\}$ $\Leftrightarrow$ $\exists$\gls{tf} $\{x_{n_k}\}: x_{n_k} \overset{n\rightarrow\infty}{\longrightarrow} \gamma$
+		\item \begriff{Teilfolgenprinzip}: Jede \gls{tf} $\{x_{k'}\}$ von $\{x_n\}$ hat \gls{tf} $\{x_{k''}\}$ mit $x_{n''}\rightarrow x$ $\Rightarrow$ $x_n \rightarrow x$
+	\end{enumerate}
+\end{proposition}
+\begin{proposition}
+	Sei $(X,d)$ metrischer Raum, $M\subset X$ Teilmenge. Dann
+	\[ M\text{ abgeschlossen} \quad\Leftrightarrow\quad \text{für jede konv. Folge $\{x_n\}$ in $M$ gilt: }\lim\limits_{n\rightarrow\infty} x_n\in M \]
+\end{proposition}
+
+\subsection*{Konvergenz im normierten Raum $X$}
+\begin{proposition}
+	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X$, $\{\lambda_n\}$ in $K$ mit $\lim x_n = x, \lim y_n = y$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\{x_n \pm y_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty}x_n \pm y_n = \lim\limits_{n\rightarrow\infty} x_n \pm \lim\limits_{n\rightarrow\infty} y_n$
+		\item $\{\lambda_n x_n\}$ konvergiert und $\lim\limits_{n\rightarrow\infty} \lambda_n x_n = \lim\limits_{n\rightarrow\infty} \lambda_n \cdot \lim\limits_{n\rightarrow\infty}x_n$
+		\item $\lambda\neq 0 \;\Rightarrow\;\lim\limits_{n\rightarrow\infty} \frac{1}{\lambda_n} = \frac{1}{\lambda}$ (in $K$) für $\{\frac{1}{\lambda_n}\}_{n\ge\tilde{n}}$ ($\lambda_n\neq 0\,\forall n\ge\tilde{n}$)
+	\end{enumerate}
+\end{proposition}
+\begin{conclusion}
+	Seien $\{\lambda_n\}, \{\mu_n\}$ Folgen in $K$ mit $\lambda_n\rightarrow\lambda,\mu_n\rightarrow\mu$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\lambda_n + \mu_n\rightarrow \lambda + \mu, \lambda_n \mu_n\rightarrow\lambda \mu$
+		\item falls $\lambda\neq 0$ (\gls{obda} $\lambda_n\neq 0$): $\frac{\mu_n}{\lambda_n}\rightarrow\frac{\mu}{\lambda}$
+	\end{enumerate}
+\end{conclusion}
+\stepcounter{theorem}
+\begin{lemma}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Im metrischen Raum $X$ gilt:$x_n\rightarrow x$ in $X$ $\Leftrightarrow\;d(x_n,x)\rightarrow 0$ in $\mathbb{R}$
+		\item Sei $0\le \alpha_n\le\beta_n\,\forall n\in\mathbb{N}, \alpha_n, \beta_n\in\mathbb{R}, \beta_n\rightarrow 0$\\
+		$\Rightarrow \alpha_n\rightarrow 0$ \begriff{Sandwich-Prinzip}
+	\end{enumerate}
+\end{lemma}
+\begin{proposition}
+	Sei $X$ normierter Raum, $\{x_n\}$ in $X$. Dann\\
+	$x_n\rightarrow x$ in $X$ $\Rightarrow$ $\Vert x_n\Vert \rightarrow\Vert x\Vert$ in $\mathbb{R}$
+\end{proposition}
+\begin{proposition}
+	Seien $(X,\Vert .\Vert_1)$, $(X,\Vert.\Vert_2)$ normierte Räume mit äquivalenten Normen. Dann
+	
+	$x_n\rightarrow x$ in $(X,\Vert.\Vert_1)$ $\Leftrightarrow$ $x_n\rightarrow x$ in $(X,\Vert.\Vert_2)$
+\end{proposition}
+\stepcounter{theorem}
+\begin{proposition}[Konvergenz in $\mathbb{R}^n$/$\mathbb{C}^n$ bzgl. Norm]
+	Sei $\{x_n\}$ Folge mit $x_n = (x_n^1, \dotsc, x_n^n)\in\mathbb{R} (\mathbb{C}^n)$, $x=(x^1, \dotsc,x^n)\in\mathbb{R}^n (\mathbb{C}^n)$.
+	
+	$\lim\limits_{n\rightarrow\infty} x_n = x$ in $\mathbb{R}^n (\mathbb{C}^n)$ $\Leftrightarrow$ $\lim\limits_{n\rightarrow\infty} x_k^j = xj$ in $\mathbb{R}$ bzw. $\mathbb{C}\,\forall j=1,\dotsc,n$
+\end{proposition}
+\addtocounter{theorem}{3}
+\subsection*{Konvergenz in $\mathbb{R}$}
+\begin{proposition}
+	Seien $\{x_n\},\{y_n\},\{z_n\}$ Folgen in $\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x_n \le y_n\,\forall n\ge n_0, x_n\rightarrow x, y_n\rightarrow y\;\Rightarrow x\le y$
+		\item $x_n\le y_n\le z_n\,\forall n\ge n_0, x_n\rightarrow c,z_n\rightarrow c \;\Rightarrow y_n\rightarrow c$ (\begriff{Sandwich-Prinzip})
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[monoton]
+	Folge $\{x_n\}$ heißt \begriff[monoton!]{wachsend} / \begriff[monoton!]{fallend}, falls gilt:
+	
+	$x_n \le x_{n-1}\;(x_n\ge x_{n+1})\,\forall n\in\mathbb{N}$ (in beiden Fällen heißt Folge \begriff{monoton}).
+	
+	Falls stets "`$<$"' ("`$>$"') ist $\{x_n\}$ \begriff[monoton!]{strikt}
+\end{definition}
+\begin{proposition}
+	Sei $\{x_n\}$ in $\mathbb{R}$ monoton und beschränkt.\[
+	\{x_n\}\text{ konvergiert gegen }x:=
+	\left\lbrace
+		\begin{aligned}
+			&\sup \{x_n \mid n\in\mathbb{N}\}, \\
+			&\inf\{x_n \mid n\in\mathbb{N}\}, \\
+		\end{aligned}
+	\right.
+	\text{ falls monoton }\;
+	\begin{aligned}
+		&\text{wachsend}\\
+		&\text{fallend}
+	\end{aligned}
+	\]
+\end{proposition}
+\addtocounter{theorem}{2}
+\begin{theorem}[\person{Bolzano}-\person{Weierstraß}]\label{bolzano_weierstrass}
+	$\{x_n\}$ beschränkte Folge in $\mathbb{R}$ $\Rightarrow$ $\{x_n\}$ hat konvergente \gls{tf}.
+\end{theorem}
+\stepcounter{theorem}
+
+\subsection*{Oberer \slash Unterer Limes}
+\begin{definition}
+	Seien $\{x_n\}$ beschränkte Folgen in $\mathbb{R}$.\\
+	$H:=\{ \gamma\in\mathbb{R} \mid \gamma \text{ ist \gls{hw} von }\{x_n\}\}$ ($\neq \emptyset$ nach \ref{bolzano_weierstrass})
+	
+	\begin{tabularx}{\textwidth}{ll}
+		\mathsymbol*{limsup}{$\limsup$} $\limsup\limits_{n\rightarrow\infty} x_n := \overline{\lim}_{n\rightarrow\infty} x_n =:\sup H$ & \begriff{Limes superior} von $\{x_n\}$ \\[0.5cm]
+		\mathsymbol*{liminf}{$\liminf$} $\liminf\limits_{n\rightarrow\infty} x_n = \underline{\lim}_{n\rightarrow\infty} x_n :=\inf H$  & \begriff{Limes inferior} von $\{x_n\}$
+	\end{tabularx}
+\end{definition}
+
+\begin{proposition}
+	Sei $\{x_n\}$ beschränkte Folge in $\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $\{x_{n'}\}$ \gls{tf} mit $x_{n'}\rightarrow\gamma \;\Rightarrow \;\liminf\limits_{n\rightarrow\infty} x_n \le \gamma \le \limsup\limits_{n\rightarrow\infty} x_n$
+		\item $\gamma' :=\liminf\limits_{n\rightarrow\infty} x_n$ und $\gamma'' := \limsup\limits_{n\rightarrow\infty} x_n$ sind \gls{hw} von $\{x_n\}$
+		
+		\begin{tabular}{ll}
+		(folglich)& $\inf H = \min H, \sup H = \max H$ und \\
+		& $\exists$ \gls{tf} $\{x_{n'}\}, \{x_{n''}\}, x_{n'}\rightarrow \gamma', x_{n''}\rightarrow\gamma''$
+		\end{tabular}
+		\item $x_n\rightarrow \alpha \;\Leftrightarrow \;\alpha = \liminf\limits_{n\rightarrow\infty} x_n = \limsup\limits_{n\rightarrow\infty} x_n$
+	\end{enumerate}
+\end{proposition}
+\stepcounter{theorem}
+
+\subsection*{Uneigentliche Konvergenz}
+\begin{definition}[Uneigentliche Konvergenz]
+	Folge $\{x_n\}$ in $\mathbb{R}$ konvergiert \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\,\forall n\ge n_0$
+	
+	(heißt auch \highlight{bestimmt divergent}) gegen $\infty$, "`uneigentlich"' wird meist weggelassen.
+	
+	Notation: $\lim\limits_{n\rightarrow\infty} x_n = \pm \infty$ bzw. $\xi_n\rightarrow \pm \infty$
+\end{definition}
+\stepcounter{theorem}
+\begin{proposition}[Satz von \person{Stolz}]
+	Sei $\{x_n\},\{y_n\}$ Folgen in $\mathbb{R}, \{y_n\}$ sei stren monoton wachsend, $\{y_n\}\rightarrow\infty$\\
+	$\Rightarrow \lim\limits_{n\rightarrow\infty} \frac{x_n}{y_n} = \lim\limits_{n\rightarrow\infty} \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$, falls rechter Grenzwert existiert (endlich oder unendlich)
+\end{proposition}
+\stepcounter{theorem}
+\begin{proposition}
+	Sei $\{x_n\}$ mit $x_n\rightarrow x$ im normierten Raum $X$.\\
+	$\Rightarrow\frac{1}{n}\sum_{j=1}^n x_j \overset{n\rightarrow\infty}{\longrightarrow} x$
+\end{proposition}

@@ -1,0 +1,36 @@
+\section{Grundlegende Ungleichungen}
+\begin{proposition}[geoemtrisches / arithemtisches Mittel]
+	Seien $x_1, \dotsc, x_n\in\mathbb{R}_{>0}$.\\
+	\[\Rightarrow \underbrace{\sqrt[n]{x_1\cdot x_2\cdot \dotsc \cdot x_n}}_{\text{\begriff{geometrisches Mittel}}} \le \underbrace{\frac{x_1 + \dotsc + x_n}{n}}_{\text{\begriff{arithmetisches Mittel}}}\]
+\end{proposition}
+\begin{proposition}[allgemeine \person{Bernoulli}-Ungleichung]
+	Seien $\alpha,x\in\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $(1+x)^\alpha \ge 1 + \alpha x\,\forall x\ge -1, \alpha > 1$
+		\item $(1+x)^\alpha \le 1+\alpha x \,\forall x\ge -1, 0 < \alpha < 1$
+	\end{enumerate}
+\end{proposition}
+\begin{proposition}[\person{Young}-sche Ungleichung]
+	Seien $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$.\\
+	$\Rightarrow a\cdot b \le \frac{a^p}{p} + \frac{b^q}{q}\,\forall a,b\ge 0$
+	
+	\uline{Spezialfall:} $p=q=2: ab \le \frac{a^2+b^2}{2} \,\forall a,b\in \mathbb{R}$
+\end{proposition}
+\begin{proposition}[\person{Hölder}'sche Ungleichung]
+	Sei $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p} + \frac{1}{q} = 1$\\
+	$\Rightarrow \sum_{i=1}^{n} |x_i y_i| \le \left(\sum_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}\left(\sum_{i=1}^n |y_i|^q\right)^{\frac{1}{q}}\,\forall x,y\in\mathbb{R}$
+	
+	Für $p=q=2$ heißt die Ungleichung \begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung}
+\end{proposition}
+\begin{proposition}[\person{Minkowski}-Ungleichung]
+	Sei $p\in\mathbb{R}, p>1$\\
+%	$\Rightarrow \big(\sum_{i=1}\^n|x_i + y_i|^p\big)^{\frac{1}{p}} \le \big( \sum_{i=1}^n |x_i|^p \big)^{\frac{1}{p}}+\big( \sum_{i=1}^n |y_i|^p \big)^\frac{1}{p}$
+    $\Rightarrow \big(\sum_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}$
+\end{proposition}
+
+\begin{remark}
+	\begin{enumerate}[label={\arabic*)}]
+    \item Ungleichung gilt auch für $x_i, y_i \in \mathbb{C}$
+    \item ist $\Delta$-Ungleichung für $p$-Normen
+    \end{enumerate}
+\end{remark}

@@ -178,6 +178,7 @@ innerleftmargin=10pt,%
 hidealllines=true,%
 innerleftmargin=10pt,%
 ]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+\newtheorem{overview}[theorem]{Überblick}
 
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
@@ -391,6 +392,8 @@ innerleftmargin=10pt,%
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 \newcommand{\lebesque}{\person{Lebesgue}}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -398,6 +401,11 @@ innerleftmargin=10pt,%
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\D}{d}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ext}{ext}
+\DeclareMathOperator{\diam}{diam}
 
 %change headings:
 \titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
@@ -488,7 +496,25 @@ innerleftmargin=10pt,%
 \pagenumbering{arabic}
 
 \part{1. Semester}
-\chapter{Test}
+\pagestyle{fancy}
+\chapter{Zahlenbereiche}
+\input{./TeX_files/Grundbegriffe_Logik}
+\include{./TeX_files/Natuerliche_Zahlen}
+\include{./TeX_files/Ganze_und_Rationale Zahlen}
+\include{./TeX_files/Reelle_Zahlen}
+\include{./TeX_files/Komplexe_Zahlen}
+
+\chapter{Metrische Räume und Konvergenz}
+\input{./TeX_files/Grundlegende_Ungleichungen}
+\include{./TeX_files/Metrische_Raeume}
+\include{./TeX_files/Konvergenz}
+\include{./TeX_files/Vollstaendigkeit_und_Kompaktheit}
+\include{./TeX_files/Reihen}
+
+\chapter{Funktionen und Stetigkeit}
+\input{./TeX_files/Funktionen}
+\include{./TeX_files/Stetigkeit}
+\include{./TeX_files/Anwendungen}
 \begin{proposition}
 \proplbl{aeqv_norm}
 \proplbl{chap_15_5}

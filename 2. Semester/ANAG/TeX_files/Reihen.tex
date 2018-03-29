@@ -1,0 +1,121 @@
+\section{Reihen}
+\begin{definition}[Partialsumme]
+	Sei $X$ normierter Raum. $\{x_n\}$ Folge im normierten Raum.\\
+	$s_n :=\sum_{k=1}^n x_k = x_0 + \dotsc + x_n$ heißt \begriff{Partialsumme}.
+	
+	Folge $\{s_n\}$ der Partialsumme heißt \highlight{(unendliche)}\begriff{Reihe} mit Gliedern $x_k$.\\
+	Notation: durch Symbol $\sum_{k=0}^\infty x_k = x_0 + \dotsc = \sum_k x_k = \{s_k\}_{k\in\mathbb{N}}$
+	
+	Existiert der Grenzwert $s = \lim\limits_{n\rightarrow\infty} s_n$, so heißt der \begriff[Reihe!]{Summe} der Reihe.\\
+	Notation: $s = \sum_{k=0}^\infty x_n$.
+\end{definition}
+
+\begin{proposition}[\person{Cauchy}-Kriterium]
+	Sei $X$ normierter Raum, $\{x_k\}$ Folge in $X$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\sum_k x_k$ konvergiert $\Rightarrow\;\forall \epsilon > 0\,\exists n_0: \left|\left|\sum_{k=n}^m x_k\right|\right| < \epsilon\,\forall m\ge n\ge n_0$
+		\item falls $x$ vollständiger, normierter Raum, gilt auch $\Leftarrow$ oben.
+	\end{enumerate}
+\end{proposition}
+\begin{conclusion}
+	Sei $X$ normierter Raum, $\{x_n\}$ Folge in $X$. Dann:\\
+	$\sum_k x_k$ konvergiert $\Rightarrow$ $x_k\overset{k\rightarrow \infty}{\longrightarrow}0$
+\end{conclusion}
+\begin{example}
+	\begriff{geometrische Reihe} $X=\mathbb{C}, a_k:= z^k, z\in\mathbb{C}$ fest.
+	
+	$\sum_{k=0}^\infty z^k = \frac{1}{1-z}\,\forall z\in\mathbb{C}$ mit $|z|<1$
+	$\sum_{k=0}^\infty z^k$ divergent, falls $|z|>1$
+\end{example}
+\begin{example}
+	\begriff{harmonische Reihe} $X=\mathbb{R}, x_k := \frac{1}{k}\;(k>1)$. Reihe divergiert.
+\end{example}
+\stepcounter{theorem}
+\begin{example}
+	$X=\mathbb{R}$:\[ \sum_{k=1}^\infty \frac{1}{k^s}\;\begin{cases}
+	\text{konvergiert},& \text{für }s > 1\\ \text{divergiert},& \text{für }s \le 1
+	\end{cases} \]
+	Summe heißt \begriff{\person{Riemann}'sche Zetafunktion}\mathsymbol{zeta}{$\zeta(s)$} (für $s > 1$). Diese ist beschränkt und konvergent.
+\end{example}
+\begin{proposition}
+	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X, \lambda,\mu\in K$ ($\mathbb{R}$ oder $\mathbb{C}$). Dann:\\
+	$\sum_k x_k, \sum_k y_k$ konvergernt $\Rightarrow\;\sum_{k=0}^\infty \lambda x_k + \mu x_k$ konvergent gegen $\lambda\sum_k x_k + \mu \sum_k y_k$.
+\end{proposition}
+\begin{definition}
+	Reihe $\sum_k x_k$ heißt \begriff[Reihe!]{absolut konvergent}, falls $\sum_k \Vert x_k\Vert$ konvergiert.
+\end{definition}
+\begin{proposition}
+	Sei $X$ vollständiger, normierter Raum. Dann:\\
+	$\sum_k x_k$ absolut konvergent $\Rightarrow\;\sum_k x_k$ konvergent
+\end{proposition}
+\begin{proposition}[Konvergenzkriterien für Reihen]
+	Sei $X$ normierter Raum, $\{x_k\}$ in $X, k_0\in\mathbb{N}$
+	\begin{enumerate}[label={\alph*)}]
+		\item Sei $\{x_k\}$ Folge in $\mathbb{R}$ \hfill\begriff{Majorantenkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+			\item $0 \le \alpha_k \le \Vert x_k\Vert\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\sum_k\Vert x_k\Vert$ divergent.
+		\end{enumerate}
+		\item Sei $x_k\neq 0\,\forall k\ge k_0$\hfill\begriff{Quotientenkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert}\,\forall k\ge k_0\;\Rightarrow \sum_k\Vert x_k\Vert$ divergiert.
+		\end{enumerate}
+		\item \hfill\begriff{Wurzelkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+			\item $\sqrt[k]{\Vert x_k\Vert} \ge 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent.
+		\end{enumerate}
+	\end{enumerate}
+\end{proposition}
+\begin{example}
+	\begriff{Exponentialreihe} $\exp z := \sum_{k=0}^\infty \frac{z^k}{k!}$ absolut konvergent $\forall z\in \mathbb{C}$.
+	
+	\mathsymbol{e}{$e$}$:=\exp(1)$ \begriff{\person{Euler}'sche Zahl}
+\end{example}
+\begin{example}
+	\begriff{Potenzreihe}: $\sum_{k=0}^\infty a_k(z-z_0)^k$ für $z\in\mathbb{C}, a_k\in\mathbb{C}, z_0\in\mathbb{C}$.
+	
+	Sei \[L:=\begin{cases} \limsup\limits_{n\rightarrow\infty} \sqrt[k]{|a_k|},&\text{falls existiert}\\ \infty,&\text{sonst}\end{cases}\qquad R:=\frac{1}{L} \;(\text{mit }0 = \frac{1}{\infty}, \frac{1}{0} = \infty)\]
+	
+	$ |z - z_0| < R$: absolute Konvergenz,\\
+	$|z-z_0| > R$: Divergenz,\\
+	$|z-z_0| = R$: i.A. keine Aussage möglich.
+	
+	$B_R(z_0)$ heißt \begriff{Konvergenzkreis}, $R$ \begriff{Konvergenzradius}
+\end{example}
+\begin{example}
+	\begriff{$p$-adische Brüche}. Sei $p\in\mathbb{N}_{\ge 2}$: betrachte $0,x_1x_2x_3\dotsc :=\sum_{k=1}^\infty x_k\cdot p^{-k}$ für $x_k\in\{0,1,\dotsc,p-1\}\,\forall k\in\mathbb{N}$.
+\end{example}
+\begin{proposition}[\person{Leibnitz}-Kriterium für alternierende Reihen in $\mathbb{R}$]
+	Sei $\{x_n\}$ monoton fallende Nullfolge in $\mathbb{R}$. Dann:\\
+	alternierende Reihe $\sum_{k=0}^\infty (-1)^k x_k = x_0 - x_1 + x_2 - \dotsc$ ist konvergent.
+\end{proposition}
+\stepcounter{theorem}
+\begin{definition}[Umordnung]
+	Sei $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektive Abbildung: $\sum_{k=0}^\infty x_{\beta(k)}$ heißt \begriff{Umordnung} der Reihe $\sum_k x_k$.
+\end{definition}
+\begin{proposition}
+	Sei $X$ normierter Raum. Dann:\\
+	$\sum_{k=0}^\infty x_k = x$ absolut konvergent $\Rightarrow\;\sum_{k=0}\infty x_{\beta(k)}$ absolut konvergent für jede Umordnung.
+\end{proposition}
+\begin{proposition}
+	Sei $\sum_{k=0}^\infty x_k$ konvergierende Reihe in $\mathbb{R}$, die nicht absolut konvergent ist. Dann:\\
+	$\forall s\in\mathbb{R}\cup \{\pm\infty\}$ existiert $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektiv mit $s=\sum_{k=0}^\infty x_{\beta_k}$
+\end{proposition}
+\begin{proposition}[\person{Cauchy}-Produkt]
+	Sei $X$ normierter Raum über $\mathbb{K}$, $\sum_j x_j$ und $\sum_i \lambda_i$ absolut konvergent in $X$ bzw. $\mathbb{K}$. $\beta:\mathbb{N}\times \mathbb{N}\rightarrow \mathbb{N}$ bijektiv, $Y_{\beta(i,j)} = \lambda_i x_i\,\forall i,j\in\mathbb{N}$
+	
+	$\Rightarrow \sum_{l=0}^\infty Y_l = \sum_{i=0}^\infty \lambda_i \sum_{j=0}^\infty x_j$, wobei linke Reihe absolut konvergiert in $X$.
+	
+	\begin{tabular}{ll}
+		\highlight{Spezialfall:} & $\beta(i,j) = \frac{(i+j)(i+j+1)}{2} + i$ liefert\\[5pt]
+		& $\sum_{k=0}^\infty \sum_{l=0}^k \lambda_k x_{k-l} = \sum_{i=0}^\infty \lambda_i \sum_{j=0}^\infty x_j$
+	\end{tabular}
+\end{proposition}
+\stepcounter{theorem}
+\begin{proposition}[Doppelreihenproposition]
+	Sei $\{x_{k,l}\}_{k,l\in\mathbb{N}}$ Doppelfolge im \person{Banach}-Raum $X$ und mögen $\sum_{l=0}^\infty \Vert x_{k,l}\Vert =:\alpha_k\,\forall k$ und $\sum_{k=0}^\infty x_k =: \alpha$ existieren.
+	
+	$\Rightarrow \sum_{k=0}^\infty \left(\sum_{l=0}^\infty x_{k,l}\right) = \sum_{l=0}^{\infty}\left( \sum_{k=0}^\infty x_{k,l}\right)$, wobei alle Reihen absolut konvergent sind.
+\end{proposition}

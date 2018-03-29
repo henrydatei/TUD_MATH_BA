@@ -1,0 +1,25 @@
+\section{Komplexe Zahlen}
+\begin{definition}
+	Betr. Menge der \begriff{komplexen Zahlen} $\mathbb{C}:=\mathbb{R}\times\mathbb{R} = \mathbb{R}^2$ mit Addition und Multiplikation:
+	
+	$(x,x') + (y,y') := (x+y, x'+y')$\\
+	$(x,x')\cdot(y,y') :=(xy - x'y', xy' + x'y)$
+	
+	$\mathbb{C}$ ist ein Körper mit $0_\mathbb{C} = (0,0), 1_\mathbb{C} = (1,0), -(x,y)= (-x,-y), (x,y)^{-1} = \left(\frac{x}{x^2 + y^2}, \frac{-y}{x^2 + y^2}\right)$ mit \begriff[Komplexe Zahl!]{imaginäre Einheit}\mathsymbol{i}{$i$}$:=(0,1)$ schreibt man auch $z=x+iy$ statt $z = (x,y)$
+	
+	Nenne $x:=\realz(z)$ \begriff[Komplexe Zahl!]{Realteil}, $y:=\imagz(z)$ \begriff[Komplexe Zahl!]{Imaginärteil} von $z$.\\
+	$\overline{z}:= x - iy$ zu $z$ \begriff[Komplexe Zahl!]{konjungiert}\highlight{komplexe Zahl}
+	
+	Komplexe Zahl $Z = x+i0 = x$ wird mit reellen Zahl $x\in\mathbb{R}$ identifiziert. Offenbar ist $i^2 = (0,1)^2 = -1$, d.h. $z = i\in\mathbb{C}$ löst Gleichung $z^2 = -1$.
+	
+	Betrag $\vert\cdot\vert:\mathbb{C}\rightarrow \mathbb{R}_{>0}$ mit $\vert z\vert :=\sqrt{x^2 + y^2}$ ist Beträg / Länge des Vektors.
+	
+	Es gilt:
+	\begin{enumerate}[label={\alph*)}]
+		\item $\Re z = \frac{z+\overline{z}}{z}, \Im z = \frac{z - \overline{z}}{z}$
+		\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}, \overline{z_1 \cdot z_2} = \overline{z_1}\cdot \overline{z_2}$
+		\item $|z| = 0 \Leftrightarrow z = 0$
+		\item $|z | = |\overline{z}|$
+		\item $|z_1 \cdot z_2 | = |z_1| \cdot |z_2|$
+	\end{enumerate}
+\end{definition}
