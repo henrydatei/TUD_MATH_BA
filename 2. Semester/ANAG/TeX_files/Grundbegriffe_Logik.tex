@@ -1,0 +1,198 @@
+\section{Grundbegriffe aus Logik und Mengenlehre}
+
+\begin{definition}[Aussage]
+	\begriff{Aussage} ist ein Schverhalt, dem man entweder den Warheitswert wahr ($w$) oder falsch ($f$) zuordnen kann (und nichts anderes).
+\end{definition}
+
+\addtocounter{theorem}{1}
+	
+\begin{definition}[Menge]
+	\begriff{Menge} ist (nach Cantor 1877) eine Zusammenfassung von bestimmten, wohlunterschiedenen Objekten der Anschauung oder des Denkens, welche die \begriff{Elemente} der Menge genannt werden, zu einem Ganzen.
+\end{definition}
+
+\addtocounter{theorem}{1}
+
+\begin{definition}
+	\begin{itemize}
+		\item $M=N$, falls dieselben Elemente enthalten sind
+		\item $N$\mathsymbol{c}{$\subset$}$M$ (\begriff{Teilmenge}), falls $n\in M$für jedes $n\in\mathbb{N}$
+		\item $N$\mathsymbol{c=}{$\subsetneqq$}$M$ (\begriff{echte Teilmenge}), falls zusätzlich $N\neq M$.
+		\item \begriff{Aussageform}: Sachverhalt mit Variablen, der durch geeignete Ersetzung der Variablen zur Aussage führt
+	\end{itemize}
+\end{definition}
+
+\addtocounter{theorem}{1}
+
+\begin{definition}[Quantoren]
+	\begriff{Quantoren}
+	\begin{itemize}
+		\item $\forall x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für jedes $x\in M$
+		\item $\exists x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für mindestens ein $x\in M$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	\begriff{Tautologie} bzw. \begriff{Kontradiktion}\slash\begriff{Widerspruch} ($\Lightning$) ist zusätzlich gesetzte Aussage, die unabhängig vom Wahrheitswert der Teilaussagen stets wahr bzw. falsch ist.
+\end{definition}
+
+\begin{proposition}[\person{de Morgan}'sche Regeln]
+	Folgende Aussagen sind stets Tautologien
+	\begin{enumerate}[label={\alph*)}]
+		\item $\neg(A\land B) \Leftrightarrow \neg A \lor \neg B$
+		\item $\neg(A\lor B) \Leftrightarrow \neg A\land \neg B$
+		\item $\neg (\forall x\in M: A(x)) \;\Leftrightarrow \; \exists x\in M:\neg A(x)$
+		\item $\neg (\exists x\in M: A(x)) \;\Leftrightarrow \;\forall x\in M:\neg A(x)$
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	\begin{itemize}
+		\item \begriff{leere Menge} \mathsymbol{o}{$\emptyset$}$=:$ Menge, die kein Element enthält
+		\item $M,N$ sind \begriff[Menge!]{disjunkt}, falls $M\cap N = \emptyset$
+		\item Sei $\mathcal{M}$ \begriff{Mengensystem}, d.h. Mengen von Mengen, dann
+		\begin{itemize}
+			\item $\bigcup_{M\in\mathcal{M}} M := \{x \mid \exists M\in\mathcal{M}: x\in M\}$
+			\item $\bigcap_{M\in\mathcal{M}} M:= \{ x\mid\forall M\in\mathcal{M}: x\in M \}$
+		\end{itemize}
+		\item \begriff{Potenzmenge}: \mathsymbol{p}{$\mathcal{P}$}$(XM):=\{\tilde{M} | \tilde{M}\in M\}$
+		\item \begriff{\person{de Morgan}'sche Regeln} (für $\mathcal{N}\subset\mathcal{P}(M)$)
+		\begin{itemize}
+			\item $\left(\bigcup_{N\in\mathcal{N}} N\right)^C = \bigcap_{N\in\mathcal{N}} N^C$
+			\item $\left(\bigcap_{N\in\mathcal{N}} N\right)^C = \bigcup_{N\in\mathcal{N}} N^C$
+		\end{itemize}
+		\item \begriff{kartesisches Produkt} $M$\mathsymbol{x}{$\times$}$N:=\{(m,n) | m\in M \text{ und } n\in N\}$
+		\item $(m_1, \dotsc, m_n)$ ist \begriff{n-Tupel}
+		\item \begriff{Auswahlaxiom} (AC / axiom of choice)
+		
+		Sei $\mathcal{M}$ Menge nichtleerer, paarweise disjunkter Mengen $M$\\
+		$\Rightarrow$ es gibt immer (Auswahl-) Menge $\tilde{M}$, die mit jedem $M\in\mathcal{M}$ genau ein Element gemein hat.
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Für Aussagen $A,B,C$: $A\land C \Rightarrow B$
+		\begin{itemize}
+			\item $B$ ist \begriff[Bedingung!]{notwendig} für $A$
+			\item $A$ ist \begriff[Bedingung!]{hinreichend} für $B$
+		\end{itemize}
+	\end{itemize}
+\end{example}
+
+\subsection*{Mathematische Beweise}
+\begin{definition}
+	\begin{enumerate}
+		\item \begriff[Beweis!]{direkt}\highlight{er Beweis}: $(A\Rightarrow A_1)\land(A_1\Rightarrow A_2)\land\dotsc\land(A_n\Rightarrow B)$ wahr für $A\Rightarrow B$
+		\item \begriff[Beweis!]{indirekt}\highlight{er Beweis} durch Tautologie $(A\Rightarrow B)\Leftrightarrow (\neg B\rightarrow \neg A)$
+	\end{enumerate}
+\end{definition}
+
+\subsection*{Relation und Funktion}
+\begin{definition}[Relation]
+	\begin{itemize}
+		\item \begriff{Relation} ist Teilmenge $R\subset M\times N$. $(x,y)\in R$ heißt: $x$ und $y$ stehen in Relation zueinander.
+		\item Relation $R\subset M\times N$ heißt \begriff{Ordnungsrelation} (kurz \begriff{Ordnung}) auf $M$, falls $\forall a,b,c\in M$:
+		\begin{enumerate}[label={\alph*)}]
+			\item $(a,a)\in R$ (\begriff[Ordnung!]{reflexiv})
+			\item $(a,b),(b,a)\in R \rightarrow a=b$ (\begriff[Ordnung!]{antisymmetrisch})
+			\item $(a,b),(b,c)\in R \rightarrow (a,c)\in R$ (\begriff[Ordnung!]{transitiv})
+		\end{enumerate}
+		\item Ordnungsrelation $R$ auf $M$ heißt \begriff{Totalordnung}, falls $\forall a,b\in M: (a,b)\in R \lor (b,a)\in R$
+		\item Relation auf $M$ heißt \begriff{Äquivalenzrelation}, falls $\forall a,b,c\in M$:
+		\begin{enumerate}[label={\alph*)}]
+			\item $(a,a)\in R$ (\begriff[Ordnung!]{reflexiv})
+			\item $(a,b)\in R \Rightarrow (b,a)\in R$ (\begriff[Ordnung!]{symmetrisch})
+			\item $(a,b),(b,c)\in R \Rightarrow (a,c)\in R$ (\begriff[Ordnung!]{transitiv})
+		\end{enumerate}
+		\item \mathsymbol{[a]}{$[a]$}$:=\{b\in M\mid (a,b)\in R\}$ heißt \begriff{Äquivalenzklasse} von $a\in M$ bzgl. $R$
+		
+		Jedes $b\in [a]$ ist ein \begriff{Repräsentant} von $[a]$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Abbildung]
+	\begriff{Abbildung}/\begriff{Funktion} von $M$ nach $N$, kurz: $F:M\rightarrow N$ ist Vorschrift, die jedem \begriff{Argument} / \begriff{Urbild} $m\in M$ genau einen \begriff{Wert} / \begriff{Bild} $F(m)\in N$ zuordnet.
+	
+	\begin{itemize}
+		\item \mathsymbol{D}{$\mathcal{D}$}$(F):=M$ heißt \begriff{Definitionsbereich} / \begriff{Urbildmenge}
+		\item $N$ heißt \begriff{Zielbereich}
+		\item $F(M'):=\{n\in N \mid n=F(m)$ für ein $m\in M'\}$ ist \begriff{Bild}\highlight{ von $M'$}$\subset M$
+		\item $F^{-1}(N'):=\{ m\in M\mid n=F(m)$ für ein $N' \}$ ist \begriff{Urbild}\highlight{ von $N'$}$\subset N$
+		\item \mathsymbol{R}{$\mathcal{R}$}$(F):= F(M)$ heißt \begriff{Wertebereich} / \begriff{Bildmenge}
+		\item \mathsymbol{graph}{$\graph$}$(F) :=\{ (mn,)\in M\times N | n = F(m)\}$ heißt \begriff{Graph}\highlight{von $F$}
+		\item \mathsymbol{fm}{$F|_{M'}$} ist \begriff{Einschränkung}\highlight{der Funktion} von $F$ auf $M'\subset M$
+		\item \begriff{Komposition} von $F:M\rightarrow N$ und $G:N\rightarrow P$ ist Abbildung $G$\mathsymbol{o}{$\circ$}$F:M\rightarrow P$ mit $(G\circ F)(m):=G(F(m))$
+		\item $Abbildung F:M\rightarrow N$ heißt
+		\begin{itemize}
+			\item \begriff[Abbildung!]{injektiv}, falls eineindeutig (d.h. $F(m_1) = F(m_2) \Rightarrow m_1 = m_2$)
+			\item \begriff[Abbildung!]{surjektiv}, falls $F(M) = N$, d.h. $\forall n\in N\,\exists m\in M: F(m) = n$
+			\item \begriff[Abbildung!]{bijektiv}, falls injektiv und surjektiv
+		\end{itemize}
+		\item Für bijektive Abb. $F:M\rightarrow N$ ist \begriff{Umkehrabbildung} / \begriff{inverse Abbildung} \mathsymbol{f-1}{$F^{-1}$}$:N\rightarrow M$ definiert durch $F^{-1}(n) = m \Leftrightarrow F(m) = n$
+	\end{itemize}
+\end{definition}
+
+\stepcounter{theorem}
+\begin{proposition}
+	Sei $F:M\rightarrow N$ surjektiv. Dann existiert Abbildung $G:N\rightarrow M$, sodass $F\circ G = \id_N$ (d.h. $F(G(n)) = n\,\forall n\in N$)
+\end{proposition}
+
+\begin{definition}[Verknüpfung]
+	Eine \begriff{Rechenoperation} / \begriff{Verknüpfung} auf $M$ ist Abb. $*:M\times M\rightarrow M$, d.h. $m,n\in M$ wird \begriff{Ergebnis} $m*n\in M$
+	
+	Rechenoperation
+	\begin{itemize}
+		\item hat \begriff[Verknüpfung!]{neutrales Element} $e\in M$, falls $m*e = e*m = m\,\forall m\in M$
+		\item ist \begriff[Verknüpfung!]{kommutativ}, falls $m*n = n*m$
+		\item ist \begriff[Verknüpfung!]{assoziativ}, falls $k*(m*n) = (k*m)*n\,\forall k,m,n\in M$
+		\item hat \begriff[Verknüpfung!]{inverses Element} $m'\in M$ zu $m\in M$, falls $m*m' = m'*m = e$
+	\end{itemize}
+\end{definition}
+
+\begin{*example}
+	\begin{enumerate}[label={\alph*)}]
+		\item \begriff{Addition}: $(m,n)\mapsto: m+n$ \begriff{Summe},
+		\begin{itemize}
+			\item neutrales Element heißt \begriff{Null} / \begriff{Nullelement}
+			\item Inverses Element: \mathsymbol{-}{$-m$}
+		\end{itemize}
+		\item \begriff{Multiplikation} $\cdot:(m,n)\mapsto: m\cdot n$ \begriff{Produkt}
+		\begin{itemize}
+			\item neutrales Element heißt \begriff{Eins} / \begriff{Einselement}
+			\item Inverses Element:\mathsymbol{-1}{$m^{-1}$}
+		\end{itemize}
+	\end{enumerate}
+\end{*example}
+
+\begin{definition}
+	Addition und Multiplikation heißen \begriff{distributiv}, falls $k\cdot(m+n) = k\cdot m + k\cdot n\,\forall k,m,n\in M$
+\end{definition}
+
+\begin{definition}[Körper]
+	Menge $K$ heißt \begriff{Körper}, falls auf $K$ eine Addition und Multiplikation existiert mit
+	\begin{enumerate}[label={\alph*}]
+		\item es existieren neutrale Elemente $0\in K$ und $1\in K_{\neg 0}$
+		\item Addition und Multiplikation sind distributiv
+		\item Es gibt Inverse
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Menge $M$ habe Ordnung "`$\le$"', sowie Addition und Multiplikation.
+	
+	Ordnung ist \begriff[Ordnung!]{verträglich}\highlight{mit Addition und Multiplikation}, wenn $\forall a,b,c\in M$
+	\begin{enumerate}[label={(\alph*)}]
+		\item $a\le b \Leftrightarrow a+c \le b+c$
+		\item $a\le b \Leftrightarrow a\cdot c \le b\cdot c$ mit $c > 0$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Körper $K$ heißt \begriff[Körper!]{angeordnet}, falls mit Addition und Multiplikation verträgliche Totalordnung existert.
+\end{definition}
+
+\begin{definition}[Isomorphismus]
+	\begriff{Isomorphismus} bezüglich einer Struktur ist bijektive Abbildung $I:M_1\rightarrow M_2$, die auf $M_1$ und $M_2$ vorhandene Struktur erhält.
+	
+	Mengen $M_1$ und $M_2$ heißen \begriff[Menge!]{isomorph}.
+\end{definition}

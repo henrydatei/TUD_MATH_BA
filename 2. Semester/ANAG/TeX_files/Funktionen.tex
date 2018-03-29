@@ -1,0 +1,300 @@
+\section{Funktionen}
+\begin{definition}
+	$f:\mathbb{R}\to \mathbb{R}$ \begriff{monoton}\begriff[monoton!]{falled}/\begriff[monoton!]{wachsend}, falls $x < y, x,y\in M \,\Rightarrow \,f(x) \le f(y)$ bzw. $f(x) \ge f(y)$
+	
+	Falls rechts stets $<$ bzw. $>$, sagt man auch \begriff[monoton!]{streng} monoton.
+\end{definition}
+
+\begin{proposition}
+	Sei $f:\mathbb{R}\rightarrow \mathbb{R}$ streng monoton fallend / wachsend.\\
+	$\Rightarrow$ inverse Funktion $f^{-1}:\mathcal{R}\rightarrow M$ existiert und ist streng monoton wachsend / fallend.
+\end{proposition}
+\begin{example}
+	\begriff{Allgemeine Potenzfunktion} in $\mathbb{R}$:\\
+	$f:\mathbb{R}_{>0} \to \mathbb{R}$ mit $f(x) = x^r$ für $r\in\mathbb{R}$ fest.
+	
+	\begin{itemize}
+		\item $r > 0:$ Satz \ref{proposition_potenz_r} $\Rightarrow$ $f$ streng monoton wachsend
+		\item $r < 0$: $x^r = \frac{1}{x^{-r}}$ $\Rightarrow$ $f$ streng monoton fallend
+	\end{itemize}
+	$\overset{\text{Satz 1}}{\Rightarrow}$ $f^{-1}$ existiert für $r\neq 0$ auf $(0,\infty)$, wegen $ y = (r^{\frac{1}{r}})^r$ ist $f^{-1}(y) = y^{\frac{1}{r}}$
+\end{example}
+\begin{example}
+	\begriff{Allgemeine Exponentialfunktion} in $\mathbb{R}$:\\
+	$f:\mathbb{R}\rightarrow\mathbb{R}$ mit $f(x) = a^x$ für $a\in\mathbb{R}_{>0}$ fest.
+	
+	\ref{proposition_potenz_r} $\Rightarrow$ streng monoton wachsend für $a > 1$ bzw. fallend für $a < 1$ (benutze $\frac{1}{a} > 1$)\\
+	$\overset{\text{Satz 1}}{\Rightarrow}$ $f^{-1}$ existiert auf $(0,\infty)$ für $a \neq 1$. Wegen $y = a^{\log_a y}$ (\ref{proposition_logarithmus_r}) ist $f^{-1} (y) = \log_a y$.
+\end{example}
+\begin{example}
+	\begriff{Polynom} in $\mathbb{C}$:\\
+	Abbidlung $f:\mathbb{C}\rightarrow\mathbb{C}$ heißt \highlight{Polynom}, falls $f(z) = a_n z^n + \dotsc + a_1 z + a_0$ für $a_0,\dotsc, a_n\in\mathbb{C}$ fest.
+	\begin{itemize}
+		\item \mathsymbol{grad}{$grad$}$f = n$ falls $a_n\neq 0$
+		\item $f$ ist \begriff{Nullpolynom}, falls $f(z) = 0\,\forall z\in\mathbb{C}$
+		
+		Notation: $f=0$
+		
+		(Menge der Polynome in $\mathbb{C}$ ist ein Vektorraum über $\mathbb{C}$)
+	\end{itemize}
+\end{example}
+\begin{proposition}\label{Polynomdiv}
+	Seien $f,g$ Polynome mit $f(z) = \sum_{k=0}^n a_k z^k, g(z) = \sum_{k=0}^m a_k z^k$. Dann:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $f,g\neq 0$, $\grad f\ge \grad g$\\
+		$\Rightarrow$ existieren eindeutig bestimmte Polynome $q,r$ mit $f = q\cdot g + r$, wobei $r\neq 0$ oder $\grad r < \grad g$
+		\item $z_0\in\mathbb{C}$ Nullstelle von $f\neq 0$ $\Leftrightarrow$ $f(z) = (z - z_0)q(z)$ für ein Plynom $q\neq 0$ mit $\grad q = \grad f -1$
+		\item $f$ hat höchstens $\grad f$ Nullstellen falls $f\neq 0$
+		\item $f(z_i) = g(z_j)$ für $n+1$ paarweise verschiedene Punkte $z_0, \dotsc, z_n\in\mathbb{C}, n = \grad f \ge \grad g$\\
+		$\Rightarrow$ $f(z) = g(z) \,\forall z\in\mathbb{C}$ (d.hz. $a_k = b_k\,\forall k$)
+	\end{enumerate}
+\end{proposition}
+\stepcounter{theorem}
+\begin{definition}
+	Abbildung $f:X\rightarrow Y, Y$ metrischer Raum heißt \begriff{beschränkt}[!Funktion] auf $M\subset X$ , falls Menge $f(M)$ beschränkt in $Y$ ist, sonst unbeschränkt.
+\end{definition}
+\begin{definition}
+	$f:X\to Y$ heißt \begriff{konstante Funktion}, falls $f(x) = a\,\forall x\in X$ und $a\in Y$ fest.
+\end{definition}
+\begin{definition}
+	$M\subset X, X$ normierter Raum heißt \begriff{konvex}, falls $x,y\in M \,\Rightarrow \,tx+(1-t)y \in M\,\forall t\in(0,1)$
+	
+	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\forall x,y\in D, t\in(0,1)$
+	
+	$f$ heißt \begriff{konkav} (bzw. \begriff[konkav!]{strikt}), falls $-f$ (strikt) konvex.
+\end{definition}
+\stepcounter{theorem}
+
+\subsection*{Lineare Funktionen}
+\begin{definition}
+	Seien $X,Y$ normierte Räume über $K$.\\
+	$f: X\rightarrow Y$ heißt \begriff[Abbildung!]{linear}, falls
+	\begin{itemize}
+		\item $f$ \begriff[Abbildung!linear!]{additiv}, d.h. $f(a+b) = f(a) + f(b) \,\forall a,b\in X$ und
+		\item $f$ \begriff[Abbildung!linear!]{homogen}, d.h. $f(\lambda a) = \lambda f(a)\,\forall a\in X,\lambda\in K$
+	\end{itemize}
+
+	$f:X\to Y$ heißt \begriff[Abbildung!linear!]{affin}\highlight{linear}, falls $f+f_0$ linear für eine konstante Funktion $f_0$
+	
+	Offenbar $f$ linear $\Rightarrow\;f(0) = 0$
+\end{definition}
+\stepcounter{theorem}
+\begin{definition}
+	Lineare Abbildung $f:X\to Y$ heißt \begriff{beschränkt}[!lineare Funktion], falls $f$ beschränkt auf $\overline{B_1(0)}$, d.h. \begin{align}
+		\tag{1}\exists\text{ konstante }c > 0: \Vert f(x)\Vert \le c\,\forall x: \Vert x\Vert \le 1
+	\end{align}
+	Wegen $\Vert f\left( \frac{x}{\Vert x \Vert}\right) = \frac{1}{\Vert x \Vert} \Vert f(x) \Vert$ ist (1) äquivalent zu
+	\begin{align}
+		\tag{1'} \Vert f(x) \Vert = \sup \{ \Vert f(x) \Vert | x \in \overline{B_1(0)}\}
+	\end{align}
+\end{definition}
+\begin{proposition}
+	Seien $X,Y$ normierte Räume über $K$, dann:\\
+	\mathsymbol{L}{$L$}$(X,Y):= \{ f:X\to Y \,|\, f \text{ linear und beschränkt} \}$ ist normierter Raum über $K$ mit $\Vert f \Vert = \sup \{ \Vert f(x) \Vert | x\in \overline{B_1(0)} \}$
+\end{proposition}
+
+\subsection*{Exponentialfunktion}
+\begin{definition}
+	$\exp:\mathbb{C}\to \mathbb{C}$ mit $\exp(z) = \sum_{k=0}^\infty \frac{z^k}{k!}$
+\end{definition}
+
+\begin{proposition}
+	Sei $\{z_n\}$ Folge in $\mathbb{C}$ mit $z_n\to z$. Dann: $\lim\limits_{n\rightarrow\infty} \left( 1 + \frac{z_n}{n}\right)^n = \exp (z)$
+\end{proposition}
+
+\begin{lemma}
+	Sei $z_n\to 0$ in $\mathbb{C}\;\Rightarrow\; \lim \frac{\exp(z_n) - 1}{z^n} = 1$
+\end{lemma}
+
+\begin{proposition}
+	Sei $f:\mathbb{C}\rightarrow\mathbb{C}$ mit $f(z_1 + z_2) = f(z_1) \cdot f(z_2) \,\forall z_1, z_2\in\mathbb{C}$ und $\lim\limits_{n\rightarrow\infty} \dfrac{f\left( \frac{z}{n}\right) - 1}{\frac{z}{n}} = \gamma\in\mathbb{C}\,\forall z\in\mathbb{C}$ \\
+	$\Rightarrow \;f(z) = \exp(\gamma z)\,\forall z\in\mathbb{C}$
+\end{proposition}
+
+\begin{conclusion}
+	Funktion $\exp$ ist durch obiges Lemma und Satz eindeutig definiert.
+\end{conclusion}
+\begin{proposition}
+	Es gilt: $e^x = \exp (x) \,\forall x\in \mathbb{R}$
+	
+	Definiert (!) in $\mathbb{C}:\; e^z := \exp(z) \,\forall z\in\mathbb{C}$ (als Potenz nicht erklärt)
+\end{proposition}
+
+\begin{definition}
+	\begriff{natürlicher Logarithmus}: $\ln x = \log_e x\,\forall x\in\mathbb{R}_{>0}$
+	
+	\begriff{Trigonometrische Funktion}:
+	\begin{itemize}
+		\item $\sin z := \frac{e^{iz} - e^{-iz}}{2i} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k+1}}{(2k+1)!} = z - \frac{z^3}{3!} + \frac{z^5}{5!}+ \dotsc \,\forall z\in\mathbb{C}$
+		\item $\cos z := \frac{e^{iz}+e^{-iz}}{2} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k}}{(2k)!} = 1 - \frac{z^2}{4} + \frac{z^4}{24}+\dotsc \,\forall z\in\mathbb{C}$
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	Es gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item \begriff{\person{Euler}'sche Formel}: $e^{iz} = \cos z + i \sin z$
+		\item $\sin^2 z + \cos^2 z = 1\,\forall z\in\mathbb{C}$ (beachte: $\cancel{\rightarrow}\;|\sin z|\le1, |\cos z| \le 1$, $\sin, \cos$ unbeschränkt auf $\mathbb{C}$)
+		\item $\sin(-z) = -\sin z, \cos z = \cos(-z)$
+		\item (\begriff{Additionstheoreme})
+		\begin{itemize}
+			\item $\sin(z+w) = \sin z \cos w + \sin w \cos z \,\forall z,w\in\mathbb{C}$
+			\item $\cos (z+w) = \cos z \cos w - \sin z \sin w \,\forall z,w\in\mathbb{C}$
+		\end{itemize}
+		\item $\sin(2z) = 2\sin z \cos z, \cos(2z) = \cos^2 z - \sin^2 z\,\forall z\in\mathbb{C}$
+		\item $\sin z - \sin w = 2\cos \frac{z+w}{2} - \sin \frac{z+w}{2}$\\
+			  $\cos z - \cos w = -2\sin\frac{z+2}{2}\sin\frac{z-w}{2}$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+	Es gilt $\forall x\in \mathbb{R}:$\\
+	$\,\left| e^{ix}\right| = 1, \sin x = \Im e^{ix}, \cos = \Re e^{ix}$ (insbesondere $\sin x,\cos x \in\mathbb{R}$), somit $e^{ix} = \cos x + i \sin x$
+\end{proposition}
+
+\begin{lemma}
+	Es gilt in $\mathbb{R}$:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\cos$ streng fallend auf $[0,2]$
+		\item $\cos 2 < 0$ und $\sin x > 0\,\forall x\in (0,2]$
+		\item $\phi(x) = \phi(1) \,\forall x\in [0,2]$ und $45 < \phi(x) < 90$ (d.h. $\phi(x)$ proportional zu $x$)
+		\item $\cos \frac{\pi}{2} = 0$ für $\pi := \frac{180°}{\phi(1)}$ ($=3,1415\dotsc$), $\frac{\pi}{2}$ einzige Nulsltelle in $[0,2]$
+	\end{enumerate}
+\end{lemma}
+\stepcounter{theorem}
+\begin{proposition}
+	Für alle $z\in\mathbb{C}, k\in\mathbb{Z}$ gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $e^{z+2k\pi i} = e^z$, d.h. Periode $2\pi i$\\
+		$\sin(z+2k\pi) = \sin z$ (d.h. Periode $2\pi$)\\
+		$\cos(z+2k\pi) = \cos z$ (d.h. Periode $2\pi$)
+		\item $e^{z+i\sfrac{\pi}{2}} = ie^z, e^{z+i\pi} = -e^z$
+		\item $\sin(z+\pi) = -\sin z, \cos(z+\pi) = -\cos z$\\
+		$\sin\left(z+\frac{\pi}{2}\right) = \cos z, \cos\left(z+\frac{\pi}{2}\right) = -\sin z$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+	Auf $\mathbb{C}$ gilt:
+	\begin{itemize}
+		\item $e^z = 1 \,\Leftrightarrow\,z=2k\pi i,\;k\in\mathbb{Z}$
+		\item $\sin z = 0\,\Leftrightarrow\,z=k\pi,\;k\in\mathbb{Z}$
+		\item $\cos z = 0\,\Leftrightarrow\,z =k\pi + \frac{\pi}{2},\;k\in\mathbb{Z}$
+	\end{itemize}
+\end{proposition}
+\subsection*{$\sin$ / $\cos$ in $\mathbb{R}$}
+\begin{centering}
+	\begin{tabular}{c|ccccc}
+		\toprule
+		$x$ & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ \\
+		\midrule
+		$\sin x$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ \\
+		$\cos x$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ \\
+		\bottomrule
+	\end{tabular}
+\end{centering}
+
+\begin{definition}
+	$\sin\left[ -\frac{\pi}{2},\frac{\pi}{2}\right]\to [-1,1]$ streng monoton und surjektiv,\\
+	$\cos[0,\pi]\to[-1,1]$ streng monoton und surjektiv\\
+	$\Rightarrow$ Umkehrfunktion existiert: \begriff{Arcussinus}, \begriff{Arcuscosinus}:
+	\begin{itemize}
+		\item $\arcsin := \sin^{-1}: [-1,1]\to\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$
+		\item $\arccos := \cos^{-1}: [-1,1]\to [0,\pi]$
+	\end{itemize}
+\end{definition}
+
+\subsection*{Tangens und Cotangents}
+\begin{definition}
+	$\tan z z := \frac{\sin z}{\cos z}\,\forall z\in\mathbb{C}\setminus\{ \left.\frac{\pi}{2} + k\pi \right| k\in\mathbb{Z}\}$\\
+	$\cot z := \frac{\cos z}{\sin z}\,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$
+	
+	$\left.\begin{aligned}
+		\text{Offenbar }\tan (z+\pi) &= \frac{\sin (z+\pi)}{\cos(z+\pi)} = \frac{-\sin z}{-\cos z} = \tan z\\
+		\cot(z+\pi) &= \cot (z)
+	\end{aligned}\right\rbrace
+	\begin{gathered}
+		\forall z\in\mathbb{C}, \text{ d.h. Periode $\pi$}
+	\end{gathered}
+	$
+\end{definition}
+
+\subsection*{Tangens auf $\mathbb{R}$}
+\begin{definition}
+	$0 \le x_1 < x_2 < \sfrac{\pi}{2} \,\Rightarrow\,\tan x_1 = \frac{\sin x_1}{\cos x_1} < \frac{\sin x_2}{\cos x_2} = \tan x_2$ \\
+	$\Rightarrow\,\tan (-x) = - \tan(x) $ $\Rightarrow$ streng wachsend auf $\left( \frac{\pi}{2},\frac{\pi}{2}\right)$ \\
+	$\Rightarrow\,\arctan = \tan^{-1}: \mathbb{R}\to \left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ existiert.
+\end{definition}
+\begin{proposition}
+	Es gilt:
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\Re(exp) = \mathbb{C}\setminus\{0\}$
+		\item (\begriff{Polarkoordinaten} auf $\mathbb{C}$)
+		
+		Für $z\in\mathbb{C}\setminus\{0\}$ existiert eindeutiges $\gamma\in[0,2\pi] mit z = |z|e^{i\gamma} = |z|\left( \cos \gamma + i\sin \gamma\right)$ (auch $[-\pi,\pi]$)
+		\item (Wurzeln)
+		
+		Für $Z=|z|e^{i\gamma}\in\mathbb{C}\setminus\{0\}, n\ge 2$ gilt:\\
+		$w^n = z \,\Leftrightarrow\, w\in\left\{ \left. \sqrt[n]{z} e^{i \frac{k}{n} + \frac{2k\pi}{n}} =: w_k \right| k=1,\dotsc,n\right\}$ (Lösungen bilden ein regelmäßiges $N$-Eck auf dem Kreis mit dem Radius $\sqrt[n]{|z|}$)
+	\end{enumerate}
+\end{proposition}
+
+\subsection*{Logarithmen in $\mathbb{C}$} (sog. Hauptzweig)
+\begin{definition}
+	$exp\left( \{ z\in\mathbb{C}\,|\, \Im z < \pi \}\right) \to \mathbb{C}\setminus (\infty, 0]$ ist bijektiv \\
+	$\Rightarrow$ Umkehrabbildung $\ln:\mathbb{C}\setminus(-\infty,0]$ gilt: $e^{\ln |z| + i\gamma} = |z|e^{i\gamma} = z$\\
+	$\Rightarrow\,\ln z = \ln |z| + i\gamma \,\forall z=|z|e^{i\gamma}\in\mathbb{C}\setminus(-\infty,0)$\\
+	$\Rightarrow \,\ln z$ stimmt auf $\mathbb{R}_{>0}$ mit rellen $\ln$ überein.
+\end{definition}
+
+\subsection*{Hyperbolische Funktionen}
+\begin{definition}
+	\begin{itemize}
+		\item $\sinh (z) = \frac{e^z - e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k+1}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Sinus Hyperbolicus})
+		\item $\cosh (z) = \frac{e^z+e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Cosinus Hyperbolicus})
+		\item $\tanh (z) = \frac{\sinh (z)}{\cosh (z)}\,\forall z\in\mathbb{C}\setminus\left\lbrace \left.\frac{\pi}{2} + k\pi  \right| k\in\mathbb{Z} \right\rbrace$ (\begriff{Tangens Hyperbolicus})
+		\item $\coth(z) = \frac{\cosh(z)}{\sinh(z)} \,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$ (\begriff{Cotangens Hyperbolicus})
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	Es gilt $\forall z,w\in\mathbb{C}$
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\sin h = -i\sin(z), \cos (z) = \cosh(iz), \sinh(-z) = -\sinh(z), \cosh(-z) = \cosh(x)$ (gibt auch Nullstellen vom $\sinh / \cosh$)
+		\item $\sinh, \cosh$ haben Periode $2\pi i$, $\tanh, \coth$ haben Periode $\pi i$
+		\item $\cosh^2 z - \sin^2 z = 1$
+		\item $\sinh(z+w) = \sinh z \cosh w + \sinh w \cosh z$\\
+		$\cosh (z+w) = \cosh z \cosh w + \sinh z \sin w$
+	\end{enumerate}
+\end{proposition}
+\rule{4cm}{0.4pt}
+\begin{definition}
+	Sei $f_n X\to Y$, $Y$ metrischer Raum ($X$ beliebige Menge), $n\in\mathbb{N}$. $\{f_n\}_{n\in\mathbb{N}}$ heißt \begriff{Funktionenfolge}.
+	
+	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{punktweise} gegen $f:X\to Y$ auf $M\subset X$, falls $f_n(x) \overset{n\rightarrow\infty}{\longrightarrow} f(x) \,\forall x\in M$
+	
+	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{gleichmäßig} gegen $f:X\to Y$ auf $M\subset X$, falls \[ \forall \epsilon > 0 \,\exists n_0\in\mathbb{N}: d(f_n(x), f(x)) < \epsilon\quad \forall n\ge n_0\,\forall x\in M \]
+	Notation: \mathsymbol*{->}{$\rightrightarrows$} $f_n(x) \overset{n\rightarrow\infty}{\rightrightarrows} f(x)$ bzw. $f_n\overset{n\rightarrow\infty}{\longrightarrow}f$ gleichmäßig auf $M$.
+\end{definition}
+
+\begin{lemma}
+	$f_n\to f$ gleichmäßig auf $M$ $\Rightarrow$ $f_n(x)\to f(x)\,\forall x\in M$ (d.h. punktweise auf $M$)
+\end{lemma}
+
+\begin{proposition}
+	Seien $f_n, f\in B(X,Y)$. Dann ($X$ metrischer Raum):
+	\begin{center}
+		$f_n \to f$ gleichmäßig auf $X$ $\Leftrightarrow$ $f_n \to f$ in $(B(X,Y),\Vert.\Vert_1\infty)$
+	\end{center}
+\end{proposition}
+
+\begin{definition}
+	Sei $f_n.:X\to Y$, $Y$ normierter Raum ($X$ beliebige Menge), $n\in\mathbb{N}$: $\sum_{n=0}^\infty f_n$ heißt \begriff{Funktionenreihe}
+	
+	Reihe $\sum_n f_n$ heißt \begriff[Konvergenz!]{punktweise}[!Funktionenreihe] (\begriff[Konvergenz!]{gleichmäßig}[!Funktionenreihe]) konvergent gegen $f:X\to Y$ auf $M\subset X$, falls dies für die zugehörige Folge (Partialsumme!) $\{s_n\}$ gilt.
+\end{definition}
+
+\begin{proposition}
+	Sei $\sum_{k=0}^\infty a_k(z-z_0)^k$ Potenzreihe in $\mathbb{C}$ mit Konvergenzradius $R\in(0,\infty]$ und sei $M\subset B_R(z_0)$ kompakt\\
+	$\Rightarrow$ Potenzreihe konvergiert gleichmäßig auf $M$.
+\end{proposition}
