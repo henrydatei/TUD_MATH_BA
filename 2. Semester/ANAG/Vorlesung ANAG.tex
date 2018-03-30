@@ -46,6 +46,8 @@
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
@@ -194,6 +196,17 @@
 	innerleftmargin=10pt,%
 ]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 \newtheorem{overview}[theorem]{Überblick}
+
+\newmdtheoremenv[%
+	style=boxedtheorem,%
+	topline=false,%
+	rightline=false,%
+	leftline=false,
+	bottomline=false,%
+	innertopmargin=\topskip,%
+	innerbottommargin=\topskip,%
+	backgroundcolor=lightgrey,%
+]{*anmerkung}{Anmerkung}
 
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)

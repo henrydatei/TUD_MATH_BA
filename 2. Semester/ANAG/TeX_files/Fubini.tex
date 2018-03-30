@@ -1,8 +1,6 @@
 \section{Satz von \person{Fubini} und Mehrfachintegrale} \setcounter{equation}{0}
 
-\begin{underlinedenvironment}[Ziel]
-	Reduktion der Berechnung von Integralen auf $\mathbb{R}^n$ $\int_{\mathbb{R}^n} f \D x$ auf Integrale über $\mathbb{R}$.
-\end{underlinedenvironment}
+\textbf{Ziel:} Reduktion der Berechnung von Integralen auf $\mathbb{R}^n$ $\int_{\mathbb{R}^n} f \D x$ auf Integrale über $\mathbb{R}$.
 
 Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,y)\in X\times Y$. $\vert M \vert_X$ Maß auf $X$, $\mathcal{Q}_X$ Quader in $X$ usw.
 
@@ -17,7 +15,7 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 	\end{enumerate}
 \end{theorem}
 
-\begin{*definition}
+\begin{*definition}[iteriertes Integral, Mehrfachintegral]
 	Rechte Seite in \eqref{fubini_fubini_eq} heißt \begriff{iteriertes Integral} bzw. \begriff{Mehrfachintegral}.
 \end{*definition}
 
@@ -222,10 +220,10 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 \end{example}
 
 \subsection{Integration durch Koordinatentransformation}
-\begin{*definition}
+\begin{*definition}[Diffeomorphismus, diffeomorph]
 Sei $f:U\subset K^n\to V\subset K^m$ bijektiv, wobei $U$, $V$ offen.
 
-$f$ heißt \begriff{Diffeomorphismus}, falls $f$ und $f^{-1}$ stetig \gls{diffbar} auf $U$ bzw. $V$ sind.
+$f$ heißt \begriff{Diffeomorphismus}, falls $f$ und $f^{-1}$ stetig \gls{differenzierbar} auf $U$ bzw. $V$ sind.
 
 $U$ und $V$ heißen dann \begriff{diffeomorph}.
 \end{*definition}
@@ -267,7 +265,7 @@ $\xRightarrow{\eqref{fubini_trafo_trafosatz_eq}}$ $\vert V \vert = \int_V 1 \D y
 	
 	Mit $H:= \{ (x,0,z)\in\mathbb{R}\mid x\le 0 \}$ und $\tilde{V} := V\setminus H$ gilt: $\vert H\vert_{\mathbb{R}^3} = 0$
 	
-	$\phi: U\to\tilde{V}$ \gls{diffbar}, injektiv, und \begin{align*}
+	$\phi: U\to\tilde{V}$ \gls{differenzierbar}, injektiv, und \begin{align*}
 		\phi'(r,\alpha,\beta) &= \begin{pmatrix}
 			\cos\alpha \cos \beta & -r\sin \alpha\cos\beta & -r\cos\alpha\sin\beta \\
 			\sin\alpha\cos\beta & r \cos\alpha\cos\beta & -r\sin\alpha\sin\beta \\
@@ -297,7 +295,7 @@ $\xRightarrow{\eqref{fubini_trafo_trafosatz_eq}}$ $\vert V \vert = \int_V 1 \D y
 			r\cos \alpha \\ r \sin\alpha \\ z
 		\end{pmatrix}
 	\end{align*}
-	auf \[U= \{ (r,\alpha,z) \in\mathbb{R}^3 \mid r \in (0, g(z)), \alpha\in (-\pi,\pi),z\in(a,b) \},\] mit $H:= \{ (x,0,z) \in\mathbb{R}^3 \mid x \le 0 \}$, $\tilde{V} := V \setminus H $ gilt $\vert H \vert = 0$ und $\phi:U\to\tilde{V}$ \gls{diffbar}, injektiv, sowie \begin{align*}
+	auf \[U= \{ (r,\alpha,z) \in\mathbb{R}^3 \mid r \in (0, g(z)), \alpha\in (-\pi,\pi),z\in(a,b) \},\] mit $H:= \{ (x,0,z) \in\mathbb{R}^3 \mid x \le 0 \}$, $\tilde{V} := V \setminus H $ gilt $\vert H \vert = 0$ und $\phi:U\to\tilde{V}$ \gls{differenzierbar}, injektiv, sowie \begin{align*}
 		\phi'(r,\alpha,z) = \begin{pmatrix}
 			\cos \alpha & - r\sin \alpha & 0 \\ \sin \alpha & r \cos \alpha & 0 \\ 0 & 0 & 1
 		\end{pmatrix} = r > 0\text{ auf $U$}

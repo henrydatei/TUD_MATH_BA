@@ -1,16 +1,15 @@
 \section{Höhere Ableitungen und \person{Taylor}-scher Satz}\setcounter{equation}{0}
 
-\begin{underlinedenvironment}[Vorbetrachtung]
-	Sei $X$ endlich dimensionaler, normierter Raum über $K$ (d.. Vektorraum über $K$ mit Norm $\Vert \,\cdot \Vert$, $\dim X =l\in\mathbb{N}$).
+\textbf{Vorbetrachtung:} Sei $X$ endlich dimensionaler, normierter Raum über $K$ (d.. Vektorraum über $K$ mit Norm $\Vert \,\cdot \Vert$, $\dim X =l\in\mathbb{N}$).
 	
 	Offebar sind $X$ und $K^l$ isomorph als Vektorraum, schreibe $X\cong K^l$, z.B. $X = L(K^n,K^m)\cong K^{m\cdot n}$.
 	
 	Für $g:D\subset K^n\to X$, $D$ offen, kann man die bisherigen Resultate bezüglich der Ableitung übertragen. $g'(x)\in L(K^n, X)$ heißt Ableitung von $g$ im Punkt $x\in D$, falls \begin{align*}
 		g(x + y) = g(x) + g'x() y + o(\vert y\vert), \;y\to 0
 	\end{align*}
-\end{underlinedenvironment}
-	\begin{*definition}
-	Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{diffbar} in $x\in D$ ist, heißt \begin{align}
+	
+	\begin{*definition}[zweite Ableitung]
+	Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{differenzierbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{differenzierbar} in $x\in D$ ist, heißt \begin{align}
 		f''(x) := g'(x)\in L(K^n, Y_1) = L\big( K^n, \underbrace{L(K^n, K^m)}_{\cong K^{m\times n}}\big)
 	\end{align}
 	\begriff{zweite Ableitung} von $f$ in $X$.
@@ -31,8 +30,7 @@
 	\emph{beachte:} Ausdruck für $f''(x + y)\cdot z$ ist jeweils linear in $y$ und $z$.
 \end{underlinedenvironment}
 
-\begin{underlinedenvironment}[Frage]
-	höhere Ableitungen, d.h. von $f'':D\to L(K^n, Y_1)$ usw.
+\textbf{Frage:} höhere Ableitungen, d.h. von $f'':D\to L(K^n, Y_1)$ usw.
 	
 	Offenbar: \begin{align*}
 		g_2&:= L(K^n, Y_1) = L\big(K^n, L(K^n K^m)\big) \cong L(K^n, K^{m\times n}) \cong L(K^n, K^{m\times n}) \cong K^{m\cdot n^2}\\
@@ -52,21 +50,20 @@
 		\begin{tabularx}{\linewidth}{l@{\ }c@{\ }X}
 			$f^{(0)}$ & := & $f:D\subset K^n\to K^m$, $D$ offen.\\
 		\end{tabularx}
-		Falls $f^{(k)}:D\to Y_k$ \gls{diffbar} in $x\in D$ heißt \[ f^{(k+1)}(x) := \left( f^{(k)} \right) (x)\in L(K^n, Y_k)  \]
+		Falls $f^{(k)}:D\to Y_k$ \gls{differenzierbar} in $x\in D$ heißt \[ f^{(k+1)}(x) := \left( f^{(k)} \right) (x)\in L(K^n, Y_k)  \]
 		\begriff{$(k+1)$-te Ableitung} von $f$ in $x$. (\emph{beachte:} $f^{(1)}(x) = f'(x)$)
 		
 		Somit gilt: \begin{align}
 			f^{(k)} (x + y) = f^{(k)}(x) + f^{(k+1)}(x) \cdot y + o(\vert y \vert) \;(\in Y_k), \;y\to 0
 		\end{align}
 	\end{enumerate}
-\end{underlinedenvironment}
 
-\begin{*definition}
+\begin{*definition}[$k$-fach differenzierbar]
 	$f$ heißt \begriff{$k$-fach differenzierbar} (auf $D$), falls $f^{(k)}$(x) existiert $\forall x\in D$.
 	
-	$f$ heißt $k$-fach stetig \gls{diffbar} (auf $D$) oder $C^k$-Funktion, falls $f$ $k$-fach \gls{diffbar} und $f^{(k)}:D\to Y_k$ stetig.
+	$f$ heißt $k$-fach stetig \gls{differenzierbar} (auf $D$) oder $C^k$-Funktion, falls $f$ $k$-fach \gls{differenzierbar} und $f^{(k)}:D\to Y_k$ stetig.
 	
-	$C^k(D, K^m) := \{ f:D\to K^m\mid $f$ \text{ $k$-fach stetig \gls{diffbar} auf $D$} \}$
+	$C^k(D, K^m) := \{ f:D\to K^m\mid $f$ \text{ $k$-fach stetig \gls{differenzierbar} auf $D$} \}$
 \end{*definition}
 
 \begin{underlinedenvironment}[Hinweis]
@@ -83,10 +80,26 @@
 
 \begin{example}
 	Für $f:\mathbb{R}\to\mathbb{R}$ mit $f(x) = x\cdot \sin x$\\ \begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }l}
-		$\Rightarrow$ & $f'(x)$ & = & $\sin x + x\cdot \cos $ \\
+		$\Rightarrow$ & $f'(x)$ & = & $\sin x + x\cdot \cos x $ \\
 		$\Rightarrow$ & $f''(x)$ & = & $\cos x + \cos x - x \sin x = 2 \cos x - x \sin x$ \\
 		$\Rightarrow$ & $f'''(x)$ & = & $-3\sin x - x\cos x$ usw.
 	\end{tabularx}
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {x*sin(deg(x))};
+		\addlegendentry{$x\cdot\sin(x)$}
+		\addplot+[mark=none, dashed] {sin(deg(x))+x*cos(deg(x))};
+		\addlegendentry{$\sin(x)+x\cdot\cos(x)$}
+		\addplot+[mark=none, dotted] {2*cos(deg(x))-x*sin(deg(x))};
+		\addlegendentry{$2\cos(x)-x\cdot\sin(x)$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{example}
@@ -132,7 +145,7 @@
 	Man schreibt auch $f\in C^\infty(\mathbb{R},\mathbb{R})$
 \end{example}
 
-\begin{underlinedenvironment}[Räume $Y_k$] $=L(K^n, Y_{k-1}) \cong K^{m\times n^k}$.
+\textbf{Räume $Y_k$} $=L(K^n, Y_{k-1}) \cong K^{m\times n^k}$.
 
 Für $A\in Y_k = L(K^n, Y_{k-1})$ und $y_1, \dotsc, y_k\in K^n$ gilt:
 
@@ -144,9 +157,8 @@ $(\dotsc (A y_1) y_2) \dotsc \cdot y_k)$ & $ \in Y_0$ & $ = K^m$
 \end{tabularx}
 
 Ausdrücke links sind offebar linear in jedem $y_j\in K^n$ separat, $j=1\dotsc,k$
-\end{underlinedenvironment}
 
-\begin{*definition}
+\begin{*definition}[$k$-lineare Abbildung]
 Betrachte \begin{align*}
 X_k &:= L^k(K^n, K^m) \\
 &:= \{ B: \underbrace{K^n \times \dotsc \times K^n}_{\text{$k$-fach}} \to K^m \mid y_j \to B(y_1, \dotsc, y_k) \text{ linear für jedes $j=1,\dotsc,k$ }\}
@@ -208,8 +220,7 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 	$\Rightarrow$ $I_k$ Isomorphismus
 \end{proof}
 
-\begin{underlinedenvironment}[Norm]
-	in $X_k$, $Y_k$: für $A\in Y_k$ folgt durch rekursive Definition \begin{align}
+\textbf{Norm} in $X_k$, $Y_k$: für $A\in Y_k$ folgt durch rekursive Definition \begin{align}
 		\notag
 		& \left(\dotsc\left(  \left( A \frac{y_1}{\vert y_1\vert}\right) \frac{y_2}{\vert y_2 \vert} \right) \dotsc \frac{y_k}{\vert y_k \vert} \right) \le \Vert A\Vert_{Y_k} \quad \forall y_j\in K^n,\; y_j\neq 0 \\
 		\proplbl{taylor_hoehere_ableitungen_norm}
@@ -222,7 +233,6 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 		\proplbl{taylor_hoehere_ableitung_abschaetzung_norm}
 		\vert A(y_1, \dotsc, y_k)\vert \le \Vert A\Vert_{X_k} \vert y_1 \vert \cdot \dotsc \cdot \vert y_k\vert \quad\forall y_j\in K^n
 	\end{align}
-\end{underlinedenvironment}
 
 \begin{proposition}
 	Mit Isomorphismus $I_k: Y_k\to X_k$ aus \propref{taylor_ismomorphismus_yk_xk} gilt: \begin{align*}
@@ -241,10 +251,9 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 \subsection{Partielle Ableitungen}
 Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Standard-Einheitsvektoren
 
-\begin{underlinedenvironment}[Wdh]
-	Partielle Ableitung $f_{x_j} (x) = \frac{\partial}{\partial x_j}f(x) = D_{x_j} f(x)$ ist Richtungsableitung $f'(x, e_j) = D_{e_j} f(x) \in L(K, K^m)$.
-\end{underlinedenvironment}
-\begin{*definition}
+\textbf{Wiederholung:} Partielle Ableitung $f_{x_j} (x) = \frac{\partial}{\partial x_j}f(x) = D_{x_j} f(x)$ ist Richtungsableitung $f'(x, e_j) = D_{e_j} f(x) \in L(K, K^m)$.
+
+\begin{*definition}[partielle Ableitung]
 	Nenne $f_{x_1}(x), \dotsc, f_{x_1}(x)$ \uline{partielle Ableitung }\begriff[partielle Ableitung!]{1. Ordnung} von $f$ in $X$
 	
 	Für $g:D\to X$ definieren wir die partielle Ableitung $\frac{\partial}{\partial x_j} g(x) = g_{x_j}(x)\in L(K, X)$ analog zu \propref{richtungsableitung}:\begin{align}
@@ -276,16 +285,14 @@ Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Stand
 		f_{xy}(x,y) &= \cos x & f_{yx}(x,y) &= \cos x
 	\end{align*}
 	
-	\begin{underlinedenvironment}[Beobachtung]
-		$f_{xy}(x,y) = f_{yx}(x,y)$
-	\end{underlinedenvironment}
+\textbf{Beobachtung:} $f_{xy}(x,y) = f_{yx}(x,y)$
 \end{example}
 
 Abkürzende Schreibweise: \begin{align*}
 	f_{x_j x_j x_j}(x) &= \frac{\partial^3}{\partial x_j \partial x_j \partial x_j} f(x) = \frac{\partial^3}{\partial x_j^3} f(x) \\
 	f_{x_i x_j x_i x_l x_l}f(x) &= \frac{\partial}{\partial x_l^2 \partial x_j^2 \partial x_i} f(x)
 \end{align*}
-\begin{*definition}
+\begin{*definition}[\person{Hesse}-Matrix]
 Für $m=1$ (d.h. $f:D\subset\mathbb{R}^n\to K$) ist 
 \begin{align*}
 	\begin{pmatrix}
@@ -342,12 +349,12 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 		\end{align}
 		\item \proplbl{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b}
 		Falls alle partiellen Ableitungen $f_{x_{j_1}\dots x_{j_k}}$ der Ordnung $k$ für alle $y\in B_r(x)\subset D$ existieren und falls diese stetig sind \\
-		\ \ $\Rightarrow$ $f$ ist $k$-fach \gls{diffbar}, d.h. $f^{(k)}(x)$ existiert.
+		\ \ $\Rightarrow$ $f$ ist $k$-fach \gls{differenzierbar}, d.h. $f^{(k)}(x)$ existiert.
 	\end{enumerate}
 \end{theorem}
 
 \begin{remark}
-	\propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung} \ref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b} ist ein wichtiges Kriterium zur Prüfung der \gls{diffbar}keit, $k$-te Ableitung kann dann mittels \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq} bestimmt werden.
+	\propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung} \ref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b} ist ein wichtiges Kriterium zur Prüfung der \gls{differenzierbar}keit, $k$-te Ableitung kann dann mittels \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq} bestimmt werden.
 \end{remark}
 
 \begin{proof}
@@ -399,9 +406,7 @@ Analoge Rechnung liefert allgemein
 	Für höhere Ableitungen wird die Darstellung $f^{(k)}(x)(y_1, \dotsc, y_k)$ allgemein mittels partiellen Ableitungen immer komplexer, wird allerdings auch selten benötigt.
 \end{remark}
 
-\begin{underlinedenvironment}[Frage]
-	Kann man die Reihenfolge bei partiellen Ableitungen vertauschen? (vgl. \propref{taylor_partielle_ableitungen_beispiel_9})
-\end{underlinedenvironment}
+\textbf{Frage:} Kann man die Reihenfolge bei partiellen Ableitungen vertauschen? (vgl. \propref{taylor_partielle_ableitungen_beispiel_9})
 
 \begin{example}
 	Sei $f:\mathbb{R}^2\to\mathbb{R}^2$ mit\begin{align*}
@@ -435,7 +440,7 @@ Analoge Rechnung liefert allgemein
 
 \begin{conclusion}
 	\proplbl{taylor_partielle_ableitung_schwarz_folgerung}
-	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ $k$-fach \gls{diffbar} (d.h. $f\in C^k(D,\mathbb{R}^m)$) \\
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ $k$-fach \gls{differenzierbar} (d.h. $f\in C^k(D,\mathbb{R}^m)$) \\
 	\ $\Rightarrow$ alle partiellen Ableitung bis Ordnung $k$ existieren und die Reihenfolge kann vertauscht werden.
 \end{conclusion}
 
@@ -459,7 +464,7 @@ Analoge Rechnung liefert allgemein
 		\vert f_{x_i x_j}(x + s\cdot e_i + t\cdot e_j) - f_{x_i x_j}(x)\vert < \epsilon \quad\forall s,t\in(-\delta,\delta)
 	\end{align}
 	
-	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{diffbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
+	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{differenzierbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow{\text{MWS}}$ & $\exists \sigma \in (0,s): \phi(s) - \phi(0) = \phi'(\sigma)s = \left(f_{x_i}(x + \sigma e_i + t e_j) - f_{x_i}(x + \sigma e_i)\right)s$ \marginnote{MWS = Mittelwertsatz, \propref{mittelwertsatz_mittelwertsatz}}\\
 	$\xRightarrow{\text{MWS}}$ & für $t\to f_{x_i}(x + \sigma e_i + t e_j)$: $\exists \tau \in (0,t): \phi(s) - \phi(0) = f_{x_i x_j}(\underbrace{x + \sigma e_i + \tau e_j}_{=: \tilde{x}}) s t$ ($\sigma$, $\tau$ abhängig von $s$, $t$)
@@ -481,13 +486,11 @@ Analoge Rechnung liefert allgemein
 \end{proof}
 
 \subsection{Anwendungen}
-\begin{underlinedenvironment}[Frage]
-	Wann besitzt $fD\subset\mathbb{R}^n\to\mathbb{R}^{m\times n}$ eine Stammfunktion? (Vgl. \propref{stammfunktion}, \gls{obda} $m=1$)
-\end{underlinedenvironment}
+\textbf{Frage:} Wann besitzt $fD\subset\mathbb{R}^n\to\mathbb{R}^{m\times n}$ eine Stammfunktion? (Vgl. \propref{stammfunktion}, \gls{obda} $m=1$)
 
 \begin{proposition}[notwendige Integrabilitätsbedingung]
 	\proplbl{taylor_anwendung_integrabilitaetsbedinung}
-	Sei $f=(f_1, \dotsc, f_n): D\subset\mathbb{R}^n\to\mathbb{R}^n$, $D$ Gebiet\marginnote{Gebiet: offen, zusammenhängend}, $f$ stetig \gls{diffbar}.
+	Sei $f=(f_1, \dotsc, f_n): D\subset\mathbb{R}^n\to\mathbb{R}^n$, $D$ Gebiet\marginnote{Gebiet: offen, zusammenhängend}, $f$ stetig \gls{differenzierbar}.
 	
 	Damit $f$ eine Stammfunktion $F:D\to \mathbb{R}$ besitzt, muss folgende \begriff{Integrabilitätsbedingung} erfüllt sein: \begin{align}
 		\proplbl{taylor_anwendung_integrabilitaetsbedinung_eq}
@@ -521,7 +524,7 @@ Analoge Rechnung liefert allgemein
 \end{example}
 
 \begin{proposition}
-	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen und konvex, $f$ stetig \gls{diffbar}. Dann:\begin{enumerate}[label={\alph*)}]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen und konvex, $f$ stetig \gls{differenzierbar}. Dann:\begin{enumerate}[label={\alph*)}]
 		\item $f$ konvex $\Leftrightarrow$ $\langle f'(x), y- x\rangle \le f(y)f(x)$ $\forall x,y\in D$
 		\item falls sogar $f\in C^2(D)$, dann: \begin{center}
 			%@TODO zu definit linken
@@ -534,26 +537,21 @@ Analoge Rechnung liefert allgemein
 \end{proof}
 
 \subsection{\person{Taylor}-scher Satz}
-\begin{underlinedenvironment}[Ziel]
-	Bessere Approximation als durch Linearisierung
-\end{underlinedenvironment}
+\textbf{Ziel:} Bessere Approximation als durch Linearisierung
 
 Verwende \begriff{allgemeine Polynome} $\phi:K^n\to K$ der Ordnung $k$, d.h. \begin{align}
 	\phi(x) = a_0 + \sum_{i=1}^n a_i x_i + \sum_{i,j=1}^n a_{ij} x_i x_j + \dotsc + \sum_{j_1,\dotsc,j_k}^n a_{j_1\dots j_k} x_{j_1}\cdot\dots\cdot x_{j_k}
 \end{align}
 mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 
-\begin{underlinedenvironment}[Notation]
-	$f^{(k)}(x)(y,\dotsc,y) = f^{(k)}(x) y^k$
-\end{underlinedenvironment}
-\begin{underlinedenvironment}[Wdh]
-	$f\in C(D)$: $f(x+y) = f(x) + o(1)$, $y\to 0$ \\
-	$f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
-\end{underlinedenvironment}
+\textbf{Notation:} $f^{(k)}(x)(y,\dotsc,y) = f^{(k)}(x) y^k$\\
+
+\textbf{Wiederholung:} $f\in C(D)$: $f(x+y) = f(x) + o(1)$, $y\to 0$ \\
+$f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 
 \begin{theorem}[\person{Taylor}-scher Satz]
 	 \proplbl{taylor_taylor}
-	Sei $f:D\subset K^n\to K^m$, $D$ offen, $k$-fach \gls{diffbar} auf $D$, $x\in D$. Dann \begin{align}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $k$-fach \gls{differenzierbar} auf $D$, $x\in D$. Dann \begin{align}
 		\proplbl{taylor_taylor_eq}
 		f(x+y) = f(x) + \sum_{j=1}^{k-1} \frac{1}{j!} f^{(j)}(x) y^j + R_k(y)\quad\text{falls $[x,x+y]\subset D$,}
 	\end{align}
@@ -587,9 +585,9 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{align*}
 	Offenbar $\phi(1) = 0 = \phi(0)$.
 	
-	Da $f$ $k$-fach \gls{diffbar}\\
+	Da $f$ $k$-fach \gls{differenzierbar}\\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\phi:[0,1]\to K^m$ $\mathbb{R}$-\gls{diffbar} auf $(0,1)$ mit
+	$\Rightarrow$ & $\phi:[0,1]\to K^m$ $\mathbb{R}$-\gls{differenzierbar} auf $(0,1)$ mit
 	\end{tabularx} {\begin{align}
 		\proplbl{taylor_taylor_beweis_24}
 		\notag\phi'(t) &= -f'(x + ty) \cdot y + \sum_{j=1}^{k-1}\left( \frac{(1 - t)^{j-1}}{(j - 1)!} f^{(j)}(x + ty) y^j - \frac{(1 - t)^j}{j!} f^{(j+1)}(x + ty) y^{j+1}\right) + k (1 - t)^{k - 1} R_k(y) \\
@@ -603,7 +601,7 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 		
 		\item zu \eqref{taylor_taylor_restglied_eq_eins} mit $K=\mathbb{R}$: Sei $\psi(t) := \langle \phi(t), v\rangle$ für $v\in\mathbb{R}^n$ \\
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & $\psi:[0,1]\to\mathbb{R}$ \gls{diffbar} auf $(0,1)$ mit $\psi'(t) = \langle \phi'(t),r\rangle$ \\
+		$\Rightarrow$ & $\psi:[0,1]\to\mathbb{R}$ \gls{differenzierbar} auf $(0,1)$ mit $\psi'(t) = \langle \phi'(t),r\rangle$ \\
 		$\xRightarrow{\text{MWS}}$ & $\exists \tau\in(0,1)$: $0= \langle \phi'(\tau), v\rangle$
 		\end{tabularx}
 		 {\begin{flalign}
@@ -631,14 +629,14 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{enumerate}
 \end{proof}
 
-\begin{*definition}
+\begin{*definition}[Taylorpolynom, Taylorentwicklung]
 	Rechte Seite in \eqref{taylor_taylor_eq} ohne Restglied heißt \uline{Taylorpolynom}\begriff*[Taylor-!]{polynom} von $f$ in $x$ vom Grad $k-1$.
 	
 	\eqref{taylor_taylor_eq} heißt \uline{Taylorentwicklung}\begriff*[Taylor-!]{entwicklung} von $f$ in $x$.
 \end{*definition}
 
 \begin{conclusion}[\person{Taylor}-Formel mit partiellen Ableitungen]
-	Sei $f:D\subset K^n\to K^m$, $d$ offen, $f$ $k$-fach \gls{diffbar} auf $D$, $x\in D$, $[c,c+y]\subset D$: \begin{align}
+	Sei $f:D\subset K^n\to K^m$, $d$ offen, $f$ $k$-fach \gls{differenzierbar} auf $D$, $x\in D$, $[c,c+y]\subset D$: \begin{align}
 		\proplbl{taylor_taylor_partielle_ableitungen_eq}
 		f(x + y) = f(x) = \sum_{l=1}^{k-1} \frac{1}{l!} \sum_{j=1}^n f_{x_{j_l}\dots x_{j_1}}(x) y_{j_1}\dots y_{j_l} + R_k(y),
 	\end{align}
@@ -686,13 +684,12 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{align*}
 \end{example}
 
-\begin{underlinedenvironment}[Frage]
-	Falls $f\in C^\infty(D)$ existiert, dann \begin{align}
+\textbf{Frage:} Falls $f\in C^\infty(D)$ existiert, dann \begin{align}
 		\proplbl{taylor_taylor_reihe_eq}
 		f(x + y) = f(x) * \sum \frac{1}{k!}f^{(k)}(x) y^k + \cancel{o(\vert y \vert^k)}\quad \text{für $k=1,\dotsc,n$}
 	\end{align}
-\end{underlinedenvironment}
-\begin{*definition}
+
+\begin{*definition}[Taylorreihe]
 	Rechte Seite in \eqref{taylor_taylor_reihe_eq} heißt \uline{Taylorreihe}\begriff*[Taylor-!]{reihe} von $f$ in $x$.
 \end{*definition}
 
@@ -724,9 +721,7 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{tabularx}
 \end{example}
 
-\begin{underlinedenvironment}[Wiederholung]
-	Eine Reihe ist konvergent, falls die Folge der Partialsummen konvergieren, und damit \eqref{taylor_taylor_reihe_eq} gilt, muss die Reihe \emph{auch} gegen $f(x+y)$ konvergieren!
-\end{underlinedenvironment}
+\textbf{Wiedeholung:} Eine Reihe ist konvergent, falls die Folge der Partialsummen konvergieren, und damit \eqref{taylor_taylor_reihe_eq} gilt, muss die Reihe \emph{auch} gegen $f(x+y)$ konvergieren!
 
 \begin{proposition}[Taylorreihe]
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f\in C^\infty(D, K^m)$, $x\in D$, $B_r(x)\subset D$. Falls \begin{align*}

@@ -1,12 +1,10 @@
 \section{Stammfunktionen} \proplbl{stammfunktion} \setcounter{equation}{0}
 Sei $f:D\subset K^n\to K^{m\times n}$ ($\cong L(K^n, K^m)$)
 
-\begin{underlinedenvironment}[Frage]
-	Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
-\end{underlinedenvironment}
+\textbf{Frage:} Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
 
-\begin{*definition}
-	$F: D\subset K^n\to K^m$ heißt \begriff{Stammfunktion} oder \emph{unbestimmtes} \begriff{Integral}[!unbestimmt] von $f$ auf $D$, falls $F$ \gls{diffbar} und $F'(x) = f(x)$ $\forall x\in D$
+\begin{*definition}[Stammfunktion, unbestimmtes Integral]
+	$F: D\subset K^n\to K^m$ heißt \begriff{Stammfunktion} oder \emph{unbestimmtes} \begriff{Integral}[!unbestimmt] von $f$ auf $D$, falls $F$ \gls{differenzierbar} und $F'(x) = f(x)$ $\forall x\in D$
 \end{*definition}
 
 \begin{proposition}
@@ -30,7 +28,7 @@ Sei $f:D\subset K^n\to K^{m\times n}$ ($\cong L(K^n, K^m)$)
 \begin{proof}
 	\marginnote{Intervall $I\subset\mathbb{R}$ sind zusammenhängend} \hspace*{0pt}
 	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
-		\item["`$\Leftarrow$"'] Offenbar $F$ \gls{diffbar} mit $\tilde{F}' = F' = f$
+		\item["`$\Leftarrow$"'] Offenbar $F$ \gls{differenzierbar} mit $\tilde{F}' = F' = f$
 		\item["`$\Rightarrow$"'] Offenbar $\tilde{F}'(x) - F'(x) = 0$ $\forall x\in D$ 
 		$\xRightarrow{\text{\propref{mittelwertsatz_ableitung_null_konstante_funktion}}}$ $\tilde{F}(x) - F(x) = c$ für ein $c\in K^m$
 	\end{itemize}
@@ -43,11 +41,8 @@ Sei $f,g:D\subset K^n\to K^{m\times n}$, $D$ Gebiet, $c\in K$. Dann liefert \pro
 \int c f \D x &= c \int f \D x
 \end{split}
 \end{equation}
-Falls jeweils die rechte Seite existiert, d.h. $f\to \int f\D x$ ist in gewisser Weise linear.
-
-\begin{underlinedenvironment}
-	Aussage bleibt richtig, wenn $D$ nur offen, wir beschränken uns meist aber auf Gebiete.
-\end{underlinedenvironment}
+Falls jeweils die rechte Seite existiert, d.h. $f\to \int f\D x$ ist in gewisser Weise linear. \\
+Aussage bleibt richtig, wenn $D$ nur offen, wir beschränken uns meist aber auf Gebiete.
 
 Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$ offen. Die Beispiele zur Differentiation liefern folgende Stammfunktionen
 
@@ -87,9 +82,8 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 	\end{tabularx}
 \end{minipage}
 
-\begin{underlinedenvironment}[Strategie]
-	Rechenregeln für weitere Stammfunktionen
-\end{underlinedenvironment}
+\textbf{Strategie:} Rechenregeln für weitere Stammfunktionen
+	
 \begin{proposition}[partielle Integration]
 	\proplbl{stammfunktion_partielle_integration}
 	Seien $f,g:D\subset K\to K$, $D$ Gebiet mit zugehörigen Stammfunktion $F, G:D\to K$.
@@ -134,7 +128,7 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 
 \begin{proposition}[Integration durch Substitution]
 	\proplbl{stammfunktion_substitution}
-	Sei $f:D\subset K\to K$, $D$ Gebiet, mit Stammfunktion $F:D\to K$ und sei $\phi:D\to D$ \gls{diffbar}. Dann hat $f(\phi(.))\cdot \phi'(.):D\to K$ eine Stammfunktion mit \begin{align}
+	Sei $f:D\subset K\to K$, $D$ Gebiet, mit Stammfunktion $F:D\to K$ und sei $\phi:D\to D$ \gls{differenzierbar}. Dann hat $f(\phi(.))\cdot \phi'(.):D\to K$ eine Stammfunktion mit \begin{align}
 		\proplbl{stammfunktion_substitution_eq}
 		\int f(\phi(x))\cdot\phi'(x)\D x &= F(\phi(x))
 	\end{align}
@@ -149,7 +143,7 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 \end{remark}
 
 \begin{proof}
-	$F(\phi(.))$ ist nach der Kettenregel auf $D$ \gls{diffbar} mit \begin{align*}
+	$F(\phi(.))$ ist nach der Kettenregel auf $D$ \gls{differenzierbar} mit \begin{align*}
 		\frac{\D}{\D x} F(\phi(x)) &= F'(\phi(x)) \cdot \phi'(x) = f(\phi(x)) \cdot \phi'(x)
 	\end{align*}
 \end{proof}
@@ -181,19 +175,16 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\end{align*}
 \end{example}
 
-\begin{underlinedenvironment}[Wieder allgemeine Fall]
-	mit $f:D\subset K^n\to K^{m\times n}$
-\end{underlinedenvironment}
-\begin{underlinedenvironment}[Reduktion]
-	Nach \propref{richtungsableitung_vollstaendige_reduktion} kann man sich auf $m=1$ beschränken, d.h. falls \begin{align*}
+\textbf{Wieder der allgemeine Fall:} mit $f:D\subset K^n\to K^{m\times n}$\\
+
+\textbf{Reduktion} Nach \propref{richtungsableitung_vollstaendige_reduktion} kann man sich auf $m=1$ beschränken, d.h. falls \begin{align*}
 		f = \begin{pmatrix}
 		 f_{11} & \dotsc & f_{1k} \\ \vdots & & \vdots \\ f_{m1} & \dotsc & f_{mn}
 		\end{pmatrix}
 	\end{align*}
-	reicht eine Untersuchung der Zeilen.
-\end{underlinedenvironment}
-\begin{underlinedenvironment}[Ziel]
-	Reduktion auf $n=1$. Betrachte somit $f:D\subset K^n\to K^n$, $D$ Gebiet ($m=1$, $n$ beliebig).
+	reicht eine Untersuchung der Zeilen. \\
+	
+\textbf{Ziel:} Reduktion auf $n=1$. Betrachte somit $f:D\subset K^n\to K^n$, $D$ Gebiet ($m=1$, $n$ beliebig).
 	
 	Sei $F:D\subset K^n\to K$ Stammfunktion von $f=(f_1, \dotsc, f_n)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
@@ -214,7 +205,6 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\proplbl{stammfunktion_reduktion_bedingung_konstante}
 	\frac{\partial}{\partial x_j} \left( F_j(x_1, \dotsc, x_{j-1}, x_{j+1}, \dotsc, x_n)\right) &= f_i(x)\quad\forall i\neq j, j=1\dotsc, n
 	\end{align}
-\end{underlinedenvironment}
 
 \begin{example}
 	\proplbl{stammfunktion_beispiel_11}
@@ -256,8 +246,6 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\end{itemize}
 \end{remark}
 
-\begin{underlinedenvironment}[Ausblick auf Kapitel 27]
-	In Kapitel 27 formulieren wir eine notwendige Bedingung im Satz 27.18 ("`Integrabilitätsbedingung"') für die Existenz einer Stammfunktion (die in gewissen Mengen $D$ auch hinreichend ist): \begin{align*}
+\textbf{Ausblick:} In Kapitel 27 formulieren wir eine notwendige Bedingung im Satz 27.18 ("`Integrabilitätsbedingung"') für die Existenz einer Stammfunktion (die in gewissen Mengen $D$ auch hinreichend ist): \begin{align*}
 		\frac{\partial}{\partial x_j} f_i(x) &= \frac{\partial}{\partial x_i} f_j(x) \quad \forall i,j,x\in D
 	\end{align*}
-\end{underlinedenvironment}

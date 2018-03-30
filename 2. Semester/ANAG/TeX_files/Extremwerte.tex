@@ -1,16 +1,12 @@
 \section{Extremwerte} \setcounter{equation}{0}
 \subsection{Lokale Extrema ohne Nebenbedingung}
-Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$ wegen Ordnung}, $D$ offen, $f$ \gls{diffbar}.
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$ wegen Ordnung}, $D$ offen, $f$ \gls{differenzierbar}.
 
-\begin{underlinedenvironment}[notwendige Bedingung]
-	(\propref{mittelwertsatz_optimalitaetsbedingung}): $f$ hat lokales Minimum / Maximum in $x\in D$ $\Rightarrow$ $f'(x) = 0$
-\end{underlinedenvironment}
+\textbf{notwendige Bedingung:} (\propref{mittelwertsatz_optimalitaetsbedingung}): $f$ hat lokales Minimum / Maximum in $x\in D$ $\Rightarrow$ $f'(x) = 0$
 
-\begin{underlinedenvironment}[Frage]
-	Hinreichende Bedingung?
-\end{underlinedenvironment}
+\textbf{Frage:} Hinreichende Bedingung?
 
-\begin{*definition}
+\begin{*definition}[definit, semidefinit, indefinit]
 	$f^{(k)}(x)$ für $k\ge $ heißt positiv \begriff{definit} (negativ definit), falls \begin{align}
 		\proplbl{extremwerte_definit_definition_eq}
 		f^{(k)}(x) y^k > 0 \;(< 0) \quad\forall y\in\mathbb{R}\setminus \{0\}
@@ -76,18 +72,16 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$
 	\end{enumerate}
 \end{proof}
 
-\begin{underlinedenvironment}[Test Deefinitheit in Anwendungen]
-	$k=2$ wichtig (vgl. lineare Algebra).
+\textbf{Test Definitheit in Anwendungen}$k=2$ wichtig (vgl. lineare Algebra). \\
 	
-	$f''(x) \in L^2(\mathbb{R}^2,\mathbb{R})\cong \mathbb{R}^{n\times n}$ (\person{Hesse}-Matrix)
+	$f''(x) \in L^2(\mathbb{R}^2,\mathbb{R})\cong \mathbb{R}^{n\times n}$ (\person{Hesse}-Matrix)\\
 	
-	$f''(x) y^2 = f''(x) (y,y) = \langle (\mathrm{Hess} f)(x)y, y\rangle$, vgl. \propref{taylor_partielle_ableitung_beispiel_10}
+	$f''(x) y^2 = f''(x) (y,y) = \langle (\mathrm{Hess} f)(x)y, y\rangle$, vgl. \propref{taylor_partielle_ableitung_beispiel_10}\\
 	
 	Matrix $A\in\mathbb{R}^{n\times}$ ist \begin{itemize}
 		\item positiv (negativ) definit $\Leftrightarrow$ alle Eigenwerte sind positiv (negativ) 
 		\item indefinit $\Rightarrow$ $\exists$ positive und negative Eigenwerte
 	\end{itemize}
-\end{underlinedenvironment}
 
 \subsection{Sylvester'sches Definitheitskriterium}
 Eine symmetrische Matrix $A=(a_{ij})\in\mathbb{R}^{n\times n}$ ist positiv definit \gls{gdw} alle führenden Hauptminoren positiv sind, d.h. \begin{align*}
@@ -128,19 +122,15 @@ Eine symmetrische Matrix $A=(a_{ij})\in\mathbb{R}^{n\times n}$ ist positiv defin
 \end{example}
 
 \subsection{Lokale Extrema mit Gleichungsnebenbedingung}
-Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}, $D$ offen, $g:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}, $D$ offen, $g:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}
 
-\begin{underlinedenvironment}[Frage]
-	Bestimmen von Extrema von $f$ auf der Menge $G:= \{ x\in\mathbb{R}\mid g(x) = 0 \}$, d.h. suche notwendige Bedingung (für hinreichende Bedingung sieh Vorlesung Optimierung)
-\end{underlinedenvironment}
+\textbf{Frage:} Bestimmen von Extrema von $f$ auf der Menge $G:= \{ x\in\mathbb{R}\mid g(x) = 0 \}$, d.h. suche notwendige Bedingung (für hinreichende Bedingung sieh Vorlesung Optimierung)\\
 
-\begin{underlinedenvironment}[Motivation]
-	Für $m\ge 1$: notwendige Bedingung: $f'(\mathrm{max})$ steht senkrecht auf der Niveaumenge $G$ \marginnote{(vgl. \propref{richtungsableitung_gradient_eigenschaften})} \\
+\textbf{Motivation:} Für $m\ge 1$: notwendige Bedingung: $f'(\mathrm{max})$ steht senkrecht auf der Niveaumenge $G$ \marginnote{(vgl. \propref{richtungsableitung_gradient_eigenschaften})} \\
 	$\Rightarrow$ $\exists\lambda\in\mathbb{R}: f'(x_{\max}) + \lambda g'(x_{\max}) = 0$
-\end{underlinedenvironment}
 
 \begin{proposition}[Lagrange-Multiplikatorregel, notwendige Bedingung]
-	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, \gls{diffbar}, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
+	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, \gls{differenzierbar}, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
 	
 	Falls $g'(x)$ regulär, d.h. \begin{align}
 		\proplbl{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_4}
@@ -150,7 +140,7 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}, $D$ offen, $g:D\s
 	\exists \lambda\in\mathbb{R}^m: f'(x) + \transpose{\lambda} g'(x) = 0\end{align}
 \end{proposition}
 
-\begin{*definition}
+\begin{*definition}[Lagrangescher Multiplikator]
 	$\lambda$ oben heißt \begriff{Lagrangescher Multiplikator}
 \end{*definition}
 
@@ -198,25 +188,20 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}, $D$ offen, $g:D\s
 \end{example}
 
 \subsection{Globale Extrema mit Abstrakter Nebenbedinung}
-Betrachte $f:\overline{D}\subset\mathbb{R}\to\mathbb{R}$, $D$ offen, $f$ stetig auf $\overline{D}$, \gls{diffbar} auf $D$.
+Betrachte $f:\overline{D}\subset\mathbb{R}\to\mathbb{R}$, $D$ offen, $f$ stetig auf $\overline{D}$, \gls{differenzierbar} auf $D$.
 
-\begin{underlinedenvironment}[Existenz]
-	nach \propref{chap_15_3}:
+\textbf{Existenz:} nach \propref{chap_15_3}:
 	
-	$D$ beschränkt $\xRightarrow{\text{$\overline{D}$ kompakt}}$ $f$ besitzt auf $\overline{D}$ ein Minimum und ein Maximum
-\end{underlinedenvironment}
+	$D$ beschränkt $\xRightarrow{\text{$\overline{D}$ kompakt}}$ $f$ besitzt auf $\overline{D}$ ein Minimum und ein Maximum\\
 
-\begin{underlinedenvironment}[Frage]
-	Bestimme sogenannte globale Extremalstelle $x_{\min}$, $x_{\max}$.
-\end{underlinedenvironment}
+\textbf{Frage:} Bestimme sogenannte globale Extremalstelle $x_{\min}$, $x_{\max}$. \\
 
-\begin{underlinedenvironment}[Strategie]\vspace*{0pt}
+\textbf{Strategie:}\\
 	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
 		\item Bestimmte lokale Extrema in $D$
 		\item Bestimme globale Extrema auf $\partial D$
 		\item Vergleiche Extrema aus a) und b)
 	\end{enumerate}
-\end{underlinedenvironment}
 
 \begin{example}
 	Sei $f(x_1, x_2) = x_1^2 + \cos x_2$ mit $D=(-1,1)\times(0,4)$ (vgl. \propref{extremwerte_sylvester_beispiel_3}).

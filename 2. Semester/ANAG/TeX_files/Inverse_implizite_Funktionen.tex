@@ -1,18 +1,14 @@
 \section{Inverse und implizite Funktionen}\setcounter{equation}{0}
-\begin{underlinedenvironment}[Frage 1]
-	Sei $f:D\subset K^n\to K^m$ \gls{diffbar}, $x\in D$. Wann existiert -- zumindest lokal -- \gls{diffbar} Umkehrfunktion?
-\end{underlinedenvironment}
+\textbf{Frage 1:} Sei $f:D\subset K^n\to K^m$ \gls{differenzierbar}, $x\in D$. Wann existiert -- zumindest lokal -- \gls{differenzierbar} Umkehrfunktion?\\
 
-\begin{underlinedenvironment}[Vorbetrachtung]
-	$f$ ist dann (lokal) Diffeomorphismus und man hat in Umgebung von $x$ \begin{itemize}
+\textbf{Vorbetrachtung:} $f$ ist dann (lokal) Diffeomorphismus und man hat in Umgebung von $x$ \begin{itemize}
 		\item $f^{-1}$ existiert $\Rightarrow$ $f$ injektiv
-		\item $f^{-1}$ \gls{diffbar}, z.B. $y\in K^m$ $\Rightarrow$ $B_{\epsilon}(y)\subset f(K^m)$ für ein $\epsilon > 0$ $\Rightarrow$ ($y$ innerer Punkt) $f$ surjektiv
+		\item $f^{-1}$ \gls{differenzierbar}, z.B. $y\in K^m$ $\Rightarrow$ $B_{\epsilon}(y)\subset f(K^m)$ für ein $\epsilon > 0$ $\Rightarrow$ ($y$ innerer Punkt) $f$ surjektiv
 	\end{itemize}
 
-	Falls $f$ linear, d.h. $f(x) = Ax$ und $A\in L(K^n, K^m)$ $\Rightarrow$ $n=m$ und $A$ regulär.
+	Falls $f$ linear, d.h. $f(x) = Ax$ und $A\in L(K^n, K^m)$ $\Rightarrow$ $n=m$ und $A$ regulär.\\
 	
-	Für allgemeine Funktion sollte dann gelten: $n=m$, $f'(x)$ regulär (sonst ungewiss)
-\end{underlinedenvironment}
+	Für allgemeine Funktion sollte dann gelten: $n=m$, $f'(x)$ regulär (sonst ungewiss)\\
 
 \begin{example}
 	Sei $f_j:\mathbb{R}\to\mathbb{R}$ mit $f_j(x) = x^j$ (in Umgebung von $_0$). $f_1$ und $f_3$ sind invertierbar, $f_2$ nicht.
@@ -49,10 +45,9 @@
 	\hfill\csname\InTheoType Symbol\endcsname
 \end{proof}
 
-\begin{underlinedenvironment}[Frage 2]
-	Lösen von Gleichungen:
+\textbf{Frage 2:} Lösen von Gleichungen:
 	
-	Sei $f:D\subset K^n\times K^l\to K^m$, $(x,y)\in K^n\times K^l$.
+	Sei $f:D\subset K^n\times K^l\to K^m$, $(x,y)\in K^n\times K^l$.\\
 	
 	Bestimme Lösungen $y$ in Abhängigkeit vom Parameter $x$ für folgende Gleichung: \begin{align}
 		\proplbl{implizit_funktion_grundgleichung_eq}
@@ -61,10 +56,9 @@
 	Sinnvolle Anwendung: \begin{itemize}
 		\item Lösung $y = g(x)$ hängt stetig oder Differenzierbar vom Parameter $x$ ab
 	\end{itemize}
-\end{underlinedenvironment}
 
 \begin{example}
-	Sei $f:D\subset\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ \gls{diffbar}.
+	Sei $f:D\subset\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ \gls{differenzierbar}.
 	
 	Betrachte die Niveaumenge \begin{align*}
 		N= \left\{ (x,y)\in\mathbb{R}^2 \mid f(x,y) = 0 \right\} \quad\text{($\equalhat$ Kurve)}
@@ -103,7 +97,7 @@
 	\end{tabularx}
 \end{example}
 
-\begin{*definition}
+\begin{*definition}u[(lokale) Lösung]
 	Funktion $\tilde{y}:\tilde{D}\subset K^n\to K^m$ heißt (lokale) \begriff{Lösung} von \eqref{implizit_funktion_grundgleichung_eq} in $x$ auf $\tilde{D}$ falls \begin{align}
 		\proplbl{implizit_funktion_grundgleichung_eq_zwei}
 		f(x,\tilde{y}(x)) = 0 \quad\forall x\in\tilde{D}
@@ -126,8 +120,8 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 		(beachte: $B_r(x_0)\times B_\rho(y_0)\subset D$)
 		
 		\item \proplbl{implizit_funktion_b}
-		falls zusätzlich $f:D\to K^m$ stetig \gls{diffbar}\\
-		$\Rightarrow$ auch $\tilde{y}$ stetig \gls{diffbar} auf $B_r(x_0)$ mit \begin{align*}
+		falls zusätzlich $f:D\to K^m$ stetig \gls{differenzierbar}\\
+		$\Rightarrow$ auch $\tilde{y}$ stetig \gls{differenzierbar} auf $B_r(x_0)$ mit \begin{align*}
 			\tilde{y}'(x) &= -\underbrace{f_y(x,\tilde{y}(x))^{-1}}_{m\times n} \cdot \underbrace{f_x(x,\tilde{y}(x))}_{m\times n}\quad\in K^{m\times n}
 		\end{align*}
 	\end{enumerate}
@@ -229,7 +223,7 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 		
 		\item Zeige \ref{implizit_funktion_b}: Fixiere $x\in B_r(x_0)$, $z\in K^n$
 		
-		Da $f$ \gls{diffbar} und $\tilde{y}$ Lösung, gilt für $\vert t \vert$ klein nach \propref{definition_ableitung_proposition} \ref{satz_equivalenz_ableitungen_b}: {\zeroAmsmathAlignVSpaces**\begin{align*}
+		Da $f$ \gls{differenzierbar} und $\tilde{y}$ Lösung, gilt für $\vert t \vert$ klein nach \propref{definition_ableitung_proposition} \ref{satz_equivalenz_ableitungen_b}: {\zeroAmsmathAlignVSpaces**\begin{align*}
 			0 &= f(x + t\cdot z, \tilde{y}(x + tz)) - f(x,\tilde{y}(x)), \, \xrightarrow{t\to 0}0 \\
 			&= Df(x,\tilde{y})\cdot \begin{pmatrix}tz \\ \tilde{y}(x+tz) - \tilde{y}(x)\end{pmatrix} + \underbrace{r(t)}_{\xrightarrow{t\to 0} 0}\cdot \begin{pmatrix}
 				tz \\ \tilde{y}(x + tz) - \tilde{y}(x)
@@ -258,7 +252,7 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 		\end{align}
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & Alle partiellen Ableitungen $\tilde{y}_{x_j}$ sind stetig auf $B_r(x_0)$ \\
-		$\xRightarrow{\text{\propref{mittelwertsatz_existenz_partieller_ableitung}}}$ & $\tilde{y}$ stetig \gls{diffbar} auf $B_r(x_0)$
+		$\xRightarrow{\text{\propref{mittelwertsatz_existenz_partieller_ableitung}}}$ & $\tilde{y}$ stetig \gls{differenzierbar} auf $B_r(x_0)$
 		\end{tabularx}
 		
 		Wegen $\tilde{y}'(x)\cdot z = \tilde{y}'(x;z)$ folgt aus \eqref{implizit_funktion_beweis_10} die Formel für $\tilde{y}'(t)$
@@ -274,7 +268,7 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 	Analog erhält man $f_x(x,y)\in K^{m\times n}$.
 	
 	Falls alle $f_{x_j}^j$, $f_{y_l}^i$ stetig sind in $x$ und $y$ \\
-	$\Rightarrow$ $f$ \gls{diffbar} mit \begin{align*}
+	$\Rightarrow$ $f$ \gls{differenzierbar} mit \begin{align*}
 		f'(x,y) &= \big( f_x(x,y) \mid f_y(x,y) \big)
 	\end{align*}
 \end{underlinedenvironment}
@@ -353,13 +347,13 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 	\end{align*}
 \end{example}
 
-Zurück zu Frage 1: Wann hat $f:D\subset K^n\to K^n$ eine \gls{diffbar} Umkehrfunktion?
+Zurück zu Frage 1: Wann hat $f:D\subset K^n\to K^n$ eine \gls{differenzierbar} Umkehrfunktion?
 
 Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h. $\exists g:K^n\to K^n$ mit $f(g(y)) = y$ $\forall y$ $\Rightarrow$ $g=f^{-1}$
 
 \begin{theorem}[Satz über inverse Funktionen]
 	\proplbl{inverse_funktion}
-	Sei $f:U\subset K^n\to K^n$, $U$ offen, $f$ stetig \gls{diffbar}, $f'(x)$ regulär für ein $x_0\in U$
+	Sei $f:U\subset K^n\to K^n$, $U$ offen, $f$ stetig \gls{differenzierbar}, $f'(x)$ regulär für ein $x_0\in U$
 	
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\Rightarrow$ & Es existiert eine offene Umgebung $U_0\subset U$ von $x_0$, sodass $V_0:= f(U_0)$ offene Umgebung von $y_0 := f(x_0)$ ist, und die auf $U_0$ eingeschränkte Abbildung $f:U_0\to V_0$ ist Diffeomorphismus.
@@ -368,7 +362,7 @@ Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h
 
 \begin{proposition}[Ableitung der inversen Funktion]
 	\proplbl{inverse_funktion_ableitung}
-	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ injektiv und \gls{diffbar}, $f^{-1}$ \gls{diffbar} in $y\in \mathrm{int}\, f(D)$ \begin{align}
+	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ injektiv und \gls{differenzierbar}, $f^{-1}$ \gls{differenzierbar} in $y\in \mathrm{int}\, f(D)$ \begin{align}
 		\Rightarrow \quad\left(f^{-1}\right)'(y) &= f'\left( f^{-1}(y)\right)^{-1}
 	\end{align}
 	(bzw. $(f^{-1})'(y) = f'(x)^{-1}$ falls $y=f(x)$)
@@ -382,12 +376,12 @@ Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h
 	
 	Offenbar ist $\tilde{f}$ stetig, $\tilde{f}(x_0, y_0) = 0$ und $\tilde{f}_x(x, y) = f'(x)$, $f_y(x,y) = -\mathrm{id}_{K^n}$ $\forall(x,y)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\tilde{f}_x$, $\tilde{f}_y$ stetig $\Rightarrow$ $\tilde{f}$ stetig \gls{diffbar}\end{tabularx}
+	$\Rightarrow$ & $\tilde{f}_x$, $\tilde{f}_y$ stetig $\Rightarrow$ $\tilde{f}$ stetig \gls{differenzierbar}\end{tabularx}
 	
 	Nach Voraussetzung $\tilde{f}_x(x_0, y_0) = f'(x_0)$ regulär \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow{\text{\cref{implizit_funktion}}}$& $\exists r,\rho > 0$: $\forall y\in B_r(y_0)$ $\exists! x=\tilde{x}(y)\in B_y(x_0)$ mit $0 = \tilde{f}(\tilde{x}(y),y) = f(\tilde{x}(y)) - y$ \\
-	$\Rightarrow$ & lokal inverse Funktion $f^{-1} = \tilde{x}$ existiert auf $B_r(y_0) =: V_0$ und ist stetig \gls{diffbar}.
+	$\Rightarrow$ & lokal inverse Funktion $f^{-1} = \tilde{x}$ existiert auf $B_r(y_0) =: V_0$ und ist stetig \gls{differenzierbar}.
 	\end{tabularx}
 	
 	Setzte $U_0 := f^{-1}(V_0) = \underbrace{\{ x\in D \mid f(x)\in V_0 \}}_{\text{offen, da $f$ stetig}}\cap B_\rho(x_0)$ offene Umgebung von $x_0$ \\
@@ -397,7 +391,7 @@ Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h
 \end{proof}
 
 \begin{proof}[\cref{inverse_funktion_ableitung}]
-	$f^{-1}$ existiert, $f$ \gls{diffbar}, $f^{-1}$ \gls{diffbar} in $y = f(x)$, $x\in D$.
+	$f^{-1}$ existiert, $f$ \gls{differenzierbar}, $f^{-1}$ \gls{differenzierbar} in $y = f(x)$, $x\in D$.
 	
 	Wegen $f(f^{-1}(y)) = y$, $f^{-1}(f(x)) = x$ folgt \begin{align*}
 		f'(f^{-1}(y))\cdot (f^{-1})'(y) &= \mathrm{id}_{K^n}, &(f^{-1})'(y) &= f'(f^{-1}(y)) = \mathrm{id}_{K^n}
@@ -408,7 +402,7 @@ Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h
 Als Folgerung eine globale Aussage:
 \begin{proposition}
 	\proplbl{inverse_funktion_folgerung}
-	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ stetig \gls{diffbar}, $f'(x)$ regulär $\forall x\in D$
+	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ stetig \gls{differenzierbar}, $f'(x)$ regulär $\forall x\in D$
 	
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & \vspace*{\dimexpr -\baselineskip*2/3}
@@ -432,7 +426,7 @@ Als Folgerung eine globale Aussage:
 			
 		\item Offenbar existiert $f^{-1}: f(d)\to D$
 		
-		Lokale Eigenschaften wie Stetigkeit und \gls{diffbar}keit folgen aus \propref{inverse_funktion}
+		Lokale Eigenschaften wie Stetigkeit und \gls{differenzierbar}keit folgen aus \propref{inverse_funktion}
 	\end{enumerate}
 \end{proof}
 
@@ -466,7 +460,7 @@ Als Folgerung eine globale Aussage:
 		\end{pmatrix}
 	\end{align*}
 	
-	Offenbar stetig \gls{diffbar} auf $\mathbb{R}_{>0}\times\mathbb{R}$ mit \begin{align*}
+	Offenbar stetig \gls{differenzierbar} auf $\mathbb{R}_{>0}\times\mathbb{R}$ mit \begin{align*}
 		f'(r,\phi) = \begin{pmatrix}
 			\cos\phi & -r\sin\phi \\ \sin\phi & r\cos\phi
 		\end{pmatrix}
@@ -493,7 +487,5 @@ Als Folgerung eine globale Aussage:
 		\emph{aber:} $f:\mathbb{R}_{>0}\times(\phi_0, \phi_0+2\pi)\to\mathbb{R}^2\setminus \{\text{Strahl in Richtung $\phi_0$}\}$ ist Diffeomorphismus für beliebiges $\phi_0\in \mathbb{R}$ nach \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b}.
 	\end{underlinedenvironment}
 
-	\begin{underlinedenvironment}[folglich]
-		Voraussetzung $f$ injektiv in \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b} ist wesentlich.
-	\end{underlinedenvironment}
+\textbf{folglich:} Voraussetzung $f$ injektiv in \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b} ist wesentlich.
 \end{example}

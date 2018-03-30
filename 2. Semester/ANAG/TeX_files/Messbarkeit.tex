@@ -3,7 +3,7 @@
 Wir führen zunächst das \lebesque-Maß ein und behandeln dann messbare Mengen und messbare Funktionen.
 
 \subsection{\lebesque-Maß}
-\begin{*definition}
+\begin{*definition}[Quader, Volumen]
 	Wir definieren die Menge \begin{align*}
 		\mathcal{Q} &:= \left\{ I_1 \times \dotsc \times I_n \subset\mathbb{R}^n \mid I_j\subset\mathbb{R}\text{ beschränktes Intervall} \right\}
 	\end{align*}
@@ -19,15 +19,23 @@ Wir führen zunächst das \lebesque-Maß ein und behandeln dann messbare Mengen 
 \end{*definition}
 
 Wir möchten für beliebige Mengen $M\subset\mathbb{R}^n$ ein "`Volumenmaß"' definieren, das mit dem Volumen für Quader kompatibel ist.
-\begin{*definition}
+\begin{*definition}[\person{Lebesgue}-Maß]
 	Dafür betrachte eine (Mengen-) Funktion $\vert .\vert :\mathcal{P}(\mathbb{R}^n)\to [0,\infty]$ mit \begin{align}
 		\proplbl{messbarkeit_definition_lebesque_mass}
 		\vert \mu \vert &= \inf \left\{ \left. \sum_{j=1}^{\infty} v(Q_j) \;\right|\; M\subset\bigcup\limits_{j=1}^\infty Q_j, \; \text{$Q_j\in\mathcal{Q}$ Quader} \right\}\quad\forall M\subset\mathbb{R}^n,
 	\end{align}
-	die man \begriff{\person{Lebeque}-Maß} auf $\mathbb{R}^n$ nennt.
+	die man \begriff{\person{Lebegue}-Maß} auf $\mathbb{R}^n$ nennt.
 	
 	$\vert \mu \vert$ heißt (\lebesque-Maß) von $M$, oft schreibt man auch $\mathcal{L}^{\mu}(M)$.
 \end{*definition}
+
+\begin{*anmerkung}
+	Man versucht das zu untersuchende Intervall mit Quadern zu überdecken und sucht dabei die 
+	Überdeckung, bei der die Summe der Volumen am kleinsten wird. Also z.B. $\vert [2,3] \vert\in
+	\natur=\vert\{2,3\}\vert=0$, da man für jede der beiden Zahlen genau einen Punkt als Quader braucht. 
+	Der Punkt hat per Definition keine Dimension, also auch ein Volumen von 0. Damit gilt: $\vert [2,3]
+	\vert=0+0=0$. Mit der gleichen Begründung gilt auch $\vert\natur\vert=0$.
+\end{*anmerkung}
 
 \begin{underlinedenvironment}[Hinweis]
 	Das \lebesque-Maß wird in der Literatur vielfach nur für messbare Mengen definiert ($M\subset\mathbb{R}^n$) und die Erweiterung auf alle $M\subset\mathbb{R}^n$ wie in \eqref{messbarkeit_definition_lebesque_mass} wird dann als äußeres \lebesque-Maß bezeichnet.
@@ -69,7 +77,7 @@ Wir möchten für beliebige Mengen $M\subset\mathbb{R}^n$ ein "`Volumenmaß"' de
 	Da $\epsilon>0$ beliebig, folgt die Behauptung.
 \end{proof}
 
-\begin{*definition}
+\begin{*definition}[Nullmenge]
 	$N\subset\mathbb{R}^n$ heißt \begriff{Nullmenge}, falls $\vert N \vert = 0$. Offenbar gilt:\begin{align}
 		\tilde{N}\subset N,\;\vert N \vert = 0 &\Rightarrow \;\vert \tilde{N}\vert = 0 \\
 		\vert N_k\vert = 0 \;\forall k\in\mathbb{N}&\Rightarrow \;\left\vert \bigcup_{k=1}^\infty N_k \right\vert = 0
@@ -135,7 +143,7 @@ Nach \eqref{messbarkeit_satz_teilmenge_kleineres_mass_eq} und \eqref{messbarkeit
 	Deshalb betrachten wir "`gutartige"' Mengen.
 \end{underlinedenvironment}
 
-\begin{*definition}
+\begin{*definition}[messbar]
 Eine Menge $M\subset\mathbb{R}^n$ heißt \begriff{messbar}, falls \begin{align}
 		\vert \tilde{M}\vert = \vert \tilde{M}\cap M\vert + \vert \tilde{M}\setminus M\vert \quad\forall \tilde{M}\in\mathbb{R}\marginnote{"`Sie können sich keine Menge vorstellen, die nicht messbar ist."' (Hr. Schönherr, 2014)}
 	\end{align}
@@ -156,7 +164,7 @@ Eine Menge $M\subset\mathbb{R}^n$ heißt \begriff{messbar}, falls \begin{align}
 	\end{enumerate}
 \end{proposition}
 
-\begin{*definition}
+\begin{*definition}[$\sigma$-algebra]
 	Eine Menge von Teilmengen $\mu\subset X$  (hier $X=\mathbb{R}^n$) mit den Eigenschaften \cref{messbarkeit_satz_sigma_algebra_eins,messbarkeit_satz_sigma_algebra_zwei,messbarkeit_satz_sigma_algebra_drei} heißt \begriff{$\sigma$-algebra}
 \end{*definition}
 
@@ -299,7 +307,7 @@ Für $\epsilon > 0$ definieren wir offene $\epsilon$-Kugeln um $\pm\infty$ durch
 
 $U\subset\overline{\mathbb{R}}$ \emph{offen}, falls für jedes $x\in U$ ein $\epsilon > 0$ existiert, sodass $B_\epsilon \subset U$. Damit sind inbsesondere die offenen Mengen aus $\mathbb{R}$ auch offen in $\overline{\mathbb{R}}$ und die offenen Mengen in $\overline{\mathbb{R}}$ bilden eine Topologie. \marginnote{vgl. Kap. 8}
 
-\begin{*definition}
+\begin{*definition}[messbar]
 	Eine Funktion $f:D\subset\mathbb{R}\to\overline{\mathbb{R}}$ heißt \begriff{messbar}, falls $D$ messbar ist und $f^{-1}(U)$ für jede offene Menge $U\subset\overline{\mathbb{R}}$ messbar ist.
 \end{*definition}
 
@@ -334,7 +342,7 @@ $U\subset\overline{\mathbb{R}}$ \emph{offen}, falls für jedes $x\in U$ ein $\ep
 	Wir werden sehen, dass die Menge aller messbaren Funktionen die Menge der stetigen Funktionen enthält, aber auch noch viele Weitere.
 \end{underlinedenvironment}
 
-\begin{*definition}
+\begin{*definition}[charakteristische Funktion]
 	Für $M\subset\mathbb{R}^n$ heißt $\chi_\mu:\mathbb{R}^n\to\mathbb{R}$ mit \begin{align*}
 		\chi_\mu = \begin{cases}
 			1, &x\in M\\ 0, &x\in\mathbb{R}^n\setminus M
@@ -348,7 +356,7 @@ Offenbar gilt
 	$\chi_\mu:\mathbb{R}^n\to\mathbb{R}$ ist messbar \gls{gdw} $M\subset\mathbb{R}^n$ messbar ist.
 \end{conclusion}
 
-\begin{*definition}
+\begin{*definition}[Treppenfunktion]
 	Eine Funktion $h:\mathbb{R}^n\to\mathbb{R}$ heißt \begriff{Treppenfunktion}, falls es $M_1, \dotsc, M_k\subset\mathbb{R}^n$  und $c_1,\dotsc,c_k\in\mathbb{R}$ gibt mit \begin{align}
 		\proplbl{messbarkeit_definition_treppenfunktion_eq}
 		h(x) = \sum_{j=1}^k a_j \chi_{\mu_j}(x)
@@ -367,7 +375,7 @@ Man sieht leicht
 	\end{tabularx}
 \end{conclusion}
 
-\begin{*definition}
+\begin{*definition}[Nullfortsetzung]
 	Für $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ definieren wir die \begriff{Nullfortsetzung} $\overline{f}:\mathbb{R}^n\to\overline{\mathbb{R}}$ durch \begin{align}
 		\overline{f}(x) &:= \begin{cases}
 			f(x), &x\in D\\ 0,&x\in\mathbb{R}^n\setminus D
@@ -400,7 +408,7 @@ Man sieht leicht
 
 \rule{0.4\linewidth}{0.1pt}
 
-\begin{*definition}
+\begin{*definition}[positiver, negativer Teil]
 Für $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ und $\alpha\in\overline{\mathbb{R}}$ schreibt man verkürzt
 \begin{align*}
 \{ f > \alpha \} := \{ x\in D \mid f(x) > \alpha \}

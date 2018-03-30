@@ -45,7 +45,7 @@
 		\parbox{\widthof{\phantom{$\xRightarrow{t\to 0}$}}}{\hfill$\Rightarrow$} & $\exists \delta > 0: x_0 + t\cdot z\in D$ $\forall t\in (-\delta, \delta)$
 	\end{tabularx}
 	
-	f \gls{differenzierbar} in $x_0$, Minimum in $x_0$ \\
+	$f$ \gls{differenzierbar} in $x_0$, Minimum in $x_0$ \\
 	\begin{tabularx}{\linewidth}{rX}
 		$\Rightarrow$ & $ 0\le f(x_0 + t\cdot z) - f(x_0) = t\cdot f'(z_0) \cdot z + o(t)$, $t\to 0$ \marginnote{$\left| \cdot \frac{1}{t}\right.$} \\
 		$\xRightarrow{t>0}$ & $0\le f'(x_0)\cdot z + o(1)$ \\
@@ -415,17 +415,53 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 
 \begin{example}
 	\proplbl{mittelwertsatz_beispiel_sinx_x}
-	$\lim\limits_{x\to 0} \frac{\sin x}{x} = 1$, denn $\lim\limits_{x\to 0} \frac{(\sin x)'}{x'} = \lim\limits_{x\to 0} \frac{\cos x}{1} = 1$
+	$\lim\limits_{x\to 0} \frac{\sin x}{x} = 1$, denn $\lim\limits_{x\to 0} \frac{(\sin x)'}{x'} = \lim\limits_{x\to 0} \frac{\cos x}{1} = 1$ \\
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {sin(deg(x))/x};
+		\addlegendentry{$\frac{\sin(x)}{x}$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{example}
-	$\lim\limits_{x \to 0} x\cdot \ln x = \lim\limits_{x \to 0} \dfrac{\ln x}{\frac{1}{x}} = 0$, denn $\lim\limits_{x \to 0} \dfrac{(\ln x)'}{\left( \frac{1}{x}\right)'} = \lim\limits_{x \to 0}\dfrac{\frac{1}{x}}{-\frac{1}{x^2}} = 0$
+	$\lim\limits_{x \to 0} x\cdot \ln x = \lim\limits_{x \to 0} \dfrac{\ln x}{\frac{1}{x}} = 0$, denn $\lim\limits_{x \to 0} \dfrac{(\ln x)'}{\left( \frac{1}{x}\right)'} = \lim\limits_{x \to 0}\dfrac{\frac{1}{x}}{-\frac{1}{x^2}} = 0$\\
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {x*ln(x)};
+		\addlegendentry{$x\cdot\ln(x)$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{example}
 	$\lim\limits_{x \to 0} \frac{2 - 2\cos x}{x^2} = 1$, denn es ist $\lim\limits_{x \to 0} \frac{(2 - 2\cos x)'}{(x^2)'} = \lim\limits_{x \to 0} \frac{2\sin x}{2x} \overset{\propref{mittelwertsatz_beispiel_sinx_x}}{=} 1$.
 	
-	\emph{beachte:} \propref{mittelwertsatz_krankenhaus} wird in Wahrheit zweimal angewendet.
+	\emph{beachte:} \propref{mittelwertsatz_krankenhaus} wird in Wahrheit zweimal angewendet.\\
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {(2-2*cos(deg(x)))/(x^2)};
+		\addlegendentry{$\frac{2-2\cos(x)}{x^2}$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 \end{example}
 
 \begin{example}
