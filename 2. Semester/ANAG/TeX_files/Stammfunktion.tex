@@ -4,7 +4,7 @@ Sei $f:D\subset K^n\to K^{m\times n}$ ($\cong L(K^n, K^m)$)
 \textbf{Frage:} Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
 
 \begin{*definition}[Stammfunktion, unbestimmtes Integral]
-	$F: D\subset K^n\to K^m$ heißt \begriff{Stammfunktion} oder \emph{unbestimmtes} \begriff{Integral}[!unbestimmt] von $f$ auf $D$, falls $F$ \gls{differenzierbar} und $F'(x) = f(x)$ $\forall x\in D$
+	$F: D\subset K^n\to K^m$ heißt \begriff{Stammfunktion} oder \emph{unbestimmtes} \begriff{Integral}[!unbestimmt] von $f$ auf $D$, falls $F$ \gls{diffbar} und $F'(x) = f(x)$ $\forall x\in D$
 \end{*definition}
 
 \begin{proposition}
@@ -28,7 +28,7 @@ Sei $f:D\subset K^n\to K^{m\times n}$ ($\cong L(K^n, K^m)$)
 \begin{proof}
 	\marginnote{Intervall $I\subset\mathbb{R}$ sind zusammenhängend} \hspace*{0pt}
 	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
-		\item["`$\Leftarrow$"'] Offenbar $F$ \gls{differenzierbar} mit $\tilde{F}' = F' = f$
+		\item["`$\Leftarrow$"'] Offenbar $F$ \gls{diffbar} mit $\tilde{F}' = F' = f$
 		\item["`$\Rightarrow$"'] Offenbar $\tilde{F}'(x) - F'(x) = 0$ $\forall x\in D$ 
 		$\xRightarrow{\text{\propref{mittelwertsatz_ableitung_null_konstante_funktion}}}$ $\tilde{F}(x) - F(x) = c$ für ein $c\in K^m$
 	\end{itemize}
@@ -128,7 +128,7 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 
 \begin{proposition}[Integration durch Substitution]
 	\proplbl{stammfunktion_substitution}
-	Sei $f:D\subset K\to K$, $D$ Gebiet, mit Stammfunktion $F:D\to K$ und sei $\phi:D\to D$ \gls{differenzierbar}. Dann hat $f(\phi(.))\cdot \phi'(.):D\to K$ eine Stammfunktion mit \begin{align}
+	Sei $f:D\subset K\to K$, $D$ Gebiet, mit Stammfunktion $F:D\to K$ und sei $\phi:D\to D$ \gls{diffbar}. Dann hat $f(\phi(.))\cdot \phi'(.):D\to K$ eine Stammfunktion mit \begin{align}
 		\proplbl{stammfunktion_substitution_eq}
 		\int f(\phi(x))\cdot\phi'(x)\D x &= F(\phi(x))
 	\end{align}
@@ -143,7 +143,7 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 \end{remark}
 
 \begin{proof}
-	$F(\phi(.))$ ist nach der Kettenregel auf $D$ \gls{differenzierbar} mit \begin{align*}
+	$F(\phi(.))$ ist nach der Kettenregel auf $D$ \gls{diffbar} mit \begin{align*}
 		\frac{\D}{\D x} F(\phi(x)) &= F'(\phi(x)) \cdot \phi'(x) = f(\phi(x)) \cdot \phi'(x)
 	\end{align*}
 \end{proof}

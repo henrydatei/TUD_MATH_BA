@@ -1,7 +1,7 @@
 \section{Reelle Zahlen}
 \stepcounter{theorem}%Example 1 is missing (not important)
 \subsection*{Struktur von archimedisch angeordneten Körpern}
-\begin{satz}
+\begin{proposition}
 	Sei $K$ Körper. Dann gilt $\forall a,b\in K$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $0,1,(-a),b^{-1} (b\neq 0)$ sind eindeutig bestimmt
@@ -14,7 +14,7 @@
 		
 		$ax=b (a\neq 0)$ hat eindeutige Lösung $x=a^{-1}b =:\frac{b}{a}$ \begriff{Quotient}
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \begin{definition}
 	\begin{itemize}
@@ -42,10 +42,10 @@
 	\end{itemize}
 \end{definition}
 
-\begin{satz}[Binomischer Satz]
+\begin{proposition}[Binomischer Satz]
 	In Körper $K$ gilt: $(a+b)^n = \sum_{k=0}^n\binom{n}{k}a^n b^{n-k}, ,b\in K, n\in\mathbb{N}$
-\end{satz}
-\begin{satz}
+\end{proposition}
+\begin{proposition}
 	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b,c,d\in K$:
 	\begin{enumerate}[label={\alph*)}]
 		\item $a < b \Leftrightarrow 0 < b-a$
@@ -59,14 +59,14 @@
 		\item $a > 0 \Leftrightarrow a^{-1} > 0$
 		\item $0 < a < b \Leftrightarrow b^{-1} < a^{-1}$
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \begin{definition}
 	\begriff{Absolutbetrag} $\vert\cdot\vert:K\rightarrow K$ (auf angeordneten Körper $K$) \[\vert a \vert:=\begin{cases}
 	a&\text{für }a \ge 0 \\ -a& \text{für }a < 0\end{cases}\]
 \end{definition}
 
-\begin{satz}
+\begin{proposition}
 	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b\in K$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\vert a\vert\ge 0, \vert a\vert\ge a$
@@ -84,11 +84,11 @@
 		
 		(Gleichheit \gls{gdw} $n=0,1$ oder $a=0$)
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 \begin{definition}
 	Betr. $f:\mathbb{Q}\rightarrow K$ mit $f\left(\frac{m}{n}\right):= \frac{m\cdot 1_K}{n\cdot 1_K}=(m 1_k)(n 1_K)^{-1}\,\forall m\in\mathbb{Z},k\in\mathbb{Z}_{\neq 0}$
 \end{definition}
-\begin{satz}
+\begin{proposition}
 	Sei $K$ angeordneter Körper\\
 	$\Rightarrow$ $f:\mathbb{Q}\rightarrow K$ ist injektiv und $f$ erhält die Körperstruktur und Ordnung, d.h. $\forall p,q\in\mathbb{Q}$:
 	\begin{itemize}
@@ -96,7 +96,7 @@
 		\item $f(p\cdot q) = f(p)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
 		\item $p \le_\mathbb{Q} q \Leftrightarrow f(p) \le_K f(q)$
 	\end{itemize}
-\end{satz}
+\end{proposition}
 
 \begin{conclusion}
 	Es gilt im angeordneten Körper:
@@ -109,7 +109,7 @@
 \begin{definition}
 	Angeordneter Körper heißt \begriff[Körper!]{archimedisch}, falls $\forall a\in K\,\exists n\in\mathbb{N}\subset K: a < n$.
 \end{definition}
-\begin{satz}
+\begin{proposition}
 	Sei $K$ archimedisch angeordneter Körper. Dann\begin{enumerate}[label={\arabic*)}]
 		\item $\forall a,b\in K$ mit $a,b>0\,\exists n\in\mathbb{N}: n\cdot a > b$
 		\item $\forall a\in K\,\exists!\,[a]\in\mathbb{Z}: [a]\le a \le [a] +1$, \mathsymbol{a}{$[a]$} heißt \begriff{ganzer Anteil} von $a$
@@ -120,7 +120,7 @@
 		(d.h. $a\in K$ kann auch rationale Zahlen beliebig genau approximiert werden, $\mathbb{Q}$ "`dicht"' in $K$)
 		\item $\forall a,b\in K, a < b\,\exists q\in\mathbb{Q}:a < q < b$.
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \begin{definition}[Intervall]
 	\begriff{Intervall} für angeordneten Körper $K$: Sei $a,b\in K$:
@@ -173,9 +173,9 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	$Q:=\{ (\{x_n\}, \{y_n\})\in I_\mathbb{Q}\times I_\mathbb{Q} \}$ ist Relation auf $I_\mathbb{Q}$, $I_\mathbb{Q}:=$ Menge aller Intervallschachtelungen $\mathcal{X}=\{x_n\} \in \mathbb{Q}$.
 \end{definition}
 
-\begin{satz}
+\begin{proposition}
 	$Q$ ist Äquivalenzrelation auf $I_\mathbb{Q}$.
-\end{satz}
+\end{proposition}
 
 \begin{definition}
 	setze $\mathbb{R} := \{ [\mathcal{X}] \mid \mathcal{X}\in I_\mathbb{Q} \}$ Menge der \begriff{reellen Zahlen}.
@@ -204,23 +204,23 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{itemize}
 \end{definition}
 
-\begin{satz}
+\begin{proposition}
 	\begin{enumerate}[label={\arabic*)}]
 		\item Addition, Multiplikation und Inverse sind in $\mathbb{R}$ eindeutig definiert
 		\item $\mathbb{R}$ ist damit und neutralen Elementen ein Körper.
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \subsection*{Ordnung auf $\mathbb{R}$}
 \begin{definition}
 	Betr. Relation "`$\le$"': $R:=\{ ([\{x_n\}],[\{y_n\}])\in\mathbb{R}\times\mathbb{R} | x_n \le y_n\,\forall n\in\mathbb{N}\}$
 \end{definition}
-\begin{satz}
+\begin{proposition}
 	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper.
-\end{satz}
-\begin{satz}
+\end{proposition}
+\begin{proposition}
 	$\mathbb{R}$ ist archimedisch angeordneter Körper.
-\end{satz}
+\end{proposition}
 \begin{theorem}
 	$\mathbb{R}$ ist vollständiger, archimedisch angeordneter Körper.
 \end{theorem}
@@ -251,13 +251,13 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{align*}
 \end{definition}
 \stepcounter{theorem}
-\begin{satz}
+\begin{proposition}
 	Sei $K$ angeordneter Körper, $M\subset K$. Falls $\sup M\;(\inf M)$ existiert, dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\sup M\;(\inf M)$ eindeutig
 		\item $\forall \epsilon > 0\,\exists y\in M: \sup M < y + \epsilon\;(\inf M > y - \epsilon)$
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \begin{theorem}
 	Sei $K$ archimedisch angeordneter Körper. Dann
@@ -265,9 +265,9 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \end{theorem}
 
 \subsection*{Anwendung: Wurzeln, Potenzen, Logarithmen in $\mathbb{R}$}
-\begin{satz}[Wurzeln]
+\begin{proposition}[Wurzeln]
 	Sei $a\in\mathbb{R}_{>0}, k\in\mathbb{N}_{>0} \;\Rightarrow \; \exists ! x\in \mathbb{R}_{>0}: x^k = a, \sqrt[k]{a}:=a^{\frac{1}{k}} = x$ heißt \highlight{k-te} \begriff{Wurzel} von $a$.
-\end{satz}
+\end{proposition}
 \begin{definition}[Potenz]
 	$n$-te \begriff{Potenz} von $a\in\mathbb{R}_{>0}, r\in\mathbb{R}$:
 	
@@ -276,14 +276,14 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	offenbar eindeutig definiert und allgemeine Definition konsistent mit Definition für $\frac{m}{n}\in\mathbb{Q}$.
 	Damit: \begriff{Exponentialfunktion}
 \end{definition}
-\begin{satz}\label{satz_potenz_r}
+\begin{proposition}\label{proposition_potenz_r}
 	Seien $a,b\in\mathbb{R}_{>0}, r,s\in\mathbb{R}. Dann$
 	\begin{enumerate}[label={\arabic*)}]
 		\item $a^r b^r = (ab)^r, (a^r)^s = a^{rs}, a^ra^s = a^{r+s}$
 		\item f. $r > 0: a < b \Leftrightarrow a^r < b^r$
 		\item für $a > 1: r < s \Leftrightarrow a^r < a^s$
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \begin{definition}[Logarithmus]
 	Sei $a,b\in\mathbb{R}_{<0}, a\neq 1$: \begriff{Logarithmus}\highlight{von $b$ zur Basis $a$} ist \begin{align*}
@@ -293,7 +293,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	 \end{cases}
 	\end{align*}
 \end{definition}
-\begin{satz}\label{satz_logarithmus_r}
+\begin{proposition}\label{proposition_logarithmus_r}
 	Se $a,b,c\in\mathbb{R}_{>0}, a\neq 1$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $log_a b$ ist eindeutige Lösung von $a^x = b$, d.h. $a^{log_a b} = b$
@@ -302,7 +302,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 		\item $\log_a(bc) = \log_a b + \log_a c, \log_a \frac{b}{c} = \log_a b - \log_a c$
 		\item $\log_a b = \frac{\log_\alpha b}{\log_\alpha a}\,\forall \alpha\in\mathbb{R}_{>0},\alpha\neq 1$
 	\end{enumerate}
-\end{satz}
+\end{proposition}
 
 \subsection*{Mächtigkeit von Mengen}
 \begin{definition}
@@ -310,7 +310,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	
 	Unendliches $M$ ist \begriff[Mächtigkeit!]{abzählbar}, falls bijektive Abbildung $f:\mathbb{N}\rightarrow M$ existiert, sonst ist $M$ \begriff[Mächtigkeit!]{überabzählbar}.
 \end{definition}
-\begin{satz}
+\begin{proposition}
 	Es gilt:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\mathbb{Z},\mathbb{Q}$ abzählbar
@@ -318,4 +318,4 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 		\item Ein offenes Intervall $I\in\mathbb{R}\neq \emptyset $ ist überabzählbar
 		\item $\mathcal{P}(\mathbb{N})$ ist überabzählbar.
 	\end{enumerate}
-\end{satz}
+\end{proposition}

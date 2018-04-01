@@ -9,7 +9,7 @@
 	\end{align*}
 	
 	\begin{*definition}[zweite Ableitung]
-	Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{differenzierbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{differenzierbar} in $x\in D$ ist, heißt \begin{align}
+	Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{diffbar} in $x\in D$ ist, heißt \begin{align}
 		f''(x) := g'(x)\in L(K^n, Y_1) = L\big( K^n, \underbrace{L(K^n, K^m)}_{\cong K^{m\times n}}\big)
 	\end{align}
 	\begriff{zweite Ableitung} von $f$ in $X$.
@@ -50,7 +50,7 @@
 		\begin{tabularx}{\linewidth}{l@{\ }c@{\ }X}
 			$f^{(0)}$ & := & $f:D\subset K^n\to K^m$, $D$ offen.\\
 		\end{tabularx}
-		Falls $f^{(k)}:D\to Y_k$ \gls{differenzierbar} in $x\in D$ heißt \[ f^{(k+1)}(x) := \left( f^{(k)} \right) (x)\in L(K^n, Y_k)  \]
+		Falls $f^{(k)}:D\to Y_k$ \gls{diffbar} in $x\in D$ heißt \[ f^{(k+1)}(x) := \left( f^{(k)} \right) (x)\in L(K^n, Y_k)  \]
 		\begriff{$(k+1)$-te Ableitung} von $f$ in $x$. (\emph{beachte:} $f^{(1)}(x) = f'(x)$)
 		
 		Somit gilt: \begin{align}
@@ -61,9 +61,9 @@
 \begin{*definition}[$k$-fach differenzierbar]
 	$f$ heißt \begriff{$k$-fach differenzierbar} (auf $D$), falls $f^{(k)}$(x) existiert $\forall x\in D$.
 	
-	$f$ heißt $k$-fach stetig \gls{differenzierbar} (auf $D$) oder $C^k$-Funktion, falls $f$ $k$-fach \gls{differenzierbar} und $f^{(k)}:D\to Y_k$ stetig.
+	$f$ heißt $k$-fach stetig \gls{diffbar} (auf $D$) oder $C^k$-Funktion, falls $f$ $k$-fach \gls{diffbar} und $f^{(k)}:D\to Y_k$ stetig.
 	
-	$C^k(D, K^m) := \{ f:D\to K^m\mid $f$ \text{ $k$-fach stetig \gls{differenzierbar} auf $D$} \}$
+	$C^k(D, K^m) := \{ f:D\to K^m\mid $f$ \text{ $k$-fach stetig \gls{diffbar} auf $D$} \}$
 \end{*definition}
 
 \begin{underlinedenvironment}[Hinweis]
@@ -349,12 +349,12 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 		\end{align}
 		\item \proplbl{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b}
 		Falls alle partiellen Ableitungen $f_{x_{j_1}\dots x_{j_k}}$ der Ordnung $k$ für alle $y\in B_r(x)\subset D$ existieren und falls diese stetig sind \\
-		\ \ $\Rightarrow$ $f$ ist $k$-fach \gls{differenzierbar}, d.h. $f^{(k)}(x)$ existiert.
+		\ \ $\Rightarrow$ $f$ ist $k$-fach \gls{diffbar}, d.h. $f^{(k)}(x)$ existiert.
 	\end{enumerate}
 \end{theorem}
 
 \begin{remark}
-	\propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung} \ref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b} ist ein wichtiges Kriterium zur Prüfung der \gls{differenzierbar}keit, $k$-te Ableitung kann dann mittels \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq} bestimmt werden.
+	\propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung} \ref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b} ist ein wichtiges Kriterium zur Prüfung der \gls{diffbar}keit, $k$-te Ableitung kann dann mittels \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq} bestimmt werden.
 \end{remark}
 
 \begin{proof}
@@ -440,7 +440,7 @@ Analoge Rechnung liefert allgemein
 
 \begin{conclusion}
 	\proplbl{taylor_partielle_ableitung_schwarz_folgerung}
-	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ $k$-fach \gls{differenzierbar} (d.h. $f\in C^k(D,\mathbb{R}^m)$) \\
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ $k$-fach \gls{diffbar} (d.h. $f\in C^k(D,\mathbb{R}^m)$) \\
 	\ $\Rightarrow$ alle partiellen Ableitung bis Ordnung $k$ existieren und die Reihenfolge kann vertauscht werden.
 \end{conclusion}
 
@@ -464,7 +464,7 @@ Analoge Rechnung liefert allgemein
 		\vert f_{x_i x_j}(x + s\cdot e_i + t\cdot e_j) - f_{x_i x_j}(x)\vert < \epsilon \quad\forall s,t\in(-\delta,\delta)
 	\end{align}
 	
-	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{differenzierbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
+	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{diffbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow{\text{MWS}}$ & $\exists \sigma \in (0,s): \phi(s) - \phi(0) = \phi'(\sigma)s = \left(f_{x_i}(x + \sigma e_i + t e_j) - f_{x_i}(x + \sigma e_i)\right)s$ \marginnote{MWS = Mittelwertsatz, \propref{mittelwertsatz_mittelwertsatz}}\\
 	$\xRightarrow{\text{MWS}}$ & für $t\to f_{x_i}(x + \sigma e_i + t e_j)$: $\exists \tau \in (0,t): \phi(s) - \phi(0) = f_{x_i x_j}(\underbrace{x + \sigma e_i + \tau e_j}_{=: \tilde{x}}) s t$ ($\sigma$, $\tau$ abhängig von $s$, $t$)
@@ -490,7 +490,7 @@ Analoge Rechnung liefert allgemein
 
 \begin{proposition}[notwendige Integrabilitätsbedingung]
 	\proplbl{taylor_anwendung_integrabilitaetsbedinung}
-	Sei $f=(f_1, \dotsc, f_n): D\subset\mathbb{R}^n\to\mathbb{R}^n$, $D$ Gebiet\marginnote{Gebiet: offen, zusammenhängend}, $f$ stetig \gls{differenzierbar}.
+	Sei $f=(f_1, \dotsc, f_n): D\subset\mathbb{R}^n\to\mathbb{R}^n$, $D$ Gebiet\marginnote{Gebiet: offen, zusammenhängend}, $f$ stetig \gls{diffbar}.
 	
 	Damit $f$ eine Stammfunktion $F:D\to \mathbb{R}$ besitzt, muss folgende \begriff{Integrabilitätsbedingung} erfüllt sein: \begin{align}
 		\proplbl{taylor_anwendung_integrabilitaetsbedinung_eq}
@@ -524,7 +524,7 @@ Analoge Rechnung liefert allgemein
 \end{example}
 
 \begin{proposition}
-	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen und konvex, $f$ stetig \gls{differenzierbar}. Dann:\begin{enumerate}[label={\alph*)}]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen und konvex, $f$ stetig \gls{diffbar}. Dann:\begin{enumerate}[label={\alph*)}]
 		\item $f$ konvex $\Leftrightarrow$ $\langle f'(x), y- x\rangle \le f(y)f(x)$ $\forall x,y\in D$
 		\item falls sogar $f\in C^2(D)$, dann: \begin{center}
 			%@TODO zu definit linken
@@ -551,7 +551,7 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 
 \begin{theorem}[\person{Taylor}-scher Satz]
 	 \proplbl{taylor_taylor}
-	Sei $f:D\subset K^n\to K^m$, $D$ offen, $k$-fach \gls{differenzierbar} auf $D$, $x\in D$. Dann \begin{align}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $k$-fach \gls{diffbar} auf $D$, $x\in D$. Dann \begin{align}
 		\proplbl{taylor_taylor_eq}
 		f(x+y) = f(x) + \sum_{j=1}^{k-1} \frac{1}{j!} f^{(j)}(x) y^j + R_k(y)\quad\text{falls $[x,x+y]\subset D$,}
 	\end{align}
@@ -585,9 +585,9 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 	\end{align*}
 	Offenbar $\phi(1) = 0 = \phi(0)$.
 	
-	Da $f$ $k$-fach \gls{differenzierbar}\\
+	Da $f$ $k$-fach \gls{diffbar}\\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\phi:[0,1]\to K^m$ $\mathbb{R}$-\gls{differenzierbar} auf $(0,1)$ mit
+	$\Rightarrow$ & $\phi:[0,1]\to K^m$ $\mathbb{R}$-\gls{diffbar} auf $(0,1)$ mit
 	\end{tabularx} {\begin{align}
 		\proplbl{taylor_taylor_beweis_24}
 		\notag\phi'(t) &= -f'(x + ty) \cdot y + \sum_{j=1}^{k-1}\left( \frac{(1 - t)^{j-1}}{(j - 1)!} f^{(j)}(x + ty) y^j - \frac{(1 - t)^j}{j!} f^{(j+1)}(x + ty) y^{j+1}\right) + k (1 - t)^{k - 1} R_k(y) \\
@@ -601,7 +601,7 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 		
 		\item zu \eqref{taylor_taylor_restglied_eq_eins} mit $K=\mathbb{R}$: Sei $\psi(t) := \langle \phi(t), v\rangle$ für $v\in\mathbb{R}^n$ \\
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & $\psi:[0,1]\to\mathbb{R}$ \gls{differenzierbar} auf $(0,1)$ mit $\psi'(t) = \langle \phi'(t),r\rangle$ \\
+		$\Rightarrow$ & $\psi:[0,1]\to\mathbb{R}$ \gls{diffbar} auf $(0,1)$ mit $\psi'(t) = \langle \phi'(t),r\rangle$ \\
 		$\xRightarrow{\text{MWS}}$ & $\exists \tau\in(0,1)$: $0= \langle \phi'(\tau), v\rangle$
 		\end{tabularx}
 		 {\begin{flalign}
@@ -636,7 +636,7 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 \end{*definition}
 
 \begin{conclusion}[\person{Taylor}-Formel mit partiellen Ableitungen]
-	Sei $f:D\subset K^n\to K^m$, $d$ offen, $f$ $k$-fach \gls{differenzierbar} auf $D$, $x\in D$, $[c,c+y]\subset D$: \begin{align}
+	Sei $f:D\subset K^n\to K^m$, $d$ offen, $f$ $k$-fach \gls{diffbar} auf $D$, $x\in D$, $[c,c+y]\subset D$: \begin{align}
 		\proplbl{taylor_taylor_partielle_ableitungen_eq}
 		f(x + y) = f(x) = \sum_{l=1}^{k-1} \frac{1}{l!} \sum_{j=1}^n f_{x_{j_l}\dots x_{j_1}}(x) y_{j_1}\dots y_{j_l} + R_k(y),
 	\end{align}

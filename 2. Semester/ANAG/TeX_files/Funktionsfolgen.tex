@@ -1,8 +1,8 @@
 \section{Funktionsfolgen}\setcounter{equation}{0}
 
-Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{differenzierbar} für $k\in\mathbb{N}$
+Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{diffbar} für $k\in\mathbb{N}$
 
-\textbf{Frage:} Wann konvergiert $\{ f_k\}_{k\in\mathbb{N}}$ gegen \gls{differenzierbar}e Funktion $f$ mit $f_k'\to f'$ \\
+\textbf{Frage:} Wann konvergiert $\{ f_k\}_{k\in\mathbb{N}}$ gegen \gls{diffbar}e Funktion $f$ mit $f_k'\to f'$ \\
 
 \textbf{Wiederholung:} alle $f_k$ stetig, $f_k\to f$ gleichmäig auf $D$ $\xRightarrow{\text{\propref{chap_14_19}}}$ $f$ stetig
 
@@ -16,11 +16,11 @@ Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{differenzierbar} für
 
 \begin{proposition}[Differentiation bei Funktionsfolgen]
 	\proplbl{funktionsfolgen_differentiation}
-	Sei $f_K:D\subset K^n\to K^n$, $D$ offen, beschränkt, $f_k$ \gls{differenzierbar} $\forall k$ und\begin{enumerate}[label={(\alph*)}]
+	Sei $f_K:D\subset K^n\to K^n$, $D$ offen, beschränkt, $f_k$ \gls{diffbar} $\forall k$ und\begin{enumerate}[label={(\alph*)}]
 		\item $f_k'\rightarrow: g$ gleichmäßig auf $B_r(x)\subset D$
 		\item \proplbl{funktionsfolgen_differentiation_b} $\{ f_k(x_0)\}$ konvergiert für ein $x_0\in B_r(x)$
 	\end{enumerate}
-	$\Rightarrow$ $f_k\rightarrow: f$ gleichmäßig auf $B_r(x)$ und $f$ ist \gls{differenzierbar} auf $B_r(x)$ mit \begin{align*}
+	$\Rightarrow$ $f_k\rightarrow: f$ gleichmäßig auf $B_r(x)$ und $f$ ist \gls{diffbar} auf $B_r(x)$ mit \begin{align*}
 		f_k'(y) \rightarrow f'(y) \quad\forall y\in B_r(x)
 	\end{align*}
 \end{proposition}
@@ -55,7 +55,7 @@ Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{differenzierbar} für
 	Fixiere $\tilde{x}\in B_r(x)$, $k=k_0$. Dann liefert $l\to\infty$ in \eqref{funktionsfolgen_differentiation_beweis_3} \begin{align*}
 		\vert f(y) - f(\tilde{x}) - \big( f_k(y) - f_k(\tilde{x} \big) \vert \le \epsilon \vert y - \tilde{x}\vert \quad\forall y\in B_r(x)
 	\end{align*}
-	Da $f_k$ \gls{differenzierbar} $\exists \rho = \rho (\epsilon) > 0$ mit {\zeroAmsmathAlignVSpaces**\begin{align*}
+	Da $f_k$ \gls{diffbar} $\exists \rho = \rho (\epsilon) > 0$ mit {\zeroAmsmathAlignVSpaces**\begin{align*}
 		\vert f_k(y) - f_k(\tilde{x}) - f_k'(\tilde{x})\cdot(y - \tilde{x})\vert \le \epsilon \vert y - \tilde{x}\vert\quad\forall y\in B_\rho(\tilde{x})\subset B_r(x)
 	\end{align*}}
 	{\zeroAmsmathAlignVSpaces*\begin{flalign}
@@ -82,12 +82,12 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 
 \textbf{Wiederholung:} $R=\frac{1}{\limsup \sqrt[k]{\vert a_k\vert}}$\\
 
-\textbf{Frage:} Ist $f$ \gls{differenzierbar} und kann man gliedweise differenzieren?
+\textbf{Frage:} Ist $f$ \gls{diffbar} und kann man gliedweise differenzieren?
 
 \begin{proposition}
 	\proplbl{funktionsfolgen_satz_3}
 	Sei $f:B_r(x_0)\subset K\to K$ Potenzreihe gemäß \eqref{funktionsfolgen_potenzreihe} \\
-	\hspace*{1.5ex}$\Rightarrow$ $f$ ist \gls{differenzierbar} auf $B_r(x_0)$ mit \begin{align}
+	\hspace*{1.5ex}$\Rightarrow$ $f$ ist \gls{diffbar} auf $B_r(x_0)$ mit \begin{align}
 		\proplbl{funktionsfolgen_satz_3_eq}
 		f'(x) &= \sum_{k=1}^\infty k a_k (x - x_0)^{k-1}\quad\forall x\in B_r(x_0)
 	\end{align}
@@ -111,7 +111,7 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 	Betrache die Partialsummen\begin{align*}
 		f_k(x) := \sum_{j=0}^k a_j(x- x_0)^j\quad\forall x\in B_r(x_0)
 	\end{align*}
-	\ $\Rightarrow$ $f_k(x_0)\xrightarrow{k\to\infty} f(x_0)$ und $f_k$ \gls{differenzierbar} mit \begin{align*}
+	\ $\Rightarrow$ $f_k(x_0)\xrightarrow{k\to\infty} f(x_0)$ und $f_k$ \gls{diffbar} mit \begin{align*}
 		f_k'(x) = \sum_{j=1}^k j a_j(x - x_0)^{j-1}\quad\forall x\in B_r(x_0)
 	\end{align*}
 	Wegen \begin{align*}
@@ -123,7 +123,7 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 	den Konvergenzradius $R$ \\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	\ $\Rightarrow$ & Reihe $g$ konvergiert gleichmäßig auf $B_r(x_0)$ $\forall r\in (0,R)$ (vgl. 13.1), d.h. $f_k'\to g$ gleichmäßig auf $B_r(x_0)$ \\
-	$\xRightarrow{\text{\cref{funktionsfolgen_differentiation}}}$&  $f$ ist \gls{differenzierbar} auf $B_r(x_0)$ mit \eqref{funktionsfolgen_satz_3_eq} auf $B_r(x_0)$.
+	$\xRightarrow{\text{\cref{funktionsfolgen_differentiation}}}$&  $f$ ist \gls{diffbar} auf $B_r(x_0)$ mit \eqref{funktionsfolgen_satz_3_eq} auf $B_r(x_0)$.
 	\end{tabularx}
 	
 	Da $r\in(0,R)$ beliebig, folgt die Behauptung.
@@ -138,7 +138,7 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 	
 \begin{proof}
 	$f(x)$ sei Potenzreihe \eqref{funktionsfolgen_eq_9}, hat Konvergenzradius $R=1$, $x_0=0$ \\
-	$\xRightarrow{\text{\cref{funktionsfolgen_satz_3}}}$ $f$ \gls{differenzierbar} auf $(-1,1)$ und \begin{align*}
+	$\xRightarrow{\text{\cref{funktionsfolgen_satz_3}}}$ $f$ \gls{diffbar} auf $(-1,1)$ und \begin{align*}
 		f'(x) = \sum_{k=0}^\infty (-x)^k = \frac{1}{1-(-x)} = \frac{1}{1+x}\qquad\text{geometrische Reihe}
 	\end{align*}
 	und\begin{align*}

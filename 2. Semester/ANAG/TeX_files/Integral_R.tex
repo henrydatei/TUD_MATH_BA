@@ -1,4 +1,4 @@
-\section{Integration auf $\mathbb{R}$} \setcounter{equation}{0}
+\section{Integration auf \texorpdfstring{$\mathbb{R}$}{R}} \setcounter{equation}{0}
 
 \subsection{Integrale konkret ausrechnen}
 $\int_I f \D x$ auf Intervalle $I=(\alpha,\beta)\subset\overline{\mathbb{R}}$ (mit $\alpha\le\beta$) (da Randpunkte eines Intervalls $I\subset\mathbb{R}$ nur Nullmenge sind, könnte man statt offenem Intervall auch abgeschlossene bzw. halboffene Intervalle verwenden, ohne den Integralwert zu ändern)
@@ -240,7 +240,7 @@ Nach \propref{messbarkeit_satz_grundlegende_messbare_mengen} \ref{messbarkeit_sa
 \end{proof}
 
 \subsection{Uneigentliche Integrale}
-\textbf{Frage:} $\int_I f \D x$ für $I$ unbeschränkt bzw. $f$ unbeschränkt?\\
+\textbf{Frage:} $\int_I f \D x$ für $I$ unbeschränkt bzw. $f$ unbeschränkt?
 
 \textbf{Strategie:} Verwende den Hauptsatz mittels Grenzprozess.
 
@@ -328,12 +328,17 @@ Nach \propref{messbarkeit_satz_grundlegende_messbare_mengen} \ref{messbarkeit_sa
 	\end{flalign*}}
 	
 	Offenbar ist $\int_{(k - 1)\pi}^{k\pi} \left\vert \frac{\sin x}{x} \right\vert \D x \ge \frac{1}{k\pi} \int_{(k - 1)\pi}^{k\pi} \vert \sin x \vert \D x = \frac{2}{k\pi}$ $\forall k\ge 1$ (vgl. \propref{integration_r_beispiel_5}) \\
-	$\Rightarrow$ $\int_0^{k\pi} \left\vert \frac{\sin x}{x}\right\vert \D x \ge \frac{2}{\pi} \sum_{j=1}^k \frac{1}{j} \xrightarrow{k\to\infty} \infty$ \\
-	$\Rightarrow$ $\frac{\sin x}{x}$ \emph{nicht} integrierbar auf $(0,\infty)$
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\displaystyle\int_0^{k\pi} \left\vert \frac{\sin x}{x}\right\vert \D x \ge \frac{2}{\pi} \sum_{j=1}^k \frac{1}{j} \xrightarrow{k\to\infty} \infty$ \\
+	$\Rightarrow$ & $\frac{\sin x}{x}$ \emph{nicht} integrierbar auf $(0,\infty)$
+	\end{tabularx}
 	
-	\emph{aber} $\int_1^\beta \frac{1}{x} \sin x \D x = \frac{\cos 1}{1} - \frac{\cos \beta}{\beta} - \int_1^\beta \frac{\cos x}{x^2} \D x$
+	\emph{aber:}\begin{align*}\int_1^\beta \frac{1}{x} \sin x \D x = \frac{\cos 1}{1} - \frac{\cos \beta}{\beta} - \int_1^\beta \frac{\cos x}{x^2} \D x
+	\end{align*}
 	
 	Wegen $\left\vert\frac{\cos x}{x^2}\right\vert\le\frac{1}{x^2}$ $\forall x\neq 0$, $\frac{1}{x^2}$ ist integrierbar nach \propref{integral_r_unbestimmt_beispiel_18} \\
-	$\Rightarrow$ $\lim\limits_{\beta\to\infty} \int_1^\beta \frac{\cos x}{x^2} \D x$ existiert nach \propref{integral_funktion_majorantenkriterium} \\
-	$\Rightarrow$ $\lim\limits_{\beta\to\infty} \int_1^\beta \frac{\sin x}{x}\D x$ existiert $\Rightarrow$ $\int_0^\infty \frac{\sin x}{x} \left( = \frac{\pi}{2}\right)$ existiert als uneigentliches Integral im Sinne des \person{Riemann}-Integral (vgl \propref{integral_r_uneigentlich_bemerkung}), aber nicht als \lebesque-Integral.
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\displaystyle\lim\limits_{\beta\to\infty} \int_1^\beta \frac{\cos x}{x^2} \D x$ existiert nach \propref{integral_funktion_majorantenkriterium} \\
+	$\Rightarrow$ & $\displaystyle \lim\limits_{\beta\to\infty} \int_1^\beta \frac{\sin x}{x}\D x$ existiert $\Rightarrow$ $\int_0^\infty \frac{\sin x}{x} \left( = \frac{\pi}{2}\right)$ existiert als uneigentliches Integral im Sinne des \person{Riemann}-Integral (vgl \propref{integral_r_uneigentlich_bemerkung}), aber nicht als \lebesque-Integral.
+	\end{tabularx}
 \end{example}

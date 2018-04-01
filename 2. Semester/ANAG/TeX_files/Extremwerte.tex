@@ -1,6 +1,6 @@
 \section{Extremwerte} \setcounter{equation}{0}
 \subsection{Lokale Extrema ohne Nebenbedingung}
-Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$ wegen Ordnung}, $D$ offen, $f$ \gls{differenzierbar}.
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$ wegen Ordnung}, $D$ offen, $f$ \gls{diffbar}.
 
 \textbf{notwendige Bedingung:} (\propref{mittelwertsatz_optimalitaetsbedingung}): $f$ hat lokales Minimum / Maximum in $x\in D$ $\Rightarrow$ $f'(x) = 0$
 
@@ -122,7 +122,7 @@ Eine symmetrische Matrix $A=(a_{ij})\in\mathbb{R}^{n\times n}$ ist positiv defin
 \end{example}
 
 \subsection{Lokale Extrema mit Gleichungsnebenbedingung}
-Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}, $D$ offen, $g:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}, $D$ offen, $g:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}
 
 \textbf{Frage:} Bestimmen von Extrema von $f$ auf der Menge $G:= \{ x\in\mathbb{R}\mid g(x) = 0 \}$, d.h. suche notwendige Bedingung (für hinreichende Bedingung sieh Vorlesung Optimierung)\\
 
@@ -130,7 +130,7 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}, $D$ offen
 	$\Rightarrow$ $\exists\lambda\in\mathbb{R}: f'(x_{\max}) + \lambda g'(x_{\max}) = 0$
 
 \begin{proposition}[Lagrange-Multiplikatorregel, notwendige Bedingung]
-	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, \gls{differenzierbar}, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
+	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, \gls{diffbar}, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
 	
 	Falls $g'(x)$ regulär, d.h. \begin{align}
 		\proplbl{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_4}
@@ -188,7 +188,7 @@ Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{differenzierbar}, $D$ offen
 \end{example}
 
 \subsection{Globale Extrema mit Abstrakter Nebenbedinung}
-Betrachte $f:\overline{D}\subset\mathbb{R}\to\mathbb{R}$, $D$ offen, $f$ stetig auf $\overline{D}$, \gls{differenzierbar} auf $D$.
+Betrachte $f:\overline{D}\subset\mathbb{R}\to\mathbb{R}$, $D$ offen, $f$ stetig auf $\overline{D}$, \gls{diffbar} auf $D$.
 
 \textbf{Existenz:} nach \propref{chap_15_3}:
 	

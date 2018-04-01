@@ -13,10 +13,12 @@
 \usepackage{calc}
 
 \usepackage{scalerel,stackengine}
+\usepackage{tocloft}
 
 \usepackage[T1]{fontenc}
 \ifluatex
 \usepackage{fontspec}
+%\usepackage{luacode}
 \fi
 
 \usepackage[texindy]{imakeidx}
@@ -65,7 +67,6 @@
 \usepackage{ulem} %better underlines
 
 \usepackage{parskip}%split paragraphs by vspace instead of intendations
-\usepackage{tocloft}
 \usepackage{fancyhdr}
 \usepackage{titlesec}%customize titles
 \usepackage{marginnote}
@@ -371,6 +372,12 @@
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
 \newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
 \reqnos
+
+\pdfstringdefDisableCommands{%
+	\def\\{}%
+	\def\texttt#1{<#1>}%
+	\def\mathbb#1{<#1>}%
+}
 \makeatother
 
 %General newcommands!
@@ -496,18 +503,16 @@
 \newacronym{hp}{HP}{\begriff{Häufungspunkt}}
 \newacronym{vr}{VR}{Vektorraum}
 \newacronym{diffbar}{diffbar}{differenzierbar}
-\newacronym{differenzierbar}{differenzierbar}{differenzierbar}
 \newacronym{mws}{MWS}{Mittelwertsatz}
 
 \title{\textbf{Analysis 2. Semester (SS2018)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
 	Kursassistenz: Moritz Schönherr}
 
-   \makeatletter
+%remove page number from part{}-pages
 \makeatletter
 \let\sv@endpart\@endpart
 \def\@endpart{\thispagestyle{empty}\sv@endpart}
-\makeatother
 \makeatother
 
 \begin{document}
@@ -524,73 +529,72 @@
 \pagestyle{fancy}
 \pagenumbering{arabic}
 
-\part{1. Semester}
-\pagestyle{fancy}
-\chapter{Zahlenbereiche}
-\input{./TeX_files/Grundbegriffe_Logik}
-\include{./TeX_files/Natuerliche_Zahlen}
-\include{./TeX_files/Ganze_und_Rationale_Zahlen}
-\include{./TeX_files/Reelle_Zahlen}
-\include{./TeX_files/Komplexe_Zahlen}
 
-\chapter{Metrische Räume und Konvergenz}
-\input{./TeX_files/Grundlegende_Ungleichungen}
-\include{./TeX_files/Metrische_Raeume}
-\include{./TeX_files/Konvergenz}
-\include{./TeX_files/Vollstaendigkeit_und_Kompaktheit}
-\include{./TeX_files/Reihen}
+\begin{center}\begin{tikzpicture}
+	\begin{axis}[
+	xmin=-5, xmax=5, xlabel=$x$,
+	ymin=-5, ymax=5, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=-5:5
+	]
+	\addplot+[mark=none]  {tan(deg(x))};
+	\addlegendentry{$\tan(x)$}
+	\end{axis}
+	\end{tikzpicture}\end{center}
 
-\chapter{Funktionen und Stetigkeit}
-\input{./TeX_files/Funktionen}
-\include{./TeX_files/Stetigkeit}
-\include{./TeX_files/Anwendungen}
-\begin{proposition}
-\proplbl{aeqv_norm}
-\proplbl{chap_15_5}
-\proplbl{defLinearFunction}
-\proplbl{einseitige_grenzwerte}
-\proplbl{lemma_13_10}
-\proplbl{additionstheoreme}
-\proplbl{chap_5}
-\proplbl{satz_von_weierstrass}
-\proplbl{chap_15_3}
-\proplbl{satz_15_8}
-\proplbl{satz_15_1}
-\proplbl{zwischenwertsatz}
-\proplbl{chap_15_20}
-\proplbl{chap_14_19}
-Test für Labels.
-\end{proposition}
-
-\part{2. Semester}
-\pagestyle{fancy}
-\setcounter{section}{15}
-\setcounter{chapter}{4}
-
-\chapter{Differentiation}
-\input{./TeX_files/Wiederholung_und_Motivation}
-\include{./TeX_files/Ableitung}
-\include{./TeX_files/Richtungsableitung}
-\include{./TeX_files/Mittelwertsatz}
-\include{./TeX_files/Stammfunktion}
-
-\chapter{Integration}
-\input{./TeX_files/Integration}
-\include{./TeX_files/Messbarkeit}
-\include{./TeX_files/Integral}
-\include{./TeX_files/Integral_R}
-\include{./TeX_files/Fubini}
-
-\chapter{Differentiation II}
-\input{./TeX_files/Taylor}
-\include{./TeX_files/Extremwerte}
-\include{./TeX_files/Inverse_implizite_Funktionen}
-\include{./TeX_files/Funktionsfolgen}
+%\part{1. Semester}
+%\pagestyle{fancy}
+%\chapter{Einleitung}
+%\input{./TeX_files/Grundbegriffe_Logik}
+%\stepcounter{section}
+%\chapter{Zahlenbereiche}
+%\include{./TeX_files/Natuerliche_Zahlen}
+%\include{./TeX_files/Ganze_und_Rationale_Zahlen}
+%\include{./TeX_files/Reelle_Zahlen}
+%\include{./TeX_files/Komplexe_Zahlen}
+%
+%\chapter{Metrische Räume und Konvergenz}
+%\input{./TeX_files/Grundlegende_Ungleichungen}
+%\include{./TeX_files/Metrische_Raeume}
+%\include{./TeX_files/Konvergenz}
+%\include{./TeX_files/Vollstaendigkeit}
+%\include{./TeX_files/Kompaktheit}
+%\include{./TeX_files/Reihen}
+%
+%\chapter{Funktionen und Stetigkeit}
+%\input{./TeX_files/Funktionen}
+%\include{./TeX_files/Stetigkeit}
+%\include{./TeX_files/Anwendungen}
+%
+%\part{2. Semester}
+%\pagestyle{fancy}
+%
+%\chapter{Differentiation}
+%\input{./TeX_files/Wiederholung_und_Motivation}
+%\include{./TeX_files/Ableitung}
+%\include{./TeX_files/Richtungsableitung}
+%\include{./TeX_files/Mittelwertsatz}
+%\include{./TeX_files/Stammfunktion}
+%
+%\chapter{Integration}
+%\input{./TeX_files/Integration}
+%\include{./TeX_files/Messbarkeit}
+%\include{./TeX_files/Integral}
+%\include{./TeX_files/Integral_R}
+%\include{./TeX_files/Fubini}
+%
+%\chapter{Differentiation II}
+%\input{./TeX_files/Taylor}
+%\include{./TeX_files/Extremwerte}
+%\include{./TeX_files/Inverse_implizite_Funktionen}
+%\include{./TeX_files/Funktionsfolgen}
 
 
 \appendix
-\part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
+\part*{Anhang}
 \patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
 %\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
 %\titlespacing{command}{left}{before-sep}{after-sep}
@@ -600,6 +604,7 @@ Test für Labels.
 \titlespacing{\chapter}{0pt}{-0.75cm}{0pt}
 \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
 
+%from ntheorem.sty
 %\def\thm@@thmline@name#1#2#3#4#5{%
 %	\ifx\\#5\\%
 %		\@dottedtocline{-2}{0em}{2.3em}%
@@ -620,10 +625,11 @@ Test für Labels.
 %}
 
 \makeatletter
+%update ntheorem macro to provide space between theorem numbers and any optional comment
 \renewcommand{\thm@@thmline@name}[5]{%
 	\def\thm@@thmline@name@tmp{%
 		\if\relax\detokenize{#3}\relax%
-			\relax%
+			{:}%
 		\else%
 			{:\hspace*{1em}#3}%
 		\fi%
@@ -660,8 +666,8 @@ Test für Labels.
 \printglossary[type=\acronymtype]
 \addcontentsline{toc}{chapter}{Akronyme}
 
-\printindex
 \addcontentsline{toc}{chapter}{Index}
+\printindex
 
 \printindex[symbols]
 \addcontentsline{toc}{chapter}{Symbolverzeichnis}

@@ -43,35 +43,3 @@
 \begin{theorem}
 	$\mathbb{R}^n$ und $\mathbb{C}^n$ mit $|.|_p$ ($1\le p \le \infty$) sind vollständige, normierte Räume (d.h. \person{Banach}-Räume).
 \end{theorem}
-
-\section{Kompaktheit}
-\begin{definition}
-Sei $(X,d)$ metrischer Raum, Mengensystem $\mathcal{U}\subset \{ U\subset X | U \text{ offen }\}$ heißt \begriff{offene Überdeckung} von $M\subset X$, falls $M\subset \bigcup_{U\in\mathcal{U}} U$.
-
-Überdeckung $\mathcal{U}$ heißt endlich, falls $\mathcal{U}$ endlich (d.h. $\mathcal{U} = \{U_1,\dotsc,U_n\}$).
-
-Menge $M\subset X$ heißt \highlight{(überdeckungs-)}\begriff[Menge!]{kompakt}, falls jede Überdeckung $\mathcal{U}$ eine endliche Überdeckung $\tilde{\mathcal{U}}\subset \mathcal{U}$ endhält (d.h. $\exists U_1,\dotsc, U_n\subset\mathcal{U}$ mit $M\subset\bigcup_{i=1}^n U_n$).
-
-Menge $M\subset X$ heißt \begriff{folgenkompakt}, falls jede Folge $\{x_n\}$ aus $M$ (d.h. $x_n\in M\,\forall M$) eine konvergente Teilfolge $\{x_{n'}\}$ mit Grenzwert in $M$ bessitzt (d.h. $\{x_n\}$ hat \gls{hw} in $M$ nach \ref{tfprinzip}).
-\end{definition}
-
-\begin{theorem}
-	Sei $(X,d)$ metrischer Raum, $M\subset X$. Dann:\[M\text{ kompakt} \;\Leftrightarrow\; M\text{ folgenkompakt}\]
-\end{theorem}
-
-\begin{proposition}
-	Sei $(X,d)$ metrischer Raum, $M\subset X$. Dann
-	\begin{enumerate}[label={\arabic*)}]
-		\item $M$ folgenkompakt $\Rightarrow$ $M$ beschränkt und abgeschlossen
-		\item $M$ folgenkompakt, $A\subset M$ abgeschlossen $\Rightarrow$ $A$ folgenkompakt.
-	\end{enumerate}
-\end{proposition}
-\begin{theorem}[\person{Heine}-\person{Borell} kompakt, \person{Bolzano}-\person{Weierstraß} folgenkompakt]
-	Sei $X=\mathbb{R}^n$ (bzw. $\mathbb{C}^n$) mit beliebiger Norm, $M\subset X$. Dann \[ M \text{ kompakt} \;\Leftrightarrow\; M \text{ abgeschlossen und beschränkt} \]
-\end{theorem}
-\begin{conclusion}
-	Sei $\{x_n\}$ Folge in $X=\mathbb{R}^n$ (bzw. $\mathbb{C}^n$). Dann \[ \{x_n\}\text{ beschränkt} \;\Rightarrow \; \{x_n\} \text{ hat konvergente \gls{tf}}\]
-\end{conclusion}
-\begin{proposition}
-	Je 2 Normen aus $\mathbb{R}^n$ bzw. $\mathbb{C}^n$ sind äquivalent.
-\end{proposition}
