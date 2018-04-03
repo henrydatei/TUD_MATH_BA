@@ -1,3 +1,4 @@
+\addtocounter{section}{1} % section ``Fundament der Mathematik'' fehlt
 \section{Natürliche Zahlen}
 \begin{definition}[Peano Axiome]
 $\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
@@ -17,10 +18,11 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{definition}
 
 \begin{theorem}
+	\proplbl{naturliche_zahlen_isomorph}
 	Falls $\mathbb{N}$ und $\mathbb{N}*$ \person{Peano}-Axiome erfüllen, dann sind sie isomorph bezüglich Nachfolger-Abbildung und Nullelement (Anfangselement).
 \end{theorem}
 
-\begin{proposition}[Prinzip der vollständigen Induktion]
+\begin{proposition}[Prinzip der vollständigen Induktion] \proplbl{prin_voll_induktion}
 	\begriff*{vollständigen Induktion}
 	Sei $\{A_n | n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
 	\begin{itemize}
@@ -30,7 +32,12 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	$\Rightarrow A_n$ ist wahr $\forall n\in\mathbb{N}$
 \end{proposition}
 
+\begin{proof}
+	Sei $N := \{n \in \mathbb{N} \mid A_n \text{ ist wahr}\} \subset \mathbb{N}$, offenbar $0 \in \mathbb{N}$ und $\nu(n) \in \mathbb{N}$, falls $n \in \mathbb{N} \Rightarrow \mathbb{N}$ induktiv in $\mathbb{N} \overset{P2)}{\Rightarrow} N = \mathbb{N}$
+\end{proof}
+
 \begin{lemma}
+	\proplbl{lemma_nachfolgerabb}
 	Es gilt:
 	\begin{enumerate}[label={\alph*)}]
 		\item $\nu(\mathbb{N})\cup \{0\}=\mathbb{N}$
@@ -38,13 +45,50 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\end{enumerate}
 \end{lemma}
 
-\begin{proposition}[Rekusrive Definition / Rekursion]
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $N := \{n \in \mathbb{N} \mid n = \nu(m) \text{ für } n\in \mathbb{N} \} \cup \{ 0 \}$ ist induktiv in $\mathbb{N} \overset{P2)}{\Rightarrow} N = \mathbb{N}$
+		\item[b)] Beweis mittels vollständiger Induktion
+		\begin{itemize}
+			\item[(IA)] $\nu(0) \neq 0$ nach P1)
+			\item[(IS)] Zeige: $(\nu(n) \overset{\text{Ind.vorraus.}}{\neq} n \Rightarrow \nu(\nu(n)) \neq \nu(n) \forall n \in \mathbb{N}$
+		indirekter Beweis: \\
+		Angenommen $\nu(\nu(n)) = \nu(n) \overset{\nu \text{ inj.}}{\Rightarrow} \nu(n) = n \overset{IV}{\Rightarrow} \lightning \Rightarrow$ (1) $\Rightarrow$ b) nach Prinzip der vollst. Induktion (vgl.\propref{prin_voll_induktion})
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Rekursive Definition / Rekursion]
+	\proplbl{rekursive_def_abb}
 	\begriff*{Rekursion}
-	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align*}
-		f(0) &:= b,\\f(n+1):=F(f(n),n)\quad\forall n\in \mathbb{N}
-	\end{align*}
+	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align}\label{rekur_definition}
+		f(0) &:= b,\\f(n+1)&:=F(f(n),n)\quad\forall n\in \mathbb{N}
+	\end{align}
 	genau eine Abbildung für $f:\mathbb{N}\rightarrow B$ (d.h. solche Abbildung ist eindeutig)
 \end{proposition}
+
+\begin{proof}
+	mittels vollständiger Induktion:
+	\begin{itemize}
+		\item[IA] $f(0) = b$ eindeutig definiert 
+		\item[IS] angenommen $f(n)$ eindeutig definiert $\overset{\text{1)}{\Rightarrow}}$ 
+		$f(n+1) \overset{\text{\propref{prin_voll_induktion}}{\Rightarrow}$ Behauptung gilt nach Prinzip der vollständigen Induktion
+	\end{itemize}
+\end{proof}
+
+\begin{proof}[\propref{naturliche_zahlen_isomorph}]
+	$\mathbb{N}$ und $\mathbb{N}^{*}$ mögen \person{Peano}-Axiome erfüllen mit $(\nu, 0)$ bzw. $(\nu^{*}, 0^{*})$. Betrachte rekursive eindeutige definierte Abbildung: $I: \mathbb{N} \to \mathbb{N}^{*}$ (\propref{rekursive_def_abb} $B=\mathbb{N}^{*}$, $F(n^{*}, n) = \nu^{*}(n^{*})$)
+	$I(0) = 0^{*}, I(\nu(n)) = \nu^{*}(I(n)) \forall n \in \mathbb{N}$ $I$ enthält Nullelement und Nachfolgerabbildung. Falls $I$ bijektiv, dann ist $I$ ein Isomorphismus und Behauptung folgt.\\
+		Zeige $I$ surjektiv: offenbar $0^{*} \in I(\mathbb{N})$, falls $n^{*} \in I(\mathbb{N}) \Rightarrow \exists n \in \mathbb{N}:n^{*} = I(n) \Rightarrow \nu^{*}(n^{*}) = \nu^{*}(I(n)) = I(\nu(n)) \in I(\mathbb{N})$ (Bild). Folglich ist $I(\mathbb{N}) \subset \mathbb{N}^{*}$ induktiv in $\mathbb{N}^{*} \overset{\text{P2)}}{\Rightarrow} I(\mathbb{N}) = \mathbb{N}^{*}$.\\
+		Zeige $I$ injektiv: $I(n) \neq I(m)\forall n\neq m$ (*) vollständige Induktion nach $m$ (jeweils $\forall n \neq m$)
+		\begin{itemize}
+			\item[IA)] $m=0: \forall n \neq 0 \exists n \in \mathbb{N} \colon n = \nu(n^{'})$ (vgl. \propref{lemma_nachfolgerabb}) $\Rightarrow I(n) = I(\nu(n^{'})) = \nu^{*}(I(n^{'})) \overset{\text{P1)}}{\neq} 0^{*} = I(0) \forall n \neq 0$ (ist gerade (*)))
+			\item[IS)] IV: Sei $I(n) \neq I(m) \forall n \neq m$, dann 
+			für $n = 0$, $n = \nu(m) \text{ mit } I(0) = 0^{*} \neq \nu^{*}(I(m)) = I(\nu(m))$.\\
+			für $n \neq 0$, $n \overset{\propref{lemma_nachfolgerabb}}{=} \nu(n^{'}) \neq \nu(m) \overset{\nu \text{ inj.}}{\Rightarrow} n^{'} \overset{\text{IV)}}{\neq} m$ und $I(n) = I(\nu(n{'})) = \nu^{*}(I(n^{'})) \neq \nu^{*}(I(m)) = I(\nu(m))$\\
+			$\Rightarrow$ in der Behauptung $I(n) \neq I(\nu(m)) \forall n \neq \nu(m) \Rightarrow$(*) mittels vollständiger Induktion, d.h. $I$ ist injektiv
+		\end{itemize}
+\end{proof}
 
 \subsection*{Rechenoperationen}
 \begin{definition}[Rechenoperation auf $\boldsymbol{\mathbb{N}}$]
