@@ -422,6 +422,7 @@
 \newcommand{\lebesque}{\person{Lebesgue}}
 \renewcommand{\Re}{\mathfrak{Re}}
 \renewcommand{\Im}{\mathfrak{Im}}
+\renewcommand*{\arraystretch}{1.4}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -499,7 +500,7 @@
 \newacronym{differenzierbar}{differenzierbar}{differenzierbar}
 \newacronym{mws}{MWS}{Mittelwertsatz}
 
-\title{\textbf{Analysis 2. Semester (SS2018)}}
+\title{\textbf{Analysis 1 (WS2017/18 + SS2018)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
 	Kursassistenz: Moritz Schönherr}
 
@@ -516,6 +517,24 @@
 
 \maketitle
 
+\chapter*{Vorwort}
+Mathematik besitzt eine Sonderrolle unter den Wissenschaften, da
+\begin{itemize}
+	\item Resultate nicht empirisch gezeigt werden müssen
+	\item Resultate nicht durch Experimente widerlegt werden können
+\end{itemize}
+
+Es gibt 6 Gebiete der Mathematik:
+\begin{itemize}
+	\item Algebra
+	\item Geometrie
+	\item Zahlentheorie
+	\item Analysis
+	\item Stochastik
+	\item Numerik
+\end{itemize}
+\newpage
+
 \hypertarget{tocpage}{}
 \tableofcontents
 \bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
@@ -526,9 +545,10 @@
 
 \part{1. Semester}
 \pagestyle{fancy}
-\chapter{Zahlenbereiche}
+\chapter{Grundlagen der Mathematik}
 \input{./TeX_files/Grundbegriffe_Logik}
-\include{./TeX_files/Natuerliche_Zahlen}
+\chapter{Zahlenbereiche}
+\input{./TeX_files/Natuerliche_Zahlen}
 \include{./TeX_files/Ganze_und_Rationale_Zahlen}
 \include{./TeX_files/Reelle_Zahlen}
 \include{./TeX_files/Komplexe_Zahlen}
