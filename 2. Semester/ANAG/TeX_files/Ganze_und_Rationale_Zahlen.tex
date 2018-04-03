@@ -1,17 +1,53 @@
 \section{Ganze und rationale Zahlen}
-\begin{definition}
+\subsection{Ganze Zahlen}
+\textbf{Frage:} Existiert eine natürliche Zahl $x$ mit $n=n'+x$ für ein gegebenes $n$ und $n'$? \\
+\textbf{Antwort:} Das geht nur falls $n\ge n'$, dann ist $x=n-n'$. \\
+\textbf{Ziel:} Zahlbereichserweiterung, sodass die Gleichung immer lösbar ist. Ordne jedem Paar 
+$(n,n')\in\natur\times\natur$ eine neue Zahl $x$ als Lösung zu. Gewisse Paare liefern die gleiche 
+Lösung, z.B. $(6,4)$, $(5,3)$ und $(7,5)$. Diese müssen mittels Relation identifiziert werden.
+
+\begin{definition}[Äquivalenzrelation auf $\whole$]
 	Definiere Äquivalenzrelation $Q:=\{ ((n_1,n_1'),(n_2,n_2'))\in((\mathbb{N}\times\mathbb{N})\times(\mathbb{N}\times\mathbb{N})) | n_1+n_2' = n_1' + n_2 \}$
 \end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item $(5,3)\sim (6,4) \sim (7,5)$ bzw. $5-3\sim 6-4\sim 7-5$
+		\item $(3,6)\sim (5,8)$ bzw. $3-6\sim 5-8$
+	\end{itemize}
+\end{example}
+
 \begin{proposition}
 	$Q$ ist Äquivalenzrelation auf $\mathbb{N}\times\mathbb{N}$.
 \end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item offenbar $(n,n')\in Q$ und $(n',n)\in Q\Rightarrow$ reflexiv
+		\item falls $((n_1,n_1'),(n_2,n_2'))\in Q\Rightarrow ((n_2,n_2'),(n_1,n_1'))\in Q\Rightarrow$ symmetrisch
+		\item sei $((n_1,n_1'),(n_2,n_2'))\in Q$ und $((n_2,n_2'),(n_3,n_3'))\in Q\Rightarrow n_1+n_2'=n_1'+n_2$ und $n_2+n_3'=n_2'+n_3\Rightarrow n_1+n_3'=n_1'+n_3\Rightarrow ((n_1,n_1'),(n_3,n_3'))\in Q\Rightarrow$ transitiv
+	\end{itemize}
+\end{proof}
+
+Setze $\overline{\whole}=\{[(n,n')]\mid n,n'\in\natur\}$ Menge der ganzen Zahlen \\
+Kurzschreibweise: $\overline{m}=[(m,m')]$
 
 \begin{proposition}
 	Sei $[(n,n')]\in\overline{\mathbb{Z}}$. Dann ex. eindeutige $n^{*}\in\mathbb{N}:(n^{*},0)\in[(n,n')]$ falls $n\geq n'$ bzw. $(0,n^{*})\in[(n,n')]$ falls $n\leq n'$.
 \end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $n\ge n'\Rightarrow$ es existiert genau ein $n*\in\natur:n=n'+n*\Rightarrow (n*,0)\sim (n,n')$
+		\item $n< n'\Rightarrow$ es existiert genau ein $n*\in\natur:n+n*=n'\Rightarrow (0,n*)\sim (n,n')$
+	\end{itemize}
+\end{proof}
 
-\subsection*{Rechenoperationen}
-\begin{definition}
+\textbf{Frage:} Was hat $\overline{\mathbb{Z}}$ mit $\whole$ zu tun? \\
+\textbf{Antwort:} Identifiziere $(n,0)$ bzw. $(n-0)$ mit $n\in\natur$ und $(0,n)$ bzw. $(0-n)$ mit Symbol $-n$. \\
+$\Rightarrow$ ganze Zahlen kann man eindeutig den Elementen folgender Mengen zuordnen: 
+$\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
+
+\subsection{Rechenoperationen auf $\overline{\whole}$}
+\begin{definition}[Addition, Multiplikation]
 	\begriff{Addition}[!ganze Zahlen]: $\overline{m}+\overline{n} = [(m,n')] + [(n,n')] :=[(m+n,m'+n')]$
 	
 	\begriff{Multiplikation}[!ganze Zahlen]: $\overline{m}\cdot\overline{n} = \overline{m}\overline{n} = [(m,m')]\cdot[(n,n')]:=[(mn+m'n',mn'+m'n)]$
@@ -20,6 +56,9 @@
 \begin{proposition}
 	Addition und Multiplikation sind eindeutig definiert, d.h. unabhängig vom Repräsentanten bzgl. $Q$.
 \end{proposition}
+\begin{proof}
+	Sei $(m_1,m_1')\sim (m_2,m_2')$ und $(n_1,n_1')\sim (n_2,n_2')\Rightarrow m_1+m_2'=m_1'+m_2$ und $n_1+n_2'=n_1'+n_2\Rightarrow m_1+n_1+m_2'+n_2'=m_1'+n_1'+m_2+n_2 \Rightarrow (m_1,m_1')+(n_1,n_1')\sim (m_2,m_2')+(n_2,n_2')$
+\end{proof}
 
 \begin{proposition}
 	Für Addition und Multiplikation auf $Z$ gilt $\forall \overline{m},\overline{n}\in\overline{\mathbb{Z}}$:
@@ -31,29 +70,58 @@
 		\item $\overline{m}\cdot\overline{n} = 0 \Leftrightarrow \overline{m} = 0 \lor \overline{n} = 0$
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item offenbar $\overline{n}+0=0+\overline{n}=\overline{n}$ und $\overline{n}\cdot 1=1\cdot \overline{n}=\overline{n}$
+		\item Fleißarbeit
+		\item offenbar $\overline{n}+(-\overline{n})=(-\overline{n})+\overline{n}=0$
+		\item $-1\cdot\overline{n}=[(0,1)]\cdot[(n,n')]=[(n',n)]=-\overline{n}$
+		\item Übungsaufgabe
+	\end{enumerate}
+\end{proof}
 
 \begin{proposition}
 	Für $\overline{m},\overline{n}\in\overline{\mathbb{Z}}$ hat Gleichung $\overline{m} = \overline{n} + \overline{x}$ eindeutige Lösung $\overline{x} = \overline{m} + (-\overline{n}) = [(m+n'),(m'+n)]$.
 \end{proposition}
+\begin{proof}
+	$\overline{m}=\overline{n}+\overline{x}\iff \overline{x}=(-\overline{n})+\overline{n}+\overline{x}=
+	-\overline{n}+\overline{m}$
+\end{proof}
 
-\subsection*{Ordnung auf $\overline{\mathbb{Z}}$}
-\begin{definition}
+\subsection{Ordnung auf $\overline{\mathbb{Z}}$}
+\begin{definition}[Ordnungsrelation auf $\overline{\whole}$]
 	Betr. Relation $R:=\{(\overline{m},\overline{n})\in\overline{\mathbb{Z}}\times\overline{\mathbb{Z}} | \overline{m} \le \overline{n}\}$, wobei $\overline{m} = [(m,m')] \le [(n,n')]$ \gls{gdw} $(m+n'\le m'+n)$
 \end{definition}
 
 \begin{proposition}
 	$R$ ist Totalordnung auf $\overline{\mathbb{Z}}$, die verträglich ist mit Addition und Multiplikation.
 \end{proposition}
+\begin{proof}
+	Selbststudium und analog
+\end{proof}
 
-\begin{definition}
-	Betr. $\mathbb{Z} = \mathbb{Z}\cup\{ (-k) | k\in\mathbb{N}_{>0} \}$ mit üblicher Addition, Multiplikation und Ordnung "`$\ge$"'.
-\end{definition}
+Ordnung verträglich mit Addition: $\overline{n}<0\iff 0=\overline{n}+(-\overline{n})< -\overline{n}=-1\cdot \overline{n}$
+
 \begin{proposition}
+	Betr. $\mathbb{Z} = \mathbb{Z}\cup\{ (-k) | k\in\mathbb{N}_{>0} \}$ mit üblicher Addition, Multiplikation und Ordnung "`$\ge$"'. \\
 	$\mathbb{Z},\overline{\mathbb{Z}}$ sind isomorph bzgl. Addition, Multiplikation, Ordnung.
 \end{proposition}
+\begin{proof}
+	betrachte Abbildung $I:\whole\to\overline{\whole}$ mit $I(k)=[(k,0)]$ und $I(-k)=[(0,k)]$ \\
+	$\Rightarrow$ Übungsaufgabe
+\end{proof}
 
-\subsection*{Rationale Zahlen}
-\begin{definition}
+\textbf{Notation:} verwende stets $\whole$, schreibe $m,n,...$ statt $\overline{m},\overline{n},...$
+
+\subsection{Rationale Zahlen}
+
+\textbf{Frage:} Existiert eine ganze Zahl mit $n=n'\cdot x$ für $n,n'\in\whole$, $n'\neq 0$? \\
+\textbf{Antwort:} Im Allgemeinen nicht. \\
+\textbf{Ziel:} Zahlbereichserweiterung analog zu $\natur\to\whole$ \\
+ordne jedem Paar $(n,n')\in\whole\times\whole$ eine neue Zahl $x$ zu, schreibe $(n,n')$ auch als 
+$\frac{n}{n'}$ oder $n:n'$, identifiziere Paare wie z.B. $\frac{4}{2},\frac{6}{3},\frac{8}{4}$ durch Relation
+
+\begin{definition}[Äquivalenzrelation auf $\ratio$]
 	Betr. Relation $Q:=\left\lbrace \left. \left( \frac{n_1}{n_1'},\frac{n_2}{n_2'}\right) \in \left( \mathbb{Z}\times\mathbb{Z}_{\neq 0}\right)\times\left(\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right) \right| n_1n_2' = n_1'n_2\right\rbrace$
 	
 	Setzte $\mathbb{Q} := \left\lbrace \left[ \left. \frac{n}{n'}\right] \right| (n,n')\in\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right\rbrace$ Menge der \begriff{rationale Zahlen}.
@@ -61,7 +129,7 @@
 	Offenbar gilt \begriff{Kürzungsregel}[!rationale Zahlen] $\left[ \frac{n}{n'}\right] = \left[ \frac{k\cdot n}{k\cdot n'}\right]\quad\forall k\in\mathbb{Z}_{\neq 0}$.
 \end{definition}
 
-\subsection*{Rechenoperationen auf $\mathbb{Q}$}
+\subsection{Rechenoperationen auf $\mathbb{Q}$}
 \begin{definition}
 	\begriff{Addition}[!rationale Zahlen]: $\left[ \frac{m}{m'}\right] + \left[ \frac{n}{n'}\right] := \left[ \frac{mn' + m'n}{m'+n'}\right]$
 	
@@ -77,8 +145,11 @@
 	\item Inverse Elemente $-\left[\frac{n}{n'}\right] = \left[ \frac{-n}{n'}\right], \left[\frac{n}{n'}\right]^{-1} = \left[\frac{n'}{n}\right]$
 	\end{itemize}
 \end{proposition}
+\begin{proof}
+	Selbststudium, Übungsaufgabe
+\end{proof}
 
-\subsection*{Ordnung auf $\mathbb{Q}$}
+\subsection{Ordnung auf $\mathbb{Q}$}
 \begin{definition}
 	Relation $R:=\left\lbrace \left. \left( \left[\frac{m}{m'}\right],\left[\frac{n}{n'}\right]\right)\in\mathbb{Q}\times\mathbb{Q} \right| mn'\le m'n'; m',n'>0\right\rbrace$ gibt Ordnung "`$\le$"'.
 \end{definition}
@@ -86,6 +157,26 @@
 \begin{proposition}
 	$\mathbb{Q}$ ist angeordneter Körper ("`$\leq$"') ist Totalordnung verträglich mit Addition und Multiplikation).
 \end{proposition}
+\begin{proof}
+	Selbststudium, Übungsaufgabe
+\end{proof}
+
+\textbf{Notation:} schreibe vereinfacht nur noch $\frac{n}{n'}$ für die Zahl $\left[\frac{n}{n'}\right]
+\in\ratio$ und verwende Symbole $p,q,...$ für Elemente aus $\ratio$.
+
+Gleichung $p\cdot x=q$ hat stets eine eindeutige Lösung: $x=q\cdot p^{-1}$.
+
+\textbf{Frage:} $\natur\subset\whole$ (nach Definition) $\to\whole\subset\ratio$? \\
+\textbf{Antwort:} Sei $\whole_{\ratio}=\left\lbrace \frac{n}{1}\in\ratio\mid n\in\whole\right\rbrace$, $I:\whole\to\whole{\ratio}$ mit $I(n)=\frac{n}{1}$ \\
+$\Rightarrow I$ ist Isomorphismus bezüglich Addition, Multiplikation, Ordnung; in diesem Sinne: $\natur\subset\whole\subset\ratio$.
+
 \begin{conclusion}
 	Körper $\mathbb{Q}$ ist \begriff[Körper!]{archimedisch angeordnet}, d.h. $\forall q\in\mathbb{Q} \, \exists n\in\mathbb{N}: q < n$.
 \end{conclusion}
+\begin{proof}
+	Sei $q=\left[ \frac{k}{k'}\right]$ mit $k'>0$
+	\begin{itemize}
+		\item $n=0$ falls $k<0\Rightarrow q=\left[\frac{k}{k'}\right] < \left[ \frac{0}{k'}\right] =0=n$
+		\item $n=k+1$ falls $k\ge 0\Rightarrow q=\left[ \frac{k}{k'}\right] \le \left[ \frac{k+1}{k'}\right] \le \left[ \frac{k+1}{1}\right] =n$
+	\end{itemize}
+\end{proof}
