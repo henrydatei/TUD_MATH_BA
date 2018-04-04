@@ -137,6 +137,7 @@
 	Betrachte: $f:\mathbb{Q}\rightarrow K$ mit $f\left(\frac{m}{n}\right):= \frac{m\cdot 1_K}{n\cdot 1_K}=(m 1_k)(n 1_K)^{-1}\,\forall m\in\mathbb{Z},k\in\mathbb{Z}\setminus\{0\} =:\mathbb{Z}_{\neq 0}$
 	
 \begin{proposition}
+	\proplbl{inj_abb_ange_koerper}
 	Sei $K$ angeordneter Körper\\
 	$\Rightarrow$ $f:\mathbb{Q}\rightarrow K$ ist injektiv und $f$ erhält die Körperstruktur und Ordnung, d.h. $\forall p,q\in\mathbb{Q}$:
 	\begin{itemize}
@@ -166,8 +167,18 @@
 \end{conclusion}
 
 \begin{proof}
-	hier sollte bald was stehen! \smiley
+	\begin{itemize}
+		\item[1)] $\mathbb{Q}_K \subset K$ und Addition und Multi. führen nicht aus $\mathbb{Q}_K$ (vgl. \propref{inj_abb_ange_koerper}) $\Rightarrow \mathbb{Q}_K$ selbst Körper mit Ordnung von $K \Rightarrow$ Behauptung
+		\item[2)] nach \propref{inj_abb_ange_koerper} is $f$ entsprechender Isomorphismus
+	\end{itemize}
 \end{proof}
+
+\begin{*anmerkung}
+	$\mathbb{Q}_K \subset K$ und $\mathbb{Q}$ sind strukturell gleich $\Rightarrow$ können identifiziert werden.\\
+	Analog $\mathbb{N}_K \subset\mathbb{Z}_K \subset K$, identifiziere: $n_K := n\cdot 1_K$ mit $n \in \mathbb{N}$ bzw. $n \in \mathbb{Z} \rightarrow$ Schreibe kurz (im angeordneten Körper $K$) $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset K$\\
+	$\rightarrow$ Vielfachheit $ma = (1_Ka + \dots + I_K a) = (1_K + \dots + 1_K)a = (m 1_K)\cdot a = m_K \cdot a$\\
+	angeordneter Körper $K$ heißt archimedisch falls: \[\forall a \in K \exists n \in \mathbb{N} \subset K\quad a < n\]
+\end{*anmerkung}
 
 \begin{*definition}
 	Angeordneter Körper heißt \begriff[Körper!]{archimedisch}, falls $\forall a\in K\,\exists n\in\mathbb{N}\subset K: a < n$.
@@ -185,6 +196,19 @@
 		\item $\forall a,b\in K, a < b\,\exists q\in\mathbb{Q}:a < q < b$.
 	\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[1)] $a > 0 \Rightarrow \frac{b}{a} \in K \Rightarrow \exists n \in \mathbb{N} \colon n > \frac{b}{a} \xRightarrow{\cdot a}$ Behauptung
+		\item[2)] es ist $N:=\{n \in \mathbb{Z} \mid 0 < n}\neq \emptyset$:\\
+		$N$ hat \highlight{kleinstes Element} $\tilde{n} \in N$ (d.h. $\tilde{n} \leq n \forall n \in \mathbb{N}$) vgl. ÜA\\
+		Setze $[a]:=\tilde{n} -1 \xRightarrow{\text{Def }\tilde{n}} [a] = \tilde{n} -1 \leq a < \tilde{n} = [a] +1$ falls $alpha$ ganzer Anteil mit $\alpha < [a] \Rightarrow [a] \leq a < \alpha +1 \xRightarrow{-\alpha} 0 < \underbrace{[a] - \alpha}_{\in \mathbb{N}} < \alpha \Rightarrow \lightning \xRightarrow{\text{\ac{obda}}} [a]$ eindeutig
+		\item[3)] Wähle $n > \frac{1}{\epsilon} \Rightarrow$ Behauptung
+		\item[4)] $\exists n \in \mathbb{N} b \overset{\text{1)}}{<} n(a-1) < 1 + n(a-1) \overset{\text{Bernoulli-Ungl.}}{\leq} (1+(a-1))^n = a^n$
+		\item[5)] Verwende 4) mit $\tilde{a}:=\frac{1}{a},\tilde{b}:=\frac{1}{\epsilon}$
+		\item[6)] nach 3) $\exists n \in \mathbb{N}_{\neq 0}$ mit $\frac{1}{n} < \epsilon, p:= \frac{[na]}{n},q:= \frac{}{den}$ % to be finished!
+	\end{itemize}  
+\end{proof}
 
 \begin{*definition}[Intervall]
 	\begriff{Intervall} für angeordneten Körper $K$: Sei $a,b\in K$:
