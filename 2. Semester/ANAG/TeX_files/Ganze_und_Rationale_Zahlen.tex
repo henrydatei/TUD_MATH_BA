@@ -47,11 +47,11 @@ $\Rightarrow$ ganze Zahlen kann man eindeutig den Elementen folgender Mengen zuo
 $\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
 
 \subsection{Rechenoperationen auf $\overline{\whole}$}
-\begin{definition}[Addition, Multiplikation]
+\begin{*definition}[Addition, Multiplikation]
 	\begriff{Addition}[!ganze Zahlen]: $\overline{m}+\overline{n} = [(m,n')] + [(n,n')] :=[(m+n,m'+n')]$
 	
 	\begriff{Multiplikation}[!ganze Zahlen]: $\overline{m}\cdot\overline{n} = \overline{m}\overline{n} = [(m,m')]\cdot[(n,n')]:=[(mn+m'n',mn'+m'n)]$
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Addition und Multiplikation sind eindeutig definiert, d.h. unabhängig vom Repräsentanten bzgl. $Q$.
@@ -73,10 +73,10 @@ $\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
 \begin{proof}
 	\begin{enumerate}[label={\arabic*)}]
 		\item offenbar $\overline{n}+0=0+\overline{n}=\overline{n}$ und $\overline{n}\cdot 1=1\cdot \overline{n}=\overline{n}$
-		\item Fleißarbeit
+		\item SeSt
 		\item offenbar $\overline{n}+(-\overline{n})=(-\overline{n})+\overline{n}=0$
 		\item $-1\cdot\overline{n}=[(0,1)]\cdot[(n,n')]=[(n',n)]=-\overline{n}$
-		\item Übungsaufgabe
+		\item ÜA
 	\end{enumerate}
 \end{proof}
 
@@ -89,15 +89,15 @@ $\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
 \end{proof}
 
 \subsection{Ordnung auf $\overline{\mathbb{Z}}$}
-\begin{definition}[Ordnungsrelation auf $\overline{\whole}$]
+\begin{*definition}[Ordnungsrelation auf $\overline{\whole}$]
 	Betr. Relation $R:=\{(\overline{m},\overline{n})\in\overline{\mathbb{Z}}\times\overline{\mathbb{Z}} | \overline{m} \le \overline{n}\}$, wobei $\overline{m} = [(m,m')] \le [(n,n')]$ \gls{gdw} $(m+n'\le m'+n)$
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	$R$ ist Totalordnung auf $\overline{\mathbb{Z}}$, die verträglich ist mit Addition und Multiplikation.
 \end{proposition}
 \begin{proof}
-	Selbststudium und analog
+	SeSt und analog
 \end{proof}
 
 Ordnung verträglich mit Addition: $\overline{n}<0\iff 0=\overline{n}+(-\overline{n})< -\overline{n}=-1\cdot \overline{n}$
@@ -121,22 +121,22 @@ Ordnung verträglich mit Addition: $\overline{n}<0\iff 0=\overline{n}+(-\overlin
 ordne jedem Paar $(n,n')\in\whole\times\whole$ eine neue Zahl $x$ zu, schreibe $(n,n')$ auch als 
 $\frac{n}{n'}$ oder $n:n'$, identifiziere Paare wie z.B. $\frac{4}{2},\frac{6}{3},\frac{8}{4}$ durch Relation
 
-\begin{definition}[Äquivalenzrelation auf $\ratio$]
+\begin{*definition}[Äquivalenzrelation auf $\ratio$]
 	Betr. Relation $Q:=\left\lbrace \left. \left( \frac{n_1}{n_1'},\frac{n_2}{n_2'}\right) \in \left( \mathbb{Z}\times\mathbb{Z}_{\neq 0}\right)\times\left(\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right) \right| n_1n_2' = n_1'n_2\right\rbrace$
 	
 	Setzte $\mathbb{Q} := \left\lbrace \left[ \left. \frac{n}{n'}\right] \right| (n,n')\in\mathbb{Z}\times\mathbb{Z}_{\neq 0}\right\rbrace$ Menge der \begriff{rationale Zahlen}.
 	
 	Offenbar gilt \begriff{Kürzungsregel}[!rationale Zahlen] $\left[ \frac{n}{n'}\right] = \left[ \frac{k\cdot n}{k\cdot n'}\right]\quad\forall k\in\mathbb{Z}_{\neq 0}$.
-\end{definition}
+\end{*definition}
 
 \subsection{Rechenoperationen auf $\mathbb{Q}$}
-\begin{definition}
+\begin{*definition}
 	\begriff{Addition}[!rationale Zahlen]: $\left[ \frac{m}{m'}\right] + \left[ \frac{n}{n'}\right] := \left[ \frac{mn' + m'n}{m'+n'}\right]$
 	
 	\begriff{Multiplikation}[!rationale Zahlen]: $\left[\frac{m}{m'}\right]\cdot\left[\frac{n}{n'}\right]:=\left[\frac{m\cdot n}{m'\cdot n'}\right]$
 	
 	Addition und Multiplikation sind unabhängig vom Repräsentanten bzgl. $Q$ $\Rightarrow$ Operationen auf $Q$ eindeutig definiert.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Mit Addition und Multiplikation ist $\mathbb{Q}$ Körper mit
@@ -146,19 +146,19 @@ $\frac{n}{n'}$ oder $n:n'$, identifiziere Paare wie z.B. $\frac{4}{2},\frac{6}{3
 	\end{itemize}
 \end{proposition}
 \begin{proof}
-	Selbststudium, Übungsaufgabe
+	SeSt, ÜA
 \end{proof}
 
 \subsection{Ordnung auf $\mathbb{Q}$}
-\begin{definition}
+\begin{*definition}
 	Relation $R:=\left\lbrace \left. \left( \left[\frac{m}{m'}\right],\left[\frac{n}{n'}\right]\right)\in\mathbb{Q}\times\mathbb{Q} \right| mn'\le m'n'; m',n'>0\right\rbrace$ gibt Ordnung "`$\le$"'.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	$\mathbb{Q}$ ist angeordneter Körper ("`$\leq$"') ist Totalordnung verträglich mit Addition und Multiplikation).
 \end{proposition}
 \begin{proof}
-	Selbststudium, Übungsaufgabe
+	SeSt, ÜA
 \end{proof}
 
 \textbf{Notation:} schreibe vereinfacht nur noch $\frac{n}{n'}$ für die Zahl $\left[\frac{n}{n'}\right]
