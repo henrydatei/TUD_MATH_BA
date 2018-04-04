@@ -33,6 +33,14 @@
 \begin{definition}[Halbnorm]
 	$\Vert . \Vert:X\rightarrow\mathbb{R}_{\ge0}$ heißt \begriff{Halbnorm}, falls nur \ref{norm_2} und \ref{norm_3} gelten.
 \end{definition}
+
+\begin{conclusion}
+	\begin{itemize}
+		\item $\Vert x\Vert\ge 0$
+		\item $\vert \; \Vert x\Vert - \Vert y\Vert \; \vert \leq \Vert x-y\Vert$
+	\end{itemize}
+\end{conclusion}
+
 \begin{proposition}
 	Sei $(X,\Vert .\Vert)$ normierter Raum.\\
 	$\Rightarrow X$ ist metrischer Raum mit Metrik $d(x,y):=\Vert x - y \Vert\,\forall x,y\in X$.
@@ -69,19 +77,30 @@
 		\item \mathsymbol{B}{$B$}$(M):=\{ f:M\rightarrow \mathbb{R} \mid\; \Vert f \Vert < \infty \}$ \begriff{Menge der beschränkten Funktionen}
 	\end{itemize}
 \end{example}
-\stepcounter{theorem}
-\stepcounter{theorem}
+
+\begin{example}
+	$\Vert x\Vert:=\vert x_1\vert$ ist Halbnorm auf $X=\real^n$, da $\Vert(0,1)\Vert=0$, aber $(0,1)\neq 0$
+\end{example}
+
 \begin{definition}
 	Normen $\Vert .\Vert_1, \Vert .\Vert_2$ auf $X$ heißen \begriff[Norm!]{äquivalent}, falls $\exists \alpha,\beta > 0:\alpha \Vert x \Vert_1 \le \Vert x\Vert_2 \le \beta \Vert x\Vert_1 \,\forall x\in X$
 \end{definition}
+
+\begin{example}
+	$\vert x \vert_\infty \le \vert x\vert_p \le \sqrt[p]{n}\cdot\vert x\vert_\infty$, d.h. $\vert\cdot\vert_\infty$ und $\vert\cdot\vert_p$ sind äquivalent für alle $p\ge 1$
+\end{example}
+\begin{proof}
+	$\vert x\vert_\infty=(\max\{\vert x_1\vert,...\}^p)^{\frac{1}{p}}\le \left(\sum_{j=1}^n \vert x_j\vert^p \right)^{\frac{1}{p}}=\vert x\vert_p\le (n\cdot\max\{\vert x_1\vert,...\}^p)^{\frac{1}{p}}=\sqrt[p]{n}\cdot \vert x\vert_\infty$
+\end{proof}
+
 \begin{conclusion}
 	$\vert\cdot\vert_p, \vert\cdot\vert_q$ sind äquivalent auf $\mathbb{R}^n\,\forall p,q\ge 1$.
 \end{conclusion}
 
 \begin{definition}
     \begin{itemize}
-    \item $B_r(a):=\{ x\in X \mid d(a,x) < r \}$ heißt (offene)\begriff{Kugel} um $a$ mit Radius $r > 0$
-    \item $B_r[a]:=\bar{B}_r(a):=\{ x\in X \mid d(a,x) \le r \}$ heißt (abgeschlossene)\begriff{Kugel} um $a$ mit Radius $r > 0$
+    \item $B_r(a):=\{ x\in X \mid d(a,x) < r \}$ heißt (offene) \begriff{Kugel} um $a$ mit Radius $r > 0$
+    \item $B_r[a]:=\bar{B}_r(a):=\{ x\in X \mid d(a,x) \le r \}$ heißt (abgeschlossene) \begriff{Kugel} um $a$ mit Radius $r > 0$
     \end{itemize}
     Hinweis: muss keine "`übliche"' Kugel sein, zum Beispiel $\{ x\in \mathbb{R}^n \mid d(0,x) = \Vert x\Vert_{\infty} < 1 \}$ hat die Form eines "`üblichen"' Quadrats.
     \begin{itemize}
@@ -100,7 +119,27 @@
         \item $x\in M$ heißt \begriff{isolierter Punkt} von $M$, falls $x$ kein Häufungspunkt
         \end{itemize}
 \end{definition}
-\stepcounter{theorem}
+
+\begin{example}
+	\begin{enumerate}
+		\item $X=\real$ mit $d(x,y)=\vert x-y\vert$
+		\begin{itemize}
+			\item $(a,b)$ offen, $[a,b]$ abgeschlossen
+			\item $[a,b)$ halboffen, aber beschränkt
+			\item $\inn (a,b)=\inn [a,b]=(a,b)$
+			\item $\ext (a,b)=\ext [a,b]=(-\infty,a)\cup(b,\infty)$
+			\item $\partial (a,b)=\partial [a,b]=\{a,b\}$
+			\item $\cl (a,b)=\cl [a,b]=[a,b]$
+			\item $\ratio$ weder offen noch abgeschlossen in $\real$, $\inn\ratio=\emptyset$, $\partial\ratio=\real$
+			\item $\real\backslash\{0\}$ offen, $\natur$ in $\real$ abgeschlossen und nicht beschränkt
+			\item $[0,3]$ ist Umgebung von $[1,2]$, $B_r(a)$ ist Umgebung von $a$
+			\item $a$ ist HP von $(a,b)$ und $[a,b]$, wenn $a<b$, aber nicht von $[a,a]$
+			\item alle $a\in\real$ sind HP von $\ratio$
+		\end{itemize}
+	\item für $X=\real$ mit diskreter Metrik: $x\in M\Rightarrow B_{0,5}(x)=\{x\}$ \\
+	$\Rightarrow$ alle $M\subset\real$ sind offen und abgeschlossen
+	\end{enumerate}
+\end{example}
 
 \begin{lemma}
 	Sei $(X,d)$ metrischer Raum. Dann
@@ -109,6 +148,21 @@
 		\item $M\subset X$ beschränkt $\Rightarrow\; \forall a\in X\,\exists r>0: M\subset B_r(a)$
 	\end{enumerate}
 \end{lemma}
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $b \in B_r(a),\epsilon := r - a-d(a,b)>0$, dann gilt für beliebige $x \in B_{\epsilon}(b)$
+		\begin{align*}
+		d(a,x) &\overset{\Delta\text{-Ungl.}}{\leq} d(a,b) + d(b,x)\\
+		&<d(a,b)+r-d(a,b)&\\
+		&=r \Rightarrow B_{\epsilon}(b) \subset B_{\epsilon}(a) \beha &
+		\end{align*}
+		\item Sei $M\subset B_{\rho}(b),a\in X$ beliebig, $r:=\rho + d(a,b),m\in M$\\
+		\begin{align*}
+		\Rightarrow d(m,a) &\leq d(m,b)+d(b,a)&\\
+		&<\rho + d(b,a) = r \Rightarrow m\in B_{r}(a)
+		\end{align*}
+	\end{enumerate}
+\end{proof}
 
 \begin{proposition}\label{proposition_topologie}
 	Sei $(X,d)$ metrischer Raum, $\tau:=\{U\subset X \mid U \text{ offen}\}$. Dann
@@ -118,6 +172,23 @@
 		\item \label{topologie_3} $\bigcup_{U\in\tau'} U\in\tau$ falls $\tau'\in\tau$ 
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item $X$ offen, da stets $B_{\epsilon}(x) \subset X$, Definition ``offen'' wahr für $\emptyset$
+		\item Sei $X \in \bigcap_{i=0}^{n} U_i \Rightarrow \exists \epsilon_i > 0 \colon B_{\epsilon_i}(x) \subset U_i \forall i, \epsilon = \min\{\epsilon_1, \dots \epsilon_n\}$\\
+		$\Rightarrow B_{\epsilon}(x) \in \bigcap_{i=0}^{n} U_i \beha$
+		\item Sei $x \in \bigcup_{U\in\tau^{\prime}} U \Rightarrow \exists \tilde{U}\in \tau^{\prime}\colon x \in \tilde{U} \overset{\tilde{U} \text{ offen}}{\Rightarrow}\exists \epsilon > 0 \colon B_{\epsilon}(x) \subset \tilde{U} \in \bigcup_{U\in\tau^{\prime}} U \beha$.
+	\end{enumerate}
+\end{proof}
+
+\begin{underlinedenvironment}[Hinweis]
+	Durchschnitt beliebig vieler offener Mengen im Allgemeinen nicht offen \\
+\end{underlinedenvironment}
+
+\begin{example}
+	$\bigcap (-\frac{1}{n},1+\frac{1}{n})=[0,1]$
+\end{example}
+
 \begin{conclusion}
 	Sei $(X,d)$ metrischer Raum, $\sigma :=\{ V\subset X \mid  V \text{ abgeschlossen}\}$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -129,11 +200,20 @@
 
 \begin{definition}[Topologie]
 	Sei $X$ Menge, und $\tau$ Menge von Teilmengen von $X$, d.h. $\tau\subset\mathcal{P}(X)$.\\
-	$\tau$ ist \begriff{Topologie} und $(X,\tau)$ \begriff{topologischer Raum}, falls \ref{topologie_1},\ref{topologie_2},\ref{topologie_3} aus \ref{proposition_topologie} gelten.
+	$\tau$ ist \begriff{Topologie} und $(X,\tau)$ \begriff{topologischer Raum}, falls \ref{topologie_1},\ref{topologie_2},\ref{topologie_3} aus \ref{proposition_topologie} gelten. \\
+	Mengen $U\subset\tau$ heißen dann (per Definition) offene Mengen, folglich in metrischen Räumen definierte offene Mengen sind ein Spezialfall einer Topologie. \\
+	\begin{underlinedenvironment}[beachte]
+		$\tilde{\tau}=\{\emptyset, X\}$ ist stets Topologie für beliebige Menge $X$
+	\end{underlinedenvironment}
 \end{definition}
+
 \begin{proposition}
 	Seien $\Vert.\Vert_1, \Vert.\Vert_2$ äquivalente Normen in $X$ und $U\subset X$. Dann \[ U\text{ offen bezüglich } \Vert .\Vert_1\; \Leftrightarrow\; U\text{ offen bzgl. } \Vert .\Vert_2 \]
 \end{proposition}
+\begin{proof}
+	Übungsaufgabe
+\end{proof}
+
 \begin{proposition}
 	Sei $(X,d)$ metrischer Raum und $M\subset X$: Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -142,3 +222,11 @@
 		\item $M = \Int M$, falls $M$ offen, $M=\cl M$ falls $M$ abgeschlossen
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Seien $x \in \inn M$, d.h. innere Punkte von $M \Rightarrow \exists \epsilon > 0 \colon B_{\epsilon}(x) \subset M$, da $B_{\epsilon}(x)$ offene Menge, ist jedes $y \in B_{\epsilon}(x)$ eine Teilemenge von $\inn M$ $\Rightarrow B_{\epsilon}(x) \subset M \beha$ ($\ext M$ analog)
+		\item $\partial X\setminus (\inn M \cup \ext M)$ ist abgeschlossen, $\cl M = X\setminus\ext M$ abgeschlossen
+		\item $M$ offen: es ist stets $\int M$ und da $M$ offen $M \subset \inn M \beha$  $\Rightarrow X\setminus M = \inn(X\setminus M) = \ext M = X \setminus \cl M \beha$.
+		($M$ abgeschlossen analog)
+	\end{enumerate}
+\end{proof}
