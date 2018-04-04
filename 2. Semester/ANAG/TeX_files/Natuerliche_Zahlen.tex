@@ -24,7 +24,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 
 \begin{proposition}[Prinzip der vollständigen Induktion] \proplbl{prin_voll_induktion}
 	\begriff*{vollständigen Induktion}
-	Sei $\{A_n | n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
+	Sei $\{A_n \mid n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
 	\begin{itemize}
 		\item[(IA)] $A_0$ ist wahr (\begriff{Induktionsanfang})
 		\item[(IS)] $\forall n\in\mathbb{N}$ gilt: $A_n$ (wahr) $\Rightarrow A_{n+1}$
@@ -90,7 +90,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 		\end{itemize}
 \end{proof}
 
-\subsection*{Rechenoperationen}
+\subsection{Rechenoperationen}
 \begin{definition}[Rechenoperation auf $\boldsymbol{\mathbb{N}}$]
 	Definiere \begriff{Addition}[!natürliche Zahlen] $+:\mathbb{N}\times\mathbb{N}\rightarrow \mathbb{N}$ auf $\mathbb{N}$ durch $n+0:=n, n+\nu(m) :=\nu(n+m)\,\forall n,m\in\mathbb{N}$
 	
@@ -112,21 +112,60 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\end{tabular}
 \end{proposition}
 
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $n+0 = n$ klar, $n \cdot 1 = n\nu(0) = n \cdot 0 + n = 0 + n \overset{\text{Add. kommutativ}}{=} n$
+		\item[b)] ÜA
+		\item[c)] assoziativ für Addition (vollst. Induktion nach $n$)
+		\begin{itemize}
+			\item[IA)] $n=0$: $k+(m+0) = k + m = (k+m)+0 \forall k,m \in \mathbb{N}$
+			\item[IV)] Sei $k+(m+n) = (k+m)+n \forall k,m \in \mathbb{N}$
+			\item[IS)] 
+				IV) $\Rightarrow k + (m + \nu(n)) = k+\nu(m+n) =\nu(k+(m+n)) \overset{\text{IV)}}{=} \nu((k+m)+n)
+				=(k+m)+\nu(n) \forall k,m \in \mathbb{N}
+				\Rightarrow$ Indunktionbehauptung
+			$\overset{\text{voll. Ind.}}{\Rightarrow}$ Addition assoziativ: Beweis für Multiplikation analog
+		\end{itemize}
+		\item[d)] distributiv (vollst. Ind. nach $k$)
+			\begin{itemize}
+				\item[IA)] $k=0$ $0\cdot(m+n) = km + kn \forall m,n \in \mathbb{N}$
+				\item[IS)] Sei $k(m+n) = km + kn \forall m,n \in \mathbb{N}$
+				$\Rightarrow \nu(k)\cdot (m+n) \overset{\text{Def M.}}{=} k \cdot (m+n) + (m+n) \overset{\text{IV)}}{=}k\cdot m + k \cdot m + m+n \overset{\text{Def M.}}{=} \nu(k)\cdot m + \nu(k)\cdot n \forall m,n \in \mathbb{N} \overset{\text{voll. Ind.}}{\Rightarrow}$ Behauptung
+			\end{itemize}
+	\end{itemize}
+\end{proof}
+
 \begin{conclusion}
+	\proplbl{kurzungsregel}
 	Es gilt $\forall k,m,n\in\mathbb{N}$:
 	\begin{enumerate}[label={\alph*)}]
-		\item $m\neg 0 \Rightarrow m+n \neg 0$
+		\item $m\neq 0 \Rightarrow m+n \neq 0$
 		\item $m\cdot n = 0 \Leftrightarrow m = 0 \lor n = 0$
-		\item $m + k = n + k \Leftrightarrow m = n$ (Kürzungsregel Addition)
-		\item $k\neg 0: m\cdot k = n\cdot k \Leftrightarrow m = n$ (Kürzungsregel Multiplikation)
+		\item $m + k = n + k \Leftrightarrow m = n$ (Kürzungsregel(KR) Addition)
+		\item $k\neq 0: m\cdot k = n\cdot k \Leftrightarrow m = n$ (KR Multiplikation)
 	\end{enumerate}
 \end{conclusion}
 
-\subsection*{Ordnung auf $\boldsymbol{\mathbb{N}}$}
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $m \neq 0 \Rightarrow \exists n \in \mathbb{N} \colon m = \nu(m^{'}) \Rightarrow n + m = n + \nu(m^{'}) \overset{\text{Def Add.}}{=} \nu(n+m^{'}) \neq 0 \forall n \in \mathbb{N}$
+		\item[b)] $\Leftarrow$: folgt nach Def M. \\ $\Rightarrow$ SeSt
+		\item[c)] $\Leftarrow$: Wegen Eindeutigkeit der Addition\\
+		$\Rightarrow$: vollst. Induktion nach $k$
+			\begin{itemize}
+				\item[IA)] $n = 0$ klar
+				\item[IS)] Behauptung gelte für $k$, sei nun $m+(k+1) = n + (k+1) \Rightarrow \nu(n+k) \overset{\nu \text{ inj.}}{\Rightarrow} m+k = n+k \overset{\text{IV)}}{\Rightarrow} m = n \Rightarrow$
+			\end{itemize}
+		\item[d)]ÜA/SeSt (kann erst nach \propref{ordnung_nat_zahlen} beweisen werden!)
+	\end{itemize}
+\end{proof}
+
+\subsection{Ordnung auf $\boldsymbol{\mathbb{N}}$}
 \begin{definition}[Ordnung auf $\boldsymbol{\mathbb{N}}$]
-	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N}|m \le n\}$
+	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N} \mid m \le n\}$
 \end{definition}
 \begin{proposition}
+	\proplbl{ordnung_nat_zahlen}
 	Es gilt auf $\mathbb{N}$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $m\le n \;\Rightarrow \;\exists!k\in\mathbb{N}: n = m + k$, nenne $n - m=:k$ \begriff{Differenz}
@@ -134,3 +173,13 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 		\item Ordnung "`$\leq$"' ist verträglich mit Addition und Multiplikation
 	\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[1)] Sei $n=m+k=m+k^{'} \overset{\text{KR}}{\Rightarrow} k = k^{'}$
+		\item[2)] $n=n+0 \Rightarrow n \leq n \Rightarrow$  reflexiv \\
+		Sei $k \leq m , m \leq n \Rightarrow \exists l,j \colon m = k+l, n = m+j = (k+l)+j = k + (l+j) \Rightarrow k \leq n \Rightarrow$ transitiv\\
+		Sei $m \leq n, n \leq m \overset{\text{transitiv} k = n}{\Rightarrow} n = m + j = n + l + j \overset{\text{KR}}{\Rightarrow} 0 = l+j \overset{\propref{kurzungsregel}}{\Rightarrow} j =0 \Rightarrow n = m \Rightarrow$ antisymmetrisch\\
+		$\Rightarrow R$ ist eine Ordnung auf $\mathbb{N}$
+	\end{itemize}
+\end{proof}
