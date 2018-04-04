@@ -33,7 +33,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{proposition}
 
 \begin{proof}
-	Sei $N := \{n \in \mathbb{N} \mid A_n \text{ ist wahr}\} \subset \mathbb{N}$, offenbar $0 \in \mathbb{N}$ und $\nu(n) \in \mathbb{N}$, falls $n \in \mathbb{N} \Rightarrow \mathbb{N}$ induktiv in $\mathbb{N} \overset{P2)}{\Rightarrow} N = \mathbb{N}$
+	Sei $N := \{n \in \mathbb{N} \mid A_n \text{ ist wahr}\} \subset \mathbb{N}$, offenbar $0 \in \mathbb{N}$ und $\nu(n) \in \mathbb{N}$, falls $n \in \mathbb{N} \Rightarrow \mathbb{N}$ induktiv in $\mathbb{N} \overset{\text{P2)}}{\Rightarrow} N = \mathbb{N}$
 \end{proof}
 
 \begin{lemma}
@@ -47,13 +47,13 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 
 \begin{proof}
 	\begin{itemize}
-		\item[a)] $N := \{n \in \mathbb{N} \mid n = \nu(m) \text{ für } n\in \mathbb{N} \} \cup \{ 0 \}$ ist induktiv in $\mathbb{N} \overset{P2)}{\Rightarrow} N = \mathbb{N}$
+		\item[a)] $N := \{n \in \mathbb{N} \mid n = \nu(m) \text{ für } n\in \mathbb{N} \} \cup \{ 0 \}$ ist induktiv in $\mathbb{N} \overset{\text{P2)}}{\Rightarrow} N = \mathbb{N}$
 		\item[b)] Beweis mittels vollständiger Induktion
 		\begin{itemize}
 			\item[(IA)] $\nu(0) \neq 0$ nach P1)
-			\item[(IS)] Zeige: $(\nu(n) \overset{\text{Ind.vorraus.}}{\neq} n \Rightarrow \nu(\nu(n)) \neq \nu(n) \forall n \in \mathbb{N}$
+			\item[(IS)] Zeige: $(\nu(n) \overset{\text{IV)}}{\neq} n \Rightarrow \nu(\nu(n)) \neq \nu(n) \forall n \in \mathbb{N}$
 		indirekter Beweis: \\
-		Angenommen $\nu(\nu(n)) = \nu(n) \overset{\nu \text{ inj.}}{\Rightarrow} \nu(n) = n \overset{IV}{\Rightarrow} \lightning \Rightarrow$ (1) $\Rightarrow$ b) nach Prinzip der vollst. Induktion (vgl.\propref{prin_voll_induktion})
+		Angenommen $\nu(\nu(n)) = \nu(n) \overset{\nu \text{ inj.}}{\Rightarrow} \nu(n) = n \overset{\text{IV)}}{\Rightarrow} \lightning \Rightarrow$ (1) $\Rightarrow$ b) nach Prinzip der vollst. Induktion (vgl.\propref{prin_voll_induktion})
 		\end{itemize}
 	\end{itemize}
 \end{proof}
@@ -85,7 +85,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 			\item[IA)] $m=0: \forall n \neq 0 \exists n \in \mathbb{N} \colon n = \nu(n^{'})$ (vgl. \propref{lemma_nachfolgerabb}) $\Rightarrow I(n) = I(\nu(n^{'})) = \nu^{*}(I(n^{'})) \overset{\text{P1)}}{\neq} 0^{*} = I(0) \forall n \neq 0$ (ist gerade (*)))
 			\item[IS)] IV: Sei $I(n) \neq I(m) \forall n \neq m$, dann 
 			für $n = 0$, $n = \nu(m) \text{ mit } I(0) = 0^{*} \neq \nu^{*}(I(m)) = I(\nu(m))$.\\
-			für $n \neq 0$, $n \overset{\propref{lemma_nachfolgerabb}}{=} \nu(n^{'}) \neq \nu(m) \overset{\nu \text{ inj.}}{\Rightarrow} n^{'} \overset{\text{IV)}}{\neq} m$ und $I(n) = I(\nu(n{'})) = \nu^{*}(I(n^{'})) \neq \nu^{*}(I(m)) = I(\nu(m))$\\
+			für $n \neq 0$, $n \overset{\text{\propref{lemma_nachfolgerabb}}}{=} \nu(n^{'}) \neq \nu(m) \overset{\nu \text{ inj.}}{\Rightarrow} n^{'} \overset{\text{IV)}}{\neq} m$ und $I(n) = I(\nu(n{'})) = \nu^{*}(I(n^{'})) \neq \nu^{*}(I(m)) = I(\nu(m))$\\
 			$\Rightarrow$ in der Behauptung $I(n) \neq I(\nu(m)) \forall n \neq \nu(m) \Rightarrow$(*) mittels vollständiger Induktion, \\ d.h. $I$ ist injektiv
 		\end{itemize}
 \end{proof}
@@ -149,9 +149,9 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \begin{proof}
 	\begin{itemize}
 		\item[a)] $m \neq 0 \Rightarrow \exists n \in \mathbb{N} \colon m = \nu(m^{'}) \Rightarrow n + m = n + \nu(m^{'}) \overset{\text{Def Add.}}{=} \nu(n+m^{'}) \neq 0 \forall n \in \mathbb{N}$
-		\item[b)] $\Leftarrow$: folgt nach Def M. \\ $\Rightarrow$ SeSt
-		\item[c)] $\Leftarrow$: Wegen Eindeutigkeit der Addition\\
-		$\Rightarrow$: vollst. Induktion nach $k$
+		\item[b)] ``$\Leftarrow$'': folgt nach Def M. \\ ``$\Rightarrow$'': SeSt
+		\item[c)] ``$\Leftarrow$'': Wegen Eindeutigkeit der Addition\\
+		``$\Rightarrow$'': vollst. Induktion nach $k$
 			\begin{itemize}
 				\item[IA)] $n = 0$ klar
 				\item[IS)] Behauptung gelte für $k$, sei nun $m+(k+1) = n + (k+1) \Rightarrow \nu(n+k) \overset{\nu \text{ inj.}}{\Rightarrow} m+k = n+k \overset{\text{IV)}}{\Rightarrow} m = n \Rightarrow$
@@ -179,7 +179,16 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 		\item[1)] Sei $n=m+k=m+k^{'} \overset{\text{KR}}{\Rightarrow} k = k^{'}$
 		\item[2)] $n=n+0 \Rightarrow n \leq n \Rightarrow$  reflexiv \\
 		Sei $k \leq m , m \leq n \Rightarrow \exists l,j \colon m = k+l, n = m+j = (k+l)+j = k + (l+j) \Rightarrow k \leq n \Rightarrow$ transitiv\\
-		Sei $m \leq n, n \leq m \overset{\text{transitiv} k = n}{\Rightarrow} n = m + j = n + l + j \overset{\text{KR}}{\Rightarrow} 0 = l+j \overset{\propref{kurzungsregel}}{\Rightarrow} j =0 \Rightarrow n = m \Rightarrow$ antisymmetrisch\\
-		$\Rightarrow R$ ist eine Ordnung auf $\mathbb{N}$
+		Sei $m \leq n, n \leq m \overset{\text{transitiv} k = n}{\Rightarrow} n = m + j = n + l + j \overset{\text{KR}}{\Rightarrow} 0 = l+j \overset{\text{\propref{kurzungsregel}}}{\Rightarrow} j =0 \Rightarrow n = m \Rightarrow$ antisymmetrisch\\
+		$\Rightarrow R$ ist eine Ordnung auf $\mathbb{N}$\\
+		Zeige R Totalordnung, d.h. $\forall m,n \in \mathbb{N}\colon m \leq n \text{ oder } n \leq m$ (\propref{kurzungsregel})\\
+		vollst. Induktion nach $m$:
+		\begin{itemize}
+			\item[IA)] $m=0$: wegen $n = 0 + n$ folgt $0 \leq n \forall n$
+			\item[IS)] gelte \propref{kurzungsregel} für festes $m$ und $\forall n \in \mathbb{N}$, dann \\
+			falls $n \leq m \overset{m \leq m + 1 \text{ transitiv}}{\Rightarrow} n \leq m + 1$\\
+			falls $m \leq n \Rightarrow \exists k \in \mathbb{N} \colon n = m + (k+1) = (m+1) + k \Rightarrow m +1 \leq n \Rightarrow \text{ \propref{kurzungsregel}}$ gilt für $m +1$ und $\forall n \in \mathbb{N} \overset{\text{voll. Ind.}}{\Rightarrow} \text{ \propref{kurzungsregel}}$
+		\end{itemize}
+		\item[3)] Sei $m \leq n \Rightarrow \exists j\colon n = m + j \overset{\text{KR}}{\Rightarrow} n + k = m + j + k \Rightarrow m + k \leq n + k$ und Rest analog
 	\end{itemize}
 \end{proof}
