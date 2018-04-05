@@ -4,9 +4,9 @@
 \textbf{Logik:} Regeln des Folgerns, wahre und falsche Aussagen \\
 $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behandelt
 
-\begin{definition}[Aussage]
+\begin{*definition}[Aussage]
 	\begriff{Aussage} ist ein Schverhalt, dem man entweder den Warheitswert wahr ($w$) oder falsch ($f$) zuordnen kann (und nichts anderes).
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -16,9 +16,9 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 	\end{itemize}
 \end{example}
 	
-\begin{definition}[Menge]
+\begin{*definition}[Menge]
 	\begriff{Menge} ist (nach Cantor 1877) eine Zusammenfassung von bestimmten, wohlunterschiedenen Objekten der Anschauung oder des Denkens, welche die \begriff{Elemente} der Menge genannt werden, zu einem Ganzen.
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -27,14 +27,14 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 	\end{itemize}
 \end{example}
 
-\begin{definition}
+\begin{*definition}
 	\begin{itemize}
 		\item $M=N$, falls dieselben Elemente enthalten sind
 		\item $N$\mathsymbol{c}{$\subset$}$M$ (\begriff{Teilmenge}), falls $n\in M$ für jedes $n\in\mathbb{N}$
 		\item $N$\mathsymbol{c=}{$\subsetneqq$}$M$ (\begriff{echte Teilmenge}), falls zusätzlich $N\neq M$.
 		\item \begriff{Aussageform}: Sachverhalt mit Variablen, der durch geeignete Ersetzung der Variablen zur Aussage führt
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -68,13 +68,13 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 	\end{itemize}
 \end{example}
 
-\begin{definition}[Quantoren]
+\begin{*definition}[Quantoren]
 	Neue Aussagen können mittels \begriff{Quantoren} gebildet werden:
 	\begin{itemize}
 		\item $\forall x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für jedes $x\in M$
 		\item $\exists x\in M: A(x)$ wahr \gls{gdw} $A(x)$ wahr für mindestens ein $x\in M$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -83,9 +83,9 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 	\end{itemize}
 \end{example}
 
-\begin{definition}[Tautologie, Kontraduktion]
+\begin{*definition}[Tautologie, Kontraduktion]
 	\begriff{Tautologie} bzw. \begriff{Kontradiktion}\slash\begriff{Widerspruch} ($\lightning$) ist zusätzlich gesetzte Aussage, die unabhängig vom Wahrheitswert der Teilaussagen stets wahr bzw. falsch ist.
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -109,7 +109,7 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 	Übung
 \end{proof}
 
-\begin{definition}
+\begin{*definition}
 	\begin{itemize}
 		\item \begriff{leere Menge} \mathsymbol{o}{$\emptyset$}$=:$ Menge, die kein Element enthält
 		\item $M,N$ sind \begriff[Menge!]{disjunkt}, falls $M\cap N = \emptyset$
@@ -131,7 +131,7 @@ $\to$ hier werden einige Aspekte etwas vereinfacht, aber ausreichend genug behan
 		Sei $\mathcal{M}$ Menge nichtleerer, paarweise disjunkter Mengen $M$\\
 		$\Rightarrow$ es gibt immer (Auswahl-) Menge $\tilde{M}$, die mit jedem $M\in\mathcal{M}$ genau ein Element gemein hat.
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \subsection{Aufbau einer mathematischen Theorie}
 
@@ -166,15 +166,15 @@ Formulierung mathematischer Aussagen:
 	\end{itemize}
 \end{*anmerkung}
 
-\begin{definition}[direkter Beweis, indirekter Beweis]
+\begin{*definition}[direkter Beweis, indirekter Beweis]
 	\begin{itemize}
 		\item \begriff[Beweis!]{direkt}\highlight{er Beweis}: $(A\Rightarrow A_1)\land(A_1\Rightarrow A_2)\land\dotsc\land(A_n\Rightarrow B)$ wahr für $A\Rightarrow B$
 		\item \begriff[Beweis!]{indirekt}\highlight{er Beweis} durch Tautologie $(A\Rightarrow B)\Leftrightarrow (\neg B\rightarrow \neg A)$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \subsection{Relation und Funktion}
-\begin{definition}[Relation]
+\begin{*definition}[Relation]
 	\begin{itemize}
 		\item \begriff{Relation} ist Teilmenge $R\subset M\times N$. $(x,y)\in R$ heißt: $x$ und $y$ stehen in Relation zueinander.
 		\item Relation $R\subset M\times N$ heißt \begriff{Ordnungsrelation} (kurz \begriff{Ordnung}) auf $M$, falls $\forall a,b,c\in M$:
@@ -194,7 +194,7 @@ Formulierung mathematischer Aussagen:
 		
 		Jedes $b\in [a]$ ist ein \begriff{Repräsentant} von $[a]$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\proplbl{beispiel_brueche_aequivalenzklassen}
@@ -216,7 +216,7 @@ Formulierung mathematischer Aussagen:
 	\end{itemize}
 \end{*anmerkung}
 
-\begin{definition}[Abbildung]
+\begin{*definition}[Abbildung]
 	\begriff{Abbildung}/\begriff{Funktion} von $M$ nach $N$, kurz: $F:M\rightarrow N$ ist Vorschrift, die jedem \begriff{Argument} / \begriff{Urbild} $m\in M$ genau einen \begriff{Wert} / \begriff{Bild} $F(m)\in N$ zuordnet.
 	
 	\begin{itemize}
@@ -241,7 +241,7 @@ Formulierung mathematischer Aussagen:
 		\end{itemize}
 		\item Für bijektive Abb. $F:M\rightarrow N$ ist \begriff{Umkehrabbildung} / \begriff{inverse Abbildung} \mathsymbol{f-1}{$F^{-1}$}$:N\rightarrow M$ definiert durch $F^{-1}(n) = m \Leftrightarrow F(m) = n$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	betrachte $f:\real\to\real$ und $f(x)=\sin(x)$ \\
@@ -259,7 +259,7 @@ Formulierung mathematischer Aussagen:
 
 
 
-\begin{definition}[Verknüpfung]
+\begin{*definition}[Verknüpfung]
 	Eine \begriff{Rechenoperation} / \begriff{Verknüpfung} auf $M$ ist Abb. $*:M\times M\rightarrow M$, d.h. $m,n\in M$ wird \begriff{Ergebnis} $m*n\in M$
 	
 	Rechenoperation
@@ -269,7 +269,7 @@ Formulierung mathematischer Aussagen:
 		\item ist \begriff[Verknüpfung!]{assoziativ}, falls $k*(m*n) = (k*m)*n\,\forall k,m,n\in M$
 		\item hat \begriff[Verknüpfung!]{inverses Element} $m'\in M$ zu $m\in M$, falls $m*m' = m'*m = e$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -286,40 +286,40 @@ Formulierung mathematischer Aussagen:
 	\end{itemize}
 \end{example}
 
-\begin{definition}[distributiv]
+\begin{*definition}[distributiv]
 	Addition und Multiplikation heißen \begriff{distributiv}, falls $k\cdot(m+n) = k\cdot m + k\cdot n\,\forall k,m,n\in M$
-\end{definition}
+\end{*definition}
 
-\begin{definition}[Körper]
+\begin{*definition}[Körper]
 	Menge $K$ heißt \begriff{Körper}, falls auf $K$ eine Addition und Multiplikation existiert mit
 	\begin{itemize}
 		\item es existieren neutrale Elemente $0\in K$ und $1\in K_{\neg 0}$
 		\item Addition und Multiplikation sind distributiv
 		\item Es gibt Inverse
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
-\begin{definition}
+\begin{*definition}
 	Menge $M$ habe Ordnung "`$\le$"', sowie Addition und Multiplikation.
 	Ordnung ist \begriff[Ordnung!]{verträglich}\highlight{ mit Addition und Multiplikation}, wenn $\forall a,b,c\in M$
 	\begin{itemize}
 		\item $a\le b \Leftrightarrow a+c \le b+c$
 		\item $a\le b \Leftrightarrow a\cdot c \le b\cdot c$ mit $c > 0$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
-\begin{definition}[angeordnet]
+\begin{*definition}[angeordnet]
 	Körper $K$ heißt \begriff[Körper!]{angeordnet}, falls mit Addition und Multiplikation verträgliche Totalordnung existiert.
-\end{definition}
+\end{*definition}
 
-\begin{definition}[Isomorphismus]
+\begin{*definition}[Isomorphismus]
 	\begriff{Isomorphismus} bezüglich einer Struktur ist bijektive Abbildung $I:M_1\rightarrow M_2$, die auf $M_1$ und $M_2$ vorhandene Struktur erhält, z.B. 
 	\begin{itemize}
 		\item Ordnung: $a\le b\iff I(a)\le I(b)$
 		\item Rechenoperationen: $I(a*b)=I(a)*I(b)$
 	\end{itemize}
 	Mengen $M_1$ und $M_2$ heißen \begriff[Menge!]{isomorph}.
-\end{definition}
+\end{*definition}
 
 \begin{*anmerkung}
 	Mit einem Isomorphismus kann man die Elemente einer Menge, z.B. ganze Zahlen, den Elementen einer anderen Menge, z.B. den natürlichen Zahlen, zuordnen. Konkret würde das dann so aussehen: \\

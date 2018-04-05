@@ -6,9 +6,9 @@
 $(n,n')\in\natur\times\natur$ eine neue Zahl $x$ als Lösung zu. Gewisse Paare liefern die gleiche 
 Lösung, z.B. $(6,4)$, $(5,3)$ und $(7,5)$. Diese müssen mittels Relation identifiziert werden.
 
-\begin{definition}[Äquivalenzrelation auf $\whole$]
+\begin{*definition}[Äquivalenzrelation auf $\whole$]
 	Definiere Äquivalenzrelation $Q:=\{ ((n_1,n_1'),(n_2,n_2'))\in((\mathbb{N}\times\mathbb{N})\times(\mathbb{N}\times\mathbb{N})) | n_1+n_2' = n_1' + n_2 \}$
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{itemize}
@@ -46,7 +46,7 @@ Kurzschreibweise: $\overline{m}=[(m,m')]$
 $\Rightarrow$ ganze Zahlen kann man eindeutig den Elementen folgender Mengen zuordnen: 
 $\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
 
-\subsection{Rechenoperationen auf $\overline{\whole}$}
+\subsection{Rechenoperationen auf \texorpdfstring{$\overline{\whole}$}{Z}}
 \begin{*definition}[Addition, Multiplikation]
 	\begriff{Addition}[!ganze Zahlen]: $\overline{m}+\overline{n} = [(m,n')] + [(n,n')] :=[(m+n,m'+n')]$
 	
@@ -88,7 +88,7 @@ $\whole=\natur\cup\{(-n)\mid n\in\natur_{>0}\}$
 	-\overline{n}+\overline{m}$
 \end{proof}
 
-\subsection{Ordnung auf $\overline{\mathbb{Z}}$}
+\subsection{Ordnung auf \texorpdfstring{$\overline{\mathbb{Z}}$}{Z}}
 \begin{*definition}[Ordnungsrelation auf $\overline{\whole}$]
 	Betr. Relation $R:=\{(\overline{m},\overline{n})\in\overline{\mathbb{Z}}\times\overline{\mathbb{Z}} | \overline{m} \le \overline{n}\}$, wobei $\overline{m} = [(m,m')] \le [(n,n')]$ \gls{gdw} $(m+n'\le m'+n)$
 \end{*definition}
@@ -129,7 +129,7 @@ $\frac{n}{n'}$ oder $n:n'$, identifiziere Paare wie z.B. $\frac{4}{2},\frac{6}{3
 	Offenbar gilt \begriff{Kürzungsregel}[!rationale Zahlen] $\left[ \frac{n}{n'}\right] = \left[ \frac{k\cdot n}{k\cdot n'}\right]\quad\forall k\in\mathbb{Z}_{\neq 0}$.
 \end{*definition}
 
-\subsection{Rechenoperationen auf $\mathbb{Q}$}
+\subsection{Rechenoperationen auf \texorpdfstring{$\mathbb{Q}$}{Q}}
 \begin{*definition}
 	\begriff{Addition}[!rationale Zahlen]: $\left[ \frac{m}{m'}\right] + \left[ \frac{n}{n'}\right] := \left[ \frac{mn' + m'n}{m'+n'}\right]$
 	
@@ -149,7 +149,7 @@ $\frac{n}{n'}$ oder $n:n'$, identifiziere Paare wie z.B. $\frac{4}{2},\frac{6}{3
 	SeSt, ÜA
 \end{proof}
 
-\subsection{Ordnung auf $\mathbb{Q}$}
+\subsection{Ordnung auf \texorpdfstring{$\mathbb{Q}$}{Q}}
 \begin{*definition}
 	Relation $R:=\left\lbrace \left. \left( \left[\frac{m}{m'}\right],\left[\frac{n}{n'}\right]\right)\in\mathbb{Q}\times\mathbb{Q} \right| mn'\le m'n'; m',n'>0\right\rbrace$ gibt Ordnung "`$\le$"'.
 \end{*definition}

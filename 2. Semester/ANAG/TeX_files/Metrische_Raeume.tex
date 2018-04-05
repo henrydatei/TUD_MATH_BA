@@ -1,5 +1,5 @@
 \section{Metrische Räume}
-\begin{definition}[Metrik]
+\begin{*definition}[Metrik]
 	Sei $X$ Menge, Abbildung $d:X\times X\rightarrow \mathbb{R}$ heißt \begriff{Metrik} auf $X$, falls $\forall x,y,z\in X$:
 	\begin{enumerate}[label={\alph*)}]
 		\item $d(x,y) = 0 \Leftrightarrow x=y$
@@ -8,7 +8,7 @@
 	\end{enumerate}
 
 	$(X,d)$ heißt \begriff{metrischer Raum}.
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \begin{example}
 	\begriff{Diskrete Metrik} auf bel. Menge $X$ ist \[ d(x,y) = \begin{cases}0& x=y \\ 1 & x\neq y \end{cases} \] ist offenbar Metrik.
@@ -18,7 +18,7 @@
 	$\Rightarrow (Y,\tilde{d})$ ist metrischer Raum mit \begriff{induzierte Metrik} $\tilde{d}(x,y) := d(x,y)\,\forall x,y\in X$.
 \end{example}
 
-\begin{definition}[Norm]
+\begin{*definition}[Norm]
 	Sei $X$ Vektorraum über $K=\mathbb{R}$ bzw. $K=\mathbb{C}$.
 	
 	Abbildung \mathsymbol{.}{$\Vert.\Vert$}$: X\rightarrow\mathbb{R}$ heißt \begriff{Norm} auf $X$, falls $\forall x,y\in X$
@@ -29,10 +29,10 @@
 	\end{enumerate}
 
 	$(X,\Vert . \Vert)$ heißt \begriff{normierter Raum}
-\end{definition}
-\begin{definition}[Halbnorm]
+\end{*definition}
+\begin{*definition}[Halbnorm]
 	$\Vert . \Vert:X\rightarrow\mathbb{R}_{\ge0}$ heißt \begriff{Halbnorm}, falls nur \ref{norm_2} und \ref{norm_3} gelten.
-\end{definition}
+\end{*definition}
 
 \begin{conclusion}
 	\begin{itemize}
@@ -55,12 +55,12 @@
 
 	Standardnorm im $\mathbb{R}^n: \vert \cdot \vert:=\vert \cdot \vert_{p=2}$ heißt \begriff{euklidische Norm}
 \end{example}
-\begin{definition}[Skalarprodukt]
+\begin{*definition}[Skalarprodukt]
 	$\langle x,y\rangle:=\sum_{i=1}^n x_i y_i$ heißt \begriff{Skalarprodukt}[!$\mathbb{R}$] (\begriff{inneres Produkt}) von $x,y\in\mathbb{R}^n$.
 	
 	Offenbar ist $\langle x,x\rangle = |x|^2\,\forall x\in\mathbb{R}^n$ (\highlight{ausschließlich für Euklidische Norm})\\
 	Man hat $|\langle x,y\rangle | \le |x|\cdot |y|\,\forall x,y\in\mathbb{R}^n$ (\begriff{\person{Cauchy}-\person{Schwarz}'sche Ungleichung})
-\end{definition}
+\end{*definition}
 \begin{example}
 	$X=\mathbb{C}^n$ ist Vektorraum über $\mathbb{C}$, $x=(x_1,\dotsc,x_n)\in\mathbb{C}^n, x_i\in\mathbb{C}$.
 	
@@ -82,9 +82,9 @@
 	$\Vert x\Vert:=\vert x_1\vert$ ist Halbnorm auf $X=\real^n$, da $\Vert(0,1)\Vert=0$, aber $(0,1)\neq 0$
 \end{example}
 
-\begin{definition}
+\begin{*definition}
 	Normen $\Vert .\Vert_1, \Vert .\Vert_2$ auf $X$ heißen \begriff[Norm!]{äquivalent}, falls $\exists \alpha,\beta > 0:\alpha \Vert x \Vert_1 \le \Vert x\Vert_2 \le \beta \Vert x\Vert_1 \,\forall x\in X$
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	$\vert x \vert_\infty \le \vert x\vert_p \le \sqrt[p]{n}\cdot\vert x\vert_\infty$, d.h. $\vert\cdot\vert_\infty$ und $\vert\cdot\vert_p$ sind äquivalent für alle $p\ge 1$
@@ -97,7 +97,7 @@
 	$\vert\cdot\vert_p, \vert\cdot\vert_q$ sind äquivalent auf $\mathbb{R}^n\,\forall p,q\ge 1$.
 \end{conclusion}
 
-\begin{definition}
+\begin{*definition}
     \begin{itemize}
     \item $B_r(a):=\{ x\in X \mid d(a,x) < r \}$ heißt (offene) \begriff{Kugel} um $a$ mit Radius $r > 0$
     \item $B_r[a]:=\bar{B}_r(a):=\{ x\in X \mid d(a,x) \le r \}$ heißt (abgeschlossene) \begriff{Kugel} um $a$ mit Radius $r > 0$
@@ -118,7 +118,7 @@
         \item $x\in X$ heißt \gls{hp} von $M$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(x)$ unendlich viele Elemente aus $M$
         \item $x\in M$ heißt \begriff{isolierter Punkt} von $M$, falls $x$ kein Häufungspunkt
         \end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	\begin{enumerate}
@@ -198,14 +198,14 @@
 	\end{enumerate}
 \end{conclusion}
 
-\begin{definition}[Topologie]
+\begin{*definition}[Topologie]
 	Sei $X$ Menge, und $\tau$ Menge von Teilmengen von $X$, d.h. $\tau\subset\mathcal{P}(X)$.\\
 	$\tau$ ist \begriff{Topologie} und $(X,\tau)$ \begriff{topologischer Raum}, falls \ref{topologie_1},\ref{topologie_2},\ref{topologie_3} aus \ref{proposition_topologie} gelten. \\
 	Mengen $U\subset\tau$ heißen dann (per Definition) offene Mengen, folglich in metrischen Räumen definierte offene Mengen sind ein Spezialfall einer Topologie. \\
 	\begin{underlinedenvironment}[beachte]
 		$\tilde{\tau}=\{\emptyset, X\}$ ist stets Topologie für beliebige Menge $X$
 	\end{underlinedenvironment}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Seien $\Vert.\Vert_1, \Vert.\Vert_2$ äquivalente Normen in $X$ und $U\subset X$. Dann \[ U\text{ offen bezüglich } \Vert .\Vert_1\; \Leftrightarrow\; U\text{ offen bzgl. } \Vert .\Vert_2 \]

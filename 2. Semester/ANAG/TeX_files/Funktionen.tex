@@ -1,9 +1,9 @@
 \section{Funktionen}
-\begin{definition}
+\begin{*definition}
 	$f:\mathbb{R}\to \mathbb{R}$ \begriff{monoton}\begriff[monoton!]{falled}/\begriff[monoton!]{wachsend}, falls $x < y, x,y\in M \,\Rightarrow \,f(x) \le f(y)$ bzw. $f(x) \ge f(y)$
 	
 	Falls rechts stets $<$ bzw. $>$, sagt man auch \begriff[monoton!]{streng} monoton.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $f:\mathbb{R}\rightarrow \mathbb{R}$ streng monoton fallend / wachsend.\\
@@ -50,23 +50,23 @@
 	\end{enumerate}
 \end{proposition}
 \stepcounter{theorem}
-\begin{definition}
+\begin{*definition}
 	Abbildung $f:X\rightarrow Y, Y$ metrischer Raum heißt \begriff{beschränkt}[!Funktion] auf $M\subset X$ , falls Menge $f(M)$ beschränkt in $Y$ ist, sonst unbeschränkt.
-\end{definition}
-\begin{definition}
+\end{*definition}
+\begin{*definition}
 	$f:X\to Y$ heißt \begriff{konstante Funktion}, falls $f(x) = a\,\forall x\in X$ und $a\in Y$ fest.
-\end{definition}
-\begin{definition}
+\end{*definition}
+\begin{*definition}
 	$M\subset X, X$ normierter Raum heißt \begriff{konvex}, falls $x,y\in M \,\Rightarrow \,tx+(1-t)y \in M\,\forall t\in(0,1)$
 	
 	$f:D\subset X\to \mathbb{R}$ heißt \begriff[konvex!]{strikt}\begriff{konvex}, falls $f(tx + (1-t)y) \underset{(<)}{\le} t f(x) + (1-t)f(y)\forall x,y\in D, t\in(0,1)$
 	
 	$f$ heißt \begriff{konkav} (bzw. \begriff[konkav!]{strikt}), falls $-f$ (strikt) konvex.
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 
 \subsection*{Lineare Funktionen} \proplbl{defLinearFunction}
-\begin{definition}
+\begin{*definition}
 	Seien $X,Y$ normierte Räume über $K$.\\
 	$f: X\rightarrow Y$ heißt \begriff[Abbildung!]{linear}, falls
 	\begin{itemize}
@@ -77,9 +77,9 @@
 	$f:X\to Y$ heißt \begriff[Abbildung!linear!]{affin}\highlight{linear}, falls $f+f_0$ linear für eine konstante Funktion $f_0$
 	
 	Offenbar $f$ linear $\Rightarrow\;f(0) = 0$
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
-\begin{definition}
+\begin{*definition}
 	Lineare Abbildung $f:X\to Y$ heißt \begriff{beschränkt}[!lineare Funktion], falls $f$ beschränkt auf $\overline{B_1(0)}$, d.h. \begin{align}
 		\tag{1}\exists\text{ konstante }c > 0: \Vert f(x)\Vert \le c\,\forall x: \Vert x\Vert \le 1
 	\end{align}
@@ -87,16 +87,16 @@
 	\begin{align}
 		\tag{1'} \Vert f(x) \Vert = \sup \{ \Vert f(x) \Vert | x \in \overline{B_1(0)}\}
 	\end{align}
-\end{definition}
+\end{*definition}
 \begin{proposition}
 	Seien $X,Y$ normierte Räume über $K$, dann:\\
 	\mathsymbol{L}{$L$}$(X,Y):= \{ f:X\to Y \,|\, f \text{ linear und beschränkt} \}$ ist normierter Raum über $K$ mit $\Vert f \Vert = \sup \{ \Vert f(x) \Vert | x\in \overline{B_1(0)} \}$
 \end{proposition}
 
 \subsection*{Exponentialfunktion}
-\begin{definition}
+\begin{*definition}
 	$\exp:\mathbb{C}\to \mathbb{C}$ mit $\exp(z) = \sum_{k=0}^\infty \frac{z^k}{k!}$
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $\{z_n\}$ Folge in $\mathbb{C}$ mit $z_n\to z$. Dann: $\lim\limits_{n\rightarrow\infty} \left( 1 + \frac{z_n}{n}\right)^n = \exp (z)$
@@ -121,7 +121,7 @@
 	Definiert (!) in $\mathbb{C}:\; e^z := \exp(z) \,\forall z\in\mathbb{C}$ (als Potenz nicht erklärt)
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	\begriff{natürlicher Logarithmus}: $\ln x = \log_e x\,\forall x\in\mathbb{R}_{>0}$
 	
 	\begriff{Trigonometrische Funktion}:
@@ -129,7 +129,7 @@
 		\item $\sin z := \frac{e^{iz} - e^{-iz}}{2i} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k+1}}{(2k+1)!} = z - \frac{z^3}{3!} + \frac{z^5}{5!}+ \dotsc \,\forall z\in\mathbb{C}$
 		\item $\cos z := \frac{e^{iz}+e^{-iz}}{2} = \sum_{k=0}^\infty (-1)^k \frac{z^{2k}}{(2k)!} = 1 - \frac{z^2}{4} + \frac{z^4}{24}+\dotsc \,\forall z\in\mathbb{C}$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	\proplbl{additionstheoreme}
@@ -196,7 +196,7 @@
 	\end{tabular}
 \end{centering}
 
-\begin{definition}
+\begin{*definition}
 	$\sin\left[ -\frac{\pi}{2},\frac{\pi}{2}\right]\to [-1,1]$ streng monoton und surjektiv,\\
 	$\cos[0,\pi]\to[-1,1]$ streng monoton und surjektiv\\
 	$\Rightarrow$ Umkehrfunktion existiert: \begriff{Arcussinus}, \begriff{Arcuscosinus}:
@@ -204,10 +204,10 @@
 		\item $\arcsin := \sin^{-1}: [-1,1]\to\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$
 		\item $\arccos := \cos^{-1}: [-1,1]\to [0,\pi]$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \subsection*{Tangens und Cotangents}
-\begin{definition}
+\begin{*definition}
 	$\tan z z := \frac{\sin z}{\cos z}\,\forall z\in\mathbb{C}\setminus\{ \left.\frac{\pi}{2} + k\pi \right| k\in\mathbb{Z}\}$\\
 	$\cot z := \frac{\cos z}{\sin z}\,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$
 	
@@ -219,14 +219,14 @@
 		\forall z\in\mathbb{C}, \text{ d.h. Periode $\pi$}
 	\end{gathered}
 	$
-\end{definition}
+\end{*definition}
 
 \subsection*{Tangens auf $\mathbb{R}$}
-\begin{definition}
+\begin{*definition}
 	$0 \le x_1 < x_2 < \sfrac{\pi}{2} \,\Rightarrow\,\tan x_1 = \frac{\sin x_1}{\cos x_1} < \frac{\sin x_2}{\cos x_2} = \tan x_2$ \\
 	$\Rightarrow\,\tan (-x) = - \tan(x) $ $\Rightarrow$ streng wachsend auf $\left( \frac{\pi}{2},\frac{\pi}{2}\right)$ \\
 	$\Rightarrow\,\arctan = \tan^{-1}: \mathbb{R}\to \left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ existiert.
-\end{definition}
+\end{*definition}
 \begin{proposition}
 	Es gilt:
 	\begin{enumerate}[label={\arabic*)}]
@@ -242,22 +242,22 @@
 \end{proposition}
 
 \subsection*{Logarithmen in $\mathbb{C}$} (sog. Hauptzweig)
-\begin{definition}
+\begin{*definition}
 	$exp\left( \{ z\in\mathbb{C}\,|\, \Im z < \pi \}\right) \to \mathbb{C}\setminus (\infty, 0]$ ist bijektiv \\
 	$\Rightarrow$ Umkehrabbildung $\ln:\mathbb{C}\setminus(-\infty,0]$ gilt: $e^{\ln |z| + i\gamma} = |z|e^{i\gamma} = z$\\
 	$\Rightarrow\,\ln z = \ln |z| + i\gamma \,\forall z=|z|e^{i\gamma}\in\mathbb{C}\setminus(-\infty,0)$\\
 	$\Rightarrow \,\ln z$ stimmt auf $\mathbb{R}_{>0}$ mit rellen $\ln$ überein.
-\end{definition}
+\end{*definition}
 
 \subsection*{Hyperbolische Funktionen}
-\begin{definition}
+\begin{*definition}
 	\begin{itemize}
 		\item $\sinh (z) = \frac{e^z - e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k+1}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Sinus Hyperbolicus})
 		\item $\cosh (z) = \frac{e^z+e^{-z}}{2} = \sum_{k=0}^\infty \frac{z^{2k}}{(2k+1)!}\,\forall z\in\mathbb{C}$ (\begriff{Cosinus Hyperbolicus})
 		\item $\tanh (z) = \frac{\sinh (z)}{\cosh (z)}\,\forall z\in\mathbb{C}\setminus\left\lbrace \left.\frac{\pi}{2} + k\pi  \right| k\in\mathbb{Z} \right\rbrace$ (\begriff{Tangens Hyperbolicus})
 		\item $\coth(z) = \frac{\cosh(z)}{\sinh(z)} \,\forall z\in\mathbb{C}\setminus \{ k\pi | k\in\mathbb{Z}\}$ (\begriff{Cotangens Hyperbolicus})
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Es gilt $\forall z,w\in\mathbb{C}$
@@ -270,14 +270,14 @@
 	\end{enumerate}
 \end{proposition}
 \rule{4cm}{0.4pt}
-\begin{definition}
+\begin{*definition}
 	Sei $f_n X\to Y$, $Y$ metrischer Raum ($X$ beliebige Menge), $n\in\mathbb{N}$. $\{f_n\}_{n\in\mathbb{N}}$ heißt \begriff{Funktionenfolge}.
 	
 	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{punktweise} gegen $f:X\to Y$ auf $M\subset X$, falls $f_n(x) \overset{n\rightarrow\infty}{\longrightarrow} f(x) \,\forall x\in M$
 	
 	Funktionenfolge $\{f_n\}$ konvergiert \begriff[Konvergenz!]{gleichmäßig} gegen $f:X\to Y$ auf $M\subset X$, falls \[ \forall \epsilon > 0 \,\exists n_0\in\mathbb{N}: d(f_n(x), f(x)) < \epsilon\quad \forall n\ge n_0\,\forall x\in M \]
 	Notation: \mathsymbol*{->}{$\rightrightarrows$} $f_n(x) \overset{n\rightarrow\infty}{\rightrightarrows} f(x)$ bzw. $f_n\overset{n\rightarrow\infty}{\longrightarrow}f$ gleichmäßig auf $M$.
-\end{definition}
+\end{*definition}
 
 \begin{lemma}
 	$f_n\to f$ gleichmäßig auf $M$ $\Rightarrow$ $f_n(x)\to f(x)\,\forall x\in M$ (d.h. punktweise auf $M$)
@@ -290,11 +290,11 @@
 	\end{center}
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	Sei $f_n.:X\to Y$, $Y$ normierter Raum ($X$ beliebige Menge), $n\in\mathbb{N}$: $\sum_{n=0}^\infty f_n$ heißt \begriff{Funktionenreihe}
 	
 	Reihe $\sum_n f_n$ heißt \begriff[Konvergenz!]{punktweise}[!Funktionenreihe] (\begriff[Konvergenz!]{gleichmäßig}[!Funktionenreihe]) konvergent gegen $f:X\to Y$ auf $M\subset X$, falls dies für die zugehörige Folge (Partialsumme!) $\{s_n\}$ gilt.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $\sum_{k=0}^\infty a_k(z-z_0)^k$ Potenzreihe in $\mathbb{C}$ mit Konvergenzradius $R\in(0,\infty]$ und sei $M\subset B_R(z_0)$ kompakt\\

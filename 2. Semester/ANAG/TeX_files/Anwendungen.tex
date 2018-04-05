@@ -37,21 +37,21 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     Hinweis: Etwas allgemeiner hat man sogar $f: X \to Y$ linear, $X,Y$ normierte Räume, $\dim X < \infty \Rightarrow f $ ist stetig. (Ist i.a nicht richtig für $\dim X = \infty$.)
 \end{proposition}
 
-\begin{definition}[\index{Kurve}Kurve]
+\begin{*definition}[\index{Kurve}Kurve]
     Eine stetige Abbildung $f: I \subset X \to Y$, wobei $I$ Intervall und $Y$ metrischer Raum ist heißt Kurve in $Y$ (gelegentlich wird auch Mange $f(I)$ als Kurve und $f$ also zugehörige Parametrisierung bezeichnet).
-\end{definition}
+\end{*definition}
 
-\begin{definition}[bogenzusammenhängende Menge]
+\begin{*definition}[bogenzusammenhängende Menge]
     Menge $M \subset X$, wobei $X$ ist metrische Raum, heißt \begriff[Menge!]{bogenzusammenhängend} (bogenweise zusammenhängend) falls $\forall a,b \in M \,\exists$ Kurve $f: [a,b] \to M$ mit $f(\alpha) = a, f(\beta) = b$.\\
     Bemerkung: Eigentlich ist das die Definition für Wegzusammenhängend, leider ist das in der Literatur nicht eindeutig und manchmal wird zwischen Wegzusammenhängend und zusammenhängend noch das "`echt"' bogenzusammenhängend unterschieden. %TODO definition echt bogenzusammenhängend hinzufügen.
-\end{definition}
+\end{*definition}
 
-\begin{definition}[\index{zusammenhängende Menge}zusammenhängende Menge]
+\begin{*definition}[\index{zusammenhängende Menge}zusammenhängende Menge]
     Menge $M \subset X$ heißt zusammenhängend, falls
     \begin{align}
         A, B \subset M \text{ sind offen in }M\text{, disjunkt, }\emptyset \Rightarrow M \neq A \cup B.
     \end{align}
-\end{definition}
+\end{*definition}
 
 \begin{example}
     \begin{enumerate}[label={\arabic*)}]
@@ -75,11 +75,11 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     \end{enumerate}
 \end{proposition}
 
-\begin{definition}[\index{Gebiet}Gebiet]
+\begin{*definition}[\index{Gebiet}Gebiet]
     Sei $X$ metrischer Raum, $M \subset X$ heißt \begriff{Gebiet} falls $M$ offen und zusammenhängend ist.\\
     Beachte: Gebiet in einem normiertem Raum ist sogar bogenzusammenhängend.\\
     Offenbar: $M \subset X$ ist konvex $\Rightarrow M$ ist bogenzusammenhängend.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
     Sei $f: D\subset X\to Y$ stetig, wobei $X,Y$ metrische Räume sind, dann gilt: $M \subset D$ ist zusammenhängend $\Rightarrow f(M)$ ist zusammenhängend.
@@ -106,12 +106,12 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     Hinweis: In dem Satz \ref{Polynomdiv} wurde gezeigt, das $f$ höchstens $n$ Nullstellen besitzt.
 \end{conclusion}
 
-\begin{definition}[\index{analytische Funktion}analytische Funktion]
+\begin{*definition}[\index{analytische Funktion}analytische Funktion]
     Abbildung $f:\mathbb{C} \to \mathbb{C}$ heißt analytisch auf $B_R(z_0)\subset \mathbb{C}$ falls $f$ auf $B_R(z_0)$ durch Potenzreihe in $z_0$ darstellbar ist, d.h.
     \[
     f(z)=\sum_{k=0}^{\infty} a_k(z-z_0)^k \quad \forall z \in B_R(z_0).
     \]
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	\proplbl{chap_15_20}
@@ -143,13 +143,13 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     Sei $X$ metrischer Raum, $Y$ Banachraum $\Rightarrow B(X,Y)$ und $C_b(X,Y)$ und Banachräume (mit $\Vert \cdot \Vert_{\infty}$).
 \end{proposition}
 
-\begin{definition}[\index{Kontraktion}Kontraktion]
+\begin{*definition}[\index{Kontraktion}Kontraktion]
     Funktion $f: D \subset X \to X$, wobei $X$ metrischer Raum ist, heißt \begriff{Kontraktion} (bzw. kontraktiv) auf $M \subset D$ falls
     \[
     \exists L, 0 \leq L < 1\colon d(f(x),f(y)) \leq L\cdot d(x,y) \quad \forall x,y \in M.
     \]
     D.h. $f$ ist Lipschitz-stetig mit Lipschitzkonstante $L < 1$, folglich ist $f$ auch stetig.
-\end{definition}
+\end{*definition}
 
 \begin{theorem}[\begriff*{Banacherscher Fixpunktproposition}Banacherscher Fixpunktproposition]\label{Banach_Fixpunkt}
     Sei $f : D\subset X \to Y$ Kontraktion auf $M \subset D, X$ vollständiger metrischer Raum (z.B. Banachraum), $M$ abgeschlossen und $f(M) \subset M$. Dann
@@ -165,7 +165,7 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
 
 \subsection*{Partialbruchzerlegung}
 
-\begin{definition}[\index{Pol der Ordnung $k$}Pol der Ordnung $k$]
+\begin{*definition}[\index{Pol der Ordnung $k$}Pol der Ordnung $k$]
     Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, d.h. $R(z) = \frac{f(z)}{g(z)}$ für Polynome $f$, $g$ existieren mit
     \begin{align*}
 	    R(z) &= \frac{\tilde{f}(z)}{(z-z_0)^k\cdot \tilde{g}}& &\text{und}& \tilde{f}(z_0) \neq 0,&\;\tilde{g}(z_0) \neq 0.
@@ -174,7 +174,7 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     \[
     \frac{2x}{x^2 - 1} = \frac{2x}{(x-1)(x+1)} = \frac{1}{x+1}+\frac{1}{x-1}.
     \]
-\end{definition}
+\end{*definition}
 
 \begin{lemma}
     Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, $z_0 \in \mathbb{C}$ Pol der Ordnung $k\geq 1 \Rightarrow \,\exists ! a_1,\dots,a_k \in \mathbb{C},a_k\neq 0$ und $\exists !$ Polynom $\tilde{p}$ mit 

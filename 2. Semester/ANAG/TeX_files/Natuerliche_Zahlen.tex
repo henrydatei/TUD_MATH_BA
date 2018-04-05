@@ -1,6 +1,5 @@
-\addtocounter{section}{1} % section ``Fundament der Mathematik'' fehlt
 \section{Natürliche Zahlen}
-\begin{definition}[Peano Axiome]
+\begin{*definition}[Peano Axiome]
 $\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
 \begin{enumerate}[label={P\arabic*)}]
 	\item $\mathbb{N}$ sei indutkiv, d.h. es ex.
@@ -15,7 +14,7 @@ $\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
 \end{enumerate}
 
 Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen} mit üblichen Symbolen.
-\end{definition}
+\end{*definition}
 
 \begin{theorem}
 	\proplbl{naturliche_zahlen_isomorph}
@@ -61,7 +60,7 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \begin{proposition}[Rekursive Definition / Rekursion]
 	\proplbl{rekursive_def_abb}
 	\begriff*{Rekursion}
-	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align}\label{rekur_definition}
+	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align}\label{rekur_**definition}
 		f(0) &:= b,\\f(n+1)&:=F(f(n),n)\quad\forall n\in \mathbb{N}
 	\end{align}
 	genau eine Abbildung für $f:\mathbb{N}\rightarrow B$ (d.h. solche Abbildung ist eindeutig)
@@ -91,11 +90,11 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{proof}
 
 \subsection{Rechenoperationen}
-\begin{definition}[Rechenoperation auf $\boldsymbol{\mathbb{N}}$]
+\begin{*definition}[Rechenoperation auf $\boldsymbol{\mathbb{N}}$]
 	Definiere \begriff{Addition}[!natürliche Zahlen] $+:\mathbb{N}\times\mathbb{N}\rightarrow \mathbb{N}$ auf $\mathbb{N}$ durch $n+0:=n, n+\nu(m) :=\nu(n+m)\,\forall n,m\in\mathbb{N}$
 	
 	Definiere \begriff{Multiplikation}[!natürliche Zahlen] $\cdot:\mathbb{N}\times\mathbb{N} \rightarrow\mathbb{N}$ auf $\mathbb{N}$ durch $n\cdot 0 = 0, n\cdot\nu(m) = n\cdot m+n\,\forall m,n\in\mathbb{N}$
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Addition und Multiplikation haben folgende Eigenschaften, d.h. $\forall k,m,n\in\mathbb{N}$ gilt:
@@ -160,10 +159,10 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\end{itemize}
 \end{proof}
 
-\subsection{Ordnung auf $\boldsymbol{\mathbb{N}}$}
-\begin{definition}[Ordnung auf $\boldsymbol{\mathbb{N}}$]
+\subsection{Ordnung auf \texorpdfstring{$\boldsymbol{\mathbb{N}}$}{N}}
+\begin{*definition}[Ordnung auf $\boldsymbol{\mathbb{N}}$]
 	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N} \mid m \le n\}$
-\end{definition}
+\end{*definition}
 \begin{proposition}
 	\proplbl{ordnung_nat_zahlen}
 	Es gilt auf $\mathbb{N}$:

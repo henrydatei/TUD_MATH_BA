@@ -1,5 +1,5 @@
 \section{Konvergenz}\setcounter{theorem}{0}
-\begin{definition}[konvergent]
+\begin{*definition}[konvergent]
 	Sei $(X,d)$ metrischer Raum. Folge $\{x_n\}_{n\in\mathbb{N}}$ in $X$, (d.h. $x_n\in X\,\forall n$) heißt \begriff[Folge!]{konvergent}, falls $x\in X$ existiert mit \[\forall \epsilon > 0 \,\exists n_0=n_0(\epsilon)\in\mathbb{N}: d(x_n, x) < \epsilon\quad \forall n\ge n_0\]
 	
 	$x$ heißt dann \begriff{Grenzwert} (auch Limes) der Folge.
@@ -7,7 +7,7 @@
 	Notation: $x=$\mathsymbol{lim}{$\lim\limits_{n\rightarrow\infty}$}, $x_n\rightarrow x$ für $n\rightarrow\infty$, $x_n \overset{n\rightarrow\infty}{\longrightarrow}x$
 	
 	Folge heißt \begriff[Folge!]{divergent}, falls nicht konvergent.
-\end{definition}
+\end{*definition}
 
 \begin{conclusion}
 	Für Folge $\{x_n\}$ gilt: \[ x=\lim\limits_{n\rightarrow\infty}x_n \;\Leftrightarrow \text{Jede Kugel $B_\epsilon(x)$ enthält fast alle $x_n$} \]
@@ -69,14 +69,14 @@
 	$1<\sqrt[n]{n}< a^{\varepsilon}\Rightarrow 0 < \frac{\log_a n}{n} < \varepsilon$
 \end{example}
 
-\begin{definition}[Teilfolge, Häufungswert]
+\begin{*definition}[Teilfolge, Häufungswert]
 	Sei $\{x_n\}$ beliebige Folge in $X$, $\{n_k\}_{k\in\mathbb{N}}$ Folge in $\mathbb{N}$ mit $n_{k+1} > n_k\,\forall k\in\mathbb{N}$. Dann heißt $\{x_{n_k}\}_{k\in\mathbb{N}}$ \gls{tf} von $\{x_n\}_{n\in\mathbb{N}}$.
 	
 	$\gamma\in X$ heißt \gls{hw} (auch Häufungspunkt) der Folge $\{x_n\}$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(\gamma)$ unendlich viele $x_n$.
 	\begin{underlinedenvironment}[beachte]
 		HP der Folge muss nicht HP der Menge $\{x_n\}$ sein, z.B. konstante Folge
 	\end{underlinedenvironment}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}\label{tfprinzip}
 	\proplbl{tfprinzip}
@@ -109,7 +109,7 @@
 	$(\Leftarrow):$ sei $X\backslash M$ nicht offen, also abgeschlossen $\Rightarrow\exists x\in X\backslash M:B_{\varepsilon}(x)\cap M\neq\emptyset\Rightarrow\exists x_n\in B_{\frac{1}{n}}(x)\cap M\Rightarrow x_n\to x\in M\lightning\Rightarrow X\backslash M$ offen
 \end{proof}
 
-\subsection{Konvergenz im normierten Raum $X$}
+\subsection{Konvergenz im normierten Raum \texorpdfstring{$X$}{X}}
 $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot\vert)$
 
 \begin{proposition}
@@ -138,9 +138,9 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 	\end{enumerate}
 \end{conclusion}
 
-\begin{definition}[Nullfolge]
+\begin{*definition}[Nullfolge]
 	$\{x_n\}$ im normierten Raum heißt \begriff{Nullfolge}, falls $x_n\to 0$
-\end{definition}
+\end{*definition}
 
 \begin{lemma}
 	\proplbl{sandwich_lemma}
@@ -212,7 +212,7 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 	$\realz(z_n)=\frac{1}{1+k}\to 0$ und $\imagz(z_n)=\frac{k}{k+1}\to 1\Rightarrow\to (0,1)=i$
 \end{example}
 
-\subsection{Konvergenz in $\mathbb{R}$}
+\subsection{Konvergenz in \texorpdfstring{$\mathbb{R}$}{R}}
 \begin{proposition}
 	Seien $\{x_n\},\{y_n\},\{z_n\}$ Folgen in $\mathbb{R}$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -229,13 +229,13 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 	\end{enumerate}
 \end{proof}
 
-\begin{definition}[monoton]
+\begin{*definition}[monoton]
 	Folge $\{x_n\}$ heißt \begriff[monoton!]{wachsend} / \begriff[monoton!]{fallend}, falls gilt:
 	
 	$x_n \le x_{n-1}\;(x_n\ge x_{n+1})\,\forall n\in\mathbb{N}$ (in beiden Fällen heißt Folge \begriff{monoton}).
 	
 	Falls stets "`$<$"' ("`$>$"') ist $\{x_n\}$ \begriff[monoton!]{strikt}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $\{x_n\}$ in $\mathbb{R}$ monoton und beschränkt.\[
@@ -297,7 +297,7 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 \end{example}
 
 \subsection{Oberer und Unterer Limes}
-\begin{definition}
+\begin{*definition}
 	Seien $\{x_n\}$ beschränkte Folgen in $\mathbb{R}$.\\
 	$H:=\{ \gamma\in\mathbb{R} \mid \gamma \text{ ist \gls{hw} von }\{x_n\}\}$ ($\neq \emptyset$ nach \ref{bolzano_weierstrass})
 	
@@ -309,7 +309,7 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 \begin{underlinedenvironment}[beachte]
 	$\limsup$ und $\liminf$ existieren stets für beschränkte Folgen!
 \end{underlinedenvironment}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $\{x_n\}$ beschränkte Folge in $\mathbb{R}$. Dann
@@ -326,7 +326,7 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-		\item $x\in H\overset{\text{\propref{tfprinzip}}}{\Rightarrow}$ Behauptung
+		\item $x\in H\overset{\text{\ref{tfprinzip}}}{\Rightarrow}$ Behauptung
 		\item $\varepsilon>0\Rightarrow\exists x\in H\cap B_{\varepsilon}(x')$ \\
 		$B_{\varepsilon}(x')$ offen $\Rightarrow\exists\tilde{\varepsilon}>0:B_{\tilde{\varepsilon}}(x')\subset B_{\varepsilon}(x')\Rightarrow$ unendlich viele $x_n$ in $B_{\varepsilon}(x')\Rightarrow$ Behauptung für $\liminf$
 		\item Übungsaufgabe, Selbststudium
@@ -339,13 +339,13 @@ $x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot
 \end{example}
 
 \subsection{Uneigentliche Konvergenz}
-\begin{definition}[Uneigentliche Konvergenz]
+\begin{*definition}[Uneigentliche Konvergenz]
 	Folge $\{x_n\}$ in $\mathbb{R}$ konvergiert \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\,\forall n\ge n_0$
 	
 	(heißt auch \highlight{bestimmt divergent}) gegen $\infty$, "`uneigentlich"' wird meist weggelassen.
 	
 	\textbf{Notation}: $\lim\limits_{n\rightarrow\infty} x_n = \pm \infty$ bzw. $\xi_n\rightarrow \pm \infty$
-\end{definition}
+\end{*definition}
 
 \begin{example}
 	$\lim\limits_{n\to\infty} \frac{n^2+1}{n+1}=+\infty$, denn für $R>0$ gilt: $\frac{n^2+1}{n+1}=\frac{n+\frac{1}{n}}{1+\frac{1}{n}}\ge \frac{n}{2}\ge R$ für $n\ge 2R$

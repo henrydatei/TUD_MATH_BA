@@ -1,11 +1,11 @@
 \section{Stetigkeit}
-\begin{definition}
+\begin{*definition}
 	Sei stets $f:D\subset X\rightarrow Y$, $X,Y$ metrischer Raum, $D=\mathcal{D}(f)\neq \emptyset, y_0\in Y$ heißt \begriff{Grenzwert}[!Funktion] der Funktion $f$ im Punkt $x_0\in \overline{D}$, falls gilt:
 	\begin{center}
 		$\{x_n\}$ Folge in $D$ mit $x_n\to x_0$ $\Rightarrow$ $f(x_n)\to y_0$
 	\end{center}
 	Notaton: $\lim\limits_{x\rightarrow x_0} = y_0, f(x)\overset{x\to x_0}{\longrightarrow } y_0$
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \begin{remark}
 	Falls $x_0\in D$ \begriff{isolierter Punkt} von $D$, d.h. kein \gls{hp} von $D$, dann ist stets $\lim\limits_{x\rightarrow x_0} f(x) = f(x_0)$.
@@ -31,7 +31,7 @@
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	\proplbl{einseitige_grenzwerte}
 	Für $f:D\subset X\to Y$ mit $X=\mathbb{R}$ definieren wir einen \begriff{einseitiger Grenzwert} $y_0\in Y$ heißt \begriff[einseitiger Grenzwert!]{linksseitig} bzw. \begriff[einseitiger Grenzwert!]{rechtsseitig} von $f$ im \gls{hp} $x_0$ von $D\cap(-\infty, x_0)$ bzw. $D\cap(x_0,\infty)$, falls gilt: $x_n\in D\cap(-\infty, x_0)$ bzw. $x_n\in D\cap (x_0,\infty)$ mit $x_n\to x_0\,\Rightarrow \,f(x_n)\to y_0$
 	
@@ -39,7 +39,7 @@
 		\text{Notation: } \lim\limits_{x\uparrow x_0} f(x) &= y_0 =: f(x_0^-)& f(x)&\overset{x\uparrow x_0}{\longrightarrow} y_0 \\
 		\lim\limits_{x\downarrow x_0}f(x) &= y_0 =:f(x_0^+) & f(x) &\overset{x\downarrow x_0}{\longrightarrow} y_0
 	\end{aligned}$
-\end{definition}
+\end{*definition}
 
 \begin{remark}
 	Satz \ref{proposition:rechenregel_stetigkeit} gilt sinngemäß auch für einseitige Grenzwerte.
@@ -48,7 +48,7 @@
 \end{remark}
 \stepcounter{theorem}
 \subsection*{Landau-Symbole} (Vgl. von "`Konvergenzgeschwindigkeiten"')
-\begin{definition}
+\begin{*definition}
 	Sei $f:D\subset X\to Y, X$ metrischer Raum, $Y$ normierter Raum, $g:D\subset X\to \mathbb{R}$, $x_0\in \overline{D}$.
 	\begin{itemize}
 		\item $f(x)$ ist "`\begriff{klein o}"' von $g(x)$ für $x\to x_0$, falls \[ \lim\limits_{\stackrel{x\to x_0}{x\neq x_0}} \frac{\Vert f(x)\Vert}{g(x)} = 0 \]
@@ -56,30 +56,30 @@
 		\item $f(x)$ ist "`\begriff{groß O}"' von $g(x)$ für $x\to x_0$, falls \[ \exists \delta > 0, c \ge 0: \frac{\Vert f(x)\Vert}{|g(x)|} \le c \quad \forall x\in (B_\delta(x_0) \setminus \{x_0\})\cap D \]
 		Notation: $f(x) = \mathcal{O}(g(x))$\mathsymbol*{O}{$\mathcal{O}$} für $x\to x_0$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \stepcounter{theorem}
 \subsection*{Relativtopologie}
-\begin{definition}
+\begin{*definition}
 	Sei $(X,d)$ metrischer Raum, für $D\subset X$ ist $(D,d)$ ein metrischer Raum mit der induzierten Metrik.
 	\begin{itemize}
 		\item $M\subset D$ heißt \begriff[Relativtopologie!]{offen} bzw. \begriff[Relativtopologie!]{abgeschlossen} \highlight{relativ zu $D$}, falls $M$ offen bzw. abgeschlossen im metrischen Raum $(D,d)$.
 		\item $M\subset D$ heißt \begriff[Relativtopologie!]{Umgebung} von $x\in D$ relativ zu $D$, falls $M$ Umgebung von $x$ im metrischen Raum $(D,d)$.
 	\end{itemize}
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \rule{4cm}{0.4pt}
-\begin{definition}
+\begin{*definition}
 	Sei $f:D\subset X\to Y$ metrischer Raum, $D=\mathcal{D}(f)$, Fkt. $f$ heißt \begriff{folgenstetig} im Punkt $x_0\in D$, falls \[ f(x_n)\to f(x_0) \forall \text{ Folgen $x_n\to x_0$ in $D$} \]
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
-\begin{definition}
+\begin{*definition}
 	Funktion $f$ heißt \begriff{stetig} im Punkt $x_0\in D$, falls $\forall $ Umgebungen $V$ von $f(x_0)\,\exists $ Umgebung $U$ von $x_0$ in $D:\,f(U)\subset V$.
 	
 	\begin{tabularx}{\textwidth}{lX}
 		\noindent\highlight{Interpretation:} & Input / Output Steuerung besteht Forderung, dass beliebig kleine Output-Toleranzen $\epsilon$ stets durch hinreichend kleine Input-Toleranzen $\delta$ erreicht werden können.
 	\end{tabularx}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $f:D\subset X\to Y$, $X,Y$ metrischer Raum, $x_0\in D$. Dann:
@@ -88,9 +88,9 @@
 	\end{center}
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	Funktion $f$ heißt stetig (folgen- / $\epsilon\delta$-stetig) auf $M\subset D$, falls $f$ stetig (folgen-/$\epsilon\delta$-stetig) in jedem Punkt $x_0\in M$.
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \begin{proposition}
 	Sei $f:D\subset X\to Y, X,Y$ metrische Räume, dann sind folgende Aussagen äquivalent:
@@ -130,13 +130,13 @@
 	$\Rightarrow\, f:B_r(z_0) \to \mathbb{C}$ stetig auf $B_R(z_0)$
 \end{proposition}
 \addtocounter{theorem}{2}
-\begin{definition}
+\begin{*definition}
 	Bijektive Abbildung $f:D\subset X\to R\subset Y, X,Y$ metrische Räume, $D=\mathcal{D}(f), R=\mathcal{R}(f)$ heißt \begriff{Homöomorphismus}, falls $f$ und $f^{-1}$ stetig.
 	
 	Mengen $D$ und $R$ heißen \begriff[Menge!]{homöomorph} zueinander, falls es einen Homöomorphismus $f:D\to R$ mit $D=\mathcal{D}(f), R=\mathcal{R}(f)$ gibt.
 	
 	\highlight{beachte:} Homöomorphismus bildet offene (abgeschlossene) Mengen auf offene (abgeschlossene) Mengen ab.
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \begin{example}
 	\begriff{stereographische Projektion}
@@ -160,17 +160,17 @@
 	\end{enumerate}
 \end{proposition}
 \rule{4cm}{0.4pt}
-\begin{definition}
+\begin{*definition}
 	Funktion $f:D\subset X\to Y, X,Y$ metrische Räume, heißt \begriff{gleichmäßig stetig} auf $M\subset D$, falls \[ \forall \epsilon > 0 \,\exists \delta > 0: d(f(x), f(\tilde{x})) < \epsilon\quad \forall x,\tilde{x}\in M \text{ mit $d(x,\tilde{x}) < \delta$}, \]
 	d.h. $f$ ist $\epsilon\delta$-stetig in jedem $\tilde{x}\in M$ \highlight{und} $\delta > 0$ kann unabhängig von $x\in M$ gewählt werden.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $f:D\subset X\to Y, X,Y$ metrischer Raum, $f$ stetig auf kompakten $M\subset D$ \\
 	$\Rightarrow \,f$ gleichmäßig stetig auf $M$
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	Funktion $f:D\subset X\to Y, X,Y$ metrischer Raum, heißt \begriff{\person{Lipschitz}-stetig} auf $M\subset D$, falls \begriff{\person{Lipschitz}-Konstante} $L>0$ existiert mit \begin{align}
 		\tag{L} d(f(x), f(\tilde{x})) \le Ld(x,\tilde{x})
 	\end{align}
@@ -184,7 +184,7 @@
 		\item Graph von $f$ liegt im schraffierten Kegel
 		\item muss $\forall \tilde{x}\in M$ gelten mit gleichem $L$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	Sei $f:D\subset X\to Y$ \person{lipschitz}-stetig auf $M,X,Y$ metrische Räume\\
@@ -193,9 +193,9 @@
 
 \addtocounter{theorem}{2}
 
-\begin{definition}[Fortsetzung, Einschränkung]
+\begin{*definition}[Fortsetzung, Einschränkung]
     Funktion $\tilde{f}: D(\tilde{f}) \to Y$ heißt Fortsetzung (bzw. Einschränkung) von $f \mathcal{D}(f) \to Y$ auf $\mathcal{D}(f)$ falls $\mathcal{D} \subset \mathcal{D}(\tilde{f})$ (bzw. $\mathcal{D}(\tilde{f}) \subset \mathcal{D}(f)$) und $\tilde{f}(x) = f(x) \,\forall x \in \mathcal{D}$ (bzw. $\forall x \in \mathcal{D}(\tilde{f}$). Für eine eingeschränkte Funktion $f$ auf $\mathcal{D}(\tilde{f})$, schreibe $\tilde{f} = f_{\vert \mathcal{D}(\tilde{f})}$.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
     Sei $f: D \subset X \to Y$ gleichmäßig stetig auf $D$, wobei $X,Y$  sind metrische Räume , $Y$ ist vollständig $\Rightarrow$ es existiert eindeutige stetige Fortsetzung $\tilde{f}$ von $f$ auf $\bar{D}$ und $\tilde{f}$ ist auf gleichmäßige stetige auf $\bar{D}$.
