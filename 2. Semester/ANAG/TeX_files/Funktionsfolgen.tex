@@ -2,9 +2,13 @@
 
 Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{diffbar} für $k\in\mathbb{N}$
 
-\textbf{Frage:} Wann konvergiert $\{ f_k\}_{k\in\mathbb{N}}$ gegen \gls{diffbar}e Funktion $f$ mit $f_k'\to f'$ \\
+\begin{boldenvironment}[Frage:]
+	Wann konvergiert $\{ f_k\}_{k\in\mathbb{N}}$ gegen \gls{diffbar}e Funktion $f$ mit $f_k'\to f'$
+\end{boldenvironment}
 
-\textbf{Wiederholung:} alle $f_k$ stetig, $f_k\to f$ gleichmäig auf $D$ $\xRightarrow{\text{\propref{chap_14_19}}}$ $f$ stetig
+\begin{boldenvironment}[Wiederholung]
+	alle $f_k$ stetig, $f_k\to f$ gleichmäig auf $D$ $\xRightarrow{\text{\propref{chap_14_19}}}$ $f$ stetig
+\end{boldenvironment}
 
 \begin{example}
 	Sei $f_k:\mathbb{R}\to\mathbb{R}$ mit $f_k(x) = \frac{\sinh^2 x}{k}$.
@@ -67,7 +71,8 @@ Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{diffbar} für $k\in\m
 		&\le \epsilon\vert y - \tilde{x}\vert + \epsilon \vert y - \tilde{x}\vert + \epsilon \vert y - \tilde{x}\vert = 3\epsilon \vert y - \tilde{x}\vert \quad\forall y\in B_\rho(\tilde{x})&
 	\end{flalign}}
 	
-	Beachte: $\forall \epsilon > 0$ $\exists \rho > 0$ und mit \eqref{funktionsreihe_differentiation_beweis_5} \\
+	Beachte: $\forall \epsilon > 0$ $\exists \rho > 0$ und mit \eqref{funktionsreihe_differentiation_beweis_5}
+	
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & $f(y) - f(\tilde{x}) - g(\tilde{x})\cdot(y - \tilde{x}) = o(\vert y -\tilde{x}\vert)$, $y\to \tilde{x}$ \\
 		$\Rightarrow$ & $f(\tilde{x}) = g(\tilde{x})$ $\xRightarrow{\text{$\tilde{x}$ beliebig}}$ Behauptung
@@ -80,9 +85,13 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 	f(x) &= \sum_{k=0}^\infty a_k(x  - x_0)^k\quad\forall x\in B_{\underbrace{\text{\scriptsize$R$}}_{\mathclap{\text{Konvergenzradius}}}}(x_0)
 \end{align}
 
-\textbf{Wiederholung:} $R=\frac{1}{\limsup \sqrt[k]{\vert a_k\vert}}$\\
+\begin{boldenvironment}[Wiederholung]
+	$R=\frac{1}{\limsup \sqrt[k]{\vert a_k\vert}}$
+\end{boldenvironment}
 
-\textbf{Frage:} Ist $f$ \gls{diffbar} und kann man gliedweise differenzieren?
+\begin{boldenvironment}[Frage]
+	Ist $f$ \gls{diffbar} und kann man gliedweise differenzieren?
+\end{boldenvironment}
 
 \begin{proposition}
 	\proplbl{funktionsfolgen_satz_3}

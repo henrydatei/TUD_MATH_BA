@@ -1,15 +1,19 @@
 \section{Richtungsableitung und partielle Ableitung}\proplbl{richtungsableitung}  \setcounter{equation}{0}
 Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 
-\textbf{Ziel:} Zurückführung der Berechnung der Ableitung $f(x)$ auf die Berechnung der Ableitung für Funktionen $\tilde{f}:\tilde{D}\subset K\to K$
+\begin{boldenvironment}[Ziel]
+	Zurückführung der Berechnung der Ableitung $f(x)$ auf die Berechnung der Ableitung für Funktionen $\tilde{f}:\tilde{D}\subset K\to K$
 	\begin{itemize}
 		\item Reduktionssatz $\Rightarrow$ man kann sich bereits auf $m=1$ einschränken
 		\item für Berechnung der Ableitung von $f$ ist neben den Rechen- und Kettenregeln auch der Differentialquotient verfügbar
 	\end{itemize}
+\end{boldenvironment}
 
-\textbf{Idee:} Betrachte $f$ auf Geraden $t\to x + t\cdot z$ durch $x$ $\Rightarrow$ skalares Argument $t$, $t\in K$ $\Rightarrow$ Differentialquotient.
+\begin{boldenvironment}[Idee]
+	Betrachte $f$ auf Geraden $t\to x + t\cdot z$ durch $x$ $\Rightarrow$ skalares Argument $t$, $t\in K$ $\Rightarrow$ Differentialquotient.
 	
 	Spezialfall: $z = e_j$ $\Rightarrow$ Partielle Ableitung
+\end{boldenvironment}
 
 \begin{*definition}[Richtungsableitung]
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$, $z\in K^n$.
@@ -50,7 +54,9 @@ Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 	$\xRightarrow{\eqref{richtungsableitung_definition_prop_eins}}$ Richtungsableitung von $f$ existiert für alle $ x = (x_1, 0)$ \emph{nur} in Richtung $z=(z_1, 0)$ mit $\mathrm{D}_z f(x) = 2x_1 z_1$
 \end{example}
 
-\textbf{Frage:} Existiert $\mathrm{D}_z f(x)$ $\forall z$, falls $f$ \gls{diffbar} in $x$?
+\begin{boldenvironment}[Frage]
+	Existiert $\mathrm{D}_z f(x)$ $\forall z$, falls $f$ \gls{diffbar} in $x$?
+\end{boldenvironment}
 
 \begin{proposition}
 	\proplbl{richtungsableitung_prop_existenz_prop}
@@ -104,12 +110,12 @@ Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 	Ein $z\in\mathbb{R}\setminus \{0\}$ mit $z = \gamma'(0)$ für eine derartige Kurve $\gamma$ heißt \begriff{Tangentialvektor} an $N_C$ in $x$.
 	
 	Offenbar gilt \zeroAmsmathAlignVSpaces
-	\begin{align}
-	 \notag & \phi(t) = f(\gamma(t)) = c \\
-	 \notag \Rightarrow\;\;& \phi'(0) = f'(\gamma(0))\cdot \gamma'(0) = 0 \\
+	\begin{alignat}{2}
+	 \notag && \phi(t) &= f(\gamma(t)) = c \\
+	 \notag &\Rightarrow\;\;& \phi'(0) &= f'(\gamma(0))\cdot \gamma'(0) = 0 \\
 	 \proplbl{richtungsableitung_tangentialvektor_eigenschaft}
-	 \Rightarrow\;\; &\mathrm{D}_{\gamma'(0)} f(x) \overset{\star}{=} \langle f'(x), \gamma'(0)\rangle = 0\marginnote{$\star$: vgl. \propref{richtungsableitung_prop_existenz_prop}}[\dimexpr -\baselineskip / 2 \relax]
-	 \end{align}
+	 &\Rightarrow\;\; &\mathrm{D}_{\gamma'(0)} f(x) &\overset{\mathclap{\star}}{=} \langle f'(x), \gamma'(0)\rangle = 0\marginnote{$\star$: vgl. \propref{richtungsableitung_prop_existenz_prop}}[\dimexpr -\baselineskip / 2 \relax]
+	 \end{alignat}
 \end{*definition}
 
 \begin{proposition}[Eigenschaften des Gradienten]
@@ -139,10 +145,12 @@ Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
 	\end{enumerate}
 \end{proof}
 
-\textbf{Feststellung:} für $f:D\subset K^n\to K^m$: die lineare Abbildung $f'(x):K^n\to K^m$ ist durch Kenntnis für $n$ linear unabhängige Vektoren bestimmt\\
+\begin{boldenvironment}[Feststellung]
+	für $f:D\subset K^n\to K^m$: die lineare Abbildung $f'(x):K^n\to K^m$ ist durch Kenntnis für $n$ linear unabhängige Vektoren bestimmt\\
 	$\xRightarrow{\eqref{richtungsableitung_prop_existenz}}$ $f'(x)$ eindeutig bestimmt durch Kenntnis von \begin{align*}
 		\mathrm{D}_{e_j} f(x) = f'(x) \cdot e_j \;(\in K^{m\times 1}) \text{ für } j = 1,\dotsc,n
 	\end{align*}
+\end{boldenvironment}
 
 \begin{*definition}[partielle Ableitung]
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$ (nicht notwendigerweise \gls{diffbar} in $x$).
@@ -219,7 +227,9 @@ Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ li
 \end{enumerate}
 \end{proof}
 
-\textbf{Frage:} Gilt die Umkehrung von \propref{richtungsableitung_vollstaendige_reduktion} (\propref{richtungsableitung_prop_existenz_prop}), d.h. falls alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f(x)$ bzw. alle Richtungsableitungen $\mathrm{D}_z f(x)$ existieren, ist dann $f$ \gls{diffbar} in $x$? Nein!
+\begin{boldenvironment}][Frage]
+	Gilt die Umkehrung von \propref{richtungsableitung_vollstaendige_reduktion} (\propref{richtungsableitung_prop_existenz_prop}), d.h. falls alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f(x)$ bzw. alle Richtungsableitungen $\mathrm{D}_z f(x)$ existieren, ist dann $f$ \gls{diffbar} in $x$? Nein!
+\end{boldenvironment}
 
 \begin{example}
 	Betrachte $f:\mathbb{R}^2\to\mathbb{R}$ mit \begin{align*}
@@ -241,8 +251,10 @@ Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ li
 	$\Rightarrow$ $f$ nicht stetig in $x=0$ $\xRightarrow{\text{\propref{diffbar_impl_stetig}}}$ $f$ \emph{nicht \gls{diffbar}}.
 \end{example}
 
-\textbf{Ausblick:} Sind alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f_j(x)$ stetige Funktionen in $x\in D$ \\
+\begin{boldenvironment}[Ausblick]
+	Sind alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f_j(x)$ stetige Funktionen in $x\in D$ \marginnote{Siehe \propref{mittelwertsatz_existenz_partieller_ableitung}}\\
 	$\Rightarrow$ $f$ \gls{diffbar} in $x$ und \propref{richtungsableitung_vollstaendige_reduktion_eq} gilt.
+\end{boldenvironment}
 
 \subsection{\texorpdfstring{$\mathbf{\mathbb{R}}$}{R}-differenzierbar und \texorpdfstring{$\mathbf{\mathbb{C}}$}{C}-differenzierbar}
 Sei $f:D\subset K^n\to K^m$ ist \gls{diffbar} in $z_0 \in D$, $D$ offen
@@ -274,7 +286,7 @@ Die Umkehrung gilt i.A. nicht!
 	
 	\uline{beachte:} falls $X$ oder $Y$ nur \gls{vr} über $\mathbb{R}$, dann $\mathbb{C}$-\gls{diffbar} nicht erklärt.
 	\vspace*{1.5em}
-\begin{underlinedenvironment}[Spezialfall]
+\begin{boldenvironment}[Spezialfall]
 	Sei $f:D\subset\mathbb{C}\to\mathbb{C}$, $D$ offen, $z_0\in D$. Vergleiche $\mathbb{R}$-\gls{diffbar} und $\mathbb{C}$-\gls{diffbar}:
 	
 	Sei $f$ $\mathbb{R}$-\gls{diffbar} in $z_0$, d.h. es existiert eine $\mathbb{R}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ mit {\zeroAmsmathAlignVSpaces**\begin{align}
@@ -287,7 +299,7 @@ Die Umkehrung gilt i.A. nicht!
 	\proplbl{richtungsableitung_differenzierbar_partiell_y}
 	&\text{für }& z=&iy,\;& y\in\mathbb{R}:\;& A(i) &= \lim\limits_{\substack{y\to 0 \\ y\in\mathbb{R}}} \frac{f(z_0 + iy) - f(z_0)}{y} &=: f_y (z_0)
 	\end{alignat}
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 	Nenne $f_x(z_0)$, $f_y(z_0)$ \begriff[Ableitung!]{partielle Ableitung}[!$\mathbb{C}$] von $f$ in $z_0$. Sei $f$ \begriff[Ableitung!]{$\mathbb{C}$-\gls{diffbar}} in $x_z$, d.h. \begin{align}
 		\notag &f(z_0 + z) = f(z_0) + \underbrace{f'(z_0)}_{\in\mathbb{C}}\cdot z + o(\vert z \vert) \\
@@ -337,7 +349,9 @@ Lineare Algebra: $A:\mathbb{C}\to\mathbb{C}$ linear $\Leftrightarrow$ $\exists w
 	Selbststudium
 \end{proof}
 
-\textbf{Somit:} $\mathbb{C}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ entspricht \emph{spezieller} $\mathbb{R}$-linearen Abbildung $\mathbb{R}^2\to\mathbb{R}^2$
+\begin{boldenvironment}[Somit]
+	$\mathbb{C}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ entspricht \emph{spezieller} $\mathbb{R}$-linearen Abbildung $\mathbb{R}^2\to\mathbb{R}^2$
+\end{boldenvironment}
 
 \begin{*definition}[\person{Cauchy}-\person{Riemann}-Differentialgleichungen]
 Falls $\mathbb{R}$-\gls{diffbar} in $z_0$ liefert \eqref{richtungsableitung_differenzierbarkeit_vorform_cauchy_riemann} \begin{align*}
@@ -351,7 +365,8 @@ folglich \begin{align}
 \end{align}
 \end{*definition}
 
-\textbf{Somit:} $\mathbb{C}$-lineare Abbilung $z \to f'(z_0)$ entspricht $\mathbb{R}$-linearer Abbildung \begin{align*}
+\begin{boldenvironment}[Somit]
+	$\mathbb{C}$-lineare Abbilung $z \to f'(z_0)$ entspricht $\mathbb{R}$-linearer Abbildung \begin{align*}
 	\begin{pmatrix}
 		x \\ y
 	\end{pmatrix}\to \begin{pmatrix}
@@ -360,6 +375,7 @@ folglich \begin{align}
 		x \\ y
 	\end{pmatrix}
 	\end{align*}
+\end{boldenvironment}
 
 \begin{hint}
 	$\mathbb{C}$-\gls{diffbar}e Funktionen $f:D\subset \mathbb{C}\to\mathbb{C}$ werden in der Funktionentheorie untersucht.

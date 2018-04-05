@@ -4,6 +4,7 @@
 \usepackage[ngerman]{babel}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
+\usepackage[T1]{fontenc}
 \fi
 
 \usepackage{zref-base}
@@ -15,7 +16,6 @@
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}
 
-\usepackage[T1]{fontenc}
 \ifluatex
 \usepackage{fontspec}
 %\usepackage{luacode}
@@ -25,10 +25,10 @@
 \indexsetup{
 	level=\chapter*
 }
-\makeindex
+\makeindex[intoc]
 \makeindex[name=semester1,title={Symbolverzeichnis (1. Semester)}]
 \makeindex[name=semester2,title={Symbolverzeichnis (2. Semester)}]
-\makeindex[name=symbols,title=Symbolverzeichnis]
+\makeindex[name=symbols,title=Symbolverzeichnis,intoc]
 
 \usepackage[xindy,acronym]{glossaries}
 \makeglossaries
@@ -226,6 +226,8 @@
 	{\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ \theorem@headerfont(##3)\theorem@separator}]}
 \newtheoremstyle{underlinedEnvironment}{}%
 {\item[\hskip\labelsep \uline{##1\theorem@headerfont ##3\theorem@separator}]}
+\newtheoremstyle{boldEnvironment}{}%
+{\item[\hskip\labelsep \textbf{##1\theorem@headerfont ##3\theorem@separator}]}
 \newtheoremstyle{proofstyle}%
 {\item[\hskip\labelsep {\theorem@headerfont ##1}\theorem@separator]}%
 {\item[\hskip\labelsep {\theorem@headerfont ##1}\ (##3)\theorem@separator]}
@@ -254,6 +256,14 @@
 	innerrightmargin=0,%
 	skipbelow=0pt,%
 ]{underlinedenvironment}{\hspace*{\dimexpr -\mdflength{innerleftmargin}\relax}}
+\theoremheaderfont{\bfseries}
+\theoremstyle{boldEnvironment}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{boldenvironment}{\hspace*{\dimexpr -\mdflength{innerleftmargin}\relax}}
 
 \theoremstyle{proofstyle}
 \theoremheaderfont{\normalfont\normalsize\itshape}
@@ -529,72 +539,57 @@
 \pagestyle{fancy}
 \pagenumbering{arabic}
 
+\part{1. Semester}
+\pagestyle{fancy}
+\chapter{Einleitung}
+\input{./TeX_files/Grundbegriffe_Logik}
+\stepcounter{section}
+\chapter{Zahlenbereiche}
+\include{./TeX_files/Natuerliche_Zahlen}
+\include{./TeX_files/Ganze_und_Rationale_Zahlen}
+\include{./TeX_files/Reelle_Zahlen}
+\include{./TeX_files/Komplexe_Zahlen}
 
-\begin{center}\begin{tikzpicture}
-	\begin{axis}[
-	xmin=-5, xmax=5, xlabel=$x$,
-	ymin=-5, ymax=5, ylabel=$y$,
-	samples=400,
-	axis y line=middle,
-	axis x line=middle,
-	restrict y to domain=-5:5
-	]
-	\addplot+[mark=none]  {tan(deg(x))};
-	\addlegendentry{$\tan(x)$}
-	\end{axis}
-	\end{tikzpicture}\end{center}
+\chapter{Metrische Räume und Konvergenz}
+\input{./TeX_files/Grundlegende_Ungleichungen}
+\include{./TeX_files/Metrische_Raeume}
+\include{./TeX_files/Konvergenz}
+\include{./TeX_files/Vollstaendigkeit}
+\include{./TeX_files/Kompaktheit}
+\include{./TeX_files/Reihen}
 
-%\part{1. Semester}
-%\pagestyle{fancy}
-%\chapter{Einleitung}
-%\input{./TeX_files/Grundbegriffe_Logik}
-%\stepcounter{section}
-%\chapter{Zahlenbereiche}
-%\include{./TeX_files/Natuerliche_Zahlen}
-%\include{./TeX_files/Ganze_und_Rationale_Zahlen}
-%\include{./TeX_files/Reelle_Zahlen}
-%\include{./TeX_files/Komplexe_Zahlen}
-%
-%\chapter{Metrische Räume und Konvergenz}
-%\input{./TeX_files/Grundlegende_Ungleichungen}
-%\include{./TeX_files/Metrische_Raeume}
-%\include{./TeX_files/Konvergenz}
-%\include{./TeX_files/Vollstaendigkeit}
-%\include{./TeX_files/Kompaktheit}
-%\include{./TeX_files/Reihen}
-%
-%\chapter{Funktionen und Stetigkeit}
-%\input{./TeX_files/Funktionen}
-%\include{./TeX_files/Stetigkeit}
-%\include{./TeX_files/Anwendungen}
-%
-%\part{2. Semester}
-%\pagestyle{fancy}
-%
-%\chapter{Differentiation}
-%\input{./TeX_files/Wiederholung_und_Motivation}
-%\include{./TeX_files/Ableitung}
-%\include{./TeX_files/Richtungsableitung}
-%\include{./TeX_files/Mittelwertsatz}
-%\include{./TeX_files/Stammfunktion}
-%
-%\chapter{Integration}
-%\input{./TeX_files/Integration}
-%\include{./TeX_files/Messbarkeit}
-%\include{./TeX_files/Integral}
-%\include{./TeX_files/Integral_R}
-%\include{./TeX_files/Fubini}
-%
-%\chapter{Differentiation II}
-%\input{./TeX_files/Taylor}
-%\include{./TeX_files/Extremwerte}
-%\include{./TeX_files/Inverse_implizite_Funktionen}
-%\include{./TeX_files/Funktionsfolgen}
+\chapter{Funktionen und Stetigkeit}
+\input{./TeX_files/Funktionen}
+\include{./TeX_files/Stetigkeit}
+\include{./TeX_files/Anwendungen}
+
+\part{2. Semester}
+\pagestyle{fancy}
+
+\chapter{Differentiation}
+\input{./TeX_files/Wiederholung_und_Motivation}
+\include{./TeX_files/Ableitung}
+\include{./TeX_files/Richtungsableitung}
+\include{./TeX_files/Mittelwertsatz}
+\include{./TeX_files/Stammfunktion}
+
+\chapter{Integration}
+\input{./TeX_files/Integration}
+\include{./TeX_files/Messbarkeit}
+\include{./TeX_files/Integral}
+\include{./TeX_files/Integral_R}
+\include{./TeX_files/Fubini}
+
+\chapter{Differentiation II}
+\input{./TeX_files/Taylor}
+\include{./TeX_files/Extremwerte}
+\include{./TeX_files/Inverse_implizite_Funktionen}
+\include{./TeX_files/Funktionsfolgen}
 
 
-\appendix
-\addcontentsline{toc}{part}{Anhang}
 \part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
 \patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
 %\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
 %\titlespacing{command}{left}{before-sep}{after-sep}
@@ -666,10 +661,10 @@
 \printglossary[type=\acronymtype]
 \addcontentsline{toc}{chapter}{Akronyme}
 
-\addcontentsline{toc}{chapter}{Index}
 \printindex
+%\addcontentsline{toc}{chapter}{Index}
 
 \printindex[symbols]
-\addcontentsline{toc}{chapter}{Symbolverzeichnis}
+%\addcontentsline{toc}{chapter}{Symbolverzeichnis}
 
 \end{document}

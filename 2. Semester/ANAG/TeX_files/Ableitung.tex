@@ -131,7 +131,7 @@
 	\begin{interpretation}[ für $m > 1$]
 		$f'(x_0)$ heißt \begriff{Tangentenvektor} an die Kurve in $f(x_0)$. Falls $f$ nicht  \gls{diffbar} in $x_0$ bzw. $x_0$ Randpunkt in $D$ und ist $f(x_0)$ definiert, so betrachtet man in \propref{differentialquotient} auch einseitige Grenzwerte (vgl. \propref{einseitige_grenzwerte}).
 		
-		$\lim\limits_{t\downarrow 0} \frac{f(x_0 + t) - f(x_0)}{t} = f_r'(x_0)$ heißt \begriff[Ableitung!]{rechtsseitige} \uline{Ableitung} von $f$ in $x_0$ (falls existent), analog \begriff[Ableitung!]{linksseitige} \uline{Ableitung} $f_l'(x_0)$.
+		$\lim\limits_{t\downarrow 0} \frac{f(x_0 + t) - f(x_0)}{t} = f_r'(x_0)$ heißt \begriff[Ableitung!]{rechtsseitige} \uline{Ableitung} von $f$ in $x_0$ (falls existent), analog ist $\lim\limits_{t\uparrow 0}$ die \begriff[Ableitung!]{linksseitige} \uline{Ableitung} $f_l'(x_0)$.
 	\end{interpretation}
 
 	\item \uline{$n=m=1\negthickspace:\;f\negthickspace: D\subset \mathbb{R}\to \mathbb{R}$} (vgl. Schule)\\[0.6ex]
@@ -169,7 +169,7 @@
 	\begin{align*}
 		\xRightarrow{(\ref{definition_ableitung})}\;\; \text{$f$ ist  \gls{diffbar} in $x_0$ mit } f'(x_0) = A
 	\end{align*}
-	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$\\
+	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
 		xmin=-5, xmax=5, xlabel=$x$,
@@ -198,7 +198,7 @@
  	\end{flalign*}
  	(vgl. auch \propref{spezialfall_ableitung_m1} im Spezialfall \ref{spezialfall_ableitung_m1_item})
  	
- 	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist  \gls{diffbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$\\
+ 	Wegen $2x_0\in L(\mathbb{R}^n, \mathbb{R})$ folgt $f = \vert \cdot \vert^2$ ist  \gls{diffbar} in $x_0$ mit $f'(x_0) = 2 x_0\;\forall x_0\in\mathbb{R}$
  	\begin{center}\begin{tikzpicture}
  		\begin{axis}[
  		xmin=-5, xmax=5, xlabel=$x$,
@@ -215,7 +215,7 @@
  		\end{tikzpicture}\end{center}
 \end{example}
 
-\begin{example}[Funktionen mit höhrerem Exponent]
+\begin{example}[Funktionen mit höherem Exponent]
 	Sei $f:K\to K$, $f(x) = x^k$, $k\in\mathbb{N}$.
 	\begin{itemize}[leftmargin=\widthof{$\,k=0$:\ }]
 		\item[$k=0$:] $f(x) = 1\;\forall x$ $\Rightarrow$ $f'(x_0) = 0\;\forall x_0\in\mathbb{C}$ (vgl. \propref{ableitung_linear})
@@ -227,7 +227,7 @@
 			$\xRightarrow{(\ref{definition_ableitung})}$ & $f'(x_0)$ & $= k\cdot x_0^{k-1}$
 		\end{tabularx}
 	\end{itemize}
-	\emph{beachte:} gilt in $\mathbb{C}$ und $\mathbb{R}$. \\
+	\emph{beachte:} gilt in $\mathbb{C}$ und $\mathbb{R}$.
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
 		xmin=-5, xmax=5, xlabel=$x$,
@@ -411,7 +411,7 @@
 	d.h. Ableitung einer stetigen Funktion muss \emph{nicht} stetig sein.
 \end{example}
 
-\begin{underlinedenvironment}[Man beobachtet]
+\begin{boldenvironment}[Man beobachtet]
 	\hspace{0pt}
 \begin{itemize}[topsep=-2pt]
 	\item \propref{definition_ableitung} bzw. \propref{definition_ableitung_zwei_stern} sind häufig ungeeignet zum Bestimmen von $f'(x_0)$
@@ -419,7 +419,7 @@
 	
 	\emph{$\rightarrow$ Strategie:} Zurückführung auf einfachere Fälle durch Rechenregeln und Reduktion
 \end{itemize}
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{proposition}[Rechenregeln]
 	\proplbl{ableitung_rechenregeln}
@@ -499,7 +499,7 @@ und mit \propref{definition_ableitung_proposition} c) ergibt sich die Behauptung
 		]
 		\addplot+[mark=none] {tan(deg(x))};
 		\addlegendentry{$\tan(x)$}
-		\addplot+[mark=none, dashed] {1/(cos(x))^2};
+		\addplot+[mark=none, dashed] {1/(cos(deg(x)))^2};
 		\addlegendentry{$\frac{1}{\cos^2(x)}$}
 		\end{axis}
 		\end{tikzpicture}

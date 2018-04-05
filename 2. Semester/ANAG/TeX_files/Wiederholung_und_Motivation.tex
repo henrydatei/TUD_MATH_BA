@@ -61,7 +61,7 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		&\Leftrightarrow \boxed{f(x) = f(x_0) + o(1)} \text{ für }x\to x_0\proplbl{chap15specialCase}
 	\end{align}
 	
-	\begin{underlinedenvironment}[Interpretation von \propref{chap15specialCase}]{}
+	\begin{boldenvironment}[Interpretation von \eqref{chap15specialCase}]
 	
 	Setze $r(x) := f(x) - f(x_0)$
 	\zeroAmsmathAlignVSpaces
@@ -70,7 +70,7 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		&\label{chap15interpretationSpecialCase} \Rightarrow r(x) \overset{x\to x_0}{\longrightarrow} 0,&
 	\end{flalign}
 	d.h. $o(1)$ ersetzt eine "`Rest-Funktion"' $r(x)$ mit Eigenschaft (\ref{chap15interpretationSpecialCase}).
-	\end{underlinedenvironment}
+	\end{boldenvironment}
 	Wegen $o(1) = o(\vert x-x_0\vert^0)$ (d.h. $k=0$) sagt man auch, \propref{chap15specialCase} ist die Approximation 0. Ordnung der Funktion $f$ in der Nähe von $x_0$.
 \end{example}
 \begin{example}
@@ -95,9 +95,15 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		$\Rightarrow$ Graph "`schmiegt sich"' an eine horizontale Ebene an den Punkt $(x_0, f(x_0))$ an.
 	\end{enumerate}
 		
-		\textbf{Beobachtung:} horizontale Ebene ist Graph einer affin linearen Funktion $\tilde{A}: \mathbb{R}^n\to\mathbb{R}^n$, daher\\
-		\textbf{Zentrale Frage:} Existiert zu gesuchter Funktion $f: D\subset\mathbb{R}^n \to K^m$, $x_0\in\mathbb{R}$ eine affin lineare Funktion $\tilde{A}:K^n\to K^m$, sodass sich in der Nähe von $x_0$ der Graph von $f$ an den Graph von $\tilde{A}$ "`anschmiegt"'?\\
-		\textbf{Antwort} Ja, wegen $f(x_0) = \tilde{A}(x_0)$ folgt $\tilde{A}(x) = A(x-x_0) + f(x_0)$. 
+		\begin{boldenvironment}[Beobachtung]
+			horizontale Ebene ist Graph einer affin linearen Funktion $\tilde{A}: \mathbb{R}^n\to\mathbb{R}^n$, daher
+		\end{boldenvironment}
+		\begin{boldenvironment}[Zentrale Frage]
+			Existiert zu gesuchter Funktion $f: D\subset\mathbb{R}^n \to K^m$, $x_0\in\mathbb{R}$ eine affin lineare Funktion $\tilde{A}:K^n\to K^m$, sodass sich in der Nähe von $x_0$ der Graph von $f$ an den Graph von $\tilde{A}$ "`anschmiegt"'?
+		\end{boldenvironment}
+		\begin{boldenvironment}[Antwort]
+			Ja, wegen $f(x_0) = \tilde{A}(x_0)$ folgt $\tilde{A}(x) = A(x-x_0) + f(x_0)$. 
+		\end{boldenvironment}
 \end{example}
 
 \begin{*definition}[Anschmiegen]

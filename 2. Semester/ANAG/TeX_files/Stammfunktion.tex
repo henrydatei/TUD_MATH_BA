@@ -1,7 +1,9 @@
 \section{Stammfunktionen} \proplbl{stammfunktion} \setcounter{equation}{0}
 Sei $f:D\subset K^n\to K^{m\times n}$ ($\cong L(K^n, K^m)$)
 
-\textbf{Frage:} Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
+\begin{boldenvironment}[Frage]
+	Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
+\end{boldenvironment}
 
 \begin{*definition}[Stammfunktion, unbestimmtes Integral]
 	$F: D\subset K^n\to K^m$ heißt \begriff{Stammfunktion} oder \emph{unbestimmtes} \begriff{Integral}[!unbestimmt] von $f$ auf $D$, falls $F$ \gls{diffbar} und $F'(x) = f(x)$ $\forall x\in D$
@@ -82,7 +84,9 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 	\end{tabularx}
 \end{minipage}
 
-\textbf{Strategie:} Rechenregeln für weitere Stammfunktionen
+\begin{boldenvironment}[Strategie]
+	Rechenregeln für weitere Stammfunktionen
+\end{boldenvironment}
 	
 \begin{proposition}[partielle Integration]
 	\proplbl{stammfunktion_partielle_integration}
@@ -94,11 +98,11 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 	\end{align}
 \end{proposition}
 
-\begin{underlinedenvironment}[Interpretation von \eqref{stammfunktion_partielle_integration_eq}]
+\begin{boldenvironment}[Interpretation von \eqref{stammfunktion_partielle_integration_eq}]
 	Es gibt eine Stammfunktion $\widehat{F\cdot g}$ von $F\cdot g$ und eine Stammfunktion $\widehat{f \cdot G}$ von $f\cdot G$ mit \begin{align}
 		\tag{2'} \widehat{F\cdot g}(x) = F(x) G(x) - \widehat{f\cdot G}(x)
 	\end{align}
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{remark}
 	\eqref{stammfunktion_partielle_integration_eq} kann als Umkehrung der Produktregel betrachtet werden.
@@ -134,9 +138,9 @@ Betrachte zunächst den \emph{Spezialfall} $n=m=1$. Sei $f:D\subset K\to K$, $D$
 	\end{align}
 \end{proposition}
 
-\begin{underlinedenvironment}[Interpretation]
+\begin{boldenvironment}[Interpretation]
 	analog zu \eqref{stammfunktion_partielle_integration_eq}
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{remark}
 	\eqref{stammfunktion_substitution_eq} kann als Umkehrung der Kettenregel angesehen werden.
@@ -175,25 +179,30 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\end{align*}
 \end{example}
 
-\textbf{Wieder der allgemeine Fall:} mit $f:D\subset K^n\to K^{m\times n}$\\
+\begin{boldenvironment}[Wieder der allgemeine Fall]
+	mit $f:D\subset K^n\to K^{m\times n}$
+\end{boldenvironment}
 
-\textbf{Reduktion} Nach \propref{richtungsableitung_vollstaendige_reduktion} kann man sich auf $m=1$ beschränken, d.h. falls \begin{align*}
-		f = \begin{pmatrix}
+\begin{boldenvironment}[Reduktion] Nach \propref{richtungsableitung_vollstaendige_reduktion} kann man sich auf $m=1$ beschränken, d.h. falls \begin{align*}
+		f &= \begin{pmatrix}
 		 f_{11} & \dotsc & f_{1k} \\ \vdots & & \vdots \\ f_{m1} & \dotsc & f_{mn}
 		\end{pmatrix}
 	\end{align*}
-	reicht eine Untersuchung der Zeilen. \\
+	reicht eine Untersuchung der Zeilen.
+\end{boldenvironment}
 	
-\textbf{Ziel:} Reduktion auf $n=1$. Betrachte somit $f:D\subset K^n\to K^n$, $D$ Gebiet ($m=1$, $n$ beliebig).
+\begin{boldenvironment}[Ziel]
+	Reduktion auf $n=1$. Betrachte somit $f:D\subset K^n\to K^n$, $D$ Gebiet ($m=1$, $n$ beliebig).
 	
-	Sei $F:D\subset K^n\to K$ Stammfunktion von $f=(f_1, \dotsc, f_n)$ \\
+	Sei $F:D\subset K^n\to K$ Stammfunktion von $f=(f_1, \dotsc, f_n)$
+	
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow{\ref{richtungsableitung_vollstaendige_reduktion}}$ & $F_{x_j}(x) = f_j(x)$ $\forall x\in D$, $j = 1,\dotsc, n$ \\
 	$\Rightarrow$ & $x_j \to F(x_1, \dotsc, x_j, \dotsc, x_n)$ ist Stammfunktion von $x_j \to f_j(x_1, \dotsc, x_j, \dotsc, x_n)$. Hierbei sind $x_i$ mit $i\neq j$ als Parameter anzusehen. \\
 	$\Rightarrow$ & Ist $x_j \to F_j(x_1, \dotsc, x_j, \dotsc, x_n)$ \emph{eine} Stammfunktion von $x_j\to f_j(x_1, \dotsc, x_j, \dotsc, x_n)$, dann erhält man \emph{alle} Stammfunktionen durch Addition einer Konstanten, die jedoch von den Parametern abhängen kann, d.h. durch
 	\end{tabularx}
 	{
-		\stepcounter{equation} \zeroAmsmathAlignVSpaces
+		\stepcounter{equation}
 		\begin{align}\proplbl{stammfunktion_reduktion_konstante}
 			x_j\to F_j(x_1, \dotsc, x_j, \dotsc, x_n) + \phi_j(x_1, \dotsc, x_{j-1}, x_{j+1}, \dotsc, x_n)
 		\end{align}}
@@ -205,6 +214,7 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\proplbl{stammfunktion_reduktion_bedingung_konstante}
 	\frac{\partial}{\partial x_j} \left( F_j(x_1, \dotsc, x_{j-1}, x_{j+1}, \dotsc, x_n)\right) &= f_i(x)\quad\forall i\neq j, j=1\dotsc, n
 	\end{align}
+\end{boldenvironment}
 
 \begin{example}
 	\proplbl{stammfunktion_beispiel_11}
@@ -246,6 +256,7 @@ Weitere Regeln prüft man leicht durch Differentiation:
 	\end{itemize}
 \end{remark}
 
-\textbf{Ausblick:} In Kapitel 27 formulieren wir eine notwendige Bedingung im Satz 27.18 ("`Integrabilitätsbedingung"') für die Existenz einer Stammfunktion (die in gewissen Mengen $D$ auch hinreichend ist): \begin{align*}
+\begin{boldenvironment}[Ausblick] In \propref{section_taylor} formulieren wir eine notwendige Bedingung in \propref{taylor_anwendung_integrabilitaetsbedinung} ("`Integrabilitätsbedingung"') für die Existenz einer Stammfunktion (die in gewissen Mengen $D$ auch hinreichend ist): \begin{align*}
 		\frac{\partial}{\partial x_j} f_i(x) &= \frac{\partial}{\partial x_i} f_j(x) \quad \forall i,j,x\in D
 	\end{align*}
+\end{boldenvironment}

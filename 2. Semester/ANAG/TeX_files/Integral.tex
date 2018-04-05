@@ -64,8 +64,7 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 	\end{tabularx}
 \end{example}
 
-\textbf{Motivation}
-	\hspace*{0pt}
+\begin{boldenvironment}[Motivation] \hspace*{0pt}
 	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
 		\item Nur monotone Folgen von Treppenfunktionen, oder
 		\item Beschränktheit aus \propref{integral_treppenfunktion_grundlegende_folgerung} erhalten
@@ -75,11 +74,13 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 	Beschränktheit aus \propref{integral_treppenfunktion_grundlegende_folgerung} \ref{integral_treppenfunktion_grundlegende_folgerung_beschraenktheit} bedeutet insbesondere \begin{align*}
 		\left\vert \int_M h_k\D x - \int_M f \D x \right\vert = \left\vert \int_M h_k - f \D x \right\vert \le \int_M \vert h_k - f\vert \D x \quad\forall k
 	\end{align*}
+\end{boldenvironment}
 	
-\textbf{man definiert:} $h_k\to f$ \gls{gdw} $\int_M \vert h_k - f\vert \D x\to 0$\\
+\begin{boldenvironment}[man definiert] $h_k\to f$ \gls{gdw} $\int_M \vert h_k - f\vert \D x\to 0$\\
 	$\Rightarrow$ Integralabbildung stetig bezüglich dieser Konvergenz.
 	
 	Wegen $\int_M \vert h_k - h_l\vert \D x \le \int_m \vert h_k - f\vert \D x + \int_M \vert h_l -f \vert \D x$ müsste $\int_M \vert h_k - h_l\vert \D x$ klein sein $\forall h,l$ groß.
+\end{boldenvironment}
 
 \subsection{\lebesque-Integral}
 \begin{*definition}[$L^1$-\person{Chauchy}-Folge, \person{Lebesgue}-Integral]
@@ -107,9 +108,9 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 \begin{underlinedenvironment}[Hinweis]
 	Integrale unter dem Grenzwert in \eqref{integral_lebesque_funktion_definition} sind elementare Integrale gemäß \eqref{integral_treppenfunktion_definition}.
 \end{underlinedenvironment}
-\begin{underlinedenvironment}[Sprechweise]
+\begin{boldenvironment}[Sprechweise]
 	$f$ integrierbar auf $M$ bedeutet stets $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar und $M\subset D$ messbar
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{*definition}[Menge der integrierbaren Funktionen]
 Menge der auf $M$ integrierbaren Funktionen ist \mathsymbol*{L1}{$L^1$} \begin{align*}
@@ -126,7 +127,9 @@ Menge der auf $M$ integrierbaren Funktionen ist \mathsymbol*{L1}{$L^1$} \begin{a
 	\end{enumerate}
 \end{remark}
 
-\textbf{Frage:} Ist die Definition des Integrals in \eqref{integral_lebesque_funktion_definition} unabhängig von der Wahl einer konkreten $L^1$-CF $\{ h_k\}$ zu $f$?
+\begin{boldenvironment}[Frage]
+	Ist die Definition des Integrals in \eqref{integral_lebesque_funktion_definition} unabhängig von der Wahl einer konkreten $L^1$-CF $\{ h_k\}$ zu $f$?
+\end{boldenvironment}
 
 \begin{proposition}
 	\proplbl{integral_funktion_unabhaengigkeit_leins_folge}
@@ -568,7 +571,8 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 \begin{proof}
 	Aussage klar für $\vert M \vert = 0$, deshalb wähle $\vert M \vert > 0$.
 	
-	Da $f$ stetig auf $M$ kompakt \\
+	Da $f$ stetig auf $M$ kompakt 
+	
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
 	$\xRightarrow[\propref{satz_von_weierstrass}]{\text{Weierstrass}}$ & $\exists$ Minimalstelle $x_1\in M$, Maximalstelle $x_2\in M$ und $\displaystyle\gamma := \int_M f \D x$ \\ $\xRightarrow{\text{\cref{integral_funktion_lemma_weitere_eigenschaften}}}$ & $f(x_1) \le \frac{\gamma}{\vert M \vert} \le f(x_2)$ \\
 	$\xRightarrow[\propref{zwischenwertsatz}]{\text{Zwischenwertsatz}}$ & $\displaystyle\exists \xi\in M: f(\xi) = \frac{\gamma}{\vert M \vert}$ \\
@@ -603,8 +607,9 @@ $\Rightarrow$ Integrale in \eqref{integral_parameterabhaengig_grundgleichung_eq}
 	
 	Setzte $f_k(x) := f(x, p_k)$
 	
-	Stetigkeit von $f(x,\,\cdot\,)$ liefert $f_k(x) = f(x, p_k)\xrightarrow{x\to\infty} f(x,p)$ für \gls{fa} $x\in M$.\\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\cref{integral_grenzwertsatz_majorisierte_konvergenz}}$ & $F(p_k) = \int_M f_k(x) \D x \to \int_M f(x,p)\D x = F(p)$ \\
+	Stetigkeit von $f(x,\,\cdot\,)$ liefert $f_k(x) = f(x, p_k)\xrightarrow{x\to\infty} f(x,p)$ für \gls{fa} $x\in M$.
+	 \begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\xRightarrow{\text{\cref{integral_grenzwertsatz_majorisierte_konvergenz}}}$ & $F(p_k) = \int_M f_k(x) \D x \to \int_M f(x,p)\D x = F(p)$ \\
 	$\xRightarrow[\text{beliebig}]{p\in P}$ & Behauptung
 	\end{tabularx}
 \end{proof}
@@ -637,7 +642,8 @@ $\Rightarrow$ Integrale in \eqref{integral_parameterabhaengig_grundgleichung_eq}
 Der klassische Integralbegriff hat konzeptionelle Bedeutung (Einführung etwas einfacher, keine messbaren Mengen und Funktionen) \\
 $\Rightarrow$ weniger Leistungsfähig (Anwendung nur in speziellen Situationen)
 
-\textbf{ebenfalls:} Approximation von der zu integrierenden Funktion $f$ durch geeignete Treppenfunktionen
+\begin{boldenvironment}[ebenfalls]
+	Approximation von der zu integrierenden Funktion $f$ durch geeignete Treppenfunktionen
 	
 	Sei $f:Q\subset\mathbb{R}^n\to\mathbb{R}$ mit $Q\in\mathcal{Q}$ eine beschränkte Funktion. Betrachte die Menge der Treppenfunktionen $T_{\mathcal{Q}}(Q)$, der Form \begin{alignat*}{3}
 		h &= \sum_{j=1}^l c_j \chi_{Q_j} & &\quad\text{mit}\quad & \bigcup_{j=1}^l Q_j&= Q,
@@ -645,6 +651,7 @@ $\Rightarrow$ weniger Leistungsfähig (Anwendung nur in speziellen Situationen)
 	$Q_j\in\mathcal{Q}$ paarweise disjunkt, $c_j\in \mathbb{R}$.
 	
 	Quader $\{ Q_j\}_{j=1,\dotsc,l}$ werden als Zerlegung zugehörig zu $h$ bezeichnet.
+\end{boldenvironment}
 
 \begin{*definition}[Feinheit, \person{Riemann}-Summe, \person{Riemann}-Folge]
 	Für Quader $Q' = F_1'\times \dotsc\times F_n'\in\mathcal{Q}$ mit Intervallen $F_j\subset\mathbb{R}$ heißt $\sigma_{Q'} := \max\limits_{j} \vert I_j'\vert$ ($\vert I_j'\vert$ - Intervalllänge) \begriff{Feinheit} von $Q'$ (setzte $\sigma_\emptyset = 0$).

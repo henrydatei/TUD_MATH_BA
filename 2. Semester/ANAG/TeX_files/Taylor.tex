@@ -1,19 +1,20 @@
-\section{Höhere Ableitungen und \person{Taylor}-scher Satz}\setcounter{equation}{0}
+\section{Höhere Ableitungen und \person{Taylor}-scher Satz} \proplbl{section_taylor} \setcounter{equation}{0}
 
-\textbf{Vorbetrachtung:} Sei $X$ endlich dimensionaler, normierter Raum über $K$ (d.. Vektorraum über $K$ mit Norm $\Vert \,\cdot \Vert$, $\dim X =l\in\mathbb{N}$).
+\begin{boldenvironment}[Vorbetrachtung] Sei $X$ endlich dimensionaler, normierter Raum über $K$ (d.. Vektorraum über $K$ mit Norm $\Vert \,\cdot \Vert$, $\dim X =l\in\mathbb{N}$).
 	
 	Offebar sind $X$ und $K^l$ isomorph als Vektorraum, schreibe $X\cong K^l$, z.B. $X = L(K^n,K^m)\cong K^{m\cdot n}$.
 	
 	Für $g:D\subset K^n\to X$, $D$ offen, kann man die bisherigen Resultate bezüglich der Ableitung übertragen. $g'(x)\in L(K^n, X)$ heißt Ableitung von $g$ im Punkt $x\in D$, falls \begin{align*}
 		g(x + y) = g(x) + g'x() y + o(\vert y\vert), \;y\to 0
 	\end{align*}
+\end{boldenvironment}
 	
-	\begin{*definition}[zweite Ableitung]
-	Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{diffbar} in $x\in D$ ist, heißt \begin{align}
-		f''(x) := g'(x)\in L(K^n, Y_1) = L\big( K^n, \underbrace{L(K^n, K^m)}_{\cong K^{m\times n}}\big)
-	\end{align}
-	\begriff{zweite Ableitung} von $f$ in $X$.
-	\end{*definition}
+\begin{*definition}[zweite Ableitung]
+Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{diffbar} in $x\in D$ ist, heißt \begin{align}
+	f''(x) := g'(x)\in L(K^n, Y_1) = L\big( K^n, \underbrace{L(K^n, K^m)}_{\cong K^{m\times n}}\big)
+\end{align}
+\begriff{zweite Ableitung} von $f$ in $X$.
+\end{*definition}
 
 \begin{underlinedenvironment}
 	Offenbar gilt dann: \begin{align}
@@ -24,13 +25,13 @@
 	\end{align}
 \end{underlinedenvironment}
 
-\begin{underlinedenvironment}[Interpretation]
+\begin{boldenvironment}[Interpretation]
 	Betrachte $f''(x)$ als kubische bzw. $3$-dimensionale "`Matrix"' (heißt auch \emph{Tensor} 3. Ordnung).
 	
 	\emph{beachte:} Ausdruck für $f''(x + y)\cdot z$ ist jeweils linear in $y$ und $z$.
-\end{underlinedenvironment}
+\end{boldenvironment}
 
-\textbf{Frage:} höhere Ableitungen, d.h. von $f'':D\to L(K^n, Y_1)$ usw.
+\begin{boldenvironment}[Frage] höhere Ableitungen, d.h. von $f'':D\to L(K^n, Y_1)$ usw.
 	
 	Offenbar: \begin{align*}
 		g_2&:= L(K^n, Y_1) = L\big(K^n, L(K^n K^m)\big) \cong L(K^n, K^{m\times n}) \cong L(K^n, K^{m\times n}) \cong K^{m\cdot n^2}\\
@@ -57,6 +58,7 @@
 			f^{(k)} (x + y) = f^{(k)}(x) + f^{(k+1)}(x) \cdot y + o(\vert y \vert) \;(\in Y_k), \;y\to 0
 		\end{align}
 	\end{enumerate}
+\end{boldenvironment}
 
 \begin{*definition}[$k$-fach differenzierbar]
 	$f$ heißt \begriff{$k$-fach differenzierbar} (auf $D$), falls $f^{(k)}$(x) existiert $\forall x\in D$.
@@ -69,14 +71,14 @@
 \begin{underlinedenvironment}[Hinweis]
 	Falls $f^(k)(x)$ existiert $\Rightarrow$ $f^{(k-1)}$ stetig in $X$  (vgl. \propref{diffbar_impl_stetig})
 \end{underlinedenvironment}
-\begin{underlinedenvironment}[Speziafall $n=1$]
+\begin{boldenvironment}[Speziafall $n=1$]
 	$f:D\subset K\to K^m$\\
 	\begin{tabularx}{\linewidth}{r@{$\;$}l@{$\,$}c@{$\,$}X}
 	$f'(x)$ & $\in Y_1 = L(K, K^n)$ & $\cong$ & $K^m$ \\
 	$f''(x)$ & $\in Y_2 = L(K, Y_1)$ & $\cong$ &  $L(K, K^m)\cong K^m$
 	\end{tabularx}
 	Allgemein: $f^{(k)}(x) \in Y_k = L(K, Y_{k-1}) \cong L(K, K^m)\cong K^m$, d.h. für $n=1$ kann $f^{(k)}(x)$ stets als $m$-Vektor in $K^m$ betrachtet werden.
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{example}
 	Für $f:\mathbb{R}\to\mathbb{R}$ mit $f(x) = x\cdot \sin x$\\ \begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }l}
@@ -145,7 +147,8 @@
 	Man schreibt auch $f\in C^\infty(\mathbb{R},\mathbb{R})$
 \end{example}
 
-\textbf{Räume $Y_k$} $=L(K^n, Y_{k-1}) \cong K^{m\times n^k}$.
+\begin{boldenvironment}[Räume $Y_k$] $=L(K^n, Y_{k-1}) \cong K^{m\times n^k}$.
+\end{boldenvironment}
 
 Für $A\in Y_k = L(K^n, Y_{k-1})$ und $y_1, \dotsc, y_k\in K^n$ gilt:
 
@@ -220,7 +223,7 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 	$\Rightarrow$ $I_k$ Isomorphismus
 \end{proof}
 
-\textbf{Norm} in $X_k$, $Y_k$: für $A\in Y_k$ folgt durch rekursive Definition \begin{align}
+\begin{boldenvironment}[Norm] in $X_k$, $Y_k$: für $A\in Y_k$ folgt durch rekursive Definition \begin{align}
 		\notag
 		& \left(\dotsc\left(  \left( A \frac{y_1}{\vert y_1\vert}\right) \frac{y_2}{\vert y_2 \vert} \right) \dotsc \frac{y_k}{\vert y_k \vert} \right) \le \Vert A\Vert_{Y_k} \quad \forall y_j\in K^n,\; y_j\neq 0 \\
 		\proplbl{taylor_hoehere_ableitungen_norm}
@@ -233,6 +236,7 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 		\proplbl{taylor_hoehere_ableitung_abschaetzung_norm}
 		\vert A(y_1, \dotsc, y_k)\vert \le \Vert A\Vert_{X_k} \vert y_1 \vert \cdot \dotsc \cdot \vert y_k\vert \quad\forall y_j\in K^n
 	\end{align}
+\end{boldenvironment}
 
 \begin{proposition}
 	Mit Isomorphismus $I_k: Y_k\to X_k$ aus \propref{taylor_ismomorphismus_yk_xk} gilt: \begin{align*}
@@ -251,7 +255,9 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 \subsection{Partielle Ableitungen}
 Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Standard-Einheitsvektoren
 
-\textbf{Wiederholung:} Partielle Ableitung $f_{x_j} (x) = \frac{\partial}{\partial x_j}f(x) = D_{x_j} f(x)$ ist Richtungsableitung $f'(x, e_j) = D_{e_j} f(x) \in L(K, K^m)$.
+\begin{boldenvironment}[Wiederholung]
+	Partielle Ableitung $f_{x_j} (x) = \frac{\partial}{\partial x_j}f(x) = D_{x_j} f(x)$ ist Richtungsableitung $f'(x, e_j) = D_{e_j} f(x) \in L(K, K^m)$.
+\end{boldenvironment}
 
 \begin{*definition}[partielle Ableitung]
 	Nenne $f_{x_1}(x), \dotsc, f_{x_1}(x)$ \uline{partielle Ableitung }\begriff[partielle Ableitung!]{1. Ordnung} von $f$ in $X$
@@ -285,7 +291,9 @@ Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Stand
 		f_{xy}(x,y) &= \cos x & f_{yx}(x,y) &= \cos x
 	\end{align*}
 	
-\textbf{Beobachtung:} $f_{xy}(x,y) = f_{yx}(x,y)$
+	\begin{boldenvironment}[Beobachtung]
+		$f_{xy}(x,y) = f_{yx}(x,y)$
+	\end{boldenvironment}
 \end{example}
 
 Abkürzende Schreibweise: \begin{align*}
@@ -336,9 +344,9 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 	Anschaulich: alle partiellen Ableitungen 2. Ordnung bilden eine 3D Matrix.
 \end{example}
 
-\begin{underlinedenvironment}[Frage]
+\begin{boldenvironment}[Frage]
 	Zusammenhang von $f^{(k)}(x)$ mit partiellen Ableitungen?
-\end{underlinedenvironment}
+\end{boldenvironment}
 
 \begin{theorem}
 	\proplbl{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung}
@@ -406,7 +414,9 @@ Analoge Rechnung liefert allgemein
 	Für höhere Ableitungen wird die Darstellung $f^{(k)}(x)(y_1, \dotsc, y_k)$ allgemein mittels partiellen Ableitungen immer komplexer, wird allerdings auch selten benötigt.
 \end{remark}
 
-\textbf{Frage:} Kann man die Reihenfolge bei partiellen Ableitungen vertauschen? (vgl. \propref{taylor_partielle_ableitungen_beispiel_9})
+\begin{boldenvironment}[Frage:]
+	Kann man die Reihenfolge bei partiellen Ableitungen vertauschen? (vgl. \propref{taylor_partielle_ableitungen_beispiel_9})
+\end{boldenvironment}
 
 \begin{example}
 	Sei $f:\mathbb{R}^2\to\mathbb{R}^2$ mit\begin{align*}
@@ -486,7 +496,9 @@ Analoge Rechnung liefert allgemein
 \end{proof}
 
 \subsection{Anwendungen}
-\textbf{Frage:} Wann besitzt $fD\subset\mathbb{R}^n\to\mathbb{R}^{m\times n}$ eine Stammfunktion? (Vgl. \propref{stammfunktion}, \gls{obda} $m=1$)
+\begin{boldenvironment}[Frage]
+	Wann besitzt $fD\subset\mathbb{R}^n\to\mathbb{R}^{m\times n}$ eine Stammfunktion? (Vgl. \propref{stammfunktion}, \gls{obda} $m=1$)
+\end{boldenvironment}
 
 \begin{proposition}[notwendige Integrabilitätsbedingung]
 	\proplbl{taylor_anwendung_integrabilitaetsbedinung}
@@ -503,7 +515,8 @@ Analoge Rechnung liefert allgemein
 \end{remark}
 
 \begin{proof}
-	$f$ habe Stammfunktion $F$ $\Rightarrow$ $F\in C^2(D)$ \\
+	$f$ habe Stammfunktion $F$ $\Rightarrow$ $F\in C^2(D)$
+	
 	\begin{tabularx}{\linewidth}{r@{\ \ }l@{\ }c@{\ }l@{\ }l}
 	$\Rightarrow$ &$F_{x_j}(x)$& = &$f_j(x)$ &$\forall x\in D,j,i$ \\
 	$\Rightarrow$& $F_{x_j x_i}(x)$& = &$\frac{\partial}{\partial x_i} f_j(x)$ & $\forall x\in D,i,j$ \\
@@ -537,17 +550,23 @@ Analoge Rechnung liefert allgemein
 \end{proof}
 
 \subsection{\person{Taylor}-scher Satz}
-\textbf{Ziel:} Bessere Approximation als durch Linearisierung
+\begin{boldenvironment}[Ziel]
+	Bessere Approximation als durch Linearisierung
+\end{boldenvironment}
 
 Verwende \begriff{allgemeine Polynome} $\phi:K^n\to K$ der Ordnung $k$, d.h. \begin{align}
 	\phi(x) = a_0 + \sum_{i=1}^n a_i x_i + \sum_{i,j=1}^n a_{ij} x_i x_j + \dotsc + \sum_{j_1,\dotsc,j_k}^n a_{j_1\dots j_k} x_{j_1}\cdot\dots\cdot x_{j_k}
 \end{align}
 mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 
-\textbf{Notation:} $f^{(k)}(x)(y,\dotsc,y) = f^{(k)}(x) y^k$\\
+\begin{boldenvironment}[Notation]
+	 $f^{(k)}(x)(y,\dotsc,y) = f^{(k)}(x) y^k$
+\end{boldenvironment}
 
-\textbf{Wiederholung:} $f\in C(D)$: $f(x+y) = f(x) + o(1)$, $y\to 0$ \\
-$f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
+\begin{boldenvironment}[Wiederholung]
+	$f\in C(D)$: $f(x+y) = f(x) + o(1)$, $y\to 0$ \\
+	$f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
+\end{boldenvironment}
 
 \begin{theorem}[\person{Taylor}-scher Satz]
 	 \proplbl{taylor_taylor}
@@ -684,10 +703,12 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 	\end{align*}
 \end{example}
 
-\textbf{Frage:} Falls $f\in C^\infty(D)$ existiert, dann \begin{align}
+\begin{boldenvironment}[Frage]
+	Falls $f\in C^\infty(D)$ existiert, dann \begin{align}
 		\proplbl{taylor_taylor_reihe_eq}
 		f(x + y) = f(x) * \sum \frac{1}{k!}f^{(k)}(x) y^k + \cancel{o(\vert y \vert^k)}\quad \text{für $k=1,\dotsc,n$}
 	\end{align}
+\end{boldenvironment}
 
 \begin{*definition}[Taylorreihe]
 	Rechte Seite in \eqref{taylor_taylor_reihe_eq} heißt \uline{Taylorreihe}\begriff*[Taylor-!]{reihe} von $f$ in $x$.
@@ -721,7 +742,9 @@ $f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
 	\end{tabularx}
 \end{example}
 
-\textbf{Wiedeholung:} Eine Reihe ist konvergent, falls die Folge der Partialsummen konvergieren, und damit \eqref{taylor_taylor_reihe_eq} gilt, muss die Reihe \emph{auch} gegen $f(x+y)$ konvergieren!
+\begin{boldenvironment}[Wiedeholung]
+	Eine Reihe ist konvergent, falls die Folge der Partialsummen konvergieren, und damit \eqref{taylor_taylor_reihe_eq} gilt, muss die Reihe \emph{auch} gegen $f(x+y)$ konvergieren!
+\end{boldenvironment}
 
 \begin{proposition}[Taylorreihe]
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f\in C^\infty(D, K^m)$, $x\in D$, $B_r(x)\subset D$. Falls \begin{align*}

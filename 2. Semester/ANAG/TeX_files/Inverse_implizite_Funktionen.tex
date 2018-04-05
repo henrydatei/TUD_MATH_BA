@@ -1,14 +1,17 @@
 \section{Inverse und implizite Funktionen}\setcounter{equation}{0}
-\textbf{Frage 1:} Sei $f:D\subset K^n\to K^m$ \gls{diffbar}, $x\in D$. Wann existiert -- zumindest lokal -- \gls{diffbar} Umkehrfunktion?\\
+\begin{boldenvironment}[Frage 1] Sei $f:D\subset K^n\to K^m$ \gls{diffbar}, $x\in D$. Wann existiert -- zumindest lokal -- \gls{diffbar} Umkehrfunktion?
+\end{boldenvironment}
 
-\textbf{Vorbetrachtung:} $f$ ist dann (lokal) Diffeomorphismus und man hat in Umgebung von $x$ \begin{itemize}
+\begin{boldenvironment}[Vorbetrachtung]
+	$f$ ist dann (lokal) Diffeomorphismus und man hat in Umgebung von $x$ \begin{itemize}
 		\item $f^{-1}$ existiert $\Rightarrow$ $f$ injektiv
 		\item $f^{-1}$ \gls{diffbar}, z.B. $y\in K^m$ $\Rightarrow$ $B_{\epsilon}(y)\subset f(K^m)$ für ein $\epsilon > 0$ $\Rightarrow$ ($y$ innerer Punkt) $f$ surjektiv
 	\end{itemize}
+\end{boldenvironment}
 
-	Falls $f$ linear, d.h. $f(x) = Ax$ und $A\in L(K^n, K^m)$ $\Rightarrow$ $n=m$ und $A$ regulär.\\
-	
-	Für allgemeine Funktion sollte dann gelten: $n=m$, $f'(x)$ regulär (sonst ungewiss)\\
+Falls $f$ linear, d.h. $f(x) = Ax$ und $A\in L(K^n, K^m)$ $\Rightarrow$ $n=m$ und $A$ regulär.
+
+Für allgemeine Funktion sollte dann gelten: $n=m$, $f'(x)$ regulär (sonst ungewiss)
 
 \begin{example}
 	Sei $f_j:\mathbb{R}\to\mathbb{R}$ mit $f_j(x) = x^j$ (in Umgebung von $_0$). $f_1$ und $f_3$ sind invertierbar, $f_2$ nicht.
@@ -45,9 +48,10 @@
 	\hfill\csname\InTheoType Symbol\endcsname
 \end{proof}
 
-\textbf{Frage 2:} Lösen von Gleichungen:
+\begin{boldenvironment}[Frage 2]
+	Lösen von Gleichungen:
 	
-	Sei $f:D\subset K^n\times K^l\to K^m$, $(x,y)\in K^n\times K^l$.\\
+	Sei $f:D\subset K^n\times K^l\to K^m$, $(x,y)\in K^n\times K^l$.
 	
 	Bestimme Lösungen $y$ in Abhängigkeit vom Parameter $x$ für folgende Gleichung: \begin{align}
 		\proplbl{implizit_funktion_grundgleichung_eq}
@@ -56,6 +60,7 @@
 	Sinnvolle Anwendung: \begin{itemize}
 		\item Lösung $y = g(x)$ hängt stetig oder Differenzierbar vom Parameter $x$ ab
 	\end{itemize}
+\end{boldenvironment}
 
 \begin{example}
 	Sei $f:D\subset\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ \gls{diffbar}.
@@ -487,5 +492,7 @@ Als Folgerung eine globale Aussage:
 		\emph{aber:} $f:\mathbb{R}_{>0}\times(\phi_0, \phi_0+2\pi)\to\mathbb{R}^2\setminus \{\text{Strahl in Richtung $\phi_0$}\}$ ist Diffeomorphismus für beliebiges $\phi_0\in \mathbb{R}$ nach \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b}.
 	\end{underlinedenvironment}
 
-\textbf{folglich:} Voraussetzung $f$ injektiv in \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b} ist wesentlich.
+	\begin{boldenvironment}[folglich]
+		Voraussetzung $f$ injektiv in \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b} ist wesentlich.
+	\end{boldenvironment}
 \end{example}

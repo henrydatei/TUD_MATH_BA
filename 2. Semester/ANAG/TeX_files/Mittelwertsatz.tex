@@ -134,7 +134,9 @@ Einfache, aber wichtige Anwendung:
 	\end{tabularx}
 \end{proof}
 
-\textbf{Frage:} Der \gls{mws} gilt für $m=1$. Was ist bei $m > 1$?
+\begin{boldenvironment}[Frage]
+	Der \gls{mws} gilt für $m=1$. Was ist bei $m > 1$?
+\end{boldenvironment}
 	
 \begin{conclusion}
 	Sei $f = (f_1, \dotsc, f_m): D\subset\mathbb{R}^n \to \mathbb{R}^m$, $D$ offen, \gls{diffbar} auf $D$, $[x,y]\subset D$. Dann
@@ -153,7 +155,9 @@ Einfache, aber wichtige Anwendung:
 	und diese Folgen direkt aus \propref{mittelwertsatz_mittelwertsatz} für $f_j: D\to \mathbb{R}$.
 \end{proof}
 
-\textbf{Frage:} Ist in \eqref{mittelwertsatz_mittelwertsatz_m_gt_eins_eq} auch $\xi_1 = \dotsc = \xi_m$ möglich? Im Allgemeinen nein.
+\begin{boldenvironment}[Frage]
+	Ist in \eqref{mittelwertsatz_mittelwertsatz_m_gt_eins_eq} auch $\xi_1 = \dotsc = \xi_m$ möglich? Im Allgemeinen nein.
+\end{boldenvironment}
 
 \begin{example}
 	Sei $f:\mathbb{R}\to\mathbb{R}^2$ mit $f(x) = \binom{\cos x}{\sin x}$ $\forall x\in\mathbb{R}$.
@@ -166,7 +170,9 @@ Einfache, aber wichtige Anwendung:
 	\end{tabularx}
 \end{example}
 
-\textbf{Ausweg:} Für $m>1$ gilt statt \eqref{mittelwertsatz_mittelwertsatz_eq} Abschätzung \eqref{mittelwertsatz_schrankensatz_eq}, die meist ausreicht und ebenso richtig ist wie der \gls{mws}.
+\begin{boldenvironment}[Ausweg]
+	Für $m>1$ gilt statt \eqref{mittelwertsatz_mittelwertsatz_eq} Abschätzung \eqref{mittelwertsatz_schrankensatz_eq}, die meist ausreicht und ebenso richtig ist wie der \gls{mws}.
+\end{boldenvironment}
 
 \begin{theorem}[Schrankensatz]
 	\proplbl{mittelwertsatz_schrankensatz}
@@ -195,7 +201,9 @@ Einfache, aber wichtige Anwendung:
 	\end{alignat*} \hfill\csname\InTheoType Symbol\endcsname
 \end{proof}
 
-\textbf{Wiederholung:} $M\subset K^n$ heißt konvex, falls $[x,y]\subset M$ $\forall x,y\in M$
+\begin{boldenvironment}[Wiederholung]
+	$M\subset K^n$ heißt konvex, falls $[x,y]\subset M$ $\forall x,y\in M$
+\end{boldenvironment}
 
 \begin{proposition}[\person{Lipschitz}-Stetigkeit]
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ stetig \gls{diffbar} auf $D$. Sei $M\subset D$ kompakt und konvex. Dann \begin{align}
@@ -216,7 +224,9 @@ Einfache, aber wichtige Anwendung:
 	$\xRightarrow{\text{\propref{chap_15_3}}}$ $\Vert f'(\xi)\Vert$ besitzt Maxium auf $M$ und die Behauptung folgt aus \propref{mittelwertsatz_schrankensatz}.
 \end{proof}
 
-\textbf{bekanntlich:} $f(x) = \mathrm{const}$ $\forall x$ $\Rightarrow$ $f'(x) = 0$
+\begin{boldenvironment}[bekanntlich]
+	$f(x) = \mathrm{const}$ $\forall x$ $\Rightarrow$ $f'(x) = 0$
+\end{boldenvironment}
 
 \begin{proposition}
 	\proplbl{mittelwertsatz_ableitung_null_konstante_funktion}
@@ -415,7 +425,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 
 \begin{example}
 	\proplbl{mittelwertsatz_beispiel_sinx_x}
-	$\lim\limits_{x\to 0} \frac{\sin x}{x} = 1$, denn $\lim\limits_{x\to 0} \frac{(\sin x)'}{x'} = \lim\limits_{x\to 0} \frac{\cos x}{1} = 1$ \\
+	$\lim\limits_{x\to 0} \frac{\sin x}{x} = 1$, denn $\lim\limits_{x\to 0} \frac{(\sin x)'}{x'} = \lim\limits_{x\to 0} \frac{\cos x}{1} = 1$
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
 		xmin=-5, xmax=5, xlabel=$x$,
@@ -431,7 +441,7 @@ Betrachte nun "`unbestimme Grenzwerte"' $\lim\limits_{y\to x} \frac{f(x)}{g(x)}$
 \end{example}
 
 \begin{example}
-	$\lim\limits_{x \to 0} x\cdot \ln x = \lim\limits_{x \to 0} \dfrac{\ln x}{\frac{1}{x}} = 0$, denn $\lim\limits_{x \to 0} \dfrac{(\ln x)'}{\left( \frac{1}{x}\right)'} = \lim\limits_{x \to 0}\dfrac{\frac{1}{x}}{-\frac{1}{x^2}} = 0$\\
+	$\lim\limits_{x \to 0} x\cdot \ln x = \lim\limits_{x \to 0} \dfrac{\ln x}{\frac{1}{x}} = 0$, denn $\lim\limits_{x \to 0} \dfrac{(\ln x)'}{\left( \frac{1}{x}\right)'} = \lim\limits_{x \to 0}\dfrac{\frac{1}{x}}{-\frac{1}{x^2}} = 0$
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
 		xmin=-5, xmax=5, xlabel=$x$,
