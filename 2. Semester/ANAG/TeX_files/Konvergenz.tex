@@ -12,21 +12,74 @@
 \begin{conclusion}
 	Für Folge $\{x_n\}$ gilt: \[ x=\lim\limits_{n\rightarrow\infty}x_n \;\Leftrightarrow \text{Jede Kugel $B_\epsilon(x)$ enthält fast alle $x_n$} \]
 \end{conclusion}
-\addtocounter{theorem}{4}
+
+\begin{example}
+	\begin{itemize}
+		\item konstante Folge: Sei $\{x_n\}_n=\{x\}_n\in\natur$, d.h. $x=x_n$
+		\item $X=\real$: Folge $\{\frac{1}{n}\}$ konvergent, Grenzwert 0
+		\item $X=\real$: $\lim\limits_{n\to\infty} \sqrt[n]{x}=1$
+		\item $X=\real$: $\{-1\}^n$ ist divergent
+	\end{itemize}
+\end{example}
+
 \begin{proposition}[Eindeutigkeit des Grenzwertes]
 	Sei $(X,d)$ metr. Raum, $\{x_n\}$ Folge in $X$. Dann \[ x,x' \text{ Grenzwert von $\{x_n\}$} \;\Rightarrow\; x = x' \]
 \end{proposition}
+\begin{proof}
+	Sei $\varepsilon:=\frac{1}{3}$, $d(x,x')>0\Rightarrow\exists m\in\natur:d(x_m,x)<\varepsilon$, $d(x_m,x')<\varepsilon$\\
+	$3\varepsilon=d(x,x')\le d(x_m,x)+d(x_m,x')< 2\varepsilon\Rightarrow\lightning\Rightarrow d(x,x')=0$
+\end{proof}
+
 \begin{proposition}
 	Sei $(X,d)$ metrischer Raum, $\{x_n\}$ konvergente Folge in $X$\\
     $\Rightarrow$ $\{x_n\}$ ist beschränkt.
 \end{proposition}
-\addtocounter{theorem}{4}
-\begin{definition}
+\begin{proof}
+	Sei $\lim\limits_{n\to\infty} x_n=x\Rightarrow$ für $\varepsilon=1\exists n_0:d(x_n,x)<1$ mit $r=\max\{d(x,x_n)\}+1$ folgt: $x_n\in B_r(x)\Rightarrow$ beschränkt
+\end{proof}
+
+\begin{example}
+	$X=\real$ mit diskreter Metrik: betrachte $\{x_n\}$ \\
+	angenommen $\lim\limits_{n\to\infty} x_n=x\Rightarrow$ für $\varepsilon=\frac{1}{2}\exists n_0: x_n\in B_{0,5}(x)=\{x\}$ \\
+	$\Rightarrow$ fast alle $x_n$ sind gleich $x$ bei Konvergenz $\Rightarrow \left\lbrace \frac{1}{n}\right\rbrace$ ist divergent $\Rightarrow$ Konvergenz ist abhängig von Metrik
+\end{example}
+
+\begin{example}
+	$X=\comp$ mit $\vert\cdot\vert$. betrachte $\{z^n\}$ für $z\in\comp$
+	\begin{itemize}
+		\item $\vert z \vert < 1$: $\forall\varepsilon >0\exists n_0:\vert z^n-n_0\vert<\varepsilon\Rightarrow\lim\limits_{n\to\infty} z^n=0$
+		\item $\vert z \vert > 1$: $\forall r>0\exists n_0:\vert z^{n_0}-0\vert=\vert z\vert^{n_0}>r\Rightarrow$ es gibt also kein $r>0\Rightarrow \{z^n\}$ ist nicht beschränkt $\Rightarrow$ divergent
+		\item $z=1$ offenbar $\lim\limits_{n\to\infty} 1^n=1$
+		\item $\vert z\vert =1$, aber $z\neq 1$: angenommen $\lim\limits_{n\to\infty} z^n=\tilde z\Rightarrow \varepsilon=\frac{1}{2}\vert z-1\vert\Rightarrow \vert z-\tilde{z}\vert<\varepsilon\Rightarrow 2\varepsilon=\vert z-1\vert=\vert z^{n_0}\vert\cdot\vert z-1\vert=\vert z^{n_0}+1-\tilde{z}+\tilde{z}-z^{n_0}\vert\le\vert z^{n_0}+1-\tilde{z}\vert+\vert\tilde{z}-z^{n_0}\vert< 2\varepsilon\Rightarrow\lightning\Rightarrow \{z^n\}$ divergent
+	\end{itemize}
+\end{example}
+
+\begin{example}
+	$\lim\limits_{n\to\infty} \sqrt[n]{n}=1$, denn: \\
+	\begin{align*}
+		x_n:=\sqrt[n]{n}-1&\ge 0 \\
+		n=(1+x_n)^n&\ge 1+\binom{n}{2}\cdot x_n^2 \\
+		n-1 &\ge n\frac{n-1}{2x_n^2} \\
+		x_n=\sqrt[n]{n}-1 &\le \sqrt{\frac{2}{n}}\le \varepsilon
+	\end{align*}
+\end{example}
+
+\begin{example}
+	$\lim\limits_{n\to\infty} \frac{\log_a n}{n}=0$ für $a>1$, denn \\
+	$1<\sqrt[n]{n}< a^{\varepsilon}\Rightarrow 0 < \frac{\log_a n}{n} < \varepsilon$
+\end{example}
+
+\begin{definition}[Teilfolge, Häufungswert]
 	Sei $\{x_n\}$ beliebige Folge in $X$, $\{n_k\}_{k\in\mathbb{N}}$ Folge in $\mathbb{N}$ mit $n_{k+1} > n_k\,\forall k\in\mathbb{N}$. Dann heißt $\{x_{n_k}\}_{k\in\mathbb{N}}$ \gls{tf} von $\{x_n\}_{n\in\mathbb{N}}$.
 	
 	$\gamma\in X$ heißt \gls{hw} (auch Häufungspunkt) der Folge $\{x_n\}$, falls $\forall \epsilon > 0$ enthält $B_\epsilon(\gamma)$ unendlich viele $x_n$.
+	\begin{underlinedenvironment}[beachte]
+		HP der Folge muss nicht HP der Menge $\{x_n\}$ sein, z.B. konstante Folge
+	\end{underlinedenvironment}
 \end{definition}
+
 \begin{proposition}\label{tfprinzip}
+	\proplbl{tfprinzip}
 	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $x_n\rightarrow x \;\Rightarrow\; x_{n_k} \overset{n\rightarrow\infty}{\longrightarrow} x$ für jede \gls{tf} $\{x_{n_k}\}_k$
@@ -34,12 +87,31 @@
 		\item \begriff{Teilfolgenprinzip}: Jede \gls{tf} $\{x_{k'}\}$ von $\{x_n\}$ hat \gls{tf} $\{x_{k''}\}$ mit $x_{n''}\rightarrow x$ $\Rightarrow$ $x_n \rightarrow x$
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item folgt aus Definition
+		\item $(\Rightarrow):\exists n_k:x_{n_k}\in B_{\frac{1}{k}}(x), n_{k+1}>n_k\Rightarrow \{x_{n_k}\}$ ist TF mit $x_{n_k}\to x$ \\
+		$(\Leftarrow):x_{n_k}\to x\Rightarrow B_{\varepsilon}(x)$ fast alle $x\beha$
+		\item Übungsaufgabe
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	$\{(-1)^n\}$ hat TF $\{(-1)^{2k}\}$ und $\{(-1)^{2k+1}\}$ mit Grenzwert +1 und -1 $\Rightarrow \{(-1)^n\}$ ist divergent, da es 2 HW gibt.
+\end{example}
+
 \begin{proposition}
 	Sei $(X,d)$ metrischer Raum, $M\subset X$ Teilmenge. Dann
 	\[ M\text{ abgeschlossen} \quad\Leftrightarrow\quad \text{für jede konv. Folge $\{x_n\}$ in $M$ gilt: }\lim\limits_{n\rightarrow\infty} x_n\in M \]
 \end{proposition}
+\begin{proof}
+	$(\Rightarrow):$ sei $\{x_n\}\in M$ mit $x_n\to x\notin M\Rightarrow\exists\varepsilon:B_{\varepsilon}\subset X\backslash M\Rightarrow x_n\not\to x\lightning\beha$ \\
+	$(\Leftarrow):$ sei $X\backslash M$ nicht offen, also abgeschlossen $\Rightarrow\exists x\in X\backslash M:B_{\varepsilon}(x)\cap M\neq\emptyset\Rightarrow\exists x_n\in B_{\frac{1}{n}}(x)\cap M\Rightarrow x_n\to x\in M\lightning\Rightarrow X\backslash M$ offen
+\end{proof}
 
-\subsection*{Konvergenz im normierten Raum $X$}
+\subsection{Konvergenz im normierten Raum $X$}
+$x_n\to x$ in $(X,\Vert .\Vert)$ und $\lambda_n\to\lambda$ in $(\real,\vert\cdot\vert)$
+
 \begin{proposition}
 	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X$, $\{\lambda_n\}$ in $K$ mit $\lim x_n = x, \lim y_n = y$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -48,6 +120,16 @@
 		\item $\lambda\neq 0 \;\Rightarrow\;\lim\limits_{n\rightarrow\infty} \frac{1}{\lambda_n} = \frac{1}{\lambda}$ (in $K$) für $\{\frac{1}{\lambda_n}\}_{n\ge\tilde{n}}$ ($\lambda_n\neq 0\,\forall n\ge\tilde{n}$)
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Übungsaufgabe
+		\item $\{x_n\}$ beschränkt $\Rightarrow\exists r>\vert\lambda\vert>0:\Vert rx_n\Vert\le r$\\
+		$\varepsilon>0\Rightarrow\exists n_0:\vert \lambda_n-\lambda\vert<\frac{\varepsilon}{2r},\Vert x_n-x\Vert < \frac{\varepsilon}{2r}$ \\
+		$\Rightarrow \Vert \lambda_{x_n}-\lambda_n\Vert\le \Vert\lambda_nx_n-\lambda x_n\Vert+\Vert\lambda x_n\lambda x\Vert=\vert\lambda_n-\lambda\cdot\Vert x_n\Vert+\vert\lambda\vert\cdot\Vert x_n-x\Vert\le \frac{\varepsilon}{2r}\cdot r+r\cdot\frac{\varepsilon}{2r}=\varepsilon\beha$
+		\item offenbar: $\exists\tilde n:\lambda_n\neq 0$ für $\varepsilon>0\exists n_0:\vert\lambda-\lambda_n\vert<m\cdot n\cdot \left\lbrace \left(\frac{\vert x\vert}{2}\right),\left(\frac{\varepsilon\cdot\vert\lambda\vert^2}{2}\right)\right\rbrace\Rightarrow\frac{1}{2}\cdot\vert\lambda\vert\le \vert\lambda\vert-\vert\lambda+\lambda_n\vert\le \lambda_n\Rightarrow ... \Rightarrow$ Behauptung
+	\end{enumerate}
+\end{proof}
+
 \begin{conclusion}
 	Seien $\{\lambda_n\}, \{\mu_n\}$ Folgen in $K$ mit $\lambda_n\rightarrow\lambda,\mu_n\rightarrow\mu$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -55,31 +137,82 @@
 		\item falls $\lambda\neq 0$ (\gls{obda} $\lambda_n\neq 0$): $\frac{\mu_n}{\lambda_n}\rightarrow\frac{\mu}{\lambda}$
 	\end{enumerate}
 \end{conclusion}
-\stepcounter{theorem}
+
+\begin{definition}[Nullfolge]
+	$\{x_n\}$ im normierten Raum heißt \begriff{Nullfolge}, falls $x_n\to 0$
+\end{definition}
+
 \begin{lemma}
+	\proplbl{sandwich_lemma}
 	\begin{enumerate}[label={\arabic*)}]
 		\item Im metrischen Raum $X$ gilt:$x_n\rightarrow x$ in $X$ $\Leftrightarrow\;d(x_n,x)\rightarrow 0$ in $\mathbb{R}$
 		\item Sei $0\le \alpha_n\le\beta_n\,\forall n\in\mathbb{N}, \alpha_n, \beta_n\in\mathbb{R}, \beta_n\rightarrow 0$\\
 		$\Rightarrow \alpha_n\rightarrow 0$ \begriff{Sandwich-Prinzip}
 	\end{enumerate}
 \end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item benutze $d(x_n,x)<\varepsilon\iff\vert d(x_n,x)-0\vert<\varepsilon$
+		\item $\varepsilon>0\Rightarrow\exists n:\beta_n=\vert\beta_n-0\beta_n\vert<\varepsilon\Rightarrow \alpha_n=\vert\alpha_n-0\vert\le \beta_n<\varepsilon\beha$
+	\end{enumerate}
+\end{proof}
+
 \begin{proposition}
 	Sei $X$ normierter Raum, $\{x_n\}$ in $X$. Dann\\
 	$x_n\rightarrow x$ in $X$ $\Rightarrow$ $\Vert x_n\Vert \rightarrow\Vert x\Vert$ in $\mathbb{R}$
 \end{proposition}
+\begin{proof}
+	$0\le \vert \;\Vert x_n\Vert-\Vert x\Vert\;\vert\le \Vert x_n-x\Vert\to 0\overset{\text{\propref{sandwich_lemma}}}{\Rightarrow}$ Behauptung
+\end{proof}
+
 \begin{proposition}
 	Seien $(X,\Vert .\Vert_1)$, $(X,\Vert.\Vert_2)$ normierte Räume mit äquivalenten Normen. Dann
 	
 	$x_n\rightarrow x$ in $(X,\Vert.\Vert_1)$ $\Leftrightarrow$ $x_n\rightarrow x$ in $(X,\Vert.\Vert_2)$
 \end{proposition}
-\stepcounter{theorem}
+\begin{proof}
+	Es gibt $a,b>0:a\cdot\Vert y\Vert_1\le \Vert y\Vert_2\le b\cdot\Vert y\Vert_1$ \\
+	$(\Rightarrow)$: es ist $0\le \Vert x_n-x\Vert_2\le b\cdot\Vert x_n-x\Vert_1\to 0\beha$ \\
+	$(\Leftarrow)$: analog
+\end{proof}
+
+\begin{example}
+	$X=\real^n$ bzw. $\comp^n$: $x_n\to x$ bezüglich $\Vert .\Vert_1\iff x_n\to x$ bezüglich $\Vert .\Vert_2$, somit Konvergenz in $\real^n$ bzw. $\comp^n$ unabhängig von Norm.
+\end{example}
+
 \begin{proposition}[Konvergenz in $\mathbb{R}^n$/$\mathbb{C}^n$ bzgl. Norm]
 	Sei $\{x_n\}$ Folge mit $x_n = (x_n^1, \dotsc, x_n^n)\in\mathbb{R} (\mathbb{C}^n)$, $x=(x^1, \dotsc,x^n)\in\mathbb{R}^n (\mathbb{C}^n)$.
 	
 	$\lim\limits_{n\rightarrow\infty} x_n = x$ in $\mathbb{R}^n (\mathbb{C}^n)$ $\Leftrightarrow$ $\lim\limits_{n\rightarrow\infty} x_k^j = xj$ in $\mathbb{R}$ bzw. $\mathbb{C}\,\forall j=1,\dotsc,n$
 \end{proposition}
-\addtocounter{theorem}{3}
-\subsection*{Konvergenz in $\mathbb{R}$}
+\begin{proof}
+	nur in $\real^n$ \\
+	$(\Rightarrow)$: sei $x_k\to x$ in $\real^n$ bezüglich $\vert\cdot\vert_p\Rightarrow x_n\to x$ bezüglich $\vert\cdot\vert_\infty$. Wegen $\vert x_k^j-x^j\vert\le \vert x_k-x\vert_\infty\to 0$ hieraus folgt die Behauptung \\
+	$(\Leftarrow)$: sei $x_k^j\to x^j\Rightarrow\vert x_k-x\vert_1=\vert x_k^1-x^1\vert +...+\vert x_k^n-x^n\vert\to 0\Rightarrow x_k\to x$ bezüglich $\vert\cdot\vert_1\beha$
+\end{proof}
+
+\begin{underlinedenvironment}[Hinweis]
+	zukünftig bei Konvergenz in $\real^n$ oder $\comp^n$ in der Regel keine Angabe der konkreten Norm.
+\end{underlinedenvironment}
+
+\begin{remark}
+	offenbar gilt: \\
+	$z_n=x_n+iy_n\to z=x+iy\iff (x_n,y_n)\to (x,y)$ in $\real^2$ bezüglich $\vert\cdot\vert\iff \realz(z_n)\realz(z)$ und $\imagz(z_n)\to\imagz(z)$
+\end{remark}
+
+\begin{example}
+	$\{x_k\}=\{(\sqrt{k+1}-\sqrt{k},\sqrt{k+\sqrt{k}}-\sqrt{k})\}$ Folgen in $\real^2$ \\
+	es ist $0\le x_k^1=\sqrt{k+1}-\sqrt{k}=\frac{1}{\sqrt{k+1}+\sqrt{k}}<\frac{1}{\sqrt{k}}\to 0\Rightarrow x_k^1\to 0$ \\
+	$x_k^2=\sqrt{k+\sqrt{k}}-\sqrt{k}=\frac{\sqrt{k}}{\sqrt{k+\sqrt{k}}+\sqrt{k}}=\frac{1}{\sqrt{1+\frac{1}{\sqrt{k}}}+1}\to \frac{1}{2}$ \\
+	$\Rightarrow \lim\limits_{k\to\infty} x_k=\frac{1}{2}$
+\end{example}
+
+\begin{example}
+	$z_k=\frac{1+ki}{1+k}\to i$, denn: \\
+	$\realz(z_n)=\frac{1}{1+k}\to 0$ und $\imagz(z_n)=\frac{k}{k+1}\to 1\Rightarrow\to (0,1)=i$
+\end{example}
+
+\subsection{Konvergenz in $\mathbb{R}$}
 \begin{proposition}
 	Seien $\{x_n\},\{y_n\},\{z_n\}$ Folgen in $\mathbb{R}$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -87,6 +220,14 @@
 		\item $x_n\le y_n\le z_n\,\forall n\ge n_0, x_n\rightarrow c,z_n\rightarrow c \;\Rightarrow y_n\rightarrow c$ (\begriff{Sandwich-Prinzip})
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item angenommen $x>y$, sei $\varepsilon :=\frac{1}{2}(x-y)>0$ \\
+		$\Rightarrow\exists m: x_n\in B_{\varepsilon}(x), y_n\in B_{\varepsilon}(y)$ \\
+		$\Rightarrow y_n< y+\varepsilon=x-\varepsilon<x_n\Rightarrow\lightning\beha$
+		\item offenbar $0\le y_n-x_n\le z_n-x_n\to 0\Rightarrow y_n-x_n\to 0\Rightarrow\to c$
+	\end{enumerate}
+\end{proof}
 
 \begin{definition}[monoton]
 	Folge $\{x_n\}$ heißt \begriff[monoton!]{wachsend} / \begriff[monoton!]{fallend}, falls gilt:
@@ -95,6 +236,7 @@
 	
 	Falls stets "`$<$"' ("`$>$"') ist $\{x_n\}$ \begriff[monoton!]{strikt}
 \end{definition}
+
 \begin{proposition}
 	Sei $\{x_n\}$ in $\mathbb{R}$ monoton und beschränkt.\[
 	\{x_n\}\text{ konvergiert gegen }x:=
@@ -111,13 +253,50 @@
 	\end{aligned}
 	\]
 \end{proposition}
-\addtocounter{theorem}{2}
+\begin{proof}
+	Sei $\{x_n\}$ monoton wachsend und beschränkt $\Rightarrow x=\sup\{x_n\}$ existiert $\Rightarrow \varepsilon>0\Rightarrow \exists m:x-\varepsilon\le x_m\le x_n\le x\beha$ \\
+	Monoton fallend analog
+\end{proof}
+
+\begin{example}
+	Sei $x_{n+1}=\frac{1}{2}(x_n+\frac{a}{x_n})$ \\
+	vollständige Induktion: $x_n>0$, somit $\{x_n\}$ rekursiv eindeutig definiert \\
+	$\Rightarrow x_{n+1}^2-a=\frac{1}{4}(x_n+\frac{a}{x_n})^2-a=\frac{1}{4}(x_n-\frac{a}{x_n})^2\ge 0$\\
+	$\Rightarrow x_n-x_{n+1}=\frac{1}{2x_n}(x_n^2-a)\ge 0$ \\
+	$\Rightarrow \{x_n\}$ ist mon. fallend, beschränkt $\Rightarrow x_n\to x\in\real$ \\
+	da $x_{n+1}\cdot x_n=\frac{1}{2}(x_n^2+a)\Rightarrow x^2=\frac{1}{2}(x^2+a)\Rightarrow x^2=a\Rightarrow \lim\limits_{n\to\infty} x_n=\sqrt{a}$
+	
+	\textbf{Fehlerabschätzung:} $x_{n+1}-\sqrt{a}=\frac{1}{2x_n}(x_n-\sqrt{a})^2\le \frac{1}{2\sqrt{a}}(x_n-\sqrt{a})^2$, so genannte \begriff[Konvergenz!]{quadratische} Konvergenz (schnelle Konvergenz, vgl. Newton-Verfahren), d.h. die Anzahl der signifikanten Dezimalstellen verdoppelt sich mit jedem Schritt!
+\end{example}
+
+\begin{example}
+	$\lim\limits_{n\to\infty} \frac{z^n}{n!}=0$ \\
+	betrachte reelle Folge $a_n:=\frac{\vert z^n\vert}{n!}\Rightarrow a_{n+1}=\frac{\vert z\vert}{n+1}a_n$ \\
+	$\Rightarrow\exists\tilde{n}:\{a_n\}$ fallend $\left( \frac{\vert z\vert}{\tilde{n}+1}<1\right)\Rightarrow a_n\to a$ \\
+	$\Rightarrow a=0\cdot a=0\Rightarrow \vert \frac{z^n}{n!}-0\vert=\frac{vert z\vert^n}{n!}\to 0\beha$
+\end{example}
+
 \begin{theorem}[\person{Bolzano}-\person{Weierstraß}]\label{bolzano_weierstrass}
 	$\{x_n\}$ beschränkte Folge in $\mathbb{R}$ $\Rightarrow$ $\{x_n\}$ hat konvergente \gls{tf}.
 \end{theorem}
-\stepcounter{theorem}
+\begin{proof}
+	es gibt $y_0,y'_0:y_0\le x_n\le y'_0$ \\
+	rekursive Definition von $y_n,y'_n\in\real$ \\
+	$z{n+1}:=\frac{y_n+y'_n}{2}\Rightarrow \left\lbrace 
+	\begin{aligned}
+	 &\text{unendlich viele }y_n\in[z_{n+1},y'_n] & y_{n+1}=z_{n+1} &\quad y'_{n+1}=y'_n \\
+	 &\text{sonst} & y_{n+1}=y_n &\quad y'_{n+1}=z_{n+1} \\
+	\end{aligned}\right.\Rightarrow$ Folge $Y_n=[y_n,y'_n]$ ist Intervallschachtelung in $\real\Rightarrow\exists y\in\bigcap Y_n\Rightarrow y$ ist HW in $\{x_n\}\beha$ 
+\end{proof}
 
-\subsection*{Oberer / Unterer Limes}
+\begin{example}
+	$\{z_n\}$ für $z\in\comp,\vert z\vert=1,z\neq 1$: ist divergent, aber $\{\realz(z_n)\}$ und $\{\imagz(z_n)\}$ sind beschränkte Folgen in $\real$ \\
+	$\Rightarrow\exists$ TF $\{n'\}$ von $\{n\}$ mit $\realz(z^{n'})\to \alpha$ \\
+	$\Rightarrow\exists$ TF $\{n''\}$ von $\{n\}$ mit $\imagz(z^{n''})\to \beta$ \\
+	$\Rightarrow z^n\to \alpha+i\beta\Rightarrow \{z_n\}$ hat konvergente TF in $\comp$!
+\end{example}
+
+\subsection{Oberer und Unterer Limes}
 \begin{definition}
 	Seien $\{x_n\}$ beschränkte Folgen in $\mathbb{R}$.\\
 	$H:=\{ \gamma\in\mathbb{R} \mid \gamma \text{ ist \gls{hw} von }\{x_n\}\}$ ($\neq \emptyset$ nach \ref{bolzano_weierstrass})
@@ -126,6 +305,10 @@
 		\mathsymbol*{limsup}{$\limsup$} $\limsup\limits_{n\rightarrow\infty} x_n := \overline{\lim}_{n\rightarrow\infty} x_n =:\sup H$ & \begriff{Limes superior} von $\{x_n\}$ \\[0.5cm]
 		\mathsymbol*{liminf}{$\liminf$} $\liminf\limits_{n\rightarrow\infty} x_n = \underline{\lim}_{n\rightarrow\infty} x_n :=\inf H$  & \begriff{Limes inferior} von $\{x_n\}$
 	\end{tabularx}
+
+\begin{underlinedenvironment}[beachte]
+	$\limsup$ und $\liminf$ existieren stets für beschränkte Folgen!
+\end{underlinedenvironment}
 \end{definition}
 
 \begin{proposition}
@@ -141,23 +324,54 @@
 		\item $x_n\rightarrow \alpha \;\Leftrightarrow \;\alpha = \liminf\limits_{n\rightarrow\infty} x_n = \limsup\limits_{n\rightarrow\infty} x_n$
 	\end{enumerate}
 \end{proposition}
-\stepcounter{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item $x\in H\overset{\text{\propref{tfprinzip}}}{\Rightarrow}$ Behauptung
+		\item $\varepsilon>0\Rightarrow\exists x\in H\cap B_{\varepsilon}(x')$ \\
+		$B_{\varepsilon}(x')$ offen $\Rightarrow\exists\tilde{\varepsilon}>0:B_{\tilde{\varepsilon}}(x')\subset B_{\varepsilon}(x')\Rightarrow$ unendlich viele $x_n$ in $B_{\varepsilon}(x')\Rightarrow$ Behauptung für $\liminf$
+		\item Übungsaufgabe, Selbststudium
+	\end{enumerate}
+\end{proof}
 
-\subsection*{Uneigentliche Konvergenz}
+\begin{example}
+	$\{q_n\}\in\real$ sei Folge alle rationalen Zahlen in $(0,1)$ \\
+	$\Rightarrow$ Menge aller HW ist $H=[0,1]\Rightarrow \liminf q_n=0$ und $\limsup q_n=1$
+\end{example}
+
+\subsection{Uneigentliche Konvergenz}
 \begin{definition}[Uneigentliche Konvergenz]
 	Folge $\{x_n\}$ in $\mathbb{R}$ konvergiert \begriff[Konvergenz!]{uneigentlich} gegen $+\infty (-\infty)$, falls $\forall R>0\,\exists n_0\in\mathbb{N}: x_n \ge R (x_n \le -R)\,\forall n\ge n_0$
 	
 	(heißt auch \highlight{bestimmt divergent}) gegen $\infty$, "`uneigentlich"' wird meist weggelassen.
 	
-	Notation: $\lim\limits_{n\rightarrow\infty} x_n = \pm \infty$ bzw. $\xi_n\rightarrow \pm \infty$
+	\textbf{Notation}: $\lim\limits_{n\rightarrow\infty} x_n = \pm \infty$ bzw. $\xi_n\rightarrow \pm \infty$
 \end{definition}
-\stepcounter{theorem}
+
+\begin{example}
+	$\lim\limits_{n\to\infty} \frac{n^2+1}{n+1}=+\infty$, denn für $R>0$ gilt: $\frac{n^2+1}{n+1}=\frac{n+\frac{1}{n}}{1+\frac{1}{n}}\ge \frac{n}{2}\ge R$ für $n\ge 2R$
+\end{example}
+
 \begin{proposition}[Satz von \person{Stolz}]
 	Sei $\{x_n\},\{y_n\}$ Folgen in $\mathbb{R}, \{y_n\}$ sei stren monoton wachsend, $\{y_n\}\rightarrow\infty$\\
 	$\Rightarrow \lim\limits_{n\rightarrow\infty} \frac{x_n}{y_n} = \lim\limits_{n\rightarrow\infty} \frac{x_{n+1} - x_n}{y_{n+1} - y_n}$, falls rechter Grenzwert existiert (endlich oder unendlich)
 \end{proposition}
-\stepcounter{theorem}
+\begin{proof}
+	Grenzwert rechts sei $g\in\real$, oBdA $y_n>0$. \\
+	Sei $\varepsilon>0\Rightarrow n_0:\vert \frac{x_{n+1}-x_n}{y_{n+1}-y_n}-g\vert<\varepsilon\Rightarrow (g-\varepsilon)\cdot(y_{n+1}-y_n)\le x_{n+1}-x_n\le (g+\varepsilon)\cdot(y_{n+1}-y_n)\overset{(*)}{\Rightarrow} (g-\varepsilon)(y_m-y_{n_0})\le x_m-x_{n_0}\le (g+\varepsilon)(y_m-y_{n_0})\Rightarrow (g-\varepsilon)(1-\frac{y_{n_0}}{y_m})\le \frac{x_m}{y_m}\le (g+\varepsilon)(1-\frac{y_{n_0}}{y_m})+\frac{x_{n_0}}{y_m}\Rightarrow g-\varepsilon \le \liminf\frac{x_m}{y_m}\limsup\frac{x_m}{y_m}\le g+\varepsilon\Rightarrow\lim\limits_{m\to\infty}\frac{y_m}{x_m}=g$ \\
+	$(*)\; \sum_{n=n_0}^{m-1}$
+\end{proof}
+
+\begin{example}
+	$\lim\limits_{n\to\infty} \frac{n^k}{z^n}=0$ für $z\in\comp,\vert z\vert>1,k\in\natur_{>0}$ \\
+	$k=1$: $\frac{n+1-n}{\vert z\vert^{n+1}-\vert z\vert^{n}}=\frac{1}{\vert z\vert}\to 0\beha$ \\
+	$k>1$: $\frac{n^k}{\vert z\vert^n}=\left( \frac{n}{\sqrt[k]{\vert z\vert}}^n\right)^k\to 0^k=0\beha$
+\end{example}
+
 \begin{proposition}
 	Sei $\{x_n\}$ mit $x_n\rightarrow x$ im normierten Raum $X$.\\
 	$\Rightarrow\frac{1}{n}\sum_{j=1}^n x_j \overset{n\rightarrow\infty}{\longrightarrow} x$
 \end{proposition}
+\begin{proof}
+	Es ist $\Vert\frac{1}{n}\sum_{j=1}^{n} x_j-x\Vert=\frac{1}{n}\sum_{j=1}^n x_j-x\le \frac{1}{n}\sum_{j=1}^n \Vert x_j-x\Vert =:c_n$ \\
+	$\frac{\sum_{j=1}^{n+1}\Vert x_j-x\Vert-\sum_{j=1}^{n} \Vert x_j-x\Vert}{n+1-n}=\frac{\Vert x_j-x\Vert}{1}\to 0\Rightarrow c_n\to 0\beha$
+\end{proof}

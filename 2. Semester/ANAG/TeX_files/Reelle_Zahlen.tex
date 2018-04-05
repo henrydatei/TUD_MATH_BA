@@ -2,6 +2,7 @@
 \stepcounter{theorem}%Example 1 is missing (not important)
 \subsection*{Struktur von archimedisch angeordneten Körpern}
 \begin{proposition}
+	\proplbl{arch_koerper}
 	Sei $K$ Körper. Dann gilt $\forall a,b\in K$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $0,1,(-a),b^{-1} (b\neq 0)$ sind eindeutig bestimmt
@@ -11,12 +12,11 @@
 		\item $-a = (-1) a, (-a)(-b) = ab,\;a\cdot 0 = 0$
 		\item $ab = 0 \Leftrightarrow a=0\lor b = 0$
 		\item $a+x = b$ hat eindeutige Lösung $x = b+(-a) =: b-a$ \begriff{Differenz}
-		
 		$ax=b (a\neq 0)$ hat eindeutige Lösung $x=a^{-1}b =:\frac{b}{a}$ \begriff{Quotient}
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	\begin{itemize}
 	\item \begriff{Vielfache}: $na := \sum_{k=1}^{n}a$
 	
@@ -40,11 +40,15 @@
 		\item Rechenregel führt auf \begriff{\person{Pascal}'sches Dreieck}
 	\end{itemize}
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}[Binomischer Satz]
 	In Körper $K$ gilt: $(a+b)^n = \sum_{k=0}^n\binom{n}{k}a^n b^{n-k}, ,b\in K, n\in\mathbb{N}$
 \end{proposition}
+
+\begin{proof}
+	ÜA
+\end{proof}
 \begin{proposition}
 	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b,c,d\in K$:
 	\begin{enumerate}[label={\alph*)}]
@@ -61,12 +65,27 @@
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}
+\begin{proof}
+	Betrachte Ordnung veträglich mit Addition und Multiplikation.
+	\begin{itemize}
+		\item[a)] $a < b \Leftrightarrow a+(-a) < b (-a) \Leftrightarrow 0 \leq b -a$
+		\item[b)] $a < b, c < d \Rightarrow a + c < b + d \overset{\text{transitiv}}{\Rightarrow} a + c < b + d$ Multi. analog
+		\item[c)] $a < b \Leftrightarrow a-a-b < b-a-b \Leftrightarrow  - b < -a$\\
+		$a < b, - c > 0 \overset{\text{Ord. vertr. Multi}}{\Leftrightarrow} a \cdot(-1) < b \cdot (-1) \Rightarrow (-1)ac < -1(bc) \Rightarrow -(ac) < - (bc) \overset{\text{c)}}{\Rightarrow} ac > bc$
+		\item[d)] Sei $a > 0 \overset{\text{2)}}{\Rightarrow} a^{2} > 0$. Sei $a > 0 \Rightarrow (-a)>0 \overset{\text{b)}}{\Rightarrow} 0 < (-a)^2 \overset{\text{\propref{arch_koerper}}}{=} a$
+		\item[e)] ``$\Rightarrow$'': $(a^{-1})^2 > 0$ nach d) $\overset{\text{vertr. mit Multi}}{\Rightarrow} a \cdot(a^{-1})^2 = a^{-1} > 0$\\
+		``$\Leftarrow$'': Analog zu ``$\Rightarrow$'' ersetze $a^{-1} \text{ durch } a$
+		\item[6)] $ab > 0$ nach b) $\overset{\text{5)}}{\Rightarrow} 0 < (ab)^{-1} \overset{\text{\propref{arch_koerper}}}{=} a^{-1}b^{-1}$ wegen $a < b \Rightarrow b^{-1} = a^{-1}b^{-1}a \leq a^{-1}b^{-1}b = a^{-1}$
+	\end{itemize}
+\end{proof}
+
+\begin{*definition}
 	\begriff{Absolutbetrag} $\vert\cdot\vert:K\rightarrow K$ (auf angeordneten Körper $K$) \[\vert a \vert:=\begin{cases}
 	a&\text{für }a \ge 0 \\ -a& \text{für }a < 0\end{cases}\]
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
+	\proplbl{k_angeordneter_körper}
 	Sei $K$ angeordneter Körper. Dann gilt $\forall a,b\in K$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\vert a\vert\ge 0, \vert a\vert\ge a$
@@ -89,14 +108,44 @@
 	Betr. $f:\mathbb{Q}\rightarrow K$ mit $f\left(\frac{m}{n}\right):= \frac{m\cdot 1_K}{n\cdot 1_K}=(m 1_k)(n 1_K)^{-1}\,\forall m\in\mathbb{Z},k\in\mathbb{Z}_{\neq 0}$
 \end{definition}
 \begin{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[1)] klar
+		\item[2)] klar
+		\item[3)] Fallunterscheidung SeSt
+		\item[4)] Fallunterscheidung SeSt
+		\item[5)] $a = \frac{a}{b}\cdot a \overset{\text{4)}}{\Rightarrow} \vert a \vert = \vert \vert \frac{a}{b} \vert  \cdot \vert b \vert \vert \overset{\cdot \vert b \vert^{-1}}{\Rightarrow} \frac{\vert a \vert}{\vert b \vert} = \vert \frac{a}{b} \vert$
+		\item[6)] nach 1) $a \leq \vert a \vert, b \leq \vert b \vert \xRightarrow{\text{\propref{k_angeordneter_körper}}} a+b \leq \vert a \vert + \vert b \vert$ analog $-a-b \leq \vert a + \vert b\vert \Rightarrow$ Behauptung
+		\item[7)] $\vert a \vert = \vert a+b-b \vert \overset{\text{6)}}{\leq} \vert a+ b \vert + \vert b \vert \Rightarrow \vert a \vert - \vert b \vert \leq \vert a + b \vert $ analog $\vert b \vert - \vert a \vert \leq \vert a + b \vert \Rightarrow$ Behauptung
+		\item[8)] für $n = 0,1$, $a = 0$ klar\\
+		Zeige: $(1+a)^n > 1 + na \forall n \leq 2, a \neq 0$ durch voll. Induktion ÜA
+	\end{itemize}
+\end{proof}
+
+	Betrachte: $f:\mathbb{Q}\rightarrow K$ mit $f\left(\frac{m}{n}\right):= \frac{m\cdot 1_K}{n\cdot 1_K}=(m 1_k)(n 1_K)^{-1}\,\forall m\in\mathbb{Z},k\in\mathbb{Z}\setminus\{0\} =:\mathbb{Z}_{\neq 0}$
+	
+\begin{proposition}
+	\proplbl{inj_abb_ange_koerper}
 	Sei $K$ angeordneter Körper\\
 	$\Rightarrow$ $f:\mathbb{Q}\rightarrow K$ ist injektiv und $f$ erhält die Körperstruktur und Ordnung, d.h. $\forall p,q\in\mathbb{Q}$:
 	\begin{itemize}
-		\item $f(p+q) = f(p) + f(q), f(0) = 0_K, f(-p) = -f(p)$
-		\item $f(p\cdot q) = f(p)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
-		\item $p \le_\mathbb{Q} q \Leftrightarrow f(p) \le_K f(q)$
+		\item[a)] $f(p+q) = f(p) + f(q), f(0) = 0_K, f(-p) = -f(p)$
+		\item[b)] $f(p\cdot q) = f(p)\cdot f(q), f(1) = 1_K, f(p^{-1}) = f(p)^{-1} (p\neq 0)$
+		\item[c)] $p \le_\mathbb{Q} q \Leftrightarrow f(p) \le_K f(q)$
 	\end{itemize}
 \end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $0_K \overset{\text{\propref{k_angeordneter_körper}}}{<} 1 \overset{\text{voll. Ind.}}{\Rightarrow} 0_k < n 1_k \forall n \in \mathbb{N}
+		\xRightarrow[\text{Vielfache}]{\text{\propref{k_angeordneter_körper}}}(-n)1_K = -(n1_k) < 0_K \Rightarrow n 1_K \neq 0_K \forall n \in \mathbb{Z}_{\neq 0} \Rightarrow f$ auf $\mathbb{Q}$ definiert
+		\item[b)] Sei $f(\frac{m}{m^{'}}) = f(\frac{n}{n^{'}}) \Rightarrow \frac{m1_K}{m^{'}1_K} = \frac{n 1_K}{n^{'}1_K} \Rightarrow (m1_K)(n^{'}1_K) = (n 1_K)(m^{'}1_K)$\\
+		$\Rightarrow (mn^{'})1_K = (nm^{'})1_K \Rightarrow (mn^{'}-m^{'}n)1_K = 0_K \xRightarrow{\text{a)}} mn^{'} = m^{'}n =_{\mathbb{Z}} 0 \Rightarrow \frac{m}{m^{'}} =_{\mathbb{Q}} \frac{n}{n^{'}} \Rightarrow f$ injektiv
+		\item[c)] $f(\frac{m}{m^{'}}+\frac{n}{n^{'}}) = f(\frac{mn^{'} + m^{'}n}{m{'}n^{'}}) = \frac{mn^{'} + m^{'}n}{m{'}n^{'}}\frac{1_K}{1_K} \overset{\text{b)}}{=} \frac{m1_K}{m^{'}1_K} + \frac{n1_K}{n^{'}1_K} \overset{f\text{ inj}}{=} f(\frac{m}{m^{'}}) + f(\frac{n}{n^{'}})$\\
+		Multi., spezielle Elemente SeSt, Ordnung ÜA
+	\end{itemize}
+\end{proof}
 
 \begin{conclusion}
 	Es gilt im angeordneten Körper:
@@ -106,10 +155,25 @@
 	\end{enumerate}
 \end{conclusion}
 
-\begin{definition}
+\begin{proof}
+	\begin{itemize}
+		\item[1)] $\mathbb{Q}_K \subset K$ und Addition und Multi. führen nicht aus $\mathbb{Q}_K$ (vgl. \propref{inj_abb_ange_koerper}) $\Rightarrow \mathbb{Q}_K$ selbst Körper mit Ordnung von $K \Rightarrow$ Behauptung
+		\item[2)] nach \propref{inj_abb_ange_koerper} is $f$ entsprechender Isomorphismus
+	\end{itemize}
+\end{proof}
+
+\begin{*anmerkung}
+	$\mathbb{Q}_K \subset K$ und $\mathbb{Q}$ sind strukturell gleich $\Rightarrow$ können identifiziert werden.\\
+	Analog $\mathbb{N}_K \subset\mathbb{Z}_K \subset K$, identifiziere: $n_K := n\cdot 1_K$ mit $n \in \mathbb{N}$ bzw. $n \in \mathbb{Z} \rightarrow$ Schreibe kurz (im angeordneten Körper $K$) $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset K$\\
+	$\rightarrow$ Vielfachheit $ma = (1_Ka + \dots + I_K a) = (1_K + \dots + 1_K)a = (m 1_K)\cdot a = m_K \cdot a$\\
+	angeordneter Körper $K$ heißt archimedisch falls: \[\forall a \in K \exists n \in \mathbb{N} \subset K\quad a < n\]
+\end{*anmerkung}
+
+\begin{*definition}
 	Angeordneter Körper heißt \begriff[Körper!]{archimedisch}, falls $\forall a\in K\,\exists n\in\mathbb{N}\subset K: a < n$.
-\end{definition}
+\end{*definition}
 \begin{proposition}
+	\proplbl{k_archimedisch_angeordneter_körper}
 	Sei $K$ archimedisch angeordneter Körper. Dann\begin{enumerate}[label={\arabic*)}]
 		\item $\forall a,b\in K$ mit $a,b>0\,\exists n\in\mathbb{N}: n\cdot a > b$
 		\item $\forall a\in K\,\exists!\,[a]\in\mathbb{Z}: [a]\le a \le [a] +1$, \mathsymbol{a}{$[a]$} heißt \begriff{ganzer Anteil} von $a$
@@ -122,7 +186,20 @@
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}[Intervall]
+\begin{proof}
+	\begin{itemize}
+		\item[1)] $a > 0 \Rightarrow \frac{b}{a} \in K \Rightarrow \exists n \in \mathbb{N} \colon n > \frac{b}{a} \xRightarrow{\cdot a}$ Behauptung
+		\item[2)] es ist $N:=\{n \in \mathbb{Z} \mid 0 < n}\neq \emptyset$:\\
+		$N$ hat \highlight{kleinstes Element} $\tilde{n} \in N$ (d.h. $\tilde{n} \leq n \forall n \in \mathbb{N}$) vgl. ÜA\\
+		Setze $[a]:=\tilde{n} -1 \xRightarrow{\text{Def }\tilde{n}} [a] = \tilde{n} -1 \leq a < \tilde{n} = [a] +1$ falls $alpha$ ganzer Anteil mit $\alpha < [a] \Rightarrow [a] \leq a < \alpha +1 \xRightarrow{-\alpha} 0 < \underbrace{[a] - \alpha}_{\in \mathbb{N}} < \alpha \Rightarrow \lightning \xRightarrow{\text{\ac{obda}}} [a]$ eindeutig
+		\item[3)] Wähle $n > \frac{1}{\epsilon} \Rightarrow$ Behauptung
+		\item[4)] $\exists n \in \mathbb{N} b \overset{\text{1)}}{<} n(a-1) < 1 + n(a-1) \overset{\text{Bernoulli-Ungl.}}{\leq} (1+(a-1))^n = a^n$
+		\item[5)] Verwende 4) mit $\tilde{a}:=\frac{1}{a},\tilde{b}:=\frac{1}{\epsilon}$
+		\item[6)] nach 3) $\exists n \in \mathbb{N}_{\neq 0}$ mit $\frac{1}{n} < \epsilon, p:= \frac{[na]}{n},q:= \frac{}{den}$ % to be finished!
+	\end{itemize}  
+\end{proof}
+
+\begin{*definition}[Intervall]
 	\begriff{Intervall} für angeordneten Körper $K$: Sei $a,b\in K$:
 	\begin{itemize}
 		\item \begriff{beschränktes Intervall}
@@ -139,54 +216,54 @@
             \item $(-\infty, b) := \{x\in K\mid x \leq b\}$
 		\end{itemize}
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
-\begin{definition}[Folge]
+\begin{*definition}[Folge]
     Eine \begriff{Folge} in Menge $M$ ist eine Abbildung $\alpha:\mathbb{N}\rightarrow M$ (evtl. $\alpha:\mathbb{N}_{\ge n}\rightarrow M$), $\alpha_n := \alpha(n)$ heißen \begriff{Folgenglieder}, und \begriff{Folgenindex}.
     
 	Notation: $\{a_n\}_{n\in\mathbb{N}}, \{\alpha_n\}_{k=1}^\infty$ bzw. $\alpha_0, \alpha_1, \dotsc$\\
 	kurz: $\{\alpha_n\}_n, \{\alpha_n \}$
 		
 	Hinweis: $\{x\}_n$ ist \begriff{konstante Folge}, d.h. $\alpha_n = \alpha\,\forall n$
-\end{definition}
+\end{*definition}
 
 Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele $n$ falsch.
 
-\begin{definition}[Intervallschachtelung]
+\begin{*definition}[Intervallschachtelung]
 	Folge $\{x_n\}_{n\in\mathbb{N}} =:\mathcal{X}$ von abgeschlossenen Intervallen $X_n=[x_n, x_n']\subset K$ $(x_n, x_n'\in K)$ heißt \begriff{Intervallschachtelung} (im angeordneten Körper K), falls
 	\begin{enumerate}[label={\alph*)}]
 		\item $X_n\neq \emptyset$ und $X_{n+1}\subset X_n\,\forall n\in\mathbb{N}$
 		\item $\forall\epsilon > 0$ in $K$ existiert $n\in\mathbb{N}: l(X_n):= x_n' - x_n < \epsilon$, mit $l$ \begriff{Intervalllänge}
 	\end{enumerate}
-\end{definition}
+\end{*definition}
 
 \begin{lemma}
 	Sei $\mathcal{X} = \{X_n\}_{n\in\mathbb{N}}$ Intervallschachtelung im angeordneten Körper $K$\\
 	$\Rightarrow \bigcap_{n\in\mathbb{N}} X_n$ enthält höchstens ein Element.
 \end{lemma}
 
-\begin{definition}
+\begin{*definition}
 	Archimedisch angeordneter Körper heißt \begriff[Körper]{vollständig}, falls $\bigcap_{n\in\mathbb{N}} X_n\neq \emptyset$ für jede Intervallschachtelung $\mathcal{X} = \{x_n\}$ in $K$.
-\end{definition}
+\end{*definition}
 
-\begin{definition}
+\begin{*definition}
 	$Q:=\{ (\{x_n\}, \{y_n\})\in I_\mathbb{Q}\times I_\mathbb{Q} \}$ ist Relation auf $I_\mathbb{Q}$, $I_\mathbb{Q}:=$ Menge aller Intervallschachtelungen $\mathcal{X}=\{x_n\} \in \mathbb{Q}$.
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	$Q$ ist Äquivalenzrelation auf $I_\mathbb{Q}$.
 \end{proposition}
 
-\begin{definition}
+\begin{*definition}
 	setze $\mathbb{R} := \{ [\mathcal{X}] \mid \mathcal{X}\in I_\mathbb{Q} \}$ Menge der \begriff{reellen Zahlen}.
 	
 	\begin{itemize}
 		\item $\bigcap_{n\in\mathbb{N}} X_n \neq 0 \rightarrow [\mathcal{X}]$ ist "`neue"' sog. \begriff{irrationale Zahl}
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
-\subsection*{Rechenoperationen}
-\begin{definition}
+\subsection{Rechenoperationen}
+\begin{*definition}
 	Für Intervalle $X=[x,x'], Y=[y,y']$ in $\mathbb{Q}$ defineren wir Intervall in $\mathbb{Q}$:
 	\begin{itemize}
 		\item $X + Y := \{\xi + \eta \mid \xi \in X, \eta\in Y\} = [x + y, x' + y']$
@@ -202,7 +279,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 			
 			$[\mathcal{X}]^{-1} := [\{x_n^{-1}\}]$ falls $[\mathcal{X}]\neq 0_\mathbb{R}$
 	\end{itemize}
-\end{definition}
+\end{*definition}
 
 \begin{proposition}
 	\begin{enumerate}[label={\arabic*)}]
@@ -211,10 +288,10 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
-\subsection*{Ordnung auf $\mathbb{R}$}
-\begin{definition}
+\subsection{Ordnung auf $\mathbb{R}$}
+\begin{*definition}
 	Betr. Relation "`$\le$"': $R:=\{ ([\{x_n\}],[\{y_n\}])\in\mathbb{R}\times\mathbb{R} | x_n \le y_n\,\forall n\in\mathbb{N}\}$
-\end{definition}
+\end{*definition}
 \begin{proposition}
 	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper.
 \end{proposition}
@@ -229,7 +306,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	$\Rightarrow K$ ist isomorph zu $\mathbb{R}$ bzgl. Körperstruktur und Ordnung.
 \end{theorem}
 
-\begin{definition}
+\begin{*definition}
 	Sei $M\subset K$, $K$ angeordneter Körper.
 	\begin{itemize}
 		\item $s\in K$ ist \begriff[Schranke!]{obere} / \begriff[Schranke!]{untere} \begriff{Schranke} von $M$, falls $x \le s (x \ge s)\,\forall x\in M$
@@ -249,7 +326,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\sup M &= \min\{s \mid s \text{ obere Schranke von } M\}\\
 	\inf M &= \max\{s \mid s \text{ untere Schranke von } M\}
 	\end{align*}
-\end{definition}
+\end{*definition}
 \stepcounter{theorem}
 \begin{proposition}
 	Sei $K$ angeordneter Körper, $M\subset K$. Falls $\sup M\;(\inf M)$ existiert, dann
@@ -264,20 +341,24 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\[ K \text{ vollständig } \Leftrightarrow \sup M \slash \inf M \text{ ex. }\forall M\in K, M\neq \emptyset \text{ nach oben \slash unten beschränkt} \]
 \end{theorem}
 
-\subsection*{Anwendung: Wurzeln, Potenzen, Logarithmen in $\mathbb{R}$}
+\subsection{Anwendung: Wurzeln, Potenzen, Logarithmen in \texorpdfstring{$\mathbb{R}$}{R}}
+
 \begin{proposition}[Wurzeln]
 	Sei $a\in\mathbb{R}_{>0}, k\in\mathbb{N}_{>0} \;\Rightarrow \; \exists ! x\in \mathbb{R}_{>0}: x^k = a, \sqrt[k]{a}:=a^{\frac{1}{k}} = x$ heißt \highlight{k-te} \begriff{Wurzel} von $a$.
 \end{proposition}
-\begin{definition}[Potenz]
+
+\begin{*definition}[Potenz]
 	$n$-te \begriff{Potenz} von $a\in\mathbb{R}_{>0}, r\in\mathbb{R}$:
 	
 	Zunächst $r=\frac{m}{n}\in\mathbb{Q}$ (\gls{obda}) $n\in\mathbb{N}_{>0}$): $ a^{\frac{m}{n}}:= (a^m)^{\frac{1}{n}}$
 	Allgemein für $a\ge 0, a > : a^r := \sup \{ a^q \mid 0 \le q \le r,q\in\mathbb{Q} \}$
 	offenbar eindeutig definiert und allgemeine Definition konsistent mit Definition für $\frac{m}{n}\in\mathbb{Q}$.
 	Damit: \begriff{Exponentialfunktion}
-\end{definition}
+\end{*definition}
+
 \begin{proposition}\label{proposition_potenz_r}
-	Seien $a,b\in\mathbb{R}_{>0}, r,s\in\mathbb{R}. Dann$
+	\proplbl{satz_potenz_r}
+	Seien $a,b\in\mathbb{R}_{>0}, r,s\in\mathbb{R}$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $a^r b^r = (ab)^r, (a^r)^s = a^{rs}, a^ra^s = a^{r+s}$
 		\item f. $r > 0: a < b \Leftrightarrow a^r < b^r$
@@ -285,14 +366,15 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}[Logarithmus]
+\begin{*definition}[Logarithmus]
 	Sei $a,b\in\mathbb{R}_{<0}, a\neq 1$: \begriff{Logarithmus}\highlight{von $b$ zur Basis $a$} ist \begin{align*}
 	 \log_a b :=\begin{cases}
 	 \sup \{ r \in \mathbb{R} \mid a^r \le b\}& a > 1\\
  	\sup \{r\in\mathbb{R}\mid a^r \ge b\}& 0 < a < 1
 	 \end{cases}
 	\end{align*}
-\end{definition}
+\end{*definition}
+
 \begin{proposition}\label{proposition_logarithmus_r}
 	Se $a,b,c\in\mathbb{R}_{>0}, a\neq 1$. Dann
 	\begin{enumerate}[label={\arabic*)}]
@@ -304,12 +386,14 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
-\subsection*{Mächtigkeit von Mengen}
-\begin{definition}
+\subsection{Mächtigkeit von Mengen}
+
+\begin{*definition}
 	$M$ \begriff[Mächtigkeit!]{endlich}, falls $M$ endlich viele Elemente hat, sonst \begriff[Mächtigkeit!]{unendlich}.
 	
-	Unendliches $M$ ist \begriff[Mächtigkeit!]{abzählbar}, falls bijektive Abbildung $f:\mathbb{N}\to M$ existiert, sonst $M$ \begriff[Mächtigkeit!]{überabzählbar}.
-\end{definition}
+	Unendliches $M$ ist \begriff[Mächtigkeit!]{abzählbar}, falls bijektive Abbildung $f:\mathbb{N}\to M$ existiert, sonst ist $M$ \begriff[Mächtigkeit!]{überabzählbar}.
+\end{*definition}
+
 \begin{proposition}
 	Es gilt:
 	\begin{enumerate}[label={\arabic*)}]

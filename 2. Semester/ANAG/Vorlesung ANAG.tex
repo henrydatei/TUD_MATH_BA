@@ -59,6 +59,7 @@
 
 \usepackage{enumerate}
 \usepackage{enumitem} %customize label
+\usepackage{stmaryrd} % Lightning symbol
 
 \usepackage{tabularx}
 \usepackage{multirow}
@@ -372,9 +373,8 @@
 	\IfBooleanTF{#1}%
 		{\parbox[c]{\linewidth}{\begin{flalign*}#2&&\end{flalign*}}}%}
 		{\parbox[c]{\linewidth}{\begin{flalign}#2&&\end{flalign}}}%}
-	\endgroup%
+	\endgroup% 
 }
-
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 	\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
@@ -439,6 +439,7 @@
 \newcommand{\lebesque}{\person{Lebesgue}}
 \renewcommand{\Re}{\mathfrak{Re}}
 \renewcommand{\Im}{\mathfrak{Im}}
+\renewcommand*{\arraystretch}{1.4}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -515,7 +516,7 @@
 \newacronym{diffbar}{diffbar}{differenzierbar}
 \newacronym{mws}{MWS}{Mittelwertsatz}
 
-\title{\textbf{Analysis 2. Semester (SS2018)}}
+\title{\textbf{Analysis (WS2017/18 + SS2018)}}
 \author{Dozent: Prof. Dr. Friedemann Schuricht\\
 	Kursassistenz: Moritz Schönherr}
 
@@ -541,7 +542,7 @@
 
 \part{1. Semester}
 \pagestyle{fancy}
-\chapter{Einleitung}
+\chapter{Grundlagen der Mathematik}
 \input{./TeX_files/Grundbegriffe_Logik}
 \stepcounter{section}
 \chapter{Zahlenbereiche}
@@ -566,25 +567,25 @@
 \part{2. Semester}
 \pagestyle{fancy}
 
-\chapter{Differentiation}
-\input{./TeX_files/Wiederholung_und_Motivation}
-\include{./TeX_files/Ableitung}
-\include{./TeX_files/Richtungsableitung}
-\include{./TeX_files/Mittelwertsatz}
-\include{./TeX_files/Stammfunktion}
-
-\chapter{Integration}
-\input{./TeX_files/Integration}
-\include{./TeX_files/Messbarkeit}
-\include{./TeX_files/Integral}
-\include{./TeX_files/Integral_R}
-\include{./TeX_files/Fubini}
-
-\chapter{Differentiation II}
-\input{./TeX_files/Taylor}
-\include{./TeX_files/Extremwerte}
-\include{./TeX_files/Inverse_implizite_Funktionen}
-\include{./TeX_files/Funktionsfolgen}
+%\chapter{Differentiation}
+%\input{./TeX_files/Wiederholung_und_Motivation}
+%\include{./TeX_files/Ableitung}
+%\include{./TeX_files/Richtungsableitung}
+%\include{./TeX_files/Mittelwertsatz}
+%\include{./TeX_files/Stammfunktion}
+%
+%\chapter{Integration}
+%\input{./TeX_files/Integration}
+%\include{./TeX_files/Messbarkeit}
+%\include{./TeX_files/Integral}
+%\include{./TeX_files/Integral_R}
+%\include{./TeX_files/Fubini}
+%
+%\chapter{Differentiation II}
+%\input{./TeX_files/Taylor}
+%\include{./TeX_files/Extremwerte}
+%\include{./TeX_files/Inverse_implizite_Funktionen}
+%\include{./TeX_files/Funktionsfolgen}
 
 
 \part*{Anhang}

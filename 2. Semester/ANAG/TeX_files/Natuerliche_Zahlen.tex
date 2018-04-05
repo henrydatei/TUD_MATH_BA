@@ -1,3 +1,4 @@
+\addtocounter{section}{1} % section ``Fundament der Mathematik'' fehlt
 \section{Natürliche Zahlen}
 \begin{definition}[Peano Axiome]
 $\mathbb{N}$ sei Menge, die die \begriff{\person{Peano}-Axiome} erfüllen, d.h.
@@ -17,12 +18,13 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 \end{definition}
 
 \begin{theorem}
+	\proplbl{naturliche_zahlen_isomorph}
 	Falls $\mathbb{N}$ und $\mathbb{N}*$ \person{Peano}-Axiome erfüllen, dann sind sie isomorph bezüglich Nachfolger-Abbildung und Nullelement (Anfangselement).
 \end{theorem}
 
-\begin{proposition}[Prinzip der vollständigen Induktion]
+\begin{proposition}[Prinzip der vollständigen Induktion] \proplbl{prin_voll_induktion}
 	\begriff*{vollständigen Induktion}
-	Sei $\{A_n | n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
+	Sei $\{A_n \mid n\in\mathbb{N}\}$ Aussagenmenge mit d. Eigenschaften
 	\begin{itemize}
 		\item[(IA)] $A_0$ ist wahr (\begriff{Induktionsanfang})
 		\item[(IS)] $\forall n\in\mathbb{N}$ gilt: $A_n$ (wahr) $\Rightarrow A_{n+1}$
@@ -30,7 +32,12 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	$\Rightarrow A_n$ ist wahr $\forall n\in\mathbb{N}$
 \end{proposition}
 
+\begin{proof}
+	Sei $N := \{n \in \mathbb{N} \mid A_n \text{ ist wahr}\} \subset \mathbb{N}$, offenbar $0 \in \mathbb{N}$ und $\nu(n) \in \mathbb{N}$, falls $n \in \mathbb{N} \Rightarrow \mathbb{N}$ induktiv in $\mathbb{N} \overset{\text{P2)}}{\Rightarrow} N = \mathbb{N}$
+\end{proof}
+
 \begin{lemma}
+	\proplbl{lemma_nachfolgerabb}
 	Es gilt:
 	\begin{enumerate}[label={\alph*)}]
 		\item $\nu(\mathbb{N})\cup \{0\}=\mathbb{N}$
@@ -38,15 +45,52 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\end{enumerate}
 \end{lemma}
 
-\begin{proposition}[Rekusrive Definition / Rekursion]
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $N := \{n \in \mathbb{N} \mid n = \nu(m) \text{ für } n\in \mathbb{N} \} \cup \{ 0 \}$ ist induktiv in $\mathbb{N} \overset{\text{P2)}}{\Rightarrow} N = \mathbb{N}$
+		\item[b)] Beweis mittels vollständiger Induktion
+		\begin{itemize}
+			\item[(IA)] $\nu(0) \neq 0$ nach P1)
+			\item[(IS)] Zeige: $(\nu(n) \overset{\text{IV)}}{\neq} n \Rightarrow \nu(\nu(n)) \neq \nu(n) \forall n \in \mathbb{N}$
+		indirekter Beweis: \\
+		Angenommen $\nu(\nu(n)) = \nu(n) \overset{\nu \text{ inj.}}{\Rightarrow} \nu(n) = n \overset{\text{IV)}}{\Rightarrow} \lightning \Rightarrow$ (1) $\Rightarrow$ b) nach Prinzip der vollst. Induktion (vgl.\propref{prin_voll_induktion})
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Rekursive Definition / Rekursion]
+	\proplbl{rekursive_def_abb}
 	\begriff*{Rekursion}
-	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align*}
-		f(0) &:= b,\\f(n+1):=F(f(n),n)\quad\forall n\in \mathbb{N}
-	\end{align*}
+	Sei b$B$ Menge, $b\in B$ u. $F:B\times\mathbb{N}\rightarrow B$ Abbildung. Dann liefert die Vorschrift \begin{align}\label{rekur_definition}
+		f(0) &:= b,\\f(n+1)&:=F(f(n),n)\quad\forall n\in \mathbb{N}
+	\end{align}
 	genau eine Abbildung für $f:\mathbb{N}\rightarrow B$ (d.h. solche Abbildung ist eindeutig)
 \end{proposition}
 
-\subsection*{Rechenoperationen}
+\begin{proof}
+	mittels vollständiger Induktion:
+	\begin{itemize}
+		\item[IA] $f(0) = b$ eindeutig definiert 
+		\item[IS] angenommen $f(n)$ eindeutig definiert $\overset{\text{1)}}{\Rightarrow}$ 
+		$f(n+1) \overset{\text{\propref{prin_voll_induktion}}}{\Rightarrow}$ Behauptung gilt nach Prinzip der vollständigen Induktion
+	\end{itemize}
+\end{proof}
+
+\begin{proof}[\propref{naturliche_zahlen_isomorph}]
+	$\mathbb{N}$ und $\mathbb{N}^{*}$ mögen \person{Peano}-Axiome erfüllen mit $(\nu, 0)$ bzw. $(\nu^{*}, 0^{*})$. Betrachte rekursive eindeutige definierte Abbildung: $I: \mathbb{N} \to \mathbb{N}^{*}$ (\propref{rekursive_def_abb} $B=\mathbb{N}^{*}$, $F(n^{*}, n) = \nu^{*}(n^{*})$)
+	$I(0) = 0^{*}, I(\nu(n)) = \nu^{*}(I(n)) \forall n \in \mathbb{N}$ $I$ enthält Nullelement und Nachfolgerabbildung. Falls $I$ bijektiv, dann ist $I$ ein Isomorphismus und Behauptung folgt.\\
+		Zeige $I$ surjektiv: offenbar $0^{*} \in I(\mathbb{N})$, falls $n^{*} \in I(\mathbb{N}) \Rightarrow \exists n \in \mathbb{N}:n^{*} = I(n) \Rightarrow \nu^{*}(n^{*}) = \nu^{*}(I(n)) = I(\nu(n)) \in I(\mathbb{N})$ (Bild). Folglich ist $I(\mathbb{N}) \subset \mathbb{N}^{*}$ induktiv in $\mathbb{N}^{*} \overset{\text{P2)}}{\Rightarrow} I(\mathbb{N}) = \mathbb{N}^{*}$.\\
+		Zeige $I$ injektiv: $I(n) \neq I(m)\forall n\neq m$ (*) vollständige Induktion nach $m$ (jeweils $\forall n \neq m$)
+		\begin{itemize}
+			\item[IA)] $m=0: \forall n \neq 0 \exists n \in \mathbb{N} \colon n = \nu(n^{'})$ (vgl. \propref{lemma_nachfolgerabb}) $\Rightarrow I(n) = I(\nu(n^{'})) = \nu^{*}(I(n^{'})) \overset{\text{P1)}}{\neq} 0^{*} = I(0) \forall n \neq 0$ (ist gerade (*)))
+			\item[IS)] IV: Sei $I(n) \neq I(m) \forall n \neq m$, dann 
+			für $n = 0$, $n = \nu(m) \text{ mit } I(0) = 0^{*} \neq \nu^{*}(I(m)) = I(\nu(m))$.\\
+			für $n \neq 0$, $n \overset{\text{\propref{lemma_nachfolgerabb}}}{=} \nu(n^{'}) \neq \nu(m) \overset{\nu \text{ inj.}}{\Rightarrow} n^{'} \overset{\text{IV)}}{\neq} m$ und $I(n) = I(\nu(n{'})) = \nu^{*}(I(n^{'})) \neq \nu^{*}(I(m)) = I(\nu(m))$\\
+			$\Rightarrow$ in der Behauptung $I(n) \neq I(\nu(m)) \forall n \neq \nu(m) \Rightarrow$(*) mittels vollständiger Induktion, \\ d.h. $I$ ist injektiv
+		\end{itemize}
+\end{proof}
+
+\subsection{Rechenoperationen}
 \begin{definition}[Rechenoperation auf $\boldsymbol{\mathbb{N}}$]
 	Definiere \begriff{Addition}[!natürliche Zahlen] $+:\mathbb{N}\times\mathbb{N}\rightarrow \mathbb{N}$ auf $\mathbb{N}$ durch $n+0:=n, n+\nu(m) :=\nu(n+m)\,\forall n,m\in\mathbb{N}$
 	
@@ -68,21 +112,60 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 	\end{tabular}
 \end{proposition}
 
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $n+0 = n$ klar, $n \cdot 1 = n\nu(0) = n \cdot 0 + n = 0 + n \overset{\text{Add. kommutativ}}{=} n$
+		\item[b)] ÜA
+		\item[c)] assoziativ für Addition (vollst. Induktion nach $n$)
+		\begin{itemize}
+			\item[IA)] $n=0$: $k+(m+0) = k + m = (k+m)+0 \forall k,m \in \mathbb{N}$
+			\item[IV)] Sei $k+(m+n) = (k+m)+n \forall k,m \in \mathbb{N}$
+			\item[IS)] 
+				IV) $\Rightarrow k + (m + \nu(n)) = k+\nu(m+n) =\nu(k+(m+n)) \overset{\text{IV)}}{=} \nu((k+m)+n)
+				=(k+m)+\nu(n) \forall k,m \in \mathbb{N}
+				\Rightarrow$ Indunktionbehauptung
+			$\overset{\text{voll. Ind.}}{\Rightarrow}$ Addition assoziativ: Beweis für Multiplikation analog
+		\end{itemize}
+		\item[d)] distributiv (vollst. Ind. nach $k$)
+			\begin{itemize}
+				\item[IA)] $k=0$ $0\cdot(m+n) = km + kn \forall m,n \in \mathbb{N}$
+				\item[IS)] Sei $k(m+n) = km + kn \forall m,n \in \mathbb{N}$
+				$\Rightarrow \nu(k)\cdot (m+n) \overset{\text{Def M.}}{=} k \cdot (m+n) + (m+n) \overset{\text{IV)}}{=}k\cdot m + k \cdot m + m+n \overset{\text{Def M.}}{=} \nu(k)\cdot m + \nu(k)\cdot n \forall m,n \in \mathbb{N} \overset{\text{voll. Ind.}}{\Rightarrow}$ Behauptung
+			\end{itemize}
+	\end{itemize}
+\end{proof}
+
 \begin{conclusion}
+	\proplbl{kurzungsregel}
 	Es gilt $\forall k,m,n\in\mathbb{N}$:
 	\begin{enumerate}[label={\alph*)}]
-		\item $m\neg 0 \Rightarrow m+n \neg 0$
+		\item $m\neq 0 \Rightarrow m+n \neq 0$
 		\item $m\cdot n = 0 \Leftrightarrow m = 0 \lor n = 0$
-		\item $m + k = n + k \Leftrightarrow m = n$ (Kürzungsregel Addition)
-		\item $k\neg 0: m\cdot k = n\cdot k \Leftrightarrow m = n$ (Kürzungsregel Multiplikation)
+		\item $m + k = n + k \Leftrightarrow m = n$ (Kürzungsregel(KR) Addition)
+		\item $k\neq 0: m\cdot k = n\cdot k \Leftrightarrow m = n$ (KR Multiplikation)
 	\end{enumerate}
 \end{conclusion}
 
-\subsection*{Ordnung auf $\boldsymbol{\mathbb{N}}$}
+\begin{proof}
+	\begin{itemize}
+		\item[a)] $m \neq 0 \Rightarrow \exists n \in \mathbb{N} \colon m = \nu(m^{'}) \Rightarrow n + m = n + \nu(m^{'}) \overset{\text{Def Add.}}{=} \nu(n+m^{'}) \neq 0 \forall n \in \mathbb{N}$
+		\item[b)] ``$\Leftarrow$'': folgt nach Def M. \\ ``$\Rightarrow$'': SeSt
+		\item[c)] ``$\Leftarrow$'': Wegen Eindeutigkeit der Addition\\
+		``$\Rightarrow$'': vollst. Induktion nach $k$
+			\begin{itemize}
+				\item[IA)] $n = 0$ klar
+				\item[IS)] Behauptung gelte für $k$, sei nun $m+(k+1) = n + (k+1) \Rightarrow \nu(n+k) \overset{\nu \text{ inj.}}{\Rightarrow} m+k = n+k \overset{\text{IV)}}{\Rightarrow} m = n \Rightarrow$
+			\end{itemize}
+		\item[d)]ÜA/SeSt (kann erst nach \propref{ordnung_nat_zahlen} beweisen werden!)
+	\end{itemize}
+\end{proof}
+
+\subsection{Ordnung auf $\boldsymbol{\mathbb{N}}$}
 \begin{definition}[Ordnung auf $\boldsymbol{\mathbb{N}}$]
-	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N}|m \le n\}$
+	Betr. Relation $R:=\{(m,n) \in\mathbb{N}\times\mathbb{N} \mid m \le n\}$
 \end{definition}
 \begin{proposition}
+	\proplbl{ordnung_nat_zahlen}
 	Es gilt auf $\mathbb{N}$:
 	\begin{enumerate}[label={\arabic*)}]
 		\item $m\le n \;\Rightarrow \;\exists!k\in\mathbb{N}: n = m + k$, nenne $n - m=:k$ \begriff{Differenz}
@@ -90,3 +173,22 @@ Nach Mengenlehre ZF existiert eine Solche Menge der \begriff{natürliche Zahlen}
 		\item Ordnung "`$\leq$"' ist verträglich mit Addition und Multiplikation
 	\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[1)] Sei $n=m+k=m+k^{'} \overset{\text{KR}}{\Rightarrow} k = k^{'}$
+		\item[2)] $n=n+0 \Rightarrow n \leq n \Rightarrow$  reflexiv \\
+		Sei $k \leq m , m \leq n \Rightarrow \exists l,j \colon m = k+l, n = m+j = (k+l)+j = k + (l+j) \Rightarrow k \leq n \Rightarrow$ transitiv\\
+		Sei $m \leq n, n \leq m \overset{\text{transitiv} k = n}{\Rightarrow} n = m + j = n + l + j \overset{\text{KR}}{\Rightarrow} 0 = l+j \overset{\text{\propref{kurzungsregel}}}{\Rightarrow} j =0 \Rightarrow n = m \Rightarrow$ antisymmetrisch\\
+		$\Rightarrow R$ ist eine Ordnung auf $\mathbb{N}$\\
+		Zeige R Totalordnung, d.h. $\forall m,n \in \mathbb{N}\colon m \leq n \text{ oder } n \leq m$ (\propref{kurzungsregel})\\
+		vollst. Induktion nach $m$:
+		\begin{itemize}
+			\item[IA)] $m=0$: wegen $n = 0 + n$ folgt $0 \leq n \forall n$
+			\item[IS)] gelte \propref{kurzungsregel} für festes $m$ und $\forall n \in \mathbb{N}$, dann \\
+			falls $n \leq m \overset{m \leq m + 1 \text{ transitiv}}{\Rightarrow} n \leq m + 1$\\
+			falls $m \leq n \Rightarrow \exists k \in \mathbb{N} \colon n = m + (k+1) = (m+1) + k \Rightarrow m +1 \leq n \Rightarrow \text{ \propref{kurzungsregel}}$ gilt für $m +1$ und $\forall n \in \mathbb{N} \overset{\text{voll. Ind.}}{\Rightarrow} \text{ \propref{kurzungsregel}}$
+		\end{itemize}
+		\item[3)] Sei $m \leq n \Rightarrow \exists j\colon n = m + j \overset{\text{KR}}{\Rightarrow} n + k = m + j + k \Rightarrow m + k \leq n + k$ und Rest analog
+	\end{itemize}
+\end{proof}
