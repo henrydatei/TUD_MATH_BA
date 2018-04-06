@@ -11,16 +11,26 @@
 \end{*definition}
 
 \begin{proposition}[\person{Cauchy}-Kriterium]
+	\propref{satz_cauchy_kriterium}
 	Sei $X$ normierter Raum, $\{x_k\}$ Folge in $X$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $\sum_k x_k$ konvergiert $\Rightarrow\;\forall \epsilon > 0\,\exists n_0: \left|\left|\sum_{k=n}^m x_k\right|\right| < \epsilon\,\forall m\ge n\ge n_0$
 		\item falls $x$ vollständiger, normierter Raum, gilt auch $\Leftarrow$ oben.
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	Übungsaufgabe, benutze $\Vert s_m-s_{n-1}\Vert=\Vert\sum_{k=n}^m x_k\Vert$
+\end{proof}
+
 \begin{conclusion}
+	\proplbl{folgerung_konvergenz_to_zero}
 	Sei $X$ normierter Raum, $\{x_n\}$ Folge in $X$. Dann:\\
 	$\sum_k x_k$ konvergiert $\Rightarrow$ $x_k\overset{k\rightarrow \infty}{\longrightarrow}0$
 \end{conclusion}
+\begin{proof}
+	\proplbl{satz_cauchy_kriterium} mit $m=n$
+\end{proof}
+
 \begin{example}
 	\begriff{geometrische Reihe} $X=\mathbb{C}, a_k:= z^k, z\in\mathbb{C}$ fest.
 	
@@ -30,27 +40,42 @@
 \begin{example}
 	\begriff{harmonische Reihe} $X=\mathbb{R}, x_k := \frac{1}{k}\;(k>1)$. Reihe divergiert.
 \end{example}
-\stepcounter{theorem}
+\begin{example}
+	$X=\real$, $x_k=\frac{1}{k(k+1)}$ \\
+	$s_n=^\frac{1}{2}+\frac{1}{6}+...=1-\frac{1}{2}+\frac{1}{2}-\frac{1}{3}+...=1-\frac{1}{n+1}\Rightarrow$ konvergiert gegen 1 \\
+	Derartige Reihen heißen auch \begriff[Reihe!]{Teleskopreihen}: $\sum_{k=0}^{\infty} (y_k-y_{k+1})$. Diese konvertieren genau dann, wenn $\{y_k\}$ konvergiert.
+\end{example}
 \begin{example}
 	$X=\mathbb{R}$:\[ \sum_{k=1}^\infty \frac{1}{k^s}\;\begin{cases}
 	\text{konvergiert},& \text{für }s > 1\\ \text{divergiert},& \text{für }s \le 1
 	\end{cases} \]
-	Summe heißt \begriff{\person{Riemann}'sche Zetafunktion}\mathsymbol{zeta}{$\zeta(s)$} (für $s > 1$). Diese ist beschränkt und konvergent.
+	Summe heißt \begriff{\person{Riemann}'sche Zetafunktion} \mathsymbol{zeta}{$\zeta(s)$} (für $s > 1$). Diese ist beschränkt und konvergent.
 \end{example}
+
 \begin{proposition}
 	Sei $X$ normierter Raum, $\{x_n\}, \{y_n\}$ in $X, \lambda,\mu\in K$ ($\mathbb{R}$ oder $\mathbb{C}$). Dann:\\
-	$\sum_k x_k, \sum_k y_k$ konvergernt $\Rightarrow\;\sum_{k=0}^\infty \lambda x_k + \mu x_k$ konvergent gegen $\lambda\sum_k x_k + \mu \sum_k y_k$.
+	$\sum_k x_k, \sum_k y_k$ konvergent $\Rightarrow\;\sum_{k=0}^\infty \lambda x_k + \mu x_k$ konvergent gegen $\lambda\sum_k x_k + \mu \sum_k y_k$.
 \end{proposition}
+\begin{proof}
+	benutze Rechenregeln für Folgen
+\end{proof}
+
 \begin{*definition}
 	Reihe $\sum_k x_k$ heißt \begriff[Reihe!]{absolut konvergent}, falls $\sum_k \Vert x_k\Vert$ konvergiert.
 \end{*definition}
+
 \begin{proposition}
 	Sei $X$ vollständiger, normierter Raum. Dann:\\
 	$\sum_k x_k$ absolut konvergent $\Rightarrow\;\sum_k x_k$ konvergent
 \end{proposition}
+\begin{proof}
+	Es ist $\Vert\sum_{k=n}^m x_k\Vert\le \sum_{k=n}^m \Vert x_k\Vert$ (1) \\
+	$\Rightarrow \tilde{s_m}=\sum_{k=0}^m \Vert x_k\Vert$ ist CF in $\real \overset{(1)}{\Rightarrow} \sum_{k=0}^m x_k$ ist CF in $X\beha$
+\end{proof}
+
 \begin{proposition}[Konvergenzkriterien für Reihen]
 	Sei $X$ normierter Raum, $\{x_k\}$ in $X, k_0\in\mathbb{N}$
-	\begin{enumerate}[label={\alph*)}]
+	\begin{enumerate}
 		\item Sei $\{x_k\}$ Folge in $\mathbb{R}$ \hfill\begriff{Majorantenkriterium}
 		\begin{enumerate}[label={\alph*)}]
 			\item $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
@@ -68,6 +93,22 @@
 		\end{enumerate}
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item $s_n=\sum_{k=0}^n \Vert a_k\Vert$ monoton wachsend
+		\begin{enumerate}[label={\alph*)}]
+			\item $\{s_n\}$ beschränkt $\Rightarrow$ konvergent
+			\item $\{s_n\}$ unbeschränkt $\Rightarrow$ divergent
+		\end{enumerate}
+		\item 
+		\begin{enumerate}[label={\alph*)}]
+			\item $\Vert x_k\Vert\le q^2\Vert x_{k-2}\Vert\le ...\le q^k\Vert x_1\Vert=:a$, da $\sum_{k=0}^m a_k=\Vert x_k\Vert\sum_{k=0}^{\infty} q^k$ konvergent
+			\item ist $\Vert x_k\Vert \not\to 0\overset{\text{\propref{folgerung_konvergenz_to_zero}}}{\Rightarrow}$ Behauptung
+		\end{enumerate}
+		\item analog zu 2., verwende $\Vert x_k\Vert\le q^k$
+	\end{enumerate}
+\end{proof}
+
 \begin{example}
 	\begriff{Exponentialreihe} $\exp z := \sum_{k=0}^\infty \frac{z^k}{k!}$ absolut konvergent $\forall z\in \mathbb{C}$.
 	
@@ -91,18 +132,46 @@
 	Sei $\{x_n\}$ monoton fallende Nullfolge in $\mathbb{R}$. Dann:\\
 	alternierende Reihe $\sum_{k=0}^\infty (-1)^k x_k = x_0 - x_1 + x_2 - \dotsc$ ist konvergent.
 \end{proposition}
-\stepcounter{theorem}
+
+\begin{example}
+	Alternierende harmonische Reihe $\sum_{k=1}^{\infty} (-1)^k\cdot\frac{1}{k}=1-\frac{1}{2}+\frac{1}{3} - \frac{1}{4}+...$ ist konvergent \\
+	man kann zeigen, dass $\sum_{k=1}^{\infty} (-1)^k\cdot\frac{1}{k}=\ln 2$
+\end{example}
+
+\begin{boldenvironment}[Frage]
+	Ist die Summationsreihenfolge bei Reihen wichtig?
+\end{boldenvironment}
+\begin{boldenvironment}[Antwort]
+	im Allgemeinen nicht.
+\end{boldenvironment}
+
 \begin{*definition}[Umordnung]
 	Sei $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektive Abbildung: $\sum_{k=0}^\infty x_{\beta(k)}$ heißt \begriff{Umordnung} der Reihe $\sum_k x_k$.
 \end{*definition}
 \begin{proposition}
+	\proplbl{satz_umordnung}
 	Sei $X$ normierter Raum. Dann:\\
 	$\sum_{k=0}^\infty x_k = x$ absolut konvergent $\Rightarrow\;\sum_{k=0}\infty x_{\beta(k)}$ absolut konvergent für jede Umordnung.
 \end{proposition}
+\begin{proof}
+	wegen Konvergenz der Partialsummen: $\forall\varepsilon>0\;\exists n_0:\sum_{k=n_0}^{\infty} \Vert x_k\Vert<\varepsilon$ \\
+	da $b:\natur\to\natur$ bijektiv $\exists n_1:\{0,1,...,n_0\}\subset \{b(0),...,b(n_1)\}\Rightarrow \Vert\sum_{k=0}^{\infty} x_k - \sum_{k=0}^m x_{b(k)}\Vert\le \sum_{k=n_0}^{\infty} \Vert x_k\Vert<\varepsilon\Rightarrow\sum_{k=0}^m x_{b(k)}\to \sum_{k=0}^{\infty} x_k=x$ \\
+	wegen $\sum_{k=0}^m \Vert x_{b(k)}\Vert\le \sum_{k=0}^{\infty} \Vert x_k\Vert\Rightarrow$ Umordnung ist absolut konvergent
+\end{proof}
+
+\begin{underlinedenvironment}[Hinweis]
+	Satz \propref{satz_umordnung} ist falsch, falls $\sum_{k=0}^{\infty} x_k$ nicht absolut konvergent
+\end{underlinedenvironment}
+
 \begin{proposition}
 	Sei $\sum_{k=0}^\infty x_k$ konvergierende Reihe in $\mathbb{R}$, die nicht absolut konvergent ist. Dann:\\
 	$\forall s\in\mathbb{R}\cup \{\pm\infty\}$ existiert $\beta:\mathbb{N}\rightarrow\mathbb{N}$ bijektiv mit $s=\sum_{k=0}^\infty x_{\beta_k}$
 \end{proposition}
+\begin{proof}
+	für $s\in\real$: Seien $x^+_k$ und $x^-_k$ positive bzw. negative Glieder $\Rightarrow$ Reihe konvergent $\Rightarrow\sum_{k=0}^{\infty} x^{\pm}_k=\pm\infty$ \\
+	summiere nun in folgender Reihenfolge: $x^+_1+x^+_2+...+x^+_n$ (Summe erstmals $>s$) $+x^-_{n+1}+x^-_{n+2}...$ (Summe erstmals $<s$) $\Rightarrow$ Partialsummen schwanken um $s\Rightarrow$ wegen $x_k\to 0$ konvergiert umgeordnete Reihe gegen $s$
+\end{proof}
+
 \begin{proposition}[\person{Cauchy}-Produkt]
 	Sei $X$ normierter Raum über $\mathbb{K}$, $\sum_j x_j$ und $\sum_i \lambda_i$ absolut konvergent in $X$ bzw. $\mathbb{K}$. $\beta:\mathbb{N}\times \mathbb{N}\rightarrow \mathbb{N}$ bijektiv, $Y_{\beta(i,j)} = \lambda_i x_i\,\forall i,j\in\mathbb{N}$
 	
@@ -113,9 +182,30 @@
 		& $\sum_{k=0}^\infty \sum_{l=0}^k \lambda_k x_{k-l} = \sum_{i=0}^\infty \lambda_i \sum_{j=0}^\infty x_j$
 	\end{tabular}
 \end{proposition}
-\stepcounter{theorem}
+\begin{proof}
+	Sei $m(k,l)=\max\{k,l\}=m$ und $\tilde{b}(k,l)=m(k,l)^2+m(k,l)+k-l=n$ \\
+	$\Rightarrow m(\tilde{b}^{}-1,n)\to\infty$ für $n\to\infty$ \\
+	$\Rightarrow\Vert\sum_{l=0}^{n} y_l-\sum_{i=0}^{m(k,l)} \lambda_i\cdot\sum_{j=0}^{m(k,l)} x_j\Vert\le \Vert x_m\Vert\cdot\sum_{i=0}^m \vert\lambda_i\vert+\vert\lambda_m\vert\cdot\sum_{j=0}^m \Vert x_j\Vert\le \tilde{\lambda}\cdot\Vert x_m\Vert+\tilde{j}\cdot\vert \lambda_m\vert\to 0$ (3) \\
+	$\sum_{i=0}^m \vert\lambda_i\vert\le \tilde{\lambda}$ \\
+	$\sum_{j=0}^m \Vert x_j\Vert\le \tilde{j}$ \\
+	da $\sum_{i=0}^m \lambda_i := \lambda, \sum_{j=0}^m x_j=:x$ folgt $\sum_{l=0}^n y_l=\lambda\cdot x$ für $l=\tilde{b}(i,j)$ mit $\Vert y_l\Vert,\vert\lambda_i\vert,\vert x_j\vert$ links in (3) folgt absolute Konvergenz von $\sum_{l=0}^n y_l \Rightarrow$ Behauptung für beliebige $b$ folgt mit \propref{satz_umordnung}
+\end{proof}
+
+\begin{example}
+	$\exp(z_1+z_2)=\exp(z_1)\cdot\exp(z_2)$, denn \\
+	$\exp(z_1)\cdot\exp(z_2)=\sum_{k=0}^{\infty} \frac{z_1^k}{k!}\cdot\sum_{l=0}^{\infty} \frac{z_2^l}{l!}=\sum_{n=0}^{\infty}\sum_{m=0}^{n}\frac{z_1^m\cdot z_2^{n-m}}{m!\cdot (n-m!)}\Rightarrow$ Erweiterung mit $\frac{n!}{n!}$ gibt $\binom{n}{m}\Rightarrow\sum_{n=0}^{\infty} \frac{(z_1+z_2)^n}{n!}=\exp(z_1+z_2)$
+\end{example}
+
 \begin{proposition}[Doppelreihenproposition]
 	Sei $\{x_{k,l}\}_{k,l\in\mathbb{N}}$ Doppelfolge im \person{Banach}-Raum $X$ und mögen $\sum_{l=0}^\infty \Vert x_{k,l}\Vert =:\alpha_k\,\forall k$ und $\sum_{k=0}^\infty x_k =: \alpha$ existieren.
 	
 	$\Rightarrow \sum_{k=0}^\infty \left(\sum_{l=0}^\infty x_{k,l}\right) = \sum_{l=0}^{\infty}\left( \sum_{k=0}^\infty x_{k,l}\right)$, wobei alle Reihen absolut konvergent sind.
 \end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item als Konvergenz der Reihen: links klar nach Vorraussetzungen \\
+		$\Vert x_{kl}\Vert\le a_k\overset{\text{Maj.-Krit.}}{\Rightarrow}\sum_{k=0}^{}\infty x_{kl}:=b_l$ absolut konvergent $\sum_{l=0}^{n}\Vert b_l\Vert=\sum_{l=0}^{n}\Vert\sum_{k=0}^{\infty} x_{kl}\Vert\le \sum_{l=0}^n\sum_{k=0}^{\infty}\Vert x_{kl}\Vert\overset{\text{Add.}}{\le} \sum_{k=0}^{\infty}\sum_{l=0}^n \Vert x_k\Vert\le \sum_{k=0}^{\infty} a_k=a \Rightarrow\sum_{l=0}^{\infty} b_l$ ist absolut konvergent $\Rightarrow$ Reihen rechts sind absolut konvergent
+		\item Sei nun $\varepsilon>0\Rightarrow\exists n_0:\sum_{k=n+1}^{\infty} a_k<\frac{\varepsilon}{2}, \sum_{l=n+1}^{\infty} \Vert b_l\Vert <\frac{\varepsilon}{2}\Rightarrow\Vert\sum_{k=0}^{\infty} \left( \sum_{l=0}^{\infty} x_{kl}\right) - \sum_{k=0}^n \sum_{l=0}^{n} x_{kl}\Vert =: s-s_n\le \sum_{k=n+1}^{\infty} a_k+\sum_{l=n+1}^{\infty} \Vert b_l\Vert <\varepsilon$ \\
+		$\Rightarrow s_n\to s$, analog $s_n\to\sum_{l=0}^{\infty} \sum_{k=0}^{\infty} x_{kl}=:\tilde{s}\Rightarrow s=\tilde{s}\beha$
+	\end{itemize}
+\end{proof}
