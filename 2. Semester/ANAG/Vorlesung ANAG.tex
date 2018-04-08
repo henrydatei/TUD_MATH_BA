@@ -546,7 +546,7 @@
 \input{./TeX_files/Grundbegriffe_Logik}
 \stepcounter{section}% section ``Fundament der Mathematik'' fehlt
 \chapter{Zahlenbereiche}
-\include{./TeX_files/Natuerliche_Zahlen}
+\input{./TeX_files/Natuerliche_Zahlen}
 \include{./TeX_files/Ganze_und_Rationale_Zahlen}
 \include{./TeX_files/Reelle_Zahlen}
 \include{./TeX_files/Komplexe_Zahlen}
@@ -588,8 +588,8 @@
 \include{./TeX_files/Funktionsfolgen}
 
 
+\phantomsection\addcontentsline{toc}{part}{Anhang}
 \part*{Anhang}
-\addcontentsline{toc}{part}{Anhang}
 \appendix
 \patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
 %\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
