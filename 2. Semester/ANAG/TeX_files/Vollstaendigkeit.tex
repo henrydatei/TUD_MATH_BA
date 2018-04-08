@@ -5,24 +5,46 @@
     \forall\epsilon > 0 \,\exists n_0\in\mathbb{N}: d(x_n, x_m) < \epsilon\quad\forall n,m\ge n_0.
     \]
 \end{*definition}
+
 \begin{proposition}
+	\proplbl{satz_cauchy_folge}
 	Sei $\{x_n\}$ Folge im metrischen Raum $(X,d)$. Dann
 	\begin{enumerate}[label={\arabic*)}]
 		\item $x_n\rightarrow x \Rightarrow \{x_n\}$ ist \person{Cauchy}-Folge
 		\item $\{x_n\}$ \gls{cf} $\Rightarrow \{x_n\}$ ist beschränkt und hat maximal einen \gls{hw}.
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Sei $\varepsilon>0\Rightarrow n_0:d(x_{n_0},x)<\frac{\varepsilon}{2}\Rightarrow d(x_{n_0},x_m)\le d(x_{n_0},x)+d(x,x_m)<\varepsilon\beha$
+		\item $\exists n_0:d(x_n,x_m)<1\Rightarrow$ fast alle $x_n\in B_1(x_{n_0})\Rightarrow$ Folge beschränkt \\
+		Sei $g$ HW: $\varepsilon>0\Rightarrow$ unendlich viele $x_n\in B_{\varepsilon}(g)\Rightarrow$ fast alle $x_n\in B_{\varepsilon}(g)\Rightarrow$ nur 1 HW möglich $\beha$
+	\end{enumerate}
+\end{proof}
+
 \begin{*definition}[Durchmesser]
 	\begriff{Durchmesser} von $M\subset X$ beschränkt, $\neq 0$, $(X,d)$ metrischer Raum ist \mathsymbol{diam}{$\diam$}$M:=\sup\{d(x,y) | x,y\in M\}$
 	
 	Folge $\{A_n\}$ von abgeschlossenen Mengen heißt \begriff{Schachtelung} falls $A_n\neq\emptyset, A_{n+1}\subset A_n\,\forall n\in\mathbb{N}$ und $\diam A_n\overset{n\rightarrow\infty}{\longrightarrow}0$.
 \end{*definition}
+
 \begin{lemma}
 	Sei $M\subset X$ beschränkt, $\neq 0\;\Rightarrow\;\diam M = \diam (\cl M)$.
 \end{lemma}
+\begin{proof}
+	Übungsaufgabe, Selbststudium
+\end{proof}
+
 \begin{theorem}
+	\proplbl{theorem_schachtelung}
 	Sei $(X,d)$ metrischer Raum. Dann: für jede Schachtelung $A_n$ in $X$ gilt:\[ \bigcap_{n\in\mathbb{N}} A_n\neq \emptyset \;\Leftrightarrow \; \text{jede \gls{cf} in $\{x_n\}$ in $X$ ist konvergent} \]
 \end{theorem}
+\begin{proof}
+	$(\Rightarrow)$ Sei $\{x_n\}$ CF in $X$, setze $A_n:=\cl\{x_k\mid k\ge n\}\Rightarrow\diam A_n\to 0$ und $\{A_n\}$ Schachtelung $\Rightarrow\exists x\in\bigcap A_n$ \\
+	$\forall\varepsilon>0\quad\exists n_0:\diam A_{n_0}<\varepsilon\Rightarrow d(x_n,x)<\varepsilon\Rightarrow x_n\to x$ \\
+	$(\Leftarrow)$ Sei $\{A_n\}$ Schachtelung, wähle $x_n\in A_n\Rightarrow x_k\in A_n\; (k\ge n)\Rightarrow \{x_n\}$ ist CF $\Rightarrow x_n\to x\Rightarrow x\in A_n\beha$
+\end{proof}
+
 \begin{lemma}
 	In $\mathbb{R}$ gilt:
 	\begin{center}
@@ -32,14 +54,30 @@
 		\end{tabular}
 	\end{center}
 \end{lemma}
+\begin{proof}
+	$(\Rightarrow)$ trivial \\
+	$(\Leftarrow)$ Zeige: jede CF konvergiert in $\real$, dann folgt die Behauptung aus \propref{theorem_schachtelung} \\
+	Sei $\{x_n\}$ CF in $\real, M_n:=\{x_k\mid k\ge n\}\Rightarrow X_n:=[\inf M_n,\sup M_n]$ Intervallschachtelung in $\real\Rightarrow\exists x\in\bigcap X_n\Rightarrow x_n\to x\beha$
+\end{proof}
+
 \begin{*definition}[Vollständigkeit]
 	Metrischer Raum $(X,d)$ heißt \begriff{Vollständig}, falls jede \person{Cauchy}-Folge $\{x_n\}$ in $X$ konvergiert.
 	
 	Vollständiger, normierter Raum $(X,\Vert .\Vert)$ heißt \begriff{\person{Banach}-Raum}.
 \end{*definition}
+
 \begin{conclusion}
 	Sei $\{x_n\}$ Folge im vollständigen metrischen Raum $(X,d)$. Dann:\[ \{x_n\}\text{ konvergent}\;\Leftrightarrow\; \{x_n\} \text{ \person{Cauchy}-Folge} \]
 \end{conclusion}
+\begin{proof}
+	vergleiche Definition Vollständigkeit und \propref{satz_cauchy_folge}
+\end{proof}
+
 \begin{theorem}
 	$\mathbb{R}^n$ und $\mathbb{C}^n$ mit $|.|_p$ ($1\le p \le \infty$) sind vollständige, normierte Räume (d.h. \person{Banach}-Räume).
 \end{theorem}
+\begin{proof}
+	für $\real^n$: $\{x_k\}$ mit $x_k=(x^1_k,...,x^n_k)$ CF in $\real^n$ bezüglich $\vert\cdot\vert_p$, offenbar $\{x_k\}$ auch CF bezüglich $\vert\cdot\vert_\infty$ \\
+	$\Rightarrow \{x^j_k\}_k$ CF in $\real$ für jedes $j=1,...,n\Rightarrow \{x^j_k\}_k$ konvergiert in $\real\quad\forall j\Rightarrow \{x_k\}$ konvergiert in $\real^n\beha$ \\
+	für $\comp$: Zurückführung auf $\real^2\to$ Realteile und Imaginärteile
+\end{proof}
