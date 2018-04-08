@@ -304,6 +304,7 @@
 	\ifcsdef{r@#1}%in first compilation the label may not be defined yet
 	{%
 		\zref@refused{#1@chapter}%
+		\cref@gettype{#1}{\propositionref@current@type@temp}%get the environment's name
 		\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{0}}%
 		{%same chapter
 			\ifmmode 
@@ -313,21 +314,19 @@
 			\fi
 		}%
 		{%otherwise
-			\def\propositionref@current@type{}%
-			\cref@gettype{#1}{\propositionref@current@type}%get the environment's name
 			%example for following line:
 			%\crefformat{truetheorem}{\cref@truetheorem@name~##2\rom{\zref@extractdefault{#1}{#1chapter}{1}}.##1##3}
 			%this changes the format used by \cref to <environtment name> <chapter-number>.<section-number>.<theorem number>
-			\crefformat{\propositionref@current@type}{%
-				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
+			\crefformat{\propositionref@current@type@temp}{%
+				\csname cref@\propositionref@current@type@temp @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
 			}%
 			\ifmmode 
 				\cref{#1}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
-			\crefformat{\propositionref@current@type}{%
-				\csname cref@\propositionref@current@type @name\endcsname~##2##1##3%
+			\crefformat{\propositionref@current@type@temp}{%
+				\csname cref@\propositionref@current@type@temp @name\endcsname~##2##1##3%
 			}%
 		}%
 	}%
