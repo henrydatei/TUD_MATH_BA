@@ -142,15 +142,15 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 Mathematik \smiley{}
 
 \begin{proposition}[Rechenregeln für \person{Landau}-Symbole]
-	Für $r_k,\tilde{r_l},R_l:D\subset K^n\to K^m,x_0\in D,k,l\in\natur$ mit \\
-	$r_k(x)=o(\vert x-x_0\vert^k),\tilde{r_k}=o(\vert x-x_0\vert^l),R_l(x)=O(\vert x-x_0\vert ^l),x\to x_0$
+	Für $r_k,\tilde{r}_l,R_l:D\subset K^n\to K^m,x_0\in D,k,l\in\natur$ mit \\
+	$r_k(x)=o(\vert x-x_0\vert^k),\tilde{r}_l=o(\vert x-x_0\vert^l),R_l(x)=\mathcal{O}(\vert x-x_0\vert ^l),x\to x_0$
 	\begin{enumerate}
 		\item $r_k(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j\le k$ \\
 		$R_l(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j<l$
 		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=o(\vert x-x_0\vert^{k-j})\quad j\le k$ \\
 		$\frac{R_l(x)}{\vert x-x_0\vert^j}=\mathcal{O}(\vert x-x_0\vert^{l-j})=o(\vert x-x_0\vert^{l-j-1})\quad j\le l$
-		\item $r_k(x)\pm \tilde{r_l}(x)=o(\vert x-x_0\vert ^k)\quad k\le l$
-		\item $r_k(x)\cdot \tilde{r_l}(x)=o(\vert x-x_0\vert^{k+l}),r_k(x)\cdot R_l(x)=o(\vert x-x_0\vert^{k+l})$
+		\item $r_k(x)\pm \tilde{r}_l(x)=o(\vert x-x_0\vert ^k)\quad k\le l$
+		\item $r_k(x)\cdot \tilde{r}_l(x)=o(\vert x-x_0\vert^{k+l}),r_k(x)\cdot R_l(x)=o(\vert x-x_0\vert^{k+l})$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -160,8 +160,8 @@ Mathematik \smiley{}
 		$\frac{R_l(x)}{\vert  x-x_0\vert^j}=\frac{R_l(x)}{\vert x-x_0\vert^l}\vert x-x_0\vert^{l-j}\to 0$, Rest wie oben
 		\item $\frac{r_k(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{k-j}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\to 0$ \\
 		$\frac{R_l(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{l-j}}=\frac{R_l(x)}{\vert x-x_0\vert^l}\le c$ nahe $x_0$, Rest wie oben
-		\item $\frac{r_k(x)}{\vert x-x_0\vert^k}\pm\frac{\tilde{r_l}(x)}{\vert x-x_0\vert^k}\overset{(2)}{=}o(1)\pm\underbrace{o(\vert x-x_0\vert^{l-k})}_{o(1)}\to 0$
-		\item $\frac{r_k(x)\cdot \tilde{r_l}(x)}{\vert x-x_0\vert^{k+l}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\cdot\frac{\tilde{r_l}(x)}{\vert x-x_0\vert^l}\to 0$ \\
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^k}\pm\frac{\tilde{r}_l(x)}{\vert x-x_0\vert^k}\overset{(2)}{=}o(1)\pm\underbrace{o(\vert x-x_0\vert^{l-k})}_{o(1)}\to 0$
+		\item $\frac{r_k(x)\cdot \tilde{r}_l(x)}{\vert x-x_0\vert^{k+l}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\cdot\frac{\tilde{r}_l(x)}{\vert x-x_0\vert^l}\to 0$ \\
 		$\frac{\vert r_k(x)\cdot R_l(x)\vert}{\vert x-x_0\vert^{k+l}}=\frac{\vert r_k(x)\vert}{\vert x-x_0\vert^k}\cdot\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\to 0$
 	\end{enumerate}
 \end{proof}
