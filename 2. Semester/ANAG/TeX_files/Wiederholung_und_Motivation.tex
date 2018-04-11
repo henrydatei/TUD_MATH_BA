@@ -6,13 +6,13 @@ Sei $K^n$ $n$-dim. \gls{vr} über Körper mit $K=\mathbb{R}$ oder $K=\mathbb{C},
 	\item alle Normen auf $K^n$ sind äquivalent (\propref{aeqv_norm}) \\
 	$\Rightarrow$ Kovergenz unabhängig von der Norm
 	
-	Verwende in der Regel euklidische Norm $\vert x \vert_2 = \vert x \vert = \sqrt{\sum\limits_{i}\vert x_i \vert^2}$
+	Verwende in der Regel euklidische Norm $\Vert x \Vert_2 = \vert x \vert = \sqrt{\sum\limits_{i}\vert x_i \vert^2}$
 	\item \begriff{Skalarprodukt}
 	\begin{itemize}
-		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} x_j\cdot y_j$ in $\mathbb{R}$
-		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} \overline{x}_j\cdot y_j$ in $\mathbb{C}$
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} x_j\cdot y_j$ in $\mathbb{R}^n$
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} \overline{x}_j\cdot y_j$ in $\mathbb{C}^n$
 	\end{itemize}
-	\item \textsc{Cauchy}-\textsc{Schwarz}-Ungleichung ($\vert \langle x,y\rangle \vert \le \vert x \vert + \vert y \vert\,\quad\forall x,y\in K^n$)
+	\item \textsc{Cauchy}-\textsc{Schwarz}-Ungleichung ($\vert \langle x,y\rangle \vert \le \vert x \vert \cdot \vert y \vert\,\quad\forall x,y\in K^n$)
 \end{itemize}
 
 \subsection{Lineare Abbildungen}
@@ -23,7 +23,7 @@ Eine \begriff{lineare Abbildung} ist homogen und additiv (siehe \propref{defLine
 	(\emph{beachte:} $A$ sowohl Abbildung als auch Matrix)
 	\begin{itemize}
 		\item lineare Abbildung ist stetig auf endlich-dimensionalen Räumen (unabhängig von der Norm, siehe \propref{chap_15_5})
-		\item transponierte Matrix: $A^T\in K^{m\times n}$
+		\item transponierte Matrix: $A^T\in K^{n\times m}$
 		
 		\begin{hint}
 		$x=(x_1,\dotsc, x_n)\in K^n$ idR platzsparender als Zeilenvektor geschrieben, \emph{aber} bei Matrix-Multiplikation $x$ Spalten-Vektor, $x^T$ Zeilenvektor, d.h.	\begin{align*}
@@ -38,13 +38,18 @@ Eine \begriff{lineare Abbildung} ist homogen und additiv (siehe \propref{defLine
 		 \item $L(K^n, K^m)$ ist isomorph zu $K^{m\times n}$ als \gls{vr} \\
 		 $\Rightarrow$ $L(K^n, K^m)$ ist $m\cdot n$-dim. \gls{vr} ($\Rightarrow$ alle Normen äquivalent, $\Rightarrow$ Konvergenz von $\{A_n\}$ von linearer Abbildungen in $L(K^n, K^m)$ ist normunabhängig)
 		 
-		 Nehmen in der Regel statt $\Vert A \Vert$ \person{euklidische} Norm $\vert A \vert = \sqrt{\sum\limits_{k,l} \vert A_{k,l} \vert ^2}$.\\
+		 Nehmen in der Regel statt $\Vert A \Vert$ euklidische Norm $\vert A \vert = \sqrt{\sum\limits_{k,l} \vert a_{kl} \vert ^2}$.\\
 		 Es gilt: \[ \vert Ax \vert \le \Vert A \Vert\cdot \vert x \vert \text{ und } \vert Ax\vert \le \vert A \vert \cdot\vert x \vert \]
 	\end{itemize}
 	\item Abbildung $\tilde{f}: K^n \to K^m$ heißt \begriff[linear!]{affin} \highlight{linear}, falls $\tilde{f}(x) = Ax + a$ für lineare Abbildung $A:K^n\to K^m, a\in K^m$
 \end{itemize}
 
 \subsection{\textsc{Landau}-Symbole}
+
+\begin{*anmerkung}
+	Eine Approximation besitzt zwangsläufig immer einen Fehler. Eine gute Approximation zeichnet sich dadurch aus, dass der Fehler bzw. Rest möglichst klein wird. Dieser Fehler wird mit \person{Landau}-Symbolen beschrieben.
+\end{*anmerkung}
+
 Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Dann:
 \begin{itemize}
 	\item $f(x) = o(g(x))$ für $x\to x_o$ \gls{gdw} $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x) \vert}{g(x)} = 0$
@@ -53,13 +58,30 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 	\emph{wichtiger Spezialfall:} $g(x) = \vert x - x_0\vert ^k, k\in\mathbb{N}$
 \end{itemize}
 
-\begin{example}
+\begin{example}[gute Approximation durch konstante Funktion nahe $x=x_0$]
 	Sei $f:D\subset K^n\to K^m$, $x_0\in D$ \gls{hp} von $D$. Dann:
 	\begin{align}
 		\notag f\text{ stetig in } x_0 &\Leftrightarrow \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} f(x) = f(x_0) \\
 		\notag &\Leftrightarrow \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{f(x) - f(x_0)}{1} = 0 \\
 		&\Leftrightarrow \boxed{f(x) = f(x_0) + o(1)} \text{ für }x\to x_0\proplbl{chap15specialCase}
 	\end{align}
+	
+	\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		xmin=0, xmax=5, xlabel=$x$,
+		ymin=0, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {x^2};
+		\addlegendentry{$f$}
+		\addplot+[mark=none] {2};
+		\addlegendentry{Apprx}
+		\addplot+[mark=none, dashed] {x^2-2};
+		\addlegendentry{$r$}
+		\end{axis}
+		\end{tikzpicture}\end{center}
 	
 	\begin{boldenvironment}[Interpretation von \eqref{chap15specialCase}]
 	
@@ -71,12 +93,37 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 	\end{flalign}
 	d.h. $o(1)$ ersetzt eine "`Rest-Funktion"' $r(x)$ mit Eigenschaft (\ref{chap15interpretationSpecialCase}).
 	\end{boldenvironment}
+
+	\begin{*anmerkung}
+		Man kann als Approximation auch $x=3$ wählen, allerdings stimmt dann die Aussage $r\to 0$ für $x\to x_0$ nicht mehr.
+	\end{*anmerkung}
+
 	Wegen $o(1) = o(\vert x-x_0\vert^0)$ (d.h. $k=0$) sagt man auch, \propref{chap15specialCase} ist die Approximation 0. Ordnung der Funktion $f$ in der Nähe von $x_0$.
 \end{example}
-\begin{example}
+
+\begin{example}[gute Approximation durch (affin) lineare Funktion nahe $x=x_0$]
 	Sei $f:D\subset \mathbb{R}^n\to \mathbb{R}$, $x_0\in D$, $D$ offen. Was bedeutet \begin{align}
-		\proplbl{chap15meaningSpecialCase} f(x) = f(x_0) + o(\vert x-x_0\vert),\;x\to x_0?
+		\proplbl{chap15meaningSpecialCase} f(x) = \underbrace{f(x_0)+A(x-x_0)}_{\tilde{f}\text{ affin lineare Funktion}} + o(\vert x-x_0\vert),\;x\to x_0?		
 	\end{align}
+	
+	\begin{*anmerkung}
+		Wie sollte ein guter Rest sein? \\
+		$\graph\tilde{f}$ ist die $n$-dimensionale Ebene in $K^{n+m}$ (affin-lin. UR) \\
+		$\graph f$ sollte sich an diese Ebene anschmiegen ($\graph\tilde{f}=$Tangentialebene) \\
+		$\Rightarrow$ Rest sollte sich an den Grafen der Nullfunktion anschmiegen \\
+		Sei $\proplbl{eqvanschmiegen}g(t)=\sup\limits_{\vert x-x_0\vert \le t}\vert r(x)\vert\Rightarrow \vert r(x)\vert\le g(\vert x-x_0\vert)\quad\forall x$ \\
+		anschmiegen: $g(t)=o(1),t\to 0$ nicht ausreichend \\
+		angenommen $g(t)=o(t),t\to 0$: dann ist für ein festes $v\in K^n$ mit $\Vert v\Vert=1$
+		\begin{align}
+			\vert r(x_0+tv)\vert\le g(t) &\Rightarrow\frac{\vert r(x_0+tv)-r(x_0)\vert}{t}\le \frac{g(t)}{t}\to 0 \notag\\
+			&\Rightarrow\text{anschmiegen}
+		\end{align}
+		Wegen (\propref{eqvanschmiegen}) folgt: $\frac{\vert r(x)\vert}{\vert x-x_0\vert}\le \frac{g(\vert x-x_0\vert)}{\vert x-x_=\vert}\to 0$ \\
+		$\Rightarrow r(x)=o(\vert x-x_0\vert)$ für $x\to x_0=o(1)\vert x-x_0\vert$ \\
+		$\Rightarrow$ betrachte $\tilde f$ als gute lin. Approx. von $f$ nahe $x=x_0$ falls Fehler $=f(x)-(f(x_0)-A(x-x_0))=o(\vert x-x_0\vert)$ für $x\to x_0$ \\
+		man sagt: Fehler wird schneller kleiner als $\vert x-x_0\vert$! $\tilde f$ heißt Approx. 1. Ordnung con $f$ in $x_0$
+		\end{*anmerkung}
+	
 	\begin{enumerate}[label={\alph*)}]
 		\item Betrachte $f$ auf Strahl $x=x_0 + ty$, $y\in\mathbb{R}^n$ fest, $\vert y \vert = 1$, $t\in\mathbb{R}$.
 		\begin{align*}
@@ -113,3 +160,19 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 
 \smiley{} Vielleicht hatten Sie eine andere Vorstellung von "'anschmiegen"', aber wir machen hier 
 Mathematik \smiley{}
+
+\begin{proposition}[Rechenregeln für \person{Landau}-Symbole]
+	Für $r_k,\tilde{r_l},R_l:D\subset K^n\to K^m,x_0\in D,k,l\in\natur$ mit \\
+	$r_k(x)=o(\vert x-x_0\vert^k),\tilde{r_k}=o(\vert x-x_0\vert^l),R_l(x)=O(\vert x-x_0\vert ^l),x\to x_0$
+	\begin{enumerate}[label={\alph*)}]
+		\item $r_k(x)=o(\vert x-x_0\vert^j)=O(\vert x-x_0\vert^j)\quad j\le k$ \\
+		$R_l(x)=o(\vert x-x_0\vert^j)=O(\vert x-x_0\vert^j)\quad j<l$
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=o(\vert x-x_0\vert^{k-j})\quad j\le k$ \\
+		$\frac{R_l(x)}{\vert x-x_0\vert^j}=O(\vert x-x_0\vert^{l-j})=o(\vert x-x_0\vert^{l-j-1})\quad j\le l$
+		\item $r_k(x)\pm \tilde{r_l}(x)=o(\vert x-x_0\vert ^k)\quad k\le l$
+		\item $r_k(x)\cdot \tilde{r_l}(x)=o(\vert x-x_0\vert^{k+l}),r_k(x)\cdot R_l(x)=o(\vert x-x_0\vert^{k+l})$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
