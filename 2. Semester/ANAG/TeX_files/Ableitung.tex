@@ -16,6 +16,26 @@
 	\end{align}
 \end{*definition}
 
+\begin{*anmerkung}
+	Eine andere Erklärung der oben stehenden Definition wäre folgende: \\
+	Eine Funktion $f$ ist genau dann differenzierbar an der Stelle $x_0$, wenn eine reelle Zahl $m$ (die von $x_0$ abhängen darf) und eine (ebenfalls von $x_0$ abhängige) Funktion $r$ (Fehler der Approximation) mit folgenden Eigenschaften existieren:
+	\begin{itemize}
+		\item $f(x_0+h)=f(x_0)+m\cdot h+r(h)$
+		\item Für $h\to 0$ geht $r(h)$ schneller als linear gegen 0, d.h. $\frac{r(h)}{h}\to 0$ für $h\to 0$
+	\end{itemize}
+	Die Funktion $f$ lässt sich also in der Nähe von $x_0$ durch eine lineare Funktion $g$ mit $g(x_0+h)=f(x_0)+m\cdot h$ bis auf den Fehler $r(h)$ approximieren. Den Wert $m$ bezeichnet man als Ableitung von $f$ an der Stelle $x_0$.
+	
+	\begin{center}\includegraphics[width=0.4\textwidth]{pictures/diff-definition.png}\end{center} %70% der Textbreite%TODO: Bild selber machen
+\end{*anmerkung}
+
+\begin{*anmerkung}
+	Neben der oben genannten Definition gibt es noch eine weitere Definition, die sich des Differentialquotienten bedient:
+	\begin{align}
+		f\text{ differentierbar in }x_0 \iff \lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}= \lim\limits_{h\to 0}\frac{f(x_0+h)-f(x_0)}{h}\text{ exisitiiert}\notag
+	\end{align}
+	Diese Definition lässt sich im Kontext komplexer oder mehrdimensionaler Funktionen nicht anwenden, zudem sind Beweise wegen des Quotienten leichter zu führen.
+\end{*anmerkung}
+
 \begin{*remark}
 	Affin lineare Abbildung $\tilde{A}(x) := f(x_0) + f'(x_0)\cdot(x-x_0)$ approximiert die Funktion $f$ in der Nähe von $x_0$ und heißt \begriff{Linearisierung} von $f$ in $x_0$ (man nennt \propref{definition_ableitung} auch Approximation 1. Ordnung von $f$ in der Nähe von $x_0$).
 \end{*remark}

@@ -47,7 +47,11 @@ Eine \begriff{lineare Abbildung} ist homogen und additiv (siehe \propref{defLine
 \subsection{\textsc{Landau}-Symbole}
 
 \begin{*anmerkung}
-	Eine Approximation besitzt zwangsläufig immer einen Fehler. Eine gute Approximation zeichnet sich dadurch aus, dass der Fehler bzw. Rest möglichst klein wird. Dieser Fehler wird mit \person{Landau}-Symbolen beschrieben.
+	Eine Approximation besitzt zwangsläufig immer einen Fehler. Eine gute Approximation zeichnet sich dadurch aus, dass der Fehler bzw. Rest möglichst klein wird. Dieser Fehler wird mit \person{Landau}-Symbolen beschrieben. Dabei bedeutet anschaulich:
+	\begin{itemize}
+		\item $f=o(g)$: $f$ wächst langsamer als $g$
+		\item $f=\mathcal{O}(g)$: $f$ wächst nicht wesentlich schneller als $g$
+	\end{itemize}
 \end{*anmerkung}
 
 Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Dann:
@@ -76,9 +80,9 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		]
 		\addplot+[mark=none] {x^2};
 		\addlegendentry{$f$}
-		\addplot+[mark=none] {2};
+		\addplot+[mark=none] {sqrt(2)};
 		\addlegendentry{Apprx}
-		\addplot+[mark=none, dashed] {x^2-2};
+		\addplot+[mark=none, dashed] {x^2-sqrt(2)};
 		\addlegendentry{$r$}
 		\end{axis}
 		\end{tikzpicture}\end{center}
@@ -106,51 +110,27 @@ Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Da
 		\proplbl{chap15meaningSpecialCase} f(x) = \underbrace{f(x_0)+A(x-x_0)}_{\tilde{f}\text{ affin lineare Funktion}} + o(\vert x-x_0\vert),\;x\to x_0?		
 	\end{align}
 	
-	\begin{*anmerkung}
-		Wie sollte ein guter Rest sein? \\
+		\begin{boldenvironment}[Zentrale Frage]
+			Wie sollte ein guter Rest sein?
+		\end{boldenvironment}
 		$\graph\tilde{f}$ ist die $n$-dimensionale Ebene in $K^{n+m}$ (affin-lin. UR) \\
 		$\graph f$ sollte sich an diese Ebene anschmiegen ($\graph\tilde{f}=$Tangentialebene) \\
 		$\Rightarrow$ Rest sollte sich an den Grafen der Nullfunktion anschmiegen \\
-		Sei $\proplbl{eqvanschmiegen}g(t)=\sup\limits_{\vert x-x_0\vert \le t}\vert r(x)\vert\Rightarrow \vert r(x)\vert\le g(\vert x-x_0\vert)\quad\forall x$ \\
+		\\
+		Sei
+		\begin{align}
+			\proplbl{eqvanschmiegen}g(t)=\sup\limits_{\vert x-x_0\vert \le t}\vert r(x)\vert\Rightarrow \vert r(x)\vert\le g(\vert x-x_0\vert)\quad\forall x
+		\end{align}
 		anschmiegen: $g(t)=o(1),t\to 0$ nicht ausreichend \\
 		angenommen $g(t)=o(t),t\to 0$: dann ist für ein festes $v\in K^n$ mit $\Vert v\Vert=1$
 		\begin{align}
 			\vert r(x_0+tv)\vert\le g(t) &\Rightarrow\frac{\vert r(x_0+tv)-r(x_0)\vert}{t}\le \frac{g(t)}{t}\to 0 \notag\\
-			&\Rightarrow\text{anschmiegen}
+			&\Rightarrow\text{anschmiegen}\notag
 		\end{align}
-		Wegen (\propref{eqvanschmiegen}) folgt: $\frac{\vert r(x)\vert}{\vert x-x_0\vert}\le \frac{g(\vert x-x_0\vert)}{\vert x-x_=\vert}\to 0$ \\
+		Wegen \propref{eqvanschmiegen} folgt: $\frac{\vert r(x)\vert}{\vert x-x_0\vert}\le \frac{g(\vert x-x_0\vert)}{\vert x-x_=\vert}\to 0$ \\
 		$\Rightarrow r(x)=o(\vert x-x_0\vert)$ für $x\to x_0=o(1)\vert x-x_0\vert$ \\
-		$\Rightarrow$ betrachte $\tilde f$ als gute lin. Approx. von $f$ nahe $x=x_0$ falls Fehler $=f(x)-(f(x_0)-A(x-x_0))=o(\vert x-x_0\vert)$ für $x\to x_0$ \\
-		man sagt: Fehler wird schneller kleiner als $\vert x-x_0\vert$! $\tilde f$ heißt Approx. 1. Ordnung con $f$ in $x_0$
-		\end{*anmerkung}
-	
-	\begin{enumerate}[label={\alph*)}]
-		\item Betrachte $f$ auf Strahl $x=x_0 + ty$, $y\in\mathbb{R}^n$ fest, $\vert y \vert = 1$, $t\in\mathbb{R}$.
-		\begin{align*}
-			\text{\propref{chap15meaningSpecialCase}} \Rightarrow\;& 0 = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x) - f(x_0)\vert}{\vert x - x_0\vert} = \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x_0 + ty) - f(x_0) \vert}{\vert t \vert}
-		\end{align*}
-		
-		\item \zeroAmsmathAlignVSpaces[\dimexpr -\baselineskip - \parskip\relax]
-		\begin{flalign*}
-			\text{\propref{chap15meaningSpecialCase}} \;\Rightarrow\;& f(x) = f(x_0) + \underbrace{\frac{o(\vert x - x_0\vert)}{\vert x - x_0\vert}}_{=o(1)} \cdot \vert x - x_0\vert, \;x\to \infty& \\
-			\Rightarrow\;& f(x) = f(x) + \underbrace{o(1)}_{\mathclap{\text{anstatt }r(x)\text{ gemäß (\ref{chap15interpretationSpecialCase})}}}\cdot \vert x-x_0\vert, \;x\to x_0 &\\
-			\Rightarrow\;& f(x) = f(x_0) + r(x) \cdot \vert x - x_0\vert &\\
-			\Rightarrow\;& \vert f(x) - f(x_0)\vert \le \rho(t) \cdot \vert x - x_0\vert,&\\
-			& \rho(t) := \sup\limits_{\vert x - x_0\vert \le t} \vert r(x)\vert \xrightarrow{t\to\infty} 0
-		\end{flalign*}
-		Der Graph von $f$ liegt in der Nähe von $x_0$ in immer flacheren, kegelförmigen Mengen\\
-		$\Rightarrow$ Graph "`schmiegt sich"' an eine horizontale Ebene an den Punkt $(x_0, f(x_0))$ an.
-	\end{enumerate}
-		
-		\begin{boldenvironment}[Beobachtung]
-			horizontale Ebene ist Graph einer affin linearen Funktion $\tilde{A}: \mathbb{R}^n\to\mathbb{R}^n$, daher
-		\end{boldenvironment}
-		\begin{boldenvironment}[Zentrale Frage]
-			Existiert zu gesuchter Funktion $f: D\subset\mathbb{R}^n \to K^m$, $x_0\in\mathbb{R}$ eine affin lineare Funktion $\tilde{A}:K^n\to K^m$, sodass sich in der Nähe von $x_0$ der Graph von $f$ an den Graph von $\tilde{A}$ "`anschmiegt"'?
-		\end{boldenvironment}
-		\begin{boldenvironment}[Antwort]
-			Ja, wegen $f(x_0) = \tilde{A}(x_0)$ folgt $\tilde{A}(x) = A(x-x_0) + f(x_0)$. 
-		\end{boldenvironment}
+		$\Rightarrow$ betrachte $\tilde f$ als gute lineare Approximation von $f$ nahe $x=x_0$ falls Fehler $=f(x)-(f(x_0)-A(x-x_0))=o(\vert x-x_0\vert)$ für $x\to x_0$ \\
+		man sagt: Fehler wird schneller kleiner als $\vert x-x_0\vert$! $\tilde f$ heißt Approximation 1. Ordnung von $f$ in $x_0$
 \end{example}
 
 \begin{*definition}[Anschmiegen]
@@ -164,15 +144,24 @@ Mathematik \smiley{}
 \begin{proposition}[Rechenregeln für \person{Landau}-Symbole]
 	Für $r_k,\tilde{r_l},R_l:D\subset K^n\to K^m,x_0\in D,k,l\in\natur$ mit \\
 	$r_k(x)=o(\vert x-x_0\vert^k),\tilde{r_k}=o(\vert x-x_0\vert^l),R_l(x)=O(\vert x-x_0\vert ^l),x\to x_0$
-	\begin{enumerate}[label={\alph*)}]
-		\item $r_k(x)=o(\vert x-x_0\vert^j)=O(\vert x-x_0\vert^j)\quad j\le k$ \\
-		$R_l(x)=o(\vert x-x_0\vert^j)=O(\vert x-x_0\vert^j)\quad j<l$
+	\begin{enumerate}
+		\item $r_k(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j\le k$ \\
+		$R_l(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j<l$
 		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=o(\vert x-x_0\vert^{k-j})\quad j\le k$ \\
-		$\frac{R_l(x)}{\vert x-x_0\vert^j}=O(\vert x-x_0\vert^{l-j})=o(\vert x-x_0\vert^{l-j-1})\quad j\le l$
+		$\frac{R_l(x)}{\vert x-x_0\vert^j}=\mathcal{O}(\vert x-x_0\vert^{l-j})=o(\vert x-x_0\vert^{l-j-1})\quad j\le l$
 		\item $r_k(x)\pm \tilde{r_l}(x)=o(\vert x-x_0\vert ^k)\quad k\le l$
 		\item $r_k(x)\cdot \tilde{r_l}(x)=o(\vert x-x_0\vert^{k+l}),r_k(x)\cdot R_l(x)=o(\vert x-x_0\vert^{k+l})$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	
+	Sei $\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\le c$ nahe $x_0$, d.h. auf $(B_{\delta}(x_0)\backslash\{x_0\})\cap D$ für ein $\delta>0$
+	\begin{enumerate}
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=\frac{r_k(x)}{\vert x-x_0\vert^k}\vert x-x_0\vert^{k-j}\to 0$, folgl. $\frac{r_k(x)}{\vert x-x_0\vert^{\delta}}$ auch beschränkt nahe $x_0$ \\
+		$\frac{R_l(x)}{\vert  x-x_0\vert^j}=\frac{R_l(x)}{\vert x-x_0\vert^l}\vert x-x_0\vert^{l-j}\to 0$, Rest wie oben
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{k-j}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\to 0$ \\
+		$\frac{R_l(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{l-j}}=\frac{R_l(x)}{\vert x-x_0\vert^l}\le c$ nahe $x_0$, Rest wie oben
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^k}\pm\frac{\tilde{r_l}(x)}{\vert x-x_0\vert^k}\overset{(2)}{=}o(1)\pm\underbrace{o(\vert x-x_0\vert^{l-k})}_{o(1)}\to 0$
+		\item $\frac{r_k(x)\cdot \tilde{r_l}(x)}{\vert x-x_0\vert^{k+l}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\cdot\frac{\tilde{r_l}(x)}{\vert x-x_0\vert^l}\to 0$ \\
+		$\frac{\vert r_k(x)\cdot R_l(x)\vert}{\vert x-x_0\vert^{k+l}}=\frac{\vert r_k(x)\vert}{\vert x-x_0\vert^k}\cdot\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\to 0$
+	\end{enumerate}
 \end{proof}
