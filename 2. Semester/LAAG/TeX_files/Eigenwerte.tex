@@ -1,0 +1,38 @@
+In diesem Kapitel seien $K$ ein Körper, $n\in\natur$ eine natürliche Zahl, $V$ ein $n$-dimensionaler $K$-VR und $f\in\End_K(V)$ ein Endomorphismus.
+
+Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Basen zu finden, für die $M_B(f)$ eine besonders einfache oder kanonische Form hat.
+
+\section{Eigenwerte}
+
+\begin{remark}
+	Wir erinnern uns daran, dass $\End_K(V)=\Hom_K(V,V)$ sowohl einen $K$-VR als auch einen Ring bildet. Bei der Wahl einer Basis $B$ von $V$ wird $f\in\End_K(V)$ durch die Matrix $M_B(f)=M_B^B(f)$ beschrieben.	
+\end{remark}
+
+\begin{example}
+	$K=\real, A=\begin{pmatrix}1&2\\2&1\end{pmatrix}\in\Mat_2(\real),f=f_A\in\End_K(K^2)$ \\
+	\begin{align}
+		A\cdot \begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}3\\3\end{pmatrix},\;A\cdot\begin{pmatrix} 1\\-1\end{pmatrix}=\begin{pmatrix}-1\\1\end{pmatrix}\notag
+	\end{align}
+	$\Rightarrow$ mit $B=\left( \begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}\right)$ ist $M_B(f)=\begin{pmatrix}3&0\\0&-1\end{pmatrix}$.
+	
+	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{pmatrix}1\\1\end{pmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{pmatrix}1\\-1\end{pmatrix}$
+\end{example}
+
+\begin{definition}[Eigenwert, Eigenvektor, Eigenraum]
+	Sind $0\neq x\in V$ und $\lambda\in K$ mit $f(x)=\lambda x$ so nennt man $\lambda$ einen \begriff{Eigenwert} von $f$ und $x$ einen \begriff{Eigenvektor} von $f$ zum Eigenwert $\lambda$. Der \begriff{Eigenraum} zu $\lambda\in K$ ist $\Eig (f,\lambda)=\{x\in V\mid f(x)=\lambda x\}$.
+\end{definition}
+
+\begin{remark}
+	Für jedes $\lambda\in K$ ist $\Eig (f,\lambda)$ ein UVR von $V$, da
+	\begin{align}
+		\Eig (f,\lambda) &= \{x\in V\mid f(x)=\lambda x\} \notag \\
+		&= \{x\in V\mid f(x)-\lambda\cdot\id_V(x)=0\} \notag \\
+		&= \{x\in V\mid (f-\lambda\cdot\id_V)(x)=0\} \notag \\
+		&= \Ker (f-\lambda\cdot\id_V) \notag
+	\end{align}
+	und $f-\lambda\cdot\id_V\in\End_K(V)$.
+\end{remark}
+
+\begin{remark}
+	Achtung! Der Nullvektor ist nach Definition kein Eigenvektor, aber $\lambda=0$ kann ein Eigenwert sein, nämlich genau dann, wenn $f\notin\Aut_K(V)$, siehe Übung. Die Menge der Eigenvektoren zu $\lambda$ ist also $\Eig (f,\lambda)\backslash\{0\}$ und $\lambda$ ist genau dann ein Eigenwert von $f$, wenn $\Eig (f,\lambda)\neq\{0\}$.
+\end{remark}
