@@ -2,7 +2,7 @@
 \proplbl{section_ableitung}
 
 \begin{*definition}[differenzierbar, Ableitung]
-	Sei $f: D\subset K^n \to K^m$, $D$ offen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in L(K^n, K^m)$ gibt mit \begin{align}
+	Sei $f: D\subset \mathbb{R}^n \to K^m$, $D$ offen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in L(K^n, K^m)$ gibt mit \begin{align}
 		\proplbl{definition_ableitung}
 		\Aboxed{f(x) &= f(x_0) + A(x-x_0) + o(\vert x-x_0 \vert), x\to x_0}
 	\end{align}
@@ -12,7 +12,7 @@
 	Andere Schreibweisen: $\frac{\partial f}{\partial x}(x_0), \left.\frac{\partial f(x)}{\partial x}\right|_{x=x_0}, \mathrm{d}f(x_0), \dotsc$
 	
 	Somit ist \propref{definition_ableitung} gleichwertig mit \begin{align}
-		\proplbl{definition_ableitung_zwei_stern}\Aboxed{f(x) &= f(x_0) + f'(x_0) \cdot (x - x_0) + o(\vert x - x_0\vert), \text{ für } x\to x_0}\notag
+		\proplbl{definition_ableitung_zwei_stern}\Aboxed{f(x) &= f(x_0) + f'(x_0) \cdot (x - x_0) + o(x - x_0), \text{ für } x\to x_0}
 	\end{align}
 \end{*definition}
 
@@ -33,25 +33,25 @@
 	\begin{align}
 		f\text{ differentierbar in }x_0 \iff \lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}= \lim\limits_{h\to 0}\frac{f(x_0+h)-f(x_0)}{h}\text{ exisitiiert}\notag
 	\end{align}
-	Diese Definition lässt sich im Kontext komplexer oder mehrdimensionaler Funktionen nicht anwenden, zudem sind Beweise wegen des Quotienten schwerer zu führen.
+	Diese Definition lässt sich im Kontext komplexer oder mehrdimensionaler Funktionen nicht anwenden, zudem sind Beweise wegen des Quotienten leichter zu führen.
 \end{*anmerkung}
 
 \begin{*remark}
-	Affin lineare Abbildung $\tilde{f}(x) := f(x_0) + f'(x_0)\cdot(x-x_0)$ approximiert die Funktion $f$ in der Nähe von $x_0$ und heißt \begriff{Linearisierung} von $f$ in $x_0$ (man nennt \propref{definition_ableitung} auch Approximation 1. Ordnung von $f$ in der Nähe von $x_0$).
+	Affin lineare Abbildung $\tilde{A}(x) := f(x_0) + f'(x_0)\cdot(x-x_0)$ approximiert die Funktion $f$ in der Nähe von $x_0$ und heißt \begriff{Linearisierung} von $f$ in $x_0$ (man nennt \propref{definition_ableitung} auch Approximation 1. Ordnung von $f$ in der Nähe von $x_0$).
 \end{*remark}
 
-\begin{conclusion}
+\begin{proposition}
 	\proplbl{definition_ableitung_proposition}
 	Sei $f:D\subset K^n\to K^m$, $D$ offen. Dann: \\
 	$f$ ist differenzierbar in $x_0\in D$ mit Ableitung $f'(x_0) \in L(K^n, K^m)$ \gls{gdw} eine der folgenden Bedingungen erfüllt ist:
 	\begin{enumerate}[label={\alph*)},mode=unboxed]
-		\item \label{satz_equivalenz_ableitungen_a} \itemEq{f(x) &= f(x_0) + f'(x_0) \cdot (x-x_0) + r(x) \quad \forall x\in D}
+		\item \label{satz_equivalenz_ableitungen_a} \itemEq{\proplbl{definition_ableitung_eins}f(x) &= f(x_0) + f'(x_0) \cdot (x-x_0) + r(x) \quad \forall x\in D}
 		für ein $r: D\to K^m$ mit $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r(x)}{\vert x - x_0 \vert} = 0$
-		\item \proplbl{satz_equivalenz_ableitungen_b} $f(x) =f(x_0) + f'(x_0) \cdot (x-x_0) + R(x) (x-x_0)\quad\forall x\in D\proplbl{definition_ableitung_zwei}$\\
-		für ein $R:D \to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} R(x) = 0$ (d.h. Matrizen $R(x) \xrightarrow{x\to x_0}$ Nullmatrix in $K^{m\times n}$) 
-		\item \proplbl{definition_ableitung_drei} \label{satz_equivalenz_ableitungen_c} $f(x) = f(x_0) + Q(x) (x - x_0) \quad \forall x\in D$\\ für ein $Q:D\to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} Q(x) = f'(x_0)$ (d.h. Matrizen $Q(x) \xrightarrow{x\to x_0}$ Matrix $f'(x_0)$ in $K^{m\times n}$)
+		\item \proplbl{satz_equivalenz_ableitungen_b} \itemEq{f(x) =f(x_0) + f'(x_0) \cdot (x-x_0) + R(x) (x-x_0)\quad\forall x\in D\proplbl{definition_ableitung_zwei}}
+		für ein $R:D \to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} R(x) = 0$ (d.h. Matrizen $R(x) \xrightarrow{x\to x_0}$ Nullmatrix in $K^{m\times n}$)
+		\item \label{satz_equivalenz_ableitungen_c} \itemEq{\proplbl{definition_ableitung_drei}f(x) = f(x_0) + Q(x) (x - x_0) \quad \forall x\in D} für ein $Q:D\to L(K^n, K^m)$ ($\cong K^{m\times n}$) mit $\lim\limits_{x\to x_0} Q(x) = f'(x_0)$ (d.h. Matrizen $Q(x) \xrightarrow{x\to x_0}$ Matrix $f'(x_0)$ in $K^{m\times n}$)
 	\end{enumerate}
-\end{conclusion}
+\end{proposition}
 
 \begin{*remark}
 	Es gilt:
@@ -90,15 +90,6 @@
 	\end{itemize}
 \end{proof}
 
-\begin{*definition}[stetig differenzierbar]
-	Funktion $f$ heißt \begriff[stetig!]{stetig differenzierbar} bzw. \begriff{$C^1$-Funktion} auf $D$ falls $f'$ stetig auf $D$ \\
-	$C^1(D,K^m):=\{f:D\to K^m\mid f\text{ stetig differenzierbar auf } D\}$, kurz $C^1(D)$
-\end{*definition}
-
-\begin{hint}
-	Die obige Definition ist allgemein in normierten Räumen verwendbar. In der Literatur: statt differenzierbar $\to$ total differenzierbar
-\end{hint}
-
 \begin{proposition}
 	\proplbl{diffbar_impl_stetig}
 	Sei $f:D\subset K^n \to K^m$, $D$ offen, differenzierbar in $x_0\in D$. Dann:
@@ -110,12 +101,12 @@
 
 \begin{proof}
 	\NoEndMark \hspace*{0pt}
-	\begin{enumerate}
-		\item \propref{definition_ableitung} liefert \begin{align*}
+	\begin{enumerate}[label={zu \arabic*)},topsep=-5pt,leftmargin=\widthof{\ zu\ a)\ :\ }]
+		\item \propref{definition_ableitung_zwei} liefert \begin{align*}
 			& \lim\limits_{x\to x_0} f(x) = \lim\limits_{x\to x_0} \left( f(x_0) + f'(x_0) \cdot \underbrace{(x - x_0)}_{=0} + R(x) \underbrace{(x - x_0)}_{=0} \right) = f(x_0) \\
 			\Rightarrow & \text{ Behauptung}
 		\end{align*}
-		\item Angenommen, $A_1, A_2\in L(K^n, K^m)$ sind Ableitungen von $f$ in $x_0$. Seien $R_1, R_2$ die zugehörigen Terme in \propref{definition_ableitung}. Dann gilt für $x=x_0 + ty \;\forall y\in K^n, t\in \mathbb{R}$:
+		\item Angenommen, $A_1, A_2\in L(K^n, K^m)$ sind Ableitungen von $f$ in $x_0$. Seien $R_1, R_2$ die zugehörigen Terme in \propref{definition_ableitung_zwei}. Dann gilt für $x=x_0 + ty \;\forall y\in K^n, t\in \mathbb{R}$:
 		\vspace*{2mm} \ \\
 		\renewcommand{\arraystretch}{1.2}
 		\begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }X}
@@ -136,16 +127,16 @@
 	$f'(x_0)\in \mathbb{R}^{1\times n}$ ist Zeilenvektor, $f'(x_0)$ betrachtet als Vektor im $\mathbb{R}^n$ auch \begriff{Gradient} genannt.
 	
 	Offenbar gilt $f'(x_0)\cdot y = \langle f'(x_0), y\rangle\;\forall y\in\mathbb{R}^n$ (Matrizenmultiplikation = Skalarprodukt) \\
-	$\Rightarrow$ \propref{definition_ableitung} hat die Form \begin{align}
+	$\Rightarrow$ \propref{definition_ableitung_zwei} hat die Form \begin{align}
 		\proplbl{spezialfall_ableitung_m1}
-		f(x) = \underbrace{f(x_0) + \langle f'(x_0), x - x_0\rangle}_{\mathclap{\text{affin lineare Funktion: }\tilde{f}: \mathbb{R}\to \mathbb{R} \,(\text{in }x)}} + o\big( \vert x - x_0\vert \big)
+		f(x) = \underbrace{f(x_0) + \langle f'(x_0), x - x_0\rangle}_{\mathclap{\text{affin lineare Funktion: }\tilde{A}: \mathbb{R}\to \mathbb{R} \,(\text{in }x)}} + o\big( \vert x - x_0\vert \big)
 	\end{align}
 	Graph von $f$ ist Fläche im $\mathbb{R}^{n\times 1}$, genannt \begriff{Tangentialebene} vom Graphen von $f$ in $\big(x_0, f(x_0)\big)$.
 	
 	\item \proplbl{spezialfall_ableitung_n1} \uline{$n=1\negthickspace: f\negthickspace: D\subset \mathbb{R}\to \mathbb{R}^n$}\ \ (z.B. $D=(a,b)$)\\[0.6ex]
-	$f$ (bzw.  Bild $f[D]$) ist Kurve im $\mathbb{R}^n$ ($\cong \mathbb{R}^{m\times 1}$). \propref{definition_ableitung} kann man schreiben als \begin{align}
-		f(x_0 + t) = \underbrace{f(x_0) + t\cdot f'(x_0)}_{\mathclap{\text{Affin lineare Abb. }\tilde{f}:\mathbb{R}\to \mathbb{R}^m \text{ (in $t$)}}} + o(t), t\to 0, t\in\mathbb{R}
-	\end{align}
+	$f$ (bzw.  Bild $f[D]$) ist Kurve im $\mathbb{R}^n$ ($\cong \mathbb{R}^{m\times 1}$). \propref{definition_ableitung_zwei} kann man schreiben als \begin{align*}
+		f(x_0 + t) = \underbrace{f(x_0) + t\cdot f'(x_0)}_{\mathclap{\text{Affin lineare Abb. }\tilde{A}:\mathbb{R}\to \mathbb{R}^m \text{ (in $t$)}}} + o(t), t\to 0, t\in\mathbb{R}
+	\end{align*}
 	\zeroAmsmathAlignVSpaces
 	\begin{alignat}{2}
 		\notag &\Leftrightarrow\quad& \underbrace{\frac{f(x_0 + t) - f(x_0)}{t}}_{\mathclap{\text{\begriff{Differenzenquotient} von $f$ in $x_0$}}} &= f'(x_0) + o(1), t\to 0 \\
@@ -171,7 +162,7 @@
 \vspace*{1.5
 	em}
 
-\begin{proposition}[Differentialquotient für $n=1$]
+\begin{conclusion}
 	Sei $f:D\subset K\to K^n$, $D$ offen. Dann:
 	\begin{align}
 		\notag& \text{$f$ ist differenzierbar in $x_0\in D$ mit Ableitung $f'(x_0)\in L(K, K^m)$} \\
@@ -180,7 +171,7 @@
 		\notag 
 		& \text{alternativ: } \lim\limits_{x\to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
 	\end{align}
-\end{proposition}
+\end{conclusion}
 
 \subsection{Einfache Beispiele für Ableitungen}
 \begin{example}[affin lineare Funktionen]
@@ -198,8 +189,7 @@
 	\begin{align*}
 		\xRightarrow{(\ref{definition_ableitung})}\;\; \text{$f$ ist  \gls{diffbar} in $x_0$ mit } f'(x_0) = A
 	\end{align*}
-	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$ \\
-	Offenbar $x\to f(x)=A$ stetig auf $K^n$, d.h. $f\in C^1(K^n)$
+	Insbesondere gilt für konstante Funktionen $f'(x_0) = 0$
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
 		xmin=-5, xmax=5, xlabel=$x$,
