@@ -1,0 +1,62 @@
+\section{Diagonalisierbarkeit}
+
+\begin{definition}[diagonalisierbar]
+	Man nennt $f$ \begriff{diagonalisierbar}, wenn $V$ eine Basis $B$ besitzt, für die $M_B(f)$ eine Diagonalmatrix ist.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{lemma_diag_summe_eig}
+	Genau dann ist $f$ diagonalisierbar, wenn
+	\begin{align}
+		V=\sum\limits_{\lambda\in K} \Eig(f,\lambda) \notag
+	\end{align}.
+\end{lemma}
+\begin{proof}
+	$(\Rightarrow)$: Ist $B$ eine Basis aus EV von $f$ (vgl. \propref{satz_diagonal_ev}), so ist $B\le \bigcup\limits_{\lambda\in K}\Eig(f,\lambda)$, also $V=\Span_K(\bigcup\limits_{\lambda\in K}\Eig(f, \lambda))=\sum\limits_{\lambda\in K}\Eig(f,\lambda)$. \\
+	$(\Leftarrow)$: Ist $V=\sum\limits_{\lambda\in K}\Eig(f,\lambda)$, so gibt es $\lambda_1,...,\lambda_n \in K$ mit $V=\sum\limits_{i=1}^r \Eig(f,\lambda_i)$. Wir wählen Basen $B_i$ von $\Eig(f,\lambda_i)$. Dann ist $\bigcup\limits_{i=1}^r B_i$ ein endliches Erzeugendensystem von $V$, enthält also eine Basis von $V$ (II.3.6). Diese besteht aus EV von $f$. %TODO: Verlinkung
+\end{proof}
+
+\begin{proposition}
+	Ist $\dim_K(V)=n$, so hat $f$ höchstens $n$ Eigenwerte. Hat $f$ genau $n$ Eigenwerte, so ist $f$ diagonalisierbar.
+\end{proposition}
+\begin{proof}
+	Ist $\lambda$ ein EW von $f$, so ist $\dim_K(\Eig(f,\lambda))\ge 1$. Sind also $\lambda_1,...,\lambda_n$ paarweise verschiedene EW von $f$, so ist
+	\begin{align}
+		n=\dim_K(V)&\ge \dim_K\left( \sum\limits_{i=1}^m \Eig(f,\lambda_i)\right) \notag \\
+		&\overset{\propref{satz_eig_direkte_summe}}{=} \dim_K\left( \oplus \Eig(f,\lambda_i)\right) \notag \\
+		&= \sum\limits_{i=1}^m \dim_K(\Eig(f,\lambda_i)) \notag \\
+		&\ge m \notag
+	\end{align}
+	Ist zudem $m=n$, so muss 
+	\begin{align}
+		\dim_K(V) &= \dim_K(\sum\limits_{i=1}^m \Eig(f,\lambda_i))\text{ sein, also }\notag \\
+		V&= \sum\limits_{i=1}^m \Eig(f,\lambda_i) \notag
+	\end{align}
+	Nach \propref{lemma_diag_summe_eig} ist $f$ genau dann diagonalisierbar.
+\end{proof}
+
+\begin{definition}[$a$ teilt $b$]
+	Sei $R$ ein kommutativer Ring mit seien $a,b\in R$. Man sagt, $a$ \begriff{teilt} $b$ (in Zeichen $a\vert b$), wenn es $x\in R$ mit $b=ax$ gibt.
+\end{definition}
+
+\begin{definition}[Vielfachheit]
+	Für $0\neq P\in K[t]$ und $\lambda\in K$ nennt man $\mu(P,\lambda)=\max\{r\in \natur_{>0}\mid (t-r)^r\vert P\}$ die \begriff{Vielfachheit} der Nullstelle $\lambda$ von $P$.
+\end{definition}
+
+\begin{lemma}
+	Genau dann ist $\mu(P,\lambda)\ge 1$, wenn $\lambda$ eine Nullstelle von $P$ ist.
+\end{lemma}
+\begin{proof}
+	$(\Rightarrow)$: $t-\lambda\vert P\Rightarrow P(t)=(t-\lambda)\cdot Q(t)$ mit $Q(t)\in K[t]\Rightarrow P(\lambda)=0\cdot Q(\lambda)=0$. \\
+	$(\Leftarrow)$: $P(\lambda)=0\overset{I.6.9}{=}t-\lambda\vert P(t)\Rightarrow \mu(P,\lambda)\ge 1$.
+	%TODO: Verlinkung
+\end{proof}
+
+\begin{lemma}
+	Ist $P(t)=(t-\lambda)^r\cdot Q(t)$ mit $Q(t)\in K[t]$ und $Q(\lambda)\neq 0$, so ist $\mu(P,\lambda)=r$
+\end{lemma}
+\begin{proof}
+	Offensichtlich ist $\mu(P,\lambda)\ge r$. Wäre $\mu(P,\lambda)\ge r+l$, so $(t-\lambda)^{r+l}\vert P(t)$ also $(t-\lambda)^r\cdot Q(t)=(t-\lambda)^{r^+l}\cdot R(t)$ mit $R(t)\in K[t]$, folglich $t-\lambda\vert Q(t)$, insbesondere $Q(\lambda)=0$. \\
+	(Denn wir dürfen kürzen: $R$ ist Nullteilerfrei, genau so wie $K[t]$). \\
+	$(t-\lambda)^r(Q(t)-(t-\lambda)R(t))=0\Rightarrow Q(t)=(t-\lambda)R(t)$.
+\end{proof}
