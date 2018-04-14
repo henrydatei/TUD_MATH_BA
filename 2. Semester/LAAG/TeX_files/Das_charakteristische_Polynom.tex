@@ -9,7 +9,7 @@
 \end{proof}
 
 \begin{definition}[charakteristisches Polynom]
-	Das \begriff{charakteristische Polynom} einer Matrix $A\in\Mat_n(K)$ ist die Determinante der Matrix $t\cdot 1_n-A\in\Mat_n(K[t])$. 
+	Das \begriff{charakteristische Polynom} einer Matrix $A\in\Mat_n(K)$ ist die Determinante der Matrix $t\cdot \mathbbm{1}_n-A\in\Mat_n(K[t])$. 
 	\begin{align}
 		\chi_A(t)&=\det(t\cdot 1_n-A)\in K[t] \notag
 	\end{align}
@@ -20,7 +20,7 @@
 	Sind $A,B\in\Mat_n(K)$ mit $A\sim B$, so ist $\chi_A=\chi_B$. Insbesondere ist $\chi_f$ wohldefiniert.
 \end{proposition}
 \begin{proof}
-	Ist $B=SAS^{-1}$ mit $S\in\GL_n(K)$, so ist $t\cdot 1_n-B = S(t\cdot 1_n-A)S^{-1}$, also $t\cdot 1_n-B\sim t\cdot 1_n-A$ und ähnliche Matrizen haben die selben Determinante (IV.4.4). \\
+	Ist $B=SAS^{-1}$ mit $S\in\GL_n(K)$, so ist $t\cdot \mathbbm{1}_n-B = S(t\cdot \mathbbm{1}_n-A)S^{-1}$, also $t\cdot 1_n-B\sim t\cdot 1_n-A$ und ähnliche Matrizen haben die selben Determinante (IV.4.4). \\
 	Sind $B,B'$ Basen von $V$, so sind $M_B(f)\sim M_{B'}(f)$, also $\chi_{M_B(f)}=\chi_{M_{B'}(f)}$ %TODO: Verlinkung setzen
 \end{proof}
 
