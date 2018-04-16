@@ -11,7 +11,7 @@
 \begin{definition}[charakteristisches Polynom]
 	Das \begriff{charakteristische Polynom} einer Matrix $A\in\Mat_n(K)$ ist die Determinante der Matrix $t\cdot \mathbbm{1}_n-A\in\Mat_n(K[t])$. 
 	\begin{align}
-		\chi_A(t)&=\det(t\cdot 1_n-A)\in K[t] \notag
+		\chi_A(t)&=\det(t\cdot \mathbbm{1}_n-A)\in K[t] \notag
 	\end{align}
 	Das charakteristische Polynom eines Endomorphismus $f\in\End_K(V)$ ist $\chi_f(t)=\chi_{M_B(f)}(t)$, wobei $B$ eine Basis von $V$ ist.
 \end{definition}
@@ -20,7 +20,7 @@
 	Sind $A,B\in\Mat_n(K)$ mit $A\sim B$, so ist $\chi_A=\chi_B$. Insbesondere ist $\chi_f$ wohldefiniert.
 \end{proposition}
 \begin{proof}
-	Ist $B=SAS^{-1}$ mit $S\in\GL_n(K)$, so ist $t\cdot \mathbbm{1}_n-B = S(t\cdot \mathbbm{1}_n-A)S^{-1}$, also $t\cdot 1_n-B\sim t\cdot 1_n-A$ und ähnliche Matrizen haben die selben Determinante (IV.4.4). \\
+	Ist $B=SAS^{-1}$ mit $S\in\GL_n(K)$, so ist $t\cdot \mathbbm{1}_n-B = S(t\cdot \mathbbm{1}_n-A)S^{-1}$, also $t\cdot \mathbbm{1}_n-B\sim t\cdot \mathbbm{1}_n-A$ und ähnliche Matrizen haben die selben Determinante (IV.4.4). \\
 	Sind $B,B'$ Basen von $V$, so sind $M_B(f)\sim M_{B'}(f)$, also $\chi_{M_B(f)}=\chi_{M_{B'}(f)}$ %TODO: Verlinkung setzen
 \end{proof}
 
@@ -29,11 +29,11 @@
 	Für $\lambda\in K$ ist $\chi_f(\lambda)=\det(\lambda\cdot\id_V-f)$.
 \end{lemma}
 \begin{proof}
-	Sei $B$ eine Basis von $V$ und $A=M_B(f)=(a_{ij})_{i,j}$. Dann ist $M_B(\lambda\cdot\id_V-f)= \lambda\cdot 1_n-A$. Aus IV.2.8 und I.6.8 folgt $\det(t\cdot 1_n-A)(\lambda)=\det(\lambda\cdot 1_n-A)$. Folglich ist 
+	Sei $B$ eine Basis von $V$ und $A=M_B(f)=(a_{ij})_{i,j}$. Dann ist $M_B(\lambda\cdot\id_V-f)= \lambda\cdot \mathbbm{1}_n-A$. Aus IV.2.8 und I.6.8 folgt $\det(t\cdot \mathbbm{1}_n-A)(\lambda)=\det(\lambda\cdot \mathbbm{1}_n-A)$. Folglich ist 
 	\begin{align}
 		\chi_f(\lambda)&=\chi_A(\lambda)\notag \\
-		&=\det(t\cdot 1_n-A)(\lambda)\notag \\
-		&=\det(\lambda\cdot 1_n-A)\notag \\
+		&=\det(t\cdot \mathbbm{1}_n-A)(\lambda)\notag \\
+		&=\det(\lambda\cdot \mathbbm{1}_n-A)\notag \\
 		&= \det(\lambda\cdot\id_V-f) \notag
 	\end{align}
 \end{proof}
