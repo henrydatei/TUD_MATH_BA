@@ -13,8 +13,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 	\begin{align}
 		A\cdot \begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}3\\3\end{pmatrix},\;A\cdot\begin{pmatrix} 1\\-1\end{pmatrix}=\begin{pmatrix}-1\\1\end{pmatrix}\notag
 	\end{align}
-	$\Rightarrow$ mit $B=\left( \begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}\right)$ ist $M_B(f)=\begin{pmatrix}3&0\\0&-1\end{pmatrix}$.
-	
+	$\Rightarrow$ mit $B=\left( \begin{pmatrix}1\\1\end{pmatrix},\begin{pmatrix}1\\-1\end{pmatrix}\right)$ ist $M_B(f)=\begin{pmatrix}3&0\\0&-1\end{pmatrix}$. \\%TODO figure
 	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{pmatrix}1\\1\end{pmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{pmatrix}1\\-1\end{pmatrix}$
 \end{example}
 
@@ -51,10 +50,10 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 
 \begin{example}
 	Sei $K=\real$, $V=\real^2$ und $f_{\alpha}\in\End_K(\real^2)$ die Drehung um den Winkel $\alpha\in [0,2\pi)$ \\
-	$\Rightarrow M_E(f_{\alpha})=\begin{pmatrix}\cos(\alpha)&-\sin(\alpha) \\ \sin(\alpha) & \cos(\alpha)\end{pmatrix}$ \\
+	\[\Rightarrow M_{\mathcal{E}}(f_{\alpha})=\begin{pmatrix}\cos(\alpha)&-\sin(\alpha) \\ \sin(\alpha) & \cos(\alpha)\end{pmatrix}\]
 	Für $\alpha=0$ hat $f_{\alpha}=\id_{\real^2}$ nur den EW 1. \\
 	Für $\alpha=\pi$ hat $f_{\alpha}=-\id_{\real^2}$ nur den EW -1. \\
-	Für $\alpha\neq 0,\pi$ hat $f_{\alpha}$ keine EW.
+	Für $\alpha\neq 0,\pi$ hat $f_{\alpha}$ keine EW. %TODO figure
 \end{example}
 
 \begin{lemma}
@@ -75,7 +74,8 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 
 \begin{proposition}
 	\proplbl{satz_eig_direkte_summe}
-	Sind $\lambda_1,...,\lambda_m\in K$ paarweise verschieden, so ist $\sum\limits_{i=1}^m \Eig(f,\lambda_i)=\oplus\Eig(f,\lambda_i)$.
+	Sind $\lambda_1,...,\lambda_m\in K$ paarweise verschieden, so ist 
+	\[\sum\limits_{i=1}^m \Eig(f,\lambda_i)=\bigoplus_{i=0}^{m}\Eig(f,\lambda_i).\]
 \end{proposition}
 \begin{proof}
 	Seien $x_i,y_i\in\Eig(f,\lambda_i)$ für $i=1,...,m$. Ist $\sum\limits_{i=1}^m x_i=\sum\limits_{i=1}^m y_i$, so ist $\sum\limits_{i=1}^m \underbrace{x_i-y_i}_{z_i}=0$.\\

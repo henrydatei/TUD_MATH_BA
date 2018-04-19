@@ -3,6 +3,8 @@ Skript zu den Vorlesungen Analysis (Prof. Dr. Friedemann Schuricht) und Lineare 
 
 Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
 
+Tafel-Bilder gibt es [hier](http://protagon.space/AnagBilder.pdf).
+
 ### Fortschritt Analysis (2. Semester, SS2018)
 5. Differentiation ... fertig
   
@@ -37,3 +39,19 @@ Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
     28. Inverse und implizierte Funktionen ... fertig
 
 ### Fortschritt Lineare Algebra (2. Semester, SS2018)
+
+1. Endomorphismen ... wird bearbeitet
+
+    1. Eigenwerte ... fertig
+    
+    2. Das charakteristische Polynom ... fertig
+    
+    3. Diagonalisierbarkeit ... fertig
+    
+    4. Trigonalisierbarkeit ... wird bearbeitet
+
+2. Skalarprodukte ... noch nicht bearbeitet
+
+3. Dualität ... noch nicht bearbeitet
+
+4. Moduln ... noch nicht bearbeitet
