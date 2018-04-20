@@ -1,0 +1,76 @@
+\section{Das Minimalpolynom}
+
+\begin{definition}
+	Für ein Polynom $P(t)=\sum\limits_{i=0}^n c_it^i\in K[t]$ definieren wir $P(f)=\sum\limits_{i=0}^m c_if^i\in\End_K(V)$, wobei $f^0=\id_V$, $f^1=f$, $f^2=f\circ f$, ...
+	
+	Analog definiert man $P(A)$ für $A\in\Mat_n(K)$.
+\end{definition}
+
+\begin{remark}
+	Die Abbildung $\quad\begin{cases}K[t]\to \End_K(V)\\ P\mapsto P(f)\end{cases}$ ist ein Homomorphismus von $K$-VR und Ringen. Sein Kern ist das Ideal 
+	\begin{align}
+		\mathcal{I}_f:=\{P\in K[t]\mid P(f)=0\}\notag
+	\end{align}
+	und sein Bild ist der kommutative Unterring 
+	\begin{align}
+		K[f]:&=\{P(f)\mid P\in K[t]\}\notag \\
+		&= \Span_K(f^0,f^1,f^2,...)\notag
+	\end{align}
+	des (im Allgemeinen nicht kommutativen) Rings $\End_K(V)$.
+	
+	Analog definiert man $\mathcal{I}_A$ und $K[A]\le \Mat_n(K)$.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{lemma_5_3}
+	$\mathcal{I}_f\neq\{0\}$
+\end{lemma}
+\begin{proof}
+	Wäre $\mathcal{I}_f=\{0\}$, so wäre $K[t]\to \End_K(V)$ injektiv, aber $\dim_K(K[t])= \infty>n^2=\dim_K(\End_K(V))$, ein Widerspruch.
+\end{proof}
+
+\begin{proposition}
+	Es gibt ein eindeutig bestimmtes normiertes Polynom $0\neq P\in K[t]$ kleinsten Grades mit $P(f)=0$. Dieses teilt jedes $Q\in K[t]$ mit $Q(f)=0$.
+\end{proposition}
+\begin{proof}
+	Nach \propref{lemma_5_3} gibt es $0\neq P\in K[t]$ mit $P(f)=0$ von minimalem Grad $d$. Indem wir durch den Leitkoeffizienten von $P$ teilen, können wir annehmen, dass $P$ normiert ist. \\
+	Sei $Q\in\mathcal{I}_f$. Polynomdivision liefert $R,H\in K[t]$ mit $Q=P\cdot H+R$ und $\deg(R)<\deg(P)=d$. Es folgt $R(f)=\underbrace{Q(f)}_{=0}-\underbrace{P(f)}_{=0}\cdot H(f)=0$. Aus der Minimalität von $d$ folgt $R=0$ und somit $P\vert Q$. \\
+	Ist $Q$ zudem normiert vom Grad $d$, so ist $H=1$, also $Q=P$, was die Eindeutigkeit zeigt.
+\end{proof}
+
+\begin{definition}[Minimalpolynom]
+	Das eindeutig bestimmte normierte Polynom $0\neq P\in K[t]$ kleinsten Grades mit $P(f)=0$ nennt man das \begriff{Minimalpolynom} $P_f$ von $f$.
+	
+	Analog definiert man das Minimalpolynom $P_A\in K[t]$ einer Matrix $A\in\Mat_n(K)$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item $A=\mathbbm{1}_n$, $\chi_A(t)=(t-1)^n$, $P_A(t)=t-1$
+		\item $A=0$, $\chi_A(t)=t^n$, $P_A(t)=t$
+		\item Ist $A=\diag(a_1,...,a_n)$ mit paarweise verschiedenen Eigenwerten $\lambda_1,...,\lambda_r$, so ist $\chi_A(t)=\prod\limits_{i=1}^n (t-a_i)=\prod\limits_{i=1}^n (t-\lambda_i)^{\mu_a(f_A,\lambda_i)}$, $P_A(t)=\prod\limits_{i=1}^r (t-\lambda_i)$ und es folgt $\deg(P_A)\ge \vert \{a_1,...,a_n\}\vert=r$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[$f$-zyklisch]
+	Ein $f$-invarianter UVR $W\le V$ heißt $f$-\begriff{zyklisch}, wenn es ein $x\in W$ mit $W=\Span_K(x,f(x),f^2(x),...)$ gibt.
+\end{definition}
+
+\begin{lemma}
+	Sei $x\in V$ und $x_i=f(x)$. Es gibt ein kleinstes $k$ mit $x_k\in\Span_K(x_0,x_1,...,x_{k-1})$, und $W=\Span_K(x_0,...,x_{k-1})$ ein $f$-zyklischer UVR von $V$ mit Basis $B=(x_0,...,x_{k-1})$ und $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
+\end{lemma}
+\begin{proof}
+	Da $\dim_K(V)=n$ ist $(x_0,...,x_n)$ linear abhängig, es gibt also ein kleinstes $k$ mit $(x_0,...,x_{k-1})$ linear unabhängig, aber $(x_0,...,x_k)$ linear abhängig, folglich $x_k\in\Span_K(x_0,...,x_{k-1})$. Mit $x_k=f(x_{k-1})=\sum\limits_{i=0}^{k-1}-c_ix_i$ ist dann 
+	\begin{align}
+		M_B(f\vert_W)=\begin{pmatrix}0&...&...&...&0&-c_0\\
+		1&\ddots&\;&\;&\vdots&\vdots\\
+		0&\ddots&\ddots&\;&\vdots&\vdots\\
+		\vdots&\ddots&\ddots&\ddots&\vdots&\vdots\\
+		0&...&0&1&0&-c_{k-1}\end{pmatrix}\notag
+	\end{align},
+	somit $\chi_{f\vert_W}=t^k+\sum\limits_{i=0}^{k-1}c_it^i$, also $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$
+\end{proof}
+
+\begin{theorem}[Satz von \person{Cayley-Hamiltion}]
+	Für $f\in\End_K(V)$ ist $\chi_f(f)=0$.
+\end{theorem}
