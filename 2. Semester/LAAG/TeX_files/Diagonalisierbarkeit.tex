@@ -89,7 +89,7 @@
 	\begin{align}
 		A=M_B(f)=\begin{pmatrix}\lambda\mathbbm{1}_s&*\\0&A'\end{pmatrix}\notag
 	\end{align}
-	mit einer Matrix $A'\in \Mat_{n-s}(K)$, also $\chi_f(t)=\chi_A(t)\overset{\propref{beispiel_2_8}}{=}\chi_{\lambda\mathbbm{1}}\cdot\chi_{A'}(t)=(t- \lambda)^s\cdot \chi_{A'}(t)$ und somit $\dim_K(\Eig(f,\lambda))=s\le \mu(x_f,\lambda)$.
+	mit einer Matrix $A'\in \Mat_{n-s}(K)$, also $\chi_f(t)=\chi_A(t)\overset{\text{\propref{beispiel_2_8}}}{=}\chi_{\lambda\mathbbm{1}}\cdot\chi_{A'}(t)=(t- \lambda)^s\cdot \chi_{A'}(t)$ und somit $\dim_K(\Eig(f,\lambda))=s\le \mu(x_f,\lambda)$.
 \end{proof}
 
 \begin{proposition}
@@ -98,13 +98,13 @@
 \begin{proof}
 	Es gilt
 	\begin{align}
-		\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))&\overset{\propref{satz_eig_direkte_summe}}{=} \dim_K(\bigoplus\limits_{\lambda\in K}\Eig(f,\lambda)) \notag \\
-		&\overset{II.4.12}{=}\sum\limits_{\lambda\in K}\dim_K(\Eig(f,\lambda)) \notag \\
-		&\overset{\propref{lemma_3_10}}{\le}\sum\limits_{\lambda\in K}\mu(\chi_f,\lambda) \\
+		\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))&\overset{\text{\propref{satz_eig_direkte_summe}}}{=} \dim_K(\bigoplus\limits_{\lambda\in K}\Eig(f,\lambda)) \notag \\
+		&\overset{\text{II.4.12}}{=}\sum\limits_{\lambda\in K}\dim_K(\Eig(f,\lambda)) \notag \\
+		&\overset{\text{\propref{lemma_3_10}}}{\le}\sum\limits_{\lambda\in K}\mu(\chi_f,\lambda) \\
 		&\le \deg(\chi_f) \\
 		&= n \notag
 	\end{align}
-	Nach \propref{lemma_diag_summe_eig} ist $f$ genau dann diagonalisierbar, wenn $\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))=n$, also wenn bei (1) und (2) Gleichheit herrscht. Gleichheit bei (1) bedeutet $\dim_K(\Eig(f,\lambda))=\mu(\chi_f,\lambda)$ für alle $\lambda\in K$, und Gleichheit bei (2) bedeutet nach \propref{lemma_3_9}, dass $\chi_f$ in Linearfaktoren zerfällt. %TODO: Verlinkung
+	Nach \propref{lemma_diag_summe_eig} ist $f$ genau dann diagonalisierbar, wenn $\dim_K(\sum_{\lambda\in K}\Eig(f,\lambda))=n$, also wenn bei (1) und (2) Gleichheit herrscht. Gleichheit bei (1) bedeutet $\dim_K(\Eig(f,\lambda))=\mu(\chi_f,\lambda)$ für alle $\lambda\in K$, und Gleichheit bei (2) bedeutet nach \propref{lemma_3_9}, dass $\chi_f$ in Linearfaktoren zerfällt. %TODO: Verlinkung
 \end{proof}
 
 \begin{definition}[algebraische und geometrische Vielfachheit]
