@@ -48,7 +48,9 @@ Tafel-Bilder gibt es [hier](http://protagon.space/AnagBilder.pdf).
     
     3. Diagonalisierbarkeit ... fertig
     
-    4. Trigonalisierbarkeit ... wird bearbeitet
+    4. Trigonalisierbarkeit ... fertig
+
+    5. Das Minimalpolynom ... wird bearbeitet
 
 2. Skalarprodukte ... noch nicht bearbeitet
 
