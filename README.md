@@ -50,7 +50,9 @@ Tafel-Bilder gibt es [hier](http://protagon.space/AnagBilder.pdf).
     
     4. Trigonalisierbarkeit ... fertig
 
-    5. Das Minimalpolynom ... wird bearbeitet
+    5. Das Minimalpolynom ... fertig
+    
+    6. Nilpotente Endomorphismen
 
 2. Skalarprodukte ... noch nicht bearbeitet
 
