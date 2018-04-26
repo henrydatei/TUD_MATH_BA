@@ -1,0 +1,62 @@
+\section{Nilpotente Endomorphismen}
+
+\begin{remark}
+	Für $f\in\End_K(V)$ sind 
+	\begin{itemize}
+		\item $f\{0\}=\Ker(f^0)\subseteq \Ker(f^1)\subseteq \Ker(f^2)\subseteq ...$
+		\item $V=\Image(f^0)\supseteq \Image(f^1)\supseteq \Image(f^2)\supseteq ...$
+	\end{itemize}
+Folgen von UVR von $V$. Nach der Kern-Bild-Formel III.7.13 ist %TODO: Verlinkung
+\begin{align}
+	\dim_K(\Ker(f^i))+\dim_K(\Image(f^i))=\dim_K(V)\quad\forall i\notag
+\end{align}
+Da $\dim_K(V)=n<\infty$ gibt es ein $d$ mit $\Ker(f^d)=\Ker(f^{d+i})$ und $\Image(f^d)=\Image(f^{d+i})$ für jedes $i\ge 0$.
+\end{remark}
+
+\begin{example}
+	$f=f_A$, $A\in\Mat_2(K)$.
+	\begin{itemize}
+		\item $A=\begin{pmatrix}1&0\\0&1\end{pmatrix}$: $\{0\}=\Ker(f^0)=\Ker(f^1)=...$
+		\item $A=\begin{pmatrix}1&0\\0&0\end{pmatrix}$: $\{0\}=\Ker(f^0)\subset\Ker(f^1)=\Ker(f^2)=...=\Span_K(e_2)$
+		\item $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$: $\{0\}=\Ker(f^0)\subset\underbrace{\Ker(f^1)}_{=\Span_K(e_1)}\subset \Ker(f^2)=... = K^2$
+		\item $A=\begin{pmatrix}0&0\\0&0\end{pmatrix}$: $\{0\}=\Ker(f^0)\subset\Ker(f^1)=\Ker(f^2)=...=K^2$
+	\end{itemize}
+\end{example}
+
+\begin{lemma}
+	\proplbl{lemma_6_3}
+	Seien $f,g\in\End_K(V)$. Wenn $f$ und  $g$ kommutieren, d.h. $f\circ g=g\circ f$, so sind die UVR $\Ker(g)$ und $\Image(g)$ $f$ invariant.
+\end{lemma}
+\begin{proof}
+	Ist $x\in\Ker(f)$, so ist $g(f(x))=f(g(x))=f(0)=0$, also $f(x)\in\Ker(g)$. Für $g(x)\in\Image(g)$ ist $f(g(x))=g(f(x))\in\Image(g)$.
+\end{proof}
+
+\begin{proposition}[Lemma von \person{Fitting}]
+	Seien $V_i=\Ker(f^i)$, $W_i=\Image(f^i)$, $d=\min\{i:V_i=V_{i+1}\}$. Dann sind 
+	\begin{align}
+		\{0\}&=V_0\subset V_1\subset ...\subset V_d=V_{d+1}=...\notag \\
+		V&= W_0\supset W_1\supset ... \supset W_d=W_{d+1}=...\notag
+	\end{align}
+	Folgen $f$-invarianter UVR und $V=V_d\oplus W_d$.
+\end{proposition}
+\begin{proof}
+	Da $f^i$ und $f^j$ für beliebige $i,j$ kommutieren, sind $V_i$ und $V_j$ nach \propref{lemma_6_3} $f$-invariant für jedes $i$. Aus $\dim_K(V_i)+\dim_K(W_i)=n$ folgt $d=\min\{i:W_i=W_{i+1}\}$, insbesondere ist $\Image(f^d)=\Image(f^{d+1})=f(\Image(f^d))$, somit $W_{d+i}=\Image(f^{d+i})=W_d$ für $i\ge 0$, also auch $V_d=V_{d+i}$ für alle $i\ge 0$. \\
+	Insbesondere ist $f^d\vert_{W_d}:W_d\to W_{2d}=W_d$ surjektiv, also auch injektiv, also $V_d\cap W_d=\{0\}$. Aus der Dimensionsformel II.4.12 folgt dann $\dim_K(V_d+W_d)=\dim_K(V_d)+\dim_K(W_d)=\dim_K(V)$. Folglich ist $V_d+W_d=V$ und $V_d\cap W_d=\{0\}$, also $V=V_d\oplus W_d$.
+\end{proof}
+
+\begin{definition}[nilpotent]
+	Ein $f\in\End_K(V)$ heißt \begriff{nilpotent}, wenn $f^k=0$ für ein $k\in\natur$. Analog heißt $A\in\Mat_n(K)$ nilpotent, wenn $A^k=0$ für $k\in\natur$. Das kleinste $k$ mit $f^k=0$ bzw. $A^k$ heißt die \begriff{Nilpotenzklasse} von $f$ bzw. $A$.
+\end{definition}
+
+\begin{lemma}
+	Ist $f$ nilpotent, so gibt es eine Basis $B$ von $V$, für die $M_B(f)$ eine strikte obere Dreiecksmatrix ist.
+\end{lemma}
+\begin{proof}
+	Induktion nach $n=\dim_K(V)$. \\
+	\emph{$n=1$}: $f^k=0\Rightarrow f=0$ \\
+	\emph{$n>1$}: Sei $k$ die Nilpotenzklasse von $f$ und $U=\Ker(f^{k-1})$. Dann ist $U\subset V$. Da $f^k=f^{k-1}\circ f$ ist $f(V\subset U$, insbesondere $f\vert_U\in\End_K(U)$. Da $f\vert_U$ nilpotent ist, gibt es nach I.H. eine Basis $B_0$ von $U$, für die $M_B(f\vert_U)$ eine strikte obere Dreiecksmatrix ist. Ergänze $B_0$ zu einer Basis $B$ von $V$. Da $f(V)\subset U$ ist dann auch 
+	\begin{align}
+		M_B(f)=\begin{pmatrix}M_{B_0}(f\vert-U)&*\\0&0\end{pmatrix}\notag
+	\end{align}
+	eine strikte obere Dreiecksmatrix.
+\end{proof}

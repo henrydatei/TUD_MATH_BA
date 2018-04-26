@@ -30,6 +30,7 @@
 \end{proof}
 
 \begin{proposition}
+	\proplbl{satz_5_4}
 	Es gibt ein eindeutig bestimmtes normiertes Polynom $0\neq P\in K[t]$ kleinsten Grades mit $P(f)=0$. Dieses teilt jedes $Q\in K[t]$ mit $Q(f)=0$.
 \end{proposition}
 \begin{proof}
@@ -57,6 +58,7 @@
 \end{definition}
 
 \begin{lemma}
+	\proplbl{lemma_5_8}
 	Sei $x\in V$ und $x_i=f(x)$. Es gibt ein kleinstes $k$ mit $x_k\in\Span_K(x_0,x_1,...,x_{k-1})$, und $W=\Span_K(x_0,...,x_{k-1})$ ein $f$-zyklischer UVR von $V$ mit Basis $B=(x_0,...,x_{k-1})$ und $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
 \end{lemma}
 \begin{proof}
@@ -72,5 +74,30 @@
 \end{proof}
 
 \begin{theorem}[Satz von \person{Cayley-Hamiltion}]
+	\proplbl{theorem_5_9}
 	Für $f\in\End_K(V)$ ist $\chi_f(f)=0$.
 \end{theorem}
+\begin{proof}
+	Sei $x\in V$. Definiere $x_i=f^i(x)$ und $W=\Span_K(x_0,...,x_{k-1})$ wie in \propref{lemma_5_8}. Sei $\chi_{f\vert_W}=t^k+\sum\limits_{i=0}^{k-1} c_it^i$, also $f(x_{k-1})=\sum\limits_{i=0}^{k-1} -c_ix_i$. Wenden wir $\chi_{f\vert_W}(f)\in\End_K(V)$ auf $x$ an, so erhalten wir 
+	\begin{align}
+		\chi_{f\vert_W}(f)(x)&=\left( f^k+\sum\limits_{i=1}^{k-1} c_if^i\right)(x)\notag \\
+		&= \sum\limits_{i=1}^{k-1} -c_ix_i+\sum\limits_{i=1}^{k-1}c_ix_i\notag \\
+		&= 0\notag
+	\end{align}
+	Aus $\chi_{f\vert_W}\vert \chi_f$ (\propref{beispiel_4_6}) folgt somit $\chi_f(f)(x)=0$, denn ist $\chi_f=Q\cdot \chi_{f\vert_W}$ mit $Q\in K[t]$, so ist $\chi_f(f)=Q(f)\circ\chi_{f\vert_W}(f)$, also $\chi_f(f)(x)=Q(f)(\underbrace{\chi_{f\vert_W}(f)(x)})_{=0}=0$. Da $x\in V$ beliebig war, folgt $\chi_f(f)=0\in\End_K(V)$.
+\end{proof}
+
+\begin{conclusion}
+	Es gilt $P_f\vert \chi_f$. Insbesondere ist $\deg(P_f)\le n$.
+\end{conclusion}
+\begin{proof}
+	\propref{theorem_5_9} + \propref{satz_5_4}
+\end{proof}
+
+\begin{remark}
+	Ist $B$ eine Basis von $V$ und $A=M_B(f)$, so ist $P_A=P_f$. Insbesondere ist $P_A=P_B$ für $A\sim B$. Als Spezialfall von \propref{theorem_5_9} erhält man $\chi_A(A)=0$ und $P_A\vert \chi_A$.
+\end{remark}
+
+\begin{remark}
+	Der naheliegende "'Beweis"' $\underbrace{\chi_A}_{\in\Mat_n(K)}=\det(t\mathbbm{1}_n-A)(A) =\det(A\mathbbm{1}_n-A)=\det(0)=\underbrace{0}_{\in K}$ ist falsch!
+\end{remark}
