@@ -2,6 +2,7 @@
 
 \begin{definition}
 	Für ein Polynom $P(t)=\sum\limits_{i=0}^n c_it^i\in K[t]$ definieren wir $P(f)=\sum\limits_{i=0}^m c_if^i\in\End_K(V)$, wobei $f^0=\id_V$, $f^1=f$, $f^2=f\circ f$, ...
+	Für ein Polynom $P(t)=\sum_{i=0}^n c_it^i\in K[t]$ definieren wir $P(f)=\sum_{i=0}^m c_if^i\in\End_K(V)$, wobei $f^0=\id_V$, $f^1=f$, $f^2=f\circ f$, ...
 	
 	Analog definiert man $P(A)$ für $A\in\Mat_n(K)$.
 \end{definition}
@@ -63,14 +64,15 @@
 \end{lemma}
 \begin{proof}
 	Da $\dim_K(V)=n$ ist $(x_0,...,x_n)$ linear abhängig, es gibt also ein kleinstes $k$ mit $(x_0,...,x_{k-1})$ linear unabhängig, aber $(x_0,...,x_k)$ linear abhängig, folglich $x_k\in\Span_K(x_0,...,x_{k-1})$. Mit $x_k=f(x_{k-1})=\sum\limits_{i=0}^{k-1}-c_ix_i$ ist dann 
+	Da $\dim_K(V)=n$ ist $(x_0,...,x_n)$ linear abhängig, es gibt also ein kleinstes $k$ mit $(x_0,...,x_{k-1})$ linear unabhängig, aber $(x_0,...,x_k)$ linear abhängig, folglich $x_k\in\Span_K(x_0,...,x_{k-1})$. Mit $x_k=f(x_{k-1})=\sum_{i=0}^{k-1}-c_ix_i$ ist dann 
 	\begin{align}
 		M_B(f\vert_W)=\begin{pmatrix}0&...&...&...&0&-c_0\\
 		1&\ddots&\;&\;&\vdots&\vdots\\
 		0&\ddots&\ddots&\;&\vdots&\vdots\\
 		\vdots&\ddots&\ddots&\ddots&\vdots&\vdots\\
 		0&...&0&1&0&-c_{k-1}\end{pmatrix}\notag
-	\end{align},
-	somit $\chi_{f\vert_W}=t^k+\sum\limits_{i=0}^{k-1}c_it^i$, also $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$
+	\end{align}
+	somit $\chi_{f\vert_W}=t^k+\sum\limits_{i=0}^{k-1}c_it^i$, also $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
 \end{proof}
 
 \begin{theorem}[Satz von \person{Cayley-Hamiltion}]
@@ -79,6 +81,7 @@
 \end{theorem}
 \begin{proof}
 	Sei $x\in V$. Definiere $x_i=f^i(x)$ und $W=\Span_K(x_0,...,x_{k-1})$ wie in \propref{lemma_5_8}. Sei $\chi_{f\vert_W}=t^k+\sum\limits_{i=0}^{k-1} c_it^i$, also $f(x_{k-1})=\sum\limits_{i=0}^{k-1} -c_ix_i$. Wenden wir $\chi_{f\vert_W}(f)\in\End_K(V)$ auf $x$ an, so erhalten wir 
+	Sei $x\in V$. Definiere $x_i=f^i(x)$ und $W=\Span_K(x_0,...,x_{k-1})$ wie in \propref{lemma_5_8}. Sei $\chi_{f\vert_W}=t^k+\sum_{i=0}^{k-1} c_it^i$, also $f(x_{k-1})=\sum_{i=0}^{k-1} -c_ix_i$. Wenden wir $\chi_{f\vert_W}(f)\in\End_K(V)$ auf $x$ an, so erhalten wir 
 	\begin{align}
 		\chi_{f\vert_W}(f)(x)&=\left( f^k+\sum\limits_{i=1}^{k-1} c_if^i\right)(x)\notag \\
 		&= \sum\limits_{i=1}^{k-1} -c_ix_i+\sum\limits_{i=1}^{k-1}c_ix_i\notag \\
