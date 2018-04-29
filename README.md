@@ -52,7 +52,7 @@ Tafel-Bilder gibt es [hier](http://protagon.space/AnagBilder.pdf).
 
     5. Das Minimalpolynom ... fertig
     
-    6. Nilpotente Endomorphismen
+    6. Nilpotente Endomorphismen ... wird bearbeitet
 
 2. Skalarprodukte ... noch nicht bearbeitet
 
