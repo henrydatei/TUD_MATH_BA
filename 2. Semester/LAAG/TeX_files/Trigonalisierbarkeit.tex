@@ -64,12 +64,12 @@
 	$(\Rightarrow)$: \propref{lemma_4_3}\\
 	$(\Leftarrow)$: Induktion nach $n=\dim_K(V)$. \\
 	\emph{$n=1$}: trivial \\
-	\emph{$n-1\to n$}: Nach Annahme ist $\chi_f(t)=\prod\limits_{i=1}^n (t-\lambda_i)$ mit $\lambda_1,...,\lambda_n\in K$. Sei $x_1$ ein EV zum EW $\lambda_1$. Dann ist $V_1=K\cdot x_1$ ein $f$-invarianter UVR. Ergänze $B_1=(x_1)$ zu einer Basis $B=(x_1,...,x_n)$ von $V$ und setze $B_2=(x_2,...,x_n)$, $V_2=\Span_K(B_2)$.
+	\emph{$n-1\to n$}: Nach Annahme ist $\chi_f(t)=\prod_{i=1}^n (t-\lambda_i)$ mit $\lambda_1,...,\lambda_n\in K$. Sei $x_1$ ein EV zum EW $\lambda_1$. Dann ist $V_1=K\cdot x_1$ ein $f$-invarianter UVR. Ergänze $B_1=(x_1)$ zu einer Basis $B=(x_1,...,x_n)$ von $V$ und setze $B_2=(x_2,...,x_n)$, $V_2=\Span_K(B_2)$.
 	\emph{$n-1\to n$}: Nach Annahme ist $\chi_f(t)=\prod_{i=1}^n (t-\lambda_i)$ mit $\lambda_1,...,\lambda_n\in K$. Sei $x_1$ ein EV zum EW $\lambda_1$. Dann ist $V_1=K\cdot x_1$ ein $f$-invarianter UVR. Ergänze $B_1=(x_1)$ zu einer Basis $B=(x_1,...,x_n)$ von $V$ und setze $B_2=(x_2,...,x_n)$, $V_2=\Span_K(B_2)$.
 	\begin{align}
 		\Rightarrow M_B(f)&=\begin{pmatrix}\lambda_1&*\\0&A_2\end{pmatrix}\quad A_2\in\Mat_{n-1}(K)\notag\\
 		\chi_f(t)&=\chi_{\lambda_1\mathbbm{1}_1}\cdot \chi_{A_2}=(t-\lambda_1)\cdot\chi_{A_2}(t)\notag \\
-		\overset{\text{\propref{lemma_3_7}}}{\Rightarrow} \chi_{A_2}(t)&=\prod\limits_{i=2}^n(t-\lambda_i)\notag
+		\overset{\text{\propref{lemma_3_7}}}{\Rightarrow} \chi_{A_2}(t)&=\prod_{i=2}^n(t-\lambda_i)\notag
 	\end{align}
 	Seien $\pi_1,\pi_2\in\End_K(V)$ gegeben durch $M_B(\pi_1)=\diag(1,0,...,0)$ und $M_B(\pi_2)=\diag(0,1,...,1)$. Dann ist $\pi_1+\pi_2=\id_V$ und $f_i=\pi_1\circ f$ ist $f=\id_V\circ f=f_1+f_2$ und $f_2\vert_{V_2}\in\End_K(V_2)$. Nach Induktionshypothese ist $f_2\vert_{V_2}$ trigonalisierbar, da $M_B(f_2\vert_{V_2})=A_2$, also $\chi_{f_2\vert_{V_2}}=\chi_{A_2}$. Dies bedeutet, es gibt also eine Basis $B'_2=(x'_2,...,x'_n)$ von $V_2$, für die $M_{B'_2}(f_2\vert_{V_2})$ eine obere Dreiecksmatrix ist. Somit ist für $B'=(x_1,x'_2,...,x'_n)$ auch 
 	\begin{align}
