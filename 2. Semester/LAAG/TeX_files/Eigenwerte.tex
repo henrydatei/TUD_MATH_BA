@@ -63,7 +63,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \begin{proof}
 	Induktion nach $m$\\
 	\emph{$m=1$}: klar, denn $x_1\neq 0$ \\
-	\emph{$m-1\to m$}: Sei $\sum\limits_{i=1}^m \mu_i x_i=0$ mit $\mu_1,...,\mu_m\in K$.
+	\emph{$m-1\to m$}: Sei $\sum_{i=1}^m \mu_i x_i=0$ mit $\mu_1,...,\mu_m\in K$.
 	\begin{align}
 		0&= (f-\lambda\cdot\id_V)\left( \sum\limits_{i=1}^m \mu_i x_i\right) \notag \\
 		&= \sum\limits_{i=1}^m \mu_i(f(x_i)-\lambda_m\cdot x_i) \notag \\
@@ -78,7 +78,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 	\[\sum\limits_{i=1}^m \Eig(f,\lambda_i)=\bigoplus_{i=0}^{m}\Eig(f,\lambda_i).\]
 \end{proposition}
 \begin{proof}
-	Seien $x_i,y_i\in\Eig(f,\lambda_i)$ für $i=1,...,m$. Ist $\sum\limits_{i=1}^m x_i=\sum\limits_{i=1}^m y_i$, so ist $\sum\limits_{i=1}^m \underbrace{x_i-y_i}_{z_i}=0$.\\
+	Seien $x_i,y_i\in\Eig(f,\lambda_i)$ für $i=1,...,m$. Ist $\sum_{i=1}^m x_i=\sum_{i=1}^m y_i$, so ist $\sum_{i=1}^m \underbrace{x_i-y_i}_{z_i}=0$.\\
 	o. E. seien $z_i\neq 0$ für $i=1,...,r$ und $z_i=0$ für $i=r+1,...,m$. Wäre $r>0$, so wären $(z_1,...,z_r)$ linear abhängig, aber $z_i=x_i-y_i\in\Eig(f,\lambda_i)\backslash\{0\}$, im Widerspruch zu \propref{lemma_EW_lin_unabh}. Somit ist $x_i=y_i$ für alle $i$ und folglich ist die Summe $\sum\Eig(f,\lambda_i)$ direkt.
 \end{proof}
 

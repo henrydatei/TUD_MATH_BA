@@ -12,8 +12,8 @@
 	\end{align}.
 \end{lemma}
 \begin{proof}
-	$(\Rightarrow)$: Ist $B$ eine Basis aus EV von $f$ (vgl. \propref{satz_diagonal_ev}), so ist $B\le \bigcup\limits_{\lambda\in K}\Eig(f,\lambda)$, also $V=\Span_K(\bigcup\limits_{\lambda\in K}\Eig(f, \lambda))=\sum\limits_{\lambda\in K}\Eig(f,\lambda)$. \\
-	$(\Leftarrow)$: Ist $V=\sum\limits_{\lambda\in K}\Eig(f,\lambda)$, so gibt es $\lambda_1,...,\lambda_n \in K$ mit $V=\sum\limits_{i=1}^r \Eig(f,\lambda_i)$. Wir wählen Basen $B_i$ von $\Eig(f,\lambda_i)$. Dann ist $\bigcup\limits_{i=1}^r B_i$ ein endliches Erzeugendensystem von $V$, enthält also eine Basis von $V$ (II.3.6). Diese besteht aus EV von $f$. %TODO: Verlinkung
+	$(\Rightarrow)$: Ist $B$ eine Basis aus EV von $f$ (vgl. \propref{satz_diagonal_ev}), so ist $B\le \bigcup\limits_{\lambda\in K}\Eig(f,\lambda)$, also $V=\Span_K(\bigcup\limits_{\lambda\in K}\Eig(f, \lambda))=\sum_{\lambda\in K}\Eig(f,\lambda)$. \\
+	$(\Leftarrow)$: Ist $V=\sum_{\lambda\in K}\Eig(f,\lambda)$, so gibt es $\lambda_1,...,\lambda_n \in K$ mit $V=\sum_{i=1}^r \Eig(f,\lambda_i)$. Wir wählen Basen $B_i$ von $\Eig(f,\lambda_i)$. Dann ist $\bigcup\limits_{i=1}^r B_i$ ein endliches Erzeugendensystem von $V$, enthält also eine Basis von $V$ (II.3.6). Diese besteht aus EV von $f$. %TODO: Verlinkung
 \end{proof}
 
 \begin{proposition}
@@ -73,10 +73,10 @@
 
 \begin{lemma}
 	\proplbl{lemma_3_9}
-	Es ist $\sum\limits_{\lambda\in K} \mu(P,\lambda)\le \deg(P)$, mit Gleichheit genau dann, wenn $P$ in Linearfaktoren zerfällt.
+	Es ist $\sum_{\lambda\in K} \mu(P,\lambda)\le \deg(P)$, mit Gleichheit genau dann, wenn $P$ in Linearfaktoren zerfällt.
 \end{lemma}
 \begin{proof}
-	Schreibe $P(t)=\prod\limits_{\lambda\in K}(t-\lambda)^{r_\lambda}\cdot Q(t)$, wobei $Q(t)\in K[t]$ keine Nullstellen mehr besitzt. Nach \propref{lemma_3_7} ist $\mu(P,\lambda)=r_\lambda$ für alle $\lambda$ und somit $\deg(P)=\sum\limits_{\lambda\in K} r_\lambda+\deg(Q)\ge \sum\limits_{\lambda\in K} \mu(P,\lambda)$ mit Gleichheit genau dann,wenn $\deg(Q)=0$, also $Q=c\in K$, d.h. genau dann, wenn $P(t)=c\cdot \prod\limits_{\lambda\in K} (t-\lambda)^{r_\lambda}$.
+	Schreibe $P(t)=\prod_{\lambda\in K}(t-\lambda)^{r_\lambda}\cdot Q(t)$, wobei $Q(t)\in K[t]$ keine Nullstellen mehr besitzt. Nach \propref{lemma_3_7} ist $\mu(P,\lambda)=r_\lambda$ für alle $\lambda$ und somit $\deg(P)=\sum_{\lambda\in K} r_\lambda+\deg(Q)\ge \sum_{\lambda\in K} \mu(P,\lambda)$ mit Gleichheit genau dann,wenn $\deg(Q)=0$, also $Q=c\in K$, d.h. genau dann, wenn $P(t)=c\cdot \prod_{\lambda\in K} (t-\lambda)^{r_\lambda}$.
 \end{proof}
 
 \begin{lemma}
@@ -106,7 +106,7 @@
 		&\le \deg(\chi_f) \\
 		&= n \notag
 	\end{align}
-	Nach \propref{lemma_diag_summe_eig} ist $f$ genau dann diagonalisierbar, wenn $\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))=n$, also wenn bei (1) und (2) Gleichheit herrscht. Gleichheit bei (1) bedeutet $\dim_K(\Eig(f,\lambda))=\mu(\chi_f,\lambda)$ für alle $\lambda\in K$, und Gleichheit bei (2) bedeutet nach \propref{lemma_3_9}, dass $\chi_f$ in Linearfaktoren zerfällt. %TODO: Verlinkung
+	Nach \propref{lemma_diag_summe_eig} ist $f$ genau dann diagonalisierbar, wenn $\dim_K(\sum_{\lambda\in K}\Eig(f,\lambda))=n$, also wenn bei (1) und (2) Gleichheit herrscht. Gleichheit bei (1) bedeutet $\dim_K(\Eig(f,\lambda))=\mu(\chi_f,\lambda)$ für alle $\lambda\in K$, und Gleichheit bei (2) bedeutet nach \propref{lemma_3_9}, dass $\chi_f$ in Linearfaktoren zerfällt. %TODO: Verlinkung
 \end{proof}
 
 \begin{definition}[algebraische und geometrische Vielfachheit]

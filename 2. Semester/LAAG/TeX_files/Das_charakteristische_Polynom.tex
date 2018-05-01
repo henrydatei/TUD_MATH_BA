@@ -41,7 +41,7 @@
 
 \begin{proposition}
 	\proplbl{satz_chi_polynom}
-	Sei $\dim_K(V)=n$ und $f\in\End_K(V)$. Dann ist $\chi_f(t)=\sum\limits_{i=0}^n \alpha_i t^i$ ein Polynom vom Grad $n$ mit 
+	Sei $\dim_K(V)=n$ und $f\in\End_K(V)$. Dann ist $\chi_f(t)=\sum_{i=0}^n \alpha_i t^i$ ein Polynom vom Grad $n$ mit 
 	\begin{align}
 		\alpha_n&=1\notag \\
 		\alpha_{n-1}&=-\tr(f) \notag \\
@@ -50,8 +50,8 @@
 	Die Nullstellen von $\chi_f$ sind genau die EW von $f$.
 \end{proposition}
 \begin{proof}
-	Sei $B$ eine Basis von $V$ und $A=M_B(f)=(a_{ij})_{i,j}$. Wir erinnern uns daran, dass $\tr(f)=\tr(A=\sum\limits_{i=1}^n a_{ii}$. Es ist $\chi_f(t)=\det(t-\cdot 1_n-A)=\sum\limits_{\sigma\in S_n}\sgn(\sigma)\prod\limits_{i=1}^n (t\delta_{i,\sigma(i)}-a_{i,\sigma(i)})$. \\
-	Der Summand für \emph{$\sigma=\id$} ist $\prod\limits_{i=1}^n (t-a_{ii})=t^n+\sum\limits_{i=1}^n (-a_{ii})t^{n-1}+...+\prod\limits_{i=1}^n(-a_{ii})$ \\
+	Sei $B$ eine Basis von $V$ und $A=M_B(f)=(a_{ij})_{i,j}$. Wir erinnern uns daran, dass $\tr(f)=\tr(A=\sum_{i=1}^n a_{ii}$. Es ist $\chi_f(t)=\det(t-\cdot 1_n-A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i=1}^n (t\delta_{i,\sigma(i)}-a_{i,\sigma(i)})$. \\
+	Der Summand für \emph{$\sigma=\id$} ist $\prod_{i=1}^n (t-a_{ii})=t^n+\sum_{i=1}^n (-a_{ii})t^{n-1}+...+\prod_{i=1}^n(-a_{ii})$ \\
 	Für \emph{$\sigma\neq\id$} ist $\sigma(i)\neq i$ für mindestens zwei $i$, der entsprechende Summand hat also Grad höchstens $n-2$. Somit haben $\alpha_n$ und $\alpha_{n-1}$ die oben behauptete Form, und $\alpha_0=\chi_A(0)=\det(-A)=(-1)^n\cdot\det(f)$. \\
 	Die Aussage über die Nullstellen von $\chi_f$ folgt aus \propref{satz_det_null} und \propref{lemma_chi_det}.
 \end{proof}
@@ -70,7 +70,7 @@
 \begin{example}
 	\proplbl{beispiel_2_8}
 	\begin{enumerate}
-		\item Ist $A=(a_{ij})_{i,j}$ eine obere Dreiecksmatrix, so ist $\chi_A(t)=\prod\limits_{i=1}^n (t-a_{ii})$, vgl. IV.2.9.c \\ %TODO: Verlinkung
+		\item Ist $A=(a_{ij})_{i,j}$ eine obere Dreiecksmatrix, so ist $\chi_A(t)=\prod_{i=1}^n (t-a_{ii})$, vgl. IV.2.9.c \\ %TODO: Verlinkung
 		Insbesondere ist $\chi_{1_n}(t)=(t-1)^n$, $\chi_0(t)=t^n$
 		\item Für eine Blockmatrix $A=\begin{pmatrix}A_1&B \\ 0&A_2\end{pmatrix}$ mit quadratischen Matrizen $A_1,A_2$ ist $\chi_A=\chi_{A_1}\cdot \chi_{A_2}$ vgl. IV.2.9.e %TODO: Verlinkung
 		\item Für
@@ -83,7 +83,7 @@
 			0&...&0&1&0&-c_{n-1} 
 			\end{pmatrix} \quad c_0,...,c_{n-1}\in K \notag
 		\end{align}
-		ist $\chi_A(t)=t^n+\sum\limits_{i=0}^{n-1} c_i t^i$ \\
-		Man nennt diese Matrix die Begleitmatrix zum normierten Polynom $P=t^n+\sum\limits_{i=0}^{n-1} c_i t^i$ und schreibt $M_P:=A$
+		ist $\chi_A(t)=t^n+\sum_{i=0}^{n-1} c_i t^i$ \\
+		Man nennt diese Matrix die Begleitmatrix zum normierten Polynom $P=t^n+\sum_{i=0}^{n-1} c_i t^i$ und schreibt $M_P:=A$
 	\end{enumerate}
 \end{example}
