@@ -210,7 +210,7 @@ Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ li
 		\end{pmatrix} \overset{(b)}{=} \left( \frac{\partial}{\partial x_1} f(x)\;\dotsc\;\frac{\partial}{\partial x_n}f(x) \right) \overset{(c)}{=} \underbrace{\begin{pmatrix}
 			\frac{\partial }{\partial x_1} f_1(x) & \dots & \frac{\partial}{\partial x_n} f_1(x) \\
 			\vdots & & \vdots
-			\\ \frac{\partial}{\partial x_n} f_m(x) & \dots & \frac{\partial}{\partial x_n} f_m(x)
+			\\ \frac{\partial}{\partial x_1} f_m(x) & \dots & \frac{\partial}{\partial x_n} f_m(x)
 		\end{pmatrix}}_{\mathcal{\text{\begriff{\person{Jacobi}-Matrix}}}}\in K^{m\times n}
 	\end{align}
 \end{theorem}
@@ -370,7 +370,7 @@ folglich \begin{align}
 	\begin{pmatrix}
 		x \\ y
 	\end{pmatrix}\to \begin{pmatrix}
-		u_x & u_y \\ - u_y & u_x
+		u_x & u_y \\ - v_y & v_x
 	\end{pmatrix} \begin{pmatrix}
 		x \\ y
 	\end{pmatrix}
