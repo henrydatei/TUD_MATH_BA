@@ -375,6 +375,17 @@
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 	\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
+\NewDocumentCommand{\matrixBracketSpacing}{}{\mspace{4.0mu plus 3.0mu minus 1.0mu}}
+\newenvironment{henrysmatrix}{%
+	\renewcommand*{\arraystretch}{1.2}
+	\setlength\arraycolsep{5pt}
+	\left(\matrixBracketSpacing
+	\begin{matrix}
+}{%
+	\end{matrix}
+	\matrixBracketSpacing\right)
+}
+
 \makeatletter
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
 \newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
