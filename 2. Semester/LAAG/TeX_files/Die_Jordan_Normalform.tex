@@ -32,13 +32,18 @@
 \end{proof}
 
 \begin{example}
-	$A=\begin{henrysmatrix}1&3&\; \\ \;&1&4 \\ \;&\; & 2\end{henrysmatrix}\in\Mat_3(\real)$, $f=f_A$ \\
+	$f=f_A$
+	\begin{align}
+		A=\begin{pmatrix}1&3&\; \\ \;&1&4 \\ \;&\; & 2\end{pmatrix}\in\Mat_3(\real)\notag
+	\end{align}
 	$\chi_A(t)=(t-1)^2(t-2)$
 	$\Rightarrow \real^3=\underbrace{\Hau(f,1)}_{\dim = 2}\oplus\underbrace{\Hau(f,2)}_{\dim 1}$ \\
 	$\Hau(f,1)=\Ker((f-\id)^2)=L((A-\mathbbm{1})^2,0)$ \\
 	$\Hau(f,2)=\Ker(f-2\id)=\Eig(f,2)=L(A-2\mathbbm{1},0)$ \\
-	$A-\mathbbm{1}=\begin{henrysmatrix}0&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}$, $(A-\mathbbm{1})^2=\begin{henrysmatrix}0&\;&12 \\ \;&0&4 \\ \;&\;&1\end{henrysmatrix}\Rightarrow \Hau(f,1)=\real e_1+\real e_2$\\
-	$A-2\mathbbm{1}=\begin{henrysmatrix}-1&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}\Hau(f,2)=\real\begin{henrysmatrix}12\\4\\1\end{henrysmatrix}$ \\
+	\begin{align}
+		A-\mathbbm{1}&=\begin{henrysmatrix}0&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}, (A-\mathbbm{1})^2=\begin{henrysmatrix}0&\;&12 \\ \;&0&4 \\ \;&\;&1\end{henrysmatrix}\Rightarrow \Hau(f,1)=\real e_1+\real e_2\notag \\
+		A-2\mathbbm{1}&=\begin{henrysmatrix}-1&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}\Hau(f,2)=\real\begin{henrysmatrix}12\\4\\1\end{henrysmatrix}\notag
+	\end{align}
 	Mit $B=\left( \begin{henrysmatrix}1\\0\\0\end{henrysmatrix}, \begin{henrysmatrix}0\\1\\0\end{henrysmatrix}, \begin{henrysmatrix}12\\4\\1\end{henrysmatrix}\right) $ ist
 	\begin{align}
 		M_B(f)=\begin{pmatrix}\begin{pmatrix}1&3\\\; & 1\end{pmatrix}&\; \\ \; & 2\end{pmatrix}\notag
