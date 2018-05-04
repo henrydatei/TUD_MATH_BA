@@ -517,6 +517,7 @@
 	\renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
 }
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
+\pretocmd{\chapter}{\setcounter{section}{0}}{}{}
 
 \pagestyle{fancy}
 \pagenumbering{arabic}
