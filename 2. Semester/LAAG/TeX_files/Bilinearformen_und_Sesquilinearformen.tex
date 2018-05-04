@@ -1,0 +1,39 @@
+\section{Bilinearformen und Sesquilinearformen}
+
+Sei $K=\real$ oder $K=\comp$.
+
+\begin{definition}[Bilinearform, Sesquilinearform]
+	Eine \begriff{Bilinearform} ($K=\real$) bzw. \begriff{Sesquilinearform} ($K=\comp$) ist eine Abbildung $s:V\times V\to K$ für die gilt:
+	\begin{itemize}
+		\item Für $x,x',y\in V$ ist $s(x+x',y)=s(x,y)+s(x',y)$
+		\item Für $x,y,y'\in V$ ist $s(x,y+y')=s(x,y)+s(x,y')$
+		\item Für $x,y\in V$, $\lambda\in K$ ist $s(\lambda x,y)=\lambda s(x,y)$
+		\item Für $x,y\in V$, $\lambda\in K$ ist $s(x,\lambda y)=\color{red}\overline{\lambda} s(x,y)$
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Im Fall $K=\real$ ist $\lambda=\overline{\lambda}$. Wir werden der Einfachheit halber auch in diesem Fall von Sesquilinearformen sprechen , vgl. \propref{2_1_12}
+\end{remark}
+
+\begin{example}
+	Für $A=(a_{ij})_{i,j}\in\Mat_n(K)$ ist $s_A:K^n\times K^n\to K^n$ gegeben durch
+	\begin{align}
+		s_A(x,y)=x^tA\overline{y}=x^t\left( \sum_{j=1}^n a_{ij}\overline{y_j}\right)_i=\sum_{i,j=1}^n a_{ij}x_i\overline{y_j}\notag
+	\end{align}
+	eine Sesquilinearform auf $V=K^n$.
+\end{example}
+
+\begin{definition}
+	Sei $s$ eine SLF auf $V$ und $B=(v_1,...,v_n)$ eine Basis von $V$. Die \begriff[Sesquilinearform!]{darstellende Matrix} von $s$ bzgl. $B$ ist
+	\begin{align}
+		M_B(s)=(s(v_i,v_j))_{i,j}\in\Mat_n(K)\notag
+	\end{align}
+\end{definition}
+
+\begin{example}
+	Die darstellende Matrix des Standardskalarprodukts $s=s_{\mathbbm{1}_n}$ auf den Standardraum $V=K^n$ bzgl. der Standardbasis $\mathcal{E}$ ist
+	\begin{align}
+		M_{\mathcal{E}}(s)=\mathbbm{1}_n\notag
+	\end{align}
+\end{example}

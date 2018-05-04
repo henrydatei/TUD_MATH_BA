@@ -41,8 +41,8 @@
 	$\Hau(f,1)=\Ker((f-\id)^2)=L((A-\mathbbm{1})^2,0)$ \\
 	$\Hau(f,2)=\Ker(f-2\id)=\Eig(f,2)=L(A-2\mathbbm{1},0)$ \\
 	\begin{align}
-		A-\mathbbm{1}&=\begin{henrysmatrix}0&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}, (A-\mathbbm{1})^2=\begin{henrysmatrix}0&\;&12 \\ \;&0&4 \\ \;&\;&1\end{henrysmatrix}\Rightarrow \Hau(f,1)=\real e_1+\real e_2\notag \\
-		A-2\mathbbm{1}&=\begin{henrysmatrix}-1&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}\Hau(f,2)=\real\begin{henrysmatrix}12\\4\\1\end{henrysmatrix}\notag
+		A-\mathbbm{1}&=\begin{henrysmatrix}0&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}, (A-\mathbbm{1})^2=\begin{henrysmatrix}0&\;&12 \\ \;&0&4 \\ \;&\;&1\end{henrysmatrix}&\Rightarrow \Hau(f,1)=\real e_1+\real e_2\notag \\
+		A-2\mathbbm{1}&=\begin{henrysmatrix}-1&3&\; \\ \; & -1&4 \\ \;&\;&0\end{henrysmatrix}&\Rightarrow\Hau(f,2)=\real\begin{henrysmatrix}12\\4\\1\end{henrysmatrix}\notag
 	\end{align}
 	Mit $B=\left( \begin{henrysmatrix}1\\0\\0\end{henrysmatrix}, \begin{henrysmatrix}0\\1\\0\end{henrysmatrix}, \begin{henrysmatrix}12\\4\\1\end{henrysmatrix}\right) $ ist
 	\begin{align}
@@ -71,6 +71,7 @@
 \end{remark}
 
 \begin{conclusion}
+	\proplbl{folgerung_7_7}
 	Sei $f\in\End_K(V)$ trigonalisierbar mit $\chi_f(t)=\prod_{i=1}^m (t-\lambda_i)^{\mu_a(f,\lambda_i)}$, $P_f(t)=\prod_{i=1}^m (t-\lambda_i)^{d_i}$ und \person{Jordan}-Invarianten $(\mu_1,k_1),...,(\mu_r,k_r)$. Mit $J_i=\{j\mid \mu_j=\lambda_i\}$ ist dann 
 	\begin{align}
 		\mu_g(f,\lambda_i)&= \vert J_i \vert \notag \\
@@ -84,4 +85,26 @@
 		\item $\mu_g$: lese Basis von $\Eig(f,\lambda_i)$ aus \person{Jordan}-NF: Jeder Block $J_{k_j}(\lambda_i)$ liefert ein Element der Basis.
 		\item $d_i$: folgt, da $J_{k_j}$ nilpotent von Nilpotenzklasse $k_j$ ist (\propref{lemma_6_12}).
 	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Genau dann ist $f$ diagonalisierbar, wenn 
+	\begin{align}
+		\chi_f(t)&=\prod_{i=1}^m (t-^\lambda_i)^{r_i}\quad \lambda_1,...,\lambda_m\in K\text{ paarweise verscheiden und} \notag \\
+		P_f(t) &= \prod_{i=1}^mm (t-\lambda_i)\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	Genau dann ist $f$ diagonalisierbar, wenn $f$ trigonalisierbar ist und die \person{Jordan}-NF die Diagonalmatrix ist (Eindeutigkeit der JNF), also $k_j=1$ für alle $j$. Nach \propref{folgerung_7_7} ist dies äquivalent dazu, dass $d_i=1$ für alle $i$, also $P_f=\prod_{i=1}^m (t-\lambda_i)$.
+\end{proof}
+
+\begin{remark}
+	Wider definiert man die \person{Jordan}-Invarianten, etc. von einer Matrix $A\in\Mat_n(K)$ als die \person{Jordan}-Invarianten von $f_A\in\End_K(K^n)$.
+\end{remark}
+
+\begin{conclusion}
+	Seien $A,B\in\Mat_n(K)$ trigonalisierbar. Genau dann ist $A\sim B$, wenn $A$ und $B$ die gleichen \person{Jordan}-Invarianten haben.
+\end{conclusion}
+\begin{proof}
+	Existenz und Eindeutigkeit der \person{Jordan}-Normalform.
 \end{proof}
