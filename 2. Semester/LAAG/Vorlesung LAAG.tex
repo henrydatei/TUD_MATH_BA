@@ -387,6 +387,11 @@
 }
 
 \makeatletter
+\let\@old@overline\overline
+\renewcommand*{\overline}[1]{%
+	\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{$#1$}}%
+}
+
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
 \newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
 \reqnos
