@@ -53,6 +53,7 @@
 \usetikzlibrary{matrix}
 \usepackage{color}
 \usepackage{wasysym}
+\usepackage{tcolorbox}
 
 \usepackage{enumerate}
 \usepackage{enumitem} %customize label
@@ -101,6 +102,7 @@
 	skipabove=5pt,%
 	skipbelow=10pt,%
 	frametitlefont=\normalfont\bfseries\color{black},%
+	nobreak,%enforce no pagebrakes in the whole frame
 }
 
 \newmdtheoremenv[%
@@ -337,9 +339,6 @@
 	{\index{#2#3#4}}%
 	{%
 		\uline{#3}%
-		\ifnumcomp{\value{section}}{<}{16}%
-		{\index[semester1]{#2#3#4}}%
-		{\index[semester2]{#2#3#4}}%
 		\index{#2#3#4}%
 	}%
 }
@@ -390,6 +389,28 @@
 \let\@old@overline\overline
 \renewcommand*{\overline}[1]{%
 	\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{$#1$}}%
+}
+
+\newlength{\contentheight}
+\newlength{\contentwidth}
+\NewDocumentCommand{\kringel}{o m m}{%
+	\def\@kringel@color{%
+		\IfValueTF{#1}{#1}{blue}%
+	}
+%
+	\let\@kringel@inner\relax
+	\let\@kringel@outer\@secondoftwo
+	\ifmmode
+		\let\@kringel@inner\ensuremath
+		\let\@kringel@outer\raisebox
+	\fi
+%
+	\settoheight{\contentheight}{\@kringel@inner{#3}}
+	\settowidth{\contentwidth}{\@kringel@inner{#3}}
+%
+	\@kringel@outer{-0.5em}{\begin{tcolorbox}[colframe=blue,halign=center,valign=center,width=1.5\contentwidth,height=2\contentheight,left=0pt,right=0pt,bottom=0pt,top=0pt,boxrule=0.8pt,colback=#2,boxsep=0pt,bean arc]
+		\@kringel@inner{#3}
+	\end{tcolorbox}}
 }
 
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
@@ -516,7 +537,9 @@
 	\renewcommand{\headrulewidth}{0pt}% Line at the header invisible
 	\renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
 }
+%changes pagestyle; instead of empty page the normal footer is printed
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
+%usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
 \pretocmd{\chapter}{\setcounter{section}{0}}{}{}
 
 \pagestyle{fancy}
@@ -607,27 +630,24 @@
 
 \makeatletter
 %update ntheorem macro to provide space between theorem numbers and any optional comment
-\renewcommand{\thm@@thmline@name}[5]{%
+\renewcommand{\thm@@thmline@name}[5]{%-       		
 	\def\thm@@thmline@name@tmp{%
-		\if\relax\detokenize{#3}\relax%
-			{:}%
-		\else%
-			{:\hspace*{1em}#3}%
+		\if\relax\detokenize{#3}\relax\else%
+			{\hspace*{2.2ex}#3}%
 		\fi%
 	}%
 	\ifx\\#5\\%
 		\@dottedtocline{-2}{0em}{2.3em}%
-		{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}%
+		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
 		{#4}
 	\else
 		\ifHy@linktocpage\relax\relax
-			\@dottedtocline{-2}{0em}{2.3em}%
-			{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}%
+			\@dottedtocline{-2}{0em}{1.3em}%
+			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{2.3em}%
-			{%
-			{#1 \protect\numberline{#2}{\thm@@thmline@name@tmp}}}%
+			\@dottedtocline{-2}{0em}{1.3em}%
+			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
