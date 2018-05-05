@@ -1,6 +1,6 @@
 \RequirePackage{ifluatex,ifpdf}
 \documentclass[ngerman,a4paper]{report}
-\usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
+\usepackage[left=2.1cm,right=3.1cm,bottom=3cm,footskip=0.75cm,headsep=0.5cm]{geometry}
 \usepackage[ngerman]{babel}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
@@ -18,6 +18,8 @@
 
 \ifluatex
 \usepackage{fontspec}
+%awesome package for debugging spacing issues
+%\usepackage{lua-visual-debug}
 %\usepackage{luacode}
 \fi
 
@@ -287,7 +289,9 @@
 \crefname{*example}{Beispiel}{Beispiele}
 
 \makeatletter
+%output a number in upper roman letters
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+%declare a new label; store current chapter number
 \newcommand*{\proplbl}[1]{%
 	\@bsphack
 	\begingroup
@@ -299,6 +303,10 @@
 	\endgroup
 	\@esphack
 }
+
+%refer to a label set by proplbl.
+%If the label is not defined (yet), question marks are output at the calling position. If the label is defined, the chapter number is prepended to the link output by \cref if the current chapter number and the one set when calling \proplbl differ.
+%the macro handels both text and math mode. mbox is needed due to a feature concerning ulem / cleveref
 \newcommand*{\propref}[1]{%
 	\ifcsdef{r@#1}%in first compilation the label may not be defined yet
 	{%
@@ -334,6 +342,7 @@
 }
 \makeatother
 
+%declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\IfBooleanTF{#1}%
 	{\index{#2#3#4}}%
@@ -342,11 +351,15 @@
 		\index{#2#3#4}%
 	}%
 }
+
+%append a new mathsymbol to the index, output if no star is given at the call position
 \NewDocumentCommand{\mathsymbol}{s O{} m m O{}}{%
 	\IfBooleanTF{#1}%
 	{\index[symbols]{#2#3@\detokenize{#4}#5}}%
 	{#4\index[symbols]{#2#3@\detokenize{#4}#5}}%
 }
+
+%remove skip before / after amsmath-environments: default to 0pt. 1star: just before the environment, 2stars: just after the environment, no star: both
 \NewDocumentCommand{\zeroAmsmathAlignVSpaces}{s s O{0 pt} O{0 pt}}{%
 	\IfBooleanTF{#1}%
 	{%
@@ -360,8 +373,10 @@
 	}%
 }
 
+%general transpose-makro
 \NewDocumentCommand{\transpose}{m}{\ensuremath{#1^\mathsf{T}}}
 
+%unused
 \NewDocumentCommand{\itemEq}{s m}{%
 	\begingroup%
 	\setlength{\abovedisplayskip}{\dimexpr -\parskip + 1pt\relax}%
@@ -371,10 +386,14 @@
 		{\parbox[c]{\linewidth}{\begin{flalign}#2&&\end{flalign}}}%}
 	\endgroup% 
 }
+
+%new macro for "equals" ^=
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 	\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
+%macro that defines the spacing between bracket and content of a matrix
 \NewDocumentCommand{\matrixBracketSpacing}{}{\mspace{4.0mu plus 3.0mu minus 1.0mu}}
+%macro width customized spacing between bracktes / content, lineheight and columnwidth
 \newenvironment{henrysmatrix}{%
 	\renewcommand*{\arraystretch}{1.2}
 	\setlength\arraycolsep{5pt}
@@ -386,33 +405,46 @@
 }
 
 \makeatletter
+%redefine \overline to customize the space between text / line (currently 0.4mm + height of the content)
+%ATTENTION: when changing the 0.4mm unfortunately, in \kringel the 0.4mm need to be changed accordingly
 \let\@old@overline\overline
 \renewcommand*{\overline}[1]{%
 	\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{$#1$}}%
 }
 
-\newlength{\contentheight}
-\newlength{\contentwidth}
-\NewDocumentCommand{\kringel}{o m m}{%
-	\def\@kringel@color{%
-		\IfValueTF{#1}{#1}{blue}%
-	}
-%
+%encircle some content. Arguments: border color (optional), background color (mandatory), content (mandatory)
+%two lengths to get width / height of content (important for width / height of the circle)
+\newlength{\@kringel@contentheight}
+\newlength{\@kringel@contentwidth}
+\newlength{\@kringel@depth}
+\NewDocumentCommand{\kringel}{O{blue} m m}{%
+%as the macro should work for both text and math mode, add some macros for later use to distinguish
+%in text mode, nothing happens (except discarding the 1st argument for the raisebox, that is permantently given), in math mode, the content needs to be enbraced by \ensuremath, the tcolorbox-environment by a raisebox
+%ATTENTION: when changing the height-factor of tcolorbox, the depth correction needs to be changed as well
 	\let\@kringel@inner\relax
 	\let\@kringel@outer\@secondoftwo
 	\ifmmode
 		\let\@kringel@inner\ensuremath
 		\let\@kringel@outer\raisebox
 	\fi
-%
-	\settoheight{\contentheight}{\@kringel@inner{#3}}
-	\settowidth{\contentwidth}{\@kringel@inner{#3}}
-%
-	\@kringel@outer{-0.5em}{\begin{tcolorbox}[colframe=blue,halign=center,valign=center,width=1.5\contentwidth,height=2\contentheight,left=0pt,right=0pt,bottom=0pt,top=0pt,boxrule=0.8pt,colback=#2,boxsep=0pt,bean arc]
+%set the width and height
+	\settoheight{\@kringel@contentheight}{\hbox{\@kringel@inner{#3}}}
+	\settowidth{\@kringel@contentwidth}{\@kringel@inner{#3}}
+	\settodepth{\@kringel@depth}{\@kringel@inner{#3}}
+%change the depth correction dependend whethere there is a depth (e.g. y) or not (e.g. a)
+	\ifdim \@kringel@depth > 0pt%
+		\setlength{\@kringel@depth}{\dimexpr\@kringel@depth+0.5mm\relax}
+	\else
+		\settodepth{\@kringel@depth}{y}
+		\setlength{\@kringel@depth}{\dimexpr\@kringel@depth+0.3mm\relax}
+	\fi
+%output the colorbox width given parameter: frame color, background color, computed width and height, and escaped content depending on math / text mode
+	\@kringel@outer{\dimexpr-\@kringel@contentheight/2-\@kringel@depth\relax}{\begin{tcolorbox}[colframe=#1,halign=center,valign=center,width=1.5\@kringel@contentwidth,height=2.5\@kringel@contentheight,left=0pt,right=0pt,bottom=0pt,top=0pt,boxrule=0.8pt,colback=#2,boxsep=0pt,bean arc]
 		\@kringel@inner{#3}
 	\end{tcolorbox}}
 }
 
+%switch numbering of equations (amsmath-environments)
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}
 \newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
 \reqnos
