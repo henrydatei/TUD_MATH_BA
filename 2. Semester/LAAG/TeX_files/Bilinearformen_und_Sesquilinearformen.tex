@@ -13,7 +13,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{definition}
 
 \begin{remark}
-	Im Fall $K=\real$ ist $\lambda=\overline{\lambda}$. Wir werden der Einfachheit halber auch in diesem Fall von Sesquilinearformen sprechen , vgl. \propref{2_1_12}
+	Im Fall $K=\real$ ist $\lambda=\overline{\lambda}$. Wir werden der Einfachheit halber auch in diesem Fall von Sesquilinearformen sprechen, vgl. \propref{2_1_12}
 \end{remark}
 
 \begin{example}
@@ -37,3 +37,89 @@ Sei $K=\real$ oder $K=\comp$.
 		M_{\mathcal{E}}(s)=\mathbbm{1}_n\notag
 	\end{align}
 \end{example}
+
+\begin{lemma}
+	\proplbl{2_2_6}
+	Seien $v,w\in V$. Mit $x=\Phi_B^{-1}(v)$, $y=\Phi_B^{-1}(w)$ und $A=M_B(s)$ ist $s(v,w)=x^tA\overline{y}=s_A(x,y)$.
+\end{lemma}
+\begin{proof}
+	Achtung: $v_i$ beschreibt das $i$-te Element der Basis $B$!\\
+	$s(v,w)=s(\sum_{i=1}^n x_iv_i,\sum_{j=1}^n y_jv_j)=\sum_{i,j=1}^n x_i\overline{y}s(v,v_j)=x^tA\overline{y}$
+\end{proof}
+
+\begin{proposition}
+	ISei $B$ eine Basis von $V$. Die Abbildung $s\mapsto M_B(s)$ ist eine Bijektion zwischen den Sesquilinearformen auf $V$ und $\Mat_n(K)$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item injektiv: \propref{2_2_6}
+		\item surjektiv: Für $A\in\Mat_n(K)$ wird durch $s(v,w)=\Phi_B^{-1}(v)^t\cdot A\cdot \overline{\Phi_B^{-1}(w)}$ eine Sesquilinearform auf $V$ mit $M_B(s)=(s(v_i,w_j))_{i,j}= (e_i^tA\overline{e_j})_{i,j}=(e_iAe_j)_{i,j}=A$ definiert.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Transformationsformel]
+	Seien $B$ und $B'$ Basen von $V$ und $s$ eine Sesquilinearform auf $V$. Dann gilt:
+	\begin{align}
+		M_{B'}(s)=(T_B^{B'})^t\cdot M_B(s)\cdot \overline{T_B^{B'}}\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Seien $v,w\in V$. Definiere $A=M_B(s)$, $A'=M_{B'}(s)$, $T=T_B^{B'}$ und $x,y,x',y'\in K^n$ mit $v=\Phi_B(x)=\Phi_B(x')$, $w=\Phi_B(y)=\Phi_B(y')$. Dann ist $x=Tx'$, $y=Ty'$ und somit
+	\begin{align}
+		(x')^tA'\overline{y'}&\overset{\propref{2_2_6}}{=}s(v,w)\notag \\
+		&\overset{\propref{2_2_6}}{=}x^tA\overline{y}\notag \\
+		&= (Tx')^tA\overline{Ty'} \notag \\
+		&= (x')^tT^tA\overline{T}\overline{y'}\notag
+	\end{align} 
+	Da $v,w\in V$ und somit $x',y'\in K$ beliebig waren, folgt $A=T^tA\overline{T}$.
+\end{proof}
+
+\begin{example}
+	Sei $s$ das Standardskalarprodukt auf dem $K^n$ und $B=(b_1,...,b_n)$ eine Basis des $K^n$. Dann ist 
+	\begin{align}
+		M_B(s)=(T_{\mathcal{E}}^B)^t\cdot M_{\mathcal{E}}(s)\cdot \overline{T_{\mathcal{E}}^B}=B^t\cdot \mathbbm{1}_n\cdot \overline{B}=B^tB\notag
+	\end{align}
+	wobei $B=(b_1,...,b_n)\in\Mat_n(K)$.
+\end{example}
+
+\begin{proposition}
+	\proplbl{2_2_10}
+	Sei $s$ eine Sesquilinearform auf $V$. Dann sind äquivalent:
+	\begin{itemize}
+		\item Es gibt $0\neq v\in V$ mit $s(v,w)=0$ für alle $w\in V$.
+		\item Es gibt $0\neq w\in V$ mit $s(v,w)=0$ für alle $v\in V$.
+		\item Es gibt eine Basis $B$ von $V$ mit $\det(M_B(s))=0$.
+		\item Für jede Basis $B$ von $V$ gilt $\det(M_B(s))=0$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Sei $B$ eine Basis von $V$, $v=\Phi_B(x)$ und $A=M_B(s)$. Genau dann ist die (semilineare) Abbildung $w\mapsto s(v,w)$ die Nullabbildung, wenn $x^tA\overline{y}=0$ für alle $y\in K^n$, also wenn $0=x^tA$, d.h. $A^tx=0$. Somit ist $(1)$ genau dann erfüllt, wenn $A^t$ nicht invertierbar ist, also wenn $0=\det(A^t)=\det(A)$. Damit $(1)\Rightarrow (4)\Rightarrow (3)\Rightarrow (1)$ gezeigt und $(2)\iff (4)$ zeigt man analog.
+\end{proof}
+
+\begin{definition}[ausgeartet]
+	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{ausgeartet}, wenn eine der äquivalenten Bedingungen aus \propref{2_2_10} erfüllt ist, sonst \emph{nicht-ausgeartet}.
+\end{definition}
+
+\begin{definition}[symmetrisch, hermitesch]
+	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{symmetrisch}, wenn bzw. \begriff{hermitesch}, wenn
+	\begin{align}
+		s(x,y)=\overline{s(y,x)}\quad\text{ für alle }x,y\in V\notag
+	\end{align}
+	
+	Eine Matrix $A\in\Mat_n(K)$ heißt \emph{symmetrisch} bzw. \emph{hermitesch}, wenn $A=A^*=\overline{A}^t=\overline{A^t}$.
+\end{definition}
+
+\begin{proposition}
+	Sei $s$ eine Sesquilinearform auf $V$ und $B$ eine Basis von $V$. Genau dann ist $s$ hermitesch, wenn $M_B(s)$ dies ist.
+\end{proposition}
+\begin{proof}
+	$(\Rightarrow)$: klar aus Definition von $M_B(s)$. \\
+	$(\Leftarrow)$: $x=\Phi_B^{-1}$, $y=\Phi_B^{-1}(w)$, $\overline{s(v,w)}=\overline{s(v,w)^t}=\overline{(x^tA\overline{y})^t}=y^t\overline{A^t}\overline{x}=s(w,v)$
+\end{proof}
+
+\begin{proposition}
+	Für $A,B\in\Mat_n(K)$ und $S\in\GL_n(K)$ ist $(A+B)^*=A^*+B^*$, $(AB)^*=B^*A^*$, $(A^*)^*=A$ und $(S^{-1})^*=(S^*)^{-1}$.
+\end{proposition}
+\begin{proof}
+	\propref{2_1_8}, III.1.14, III.1.15 %TODO: Verlinkung
+\end{proof}

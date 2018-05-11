@@ -1,0 +1,38 @@
+\section{Euklidische und unitäre Vektorräume}
+
+\begin{lemma}
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Dann ist $s(x,x)\in\real$ für alle $x\in V$.
+\end{lemma}
+\begin{proof}
+	Da $s$ hermitesch ist, ist $s(x,x)=\overline{s(x,x)}$, also $s(x,x)\in\real$.
+\end{proof}
+
+\begin{definition}[quadratische Form]
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Die \begriff{quadratische Form} zu $s$ ist die Abbildung
+	\begin{align}
+		q_s:\begin{cases}
+		V\to \real \\ x\mapsto s(x,x)
+		\end{cases}\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	Die quadratische Form $q_s$ erfüllt das $q_s(\lambda x)=\vert\lambda\vert^2\cdot q_s(x)$ für alle $x\in V$, $\lambda\in K$. Im Fall $K=\real$, $V=\real^n$, $x=(x_1,...,x_n)^t$, $s=s_A$, $A\in\Mat_n(\real)$ ist $q_s(x)=s_A(x,x)=x^tAx=\sum_{i,j=1}^n a_{ij}x_ix_j$ ein "'quadratisches Polynom in den Variablen $x_1,...,x_n$"'.
+\end{remark}
+
+\begin{proposition}[Polarisierung]
+	Sei $s$ ein hermitesche Sesquilinearform auf $V$. Dann gilt für $x,y\in V$:
+	\begin{align}
+		s(x,y)&=\frac 1 2 (q_s(x+y)-q_s(x)-q_s(y))\quad K=\real\notag \\
+		s(x,y)&=\frac 1 4 (q_s(x+y)-q_s(x-y)+iq_s(x+iy)-iq_s(x-iy))\quad K=\comp\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Im Fall $K=\real$ ist
+	\begin{align}
+		q_s(x+y)-q_s(x)-q_s(y)&= s(x+y,x+y)-s(x,x)-s(y,y)\notag \\
+		&= s(x,x)+s(x,y)+s(y,x)+s(y,y)-s(x,x)-s(y,y)\notag \\
+		&= s(x,y)+s(y,x)-2s(x,y)\notag
+	\end{align}
+	Im Fall $K=\comp$: ÜA
+\end{proof}
