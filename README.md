@@ -60,7 +60,7 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
     1. Das Standardskalarprodukt ... fertig
     
-    2. Bilinearformen und Sesquilinearformen ..fertig
+    2. Bilinearformen und Sesquilinearformen ... fertig
     
     3. Euklidische und unitäre VR ... wird bearbeitet
 
