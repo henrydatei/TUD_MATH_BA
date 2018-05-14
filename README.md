@@ -40,7 +40,7 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
 ### Fortschritt Lineare Algebra (2. Semester, SS2018)
 
-1. Endomorphismen ... wird bearbeitet
+1. Endomorphismen ... fertig
 
     1. Eigenwerte ... fertig
     
@@ -52,9 +52,17 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
     5. Das Minimalpolynom ... fertig
     
-    6. Nilpotente Endomorphismen ... wird bearbeitet
+    6. Nilpotente Endomorphismen ... fertig
+    
+    7. Die Jordan-Normalform ... fertig
 
-2. Skalarprodukte ... noch nicht bearbeitet
+2. Skalarprodukte ... wird bearbeitet
+
+    1. Das Standardskalarprodukt ... fertig
+    
+    2. Bilinearformen und Sesquilinearformen ..fertig
+    
+    3. Euklidische und unitäre VR ... wird bearbeitet
 
 3. Dualität ... noch nicht bearbeitet
 
