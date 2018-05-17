@@ -1,0 +1,76 @@
+\section{Orthogonalität}
+
+Sei $V$ ein euklidischer bzw. unitärer VR.
+
+\begin{definition}[orthogonal, orthogonales Komplement]
+	Zwei Vektoren $x,y\in V$ heißen \begriff{orthogonal}, in Zeichen $x\perp y$, wenn $\skalar{x}{y}=0$. Zwei Mengen $X,Y\subseteq V$ sind \emph{orthogonal}, in Zeichen $X\perp Y$, wenn $x\perp y$ für alle $x\in X$ und $y\in Y$.
+	
+	Für $U\subseteq V$ bezeichnet 
+	\begin{align}
+		U^{\perp}=\{x\in V\mid x\perp u\text{ für alle } u\in U\}\notag
+	\end{align}
+	das \begriff{orthogonale Komplement} zu $U$.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{2_4_2}
+	Für $x,y\in V$ ist
+	\begin{itemize}
+		\item $x\perp y\iff y\perp x$
+		\item $x\perp 0$
+		\item $x\perp x\iff x=0$
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	klar
+\end{proof}
+
+\begin{proposition}
+	Für $U\subseteq V$ ist $U^\perp$ ein UVR von $V$ mit $U\perp U^\perp$ und $U\cap U^\perp \subseteq\{0\}$.
+\end{proposition}
+\begin{proof}
+	Linearität des Skalarprodukts im ersten Argument liefert, dass $U^\perp$ ein UVR ist. Die Aussage $U^\perp \perp U$ ist trivial, $U \perp U^\perp$ folgt dann aus \propref{2_4_2}. Ist $u\in U\cap U^\perp$, so ist insbesondere $u\perp u$, also $u=0$ nach \propref{2_4_2}.
+\end{proof}
+
+\begin{definition}[orthonormal]
+	Eine Familie $(x_i)_{i\in I}$ von Elementen von $V$ ist \emph{orthogonal}, wenn $x_i\perp x_j$ für alle $i\neq j$, und \begriff{orthonormal}, wenn zusätzlich $\Vert x_i\Vert=1$ für alle $i$. Eine orthogonale Basis nennt man eine \emph{Orthogonalbasis}, eine orthonormale Basis nennt man eine \emph{Orthonormalbasis} (ONB).
+\end{definition}
+
+\begin{remark}
+	Eine Basis $B$ ist genau dann eine ONB, wenn die darstellende Matrix des Skalarprodukts bezüglich $B$ die Einheitsmatrix ist. (Beispiel: Standardbasis des Standardraum bezüglich des Standardskalarprodukts)
+\end{remark}
+
+\begin{lemma}
+	Ist die Familie $(x_i)_{i\in I}$ orthogonal und $x_i\neq 0$ für alle $i\in I$, so ist $(x_i)_{i\in I}$ linear unabhängig.
+\end{lemma}
+\begin{proof}
+	Ist $\sum_{i\in I} \lambda_i x_i=0$, $\lambda_i\in K$, fast alle gleich 0, so ist $0=\skalar{\sum_{i\in I} \lambda_i x_i}{x_j}=\sum_{i\in I} \lambda_i\skalar{x_i}{x_j}=\lambda_j\skalar{x_j}{x_j}$ Aus $x_j\neq 0$ folgt $\skalar{x_j}{x_j}>0$ und somit $\lambda_j=0$ für jedes $j\in I$.
+\end{proof}
+
+\begin{lemma}
+	Ist $(x_i)_{i\in I}$ orthogonal und $x_i\neq 0$ für alle $i$, so ist $(y_i)_{i\in I}$ mit
+	\begin{align}
+		y_i=\frac{1}{\Vert x_i\Vert}x_i\notag
+	\end{align}
+	orthonormal.
+\end{lemma}
+\begin{proof}
+	Für alle $i$ ist $\skalar{y_i}{y_i}=\frac{1}{\Vert x_i\Vert^2}\skalar{x_i}{x_i}=1$. \\
+	Für alle $i\neq j$ ist $\skalar{y_i}{y_j}=\frac{1}{\Vert x_i\Vert\cdot \Vert x_j\Vert}\skalar{x_i}{x_j}=0$.
+\end{proof}
+
+\begin{proposition}
+	Sei $U\subseteq V$ ein UVR und $B=(x_1,...,x_k)$ eine ONB von $U$. Es gibt genau einen Epimorphismus $pr_U:V\to U$ mit $pr_U\vert_U=\id_U$ und $\Ker(pr_U)\perp U$, insbesondere also $x-pr_U\perp U$ für alle $x\in V$, genannt die \begriff{orthogonale Projektion} auf $U$, und dieser ist geben durch
+	\begin{align}
+		x\mapsto\sum_{i=1}^k \skalar{x}{x_i}x_i
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Sei zunächst $pr_U$ durch (1) gegeben. Die Linearität von $pr_U$ folgt aus (S1) und (S3). Für $u=\sum_{i=1}^k \lambda_i x_i\in U$ ist $\skalar{u}{x_j}=\skalar{\sum_{i=1}^k \lambda_i x_i}{x_j}=\sum_{i=1}^k \lambda_i\skalar{x_i}{x_j}=\lambda_j$, woraus $pr_U(u)=u$. Somit ist $pr_U\vert_U=\id_U$, und insbesondere ist $pr_U$ surjektiv. Ist $pr_U(x)=0$, so ist $\skalar{x}{x_i}=0$ für alle $i$., woraus mit (S2) und (S4) sofort $x\perp U$ folgt. Somit ist $\Ker(pr_U)\perp U$. \\
+	Für $x\in V$ ist $pr_U(x-pr_U(x))=pr_U(x)-pr_U(pr_U(x))=pr_U(x)-pr_U(x)=0$, also $x-pr_U(x)\in\Ker(pr_U)\subseteq U^\perp$. \\
+	Ist $f:V\to U$ ein weiterer Epimorphismus mit $f\vert_U=\id_U$ und $\Ker(f)\perp U$, so ist 
+	\begin{align}
+		\underbrace{pr_U(x)}_{\in U}-\underbrace{f(x)}_{\in U}=\underbrace{pr_U(x)-x}_{\in U^\perp}-\underbrace{f(x)-x}_{\in U^\perp}\in U\cap U^\perp =\{0\}\notag
+	\end{align}
+	für jedes $x\in V$, somit $f=pr_U$.
+\end{proof}
