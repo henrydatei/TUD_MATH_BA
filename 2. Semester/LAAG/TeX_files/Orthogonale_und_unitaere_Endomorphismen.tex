@@ -1,0 +1,89 @@
+\section{Orthogonale und unitäre Endomorphismen}
+
+Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $f\in\End_K(V)$.
+
+\begin{definition}[orthogonale, unitäre Endomorphismen]
+	$f$ ist \begriff[Endomorphismus!]{orthogonal} bzw. \begriff[Endomorphismus!]{unitär}, wenn 
+	\begin{align}
+		\skalar{f(x)}{f(y)}=\skalar{x}{y}\quad\forall x,y\in V\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	Ist $f$ unitär, so gelten
+	\begin{itemize}
+		\item Für $x\in V$ ist $\Vert f(x)\Vert =\Vert x\Vert$.
+		\item Sind $x,y\in V$ mit $x\perp y$, so ist $f(x)\perp f(y)$.
+		\item Es ist $f\in\Aut_K(V)$ und auch $f^{-1}$ ist unitär.
+		\item Das Bild einer Orthonormalbasis unter $f$ ist eine Orthonormalbasis.
+		\item Ist $\lambda$ ein Eigenwert von $f$, so ist $\vert\lambda\vert=1$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item klar
+		\item klar
+		\item $f(x)=0\iff \Vert f(x)\Vert=0\iff \Vert x\Vert =0\iff x=0$, also ist $f$ injektiv, somit $f\in\Aut_K(V)$ und
+		\begin{align}
+			\skalar{f^{-1}(x)}{f^{-1}(y)}\overset{f\text{ unitär}}{=}\skalar{f(f^{-1}(x))}{f(f^{-1}(y))}=\skalar x y \notag
+		\end{align}
+		\item Folgt aus 1, 2 und 3
+		\item Ist $f(x)=\lambda x$, $x\neq 0$, so ist
+		\begin{align}
+			\Vert x\Vert=\Vert f(x)\Vert =\Vert \lambda x\Vert =\vert\lambda\vert \cdot \Vert x\Vert \Rightarrow \vert\lambda\vert=1\notag 
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Ist $\Vert f(x)\Vert=\Vert x\Vert$ für alle $x\in V$, so ist $f$ unitär.
+\end{proposition}
+\begin{proof}
+	Aus $\Vert f(x)\Vert=\Vert x\Vert$ folgt $\skalar{f(x)}{f(x)}=\skalar{x}{x}$. Die Polarisierung (\propref{2_3_4}) für $\skalar{f(x)}{f(y)}$ und die Linearität von $f$ liefern $\skalar{f(x)}{f(y)}=\skalar{x}{y}$. Zum Beispiel im Fall $K=\real$:
+	\begin{align}
+		\skalar{f(x)}{f(y)}&=\frac 1 2 \left(\skalar{\underbrace{f(x)+f(y)}_{f(x+y)}} {\underbrace{f(x)+f(y)}_{f(x+y)}}-\skalar{f(x)}{f(x)}-\skalar{f(y)}{f(y)}\right) \notag \\
+		&= \frac 1 2 \left( \skalar{x+y}{x+y}-\skalar{x}{x}-\skalar{y}{y}\right) \notag \\
+		&= \skalar{x}{y}\notag
+	\end{align}
+\end{proof}
+
+\begin{definition}[orthogonale, unitäre Matrizen]
+	Eine Matrix $A\in\Mat_n(K)$ heißt \begriff[Matrix!]{orthogonal} bzw. \begriff[Matrix!]{unitär}, wenn
+	\begin{align}
+		A^*A=\mathbbm{1}_n\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	Offenbar ist $A$ genau dann unitär, wenn $A^*$ das Inverse zu $A$ ist. Die folgenden Bedingungen sind daher äquivalent dazu, dass $A$ unitär ist:
+	\begin{align}
+		AA^*=\mathbbm{1}_n, \overline{A}A^t=\mathbbm{1}_n,  A^t\overline{A}=\mathbbm{1}_n,  A^t=\overline{A^{-1}}\notag
+	\end{align}
+\end{remark}
+
+\begin{proposition}
+	Sei $B$ eine Orthogonalbasis von $V$. Genau dann ist $f$ unitär, wenn $M_B(f)$ unitär ist.
+\end{proposition}
+\begin{proof}
+	Sei $A=M_B(f)$, $v=\Phi_B(x)$, $\Phi_B(y)$. Dann ist $\skalar{v}{w}=x^t\underbrace{M_B(\skalar{\cdot}{\cdot})}_{=\mathbbm{1}}\cdot \overline{y}=x^t\cdot \overline{y}$. Somit ist $f$ genau dann unitär, wenn $(Ax)^t\overline{Ay}=x^t\overline{y}$ für alle $x,y\in K^n$, also wenn $A^t\overline{A}=\mathbbm{1}$, d.h. $A$ unitär.
+\end{proof}
+
+\begin{proposition}
+	Die folgenden Mengen bilden Untergruppen der $\GL_n(K)$.
+	\begin{itemize}
+		\item $\Orth_n=\{A\in\GL_n(\real)\mid A\text{ ist orthogonal}\}$ die \begriff{orthogonale Gruppe}
+		\item $\SO_n=\{A\in \Orth_n\mid \det(A)=1\}$ die \begriff{spezielle orthogonale Gruppe}
+		\item $\Uni_n=\{A\in\GL_n(\comp)\mid A\text{ ist unitär}\}$ die \begriff{unitäre Gruppe}
+		\item $\SU_n=\{A\in \Uni_n\mid \det(A)=1\}$ die \begriff{spezielle unitäre Gruppe}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	z.B. für $\Uni_n$: Sind $A^{-1}=A^*$, $B^{-1}=B^*$, so ist $(AB)^{-1}=B^{-1}A^{-1}=B^*A^*=(AB)^*$, $(A^{-1})^{-1}=A=(A^*)^{-1}=(A^{-1})^*$
+\end{proof}
+
+\begin{proposition}
+	Genau dann ist $A\in\Mat_n(K)$ unitär, wenn die Spalten (oder die Zeilen) von $A$ eine Orthonormalbasis des $K^n$ bilden. 
+\end{proposition}
+\begin{proof}
+	Sei $s$ das Standardskalarprodukt und $B=(a_1,...,a_n)$. Nach \propref{2_4_5} ist $B$ genau dann eine Orthonormalbasis, wenn $M_B(s)=\mathbbm{1}_n$, und $M_B(s)=A^t\cdot\mathbbm{1}_n\cdot\overline{A}$, vgl. \propref{2_2_9}
+\end{proof}
