@@ -14,7 +14,19 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 		A\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}=\begin{henrysmatrix}3\\3\end{henrysmatrix},\;A\cdot\begin{henrysmatrix} 1\\-1\end{henrysmatrix}=\begin{henrysmatrix}-1\\1\end{henrysmatrix}\notag
 	\end{align}
 	$\Rightarrow$ mit $B=\left( \begin{henrysmatrix}1\\1\end{henrysmatrix},\begin{henrysmatrix}1\\-1\end{henrysmatrix}\right)$ ist $M_B(f)=\begin{henrysmatrix}3&0\\0&-1\end{henrysmatrix}$. \\%TODO figure
-	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{henrysmatrix}1\\-1\end{henrysmatrix}$
+	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{henrysmatrix}1\\-1\end{henrysmatrix}$ %TODO fix drawing!
+%	\begin{center}
+%		\begin{tikzpicture}
+%		\draw[->,thick] (-3,0) -- (3,0) node[right] {$x_1$};
+%		\draw[->,thick] (0,-3) -- (0,3) node[above] {$x_2$};
+%		\draw[->, thin, dashed] (0,0) -- (3,2);
+%		\draw[->, thin, dashed] (0,0) -- (-3,-2);
+%		\draw[->, thin, dashed] (0,0) -- (-1,1);
+%		\draw[->, thin, dashed] (0,0) -- (1,-1);
+%		\draw[dashed, rotate=+45, blue] (0,0) ellipse (2cm and 1cm);
+%		\draw (0,0) circle (2);
+%		\end{tikzpicture}
+%	\end{center}
 \end{example}
 
 \begin{definition}[Eigenwert, Eigenvektor, Eigenraum]
