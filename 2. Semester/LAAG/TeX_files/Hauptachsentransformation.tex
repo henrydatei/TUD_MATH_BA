@@ -80,7 +80,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $s$ eine hermitesche Sesq
 	\begin{align}
 		M_B(s)=\begin{pmatrix}\mathbbm{1_{r_{+}(s)}}&\;&\;\\\;&-\mathbbm{1_{r_{-}(s)}}&\;\\\;&\;&0\end{pmatrix}\notag
 	\end{align}
-	mit $r_+(s)-r_-(s)\le n$.
+	mit $r_+(s)+r_-(s)\le n$.
 \end{conclusion}
 \begin{proof}
 	Sei $B_0=(x_1,...,x_n)$ eine Orthonormalbasis von $V$ mit $A=M_{B_0}(s)=\diag(\lambda_1,...,\lambda_n)$. Setze 
@@ -112,8 +112,8 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $s$ eine hermitesche Sesq
 	\proplbl{2_7_8}
 	Seien $V_+$ und $V_-$ Untervektorräume von $V$ mit $V=V_+\oplus V_-\oplus V_0$ und $s$ positiv definit auf $V_+$, $-s$ positiv definit auf $V_-$. Dann ist
 	\begin{align}
-		\dim_K(V_+)&=\max{\dim_K(W)\mid \text{Untervektorraum von }V,s\text{ positiv definit auf }V}\notag \\
-		\dim_K(V_-)&=\max{\dim_K(W)\mid \text{Untervektorraum von }V,-s\text{ positiv definit auf }V}\notag
+		\dim_K(V_+)&=\max\{\dim_K(W)\mid \text{Untervektorraum von }V,s\text{ positiv definit auf }V\}\notag \\
+		\dim_K(V_-)&=\max\{\dim_K(W)\mid \text{Untervektorraum von }V,-s\text{ positiv definit auf }V\}\notag
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -132,7 +132,21 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $s$ eine hermitesche Sesq
 		V_-&=\Span_K(x_{r_+(s)+1},...,x_{r_+(s)+r_-(s)})\notag \\
 		V'_0&=\Span_K(x_{r_+(s)+r_-(s)+1},...,x_n)\notag
 	\end{align}
-	Dann ist $s$ positiv definit auf $V_+$, $-s$ positiv definit auf $V_-$ und $V=V_+\oplus V_-\oplus V'_0$. Es gilt $V'_0=V_0$:
+	Dann ist $s$ positiv definit auf $V_+$, $-s$ positiv definit auf $V_-$ und $V=V_+\oplus V_-\oplus V'_0$. Es gilt $V'_0=V_0$\\
 	$\subseteq$: klar \\
 	$\supseteq$: Ist $x=\sum_{i=1}^{n} \lambda_ix_i\in V_0$, so ist $0=s(x,x_i)=\lambda_i\cdot s(x_i,x_i)$ für $i=1,...,n$ also $\lambda_i=0$ für $i=1,...,r_+(s)+r_-(s)$, d.h. $x\in V'_0$. Nach \propref{2_7_8} ist $r_+(s)=\dim_K(V_+)$ nur von $s$ abhängig, analog für $r_-(s)$.
+\end{proof}
+
+\begin{definition}[Signatur]
+	Die \begriff{Signatur} von $s$ ist 
+	\begin{align}
+		(r_+(s),r_-(s),r_0(s))\notag
+	\end{align}
+\end{definition}
+
+\begin{conclusion}
+	Die Anzahl der positiven bzw. negativen Eigenwerte von $M_B(s)$ ist $r_+(s)$ bzw. $r_-(s)$.
+\end{conclusion}
+\begin{proof}
+	$A=M_B(s)$, $\exists S\in\Uni_n(K)$ und $S^*AS=D$ reelle Diagonalmatrix \propref{2_7_1}. Das heißt $\exists B'$ Basis mit $M_{B'}(s)=D$. Skalieren ergibt $B''$ mit $M_{B''}=D''$ wie in \propref{2_7_5}. Da $S\in\Uni_n(K)$ folgt $S^*=S^{-1}$, also sind $A$ und $D$ ähnlich zueinander und haben die gleichen Eigenwerte. Die Vorzeichen ändern sich nicht unter der Skalierung.
 \end{proof}
