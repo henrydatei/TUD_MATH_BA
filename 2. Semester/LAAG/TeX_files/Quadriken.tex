@@ -52,7 +52,7 @@ Sei $n\in\natur$.
 	\end{align}
 	Jetzt für $\tau_z$. Sei $U_z=\begin{henrysmatrix}\mathbbm{1}&z\\0&1\end{henrysmatrix}$. $U_z\tilde{x}=\tilde{\tau}_z(x)$. Man folgert analog, dass 
 	\begin{align}
-		\tau_z(Q)=\{y\in\real^n\mid \tilde{y}\underbrace{U_z^t\tilde{A}U_z}_{\begin{pmatrix} A&Az+b\\z^tA+b&z^tAz+b^tz+z^tb+c\end{pmatrix}}\tilde{y}=0\}\notag
+		\tau_z(Q)=\{y\in\real^n\mid \tilde{y}^t\underbrace{U_z^t\tilde{A}U_z}_{\begin{pmatrix} A&Az+b\\z^tA+b&z^tAz+b^tz+z^tb+c\end{pmatrix}}\tilde{y}=0\}\notag
 	\end{align}
 \end{proof}
 
@@ -85,12 +85,52 @@ Sei $n\in\natur$.
 	$f:\real^n\to\real^n$ ist eine Isometrie genau dann, wenn $\Vert f(x)-f(y)\Vert=\Vert x-y\Vert$ für alle $x,y\in\real^n.$
 \end{remark}
 
-\begin{theorem}[Klassifikation bis aus Isometrien]
+\begin{theorem}[Klassifikation bis auf Isometrien]
 	Sei $Q$ eine Quadrik. Es gibt eine Isometrie $f\in\Aff_{\real}(\real^n)$ mit $f(Q)$, die eine der folgenden Formen annimmt:
 	\begin{itemize}
 		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k \left( \frac{x_i}{a_i}\right)^2 -\sum_{i=k+1}^{n} \left( \frac{x_i}{a_i}\right)^2=0\right\rbrace \quad k\ge r-k\notag}
 		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k \left( \frac{x_i}{a_i}\right)^2 -\sum_{i=k+1}^{n} \left( \frac{x_i}{a_i}\right)^2=1\right\rbrace\notag}
-		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k \left( \frac{x_i}{a_i}\right)^2 -\sum_{i=k+1}^{n} \left( \frac{x_i}{a_i}\right)^2-zx-{r+1}=0\right\rbrace \quad k\ge r-k, r<n\notag}
+		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k \left( \frac{x_i}{a_i}\right)^2 -\sum_{i=k+1}^{n} \left( \frac{x_i}{a_i}\right)^2-2x_{r+1}=0\right\rbrace \quad k\ge r-k, r<n\notag}
 	\end{itemize}
 	mit $a_1,...,a_r\in\real_{>0}$ und $0\le k\le r\le n$
 \end{theorem}
+\begin{proof}
+	
+\end{proof}
+
+\begin{example}
+	\proplbl{2_8_example}
+	$Q\subseteq\real^2$
+	\begin{itemize}
+		\item \begin{itemize}
+			\item \itemEq{k=2,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2+\left( \frac{x_2}{a_2}\right)^2=0\right\rbrace\notag}
+			\item \itemEq{k=1,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=0\right\rbrace\notag}
+			\item \itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2=0\right\rbrace\notag}
+		\end{itemize}
+		\item \begin{itemize}
+			\item\itemEq{k=2,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2+\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace\notag}
+			\item\itemEq{k=1,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace\notag}
+			\item\itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2=1 \right\rbrace\notag}
+			\item\itemEq{k=0,r=2:\left\lbrace x\in\real^2\mid -\left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace=\emptyset\notag}
+			\item\itemEq{k=0,r=1:\left\lbrace x\in\real^2\mid -\left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace=\emptyset\notag}
+		\end{itemize}
+		\item \begin{itemize}
+			\item\itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-2x_2=0 \right\rbrace \notag}
+		\end{itemize}
+	\end{itemize}
+\end{example}
+
+\begin{remark}
+	\begin{itemize}
+		\item Ist $Q\subseteq\real^2$ eine Quadrik, $U\subseteq V$ affiner Untervektorraum, so ist $Q\cap U$ eine Quadrik in dem Sinne, dass $\exists f\text{ Isometrie}: f(U)=\real^k$ und $f(Q\cap U)$ ist eine Quadrik.
+		\item Ebene Quadriken sind im wesentlichen Kegelschnitte, $Q'=\{x\in\real^3\mid x_1^2+x_2^2=x_3^2\}$, außer 2c und 2d in \propref{2_8_example}
+	\end{itemize}
+\end{remark}
+
+\begin{conclusion}
+	Sei $Q$ eine Quadrik, dann existiert eine lineare affine Abbildung $f$ mit: $f(Q)$ ist vom Typ 1, 2 oder 3.
+\end{conclusion}
+
+\begin{remark}
+	$\real^n$ und "'Punkte im Unendlichen"' $\to \mathbb{P}^n(\real^n)$, der \begriff{projektive Raum}
+\end{remark}
