@@ -56,14 +56,26 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
     
     7. Die Jordan-Normalform ... fertig
 
-2. Skalarprodukte ... wird bearbeitet
+2. Skalarprodukte ... fertig
 
     1. Das Standardskalarprodukt ... fertig
     
     2. Bilinearformen und Sesquilinearformen ... fertig
     
-    3. Euklidische und unitäre VR ... wird bearbeitet
+    3. Euklidische und unitäre VR ... fertig
+    
+    4. Orthononalität ... fertig
+    
+    5. Orthogonale und unitäre Endomorphismen ... fertig
+    
+    6. Selbstadjungierte Endomorphismen ... fertig
+    
+    7. Hauptachsentransformation ... fertig
+    
+    8. Quadriken ... fertig
 
-3. Dualität ... noch nicht bearbeitet
+3. Dualität ... wird bearbeitet
+
+    1. Das Lemma von Zorn ... wird bearbeitet
 
 4. Moduln ... noch nicht bearbeitet
