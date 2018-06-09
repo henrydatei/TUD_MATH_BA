@@ -1,1 +1,125 @@
 \section{Koordinatendarstellung linearer Abbildungen}
+
+Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
+
+\begin{definition}[darstellende Matrix]
+	Sei $f\in \Hom_K(V,W)$. Für $j=1,...,n$ schreiben wir $f(x_j)=\sum_{
+		i=1}^m a_{ij}y_i$ mit eindeutig bestimmten $a_{ij}\in K$. Die Matrix $M_C^B(f)=(a_{ij})\in \Mat_{m\times n}(K)$ 
+	heißt die \begriff{darstellende Matrix} von $f$ bezüglich der Basen $B$ und $C$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{3_6_2}
+	Sei $f\in \Hom_K(V,W)$. Die darstellende Matrix $M_C^B(f)$ ist die eindeutig bestimmte Matrix $A\in 
+	\Mat_{n\times m}(K)$, für die das folgenden Diagramm kommutiert: \\
+	\begin{center}\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{K^n & K^m \\ V & W \\};
+		\path[-stealth]
+		(m-1-1) edge node [left] {$\Phi_B$} (m-2-1)
+		edge node [above] {$f_A$} (m-1-2)
+		(m-2-1) edge node [below] {$f$} (m-2-2)
+		(m-1-2) edge node [right] {$\Phi_C$} (m-2-2);
+		\end{tikzpicture}\end{center}
+	d.h. $f\circ \Phi_B=\Phi_C\circ f_A$.
+\end{proposition}
+\begin{proof}
+	Sei zunächst $A=M_C^B(f)$. Für $j=1,...,n$ ist $\Phi_C(f_A(e_j))=\Phi_C((a_{1j},...,a_{mj})^t)=\sum_{i=1}^m 
+	a_{ij}\cdot y_i=f(x_j)=f(\Phi_B(e_j))$, also $\Phi_C\circ f_A=f \circ \Phi_B$. \\
+	Sei umgekehrt $A\in \Mat_{m\times n}(K)$ mit $\Phi_C\circ f_A=f\circ\Phi_B$. Da $\Phi_B$ und $\Phi_C$ Isomorphismen 
+	sind, ist $f_A$ eindeutig bestimmt: $f_A=\Phi_C^{-1}\circ f \circ \Phi_B$ und deshalb auch $A$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_6_3}
+	Die Abbildung $M_C^B$: $\Hom_K(V,W)\to \Mat_{m\times n}(K)$ ist ein Isomorphismus von $K$-VR.
+\end{conclusion}
+\begin{proof}
+	Definiere $A$: $\Hom_K(V,W)\to \Mat_{m\times n}(K)$ mit $f\mapsto \Phi_C^{-1}\circ f \circ \Phi_B$. $A(f)=F_{m\times n}
+	(M_C^B(f))$, also $A=F_{m\times n}\circ M_C^B$. Die Abbildung ist bijektiv, da $\Phi_B$ und $\Phi_C$ bijektiv sind, 
+	und linear, da $\Phi_B$ und $\Phi_C$ linear sind. Also ist $A$ ein Isomorphismus. Da auch $F_{m\times n}^{-1}$ ein 
+	Isomorphismus ist, ist folglich auch $M_C^B=F_{m\times n}^{-1}\circ A$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{3_6_4}
+	Sei $U$ ein weitere $K$-VR mit endlicher Basis $D$. Für $f\in \Hom_K(V,W)$ und $g\in \Hom_K(U,V)$ ist 
+	\begin{align}
+		M_C^B(f)\cdot M_B^D(g)=M_C^D(f\circ g)\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Sei $r=\dim_K(U)$ und $A=M_B^D(g)$ und $B=M_C^B(f)$. Nach \propref{3_6_2} kommutieren die beiden kleinen Quadrate in: 
+	\begin{center}\begin{tikzpicture}
+		\matrix (n) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{K^r & K^n & K^m \\ U & V & W \\};
+		\path[-stealth]
+		(n-1-1) edge node [left] {$\Phi_D$} (n-2-1)
+		edge node [above] {$f_A$} (n-1-2)
+		(n-2-1) edge node [below] {$g$} (n-2-2)
+		(n-2-2) edge node [below] {$f$} (n-2-3)
+		(n-1-2) edge node [right] {$\Phi_B$} (n-2-2)
+		(n-1-2) edge node [above] {$f_B$} (n-1-3)
+		(n-1-3) edge node [right] {$\Phi_C$} (n-2-3);
+		\end{tikzpicture}\end{center}
+	Deshalb kommutiert auch:
+	\begin{center}\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{K^r & K^m \\ U & W \\};
+		\path[-stealth]
+		(m-1-1) edge node [left] {$\Phi_D$} (m-2-1)
+		edge node [above] {$f_B \circ f_A$} (m-1-2)
+		(m-2-1) edge node [below] {$f\circ g$} (m-2-2)
+		(m-1-2) edge node [right] {$\Phi_C$} (m-2-2);
+		\end{tikzpicture}\end{center}
+	Die Eindeutigkeit impliziert deshalb, dass $F_{m\times n}(M_C^B(f))\circ F_{r\times m}(M_B^D(g))=F_{r\times n}
+	(M_C^D(f\circ g))$. Da $F_{r\times n}$ injektiv ist, folgt $M_C^B(f)\cdot M_B^D(g)=M_C^D(f\circ g)$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_6_5}
+	Sei $f\in \Hom_K(V,W)$. Genau dann ist $f$ ein Isomorphismus, wenn $m=n$ und $M_C^B(f)=\GL_(K)$. In 
+	diesem Fall ist $M_B^C(f^{-1})=M_C^B(f)^{-1}$.
+\end{conclusion}
+\begin{proof}
+	Sei $A=M_C^B(f)$. $f$ ist genau dann ein Isomorphismus, wenn $f_A$ einer ist, und in diesem Fall ist $m=n$. Zudem ist 
+	$f_A$ genau dann ein Isomorphismus, wenn $A\in \GL_(K)$. Ist $f$ ein Isomorphismus, so ist $M_B^C(f^{-1})\cdot 
+	M_C^B(f)=M_C^C(f^{-1}\circ f)=1_n$, also $M_B^C(f^{-1})=M_C^B(f)^{-1}$.
+\end{proof}
+
+\begin{conclusion}
+	Die Abbildung $M_B:=M_B^B$: $\End_K(V)\to \Mat_n(K)$ ist ein Ringisomorphismus, der $\Aut_K(V)$ auf 
+	$\GL_(K)$ abbildet.
+\end{conclusion}
+\begin{proof}
+	\propref{3_6_3}, \propref{3_6_4}, \propref{3_6_5}
+\end{proof}
+
+\begin{definition}[Transformationsmatrix]
+	Sind $B$ und $B'$ Basen von $V$, so nennt man $T_{B'}^B:=M_{B'}^B(\id_V)\in 
+	\GL_(K)$ die \begriff{Transformationsmatrix} des Basiswechsels von $B$ nach $B'$.
+\end{definition}
+
+\begin{remark}
+	Nach \propref{3_6_2} ist $T_{B'}^B$, also die Matrix $A$, die $f_A=\Phi_B^{-1}\circ \Phi_B$ 
+	erfüllt. Ist $x=\Phi_B^{-1}(v)\in K^n$ der Koordinatenvektor von $v$ bezüglich $B$, so ist $T_{B'}^B\cdot 
+	x=f_{T_{B'}^B}(x)=(\Phi_{B'}\circ \Phi_B)(\Phi_B^{-1}(v))=\Phi_{B'}^{-1}(v)$ der Koordinatenvektor von $v$ 
+	bezüglich $B'$.
+\end{remark}
+
+\begin{proposition}[Transformationsformel]
+	Seien $B,B'$ Basen von $V$ und $C,C'$ Basen von $W$. Für $f\in \Hom_K(V,W)$ ist 
+	\begin{align}
+		M_{C'}^B(f)=T_{C'}^C\cdot M_C^B(f)\cdot (T_{B'}^B)^{-1}\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	$f=\id_W\circ f \circ \id_V$ mit den Basen $B',B,C,C'$ und erhält $M_{C'}^{B'}(f)=M_{C'}^C(\id_W)\cdot M_C^B(f)\cdot
+	M_B^{B'}(\id_V)=T_{C'}^C\cdot M_C^B(f)\cdot T_B^{B'}$ und $T_B^{B'}=M_B^{B'}(\id_V)=M_B^{B'}(\id_V^{-1})=M_{B'}^B(\id_V)^
+	{-1}=(T_{B'}^B)^{-1}$.
+\end{proof}
+
+\begin{conclusion}
+	Sind $B$ und $B'$ Basen von $V$ und $f\in \End_K(V)$, so gilt $M_{B'}(f)=T_{B'}^B \cdot M_B(f)
+	\cdot (T_{B'}^B)^{-1}$.
+\end{conclusion}
