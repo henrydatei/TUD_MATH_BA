@@ -42,6 +42,48 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	Analog: \begriff[Kette!]{maximales Element}, \begriff[Kette!]{obere Schranke}, \begriff[Kette!]{größtes Element}.
 \end{definition}
 
+\begin{center}
+	\begin{tikzpicture}
+		\node[place] (A) {1};
+		\node[place] (B) [below=of A] {3};
+		\node[place] (C) [left=of B] {2};
+		\node[place] (D) [right=of B] {5};
+		\node[place] (E) [right=of D] {7};
+		\node[place] (dots) [right=of E] {...};
+		
+		\node[place] (F) [below=of C] {4};
+		\node[place] (G) [below=of B] {6};
+		\node[place] (H) [below=of E] {15};
+		\node[place] (I) [right=of G] {10};
+		\node[place] (dots2) [right=of H] {...};
+		
+		\node[place] (J) [below=of F] {8};
+		\node[place] (K) [below=of J] {16};
+		\node[place] (L) [below=of K] {32};
+		
+		\draw[->,thick] (A.west) -- (C.north);
+		\draw[->,thick] (A.south) -- (B.north);
+		\draw[->,thick] (A.east) -- (D.north);
+		\draw[->,thick] (A.east) -- (E.north);
+		\draw[->,thick] (A.east) -- (dots.north);
+		
+		\draw[->,thick] (C.south) -- (F.north);
+		\draw[->,thick] (C.south) -- (G.north);
+		\draw[->,thick] (B.south) -- (G.north);
+		\draw[->,thick] (C.south) -- (I.north);
+		\draw[->,thick] (D.south) -- (I.north);
+		\draw[->,thick] (B.south) -- (H.north);
+		\draw[->,thick] (D.south) -- (H.north);
+		\draw[->,thick] (E.south) -- (dots2.north);
+		\draw[->,thick] (D.south) -- (dots2.north);
+		
+		\draw[->,thick] (F.south) -- (J.north);
+		\draw[->,thick] (J.south) -- (K.north);
+		\draw[->,thick] (K.south) -- (L.north);
+	\end{tikzpicture}
+	$Y=\{2^n\mid n\in\natur\}$ ist eine Kette
+\end{center}
+
 \begin{remark}
 	\begin{itemize}
 		\item Hat $Y$ ein kleinstes Element, so ist dies eindeutig bestimmt. Ein kleinstes Element ist minimal.

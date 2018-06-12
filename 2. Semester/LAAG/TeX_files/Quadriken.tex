@@ -104,18 +104,70 @@ Sei $n\in\natur$.
 	\begin{itemize}
 		\item \begin{itemize}
 			\item \itemEq{k=2,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2+\left( \frac{x_2}{a_2}\right)^2=0\right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[->,thick] (-1,0) -- (1,0);
+					\draw[->,thick] (0,-1) -- (0,1);
+					\draw[fill=red] (0,0) circle (0.1);
+				\end{tikzpicture}
+			\end{center}
 			\item \itemEq{k=1,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=0\right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[->,thick] (-1,0) -- (1,0);
+				\draw[->,thick] (0,-1) -- (0,1);
+				\draw[thick, red] (-1,-1) -- (1,1);
+				\draw[thick, red] (-1,1) -- (1,-1);
+				\end{tikzpicture}
+			\end{center}
 			\item \itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2=0\right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[->,thick] (-1,0) -- (1,0);
+				\draw[->,thick] (0,-1) -- (0,1);
+				\draw[thick, red] (0,-1) -- (0,1);
+				\end{tikzpicture}
+			\end{center}
 		\end{itemize}
 		\item \begin{itemize}
 			\item\itemEq{k=2,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2+\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[->,thick] (-1,0) -- (1,0);
+					\draw[->,thick] (0,-1) -- (0,1);
+					\draw[red] (0,0) ellipse (1cm and 0.5cm);
+				\end{tikzpicture}
+			\end{center}
 			\item\itemEq{k=1,r=2:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[->,thick] (-1,0) -- (1,0);
+					\draw[->,thick] (0,-1) -- (0,1);
+					\draw[red] plot [smooth] coordinates {(-0.2,1) (0,0.6) (0.5,0.3) (1,0.3)};
+					\draw[red] plot [smooth] coordinates {(-1,-0.2) (-0.4,-0.3) (-0.2,-0.5) (0,-1)};
+				\end{tikzpicture}
+			\end{center}
 			\item\itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2=1 \right\rbrace\notag}
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[->,thick] (-1,0) -- (1,0);
+				\draw[->,thick] (0,-1) -- (0,1);
+				\draw[thick, red] (-0.5,-1) -- (-0.5,1);
+				\draw[thick, red] (0.5,-1) -- (0.5,1);
+				\end{tikzpicture}
+			\end{center}
 			\item\itemEq{k=0,r=2:\left\lbrace x\in\real^2\mid -\left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace=\emptyset\notag}
 			\item\itemEq{k=0,r=1:\left\lbrace x\in\real^2\mid -\left( \frac{x_1}{a_1}\right)^2-\left( \frac{x_2}{a_2}\right)^2=1 \right\rbrace=\emptyset\notag}
 		\end{itemize}
 		\item \begin{itemize}
 			\item\itemEq{k=1,r=1:\left\lbrace x\in\real^2\mid \left( \frac{x_1}{a_1}\right)^2-2x_2=0 \right\rbrace \notag}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[->,thick] (-1,0) -- (1,0);
+					\draw[->,thick] (0,-1) -- (0,1);
+					\draw[red] plot [smooth] coordinates {(-1,1) (-0.5,0.25) (0,0) (0.5,0.25) (1,1)};
+				\end{tikzpicture}
+			\end{center}
 		\end{itemize}
 	\end{itemize}
 \end{example}
