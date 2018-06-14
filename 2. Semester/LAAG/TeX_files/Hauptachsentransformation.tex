@@ -138,15 +138,16 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $s$ eine hermitesche Sesq
 \end{proof}
 
 \begin{definition}[Signatur]
-	Die \begriff{Signatur} von $s$ ist 
+	Die \begriff{Signatur} von $s$ ist das Tripel
 	\begin{align}
 		(r_+(s),r_-(s),r_0(s))\notag
 	\end{align}
+	wobei $r_0(s)=\dim_K(V_0)$.
 \end{definition}
 
 \begin{conclusion}
-	Die Anzahl der positiven bzw. negativen Eigenwerte von $M_B(s)$ ist $r_+(s)$ bzw. $r_-(s)$.
+	Ist $s$ eine hermitesche Form auf $V$ und $B$ eine Basis von $V$, so ist die Zahl der positiven bzw. negativen Eigenwerte von $M_B(s)$ gleich $r_+(s)$ bzw. $r_-(s)$, insbesondere also unabhängig von $B$.
 \end{conclusion}
 \begin{proof}
-	$A=M_B(s)$, $\exists S\in\Uni_n(K)$ und $S^*AS=D$ reelle Diagonalmatrix \propref{2_7_1}. Das heißt $\exists B'$ Basis mit $M_{B'}(s)=D$. Skalieren ergibt $B''$ mit $M_{B''}=D''$ wie in \propref{2_7_5}. Da $S\in\Uni_n(K)$ folgt $S^*=S^{-1}$, also sind $A$ und $D$ ähnlich zueinander und haben die gleichen Eigenwerte. Die Vorzeichen ändern sich nicht unter der Skalierung.
+	Sei $A=M_B(s)$. Nach \propref{2_7_1} gibt es $S\in\Uni_n(K)$ mit $S^*AS$ eine reelle Diagonalmatrix. Da $S^*=S^{-1}$ haben $A$ und $S^*AS$ die selben Eigenwerte. Bringt man $S^*AS$ nun in die Form in \propref{2_7_5}, so ändern sich die Vorzeichen der Diagonale nicht mehr.
 \end{proof}

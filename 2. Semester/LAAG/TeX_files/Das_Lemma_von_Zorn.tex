@@ -13,19 +13,20 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	\end{itemize}
 \end{definition}
 
-\begin{definition}[Äquivalenzrelation]
-	Eine \begriff{Äquivalenzrelation} ist eine reflexive, transitive und symmetrische Relation.
-\end{definition}
+\begin{example}[Äquivalenzrelation]
+	Eine \begriff{Äquivalenzrelation} ist eine reflexive, transitive und symmetrische Relation. Wir haben schon verschiedene Äquivalenzrelationen kennengelernt: Isomorphie von $K$-Vektorräumen und Ähnlichkeit von Matrizen.
+\end{example}
 
 \begin{definition}[Halbordnung]
-	Eine \begriff{Halbordnung} ist eine reflexiv, transitive und antisymmetrische Relation. Eine totale Halbordnung heißt \begriff{Totalordnung} oder \begriff{lineare Ordnung}
+	Eine \begriff{Halbordnung} (oder \begriff{partielle Ordnung}) ist eine reflexive, transitive und antisymmetrische Relation $\le$. Eine totale Halbordnung heißt \begriff{Totalordnung} oder \begriff{lineare Ordnung}. Man schreibt $x<y$ für $x\le y\land x\neq y$.
 \end{definition}
 
 \begin{example}
 	\begin{itemize}
-		\item Die natürliche Ordnung auf $\real$, $\ratio$, $\whole$ und $\natur$.
-		\item Teilbarkeit ist eine Halbordnung auf $\natur$, aber Teilbarkeit ist keine Halbordnung auf $\whole$, da $1\vert -1$ und $-1\vert 1$, aber $1\neq -1$!
-		\item $\mathcal{P}(X)$ ist die Potenzmenge. "'$\subseteq$"' ist eine Halbordnung auf $\mathcal{P}$, aber für $\vert X\vert>1$ ist "'$\subseteq$"' keine Totalordnung.
+		\item Die natürliche Ordnung $\le$ auf $\real$, $\ratio$, $\whole$ und $\natur$ ist eine Z
+		Totalordnung.
+		\item Teilbarkeit $\vert$ ist eine Halbordnung auf $\natur$, aber Teilbarkeit ist keine Halbordnung auf $\whole$, da $1\vert -1$ und $-1\vert 1$, aber $1\neq -1$!
+		\item $\mathcal{P}(X)$ ist die Potenzmenge. "$\subseteq$" ist eine Halbordnung auf $\mathcal{P}$, aber für $\vert X\vert>1$ ist "$\subseteq$" keine Totalordnung.
 		\item Sei $(X,\le)$ eine Halbordnung, sei $Y\subseteq X$, so ist $(Y,\subseteq\vert_Y)$ eine Halbordnung.
 	\end{itemize}
 \end{example}
@@ -108,7 +109,7 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
 \end{theorem}
 \begin{proof}
-	Dieses Theorem ist äquivalent zum Auswahlaxiom. \frownie{}. Wir wollen zumindest die Hinrichtung zeigen, d.h. aus dem Lemma von Zorn folgt das Auswahlaxiom.
+	Das Lemma von Zorn hat axiomatischen Charakter - es ist äquivalent zum Auswahlaxiom, seine Gültigkeit ist somit abhängig von unseren grundlegenden mengentheoretischen Annahmen. Für einen Beweis des Lemmas von Zorn aus dem Auswahlaxiom siehe die Vorlesung \textit{Mengenlehre}. Wir zeigen hier zumindest die andere Richtung, nämlich dass das Auswahlaxiom aus dem Lemma von Zorn folgt.
 \end{proof}
 
 \begin{conclusion}[Auswahlaxiom]

@@ -29,7 +29,7 @@ Sei $n\in\natur$.
 	\begin{align}
 		\begin{pmatrix}A&b\end{pmatrix}\in\Mat_{n,n+1}(\real)\notag
 	\end{align}
-	Es gilt $\rk(A)\le \rk(\tilde{A})$.
+	Es gilt $\rk(A)\le \rk(A,b)\le \rk(\tilde{A})$.
 \end{remark}
 
 \begin{remark}[Wiederholung]
@@ -62,6 +62,7 @@ Sei $n\in\natur$.
 		\item vom \begriff[Quadrik!]{kegeligen Typ}, wenn $\rk(A)=\rk(A,b)=\rk(\tilde{A})$
 		\item eine \begriff[Quadrik!]{Mittelpunktsquadrik}, wenn $\rk(A)=\rk(A,b)<\rk(\tilde{A})$
 		\item vom \begriff[Quadrik!]{parabolischen Typ}, wenn $\rk(A)<\rk(A,b)$
+		\item \begriff{ausgeartet}, wenn $\det(\tilde{A})=0$
 	\end{itemize}
 \end{definition}
 
@@ -85,7 +86,7 @@ Sei $n\in\natur$.
 	$f:\real^n\to\real^n$ ist eine Isometrie genau dann, wenn $\Vert f(x)-f(y)\Vert=\Vert x-y\Vert$ für alle $x,y\in\real^n.$
 \end{remark}
 
-\begin{theorem}[Klassifikation bis auf Isometrien]
+\begin{theorem}[Klassifikation der Quadriken bis auf Isometrien]
 	Sei $Q$ eine Quadrik. Es gibt eine Isometrie $f\in\Aff_{\real}(\real^n)$ mit $f(Q)$, die eine der folgenden Formen annimmt:
 	\begin{itemize}
 		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k \left( \frac{x_i}{a_i}\right)^2 -\sum_{i=k+1}^{n} \left( \frac{x_i}{a_i}\right)^2=0\right\rbrace \quad k\ge r-k\notag}
@@ -95,7 +96,15 @@ Sei $n\in\natur$.
 	mit $a_1,...,a_r\in\real_{>0}$ und $0\le k\le r\le n$
 \end{theorem}
 \begin{proof}
-	
+	Sei $Q$ gegeben durch $(A,b,c)$. Nach \propref{2_7_1} gibt es eine orthogonale Matrix $S\in\Orth_n$ mit $S^tSAS=\diag(\lambda_1,...,\lambda_n)$. Indem wir $Q$ durch $f_{S^{-1}}(Q)$ ersetzen, können wir also ohne Einschränkung annehmen, dass $A=\diag(\lambda_1,...,\lambda_n)$. Ohne Einschränkung ist weiter $\lambda_1,...,\lambda_k>0$ und $\lambda_{k+1},...,\lambda_r<0$ und $\lambda_{r+1},...,\lambda_n=0$. Dann ist $(e_{r+1},...,e_n)$ eine Orthonormalbasis des Ausartungsraums $V_0$ von $s_A$. \\ 
+	Wenn wir $Q$ durch $\tau_z(Q)$ ersetzen, wird $b$ durch $Az+b$ ersetzt, wir können deshalb ohne Einschränkung annehmen, dass $b\in V_0$. Ist $n>r$, also $V_0\neq \{0\}$, so können wir eine Orthonormalbasis $(v_{r+1},...,v_n)$ von $V_0$ mit $b\in\Span_\real(v_{r+1})$ wählen. \\
+	Indem wir $Q$ durch $f_{S^{-1}}(Q)$ mit $S=(e_1,...,e_r,v_{r+1},...,v_n)$ ersetzen, können wir ohne Einschränkung annehmen, dass $b=\mu\cdot e_{r+1}$ mit $\mu\in\real$. \\
+	Ist nun $\rk(A)=\rk(A,b)$, so gibt es $z$ mit $Az=-b$, und indem wir $Q$ durch $\tau_z(Q)$ ersetzen, können wir annehmen, dass $b=0$. 
+	\begin{itemize}
+		\item Im Fall $c=0$ setzt man $a_i=\frac{1}{\sqrt{\vert \lambda_i\vert}}$ und ersetzt gegebenenfalls $(A,b,c)$ mit $(-A,-b,-c)$, um Form 1 zu erhalten.
+		\item Im Fall $c\neq 0$ ersetzt man $(A,b,c)$ durch $(-\frac 1 c A, -\frac 1 c b,-1)$ und setzt dann $a_i=\frac{1}{\sqrt{\vert \lambda_i\vert}}$, um Form 2 zu erhalten.
+		\item Ist $\rk(A)<\rk(A,b)$, so ist insbesondere $r<n$ und $\mu\neq 0$. Nun ersetzten wir $Q$ durch $\tau_z(Q)$ mit $z=-\frac{c}{2\mu}\cdot e_{r+1}$ und können somit auch wieder $c=0$ annehmen. Ersetzt man $(A,b,0)$ durch $(-\frac{1}{\mu}A,-1,0)$ und setzt wieder $a_i=\frac{1}{\sqrt{\vert \lambda_i\vert}}$, so erhält man Form 3. (Ist $k<r-k$, so ersetzt man weiter $Q$ durch $f_{-\mathbbm{1}_n}(Q)$ und $(A,b,0)$ durch $(-A,-b,0)$.) 
+	\end{itemize}
 \end{proof}
 
 \begin{conclusion}
@@ -187,10 +196,6 @@ Sei $n\in\natur$.
 		\item Ebene Quadriken sind im wesentlichen Kegelschnitte, $Q'=\{x\in\real^3\mid x_1^2+x_2^2=x_3^2\}$, außer 2c und 2d in \propref{2_8_example}
 	\end{itemize}
 \end{remark}
-
-\begin{conclusion}
-	Sei $Q$ eine Quadrik, dann existiert eine lineare affine Abbildung $f$ mit: $f(Q)$ ist vom Typ 1, 2 oder 3.
-\end{conclusion}
 
 \begin{remark}
 	Die Situation wird deutlich übersichtlicher, wenn man den affinen Raum $\real^n$ durch Hinzunahme von Punkten im Unendlichen zum \begriff{projektiven Raum} $\mathbb{P}^n(\real)$ vervollstädigt und den Abschluss der Quadriken darin betrachtet. Es stellt sich dann heraus, dass vom projektiven Standpunkt aus die meisten ebenen Quadriken ähnlich aussehen. (Siehe Vorlesung \textit{Elementare Algebraische Geometrie})
