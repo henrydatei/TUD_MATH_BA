@@ -98,6 +98,15 @@ Sei $n\in\natur$.
 	
 \end{proof}
 
+\begin{conclusion}
+	Sei $Q\subseteq \real^n$ eine Quadrik. Es gibt eine invertierbare affine Abbildung $f\in\Aff_{\real}(\real^n)$ für die $f(Q)$ eine der folgenden 3 Formen annimmt:
+	\begin{itemize}
+		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k x_i^2-\sum_{i=k+1}^r x_i^2=0\right\rbrace \quad k\ge r-k\notag}
+		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k x_i^2-\sum_{i=k+1}^r x_i^2=1\right\rbrace\notag}
+		\item \itemEq{f(Q)=\left\lbrace x\in\real^n\mid \sum_{i=1}^k x_i^2-\sum_{i=k+1}^r x_i^2-2x_{r+1}=0\right\rbrace\quad k\ge r-k,r<n\notag}
+	\end{itemize}
+\end{conclusion}
+
 \begin{example}
 	\proplbl{2_8_example}
 	$Q\subseteq\real^2$
@@ -184,5 +193,5 @@ Sei $n\in\natur$.
 \end{conclusion}
 
 \begin{remark}
-	$\real^n$ und "'Punkte im Unendlichen"' $\to \mathbb{P}^n(\real^n)$, der \begriff{projektive Raum}
+	Die Situation wird deutlich übersichtlicher, wenn man den affinen Raum $\real^n$ durch Hinzunahme von Punkten im Unendlichen zum \begriff{projektiven Raum} $\mathbb{P}^n(\real)$ vervollstädigt und den Abschluss der Quadriken darin betrachtet. Es stellt sich dann heraus, dass vom projektiven Standpunkt aus die meisten ebenen Quadriken ähnlich aussehen. (Siehe Vorlesung \textit{Elementare Algebraische Geometrie})
 \end{remark}

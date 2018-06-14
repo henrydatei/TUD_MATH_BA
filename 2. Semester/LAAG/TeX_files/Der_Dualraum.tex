@@ -1,0 +1,73 @@
+\section{Der Dualraum}
+
+Sei $V$ ein $K$-Vektorraum.
+
+\begin{definition}[Dualraum]
+	Der \begriff{Dualraum} zu $V$ ist der $K$-Vektorraum
+	\begin{align}
+		V^*=\Hom_K(V,K)=\{\phi:V\to K\text{ linear}\}\notag
+	\end{align}
+	Die Elemente von $V^*$ heißen \begriff{Linearformen} auf $V$.
+\end{definition}
+
+\begin{example}
+	Ist $V=K^n=\Mat_{n\times 1}(K)$, so wird $V^*=\Hom_K(V,K)$ durch $\Mat_{1\times n}(K)\cong K^n$. Wir können also die Elemente von $V$ als Spaltenvektoren und die Linearformen auf $V$ als Zeilenvektoren auffassen.
+\end{example}
+
+\begin{lemma}
+	Ist $B(x_1)_{i\in I}$ eine Basis von $V$, so gibt es zu jedem $i\in I$ genau $x_i^*\in V^*$ mit $x_i^*(x_j)=\delta_{ij}\quad\forall j\in I$.
+\end{lemma}
+\begin{proof}
+	Siehe LAAG1 III.5.1, angewandt auf die Familie $(y_j)_{j\in I}$, $y_j\delta_{i.j}$ in $W=K$. %TODO: Verlinkung
+\end{proof}
+
+\begin{proposition}
+	Ist $B=(x_1)_{i\in I}$ eine Basis von $V$, so ist $B^*=(x_i^*)_{i\in I}$ linear unabhängig. Ist $I$ endlich, so ist $B^*$ eine Basis von $V^*$.
+\end{proposition}
+\begin{proof}
+	Ist $\phi=\sum_{i\in I} \lambda_ix_i^*$, $\lambda_i\in K$, fast alle gleich 0, so ist $\phi(x_j)=\sum_{i\in I} \lambda_j x_i^*(x_j)=\lambda_j$ für jedes $j\in I$. Ist also $\phi=0$, so ist $\lambda_j=\phi(x_j)=0\quad\forall j\in I$, $B^*$ ist somit linear unabhängig. \\
+	Ist zudem $I$ endlich und $\psi\in V^*$, so ist $\psi=\psi'=\sum_{i\in I} \psi(x_i)x_i^*$, denn $\psi'(x_j)=\sum_{i\in I} \psi(x_i)x_i^*(x_j)=\psi(x_i)\quad\forall j\in I$, und somit ist $B^*$ ein Erzeugendensystem von $V^*$.
+\end{proof}
+
+\begin{definition}[duale Basis]
+	Ist $B=(x_i)_{i\in I}$ eine endliche Basis von $V$, so nennt man $B^*=(x_i^*)_{i\in I}$ die zu $B$ \begriff{duale Basis}.
+\end{definition}
+
+\begin{conclusion}
+	Zu jeder Basis $B$ von $V$ gibt es einen eindeutig bestimmtem Monomorphismus
+	\begin{align}
+		f_V\to V^*\text{ mit } f(B)=B^*\notag
+	\end{align}
+	Ist $\dim_K(V)<\infty$, so ist dieser ein Isomorphismus.
+\end{conclusion}
+
+\begin{conclusion}
+	Zu jedem $=0\neq x\in V$ gibt es eine Linearform $\phi\in V$ mit $\phi(x)=1$.
+\end{conclusion}
+\begin{proof}
+	Ergänze $x_1=x$ zu einer Basis $(x_i)_{i\in I}$ von $V$ (\propref{3_1_11}) und $\phi=x_1^*$.
+\end{proof}
+
+\begin{example}
+	Ist $V=K^n$ mit Standardbasis $\mathcal{E}=(e_1,...,e_n)$, so können wir $V^*$ mit dem Vektorraum der Zeilenvektoren identifizieren, und dann ist
+	\begin{align}
+		e_i^* = e_i^t\notag
+	\end{align}
+\end{example}
+
+\begin{definition}[Bidualraum]
+	Der \begriff{Bidualraum} zu $V$ ist der $K$-Vektorraum
+	\begin{align}
+		V^{**}=(V^*)^*=\Hom_K(V^*,K)\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	Die kanonische Abbildung
+	\begin{align}
+		\iota:\begin{cases}
+		V\to V^{**} \\ x\to \iota_x
+		\end{cases}\text{ wobei } \iota_x(\phi)=\phi(x)\notag
+	\end{align}
+	ist ein Monomorphismus. Ist $\dim_K(V)<\infty$, so ist $\iota$ ein Isomorphismus.
+\end{proposition}

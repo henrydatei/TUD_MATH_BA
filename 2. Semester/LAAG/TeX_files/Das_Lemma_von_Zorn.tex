@@ -108,12 +108,24 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
 \end{theorem}
 \begin{proof}
-	Dieses Theorem ist äquivalent zum Auswahlaxiom. \frownie{}
+	Dieses Theorem ist äquivalent zum Auswahlaxiom. \frownie{}. Wir wollen zumindest die Hinrichtung zeigen, d.h. aus dem Lemma von Zorn folgt das Auswahlaxiom.
 \end{proof}
 
-\begin{conclusion}
+\begin{conclusion}[Auswahlaxiom]
 	Zu jeder Familie $(x_i)$, nicht leer, gibt es eine \begriff{Auswahlfunktion}, das heißt eine Abbildung:
 	\begin{align}
-		f: I\to \bigcup X_i\text{ mit } f(i)\in X_i\quad\forall i\notag
+		f: I\to \bigcup_{i\in I} X_i\text{ mit } f(i)\in X_i\quad\forall i\notag
 	\end{align}
 \end{conclusion}
+\begin{proof}
+	Sei $\mathcal{F}$ die Menge der Paare $(J,f)$ bestehend aus einer Teilmenge $J\subseteq I$ und einer Abbildung $f:I\to \bigcup_{i\in I} X_i$ mit $f(i)\in X_i\quad\forall i\in J$. Definieren wir $(J,f)\le (J',f')\iff J\subseteq J'$ und $f'\vert_J = f$, so ist $\le$ eine Halbordnung auf $\mathcal{F}$. Da $(\emptyset,\emptyset)\in\mathcal{F}$ ist $\mathcal{F}$ nichtleer. Ist $\mathcal{G}\subseteq\mathcal{F}$ eine nichtleere Kette, so wird auf $J':=\bigcup_{(J,f)\in\mathcal{G}} J$ durch $f'(j)=f(j)$ falls $(J,f)\in\mathcal{G}$ und $j\in J$ eine wohldefinierte Abbildung $f':J\to \bigcup_{i\in J}X_i$ mit $f'(i)\in X_i\quad\forall i\in J'$ gegeben. Das Paar $(J',f')$ ist eine obere Schranke der Kette $\mathcal{G}$. Nach dem Lemma von Zorn besitzt $\mathcal{F}$ ein maximales Element $(J,f)$. Wir behaupten, dass $J=I$. Andernfalls nehmen wir ein $i'\in I\backslash J$ und ein $x'\in X_{i'}$ und definieren $J':= U\cup\{i'\}$ und $f':J'\to \bigcup_{i\in J'} X_i$, $j\mapsto\begin{cases}f(j)&j\in J\\ x'&j=i'\end{cases}$. Dann ist $(J',f')\in\mathcal{F}$ und $(J,f)<(J',f')$ im Widerspruch zur Maximalität von $(J,f)$.
+\end{proof}
+
+
+\begin{conclusion}[Basisergänzungssatz]
+	\proplbl{3_1_11}
+	Sei $V$ ein $K$-Vektorraum. Jede linear unabhängige Teilmenge $X_0\subseteq V$ ist in einer Basis von $V$ enthalten.
+\end{conclusion}
+\begin{proof}
+	Sei $\mathcal{X}=\{X\subseteq V\mid X\text{ ist linear unabhängig, } X_0\subseteq X\}$ geordnet durch Inklusion. Dann ist $X_0\in\mathcal{X}$, also $\mathcal{X}\neq\emptyset$. Ist $\mathcal{Y}$ eine nichtleere Kette in $\mathcal{X}$, so ist auch $Y=\bigcup\mathcal{Y}\subseteq V$ linear unabhängig. Sind $y_1,...,y_n\in Y$ paarweise verschieden, so gibt es $Y_1,...,Y_n\in\mathcal{Y}$ mit $y_i\in Y_i$ für $i=1,...,n$. Da $\mathcal{Y}$ total geordnet ist, besitzt $\{Y_1,...,Y_n\}$ ein größtes Element, o.E. $Y_1$. Also sind $y_1,...,y_n\in Y_1$ und somit linear unabhängig. Folglich ist $Y_1\in \mathcal{X}$ eine obere Schranke von $\mathcal{Y}$. Nach dem Lemma von Zorn besitzt $\mathcal{X}$ ein maximales Element $X$. Das heißt, $X$ ist eine maximal linear unabhängige Teilmenge von $V$, nach LAAG1 II.3.5 also eine Basis von $V$. %TODO: Verlinkung
+	\end{proof}
