@@ -76,6 +76,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
 3. Dualität ... wird bearbeitet
 
-    1. Das Lemma von Zorn ... wird bearbeitet
+    1. Das Lemma von Zorn ... fertig
+
+    2. Der Dualraum ... wird bearbeitet
 
 4. Moduln ... noch nicht bearbeitet
