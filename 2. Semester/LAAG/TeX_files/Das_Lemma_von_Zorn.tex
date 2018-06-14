@@ -96,7 +96,7 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 \end{example}
 
 \begin{example}
-	$V=\real^3$, $\mathcal{X}$ die Menge der Untervektorräume des $\real^3$. $(\mathcal{X},\le)$ ist eine Halbordnung auf $Y\subseteq X$ mit $Y=\{U\in\mathcal{X}\mid \dim_\real(U)\le 2\}$. 
+	$V=\real^3$, $\mathfrak{X}$ die Menge der Untervektorräume des $\real^3$. $(\mathfrak{X},\le)$ ist eine Halbordnung auf $Y\subseteq X$ mit $Y=\{U\in\mathfrak{X}\mid \dim_\real(U)\le 2\}$. 
 	\begin{itemize}
 		\item $Y$ hat ein kleinstes Element: $\{0\}$.
 		\item Es gibt unendlich viele maximale Elemente in $Y$, nämlich die Untervektorräume von $V$, die die Dimension 2 haben. Es gibt also kein größtes Element.
@@ -127,5 +127,5 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	Sei $V$ ein $K$-Vektorraum. Jede linear unabhängige Teilmenge $X_0\subseteq V$ ist in einer Basis von $V$ enthalten.
 \end{conclusion}
 \begin{proof}
-	Sei $\mathcal{X}=\{X\subseteq V\mid X\text{ ist linear unabhängig, } X_0\subseteq X\}$ geordnet durch Inklusion. Dann ist $X_0\in\mathcal{X}$, also $\mathcal{X}\neq\emptyset$. Ist $\mathcal{Y}$ eine nichtleere Kette in $\mathcal{X}$, so ist auch $Y=\bigcup\mathcal{Y}\subseteq V$ linear unabhängig. Sind $y_1,...,y_n\in Y$ paarweise verschieden, so gibt es $Y_1,...,Y_n\in\mathcal{Y}$ mit $y_i\in Y_i$ für $i=1,...,n$. Da $\mathcal{Y}$ total geordnet ist, besitzt $\{Y_1,...,Y_n\}$ ein größtes Element, o.E. $Y_1$. Also sind $y_1,...,y_n\in Y_1$ und somit linear unabhängig. Folglich ist $Y_1\in \mathcal{X}$ eine obere Schranke von $\mathcal{Y}$. Nach dem Lemma von Zorn besitzt $\mathcal{X}$ ein maximales Element $X$. Das heißt, $X$ ist eine maximal linear unabhängige Teilmenge von $V$, nach LAAG1 II.3.5 also eine Basis von $V$. %TODO: Verlinkung
+	Sei $\mathfrak{X}=\{X\subseteq V\mid X\text{ ist linear unabhängig, } X_0\subseteq X\}$ geordnet durch Inklusion. Dann ist $X_0\in\mathfrak{X}$, also $\mathfrak{X}\neq\emptyset$. Ist $\mathcal{Y}$ eine nichtleere Kette in $\mathfrak{X}$, so ist auch $Y=\bigcup\mathcal{Y}\subseteq V$ linear unabhängig. Sind $y_1,...,y_n\in Y$ paarweise verschieden, so gibt es $Y_1,...,Y_n\in\mathcal{Y}$ mit $y_i\in Y_i$ für $i=1,...,n$. Da $\mathcal{Y}$ total geordnet ist, besitzt $\{Y_1,...,Y_n\}$ ein größtes Element, o.E. $Y_1$. Also sind $y_1,...,y_n\in Y_1$ und somit linear unabhängig. Folglich ist $Y_1\in \mathfrak{X}$ eine obere Schranke von $\mathcal{Y}$. Nach dem Lemma von Zorn besitzt $\mathfrak{X}$ ein maximales Element $X$. Das heißt, $X$ ist eine maximal linear unabhängige Teilmenge von $V$, nach LAAG1 II.3.5 also eine Basis von $V$. %TODO: Verlinkung
 	\end{proof}
