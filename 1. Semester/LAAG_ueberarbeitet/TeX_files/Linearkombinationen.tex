@@ -1,6 +1,6 @@
 \section{Linearkombinationen}
 
-Sei $V$ ein $K$-VR.
+Sei $V$ ein $K$-Vektorraum.
 
 \begin{definition}[Linearkombination]
 	\begin{itemize}
@@ -29,7 +29,7 @@ Sei $V$ ein $K$-VR.
 \end{remark}
 
 \begin{lemma}
-	Für jede Teilmenge $X \subset V$ ist $\Span_K(X)$ ein UVR von $V$.
+	Für jede Teilmenge $X \subseteq V$ ist $\Span_K(X)$ ein Untervektorraum von $V$.
 \end{lemma}
 \begin{proof}
 	\begin{itemize}
@@ -42,20 +42,20 @@ Sei $V$ ein $K$-VR.
 \end{proof}
 
 \begin{proposition}
-	Für jede Teilmenge $X \subset V$ ist $\Span_K(X)=\langle X\rangle$.
+	Für jede Teilmenge $X \subseteq V$ ist $\Span_K(X)=\langle X\rangle$.
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-		\item $\Span_K(X)$ ist UVR von $V$, der wegen $x=x\cdot 1$ die Menge $X$ enthält, und $\langle X\rangle$ ist der kleinste solche.
-		\item Ist $W\subset V$ ein UVR von $V$, der $X$ enthält, so enthält er auch wegen (UV2) alle Elemente der Form 
+		\item $\Span_K(X)$ ist Untervektorraum von $V$, der wegen $x=x\cdot 1$ die Menge $X$ enthält, und $\langle X\rangle$ ist der kleinste solche.
+		\item Ist $W\subseteq V$ ein Untervektorraum von $V$, der $X$ enthält, so enthält er auch wegen (UV2) alle Elemente der Form 
 		$\lambda\cdot x$, und wegen (UV1) dann auch alle Linearkombinationen aus $X$. Insbesondere gilt dies auch für $W=\langle X\rangle$
 	\end{itemize}
 \end{proof}
 
 \begin{remark}
-	Wir erhalten $\Span_K(X)=\langle X\rangle$ auf 2 verschiedenen Wegen. Erstens "'von oben"' als Schnitt über alle UVR 
+	Wir erhalten $\Span_K(X)=\langle X\rangle$ auf 2 verschiedenen Wegen. Erstens "'von oben"' als Schnitt über alle Untervektorraum 
 	von $V$, die $X$ enthalten und zweitens "'von unten"' als Menge der Linearkombinationen. Man nennt $\Span_K(X)$ auch den 
-	von $X$ aufgespannten UVR oder die lineare Hülle von $X$.
+	von $X$ aufgespannten Untervektorraum oder die lineare Hülle von $X$.
 \end{remark}
 
 \begin{example}
@@ -65,12 +65,12 @@ Sei $V$ ein $K$-VR.
 		$\Span_K(e_1,..,e_n)=V$. Insbesondere ist $K^n$ eindeutig erzeugt. Man nennt $(e_1,...,e_n)$ die Standardbasis des 
 		Standardraums $K^n$.
 		\item Sei $V=K[X]$ Polynomring über $K$. Da $f=\sum_{i=1}^n a_i\cdot X^i$ ist $\Span_K((X^i)_{i \in I})=K[X]$. 
-		Genauer ist $\Span_K(1,X,X^2,...,X^n)=K[X]_{\le n}$. Tatsächlich ist der $K$-VR $K[X]$ nicht endlich erzeugt. Sind 
+		Genauer ist $\Span_K(1,X,X^2,...,X^n)=K[X]_{\le n}$. Tatsächlich ist der $K$-Vektorraum $K[X]$ nicht endlich erzeugt. Sind 
 		$f_1,...,f_r \in K[X]$ und ist $d=\max\{\deg(f_1),...,\deg(f_r)\}$, so sind $f_1,...,f_r \in K[X]_{\le d}$ und somit 
-		$\Span_K(f_1,...,f_r) \subset K[X]_{\le d}$, aber es gibt Polynome, deren Grad größer $d$ ist.
+		$\Span_K(f_1,...,f_r) \subseteq K[X]_{\le d}$, aber es gibt Polynome, deren Grad größer $d$ ist.
 		\item Für $x \in V$ ist $\langle x\rangle=\Span_K(x)=K\cdot x$. Im Fall $K=\mathbb R$, $V=\mathbb R^3$, $x\neq 0$ ist dies eine 
 		Ursprungsgerade.
-		\item Im $\mathbb R$-VR $\mathbb C$ ist $\Span_{\mathbb R}(1)=\mathbb R\cdot 1=\mathbb R$, aber im $\mathbb C$-VR 
+		\item Im $\mathbb R$-Vektorraum $\mathbb C$ ist $\Span_{\mathbb R}(1)=\mathbb R\cdot 1=\mathbb R$, aber im $\mathbb C$-Vektorraum 
 		$\mathbb C$ ist $\Span_{\mathbb C}(1)=\mathbb C\cdot 1=\mathbb C$
 	\end{itemize}
 \end{example}
@@ -91,8 +91,8 @@ Sei $V$ ein $K$-VR.
 		\item Offenbar hängt die Bedingung (*) nicht von der Reihenfolge der $x_1,...,x_n$ ab und ist $(x_1,...,x_k)$ linear 
 		abhängig für ein $k \le n$, so ist auch $(x_1,...,x_n)$ linear abhängig. Deshalb stimmt die 2. Definition für 
 		endliche Familien mit der 1. überein und $(x_i)$ ist genau dann linear abhängig, wenn es eine endliche Teilmenge 
-		$J \subset I$ gibt, für die $(x_j)$ linear abhängig ist.
-		\item Eine Familie ist genau dann linear unabhängig, wenn für jede endliche Teilmenge $J\subset I$ und für jede 
+		$J \subseteq I$ gibt, für die $(x_j)$ linear abhängig ist.
+		\item Eine Familie ist genau dann linear unabhängig, wenn für jede endliche Teilmenge $J\subseteq I$ und für jede 
 		Wahl an Skalaren $(\lambda_i)_{i\in J}$ aus $\sum \lambda_i\cdot x_i=0$ schon $\lambda_i=0$ folgt, also wenn sich 
 		der Nullvektor nur trivial linear kombinieren lässt. 
 	\end{itemize}
@@ -141,14 +141,14 @@ Sei $V$ ein $K$-VR.
 	\begin{itemize}
 		\item Die Standardbasis $(e_1,...,e_n)$ des $K^n$ ist linear unabhängig. Es ist $\sum_{i=1}^n \lambda_i\cdot 
 		e_i=(\lambda_1,...,\lambda_n)$
-		\item Im $K$-VR $K[X]$ sind die Monome $(X^i)$ linear unabhängig.
+		\item Im $K$-Vektorraum $K[X]$ sind die Monome $(X^i)$ linear unabhängig.
 		\item Ein einzelner Vektor $x\in V$ ist genau dann linear abhängig, wenn $x=0$.
 		\item Ein Paar $(x_1,x_2)$ von Elementen von $V$ ist linear abhängig, wenn es ein skalares Vielfaches des anderen ist, also z.B. $x_1=
 		\lambda\cdot x_2$.
-		\item Im $\mathbb R$-VR $\mathbb R^2$ sind die beiden Vektoren $(1,2)$ und $(2,1)$ linear unabhängig. \\
-		Im $\mathbb Z\backslash 3\mathbb Z$-VR $(\mathbb Z\backslash 3\mathbb Z)^2$ sind diese Vektoren linear unabhängig, da 
+		\item Im $\mathbb R$-Vektorraum $\mathbb R^2$ sind die beiden Vektoren $(1,2)$ und $(2,1)$ linear unabhängig. \\
+		Im $\mathbb Z\backslash 3\mathbb Z$-Vektorraum $(\mathbb Z\backslash 3\mathbb Z)^2$ sind diese Vektoren linear unabhängig, da 
 		$x_1+x_2=(1,2)+(2,1)=(3,3)=(0,0)=0$. 
-		\item Im $\mathbb R$-VR $\mathbb C$ ist $(1,i)$ linear unabhängig, aber im $\mathbb C$-VR $\mathbb C$ ist $(1,i)$ 
+		\item Im $\mathbb R$-Vektorraum $\mathbb C$ ist $(1,i)$ linear unabhängig, aber im $\mathbb C$-Vektorraum $\mathbb C$ ist $(1,i)$ 
 		linear abhängig, denn $\lambda_1\cdot 1+\lambda_2\cdot i =0$ für $\lambda_1=1$ und $\lambda_2=i$.
 	\end{itemize}
 \end{example}
@@ -157,7 +157,7 @@ Sei $V$ ein $K$-VR.
 	\begin{itemize}
 		\item Ist $x_{i_0}=0$, ist $(x_i)$ linear abhängig: $1\cdot x_{i_0}=0$
 		\item Gibt es $i,j\in I$ mit $i\neq j$, aber $x_i=x_j$, so ist $(x_i)$ linear abhängig: $x_i-x_j=0$
-		\item Dennoch sagt man auch "'die Teilmenge $X\subset V$ ist linear abhängig"' und meint damit, dass die Familie $(x_x)
+		\item Dennoch sagt man auch "'die Teilmenge $X\subseteq V$ ist linear abhängig"' und meint damit, dass die Familie $(x_x)
 		_{x\in X}$ linear abhängig ist, d.h. es gibt ein $n\in \mathbb N_0$, $x_1,...,x_n \in X$ paarweise verschieden, mit 
 		$\sum_{i=1}^n \lambda_i\cdot x_i=0$.
 	\end{itemize}

@@ -1,9 +1,9 @@
-\section{Summen von VR}
+\section{Summen von Vektorräumen}
 
-Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
+Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $V$.
 
 \begin{definition}[Summe von Vektorräumen]
-	Die \begriff[Vektorraum!]{Summe} der $W_i$ ist der UVR
+	Die \begriff[Vektorraum!]{Summe} der $W_i$ ist der Untervektorraum
 	\begin{align}
 		\sum_{i\in I} W_i := \Span_K\left(\bigcup W_i\right)\notag
 	\end{align} 
@@ -17,15 +17,15 @@ Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 \begin{proof}
 	\begin{itemize}
 		\item $"\supseteq"$: klar, $\sum x_i \in \Span_K(\bigcup W_i)$
-		\item $"\subseteq"$: Die rechte Seite enthält jedes $W_i$ und ist ein UVR von $V$: \\
+		\item $"\subseteq"$: Die rechte Seite enthält jedes $W_i$ und ist ein Untervektorraum von $V$: \\
 		Für $x_i,x'_i \in W$, fast alle gleich 0 und $\lambda \in K$ ist $\sum x_i + \sum x'_i = \sum (x_i+x'_i)$, $\lambda
-		\cdot \sum x_i = \sum \lambda\cdot x_i$ $\Rightarrow$ UVR
+		\cdot \sum x_i = \sum \lambda\cdot x_i$ $\Rightarrow$ Untervektorraum
 	\end{itemize}
 \end{proof}
 
 \begin{definition}[direkte Summe]
 	Ist jedes $x\in \sum W_i$ eindeutig als Summe von $x_i$ mit $x_i\in W_i$ 
-	darstellbar, so sagt man, dass $\sum W_i$ die \begriff{direkte Summe} der UVR $W_i$ ist und schreibt $\oplus W_i$ für 
+	darstellbar, so sagt man, dass $\sum W_i$ die \begriff{direkte Summe} der Untervektorräume $W_i$ ist und schreibt $\oplus W_i$ für 
 	$\sum W_i$. Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1\oplus W_2 \oplus ... \oplus W_n$ für $\oplus W_i$.
 \end{definition}
 
@@ -43,7 +43,7 @@ Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 \end{remark}
 
 \begin{proposition}
-	Sind $W_1,W_2$ UVR von $V$ mit Basen $(x_i)_{i\in I_1}$ bzw. $(x_i)_{i\in I_2}$, wobei $I_1 \cap 
+	Sind $W_1,W_2$ Untervektorräume von $V$ mit Basen $(x_i)_{i\in I_1}$ bzw. $(x_i)_{i\in I_2}$, wobei $I_1 \cap 
 	I_2 = \emptyset$, so sind äquivalent:
 	\begin{itemize}
 		\item $V=W_1 \oplus W_2$
@@ -65,8 +65,8 @@ Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 \end{proof}
 
 \begin{conclusion}
-	Ist $\dim_K(V)<\infty$, so ist jeder UVR ein direkter Summand: Ist $W$ ein UVR von $V$, so 
-	gibt es einen UVR $W'$ von $V$ mit $V=W\oplus W'$ ($W'$ heißt das \begriff{lineare Komplement} von $W$ in $V$). Es 
+	Ist $\dim_K(V)<\infty$, so ist jeder Untervektorraum ein direkter Summand: Ist $W$ ein Untervektorraum von $V$, so 
+	gibt es einen Untervektorraum $W'$ von $V$ mit $V=W\oplus W'$ ($W'$ heißt das \begriff{lineare Komplement} von $W$ in $V$). Es 
 	ist
 	\begin{align}
 		\dim_K(W')=\dim_K(V)-\dim_K(W)\notag
@@ -84,13 +84,13 @@ Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 \end{remark}
 
 \begin{theorem}[Dimensionsformel]
-	Sei $\dim_K(V)<\infty$. Für UVR $W_1,W_2$ von $V$ gilt:
+	Sei $\dim_K(V)<\infty$. Für Untervektorräume $W_1,W_2$ von $V$ gilt:
 	\begin{align}
 		\dim_K(W_1+W_2) + \dim_K(W_1 \cap W_2) = \dim_K(W_1) + \dim_K(W_2)\notag
 	\end{align}
 \end{theorem}
 \begin{proof}
-	Da $\dim_K(V)<\infty$ haben alle UVR von $V$ Basen. Sei also $B_0=(X_1,...,x_n)$ eine Basis von $W_1\cap W_2$. Nach 
+	Da $\dim_K(V)<\infty$ haben alle Untervektorräume von $V$ Basen. Sei also $B_0=(X_1,...,x_n)$ eine Basis von $W_1\cap W_2$. Nach 
 	dem Basisergänzungssatz können wir $B_0$ zu den Basen $B_1=(x_1,...,x_n,y_1,...,y_p)$ von $W_1$ und $B_2=(x_1,...,
 	x_n,z_1,...,z_q)$ von $W_2$ ergänzen. Wir behaupten, dass $B=(x_1,...,x_n,y_1,...,y_p,z_1,...,z_q)$ eine Basis von 
 	$W_1+W_2$ ist. Offenbar ist $B$ ein Erzeugendensystem von $W_1+W_2$. Seien nun $\lambda_1,...,\lambda_n,\mu_1,...,
@@ -103,24 +103,24 @@ Sei $V$ ein $K$-VR und $(W_i)$ eine Familie von UVR von $V$.
 \end{proof}
 
 \begin{definition}[externes Produkt]
-	Das \begriff{externe Produkt} einer Familie $(V_i)$ von $K$-VR ist der $K$-VR 
+	Das \begriff{externe Produkt} einer Familie $(V_i)$ von $K$-Vektorräumen ist der $K$-Vektorraum 
 	$\prod V_i$ bestehend aus dem kartesischen Produkt der $V_i$ mit komponentenweiser Addition und 
 	Skalarmultiplikation, $(x_i)+(x'_i) := (x_i+x'_i)$ und $\lambda(x_i) := (\lambda x_i).$
 \end{definition}
 
 \begin{definition}[externe Summe]
-	Die \begriff{externe Summe} einer Familie $(V_i)$ von $K$-VR ist der UVR 
-	$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{; für fast alle }i\}$ des $K$-VR $\prod V_i$.
+	Die \begriff{externe Summe} einer Familie $(V_i)$ von $K$-Vektorräumen ist der Untervektorraum 
+	$\oplus V_i := \{(x_i) \in \prod V_i \mid x_i=0 \text{; für fast alle }i\}$ des $K$-Vektorraum $\prod V_i$.
 \end{definition}
 
 \begin{remark}
-	Man prüft sofort nach, dass $\prod V_i$ ein $K$-VR ist und $\oplus V_i$ ein UVR davon ist. Für 
+	Man prüft sofort nach, dass $\prod V_i$ ein $K$-Vektorraum ist und $\oplus V_i$ ein Untervektorraum davon ist. Für 
 	endliche Indexmengen ist $\prod V_i = \oplus V_i$, z.B. $K^n = \prod_{i=1}^n K = \oplus K$.
 \end{remark}
 
 \begin{lemma}
-	Sei $(V_i)$ eine Familie von $K$-VR und sei $V=\oplus V_i$. Für jedes $j\in I$ ist $\tilde V_j :=
-	V \times \prod_{i\in I\backslash\{j\}} \{0\}$ ein UVR von $V$ und $V=\oplus \tilde V_j$
+	Sei $(V_i)$ eine Familie von $K$-Vektorräumen und sei $V=\oplus V_i$. Für jedes $j\in I$ ist $\tilde V_j :=
+	V \times \prod_{i\in I\backslash\{j\}} \{0\}$ ein Untervektorraum von $V$ und $V=\oplus \tilde V_j$
 \end{lemma}
 \begin{proof}
 	Ist $x=(x_i)\in V$ mit $x_i\in V_i$, fast alle $x_i=0$, so ist $x=\sum \tilde x_i$ mit $\tilde x:=(x_i\delta_{ij})
