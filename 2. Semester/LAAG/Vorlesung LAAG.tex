@@ -6,13 +6,14 @@
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
 \usepackage[T1]{fontenc}
+\usepackage{chngcntr}
 \fi
 
 \usepackage{zref-base}
 \usepackage{etoolbox}
 \usepackage{xparse}%better macros
-\usepackage{chngcntr}
 \usepackage{calc}
+\usepackage{xstring}
 
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}
@@ -316,7 +317,7 @@
 		\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{0}}%
 		{%same chapter
 			\ifmmode 
-				\cref{#1}%
+				\ref{#1}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
@@ -331,7 +332,7 @@
 				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
 			}%
 			\ifmmode 
-				\cref{#1}%
+				\ref{#1}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
@@ -686,7 +687,10 @@
 		\if\relax\detokenize{#3}\relax\else%
 			{\hspace*{2.2ex}#3}%
 		\fi%
-	}%
+	}
+	\def\thm@@thmline@name@thm@number{%
+		\StrBetween[1,2]{#5}{.}{.}.#2%
+	}
 	\ifx\\#5\\%
 		\@dottedtocline{-2}{0em}{2.3em}%
 		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
@@ -697,8 +701,8 @@
 			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{1.3em}%
-			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
+			\@dottedtocline{-2}{0em}{2.3em}%
+			{#1 \protect\numberline{\thm@@thmline@name@thm@number:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
@@ -713,10 +717,9 @@
 \pagebreak
 \section{Liste der benannten Sätze}
 \theoremlisttype{optname}
-\listtheorems{proposition}
+\listtheorems{proposition,lemma}
 
 %\printglossary[type=\acronymtype]
-\addcontentsline{toc}{chapter}{Index}
 
 \printindex
 
