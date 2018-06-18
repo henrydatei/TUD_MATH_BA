@@ -19,10 +19,10 @@
 	\begin{itemize}
 		\item Die leere Familie ist eine Basis des Nullraums.
 		\item Die \begriff{Standardbasis} $(e_1,...,e_n)$ ist eine Basis des Standardraums.
-		\item Die Monome $(X^i)$ bilden eine Basis des $K$-VR $K[X]$.
-		\item Die Basis des $\mathbb R$-VR $\mathbb C$ ist gegeben durch $(1,i)$, eine Basis des $\mathbb C$-
-		VR $\mathbb C$ ist gegeben durch $(1)$
-		\item Der $\mathbb C$-VR $\mathbb C$ hat viele weitere Basen.
+		\item Die Monome $(X^i)$ bilden eine Basis des $K$-Vektorraum $K[X]$.
+		\item Die Basis des $\mathbb R$-Vektorraum $\mathbb C$ ist gegeben durch $(1,i)$, eine Basis des $\mathbb C$-
+		Vektorraum $\mathbb C$ ist gegeben durch $(1)$
+		\item Der $\mathbb C$-Vektorraum $\mathbb C$ hat viele weitere Basen.
 	\end{itemize}
 \end{example}
 
@@ -58,11 +58,11 @@
 \begin{theorem}[Basisauswahlsatz]
 	\proplbl{2_3_6}
 	Jedes endliche Erzeugendensystem von $V$ besitzt eine Basis  als 
-	Teilfamilie: Ist $(x_i)$ ein endliches Erzeugendensystem von $V$, so gibt es eine Teilmenge $J\subset I$, 
+	Teilfamilie: Ist $(x_i)$ ein endliches Erzeugendensystem von $V$, so gibt es eine Teilmenge $J\subseteq I$, 
 	für die $(x_i)_{i\in J}$ eine Basis von $V$ ist. 
 \end{theorem}
 \begin{proof}
-	Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subset I \mid (x_i)_{i\in J}\; 
+	Sei $(x_i)$ ein endliches Erzeugendensystem von $V$. Definiere $\mathcal J:=\{J \subseteq I \mid (x_i)_{i\in J}\; 
 	\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
 	Erzeugendensystem ist, ist $I\in J$, insbesondere $\mathcal J\neq\emptyset$. Es gibt deshalb ein bezüglich 
 	Inklusion minimales $J_0\in \mathcal J$, d.h. $J_1 \in \mathcal J$ so gilt nicht $J_1 \subsetneq J_0$. Deshalb 
@@ -70,7 +70,7 @@
 \end{proof}
 
 \begin{conclusion}
-	Jeder endlich erzeugte $K$-VR besitzt eine endliche Basis.
+	Jeder endlich erzeugte $K$-Vektorraum besitzt eine endliche Basis.
 \end{conclusion}
 
 \begin{remark}
@@ -145,7 +145,7 @@
 \end{proof}
 
 \begin{definition}[Dimension]
-	Ist $V$ endlich erzeugt, so ist die \begriff{Dimension} des VR $V$ die Mächtigkeit $\dim_K(V)$ 
+	Ist $V$ endlich erzeugt, so ist die \begriff{Dimension} des Vektorraum $V$ die Mächtigkeit $\dim_K(V)$ 
 	einer Basis von $V$. Andernfalls sagt man, dass $V$ unendliche Dimensionen hat und schreibt $\dim_K(V)= \infty$. 
 \end{definition}
 
@@ -167,7 +167,7 @@
 \end{remark}
 
 \begin{proposition}
-	Sei $V$ endlich erzeugt und $W\le V$ ein UVR.
+	Sei $V$ endlich erzeugt und $W\le V$ ein Untervektorraum.
 	\begin{itemize}
 		\item Es ist $\dim_K(W)\le \dim_K(V)$. Insbesondere ist $W$ endlich erzeugt.
 		\item Ist $\dim_K(W)=\dim_K(V)$, so ist auch $W=V$.
