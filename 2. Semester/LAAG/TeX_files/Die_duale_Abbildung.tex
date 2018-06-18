@@ -7,6 +7,15 @@ Sei $f\in\Hom_K(V,W)$.
 	%TODO: Bild von Pascal
 \end{remark}
 
+\begin{center}
+	\begin{tikzcd}
+		V \arrow[r, "f"] \arrow[dr, dashrightarrow, "f^{\ast}(\phi)"]
+		& W \arrow[d, "\phi"]\\
+		& K\\
+		V^{\ast} & \arrow[l, "f^{\ast}"] W^{\ast}
+	\end{tikzcd}
+\end{center}
+
 \begin{definition}[duale Abbildung]
 	Die zu $f$ duale Abbildung ist
 	\begin{align}
@@ -48,7 +57,18 @@ Sei $f\in\Hom_K(V,W)$.
 	\proplbl{3_3_5}
 	Sind $V$ und $W$ endlichdimensional, und identifizieren wir $V=V^{**}$ und $W=W^{**}$, so ist $f=f^{**}$, das heißt $\iota\circ f=f^{**}\circ\iota$.
 	%TODO: Bild von Pascal
+	
 \end{conclusion}
+
+\begin{center}
+	\begin{tikzcd}
+		V \arrow[r, "f"] \arrow[d, "\iota_V \cong"] 
+		& W \arrow[d, "\iota_W \cong"] \\
+		V^{\ast \ast} \arrow[r, "f^{\ast \ast}"] 
+		& W^{\ast \ast}
+	\end{tikzcd}
+\end{center}
+
 \begin{proof}
 	Seien $B$ und $C$ Basen von $V$ bzw. $W$. Unter der Identifizierung ist $B^{**}=B$ und $C=C^{**}$, das heißt $\iota(x_i)=x_i^{**}$ bzw. $\iota(y_j)=y_j^{**}$, denn $\iota(x_i)(x_j^*)=x_j^*(x_i)=\delta_{ij} = x_i^{**}(x_j^*)\quad\forall i,j$ und somit 
 	\begin{align}
