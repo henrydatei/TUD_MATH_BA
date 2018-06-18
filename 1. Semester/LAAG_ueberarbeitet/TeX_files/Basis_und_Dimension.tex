@@ -14,6 +14,9 @@
 	Sei $(x_i)$ eine Familie von Elementen von $V$. Genau dann ist $(x_i)$ eine Basis von $V$, 
 	wenn sich jedes $x \in V$ auf eindeutige Weise als Linearkombination der $(x_i)$ schreiben lässt.
 \end{proposition}
+\begin{proof}
+	Dies folgt sofort aus \propref{2_2_10}
+\end{proof}
 
 \begin{example}
 	\begin{itemize}
@@ -27,6 +30,7 @@
 \end{example}
 
 \begin{proposition}
+	\propref{2_3_5}
 	Für eine Familie $(x_i)$ von Elementen von $V$ sind äquivalent:
 	\begin{itemize}
 		\item $B$ ist eine Basis von $V$.
@@ -39,13 +43,13 @@
 	\begin{itemize}
 		\item $1 \Rightarrow 2$: Sei $B$ eine Basis von $V$ und $J$ eine echte Teilmenge von $I$. Nach Definition ist $B$ ein 
 		Erzeugendensystem. Wähle $i_0 \in I\backslash J$. Da $(x_i)$ linear unabhängig ist, ist $x_{i_0}$ keine Element 
-		$\Span_K((x_i)_{i \in I\backslash \{i_0\}}) \ge \Span_K((x_i)_{i \in J})$. Insbesondere ist $(x_i)_{i\in J}$ kein 
+		$\Span_K((x_i)_{i \in I\backslash \{i_0\}}) \supseteq \Span_K((x_i)_{i \in J})$ (\propref{2_2_9}). Insbesondere ist $(x_i)_{i\in J}$ kein 
 		Erzeugendensystem von $V$. 
 		\item $2 \Rightarrow 3$: Sei $B$ ein minimales Erzeugendensystem und $(x_i)_{i \in J}$ eine Familie mit $J$ echter 
 		Obermenge von $I$. Wäre $(x_i)$ linear abhängig, so gäbe es ein $i_0$ mit $\Span_K((x_i)_{i \in I\backslash 
 			\{i_0\}}) = \Span_K((x_i)_{i \in I})=V$ im Widerspruch zur Minimalität von $B$. Also ist $B=(x_i)$ linear 
 		unabhängig. Wähle $j_0 \in J\backslash I$. Dann ist $x_{j_0} \in V=\Span_K(x_i) \le \Span_K((x_i)_{i \in 
-			J\backslash \{j_0\}})$ und somit ist $(x_i)_{i\in J}$ linear abhängig.
+			J\backslash \{j_0\}})$ und somit ist $(x_i)_{i\in J}$ linear abhängig nach \propref{2_2_9}.
 		\item $3 \Rightarrow 1$: Sei $B$ nun maximal linear unabhängig. Angenommen $B$ wäre kein Erzeugendensystem. 
 		Dann gibt es ein $x\in V \backslash \Span_K(x_i)$. Definiere $J=I \cup \{j_0\}$ mit $j_0 \notin I$ und $x_{j_0}:=x$. 
 		Aufgrund der Maximalität von $B$ ist $(x_i)$ linear abhängig, es gibt als Skalare $\lambda$, $(\lambda_i)$, nicht 
@@ -66,23 +70,25 @@
 	\text{J ist Erzeugendensystem von }V\}$. Da $I$ endlich ist, ist auch $\mathcal J$ endlich. Da $(x_i)$ 
 	Erzeugendensystem ist, ist $I\in J$, insbesondere $\mathcal J\neq\emptyset$. Es gibt deshalb ein bezüglich 
 	Inklusion minimales $J_0\in \mathcal J$, d.h. $J_1 \in \mathcal J$ so gilt nicht $J_1 \subsetneq J_0$. Deshalb 
-	ist $(x_i)_{i\in J_0}$ eine Basis von $V$.
+	ist $(x_i)_{i\in J_0}$ eine Basis von $V$ (\propref{2_3_5}).
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{2_3_7}
 	Jeder endlich erzeugte $K$-Vektorraum besitzt eine endliche Basis.
 \end{conclusion}
 
 \begin{remark}
-	\begin{itemize}
-		\item Der Beweis des Theorems liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
-		Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in \Span_K((x_i)_{i\neq i_0})$ gibt. 
-		Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}},
-		...,x_n)$ weiter.
-		\item Man kann jedoch zeigen, dass jeder Vektorraum eine Basis besitzt. Die Gültigkeit der Aussage hängt jedoch 
-		von bestimmten mengentheoretischen Axiomen ab, auf die wir an dieser Stelle nicht eingehen werden. Siehe dazu 
-		LAAG 2. Semester.
-	\end{itemize}
+	Der Beweis von \propref{2_3_6} liefert ein konstruktives Verfahren: Ist $(x_1,...,x_n)$ ein endliches 
+	Erzeugendensystem von $V$, so prüfe man, ob es ein $i_0$ mit $x_{i_0} \in \Span_K((x_i)_{i\neq i_0})$ gibt. 
+	Falls Nein, ist $(x_1,...,x_n)$ eine Basis von $V$. Falls Ja, macht man mit $(x_1,...,x_{i_{0-1}}, x_{i_{0+1}},
+	...,x_n)$ weiter.
+\end{remark}
+
+\begin{remark}
+	Man kann jedoch zeigen, dass jeder Vektorraum eine Basis besitzt. Die Gültigkeit der Aussage hängt jedoch 
+	von bestimmten mengentheoretischen Axiomen ab, auf die wir an dieser Stelle nicht eingehen werden. Siehe dazu 
+	LAAG 2. Semester.
 \end{remark}
 
 \begin{lemma}[Austauschlemma]
@@ -119,13 +125,13 @@
 	$V$ ist.
 \end{proof}
 
-\begin{conclusion}
+\begin{conclusion}[Basisergänzungssatz]
 	Ist $V$ endlich erzeugt, so lässt sich jede linear unabhängige Familie zu einer Basis ergänzen: 
 	Ist $(x_1,...,x_n)$ linear unabhängig, so gibt es $m\ge n$ und $x_{n+1},x_{n+2},...,x_m$ für die $(x_1,...,x_n,
 	x_{n+1},...,x_m)$ eine Basis von $V$ ist.
 \end{conclusion}
 \begin{proof}
-	Nach dem Basisauswahlsatz (\propref{2_3_6}) besitzt $V$ eine endliche Basis, die Behauptung folgt somit aus dem \person{Steinitz}'schen Austauschsatz (\propref{2_3_10}).
+	Nach dem Basisauswahlsatz (\propref{2_3_6} und \propref{2_3_7}) besitzt $V$ eine endliche Basis, die Behauptung folgt somit aus dem \person{Steinitz}'schen Austauschsatz (\propref{2_3_10}).
 \end{proof}
 
 \begin{conclusion}
@@ -141,7 +147,7 @@
 	Ist $V$ endlich erzeugt, so haben alle Basen von $V$ die gleiche Mächtigkeit.
 \end{conclusion}
 \begin{proof}
-	Besitzt $V$ eine endliche Basis, so folgt deshalb die Behauptung aus \propref{2_3_12}.
+	$V$ besitzt eine endliche Basis (\propref{2_3_7}), deshalb folgt die Behauptung aus \propref{2_3_12}.
 \end{proof}
 
 \begin{definition}[Dimension]
@@ -162,7 +168,7 @@
 \begin{remark}
 	\begin{itemize}
 		\item $V$ ist genau dann endlich erzeugt, wenn $\dim_K(V)< \infty$.
-		\item $\dim_K(V)=\min\{|B| \mid \Span_K(B)=V\}=\max\{|B| \mid B\text{ linear unabhängig}\}$
+		\item Mit \propref{2_3_5} $\dim_K(V)=\min\{|B| \mid \Span_K(B)=V\}=\max\{|B| \mid B\text{ linear unabhängig}\}$
 	\end{itemize}
 \end{remark}
 

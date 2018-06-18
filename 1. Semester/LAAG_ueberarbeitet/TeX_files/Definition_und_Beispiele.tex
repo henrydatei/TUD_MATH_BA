@@ -96,7 +96,7 @@ In diesem Kapitel sei $K$ ein Körper.
 		ist $W$ ein Untervektorraum.
 		\item $\Leftarrow$: Nach (UV1) und (UV2) lassen sich $+$ und $\cdot$ einschränken zu Abbildungen $+_w$: $W \times W \to W$ und 
 		$\cdot_w$: $K \times W \to W$. Nach (UV1) ist abgeschlossen und unter der Addition und für $x \in W$ ist auch $-x=
-		(-1)x \in W$ nach (UV2), $W$ ist somit Untergruppe von $(V,+)$. Insbesondere ist $(W,+)$ eine abelsche Gruppe, erfüllt 
+		(-1)x \in W$ nach (UV2), $W$ ist somit Untergruppe von $(V,+)$. Insbesondere ist $(W,+)$ eine abelsche Gruppe (\propref{1_3_14}), erfüllt 
 		also (V1). Die Verträglichkeit (V2) ist für $\lambda,\mu \in K$ und $x,y \in W$ gegeben, da sie auch für $x,y \in V$ 
 		erfüllt ist. Somit ist $(W,+_w,\cdot_w)$ ein $K$-Vektorraum.
 	\end{itemize}
@@ -117,13 +117,14 @@ In diesem Kapitel sei $K$ ein Körper.
 		\end{itemize}
 		\item In der Analysis werden Sie verschiedene Untervektorraum des $\mathbb R$-Vektorraum $\Abb(\mathbb R,\mathbb R)$ kennenlernen, etwa
 		den Raum $\mathcal C(\mathbb R,\mathbb R)$ der stetigen Funktionen und den Raum $\mathcal C^{-1}(\mathbb R,\mathbb 
-		R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynomfunktionen $\{\tilde f\mid \tilde f\in \mathbb R[X]\}$ bildet
+		R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynomfunktionen $\{\tilde f\mid \tilde f\in \mathbb R[X]\}$ (vgl. \propref{1_6_7}) bildet
 		einen Untervektorraum des $\mathbb R$-Vektorraum $\mathcal C^{-1}(\mathbb R,\mathbb R)$
 	\end{itemize}
 \end{example}
 
 
 \begin{lemma}
+	\proplbl{2_1_10}
 	Ist $V$ ein Vektorraum und $(W_i)_{i \in I}$ eine Familie von Untervektorraum von $V$, so ist auch $W=\bigcap W_i$ 
 	ein Untervektorraum von $V$.
 \end{lemma}
@@ -141,7 +142,7 @@ In diesem Kapitel sei $K$ ein Körper.
 \end{proposition}
 \begin{proof}
 	Sei $\mathcal V$ die Menge aller Untervektorraum von $X$, die $X$ enthalten. Sei $W=\bigcap \mathcal V$. Damit ist 
-	$W$ ein Untervektorraum von $V$ der $X$ enthält.
+	$W$ ein Untervektorraum (\propref{2_1_10}) von $V$ der $X$ enthält.
 \end{proof}
 
 \begin{definition}[Erzeugendensystem]
