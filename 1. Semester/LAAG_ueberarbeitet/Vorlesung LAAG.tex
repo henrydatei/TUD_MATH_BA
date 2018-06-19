@@ -199,7 +199,20 @@
 	hidealllines=true,%
 	innerleftmargin=10pt,%
 ]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
-\newtheorem{overview}[theorem]{Überblick}
+
+\newmdtheoremenv[%
+	outerlinewidth=3pt,%
+	linecolor=black,%
+	topline=false,%
+	rightline=false,%
+	bottomline=false,%
+	leftline=false,
+	innertopmargin=0pt,%
+	innerbottommargin=-0pt,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	skipabove=5pt,%	
+	skipbelow=10pt,%
+]{overview}[theorem]{Überblick}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -549,7 +562,7 @@
 
 %change headings:
 \titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
-\counterwithout{section}{chapter}
+%\counterwithout{section}{chapter}
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thepart}{\Alph{part}}
 %italic chapters (due to titlesec package some more stuff)
@@ -599,7 +612,7 @@
 	\markright{\thesection.\ #1}{}}
 
 %change numbering of equations to be section by section
-\counterwithout{equation}{section}
+%\counterwithout{equation}{section}
 
 \title{\textbf{Lineare Algebra WS2017/18}}
 \author{Dozent: Prof. Dr. Arno Fehm}
