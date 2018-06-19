@@ -78,6 +78,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
     1. Das Lemma von Zorn ... fertig
 
-    2. Der Dualraum ... wird bearbeitet
+    2. Der Dualraum ... fertig
+
+    3. Die duale Abbildung ... wird bearbeitet
 
 4. Moduln ... noch nicht bearbeitet
