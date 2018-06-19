@@ -5,7 +5,7 @@
 
 % diagramms
 \usepackage{tikz} %diagrams
-\usetikzlibrary{arrows,cd,calc} % for commutative diagrams
+\usetikzlibrary{arrows,cd} % for commutative diagrams
 
 % template for a simple article in maths, also useful to just type up something math short!
 
@@ -61,17 +61,18 @@
 \end{center}
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
-		\draw[thick] (-2,0) -- (10,0) node[right] {$x_1$}; 
-		\draw[thick] (0,-2) -- (0,10) node[above] {$x_2$};
-		\coordinate (center) at (0,0)
+	\begin{tikzpicture}
+		\draw[thin] (-2,0) -- (10,0) node[right] {$x_1$}; 
+		\draw[thin] (0,-2) -- (0,10) node[above] {$x_2$};
+		%circles
+		\draw [->,green!70!black,thick,domain=0:16] plot ({5*cos(\x)}, {5*sin(\x)});
+		\draw [green!70!black] (5,-0.3) node {\scriptsize $\alpha_1$};
+		\draw [->,green!70!black,thick,domain=0:74] plot ({3*cos(\x)}, {3*sin(\x)});
+		\draw [green!70!black] (3,-0.3) node {\scriptsize $\alpha_2$};
 		% triangle
-		%\fill[line width=1pt, color=red,fill=red, opacity=0.1] (0,0) -- (2,7) -- (7,2) -- cycle ;
+		\fill[line width=1pt, color=red,fill=red, opacity=0.1] (0,0) -- (2,7) -- (7,2) -- cycle ;
 		\draw[red] (2,7) -- (7,2);
-		\draw[fill=green] ($(center) + (0:5)$) arc (0:12:5)
 		\draw[red] (3.5,3.5) node {\scriptsize $\Delta$};
-		%Circles
-		\draw[shift={(-7.8,-4.5)}, color=green, opacity=0.1, fill=green] (0,0) -- (0:5.6) arc (0:7.2:5.6) -- cycle
 		% Paralello
 		\draw[->, thick] (0,0) -- (7,2) node[right] {\scriptsize $x_1=(a,b)$};
 		\draw[->, thick] (0,0) -- (2,7) node[above] {\scriptsize$x_2=(c,d)$};
@@ -79,7 +80,6 @@
 		\draw[->, thick] (2,7) -- (9,9);
 		\draw[blue] (0,0) -- (7,2) node[near end, below] {\scriptsize $g_{\Delta}$};
 		\draw[blue] (3.5,1) -- (2,7) node[near start, right] {\scriptsize$h_{\Delta}$};
-		
 	\end{tikzpicture}
 \end{center}
 
