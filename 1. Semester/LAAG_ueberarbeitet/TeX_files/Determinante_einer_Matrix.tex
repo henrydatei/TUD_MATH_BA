@@ -17,39 +17,29 @@
 		A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in \Mat_2(K)\notag
 	\end{align} und hatten 
 	festgestellt: $\det(A)\neq 0 \iff A\in \GL_2(K)$. Interpretation im $K=\mathbb R$:\\
-	\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
-	\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
-	\definecolor{qqqqff}{rgb}{0,0,1}
-	\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-	\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
-	\begin{center}\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, scale=0.6]
-		\clip(-10.24,-7.15) rectangle (10.24,7.15);
-		\fill[line width=1pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-7.8,-4.49) -- (-4.66,2.77) -- (1.02,-3.37) -- cycle;
-		\draw [shift={(-7.8,-4.49)},line width=1pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (0:5.6) arc (0:7.236922025968005:5.6) -- cycle;
-		\draw [shift={(-7.8,-4.49)},line width=1pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.45] (0,0) -- (0:3.6) arc (0:66.61118515369776:3.6) -- cycle;
-		\draw [line width=1pt] (-7.8,-6.15) -- (-7.8,5.15);
-		\draw [line width=1pt,domain=-9.24:7.24] plot(\x,{(-46.8756-0*\x)/10.44});
-		\draw [-latex,line width=1pt] (-7.8,-4.49) -- (-4.66,2.77);
-		\draw [-latex,line width=1pt] (-7.8,-4.49) -- (1.02,-3.37);
-		\draw [-latex,line width=1pt] (1.02,-3.37) -- (4.16,3.89);
-		\draw [-latex,line width=1pt] (-4.66,2.77) -- (4.16,3.89);
-		\draw [line width=1pt,color=zzttqq] (-7.8,-4.49)-- (-4.66,2.77);
-		\draw [line width=1pt,color=zzttqq] (-4.66,2.77)-- (1.02,-3.37);
-		\draw [line width=1pt,color=zzttqq] (1.02,-3.37)-- (-7.8,-4.49);
-		\draw [line width=1pt,color=qqqqff] (-7.8,-4.49)-- (1.02,-3.37);
-		\draw [line width=1pt,color=qqqqff] (-4.66,2.77)-- (-3.5966674931812537,-3.9562434911976196);
-		\begin{scriptsize}
-		\draw[color=ududff] (-3.78,3.6) node {$x_2 = (c,a)$};
-		\draw[color=ududff] (2.5,-3.14) node {$x_1 = (a,b)$};
-		\draw[color=ududff] (5.2,4.32) node {$x_1 + x_2$};
-		\draw[color=zzttqq] (-3.42,-1.46) node {$\Delta$};
-		\draw[color=qqqqff] (-3.28,-4.2) node {$g_{\Delta}$};
-		\draw[color=qqqqff] (-3.38,-0.4) node {$h_{\Delta}$};
-		\draw[color=qqwuqq] (-3,-4.82) node {$\alpha_1$};
-		\draw[color=qqwuqq] (-4.74,-1.84) node {$\alpha_2$};
-		\end{scriptsize}
-		\end{tikzpicture}\end{center}
-	Parallelogramm hat die Fläche $|\det A|$. Polarkoordianten: $x_i=\lambda_i(\cos a_i, \sin a_i)$. Ohne Einschränkung: $0\le a_1 \le a_2
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[thin] (-2,0) -- (10,0) node[right] {$x_1$}; 
+		\draw[thin] (0,-2) -- (0,10) node[above] {$x_2$};
+		%circles
+		\draw [->,green!70!black,thick,domain=0:16] plot ({5*cos(\x)}, {5*sin(\x)});
+		\draw [green!70!black] (5,-0.3) node {\scriptsize $\alpha_1$};
+		\draw [->,green!70!black,thick,domain=0:74] plot ({3*cos(\x)}, {3*sin(\x)});
+		\draw [green!70!black] (3,-0.3) node {\scriptsize $\alpha_2$};
+		% triangle
+		\fill[line width=1pt, color=red,fill=red, opacity=0.1] (0,0) -- (2,7) -- (7,2) -- cycle ;
+		\draw[red] (2,7) -- (7,2);
+		\draw[red] (3.5,3.5) node {\scriptsize $\Delta$};
+		% Paralello
+		\draw[->, thick] (0,0) -- (7,2) node[right] {\scriptsize $x_1=(a,b)$};
+		\draw[->, thick] (0,0) -- (2,7) node[above] {\scriptsize$x_2=(c,d)$};
+		\draw[->, thick] (7,2) -- (9,9) node[right] {\scriptsize$x_1 + x_2$};
+		\draw[->, thick] (2,7) -- (9,9);
+		\draw[blue] (0,0) -- (7,2) node[near end, below] {\scriptsize $g_{\Delta}$};
+		\draw[blue] (3.5,1) -- (2,7) node[near start, right] {\scriptsize$h_{\Delta}$};
+		\end{tikzpicture}
+	\end{center}
+	Parallelogramm hat die Fläche $|\det A|$. Polarkoordinaten: $x_i=\lambda_i(\cos a_i, \sin a_i)$. Ohne Einschränkung: $0\le a_1 \le a_2
 	\le \pi$
 	\begin{align}
 	F_{P} &= 2\cdot F_{\Delta} = 2\cdot \frac 1 2 \cdot g_{\Delta} \cdot h_{\Delta} \notag \\
@@ -92,11 +82,12 @@
 		\delta(a_{\sigma(1)},...,a_{\sigma(n)})=\sgn(\sigma)\cdot \delta(a_1,...,a_n)\notag
 	\end{align}
 \end{lemma}
-\textit{Beweis: \\
-	$\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen. \\
-	$0=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n)=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
-	...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n}=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)})=0$. Mit $\sgn(\sigma)=
-	\sgn(\tau_{ij})=-1$ folgt die Behauptung.}
+\begin{proof}
+	 $\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen. \\
+	 $0=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n)=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
+	 ...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n}=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)})=0$. Mit $\sgn(\sigma)=
+	 \sgn(\tau_{ij})=-1$ folgt die Behauptung.
+\end{proof}
 
 \begin{lemma}
 	Erfüllt $\delta:\Mat_n(R)\to R$ die Axiome D1 und D2, so gilt für $A=(a_{ij})\in \Mat_n(R)$: 
