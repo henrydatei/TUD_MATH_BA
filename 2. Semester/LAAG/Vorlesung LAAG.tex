@@ -688,11 +688,9 @@
 			{\hspace*{2.2ex}#3}%
 		\fi%
 	}
-	\def\thm@@thmline@name@thm@number{%
-		\StrBetween[1,2]{#5}{.}{.}.#2%
-	}
+	\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
 	\ifx\\#5\\%
-		\@dottedtocline{-2}{0em}{2.3em}%
+		\@dottedtocline{-2}{0em}{2.4em}%
 		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
 		{#4}
 	\else
@@ -701,8 +699,8 @@
 			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{2.3em}%
-			{#1 \protect\numberline{\thm@@thmline@name@thm@number:}\thm@@thmline@name@tmp}%
+			\@dottedtocline{-2}{0em}{2.4em}%
+			{#1 \protect\numberline{\rom{\thm@@thmline@name@chap@num}.#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
