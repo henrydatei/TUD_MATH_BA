@@ -80,6 +80,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
     2. Der Dualraum ... fertig
 
-    3. Die duale Abbildung ... wird bearbeitet
+    3. Die duale Abbildung ... fertig
+    
+    4. Die adjungierte Abbildung ... wird bearbeitet
 
 4. Moduln ... noch nicht bearbeitet
