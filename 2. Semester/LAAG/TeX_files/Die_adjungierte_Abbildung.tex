@@ -1,0 +1,78 @@
+\section{Die adjungierte Abbildung}
+
+Sei $K=\real$ oder $K=\comp$ und $V$ ein endlichdimensionaler unitärer $K$-Vektorraum.
+
+\begin{definition}[weitere Skalarmultiplikation]
+	Wir definieren auf $V$ eine Skalarmultiplikation
+	\begin{align}
+		\lambda\ast x=\overline{\lambda}\cdot x\notag
+	\end{align}
+	und schreiben $\overline{V}=(V,+,\ast)$.
+\end{definition}
+
+\begin{lemma}
+	$\overline{V}$ ist ein $K$-Vektorraum und $\End_K(V)=\End_K(\overline{V})$.
+\end{lemma}
+\begin{proof}
+	Mit LAAG1 VI.1.7 nachprüfen, zum Beispiel:
+	\begin{itemize}
+		\item $\lambda\ast (x+y)=\overline{\lambda}\cdot (x+y)=\overline{\lambda} x+\overline{\lambda} y=\lambda\ast x+\lambda\ast y$
+		\item $\lambda\ast(\mu\ast x)=\overline{\lambda}(\overline{\mu}\cdot x)=\overline{\lambda\mu}x=(\lambda\mu)\ast x$
+	\end{itemize}
+	Weiterhin sei: $f\in\End_K(V)$, $x\in V$, $\lambda\in K$ \\
+	$\Rightarrow f(\lambda\ast x)=f(\overline{\lambda}x)=\lambda\ast f(x)$ \\
+	$\Rightarrow f\in \End_K(\overline{V})$. \\
+	Umgekehrt sei $g\in\End_K(\overline{V})$, $x\in V$, $\lambda\in K$ \\
+	$\Rightarrow g(\lambda\cdot x)=g(\overline{\lambda}\ast x)=\lambda\cdot g(x)$ \\
+	$\Rightarrow g\in \End_K(V)$. \\
+\end{proof}
+
+\begin{lemma}
+	Für $y\in V$ ist
+	\begin{align}
+		\Phi_y:
+		\begin{cases}
+			V\to K \\ x\mapsto\skalar{x}{y}
+		\end{cases}\notag
+	\end{align}
+	eine Linearform auf $V$.
+	
+	Die Abbildung $y\mapsto\Phi_y$ liefert einen Isomorphismus $\Phi:\overline{V}\to V^*$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item $\Phi_y\in V^*$: Linearität in ersten Argument.
+		\item $\Phi\in \Hom_K(\overline{V},V^*)$: Für $y,y'\in V$, $\lambda\in K$, $x\in V$ ist
+		\begin{itemize}
+			\item $\Phi_{y+y'}(x)=\skalar{x}{y+y'}=\skalar{x}{y}+\skalar{x}{y'}=\Phi_y(x)+\Phi_{y'}(x)$
+			\item $\Phi_{\lambda\ast y}(x)=\skalar{x}{\lambda\ast x}=\skalar{x}{\overline{\lambda}y}=\lambda \skalar{x}{y}=\lambda\Phi_y(x)$
+		\end{itemize}
+		\item $\Phi$ injektiv: Skalarprodukt ist nicht ausgeartet.
+		\item Da $\dim_K(\overline{V})=\dim_K(V)=\dim_K(V^*)$ ist $\Phi$ somit ein Isomorphismus.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Zu $f\in\End_K(V)$ gibt es ein eindeutig bestimmtes $f^{adj}\in\End_K(V)$ mit 
+	\begin{align}
+		\skalar{f(x)}{y}=\skalar{x}{f^{adj}(y)}\quad\forall x,y\in V\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
+
+\begin{definition}[adjungierter Endomorphismus]
+	Die Abbildung $f^{adj}$ heißt der zu $f$ \begriff[Endomorphismus!]{adjungierte Endomorphismus}.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Ist $f$ selbstadjungiert, so ist $f^{adj}=f$.
+		\item Ist $f$ unitär, so ist $f\in\Aut_K(V)$ und 
+		\begin{align}
+		\skalar{f(x)}{y}=\skalar{x}{f^{-1}(y)}\quad\forall x,y\in V\notag
+		\end{align}
+		also $f^{adj}=f^{-1}$.
+	\end{itemize}
+\end{example}

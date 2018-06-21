@@ -99,9 +99,67 @@ Sei $f\in\Hom_K(V,W)$.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{3_3_7}
 	Sind $V,W$ endlichdimensional so ist
 	\begin{align}
 		\Image(f^*)&=\Ker(f)^0\notag \\
 		\Ker(f^*)&=\Image(f)^0\notag
 	\end{align}
 \end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $\Image(f^*)\subseteq\Ker(f)^0$: Ist $\phi\in W^*$, $x\in \Ker(f)$, so ist
+		\begin{align}
+			f^*(\phi)(x)=(\phi\circ f)(x)=\phi(0)=0\notag
+		\end{align}
+		\item $\Ker(f)^0\subseteq\Image(f^*)$: Sei $\phi\in\Ker(f)^0$. Setze eine Basis $(x_1,...,x_r)$ von $\Ker(f)$ zu einer Basis $(x_1,...,x_n)$ von $V$ fort. Dann sind $f(x_{r+1}),...,f(x_n)$ linear unabhängig nach der Kern-Bild-Formel (LAAG 1 III.7.13), es gibt also $\psi\in W^*$ mit 
+		\begin{align}
+			\psi(f(x_i))=\phi(x_i)\quad\forall i\notag
+		\end{align}
+		Es folgt
+		\begin{align}
+			f^*(\psi)(x_i)=\psi(f(x_i))=\phi(x_i)\quad\forall i\notag
+		\end{align}
+		also $\phi=f^*(\psi)$. %TODO: Verlinkung
+		\item Mit der Identifizierung $V=V^{**}$ ist
+		\begin{align}
+			\Image(f)^0\overset{\propref{3_3_5}}{=}\Image(f^{**})^0=\Ker(f^*)^{00}\overset{\propref{3_2_15}}{=}\Ker(f^*)\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Sind $V,W$ endlichdimensional, so ist
+	\begin{align}
+		\rk(f)=\rk(f^*)\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	\begin{align}
+		\rk(f) &= \dim_K(\Image(f))\notag \\
+		&\overset{\propref{3_2_14}}{=} \dim_K(W)-\dim_K(\Image(f)^0)\notag \\
+		&\overset{LAAG1.III.7.13}{=} \dim_K(W^*)-\dim_K(\Ker(f^*)) \notag \\
+		&= \rk(f^*)\notag %TODO: Verlinkung
+	\end{align}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_3_9}
+	Ist $\dim_K(V)<\infty$ und $U\subseteq V$ ein Untervektorraum, so lässt sich jede Linearform auf $U$ zu einer Linearform auf $V$ fortsetzen.
+\end{conclusion}
+\begin{proof}
+	Ist $f:U\to V$ die Inklusionsabbildung, so ist $f^*:V^*\to U^*$, $\phi\mapsto\phi\vert_U$ und
+	\begin{align}
+		\rk(f^*)=\rk(f)=\dim_K(U)=\dim_K(U^*)\notag
+	\end{align}
+	$f^*$ ist somit surjektiv.
+\end{proof}
+
+\begin{remark}
+	\propref{3_3_9} gilt auch ohne die Voraussetzung $\dim_K(V)<\infty$, siehe Übung.
+\end{remark}
+
+\begin{remark}
+	Ein homogenes lineares Gleichungssystem $Ax=0$ hat als Lösungsraum $L(A,0)\subseteq K^n$ ein Untervektorraum des $K^n$. Unter der Identifizierung $K^n=(K^n)^{**}$ ist $L(A,0)$ der Annulator der Linearformen beschrieben durch die Zeilen $a_1,...,a_m\in (K^n)^*$ von $A$. Wir wollen umgekehrt zu einem Untervektorraum $W\subseteq K^n$ ein $A=(a_1,...,a_m)\in\Mat_{n\times m}(K)$ mit $W=L(A,0)$ finden. Ist $W=\Span_K(b_1,...,b_r)$, so ist $W=\Image(f_B)$ mit $B=(b_1,...,b_r)\in\Mat_{n\times r}(K)$. \\
+	$\Rightarrow W\overset{\propref{3_3_7}}{=}\Ker(f^*_B)^0$ und $M_{\mathcal{E}^t}(f^*_B)=B^t$. Wenn man also eine Basis $(a_1,...,a_s)$ von $L(B^t,0)$ bestimmt und daraus eine Matrix $A=(a_1^t,...,a_s^t)\in\Mat_{s\times n}(K)$ bildet, so ist $W=L(A,0)$.
+\end{remark}
