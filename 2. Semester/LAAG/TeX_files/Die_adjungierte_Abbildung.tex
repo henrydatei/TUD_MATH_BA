@@ -63,13 +63,17 @@ Sei $K=\real$ oder $K=\comp$ und $V$ ein endlichdimensionaler unitärer $K$-Vekt
 	\begin{itemize}
 		\item Existenz:
 		\begin{center}
-			\begin{tikzcd}
-				\overline{V} \arrow[r, "f"] \arrow[d, "\Phi"]
-				& \overline{V} \arrow[d, "\Phi"] \arrow[l, "f^{adj}"] \\
-				V^{\ast}
-				& V^{\ast} \arrow[l, "f^*"]
-			\end{tikzcd}
-		\end{center} %TODO: Ändern
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{\overline{V} & \overline{V} \\ V^* & V^* \\};
+		\path[-stealth]
+		(m-1-1) edge node [left] {$\Phi$} (m-2-1)
+		edge node [above] {$f$} (m-1-2)
+		(m-1-2) edge node [below] {$f^{adj}$} (m-1-1)
+		(m-2-2) edge node [below] {$f^*$} (m-2-1)
+		(m-1-2) edge node [right] {$\Phi$} (m-2-2);
+		\end{tikzpicture}
+		\end{center}
 		Für $f^{adj}=\Phi{-1}\circ f^*\circ \Phi\in \End_K(\overline{V})=\End_K(V)$ ist 
 		\begin{align}
 			\Phi_y\circ = (f^*\circ \Phi)(y)=(\Phi\circ f^{adj.})(y)=\Phi_{f^{adj}(y)}\notag

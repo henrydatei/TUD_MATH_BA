@@ -4,17 +4,17 @@ Sei $f\in\Hom_K(V,W)$.
 
 \begin{remark}
 	Ist $\phi\in W^*=\Hom_K(W,K)$ eine Linearform auf $W$, so ist $\phi\circ f\in \Hom_K(V,K)=V^*$ eine Linearform auf $V$.
-	%TODO: Bild von Pascal
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V & W \\ \; & K \\};
+		\path[-stealth]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		(m-1-1) edge [dashed,.] node [below] {$f^*(\phi)$} (m-2-2)
+		(m-1-2) edge node [right] {$\phi$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
 \end{remark}
-
-\begin{center}
-	\begin{tikzcd}
-		V \arrow[r, "f"] \arrow[dr, dashrightarrow, "f^{\ast}(\phi)"]
-		& W \arrow[d, "\phi"]\\
-		& K\\
-		V^{\ast} & \arrow[l, "f^{\ast}"] W^{\ast}
-	\end{tikzcd}
-\end{center}
 
 \begin{definition}[duale Abbildung]
 	Die zu $f$ duale Abbildung ist
@@ -56,18 +56,18 @@ Sei $f\in\Hom_K(V,W)$.
 \begin{conclusion}
 	\proplbl{3_3_5}
 	Sind $V$ und $W$ endlichdimensional, und identifizieren wir $V=V^{**}$ und $W=W^{**}$, so ist $f=f^{**}$, das heißt $\iota\circ f=f^{**}\circ\iota$.
-	%TODO: Bild von Pascal
-	
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V & W \\ V^{**} &W^{**} \\};
+		\path[-stealth]
+		(m-1-1) edge node [left] {$\iota_V\cong$} (m-2-1)
+		edge node [above] {$f$} (m-1-2)
+		(m-2-1) edge node [below] {$f^{**}$} (m-2-2)
+		(m-1-2) edge node [right] {$\iota_W\cong$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
 \end{conclusion}
-
-\begin{center}
-	\begin{tikzcd}
-		V \arrow[r, "f"] \arrow[d, "\iota_V \cong"] 
-		& W \arrow[d, "\iota_W \cong"] \\
-		V^{\ast \ast} \arrow[r, "f^{\ast \ast}"] 
-		& W^{\ast \ast}
-	\end{tikzcd}
-\end{center}
 
 \begin{proof}
 	Seien $B$ und $C$ Basen von $V$ bzw. $W$. Unter der Identifizierung ist $B^{**}=B$ und $C=C^{**}$, das heißt $\iota(x_i)=x_i^{**}$ bzw. $\iota(y_j)=y_j^{**}$, denn $\iota(x_i)(x_j^*)=x_j^*(x_i)=\delta_{ij} = x_i^{**}(x_j^*)\quad\forall i,j$ und somit 
