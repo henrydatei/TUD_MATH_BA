@@ -59,10 +59,11 @@ Seien $U,V,W$ drei $K$-VR. \\
 		a_{m1}\cdot x_1 + ... + a_{mn}\cdot x_n\\
 		\end{pmatrix}\notag
 	\end{align} 
-	Diese Abbildung ist $K$-linear.
+	Nach \propref{3_1_9} und \propref{3_1_7} ist $f_A$ eine lineare Abbildung.
 \end{example}
 
 \begin{proposition}
+	\proplbl{3_4_6}
 	Für ein $f\in \Hom_K(V,W)$. Dann gilt:
 	\begin{itemize}
 		\item $f(0)=0$
@@ -97,6 +98,7 @@ Seien $U,V,W$ drei $K$-VR. \\
 \end{proof}
 
 \begin{lemma}
+	\proplbl{3_4_8}
 	Ist $f:V\to W$ ein Isomorphismus, so auch $f^{-1}:W\to V$.
 \end{lemma}
 \begin{proof}
@@ -110,7 +112,7 @@ Seien $U,V,W$ drei $K$-VR. \\
 	\to V$ gibt mit $(f'\circ f)=\id_V$ und $(f\circ f')=\id_W$.
 \end{proposition}
 \begin{proof}
-	Ist $f$ ein Isomorphismus, so erfüllt $f'=f^{-1}$ die Behauptung. Existiert umgekehrt $f'$ wie angegeben, so muss 
+	Ist $f$ ein Isomorphismus, so erfüllt $f'=f^{-1}$ nach \propref{3_4_8} die Behauptung. Existiert umgekehrt $f'$ wie angegeben, so muss 
 	$f$ bijektiv sein.
 \end{proof}
 
@@ -126,6 +128,6 @@ Seien $U,V,W$ drei $K$-VR. \\
 	Monomorphismus, wenn $\Ker(f)=\{0\}$.
 \end{proposition}
 \begin{proof}
-	Der erste Teil folgt aus \propref{3_4_5}, der zweite folgt aus den Gruppen, da $f:(V,+)\to (W,+)$ ein 
+	Der erste Teil folgt aus \propref{3_4_6}, der zweite folgt aus \propref{3_2_14}, da $f:(V,+)\to (W,+)$ ein 
 	Gruppenhomomorphismus ist.
 \end{proof}

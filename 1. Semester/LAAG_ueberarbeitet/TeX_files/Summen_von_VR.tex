@@ -23,7 +23,33 @@ Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $
 	\end{itemize}
 \end{proof}
 
+\begin{example}
+	Ist $(x_i)_{i\in I}$ eine Familie von Elementen von $V$, so ist
+	\begin{align}
+		\Span_K((x_i)_{i\in I})=\sum_{i\in I} Kx_i\notag
+	\end{align}
+	wobei $Kx_i$ der Untervektorraum aus \propref{2_1_9} und \propref{2_2_6} ist.
+\end{example}
+
+\begin{proposition}
+	Es sind äquivalent:
+	\begin{itemize}
+		\item Jedes $x\in\sum_{i \in I} W_i$ ist eindeutig als $\sum_{i \in I} x_i$ mit $x_i\in W_i$ darstellbar.
+		\item Für jedes $i\in I$ ist $W_i\cap\sum_{j\neq i} W_j=\{0\}$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $1\Rightarrow 2$: Sei $x\in W_i\cap\sum_{i\neq j} W_j$. Dann ist $x=\sum_j x_j$ mit $x_j\in W_j$ und $x_i=0$. Die Eindeutigkeit der Darstellung impliziert also, dass $x=0$.
+		\item $2\Rightarrow 1$: Sei $x=\sum_{j\in I}x_j=\sum_{j\in I}x'_j$ mit $x_j,x'_j\in W_j$ für alle $j$. Dann ist $0=\sum_{j\in I}(x_j-x'_j)$, also
+		\begin{align}
+			x_i-x'_i=-\sum_{j\neq i}(x_j-x'_j)\in W_i\cap \sum_{j\neg i} W_j=\{0\}\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
 \begin{definition}[direkte Summe]
+	\proplbl{2_4_5}
 	Ist jedes $x\in \sum W_i$ eindeutig als Summe von $x_i$ mit $x_i\in W_i$ 
 	darstellbar, so sagt man, dass $\sum W_i$ die \begriff{direkte Summe} der Untervektorräume $W_i$ ist und schreibt $\oplus W_i$ für 
 	$\sum W_i$. Im Fall $I=\{1,...,n\}$ schreibt man auch $W_1\oplus W_2 \oplus ... \oplus W_n$ für $\oplus W_i$.
@@ -36,11 +62,15 @@ Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $
 \begin{remark}
 	Wir wollen uns näher mit dem wichtigen Spezialfall $I=\{1,2\}$ beschäftigen und schreiben noch 
 	mal auf: 
+\end{remark}
+
+\begin{conclusion}
+	Seien $W_1,W_2$ Untervektorräume von $V$. Es sind äquivalent:
 	\begin{itemize}
 		\item $V=W_1\oplus W_2$
 		\item $V=W_1 + W_2$ und $W_1 \cap W_2 = \{0\}$
 	\end{itemize}
-\end{remark}
+\end{conclusion}
 
 \begin{proposition}
 	Sind $W_1,W_2$ Untervektorräume von $V$ mit Basen $(x_i)_{i\in I_1}$ bzw. $(x_i)_{i\in I_2}$, wobei $I_1 \cap 
@@ -73,7 +103,7 @@ Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $
 	\end{align}
 \end{conclusion}
 \begin{proof}
-	Sei $(x_1,...,x_m)$ eine Basis von $W$. Nach dem Basisergänzungssatz lässt sich diese zu einer Basis $(x_1,...,x_n)$ 
+	Sei $(x_1,...,x_m)$ eine Basis von $W$. Nach dem Basisergänzungssatz (\propref{2_3_12}) lässt sich diese zu einer Basis $(x_1,...,x_n)$ 
 	von $V$ ergänzen. Mit $W':= \Span_K(x_{m+1},...,x_n)$ ist dann $V=W\oplus W'$.
 	%TODO: Wo ist der Basisergänzungssatz?
 \end{proof}
@@ -91,7 +121,7 @@ Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $
 \end{theorem}
 \begin{proof}
 	Da $\dim_K(V)<\infty$ haben alle Untervektorräume von $V$ Basen. Sei also $B_0=(X_1,...,x_n)$ eine Basis von $W_1\cap W_2$. Nach 
-	dem Basisergänzungssatz können wir $B_0$ zu den Basen $B_1=(x_1,...,x_n,y_1,...,y_p)$ von $W_1$ und $B_2=(x_1,...,
+	dem Basisergänzungssatz (\propref{2_3_12}) können wir $B_0$ zu den Basen $B_1=(x_1,...,x_n,y_1,...,y_p)$ von $W_1$ und $B_2=(x_1,...,
 	x_n,z_1,...,z_q)$ von $W_2$ ergänzen. Wir behaupten, dass $B=(x_1,...,x_n,y_1,...,y_p,z_1,...,z_q)$ eine Basis von 
 	$W_1+W_2$ ist. Offenbar ist $B$ ein Erzeugendensystem von $W_1+W_2$. Seien nun $\lambda_1,...,\lambda_n,\mu_1,...,
 	\mu_p,\eta_1,...,\eta_q \in K$ mit $\sum_{i=1}^n \lambda_ix_i + \sum_{j=1}^p \mu_jy_j + \sum
@@ -116,6 +146,8 @@ Sei $V$ ein $K$-Vektorraum und $(W_i)$ eine Familie von Untervektorräumen von $
 \begin{remark}
 	Man prüft sofort nach, dass $\prod V_i$ ein $K$-Vektorraum ist und $\oplus V_i$ ein Untervektorraum davon ist. Für 
 	endliche Indexmengen ist $\prod V_i = \oplus V_i$, z.B. $K^n = \prod_{i=1}^n K = \oplus K$.
+	
+	Eine erste Beziehung zwischen externer direkter Summe und direkter Summe im Sinne von \propref{2_4_5} gibt das folgende Lemma. Im nächsten Kapitel werden wir den Zusammenhang dann vollständig verstehen.
 \end{remark}
 
 \begin{lemma}

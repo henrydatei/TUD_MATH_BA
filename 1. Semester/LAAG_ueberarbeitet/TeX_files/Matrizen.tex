@@ -40,6 +40,7 @@ Sei $K$ ein Körper.
 \end{definition}
 
 \begin{proposition}
+	\proplbl{3_1_4}
 	$(\Mat_{m\times n},+,\cdot)$ ist ein $K$-VR der Dimension $\dim_K(\Mat_{m\times n})=n\cdot m$ mit 
 	Basismatrix als Basis.
 \end{proposition}
@@ -55,6 +56,7 @@ Sei $K$ ein Körper.
 \end{definition}
 
 \begin{example}
+	\proplbl{3_1_6}
 	\begin{itemize}
 		\item Für $A\in \Mat_n(K)$ ist $0\cdot A=0$ und $1\cdot A=A$.
 		\item Für $\sigma \in S_n$ und $A\in \Mat_{n\times r}(K)$ geht $P_{\sigma}\cdot A$ aus $A$ durch Permutation der 
@@ -63,6 +65,7 @@ Sei $K$ ein Körper.
 \end{example}
 
 \begin{lemma}
+	\proplbl{3_1_7}
 	Für $m,n,r \in \mathbb N_0$ und $A=(a_{ij})\in \Mat_{m\times n}(K)$, $B=(b_{jk})\in \Mat_
 	{n\times r}(K)$ und $\lambda\in K$ gilt:
 	\begin{align}
@@ -76,6 +79,7 @@ Sei $K$ ein Körper.
 \end{proof}
 
 \begin{lemma}
+	\proplbl{3_1_8}
 	Matrizenmultiplikation ist assoziativ:
 	\begin{align}
 		A(BC)=(AB)C\notag
@@ -90,6 +94,7 @@ Sei $K$ ein Körper.
 \end{proof}
 
 \begin{lemma}
+	\proplbl{3_1_9}
 	Für $m,n,r\in \mathbb N_0$ und $A,A'\in \Mat_{m\times n}(K)$, $B,B'\in \Mat_{n\times r}(K)$ ist
 	 \begin{align}
 	 	(A+A')B&=AB+A'B\notag \\
@@ -105,7 +110,7 @@ Sei $K$ ein Körper.
 	Mit der Matrizenmultiplikation wird $\Mat_n(K)$ zu einem Ring mit Einselement $1$.
 \end{proposition}
 \begin{proof}
-	Die vorherigen Sätze und Lemmas.
+	Nach \propref{3_1_4}, \propref{3_1_8} und \propref{3_1_9} ist $\Mat_n(K)$ ein Ring und dass $\mathbbm{1}_n$ ein neutrales Element ist, haben wir schon in \propref{3_1_6} gesehen
 \end{proof}
 
 \begin{example}
@@ -134,10 +139,11 @@ Sei $K$ ein Körper.
 	\end{align}
 	Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
 	(ad-bc)\cdot 1_2$. Definiert man nun $\det(A)=ad-bc$ so sieht man: Ist $\det(A)\neq 0$, so ist $A$ invertierbar mit 
-	$A^{-1}=\det(A)^{-1}\cdot \tilde A$. Ist $\det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar.
+	$A^{-1}=\det(A)^{-1}\cdot \tilde A$. Ist $\det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar (\propref{1_4_13}). Mehr dazu in Kapitel IV.
 \end{example}
 
 \begin{lemma}
+	\proplbl{3_1_14}
 	Für $A,A_1,A_2\in \Mat_{m\times n}(K)$ und $B=\Mat_{n\times r}(K)$ ist 
 	\begin{itemize}
 		\item $(A^t)^t=A$
@@ -153,5 +159,5 @@ Sei $K$ ein Körper.
 	Für $A\in \GL_n(K)$ ist $A^t\in \GL_n(K)$ und $(A^{-1})^t = (A^t)^{-1}$
 \end{proposition}
 \begin{proof}
-	Aus $AA^{-1}=1$ folgt, dass $(A^{-1})^tA^t=1_n^t=1_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.
+	Aus $AA^{-1}=1$ folgt nach \propref{3_1_14}, dass $(A^{-1})^tA^t=1_n^t=1_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.
 \end{proof}

@@ -24,7 +24,7 @@ Seien $R,S$ und $T$ Ringe.
 		\item Ist $R_0\le R$ ein Unterring von $R$, so ist $\iota: R_0 \to R$ ein Ringmonomorphismus
 		\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a\mapsto a+n\mathbb Z$ it ein Ringepimorphismus
 		\item Sei $R$ kommutativ mit Einselement. Für $\lambda\in R$ ist die Auswertungsabbildung $R[X]\to R$ mit $f\mapsto 
-		f(\lambda)$ ein Ringepimorphismus.
+		f(\lambda)$ ein Ringepimorphismus. Dies ist die Aussage von \propref{1_6_8}
 		\item $\mathbb C \to \mathbb C$ mit $z\mapsto \overline z$ ist ein Ringisomorphismus
 	\end{itemize}
 \end{example}
@@ -33,14 +33,14 @@ Seien $R,S$ und $T$ Ringe.
 	Sind $f:R\to S$ und $g:S\to T$ Ringhomomorphismen, so auch $g\circ f:R\to T$.
 \end{proposition}
 \begin{proof}
-	Übung, analog zu Gruppen
+	Übung, analog zu \propref{3_2_5}
 \end{proof}
 
 \begin{lemma}
 	Ist $f:R\to S$ ein Ringisomorphismus, so auch $f^{-1}: S\to R$.
 \end{lemma}
 \begin{proof}
-	Von den Gruppen wissen wir: $f^{-1}$ ist ein Isomorphismus der abelschen Gruppen $(S,+)\to (R,+)$. Die Verträglichkeit 
+	Nach \propref{3_2_7} wissen wir: $f^{-1}$ ist ein Isomorphismus der abelschen Gruppen $(S,+)\to (R,+)$. Die Verträglichkeit 
 	mit der Multiplikation zeigt man analog.
 \end{proof}
 
@@ -49,7 +49,7 @@ Seien $R,S$ und $T$ Ringe.
 	f=\id_R$ und $f\circ f'=\id_S$ gibt.
 \end{proposition}
 \begin{proof}
-	analog zu Gruppen
+	Klar, analog zu \propref{3_2_8}
 \end{proof}
 
 \begin{lemma}
@@ -57,7 +57,7 @@ Seien $R,S$ und $T$ Ringe.
 	$x\cdot a, a\cdot x \in I$ für alle $a\in I$ und $x\in R$.
 \end{lemma}
 \begin{proof}
-	Von den Gruppen wissen wir: $I$ ist eine Untergruppe von $(R,+)$. Für $x\in R$ und $a \in I$ ist $f(xa)=f(x)\cdot 
+	Nach \propref{3_2_13} ist $I$ eine Untergruppe von $(R,+)$. Für $x\in R$ und $a \in I$ ist $f(xa)=f(x)\cdot 
 	f(a)=f(x)\cdot 0=0$. Somit ist $xa\in I$. Analog ist $ax\in I$.
 \end{proof}
 
@@ -65,7 +65,7 @@ Seien $R,S$ und $T$ Ringe.
 	Sei $f\in \Hom(R,S)$. Genau dann ist $f$ injektiv, wenn $\Ker(f)=\{0\}$.
 \end{proposition}
 \begin{proof}
-	Die Aussage folgt aus dem entsprechenden Satz für Gruppen, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.
+	Klar aus \propref{3_2_14}, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.
 \end{proof}
 
 \begin{definition}[Ideal]

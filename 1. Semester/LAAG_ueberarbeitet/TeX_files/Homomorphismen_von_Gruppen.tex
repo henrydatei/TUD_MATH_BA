@@ -15,18 +15,19 @@ Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
 
 \begin{example}
 	\begin{itemize}
-		\item $id_G: G \to G$
+		\item $\id_G: G \to G$
 		\item $c_1:G\to H$ mit $x\mapsto 1_H$
 		\item $G_0\le G$ Untergruppe, $\iota:G_0\to G$
 		\item $(A,+)$ abelsche Gruppe, $k\in \mathbb Z$, $A\to A$ mit $a\mapsto ka$
 		\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a \mapsto a+n\mathbb Z$
 		\item $\mathbb R \to \mathbb R^{\times}$ mit $x\mapsto e^x$
-		\item $Mat_n(K)\to Mat_n(K)$ mit $A\mapsto A^t$
+		\item $\Mat_n(K)\to \Mat_n(K)$ mit $A\mapsto A^t$
 		\item $\mathbb C\to \mathbb R^{\times}$ mit $z\mapsto |z|$
 	\end{itemize}
 \end{example}
 
 \begin{proposition}
+	\proplbl{3_2_4}
 	Sei $f\in \Hom(G,H)$. Dann gilt: 
 	\begin{itemize}
 		\item $f(1_G)\to 1_H$
@@ -49,6 +50,7 @@ Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{3_2_5}
 	Seien $G_1,G_2,G_3$ Gruppen. Sind $f_1:G_1\to G_2$, $f_2:G_2\to G_3$ Homomorphismen, so ist auch 
 	$f_2\circ f_1:G_1\to G_3$.
 \end{proposition}
@@ -80,7 +82,7 @@ Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
 	$f':H\to G$ mit $f'\circ f=\id_G$ und $f\circ f'=\id_H$ gibt.
 \end{proposition}
 \begin{proof}
-	Ist $f$ ein Isomorphismus, so erfüllt $f':=f^{-1}$ das Gewünschte. Ist umgekehrt $f'$ wie angegeben, so muss $f$ 
+	Ist $f$ ein Isomorphismus, so erfüllt $f':=f^{-1}$ nach \propref{3_2_7} das Gewünschte. Ist umgekehrt $f'$ wie angegeben, so muss $f$ 
 	bijektiv sein:
 	\begin{itemize}
 		\item $f'\circ f=\id_G$ injektiv $\Rightarrow f$ injektiv
@@ -100,12 +102,12 @@ Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
 	\begin{itemize}
 		\item $\id_G$ ist ein Isomorphismus
 		\item \propref{3_2_7}
-		\item \propref{3_2_8} und A18
+		\item Folgt aus \propref{3_2_5} und der Tatsache, dass die Komposition bijektiver Abbildungen wieder bijektiv ist.
 	\end{itemize}
 \end{proof}
 
 \begin{remark}
-	Der letzte Satz erklärt die Bedeutung des Isomorphismus: Eine mit der Struktur verträgliche 
+	\propref{3_2_8} erklärt die Bedeutung des Isomorphismus: Eine mit der Struktur verträgliche 
 	Abbildung, die eine mit der Struktur verträgliche Umkehrabbildung besitzt, also eine strukturerhaltende Abbildung. 
 	Tatsächlich können wir uns einen Isomorphismus $f: G\to H$ so vorstellen, dass wir nur die Elemente von $G$ umbenennen. 
 	Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr. Zum Beispiel: Ist $G\cong H$ und ist 
@@ -127,15 +129,17 @@ Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
 \end{definition}
 
 \begin{lemma}
+	\proplbl{3_2_13}
 	Ist $f:G\to H$ ein Homomorphismus, so ist $N:=\Ker(f)$ eine Untergruppe von $G$ mit $x\cdot y\cdot 
 	x^{-1}\in N$ für alle $x\in G$ und $y\in N$.
 \end{lemma}
 \begin{proof}
-	Es ist $N\le G$. Für $x\in G$ und $y\in N$ ist $f(xyx^{-1})=f(x)\cdot f(y)\cdot f(x^{-1})=f(x)\cdot f(x^{-1}) \cdot 1=
+	Nach \propref{3_2_4} ist $N$ eine Untergruppe. Für $x\in G$ und $y\in N$ ist $f(xyx^{-1})=f(x)\cdot f(y)\cdot f(x^{-1})=f(x)\cdot f(x^{-1}) \cdot 1=
 	f(x)\cdot f(x^{-1})=1$, also $xyx^{-1}\in N$.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{3_2_14}
 	Sei $f\in \Hom(G,H)$. Genau dann ist $f$ injektiv, wenn $\Ker(f)=\{1_G\}$.
 \end{proposition}
 \begin{proof}
