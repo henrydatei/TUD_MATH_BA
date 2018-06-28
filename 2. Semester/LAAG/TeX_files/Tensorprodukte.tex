@@ -83,17 +83,32 @@
 \begin{definition}[Tensorprodukt]
 	Ein \begriff{Tensorprodukt} von $V$ und $W$ ist ein Paar $(T,\tau)$ bestehend aus einem $K$-Vektorraum $T$ und einer bilinearen Abbildung $\tau\in\Bil_K(V,W,T)$ welche die folgende \begriff{universelle Eigenschaft} erfüllt: \\
 	\textit{Ist $U$ ein weiterer $K$-Vektorraum und $\xi\in\Bil_K(V,W,U)$ so gibt es genau ein $\xi_\otimes\in\Hom_K(T,U)$ mit $\xi=\xi_\otimes\circ\tau$.}
-	%TODO: Abbildung
-%	V\times W -> \tau -> T
-%									|
-%					\xi				\/ \xi_\otimes
-%									U
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V\times W & T \\ \; & U \\};
+		\path[-stealth]
+		(m-1-1) edge node [below] {$\xi$} (m-2-2)
+		edge node [above] {$\tau$} (m-1-2)
+		(m-1-2) edge [dashed] node [right] {$\xi_\otimes$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
 \end{definition}
 
 \begin{lemma}
 	\proplbl{3_6_7}
 	Sind $(T,\tau)$ und $(T',\tau')$ Tensorprodukte von $V$ und $W$, so gibt es einen eindeutig bestimmten Isomorphismus $\Theta:T\to T'$ mit $\tau'=\Theta\circ\tau$.
-	%TODO: Abbildung
+	\begin{center}
+		\begin{tikzpicture}
+		\node (V) at (1.5,0) {$V\times W$};
+		\node (T) at (0,-2) {$T$};
+		\node (S) at (3,-2) {$T'$};
+		\draw[->, left] (V) to node {$\tau$} (T);
+		\draw[->, right] (V)  to node {$\tau'$} (S);
+		\draw[->, above, dashed] (T)  to [bend left=10] node {$\Theta$} (S);
+		\draw[->, below, dashed] (S)  to [bend left=10] node {$\Theta'$} (T);
+		\end{tikzpicture}
+	\end{center}
 \end{lemma}
 \begin{proof}
 	Da $(T,\tau)$ die universelle Eigenschaft erfüllt, gibt es ein eindeutig bestimmtes $\Theta=(\tau')_\otimes\in\Hom_K(T,T')$ mit $\tau'=\Theta\circ\tau$. Analog gibt es $\Theta'\in\Hom_K(T',T)$ mit $\tau=\Theta'\circ\tau'$. Es folgt, dass $\tau=\Theta'\circ\tau'= \Theta'\circ\Theta\circ\tau$. Da auch $\tau=\id_T\circ\tau$ liefert die Eindeutigkeitsaussage in der universellen Eigenschaft von $(T,\tau)$, für $U=T$, $\xi=\tau$, dass $\Theta\circ\Theta'=\id_T$. Analog sieht man, dass $\Theta\circ\Theta'=\id_{T'}$. Somit ist $\Theta$ ein Isomorphismus.
