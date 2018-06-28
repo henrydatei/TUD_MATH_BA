@@ -3,6 +3,7 @@
 Seien $V$ und $W$ zwei $K$-VR.
 
 \begin{proposition}
+	\proplbl{3_5_1}
 	Sei $(x_i)$ eine Basis von $V$ und $(y_i)$ eine Familie in $W$. Dann gibt es genau eine lineare 
 	Abbildung $f:V\to W$ mit $f(x_i)=y_i$. Diese Abbildung ist durch $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$ 
 	(*) ($\lambda_i\in K$, fast alle gleich 0) gegeben und erfüllt
@@ -12,7 +13,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 	\end{itemize}
 \end{proposition}
 \begin{proof}
-	Ist $f:V\to W$ linear mit $f(x_i)=y_i$, so folgt $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$. Da sich jedes 
+	Ist $f:V\to W$ linear mit $f(x_i)=y_i$, so folgt aus \propref{3_4_6} $f(\sum \lambda_ix_i)=\sum \lambda_iy_i$. Da sich jedes 
 	$x\in V$ als $x=\sum  \lambda_ix_i$ schreiben lässt, ist $f$ dadurch schon eindeutig bestimmt. Andererseits wird 
 	durch (*) eine wohldefinierte Abbildung beschrieben, da die Darstellung von $x$ eindeutig ist (denn $x_i$ sind 
 	linear unabhängig). Es bleibt zu zeigen, dass die durch (*) definierte Abbildung $f:V\to W$ tatsächlich linear ist. 
@@ -20,8 +21,8 @@ Seien $V$ und $W$ zwei $K$-VR.
 	\sum (\lambda_i+\lambda'_i)y_i=\sum \lambda_iy_i+\sum \lambda'_iy_i=f(x)+f(x')$. $f(\lambda x)=f(\sum \lambda
 	\lambda_ix_i)=\sum \lambda\lambda_iy_i=\lambda\sum\lambda_iy_i=\lambda f(x)$.
 	\begin{itemize}
-		\item $\Image(f)$ ist ein UVR von $W$ und $\{y_i\}\subset \Image(f)\subset \Span_K(y_i)$, somit $\Image(f)=\Span_K(y_i)$
-		\item $f$ ist injektiv $\iff \Ker(f)=\{0\}$ \\ 
+		\item $\Image(f)$ ist ein Untervektorraum nach \propref{3_4_6} von $W$ und $\{y_i\}\subset \Image(f)\subset \Span_K(y_i)$, somit $\Image(f)=\Span_K(y_i)$
+		\item \propref{3_4_11}: $f$ ist injektiv $\iff \Ker(f)=\{0\}$ \\ 
 		$\iff \lambda_i\in K$ gilt: $f(\sum \lambda_ix_i)=0\Rightarrow \sum \lambda_ix_i=0$ \\ 
 		$\iff \lambda_i\in K$ gilt: $\sum\lambda_iy_i=0\Rightarrow \lambda_i=0$ \\ 
 		$\iff (y_i)$ linear unabhängig.
@@ -33,9 +34,8 @@ Seien $V$ und $W$ zwei $K$-VR.
 	eine Familie in $W$, so gibt es eine lineare Abbildung $f:V\to W$ mit $f(x_i)=y_i$
 \end{conclusion}
 \begin{proof}
-	Nach dem Basisergänzungssatz können wir die Familie $(x_i)$ zu einer Basis $x_1,...,x_m$ ergänzen. Die Behauptung 
-	folgt aus dem vorherigen Satz für beliebige $y_{n+1},...,y_m\in W$.
-	%TODO: Wo ist der Basisergänzungssatz?
+	Nach dem Basisergänzungssatz (\propref{2_3_12}) können wir die Familie $(x_i)$ zu einer Basis $x_1,...,x_m$ ergänzen. Die Behauptung 
+	folgt aus \propref{3_5_1} für beliebige $y_{n+1},...,y_m\in W$.
 \end{proof}
 
 \begin{conclusion}
@@ -44,7 +44,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 	$f:V\to W$ mit $f(x_i)=y_i$.
 \end{conclusion}
 \begin{proof}
-	Sei $f$ wie im ersten Satz. $(y_i)$ ist Erzeugendensystem $\Rightarrow \Image(f)=\Span_K(y_i)=W$, also $f$ surjektiv. 
+	Sei $f$ wie in \propref{3_5_1}. $(y_i)$ ist Erzeugendensystem $\Rightarrow \Image(f)=\Span_K(y_i)=W$, also $f$ surjektiv. 
 	$(y_i)$ linear abhängig $\Rightarrow f$ ist injektiv.
 \end{proof}
 
@@ -52,10 +52,11 @@ Seien $V$ und $W$ zwei $K$-VR.
 	Zwei endlichdimensionale $K$-VR sind genau dann isomorph, wenn sie dieselbe Dimension haben.
 \end{conclusion}
 \begin{proof}
-	\propref{3_5_3} und letztes Kapitel
+	\propref{3_5_3} und \propref{3_4_10}
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{3_5_5}
 	Ist $B=(v_1,...,v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_B:K^n\to 
 	V$ mit $\Phi_B(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
 	$K^n$ für $n=\dim_K(V)$.
@@ -95,11 +96,12 @@ Seien $V$ und $W$ zwei $K$-VR.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{3_5_9}
 	Unter der Komposition wird $\End_K(V)$ zu einem Ring mit Einselement $\id_V$ und $\End_K(V)^{\times}=
 	\Aut_K(V)$.
 \end{conclusion}
 \begin{proof}
-	$(\End_K(V),+)$ ist eine abelsche Gruppe, die Komposition eine Verknüpfung auf $\End_K(V)$ ist assoziativ und die 
+	$(\End_K(V),+)$ ist eine abelsche Gruppe (\propref{3_4_9}), die Komposition eine Verknüpfung auf $\End_K(V)$ ist assoziativ und die 
 	Distributivgesetze gelten (\propref{3_5_8}).
 \end{proof}
 
@@ -109,17 +111,19 @@ Seien $V$ und $W$ zwei $K$-VR.
 \end{remark}
 
 \begin{lemma}
+	\proplbl{3_5_11}
 	Seien $m,n,r\in \mathbb N$, $A\in \Mat_{m\times n}(K)$, $B\in \Mat_{n\times r}(K)$. Für die linearen 
-	Abbildungen $f_A\in \Hom_K(K^n,K^m)$, $f_B\in \Hom_K(K^r,K^n)$ gilt dann $f_{AB}=f_A\circ f_B$.
+	Abbildungen $f_A\in \Hom_K(K^n,K^m)$, $f_B\in \Hom_K(K^r,K^n)$ aus \propref{3_4_5} gilt dann $f_{AB}=f_A\circ f_B$.
 \end{lemma}
 \begin{proof}
 	Sind $A=(a_{ij})$ und $B=(b_{jk})$, so ist $(f_A\circ f_B)(e_k)=f_A(f_B(e_k))=f_A(Be_k)=f_A(b_{1k},...,b_{nk})^t=
 	A\cdot (b_{1k},...,b_{nk})^t=(\sum_{j=1}^n a_{ij}b_{jk},...,\sum_{j=1}^n a_{mj}b_{jk})^t=AB\cdot e_k=
-	f_{AB}(e_k)$ für $k=1,...,r$, also $f_A\circ f_B=f_{AB}$.
+	f_{AB}(e_k)$ für $k=1,...,r$, also $f_A\circ f_B=f_{AB}$ nach \propref{3_5_1}.
 \end{proof}
 
 \begin{proposition}
-	Die Abbildung $A\to f_A$ liefert einen Isomorphismus von $K$-VR $F_{m\times n}\!\!: \Mat_{m\!\times\!n}(K)
+	\proplbl{3_5_12}
+	Die Abbildung $A\to f_A$ aus \propref{3_4_5} liefert einen Isomorphismus von $K$-VR $F_{m\times n}\!\!: \Mat_{m\!\times\!n}(K)
 	\!\to\! \Hom_K(K^n\!,K^m)$ sowie einen Ringisomorphismus $F_n:\Mat_n(F)\to \End_K(K^n)$ der $\GL_n(K)$ auf $\Aut_K(K^n)$ 
 	abbildet.
 \end{proposition}
@@ -129,14 +133,18 @@ Seien $V$ und $W$ zwei $K$-VR.
 		\item $F$ ist linear: Sind $A,B\in Mat-{n\times m}(K)$ und $\lambda,\mu\in K$, so ist $F(\lambda A+\mu B)(x)=
 		f_{\lambda A+\mu B}(x)=(\lambda A+\mu B)x=\lambda Ax+\mu Bx=\lambda f_A(x)+\mu f_B(x)=(\lambda F(A)+\mu F(B))(x)$, 
 		also ist $F$ linear.
-		\item $F$ ist injektiv: Es genügt zu zeigen, dass $\Ker(f)=\{0\}$. Ist $A=(a_{ij})\in \Mat_{n\times m}(K)$ mit $F(A)=0$, 
+		\item $F$ ist injektiv: Es genügt zu zeigen, dass $\Ker(f)=\{0\}$ (\propref{3_4_11}). Ist $A=(a_{ij})\in \Mat_{n\times m}(K)$ mit $F(A)=0$, 
 		so insbesondere $0=F(A)(e_j)=f_A(e_j)=Ae_j=(a_{1j},...,a_{mj})^t$, also $A=0$.
 		\item $F$ ist surjektiv: Sei $f\in \Hom_K(V,W)$. Schreibe $f(e_j)=(a_{1j},...,a_{mj})^t$ und setze $A=(a_{ij})\in 
-		\Mat_{n\times m}(K)$. Dann ist $f_A\in \Hom_K(K^n,K^m)$ mit $f_A(e_j)=Ae_j=f(e_j)$, also $f=f_A=F(A)\in \Image(f)$.
-		\item $F_n$ ist eine Ringhomomorphismus: \\
+		\Mat_{n\times m}(K)$. Dann ist $f_A\in \Hom_K(K^n,K^m)$ mit $f_A(e_j)=Ae_j=f(e_j)$, also $f=f_A=F(A)\in \Image(f)$ nach \propref{3_5_1}.
+		\item $F_n$ ist eine Ringhomomorphismus (\propref{3_5_11}): \\
 		(RH1) aus (L1) \\
 		(RH2) aus $f_{AB}=f_A\circ f_B$.
 		\item Somit ist $F_n$ eine Ringisomorphismus $\Rightarrow F_n(\Mat_n(K)^{\times})=\End_K(V)^{\times}$, also $F_n(
-		\GL_n(K))=\Aut_K(V)$.
+		\GL_n(K))=\Aut_K(V)$ nach \propref{3_5_9}.
 	\end{itemize}
 \end{proof}
+
+\begin{remark}
+	Wir sehen also, dass die linearen Abbildungen zwischen Standardräumen sehr konkret durch Matrizen beschrieben werden können. Da jeder endlichdimensionale Vektorraum zu einem Standardraum isomorph ist (\propref{3_5_5}), kann man diese Aussage auf solche Vektorräume erweitern. Dies wollen wir im nächsten Abschnitt tun.
+\end{remark}

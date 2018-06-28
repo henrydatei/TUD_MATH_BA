@@ -11,6 +11,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{definition}
 
 \begin{lemma}
+	\proplbl{3_7_2}
 	Für $x,x'\in V$ sind äquivalent:
 	\begin{itemize}
 		\item $x+U=x'+U$
@@ -48,7 +49,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{lemma}
 \begin{proof}
 	\begin{itemize}
-		\item $x_1+U=x'_1+U$, $x_2+U=x'_2+U\Rightarrow x'_1-x_1,x'_2-x_2\in U\Rightarrow (x'_1+x'_2)-(x_1+x_2)=(x'_1-x_1)-(x'_2-x_2)\in U
+		\item $x_1+U=x'_1+U$, $x_2+U=x'_2+U\Rightarrow x'_1-x_1,x'_2-x_2\in U\text{ \propref{3_7_2} }\Rightarrow (x'_1+x'_2)-(x_1+x_2)=(x'_1-x_1)-(x'_2-x_2)\in U
 		\Rightarrow (x_1+x_2)+U=(x'_1+x'_2)+U$
 		\item $x_1+U=x'_1+U\Rightarrow x'_1-x_1\in U\Rightarrow \lambda x'_1-\lambda x_1\in U\Rightarrow \lambda x'_1+U=\lambda x_1+U$
 	\end{itemize}
@@ -116,6 +117,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{3_7_10}
 	Für $f\in \Hom_K(V,W)$ ist $\Image(f)\cong $\qraum{$V$}{$\Ker(f)$}. Insbesondere gilt: Ist $f$ ein Epimorphismus, so 
 	ist $W\cong $\qraum{$V$}{$\Ker(f)$}.
 \end{conclusion}
@@ -142,11 +144,12 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 	Ist $\dim_K(V)<\infty$, so ist $\dim_K($\qraum{$V$}{$U$}$)=\dim_K(V)-\dim_K(U)$.
 \end{conclusion}
 \begin{proof}
-	Es existiert ein lineares Komplement $U'$ zu $U$ in $V$ (d.h. $V=U\oplus U'$) und $\dim_K(U')=\dim_K(V)-\dim_K(U)$. Es gilt \qraum{$V$}
+	Nach \propref{2_4_10} existiert ein lineares Komplement $U'$ zu $U$ in $V$ (d.h. $V=U\oplus U'$) und $\dim_K(U')=\dim_K(V)-\dim_K(U)$. Es gilt \qraum{$V$}
 	{$U$}=$U'$.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{2_7_13}
 	Ist $\dim_K(V)<\infty$ und $f\in \Hom_K(V,W)$, so ist $\dim_K(V)=\dim_K(\Ker(f))+\dim_K(\Image(f))$.
 \end{conclusion}
 \begin{proof}
@@ -154,6 +157,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{3_7_14}
 	Ist $\dim_K(V)<\infty$ und $f\in \End_K(V)$, so sind äquivalent:
 	\begin{itemize}
 		\item $f\in \Aut_K(V)$
