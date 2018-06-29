@@ -84,6 +84,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
     
     4. Die adjungierte Abbildung ... fertig
     
-    5. Der Spektralsatz ... wird bearbeitet
+    5. Der Spektralsatz ... fertig
+
+    6. Tensorprodukte ... wird bearbeitet
 
 4. Moduln ... noch nicht bearbeitet
