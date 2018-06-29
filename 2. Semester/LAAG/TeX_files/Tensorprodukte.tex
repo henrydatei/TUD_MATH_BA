@@ -116,7 +116,7 @@
 
 \begin{definition}[Vektorraum mit Basis $X$]
 	\proplbl{3_6_8}
-	Sei $X$ eine Menge. Der $K$-\begriff{Vektorraum mit Basis $X$} ist der Untervektorraum $V=\Span_K((\delta_x)_{x\in X})$ des $K$-Vektorraum $\Abb(X,K)$ ($\delta_x(y)=\delta_{x,y}=\begin{cases}1&x=y\\0&x\neq y\end{cases}$)
+	Sei $X$ eine Menge. Der $K$-\begriff{Vektorraum mit Basis $X$} ist der Untervektorraum $V=\Span_K((\delta_x)_{x\in X})$ des $K$-Vektorraum $\Abb(X,K)$ mit $\delta_x(y)=\delta_{x,y}=\begin{cases}1&x=y\\0&x\neq y\end{cases}$
 \end{definition}
 
 \begin{lemma}
@@ -151,3 +151,70 @@
 \begin{example}
 	Durch die Wahl der Standardbasis erhält man einen kanonischen Isomorphismus $K^m\otimes_K K^n\cong\Mat_{m\times n}(K)$.
 \end{example}
+
+\begin{example}
+	Ist $V$ ein $\real$-Vektorraum mit Basis $(x_1,...,x_n)$, so ist $\comp\otimes_\real V$ ein $\real$-Vektorraum der Dimension $2n$ mit Basis $(1\otimes x_1...,1\otimes x_n,i\otimes x_1,...,i\otimes x_n)$. Durch $\lambda\cdot z\otimes x=(\lambda z)\otimes x$ für $\lambda,z\in\comp$, $x\in V$ wird $\comp\otimes_\real V$ zu einem $\comp$-Vektorraum der Dimension $1\otimes x_1,...,1\otimes x_n$, $V_\comp$, genannt die \begriff{Komplexifizierung} von $V$.
+\end{example}
+
+\begin{proposition}
+	\proplbl{3_6_14}
+	Sei $V\otimes_K W$ ein Tensorprodukt von $V$ und $W$. Für jeden weiteren $K$-Vektorraum $U$ liefert die Abbildung $\xi\to\xi_\otimes$ ein Isomorphismus 
+	\begin{align}
+		\Bil_K(V,W,U)\overset{\cong}{\to}\Hom_K(V\otimes_K W,U)\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Diese Abbildung heiße $\Lambda$. 
+	\begin{itemize}
+		\item $\Lambda$ ist linear: klar aus Eindeutigkeitsaussage, z.B.
+		\begin{align}
+			(\xi_\otimes+\xi'_\otimes)\circ\otimes=\xi_\otimes\circ\otimes+\xi'_\otimes\circ\otimes=\xi+\xi'=(\xi+\xi')_\otimes\circ\otimes\notag
+		\end{align}
+		und somit $\xi_\otimes+\xi'_\otimes=(\xi+\xi')_\otimes$.
+		\item $\Lambda$ ist injektiv: Ist $\xi\neq 0$, so wegen $\xi=\xi_\otimes\circ\otimes$ auch $\xi_\otimes\neq 0$.
+		\item $\Lambda$ ist surjektiv: Ist $f\in\Hom_K(V\otimes_K W,U)$, so ist $\xi=f\circ\otimes$ bilinear, die universelle Eigenschaft liefert somit $f=\xi_\otimes\in\Image(\Lambda)$.
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Sind $V$ und $W$ endlichdimensional, so ist
+	\begin{align}
+		V\otimes_K W\cong \Bil_K(V,W,K)^*\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	Es ist $\dim_K(V\otimes_K W)<\infty$ und deshalb
+	\begin{align}
+		V\otimes_K W\cong (V\otimes_K W)^{**}\overset{\propref{3_6_14}}{\cong} \Bil_K(V,W,K)\notag
+	\end{align}
+\end{proof}
+
+\begin{remark}
+	Während obige Konstruktion des Tensorprodukts von der Wahl (und Existenz) von Basen abhängt, ist die folgende Konstruktion "'basisfrei"': \\
+	Sei $T_1$ der $K$-Vektorraum mit Basis $V\times W$ und $T_0$ der Untervektorraum von $T_1$ erzeugt von Elementen der Form:
+	\begin{align}
+		\delta_{v+v',w}-\delta_{v,w}-\delta_{v',w} \notag \\
+		\delta_{v,w+w'}-\delta_{v,w}-\delta_{v,w'} \notag \\
+		\delta_{\lambda v,w}-\lambda\cdot \delta_{v,w} \notag \\
+		\delta_{v,\lambda w}-\lambda\cdot\delta_{v,w}\notag
+	\end{align}
+	mit $v,v'\in V$, $w,w'\in W$ und $\lambda\in K$. Sei weiter $T=T_1/T_0$ und $\tau:V\times W\to T$ gegeben durch $(v,w)\mapsto\delta_{v,w}+T_0$. Dann ist $(T,^\tau)$ ein Tensorprodukt von $V$ und $W$.
+	\begin{center}
+		\begin{tikzpicture}
+		\node (K) at (0,0) {$V\times W$};
+		\node (U) at (3,-2) {$U$};
+		\node (B) at (3,0) {$T_1/T_0$};
+		\node (T) at (3,2) {$T_1$};
+		\draw[->, above] (K) to node {$\tau$} (B);
+		\draw[->, below] (V)  to node {$\xi$} (U);
+		\draw[->] (V) to node {} (T);
+		\draw[->, right] (T) to node {$\pi_{\tau_0}$} (B);
+		\draw[->, dashed] (B) to node {} (U);
+		\draw[->, dashed] (T)  to [bend left=30] node {} (U);
+		\end{tikzpicture}
+	\end{center}
+\end{remark}
+
+\begin{remark}
+	Analog kann man für $k\ge 2$ und die $K$-Vektorräume $V_1,...,V_k$ $k$-lineare Abbildungen $V_1\times ...\times V_k\to U$ definieren und erhält dann Tensorprodukte $V_1\otimes_K ... \otimes_K V_k$.
+\end{remark}
