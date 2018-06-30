@@ -1,6 +1,6 @@
 \section{Quotientenräume}
 
-Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
+Seien $V,W$ $K$-Vektorräume und $U\subseteq V$ ein Untervektorraum.
 
 \begin{definition}[affiner Unterraum]
 	Ein \begriff{affiner Unterraum} von $V$ ist eine Teilmenge der Form 
@@ -67,7 +67,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{definition}
 
 \begin{proposition}
-	Der Quotientenraum \qraum{$V$}{$U$} ist ein $K$-VR und $\pi_U$ ein Epimorphismus mit Kern $U$.
+	Der Quotientenraum \qraum{$V$}{$U$} ist ein $K$-Vektorraum und $\pi_U$ ein Epimorphismus mit Kern $U$.
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
@@ -77,7 +77,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 			\item neutrales Element: $0+U=U$
 			\item inverses Element: $-(x+U)=(-x)+U$
 		\end{itemize}
-		\item $($\qraum{$V$}{$U$}$,+)$ ist $K$-VR: (V2) überträgt sich von $(V,+,\cdot)$
+		\item $($\qraum{$V$}{$U$}$,+)$ ist $K$-Vektorraum: (V2) überträgt sich von $(V,+,\cdot)$
 		\item $\pi_U$ surjektiv: nach Definition von \qraum{$V$}{$U$}
 		\item $\pi_U$ linear: nach Definition von $+$ und $\cdot$ auf \qraum{$V$}{$U$}
 		\item $\Ker(\pi_U)=\{x\in V \mid x+U=U\}=\{x\in V \mid x\in 0+U\}=U$
@@ -149,7 +149,7 @@ Seien $V,W$ $K$-VR und $U\subseteq V$ ein Untervektorraum.
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{2_7_13}
+	\proplbl{3_7_13}
 	Ist $\dim_K(V)<\infty$ und $f\in \Hom_K(V,W)$, so ist $\dim_K(V)=\dim_K(\Ker(f))+\dim_K(\Image(f))$.
 \end{conclusion}
 \begin{proof}

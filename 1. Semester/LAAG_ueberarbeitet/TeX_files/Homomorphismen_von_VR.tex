@@ -1,12 +1,14 @@
 \section{Homomorphismen von Vektorräumen}
 
-Seien $U,V,W$ drei $K$-VR. \\
+Seien $U,V,W$ drei $K$-Vektorraum. \\
 
 \begin{definition}[linear]
-	Eine Abbildung $f: V \to W$ heißt $K$-\begriff{linear}er Homomorphismus von $K$-VR, wenn für 
-	alle $x,y\in V$ und $\lambda\in K$ gilt: \\
-	(L1): $f(x+y)=f(x)+f(y)$ \\
-	(L2): $f(\lambda x)=\lambda \cdot f(x)$ \\
+	Eine Abbildung $f: V \to W$ heißt $K$-\begriff{linear}er Homomorphismus von $K$-Vektorraum, wenn für 
+	alle $x,y\in V$ und $\lambda\in K$ gilt:
+	\begin{itemize}
+		\item (L1): $f(x+y)=f(x)+f(y)$
+		\item (L2): $f(\lambda x)=\lambda \cdot f(x)$
+	\end{itemize}
 	Die Menge der $K$-linearen Abbildungen $f: V\to W$ wird mit $\Hom_K(V,W)$ bezeichnet. Die Elemente von $\End_K(V)
 	:= \Hom_K(V,V)$ nennt man die Endomorphismen von $V$. Ein $f\in \Hom_K(V,W)$ ist ein Mono-, Epi- bzw. Isomorphismus, 
 	falls $f$ injektiv, surjektiv bzw. bijektiv ist. Einen Endomorphismus der auch ein Isomorphismus ist, nennt man 
@@ -16,7 +18,7 @@ Seien $U,V,W$ drei $K$-VR. \\
 
 \begin{remark}
 	Eine $K$-lineare Abbildung $f: V\to W$ ist also ein Homomorphismus der abelschen Gruppen $(V,+) 
-	\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen VR.
+	\to(W,+)$, der mit der Skalarmultiplikation verträglich ist, d.h. eine strukturverträgliche Abbildung zwischen Vektorräumen.
 \end{remark}
 
 \begin{proposition}
@@ -35,8 +37,8 @@ Seien $U,V,W$ drei $K$-VR. \\
 	\begin{itemize}
 		\item $\id_V: V\to V$ ist ein Automorphismus von $V$
 		\item $c_0:V\to W$ mit $x\mapsto 0$ ist $K$-linear
-		\item Für einen UVR $V_0\le V$ ist $\iota: V_0\to V$ ein Monomorphismus
-		\item Im $K$-VR $K[X]$ kann man die (formale) Ableitung definieren: $(\sum_{i=0}^n a_iX^i)' := \sum
+		\item Für einen Untervektorraum $V_0\le V$ ist $\iota: V_0\to V$ ein Monomorphismus
+		\item Im $K$-Vektorraum $K[X]$ kann man die (formale) Ableitung definieren: $(\sum_{i=0}^n a_iX^i)' := \sum
 		_{i=1}^n ia_iX^{i-1}$. Diese Abbildung $K[X]\to K[X]$ mit $f\mapsto f'$ ist ein $K$-Endomorphismus von $K[X]$.
 	\end{itemize}
 \end{example}
@@ -71,8 +73,8 @@ Seien $U,V,W$ drei $K$-VR. \\
 		\item Sind $(x_1)$ aus $V$, $(\lambda_i)$ aus $K$, fast alle gleich 0, so ist $f(\sum_{i\in I} \lambda_i
 		\cdot x_i)=\sum_{i\in I} \lambda_i\cdot f(x)$.
 		\item Ist $(x_i)$ linear abhängig in $V$, so ist $f(x_i)$ linear abhängig in $W$.
-		\item Ist $V_0\le V$ ein UVR von $V$, so ist $f(V_0)\le W$ ein UVR.
-		\item Ist $W_0\le W$ ein UVR von $W$, so ist $f^{-1}(W_0)\le V$ ein UVR.
+		\item Ist $V_0\le V$ ein Untervektorraum von $V$, so ist $f(V_0)\le W$ ein Untervektorraum.
+		\item Ist $W_0\le W$ ein Untervektorraum von $W$, so ist $f^{-1}(W_0)\le V$ ein Untervektorraum.
 	\end{itemize}
 \end{proposition}
 \begin{proof}
@@ -119,7 +121,7 @@ Seien $U,V,W$ drei $K$-VR. \\
 
 \begin{remark}
 	\proplbl{3_4_10}
-	Wie auch bei Gruppen sehen wir hier bei VR, dass Isomorphismen genau die strukturerhaltenden 
+	Wie auch bei Gruppen sehen wir hier bei Vektorräumen, dass Isomorphismen genau die strukturerhaltenden 
 	Abbildungen sind. Wieder können wir uns einen Isomorphismus $f:V\to W$ so vorstellen, dass wir nur die Elemente von 
 	$V$ umbenennen. Alle Aussagen, die sich nur aus der Struktur selbst ergeben, bleiben damit wahr, wie z.B. $\dim_K(V)=
 	\dim_K(W)\iff V=W$. Insbesondere ist $K^n \cong K^m$ für $n=m$.
@@ -127,7 +129,7 @@ Seien $U,V,W$ drei $K$-VR. \\
 
 \begin{proposition}
 	\proplbl{3_4_11}
-	Ist $f:V\to W$ eine lineare Abbildung, so ist $\Ker(f)$ ein UVR von $V$. Genau dann ist $f$ ein 
+	Ist $f:V\to W$ eine lineare Abbildung, so ist $\Ker(f)$ ein Untervektorraum von $V$. Genau dann ist $f$ ein 
 	Monomorphismus, wenn $\Ker(f)=\{0\}$.
 \end{proposition}
 \begin{proof}

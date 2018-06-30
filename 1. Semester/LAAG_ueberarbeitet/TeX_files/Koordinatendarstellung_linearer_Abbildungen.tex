@@ -1,6 +1,6 @@
 \section{Koordinatendarstellung linearer Abbildungen}
 
-Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
+Seien $V,W$ endlichdimensionale $K$-Vektorräume mit den Basen $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$.
 
 \begin{definition}[darstellende Matrix]
 	Sei $f\in \Hom_K(V,W)$. Für $j=1,...,n$ schreiben wir $f(x_j)=\sum_{
@@ -32,7 +32,7 @@ Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y
 
 \begin{conclusion}
 	\proplbl{3_6_3}
-	Die Abbildung $M_C^B$: $\Hom_K(V,W)\to \Mat_{m\times n}(K)$ ist ein Isomorphismus von $K$-VR.
+	Die Abbildung $M_C^B$: $\Hom_K(V,W)\to \Mat_{m\times n}(K)$ ist ein Isomorphismus von $K$-Vektorräumen.
 \end{conclusion}
 \begin{proof}
 	Definiere $A$: $\Hom_K(V,W)\to \Mat_{m\times n}(K)$ mit $f\mapsto \Phi_C^{-1}\circ f \circ \Phi_B$. $A(f)=F_{m\times n}
@@ -43,7 +43,7 @@ Seien $V,W$ endlichdimensionale $K$-VR mit den Basen $B=(x_1,...,x_n)$ und $C=(y
 
 \begin{lemma}
 	\proplbl{3_6_4}
-	Sei $U$ ein weitere $K$-VR mit endlicher Basis $D$. Für $f\in \Hom_K(V,W)$ und $g\in \Hom_K(U,V)$ ist 
+	Sei $U$ ein weiterer $K$-Vektorraum mit endlicher Basis $D$. Für $f\in \Hom_K(V,W)$ und $g\in \Hom_K(U,V)$ ist 
 	\begin{align}
 		M_C^B(f)\cdot M_B^D(g)=M_C^D(f\circ g)\notag
 	\end{align}

@@ -11,14 +11,16 @@ In diesem Kapitel sei $K$ ein Körper.
 \begin{definition}[Vektorraum]
 	Ein $K$-\begriff{Vektorraum} (auch Vektorraum über $K$) ist ein Tripel $(V,+,\cdot)$ 
 	bestehend aus einer Menge $V$, einer Verknüpfung $+: V \times V \to V$, genannt Addition, und einer Abbildung 
-	$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten: \\
-	(V1): $(V,+)$ ist eine abelsche Gruppe \\
-	(V2): Addition und Skalarmultiplikation sind verträglich:
+	$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten:
 	\begin{itemize}
-		\item $\lambda(x+y)=(\lambda\cdot x)+(\lambda\cdot y)$
-		\item $(\lambda+\mu)\cdot x = (\lambda\cdot x)+(\mu\cdot x)$
-		\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
-		\item $1\cdot x = x$
+		\item (V1): $(V,+)$ ist eine abelsche Gruppe
+		\item (V2): Addition und Skalarmultiplikation sind verträglich:
+		\begin{itemize}
+			\item $\lambda(x+y)=(\lambda\cdot x)+(\lambda\cdot y)$
+			\item $(\lambda+\mu)\cdot x = (\lambda\cdot x)+(\mu\cdot x)$
+			\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
+			\item $1\cdot x = x$
+		\end{itemize}
 	\end{itemize}
 \end{definition}
 
@@ -79,9 +81,12 @@ In diesem Kapitel sei $K$ ein Körper.
 
 \begin{definition}[Untervektorraum]
 	Sei $V$ ein $K$-Vektorraum. Ein \begriff{Untervektorraum} (Untervektorraum) von $V$ ist eine nichtleere
-	Teilmenge $W \subseteq V$ mit: \\
-	(UV1): Für $x,y \in W$ ist $x+y\in W$. \\
-	(UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
+	Teilmenge $W \subseteq V$ mit:
+	\begin{itemize}
+		\item (UV1): Für $x,y \in W$ ist $x+y\in W$.
+		\item (UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
+	\end{itemize}
+	
 \end{definition}
 
 \begin{proposition}

@@ -1,6 +1,6 @@
 \section{Der Vektorraum der linearen Abbildungen}
 
-Seien $V$ und $W$ zwei $K$-VR.
+Seien $V$ und $W$ zwei $K$-Vektorräume.
 
 \begin{proposition}
 	\proplbl{3_5_1}
@@ -49,7 +49,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 \end{proof}
 
 \begin{conclusion}
-	Zwei endlichdimensionale $K$-VR sind genau dann isomorph, wenn sie dieselbe Dimension haben.
+	Zwei endlichdimensionale $K$-Vektorräume sind genau dann isomorph, wenn sie dieselbe Dimension haben.
 \end{conclusion}
 \begin{proof}
 	\propref{3_5_3} und \propref{3_4_10}
@@ -58,7 +58,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 \begin{conclusion}
 	\proplbl{3_5_5}
 	Ist $B=(v_1,...,v_n)$ eine Basis von $V$, so gibt es genau einen Isomorphismus $\Phi_B:K^n\to 
-	V$ mit $\Phi_B(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-VR zu einem Standardraum isomorph, nämlich zu
+	V$ mit $\Phi_B(e_i)=v_i$. Insbesondere ist jeder endlichdimensionale $K$-Vektorraum zu einem Standardraum isomorph, nämlich zu
 	$K^n$ für $n=\dim_K(V)$.
 \end{conclusion}
 
@@ -69,7 +69,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 \end{definition}
 
 \begin{proposition}
-	Die Menge $\Hom_K(V,W)$ ist eine UVR des $K$-VR $\Abb(V,W)$.
+	Die Menge $\Hom_K(V,W)$ ist ein Untervektorraum des $K$-Vektorraums $\Abb(V,W)$.
 \end{proposition}
 \begin{proof}
 	Seien $f,g\in \Hom_K(V,W)$ und $\eta \in K$.
@@ -84,7 +84,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 
 \begin{lemma}
 	\proplbl{3_5_8}
-	Sei $U$ ein weiterer $K$-VR. Sind $f,f_1,f_2\in \Hom_K(V,W)$ und $g,g_1,g_2\in \Hom_K(U,V)$, so ist 
+	Sei $U$ ein weiterer $K$-Vektorraum. Sind $f,f_1,f_2\in \Hom_K(V,W)$ und $g,g_1,g_2\in \Hom_K(U,V)$, so ist 
 	$f\circ (g_1+g_2)=f\circ g_1+f\circ g_2$ und $(f_1+f_2)\circ g=f_1\circ g+f_2\circ g$.
 \end{lemma}
 \begin{proof}
@@ -106,8 +106,8 @@ Seien $V$ und $W$ zwei $K$-VR.
 \end{proof}
 
 \begin{remark}
-	Die Menge der strukturverträglichen Abbildungen zwischen $K$-VR trägt also wieder die Struktur 
-	eines $K$-VR. Wir können diesen mit unseren Mitteln untersuchen und z.B. nach Dimension und Basis fragen.
+	Die Menge der strukturverträglichen Abbildungen zwischen $K$-Vektorräumen trägt also wieder die Struktur 
+	eines $K$-Vektorraums. Wir können diesen mit unseren Mitteln untersuchen und z.B. nach Dimension und Basis fragen.
 \end{remark}
 
 \begin{lemma}
@@ -123,7 +123,7 @@ Seien $V$ und $W$ zwei $K$-VR.
 
 \begin{proposition}
 	\proplbl{3_5_12}
-	Die Abbildung $A\to f_A$ aus \propref{3_4_5} liefert einen Isomorphismus von $K$-VR $F_{m\times n}\!\!: \Mat_{m\!\times\!n}(K)
+	Die Abbildung $A\to f_A$ aus \propref{3_4_5} liefert einen Isomorphismus von $K$-Vektorräumen $F_{m\times n}\!\!: \Mat_{m\!\times\!n}(K)
 	\!\to\! \Hom_K(K^n\!,K^m)$ sowie einen Ringisomorphismus $F_n:\Mat_n(F)\to \End_K(K^n)$ der $\GL_n(K)$ auf $\Aut_K(K^n)$ 
 	abbildet.
 \end{proposition}

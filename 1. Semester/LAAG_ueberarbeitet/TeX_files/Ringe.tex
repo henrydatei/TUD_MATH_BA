@@ -4,10 +4,12 @@
 	Ein \begriff{Ring} ist ein Tripel $(R,+,\cdot)$ bestehend aus einer Menge
 	$R$, einer Verknüpfung $+: R \times R \to R$ (Addition) und einer anderen Verknüpfung
 	$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
-	erfüllen: \\
-	(R1) $(R,+)$ ist eine abelsche Gruppe. \\
-	(R2) $(R,\cdot)$ ist eine Halbgruppe. \\
-	(R3) Für $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$. \\
+	erfüllen:
+	\begin{itemize}
+		\item (R1) $(R,+)$ ist eine abelsche Gruppe.
+		\item (R2) $(R,\cdot)$ ist eine Halbgruppe.
+		\item (R3) Für $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$.
+	\end{itemize}
 	Ein Ring heißt kommutativ, wenn $xy=yx$ für alle $x,y \in R$.\\
 	Ein neutrales Element der Multiplikation heißt Einselement von $R$.\\
 	Ein Unterring eines Rings $(R,+,\cdot)$ ist eine Teilmenge, die mit der geeigneten
@@ -46,7 +48,7 @@
 \end{remark}
 
 \begin{theorem}
-	\proplbl{ring_theorem_1}
+	\proplbl{1_4_6}
 	Sei $b \neq 0 \in \mathbb{Z}$. Für jedes $a \in \mathbb{Z}$ gibt es 
 	eindeutig bestimmte $q,r \in \mathbb{Z}$ ($r$ ist "'Rest"'), mit $a=qb+r$ und $0 \le r < \vert b\vert$.
 \end{theorem}
@@ -82,7 +84,7 @@
 	Insbesondere besteht $a+n\mathbb{Z}$ nur aus den ganzen Zahlen, die bei der Division durch $n$ den selben Rest lassen wie $a$.
 \end{proof}
 
-Aus \propref{ring_theorem_1} folgt weiter, dass $\mathbb{Z}/n\mathbb{Z} := \{\overline{a} \mid a \in \mathbb{Z}\}
+Aus \propref{1_4_6} folgt weiter, dass $\mathbb{Z}/n\mathbb{Z} := \{\overline{a} \mid a \in \mathbb{Z}\}
 = \{\overline{0}, \overline{1},..., \overline{n-1}\}$ eine Menge der Mächtigkeit n ist (sprich: 
 "'$\mathbb{Z} \bmod n\mathbb{Z}$"'). \\
 $\newline$
