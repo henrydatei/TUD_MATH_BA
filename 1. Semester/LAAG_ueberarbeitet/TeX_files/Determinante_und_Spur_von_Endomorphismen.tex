@@ -3,6 +3,7 @@
 Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 
 \begin{proposition}
+	\proplbl{4_4_1}
 	Sei $f\in \Hom_K(V,W)$, $A'$ eine Basis von $V$ und $A=M_{A'}(f)$. Sei weiter $B\in \Mat_n(K)$. Genau 
 	dann gibt es eine Basis $B'$ von $V$ mit $B=M_{B'}(f)$, wenn es $S\in \GL_n(K)$ mit $B=SAS^{-1}$ gibt.
 \end{proposition}
@@ -10,8 +11,8 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 	Ist $B'$ eine Basis von $V$ mit $B=M_{B'}(f)$, so ist $B=SAS^{-1}$ mit $S=T^{A'}_{B'}$. Sei umgekehrt $B=SAS^{-1}$ mit 
 	$S\in \GL_n(K)$. Es gibt eine Basis $B'$ von $V$ mit $T^{A'}_{B'}=S$, also $M_{B'}(f)=T^{A'}_{B'}\cdot M_{A'}(f)\cdot (
 	T^{A'}_{B'})^{-1}=SAS^{-1}=B$: Mit $B'=(\Phi_{A'}(f_s^{-1}(e_1)),...,\Phi_{A'}(f_s^{-1}(e_n)))$ ist $\Phi_{A'}\circ f_s^{-1}=
-	id_V\circ \Phi_{B'}$, also $T^{A'}_{B'}=M_{A'}^{A'}(id_V)=S^{-1}$. Folglich ist $T^{A'}_{B'}=(T_{A'}^{B'})^{-1}=(S^{-1})^{-1}
-	=S$.
+	\id_V\circ \Phi_{B'}$, also $T^{A'}_{B'}=M_{A'}^{A'}(\id_V)=S^{-1}$. Folglich ist $T^{A'}_{B'}=(T_{A'}^{B'})^{-1}=(S^{-1})^{-1}
+	=S$ nach \propref{3_6_2}.
 \end{proof}
 
 \begin{definition}[Ähnlichkeit]
@@ -31,13 +32,14 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{4_4_4}
 	Seien $A,B\in \Mat_n(R)$. Ist $A\sim B$, so ist
 	\begin{align}
 		\det(A)=\det(B)\notag
 	\end{align}
 \end{proposition}
 \begin{proof}
-	$B=SAS^{-1}$, $S\in \GL_n(R)$, $\det(B)=\det(S)\cdot \det(A)\cdot \det(S)^{-1}=\det(A)$
+	$B=SAS^{-1}$, $S\in \GL_n(R)$, $\det(B)=\det(S)\cdot \det(A)\cdot \det(S)^{-1}=\det(A)$ nach \propref{4_2_11} und \propref{4_2_12}
 \end{proof}
 
 \begin{definition}[Determinante eines Endomorphismus]
@@ -45,7 +47,7 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 	\begin{align}
 		\det(f)=\det(M_B(f))\notag
 	\end{align}
-	wobei $B$ eine Basis von $V$ ist.
+	wobei $B$ eine Basis von $V$ ist. (Diese ist wohldefiniert nach \propref{4_4_1} und \propref{4_4_4})
 \end{definition}
 
 \begin{proposition}
@@ -57,7 +59,11 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 	\end{itemize}
 \end{proposition}
 \begin{proof}
-	sollte klar sein, evtl. mit \propref{4_2_11}
+	\begin{itemize}
+		\item klar
+		\item folgt aus \propref{3_6_6} und \propref{4_2_11}
+		\item folgt aus \propref{3_6_5} und \propref{4_2_12}
+	\end{itemize}
 \end{proof}
 
 \begin{definition}[Spur einer Matrix]
@@ -68,6 +74,7 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 \end{definition}
 
 \begin{lemma}
+	\proplbl{4_4_8}
 	Seien $A,B\in \Mat_n(R)$
 	\begin{itemize}
 		\item $\tr: \Mat_n(R)\to R$ ist $R$-linear
@@ -80,10 +87,11 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{4_4_9}
 	Seien $A,B\in \Mat_n(R)$. Ist $A\sim B$, so ist $\tr(A)=\tr(B)$.
 \end{proposition}
 \begin{proof}
-	$B=SAS^{-1}$, $S\in \GL_n(R)\Rightarrow \tr(B)=\tr(SAS^{-1})=\tr(AS^{-1}S)=\tr(A)$
+	$B=SAS^{-1}$, $S\in \GL_n(R)\Rightarrow \tr(B)=\tr(SAS^{-1})\overset{\propref{4_4_8}}{=}\tr(AS^{-1}S)=\tr(A)$
 \end{proof}
 
 \begin{definition}[Spur eines Endomorphismus]
@@ -91,11 +99,11 @@ Sei $n\in \mathbb N$ und $V$ ein $K$-VR mit $\dim_K(V)=m$.
 	\begin{align}
 		\tr(f)=\tr(M_B(f))\notag
 	\end{align} 
-	wobei $B$ eine Basis von $V$ ist.
+	wobei $B$ eine Basis von $V$ ist (Diese ist wohldefiniert nach \propref{4_4_1} und \propref{4_4_9})
 \end{definition}
 
 \begin{remark}
-	Im Fall $K=\mathbb R$ kann man den Absolutbetrag der Determinante eines $f\in \End_K(K^n)$ 
+	Im Fall $K=\mathbb R$ kann man wie in \propref{4_2_3} den Absolutbetrag der Determinante eines $f\in \End_K(K^n)$ 
 	geometrisch interpretieren, nämlich als das Volumen von $f(Q)$, wobei $Q=[0,1]^n$ der Einheitsquader ist, und somit 
 	als Volumenänderung durch $f$. Auch das Vorzeichen von $\det(f)$ hat eine Bedeutung: Es gibt an, ob $f$ 
 	orientierungserhaltend ist. Für erste Interpretationen der Spur siehe A100.

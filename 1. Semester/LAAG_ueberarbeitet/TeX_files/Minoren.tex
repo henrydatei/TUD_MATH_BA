@@ -32,6 +32,7 @@ Seien $m,n\in \mathbb N$.
 \end{definition}
 
 \begin{lemma}
+	\proplbl{4_3_2}
 	Sei $A\in \Mat_n(R)$ mit Spalten $a_1,...,a_n$. Für $i,j\in \{1,..,n\}$ gilt:
 	\begin{itemize}
 		\item $\det(A_{ij})=(-1)^{i+j}\cdot \det(A'_{ij})$
@@ -44,7 +45,7 @@ Seien $m,n\in \mathbb N$.
 		\begin{align}
 			\det(A_{ij})&=(-1)^{(i-1)+
 				(j-1)} \cdot \det(\begin{pmatrix}1&0&...&0 \\ 0 & \; & \; & \; \\ \vdots & \; & A'_{ij} & \; \\ 0 & \; & \; & \; \\ \end{pmatrix})\notag \\
-			&=(-1)^{i+j}\cdot \det(\mathbbm{1}_n)\cdot \det(A'_{ij})\notag
+			&\overset{\propref{4_2_9}}{=}(-1)^{i+j}\cdot \det(\mathbbm{1}_n)\cdot \det(A'_{ij})\notag
 		\end{align}
 		\item Man erhält $A_{ij}$ aus $(a_1,...,e_i,...,a_n)$ durch elementare Spaltenumformungen vom Typ II.
 	\end{itemize}
@@ -58,13 +59,21 @@ Seien $m,n\in \mathbb N$.
 	\end{align}
 \end{proposition}
 \begin{proof}
-	$(A^\#A)_{ij}=\sum_{k=1}^n a^\#_{ik}\cdot a_{kj}=\sum_{k=1}^n a_{kj}\cdot \det(A_{kj})=\sum_{k=1}^n a_{kj}\cdot 
-	\det(a_1,...,a_{i-1},a_j,a_{i+1},...,a_n)=\det(a_1,...,a_{i-1},\sum_{k=1}^n a_{kj}e_k,a_{i+1},...,a_n) = \det(a_1,...,a_{i-1},a_j,
-	a_{i+1},...,a_n)=\delta_{ij}\cdot \det(A)=(\det(A)\cdot \mathbbm{1}_n)_{ij}$. Analog bestimmt man die Koeffizienten von $AA^\#$, wobei man 
+	\begin{align}
+		(A^\#A)_{ij}&=\sum_{k=1}^n a^\#_{ik}\cdot a_{kj} \notag \\
+		&=\sum_{k=1}^n a_{kj}\cdot \det(A_{kj}) \notag \\
+		&\overset{\propref{4_3_2}}{=}\sum_{k=1}^n a_{kj}\cdot \det(a_1,...,a_{i-1},a_j,a_{i+1},...,a_n) \notag \\
+		&=\det(a_1,...,a_{i-1},\sum_{k=1}^n a_{kj}e_k,a_{i+1},...,a_n) \notag \\
+		&= \det(a_1,...,a_{i-1},a_j,a_{i+1},...,a_n) \notag \\
+		&=\delta_{ij}\cdot \det(A) \notag \\
+		&=(\det(A)\cdot \mathbbm{1}_n)_{ij} \notag
+	\end{align}
+	Analog bestimmt man die Koeffizienten von $AA^\#$, wobei man 
 	$\det(A_{jk})=\det(A_{jk}^t)=\det((A^t)_{kj})$ benutzt.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{4_3_4}
 	Es ist $\GL_n(R)=\{A\in \Mat_n(R) \mid \det(A)\in R^{\times}\}$ und für $A\in \GL_n(R)$ ist $A^{-1}=
 	\frac{1}{\det(A)}\cdot A^\#$.
 \end{conclusion}
@@ -81,8 +90,13 @@ Seien $m,n\in \mathbb N$.
 	Gleiches gilt auch für Spalten.
 \end{proposition}
 \begin{proof}
-	$\det(A)=(AA^\#)_{ij}=\sum_{j=1}^n a_{ij}\cdot a^\#_{ij} = \sum_{j=1}^n a_{ij}\cdot \det(A_{ij})=\sum_
-	{j=1}^n a_{ij}\cdot (-1)^{i+j}\cdot \det(A'_{ij})$. Analog auch für Spalten.
+	Nach \propref{4_3_3} ist
+	\begin{align}
+		\det(A)=(AA^\#)_{ij}&=\sum_{j=1}^n a_{ij}\cdot a^\#_{ij} \notag \\
+		&= \sum_{j=1}^n a_{ij}\cdot \det(A_{ij}) \notag \\
+		&=\sum_{j=1}^n a_{ij}\cdot (-1)^{i+j}\cdot \det(A'_{ij}) \notag
+	\end{align}
+	Analog auch für Spalten.
 \end{proof}
 
 \begin{proposition}[\person{Cramer}'sche Regel]
@@ -93,9 +107,13 @@ Seien $m,n\in \mathbb N$.
 	\end{align}
 \end{proposition}
 \begin{proof}
-	$x_i=(A^{-1}b)_i=\sum_{j=1}^n (A^{-1})_{ij}\cdot b_j=\frac{1}{\det(A)}\cdot \sum_{j=1}^n a^\#_{ij}\cdot b_j = 
-	\frac{1}{\det(A)}\cdot \sum_{j=1}^n b_j\cdot \det(a_1,...,a_{i-1},e_i,a_{i+1},...,a_n)=\frac{1}{\det(A)}\cdot \det(a_1,...,
-	a_{i-1},b_j,a_{i+1},...,a_n)$.
+	\begin{align}
+		x_i&=(A^{-1}b)_i \notag \\
+		&=\sum_{j=1}^n (A^{-1})_{ij}\cdot b_j \notag \\
+		&\overset{\propref{4_3_4}}{=}\frac{1}{\det(A)}\cdot \sum_{j=1}^n a^\#_{ij}\cdot b_j  \notag \\
+		&\overset{\propref{4_3_2}}{=} \frac{1}{\det(A)}\cdot \sum_{j=1}^n b_j\cdot\det(a_1,...,a_{i-1},e_i,a_{i+1},...,a_n) \notag \\
+		&=\frac{1}{\det(A)}\cdot \det(a_1,...,a_{i-1},b_j,a_{i+1},...,a_n) \notag
+	\end{align}
 \end{proof}
 
 \begin{definition}[Minor]

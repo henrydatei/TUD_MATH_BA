@@ -12,7 +12,8 @@
 \end{remark}
 
 \begin{remark}
-	Wir hatten bereits definiert: $\det(A)=ad-bc$ mit 
+	\proplbl{4_2_3}
+	Wir hatten bereits definiert: $\det(A)=ad-bc$ (\propref{3_1_13}) mit 
 	\begin{align}
 		A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in \Mat_2(K)\notag
 	\end{align} und hatten 
@@ -59,16 +60,19 @@
 \end{remark}
 
 \begin{definition}[Determinantenabbildung]
-	Eine Abbildung $\delta:\Mat_n(R)\to R$ heißt \begriff{Determinantenabbildung}, wenn gilt: \\
-	(D1): $\delta$ ist linear in jeder Zeile: sind $a_1,...,a_n$ die Zeilen von $A$ und ist $i\in \{1,...,n\}$ und $a_i=\lambda'a'_i + 
-	\lambda''a''_i$ mit $\lambda',\lambda''\in R$ und den Zeilenvektoren $a'_i,a''_i$, so ist $\delta(A)=\lambda'\cdot \delta(a_1,...,
-	a'_i,...,a_n) + \lambda''\cdot \det(a_1,...,a''_i,...,a_n)$. \\
-	(D2): $\delta$ ist alternierend: sind $a_1,...,a_n$ die Zeilen von $A$ und $i,j\in \{1,...,n\}$, $i\neq j$ mit $a_i=a_j$, so ist 
-	$\delta(A)=0$. \\
-	(D3): $\delta$ ist normiert: $\delta(\mathbbm{1}_n)=1$.
+	Eine Abbildung $\delta:\Mat_n(R)\to R$ heißt \begriff{Determinantenabbildung}, wenn gilt:
+	\begin{itemize}
+		\item (D1): $\delta$ ist linear in jeder Zeile: sind $a_1,...,a_n$ die Zeilen von $A$ und ist $i\in \{1,...,n\}$ und $a_i=\lambda'a'_i + 
+		\lambda''a''_i$ mit $\lambda',\lambda''\in R$ und den Zeilenvektoren $a'_i,a''_i$, so ist $\delta(A)=\lambda'\cdot \delta(a_1,...,
+		a'_i,...,a_n) + \lambda''\cdot \det(a_1,...,a''_i,...,a_n)$.
+		\item (D2): $\delta$ ist alternierend: sind $a_1,...,a_n$ die Zeilen von $A$ und $i,j\in \{1,...,n\}$, $i\neq j$ mit $a_i=a_j$, so ist 
+		$\delta(A)=0$.
+		\item (D3): $\delta$ ist normiert: $\delta(\mathbbm{1}_n)=1$.
+	\end{itemize}
 \end{definition}
 
 \begin{example}
+	\proplbl{4_2_5}
 	Sei $\delta:\Mat_n(K)\to K$ eine Determinantenabbildung. Ist $A\in \Mat_n(K)$ nicht invertierbar, so sind die Zeilen 
 	$a_1,...,a_n$ von $A$ linear abhängig, es gibt also ein $i$ mit $a_i=\sum_{j\neq i} \lambda_j\cdot a_j$. Es folgt $\delta(A)=
 	\delta(a_1,...,a_n)=\sum_{j\neq i} \lambda_j\cdot \delta(a_1,...,a_j,...,a_n)$ mit $a_i=a_j$ mit D2: $\sum_{j\neq i} 
@@ -76,6 +80,7 @@
 \end{example}
 
 \begin{lemma}
+	\proplbl{4_2_6}
 	Erfüllt $\delta:\Mat_n(R) \to R$ die Axiome D1 und D2, so gilt für jedes $\sigma\in S_n$ und die Zeilenvektoren 
 	$a_1,...,a_n$: 
 	\begin{align}
@@ -83,13 +88,20 @@
 	\end{align}
 \end{lemma}
 \begin{proof}
-	 $\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen. \\
-	 $0=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n)=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
-	 ...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n}=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)})=0$. Mit $\sgn(\sigma)=
+	 $\sigma$ ist ein Produkt von Transpositionen. Es genügt also die Behauptung für $\sigma=\tau_{ij}$ mit $1\le i<j\le n$ zu zeigen (\propref{4_1_7}). \\
+	 \begin{align}
+	 	0&=\delta(a_1,...,a_i+a_j,...,a_j+a_i,....,a_n) \notag \\
+	 	&=\delta(a_1,...,a_i,...,a_j,...,a_n)+\delta(a_1,...,a_i,...,a_i,...,a_n)+\delta(a_1,...,a_j,
+	 	...,a_j,...,a_n)+\delta{a_1,...,a_j,...,a_i,...,a_n} \notag \\
+	 	&=\delta(a_1,...,a_n)+\delta(a_{\sigma(1)},...,a_{\sigma(n)}) \notag \\
+	 	&=0 \notag
+	 \end{align}
+	 Mit $\sgn(\sigma)=
 	 \sgn(\tau_{ij})=-1$ folgt die Behauptung.
 \end{proof}
 
 \begin{lemma}
+	\proplbl{4_2_7}
 	Erfüllt $\delta:\Mat_n(R)\to R$ die Axiome D1 und D2, so gilt für $A=(a_{ij})\in \Mat_n(R)$: 
 	\begin{align}
 		\delta(A)=\delta(\mathbbm{1}_n)
@@ -97,14 +109,24 @@
 	\end{align}
 \end{lemma}
 \begin{proof}
-	Schreibe $a_i=(a_{j_1},...,a_{in})=\sum_{j=1}^n a_{ij}\cdot e_j$. Wiederholtes Anwenden von D1 gibt $\delta(A)=\delta(
-	a_1,...,a_n)=\sum_{j_1=1}^n a_{1j_1}\cdot \delta(e_{j_1},a_2,...,a_n)=\sum_{j_1=1}^n ... \sum_{j_n=1}^n \delta(
-	e_{j_1},...,e_{j_n})\cdot \prod_{i=1}^n a_{ij_i}$. Wegen D2 ist $\delta(e_{j_1},...,e_{j_n})=0$ falls $j_i=j_{i'}$ für ein $i\neq i'$. 
-	Andernfalls ist $\sigma(i)=j_i$ einer Permutation von $\{1,...,n\}$ und $\delta(e_{j_1},...,e_{j_n})=\delta(e_{\sigma(1)},...,e_{\sigma(n)})=
-	\sgn(\sigma)\cdot \delta(e_1,...,e_n)=\sgn(\sigma)\cdot \delta(\mathbbm{1}_n)$.
+	Schreibe $a_i=(a_{j_1},...,a_{in})=\sum_{j=1}^n a_{ij}\cdot e_j$. Wiederholtes Anwenden von D1 gibt 
+	\begin{align}
+		\delta(A)&=\delta(a_1,...,a_n) \notag \\
+		&=\sum_{j_1=1}^n a_{1j_1}\cdot \delta(e_{j_1},a_2,...,a_n) \notag \\
+		&=\sum_{j_1=1}^n ... \sum_{j_n=1}^n \delta(e_{j_1},...,e_{j_n})\cdot \prod_{i=1}^n a_{ij_i} \notag
+	\end{align}
+	Wegen D2 ist $\delta(e_{j_1},...,e_{j_n})=0$ falls $j_i=j_{i'}$ für ein $i\neq i'$. 
+	Andernfalls ist $\sigma(i)=j_i$ einer Permutation von $\{1,...,n\}$ und 
+	\begin{align}
+		\delta(e_{j_1},...,e_{j_n})&=\delta(e_{\sigma(1)},...,e_{\sigma(n)}) \notag \\
+		&=\sgn(\sigma)\cdot \delta(e_1,...,e_n) \notag \\
+		&=\sgn(\sigma)\cdot \delta(\mathbbm{1}_n) \notag
+	\end{align}
+	nach \propref{4_2_6}.
 \end{proof}
 
 \begin{theorem}
+	\proplbl{4_2_8}
 	Es gibt genau eine Determinantenabbildung $\delta:\Mat_n(R)\to R$ und diese ist gegeben durch die 
 	Leibnitzformel 
 	\begin{align}
@@ -113,17 +135,27 @@
 	\end{align}
 \end{theorem}
 \begin{proof}
-	Eindeutigkeit der Abbildung folgt wegen D3. Bleibt nur noch zu zeigen, dass $\det$ auch die Axiome D1 bis D3 erfüllt. \\
+	Eindeutigkeit der Abbildung folgt wegen D3 aus \propref{4_2_7}. Bleibt nur noch zu zeigen, dass $\det$ auch die Axiome D1 bis D3 erfüllt. \\
 	D1: klar \\
 	D3: klar \\
-	D2: Seien $\mu\neq v$ mit $a_{\mu}=a_v$. Mit $\tau=\tau_{\mu v}$ ist $S_n\backslash A_n = A_n\tau$, somit $\det(a_{ij})=
-	\sum_{\sigma\in A_n} \prod_{i=1}^n a_{i,\sigma(i)}-\sum_{\sigma\in A_n\tau} \prod_{i=1}^n a_{i,\sigma\tau(i)}=
-	\sum_{\sigma\in A_n} \left( \prod_{i=1}^n a_{i,\sigma(i)} - \prod_{i=1}^n a_{i,\sigma\tau(i)} \right). Da a_{ij}=a_{\tau(i),j}$ 
-	für alle $i,j$ ist $\prod_{i=1}^n a_{i,\sigma(i)}=\prod_{i=1}^n a_{\tau(i),\sigma\tau(i)}=\prod_{i=1}^n a_{i,\sigma\tau(i)}$ 
+	D2: Seien $\mu\neq v$ mit $a_{\mu}=a_v$. Mit $\tau=\tau_{\mu v}$ ist $S_n\backslash A_n = A_n\tau$, somit 
+	\begin{align}
+		\det(a_{ij})&=
+		\sum_{\sigma\in A_n} \prod_{i=1}^n a_{i,\sigma(i)}-\sum_{\sigma\in A_n\tau} \prod_{i=1}^n a_{i,\sigma\tau(i)} \notag \\
+		&=
+		\sum_{\sigma\in A_n} \left( \prod_{i=1}^n a_{i,\sigma(i)} - \prod_{i=1}^n a_{i,\sigma\tau(i)} \right) \notag
+	\end{align}
+	nach \propref{4_1_10}. Da $a_{ij}=a_{\tau(i),j}$ 
+	für alle $i,j$ ist 
+	\begin{align}
+		\prod_{i=1}^n a_{i,\sigma(i)}&=\prod_{i=1}^n a_{\tau(i),\sigma\tau(i)} \notag \\
+		&=\prod_{i=1}^n a_{i,\sigma\tau(i)} \notag
+	\end{align}
 	für jedes $\sigma\in S_n$, woraus $\det(a_{ij})=0$ folgt.
 \end{proof}
 
 \begin{example}
+	\proplbl{4_2_9}
 	\begin{itemize}
 		\item $n=2$, $S_2=\{\id, \tau_{12}\}$, 
 		\begin{align}
@@ -158,8 +190,14 @@
 	anstatt Zeilen.
 \end{conclusion}
 \begin{proof}
-	Mit $\rho=\sigma^{-1}$ gilt $\sgn(\rho)=\sgn(\sigma)$ und somit $\det(A)=\sum_{\sigma\in S_n} \sgn(\sigma) \cdot \prod_
-	{i=1}^n a_{i,\sigma(i)}=\sum_{\rho\in S_n} \sgn(\rho)\cdot \prod_{i=1}^n a_{\rho(i),i}=\det(A^t)$.
+	Mit $\rho=\sigma^{-1}$ gilt $\sgn(\rho)=\sgn(\sigma)$ nach \propref{4_1_8} und somit 
+	\begin{align}
+		\det(A)&=\sum_{\sigma\in S_n} \sgn(\sigma) \cdot \prod_
+		{i=1}^n a_{i,\sigma(i)} \notag \\
+		&=\sum_{\rho\in S_n} \sgn(\rho)\cdot \prod_{i=1}^n a_{\rho(i),i} \notag \\
+		&=\det(A^t) \notag
+	\end{align}
+	nach \propref{4_2_8}.
 \end{proof}
 
 \begin{theorem}[Determinantenmultiplikationssatz]
@@ -184,7 +222,7 @@
 \end{conclusion}
 \begin{proof}
 	Aus $AA^{-1}=\mathbbm{1}_n$ folgt $\det(A^{-1})*\det(A)=\det(\mathbbm{1}_n)=1$, insbesondere $\det(A)\in R^{\times}$. Der zweite Teil folgt wegen 
-	$K^{\times}=K\backslash \{0\}$.
+	$K^{\times}=K\backslash \{0\}$ (\propref{4_2_5}).
 \end{proof}
 
 \begin{conclusion}
@@ -193,9 +231,14 @@
 \end{conclusion}
 
 \begin{conclusion}
+	\proplbl{4_2_14}
 	Elementare Zeilenumformungen vom Typ II ändern die Determinante nicht, elementare Zeilenumformungen vom 
 	Typ III ändern nur das Vorzeichen der Determinante.
 \end{conclusion}
 \begin{proof}
-	$\det(Q_{ij}(\mu)A)=\det(Q_{ij}(\mu)) \cdot \det(A)= 1\cdot \det(A) = \det(A)$, Rest analog.
+	$\det(Q_{ij}(\mu)A)=\det(Q_{ij}(\mu)) \cdot \det(A)= 1\cdot \det(A) = \det(A)$ (\propref{4_2_9}), Rest analog.
 \end{proof}
+
+\begin{remark}
+	Aus \propref{4_2_14} und \propref{4_2_9} erhält man eine praktische Methode zur Berechnung der Determinante. Man bringt die Matrix mit dem \person{Gauss}-Algorithmus \propref{3_9_11} auf Zeilenstufenform, bildet das Produkt über die Diagonale und multipliziert mit -1, falls am eine ungerade Anzahl von Zeilenvertauschungen vorgenommen hat.
+\end{remark}

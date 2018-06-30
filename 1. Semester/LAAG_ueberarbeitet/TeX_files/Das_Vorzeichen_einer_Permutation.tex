@@ -3,7 +3,7 @@
 In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselement.
 
 \begin{remark}
-	Wir erinnern uns an die symmetrische Gruppe $S_n$, die aus den Permutationen der Menge $X=\{1,..,n\}$ (also den 
+	Wir erinnern uns an die symmetrische Gruppe $S_n$ aus \propref{1_3_7}, die aus den Permutationen der Menge $X=\{1,..,n\}$ (also den 
 	bijektiven Abbildungen $X\to X$) mit der Komposition als Verknüpfung. Es ist $\vert S_n\vert =n!$ und $S_2\cong \mathbb Z\backslash 2 \mathbb Z$, 
 	doch für $n\ge 3$ ist $S_n$ nicht abelsch. Wir schreiben $\sigma_1\sigma_2$ für $\sigma_1\circ \sigma_2$ und notieren $\sigma\in S_n$ 
 	auch als \\
@@ -77,9 +77,16 @@ In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselem
 \begin{proof}
 	Durchläuft $(i,j)$ alle Paare $1\le i<j\le n$, so durchläuft $\{\sigma(i),\sigma(j)\}$ alle zweielementigen Teilmengen von $\{1,...,
 	n\}$. Das Produkt $\prod_{i<j} \sigma(j)-\sigma(i)$ hat also bis auf das Vorzeichen die selben Faktoren wie das Produkt 
-	$\prod_{i<j} j-i=\prod_{i<j} |j-i|$ und $\prod_{i<j} \sigma(j)-\sigma(i)=\prod_{i<j,\sigma(i)<\sigma(j)} 
-	\sigma(j)-\sigma(i) \cdot \prod_{i<j,\sigma(i)>\sigma(j)} \sigma(j)-\sigma(i)=(-1)^{f(\sigma)}\cdot \prod_{i<j} 
-	|\sigma(j)-\sigma(i)|=\sgn(\sigma)\cdot \prod_{i<j} j-i$.
+	\begin{align}
+		\prod_{i<j} j-i=\prod_{i<j} |j-i|\notag
+	\end{align}
+	 und
+	 \begin{align}
+	 	\prod_{i<j} \sigma(j)-\sigma(i)&=\prod_{i<j,\sigma(i)<\sigma(j)} 
+	 	\sigma(j)-\sigma(i) \cdot \prod_{i<j,\sigma(i)>\sigma(j)} \sigma(j)-\sigma(i) \notag \\
+	 	&=(-1)^{f(\sigma)}\cdot \prod_{i<j} |\sigma(j)-\sigma(i)| \notag \\
+	 	&=\sgn(\sigma)\cdot \prod_{i<j} j-i \notag
+	 \end{align}
 \end{proof}
 
 \begin{proposition}
@@ -87,16 +94,32 @@ In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselem
 	Die Abbildung $\sgn: S_n \to \mathbb Z^{\times}=\mu_2$ ist ein Gruppenhomomorphismus.
 \end{proposition}
 \begin{proof}
-	Seien $\sigma,\tau\in S_n$. Dann ist\\
-	$\sgn(\sigma\tau)=\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{j-i}=\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(
-		\tau(i))}{\tau(j)-\tau(i)}\cdot \prod_{i<j} \frac{\tau(j)-\tau(i)}{j-i}$. Da mit $\{i,j\}$ auch $\{\tau(i),\tau(j)\}$ alle 
-	zweielementigen Teilmengen von $\{1,...,n\}$ und $\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\frac{\sigma(\tau(i))-
-		\sigma(\tau(j))}{\tau(i)-\tau(j)}$ ist $\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\prod_
-	{i<j} \frac{\sigma(j)-\sigma(i)}{j-i}=\sgn(\sigma)$ und $\prod_{i<j} \frac{\tau(j)-\tau(i)}{j-i}=sng(\tau)$. \\
+	Seien $\sigma,\tau\in S_n$. Dann ist
+	\begin{align}
+		\sgn(\sigma\tau)&=\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{j-i} \notag \\
+		&=\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}\cdot \prod_{i<j} \frac{\tau(j)-\tau(i)}{j-i} \notag
+	\end{align}
+	Da mit $\{i,j\}$ auch $\{\tau(i),\tau(j)\}$ alle 
+	zweielementigen Teilmengen von $\{1,...,n\}$ und 
+	\begin{align}
+		\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}=\frac{\sigma(\tau(i))-
+			\sigma(\tau(j))}{\tau(i)-\tau(j)} \notag
+	\end{align}
+	ist 
+	\begin{align}
+		\prod_{i<j} \frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}&=\prod_
+		{i<j} \frac{\sigma(j)-\sigma(i)}{j-i} \notag \\
+		&=\sgn(\sigma) \notag
+	\end{align}
+	und 
+	\begin{align}
+		\prod_{i<j} \frac{\tau(j)-\tau(i)}{j-i}=\sgn(\tau) \notag
+	\end{align}
 	Somit ist $\sgn(\sigma\tau)=\sgn(\sigma)\cdot \sgn(\tau)$.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{4_1_8}
 	Für $\sigma\in S_n$ ist 
 	\begin{align}
 		\sgn(\sigma^{-1})=\sgn(\sigma)\notag
@@ -117,12 +140,17 @@ In diesem Kapitel sei $K$ ein Körper und $R$ ein kommutativer Ring mit Einselem
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{4_1_10}
 	Die geraden Permutationen $A_n=\{\sigma \in S_n \mid \sgn(\sigma)=1\}$ bilden einen Normalteiler von $S_n$, 
 	genannt die \begriff{alternierende Gruppe}. Ist $\tau\in S_n$ mit $\sgn(\tau)=-1$, so gilt für $A_n\tau=\{\sigma\tau \mid \sigma\in A_n\}$: 
 	$A_n \cup A_n\tau = S_n$ und $A_n \cap A_n\tau=\emptyset$.
 \end{conclusion}
 \begin{proof}
-	Es ist $A_n=Ker(\sgn)$ und damit ist dieser auch ein Normalteiler. Ist $\sigma\in S_n\backslash A_n$, so ist $\sgn(\sigma\tau^{-1})=
-	\sgn(\sigma)\cdot \sgn(\tau)^{-1}=(-1)(-1)^{-1}=1$, also $\sigma=\sigma\tau^{-1}\in A_n\tau$, somit $A_n\cup A_n\tau=S_n$. Ist 
+	Es ist $A_n=Ker(\sgn)$ und nach \propref{3_2_13} ist dieser auch ein Normalteiler. Ist $\sigma\in S_n\backslash A_n$, so ist 
+	\begin{align}
+		\sgn(\sigma\tau^{-1})=
+		\sgn(\sigma)\cdot \sgn(\tau)^{-1}=(-1)(-1)^{-1}=1\notag
+	\end{align}
+	also $\sigma=\sigma\tau^{-1}\in A_n\tau$, somit $A_n\cup A_n\tau=S_n$. Ist 
 	$\sigma\in A_n$, so ist $\sgn(\sigma\tau)=-1$, also $A_n\cap A_n\tau=\emptyset$.
 \end{proof}
