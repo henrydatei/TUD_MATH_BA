@@ -86,6 +86,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
     
     5. Der Spektralsatz ... fertig
 
-    6. Tensorprodukte ... wird bearbeitet
+    6. Tensorprodukte ... fertig
 
-4. Moduln ... noch nicht bearbeitet
+4. Moduln ... wird bearbeitet
+
+    1. Moduln ... wird bearbeitet
