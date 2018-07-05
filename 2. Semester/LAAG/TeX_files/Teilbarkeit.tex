@@ -1,0 +1,116 @@
+\section{Teilbarkeit}
+
+\begin{definition}[Teilbarkeit]
+	Seien $a,b\in R$.
+	\begin{itemize}
+		\item $a$ \begriff{teilt} $b$ (in Zeichen $a\vert b$): Es existiert $x\in R$ mit $b=ax$.
+		\item $a$ und $b$ sind \begriff{assoziiert} (in Zeichen $a\sim b$): Es existiert $x\in R^{\times}$ mit $b=ax$.
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	Für $a,b,c,d\in R$ gelten
+	\begin{itemize}
+		\item $a\vert a$
+		\item $a\vert b$ und $b\vert c$ $\Rightarrow$ $a\vert c$
+		\item $a\vert b$ und $a\vert c$ $\Rightarrow$ $a\vert (b+c)$
+		\item $a\vert b$ und $c\vert c$ $\Rightarrow$ $(ac)\vert (bd)$
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	klar
+\end{proof}
+
+\begin{lemma}
+	Für $a,b,c,d\in R$ gelten
+	\begin{itemize}
+		\item $a\sim a$
+		\item $a\sim b$ und $b\sim c$ $\Rightarrow$ $a\sim c$
+		\item $a\sim b$ $\Rightarrow$ $b\sim a$
+		\item $a\sim b$ und $c\sim c$ $\Rightarrow$ $(ac)\sim (bd)$
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	klar, da $(R^\times,\cdot)$ eine Gruppe ist.
+\end{proof}
+
+\begin{remark}
+	Teilbarkeit auf $R$ ist insbesondere eine \begriff{Präordnung}, das heißt reflexiv und transitiv, und Assoziiertheit ist eine Äquivalenzrelation.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{4_2_5}
+	Sei $R$ nullteilerfrei und seien $a,b\in R$. Genau dann ist $a\sim b$, wenn $a\vert b$ und $b\vert a$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: $b=ax$ mit $x\in R^\times$ $\Rightarrow a=bx^{-1}$.
+		\item Rückrichtung: $b=ax$, $a=by$ mit $x,y\in R^\times$
+		\begin{align}
+			a=by&=axy \notag \\
+			a(1-xy)&= 0 \notag
+		\end{align}
+		Also $a=0$ und damit $b=0$ oder $xy=1$, also $x,y\in R^\times$. In beiden Fällen folgt $a\sim b$.
+	\end{itemize}
+\end{proof}
+
+\begin{*example}
+	Offenbar $2\vert -2$ und $-2\vert 2$. Es gilt $2\sim -2$ und $-2\sim 2$.
+\end{*example}
+
+\begin{proposition}
+	Sie $R$ nullteilerfrei. Mit 
+	\begin{align}
+		[a] := \{a'\in R\mid a\sim a'\}\notag
+	\end{align}
+	wird durch $[a][b]\iff a\vert b$ eine wohldefinierte Halbordnung auf 
+	\begin{align}
+		R/\sim\; := \{[a]\mid a\in R\}\notag
+	\end{align}
+	gegeben.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item wohldefiniert: $a\vert b$, $a\sim a'$, $b\sim b'$ $\Rightarrow a'\vert b'$: $ax=b$, $au=a'$, $bv=b$ mit $x\in R$ und $u,v\in R^\times$
+		\begin{align}
+			b'=bv=axv=a'\underbrace{u^{-1}vx}_{\in R}\notag
+		\end{align}
+		also $a'\vert b'$.
+		\item reflexiv: klar
+		\item transitiv: aus Transitivität von $\vert$
+		\item antisymmetrisch: \propref{4_2_5}
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[größter gemeinsamer Teiler, kleinstes gemeinsames Vielfaches]
+	Seien $a,b\in R$. Ein $c\in R$ ist ein \begriff{größter gemeinsamer Teiler} von $a$ und $b$ in Zeichen $c=\ggT(a,b)$, wenn gilt: $c\vert a$ und $c\vert b$ und ist $d\in R$ mit $d\vert a$ und $d\vert b$, so auch $d\vert c$.
+	
+	Ein $c\in R$ ist ein \begriff{kleinstes gemeinsames Vielfaches} von $a$ und $b$, in Zeichen $c=\kgV(a,b)$, wenn gilt: $a\vert c$ und $b\vert c$ und ist $d\in R$ mit $a\vert d$ und $b\vert d$, so ist $c\vert d$.
+\end{definition}
+
+\begin{remark}
+	Wenn $\ggT$ und $\kgV$ in einem nullteilerfreien Ring $R$ existieren, sind sie eindeutig bestimmt, aber nur bis auf Assoziiertheit (\propref{4_2_5}).
+\end{remark}
+
+\begin{definition}[Primzahl, irreduzibel]
+	Sei $x\in R$. 
+	\begin{itemize}
+		\item $x$ ist \begriff{prim} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x\vert (ab)\Rightarrow x\vert a\lor x\vert b$.
+		\item $x$ ist \begriff{irreduzibel} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x=ab\Rightarrow a\in R^\times \lor b\in R^\times$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Leicht sieht man: Ist $p\in R$ prim und $a_1,...,a_n\in R$ mit $p\vert (a_1\dots a_n)$, so gilt $p\vert a_i$ für ein $i$.
+\end{remark}
+
+\begin{example}
+	\begin{itemize}
+		\item In $R=\whole$ gilt: $p$ prim $\iff p$ irreduzibel
+		\item Sei $f\in R=\ratio[t]$.
+		\begin{itemize}
+			\item $\deg(f)=1\Rightarrow f\sim (t-a)$ ist irreduzibel und prim (denn $(t-a)\vert g\iff g(a)=0$)
+			\item $\deg(f)=2$: $f=t^2-1$ ist nicht irreduzibel, $t^2-2$ ist irreduzibel
+		\end{itemize}
+	\end{itemize}
+\end{example}
