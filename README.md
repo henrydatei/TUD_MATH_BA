@@ -74,7 +74,7 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
     
     8. Quadriken ... fertig
 
-3. Dualität ... wird bearbeitet
+3. Dualität ... fertig
 
     1. Das Lemma von Zorn ... fertig
 
