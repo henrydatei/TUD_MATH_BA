@@ -90,4 +90,6 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
 4. Moduln ... wird bearbeitet
 
-    1. Moduln ... wird bearbeitet
+    1. Moduln ... fertig
+    
+    2. Teilbarkeit ... wird bearbeitet
