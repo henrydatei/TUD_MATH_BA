@@ -95,6 +95,18 @@
 	\end{center}
 \end{definition}
 
+\begin{*anmerkung}
+	Sind $V$ und $W$ zwei Vektorräume und $K$ ein gemeinsamer Körper, so kann man das Tensorprodukt $V\otimes W$, was auch ein Vektorraum ist, wie folgt konstruieren: Wenn $B=(b_1,...,b_n)$ eine Basis von $V$ und $C=(c_1,...,c_m)$ eine Basis von $W$ ist, dass ist $V\otimes W$ ein Vektorraum, genannt \textit{Tensorproduktraum}, in dem es eine Basis gibt, die auf eindeutige Weise mit den geordneten Paaren des kartesischen Produkts
+	\begin{align}
+		B\times C=\{(b_i,c_j)\}\notag
+	\end{align}
+	der Basen der Ausgangsräume identifiziert werden kann. Die Dimension von $V\otimes W$ ist dann das Produkt der Dimensionen von $V$ und $W$. Ein Element der Basis von $V\otimes W$, das dem Paar $(b_i,c_j)$ entspricht, wird als $b_i\otimes c_j$ notiert, das $\otimes$ hat also keine tiefere Bedeutung. Ein Element des Tensorproduktes $V\otimes W$ hat dann die Gestalt:
+	\begin{align}
+		\sum_{i,j} \lambda_{ij}\cdot (b_i\otimes c_j)\notag
+	\end{align}
+	mit $\lambda_{ij}\in K$.
+\end{*anmerkung}
+
 \begin{lemma}
 	\proplbl{3_6_7}
 	Sind $(T,\tau)$ und $(T',\tau')$ Tensorprodukte von $V$ und $W$, so gibt es einen eindeutig bestimmten Isomorphismus $\Theta:T\to T'$ mit $\tau'=\Theta\circ\tau$.
