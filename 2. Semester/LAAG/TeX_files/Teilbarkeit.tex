@@ -114,3 +114,58 @@
 		\end{itemize}
 	\end{itemize}
 \end{example}
+
+\begin{proposition}
+	Sei $R$ nullteilerfrei und $0\neq p\in R\backslash R^\times$. Ist $p$ prim, so ist es auch irreduzibel.
+\end{proposition}
+\begin{proof}
+	Sei $p=ab$ mit $a,b\in R$. Da insbesondere $p\mid ab$ und $p$ prim ist, folgt $p\mid a$ oder $p\mid b$. Sei ohne Einschränkung $p\mid a$, das heißt $a=pa'$ mit $a'\in R$.
+	\begin{align}
+		\Rightarrow p=ab &= pa'b\notag \\
+		\Rightarrow p(1-ab) &= 0\notag \\
+		\Rightarrow a'b=1\text{, insbesondere }b\in R^\times\notag
+	\end{align}
+	Somit ist $p$ irreduzibel.
+\end{proof}
+
+\begin{remark}
+	Erinnerung: Ein Ideal von $R$ ist eine Untergruppe $I\subseteq (R,+)$ mit 
+	\begin{align}
+		a\in I,r\in R\Rightarrow ra\in I\notag
+	\end{align}
+	also genau ein Untermodul des $R$-Moduls $R$.
+\end{remark}
+
+\begin{definition}[erzeugtes Ideal, Hauptideal]
+	Sei $A\subseteq R$. Das von $A$ \begriff[Ideal!]{erzeugte Ideal} mit
+	\begin{align}
+		\langle A\rangle :=\left\lbrace \sum_{i=1}^n r_ia_i\mid n\in \natur_0,a_1,...,a_n\in A,r_1,...,r_n\in R\right\rbrace \notag
+	\end{align}
+	Ist $A=\{a_1,...,a_n\}$, so schreibt man auch $(a_1,...,a_n)$ für $\langle A\rangle$. Ein Ideal der Form $I=(a)$ ist ein \begriff{Hauptideal}.
+\end{definition}
+
+\begin{remark}
+	Das von $A$ erzeugte Ideal $\langle A\rangle$ ist gleich dem von $A$ erzeugten Untermodul des $R$-Moduls $R$, und ist das kleinste Ideal von $R$, das $A$ enthält.
+\end{remark}
+
+\begin{remark}
+	Für $a\in R$ ist $(a)=Ra$ und für $a,b\in R$ sind äquivalent:
+	\begin{itemize}
+		\item $a\mid b$
+		\item $b\in (a)$
+		\item $(b)\subseteq (a)$
+	\end{itemize}
+	Für $R$ nullteilerfrei sind zudem äquivalent:
+	\begin{itemize}
+		\item $a\sim b$
+		\item $(a)=(b)$
+	\end{itemize}
+\end{remark}
+
+\begin{example}
+	Jeder Ring hat die Ideale $(0)=\{0\}$ und $(1)=R$. Für jedes $a\in R^\times$ ist $(a)=(1)$, ist $R$ also ein Körper, so hat $R$ keine weiteren Ideale.
+\end{example}
+
+\begin{example}
+	In $R=\whole$: Für $n\in\whole$ ist $(n)=\whole\cdot n=n\whole$.
+\end{example}
