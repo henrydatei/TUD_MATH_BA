@@ -92,4 +92,8 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
 
     1. Moduln ... fertig
     
-    2. Teilbarkeit ... wird bearbeitet
+    2. Teilbarkeit ... fertig
+    
+    3. Hauptidealringe ... fertig
+    
+    4. Faktorielle Ringe ... fertig
