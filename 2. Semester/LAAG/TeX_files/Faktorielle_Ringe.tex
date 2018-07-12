@@ -1,4 +1,4 @@
-\section{Faktorielle Ring}
+\section{Faktorielle Ringe}
 
 Sei $R$ nullteilerfrei.
 
@@ -12,3 +12,92 @@ Sei $R$ nullteilerfrei.
 \begin{proof}
 	Sei $x$ irreduzibel, insbesondere $0\neq x\in R\backslash R^\times$. Da $R$ faktoriell, ist $x=p_1,...,p_n$ mit $p_1,...,p_n\in R$ prim. Da $x$ irreduzibel ist und $p_i\notin R^\times$ ist $n=1$ und somit $x=p_1$ prim.
 \end{proof}
+
+\begin{lemma}
+	\proplbl{4_4_3}
+	Sei $R$ ein Hauptidealring und 
+	\begin{align}
+		I_1\subseteq I_2\subseteq ...\notag
+	\end{align}
+	eine Kette von Idealen in $R$. Dann existiert ein $n\in\natur$ mit $I_n=I_{m}$ für alle $m\ge n$.
+\end{lemma}
+\begin{proof}
+	\emph{Behauptung:} $I=\bigcup_{n=1}^\infty I_n$ ist wieder ein Ideal von $R$. \\
+	\emph{Beweis:} schon in den Übungen zum Teil behandelt, aber hier noch mal kurz bewiesen
+	\begin{itemize}
+		\item $i\in I$, $r\in R\Rightarrow x\in I_n$ für ein $n\overset{I_n\unlhd}{\Rightarrow} rx\in I_n\subseteq I$
+		\item $x,y\in I\Rightarrow x\in I_n,y\in I_m$ mit $n,m\in\natur\overset{\text{Kette}}{\Rightarrow} x+y\in I_k\subseteq$ mit $k=\max\{n,m\}$
+	\end{itemize}
+	Da $R$ Hauptidealring ist, ist somit $I=(x)$ für ein $x\in R$. Mit $I=\bigcup_{n\in\natur} I_n$ folgt $x\in I_n$ für ein $n$, und somit $(x)\subseteq I_n\subseteq I_m\subseteq I=(x)$, für $m\ge n$, also $I_n=I_m$.
+\end{proof}
+
+\begin{proposition}
+	Ist $R$ ein Hauptidealring, so ist $R$ faktoriell.
+\end{proposition}
+\begin{proof}
+	Sei $X:=\{a\in R\mid a\text{ ist Produkt von Primelementen}\}\cup \{0\}\cup R^\times$. Zu zeigen ist $X=R$. Angenommen, es gebe $a\in R\backslash X$. Da nicht prim ist, insbesondere nicht irreduzibel (\propref{4_3_9}), ist $a=a_1\cdot a'_1$ mit $a_1,a'_1\in R\backslash R^\times$. Wären $a_1$ und $a'_1$ in $X$, so auch $a$, also ohne Einschränkung $a_1\notin X$. Fährt man nun mit $a_1$ so fort, erhält man eine Folge $a_1,a_2,...$ von Elementen von $R\backslash X$ mit $a_{i+1}\mid a_i$ und $a_{i+1}\nsim a_i$ für alle $i$. Die entsprechenden Hauptideale bilden eine Kette
+	\begin{align}
+		(a)\subsetneqq (a_1)\subsetneqq (a_2)\subsetneqq ...\notag
+	\end{align}
+	im Widerspruch zu \propref{4_4_3}. Somit ist $X=R$, also $R$ faktoriell.
+\end{proof}
+
+\begin{*anmerkung}
+	Es gilt also euklidisch $\Rightarrow$ Hauptidealring $\Rightarrow$ faktoriell.
+\end{*anmerkung}
+
+\begin{lemma}
+	\proplbl{4_4_5}
+	Sind $p_1,...,p_r\in R$ prim, $q_1,...,q_s\in R$ irreduzibel mit 
+	\begin{align}
+		\prod_{i=1}^r p_i = \prod_{j=1}^s q_j \notag
+	\end{align}
+	ist $r=s$ und nach Umnummerierung ist
+	\begin{align}
+		p_i\sim q_i\quad\forall i\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Wir zeigen die Behauptung unter der schwächeren Annahme 
+	\begin{align}
+	\prod_{i=1}^r p_i \sim \prod_{j=1}^s q_j \notag
+	\end{align}
+	durch Induktion nach $r$. \\
+	\emph{$r=0$:} $1\sim\prod_{j=1}^s q_j\Rightarrow q_j\in R^\times\;\forall j\overset{q_j\text{ irred.}}{\Rightarrow} s=0$ \\
+	\emph{$r-1\to r$:} $p_1\mid \prod_{i=1}^r p_i\sim \prod_{j=1}^s q_j\overset{p_1 \text{ prim}}{\Rightarrow} p_1\mid q_j$ für ein $j$. Nach Umnummerierung ist $j=1$. Da $q_1$ irreduzibel und $p_1\notin R^\times$ ist $p_1\sim q_1$, also $q_1=p_1\cdot u$ mit $u\in R^\times$. Es folgt
+	\begin{align}
+		p_1\cdot \left(\prod_{i=2}^r p_i-u\cdot \prod_{j=2}^s q_j\right)&=0\notag \\
+		\prod_{i=2}^r p_i &= u\cdot \prod_{j=2}^s q_j\sim \prod_{j=2}^s q_j\notag
+	\end{align}
+	Nach Induktionshypothese ist $r-1=s-1$, und nach Umnummerierung ist $p_i\sim q_i$ für $i=2,...,r$.
+\end{proof}
+
+\begin{proposition}
+	Ist $R$ faktoriell, so lässt sich jedes $0\neq x\in R\backslash R^\times$ auf eindeutige Weise (bis auf Reihenfolge und Assoziiertheit) als Produkt von Primelementen schreiben.
+\end{proposition}
+\begin{proof}
+	Sei $x=\prod_{i=1}^r p_i=\prod_{j=1}^s q_j$ mit $p_i,q_j$ prim. Da die $q_j$ nach \propref{4_2_12} irreduzibel sind, folgt $r=s$ und $p_i\sim q_i$ für alle $i$ aus \propref{4_4_5}.
+\end{proof}
+
+\begin{conclusion}
+	Sei $R$ faktoriell und enthalte $\mathcal{P}\subseteq R$ für jede Äquivalenzklasse assoziierter Primelemente genau einen Vertreter. Dann lässt sich jedes $0\neq a\in R$ als
+	\begin{align}
+		a=\varepsilon\cdot \prod_{p\in\mathcal{P}} p^{\mu(p)}\notag
+	\end{align}
+	mit eindeutig bestimmten $\varepsilon\in R^\times$ und $\mu(p)\in \natur_0$, fast alle gleich 0, schreiben.
+\end{conclusion}
+
+\begin{example}
+	\begin{enumerate}
+		\item Jedes $n\in\natur$ lässt sich eindeutig als
+		\begin{align}
+			n=\prod_{p\in\mathbb{P}} p^{n_p}\notag
+		\end{align}
+		schreiben, wobei $\mathbb{P}$ die Menge der Primzahlen ist (\begriff{Hauptsatz der Arithmetik}).
+		\item Bezeichnet $\mathcal{M}$ die Menge der normierten irreduziblen Polynome in $K[t]$ ($K$ Körper), so lässt sich jedes $0\neq f\in K[t]$ eindeutig als
+		\begin{align}
+			f=c\cdot\prod_{P\in\mathcal{M}} P^{n_p}\notag
+		\end{align}
+		mit $c\in K^\times$ und $n_p\in\natur_0$, fast alle gleich 0, schreiben.
+	\end{enumerate}
+\end{example}
