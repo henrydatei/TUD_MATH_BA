@@ -1,0 +1,53 @@
+\section{Der Elementarteilersatz}
+
+Sei $R$ Hauptidealring.
+
+\begin{definition}
+	Seien $a,b,x,y\in R$. Für $i,j\in\{1,...,n\}$ ist
+	\begin{align}
+		E_{ij} = (\delta_{\sigma,i},...,\delta_{\mu,j})_{\sigma,\mu}\in\Mat_n(\real)\notag
+	\end{align}
+	Sei
+	\begin{align}
+		E_{ij}(a,b,x,y) = \mathbbm{1}_n-E_{ii}-E_{jj}+aE_{ii}+bE_{ij}+xE_{jj}+yE_{ji}\notag
+	\end{align}
+	%TODO: Matrix ergänzen von Pascal
+\end{definition}
+
+\begin{lemma}
+	Ist $ax-by\in R^\times$, so ist
+	\begin{align}
+		E_{ij}(a,b,x,y)\in \GL_n(\real)\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Folgt aus LAAG1 IV.3.4, da
+	%TODO: Verlinkung
+	\begin{align}
+		\det(E_{ij}(a,b,x,y))=ax-by\in R^\times\notag
+	\end{align}
+	Oder direkt: Das Inverse ist $E_{ij}(xc^{-1},bc^{-1}, ac^{-1},-yc^{-1})$, zum Beispiel
+	\begin{align}
+		\begin{pmatrix} a & b \\ y & x\end{pmatrix}\begin{pmatrix}xc^{-1} & -bc^{-1} \\ -yc^{-1} & ac^{-1}\end{pmatrix}=\begin{pmatrix}(ax-by)c^{-1} & 0 \\ 0 & (ax-by)c^{-1}\end{pmatrix}\notag
+	\end{align}
+\end{proof}
+
+\begin{remark}
+	Multiplikation mit $E_{ij}(a,b,x,y)$ von links an $(a_1,...,a_n)^t\in\Mat_n(\real)$
+	%TODO: konnte den Rest nicht erkennen, noch ergänzen
+\end{remark}
+
+\begin{theorem}[Elementarteilersatz für Matrizen]
+	Sei $A\in\Mat_{m\times n}(\real)$. Es gibt
+	\begin{align}
+		0\le r \le\min\{n,m\}\notag \\
+		S\in\GL_m(\real)\notag \\
+		T\in\GL_n(\real)\notag
+	\end{align}
+	mit 
+	\begin{align}
+		SAT &= \diag(d_1,...,d_r,Q) \notag \\
+		0&=Q\in\Mat_{m-r\times n-r}\notag
+	\end{align}
+	wobei $d_i\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,n-1$
+\end{theorem}
