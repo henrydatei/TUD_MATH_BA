@@ -4,7 +4,7 @@
 \usepackage[ngerman]{babel}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \fi
 
 \usepackage{zref-base}
@@ -338,7 +338,7 @@
 	\IfBooleanTF{#1}%
 	{\index{#2#3#4}}%
 	{%
-		\uline{#3}%
+		\uline{#3} %
 		\ifnumcomp{\value{section}}{<}{16}%
 		{\index[semester1]{#2#3#4}}%
 		{\index[semester2]{#2#3#4}}%
@@ -505,7 +505,7 @@
 
 \newacronym{gdw}{gdw.}{genau dann wenn}
 \newacronym{fa}{fa.}{fast alle}
-\newacronym{fü}{f.ü.}{fast überall}
+\newacronym{fue}{f.ü.}{fast überall}
 \newacronym{obda}{oBdA}{ohne Beschränkung der Allgemeinheit}
 \newacronym{tf}{TF}{\begriff{Teilfolge}}
 \newacronym{hw}{Hw}{\begriff{Häufungswert}}
