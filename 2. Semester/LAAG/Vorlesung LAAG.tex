@@ -219,6 +219,17 @@
 	backgroundcolor=lightgrey,%
 ]{*anmerkung}{Anmerkung}
 
+\newmdtheoremenv[%
+style=boxedtheorem,%
+topline=false,%
+rightline=false,%
+leftline=false,
+bottomline=false,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+backgroundcolor=lightgrey,%
+]{mathematica}{Mathematica/WolframAlpha-Befehle}
+
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
 %to achieve the underlining, this needed to put in the theoremstyle definition
@@ -738,6 +749,12 @@
 \section{Liste der benannten Sätze}
 \theoremlisttype{optname}
 \listtheorems{proposition,lemma}
+
+\pagebreak
+\section{Liste der Mathematica/WolframAlpha-Befehle}
+\smiley{} für faule Mathematiker \smiley{} \\
+\theoremlisttype{allname}
+\listtheorems{mathematica}
 
 %\printglossary[type=\acronymtype]
 
