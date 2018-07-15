@@ -33,21 +33,42 @@ Sei $R$ Hauptidealring.
 \end{proof}
 
 \begin{remark}
-	Multiplikation mit $E_{ij}(a,b,x,y)$ von links an $(a_1,...,a_n)^t\in\Mat_n(\real)$
-	%TODO: konnte den Rest nicht erkennen, noch ergänzen
+	Multiplikation von $E_{ij}(a,b,x,y)$ von links an $A$ führt eine Zeilenumformung durch: Sind $a_1,...,a_n$ die Zeilen von $A$, so wird $a_i$ durch $aa_i+ba_j$ ersetzt, und gleichzeitig $a_j$ durch $ya_i+xa_j$ ersetzt. Ist $ax-by=1$, so sind diese Zeilenumformungen invertierbar.
+	
+	\emph{Spezialfälle}: elementare Zeilenumformungen von Typ II und III aus Kapitel III (LAAG 1). Warnung: Im Gegensatz dazu sind über einem Ring $R$ die elementaren Zeilenumformungen vom Typ I (Multiplikation mit einem Skalar) nicht immer invertierbar!
+	
+	Multiplikation mit $E_{ij}(a,b,x,y)$ von rechts führt entsprechende Spaltenumformungen durch.
 \end{remark}
 
-\begin{theorem}[Elementarteilersatz für Matrizen]
-	Sei $A\in\Mat_{m\times n}(\real)$. Es gibt
-	\begin{align}
-		0\le r \le\min\{n,m\}\notag \\
-		S\in\GL_m(\real)\notag \\
-		T\in\GL_n(\real)\notag
-	\end{align}
+\begin{theorem}[Elementarteilersatz für Matrizen, \person{Smith}-Normalform]
+	Sei $A\in\Mat_{m\times n}(\real)$. Es gibt $0\le r \le\min\{n,m\}$, $S\in\GL_m(R)$, $T\in\GL_n(R)$
 	mit 
 	\begin{align}
-		SAT &= \diag(d_1,...,d_r,Q) \notag \\
-		0&=Q\in\Mat_{m-r\times n-r}\notag
+		SAT &= \begin{pmatrix}d_1 & & & \\ & \ddots & & \\ & & d_r & \\ & & & \mathbb{0}\end{pmatrix} \notag \\
+		\mathbb{0} &\in\Mat_{m-r\times n-r}\notag
 	\end{align}
 	wobei $d_i\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,n-1$
 \end{theorem}
+\begin{proof}
+	Induktion nach $\min\{m,n\}$. Für $a\in R$ sei $\delta(a)\in\natur_0\cup\{\infty\}$ die Anzahl der Primelemente in der Primfaktorzerlegung von $a$, mit $\delta(0):=\infty$, und $\delta(A):=\min_{ij}\{\delta(a_{ij})\}$. Wir können annehmen, dass $\delta(A)\le \delta(SAT)$ für alle $S\in \GL_m(R)$ und $T\in \GL_n(R)$. Durch Zeilen- und Spaltenvertauschungen erreichen wir, dass $\delta(a_{11})=\delta(A)$.
+	\begin{itemize}
+		\item \emph{1. Behauptung:} $a_{11}\mid a_{i1}$ für alle $i$. Gäbe es ein $i\ge 1$ für dass $a_{11}\nmid a_{i1}$, so sei $c=\ggT(a_{11},a_{i1})=x_a{11}+ya_{i1}$ mit $\ggT(x,y)=1$, also $ax-by=1$ mit $a,b\in R$. Multiplikation mit $E_{1i}(x,y,a,b)$ von links erzeugt an der Position $(1,1)$ das Element $c$, und $\delta(c)<\delta(a_{11})=\delta(A)$, im Widerspruch zur Minimalität von $\delta(A)$. \\
+		Analog zeigt man, dass $a_{11}\mid a_{1j}$ für alle $j$. Durch Zeilen- und Spaltenumformungen können wir deshalb nun $a_{i1}=0$ für alle $i>1$ und $a_{1j}$ für alle $j>1$ erreichen.
+		\item\emph{2. Behauptung:} $a_{11}\mid a_{ij}$ für alle $i,j$. Gäbe es $i>1$ und $j>1$ mit $a_{11}\nmid a_{ij}:=b$, so können wir die $j$-te Spalte zur ersten Spalte addieren, was $a_{11}$ nicht ändert und $a_{1i}=b$ bewirkt. Wider können wir Behauptung 1 anwenden und erhalten den Widerspruch, dass $a_{11}\mid b$. Damit ist nach diesem Umformungen
+		\begin{align}
+			A=\begin{pmatrix}a_{11} & \\ & a_{11}\cdot A'\end{pmatrix}\notag
+		\end{align}
+		mit $A'\in\Mat_{(m-1)\times (n-1)}(R)$. Wir wenden nun die Induktionshypothese auf $A'$ an und sind fertig.
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Man kann zeigen, dass die $d_1,...,d_r$ bis auf Assoziiertheit eindeutig bestimmt sind. Man nennt sie deshalb \begriff{Elementarteiler} der Matrix $A$.
+\end{remark}
+
+\begin{example}
+	Sei $R=\whole$. Bestimme die Elementarteiler der Matrizen
+	\begin{align}
+		\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}1&2 \\ 3&4\end{pmatrix},\begin{pmatrix}2&0&0 \\ 0&4&0 \\0&0&6\end{pmatrix}\notag
+	\end{align}
+\end{example}

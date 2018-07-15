@@ -105,12 +105,12 @@ Seien $M$ und $M'$ zwei $R$-Moduln und $N\subseteq M$ ein Untermodul.
 	Und wieder $\pi_I:R\to\qraum{R}{I}$ mit $x\mapsto x+I$.
 \end{definition}
 
-\begin{lemma}
+\begin{proposition}
 	Addition und Multiplikation sind wohldefiniert und machen $\qraum{R}{I}$ zu einem kommutativen Ring mit Einselement. $\pi_I$ ist ein Ringhomomorphismus mit Kern
 	\begin{align}
 		\Ker(\pi_I) = I\notag
 	\end{align}
-\end{lemma}
+\end{proposition}
 \begin{proof}
 	\begin{itemize}
 		\item Addition wohldefiniert: \propref{4_5_2}
@@ -127,6 +127,7 @@ Seien $M$ und $M'$ zwei $R$-Moduln und $N\subseteq M$ ein Untermodul.
 		Also
 		\begin{align}
 			xy = (x'+a)(y'+b) &= x'y'+\underbrace{ay'+x'b+ab}_{\in I}\notag \\
+			%xy-x'y' = xy - (x-a)(x-b) = xb + ya - ab\in I \notag \\
 			\Rightarrow xy+I &= x'y'+I\notag
 		\end{align}
 		\item $\qraum{R}{I}$ ist Ring: R1 bis R3 folgen aus den entsprechenden Eigenschaften von $R$.
@@ -164,7 +165,7 @@ Seien $M$ und $M'$ zwei $R$-Moduln und $N\subseteq M$ ein Untermodul.
 		\begin{align}
 			\qraum{\whole}{(n)}=\whole\backslash n\whole\notag
 		\end{align}
-		\item Sei $K$ ein Körper und sei $a\in K$. Dann ist $K[t]\to K$, $P\mapsto P(a)$ ist ein Ringhomomorphismus. Der Kern $\Ker(\phi)=(t-a)$, also alle Polynome, die in $a$ eine Nullstelle haben. Es folgt
+		\item Sei $K$ ein Körper und sei $a\in K$. Dann ist $K[t]\to K$, $P\mapsto P(a)$ ist ein Ringepimorphismus. Der Kern $\Ker(\phi)=(t-a)$, also alle Polynome, die in $a$ eine Nullstelle haben. Es folgt
 		\begin{align}
 			\qraum{K[t]}{(t-a)}\cong K\notag
 		\end{align}
