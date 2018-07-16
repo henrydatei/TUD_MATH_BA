@@ -97,3 +97,7 @@ Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
     3. Hauptidealringe ... fertig
     
     4. Faktorielle Ringe ... fertig
+    
+    5. Quotienten von Ringen und Moduln ... fertig
+    
+    6. Der Elementarteilersatz ... wird bearbeitet
