@@ -111,6 +111,14 @@ Sei $K=\real$ oder $K=\comp$.
 	Eine Matrix $A\in\Mat_n(K)$ heißt \emph{symmetrisch} bzw. \emph{hermitesch}, wenn $A=A^*=\overline{A}^t=\overline{A^t}$.
 \end{definition}
 
+\begin{mathematica}[symmetrische bzw. hermitesche Matrizen]
+	Wie für vieles Andere auch, hat Mathematica bzw. WolframAlpha auch dafür eine Funktion:
+	\begin{align}
+		\texttt{SymmetricMatrixQ[A]}\notag \\
+		\texttt{HermitianMatrixQ[A]}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{proposition}
 	\proplbl{2_2_13}
 	Sei $s$ eine Sesquilinearform auf $V$ und $B$ eine Basis von $V$. Genau dann ist $s$ hermitesch, wenn $M_B(s)$ dies ist.

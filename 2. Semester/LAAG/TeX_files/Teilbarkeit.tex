@@ -8,6 +8,17 @@
 	\end{enumerate}
 \end{definition}
 
+\begin{mathematica}[Teiler]
+	Möchte man mit Mathematica bzw. WolframAlpha überprüfen, ob $n$ von $m$ geteilt wird, also $m\mid n$ (!), kann man folge Funktion aufrufen:
+	\begin{align}
+		\texttt{Divisible[n,m]}\notag
+	\end{align}
+	Eine Liste der  Teiler einer Zahl $x$ erhält man mit
+	\begin{align}
+		\texttt{Divisors[x]}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{lemma}
 	Für $a,b,c,d\in R$ gelten
 	\begin{enumerate}
@@ -81,6 +92,14 @@
 	
 	Ein $c\in R$ ist ein \begriff{kleinstes gemeinsames Vielfaches} von $a$ und $b$, in Zeichen $c=\kgV(a,b)$, wenn gilt: $a\mid c$ und $b\mid c$ und ist $d\in R$ mit $a\mid d$ und $b\mid d$, so ist $c\mid d$.
 \end{definition}
+
+\begin{mathematica}[ggT und kgV]
+	Die Funktionen für den größten gemeinsamen Teiler und das kleinste gemeinsame Vielfache in Mathematica bzw. WolframAlpha sind
+	\begin{align}
+		\texttt{GCD[6,12,4,32]}\notag \\
+		\texttt{LCM[6,12,4,32]}\notag
+	\end{align}
+\end{mathematica}
 
 \begin{remark}
 	Wenn $\ggT$ und $\kgV$ in einem nullteilerfreien Ring $R$ existieren, sind sie eindeutig bestimmt, aber nur bis auf Assoziiertheit (\propref{4_2_5}).

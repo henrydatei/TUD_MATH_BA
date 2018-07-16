@@ -98,6 +98,15 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 	Sei $A\in\Mat_n(K)$. Man definiert Eigenwerte, Eigenvektoren, etc von $A$ als Eigenwerte, Eigenvektoren von $f_A\in\End_K(K^n)$.
 \end{definition}
 
+\begin{mathematica}[Eigenwerte und Eigenvektoren]
+	Um die Eigenwerte und Eigenvektoren einer Matrix $A$ zu berechnen, gibt es in Mathematica bzw. WolframAlpha verschiedene Möglichkeiten:
+	\begin{itemize}
+		\item \texttt{Eigenvalues[A]}: liefert eine Liste der Eigenwerte
+		\item \texttt{Eigenvectors[A]}: liefert eine Liste der Eigenvektoren
+		\item \texttt{Eigensystem[A]}: liefert zu jeden Eigenwert den Eigenvektor
+	\end{itemize}
+\end{mathematica}
+
 \begin{proposition}
 	Sei $B$ eine Basis von $V$ und $\lambda\in K$. Genau dann ist $\lambda$ ein EW von $f$, wenn $\lambda$ ein EW von $A=M_B(f)$ ist. Insbesondere haben ähnliche Matrizen die selben EW.
 \end{proposition}

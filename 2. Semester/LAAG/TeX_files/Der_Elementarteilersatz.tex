@@ -62,6 +62,18 @@ Sei $R$ Hauptidealring.
 	\end{itemize}
 \end{proof}
 
+\begin{mathematica}[\person{Smith}-Normalform]
+	Elementarteiler einer Matrix $A$ lassen sich mit Mathematica mit der Funktion
+	\begin{align}
+	\texttt{SmithDecomposition[A]}\notag
+	\end{align}
+	die als einziges Argument eine Matrix braucht. Allerdings ist der Output unformatiert, mit folgenden Befehl sieht das deutlich besser aus:
+	\begin{align}
+	\text{\texttt{MatrixForm/@ (\{u,r,v\} = SmithDecomposition[A])}}\notag
+	\end{align}
+	Der Output sind 3 Matrizen, wobei \texttt{u} für $S$, \texttt{v} für $T$ und \texttt{r} für das Ergebnis von $SAT$ steht.
+\end{mathematica}
+
 \begin{remark}
 	Man kann zeigen, dass die $d_1,...,d_r$ bis auf Assoziiertheit eindeutig bestimmt sind. Man nennt sie deshalb \begriff{Elementarteiler} der Matrix $A$.
 \end{remark}
@@ -72,15 +84,3 @@ Sei $R$ Hauptidealring.
 		\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}1&2 \\ 3&4\end{pmatrix},\begin{pmatrix}2&0&0 \\ 0&4&0 \\0&0&6\end{pmatrix}\notag
 	\end{align}
 \end{example}
-
-\begin{mathematica}[\person{Smith}-Normalform]
-	Elementarteiler lassen sich mit Mathematica mit der Funktion
-	\begin{align}
-		\text{\texttt{SmithDecomposition[]}}\notag
-	\end{align}
-	die als einziges Argument eine Matrix braucht. Allerdings ist der Output unformatiert, mit folgenden Befehl sieht das deutlich besser aus:
-	\begin{align}
-	\text{\texttt{MatrixForm/@ (\{u,r,v\} = SmithDecomposition[])}}\notag
-	\end{align}
-	Der Output sind 3 Matrizen, wobei \texttt{u} für $S$, \texttt{v} für $T$ und \texttt{r} für das Ergebnis von $SAT$ steht.
-\end{mathematica}
