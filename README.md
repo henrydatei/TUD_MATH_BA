@@ -3,7 +3,7 @@ Skript zu den Vorlesungen Analysis (Prof. Dr. Friedemann Schuricht) und Lineare 
 
 Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
 
-Tafel-Bilder gibt es [hier](http://protagon.space/Anag.zip).
+Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
 
 ### Fortschritt Analysis (2. Semester, SS2018)
 5. Differentiation ... fertig
