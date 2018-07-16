@@ -14,6 +14,7 @@
 \usepackage{xparse}%better macros
 \usepackage{calc}
 \usepackage{xstring}
+\usepackage[bb=boondox]{mathalfa} %spezielle Null mit \mathbb{0}, sollte auch mit 1 klappen, aber dafür haben wir \mathbbm{1}
 
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}
@@ -229,6 +230,17 @@
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
 ]{*anmerkung}{Anmerkung}
+
+\newmdtheoremenv[%
+style=boxedtheorem,%
+topline=false,%
+rightline=false,%
+leftline=false,
+bottomline=false,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+backgroundcolor=lightgrey,%
+]{mathematica}{Mathematica/WolframAlpha-Befehle}
 
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
@@ -748,6 +760,12 @@
 \section{Liste der benannten Sätze}
 \theoremlisttype{optname}
 \listtheorems{proposition, lemma}
+
+\pagebreak
+\section{Liste der Mathematica/WolframAlpha-Befehle}
+\smiley{} für faule Mathematiker \smiley{} \\
+\theoremlisttype{allname}
+\listtheorems{mathematica}
 
 %\printglossary[type=\acronymtype]
 

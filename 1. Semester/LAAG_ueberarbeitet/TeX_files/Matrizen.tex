@@ -20,6 +20,19 @@ Sei $K$ ein Körper.
 	\begriff[Matrix!]{transponierte Matrix} $A^t := (a_{ij})_{j,i} \in \Mat_{n\times m}(K)$.
 \end{definition}
 
+\begin{mathematica}[Matrizen]
+	Matrizen werden in Mathematica bzw. WolframAlpha folgendermaßen dargestellt:
+	\begin{align}
+		&\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\notag \\
+		\Rightarrow&\Big\lbrace\texttt{\{1,2,3\},\{4,5,6\},\{7,8,9\}}\Big\rbrace\notag
+	\end{align}
+	Wenn Mathematica als Ergebnis eine Matrix ausgibt, so lässt sich diese als Zeile schlecht lesen. Mit dem Suffix \texttt{//MatrixForm} lässt sich der Output als Matrix formatieren:
+	\begin{align}
+		&\texttt{\{\{1,2,3\},\{4,5,6\},\{7,8,9\}\}*3 //MatrixForm}\notag \\
+		\Rightarrow&\begin{pmatrix}3&6&9\\12&15&18\\21&24&27\end{pmatrix}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{example}
 	\begin{itemize}
 		\item Die \begriff{Nullmatrix} ist $0=(0)_{i,j} \in \Mat_{m\times n}(K)$.
@@ -39,6 +52,14 @@ Sei $K$ ein Körper.
 	$\lambda \in K$. Man definiert auf $\Mat_{m\times n}(K)$ eine koeffizientenweise \begriff[Matrix!]{Addition} und \begriff[Matrix!]{Skalarmultiplikation}.
 \end{definition}
 
+\begin{mathematica}[Matrizenoperationen]
+	Die komponentenweise Addition bzw. Skalarmultiplikation von Matrizen $A$ und $B$ lässt sich in Mathematica bzw. WolframAlpha folgendermaßen realisieren:
+	\begin{align}
+		\texttt{A+B}\notag \\
+		\texttt{A*B}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{proposition}
 	\proplbl{3_1_4}
 	$(\Mat_{m\times n},+,\cdot)$ ist ein $K$-Vektorraum der Dimension $\dim_K(\Mat_{m\times n})=n\cdot m$ mit 
@@ -54,6 +75,13 @@ Sei $K$ ein Körper.
 	$B=(b_{jk})\in \Mat_{n\times r}(K)$ so definieren wir die \begriff[Matrix!]{Matrizenmultiplikation} $C=AB$ als die Matrix $C=(c_{ik})\in \Mat_{m\times r}(K)$ mit 
 	$c_{ik}=\sum_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
 \end{definition}
+
+\begin{mathematica}[Matrizenmultiplikation]
+	Die Matrizenmultiplikation in Mathematica und WolframAlpha für Matrizen $A$ und $B$ geht so:
+	\begin{align}
+		\texttt{A.B}\text{ oder }\texttt{Dot[A,B]}\notag
+	\end{align}
+\end{mathematica}
 
 \begin{example}
 	\proplbl{3_1_6}
@@ -126,6 +154,14 @@ Sei $K$ ein Körper.
 	$\Mat_n(K)$ invertierbar ist, sonst \begriff[Matrix!]{singulär}. Die Gruppe $\GL_n(K)=\Mat_n(K)^{\times}$ der invertierbaren $n\times n$
 	-Matrizen heißt \begriff{allgemeine Gruppe}.
 \end{definition}
+
+\begin{mathematica}[Matizen invertieren]
+	Das Inverse einer Matrix $A$ in Mathematica bzw. WolframAlpha lässt sich mit der Funktion
+	\begin{align}
+		\texttt{Inverse[A]}\notag
+	\end{align}
+	berechnen.
+\end{mathematica}
 
 \begin{example}
 	\proplbl{3_1_13}

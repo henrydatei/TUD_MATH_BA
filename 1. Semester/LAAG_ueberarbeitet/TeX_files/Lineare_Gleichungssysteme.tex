@@ -7,6 +7,20 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	Diese heißt \begriff{homogen}, wenn $b=0$, sonst \begriff{inhomogen} und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein \begriff{Lösungsraum}.
 \end{definition}
 
+\begin{mathematica}[Lineare Gleichungssysteme]
+	Für das Lösen von Linearen Gleichungssystemen gibt es in WolframAlpha bzw. Mathematica verschiedene Verfahren:
+	\begin{itemize}
+		\item \texttt{Solve[]}:
+		\begin{align}
+			\texttt{Solve[a == 2 b \&\& b == 5 \&\& c + a == b, \{a, b, c\}]}\notag
+		\end{align}
+		\item \texttt{LinearSolve[]}: Braucht 2 Argumente: Zum einen die Koeffizientenmatrix $A$ und den Ergebnisvektor $b$. Rückgabe ist dann der Variablenvektor $x$.
+		\begin{align}
+			\texttt{LinearSolve[\{\{1, 1\}, \{0, 1\}\}, \{6, 10\}]}\notag
+		\end{align}
+	\end{itemize}
+\end{mathematica}
+
 \begin{remark}
 	Ist $A=(a_{ij})$, $b=(b_1,...,b_m)^t$, so schreibt man das Lineare Gleichungssystem $Ax=b$ auch
 	\begin{align}
@@ -130,6 +144,13 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	erste Zeile und die ersten $k_1$ Spalten nicht mehr ändern, und weil $A'$ weniger Zeilen und Spalten als $A$ hat, bricht das Verfahren 
 	nach endlich vielen Schritten ab.
 \end{proof}
+
+\begin{mathematica}[\person{Gauss}-Verfahren]
+	Auch für das \person{Gauss}-Verfahren hat Mathematica bzw. WolframAlpha eine Funktion. Sie gibt die Matrix nach Ausführung des \person{Gauss}-Algorithmus zurück.
+	\begin{align}
+		\texttt{RowReduce[\{\{1, 4\}, \{2, 5\}\}]}\notag
+	\end{align}
+\end{mathematica}
 
 \begin{conclusion}
 	Zu jeder Matrix $A$ gibt es eine invertierbare Matrix $S\in \GL_n(K)$ für die $SA$ in Zeilenstufenform ist.
