@@ -113,7 +113,8 @@ Sei $R$ Hauptidealring.
 	Haben wir nun die erste Zeile und die erste Spalte zu 0 verwandelt, außer $a_{11}$ natürlich, kümmern wir uns um die Untermatrix in Richtung rechts unten. Hier geht der Algorithmus von vorne los; das Schöne ist, dass er uns die erste Zeile/Spalte nicht mehr kaputt machen kann. Irgendwann sind wir rechts unten angekommen und haben nur noch Elemente auf der Hauptdiagonalen stehen. Diese sollten, wie in \propref{4_6_4} behauptet eine solche Teilerkette bilden. Tun sie das nicht, kann man wieder mit Matrizen $S_n$ und $T_n$ nachhelfen.
 	\begin{align}
 		S'_n=\begin{pmatrix}u & v \\ -\frac{y}{\ggT(x,y)} & \frac{x}{\ggT(x,y)}\end{pmatrix}\quad 
-		T'_n=\begin{pmatrix}1 & -\frac{vy}{\ggT(x.y)} \\ 1 & \frac{ux}{\ggT(x,y)}\end{pmatrix} \notag
+		T'_n=\begin{pmatrix}1 & -\frac{vy}{\ggT(x,y)} \\ 1 & \frac{ux}{\ggT(x,y)}\end{pmatrix} \notag \\
+		\text{unter Vorbehalt! }\begin{pmatrix}1 & 1 \\ -\frac{vy}{\ggT(x,y)} & \frac{ux}{\ggT(x,y)}\end{pmatrix}
 	\end{align}
 	Und dann sind wir endlich fertig! Die Transformationsmatrizen $S$ und $T$ sind dann einfach
 	\begin{align}
