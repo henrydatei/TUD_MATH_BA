@@ -41,6 +41,7 @@ Sei $R$ Hauptidealring.
 \end{remark}
 
 \begin{theorem}[Elementarteilersatz für Matrizen, \person{Smith}-Normalform]
+	\proplbl{4_6_4}
 	Sei $A\in\Mat_{m\times n}(\real)$. Es gibt $0\le r \le\min\{n,m\}$, $S\in\GL_m(R)$, $T\in\GL_n(R)$
 	mit 
 	\begin{align}
@@ -84,3 +85,40 @@ Sei $R$ Hauptidealring.
 		\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}1&2 \\ 3&4\end{pmatrix},\begin{pmatrix}2&0&0 \\ 0&4&0 \\0&0&6\end{pmatrix}\notag
 	\end{align}
 \end{example}
+
+\begin{*anmerkung}[Teil 1]
+	Um die Elementarteiler der Matrix $A_0$ zu ermitteln, muss man geschickt mit Matrizen $S$ und $T$ multiplizieren. Dazu starten wir links oben bei Element $a_{11}\neq 0$ und versuchen nun, auf der ersten Spalte und auf der ersten Zeile nur Nullen zu produzieren, aber $a_{11}\neq 0$ zu erhalten.
+	
+	 Dazu fangen wir mit der ersten Spalte an. Ziel ist es, das letzte Element dieser Spalte durch geschickte Addition der vorletzten Spalte zu 0 werden zu lassen. Wir schauen uns die letzten 2 Elemente, nennen wir sie $x$ und $y$, dieser ersten Spalte an und bestimmen $\ggT(x,y)$. Weiterhin suchen wir $u$ und  $v$, sodass folgende Gleichung erfüllt ist:
+	\begin{align}
+		\ggT(x,y)=u\cdot x + v\cdot y\notag
+	\end{align}
+	Da wir eine Zeilenoperation durchführen wollen, brauchen wir eine Matrix $S_0$, die wir von links an $A$ ranmultiplizieren. Dabei müssen wir auf die richtige Dimension von $S_0$ aufpassen. Dazu setzen wir $S_0$ auf $\mathbbm{1}_m$ und fügen an der richtigen Stelle die Matrix $S'_0$ ein:
+	\begin{align}
+		S'_0=\begin{pmatrix}u & v \\ -\frac{y}{\ggT(x,y)} & \frac{x}{\ggT(x,y)}\end{pmatrix}\notag
+	\end{align}
+	Jetzt bestimmen wir $A_1:=A_0\cdot S_0$. Jetzt haben wir das letzte Element der ersten Spalte zu 0 verwandelt. Wir arbeiten uns jetzt in der ersten Spalte nach oben, versuchen also das vorletzte Element zu 0 zu verwandeln, aber mithilfe der vorvorletzten Zeile. Auch dazu bestimmen wir wieder Matrizen $S_1,S_2,...$ bis die erste Spalte 0 ist, mit Ausnahme von $a_{11}$. 
+\end{*anmerkung}
+\begin{*anmerkung}[Teil 2]
+	Jetzt wenden wir uns der ersten Zeile zu: Auch hier versuchen wir das letzte Element zu 0 zu verwandeln, aber eben mit Benutzung der vorletzten Spalte. Die Vorgehensweise ist nahezu identisch, wir bestimmen auch wieder $\ggT(x,y)$ und lösen
+	\begin{align}
+		\ggT(x,y)=u\cdot x + v\cdot y\notag
+	\end{align}
+	Damit bauen wir uns wieder $T'_0$, die wir an der passenden Stelle in $T_0=\mathbbm{1}$ einsetzen
+	\begin{align}
+		T'_0=\begin{pmatrix}z & -\frac{y}{\ggT(x,y)} \\ v & \frac{x}{\ggT(x,y)}\end{pmatrix}\notag
+	\end{align}
+	Die Matrix $T_0$ multiplizieren wir aber diesmal von rechts an $A_n$. So arbeiten wir uns wieder von hinten nach vorne. Es kann passieren, dass wir uns damit leider wieder in der ersten Spalte ein paar Nullen kaputt machen, aber dann bauen wir wieder eine $S_n$-Matrix mit der wieder Nullen erscheinen. Falls das wieder die Spalten kaputt macht, dann multiplizieren wir wieder mit einer $T_n$-Matrix. Das \propref{4_6_4} garantiert uns, dass wir irgendwann fertig werden.
+	
+	Haben wir nun die erste Zeile und die erste Spalte zu 0 verwandelt, außer $a_{11}$ natürlich, kümmern wir uns um die Untermatrix in Richtung rechts unten. Hier geht der Algorithmus von vorne los; das Schöne ist, dass er uns die erste Zeile/Spalte nicht mehr kaputt machen kann. Irgendwann sind wir rechts unten angekommen und haben nur noch Elemente auf der Hauptdiagonalen stehen. Diese sollten, wie in \propref{4_6_4} behauptet eine solche Teilerkette bilden. Tun sie das nicht, kann man wieder mit Matrizen $S_n$ und $T_n$ nachhelfen.
+	\begin{align}
+		S'_n=\begin{pmatrix}u & v \\ -\frac{y}{\ggT(x,y)} & \frac{x}{\ggT(x,y)}\end{pmatrix}\quad 
+		T'_n=\begin{pmatrix}1 & -\frac{vy}{\ggT(x.y)} \\ 1 & \frac{ux}{\ggT(x,y)}\end{pmatrix} \notag
+	\end{align}
+	Und dann sind wir endlich fertig! Die Transformationsmatrizen $S$ und $T$ sind dann einfach
+	\begin{align}
+		S = S_1\cdot S_2\cdot ... \notag \\
+		T = T_1\cdot T_2\cdot ... \notag
+	\end{align}
+	Weitere Informationen und Beispiele findet man auf \url{http://www.igt.uni-stuttgart.de/eiserm/lehre/2010/Algebra/Matrizenringe.pdf}, ab Abschnitt §7D
+\end{*anmerkung}
