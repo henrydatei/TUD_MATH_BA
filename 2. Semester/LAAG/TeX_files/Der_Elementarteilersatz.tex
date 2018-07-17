@@ -104,9 +104,9 @@ Sei $R$ Hauptidealring.
 	\begin{align}
 		\ggT(x,y)=u\cdot x + v\cdot y\notag
 	\end{align}
-	Damit bauen wir uns wieder $T'_0$, die wir an der passenden Stelle in $T_0=\mathbbm{1}$ einsetzen
+	Damit bauen wir uns wieder $T'_0$, die wir an der passenden Stelle in $T_0=\mathbbm{1}_n$ einsetzen
 	\begin{align}
-		T'_0=\begin{pmatrix}z & -\frac{y}{\ggT(x,y)} \\ v & \frac{x}{\ggT(x,y)}\end{pmatrix}\notag
+		T'_0=\begin{pmatrix}u & -\frac{y}{\ggT(x,y)} \\ v & \frac{x}{\ggT(x,y)}\end{pmatrix}\notag
 	\end{align}
 	Die Matrix $T_0$ multiplizieren wir aber diesmal von rechts an $A_n$. So arbeiten wir uns wieder von hinten nach vorne. Es kann passieren, dass wir uns damit leider wieder in der ersten Spalte ein paar Nullen kaputt machen, aber dann bauen wir wieder eine $S_n$-Matrix mit der wieder Nullen erscheinen. Falls das wieder die Spalten kaputt macht, dann multiplizieren wir wieder mit einer $T_n$-Matrix. Das \propref{4_6_4} garantiert uns, dass wir irgendwann fertig werden.
 	
