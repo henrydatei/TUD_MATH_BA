@@ -1,0 +1,348 @@
+\section{Integration auf \texorpdfstring{$\mathbb{R}$}{R}} \setcounter{equation}{0}
+
+\subsection{Integrale konkret ausrechnen}
+$\int_I f \D x$ auf Intervalle $I=(\alpha,\beta)\subset\overline{\mathbb{R}}$ (mit $\alpha\le\beta$) (da Randpunkte eines Intervalls $I\subset\mathbb{R}$ nur Nullmenge sind, könnte man statt offenem Intervall auch abgeschlossene bzw. halboffene Intervalle verwenden, ohne den Integralwert zu ändern)
+
+Schreibweise:\begin{align*}
+	\int_{\alpha}^{\beta} f \D x &:= \int_I f \D x & &\text{und}&  \int_{\beta}^{\alpha} f \D x &:= -\int_{\alpha}^{\beta} f \D x
+\end{align*}
+($\alpha = -\infty$ bzw. $\beta = +\infty$ zugelassen)
+
+\begin{underlinedenvironment}[beachte]
+	alle Intervalle sind messbare Mengen nach \propref{messbarkeit_satz_grundlegende_messbare_mengen}, \propref{messbarkeit_mengen_satz_acht}.
+	
+	$\int_{\alpha}^{\beta} f \D x$ heißt auch \begriff{bestimmtes Integral} von $f$ auf $I$.
+\end{underlinedenvironment}
+
+Nach \propref{messbarkeit_satz_grundlegende_messbare_mengen} \ref{messbarkeit_satz_sigma_algebra_zwei}:
+\begin{proposition}
+	\proplbl{integral_r_integrierbar_auf_teilintervalle}
+	Sei $f:I\to\mathbb{R}$ integrierbar auf $I$. Dann ist $I$ auch auf allen Teilintervallen $\tilde{I}\subset I$ integrierbar.
+\end{proposition}
+
+\begin{theorem}[Hauptsatz der Differential- und Integralrechnung]
+	\proplbl{integral_r_hauptsatz}
+	Sei $f:I\to\mathbb{R}$ stetig und integrierbar auf Intervall $I\subset\mathbb{R}$ und sei $x_0\in I$. Dann
+	\begin{enumerate}[label={\alph*)}]
+		\item $\tilde{F}:I\to \mathbb{R}$ mit $\tilde{F}(x) := \int_{x_0}^x f(y) \D y$ $\forall x\in I$ ist Stammfunktion von $f$ auf $I$.
+		\item Für jede Stammfunktion $F:I\to \mathbb{R}$ auf $F$ gilt: \begin{align}
+			\proplbl{integral_r_hauptsatz_eq}
+			F(b) - F(a) = \int_a^b f(x) \D x \quad\forall a,b\in I
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}\vspace*{0pt}
+	\begin{itemize}[topsep=\dimexpr-\baselineskip/2\relax]
+		\item damit besitzt jede stetige Funktion auf $I$ eine Stammfunktion
+		\item \eqref{integral_r_hauptsatz_eq} ist zentrale Formel zur Berechnung von Integralen auf $f$ der reelen Achse; die linke Seite in \eqref{integral_r_hauptsatz_eq} schreibt man auch kurz \begin{align*}
+			F(b) - F(a) &= \left.F(x)\right|_a^b = \left. F\right|_a^b = [ F(x) ]_a^b = [ F ]_a^b
+		\end{align*}
+	\end{itemize}
+\end{remark}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{enumerate}[label={zu \alph*},topsep=\dimexpr-\baselineskip/2\relax,leftmargin=\widthof{\texttt{zu a)\ }}]
+		\item Fixiere $x\in I$. Dann gilt für $t\neq 0$ \begin{align*}
+			\frac{\tilde{F}(x + t) - \tilde{F}(x)}{t} &= \frac{1}{t} \left( \int_{x_0}^{x + t} f \D y - \int_{x_0}^{x} f \D y \right) = \frac{1}{t} \int_x^{x + t} f \D y =: \phi(t),
+		\end{align*}
+		wobei nach \propref{integral_r_integrierbar_auf_teilintervalle} alle Integrale existieren. \\
+		$\xRightarrow{\cref{integral_grenzwertsatz_mittelwertsatz_integralrechnung}}$ $\forall t\neq 0$ $\exists \xi_t\in [x, x+t]$ (bzw. $[x + t, x]$ für $t < 0$): $\phi(t) = \frac{1}{\vert t \vert} f(\xi) \vert t \vert = f(\xi_t)$ \\
+		$\xRightarrow{\text{$f$ stetig}}$ $\tilde{F}'(x) = \lim\limits_{t\to 0} \phi(t) = f(x)$ \\
+		$\Rightarrow$ Behauptung
+		
+		\item Für eine beliebige Stammfunktion $F$ von $f$ gilt: $F(x) = \tilde{F}(x) + C$ für ein $c\in \mathbb{R}$ (vgl \propref{stammfunktion_uneindeutigkeit_stammfunktion}) \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $F(b) - F(a) = \tilde{F}(b) - \tilde{F}(a) = \int_{x_0}^{b} f \D x - \int_{x_0}^{a} f \D x = \int_a^b f \D x$ \\
+		$\Rightarrow$ & Behauptung \hfill\csname\InTheoType Symbol\endcsname
+		\end{tabularx}
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	\begin{align*}
+		\int_a^b \gamma x \D x &= \left.\frac{\gamma}{2} x^2\right|_a^b = \frac{\gamma}{2} (b^2 - a^2)
+	\end{align*}
+	\begin{tabularx}{\linewidth}{r@{\ }l@{\ }X}
+	für $a = 0$: & Integral = $\frac{b( \gamma b)}{2}$ & (Flächenformel für's Dreieck) \\
+	$a = -b <
+	 0$: & Integral = 0 & (d.h. vorzeichenbehaftete Fläche)
+	\end{tabularx}
+\end{example}
+
+\begin{example}
+	\proplbl{integration_r_beispiel_5}
+	\begin{align*} \int_0^\pi \sin x \D x = -\cos x | _0^\pi = 1 - (-1) = 2\end{align*}
+\end{example}\begin{proposition}[Substitution für bestimmte Integrale]
+	Sei $f:I\to\mathbb{R}$ stetig, $\phi:I\to\mathbb{R}$ stetig \gls{diffbar} und streng monoton, $a,b\in I$. Dann:
+	\begin{align}
+		\int_a^b f(x) \D x &= \int_{\phi(a)}^{\phi(b)}f (\phi(y)) \phi'(y) \D y
+	\end{align}
+	
+	\begin{boldenvironment}[formal]
+		ersetzte $\alpha = \phi(y)$ und $\D x = \frac{\D x}{\D y} \D y = \phi'(y) \D y$. 
+		
+		Ersetzung des Arguments von $f$ durch $x=\phi(y)$ bezeichnet man als \begriff{Substitution} bzw. Variablentransformation
+	\end{boldenvironment}
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	Sei $F:I\to\mathbb{R}$ Stammfunktion von $f$ auf $I$ (existiert nach \propref{integral_r_hauptsatz}) \\
+	\renewcommand{\arraystretch}{2}
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\xRightarrow{\text{\propref{stammfunktion_substitution}}}$ & $F(\phi(\,\cdot\,))$ ist Stammfunktion zu $f(\phi(\,\cdot\,))\phi'(\,\cdot\,)$ \\
+	$\xRightarrow{\text{\propref{integral_r_hauptsatz}}}$ & $\displaystyle \int_{\phi^{-1}(a)}^{\phi^{-1}(b)} f(\phi(y))\phi'(y) \D y = F(\phi(y))|_{\phi^{-1}(a)}^{\phi^{-1}(b)} = F(b) - F(a) = \int_a^b f(x) \D x$\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\begin{example}
+	\proplbl{integral_r_beispiel_7}
+	\zeroAmsmathAlignVSpaces*
+	\begin{align*}
+		\int_0^1 \frac{1}{\sqrt{1 - x^2}} \D x \overset{x = \phi(x) = \sin y}{=} \int_0^{\sfrac{\phi}{2}} \frac{1}{\sqrt{1 - \sin^2 y}} \cdot \cos y \D y = \int_0^{\sfrac{\pi}{2}} 1 \D y = \frac{\pi}{2}
+	\end{align*}
+	\begin{center}\begin{tikzpicture} 
+		\begin{axis}[
+		xmin=-0.5, xmax=1.5, xlabel=$x$,
+		ymin=0, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot[name path=f,blue] {1/(sqrt(1-x^2))};
+		
+		\path[name path=axis] (axis cs:0,0) -- (axis cs:1.5,0);
+		
+		\addplot [
+		thick,
+		color=blue,
+		fill=blue, 
+		fill opacity=0.3
+		]
+		fill between[
+		of=f and axis,
+		soft clip={domain=0:1},
+		];
+		\end{axis}
+		\end{tikzpicture}\end{center}
+\end{example}
+
+\begin{proposition}[partielle Integration für bestimmte Integrale]
+	Seien $f$, $g:I\to\mathbb{R}$ stetig und $F$ bzw. $G$ die zugehörigen Stammfunktionen, $a$,$b\in I$. Dann \begin{align*}
+		\int_a^b f G \D x = FG|^b_a - \int_a^b F g \D x
+	\end{align*}
+\end{proposition}
+
+ \begin{proof}
+ 	Es gilt nach \propref{stammfunktion_partielle_integration}
+ 	\begin{align*}
+	 	\int f G\D x &= F(x) G(x) - \int F g \D x
+ 	\end{align*}
+ 	und somit folgt aus \eqref{integral_r_hauptsatz_eq} \begin{align*}
+	 	\int_a^b f G \D x = \left[ \int f G \D x \right]_a^b = [F \cdot G]_a^b - \left[ \int F g \D x \right] _a^b = F \cdot G |_a^b - \int_a^b F g \D x
+ 	\end{align*}
+ \end{proof}
+
+\begin{example}
+	Fläche des Einheitskreises: betrachte $y = \sqrt{1 - x^2}$ und \begin{align*}
+		\int_0^1 \sqrt{1-x^2}\D x &= \int_0^1 1 \cdot\sqrt{1 - x^2} \D x = \left[ x \cdot \sqrt{1 - x^2} \right]_0^1 - \int_0^1 x \cdot \frac{-2x}{2 \sqrt{1 - x^2}} \D x\\
+		&= \int_0^1 \frac{1}{\sqrt{1 - x^2}} - \int \frac{1-x^2}{\sqrt{1-x^2}} \D x \overset{\text{\cref{integral_r_beispiel_7}}}{=} \frac{\pi}{2} - \int_0^1 \sqrt{1 - x^2} \D x
+	\end{align*}
+	$\Rightarrow$ Der Viertelkreis hat die Fläche $\int_0^1 \sqrt{1-x^2}\D x = \dfrac{\frac{\pi}{2}}{2} = \frac{\pi}{4}$ und folglich die Kreisfläche von $\pi$.
+	\begin{center}\begin{tikzpicture} 
+		\begin{axis}[
+		xmin=0, xmax=1.5, xlabel=$x$,
+		ymin=0, ymax=1.5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot[name path=f,blue] {sqrt(1-x^2)};
+		
+		\path[name path=axis] (axis cs:0,0) -- (axis cs:1.5,0);
+		
+		\addplot [
+		thick,
+		color=blue,
+		fill=blue, 
+		fill opacity=0.3
+		]
+		fill between[
+		of=f and axis,
+		soft clip={domain=0:1},
+		];
+		\end{axis}
+		\end{tikzpicture}\end{center}
+\end{example}
+
+\begin{example}
+	Berechne die Fläche zwischen den Graphen von $f(x) = x^2$, $g(x) = x+2$.
+	
+	Schnittpunkte: $x_1 = -1$, $x_2 = 2$
+	\begin{align*}
+		\int_{-1}^2 g - f \D x = \int_{-1}^2 x + 2 - x^2 \D x = \left[ \frac{1}{2}x^2 + 2x - \frac{1}{3} x^3 \right]_{-1}^2 = \frac{9}{2}
+	\end{align*}
+	\begin{center}\begin{tikzpicture} 
+		\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=-5, ymax=5, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot[name path=f,blue] {x^2};
+		\addplot[name path=g,blue] {x+2};
+		
+		\addplot [
+		thick,
+		color=blue,
+		fill=blue, 
+		fill opacity=0.3
+		]
+		fill between[
+		of=f and g,
+		soft clip={domain=-1:2},
+		];
+		\end{axis}
+		\end{tikzpicture}\end{center}
+\end{example}
+
+\begin{example}
+	Berechne die Fläche zwischen den Graphen von $f(x) = x (x - 1)(x + 1) = x^3 - x$ und $g(x) = x_0$.
+	
+	Schnittpunkte: $x_{1,3} = \pm\sqrt{2}$, $x_2 = 0$
+	
+	Betrachte $g - f$ auf $[0,\sqrt{2}]$ \begin{align*}
+		\int_0^{\sqrt{2}}g - f \D x &= \int_0^{\sqrt{2}} 2x - x^3 \D x = \left[ x^2 - \frac{x^4}{4} \right]_0^{\sqrt{2}} = 1,
+	\end{align*}
+	analog $\int_{-\sqrt{2}}^0 f - g \D x = 1$ \\
+	$\Rightarrow$ Gesamtfläche = 2
+\end{example}
+
+\begin{proposition}[Differenz von Funktionswerten]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ stetig \gls{diffbar}, $[x,y]\subset D$. Dann \begin{align*}
+		f(y) - f(x) &= \int_0^1 f'(x + t(y - x)) \cdot (y - x) \D t = \int_0^1 f(x + t(y - x)) \D t (y - x)
+	\end{align*}
+	
+	\begin{underlinedenvironment}[Hinweis]
+		die linke Seite ist Element in $\mathbb{R}^n$ und die Integrale sind jeweils komponentenweise zu verstehen (Mitte = $\mathbb{R}^m$, rechts $\mathbb{R}^{n\times m}$). Man vergleiche den Mittelwertsatz (\propref{mittelwertsatz_mittelwertsatz}) und Schrankensatz (\propref{mittelwertsatz_schrankensatz}).
+	\end{underlinedenvironment}
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	Sei $f = (f_1, \dotsc, f_n)$, $\phi_k: [0,1]\to\mathbb{R}$ mit $\phi_k(t) := f_K(x + t(y - x))$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\phi_t$ ist \gls{diffbar} auf $[0,1]$ mit $\phi_k'(t) = f'(x + t(y - x)) \cdot (y - x)$ \\
+	$\xRightarrow{\text{\propref{integral_r_hauptsatz}}}$ & $f_k(y) - f_k(x) = \phi_k(1) - \phi_k(0) = \int_0^1 \phi_k'(t) \D t$ \\
+	$\Rightarrow$ & Behauptung \hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\subsection{Uneigentliche Integrale}
+\begin{boldenvironment}[Frage]
+	$\int_I f \D x$ für $I$ unbeschränkt bzw. $f$ unbeschränkt?
+\end{boldenvironment}
+
+\begin{boldenvironment}[Strategie]
+	Verwende den Hauptsatz mittels Grenzprozess.
+\end{boldenvironment}
+
+\begin{proposition}
+	\proplbl{integral_r_uneigentlich_satz}
+	Sei $f:[a,b]\to\mathbb{R}$ stetig für $a$, $b\in\mathbb{R}$. Dann \begin{center}
+			$f$ integrierbar auf $(a,b]$ \ \ $\Leftrightarrow$ \ \ $\displaystyle \lim\limits_{\substack{x\downarrow a \\ x\neq a}} \int_a^b \vert f \vert \D x$ existiert
+	\end{center}
+\begin{flalign}
+\proplbl{integral_r_uneigentlich_satz_eq}
+\Rightarrow \;\; \int_a^b f\D x &= \lim\limits_{k\to \infty} \int_{\alpha_k}^a f \D x \text{ für eine Folge $\alpha_k \downarrow a$}&
+\end{flalign}
+\end{proposition}
+
+\begin{remark}\vspace*{0pt}
+	\proplbl{integral_r_uneigentlich_bemerkung}
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Eine analoge Aussage gilt für $f:[a,b)\to\mathbb{R}$
+		\item Falls $f$ beschränkt auf $(a,b]$, dann stets integrierbar (vgl. \propref{integral_grenzwertsatz_folgerung_fatou})
+		\item Nutzen: Integrale können mittels Hauptsatz berechnet werden
+		\item Für uneigentliche Integrale $\int_a^b f \D x$ im Sinne von \person{Riemann}-Integralen muss nur $\lim\limits_{\alpha\downarrow a} \int_{\alpha}^b f \D x$ existieren (vgl. \propref{integral_r_uneigentlich_beispiel_19} unten)
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}
+	Sei $\alpha_k\downarrow a$, $a < \alpha_k$ $\forall k$ und \begin{align*}
+		f_k(x) &:= \begin{cases}
+			f(x) & \text{auf $(\alpha_k, b]$} \\
+			0 & \text{auf $(a, \alpha_k)$}
+		\end{cases}
+	\end{align*}
+	Offenbar ist $\vert f_k\vert \le \vert f\vert$, $f_k\to f$, $\vert f_k\vert \to \vert f \vert$ f.ü. auf $(a,b)$.
+	\begin{itemize}
+		\item["`$\Rightarrow$"'] $f$ integrierbar auf $(a,b)$. Mit \propref{integral_grenzwertsatz_majorisierte_konvergenz} (Majorisierte Konvergenz) folgt \begin{align*}
+		\lim\limits_{k\to\infty} \int_{\alpha_k}^b \vert f \vert \D x &= \lim\limits_{k\to\infty} \int_a^b \vert f_k\vert \D x = \int_a^b \vert f \vert \D x
+		\end{align*}
+		$\Rightarrow$ Behauptung $\xRightarrow[\text{Beträge}]{\text{ohne}}$ \eqref{integral_r_uneigentlich_satz_eq}
+		
+		\item["`$\Leftarrow$"'] Folge $\{ \vert f_k\vert \}$ monoton wachsend, \begin{align*}
+			\lim\limits_{k\to\infty} \int_a^b \vert f_k\vert \D x &= \lim\limits_{k\to\infty} \int_{\alpha_k}^b \vert f \vert \D x\quad\text{existiert}
+		\end{align*}
+		$\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ $f$ integrierbar
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	$\int_0^1 \frac{1}{x^\gamma} \D x$ existiert für $0 < \gamma < 1$ und \emph{nicht} für $\gamma \ge 1$
+	
+	Für $\gamma \neq 1$: $\displaystyle \int_{\alpha_k}^1 \frac{1}{x^\gamma} \D x = \left.\frac{1}{1 - \gamma}x^{1 - \gamma}\right|_{\alpha_k}^1 = \frac{1}{1-\gamma} (1 - \alpha_k)^{1 - \gamma} \xrightarrow{\alpha_k \downarrow 0} \frac{1}{1 - \gamma}$
+	
+	(keine Konvergenz für $1 - \gamma \le 0$, $\gamma=1$: analog mit Stammfunktion $\ln x$)
+\end{example}
+
+\begin{proposition}
+	sei $f:[a,+\infty]\to\mathbb{R}$ stetig, dann \begin{center}
+		$f$ integrierbar auf $[a,+\infty]$ \ \ $\Leftrightarrow$ \ $\displaystyle \lim\limits_{\beta \to \infty}  \int_a^\beta \vert f \vert \D x$ existiert
+	\end{center}
+	$\Rightarrow$ $\displaystyle \int_0^\infty f \D x = \lim\limits_{k\to\infty} \int_0^{\beta_k} f \D x$ für eine Folge $\beta_k\to\infty$
+\end{proposition}
+
+\begin{remark}
+	Analoge Bemerkungen wie in \propref{integral_r_uneigentlich_bemerkung}
+\end{remark}
+\begin{proof}
+	Analog zu \propref{integral_r_uneigentlich_satz}
+\end{proof}
+
+\begin{example}
+	\proplbl{integral_r_unbestimmt_beispiel_18}
+	{\zeroAmsmathAlignVSpaces*
+	\begin{flalign*}
+	\int_1^\infty &\frac{1}{x^\gamma} \D x \text{existiert für $\gamma > 1$ und nicht für $0 \le \gamma \le 1$}&
+	\end{flalign*}}
+	
+	Für $\gamma \neq 1$:\begin{align*}
+		\int_1^{\beta_k} \frac{1}{x^\gamma} \D x &= \left.\frac{1}{\gamma} x^{1 - \gamma}\right|_1^{\beta_k} = \frac{1}{\gamma - 1} (1 - \beta_k^{1 - \gamma}) \xrightarrow{\beta_k\to\infty} \frac{1}{\gamma - 1},
+	\end{align*}
+	falls $1 - \gamma < 0$ (keine Konvergenz für $1 - \gamma \ge 0$, $\gamma = 1$ analog mit Stammfunktion $\ln x$)
+\end{example}
+
+\begin{example}
+	\proplbl{integral_r_uneigentlich_beispiel_19}
+	{\zeroAmsmathAlignVSpaces\begin{flalign*}
+	\int_0^\infty &\frac{\sin x}{x} \D x &
+	\end{flalign*}}
+	
+	Offenbar ist $\int_{(k - 1)\pi}^{k\pi} \left\vert \frac{\sin x}{x} \right\vert \D x \ge \frac{1}{k\pi} \int_{(k - 1)\pi}^{k\pi} \vert \sin x \vert \D x = \frac{2}{k\pi}$ $\forall k\ge 1$ (vgl. \propref{integration_r_beispiel_5}) \\
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\displaystyle\int_0^{k\pi} \left\vert \frac{\sin x}{x}\right\vert \D x \ge \frac{2}{\pi} \sum_{j=1}^k \frac{1}{j} \xrightarrow{k\to\infty} \infty$ \\
+	$\Rightarrow$ & $\frac{\sin x}{x}$ \emph{nicht} integrierbar auf $(0,\infty)$
+	\end{tabularx}
+	
+	\emph{aber:}\begin{align*}\int_1^\beta \frac{1}{x} \sin x \D x = \frac{\cos 1}{1} - \frac{\cos \beta}{\beta} - \int_1^\beta \frac{\cos x}{x^2} \D x
+	\end{align*}
+	
+	Wegen $\left\vert\frac{\cos x}{x^2}\right\vert\le\frac{1}{x^2}$ $\forall x\neq 0$, $\frac{1}{x^2}$ ist integrierbar nach \propref{integral_r_unbestimmt_beispiel_18} \\
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\displaystyle\lim\limits_{\beta\to\infty} \int_1^\beta \frac{\cos x}{x^2} \D x$ existiert nach \propref{integral_funktion_majorantenkriterium} \\
+	$\Rightarrow$ & $\displaystyle \lim\limits_{\beta\to\infty} \int_1^\beta \frac{\sin x}{x}\D x$ existiert $\Rightarrow$ $\int_0^\infty \frac{\sin x}{x} \left( = \frac{\pi}{2}\right)$ existiert als uneigentliches Integral im Sinne des \person{Riemann}-Integral (vgl \propref{integral_r_uneigentlich_bemerkung}), aber nicht als \lebesque-Integral.
+	\end{tabularx}
+\end{example}

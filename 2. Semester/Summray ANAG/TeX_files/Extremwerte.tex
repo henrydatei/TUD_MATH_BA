@@ -1,0 +1,246 @@
+\section{Extremwerte} \setcounter{equation}{0}
+\subsection{Lokale Extrema ohne Nebenbedingung}
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$\marginnote{Zielraum $\mathbb{R}$ wegen Ordnung}, $D$ offen, $f$ \gls{diffbar}.
+
+\begin{boldenvironment}[notwendige Bedingung] (\propref{mittelwertsatz_optimalitaetsbedingung}): $f$ hat lokales Minimum / Maximum in $x\in D$ $\Rightarrow$ $f'(x) = 0$
+\end{boldenvironment}
+
+\begin{boldenvironment}[Frage]
+	Hinreichende Bedingung?
+\end{boldenvironment}
+
+\begin{*definition}[definit, semidefinit, indefinit]
+	$f^{(k)}(x)$ für $k\ge $ heißt positiv \begriff{definit} (negativ definit), falls \begin{align}
+		\proplbl{extremwerte_definit_definition_eq}
+		f^{(k)}(x) y^k > 0 \;(< 0) \quad\forall y\in\mathbb{R}\setminus \{0\}
+	\end{align}
+	und positiv (negativ) \begriff{semidefinit} mit $\ge$ ($\le$).
+	
+	$f^{(k)}$ heißt \begriff{indefinit}, falls \begin{align}
+		\proplbl{extremwerte_indefinit_definition_eq}
+		\exists y_1, y_2\in\mathbb{R}^n\setminus \{0\}: f^{(k)}(x) y_1^k < 0 < f^{(k)} (x) y_2^k
+	\end{align}
+\end{*definition}
+
+\begin{underlinedenvironment}[Hinweis]
+	$k$ ungerade, $f^{(k)}(x)\neq 0$ $\Rightarrow$ $f^{(k)}(x)$ indefinit, denn $f^{(k)}(-y)^k = (-1)^k f^{(k)}(x) y^k$
+\end{underlinedenvironment}
+
+\begin{proposition}[Hinreichende Extremwertbedingung]
+	\proplbl{extremwerte_hinreichende_bedingung}
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen, $f\in C^k(D,\mathbb{R})$, $x\in D$, $k\ge 2$ und sei \begin{align}
+		\proplbl{extremwerte_hinreiche_bedingung_eq}
+		f'(x) = \dotsc = f^{(k-1)} = 0
+	\end{align}
+	Dann: \begin{enumerate}[label={\alph*)}]
+		\item $f$ hat strenges lokales Minimum (Maximum), falls $f^{(k)}(x)$ positiv (negativ) definit
+		\item \proplbl{extremwerte_hinreichende_bedinung_b}
+		$f$ hat weder Minimum noch Maximum, falls $f^{(k)}(x)$ indefinit.
+	\end{enumerate}
+\end{proposition}
+
+\begin{remark}\vspace*{0pt}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Falls $f^{(k)}(x)$ positiv (negativ) semidefinit $\Rightarrow$ keine Aussage möglich.
+		
+		(betrachte $f:\mathbb{R}^2\to\mathbb{R}$ mit $f(x_1, x_2) = x_1^2 + x_2^4$, hat Minimum in $x=0$, aber $f(x_1, x_2) = x_1^2 + x_2^3$ hat weder Minimum noch Maximum in $x=0$)
+		
+		\item \ref{extremwerte_hinreichende_bedinung_b} liefert: $f^{(k)}(x) \neq 0$ positiv (negativ) semidefinit ist notwendige Bedingung für ein lokales Minimum bzw. Maximum, falls \eqref{extremwerte_hinreiche_bedingung_eq} gilt
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}\hspace*{0pt}
+	\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr-\baselineskip / 2\relax,leftmargin=\widthof{\texttt{zu a)\ }}]
+		\item \proplbl{extremwerte_hinreichende_bedingung_beweis_a}
+		Für Minimum (Maximum analog):
+		
+		Sei $f^{(k)}(x)$ positiv definite Abbildung, $y\to f^{(k)}(x) y^k$ stetige Abbildung (folgt aus \propref{taylor_partielle_ableitung_isomorphismus_bemerkung}).
+		
+		Sei $S=\{ y\in\mathbb{R}^n \mid \vert y \vert = 1 \}$ ist kompakt \\
+		{\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }X}
+		$\xRightarrow{\text{\propref{chap_15_3}}}$ & \multicolumn{3}{l}{$\exists\tilde{y}\in S: f^{(k)}(x) y^k \ge f^{(k)}(x)\tilde{y}^k =: \gamma > 0\;\forall y\in S$} \\
+		$\xRightarrow{\text{\propref{taylor_taylor}}}$ & $f(x+y)$& = &$f(x) + \frac{1}{k!}f^{(k)}(x) y^k + o(\vert y\vert^k)$\\
+		& & = &$f(x) + \frac{1}{k!}\vert y \vert^k \left(\underbrace{f^{(k)}(x) \left(\frac{y}{\vert y \vert}\right)^k}_{\ge \gamma} + \underbrace{o(1)}_{\mathclap{\ge -\frac{\gamma}{2}}}\right),\;\vert y \vert\to 0$ \\
+		&& $\ge$ & $f(x) + \frac{\gamma}{2k!}\cdot \vert y \vert^k$ $\forall y\in B_r(0)$ falls $y\in B_r(0)$, $r>0$ klein \\
+		$\Rightarrow$ &\multicolumn{3}{l}{$x$ ist strenges, lokales Minimum $\Rightarrow$ Behauptung}
+		\end{tabularx}}
+		
+		\item Wähle $y_1, y_2$ gemäß \eqref{extremwerte_indefinit_definition_eq}, \gls{obda} $\vert y_1 \vert = \vert y_2 \vert = 1$ \\
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\xRightarrow[\text{$\vert t \vert$  klein}]{\text{analog \ref{extremwerte_hinreichende_bedingung_beweis_a}}}$ & $f(x + ty_1) = f(x) + \frac{t^k}{k!}\left(f^{(k)}(x) y_1^k + o(1) \right) < f(x)$, \\
+		&$f(x + ty_2) = f(x) + \frac{t^k}{k!} \left( f^{(k)}(x) y_2^k + o(1) \right) > f(x)$
+		\end{tabularx}
+		$\Rightarrow$ Behauptung
+	\end{enumerate}
+\end{proof}
+
+\begin{boldenvironment}[Test Definitheit in Anwendungen]
+	$k=2$ wichtig (vgl. lineare Algebra).
+	
+	$f''(x) \in L^2(\mathbb{R}^2,\mathbb{R})\cong \mathbb{R}^{n\times n}$ (\person{Hesse}-Matrix)
+	
+	$f''(x) y^2 = f''(x) (y,y) = \langle (\mathrm{Hess} f)(x)y, y\rangle$, vgl. \propref{taylor_partielle_ableitung_beispiel_10}
+	
+	Matrix $A\in\mathbb{R}^{n\times}$ ist \begin{itemize}
+		\item positiv (negativ) definit $\Leftrightarrow$ alle Eigenwerte sind positiv (negativ) 
+		\item indefinit $\Rightarrow$ $\exists$ positive und negative Eigenwerte
+	\end{itemize}
+\end{boldenvironment}
+
+\subsection{Sylvester'sches Definitheitskriterium}
+Eine symmetrische Matrix $A=(a_{ij})\in\mathbb{R}^{n\times n}$ ist positiv definit \gls{gdw} alle führenden Hauptminoren positiv sind, d.h. \begin{align*}
+	\alpha_k := \det\begin{pmatrix}
+		\alpha_{11} & \dots & \alpha_{1k} \\ \vdots && \vdots \\ \alpha_{k1} & \dots & \alpha_{kk}
+	\end{pmatrix} > 0\quad\forall k\in\{1,\dotsc,n\}
+\end{align*}
+
+\begin{underlinedenvironment}[beachte]
+	$A$ negativ definit $\Leftrightarrow$ $-A$ positiv definit
+\end{underlinedenvironment}
+\begin{boldenvironment}[Spezialfall $n=2$]\vspace*{0pt}
+	\begin{itemize}[topsep=\dimexpr-\baselineskip/2\relax]
+		\item $\det A <0 $ $\Leftrightarrow$ indefinit
+		\item $\alpha_1 < 0$ und $\det A > 0$ $\Leftrightarrow$ negativ definit
+	\end{itemize}
+\end{boldenvironment}
+
+\begin{example}
+	\proplbl{extremwerte_sylvester_beispiel_3}
+	Sei $f:\mathbb{R}^2\to\mathbb{R}$ mit $f(x_1, x_2) = x_1^2 + \cos x_2$ \\
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $f'(x_1, x_2) = (2x_1) - \sin x_2 = 0$ \\
+	$\Rightarrow$  &$x_1 = 0$, $x_2 = k\cdot\pi$, d.h. $\tilde{x} = (0, k\cdot\pi)$ für $k\in\mathbb{Z}$ sind Kandidaten für Extrema.
+	\end{tabularx} \begin{align*}
+		f''(x_1, x_2) &= \begin{pmatrix}
+			2 & 0 \\ 0 & -\cos x_2
+		\end{pmatrix} & \Rightarrow\;\; f(\tilde{x}) &= \begin{pmatrix}
+			2 & 0 \\ 0 & (-1)^{k+1}
+		\end{pmatrix}
+	\end{align*}
+	entsprechend ergeben sich folgende Fälle:\\
+	\begin{tabularx}{\linewidth}{r@{\ \ }Xr@{\ \ }X}
+	$\Rightarrow$ & $f''(\tilde{x})$ ist positiv definit für $k$ ungerade & $\Rightarrow$ & $f''(\tilde{x})$ ist indefinit für $k$ gerade \\
+	$\Rightarrow$ & lokales Minimum,&
+	$\Rightarrow$ & kein Extremum
+	\end{tabularx}
+\end{example}
+
+\subsection{Lokale Extrema mit Gleichungsnebenbedingung}
+Betrachte $f:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}, $D$ offen, $g:D\subset\mathbb{R}^n\to\mathbb{R}$ \gls{diffbar}
+
+\begin{boldenvironment}[Frage:]
+	Bestimmen von Extrema von $f$ auf der Menge $G:= \{ x\in\mathbb{R}\mid g(x) = 0 \}$, d.h. suche notwendige Bedingung (für hinreichende Bedingung sieh Vorlesung Optimierung)
+\end{boldenvironment}
+
+\begin{boldenvironment}[Motivation]
+	Für $m\ge 1$: notwendige Bedingung: $f'(\mathrm{max})$ steht senkrecht auf der Niveaumenge $G$ \marginnote{(vgl. \propref{richtungsableitung_gradient_eigenschaften})} \\
+	$\Rightarrow$ $\exists\lambda\in\mathbb{R}: f'(x_{\max}) + \lambda g'(x_{\max}) = 0$
+\end{boldenvironment}
+
+\begin{proposition}[Lagrange-Multiplikatorregel, notwendige Bedingung]
+	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, \gls{diffbar}, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
+	
+	Falls $g'(x)$ regulär, d.h. \begin{align}
+		\proplbl{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_4}
+	\mathrm{rang}\; g'(x) = m, \end{align}dann
+	\begin{align}
+	\proplbl{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_5}
+	\exists \lambda\in\mathbb{R}^m: f'(x) + \transpose{\lambda} g'(x) = 0\end{align}
+\end{proposition}
+
+\begin{*definition}[Lagrangescher Multiplikator]
+	$\lambda$ oben heißt \begriff{Lagrangescher Multiplikator}
+\end{*definition}
+
+\begin{remark}\vspace*{0pt}
+\begin{itemize}
+	\item Offenbar nur für $m\le n$
+	\item $x$ mit \eqref{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_4} heißt \begriff{reguläres Extrema}.
+	\item Kandidaten für Extrema bestimmen: \eqref{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_5} liefert $n$ Gleichungen für $n+m$ Unbekannte $(x,\lambda)$, \emph{aber} \eqref{extremwerte_lokale_extrema_mit_gleichungsnebenbedingung_lagrange_multiplikator_eq_5} mit $g(x) = 0$ liefert $n+m$ Gleichungen für $(x,\lambda)$
+\end{itemize}
+\end{remark}
+
+\begin{proof}
+	Vgl. Literatur.
+\end{proof}
+
+\begin{example}
+	Bestimme reguläre Extrema von $f$ auf $G=\{ g=0\}$ mit
+	\begin{alignat*}{2}
+		f&:\mathbb{R}^3\to\mathbb{R},&\, (x,y,z) \mapsto\;&x^2 + y^2 + z^2 \\
+		g&:\mathbb{R}^3\to\mathbb{R}^2,& (x,y,z) \mapsto& \begin{pmatrix}
+	x^2 + 4y^2 - 1 \\ z
+	\end{pmatrix}
+	\end{alignat*}
+	Betrachte $\transpose{\lambda} = (\lambda_1,\lambda_2)$: \begin{align}
+		0 &= f'(x,y,z) + \transpose{\lambda}g'(x,y,z) = (2x, 2y, 2z) + \transpose{\lambda}\cdot\begin{pmatrix}
+			2x & 8y & 0 \\ 0 & 0 & 1
+		\end{pmatrix} \\
+		\notag 0 &= g(x,y,z)
+	\end{align}
+	Das heißt \begin{align*}
+		2x + 2\lambda_1 x &= 0 & x^2 + 4y^2 &= 1 \\
+		2y+8\lambda_1 y &= 0 & z &= 0 \\
+		2z + \lambda_2 &= 0 & &
+	\end{align*}
+	$\Rightarrow$ $z=0$, $\lambda_2 = 0$, und \begin{align*}
+		x(1 + \lambda_1) &= 0 & y(1 + 4\lambda_1) &= 0 & x^2 + 4y^2 &= 1
+	\end{align*}
+	\begin{tabularx}{\linewidth}{@{}r@{\ }l@{\ }l@{\ }c@{\ }r@{\ }l@{\ }c@{\ }r@{\ }l@{\ \ }c@{\ \ }r@{$\,$}r@{$\,$}r@{$\,$}r@{$\,$}lX}
+	falls:& $\bullet$ $x\neq 0$:& $\lambda_1$ & = & $-1$, &$y$ & = & $0$, &$x$ = $\pm 1$ &$\Rightarrow$& $($ & $\pm1$, & 0, &0 & $)$ & \multirow{2}{*}{$\left.\phantom{\dfrac{1}{1}}\right\} \text{Kandidaten für reguläre Extrema}$} \\
+    &	$\bullet$ $x = 0$:  & $y$ & = &$\pm\frac{1}{2}$, &$\lambda_1$ & = & $-\frac{1}{1}$& & $\Rightarrow$& $($ & 0,&$\pm\frac{1}{2}$, &0 &$)$	\end{tabularx}
+
+	Offenbar ist $\mathrm{rang}\;g'(x,y,z)=2$ für alle Kandidaten.
+	
+	Da $G$ Ellipse in der $x$-$y$-Ebene ist, und $f$ die Norm in's Quadrat, prüft man leicht: Minimum in $(0,\pm\frac{1}{2},0)$ und Maximum in $(\pm 1,0,0)$.
+\end{example}
+
+\subsection{Globale Extrema mit Abstrakter Nebenbedinung}
+Betrachte $f:\overline{D}\subset\mathbb{R}\to\mathbb{R}$, $D$ offen, $f$ stetig auf $\overline{D}$, \gls{diffbar} auf $D$.
+
+\begin{boldenvironment}[Existenz]
+	nach \propref{chap_15_3}:
+	
+	$D$ beschränkt $\xRightarrow{\text{$\overline{D}$ kompakt}}$ $f$ besitzt auf $\overline{D}$ ein Minimum und ein Maximum
+\end{boldenvironment}
+
+\begin{boldenvironment}[Frage]
+	Bestimme sogenannte globale Extremalstelle $x_{\min}$, $x_{\max}$.
+\end{boldenvironment}
+
+\begin{boldenvironment}[Strategie:]\vspace*{0pt}
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Bestimmte lokale Extrema in $D$
+		\item Bestimme globale Extrema auf $\partial D$
+		\item Vergleiche Extrema aus a) und b)
+	\end{enumerate}
+\end{boldenvironment}
+
+\begin{example}
+	Sei $f(x_1, x_2) = x_1^2 + \cos x_2$ mit $D=(-1,1)\times(0,4)$ (vgl. \propref{extremwerte_sylvester_beispiel_3}).
+	
+	Lokale Extrema in $D$: $f(0,\pi) = -1$ Minimum.
+	
+	Globale Extrema auf $\partial D$:\begin{itemize}
+		\item $x_1 = \pm 1:$ Betrachte $x_2 \to f(\pm 1, x_2) = 1 + \cos x_2$ auf $[0,4]$.
+		
+		Offenbar $0 = f(\pm 1, \pi) \le f(\pm 1, x_2) \le f(\pm 1, 0) = 2$
+		
+		\item $x_2=0$: $x_1\to f(x_1, 0) = x_1^2 + 1$ auf $[-1,1]$
+		
+		Offenbar $1=f(0,0) \le f(x_1,0)\le f(\pm 1, 0) = 2$
+		
+		\item $x_2 = 4$: Betrachte $x_1\to x_1^2+\cos 4$ mit $[-1,1]$
+		
+		$\cos 4 \le f(0,4) \le f(x_1, 4) \le f(\pm 1, 4) = 1 + \cos 4$
+	\end{itemize}
+	Vergleich liefert:$ x_{\min}=(0,\pi)$, $x_{\max} = (\pm 1,0)$
+	
+	\begin{underlinedenvironment}[Hinweis]
+		Bentze für Extrema evtl. partielle Ableitungen \begin{align*}
+			f_{x_2}(\pm 1, x_2) &= -\sin x_2 = 0 \\
+			\text{bzw.}\quad f_{x_1}(x_1, 0) &= 2x_1 = 0 \qquad\qquad\text{usw.}
+		\end{align*}
+	\end{underlinedenvironment}
+\end{example}

@@ -1,0 +1,384 @@
+\section{Richtungsableitung und partielle Ableitung}\proplbl{richtungsableitung}  \setcounter{equation}{0}
+Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
+
+\begin{boldenvironment}[Ziel]
+	Zurückführung der Berechnung der Ableitung $f(x)$ auf die Berechnung der Ableitung für Funktionen $\tilde{f}:\tilde{D}\subset K\to K$
+	\begin{itemize}
+		\item Reduktionssatz $\Rightarrow$ man kann sich bereits auf $m=1$ einschränken
+		\item für Berechnung der Ableitung von $f$ ist neben den Rechen- und Kettenregeln auch der Differentialquotient verfügbar
+	\end{itemize}
+\end{boldenvironment}
+
+\begin{boldenvironment}[Idee]
+	Betrachte $f$ auf Geraden $t\to x + t\cdot z$ durch $x$ $\Rightarrow$ skalares Argument $t$, $t\in K$ $\Rightarrow$ Differentialquotient.
+	
+	Spezialfall: $z = e_j$ $\Rightarrow$ Partielle Ableitung
+\end{boldenvironment}
+
+\begin{*definition}[Richtungsableitung]
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$, $z\in K^n$.
+	
+	Falls $a\in L(K, K^m)$ ($\cong K^m$) existiert mit\begin{align}
+		\proplbl{richtungsableitung_definition}
+		f(x + t\cdot z) = f(x) + t\cdot a + o(t),\;t\to 0,\; t\in K,
+	\end{align}
+	dann heißt $f$ \gls{diffbar} in $x$ \begriff[differenzierbar!]{in Richtung $z$} und \mathsymbol{Dz}{$\mathrm{D}_z$}$f(x) := a$ heißt \begriff{Richtungsableitung} von $f$ in $x$ in Richtung $z$ (andere Bezeichnungen: $f(x; z)$, $\partial_z f(x)$, $\frac{\partial f}{\partial z}(x)$, $\partial f(x,z)$, $\dotsc$)
+\end{*definition}
+\begin{*remark}
+	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
+		\item Wegen $B_\epsilon(x)\subset D$ für ein $\epsilon > 0$ existiert $\tilde{\epsilon}$ mit $x + t\cdot z \in D$ $\forall t\in B_{\tilde{\epsilon}} (0) \subset K$
+		\item $f'(x;0)$ existiert offenbar stehts für $z=0$ mit $f'(x;0) = 0$
+	\end{itemize}
+\end{*remark}
+
+\begin{proposition}
+	\proplbl{richtungsableitung_prop_equivalente_definition}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$, $z\in K^n$. Dann:
+	\begin{align}
+		\notag &\text{$f$ \gls{diffbar} in $x$ in Richtung $z$ mit $\mathrm{D}_z f(x)\in L(K, K^m)$} \\
+		\proplbl{richtungsableitung_definition_prop_eins}
+		\Leftrightarrow\;\; & \text{für }\phi(t) = f(x + t\cdot z) \text{ existiert }\phi'(0) \text{ und } \mathrm{D}_z f(x) = \phi'(0) \\
+		\proplbl{richtungsableitung_definitnion_prop_zwei}
+		\Leftrightarrow\;\; & \lim\limits_{t\to 0} \frac{f(x + t\cdot z) - f(x)}{t} = a \;(\in L(K, K^m)) \text{ existiert und } \mathrm{D}_z f(x) = a
+	\end{align}
+\end{proposition}
+
+\begin{example}
+	Sei $f:\mathbb{R}^2\to\mathbb{R}$ mit $f(x) = x_1^2 + \vert x_2\vert$. Existiert eine Richtungsableitung in $x=(x_1, 0)$ in Richtung $z=(z_1, z_2)$?
+	
+	Sei $\phi(t) := f(x + t\cdot z) = (x_1 + t\cdot z_1)^2 + \vert t\cdot z_2\vert = \underbrace{x_1^2 + 2t\cdot x_1 z_1 + t^2 z_1^2}_{=\phi_1(t)} + \underbrace{\vert t \vert \cdot \vert z_2 \vert} _{=\phi_2(t)}$
+	
+	$\Rightarrow$ $\phi_1'(0) = 2\cdot x_1 z_1$ existiert $\forall x_1, z_1\in\mathbb{R}$ \\
+	\phantom{$\Rightarrow$} $\phi_2'(0) = 0$ existiert \emph{nur} für $z_2 = 0$ (vgl. \propref{ableitung_beispiel_betrag}) \\
+	$\Rightarrow$ $\phi_1'(0) = 2x_1z_1$ existiert \emph{nur} für $x_1$, $z_1\in\mathbb{R}$, $z_2 = 0$ \\
+	$\xRightarrow{\eqref{richtungsableitung_definition_prop_eins}}$ Richtungsableitung von $f$ existiert für alle $ x = (x_1, 0)$ \emph{nur} in Richtung $z=(z_1, 0)$ mit $\mathrm{D}_z f(x) = 2x_1 z_1$
+\end{example}
+
+\begin{boldenvironment}[Frage]
+	Existiert $\mathrm{D}_z f(x)$ $\forall z$, falls $f$ \gls{diffbar} in $x$?
+\end{boldenvironment}
+
+\begin{proposition}
+	\proplbl{richtungsableitung_prop_existenz_prop}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} in $x\in D$.\\
+	$\Rightarrow$ Richtungsableitung $\mathrm{D}_z f(x)$ existiert $\forall z\in K^n$ und \begin{align}
+		\proplbl{richtungsableitung_prop_existenz}
+		\mathrm{D}_z f(x) = f'(x) \cdot z \;(\in K^{m\times 1})
+	\end{align}
+	\emph{Hinweis:} Richtungsableitung ist linear in $z$!
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	$f$ \gls{diffbar} in $x$ \\
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ &$f(y) = f(x) + f'(x) (y - x) + o(\vert y - x\vert)$, $y\to x$ \\
+		$\xRightarrow{y=x+t\cdot z}$& $f(x + tz) = f(x) + t\cdot f'(x)\cdot z + o(t)$, $t\to 0$ \\
+		$\xRightarrow{\eqref{richtungsableitung_definition}}$&  Behauptung\hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\begin{example}
+	\proplbl{richtungsableitung_example_euklidische_norm}
+	Betrachte $f:\mathbb{R}^n\to \mathbb{R}$ mit $f(x) = \vert x \vert ^2$ $\forall x$
+	\begin{enumerate}[label={\alph*)}]
+		\item Es gilt \zeroAmsmathAlignVSpaces \begin{alignat*}{2}
+		 && \phi(t) &= \vert x + tz\vert ^2 = \sum_{i=1}^{n} (x_i + t z_i)^2 = \sum_{i=1}^n x_i^2 + 2t x_i z_i + t^2 z_i^2 \\
+		 \Rightarrow && \phi'(t) &= \sum_{i=1}^n 2x_i z_i + 2t z_i^2 \\
+		\xRightarrow{\eqref{richtungsableitung_definition_prop_eins}} &\;\;& \phi'(0) &= 2\sum_{i=1}^n x_i z_i = 2 \langle x,z\rangle = \mathrm{D}_z f(x)\quad\forall x, z\in\mathbb{R}^n
+		\end{alignat*}
+		\item \propref{ableitung_beispiel_euklidische_norm} liefert $f'(x) = 2x$ $\forall x\in\mathbb{R}^n$ \\
+		$\xRightarrow{\eqref{richtungsableitung_prop_existenz}} $ $\mathrm{D}_z f(x) = 2x\cdot z = 2 \langle x,z\rangle$ $\forall x,z\in\mathbb{R}^n$
+	\end{enumerate}
+	folglich gilt: $\vert z \vert = 1$ und $x\in\mathbb{R}^n$ fest \begin{itemize}
+		\item $\mathrm{D}_z f(x) = 0$ $\Leftrightarrow$ $x\perp z$
+		\item $\mathrm{D}_z f(x) = \,$maximal ($x$ fest) $\Leftrightarrow$ $z = \frac{x}{\vert x \vert}$
+	\end{itemize}
+\end{example}
+
+\subsection{Anwendung: Eigenschaften des Gradienten}
+\begin{*definition}[Niveaumenge]
+	Sei $f:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ \gls{diffbar} in $x\in D$.
+	
+	$N_C:= \{ y\in D \mid f(x) = f(y) \}$ heißt \begriff{Niveaumenge} von $f$ für $x\in \mathbb{R}$.
+
+\end{*definition}	
+
+\begin{*definition}[Tangentialvektor]
+	Sei $\gamma: (-\delta, \delta)\to N_C$ ($\delta > 0$) Kurve mit $\gamma(0) = 0$, $\gamma$ \gls{diffbar} in $0$.
+	
+	Ein $z\in\mathbb{R}\setminus \{0\}$ mit $z = \gamma'(0)$ für eine derartige Kurve $\gamma$ heißt \begriff{Tangentialvektor} an $N_C$ in $x$.
+	
+	Offenbar gilt \zeroAmsmathAlignVSpaces
+	\begin{alignat}{2}
+	 \notag && \phi(t) &= f(\gamma(t)) = c \\
+	 \notag &\Rightarrow\;\;& \phi'(0) &= f'(\gamma(0))\cdot \gamma'(0) = 0 \\
+	 \proplbl{richtungsableitung_tangentialvektor_eigenschaft}
+	 &\Rightarrow\;\; &\mathrm{D}_{\gamma'(0)} f(x) &\overset{\mathclap{\star}}{=} \langle f'(x), \gamma'(0)\rangle = 0\marginnote{$\star$: vgl. \propref{richtungsableitung_prop_existenz_prop}}[\dimexpr -\baselineskip / 2 \relax]
+	 \end{alignat}
+\end{*definition}
+
+\begin{proposition}[Eigenschaften des Gradienten]
+	\proplbl{richtungsableitung_gradient_eigenschaften}
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen, $f$ \gls{diffbar} in $x\in D$. Dann:
+\begin{enumerate}[label={\arabic*)}]
+	\item Gradient $f'(x)$ steht senkrecht auf der Niveaumenge $N_{f(x)}$, d.h. $\langle f'(x), z\rangle = 0$ $\forall$ Tangentialvektoren $z$ an $N_{f(x)}$ in $x$
+	\item Richtungsableitung $\mathrm{D}_z f(x) = 0$ $\forall$ Tangentialvektoren $z$ an $N_{f(x)}$ in $x$
+	\item Gradient $f(x)$ zeigt in Richtung des steilsten Anstieges von $f$ in $x$ und $\vert f'(x)\vert$ ist der steilste Anstieg, d.h. falls $f'(x)\neq 0$ gilt für Richtung $\tilde{z} := \frac{f'(x)}{\vert f'(x)\vert}$ \begin{align*}
+		D_{\tilde{z}} f(x) = \max \left\lbrace \mathrm{D}_z f(x) \in\mathbb{R} \mid z\in\mathbb{R}^n \text{ mit } \vert z \vert = 1 \right\rbrace = \vert f(x)\vert
+	\end{align*}
+	
+	(beachte: \person{euklid}ische Norm wichtig!)
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\begin{enumerate}[label={\arabic*)},topsep=\dimexpr -\baselineskip / 2 \relax]
+		\item folgt direkt aus \eqref{richtungsableitung_tangentialvektor_eigenschaft},\eqref{richtungsableitung_prop_existenz}
+		\item analog oben
+		\item für $\vert z \vert = 1$ gilt
+		\zeroAmsmathAlignVSpaces \begin{align*}
+			&\mathrm{D}_z f(x) = \langle f'(x), z \rangle = \vert f'(x) \vert \langle \tilde{z},z\rangle \\
+			\overset{\star}{\le}\; &\vert f'(x) \vert  \vert \tilde{z}\vert \vert z \vert = \vert f'(x)\vert = \frac{\langle f'(x), f'(x)\rangle}{\vert f'(x) \vert} = \langle f'(x), \tilde{z} \rangle \overset{\eqref{richtungsableitung_prop_existenz}}{=} \mathrm{D}_{\tilde{z}}f(x)\marginnote{$\star$: \person{Cauchy} - \person{Schwarz}}
+		\end{align*}
+		$\Rightarrow$ Behauptung
+	\end{enumerate}
+\end{proof}
+
+\begin{boldenvironment}[Feststellung]
+	für $f:D\subset K^n\to K^m$: die lineare Abbildung $f'(x):K^n\to K^m$ ist durch Kenntnis für $n$ linear unabhängige Vektoren bestimmt\\
+	$\xRightarrow{\eqref{richtungsableitung_prop_existenz}}$ $f'(x)$ eindeutig bestimmt durch Kenntnis von \begin{align*}
+		\mathrm{D}_{e_j} f(x) = f'(x) \cdot e_j \;(\in K^{m\times 1}) \text{ für } j = 1,\dotsc,n
+	\end{align*}
+\end{boldenvironment}
+
+\begin{*definition}[partielle Ableitung]
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$ (nicht notwendigerweise \gls{diffbar} in $x$).
+	
+	Falls Richtungsableitung $D_{e_j} f(x)$ existiert, heißt $f$ \begriff{partiell \gls{diffbar}} bezüglich $x_j$ im Punkt $x$ und $D_{e_j} f(x)$ heißt \begriff{partielle Ableitung} von $f$ bezüglich $x_j$ in $x$.
+	
+	Schreibweisen: $\frac{\partial }{\partial z}f(x), \frac{\partial f}{\partial x_j}(x), \mathrm{D}_j f(x), f_{x_j}(x), \dotsc$
+\end{*definition}
+
+Wegen $f(x + t e_j) = f(x_1, \dotsc, x_{j-1}, x_j + t, x_{j+1}, \dotsc, x_n)$ liefert \propref{richtungsableitung_prop_equivalente_definition}:
+\begin{conclusion}
+	Sei $f:D\subset\mathbb{R}^n\to K^m$, $D$ offen. Dann:	\zeroAmsmathAlignVSpaces\begin{align}
+		\notag & f \text{ ist partiell \gls{diffbar} bezüglich $x_j$ in $x$ mit Ableitung $\frac{\partial}{\partial x_j}f(x)$} \\
+		\Leftrightarrow\;\; & \lim\limits_{t\to 0} \frac{f(x_1, \dotsc, x_{j-1}, x_j, x_{j+1}, \dotsc, x_n) - f(x_1, \dotsc, x_j, \dotsc, x_n)}{t} = a \text{ existiert}\\
+		\notag & \text{ und } \frac{\partial }{\partial x_j}f(x) = a
+	\end{align}
+\end{conclusion}
+
+\begin{remark}
+	Zur Berechnung von $\frac{\partial}{\partial x_j} f(x)$ differenziert man skalare Funktionen \\ $x_j\to f(x_1, \dotsc, x_j, \dotsc, x_n)$ (d.h. alle $x_k$ mit $k\neq j$ werden als Parameter angesehen).
+\end{remark}
+
+\begin{example}
+	Sei $f:\mathbb{R}^3 \to \mathbb{R}$ mit $f(x_1, x_2, x_3) = x_1^2 \sin x_2 + e^{x_3 - x_1}$, damit \begin{align*}
+		\frac{\partial}{\partial x_1}f(x) &= 2x_1 \sin x_2 - e^{x_3 - x_1} & \frac{\partial}{\partial x_2} &= f(x) = x_1^2 \cos x_2 & \frac{\partial}{\partial x_3} f(x) &= e^{x_3 - x_1}
+	\end{align*}
+\end{example}
+
+\begin{conclusion}
+	\proplbl{richtungsableitung_prop_partielle_ableitung_ausrechnen}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} in $x\in D$ \zeroAmsmathAlignVSpaces  \begin{align}
+	\proplbl{richtungsableitung_partielle_ableitung_ausrechnen}
+	\Rightarrow \;\; D_z f(x) = \sum_{j=1}^n z_j \frac{\partial}{\partial x_j} f(x) \quad \forall z = (z_1, \dotsc, z_n)\in\mathbb{R}
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	\NoEndMark
+	\eqref{richtungsableitung_prop_existenz} liefert \zeroAmsmathAlignVSpaces\begin{align*}
+		D_z f(x) = f'(x) \cdot z = f'(x) \cdot \sum_{j=1}^n z_j \cdot e_j = \sum_{j=1}^n z_j \left(f'(x)\cdot e_j\right) = \sum_{j=1}^n z_j \frac{\partial}{\partial x_j} f(x)\tag*{\csname\InTheoType Symbol\endcsname}
+	\end{align*}
+\end{proof}
+
+\begin{example}
+	Sei $f:\mathbb{R}^n\to \mathbb{R}$ mit $f(x) = \vert x \vert ^2 = \sum_{j=1}^n x_j^2$. $f$ ist \gls{diffbar} nach \propref{richtungsableitung_example_euklidische_norm} \\
+	$\rightarrow$ $\frac{\partial}{\partial x_j} f(x) = 2 x_j$ und $j=1,\dotsc,n$ \\
+	$\xRightarrow{\eqref{richtungsableitung_partielle_ableitung_ausrechnen}}$ $\mathrm{D}_z f(x) = \sum_{j=1}^n 2x_j\cdot z_j = 2\langle x,z\rangle$ (vgl. \propref{richtungsableitung_example_euklidische_norm})
+\end{example}
+
+\begin{theorem}[Vollständige Reduktion]
+	\proplbl{richtungsableitung_vollstaendige_reduktion}
+	Sei $f=(f_1, \dotsc, f_m): D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} in $x\in D$. Dann:
+	\begin{align}
+		\proplbl{richtungsableitung_vollstaendige_reduktion_eq}
+		f'(x) \overset{(a)}{=}\begin{pmatrix}
+			f_1'(x) \\ \vdots \\ f_m'(x)
+		\end{pmatrix} \overset{(b)}{=} \left( \frac{\partial}{\partial x_1} f(x)\;\dotsc\;\frac{\partial}{\partial x_n}f(x) \right) \overset{(c)}{=} \underbrace{\begin{pmatrix}
+			\frac{\partial }{\partial x_1} f_1(x) & \dots & \frac{\partial}{\partial x_n} f_1(x) \\
+			\vdots & & \vdots
+			\\ \frac{\partial}{\partial x_1} f_m(x) & \dots & \frac{\partial}{\partial x_n} f_m(x)
+		\end{pmatrix}}_{\mathcal{\text{\begriff{\person{Jacobi}-Matrix}}}}\in K^{m\times n}
+	\end{align}
+\end{theorem}
+
+\begin{remark}
+	Falls $f$ \gls{diffbar} in $x$, dann reduziert \propref{richtungsableitung_vollstaendige_reduktion} die Berechnung von $f'(x)$ auf Ableitung skalarer Funktionen $\tilde{f}:\tilde{D}\subset K\to K$.
+\end{remark}
+
+\begin{proof}[\propref{richtungsableitung_vollstaendige_reduktion}]\hspace*{0pt}
+\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr -\baselineskip / 2 \relax]
+	\item \propref{ableitung_proposition_reduktion}
+	\item Benutze $f'(x)\cdot z = \mathrm{D}_z f(x)$ und \propref{richtungsableitung_prop_partielle_ableitung_ausrechnen}
+	\item Entweder $\frac{\partial}{\partial x_j} f(x) = \transpose{\left( \frac{\partial}{\partial x_j} f_1(x), \dotsc, \frac{\partial}{\partial x_j} f_n(x)\right)}$ oder $f_j'(x) = \left( \frac{\partial}{\partial x_1} f_j(x), \dotsc, \frac{\partial}{\partial x_n} f_j(x) \right)$, sonst analog zu b)
+\end{enumerate}
+\end{proof}
+
+\begin{boldenvironment}][Frage]
+	Gilt die Umkehrung von \propref{richtungsableitung_vollstaendige_reduktion} (\propref{richtungsableitung_prop_existenz_prop}), d.h. falls alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f(x)$ bzw. alle Richtungsableitungen $\mathrm{D}_z f(x)$ existieren, ist dann $f$ \gls{diffbar} in $x$? Nein!
+\end{boldenvironment}
+
+\begin{example}
+	Betrachte $f:\mathbb{R}^2\to\mathbb{R}$ mit \begin{align*}
+		f(x_1, x_2) = \begin{cases}
+			\frac{x_2^2}{x_1},& x_1\neq 0 \\
+			0,& x_1 = 0
+		\end{cases}
+	\end{align*}
+	
+	Berechne Richtungsableitungen in $x=0$ mittels \eqref{richtungsableitung_definitnion_prop_zwei}.
+	\begin{alignat*}{4}
+		&\mathrm{D}_z f(0) = \lim\limits_{t\to 0} \frac{f(0 + tz)- f(0)}{t} = \lim\limits_{t\to 0} \frac{f(tz)}{t} \\
+		\Rightarrow\;\; & \mathrm{D}_z f(0) = \lim\limits_{t\to 0} \frac{t^2 z_2^2}{t^2 z_1^2} = \frac{z_2^2}{z_1^2} \quad \forall z= (z_1, z_2)\in\mathbb{R}^2,\;z = 0
+		\intertext{Betrachte möglicherweise problematische Richtung $z=(0,z_2)$}
+		& D_{(0,z_2)} f(0) = \lim\limits_{t\to 0} \frac{0}{t} = 0 \\
+		\Rightarrow\;\;& \mathrm{D}_z f(0) \text{ existiert } \forall z\in\mathbb{R}^2
+	\end{alignat*}
+	\emph{aber} ist $f$ überhaupt \gls{diffbar}? $\lim\limits_{n\to 0} f\left(\frac{1}{n^2},\frac{1}{n}\right) = \lim\limits_{n\to 0} \dfrac{\frac{1}{n^2}}{\frac{1}{n^2}} = 1 \; \neq \; 0 = f(0)$ \\
+	$\Rightarrow$ $f$ nicht stetig in $x=0$ $\xRightarrow{\text{\propref{diffbar_impl_stetig}}}$ $f$ \emph{nicht \gls{diffbar}}.
+\end{example}
+
+\begin{boldenvironment}[Ausblick]
+	Sind alle partiellen Ableitungen $\frac{\partial}{\partial x_j} f_j(x)$ stetige Funktionen in $x\in D$ \marginnote{Siehe \propref{mittelwertsatz_existenz_partieller_ableitung}}\\
+	$\Rightarrow$ $f$ \gls{diffbar} in $x$ und \propref{richtungsableitung_vollstaendige_reduktion_eq} gilt.
+\end{boldenvironment}
+
+\subsection{\texorpdfstring{$\mathbf{\mathbb{R}}$}{R}-differenzierbar und \texorpdfstring{$\mathbf{\mathbb{C}}$}{C}-differenzierbar}
+Sei $f:D\subset K^n\to K^m$ ist \gls{diffbar} in $z_0 \in D$, $D$ offen
+
+$\Leftrightarrow$ eine $k$-lineare Abbildung $A:K^n\to K^m$ existiert, die die Funktion $f$ in $z_0$ "`lokal approximiert"'.
+
+$\rightarrow$ man müsste eigentlich genauer sagen: $f$ ist $k$-\gls{diffbar} in $z_0$ wegen $\mathbb{R}\subset\mathbb{C}$. Jeder \gls{vr} über $\mathbb{C}$ kann auch als \gls{vr} über $\mathbb{R}$ betrachtet werden (nicht umgekehrt!) und jede $\mathbb{C}$-lineare Abbildung zwischen $\mathbb{C}$-\gls{vr} kann auch als $\mathbb{R}$-linear betrachtet werden
+
+$\Rightarrow$ jede $\mathbb{C}$-\gls{diffbar}e Funktion $f:D\subset \mathbb{C}^n\to \mathbb{C}^m$ ist auch $\mathbb{R}$-\gls{diffbar}.
+
+Die Umkehrung gilt i.A. nicht!
+
+\begin{example}
+	Sei $f:\mathbb{C}\to\mathbb{C}$ mit $f(z) = \overline{z}$.
+	\begin{enumerate}[label={\alph*)}]
+		\item $f$ ist additiv und $f(tz) = t\cdot f(z)$ $\forall t\in \mathbb{R}$. \\
+		$\Rightarrow$ $f$ ist $\mathbb{R}$-linear.
+		
+		Wegen $f(z) = \overline{z} = \overline{z_0} + \overline{z - z_0} = f(z_0) + f(z - z_0) + 0$ folgt: $\mathbb{R}$-\gls{diffbar} in $z_0$ $\forall Z-0\in\mathbb{C}$ mit $\mathbb{R}$-Ableitung $f'(z_0) = 1$
+		
+		\item Angenommen, $f$ ist $\mathbb{C}$-\gls{diffbar} in $z_0\in\mathbb{C}$.\\
+		$\Rightarrow$ $f'(z_0) = \lim\limits_{z\to 0} \frac{\overline{z_0 + z} - \overline{z}}{z} = \lim\limits_{z\to 0} \frac{\overline{z}}{z} = \pm 1$ $\Rightarrow$ \Lightning\ (Grenzwert existiert nicht) \\
+		$\Rightarrow$ $f$ nicht $\mathbb{C}$-\gls{diffbar}
+	\end{enumerate}
+\end{example}
+
+\begin{*definition}[$\mathbb{R}$-differenzierbar]
+	$f:D\subset X\to Y$, $D$ offen, $(X,Y) = (\mathbb{R}^n, \mathbb{C}^m)$ bzw. $(\mathbb{C}^n,\mathbb{R}^m)$ oder $(\mathbb{C}^n, \mathbb{C}^m)$ heißt \begriff{$\mathbb{R}$-\gls{diffbar}} in $z_0\in D$, falls \eqref{definition_ableitung} im \propref{section_ableitung} gilt mit entsprechender $\mathbb{R}$-linearer Abbildung $A:X\to Y$ gibt.
+	
+	\uline{beachte:} falls $X$ oder $Y$ nur \gls{vr} über $\mathbb{R}$, dann $\mathbb{C}$-\gls{diffbar} nicht erklärt.
+	\vspace*{1.5em}
+\begin{boldenvironment}[Spezialfall]
+	Sei $f:D\subset\mathbb{C}\to\mathbb{C}$, $D$ offen, $z_0\in D$. Vergleiche $\mathbb{R}$-\gls{diffbar} und $\mathbb{C}$-\gls{diffbar}:
+	
+	Sei $f$ $\mathbb{R}$-\gls{diffbar} in $z_0$, d.h. es existiert eine $\mathbb{R}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ mit {\zeroAmsmathAlignVSpaces**\begin{align}
+		\proplbl{richtungsableitung_differenzierbarkeit_r_diffbar}
+		f(z_0 + z) = f(z_0) + A\cdot z + o(\vert z \vert z),\; z\to z_0
+	\end{align}}
+	\zeroAmsmathAlignVSpaces*
+	\begin{alignat}{5}
+	\notag &\text{für }& z=&x,\;&x\in\mathbb{R}:\;& A(1) &= \lim\limits_{\substack{x\to 0 \\ x\in\mathbb{R}}} \frac{f(z_0 + x) - f(z_0)}{x} &=: f_x(z_0) \\
+	\proplbl{richtungsableitung_differenzierbar_partiell_y}
+	&\text{für }& z=&iy,\;& y\in\mathbb{R}:\;& A(i) &= \lim\limits_{\substack{y\to 0 \\ y\in\mathbb{R}}} \frac{f(z_0 + iy) - f(z_0)}{y} &=: f_y (z_0)
+	\end{alignat}
+\end{boldenvironment}
+
+	Nenne $f_x(z_0)$, $f_y(z_0)$ \begriff[Ableitung!]{partielle Ableitung}[!$\mathbb{C}$] von $f$ in $z_0$. Sei $f$ \begriff[Ableitung!]{$\mathbb{C}$-\gls{diffbar}} in $x_z$, d.h. \begin{align}
+		\notag &f(z_0 + z) = f(z_0) + \underbrace{f'(z_0)}_{\in\mathbb{C}}\cdot z + o(\vert z \vert) \\
+		\proplbl{richtungsableitung_differenzierbarkeit_vorform_cauchy_riemann}
+		\xRightarrow{\eqref{richtungsableitung_differenzierbar_partiell_y}} \;& f'(z_0) = f_x(z_0) = -i f_y(x_0)
+	\end{align}
+\end{*definition}
+
+\begin{proposition}
+	Sei $f:D\subset\mathbb{C}\to\mathbb{C}$, $D$ offen, $z_0\in D$. Dann: \begin{align}
+		\proplbl{richtungsableitung_differenzierbarkeit_equivalenz_c_r_diffbar}
+		f\;\mathbb{C}\text{-\gls{diffbar} in }z_0 \; \; \Leftrightarrow \;\;f\;\mathbb{R}\text{-\gls{diffbar} in }z_0 \text{ mit }f_x(z) = -i f_y(z_0)
+	\end{align}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{itemize}[topsep=\dimexpr - \baselineskip / 2 \relax]
+		\item["`$\Rightarrow$"'] vgl. oben \eqref{richtungsableitung_differenzierbarkeit_vorform_cauchy_riemann}
+		\item["`$\Leftarrow$"'] mit $z=x + iy$ liefert \eqref{richtungsableitung_differenzierbarkeit_r_diffbar} 
+			\begin{alignat*}{2}
+			f(z_0 + z) &= f(z_0) + A(x + iy) + o(\vert z \vert) 
+			&\;=\;& f(z_0) + x\cdot A(1) + yA(i) + o(\vert z \vert) \\
+			&= f(z_0) - f_x(z_0)x + f_y(z_0) y + o(\vert z \vert)
+			&\overset{\eqref{richtungsableitung_differenzierbarkeit_equivalenz_c_r_diffbar}}{=}& f(z_0) + f_x(z_0)(x + iy) + o(\vert z \vert) \\
+			&= f(z_0) + \underbrace{f_x(z_0)}_{\mathclap{=:f'(z_0)\in\mathbb{C} \text{ als }\mathbb{C}\text{-Ableitung}}} \cdot z + o(\vert z \vert)&&
+			\end{alignat*}
+			\hfill\csname\InTheoType Symbol\endcsname
+	\end{itemize}
+\end{proof}
+
+\subsection{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}
+Identifiziere $f:D\subset\mathbb{C}\to \mathbb{C}$ mit $\tilde{f}:\tilde{D}\subset\mathbb{R}^2\to\mathbb{R}^2$ gemäß $z = x + iy \equalhat \binom{x}{y}$, $f(z) = u(x,y) + iv(x,y) \equalhat \binom{u(x,y)}{v(x,y)} = \tilde{f}(x,y)$
+
+Lineare Algebra: $A:\mathbb{C}\to\mathbb{C}$ linear $\Leftrightarrow$ $\exists w\in\mathbb{C}: Az = wz$ $\forall z\in\mathbb{C}$\marginnote{(Eigenwert)}\\
+\phantom{Lineare Algebra:} $\tilde{A}:\mathbb{R}^2 \to \mathbb{R}^2$ $\mathbb{R}$-linear $\Leftrightarrow$ $\tilde{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\in\mathbb{R}^{2\times 2}$ bezüglich Standardbasis.
+
+\begin{lemma}
+	Sei $A:\mathbb{C}\to\mathbb{C}$ $\mathbb{R}$-linear. Dann: \begin{align*}
+		&\text{$A$ ist auch $\mathbb{C}$-linear, d.h. $\exists w=\alpha + i\beta: Az = wz$ $\forall z\in\mathbb{C}$} \\ \Leftrightarrow\;\;& \text{$\exists \alpha,\beta\in\mathbb{R}: A(x + iy) \equalhat \begin{pmatrix} \alpha & -\beta \\ \beta & \alpha \end{pmatrix} \begin{pmatrix}
+			x \\ y
+		\end{pmatrix}$ $\forall x,y\in\mathbb{R}$}
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	Selbststudium
+\end{proof}
+
+\begin{boldenvironment}[Somit]
+	$\mathbb{C}$-lineare Abbildung $A:\mathbb{C}\to \mathbb{C}$ entspricht \emph{spezieller} $\mathbb{R}$-linearen Abbildung $\mathbb{R}^2\to\mathbb{R}^2$
+\end{boldenvironment}
+
+\begin{*definition}[\person{Cauchy}-\person{Riemann}-Differentialgleichungen]
+Falls $\mathbb{R}$-\gls{diffbar} in $z_0$ liefert \eqref{richtungsableitung_differenzierbarkeit_vorform_cauchy_riemann} \begin{align*}
+	f_x(z_0) &= u_x(x_0, y_0) + i v_x(x_0, y_0),& f_y(z_0) &= u_y(x_0, y_0) + iv_y(x_0, y_0)
+\end{align*}
+folglich \begin{align}
+	\text{\propref{richtungsableitung_differenzierbarkeit_equivalenz_c_r_diffbar}} \;\Leftrightarrow\;\underbrace{\begin{alignedat}{2}
+		u_x(x_0, y_0) &=& &v_y(x_0, y_0) \\
+		u_y(x_0, y_0) &=&-&v_x(x_0, y_0)
+	\end{alignedat}}_{\mathclap{\text{\begriff{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}}}}
+\end{align}
+\end{*definition}
+
+\begin{boldenvironment}[Somit]
+	$\mathbb{C}$-lineare Abbilung $z \to f'(z_0)$ entspricht $\mathbb{R}$-linearer Abbildung \begin{align*}
+	\begin{pmatrix}
+		x \\ y
+	\end{pmatrix}\to \begin{pmatrix}
+		u_x & u_y \\ - v_y & v_x
+	\end{pmatrix} \begin{pmatrix}
+		x \\ y
+	\end{pmatrix}
+	\end{align*}
+\end{boldenvironment}
+
+\begin{hint}
+	$\mathbb{C}$-\gls{diffbar}e Funktionen $f:D\subset \mathbb{C}\to\mathbb{C}$ werden in der Funktionentheorie untersucht.
+	
+	Es gilt z.B. $f$ $\mathbb{C}$-\gls{diffbar} auf $D$ $\Rightarrow$ Ableitung $f':D\to\mathbb{C}$ auch $\mathbb{C}$-\gls{diffbar} auf $D$ $\Rightarrow$ $f$ beliebig oft \gls{diffbar} auf $D$!
+\end{hint}
