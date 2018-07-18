@@ -14,7 +14,7 @@ Sei $R$ nullteilerfrei.
 \end{proof}
 
 \begin{lemma}
-	\proplbl{4_4_3}
+	\proplbl{8_4_3}
 	Sei $R$ ein Hauptidealring und 
 	\begin{align}
 		I_1\subseteq I_2\subseteq ...\notag
@@ -35,11 +35,11 @@ Sei $R$ nullteilerfrei.
 	Ist $R$ ein Hauptidealring, so ist $R$ faktoriell.
 \end{proposition}
 \begin{proof}
-	Sei $X:=\{a\in R\mid a\text{ ist Produkt von Primelementen}\}\cup \{0\}\cup R^\times$. Zu zeigen ist $X=R$. Angenommen, es gebe $a\in R\backslash X$. Da nicht prim ist, insbesondere nicht irreduzibel (\propref{4_3_9}), ist $a=a_1\cdot a'_1$ mit $a_1,a'_1\in R\backslash R^\times$. Wären $a_1$ und $a'_1$ in $X$, so auch $a$, also ohne Einschränkung $a_1\notin X$. Fährt man nun mit $a_1$ so fort, erhält man eine Folge $a_1,a_2,...$ von Elementen von $R\backslash X$ mit $a_{i+1}\mid a_i$ und $a_{i+1}\nsim a_i$ für alle $i$. Die entsprechenden Hauptideale bilden eine Kette
+	Sei $X:=\{a\in R\mid a\text{ ist Produkt von Primelementen}\}\cup \{0\}\cup R^\times$. Zu zeigen ist $X=R$. Angenommen, es gebe $a\in R\backslash X$. Da nicht prim ist, insbesondere nicht irreduzibel (\propref{8_3_9}), ist $a=a_1\cdot a'_1$ mit $a_1,a'_1\in R\backslash R^\times$. Wären $a_1$ und $a'_1$ in $X$, so auch $a$, also ohne Einschränkung $a_1\notin X$. Fährt man nun mit $a_1$ so fort, erhält man eine Folge $a_1,a_2,...$ von Elementen von $R\backslash X$ mit $a_{i+1}\mid a_i$ und $a_{i+1}\nsim a_i$ für alle $i$. Die entsprechenden Hauptideale bilden eine Kette
 	\begin{align}
 		(a)\subsetneqq (a_1)\subsetneqq (a_2)\subsetneqq ...\notag
 	\end{align}
-	im Widerspruch zu \propref{4_4_3}. Somit ist $X=R$, also $R$ faktoriell.
+	im Widerspruch zu \propref{8_4_3}. Somit ist $X=R$, also $R$ faktoriell.
 \end{proof}
 
 \begin{*anmerkung}
@@ -47,7 +47,7 @@ Sei $R$ nullteilerfrei.
 \end{*anmerkung}
 
 \begin{lemma}
-	\proplbl{4_4_5}
+	\proplbl{8_4_5}
 	Sind $p_1,...,p_r\in R$ prim, $q_1,...,q_s\in R$ irreduzibel mit 
 	\begin{align}
 		\prod_{i=1}^r p_i = \prod_{j=1}^s q_j \notag
@@ -76,7 +76,7 @@ Sei $R$ nullteilerfrei.
 	Ist $R$ faktoriell, so lässt sich jedes $0\neq x\in R\backslash R^\times$ auf eindeutige Weise (bis auf Reihenfolge und Assoziiertheit) als Produkt von Primelementen schreiben.
 \end{proposition}
 \begin{proof}
-	Sei $x=\prod_{i=1}^r p_i=\prod_{j=1}^s q_j$ mit $p_i,q_j$ prim. Da die $q_j$ nach \propref{4_2_12} irreduzibel sind, folgt $r=s$ und $p_i\sim q_i$ für alle $i$ aus \propref{4_4_5}.
+	Sei $x=\prod_{i=1}^r p_i=\prod_{j=1}^s q_j$ mit $p_i,q_j$ prim. Da die $q_j$ nach \propref{8_2_12} irreduzibel sind, folgt $r=s$ und $p_i\sim q_i$ für alle $i$ aus \propref{8_4_5}.
 \end{proof}
 
 \begin{conclusion}

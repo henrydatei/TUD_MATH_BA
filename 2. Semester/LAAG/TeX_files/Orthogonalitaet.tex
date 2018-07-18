@@ -13,7 +13,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \end{definition}
 
 \begin{lemma}
-	\proplbl{2_4_2}
+	\proplbl{6_4_2}
 	Für $x,y\in V$ ist
 	\begin{itemize}
 		\item $x\perp y\iff y\perp x$
@@ -29,7 +29,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 	Für $U\subseteq V$ ist $U^\perp$ ein Untervektorraum von $V$ mit $U\perp U^\perp$ und $U\cap U^\perp \subseteq\{0\}$.
 \end{proposition}
 \begin{proof}
-	Linearität des Skalarprodukts im ersten Argument liefert, dass $U^\perp$ ein Untervektorraum ist. Die Aussage $U^\perp \perp U$ ist trivial, $U \perp U^\perp$ folgt dann aus \propref{2_4_2}. Ist $u\in U\cap U^\perp$, so ist insbesondere $u\perp u$, also $u=0$ nach \propref{2_4_2}.
+	Linearität des Skalarprodukts im ersten Argument liefert, dass $U^\perp$ ein Untervektorraum ist. Die Aussage $U^\perp \perp U$ ist trivial, $U \perp U^\perp$ folgt dann aus \propref{6_4_2}. Ist $u\in U\cap U^\perp$, so ist insbesondere $u\perp u$, also $u=0$ nach \propref{6_4_2}.
 \end{proof}
 
 \begin{definition}[orthonormal]
@@ -37,7 +37,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \end{definition}
 
 \begin{remark}
-	\proplbl{2_4_5}
+	\proplbl{6_4_5}
 	Eine Basis $B$ ist genau dann eine Orthonormalbasis, wenn die darstellende Matrix des Skalarprodukts bezüglich $B$ die Einheitsmatrix ist. (Beispiel: Standardbasis des Standardraum bezüglich des Standardskalarprodukts)
 \end{remark}
 
@@ -49,7 +49,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \end{proof}
 
 \begin{lemma}
-	\proplbl{2_4_7}
+	\proplbl{6_4_7}
 	Ist $(x_i)_{i\in I}$ orthogonal und $x_i\neq 0$ für alle $i$, so ist $(y_i)_{i\in I}$ mit
 	\begin{align}
 		y_i=\frac{1}{\Vert x_i\Vert}x_i\notag
@@ -62,7 +62,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{2_4_8}
+	\proplbl{6_4_8}
 	Sei $U\subseteq V$ ein Untervektorraum und $B=(x_1,...,x_k)$ eine Orthonormalbasis von $U$. Es gibt genau einen Epimorphismus $\pr_U:V\to U$ mit $\pr_U\vert_U=\id_U$ und $\Ker(\pr_U)\perp U$, insbesondere also $x-\pr_U\perp U$ für alle $x\in V$, genannt die \begriff{orthogonale Projektion} auf $U$, und dieser ist geben durch
 	\begin{align}
 		x\mapsto\sum_{i=1}^k \skalar{x}{x_i}x_i
@@ -79,29 +79,29 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \end{proof}
 
 \begin{theorem}[\person{Gram-Schmidt}-Verfahren]
-	\proplbl{2_4_9}
+	\proplbl{6_4_9}
 	Ist $(x_1,...,x_n)$ eine Basis von $V$ und $k\le n$ mit $(x_1,...,x_k)$ orthonormal, so gibt es eine Orthonormalbasis $(y_1,...,y_n)$ von $V$ mit $y_i=x_i$ für $i=1,...,k$ und $\Span_K(y_1,...,y_l)=\Span_K(x_1,...,x_l)$ für $l=1,...,n$.
 \end{theorem}
 \begin{proof}
 	Induktion nach $d=n-k$. \\
 	\emph{$d=0$:} nichts zu zeigen \\
-	\emph{$d-1\to d$:} Für $i\neq k+1$ definiere $y_I=x_i$. Sei $U=\Span_K(x_1,...,x_k)$, $\tilde{x_{k+1}}=x_{k+1}-\pr_U(x_{k-1})$. Dann ist $\tilde{x_{k+1}}\in\Ker(\pr_U)\subseteq U^\perp$ (vgl. \propref{2_4_8}) und $\Span_K(x_1,...,x_k,\tilde{x_{k+1}})=\Span_K(x_1,...,x_{k+1})$. Setze $y_{k+1}=\frac{1}{\Vert \tilde{x_{k+1}}\Vert}\tilde{x_{k+1}}$. Dann ist $(y_1,...,y_n)$ eine Basis von $V$ mit $(y_1,...,y_{k+1})$ orthonormal (vgl. \propref{2_4_7}). Nach Induktionshypothese gibt es eine Orthonormalbasis von $V$, die das Gewünschte leistet.
+	\emph{$d-1\to d$:} Für $i\neq k+1$ definiere $y_I=x_i$. Sei $U=\Span_K(x_1,...,x_k)$, $\tilde{x_{k+1}}=x_{k+1}-\pr_U(x_{k-1})$. Dann ist $\tilde{x_{k+1}}\in\Ker(\pr_U)\subseteq U^\perp$ (vgl. \propref{6_4_8}) und $\Span_K(x_1,...,x_k,\tilde{x_{k+1}})=\Span_K(x_1,...,x_{k+1})$. Setze $y_{k+1}=\frac{1}{\Vert \tilde{x_{k+1}}\Vert}\tilde{x_{k+1}}$. Dann ist $(y_1,...,y_n)$ eine Basis von $V$ mit $(y_1,...,y_{k+1})$ orthonormal (vgl. \propref{6_4_7}). Nach Induktionshypothese gibt es eine Orthonormalbasis von $V$, die das Gewünschte leistet.
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{2_4_10}
+	\proplbl{6_4_10}
 	Jeder endlichdimensionale euklidische bzw. unitäre Vektorraum $V$ besitzt eine Orthonormalbasis.
 \end{conclusion}
 \begin{proof}
-	Wähle irgendeine Basis von $V$ und wende \propref{2_4_9} mit $k=0$ an.
+	Wähle irgendeine Basis von $V$ und wende \propref{6_4_9} mit $k=0$ an.
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{2_4_11}
+	\proplbl{6_4_11}
 	Ist $U$ ein Untervektorraum von $V$, so ist $V=U\oplus U^\perp$ und $(U^\perp)^\perp=U$.
 \end{conclusion}
 \begin{proof}
-	Wähle eine Orthonormalbasis von $U$ (vgl. \propref{2_4_10}), $B=(x_1,...,x_k)$ und ergänze diese zu einer Orthonormalbasis $(x_1,...,x_n)$ von $V$ (vgl. \propref{2_4_9}). Dann sind $x_{k+1},...,x_n\in U\perp$, da $U\cap U^\perp=\{0\}$ ist somit $V=U\oplus U^\perp$. Insbesondere ist $\dim_K(U^\perp)=n-\dim_K(U)$, woraus $\dim_K((U^\perp)^\perp)=\dim_K(U)$ folgt. Zusammen mit der trivialen Inklusion $U\subseteq (U^\perp)^\perp$ folgt $U=(U^\perp)^\perp$.
+	Wähle eine Orthonormalbasis von $U$ (vgl. \propref{6_4_10}), $B=(x_1,...,x_k)$ und ergänze diese zu einer Orthonormalbasis $(x_1,...,x_n)$ von $V$ (vgl. \propref{6_4_9}). Dann sind $x_{k+1},...,x_n\in U\perp$, da $U\cap U^\perp=\{0\}$ ist somit $V=U\oplus U^\perp$. Insbesondere ist $\dim_K(U^\perp)=n-\dim_K(U)$, woraus $\dim_K((U^\perp)^\perp)=\dim_K(U)$ folgt. Zusammen mit der trivialen Inklusion $U\subseteq (U^\perp)^\perp$ folgt $U=(U^\perp)^\perp$.
 \end{proof}
 
 \begin{conclusion}

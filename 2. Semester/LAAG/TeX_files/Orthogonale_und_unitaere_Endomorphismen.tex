@@ -10,7 +10,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $f\in\End_K(V)$.
 \end{definition}
 
 \begin{proposition}
-	\proplbl{2_5_2}
+	\proplbl{6_5_2}
 	Ist $f$ unitär, so gelten
 	\begin{itemize}
 		\item Für $x\in V$ ist $\Vert f(x)\Vert =\Vert x\Vert$.
@@ -40,7 +40,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $f\in\End_K(V)$.
 	Ist $\Vert f(x)\Vert=\Vert x\Vert$ für alle $x\in V$, so ist $f$ unitär.
 \end{proposition}
 \begin{proof}
-	Aus $\Vert f(x)\Vert=\Vert x\Vert$ folgt $\skalar{f(x)}{f(x)}=\skalar{x}{x}$. Die Polarisierung (\propref{2_3_4}) für $\skalar{f(x)}{f(y)}$ und die Linearität von $f$ liefern $\skalar{f(x)}{f(y)}=\skalar{x}{y}$. Zum Beispiel im Fall $K=\real$:
+	Aus $\Vert f(x)\Vert=\Vert x\Vert$ folgt $\skalar{f(x)}{f(x)}=\skalar{x}{x}$. Die Polarisierung (\propref{6_3_4}) für $\skalar{f(x)}{f(y)}$ und die Linearität von $f$ liefern $\skalar{f(x)}{f(y)}=\skalar{x}{y}$. Zum Beispiel im Fall $K=\real$:
 	\begin{align}
 		\skalar{f(x)}{f(y)}&=\frac 1 2 \left(\skalar{\underbrace{f(x)+f(y)}_{f(x+y)}} {\underbrace{f(x)+f(y)}_{f(x+y)}}-\skalar{f(x)}{f(x)}-\skalar{f(y)}{f(y)}\right) \notag \\
 		&= \frac 1 2 \left( \skalar{x+y}{x+y}-\skalar{x}{x}-\skalar{y}{y}\right) \notag \\
@@ -91,21 +91,21 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $f\in\End_K(V)$.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{2_5_8}
+	\proplbl{6_5_8}
 	Genau dann ist $A\in\Mat_n(K)$ unitär, wenn die Spalten (oder die Zeilen) von $A$ eine Orthonormalbasis des $K^n$ bilden. 
 \end{proposition}
 \begin{proof}
-	Sei $s$ das Standardskalarprodukt und $B=(a_1,...,a_n)$. Nach \propref{2_4_5} ist $B$ genau dann eine Orthonormalbasis, wenn $M_B(s)=\mathbbm{1}_n$, und $M_B(s)=A^t\cdot\mathbbm{1}_n\cdot\overline{A}$, vgl. \propref{2_2_9}
+	Sei $s$ das Standardskalarprodukt und $B=(a_1,...,a_n)$. Nach \propref{6_4_5} ist $B$ genau dann eine Orthonormalbasis, wenn $M_B(s)=\mathbbm{1}_n$, und $M_B(s)=A^t\cdot\mathbbm{1}_n\cdot\overline{A}$, vgl. \propref{6_2_9}
 \end{proof}
 
 \begin{theorem}
-	\proplbl{2_5_9}
+	\proplbl{6_5_9}
 	Sei $K=\comp$ und $f\in\End_K(V)$. Ist $f$ unitär, so besitzt $V$ eine Orthonormalbasis aus Eigenvektoren von f.
 \end{theorem}
 \begin{proof}
 	Induktion über$n=\dim_K(V)$. \\
 	\emph{$n=0$}: klar \\
-	\emph{$n-1\to n$}: Da $K$ algebraisch abgeschlossen ist, hat $\chi_f$ eine Nullstelle $\lambda$, es gibt also einen Eigenvektor $x_1$ von $f$ zum Eigenwert $\lambda$. Ohne Einschränkung nehmen wir $\Vert x\Vert=1$ an. Sei $W=K\cdot x_1$. Nach \propref{2_4_11} ist dann $V=W\oplus W^\perp$. Für $v\in W^\perp, w\in W$ ist
+	\emph{$n-1\to n$}: Da $K$ algebraisch abgeschlossen ist, hat $\chi_f$ eine Nullstelle $\lambda$, es gibt also einen Eigenvektor $x_1$ von $f$ zum Eigenwert $\lambda$. Ohne Einschränkung nehmen wir $\Vert x\Vert=1$ an. Sei $W=K\cdot x_1$. Nach \propref{6_4_11} ist dann $V=W\oplus W^\perp$. Für $v\in W^\perp, w\in W$ ist
 	\begin{align}
 		0=\skalar{v}{w}=\skalar{f(v)}{f(w)}=\overline{\lambda}\skalar{f(v)}{w}\notag
 	\end{align}
@@ -124,9 +124,9 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum und $f\in\End_K(V)$.
 	mit $\vert\lambda_i\vert=1$ für $i=1,...,n$.
 \end{conclusion}
 \begin{proof}
-	Da $A$ unitär ist, ist $f_A\in\End_\comp(\comp^n)$ unitär, nach \propref{2_5_9} existiert also eine Orthonormalbasis $B$ des $\comp^n$ aus Eigenvektoren von $A$. Die Transformationsmatrix $S=T_{\mathcal{E}}^B$ hat als Spalten die Elemente von $B$ und somit ist $S$ nach \propref{2_5_8} unitär. Nach \propref{2_5_2} ist $\vert\lambda\vert=1$ für alle Eigenwerte von $f_A$.
+	Da $A$ unitär ist, ist $f_A\in\End_\comp(\comp^n)$ unitär, nach \propref{6_5_9} existiert also eine Orthonormalbasis $B$ des $\comp^n$ aus Eigenvektoren von $A$. Die Transformationsmatrix $S=T_{\mathcal{E}}^B$ hat als Spalten die Elemente von $B$ und somit ist $S$ nach \propref{6_5_8} unitär. Nach \propref{6_5_2} ist $\vert\lambda\vert=1$ für alle Eigenwerte von $f_A$.
 \end{proof}
 
 \begin{remark}
-	Dies (\propref{2_5_9}) gilt nicht im Fall $K=\real$. Man kann aber auch orthogonale Endomorphismen immer "'fast diagonalisieren"'.
+	Dies (\propref{6_5_9}) gilt nicht im Fall $K=\real$. Man kann aber auch orthogonale Endomorphismen immer "'fast diagonalisieren"'.
 \end{remark}

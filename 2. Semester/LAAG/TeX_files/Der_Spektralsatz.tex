@@ -29,7 +29,7 @@ Sei $V$ ein endlichdimensionaler unitärer $K$-Vektorraum und $f\in\End_K(V)$.
 \end{example}
 
 \begin{lemma}
-	\proplbl{3_5_3}
+	\proplbl{7_5_3}
 	Genau dann ist $f\in\End_K(V)$ normal, wenn
 	\begin{align}
 		\skalar{f(x)}{f(y)}=\skalar{f^{adj}(x)}{f^{adj}(y)}\quad\forall x,y\in V\notag
@@ -53,14 +53,14 @@ Sei $V$ ein endlichdimensionaler unitärer $K$-Vektorraum und $f\in\End_K(V)$.
 \end{proof}
 
 \begin{lemma}
-	\proplbl{3_5_4}
+	\proplbl{7_5_4}
 	Ist $f$ normal, ist ist
 	\begin{align}
 		\Ker(f)=\Ker(f^{adj})\notag
 	\end{align}
 \end{lemma}
 \begin{proof}
-	Nach \propref{3_5_3} ist
+	Nach \propref{7_5_3} ist
 	\begin{align}
 		\Vert f(x)\Vert = \Vert f^{adj}(x)\Vert \quad\forall x\in V\notag
 	\end{align}
@@ -71,32 +71,32 @@ Sei $V$ ein endlichdimensionaler unitärer $K$-Vektorraum und $f\in\End_K(V)$.
 \end{proof}
 
 \begin{lemma}
-	\propref{3_5_5} %TODO fix reference
+	\proplbl{7_5_5}
 	Ist $f$ normal, so ist
 	\begin{align}
 		\Eig(f,\lambda)=\Eig(f^{adj},\overline{\lambda})\quad\forall\lambda\in K\notag
 	\end{align}
 \end{lemma}
 \begin{proof}
-	Da $(\lambda\cdot \id-f)^{adj}\overset{\propref{3_4_8}}{=}\overline{\lambda}\cdot\id-f^{adj}$ ist auch $\lambda\cdot\id-f$ normal. Somit ist
+	Da $(\lambda\cdot \id-f)^{adj}\overset{\propref{7_4_8}}{=}\overline{\lambda}\cdot\id-f^{adj}$ ist auch $\lambda\cdot\id-f$ normal. Somit ist
 	\begin{align}
 		\Eig(f,\lambda) &= \Ker(\lambda\id-f)\notag \\
-		&\overset{\propref{3_5_4}}{=} \Ker((\lambda\id-f)^{adj})\notag \\
+		&\overset{\propref{7_5_4}}{=} \Ker((\lambda\id-f)^{adj})\notag \\
 		&= \Ker(\overline{\lambda}\id-f^{adj})\notag \\
 		&= \Eig(f^{adj},\overline{\lambda})\notag
 	\end{align}
 \end{proof}
 
 \begin{theorem}[Spektralsatz]
-	\proplbl{3_5_6}
+	\proplbl{7_5_6}
 	Sei $f\in\End_K(V)$ ein Endomorphismus, für den $\chi_f$ in Linearfaktoren zerfällt. Genau dann besitzt $V$ eine Orthonormalbasis aus Eigenvektoren von $f$, wenn $f$ normal ist.
 \end{theorem}
 \begin{proof}
 	\begin{itemize}
-		\item Hinrichtung: Ist $B$ eine Orthonormalbasis aus Eigenvektoren von $f$, so ist $A=M_B(f)$ eine Diagonalmatrix. Dann ist auch $M_B(f^{adj})\overset{\propref{3_4_7}}{=}A^*$ eine Diagonalmatrix und $AA^*=A ^*A$. Somit ist $f$ normal.
+		\item Hinrichtung: Ist $B$ eine Orthonormalbasis aus Eigenvektoren von $f$, so ist $A=M_B(f)$ eine Diagonalmatrix. Dann ist auch $M_B(f^{adj})\overset{\propref{7_4_7}}{=}A^*$ eine Diagonalmatrix und $AA^*=A ^*A$. Somit ist $f$ normal.
 		\item Rückrichtung: Sei $f$ normal und $\chi_f(t)=\prod_{i=1}^n (t-\lambda_i)$. Beweis nach Induktion nach $n=\dim_K(V)$. \\
 		\emph{$n=0$}: klar \\
-		\emph{$n-1\to n$}: Wähle Eigenvektor zum Eigenwert $\lambda_1$, o.E. $\Vert x_1\Vert = 1$. Sei $U=K\cdot x_1$. Nach \propref{3_5_5} ist $f^{adj}(x_1)=\overline{\lambda_1}x_1$, insbesondere ist $U$ $f$-invariant und $f^{adj}$-invariant. Für $x\in U^\perp$ ist 
+		\emph{$n-1\to n$}: Wähle Eigenvektor zum Eigenwert $\lambda_1$, o.E. $\Vert x_1\Vert = 1$. Sei $U=K\cdot x_1$. Nach \propref{7_5_5} ist $f^{adj}(x_1)=\overline{\lambda_1}x_1$, insbesondere ist $U$ $f$-invariant und $f^{adj}$-invariant. Für $x\in U^\perp$ ist 
 		\begin{align}
 			\skalar{f(x)}{x_1}= \skalar{x}{f^{adj}(x_1)}=\skalar{x}{\overline{\lambda_1}x_1}=\lambda_1\skalar{x}{x_1}=0\notag
 		\end{align}
@@ -117,5 +117,5 @@ Sei $V$ ein endlichdimensionaler unitärer $K$-Vektorraum und $f\in\End_K(V)$.
 \end{conclusion}
 
 \begin{remark}
-	\propref{3_5_6} ist eine gemeinsame Verallgemeinerung von \propref{2_5_9} und \propref{2_6_5}
+	\propref{7_5_6} ist eine gemeinsame Verallgemeinerung von \propref{6_5_9} und \propref{6_6_5}
 \end{remark}

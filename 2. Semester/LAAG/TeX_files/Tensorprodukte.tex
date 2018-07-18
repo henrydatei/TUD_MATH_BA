@@ -55,7 +55,7 @@
 \end{proof}
 
 \begin{lemma}
-	\proplbl{3_6_5}
+	\proplbl{7_6_5}
 	Sei $(v_i)_{i\in I}$ eine Basis von $V$ und $(w_j)_{j\in J}$ eine Basis von $W$. Zu jeder Familie $(u_{ij})_{(i,j)\in I\times J}$ in $U$ gibt es genau ein $\xi\in\Bil_K(V,W,U)$ mit
 	\begin{align}
 		\xi(v_i,w_i)=u_{ij}\quad\forall i\in I, j\in J\notag
@@ -108,7 +108,7 @@
 \end{*anmerkung}
 
 \begin{lemma}
-	\proplbl{3_6_7}
+	\proplbl{7_6_7}
 	Sind $(T,\tau)$ und $(T',\tau')$ Tensorprodukte von $V$ und $W$, so gibt es einen eindeutig bestimmten Isomorphismus $\Theta:T\to T'$ mit $\tau'=\Theta\circ\tau$.
 	\begin{center}
 		\begin{tikzpicture}
@@ -127,7 +127,7 @@
 \end{proof}
 
 \begin{definition}[Vektorraum mit Basis $X$]
-	\proplbl{3_6_8}
+	\proplbl{7_6_8}
 	Sei $X$ eine Menge. Der $K$-\begriff{Vektorraum mit Basis $X$} ist der Untervektorraum $V=\Span_K((\delta_x)_{x\in X})$ des $K$-Vektorraum $\Abb(X,K)$ mit $\delta_x(y)=\delta_{x,y}=\begin{cases}1&x=y\\0&x\neq y\end{cases}$
 \end{definition}
 
@@ -139,15 +139,15 @@
 \end{proof}
 
 \begin{lemma}
-	\proplbl{3_6_10}
-	Sei $(v_i)_{i\in I}$ eine Basis von $V$ und $(w_j)_{j\in J}$ eine Basis von $W$. Sei $T$ der $K$-Vektorraum mit der Basis $I\times J$ (im Sinne von \propref{3_6_8}) und $\tau:V\times W\to T$ die bilineare Abbildung gegeben durch $(v_i,w_j)\mapsto \delta_{i,j}$, vergleiche \propref{3_6_5}. Dann ist $(T,\tau)$ ein Tensorprodukt von $V$ und $W$.
+	\proplbl{7_6_10}
+	Sei $(v_i)_{i\in I}$ eine Basis von $V$ und $(w_j)_{j\in J}$ eine Basis von $W$. Sei $T$ der $K$-Vektorraum mit der Basis $I\times J$ (im Sinne von \propref{7_6_8}) und $\tau:V\times W\to T$ die bilineare Abbildung gegeben durch $(v_i,w_j)\mapsto \delta_{i,j}$, vergleiche \propref{7_6_5}. Dann ist $(T,\tau)$ ein Tensorprodukt von $V$ und $W$.
 \end{lemma}
 \begin{proof}
-	Wir schreiben $v_i\otimes w_j$ für $\delta_{i,j}$. Sei $U$ ein weiterer $K$-Vektorraum und $\xi\in\Bil_K(V,W,U)$. Da $(v_i\otimes w_j)_{(ij)\in I\times J}$ eine Basis von $T$ ist, gibt es genau ein $\xi_\otimes\in\Hom_K(T,U)$ mit $\xi_\otimes(v_i\otimes w_j)=\xi(v_i,w_j)$ für alle $i,j$, also mit $\xi_\otimes\circ\tau=\xi$ nach \propref{3_6_5}. Die universelle Eigenschaft ist somit erfüllt.
+	Wir schreiben $v_i\otimes w_j$ für $\delta_{i,j}$. Sei $U$ ein weiterer $K$-Vektorraum und $\xi\in\Bil_K(V,W,U)$. Da $(v_i\otimes w_j)_{(ij)\in I\times J}$ eine Basis von $T$ ist, gibt es genau ein $\xi_\otimes\in\Hom_K(T,U)$ mit $\xi_\otimes(v_i\otimes w_j)=\xi(v_i,w_j)$ für alle $i,j$, also mit $\xi_\otimes\circ\tau=\xi$ nach \propref{7_6_5}. Die universelle Eigenschaft ist somit erfüllt.
 \end{proof}
 
 \begin{proposition}
-	Es gibt ein bis auf Isomorphie (im Sinne von \propref{3_6_7}) eindeutig bestimmtes Tensorprodukt
+	Es gibt ein bis auf Isomorphie (im Sinne von \propref{7_6_7}) eindeutig bestimmtes Tensorprodukt
 	\begin{align}
 		(V\otimes_K W,\otimes)\notag
 	\end{align}
@@ -157,7 +157,7 @@
 	\end{align}
 \end{proposition}
 \begin{proof}
-	\propref{3_6_10} und \propref{3_6_7}
+	\propref{7_6_10} und \propref{7_6_7}
 \end{proof}
 
 \begin{example}
@@ -169,7 +169,7 @@
 \end{example}
 
 \begin{proposition}
-	\proplbl{3_6_14}
+	\proplbl{7_6_14}
 	Sei $V\otimes_K W$ ein Tensorprodukt von $V$ und $W$. Für jeden weiteren $K$-Vektorraum $U$ liefert die Abbildung $\xi\to\xi_\otimes$ ein Isomorphismus 
 	\begin{align}
 		\Bil_K(V,W,U)\overset{\cong}{\to}\Hom_K(V\otimes_K W,U)\notag
@@ -197,7 +197,7 @@
 \begin{proof}
 	Es ist $\dim_K(V\otimes_K W)<\infty$ und deshalb
 	\begin{align}
-		V\otimes_K W\cong (V\otimes_K W)^{**}\overset{\propref{3_6_14}}{\cong} \Bil_K(V,W,K)\notag
+		V\otimes_K W\cong (V\otimes_K W)^{**}\overset{\propref{7_6_14}}{\cong} \Bil_K(V,W,K)\notag
 	\end{align}
 \end{proof}
 

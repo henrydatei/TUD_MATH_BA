@@ -38,7 +38,7 @@ Sei $R$ nullteilerfrei.
 \end{example}
 
 \begin{lemma}
-	\proplbl{4_3_5}
+	\proplbl{8_3_5}
 	Sei $\delta:R\backslash \{0\}\to \natur_0$ eine euklidische Gradfunktion und $(0)\neq\unlhd R$ ein Ideal. Ist $0\neq a\in I$ mit $\delta(a)=\min\{\delta(b)\mid 0\neq b\in I\}$, so ist $I=(a)$.
 \end{lemma}
 \begin{proof}
@@ -52,7 +52,7 @@ Sei $R$ nullteilerfrei.
 	Ist $R$ euklidisch, so ist $R$ ein Hauptidealring.
 \end{proposition}
 \begin{proof}
-	Sei $I\unlhd R$ ein Ideal. Ist $I=(0)$, so ist $I$ ein Hauptideal. Andernfalls existiert ein $0\neq a\in I$ mit $\delta(a)$ minimal. Nach \propref{4_3_5} ist $I=(a)$ ein Hauptideal.
+	Sei $I\unlhd R$ ein Ideal. Ist $I=(0)$, so ist $I$ ein Hauptideal. Andernfalls existiert ein $0\neq a\in I$ mit $\delta(a)$ minimal. Nach \propref{8_3_5} ist $I=(a)$ ein Hauptideal.
 \end{proof}
 
 \begin{conclusion}
@@ -60,7 +60,7 @@ Sei $R$ nullteilerfrei.
 \end{conclusion}
 
 \begin{lemma}[Lemma von \person{Bézout}]
-	\proplbl{4_3_8}
+	\proplbl{8_3_8}
 	Sei $R$ ein Hauptidealring und $a,b\in R$. Es existiert ein $c\in R$ mit $c=\ggT(a,b)$ und $(c)=(a,b)$. Insbesondere gibt es $x,y\in R$ mit $c=ax+by$ und $\ggT(x,y)=1$.
 \end{lemma}
 \begin{proof}
@@ -72,9 +72,9 @@ Sei $R$ nullteilerfrei.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{4_3_9}
+	\proplbl{8_3_9}
 	Sei $R$ ein Hauptidealring, $p\in R$. Ist $p$ irreduzibel, so auch prim.
 \end{proposition}
 \begin{proof}
-	Seien $a,b\in R$ mit $p\mid (ab)$. Angenommen $p\nmid a$. DA $p$ irreduzibel ist, ist $\ggT(p,a)=1$, also $1=px+ay$ mit $x,y\in R$ nach \propref{4_3_8}. Also $p\mid (pbx+aby)=b$.
+	Seien $a,b\in R$ mit $p\mid (ab)$. Angenommen $p\nmid a$. DA $p$ irreduzibel ist, ist $\ggT(p,a)=1$, also $1=px+ay$ mit $x,y\in R$ nach \propref{8_3_8}. Also $p\mid (pbx+aby)=b$.
 \end{proof}
