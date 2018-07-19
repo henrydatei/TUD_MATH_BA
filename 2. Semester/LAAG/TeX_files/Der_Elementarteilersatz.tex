@@ -162,12 +162,32 @@ Sei $R$ Hauptidealring.
 \end{proof}
 
 \begin{*example}
-	Sei $R=\whole$, $M=\whole^2$, \textcolor{blue}{$N$}$=\whole\begin{henrysmatrix}2\\0\end{henrysmatrix}+\whole\begin{henrysmatrix}1\\2\end{henrysmatrix}$
+	Sei $R=\whole$, $M=\whole^2$, \textcolor{blue}{$N$ }$=\whole\begin{henrysmatrix}2\\0\end{henrysmatrix}+\whole\begin{henrysmatrix}1\\2\end{henrysmatrix}$
+	\begin{align}
+		&\begin{pmatrix}2&1\\0&2\end{pmatrix}\to\begin{pmatrix}1&2\\2&0\end{pmatrix}\to\begin{pmatrix}1&0\\2&-4\end{pmatrix}\to\begin{pmatrix}1&0\\0&4\end{pmatrix}\notag \\
+		&\Rightarrow B = \left(\begin{henrysmatrix}1\\0\end{henrysmatrix},\begin{henrysmatrix}0\\4\end{henrysmatrix} \right)\Rightarrow \textcolor{red}{B'=\left(\begin{henrysmatrix}1\\2\end{henrysmatrix}, \begin{henrysmatrix}1\\1\end{henrysmatrix} \right)}\notag \\
+		&\Rightarrow \textcolor{cyan}{C=\left(1\cdot\begin{henrysmatrix}1\\2\end{henrysmatrix},4\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix} \right)}\text{ ist Basis von }\textcolor{blue}{N}\notag
+	\end{align}
 	\begin{center}
 		\begin{tikzpicture}
-		\draw[help lines,line width=.2pt,step=1] (0,-1) grid (6,5);
+		\draw[help lines, line width=.2pt, step=1] (0,0) grid (6,5);
 		\draw[->] (-1,0) -- (7,0);
-		\draw[->] (0,-2) -- (0,6);
+		\draw[->] (0,-1) -- (0,6);
+		\draw[fill=blue] (0,0) circle (0.1);
+		\draw[fill=blue] (2,0) circle (0.1);
+		\draw[fill=blue] (4,0) circle (0.1);
+		\draw[fill=blue] (6,0) circle (0.1);
+		\draw[fill=blue] (0,4) circle (0.1);
+		\draw[fill=blue] (2,4) circle (0.1);
+		\draw[fill=blue] (4,4) circle (0.1);
+		\draw[fill=blue] (6,4) circle (0.1);
+		\draw[fill=blue] (1,2) circle (0.1);
+		\draw[fill=blue] (3,2) circle (0.1);
+		\draw[fill=blue] (5,2) circle (0.1);
+		\draw[->, cyan, line width=2pt] (0,0) -- (1,2);
+		\draw[->, cyan, line width=2pt] (0,0) -- (4,4);
+		\draw[->, red, thick] (0,0) -- (1,2);
+		\draw[->, red, thick] (0,0) -- (1,1);
 		\end{tikzpicture}
 	\end{center}
 \end{*example}
