@@ -80,10 +80,17 @@ Sei $R$ Hauptidealring.
 \end{remark}
 
 \begin{example}
-	Sei $R=\whole$. Bestimme die Elementarteiler der Matrizen
+	Sei $R=\whole$. Die Elementarteiler von
 	\begin{align}
-		\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}1&2 \\ 3&4\end{pmatrix},\begin{pmatrix}2&0&0 \\ 0&4&0 \\0&0&6\end{pmatrix}\notag
+		A=\begin{pmatrix}2&0&0 \\ 0&4&0 \\0&0&6\end{pmatrix}\notag
 	\end{align}
+	sind 
+	\begin{align}
+		\begin{pmatrix}4&0\\0&6\end{pmatrix}\to\begin{pmatrix}4&0\\4&6\end{pmatrix}\notag
+		\to\begin{pmatrix}4&0\\-2&6\end{pmatrix} \to\begin{pmatrix}2&-6\\4&0\end{pmatrix} \notag
+		\to\begin{pmatrix}2&0\\4&12\end{pmatrix} \to\begin{pmatrix}2&0\\0&12\end{pmatrix}\notag
+	\end{align}
+	2, 2 und 12.
 \end{example}
 
 \begin{*anmerkung}[Teil 1]
@@ -109,7 +116,8 @@ Sei $R$ Hauptidealring.
 		T'_0=\begin{pmatrix}u & -\frac{y}{\ggT(x,y)} \\ v & \frac{x}{\ggT(x,y)}\end{pmatrix}\notag
 	\end{align}
 	Die Matrix $T_0$ multiplizieren wir aber diesmal von rechts an $A_n$. So arbeiten wir uns wieder von hinten nach vorne. Es kann passieren, dass wir uns damit leider wieder in der ersten Spalte ein paar Nullen kaputt machen, aber dann bauen wir wieder eine $S_n$-Matrix mit der wieder Nullen erscheinen. Falls das wieder die Spalten kaputt macht, dann multiplizieren wir wieder mit einer $T_n$-Matrix. Das \propref{8_6_4} garantiert uns, dass wir irgendwann fertig werden.
-	
+\end{*anmerkung}
+\begin{*anmerkung}[Teil 3]	
 	Haben wir nun die erste Zeile und die erste Spalte zu 0 verwandelt, außer $a_{11}$ natürlich, kümmern wir uns um die Untermatrix in Richtung rechts unten. Hier geht der Algorithmus von vorne los; das Schöne ist, dass er uns die erste Zeile/Spalte nicht mehr kaputt machen kann. Irgendwann sind wir rechts unten angekommen und haben nur noch Elemente auf der Hauptdiagonalen stehen. Diese sollten, wie in \propref{8_6_4} behauptet eine solche Teilerkette bilden. Tun sie das nicht, kann man wieder mit Matrizen $S_n$ und $T_n$ nachhelfen.
 	\begin{align}
 		S'_n=\begin{pmatrix}u & v \\ -\frac{y}{\ggT(x,y)} & \frac{x}{\ggT(x,y)}\end{pmatrix}\quad 
@@ -123,3 +131,88 @@ Sei $R$ Hauptidealring.
 	\end{align}
 	Weitere Informationen und Beispiele findet man auf \url{http://www.igt.uni-stuttgart.de/eiserm/lehre/2010/Algebra/Matrizenringe.pdf}, ab Abschnitt §7D
 \end{*anmerkung}
+
+\begin{lemma}
+	\proplbl{8_6_7}
+	Ist $M$ ein endlich erzeugter freier $R$-Modul und $N\subseteq M$ ein Untermodul, so ist auch $N$ endlich erzeugt.
+\end{lemma}
+\begin{proof}
+	Sei $(x_1,...,x_m)$ eine Basis von $M$. Induktion nach $m$. \\
+	\emph{$m=1$:} Durch $1\mapsto x_1$ wird nach \propref{8_1_11} eine $R$-lineare Abbildung $f:R\to M$ gegeben, die ein Isomorphismus ist. Der Untermodul $N\subseteq M$ entspricht einem Ideal $I:=f^{-1}(N)$ von $R$. Da $R$ ein Hauptidealring ist, ist $I=(a)$ für ein $a\in R$, somit $N=f(I)=R\cdot f(a)$. Insbesondere ist $N$ endlich erzeugt, sogar von einem Element. \\
+	\emph{$m-1\to m$:} Definiere $M'=\sum_{i=1}^{m-1}Rx_i$, $M''=Rx_m$, $N'=N\cap M'$. Sei unter $\pi: M\to M''$ die $R$-lineare Abbildung gegeben nach \propref{8_1_11} durch $\pi(x_i)=\delta_{i,m}x_m$. Nach Induktionshypothese ist $N'$ endlich erzeugt, etwa $N'=\sum_{j=1}^n Ry_j$. Aus dem Fall $m=1$ sehen wir zudem, dass $N''=\pi(N)=R\pi(y)$ für ein $y\in N$. Sei $\tilde{N}=Ry+\sum_{j=1}^n Ry_j\subseteq N$. Da $\Ker(\pi\vert_N)=M''\cap N=N'\subseteq\tilde{N}$ und $\pi\vert_N(\tilde{N})\supseteq R\pi(y)=N''=\pi\vert_N(N)$ ist $\tilde{N}=N$ nach \propref{8_5_5} und \propref{8_5_4}. Somit ist $N$ endlich erzeugt.
+\end{proof}
+
+\begin{proposition}[Elementarteilersatz für Moduln]
+	Sei $R$ ein Hauptidealring, $M\cong R^m$ ein endlich erzeugter freier $R$-Modul, $N\subseteq M$ ein Untermodul. Dann existiert $r\in\natur$, eine Basis $B'=(x'_1,...,x'_m)$ von $M$ und $d_1,...,d_r\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,r-1$ für die $(d_1x'_1,...,d_rx'_r)$ eine Basis von $N$ ist.
+\end{proposition}
+\begin{proof}
+	Sei $B=(x_1,...,x_m)$ eine Basis von $M$. Nach \propref{8_6_7} ist $N$ endlich erzeugt, also 
+	\begin{align}
+		N=\sum_{j=1}^n Ry_j\quad\text{ mit }\quad y_j=\sum_{i=1}^m a_{ij}x_i\quad a_{ij}\in R\notag
+	\end{align}
+	Wir betrachten die lineare Abbildung $f:R^n\to M$ gegeben durch $f(e_j)=y_j$. Dann ist $\Image(f)=N$ und 
+	\begin{align}
+		M_B^{\mathcal{E}}(f)=A=(a_{ij})\in\Mat_{m\times n}(R)\notag
+	\end{align}
+	Nach \propref{8_6_4} existieren $S\in\GL_m(R)$, $T\in\GL_n(R)$ mit
+	\begin{align}
+		SAT=D=\diag(d_1,...,d_r,\mathbb{0})\notag
+	\end{align}
+	Es gibt somit Basen $\mathcal{E}'=(e'_1,...,e'_n)$ von $R^n$, $B'=(x'_1,...,x'_m)$ von $M$ mit $M_{B'}^{\mathcal{E}'}(f)=D$. Somit ist $N=\Image(f)=\sum_{i=1}^n R\cdot f(e'_i)=\sum_{j=1}^r Rd_jx'_j$. Da $(x'_1,...,x'_r)$ frei und $R$ nullteilerfrei ist, ist auch $(d_1x'_1,...,d_rx'_r)$ frei, also eine Basis von $N$.
+\end{proof}
+
+\begin{*example}
+	Sei $R=\whole$, $M=\whole^2$, \textcolor{blue}{$N$}$=\whole\begin{henrysmatrix}2\\0\end{henrysmatrix}+\whole\begin{henrysmatrix}1\\2\end{henrysmatrix}$
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[help lines,line width=.2pt,step=1] (0,-1) grid (6,5);
+		\draw[->] (-1,0) -- (7,0);
+		\draw[->] (0,-2) -- (0,6);
+		\end{tikzpicture}
+	\end{center}
+\end{*example}
+
+\begin{remark}
+	Wieder kann man zeigen, dass $d_1,...,d_r$ bis auf Einheiten eindeutig bestimmt sind.
+\end{remark}
+
+\begin{conclusion}
+	\proplbl{8_6_10}
+	Ist $R$ ein Hauptidealring, so ist ein Untermodul eines endlich erzeugten freien $R$-Moduls wieder frei.
+\end{conclusion}
+
+\begin{remark}
+	\propref{8_6_10} wird \emph{falsch} ohne "'$R$ Hauptidealring"'. So ist zum Beispiel $N=(x,y)\unlhd\ratio[x,y]=(\ratio[x])[y]=R=M$ kein Hauptideal und somit ein nicht freier Untermodul des freien $R$-Moduls $R$: Je zwei Elemente von $R$ sind linear abhängig, für $a,b\in R$ ist
+	\begin{align}
+		b\cdot a+(-a)\cdot b=0\notag
+	\end{align}
+	Deshalb kann $N$ keine Basis mit mehr als einem Element besitzen.
+	
+	Die Voraussetzung "'endlich erzeugt"' ist hingegen nicht notwendig, aber der Beweis wird dadurch einfacher. 
+\end{remark}
+
+\begin{conclusion}
+	Ist $R$ ein Hauptidealring, so ist ein Untermodul eines endlich erzeugten $R$-Moduls $M$ wieder endlich erzeugt.
+\end{conclusion}
+\begin{proof}
+	Ist $M=\sum_{j=1}^m Ry_j$, so betrachte die $R$-lineare Abbildung $f:R^m\to M$ gegeben durch $f(e_j)=y_j$ für $j=1,...,m$. Nach \propref{8_6_7} ist $f^{-1}(N)\subseteq R^m$ endlich erzeugt, etwa $f^{-1}(N)=\sum_{i=1}^n Rx_i$. Somit ist $N=f(f^{-1}(N))=\sum_{i=1}^n R\cdot f(x_i)$ endlich erzeugt.
+\end{proof}
+
+\begin{theorem}[Hauptsatz über endlich erzeugte Moduln über Hauptidealringen]
+	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. Dann ist
+	\begin{align}
+		M = F\oplus M_{tor}\notag
+	\end{align}
+	wobei $F\cong R^r$ ein endlich erzeugter freier $R$-Modul ist und
+	\begin{align}
+		M_{tor} \cong \bigoplus_{i=1}^n \qraum{R}{Rd_i}\notag
+	\end{align}
+	mit Nichteinheiten $d_1,...,d_n\in R\backslash\{0\}$, die $d_i\mid d_{i+1}$ für $i=1,...,n-1$ erfüllen.
+\end{theorem}
+\begin{proof}
+	Inhalt...
+\end{proof}
+
+\begin{remark}
+	Auch gier sind $d_1,...,d_n$ (bis auf Einheiten) sowie $r$ eindeutig bestimmt. Man nennt $r$ den \begriff[Modul!]{(freien) Rang} von $M$.
+\end{remark}
