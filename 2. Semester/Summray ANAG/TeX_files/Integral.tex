@@ -64,18 +64,6 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 		$\Rightarrow$ & stärkerer Konvergenzbegriff in \eqref{integral_messbare_funktion_forderung} nötig
 	\end{tabularx}
 \end{example}
-
-\begin{boldenvironment}[Motivation] \hspace*{0pt}
-	\begin{itemize}[topsep=\dimexpr -\baselineskip / 2\relax]
-		\item Nur monotone Folgen von Treppenfunktionen, oder
-		\item Beschränktheit aus \propref{integral_treppenfunktion_grundlegende_folgerung} erhalten
-	\end{itemize}
-	$\Rightarrow$ jeweils gleiches Ergebnis, jedoch ist die 1. Variante technisch etwas aufwendiger
-	
-	Beschränktheit aus \propref{integral_treppenfunktion_grundlegende_folgerung} \ref{integral_treppenfunktion_grundlegende_folgerung_beschraenktheit} bedeutet insbesondere \begin{align*}
-		\left\vert \int_M h_k\D x - \int_M f \D x \right\vert = \left\vert \int_M h_k - f \D x \right\vert \le \int_M \vert h_k - f\vert \D x \quad\forall k
-	\end{align*}
-\end{boldenvironment}
 	
 \begin{boldenvironment}[man definiert] $h_k\to f$ \gls{gdw} $\int_M \vert h_k - f\vert \D x\to 0$\\
 	$\Rightarrow$ Integralabbildung stetig bezüglich dieser Konvergenz.
@@ -109,28 +97,12 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 \begin{underlinedenvironment}[Hinweis]
 	Integrale unter dem Grenzwert in \eqref{integral_lebesque_funktion_definition} sind elementare Integrale gemäß \eqref{integral_treppenfunktion_definition}.
 \end{underlinedenvironment}
-\begin{boldenvironment}[Sprechweise]
-	$f$ integrierbar auf $M$ bedeutet stets $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar und $M\subset D$ messbar
-\end{boldenvironment}
 
 \begin{*definition}[Menge der integrierbaren Funktionen]
 Menge der auf $M$ integrierbaren Funktionen ist \mathsymbol*{L1}{$L^1$} \begin{align*}
 	L^1(M) := \left\{ f:M\subset\mathbb{R}^n\to\overline{\mathbb{R}} \mid f \text{ integierbar auf $M$} \right\}
 \end{align*}
 \end{*definition}
-
-\begin{remark}\vspace*{0pt}
-	\begin{enumerate}[label={\alph*)},topsep=\dimexpr -\baselineskip / 2\relax]
-		\item Integral in \eqref{integral_lebesque_funktion_definition} kann als vorzeichenbehaftetes Volumen des Zylinders im $\mathbb{R}^{n+1}$ unter (über) dem Graphen von $f$ interpretiert werden.
-		\item Sei $0\le h_1 \le h_2 \le \dotsc$ monotone Folge von integrierbaren Treppenfunktionen mit $h_k\to f$ f.ü. auf $M$ und sei Folge $\{ \int_M h_k\D x\}$ in $\mathbb{R}$ beschränkt \\
-		$\Rightarrow$ \eqref{integral_lebesque_funktion_definition} gilt und monotone Folge $\{ \int_m h_k \D x \}$ konvergiert in $\mathbb{R}$ (d.h. $\{ h_k \}$ ist $L^1$-CF zu $f$)
-		\item $\{ h_k\}$ aus \propref{integral_funktion_beispiel_striktere_konvergenz} ist nur dann $L^1$-CF, falls $\alpha_k\to 0$.
-	\end{enumerate}
-\end{remark}
-
-\begin{boldenvironment}[Frage]
-	Ist die Definition des Integrals in \eqref{integral_lebesque_funktion_definition} unabhängig von der Wahl einer konkreten $L^1$-CF $\{ h_k\}$ zu $f$?
-\end{boldenvironment}
 
 \begin{proposition}
 	\proplbl{integral_funktion_unabhaengigkeit_leins_folge}
@@ -428,7 +400,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	
 	Da $\{ \int_M h_k \D x \}$ beschränkt ist in $\mathbb{R}$ da $g$ integrierbar ist \\
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\xRightarrow{\text{\propref{integral_funktion_lemma_majorante}}}$ & $\{ h_k\}$ ist $L^1$-Cf zu $\vert f \vert$ \\
+		$\xRightarrow{\text{\propref{integral_funktion_lemma_majorante}}}$ & $\{ h_k\}$ ist $L^1$-CF zu $\vert f \vert$ \\
 		$\Rightarrow$ & $\vert f \vert$ integrierbar \\
 		$\xRightarrow{\text{\propref{integral_funktion_eigenschaften}}}$ & $f$ integrierbar auf $M$\hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}}
@@ -474,33 +446,6 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	\intertext{Dann}
 	\int_M \liminf\limits_{k\to\infty} h_k \D x &= \int_M 0 \D x = 0 < \liminf\limits_{k\to\infty} \int_{\mathbb{R}} h_k \D x = 1
 \end{align*}
-
-\begin{proof}
-	Auf $M$ ist $0\le g_k := \inf\limits_{l\ge k} f_l \le f_j$ $\forall j\ge k$, $k\in\mathbb{N}$, $g_1 \le g_2 \le \dotsc$ und $\lim\limits_{k\to\infty} g_k = \liminf\limits_{k\to\infty} f_k = f$
-	
-	Alle $g_k$ sind messbar nach \propref{messbarkeit_funktionen_komposition}, \propref{integral_funktion_majorantenkriterium}
-	
-	Für jedes $k\in\mathbb{N}$ wählen wir gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen} eine Folge $\{ h_{k_l} \}_l$ von Treppenfunktionen mit $0\le h_{k_1} \le h_{k_2} \le \dotsc \le g_k$, $h_{k_l}\xrightarrow{l\to\infty} g_k$ f.ü. auf $M$.
-	
-	Nach \propref{integral_funktion_lemma_majorante} ist $\{ h_{k_l}\}_l$ $L^1$-CF zu $g_k$.
-	
-	Anwendung von \propref{messbarkeit_funktion_egorov} auf $g_k - f$ auf $B_k(0)\cap M$ \\
-	$\Rightarrow$ $\exists A_k' \subset\mathbb{R}^n$ messbar mit $\vert A_k'\vert \le \frac{1}{2^{k+1}}$ und (ggf. \gls{tf}) $\vert g_k - f\vert < \frac{1}{k}$ auf $(B_k(0) \cap M)\setminus A_K'$.
-	
-	Analog für Folge $h_{k_l}\xrightarrow{l\to\infty} g_k: \exists A_K''\subset\mathbb{R}^k$ mit $\vert A_k''\vert < \frac{1}{2^{k+1}}$ und (evtl. \gls{tf}) $\vert h_{k_l} - g_k \vert < \frac{1}{k}$ auf $(B_k(0)\cap M)\setminus A_k''$
-	
-	Setzte $A_k = A_k'\cup A_k''$, offenbar $\vert A_k\vert < \frac{1}{2^k}$, $h_k := h_{k_l}$
-	
-	Definiere rekursiv $\tilde{h}_1 := h_1$, $\tilde{h}_k := \max( \tilde{h}_{k-1}, h_k)$ \\
-	$\Rightarrow$ $h_k \le \tilde{h}_k \le g_k \le f_k$ und $\tilde{h}_{k-1} \le \tilde{h}_k$ $\forall k\in\mathbb{N}$ \\
-	$\Rightarrow$ $\vert \tilde{h}_k - f\vert \overset{\triangle-\text{Ungl}}{\le}\vert \tilde{h}_k - g_k\vert + \vert g_k -f \vert \le \vert h_k - g_k\vert + \vert g_k -f \vert \le \frac{2}{k}$ auf $(B_k(0)\cap M)\setminus A_k$.
-	
-	Mit $\tilde{A}_l := \bigcup_{k=l}^\infty A_k$ folgt $\vert \tilde{A}_l\vert \le \frac{1}{2^{l-1}}$ und $\vert \tilde{h}_k - f \vert \le \frac{2}{k}$ auf $(B_k(0)\cap M)\setminus \tilde{A}_l$ $\forall k>l$.
-	
-	Folglich $\tilde{h}_l\to f$ f.ü. auf $M$ und wegen der Monotonie ist $\{ \tilde{h}_k\}$ $L^1$-CF zu $f$ \\
-	$\Rightarrow$ $\int_M f \D x \overset{\text{Def}}{=} \lim\limits_{k\to\infty} \int_M \tilde{h}_k \D x \overset{\text{Monotonie}}{\le}\liminf\limits_{k\to\infty} \int_M f_k \D x$\\
-	$\Rightarrow$ Behauptung
-\end{proof}
 
 \begin{theorem}[Monotone Konvergenz]
 	\proplbl{integral_grenzwertsatz_monotone_konvergenz}
@@ -575,8 +520,8 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	Da $f$ stetig auf $M$ kompakt 
 	
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow[\propref{satz_von_weierstrass}]{\text{Weierstrass}}$ & $\exists$ Minimalstelle $x_1\in M$, Maximalstelle $x_2\in M$ und $\displaystyle\gamma := \int_M f \D x$ \\ $\xRightarrow{\text{\cref{integral_funktion_lemma_weitere_eigenschaften}}}$ & $f(x_1) \le \frac{\gamma}{\vert M \vert} \le f(x_2)$ \\
-	$\xRightarrow[\propref{zwischenwertsatz}]{\text{Zwischenwertsatz}}$ & $\displaystyle\exists \xi\in M: f(\xi) = \frac{\gamma}{\vert M \vert}$ \\
+	$\xRightarrow{\text{Weierstrass}}$ & $\exists$ Minimalstelle $x_1\in M$, Maximalstelle $x_2\in M$ und $\displaystyle\gamma := \int_M f \D x$ \\ $\xRightarrow{\text{\cref{integral_funktion_lemma_weitere_eigenschaften}}}$ & $f(x_1) \le \frac{\gamma}{\vert M \vert} \le f(x_2)$ \\
+	$\xRightarrow{\text{Zwischenwertsatz}}$ & $\displaystyle\exists \xi\in M: f(\xi) = \frac{\gamma}{\vert M \vert}$ \\
 	$\Rightarrow$ & Behauptung
 	\end{tabularx}}
 \end{proof}
@@ -609,7 +554,7 @@ $\Rightarrow$ Integrale in \eqref{integral_parameterabhaengig_grundgleichung_eq}
 	Setzte $f_k(x) := f(x, p_k)$
 	
 	Stetigkeit von $f(x,\,\cdot\,)$ liefert $f_k(x) = f(x, p_k)\xrightarrow{x\to\infty} f(x,p)$ für \gls{fa} $x\in M$.
-	 \begin{tabularx}{\linewidth}{r@{\ \ }X}
+	 \begin{tabularx}{\linewidth}{r@{\ \ }X}\\
 	$\xRightarrow{\text{\cref{integral_grenzwertsatz_majorisierte_konvergenz}}}$ & $F(p_k) = \int_M f_k(x) \D x \to \int_M f(x,p)\D x = F(p)$ \\
 	$\xRightarrow[\text{beliebig}]{p\in P}$ & Behauptung
 	\end{tabularx}
@@ -635,13 +580,7 @@ $\Rightarrow$ Integrale in \eqref{integral_parameterabhaengig_grundgleichung_eq}
 	Betrachtet man für $p=(p_1, \dotsc, p_m)\in\mathbb{R}^n$ nur $p_j$ als Parameter und fixiert andere $p_i$, dann liefert \eqref{integral_parameterabhaengig_differenzierbarkeit_eq} die partielle ABleitung $F_{p_j} (p) = \int_m f_{p_j}(x,p) \D x$ für $j=1,\dotsc, m$.
 \end{underlinedenvironment}
 
-\begin{proof}
-	Königsberger: Analysis 2 (Abschnitt 8.4)
-\end{proof}
-
 \subsection{\person{Riemann}-Integral}
-Der klassische Integralbegriff hat konzeptionelle Bedeutung (Einführung etwas einfacher, keine messbaren Mengen und Funktionen) \\
-$\Rightarrow$ weniger Leistungsfähig (Anwendung nur in speziellen Situationen)
 
 \begin{boldenvironment}[ebenfalls]
 	Approximation von der zu integrierenden Funktion $f$ durch geeignete Treppenfunktionen
@@ -676,20 +615,6 @@ $\Rightarrow$ weniger Leistungsfähig (Anwendung nur in speziellen Situationen)
 	Sei $f:Q\subset\mathbb{R}^n\to\mathbb{R}$ stetig und $Q\in\mathcal{Q}$ abgeschlossen \\
 	$\Rightarrow$ $f$ ist (\lebesque) integrierbar und \person{Riemann}-Integrierbar auf $Q$ mit R-$\int_Q f \D x = \int_Q f \D x$.
 \end{proposition}
-
-\begin{remark}
-	Sei $f:Q\subset\mathbb{R}^n\to\mathbb{R}$ beschränkt und es sei $N:=\{ x\in Q \mid f$ nicht stetig in $x \}$.
-	
-	Dann kann man zeigen: $f$ ist \person{Riemann}-Integrierbar, wenn $n$ Nullmenge ist.
-	
-	\begin{center}
-	\begin{tabular}{r@{\ \ }c@{\ \ }l}
-		$f$ ist $R$-integrierbar & $\Leftrightarrow$ $N$ ist Nullmenge.
-	\end{tabular}
-	\end{center}
-
-	Man sieht leicht: die \person{Dirichlet}-Funktion (\propref{messbarkeit_einfuehrung_dirichlet_funktion}) ist auf $[0,1]$ nicht R-integrierbar, da die Treppenfunktionen $h_0 = 0$ und $h_1 = 1$ auf $[0,1]$ mit belieb feiner Zerlegung $\{Q_j\}$ jeweils stets zulässig sind, sich jedoch in der \person{Riemann}-Summe $0$ bzw. $1$ unterscheiden. (Die \person{Dirichlet}-Funktion ist jedoch L-integrierbar)
-\end{remark}
 
 \begin{proof}[\propref{integral_riemann_stetig_r_integrierbar}]
 	Als stetige Funktion ist $f$ auf $Q$ messbar und beschränkt und somit L-integrierbar.
