@@ -23,14 +23,14 @@
 	\begin{align}
 		f \text{ ist diffbar in } x_0 \text{ mit Abl.} A &\Leftrightarrow \exists A \in L(K^n,K^m): r_A(x) = o(\vert x-x_0\vert) x \to x_0 \notag\\
 		& \quad \text{d.h. } \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x)}{\vert x - x_0\vert} = 0 \notag\\
-		&\Leftrightarrow \exists A \in \Lin(K^n,K^m): \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x) -f(x_0) -A(x-x_0)}{(x-x_0)} = 0 \notag
+		&\Leftrightarrow \exists A \in L(K^n,K^m): \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x) -f(x_0) -A(x-x_0)}{(x-x_0)} = 0 \notag
 	\end{align}
 \end{conclusion}
 
 \begin{definition}[diffbar auf $D$, stetig diffbar]
 	\begin{itemize}
 		\item falls $f$ difbar in allen $x_0 \in D$, heißt $f$ diffbar auf $D$
-		\item $f^{'}: D \to \Lin(K^n, K^m) (\cong K^{m\times n})$ Abl. von $f$ (matrixwertig)
+		\item $f^{'}: D \to L(K^n, K^m) (\cong K^{m\times n})$ Abl. von $f$ (matrixwertig)
 		\item f \emph{stetig diffbar} bzw. $C^1$-Fkt., wenn $f^{'}$ stetig auf $D$\\
 		$C^1(D,K^m) = \{f: D \to K^m \mid f \text{ stetig diffbar auf } D\} = C^1(D)$
 	\end{itemize}
