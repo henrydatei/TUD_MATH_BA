@@ -2,7 +2,7 @@
 \proplbl{section_ableitung}
 
 \begin{*definition}[differenzierbar, Ableitung]
-	Sei $f: D\subset \mathbb{R}^n \to K^m$, $D$ offen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in \Lin(K^n, K^m)$ gibt mit \begin{align}
+	Sei $f: D\subset \mathbb{R}^n \to K^m$, $D$ offen, heißt \begriff{differenzierbar} in $x\in D$, falls es lineare Abbildung $A\in L(K^n, K^m)$ gibt mit \begin{align}
 		\proplbl{definition_ableitung}
 		\Aboxed{f(x) &= f(x_0) + A(x-x_0) + o(\vert x-x_0 \vert), x\to x_0}\\
 		\text{mit } A(x-x_0) = f'(x_0) \cdot (x - x_0)
@@ -15,15 +15,15 @@
 	Affin lineare Abbildung $\tilde{A}(x) := f(x_0) + f'(x_0)\cdot(x-x_0)$ approximiert die Funktion $f$ in der Nähe von $x_0$ und heißt \begriff{Linearisierung} von $f$ in $x_0$ (man nennt \propref{definition_ableitung} auch Approximation 1. Ordnung von $f$ in der Nähe von $x_0$).
 \end{*remark}
 \begin{conclusion}[Wann ist $f$ diffbar?]
-	$f: D \subset K^n \to K^m, D$ offen, $x_0 \in D$. Für jedes $A \in \Lin(K^n,K^m)$ sei $D\to K^m$ zugeh. Restfkt. gegeben durch
+	$f: D \subset K^n \to K^m, D$ offen, $x_0 \in D$. Für jedes $A \in L(K^n,K^m)$ sei $D\to K^m$ zugeh. Restfkt. gegeben durch
 	\begin{align}
 		f(x) = f(x_0) + A(x-x_0) +r_a(x) \quad \forall x \in D
 	\end{align}
 	Dann:
 	\begin{align}
-		f \text{ ist diffbar in } x_0 \text{ mit Abl.} A &\Leftrightarrow \exists A \in \Lin(K^n,K^m): r_A(x) = o(\vert x-x_0\vert) x \to x_0 \notag\\
+		f \text{ ist diffbar in } x_0 \text{ mit Abl.} A &\Leftrightarrow \exists A \in L(K^n,K^m): r_A(x) = o(\vert x-x_0\vert) x \to x_0 \notag\\
 		& \quad \text{d.h. } \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x)}{\vert x - x_0\vert} = 0 \notag\\
-		&\Leftrightarrow \exists A \in \Lin(K^n,K^m): \limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x) -f(x_0) -A(x-x_0)}{(x-x_0)} = 0 \notag
+		&\Leftrightarrow \exists A \in \Lin(K^n,K^m): \lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{r_A(x) -f(x_0) -A(x-x_0)}{(x-x_0)} = 0 \notag
 	\end{align}
 \end{conclusion}
 
@@ -31,8 +31,8 @@
 	\begin{itemize}
 		\item falls $f$ difbar in allen $x_0 \in D$, heißt $f$ diffbar auf $D$
 		\item $f^{'}: D \to \Lin(K^n, K^m) (\cong K^{m\times n})$ Abl. von $f$ (matrixwertig)
-		\item f \emph{stetig diffbar} bzw. $C^1$-Fkt., wenn $f^{'}$ stetig auf $D$
-		$C^1(D,K^m) = \{f: D \to K^m \mid f \text{ stetig diffbar auf } D} = C^1(D)$
+		\item f \emph{stetig diffbar} bzw. $C^1$-Fkt., wenn $f^{'}$ stetig auf $D$\\
+		$C^1(D,K^m) = \{f: D \to K^m \mid f \text{ stetig diffbar auf } D\} = C^1(D)$
 	\end{itemize}
 \end{definition}
 
@@ -209,7 +209,7 @@
 	
 	Denn:{\zeroAmsmathAlignVSpaces
 	\begin{align*}
-		 \frac{\sin y}{y} = \frac{e^{iy} - e^{-iy}}{2iy} = \frac{1}{2}\cdot \left( \frac{e^{iy} - 1}{iy} + \frac{e^{-iy} - 1}{-iy} \right) \xrightarrow[\text{vgl. \eqref{exp_limit_1}}]{y\to 0} 1,
+		 \frac{\sin y}{y} = \frac{e^{iy} - e^{-iy}}{2iy} = \frac{1}{2}\cdot \left( \frac{e^{iy} - 1}{iy} + \frac{e^{-iy} - 1}{-iy} \right) \xrightarrow{y\to 0} 1,
 	\end{align*}}
 	nutze $\exp$ Definition für $\sin$, Differentialquotient und Additionstheoreme. Analog für den Kosinus.
 \end{example}
