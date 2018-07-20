@@ -143,6 +143,7 @@ Sei $R$ Hauptidealring.
 \end{proof}
 
 \begin{proposition}[Elementarteilersatz für Moduln]
+	\proplbl{8_6_8}
 	Sei $R$ ein Hauptidealring, $M\cong R^m$ ein endlich erzeugter freier $R$-Modul, $N\subseteq M$ ein Untermodul. Dann existiert $r\in\natur$, eine Basis $B'=(x'_1,...,x'_m)$ von $M$ und $d_1,...,d_r\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,r-1$ für die $(d_1x'_1,...,d_rx'_r)$ eine Basis von $N$ ist.
 \end{proposition}
 \begin{proof}
@@ -219,6 +220,7 @@ Sei $R$ Hauptidealring.
 \end{proof}
 
 \begin{theorem}[Hauptsatz über endlich erzeugte Moduln über Hauptidealringen]
+	\proplbl{8_6_13}
 	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. Dann ist
 	\begin{align}
 		M = F\oplus M_{tor}\notag
@@ -230,9 +232,27 @@ Sei $R$ Hauptidealring.
 	mit Nichteinheiten $d_1,...,d_n\in R\backslash\{0\}$, die $d_i\mid d_{i+1}$ für $i=1,...,n-1$ erfüllen.
 \end{theorem}
 \begin{proof}
-	Inhalt...
+	Sei $M=\sum_{j=1}^m Ry_j$. Betrachte die lineare Abbildung $f:R^m\to M$ gegeben durch $f(e_j)=y_j$ und dem Untermodul $N=\Ker(f)\subseteq R^m$. Nach \propref{8_6_8} existiert eine Basis $(x_1,...,x_s)$ von $R^m$, $n\le s$ und $d_1,...,d_n\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für die $(d_1x_1,...,d_nx_n)$ eine Basis von $N$ ist. Nach dem Homomorphiesatz ist
+	\begin{align}
+		M=\Image(f)&\cong\qraum{R^m}{N}=\qraum{\bigoplus_{i=1}^s Rx_i}{\bigoplus_{i=1}^n Rd_ix_i} \notag \\
+		&\cong \qraum{R^s}{\bigoplus_{i=1}^n Rd_ie_i}\notag \\
+		&\cong \bigoplus_{i=1}^n \qraum{R}{Rd_i}\oplus \underbrace{R^{s-n}}_{F}\notag
+	\end{align}
+	Ist $d_i\in R^\times$, so ist $\qraum{R}{Rd_i}=0$, wir können diese $i$ daher weglassen. Dabei ist $\bigoplus_{i=1}^n \qraum{R}{Rd_i}$ genau der Torsionsmodul $M_{tor}$:
+	\begin{itemize}
+		\item "'$\subseteq$"': Mit $d:=d_1\cdot ... \cdot d_n\in R\backslash\{0\}$ ist $d\cdot (x_i)_{1,...,n}=(dx_i)_{1,...,n}=(0,...,0)$ (Vielfache von $Rd_i$ machen das Element zu 0)
+		\item "'$\supseteq$"': Ist $d\in R\backslash\{0\}$, $x\in\bigoplus_{i=1}^n\qraum{R}{Rd_i}$, $y\in R^{s-n}$ mit $d\cdot (x,y)=0$, so ist $d\cdot y=0$ und deshalb $y=0$.
+	\end{itemize}
 \end{proof}
 
 \begin{remark}
-	Auch gier sind $d_1,...,d_n$ (bis auf Einheiten) sowie $r$ eindeutig bestimmt. Man nennt $r$ den \begriff[Modul!]{(freien) Rang} von $M$.
+	Auch hier sind $d_1,...,d_n$ (bis auf Einheiten) sowie $r$ eindeutig bestimmt. Man nennt $r$ den \begriff[Modul!]{(freien) Rang} von $M$.
 \end{remark}
+
+\begin{example}
+	Eine endlich erzeugte abelsche Gruppe $A$ ist von der Form
+	\begin{align}
+		A\cong \whole^r\oplus\bigoplus_{i=1}^k \qraum{\whole}{d_i\whole}\notag
+	\end{align}
+	mit (eindeutig bestimmten) $d_1,...,d_k\in\natur$, $d_1\mid d_2\mid ...\mid d_k$.
+\end{example}
