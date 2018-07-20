@@ -88,7 +88,7 @@ Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! 
 
     6. Tensorprodukte ... fertig
 
-4. Moduln ... wird bearbeitet
+4. Moduln ... fertig
 
     1. Moduln ... fertig
     
@@ -100,4 +100,6 @@ Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! 
     
     5. Quotienten von Ringen und Moduln ... fertig
     
-    6. Der Elementarteilersatz ... wird bearbeitet
+    6. Der Elementarteilersatz ... fertig
+    
+    7. Zyklische Vektorräume ... fertig
