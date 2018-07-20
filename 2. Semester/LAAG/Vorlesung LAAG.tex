@@ -726,7 +726,7 @@ backgroundcolor=lightgrey,%
 	}
 	\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
 	\ifx\\#5\\%
-		\@dottedtocline{-2}{0em}{2.4em}%
+		\@dottedtocline{-2}{0em}{4.4em}%
 		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
 		{#4}
 	\else
@@ -735,7 +735,7 @@ backgroundcolor=lightgrey,%
 			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{2.4em}%
+			\@dottedtocline{-2}{0em}{4.4em}%
 			{#1 \protect\numberline{\rom{\thm@@thmline@name@chap@num}.#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
