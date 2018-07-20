@@ -1,13 +1,4 @@
 \section{Höhere Ableitungen und \person{Taylor}-scher Satz} \proplbl{section_taylor} \setcounter{equation}{0}
-
-\begin{boldenvironment}[Vorbetrachtung] Sei $X$ endlich dimensionaler, normierter Raum über $K$ (d.. Vektorraum über $K$ mit Norm $\Vert \,\cdot \Vert$, $\dim X =l\in\mathbb{N}$).
-	
-	Offebar sind $X$ und $K^l$ isomorph als Vektorraum, schreibe $X\cong K^l$, z.B. $X = L(K^n,K^m)\cong K^{m\cdot n}$.
-	
-	Für $g:D\subset K^n\to X$, $D$ offen, kann man die bisherigen Resultate bezüglich der Ableitung übertragen. $g'(x)\in L(K^n, X)$ heißt Ableitung von $g$ im Punkt $x\in D$, falls \begin{align*}
-		g(x + y) = g(x) + g'x() y + o(\vert y\vert), \;y\to 0
-	\end{align*}
-\end{boldenvironment}
 	
 \begin{*definition}[zweite Ableitung]
 Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Falls $g:= f':D\to L(K^n, K^m) =: y_1$ \gls{diffbar} in $x\in D$ ist, heißt \begin{align}
@@ -15,50 +6,6 @@ Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Fal
 \end{align}
 \begriff{zweite Ableitung} von $f$ in $X$.
 \end{*definition}
-
-\begin{underlinedenvironment}
-	Offenbar gilt dann: \begin{align}
-	\notag f'(x + y) &= f'(x) + f''(x)y + o(\vert y \vert),\; y\to 0
-	\intertext{bzw.}
-	\proplbl{taylor_definition_hoehere_ableitung_zwei}
-	f'(x+y)\cdot z &= f'(x)\cdot z + \underbrace{\big( \underbrace{f''(x)\cdot y}_{\in K^{m\times n}} \big) z}_{\in K^m} + o(\vert y \vert)\cdot z\quad\forall z\in K^n
-	\end{align}
-\end{underlinedenvironment}
-
-\begin{boldenvironment}[Interpretation]
-	Betrachte $f''(x)$ als kubische bzw. $3$-dimensionale "`Matrix"' (heißt auch \emph{Tensor} 3. Ordnung).
-	
-	\emph{beachte:} Ausdruck für $f''(x + y)\cdot z$ ist jeweils linear in $y$ und $z$.
-\end{boldenvironment}
-
-\begin{boldenvironment}[Frage] höhere Ableitungen, d.h. von $f'':D\to L(K^n, Y_1)$ usw.
-	
-	Offenbar: \begin{align*}
-		g_2&:= L(K^n, Y_1) = L\big(K^n, L(K^n K^m)\big) \cong L(K^n, K^{m\times n}) \cong L(K^n, K^{m\times n}) \cong K^{m\cdot n^2}\\
-		g_3&:= L(K^n, Y_2) \cong L(K^n, K^{m\cdot n^2}) \cong K^{k\cdot n^3}
-	\end{align*}
-	Endlich dimenionale, normierte Räume, man kann rekursiv $\forall k\in \mathbb{N}$ definieren: \begin{enumerate}[label={(\roman*)}]
-		\item (Räume)
-		
-		\begin{tabularx}{\linewidth}{l@{\ }c@{\ }l@{\ }X}
-			$Y_0$ & = & $K^n$ &  mit $\vert\,.\,\vert$ \\
-			$Y_{k+1}$ &  :=  & $L(K^n, Y_k)$ & mit Standardnormen $\Vert A\Vert_{k+1} = \sup\limits_{\vert z \vert \le 1} \Vert Az\Vert_{Y_k}$ (vgl. Satz 13.8),
-		\end{tabularx}
-		analog zu oben ist $Y_k\cong K^{m\cdot n^k}$, $Y_k$ normierter Raum
-		
-		\item (Ableitungen)
-		
-		\begin{tabularx}{\linewidth}{l@{\ }c@{\ }X}
-			$f^{(0)}$ & := & $f:D\subset K^n\to K^m$, $D$ offen.\\
-		\end{tabularx}
-		Falls $f^{(k)}:D\to Y_k$ \gls{diffbar} in $x\in D$ heißt \[ f^{(k+1)}(x) := \left( f^{(k)} \right) (x)\in L(K^n, Y_k)  \]
-		\begriff{$(k+1)$-te Ableitung} von $f$ in $x$. (\emph{beachte:} $f^{(1)}(x) = f'(x)$)
-		
-		Somit gilt: \begin{align}
-			f^{(k)} (x + y) = f^{(k)}(x) + f^{(k+1)}(x) \cdot y + o(\vert y \vert) \;(\in Y_k), \;y\to 0
-		\end{align}
-	\end{enumerate}
-\end{boldenvironment}
 
 \begin{*definition}[$k$-fach differenzierbar]
 	$f$ heißt \begriff{$k$-fach differenzierbar} (auf $D$), falls $f^{(k)}$(x) existiert $\forall x\in D$.
@@ -68,9 +15,6 @@ Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Fal
 	$C^k(D, K^m) := \{ f:D\to K^m\mid $f$ \text{ $k$-fach stetig \gls{diffbar} auf $D$} \}$
 \end{*definition}
 
-\begin{underlinedenvironment}[Hinweis]
-	Falls $f^(k)(x)$ existiert $\Rightarrow$ $f^{(k-1)}$ stetig in $X$  (vgl. \propref{diffbar_impl_stetig})
-\end{underlinedenvironment}
 \begin{boldenvironment}[Speziafall $n=1$]
 	$f:D\subset K\to K^m$\\
 	\begin{tabularx}{\linewidth}{r@{$\;$}l@{$\,$}c@{$\,$}X}
@@ -79,60 +23,6 @@ Betrachte nun $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} auf $D$. Fal
 	\end{tabularx}
 	Allgemein: $f^{(k)}(x) \in Y_k = L(K, Y_{k-1}) \cong L(K, K^m)\cong K^m$, d.h. für $n=1$ kann $f^{(k)}(x)$ stets als $m$-Vektor in $K^m$ betrachtet werden.
 \end{boldenvironment}
-
-\begin{example}
-	Für $f:\mathbb{R}\to\mathbb{R}$ mit $f(x) = x\cdot \sin x$\\ \begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }l}
-		$\Rightarrow$ & $f'(x)$ & = & $\sin x + x\cdot \cos x $ \\
-		$\Rightarrow$ & $f''(x)$ & = & $\cos x + \cos x - x \sin x = 2 \cos x - x \sin x$ \\
-		$\Rightarrow$ & $f'''(x)$ & = & $-3\sin x - x\cos x$ usw.
-	\end{tabularx}
-	\begin{center}\begin{tikzpicture}
-		\begin{axis}[
-		xmin=-5, xmax=5, xlabel=$x$,
-		ymin=-5, ymax=5, ylabel=$y$,
-		samples=400,
-		axis y line=middle,
-		axis x line=middle,
-		]
-		\addplot+[mark=none] {x*sin(deg(x))};
-		\addlegendentry{$x\cdot\sin(x)$}
-		\addplot+[mark=none, dashed] {sin(deg(x))+x*cos(deg(x))};
-		\addlegendentry{$\sin(x)+x\cdot\cos(x)$}
-		\addplot+[mark=none, dotted] {2*cos(deg(x))-x*sin(deg(x))};
-		\addlegendentry{$2\cos(x)-x\cdot\sin(x)$}
-		\end{axis}
-		\end{tikzpicture}\end{center}
-\end{example}
-
-\begin{example}
-	sei $f:\mathbb{R}_{> 0}\to\mathbb{R}^2$ mit $f(x) = \binom{x^3}{\ln x}$. \begin{align*}
-		\Rightarrow\;f'(x) &= \begin{pmatrix}
-			3x^2 \\ \frac{1}{x}
-		\end{pmatrix} & \Rightarrow\; f''(x) &= \begin{pmatrix}
-			6x \\ -\frac{1}{x^2}
-		\end{pmatrix} & \Rightarrow\; f'''(x) &= \begin{pmatrix}
-			6 \\ \frac{2}{x^3}
-		\end{pmatrix}
-	\end{align*}
-\end{example}
-
-\begin{example}
-	Sei $f:\mathbb{R}\to\mathbb{R}$ mit \begin{flalign*}
-		f(x) &= \begin{cases}
-			x^3 & x\ge 0 \\
-			-x^3 & x < 0
-		\end{cases} &
-	\end{flalign*}
-	Folglich
-	\begin{align*}
-		\Rightarrow\; f'(x) &= \begin{cases}
-			3x^2 \\ -3x^2
-		\end{cases} & \Rightarrow \; f''(x) &= \begin{cases}
-			6x \\ -6x
-		\end{cases}
-	\end{align*}
-	$\Rightarrow$ $f'''(0)$ existiert nicht, d.h. $f\in C^2(K, \mathbb{R})$ aber $f\notin C^3(\mathbb{R},\mathbb{R})$
-\end{example}
 
 \begin{example}
 	\proplbl{tayler_hoehere_ableitungen_beispiel_4}
@@ -247,11 +137,6 @@ $B\in X_k$ heißt \begriff{$k$-lineare Abbildung}. $X_k$ ist Vektorraum.
 	Selbststudium / ÜA
 \end{proof}
 
-\begin{remark}
-	\proplbl{taylor_partielle_ableitung_isomorphismus_bemerkung}
-	$\Vert f^{(k)}(x)\Vert$ unabhängig davon, ob man $f^{(k)}(x)$ als Element von $X_k$ oder $Y_k$ betrachtet.
-\end{remark}
-
 \subsection{Partielle Ableitungen}
 Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Standard-Einheitsvektoren
 
@@ -298,7 +183,7 @@ Sei $X=(x_1, \dotsc, x_k)\in K^n$; d.h. $x_j\in K$, $e_1, \dotsc, e_k$ die Stand
 
 Abkürzende Schreibweise: \begin{align*}
 	f_{x_j x_j x_j}(x) &= \frac{\partial^3}{\partial x_j \partial x_j \partial x_j} f(x) = \frac{\partial^3}{\partial x_j^3} f(x) \\
-	f_{x_i x_j x_i x_l x_l}f(x) &= \frac{\partial}{\partial x_l^2 \partial x_j^2 \partial x_i} f(x)
+	f_{x_i x_j x_j x_l x_l}f(x) &= \frac{\partial}{\partial x_l^2 \partial x_j^2 \partial x_i} f(x)
 \end{align*}
 \begin{*definition}[\person{Hesse}-Matrix]
 Für $m=1$ (d.h. $f:D\subset\mathbb{R}^n\to K$) ist 
@@ -344,10 +229,6 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 	Anschaulich: alle partiellen Ableitungen 2. Ordnung bilden eine 3D Matrix.
 \end{example}
 
-\begin{boldenvironment}[Frage]
-	Zusammenhang von $f^{(k)}(x)$ mit partiellen Ableitungen?
-\end{boldenvironment}
-
 \begin{theorem}
 	\proplbl{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung}
 	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$. Dann \begin{enumerate}[label={(\alph*)}]
@@ -361,14 +242,10 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 	\end{enumerate}
 \end{theorem}
 
-\begin{remark}
-	\propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung} \ref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_b} ist ein wichtiges Kriterium zur Prüfung der \gls{diffbar}keit, $k$-te Ableitung kann dann mittels \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq} bestimmt werden.
-\end{remark}
-
 \begin{proof}
 	Jeweils mittels vollständiger Induktion nach $K$ ausgeführt:\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
-		\item basiert auf \propref{richtungsableitung_vollstaendige_reduktion} 
-		\item basiert auf \propref{mittelwertsatz_existenz_partieller_ableitung}
+		\item basiert auf Vollst. Reduktion
+		\item basiert auf Kap. MWS Existenz part. Abl.
 	\end{enumerate}
 \end{proof}
 
@@ -399,7 +276,6 @@ die \begriff{\person{Hesse}-Matrix}, die alle partiellen Ableitungen 2. Ordnung 
 	\end{align*}
 \end{example}
 
-Analoge Rechnung liefert allgemein
 \begin{conclusion}
 	Für $f=(x_1, \dotsc, f_m):D\subset K^n\to K^m$, $D$ offen, es existieren alle $f^{(2)}(x)$ für $x\in D$. Dann \begin{align}
 		f^{(2)}(x) (y_1,y_2) = \begin{pmatrix}
@@ -409,10 +285,6 @@ Analoge Rechnung liefert allgemein
 		\end{pmatrix} \in K^m\; \forall y_1, y_2\in K^n
 	\end{align}
 \end{conclusion}
-
-\begin{remark}
-	Für höhere Ableitungen wird die Darstellung $f^{(k)}(x)(y_1, \dotsc, y_k)$ allgemein mittels partiellen Ableitungen immer komplexer, wird allerdings auch selten benötigt.
-\end{remark}
 
 \begin{boldenvironment}[Frage:]
 	Kann man die Reihenfolge bei partiellen Ableitungen vertauschen? (vgl. \propref{taylor_partielle_ableitungen_beispiel_9})
@@ -454,51 +326,7 @@ Analoge Rechnung liefert allgemein
 	\ $\Rightarrow$ alle partiellen Ableitung bis Ordnung $k$ existieren und die Reihenfolge kann vertauscht werden.
 \end{conclusion}
 
-\begin{proof}[\propref{taylor_partielle_ableitung_schwarz_folgerung}]
-	Existenz der partiellen Ableitung und deren Stetigkeit folgen aus \propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung}, beliebige Vertauschung der Reihenfolge kann durch schrittweises Vertauschen von zwei "`benachbarten Veränderlichen"' erreicht werden.\\
-	\ $\xRightarrow{\text{\cref{taylor_partielle_ableitung_schwarz}}}$ Behauptung
-	
-	Zur Veranschaulichung: \begin{align*}
-		f_{x_3 x_1 x_2}(x) & \overset{\eqref{taylor_partielle_ableitung_definition_10}}{=} D_{x_2} f_{x_3 x_1}(x) \overset{\text{\cref{taylor_partielle_ableitung_schwarz}}}{=} D_{x_2}f_{x_1 x_3}(x) \overset{\eqref{taylor_partielle_ableitung_definition_10}}{=} f_{x_1 x_3 x_2}(x) \\
-		& \overset{\eqref{taylor_partielle_ableitung_definition_10}}{=} (f_{x_1})_{x_3 x_2}(x) \overset{\text{\cref{taylor_partielle_ableitung_schwarz}}}{=} (f_{x_1})_{x_2 x_3}(x) \overset{\eqref{taylor_partielle_ableitung_definition_10}}{=} f_{x_1 x_2 x_3}(x)
-	\end{align*}
-\end{proof}
-
-\begin{proof}[\propref{taylor_partielle_ableitung_schwarz}]
-	\gls{obda} $m=1$. Fixiere $\epsilon > 0$ $\Rightarrow$ $\exists \delta > 0$ mit \begin{align*}
-		x + s\cdot e_i + t\cdot e_j\in D\quad\forall s,t\in (-\delta,\delta)
-	\end{align*}
-	und
-	\begin{align}
-		\proplbl{taylor_partielle_ableitung_schwarz_beweis_15}
-		\vert f_{x_i x_j}(x + s\cdot e_i + t\cdot e_j) - f_{x_i x_j}(x)\vert < \epsilon \quad\forall s,t\in(-\delta,\delta)
-	\end{align}
-	
-	Definiere $\phi(s) := f(x + s\cdot e_i + t\cdot e_j) - f(x + s\cdot e_i)$ ist \gls{diffbar} auf $(-\delta,\delta)$ $\forall t\in (-\delta,\delta)$ \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\text{MWS}}$ & $\exists \sigma \in (0,s): \phi(s) - \phi(0) = \phi'(\sigma)s = \left(f_{x_i}(x + \sigma e_i + t e_j) - f_{x_i}(x + \sigma e_i)\right)s$ \marginnote{MWS = Mittelwertsatz, \propref{mittelwertsatz_mittelwertsatz}}\\
-	$\xRightarrow{\text{MWS}}$ & für $t\to f_{x_i}(x + \sigma e_i + t e_j)$: $\exists \tau \in (0,t): \phi(s) - \phi(0) = f_{x_i x_j}(\underbrace{x + \sigma e_i + \tau e_j}_{=: \tilde{x}}) s t$ ($\sigma$, $\tau$ abhängig von $s$, $t$)
-	\end{tabularx}
-	Daher gilt:
-	{\zeroAmsmathAlignVSpaces*\begin{align}
-	\proplbl{taylor_partielle_ableitung_schwarz_16}
-	\notag \left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(x)\right\vert &\le \underbrace{\left\vert\frac{\phi(s) - \phi(0)}{st} - f_{x_i x_j}(\tilde{x})\right\vert}_{=0} + \left\vert f_{x_i x_j}(\tilde{x}) - f_{x_i x_j}(x) \right\vert& \\
-	&\overset{\eqref{taylor_partielle_ableitung_schwarz_beweis_15}}{<} \epsilon \quad\forall s,t\in(-\delta,\delta),\; s,t\neq 0&
-	\end{align}}
-	Wegen \begin{align*}
-		\lim\limits_{t\to 0} \frac{\phi(s) - \phi(0)}{t} = \lim\limits_{t\to 0}\frac{f(x + s\cdot e_i + t\cdot e_j) - f(x + s \cdot e_i)}{t} - \frac{f(x + t\cdot e_j) - f(x)}{t} = f_{x_j}(x + s\cdot e_i) - f_{x_j}(x)
-	\end{align*}
-	folgt aus \propref{taylor_partielle_ableitung_schwarz_16} \begin{align}
-		\proplbl{taylor_partielle_ableitung_schwarz_beweis_17}
-		\left\vert \frac{f_{x_j}(x + s\cdot e_i) - f_{x_j}(x)}{s} - f_{x_i x_j}(x) \right\vert < \epsilon\quad \forall s\in (-\delta, \delta);\; s\neq 0
-	\end{align}
-	\ $\xRightarrow{\epsilon > 0}$ $f_{x_j x_i}(x) = \lim\limits_{s\to 0}\frac{f_{x_j}(x + s\cdot e_i) - f_{x_j}(x)}{s}\overset{\eqref{taylor_partielle_ableitung_schwarz_beweis_17}}{=} f_{x_i x_j}(x)$
-\end{proof}
-
 \subsection{Anwendungen}
-\begin{boldenvironment}[Frage]
-	Wann besitzt $fD\subset\mathbb{R}^n\to\mathbb{R}^{m\times n}$ eine Stammfunktion? (Vgl. \propref{stammfunktion}, \gls{obda} $m=1$)
-\end{boldenvironment}
 
 \begin{proposition}[notwendige Integrabilitätsbedingung]
 	\proplbl{taylor_anwendung_integrabilitaetsbedinung}
@@ -509,10 +337,6 @@ Analoge Rechnung liefert allgemein
 		\frac{\partial}{\partial x_i} f_j(x) = \frac{\partial}{\partial x_j} f_i(x)\quad\forall x\in D,\; i,j=1,\dotsc,n
 	\end{align}
 \end{proposition}
-
-\begin{remark}
-	\eqref{taylor_anwendung_integrabilitaetsbedinung_eq} ist hinreichend, falls z.B. $D$ konvex (siehe Analysis 3)
-\end{remark}
 
 \begin{proof}
 	$f$ habe Stammfunktion $F$ $\Rightarrow$ $F\in C^2(D)$
@@ -525,7 +349,9 @@ Analoge Rechnung liefert allgemein
 \end{proof}
 
 \begin{example}
-	Nochmal \propref{stammfunktion_beispiel_11} mit Parameter $\alpha\in\mathbb{R}$: \begin{align*}
+	Vgl. Bsp vom Kapitel Stammfkt.
+	$\alpha\in\mathbb{R}$: 
+	\begin{align*}
 		f(x,y) &= \begin{pmatrix}
 			\alpha xy \\ x^2 + y^2
 		\end{pmatrix}
@@ -559,10 +385,6 @@ Verwende \begriff{allgemeine Polynome} $\phi:K^n\to K$ der Ordnung $k$, d.h. \be
 \end{align}
 mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 
-\begin{boldenvironment}[Notation]
-	 $f^{(k)}(x)(y,\dotsc,y) = f^{(k)}(x) y^k$
-\end{boldenvironment}
-
 \begin{boldenvironment}[Wiederholung]
 	$f\in C(D)$: $f(x+y) = f(x) + o(1)$, $y\to 0$ \\
 	$f\in C^1(D)$: $f(x+y) = f(x) + f(x)y + o(\vert y \vert)$, $y\to 0$
@@ -592,62 +414,6 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 	\end{align}
 \end{theorem}
 
-\begin{remark}
-	Entscheidente Aussage in \propref{taylor_taylor} ist nicht \eqref{taylor_taylor_eq}, sondern die Eigenschaften des Restglieds (dies wird klein).
-\end{remark}
-
-\begin{proof}
-	Sei $[x,x+y]\subset D$, definiere \begin{align*}
-		R_K(y) = f(x + y) - f(x) - \sum_{j=1}^{k-1} \frac{1}{j!} f^{(j)}(x) y^j \quad\Rightarrow\eqref{taylor_taylor_eq}
-	\end{align*}
-	und definiere \begin{align*}\phi(t):= f(x + y) - f(x + ty) - \sum_{j=1}^{k-1} \frac{(1 - t)^j}{j!} f^{(j)}(x+ty) y^j - (1 - t)^k R_k(y)
-	\end{align*}
-	Offenbar $\phi(1) = 0 = \phi(0)$.
-	
-	Da $f$ $k$-fach \gls{diffbar}\\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\phi:[0,1]\to K^m$ $\mathbb{R}$-\gls{diffbar} auf $(0,1)$ mit
-	\end{tabularx} {\begin{align}
-		\proplbl{taylor_taylor_beweis_24}
-		\notag\phi'(t) &= -f'(x + ty) \cdot y + \sum_{j=1}^{k-1}\left( \frac{(1 - t)^{j-1}}{(j - 1)!} f^{(j)}(x + ty) y^j - \frac{(1 - t)^j}{j!} f^{(j+1)}(x + ty) y^{j+1}\right) + k (1 - t)^{k - 1} R_k(y) \\
-		& = - \frac{(1 - t)^{k-1}}{(k - 1)!} f^{(k)}(x + ty) y^k + k (1 - t)^{k-1} R_k(y)
-	\end{align}}
-	
-	\begin{enumerate}[label={(\alph*)}]
-		\item \marginnote{MWS = Mittelwertsatz, \propref{mittelwertsatz_mittelwertsatz}} $K=\mathbb{R}$, $n=1$: nach MWS $\exists \tau\in (0,1)$ und \begin{align*}
-			0 = \phi(1) - \phi(0) = \phi'(\tau) \quad \xRightarrow{\eqref{taylor_taylor_beweis_24}} \eqref{taylor_taylor_restglied_eq_zwei}
-		\end{align*}
-		
-		\item zu \eqref{taylor_taylor_restglied_eq_eins} mit $K=\mathbb{R}$: Sei $\psi(t) := \langle \phi(t), v\rangle$ für $v\in\mathbb{R}^n$ \\
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & $\psi:[0,1]\to\mathbb{R}$ \gls{diffbar} auf $(0,1)$ mit $\psi'(t) = \langle \phi'(t),r\rangle$ \\
-		$\xRightarrow{\text{MWS}}$ & $\exists \tau\in(0,1)$: $0= \langle \phi'(\tau), v\rangle$
-		\end{tabularx}
-		 {\begin{flalign}
-		 	\proplbl{taylor_taylor_beweis_25}
-		\qquad\Rightarrow\;\;&\langle R_K(y),v\rangle = \frac{1}{k!}\langle f^{(k)}(x + \tau y)y^k, v\rangle&
-		\end{flalign}}
-		mit $v = \frac{R_k(y)}{\vert R_k(y)\vert}$  ($\vert R_k(y)\vert \neq 0$, sonst klar) und es folgt
-		\begin{align*}
-			\langle R_k(y), v\rangle = \vert R_k(y)\vert = \left\langle \frac{1}{k!} f^{(k)}(x + \tau y) y^k, v\right\rangle \overset{\vert v \vert = 1}{\le} \frac{1}{k!} \left\vert f^{(k)}(x + \tau y) y^k\right\vert \quad\xRightarrow{\eqref{taylor_hoehere_ableitung_abschaetzung_norm}} \eqref{taylor_taylor_restglied_eq_eins}
-		\end{align*}
-		
-		\item $K=\mathbb{C}$: identifiziere $\mathbb{C}^m$ mit $\mathbb{R}^{2m}$ und setzte $\phi(t) = \langle \phi(t), r\rangle_{\mathbb{R}^{2m}}$.
-		
-		Beachte:\begin{itemize}
-			\item $\phi:[0,1]\to\mathbb{R}$, $\frac{\D}{\D t} \Re \phi_j(t) = \Re \frac{\D}{\D t}\phi_j(t)$ $\forall j$
-			\item $\langle R_k(y), R_k(y)\rangle_{\mathbb{R}^{2m}} = \vert R_k(y)\vert_{\mathbb{C}^m}^2$
-		\end{itemize}
-		 und argumentiere wie in b)
-			
-		\item zu \eqref{taylor_taylor_restglied_eq_drei}: Setzte $R_k(y) = \frac{1}{k!}f^{(k)}(x) y^k + r_k(y)$ in \eqref{taylor_taylor_beweis_25}, $r = \frac{r_k(y)}{\vert r_k(y)\vert}$ (falls $r_k(y) \neq 0$)\\
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & $\displaystyle\frac{\vert r_k(y)\vert}{\vert y \vert^k} \le \frac{1}{k!\vert y\vert^k} \left| \left( f^{(k)}(x + \tau(y)y) - f^{(k)}(x)\right)y^k\right| \overset{\eqref{taylor_hoehere_ableitung_abschaetzung_norm}}{\le} \frac{1}{k!} \left\Vert f^{(k)}(x + \tau (y)y) - f^{(k)}(x)\right\Vert \xrightarrow{y\to 0}0$,
-		\end{tabularx}
-		d.h. $r_k(y) = o(\vert y \vert^k)$, $y\to 0$
-	\end{enumerate}
-\end{proof}
-
 \begin{*definition}[Taylorpolynom, Taylorentwicklung]
 	Rechte Seite in \eqref{taylor_taylor_eq} ohne Restglied heißt \uline{Taylorpolynom}\begriff*[Taylor-!]{polynom} von $f$ in $x$ vom Grad $k-1$.
 	
@@ -665,19 +431,6 @@ mit $a_0$, $a_j$, $a_{ij}$ $\in K$ gegebene Koeffizienten
 \begin{proof}
 	Benutze \eqref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung_eq}
 \end{proof}
-
-\begin{remark}
-	Falls alle partiellen Ableitungen von $f$ bis Ordnung $k$ existieren und stetig sind auf $D$ \\
-	$\Rightarrow$ $f\in C^k(D)$ und \eqref{taylor_taylor_partielle_ableitungen_eq} (vgl. \propref{taylor_partielle_ableitung_zusammenhang_hoehere_ableitung})
-\end{remark}
-
-\begin{example}
-	Sei $f:\mathbb{R}\to\mathbb{R}$ mit $f(x) = \cos x$. Für $x=0$ gilt: \begin{align*}
-		\cos y &= \cos 0 + \frac{1}{1!}\big( \cos'(0) \big)y + \frac{1}{2!}\big( \cos''(0) \big)y^2 + \dotsc + \frac{1}{k!} \big( \cos^{(k)} 0 \big)y^k + o(\vert y \vert^k) \\
-		&\overset{k=8}{=} 1 - 0\cdot y - \frac{1}{2}y^2 + 0 y^3 + \frac{1}{24}y^4 - 0\cdot y  - \frac{1}{720} y^6 + 0\cdot y^7 + \frac{1}{40320}y^8 + o(\vert y\vert^8)
-	\end{align*}
-	(gilt auch für $K=\mathbb{C}$)
-\end{example}
 
 \begin{example}
 	Sei $f:\mathbb{R}^2\to\mathbb{R}$ mit $f(x) = (x_1^2 + x_1 x_2 + \sin x_2)$ ($x = (x_1, x_2)$)
