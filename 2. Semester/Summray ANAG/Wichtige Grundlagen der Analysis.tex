@@ -1,0 +1,79 @@
+\documentclass[ngerman,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
+\usepackage[ngerman]{babel}
+
+\title{\textbf{Wichtige Methoden der Analysis}}
+\author{H. Haustein, P. Lehmann}
+
+\begin{document}
+\maketitle
+
+\section{Grenzwerte berechnen}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Kann man die Grenze in die Funktion einsetzen und ausrechnen, ohne dass es zu Problemen kommt? 
+	\item Geschicktes Ausklammern im Nenner, dann kürzen im Zähler.
+	\item Regel von \textsc{l'Hospital} (mehrfach) verwenden, klappt aber nur, wenn Zähler und Nenner differenzierbar sind:
+	\begin{align}
+	\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=\lim\limits_{x\to x_0}\frac{f'(x)}{g'(x)}\notag
+	\end{align}
+\end{enumerate}
+
+\section{Stetigkeit}
+
+\section{Partialbruchzerlegung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Bestimmung der Nullstellen des Nenner-Polynoms
+	\item Umschreiben des Polynoms (mit 3 Nullstellen $n_1,n_2,n_3$):
+	\begin{align}
+		\frac{f}{(x-n_1)(x-n_2)(x-n_3)}=\frac{A}{x-n_1}+\frac{B}{x-n_2}+\frac{C}{x-n_3}\notag
+	\end{align}
+	\item kommt eine Nullstelle doppelt vor, so ergibt sich
+	\begin{align}
+		\frac{f}{(x-n_1)^2}=\frac{A}{x-n_1}+\frac{B}{(x-n_1)^2}\notag
+	\end{align}
+	\item bei komplexen Nullstellen:
+	\begin{align}
+		\frac{A}{a-ib-z}+\frac{B}{a+ib-z} \text{ in die Form } \frac{C+Dz}{(a-z)^2+b^2}\notag
+	\end{align}
+	\item Multiplikation beider Seiten mit $x-n_1$, Kürzen auf der linken Seite nicht vergessen!
+	\item Einsetzen: $x=n_1$, Brüche mit $B$ und $C$ werden zu 0, linke Seite $= A$
+	\item diesem Schritt mit $n_2$ und $n_3$ wiederholen
+\end{enumerate}
+
+\section{Ableitung}
+\subsection{(normale) Ableitung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Rechenregeln verwenden:
+	\begin{align}
+		(f\pm g)' &= f'\pm g'\notag \\
+		(cf)' &= c\cdot f'\notag \\
+		(x^n)' &= nx^{n-1}\notag \\
+		(fg)' &= f'\cdot g + f\cdot g' \notag \\
+		\left(\frac{f}{g}\right)' &= \frac{f'\cdot g-f\cdot g'}{g^2}\notag \\
+		f(g(x))' &= f'(g(x))\cdot g'(x)\notag \\
+		(\ln f)' &= \frac{f'}{f}\notag
+	\end{align}
+	\item bei mehrdimensionalen Funktionen: komponentenweise ableiten
+\end{enumerate}
+
+\subsection{Richtungsableitung und partielle Ableitung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Berechnung der Richtungsableitung von $f$ in $x$ in Richtung $v$:
+	\begin{align}
+		\mathrm{D}_vf(x)=\lim\limits_{t\to 0}\frac{f(x+tv)-f(x)}{t}\notag
+	\end{align}
+	\item bei partieller Ableitung: Behandeln aller Variablen, die nicht abzuleiten sind, als Konstanten
+\end{enumerate}
+
+\section{Integration}
+
+\subsection{partielle Integration}
+
+\subsection{Integration durch Substitution}
+
+\section{Extremwerte}
+
+\end{document}
