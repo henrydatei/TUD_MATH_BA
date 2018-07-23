@@ -24,7 +24,7 @@
 \end{proposition}
 
 \begin{proof}\hspace*{0pt}
-	Taylorscher Satz
+	Taylorscher Satz!
 \end{proof}
 
 \begin{boldenvironment}[Test Definitheit in Anwendungen]
@@ -43,6 +43,15 @@
 	\end{itemize}
 \end{boldenvironment}
 
+\begin{boldenvironment}[Algo Bestimmung Art und Lage Extremwerte]\vspace*{0pt}
+	Gegeben sei eine Fkt. $f: \real^n \to \real$
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Bestimme $n$-partielle Ableitung von $f$ und suche Pkte., die $f=0$ erfüllen
+		\item Bestimme Hesse-Matrix von $f$
+		\item setze gefundene Pkte.  in Hesse Matrix von $f$ ein und berechne die $\det(Hess(f))$, damit bekommt man die Art der Extremwerte.
+	\end{enumerate}
+\end{boldenvironment}
+
 \subsection{Lokale Extrema mit Gleichungsnebenbedingung}
 \begin{proposition}[Lagrange-Multiplikatorregel, notwendige Bedingung]
 	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, diffbar, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
@@ -56,6 +65,15 @@
 \begin{*definition}[Lagrangescher Multiplikator]
 	$\lambda$ oben heißt Lagrangescher Multiplikator
 \end{*definition}
+
+\begin{boldenvironment}[Finden Extremwerte mit Lagrange-Multiplikatoren]\vspace*{0pt}
+	Gegeben seien $f: \real^n \to \real$ und $g: \real^n \to \real$
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Berechnene $f'(x) + \transpose{\lambda} g'(x) = 0$, wobei $\lambda \in \real^m$ ($f'$ und $g'$ mit vollst. Reduktion in Kap. 18)
+		\item Beachte es müssen gleich viele Gleichung für Unbekannte sein
+		\item Gleichungssystem lösen und alle Unbekannten angeben
+	\end{enumerate}
+\end{boldenvironment}
 
 \subsection{Globale Extrema mit Abstrakter Nebenbedinung}
 \begin{boldenvironment}[Frage]
