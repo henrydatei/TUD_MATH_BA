@@ -7,7 +7,7 @@
 \usepackage[ngerman]{babel}
 
 \title{\textbf{Wichtige Methoden der Analysis}}
-\author{H. Haustein, P. Lehmann}
+\author{\textsc{H. Haustein}, \textsc{P. Lehmann}}
 
 \begin{document}
 \maketitle
@@ -109,9 +109,61 @@
 \section{Integration}
 
 \subsection{partielle Integration}
+\begin{align}
+	\int f'\cdot g\;\mathrm{d}x=f(x)\cdot g(x)-\int f\cdot g'\;\mathrm{d}x\notag
+\end{align}
+\textbf{Beispiel:} 
+\begin{align}
+	\int x\cdot \ln(x) \;\mathrm{d}x\notag
+\end{align}
+\begin{align}
+	f'(x) &= x & g(x) &= \ln(x) \notag \\
+	f(x) &= \frac{1}{2}x^2 & g(x)' &= \frac{1}{x}\notag
+\end{align}
+\begin{align}
+	\int x\cdot \ln(x) \;\mathrm{d}x &= \frac{1}{2}x^2\cdot\ln(x)-\int \frac{1}{2}x^2\cdot\frac{1}{x}\;\mathrm{d}x = \frac{1}{2}x^2\cdot\ln(x)-\int \frac{1}{2}x\;\mathrm{d} \notag \\
+	&= \frac{1}{2}x^2\cdot\ln(x)-\frac{1}{4}x^2\notag
+\end{align}
 
 \subsection{Integration durch Substitution}
+\begin{align}
+	\int f(x)\;\mathrm{d}x = \int f(\phi(t))\cdot\phi'(t)\;\mathrm{d}t=F(\phi(x))\notag
+\end{align}
+\textbf{Beispiel:} Mit der Substitution $x=t-1$, $\mathrm{d}x=\mathrm{d}t$ ist
+\begin{align}
+	\int\frac{1}{x^2+2x+2}\;\mathrm{d}x &= \int\frac{1}{(x+1)^2+1}\;\mathrm{d}t = \int\frac{1}{t^2+1}\;\mathrm{d}t = \arctan(t) \notag \\
+	&= \arctan(x+1)\notag
+\end{align}
 
 \section{Extremwerte}
+\subsection{ohne Nebenbedingung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item alle partiellen Ableitungen Null setzen, das resultierende Gleichungssystem lösen $\to$ Kandidaten für Extremstellen
+	\item \textsc{Hesse}-Matrix aufstellen
+	\begin{align}
+		\text{Hess}(f)=\begin{pmatrix}f_{x_1x_1} & \dots & f_{x_1x_n} \\ \vdots & & \vdots \\ f_{x_nx_1} & \dots & f_{x_nx_n}\end{pmatrix}\notag
+	\end{align}
+	\item jeden Kandidaten in die \textsc{Hesse}-Matrix einsetzen, Definitheit ausrechnen
+	\begin{itemize}
+		\item $\det(A)<0\Leftrightarrow$ indefinit
+		\item $\det(A)>0, a_1<0\Leftrightarrow$ negativ definit (Maximum)
+		\item $\det(-A)>0, a_1>0\Leftrightarrow$ positiv definit (Minimum)
+	\end{itemize}
+\end{enumerate}
 
+\subsection{mit Nebenbedingung, Lagrange-Multiplikatoren}
+	\begin{enumerate}[label=\textbf{\arabic*.}]
+		\item Voraussetzungen prüfen: 
+		\begin{align}
+			& f:D\subseteq R^n\to R\text{, stetig, differenzierbar} \notag \\
+			& g: D\to R^m\text{, stetig, differenzierbar}\notag \\
+			&\text{rang}(g')=m \notag
+		\end{align}
+		\item Gleichungssystem lösen
+		\begin{align}
+			f'(x) + \lambda^Tg'(x)&=0\notag \\
+			g(x) &= 0\notag 
+		\end{align}
+		\item Lösung(en) sind Kandidaten für Extremalstellen!
+	\end{enumerate}
 \end{document}
