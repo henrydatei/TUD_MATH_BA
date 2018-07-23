@@ -122,114 +122,18 @@ $\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_f
 	d.h. das Integral liefert Maß für messbare Mengen.
 \end{conclusion}
 
-\begin{proof}[\propref{integral_funktion_unabhaengigkeit_leins_folge}]
-	\NoEndMark
-	beachte: alle Integrale im Beweis sind elementare Integrale gemäß \eqref{integral_treppenfunktion_definition}.
-	
-	\begin{itemize}
-	
-	\item Sei $f:M\subset\mathbb{R}\to\overline{\mathbb{R}}$ integrierbar und seien $\{ h_k\}$, $\{ \tilde{h}_k \}$ zugehörigen $L^1$-CF in $T^1(M)$.\\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & $\forall \epsilon > 0$ $\exists k_0$ mit \[ \int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x \le \int_M \vert h_k - h_l\vert + \vert \tilde{h}_k - \tilde{h}_l \vert \D x < \epsilon \quad\forall k,l\ge k_0  \] \\
-		$\Rightarrow$ & $\{ h_k - \tilde{h}_k \}$ ist $L^1$-CF mit $(h_k - \tilde{h}_k)\to 0$ f.ü. auf $M$.
-	\end{tabularx}
-
-	Da $\{ \int_M h_k \D x\}$, $\{ \int_M \tilde{h}_k \D x \}$ in $\mathbb{R}$ konvergieren, bleibt zu zeigen: $\{ h_k\}$ ist $L^1$-CF 	in $T^1(M)$ mit $h_k\to 0$ f.ü. auf $M$
-	\begin{flalign}
-		\Rightarrow &\int_M h_k \D x \xrightarrow{k\to\infty} 0&
-	\end{flalign}
-	
-	Da Konvergenz von $\{ \int_M h_k \D x \}$ bereits bekannt ist, reicht es, den Grenzwert für eine \gls{tf} zu zeigen.
-	
-	\item Wähle \gls{tf} derart, dass $\int_M \vert h_k - h_l \vert \D x \le \frac{1}{2^l}$ $\forall k\ge l$
-	
-	Fixiere $l\in\mathbb{N}$ und definiere $M_l := \{ x\in M\mid h_l(x) \neq 0 \}$, offenbar ist $M$ messbar mit $\vert M_l\vert < \infty$.
-	
-	Sei nun $\epsilon_l := \frac{1}{2^l \cdot \vert M_l\vert}$ falls $\vert M_l\vert > 0$ und $\epsilon_l = 1$ falls $\vert M_l\vert = 0$.
-	
-	Weiterhin sei $M_{l,k} := \{ x\in M_l \mid \vert h_k(x)\vert > \epsilon_l \}$, und für $k > l$ folgt
-	\begin{align*}
-		\left\vert\int_M h_k\D x \right\vert &\le \int_M \vert h_k\vert \D x = \int_{M_l} \vert h_k\vert \D x + \int_{M\setminus M_l} \vert h_k\vert \D x \\
-		&\le \int_{ M\setminus M_{l,k}} \vert h_k\vert \D x + \int_{M_{l,k}} \vert h_k\vert \D x + \int_{M\setminus M_l} \vert h_k - h_l\vert \D x + \underbrace{\int_{M\setminus M_l} \vert h_l\vert \D x}_{=0} \\
-		&\le \epsilon_l \vert M_l\vert + \int_{M_{l,k}} \vert h_k - h_l\vert \D x + \int_{M_{l,k}} \vert h_l\vert \D x + \frac{1}{2^l} \\
-		&\le \frac{1}{2^l} + \frac{1}{2^l} + c_l \cdot \vert M_{l,k}\vert + \frac{1}{2^l}
-	\end{align*}
-	mit $c_l := \sup\limits_{x\in M} \vert h_l(x)\vert$, $\exists k_l > l$ mit \propref{messbarkeit_funktion_egorov} folgt $\vert \{ x\in M_l\mid \vert h_k(x)\vert > \epsilon_l \} \vert \le \frac{1}{2^l \cdot (c_l + 1)}$ $\forall k > k_l$
-	
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\displaystyle \left\vert \int_M h_k\D x \right\vert \le \frac{4}{2^l}$ $\forall k>k_l$ \\
-	$\xRightarrow[\text{beliebig}]{l\in\mathbb{N}}$ & $\displaystyle \int_M h_k \D x\to 0$
-	\end{tabularx}
-	\end{itemize}
-	\ \hfill\csname\InTheoType Symbol\endcsname
-\end{proof}
-
 \begin{proposition}[Rechenregeln]
-	\proplbl{integral_funktion_rechenregeln}
-	Seien $f$, $g$ integrierbar auf $M\subset\mathbb{R}^n$, $c\in\mathbb{R}$. Dann
 	\begin{enumerate}[label={\alph*)}]
-		\item \proplbl{integral_funktion_rechenregeln_a}
-		(Linearität) $f\pm g$, $cf$ sind integrierbar auf $M$ mit \begin{align*}
-			\int_M f \pm g \D x &= \int_M f\D x + \int_M g \D x \\
-			\int_M c f \D x &= c \int_M f \D x
-		\end{align*}
-		\item \proplbl{integral_funktion_rechenregeln_b}
-		Sei $\tilde{M}\subset\mathbb{M}$ messbar\\
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-			$\Rightarrow$ & $f \chi_{\tilde{M}}$ ist integrierbar auf $M$ und $f$ ist integrierbar auf $\tilde{M}$ mit \[
-				\int_M f\cdot \chi_{\tilde{M}} \D x = \int_{\tilde{M}} f \D x \]
-		\end{tabularx}
-		\item\proplbl{integral_funktion_rechenregeln_c}
-		Sei $M = M_1\cup M_2$ für $M_1$, $M_2$ disjunkt und messbar \\
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-			$\Rightarrow$ & $f$ ist integrierbar auf $M_1$ und $M_2$ mit 
-		\end{tabularx}
-		\begin{align*}
-			\int_M f \D x &= \int_{M_1}  f \D x + \int_{M_2} f \D x
-		\end{align*}
-		\item\proplbl{integral_funktion_rechenregeln_d}
-		Sei $f = \tilde{f}$ f.ü. auf $M$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
-			$\Rightarrow$ & $\tilde{f}$ ist integrierbar auf $M$ mit
-		\end{tabularx}
-		\begin{align*}
-			\int_M f \D x = \int_M \tilde{f} \D x
-		\end{align*}
-		\item\proplbl{integral_funktion_rechenregeln_e}
-		Die Nullfortsetung $\tilde{f}:\mathbb{R}^n\to\overline{\mathbb{R}}$ von $f$ (vgl. \propref{messbarkeit_funktion_nullfortsetzung}) ist auf jeder messbaren Menge $\tilde{M}\subset\mathbb{R}^n$ integrierbar mit \begin{align*}
-			\int_{M\cap \tilde{M}} f \D x &= \int_{\tilde{M}} \overline{f}\D x
-		\end{align*}
+		\item $\int_M f\pm g\diff x=\int_M f\diff x\pm\int_M g\diff x$, $\int_M cf\diff x=c\int_M f\diff x$
+		\item $\int_M f\chi_{\tilde{M}}\diff x=\int_{\tilde{M}}f\diff x$
+		\item $\int_M f\diff x=\int_{M_1}f\diff x+\int_{M_2}f\diff x$
+		\item $f=\tilde f$ f.ü., $\int_M f\diff x=\int_M \tilde{f}\diff x$
+		\item Nullfortsetzung $\overline{f}$ auf jeder messbaren Menge $\overline{M}$, $\int_{M\cap\overline{M}}f\diff x=\int_{\overline{M}}\overline{f}\diff x$
 	\end{enumerate}
 \end{proposition}
 
-Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der Funktionswerte von $f$ auf einer Nullmenge das Integral nicht verändert.
-
 \begin{proof}
-	Seien $\{ h_k\}$ und $\{ \tilde{h}_k \}$ aus $T^1(\mathbb{R})^n$ $L^1$-CF zu $f$ und $g$.
-	
-	\begin{enumerate}[label={zu \alph*)},leftmargin=\widthof{\texttt{zu a) }},topsep=\dimexpr-\baselineskip/2\relax]
-		\item Es ist $h_k + \tilde{h}_k\to f + g$ f.ü. auf $M$.
-		
-		Wegen \begin{align*}
-			\int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x &\le \underbrace{\int_M \vert h_k - h_l\vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}} + \underbrace{\int_M \vert \tilde{h}_k - \tilde{h}_l \vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}}
-		\end{align*}
-		ist $\{ h_k + \tilde{h}_k\}$ $L^1$-CF zu $f+g$. \\
-		$\Rightarrow$ $f+g$ ist integrierbar auf $M$ und Grenzübergang in \begin{align*}
-			\int_M h_k + \tilde{h}_k \D x &= \int_M h_k \D x + \int_M \tilde{h}_k \D x
-		\end{align*}
-		liefert die Behauptung für $f+g$.
-		
-		Analog zu $cf$. Wegen $f - g$ = $f + (-g)$ folgt die letzte Behauptung.
-		
-		\item Offenbar ist $\{ \chi_{\tilde{m} h_k} \}$ $L^1$-CF zu $\chi_{\tilde{M}}f$ und $\{ h_k \}$ $L^1$-CF zu $f$ auf $\tilde{M}$.
-		
-		Mit \begin{align*}
-			\int_M h_k \chi_{\tilde{M}} \D x &= \int_{\tilde{M}} h_k \D x\quad\forall k\in\mathbb{N}
-		\end{align*}
-		folgt die Behauptung durch Grenzübergang.
-		\item Nach \ref{integral_funktion_rechenregeln_b} ist $f$ auf $M_1$ und $M_2$ integrierbar. Wegen $f = \chi_{M_1} f + \chi_{M_2} f$ folgt die Behauptung aus \ref{integral_funktion_rechenregeln_a} und \ref{integral_funktion_rechenregeln_b}.
-		\item Da $\{ h_k\}$ auch $L^1$-CF zu $\tilde{f}$ ist, folgt die Integrierbarkeit mit dem gleichen Integral.
-		\item Es ist $\{ \chi_{M\cap \tilde{M}} h_k \}$ $L^1$-CF zu $f$ auf $M\cap \tilde{M}$ und auch zu $\overline{f}$ auf $\tilde{M}$. Damit folgt die Behauptung.
-	\end{enumerate}
+	In Treppenfunktionen umwandeln, Integral per Betrag auseinanderziehen
 \end{proof}
 
 \begin{proposition}[Eigenschaften]
@@ -547,17 +451,7 @@ $\Rightarrow$ Integrale in \eqref{integral_parameterabhaengig_grundgleichung_eq}
 \end{proposition}
 
 \begin{proof}
-	$f(\,\cdot\, ,p)$ ist integrierbar auf $M$ $\forall p\in P$ nach \cref{integral_funktion_majorantenkriterium}.
-	
-	Fixiere $p$ und $\{ p_k\}$ in $P$ mit $p_k\to p$.
-	
-	Setzte $f_k(x) := f(x, p_k)$
-	
-	Stetigkeit von $f(x,\,\cdot\,)$ liefert $f_k(x) = f(x, p_k)\xrightarrow{x\to\infty} f(x,p)$ für \gls{fa} $x\in M$.
-	 \begin{tabularx}{\linewidth}{r@{\ \ }X}\\
-	$\xRightarrow{\text{\cref{integral_grenzwertsatz_majorisierte_konvergenz}}}$ & $F(p_k) = \int_M f_k(x) \D x \to \int_M f(x,p)\D x = F(p)$ \\
-	$\xRightarrow[\text{beliebig}]{p\in P}$ & Behauptung
-	\end{tabularx}
+	$f(\,\cdot\, ,p)$ ist integrierbar auf $M$ $\forall p\in P$ nach \cref{integral_funktion_majorantenkriterium}. Fixiere $p$ und $\{ p_k\}$ in $P$ mit $p_k\to p$. Setzte $f_k(x) := f(x, p_k)$. Stetigkeit von $f(x,\,\cdot\,)$ liefert $f_k(x) = f(x, p_k)\xrightarrow{x\to\infty} f(x,p)$ für \gls{fa} $x\in M$. $\xRightarrow{\text{Majo. Konv.}}$ $F(p_k) = \int_M f_k(x) \D x \to \int_M f(x,p)\D x = F(p)$ $\Rightarrow$ Behauptung
 \end{proof}
 
 \begin{proposition}[Differenzierbarkeit]
