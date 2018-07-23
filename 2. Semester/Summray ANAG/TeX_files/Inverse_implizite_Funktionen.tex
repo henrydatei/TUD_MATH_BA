@@ -1,282 +1,25 @@
 \section{Inverse und implizite Funktionen}\setcounter{equation}{0}
-\begin{boldenvironment}[Frage 1] Sei $f:D\subset K^n\to K^m$ \gls{diffbar}, $x\in D$. Wann existiert -- zumindest lokal -- \gls{diffbar} Umkehrfunktion?
-\end{boldenvironment}
 
-\begin{boldenvironment}[Vorbetrachtung]
-	$f$ ist dann (lokal) Diffeomorphismus und man hat in Umgebung von $x$ \begin{itemize}
-		\item $f^{-1}$ existiert $\Rightarrow$ $f$ injektiv
-		\item $f^{-1}$ \gls{diffbar}, z.B. $y\in K^m$ $\Rightarrow$ $B_{\epsilon}(y)\subset f(K^m)$ für ein $\epsilon > 0$ $\Rightarrow$ ($y$ innerer Punkt) $f$ surjektiv
-	\end{itemize}
-\end{boldenvironment}
-
-Falls $f$ linear, d.h. $f(x) = Ax$ und $A\in L(K^n, K^m)$ $\Rightarrow$ $n=m$ und $A$ regulär.
-
-Für allgemeine Funktion sollte dann gelten: $n=m$, $f'(x)$ regulär (sonst ungewiss)
-
-\begin{example}
-	Sei $f_j:\mathbb{R}\to\mathbb{R}$ mit $f_j(x) = x^j$ (in Umgebung von $_0$). $f_1$ und $f_3$ sind invertierbar, $f_2$ nicht.
-	
-	wobei: $f_1'(0)=1$ ($\neq 0$) regulär, $f_2'(0) = 0 = f'(0)$ $\Rightarrow$ nicht regulär
-\end{example}
-
-\begin{example}
-	Se $f:\mathbb{R}\to\mathbb{R}$ und \begin{align*}
-		f(x) = \begin{cases}
-			x + x^2\cos \frac{\pi}{x} & x\neq 0 \\ 0 & x=0
-		\end{cases}
-	\end{align*}
-	$\Rightarrow$ $f'(0) = 1$, d.h. regulär
-	
-	\emph{aber:} $f$ in keiner Umgebung von $x=0$ invertierbar (Selbststudium / ÜA) (Problem: $f'$ nicht stetig in $x=0$)
-\end{example}
-
-\begin{lemma}
-	\proplbl{implizit_funktion_lemma_3}
-	Sei $f:U\subset K^n\to V\subset K^m$, $U$, $V$ offen, $f$ Diffeomorphismus mit $f(U) = V$\\
-	$\Rightarrow$ $n = m$
-\end{lemma}
-
-\begin{proof}
-	\NoEndMark
-	Sei $y = f(x)\in V$ für $x\in U$\\ \begin{tabularx}{\linewidth}{r@{\ \ }l@{$\,$}l@{\ }l@{\ }X}
-		$\Rightarrow$ & \multicolumn{4}{l}{$f^{-1}(f(x)) = x$,  $f(f^{-1}(y)) = y$}\\
-		$\xRightarrow[\text{regel}]{\text{Ketten-}}$ & \multicolumn{4}{l}{$\underbrace{(f^{-1})'(f(x))}_{n\times m} \cdot \underbrace{f'(x)}_{m\times n} = \mathrm{id}_{K^n}$, $f'(x) \cdot (f^{-1})'(y) = \mathrm{id}_{K^m}$} \\
-		$\Rightarrow$ & $\Re\left( (f^{-1})'(y)\right)$ & $= K^n$ & $\Rightarrow$ $n\le m$ sowie & \multirow{2}{*}{$\left. \phantom{\dfrac{1}{1}}\right\}$ $n = m$} \\
-		& $\Re\left( f'(x) \right)$ & $ = K^m$ & $\Rightarrow$ $m\le n$
-	\end{tabularx}
-
-	\hfill\csname\InTheoType Symbol\endcsname
-\end{proof}
-
-\begin{boldenvironment}[Frage 2]
-	Lösen von Gleichungen:
-	
-	Sei $f:D\subset K^n\times K^l\to K^m$, $(x,y)\in K^n\times K^l$.
-	
-	Bestimme Lösungen $y$ in Abhängigkeit vom Parameter $x$ für folgende Gleichung: \begin{align}
-		\proplbl{implizit_funktion_grundgleichung_eq}
-		f(x,y) = 0
+\begin{*definition}[(lokale) Lösung]
+	Funktion $\tilde{y}:\tilde{D}\subset K^n\to K^m$ heißt (lokale) Lösung von in $x$ auf $\tilde{D}$ falls \begin{align}
+		f(x,\tilde{y}(x)) = 0 \quad\forall x\in\tilde{D}\notag
 	\end{align}
-	Sinnvolle Anwendung: \begin{itemize}
-		\item Lösung $y = g(x)$ hängt stetig oder Differenzierbar vom Parameter $x$ ab
-	\end{itemize}
-\end{boldenvironment}
-
-\begin{example}
-	Sei $f:D\subset\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ \gls{diffbar}.
-	
-	Betrachte die Niveaumenge \begin{align*}
-		N= \left\{ (x,y)\in\mathbb{R}^2 \mid f(x,y) = 0 \right\} \quad\text{($\equalhat$ Kurve)}
-	\end{align*}
-	Im Allgemeinen mehrere Lösungen von \eqref{implizit_funktion_grundgleichung_eq}  für $\tilde{x}$ fest. \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & betrachte lokale Lösung, d.h. fixiere $(x_0, y_0)\in N$ und suche Lösungen in der Umgebung.
-		
-		Was passiert bei $(x_j, y_j)$?\begin{itemize}
-			\item $j=1$: Kreuzungspunkt: $\Rightarrow$ keine eindeutige Lösung (offenbar $f'(x,y)=$)
-			\item $j=2$: kein eindeutiges $y$ (offenbar $f'(x,y) = 0$)
-			\item $j=3$: eindeutige Lösung, aber Grenzfall mit $f_y(x_3, y_3) = 0$
-			\item $j=4$: eindeutige Lösung $y$ und offenbar $f_y(x_4, y_4)\neq 0$
-		\end{itemize}
-		\\
-		$\xRightarrow{\text{Vermutung}}$ & lokale Lösung existiert, falls $f_y(x_0, y_0)$ regulär \\
-		$\xRightarrow{\text{allgemein}}$ &
-		\vspace*{\dimexpr -\baselineskip*2/3}
-		\begin{enumerate}[label={\alph*)}]
-			\item beste lokale Lösungen, d.h. in Umgebung einer Lösung $(x_0, y_0)\in D$
-			\item lokal eindeutige Lösung $y$ erforderlich $\forall x$
-			
-			\begin{description}
-				\item[$\Rightarrow$] $y\to f(x,y)$ muss invertierbar sein für festes $x$ 
-				\item[$\Rightarrow$] I.A. nur für $l=m$ möglich (vgl. \propref{implizit_funktion_lemma_3}).
-				
-				Betrachte z.B. $f$ affin linear in $y$, d.h. \eqref{implizit_funktion_grundgleichung_eq} hat die Form $A(x)y = b(x)$ mit $A(x)\in L(K^l, K^m)$, $b(x)\in K^m$
-				\item[$\Rightarrow$] betrachte somit $f:D\subset K^n\times K^m\to K^m$
-				\item[$\Rightarrow$] für gegebenes $x$ hat \eqref{implizit_funktion_grundgleichung_eq} $m$ skalare Gleichungen mit $m$ skalaren Unbekannten
-				\[f^j(x_1, \dotsc, x_n, y_1, \dotsc, y_n) = 0,\quad j=1,\dotsc,n \]
-				\item[$\Rightarrow$] \emph{Faustregel:} wie bei linearen Gleichungen benötigt man $m$ skalare Gleichungen zur Bestimmung von $m$ skalaren Unbekannten.
-				
-				(mehrere Gleichungen: in der Regel \emph{keine} Lösung, weniger Gleichungen: i.A. viele Lösungen)
-			\end{description}
-		\end{enumerate}
-	\end{tabularx}
-\end{example}
-
-\begin{*definition}u[(lokale) Lösung]
-	Funktion $\tilde{y}:\tilde{D}\subset K^n\to K^m$ heißt (lokale) \begriff{Lösung} von \eqref{implizit_funktion_grundgleichung_eq} in $x$ auf $\tilde{D}$ falls \begin{align}
-		\proplbl{implizit_funktion_grundgleichung_eq_zwei}
-		f(x,\tilde{y}(x)) = 0 \quad\forall x\in\tilde{D}
-	\end{align}
-	Man sagt: \eqref{implizit_funktion_grundgleichung_eq} beschreibt Funktion $\tilde{y}$ implizit (d.h. nicht explizit)\\
-	häufig schreibt man $y(x)$ statt $\tilde{y}(x)$
 \end{*definition}
 
-Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist Ableitung der Funktion $x\to f(x,y)$ (für $y$ feste) im Punkt $x$ bzw. von $y\to f(x,y)$ ($x$ fest) im Punkt $y$ heißt \emph{partielle Ableitung von $f$ in (x,y) bezüglich $x$}. bzw. $y$
-
 \begin{theorem}[Satz über implizite Funktionen]
-	\proplbl{implizit_funktion}
-	Sei $f:D\subset \mathbb{R}^m \times K^m\to K^m$, $D$ offen, $f$ stetig \emph{und} \begin{enumerate}[label={\alph*)}]
+	Sei $f:D\subset \mathbb{R}^m \times K^m\to K^m$, $D$ offen, $f$ stetig und \begin{enumerate}[label={\alph*)}]
 		\item $f(x_0, y_0) = 0$ für ein $(x_0, y_0)\in D$
-		\item die Partielle Ableitung $f_y:D\to L(K^m, K^n)$ existiert, ist stetig in $(x_0, y_0)$ und $f_y(x_0, y_0)$ ist regulär
+		\item die partielle Ableitung $f_y:D\to L(K^m, K^n)$ existiert, ist stetig in $(x_0, y_0)$ und $f_y(x_0, y_0)$ ist regulär
 	\end{enumerate}
 	Dann:\begin{enumerate}[label={\arabic*)}]
 		\item $\exists r,\rho > 0$: $\forall x\in B_r(x_0)\;\exists! y=\tilde{y}\in B_\rho(y_0)$ mit $f(x,\tilde{y}(x)) = 0$ und $\tilde{y}:B_r(x_0)\to B_\rho(y_0)$ stetig
-		
-		(beachte: $B_r(x_0)\times B_\rho(y_0)\subset D$)
-		
-		\item \proplbl{implizit_funktion_b}
-		falls zusätzlich $f:D\to K^m$ stetig \gls{diffbar}\\
-		$\Rightarrow$ auch $\tilde{y}$ stetig \gls{diffbar} auf $B_r(x_0)$ mit \begin{align*}
+		\item
+		falls zusätzlich $f:D\to K^m$ stetig diffbar\\
+		$\Rightarrow$ auch $\tilde{y}$ stetig diffbar auf $B_r(x_0)$ mit \begin{align*}
 			\tilde{y}'(x) &= -\underbrace{f_y(x,\tilde{y}(x))^{-1}}_{m\times n} \cdot \underbrace{f_x(x,\tilde{y}(x))}_{m\times n}\quad\in K^{m\times n}
 		\end{align*}
 	\end{enumerate}
-
-	\mathsymbol{GL}{$\mathrm{GL}$}$(n, K) := \{ A\in L(K^n, K^n) \mid A \text{ regulär} \}$ ist die \begriff{allgemeine lineare Gruppe}.
 \end{theorem}
-
-\begin{lemma}
-	\proplbl{implizit_funktion_hilfslemma}
-	\begin{enumerate}[label={\alph*)}]
-		\item \proplbl{implizit_funktion_hilfslemma_a}
-		 Sei $A\in \mathrm{GL}(n, K)$, $B\in L(K^n, K^n)$, $\Vert B - A\vert < \frac{1}{\Vert A^{-1}\Vert}$ \\
-		$\Rightarrow$ $B\in \mathrm{GL}(n, K)$
-		\item $\phi:\mathrm{GL}(n,K)\to \mathrm{GL}(n,K)$ mit $\phi(A) = A^{-1}$ ist stetig.
-	\end{enumerate}
-\end{lemma}
-
-\begin{underlinedenvironment}[Hinweis]
-	\ref{implizit_funktion_hilfslemma_a} liefert, dass $\mathrm{GL}(n,K)\subset L(K^n, K^n)$ offen ist
-\end{underlinedenvironment}
-
-\begin{proof}[\propref{implizit_funktion_hilfslemma}]
-	\NoEndMark
-	\hspace*{0pt}
-	\begin{enumerate}[label={zu (\alph*)},topsep=\dimexpr-\baselineskip/2,leftmargin=\widthof{\texttt{zu (a)\ }}]
-		\item Es ist \begin{align}
-			\notag \Vert \mathrm{id} - A^{-1} B\Vert &= \Vert A^{-1}(A-B)\Vert \le \Vert A^{-1} \Vert \cdot \Vert A - B\Vert < 1\\
-			\proplbl{implizt_funktion_hilfslemma_beweis_3}
-			\vert(\mathrm{id} - A^{-1}B)x\vert &\le \Vert \mathrm{id} - A^{-1} B\Vert \cdot \vert x \vert < \vert x \vert\quad\forall x\neq 0
-		\end{align}
-		Sei $A^{-1}Bx = 0$ für $x\neq 0$ $\xRightarrow{\eqref{implizt_funktion_hilfslemma_beweis_3}}$ \Lightning \ $\Rightarrow$ $C:= A^{-1}B$ regulär \\
-		$\Rightarrow$ $B=AC$ regulär
-		\item Fixiere $A\in\mathrm{GL}(n, K)$ und betrachte $B\in\mathrm{GL}(n,K)$ mit \begin{align}
-			\proplbl{implizit_funktion_hilfslemma_beweis_4}
-			\Vert B - A\Vert \le \frac{1}{2\Vert A^{-1}\Vert}
-		\end{align}
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\xRightarrow{\forall y\in K^n}$ &
-		$\begin{aligned}[t]\vert B^{-1}y\vert &= \vert A^{-1} A B^{-1} y \vert \le \Vert A^{-1}\Vert \vert AB^{-1}y\vert = \Vert A^{-1}\Vert \vert (A-B)B^{-1}y + y\vert\\
-		& \le \Vert A^{-1}\Vert \left( \Vert A - B\Vert \vert B^{-1}y\vert + \vert y \vert \right) \overset{\eqref{implizit_funktion_hilfslemma_beweis_4}}{\le} \frac{1}{2} \vert B^{-1}y \vert + \Vert A^{-1}\Vert \vert y \vert\end{aligned}$ \\
-		$\Rightarrow$ & $\vert B^{-1}y\vert \le 2\Vert A^{-1}\Vert \vert y \vert$ $\forall y\in K^n$ \\
-		$\Rightarrow$ & $\Vert B^{-1}\Vert \le 2 \Vert A^{-1}\Vert$ \\
-		$\Rightarrow$ & $\begin{aligned}[t]\Vert \phi(B) - \phi(A)\Vert &= \Vert B^{-1} - A^{-1}\Vert = \Vert B^{-1}(A-B)A^{-1}\Vert\\
-		& \le \Vert B^{-1}\Vert \cdot \Vert A - B\Vert \Vert A^{-1}\Vert \le 2 \Vert A^{-1}\Vert^2 \vert A - B\vert\end{aligned}$ \\
-		$\Rightarrow$ & $\lim\limits_{B\to A} \phi(B) = \phi(A)$ \\
-		$\Rightarrow$ & $\phi$ stetig in $A$ $\xRightarrow{\text{$A$ beliebig}}$ Behauptung\hfill\csname\InTheoType Symbol\endcsname
-		\end{tabularx}
-	\end{enumerate}
-\end{proof}
-
-\begin{proof}[\propref{implizit_funktion}]
-	Setze $\phi(x,y) := y - f_y(x_0, y_0)^{-1} f(x,y)$ $\forall (x,y)\in D$
-	
-	\begin{enumerate}[label={\alph*)}]
-		\item Offenbar existiert die partielle Ableitung $\phi_y(x,y) = \mathrm{id}_{K^m} - f_y(x_0, y_0)^{-1} f_y(x,y)$ $\forall (x,y)\in D$
-		
-		Da $f_y$ stetig in $(x_0,  y_0)$ und $\phi(x_0, y_0) = 0$ existiert konvexe Umgebung $U(x_0, y_0)\subset D$ von $(x_0, y_0)$
-		und \begin{align*}
-			\Vert \phi_y(x,y)\Vert < \frac{1}{2}\quad\forall (x,y) \in U(x_0, y_0)
-		\end{align*}
-		Für feste $(x,y)$, $(x,z)\in U(x_0, y_0)$ liefert der Schrankensatz ein $\tau\in(0,1)$ mit \begin{align}
-			\proplbl{implizit_funktion_beweis_5}
-			\vert \phi(x,y) - \phi(x,z)\vert&\le \Vert \phi_y(x,\underbrace{z+\tau(y-z)}_{\in U(x_0, y_0)})\Vert \vert y - z\vert \le \frac{1}{2} \vert y - z\vert \quad\forall (y,z),\,(x,z)\in U(x_0, y_0)
-		\end{align}
-		Nun existiert $\rho > 0: \overline{B_\rho(x_0) \times B_\rho(y_0)}\subset U(x_0, y_0)$.
-		
-		Da $f$ stetig, $f(x_0, y_0) = 0$ existiert $r > 0$: \begin{align*}
-			\Vert f_y(x_0, y_0)^{-1}f(x, y_0)\Vert < \frac{1}{2}\rho \quad\forall x\in B_r(x_0)
-		\end{align*}
-		{\zeroAmsmathAlignVSpaces**
-		\begin{flalign*}
-			\Rightarrow\;\;& \begin{aligned}[t]\vert \phi(x,y)- y_0\vert &\le \vert \phi(x,y) - \phi(x,y_0)\vert + \vert \phi(x,y_0) - y_0\vert\\
-			&\overset{\mathclap{\eqref{implizit_funktion_beweis_5}}}{\le} \frac{1}{2}\vert y - y_0\vert + \Vert f_y(x_0, y_0)^{-1}\Vert \cdot \vert f(x,y_0)\vert < \rho \quad\forall x\in B_r(x_0),\, y\in \overline{B_\rho(y_0)}\end{aligned} &
-		\end{flalign*}}
-		{\zeroAmsmathAlignVSpaces*\begin{flalign}
-			\proplbl{implizit_funktion_beweis_6}
-			\Rightarrow\;\; & \phi(x,\,\cdot\,):\overline{B_\rho(y_0)} \to B_\rho(y_0) \quad\forall x\in B_r(x_0) &
-		\end{flalign}}
-		und $\phi(x,\,\cdot\,)$ ist kontraktiv nach \eqref{implizit_funktion_beweis_5} $\forall x\in B_r(x_0)$ \\
-		$\xRightarrow{\text{\propref{chap_15_20}}}$ $\forall x\in B_r(x_0)$ $\exists !$ Fixpunkt: $y=\tilde{y}(x)\in\overline{B_\rho(y_0)}$ mit \begin{align}
-			\proplbl{implizit_funktion_beweis_7}
-			\tilde{y}(x) = \phi(x, \tilde{y}(x))
-		\end{align}
-		Offenbar \eqref{implizit_funktion_beweis_7} $\Leftrightarrow$ $f_y(x_0, y_0)^{-1} f(x,\tilde{y}(x)) = 0$ $\Leftrightarrow$ $f(x,\tilde{y}(x)) = 0$
-		
-		Wegen \eqref{implizit_funktion_beweis_6} und \eqref{implizit_funktion_beweis_7} ist $\tilde{y}(x)\in B_\rho(y_0)$ \\
-		$\Rightarrow$ Behauptung (1) bis auf Stetigkeit von $\tilde{y}$
-		
-		\item Zeige: $\tilde{y}$ ist stetig. Für $x_1, x_2\in B_r(x_0)$ gilt: {\zeroAmsmathAlignVSpaces**\begin{align*}
-			\vert \tilde{y}(x_2) - \tilde{y}(x_1)\vert &\overset{\mathclap{\eqref{implizit_funktion_beweis_7}}}{=} \vert \phi(x_2, \tilde{y}(x_2)) - \phi(x_1, \tilde{y}(x_1))\vert\\
-			& \le \vert\phi(x_2, \tilde{y}(x_2)) - \phi(x_2, \tilde{y}(x_1))\vert + \vert \phi(x_2, \tilde{y}(x_1)) - \phi(x_1, \tilde{y}(x_1))\vert \\
-			&\underset{\mathllap{\text{Def. $\phi$}}}{\overset{\mathclap{\eqref{implizit_funktion_beweis_5}}}{\le}} \frac{1}{2}\vert \tilde{y}(x_2) - \tilde{y}(x_1) \vert + \Vert f_y(x_0, y_0)^{-1}\Vert \cdot \vert f(x_2, \tilde{y}(x_1)) - f(x_1, \tilde{y}(x_1))\Vert
-		\end{align*}}
-		{\zeroAmsmathAlignVSpaces*\begin{flalign}
-			\proplbl{implizit_funktion_beweis_8}
-			\Rightarrow\;\; & \vert \tilde{y}(x_2) - \tilde{y}(x_1)\vert \le 2 \Vert f_y(x_0, y_0)^{-1}\Vert \vert f(x_2, \tilde{y}(x_1)) - f(x_1, \tilde{y}(x_1))\vert &
-		\end{flalign}}
-		Da $f$ stetig folgt $\tilde{y}$ stetig auf $B_r(x_0)$
-		
-		\item Zeige \ref{implizit_funktion_b}: Fixiere $x\in B_r(x_0)$, $z\in K^n$
-		
-		Da $f$ \gls{diffbar} und $\tilde{y}$ Lösung, gilt für $\vert t \vert$ klein nach \propref{definition_ableitung_proposition} \ref{satz_equivalenz_ableitungen_b}: {\zeroAmsmathAlignVSpaces**\begin{align*}
-			0 &= f(x + t\cdot z, \tilde{y}(x + tz)) - f(x,\tilde{y}(x)), \, \xrightarrow{t\to 0}0 \\
-			&= Df(x,\tilde{y})\cdot \begin{pmatrix}tz \\ \tilde{y}(x+tz) - \tilde{y}(x)\end{pmatrix} + \underbrace{r(t)}_{\xrightarrow{t\to 0} 0}\cdot \begin{pmatrix}
-				tz \\ \tilde{y}(x + tz) - \tilde{y}(x)
-			\end{pmatrix}
-		\end{align*}}
-		{\zeroAmsmathAlignVSpaces\begin{flalign}
-			\proplbl{implizit_funktion_beweis_9}
-			\Rightarrow\;\; & 0 = f_x(x,\tilde{y}(x)) \cdot(tz) + f_y(x, \tilde{y}(x))\cdot (\tilde{y}(x + tz) - \tilde{y}(x)) + \underbrace{\underbrace{r(t)}_{\to 0}\cdot \begin{pmatrix}tz\\ \tilde{y}(x+tz)-\tilde{y}(x)\end{pmatrix}}_{=: R(t)} &
-		\end{flalign}}
-		Wegen \eqref{implizit_funktion_beweis_8} existiert $c > 0$: \begin{align*}
-			\vert \tilde{y}(x+tz) - \tilde{y}(x)\vert &\le c\vert f(x+tz, \tilde{y}(x)) - f(x,\tilde{y}(x))\vert = c\vert f_x(x,\tilde{y}(x))\cdot (tz) + o(t)\vert \\
-			&\le c\left( \Vert f_x(x,\tilde{y}(x))\Vert \cdot \vert z \vert \cdot \vert t \vert + o(1)\cdot\vert t\vert\right) \\
-			&\le c\left(\Vert f_x(x,\tilde{y}(x))\Vert\cdot\vert z\vert + o(1)\right)\vert t \vert \quad\text{für $\vert t \vert$ klein}
-		\end{align*}
-		$\Rightarrow$ $R(t) = o(t)$, $t\to 0$
-		
-		Wegen $f_y(x_0, \tilde{y}(x_0))\in \mathrm{GL}(m,K)$, $f_y$ stetig, $\tilde{y}$ stetig \\
-		$\xRightarrow{\text{\cref{implizit_funktion_hilfslemma}}}$ für eventuell kleineres $r>0$ als oben: \begin{align*}
-			f_y(x, \tilde{y}(x))\in \mathrm{GL}(m, K)\quad\forall x\in B_r(x_0)
-		\end{align*}
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\xRightarrow{\eqref{implizit_funktion_beweis_9}}$& $\tilde{y}(x+tz) - \tilde{y}(x) = -f_y(x,\tilde{y}(x))^{-1}\cdot f_x(x,\tilde{y}(x))\cdot(tz) + o(t), \;t\to 0$ \\
-		$\Rightarrow$ & $\tilde{y}'(x,z)$ existiert $\forall z\in K^n$ mit \end{tabularx} \begin{align}
-			\proplbl{implizit_funktion_beweis_10}
-			\tilde{y}'(x,z) = -\underbrace{f_y(x,\tilde{y}(x))^{-1}\cdot f_x(x,\tilde{y}(x))}_{\mathclap{\text{stetig bezüglich $x$, da $f\in C^{1}$ nach \propref{implizit_funktion_hilfslemma}}}}\cdot z\quad\forall z\in K^n
-		\end{align}
-		\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & Alle partiellen Ableitungen $\tilde{y}_{x_j}$ sind stetig auf $B_r(x_0)$ \\
-		$\xRightarrow{\text{\propref{mittelwertsatz_existenz_partieller_ableitung}}}$ & $\tilde{y}$ stetig \gls{diffbar} auf $B_r(x_0)$
-		\end{tabularx}
-		
-		Wegen $\tilde{y}'(x)\cdot z = \tilde{y}'(x;z)$ folgt aus \eqref{implizit_funktion_beweis_10} die Formel für $\tilde{y}'(t)$
-	\end{enumerate}
-\end{proof}
-
-\begin{underlinedenvironment}[Hinweis]
-	Sei $f=(f^1, \dotsc, f^m):D\subset K^n\times K^n\to K^m$, $D$ offen und seien alle partiellen Ableitungen $f_{y_j}^i$ stetig in $y$ (d.h. $y\to f_{y_j}^i(x,y)$ stetig für $x$ fest $\forall i=1,\dotsc,m$)\begin{flalign*}
-		\xRightarrow{\text{\propref{mittelwertsatz_existenz_partieller_ableitung}}} \;\;& f_y(x,y) = \begin{pmatrix}
-			f_{y_1}^1(x,y) & \dotsc & f_{y_m}^1(x,y) \\ \vdots & & \vdots \\ f_{y_1}^m(x,y) & \dotsc & f_{y_m}^m (x,y)
-		\end{pmatrix}
-	\end{flalign*}
-	Analog erhält man $f_x(x,y)\in K^{m\times n}$.
-	
-	Falls alle $f_{x_j}^j$, $f_{y_l}^i$ stetig sind in $x$ und $y$ \\
-	$\Rightarrow$ $f$ \gls{diffbar} mit \begin{align*}
-		f'(x,y) &= \big( f_x(x,y) \mid f_y(x,y) \big)
-	\end{align*}
-\end{underlinedenvironment}
 
 \begin{example}
 	Sei $f:\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ mit $f(x,y) = x^2(1 - x^2) - y^2$ $\forall x,y\in\mathbb{R}$.
@@ -292,7 +35,7 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 		$\bullet$ & $y_0=0$:& $f_y(x_0, 0) = 0$ nicht regulär $\Rightarrow$ Theorem nicht anwendbar \\
 		$\bullet$ & $y_0\neq 0$: & $f_y(x_0, y_0)\neq 0$, also regulär.
 		
-		Sei $f(x_0, y_0)$ = 0 $\xRightarrow{\text{\cref{implizit_funktion}}}$ anwendbar, z.B. $(x_0, y_0) = (\frac{1}{3}, \frac{2\cdot\sqrt{2}}{9})$ ist Nullstelle von $f$  \\
+		Sei $f(x_0, y_0)$ = 0 $\Rightarrow$ z.B. $(x_0, y_0) = (\frac{1}{3}, \frac{2\cdot\sqrt{2}}{9})$ ist Nullstelle von $f$  \\
 		&&$\Rightarrow$ $\exists r,\rho > 0$, Funktion $\tilde{y}:f(x,\tilde{y}(x)) = 0$ $\forall x\in B_r(\frac{1}{3})$
 		
 		$\tilde{y}(\frac{1}{3}) = \frac{2\cdot \sqrt{2}}{9}$ und $\tilde{y}(x)$ ist einzige Lösung um $B_\rho(\frac{2\sqrt{2}}{9})$\\
@@ -301,198 +44,45 @@ Sei $f:D\subset K^n\times K^m\to K^m$, $D$ offen, $f_x(x,y)$ bzw. $f_y(x,y)$ ist
 		&= -\left(-\frac{4\sqrt{2}}{9}\right)^{-1}\cdot\left(\frac{2}{3} - \frac{4}{27}\right) = \frac{7}{6\sqrt{2}} \approx 0,8\end{aligned}$ \\
 		
 		$\bullet$ & $y_0 = 0$, $x_0 = 1$: & hier ist $f_x(1,0) = -2$, also regulär \\
-		&& $\xRightarrow{\text{\cref{implizit_funktion}}}$ $\exists$ lokale Lösung $\tilde{x}(y)$: $f(\tilde{x}(y), y) = 0$ $\forall y\in B_{\tilde{r}}(0)$ und $\tilde{x}'(0) = 0$ \\
+		&& $\Rightarrow$ $\exists$ lokale Lösung $\tilde{x}(y)$: $f(\tilde{x}(y), y) = 0$ $\forall y\in B_{\tilde{r}}(0)$ und $\tilde{x}'(0) = 0$ \\
 		
 		$\bullet$ & $y_0 = 0$, $x_0 = 0$: & $f_x(0,0) = f_y(0,0) = 0$ nicht regulär\\
-		&& $\xRightarrow{\text{\cref{implizit_funktion}}}$ in keiner Variante Anwendbar.
+		&& $\Rightarrow$ in keiner Variante Anwendbar.
 	\end{tabularx}
 \end{example}
-
-\begin{example}
-	Betrachte nicht-lineares Gleichungssystem: \begin{equation}
-		\begin{split}
-			\proplbl{implizit_funktion_beispiel_8}
-			2 e^u + vw &= 5 \\
-			v\cos u -6u +2w &= 7
-		\end{split}
-	\end{equation}
-	Offenbar $(u,v,w) = (0,1,3)$ Lösung.
-	
-	Faustregeln: 2 Gleichungen, 3 Unbekannte $\Rightarrow$ "`viele"' Lösungen, 1 Freiheitsgrad \\
-	$\Rightarrow$ Suche Lösung der Form $(u,v)=g(w)$ nahe obiger Lösung für $g:\mathbb{R}\to\mathbb{R}^2$
-	
-	
-	Betrachte mit $x:= w$, $g=(y_1, y_2):=(u,v)$ Funktion \begin{flalign*}
-		&f:\mathbb{R}\times\mathbb{R}^2\to \mathbb{R}^2, \,(x,y)\mapsto \begin{pmatrix}
-			2e^{y_1} + y_2 x - 5 \\ y_2 \cos y-1 - 6 y_1 + 2x -7
-		\end{pmatrix} & \\
-		\Rightarrow\;\;& f_y(x,y) = \begin{pmatrix}
-			2e^{y_1} & x \\ -y_2 \sin y_1 - 6 & \cos y_1
-		\end{pmatrix}
-	\end{flalign*}
-	$\Rightarrow$ $f_y((3,0,01)) = \begin{pmatrix}
-		2 & 3 \\ -6 & 1
-	\end{pmatrix}$ regulär, $\det = 20$ \\
-	$\xRightarrow{\text{\cref{implizit_funktion}}}$ $\exists$ Funktion $g:(3-r, 3+r)\to B_\rho((0,1))$ mit \begin{align*}
-		f(x,g(x)) &= 0, & g(3) &=(0,1)
-	\end{align*}
-	Insbesondere $(u,v,w) = (g(w), w)$ sind weitere Lösungen von \eqref{implizit_funktion_beispiel_8}.
-	\begin{align*}
-		g'(3) &= -f_y(3,(0,1))^{-1}\cdot f_(3,(0,1)) = - \begin{pmatrix}
-			2 & 3 \\ -6 & 1
-		\end{pmatrix}^{-1} \cdot \begin{pmatrix}
-			1 \\ 2
-		\end{pmatrix} = -\frac{1}{20}\begin{pmatrix}
-			 1 & -3 \\ 6 & 2
-		\end{pmatrix} \begin{pmatrix}
-			1 \\ 2
-		\end{pmatrix} = \begin{pmatrix}
-			\frac{1}{4} \\ - \frac{1}{2}
-		\end{pmatrix}
-	\end{align*}
-\end{example}
-
-Zurück zu Frage 1: Wann hat $f:D\subset K^n\to K^n$ eine \gls{diffbar} Umkehrfunktion?
-
-Betrachte Gleichung $f(x) - y=0$. Falls diese Gleichung nach $x$ auflösbar, d.h. $\exists g:K^n\to K^n$ mit $f(g(y)) = y$ $\forall y$ $\Rightarrow$ $g=f^{-1}$
 
 \begin{theorem}[Satz über inverse Funktionen]
-	\proplbl{inverse_funktion}
-	Sei $f:U\subset K^n\to K^n$, $U$ offen, $f$ stetig \gls{diffbar}, $f'(x)$ regulär für ein $x_0\in U$
-	
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & Es existiert eine offene Umgebung $U_0\subset U$ von $x_0$, sodass $V_0:= f(U_0)$ offene Umgebung von $y_0 := f(x_0)$ ist, und die auf $U_0$ eingeschränkte Abbildung $f:U_0\to V_0$ ist Diffeomorphismus.
-	\end{tabularx}
+	Sei $f:U\subset K^n\to K^n$, $U$ offen, $f$ stetig diffbar, $f'(x)$ regulär für ein $x_0\in U$ \\
+	$\Rightarrow$ Es existiert eine offene Umgebung $U_0\subset U$ von $x_0$, sodass $V_0:= f(U_0)$ offene Umgebung von $y_0 := f(x_0)$ ist, und die auf $U_0$ eingeschränkte Abbildung $f:U_0\to V_0$ ist Diffeomorphismus.
 \end{theorem}
+\begin{proof}
+	benutze $\tilde{f}:D\times K^n\to K^n$ und $\tilde{f}(x)=f(x)-y\Rightarrow$, $\tilde{f}$ stetig und stetig diffbar $\Rightarrow$ Satz über implizite Funktionen $\Rightarrow f'$ stetig diffbar $\Rightarrow f$ ist Diffeomorphismus
+\end{proof}
 
 \begin{proposition}[Ableitung der inversen Funktion]
-	\proplbl{inverse_funktion_ableitung}
 	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ injektiv und \gls{diffbar}, $f^{-1}$ \gls{diffbar} in $y\in \mathrm{int}\, f(D)$ \begin{align}
-		\Rightarrow \quad\left(f^{-1}\right)'(y) &= f'\left( f^{-1}(y)\right)^{-1}
+		\Rightarrow \quad\left(f^{-1}\right)'(y) &= f'\left( f^{-1}(y)\right)^{-1}\notag
 	\end{align}
 	(bzw. $(f^{-1})'(y) = f'(x)^{-1}$ falls $y=f(x)$)
 	
 	Spezialfall$ n = m = 1$: $(f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}$
 \end{proposition}
 
-\begin{proof}[\cref{inverse_funktion}]
-	\NoEndMark
-	Betrachte $\tilde{f}:D\times K^n\to K^n$ mit $\tilde{f}(x,y) = f(x) - y$.
-	
-	Offenbar ist $\tilde{f}$ stetig, $\tilde{f}(x_0, y_0) = 0$ und $\tilde{f}_x(x, y) = f'(x)$, $f_y(x,y) = -\mathrm{id}_{K^n}$ $\forall(x,y)$ \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $\tilde{f}_x$, $\tilde{f}_y$ stetig $\Rightarrow$ $\tilde{f}$ stetig \gls{diffbar}\end{tabularx}
-	
-	Nach Voraussetzung $\tilde{f}_x(x_0, y_0) = f'(x_0)$ regulär \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\text{\cref{implizit_funktion}}}$& $\exists r,\rho > 0$: $\forall y\in B_r(y_0)$ $\exists! x=\tilde{x}(y)\in B_y(x_0)$ mit $0 = \tilde{f}(\tilde{x}(y),y) = f(\tilde{x}(y)) - y$ \\
-	$\Rightarrow$ & lokal inverse Funktion $f^{-1} = \tilde{x}$ existiert auf $B_r(y_0) =: V_0$ und ist stetig \gls{diffbar}.
-	\end{tabularx}
-	
-	Setzte $U_0 := f^{-1}(V_0) = \underbrace{\{ x\in D \mid f(x)\in V_0 \}}_{\text{offen, da $f$ stetig}}\cap B_\rho(x_0)$ offene Umgebung von $x_0$ \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\Rightarrow$ & $f(U_0) = V_0$ $\Rightarrow$ $f:U_0\to V_0$ ist Diffeomorphismus\hfill\csname\InTheoType Symbol\endcsname
-	\end{tabularx}
+\begin{proof}
+	benutze $f(f^{-1}(y))=y$ und $f^{-1}(f(x))=x$, Kettenregel, $f'(f^{-1}(y))\cdot (f^{-1})'(y)=\id$, andere Gleichung analog, gleichsetzen, Behauptung
 \end{proof}
 
-\begin{proof}[\cref{inverse_funktion_ableitung}]
-	$f^{-1}$ existiert, $f$ \gls{diffbar}, $f^{-1}$ \gls{diffbar} in $y = f(x)$, $x\in D$.
-	
-	Wegen $f(f^{-1}(y)) = y$, $f^{-1}(f(x)) = x$ folgt \begin{align*}
-		f'(f^{-1}(y))\cdot (f^{-1})'(y) &= \mathrm{id}_{K^n}, &(f^{-1})'(y) &= f'(f^{-1}(y)) = \mathrm{id}_{K^n}
-	\end{align*}
-	$\Rightarrow$ $f'(f^{-1}(y))^{-1} = (f^{-1})(y)$
-\end{proof}
-
-Als Folgerung eine globale Aussage:
 \begin{proposition}
-	\proplbl{inverse_funktion_folgerung}
-	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ stetig \gls{diffbar}, $f'(x)$ regulär $\forall x\in D$
-	
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-		$\Rightarrow$ & \vspace*{\dimexpr -\baselineskip*2/3}
-		 \begin{enumerate}[label={(\alph*)}]
-			\item (Satz über offene Abbildungen)
-			
-			$f(D)$ ist offen
-			\item \proplbl{inverse_funktion_folgerung_b} (Diffeomorphiesatz)
-			
-			$f$ injektiv $\Rightarrow$ $f:D\to f(D)$ ist Diffeomorphismus
-		\end{enumerate}
-	\end{tabularx}
+	Sei $f:D\subset K^n\to K^n$, $D$ offen, $f$ stetig diffbar, $f'(x)$ regulär $\forall x\in D$
+	\begin{enumerate}[label={(\alph*)}]
+		\item (Satz über offene Abbildungen) $f(D)$ ist offen
+		\item (Diffeomorphiesatz) $f$ injektiv $\Rightarrow$ $f:D\to f(D)$ ist Diffeomorphismus
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}\hspace*{0pt}
-	\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr-\baselineskip/2\relax,leftmargin=\widthof{\texttt{zu a)\ }}]
-		\item Sei $y_0\in f(D)$ $\Rightarrow$ $x_0 \in D:y_0 = f(x_0)$\\{\renewcommand{\arraystretch}{1.5} \begin{tabularx}{\linewidth}{r@{\ \ }X}
-			$\xRightarrow{\text{\cref{inverse_funktion}}}$ & $\exists$ Umgebung $V_0\subset f(D)$ von $y_0$ \\
-			$\xRightarrow{\text{$y_0$ beliebig}}$ & $f(D)$ offen
-		\end{tabularx}}
-			
-		\item Offenbar existiert $f^{-1}: f(d)\to D$
-		
-		Lokale Eigenschaften wie Stetigkeit und \gls{diffbar}keit folgen aus \propref{inverse_funktion}
+	\begin{enumerate}[label={(\alph*)}]
+		\item $M\subseteq D$ offen, $y_0\in f(M)\Rightarrow\exists x_0\in M:y_0=f(x_0)\Rightarrow$ Satz über inverse Funktionen $\Rightarrow\exists V_0\subseteq f(M)$ von $y_0\beha$
+		\item offenbar $\exists f^{-1}:f(D)\to D\Rightarrow$ Satz über inverse Funktionen $\Rightarrow f^{-1}$ stetig diffbar $\beha$
 	\end{enumerate}
 \end{proof}
-
-\begin{example}
-	Sei $f(x) = a^x$ $\forall x\in \mathbb{R}$ ($a > 0$, $a\neq 1$) \\
-	$\xRightarrow{\text{\propref{ableitung_beispiel_exponentialfunktion}}}$ $f'(x) = a^x\cdot\ln a$, $f'$ stetig
-	
-	Offenbar $f^{-1}(y) = \log_a y$ $\forall y>0$, $f'(x) \neq 0$, d.h. regulär $\forall x\in \mathbb{R}$ \\
-	$\xRightarrow[\text{$f$ injektiv}]{\text{\cref{inverse_funktion_folgerung}}}$ $f:\mathbb{R}\to\mathbb{R}_{<0}$ ist Diffeomorphismus und \begin{align*}
-		(\log_a y)' = (f^{-1})(y) \overset{y = f(x)}{=} \frac{1}{f'(x)} = \frac{1}{a^x \ln a} = \frac{1}{y\ln a}\quad\forall y>0
-	\end{align*}
-	(vgl. \propref{ableitung_beispiel_logarithmus})
-\end{example}
-
-\begin{example}
-	Sei $f(x) = \tan x$ $\forall x\in \left( -\frac{\pi}{2}, \frac{\pi}{2}\right)$ \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\text{\propref{ableitung_beispiel_tangens}}}$ & $(\tan x)' = \frac{1}{\cos^2 x} \neq 0$ $\forall x$, stetig \\
-	$\xRightarrow{\text{\cref{inverse_funktion_folgerung}}}$&  $\arctan: \mathbb{R}\to \left( -\frac{\pi}{2}, \frac{\pi}{2}\right)$ ist Diffeomorphismus und \end{tabularx} \begin{align*}
-		(\arctan y)' = \frac{1}{(\tan x)'} = \cos^2 x = \frac{1}{\tan^2 x + 1} = \frac{1}{1 + y^2}\quad\forall y\in\mathbb{R}
-	\end{align*}
-\end{example}
-
-\begin{example}[Polarkoordinaten im $\mathbb{R}^2$]
-	{\zeroAmsmathAlignVSpaces*\begin{align*}
-		x &= r\cdot \cos\phi & y &= r\cdot\sin\phi
-	\end{align*}}
-	Sei $f:\mathbb{R}_{\ge 0}\times\mathbb{R}\to\mathbb{R}^2$ mit \begin{align*}
-		f(r,\phi) &= \begin{pmatrix}
-			r\cdot\cos\phi \\ r\cdot\sin\phi
-		\end{pmatrix}
-	\end{align*}
-	
-	Offenbar stetig \gls{diffbar} auf $\mathbb{R}_{>0}\times\mathbb{R}$ mit \begin{align*}
-		f'(r,\phi) = \begin{pmatrix}
-			\cos\phi & -r\sin\phi \\ \sin\phi & r\cos\phi
-		\end{pmatrix}
-	\end{align*}
-	
-	Wegen $\det f'(x) = r(\cos^2\phi + \sin^2\phi) = r$ ist $f'(r,\phi)$ regulär $\forall r,\phi\in (\mathbb{R}_{>0}\times\mathbb{R})$ \\
-	\begin{tabularx}{\linewidth}{r@{\ \ }X}
-	$\xRightarrow{\text{\cref{inverse_funktion}}}$ & $f$ ist lokal Diffeomorphismus, d.h. für jedes $(r_0, \phi_0)\in\mathbb{R}_{>0}\times\mathbb{R}$ existiert Umgebung $U_0$, sodass $f:U_0\to V_0 :=f(U_0)$ Diffeomorphismus ist.
-	\end{tabularx}
-	
-	Für Ableitung $(f^{-1})'(x,y)$ mit $(x,y) = (r\cos\phi, r\sin\phi)$ gilt mit $r = \sqrt{x^2 + y^2}$:\begin{align*}
-		\left(f^{-1}\right)'(x,y) = f'(r,\phi)^{-1} = \begin{pmatrix}
-			\cos\phi & \sin\phi \\ -\frac{\sin\phi}{r} & \frac{\cos\phi}{r}
-			\end{pmatrix}
-			 = \begin{pmatrix}
-				\frac{x}{\sqrt{x^2+y^2}} & \frac{y}{\sqrt{x^2 + y^2}} \\
-				-\frac{y}{\sqrt{x^2+y^2}} & \frac{x}{\sqrt{x^2+y^2}}
-			\end{pmatrix}\quad\forall (x,y)\neq 0
-	\end{align*}
-	
-	\begin{underlinedenvironment}[beachte]
-		$f:\mathbb{R}_{>0}\times\mathbb{R}\to\mathbb{R}\setminus\{0\}$ ist \emph{kein} Diffeomorphismus, da $f$ nicht injektiv ($f$ periodisch in $\phi$),
-		
-		\emph{aber:} $f:\mathbb{R}_{>0}\times(\phi_0, \phi_0+2\pi)\to\mathbb{R}^2\setminus \{\text{Strahl in Richtung $\phi_0$}\}$ ist Diffeomorphismus für beliebiges $\phi_0\in \mathbb{R}$ nach \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b}.
-	\end{underlinedenvironment}
-
-	\begin{boldenvironment}[folglich]
-		Voraussetzung $f$ injektiv in \propref{inverse_funktion_folgerung} \ref{inverse_funktion_folgerung_b} ist wesentlich.
-	\end{boldenvironment}
-\end{example}
