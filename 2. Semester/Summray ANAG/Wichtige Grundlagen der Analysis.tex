@@ -12,6 +12,31 @@
 \begin{document}
 \maketitle
 
+\section{Wichtige Ungleichungen}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item geometrisches/arithmetisches Mittel
+	\begin{align}
+		\sqrt[n]{\prod_{i=1}^n x_i}\le \frac{\sum\limits_{i=1}^n x_i}{n}\notag
+	\end{align}
+	\item \textsc{Bernoulli}-Ungleichung
+	\begin{align}
+		(1+x)^\alpha &\ge 1 + \alpha x\,\forall x\ge -1, \alpha > 1 \notag \\
+		(1+x)^\alpha &\le 1+\alpha x \,\forall x\ge -1, 0 < \alpha < 1\notag
+	\end{align}
+	\item \textsc{Youn}'sche Ungleichung: $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$
+	\begin{align}
+		a\cdot b \le \frac{a^p}{p} + \frac{b^q}{q}\,\forall a,b\ge 0\notag
+	\end{align}
+	\item \textsc{Hölder}'sche Ungleichung: $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$
+	\begin{align}
+		\sum_{i=1}^{n} |x_i y_i| \le \left(\sum_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}\left(\sum_{i=1}^n |y_i|^q\right)^{\frac{1}{q}}\,\forall x,y\in\mathbb{R}\notag
+	\end{align}
+	\item \textsc{Minkowski}-Ungleichung: $p\in\mathbb{R}, p>1$
+	\begin{align}
+		\big(\sum_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}\notag
+	\end{align}
+\end{enumerate}
+
 \section{Grenzwerte berechnen}
 \begin{enumerate}[label=\textbf{\arabic*.}]
 	\item Kann man die Grenze in die Funktion einsetzen und ausrechnen, ohne dass es zu Problemen kommt? 
@@ -23,38 +48,30 @@
 \end{enumerate}
 
 \section{Reihen}
-\begin{enumerate}
-	\item Cauchykrit. undersuche Differenz von aufeinanderfolgenden Partialsummen, müssen kleiner als $\epsilon$ sein (Konvergenz für Folgen eigentlich)
-	\item Sei $X$ normierter Raum, $\{x_k\}$ in $X, k_0\in\mathbb{N}$
-	\begin{enumerate}[label={\alph*)}]
-		\item \emph{Majorantenkriterium} Sei $\{x_k\}$ Folge in $\mathbb{R}$
-		\begin{enumerate}[label={\alph*)}]
-			\item $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
-			\item $0 \le \alpha_k \le \Vert x_k\Vert\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\sum_k\Vert x_k\Vert$ divergent.
-		\end{enumerate}
-		\item \emph{Quotientenkriterium} Sei $x_k\neq 0\,\forall k\ge k_0$ 
-		\begin{enumerate}[label={\alph*)}]
-			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
-			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert}\,\forall k\ge k_0\;\Rightarrow \sum_k\Vert x_k\Vert$ divergiert.
-		\end{enumerate}
-		\item \emph{Wurzelkriterium}
-		\begin{enumerate}[label={\alph*)}]
-			\item $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
-			\item $\sqrt[k]{\Vert x_k\Vert} \ge 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent.
-		\end{enumerate}
-	\end{enumerate}
-	\item \emph{Konvergenzradius} Habe Potenzreihe $\sum_{k=0}^\infty a_k(z-z_0)^k$ dann
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Cauchykriterium: undersuche Differenz von aufeinanderfolgenden Partialsummen, müssen kleiner als $\epsilon$ sein (Konvergenz für Folgen eigentlich)
+	\item eines (oder mehrere) der folgenden Kriterien prüfen:
+	\begin{itemize}
+		\item \emph{Majorantenkriterium} $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+		\item \emph{Quotientenkriterium} $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
+		\item \emph{Wurzelkriterium} $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+	\end{itemize}
+	\item \emph{Konvergenzradius} Potenzreihe $\sum_{k=0}^\infty a_k(z-z_0)^k$ dann
 	\begin{align}
-		L:=\begin{cases} \limsup\limits_{n\rightarrow\infty} \sqrt[k]{|a_k|},&\text{falls existiert} \notag\\ \infty,&\text{sonst}\end{cases}\qquad R:=\frac{1}{L} \;(\text{mit }0 = \frac{1}{\infty}, \frac{1}{0} = \infty) \notag
+		R = \frac{1}{\limsup\limits_{n\rightarrow\infty}\sqrt[k]{|a_k|}}\text{ wobei }0 = \frac{1}{\infty}, \frac{1}{0} = \infty \notag
 	\end{align}
-	$$
+	\begin{itemize}
+		\item $\vert z-z_0\vert < R\Rightarrow$ absolut konvergent
+		\item $\vert z-z_0\vert > R\Rightarrow$ divergent
+		\item $\vert z-z_0\vert = R\Rightarrow$ keine Aussage,$z$ bestimmen (Fallunterscheidung!), in Reihe einsetzen und obige Kriterien testen
+	\end{itemize}
 \end{enumerate}
 
 \section{Stetigkeit}
-\begin{enumerate}
+\begin{enumerate}[label=\textbf{\arabic*.}]
 	\item wenn funktioniert, Rechenregeln und Beispiele aus Vorlesung (elementare Funktionen sind stetig)
 	\item Summen, Produkte, Komposition, Skalarmultiplikation von/mit stetigen Funktionen sind wieder stetig
-	\item wenn Rechenregel nicht funktionieren, dann über folgenstetigkeit argumentieren
+	\item wenn Rechenregel nicht funktionieren, dann über Folgenstetigkeit argumentieren
 	\begin{align}
 		f(x_n) \to f(x_0) \forall \text{ Folgen } x_n \to x_0 \text{ in } D\notag
 	\end{align}

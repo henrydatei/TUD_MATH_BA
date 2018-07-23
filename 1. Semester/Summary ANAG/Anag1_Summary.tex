@@ -1,7 +1,14 @@
 \documentclass[ngerman,a4paper]{report}
 \usepackage[table]{xcolor}
 
-\usepackage[T1]{fontenc}
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=green,
+	linkcolor=blue,
+	urlcolor=green
+}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -24,10 +31,9 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{booktabs}
-\usepackage{cleveref}
 \usepackage{xfrac}%sfrac -> fractions e.g. 3/4
 \usepackage{parskip}%split paragraphs by vspace instead of intendations
-
+\usepackage{cleveref}
 \usepackage{cancel}
 
 \usepackage{chngcntr}
@@ -45,14 +51,6 @@
 \usepackage[xindy,acronym]{glossaries}
 \makeglossaries
 
-\usepackage[bookmarks=true]{hyperref}
-\hypersetup{
-	colorlinks,
-	citecolor=green,
-	filecolor=green,
-	linkcolor=blue,
-	urlcolor=green
-}
 \usepackage{bookmark}
 
 \renewcommand{\mvchr}[1]{\mbox{\mvs\symbol{#1}}} %change the use of lightning symbol globally
@@ -1982,7 +1980,7 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
 \begin{example}
     \begin{enumerate}[label={\arabic*)}]
     \item $x \in [0,2\pi] \to (x,\sin x) \in \mathbb{R}^2$ ist Kurve in $\mathbb{R}^2$
-    \item $x \in [0,1] \to e^{î\pi x} \in \mathbb{C}$ oder $x \in [0,\pi]\to e^{i\pi} \in \mathbb{C}$ sind Kurven in $\mathbb{C}$
+    \item $x \in [0,1] \to e^{i\pi x} \in \mathbb{C}$ oder $x \in [0,\pi]\to e^{i\pi} \in \mathbb{C}$ sind Kurven in $\mathbb{C}$
     \item Sei $Y$ normierter Raum, $a,b \in Y,f:[0,1] \to Y$ mit $f(t) = (1-t)\cdot a + t\cdot b$ ist Kurve (Strecke von $a$ nach $b$)
     \end{enumerate}
 \end{example}
@@ -2104,7 +2102,7 @@ Sei stets $f: D \subset X \to Y,X,Y$ metrische Räume, $D = \mathcal{D}(f)$.
     Sei $R: \mathbb{C} \to \mathbb{C}$ rationale Funktion, $z_0 \in \mathbb{C}$ Pol der Ordnung $k\geq 1 \Rightarrow \,\exists ! a_1,\dots,a_k \in \mathbb{C},a_k\neq 0$ und $\exists !$ Polynom $\tilde{p}$ mit 
     \[
     R(z) = \sum_{i=1}^{k}
-    \frac{a_i}{(z-z_0)^{î}} + \frac{\tilde{p}(z)}{\tilde{g}(z)} = H(z) +\frac{\tilde{p}(z)}{\tilde{g}(z)}
+    \frac{a_i}{(z-z_0)^{i}} + \frac{\tilde{p}(z)}{\tilde{g}(z)} = H(z) +\frac{\tilde{p}(z)}{\tilde{g}(z)}
     \]
     $H(z)$ heißt Hauptteil von $R \text{ in } z_0$. Beachte das $\frac{\tilde{p}}{\tilde{g}}$ keine Pole in $z_0$ hat.
 \end{lemma}
