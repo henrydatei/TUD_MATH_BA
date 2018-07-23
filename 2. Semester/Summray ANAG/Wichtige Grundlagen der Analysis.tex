@@ -1,6 +1,7 @@
 \documentclass[ngerman,a4paper]{article}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
 \usepackage[ngerman]{babel}
@@ -21,7 +22,43 @@
 	\end{align}
 \end{enumerate}
 
+\section{Reihen}
+\begin{enumerate}
+	\item Cauchykrit. undersuche Differenz von aufeinanderfolgenden Partialsummen, müssen kleiner als $\epsilon$ sein (Konvergenz für Folgen eigentlich)
+	\item Sei $X$ normierter Raum, $\{x_k\}$ in $X, k_0\in\mathbb{N}$
+	\begin{enumerate}[label={\alph*)}]
+		\item \emph{Majorantenkriterium} Sei $\{x_k\}$ Folge in $\mathbb{R}$
+		\begin{enumerate}[label={\alph*)}]
+			\item $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+			\item $0 \le \alpha_k \le \Vert x_k\Vert\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\sum_k\Vert x_k\Vert$ divergent.
+		\end{enumerate}
+		\item \emph{Quotientenkriterium} Sei $x_k\neq 0\,\forall k\ge k_0$ 
+		\begin{enumerate}[label={\alph*)}]
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
+			\item $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert}\,\forall k\ge k_0\;\Rightarrow \sum_k\Vert x_k\Vert$ divergiert.
+		\end{enumerate}
+		\item \emph{Wurzelkriterium}
+		\begin{enumerate}[label={\alph*)}]
+			\item $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+			\item $\sqrt[k]{\Vert x_k\Vert} \ge 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent.
+		\end{enumerate}
+	\end{enumerate}
+	\item \emph{Konvergenzradius} Habe Potenzreihe $\sum_{k=0}^\infty a_k(z-z_0)^k$ dann
+	\begin{align}
+		L:=\begin{cases} \limsup\limits_{n\rightarrow\infty} \sqrt[k]{|a_k|},&\text{falls existiert} \notag\\ \infty,&\text{sonst}\end{cases}\qquad R:=\frac{1}{L} \;(\text{mit }0 = \frac{1}{\infty}, \frac{1}{0} = \infty) \notag
+	\end{align}
+	$$
+\end{enumerate}
+
 \section{Stetigkeit}
+\begin{enumerate}
+	\item wenn funktioniert, Rechenregeln und Beispiele aus Vorlesung (elementare Funktionen sind stetig)
+	\item Summen, Produkte, Komposition, Skalarmultiplikation von/mit stetigen Funktionen sind wieder stetig
+	\item wenn Rechenregel nicht funktionieren, dann über folgenstetigkeit argumentieren
+	\begin{align}
+		f(x_n) \to f(x_0) \forall \text{ Folgen } x_n \to x_0 \text{ in } D\notag
+	\end{align}
+\end{enumerate}
 
 \section{Partialbruchzerlegung}
 \begin{enumerate}[label=\textbf{\arabic*.}]
@@ -57,6 +94,7 @@
 		(\ln f)' &= \frac{f'}{f}\notag
 	\end{align}
 	\item bei mehrdimensionalen Funktionen: komponentenweise ableiten
+	\item affin lineare Funktionen sind diffbar $Ax+b$ (folgt aus Definition diffbar Kap. 17)
 \end{enumerate}
 
 \subsection{Richtungsableitung und partielle Ableitung}
