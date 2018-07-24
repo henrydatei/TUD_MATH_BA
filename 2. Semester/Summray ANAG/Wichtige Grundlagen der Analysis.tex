@@ -53,8 +53,11 @@
 	\item eines (oder mehrere) der folgenden Kriterien prüfen:
 	\begin{itemize}
 		\item \emph{Majorantenkriterium} $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+		\item \emph{Minorantenkriterium} $\Vert x_k\Vert\ge \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent
 		\item \emph{Quotientenkriterium} $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
 		\item \emph{Wurzelkriterium} $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+		\item\emph{Monotonie-Kriterium} Eine Reihe positiver Summanden konvergiert genau dann gegen einen Grenzwert, wenn ihre Partialsummen nach oben beschränkt sind
+		\item \emph{Leibnitz-Kriterium} $\sum_k (-1)^kx_k$ mit $\lim_{k\to\infty}x_k=0$ und $x_k\ge 0$ monoton fallend und $x_k\le 0$ monoton steigend $\Rightarrow\;\sum_k (-1)^kx_k$ konvergiert 
 	\end{itemize}
 	\item \emph{Konvergenzradius} Potenzreihe $\sum_{k=0}^\infty a_k(z-z_0)^k$ dann
 	\begin{align}
