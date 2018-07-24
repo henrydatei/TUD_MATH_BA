@@ -1,0 +1,132 @@
+\section{Das Lemma von Zorn}
+
+Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge.
+
+\begin{definition}[Relation]
+	Eine \begriff{Relation} ist eine Teilmenge $R\subseteq X\times X$. Man schreibt $(x,x')\in R$ als $xRx'$. $R$ heißt
+	\begin{itemize}
+		\item \begriff[Relation!]{reflexiv}, wenn $\forall  x\in X$: $xRx$
+		\item \begriff[Relation!]{transitiv}, wenn $\forall x,y,z\in X$: $xRy$ und $yRz\Rightarrow xRz$
+		\item \begriff[Relation!]{symmetrisch}, wenn $\forall x,y\in X$: $xRy\Rightarrow yRx$
+		\item \begriff[Relation!]{antisymmetrisch}, wenn $\forall x,y\in X$: $xRy$ und $yRx\Rightarrow y=x$
+		\item \begriff[Relation!]{total}, wenn $\forall x,y\in X$: $(x,y)\notin R\Rightarrow (y,x)\in R$
+	\end{itemize}
+\end{definition}
+
+\begin{example}[Äquivalenzrelation]
+	Eine \begriff{Äquivalenzrelation} ist eine reflexive, transitive und symmetrische Relation. Wir haben schon verschiedene Äquivalenzrelationen kennengelernt: Isomorphie von $K$-Vektorräumen und Ähnlichkeit von Matrizen.
+\end{example}
+
+\begin{definition}[Halbordnung]
+	Eine \begriff{Halbordnung} (oder \begriff{partielle Ordnung}) ist eine reflexive, transitive und antisymmetrische Relation $\le$. Eine totale Halbordnung heißt \begriff{Totalordnung} oder \begriff{lineare Ordnung}. Man schreibt $x<y$ für $x\le y\land x\neq y$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item Die natürliche Ordnung $\le$ auf $\real$, $\ratio$, $\whole$ und $\natur$ ist eine Z
+		Totalordnung.
+		\item Teilbarkeit $\vert$ ist eine Halbordnung auf $\natur$, aber Teilbarkeit ist keine Halbordnung auf $\whole$, da $1\vert -1$ und $-1\vert 1$, aber $1\neq -1$!
+		\item $\mathcal{P}(X)$ ist die Potenzmenge. ``$\subseteq$'' ist eine Halbordnung auf $\mathcal{P}$, aber für $\vert X\vert>1$ ist ``$\subseteq$'' keine Totalordnung.
+		\item Sei $(X,\le)$ eine Halbordnung, sei $Y\subseteq X$, so ist $(Y,\subseteq\vert_Y)$ eine Halbordnung.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Kette]
+	Sei $(X,\le)$ eine Halbordnung, $Y\subseteq X$. $Y$ heißt \begriff{Kette}, wenn $(Y,\le\vert_Y)$ total ist.
+	
+	$x\in Y$ heißt ein \begriff[Kette!]{minimales Element} von $Y$, wenn $\forall x'\in Y$: $x<x'$.
+	
+	$x\in Y$ heißt \begriff[Kette!]{untere Schranke} von $Y$, wenn $\forall y\in Y$: $y\ge x$.
+	
+	$x\in Y$ heißt \begriff[Kette!]{kleinstes Element} von $Y$, wenn $x$ untere Schranke von $Y$ ist.
+	
+	Analog: \begriff[Kette!]{maximales Element}, \begriff[Kette!]{obere Schranke}, \begriff[Kette!]{größtes Element}.
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}
+		\node[place] (A) {1};
+		\node[place] (B) [below=of A] {3};
+		\node[place] (C) [left=of B] {2};
+		\node[place] (D) [right=of B] {5};
+		\node[place] (E) [right=of D] {7};
+		\node[place] (dots) [right=of E] {...};
+		
+		\node[place] (F) [below=of C] {4};
+		\node[place] (G) [below=of B] {6};
+		\node[place] (H) [below=of E] {15};
+		\node[place] (I) [right=of G] {10};
+		\node[place] (dots2) [right=of H] {...};
+		
+		\node[place] (J) [below=of F] {8};
+		\node[place] (K) [below=of J] {16};
+		\node[place] (L) [below=of K] {32};
+		
+		\draw[->,thick] (A.west) -- (C.north);
+		\draw[->,thick] (A.south) -- (B.north);
+		\draw[->,thick] (A.east) -- (D.north);
+		\draw[->,thick] (A.east) -- (E.north);
+		\draw[->,thick] (A.east) -- (dots.north);
+		
+		\draw[->,thick] (C.south) -- (F.north);
+		\draw[->,thick] (C.south) -- (G.north);
+		\draw[->,thick] (B.south) -- (G.north);
+		\draw[->,thick] (C.south) -- (I.north);
+		\draw[->,thick] (D.south) -- (I.north);
+		\draw[->,thick] (B.south) -- (H.north);
+		\draw[->,thick] (D.south) -- (H.north);
+		\draw[->,thick] (E.south) -- (dots2.north);
+		\draw[->,thick] (D.south) -- (dots2.north);
+		
+		\draw[->,thick] (F.south) -- (J.north);
+		\draw[->,thick] (J.south) -- (K.north);
+		\draw[->,thick] (K.south) -- (L.north);
+	\end{tikzpicture}
+	$Y=\{2^n\mid n\in\natur\}$ ist eine Kette
+\end{center}
+
+\begin{remark}
+	\begin{itemize}
+		\item Hat $Y$ ein kleinstes Element, so ist dies eindeutig bestimmt. Ein kleinstes Element ist minimal.
+		\item Jede endliche Halbordnung hat minimale Elemente. Jede endliche Totalordnung hat ein kleinstes Element. Analog für maximale Elemente und größtes Element.
+	\end{itemize}
+\end{remark}
+
+\begin{example}
+	$(\natur,\le)$ hat als kleinstes Element die 1, aber kein größtes Element oder maximale Elemente.
+\end{example}
+
+\begin{example}
+	$V=\real^3$, $\mathfrak{X}$ die Menge der Untervektorräume des $\real^3$. $(\mathfrak{X},\le)$ ist eine Halbordnung auf $Y\subseteq X$ mit $Y=\{U\in\mathfrak{X}\mid \dim_\real(U)\le 2\}$. 
+	\begin{itemize}
+		\item $Y$ hat ein kleinstes Element: $\{0\}$.
+		\item Es gibt unendlich viele maximale Elemente in $Y$, nämlich die Untervektorräume von $V$, die die Dimension 2 haben. Es gibt also kein größtes Element.
+		\item $V$ ist die obere Schranke von $Y$.
+	\end{itemize}
+\end{example}
+
+\begin{theorem}[Das Lemma von Zorn]
+	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
+\end{theorem}
+\begin{proof}
+	Das Lemma von Zorn hat axiomatischen Charakter - es ist äquivalent zum Auswahlaxiom, seine Gültigkeit ist somit abhängig von unseren grundlegenden mengentheoretischen Annahmen. Für einen Beweis des Lemmas von Zorn aus dem Auswahlaxiom siehe die Vorlesung \textit{Mengenlehre}. Wir zeigen hier zumindest die andere Richtung, nämlich dass das Auswahlaxiom aus dem Lemma von Zorn folgt.
+\end{proof}
+
+\begin{conclusion}[Auswahlaxiom]
+	Zu jeder Familie $(x_i)$, nicht leer, gibt es eine \begriff{Auswahlfunktion}, das heißt eine Abbildung:
+	\begin{align}
+		f: I\to \bigcup_{i\in I} X_i\text{ mit } f(i)\in X_i\quad\forall i\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	Sei $\mathcal{F}$ die Menge der Paare $(J,f)$ bestehend aus einer Teilmenge $J\subseteq I$ und einer Abbildung $f:I\to \bigcup_{i\in I} X_i$ mit $f(i)\in X_i\quad\forall i\in J$. Definieren wir $(J,f)\le (J',f')\iff J\subseteq J'$ und $f'\vert_J = f$, so ist $\le$ eine Halbordnung auf $\mathcal{F}$. Da $(\emptyset,\emptyset)\in\mathcal{F}$ ist $\mathcal{F}$ nichtleer. Ist $\mathcal{G}\subseteq\mathcal{F}$ eine nichtleere Kette, so wird auf $J':=\bigcup_{(J,f)\in\mathcal{G}} J$ durch $f'(j)=f(j)$ falls $(J,f)\in\mathcal{G}$ und $j\in J$ eine wohldefinierte Abbildung $f':J\to \bigcup_{i\in J}X_i$ mit $f'(i)\in X_i\quad\forall i\in J'$ gegeben. Das Paar $(J',f')$ ist eine obere Schranke der Kette $\mathcal{G}$. Nach dem Lemma von Zorn besitzt $\mathcal{F}$ ein maximales Element $(J,f)$. Wir behaupten, dass $J=I$. Andernfalls nehmen wir ein $i'\in I\backslash J$ und ein $x'\in X_{i'}$ und definieren $J':= U\cup\{i'\}$ und $f':J'\to \bigcup_{i\in J'} X_i$, $j\mapsto\begin{cases}f(j)&j\in J\\ x'&j=i'\end{cases}$. Dann ist $(J',f')\in\mathcal{F}$ und $(J,f)<(J',f')$ im Widerspruch zur Maximalität von $(J,f)$.
+\end{proof}
+
+
+\begin{conclusion}[Basisergänzungssatz]
+	\proplbl{7_1_11}
+	Sei $V$ ein $K$-Vektorraum. Jede linear unabhängige Teilmenge $X_0\subseteq V$ ist in einer Basis von $V$ enthalten.
+\end{conclusion}
+\begin{proof}
+	Sei $\mathfrak{X}=\{X\subseteq V\mid X\text{ ist linear unabhängig, } X_0\subseteq X\}$ geordnet durch Inklusion. Dann ist $X_0\in\mathfrak{X}$, also $\mathfrak{X}\neq\emptyset$. Ist $\mathcal{Y}$ eine nichtleere Kette in $\mathfrak{X}$, so ist auch $Y=\bigcup\mathcal{Y}\subseteq V$ linear unabhängig. Sind $y_1,...,y_n\in Y$ paarweise verschieden, so gibt es $Y_1,...,Y_n\in\mathcal{Y}$ mit $y_i\in Y_i$ für $i=1,...,n$. Da $\mathcal{Y}$ total geordnet ist, besitzt $\{Y_1,...,Y_n\}$ ein größtes Element, o.E. $Y_1$. Also sind $y_1,...,y_n\in Y_1$ und somit linear unabhängig. Folglich ist $Y_1\in \mathfrak{X}$ eine obere Schranke von $\mathcal{Y}$. Nach dem Lemma von Zorn besitzt $\mathfrak{X}$ ein maximales Element $X$. Das heißt, $X$ ist eine maximal linear unabhängige Teilmenge von $V$, nach \propref{2_3_5} also eine Basis von $V$.
+	\end{proof}

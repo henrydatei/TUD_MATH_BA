@@ -1,0 +1,220 @@
+\section{Polynome}
+
+In diesem Abschnitt sei $R$ ein kommutativer Ring mit Einselement. \\
+
+\begin{remark}
+	Unter einem \begriff{Polynom} in der "'Unbekannte"' $x$ versteht man einen Ausdruck der Form
+	$f(x)=a_0+a_1x+a_2x^2+...+a_nx^n = \sum_{k=0}^{n} a_kx^k$ mit $a_0,...,a_n \in R$. Fasst man $x$
+	als ein beliebiges Element von $R$ auf, gelten einige offensichtliche Rechenregeln: \\
+	Ist $f(x)=\sum _{k=0}^{n} a_kx^k$ und $g(x)=\sum _{k=0}^{n} b_kx^k$ so ist
+	\begin{itemize}
+		\item $f(x)+g(x)=\sum _{k=0}^{n} (a_k+b_k)x^k$
+		\item $f(x)\cdot g(x)=\sum _{k=0}^{2n} c_kx^k$ mit $c_k=\sum _{j=0}^{k} a_jb_{k-j}$
+	\end{itemize}
+	Dies motiviert die folgende präzise Definition für den Ring der Polynome über $R$ in einer "'Unbestimmten"'
+	$x$.
+\end{remark}
+
+\begin{definition}[Polynom]
+	Sei $R[X]$ die Menge der Folgen in $R$ (siehe \propref{1_2_13}), die fast überall 0 sind, also
+	\begin{align}
+		R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\} \notag
+	\end{align}
+\end{definition}
+
+Wir definieren Addition und Multiplikation auf $R[X]$:
+\begin{itemize}
+	\item $(a_k)_{k \in \mathbb N_0}+(b_k)_{k \in \mathbb N_0}=(a_k+b_k)_{k \in \mathbb N_0}$
+	\item $(a_k)_{k \in \mathbb N_0}\cdot (b_k)_{k \in \mathbb N_0}=(c_k)_{k \in \mathbb N_0}$ mit 
+	$c_k = \sum _{j=0}^{k} a_jb_{k-j}$
+\end{itemize}
+$\newline$
+
+Mit diesen Verknüpfungen wird $R[X]$ zu einem kommutativen Ring mit Einselement. Diesen Ring nennt man
+Polynomring (in einer Variablen $X$) über $R$. Ein $(a_k)_{k \in \mathbb N_0} \in R[X]$ heißt Polynom mit
+den Koeffizienten $a_0,...,a_n$. Wenn wir $a \in R$ mit der Folge $(a,0,0,...,0) := (a,\delta_{k,0})_{k \in \mathbb N_0}$
+identifizieren, wird $R$ zu einem Unterring von $R[X]$. 
+$\newline$
+
+Definiert man $X$ als die Folge $(0,1,0,..,0) := (\delta_{k,1})_{k \in \mathbb N_0}$ (die Folge hat an der $k$-ten 
+Stelle eine 1, sonst nur Nullen). Jedes $f(a_k)_{k \in \mathbb N_0}$ mit $a_k=0$ für $k>n_0$ lässt sich eindeutig
+schreiben als $f(X)=\sum_{k=0}^{n_0} a_kX^k$.\\
+Alternativ schreiben wir auch $f=\sum_{k \ge 0} a_kX^k$ mit dem Verständnis, dass diese unendliche
+Summe nur endlich von 0 verschiedene Summanden enthält.
+$\newline$
+
+Sei $0 \neq f(X)=\sum_{k \ge 0} a_kX^k \in R[X]$. Der \begriff{Grad} von $f$ ist das größte $k$ mit $a_k
+\neq 0$, geschrieben $\deg(f):= max\{k \in \mathbb N_0 \mid a_k \neq 0\}$. Man definiert den Grad des
+Nullpolynoms als $\deg(0)=-\infty$, wobei $-\infty < k \forall k \in \mathbb N_0$ gelten soll. Man nennt $a_0$
+den \begriff{konstanten Term} und $a_{\deg(f)}$ den \begriff{Leitkoeffizienten} von $f$. Hat $f$ den Grad 0, 1 oder 2, so nennt
+man $f$ \begriff[Polynom!]{konstant}, \begriff[Polynom!]{linear} bzw. \begriff[Polynom!]{quadratisch}.
+
+\begin{example}
+	Das lineare Polynom $f(X)=X-2 \in R[X]$ hat den Leitkoeffizient 1 und den konstanten Term $-2$.
+\end{example}
+
+\begin{proposition}
+	Seien $f,g \in R[X]$
+	\begin{itemize}
+		\item Es ist $\deg(f+g)\le \max\{\deg(f), \deg(g)\}$.
+		\item Es ist $\deg(f\cdot g) \le \deg(f)+\deg(g)$.
+		\item Ist $R$ nullteilerfrei, so ist $\deg(f\cdot g) = \deg(f)+\deg(g)$ und auch $R[X]$ ist nullteilerfrei.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item offenbar
+		\item Ist $\deg(f)=n$ und $\deg(g)=m$, $f=\sum_{i \ge 0} f_iX^i$, $g=\sum_{j\ge 0} g_jX^j$, 
+		so ist auch $h=fg=\sum_{k \ge 0} h_kX^k$ mit $h_k=\sum_{i+j=k} f_i\cdot g_j$ für alle $k \ge 0$.
+		Ist  $k>n+m$ und $i+j=k$, so ist $i>n$ oder $j>m$, somit $f_i=0$ oder $g_j=0$ und somit $h_k=0$. 
+		Folglich ist $\deg(h) \le n+m$.
+		\item Ist $f=0$ oder $g=0$, so ist die Aussage klar, wir nehmen als $n,m \ge 0$ an. Nach b) ist $\deg(h) \le 
+		n+m$ und $h_{m+n}=\sum_{i+j=n+m} f_ig_j=f_ng_m$. Ist $R$ nullteilerfrei, so folgt aus $f_n \neq 0$
+		und $g_m\neq 0$ schon $f_ng_m\neq 0$, und somit $\deg(h)=n+m$.
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}[Polynomdivision]
+	\proplbl{1_6_5}
+	Sei $K$ ein Körper und sei $0 \neq g \in K[X]$. Für jedes Polynom
+	$f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $\deg(r)<\deg(g)$. 
+\end{theorem}
+\begin{proof}
+	Existenz und Eindeutigkeit
+	\begin{itemize}
+		\item Existenz: Sei $n=\deg(f)$, $m=\deg(g)$, $f=\sum _{k=0}^{n} a_kX^k$, $g=\sum _{k=0}^{m} b_kX^k$ \\
+		Induktion nach $n$ bei festem $g$. \\
+		IA: Ist $n<m$, so wählt man $h=0$ und $r=f$.\\
+		IB: Wir nehmen an, dass die Aussage für alle Polynome vom Grad kleiner als $n$ gilt.\\
+		IS: Ist $n \ge m$, so betrachtet man $f_1=f-\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)$. Da $\frac{a_n}{b_m}\cdot 
+		X^{n-m}\cdot g(X)$ ein Polynom vom Grad $n-m+\deg(g)=n$ mit Leitkoeffizient $\frac{a_n}{b_m}\cdot b_m=a_n$ ist, ist
+		$\deg(f_1)<n$. Nach IB gibt es also $h_1, r_1 \in K[X]$ mit $f_1=gh_1+r_1$ und $\deg(r)<\deg(g)$. Somit ist 
+		$f(X)=f_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)=gh+r$ mit $h(X)=h_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}, r=r_1$.
+		\item Eindeutigkeit: Sei $n=\deg(f), m=\deg(g)$. Ist $f=gh+r=gh'+r'$ und $\deg(r),\deg(r')<m$, so ist $(h-h')g=r'-r$ und
+		$\deg(r'-r)<m$. Da $\deg(h-h')=\deg(h'-h)+m$ muss $\deg(h-h')<0$, also $h'-h=0$ sein. Somit $h'=h$ und $r'=r$.
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Der Existenzbeweis durch Induktion liefert uns ein konstruktives Verfahren, diese sogenannte
+	Polynomdivision durchzuführen.
+\end{remark}
+
+\begin{*example}
+	in $\mathbb Q[X]$: $(x^3+x^2+1):(x^2+1)=x+1$ Rest $-x$
+\end{*example}
+
+\begin{definition}[Nullstelle]
+	\proplbl{1_6_7}
+	Sei $f(X)=\sum_{k \ge 0} a_kX^k \in \mathbb R[X]$. Für $\lambda \in
+	\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum_{k \ge 0} a_k\lambda^k
+	\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tilde f: \mathbb R \to \mathbb R$ und
+	$\lambda \mapsto f(\lambda)$. \\
+	Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine \begriff{Nullstelle} von $f$.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{1_6_8}
+	Für $f,g \in \mathbb R[X]$ und $\lambda \in \mathbb R$i ist 
+	\begin{align}
+		(f+g)(\lambda)&=f(\lambda)+g(\lambda)\notag\\
+		(fg)(\lambda)&=f(\lambda) \cdot g(\lambda)\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Ist $f=\sum _{k \ge 0} a_kX^k$ und $g=\sum _{k\ge 0} b_kX^k$, so ist \\
+	\begin{align}
+		f(\lambda)+g(\lambda)&=\sum _{k \ge 0} a_k\lambda^k + \sum _{k\ge 0} b_k\lambda^k \notag \\
+		&= \sum _{k\ge 0} (a_k+b_k)\lambda^k\notag \\
+		&=(f+g)(\lambda)\notag
+	\end{align}
+	und 
+	\begin{align}
+		f(\lambda)\cdot g(\lambda)&= \sum _{k\ge 0} a_k\lambda^k \cdot \sum _{k\ge 0} b_k\lambda^k\notag \\
+		&= \sum _{k \ge 0} \sum _{i+j=k} (a_i+b_j)\lambda^k \notag \\
+		&= (fg)(\lambda) \notag
+	\end{align}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{1_6_9}
+	Ist $K$ ein Körper und $\lambda \in K$ eine Nullstelle von $f \in K[X]$ so gibt es ein
+	eindeutig bestimmtes $h \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)$.
+\end{proposition}
+\begin{proof}
+	Nach \propref{1_6_5} gibt es gibt $h,r \in K[X]$ mit $f(X)=(X-\lambda)\cdot h(x)+r(x)$ und $\deg(r)<\deg(X-\lambda)=1$, also $r \in
+	K$. Da $\lambda$ Nullstelle von $f$ ist, gilt $0=f(\lambda)=(\lambda-\lambda)\cdot h(\lambda)+r(\lambda)=
+	r(\lambda)$ nach \propref{1_6_8}. Hieraus folgt $r=0$. Eindeutigkeit folgt aus Eindeutigkeit in \propref{1_6_5}.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{1_6_10}
+	Sei $K$ ein Körper. Ein Polynom $0\neq f \in K[X]$ hat höchstens $\deg(f)$ viele
+	Nullstellen.
+\end{conclusion}
+\begin{proof}
+	Induktion nach $\deg(f)=n$ \\
+	Ist $n=0$, so ist $f \in K^{\times}$ und hat somit keine Nullstellen. \\
+	Ist $n>0$ und hat f eine Nullstelle $\lambda \in K$, so ist $f(X)=(X-\lambda)*h(x)$ mit $h(x) \in K[X]$ und
+	$\deg(f)=\deg(X-\lambda)+\deg(h)=n-1$. Nach IV besitzt $h$ höchstens $\deg(h)=n-1$ viele Nullstellen. Ist
+	$\lambda'$ eine Nullstelle von $f$, so ist $0=f(\lambda’)=(\lambda’-\lambda)*h(\lambda’)$, also $\lambda'=
+	\lambda$ oder $\lambda'$ ist Nullstelle von $h$. Somit hat $f$ höchstens $n$ viele Nullstellen in $K$.
+\end{proof}
+
+\begin{conclusion}
+	Ist $K$ ein unendlicher Körper, so ist die Abbildung $K[X] \to \Abb(K,K)$ und $f \mapsto
+	\tilde f$ injektiv.
+\end{conclusion}
+\begin{proof}
+	Sind $f,g \in K[X]$ mit $\tilde f = \tilde g$, also $f(\lambda)=g(\lambda)$ für jedes $\lambda \in K$, so ist
+	jedes $\lambda$ Nullstelle von $h:= f-g \in K[X]$. Da $|K|=\infty$ ist, so ist $h=0$, also $f=g$.
+\end{proof}
+
+\begin{remark}
+	Dieses Korollar besagt uns, dass man über einem unendlichen Körper Polynome als
+	polynomiale Abbildungen auffassen kann. Ist $K$ aber endlich, so ist dies im Allgemeinen nicht richtig.
+	Beispiel: $K=\mathbb Z\backslash 2\mathbb Z$, $f(X)=X$, $g(X)=X^2 \Rightarrow f \neq g$, aber 
+	$\tilde f=\tilde g$.
+\end{remark}
+
+\begin{example}
+	Sei $f(X)=X^2+1 \in \mathbb R[X] \subset \mathbb C[X]$ \\
+	In $K=\mathbb R$ hat $f$ keine Nullstelle: Für $\lambda \in \mathbb R\; f(\lambda)=\lambda^2+1 \ge1 >0$. \\
+	In $K=\mathbb C$ hat $f$ die beiden Nullstellen $\lambda_1=i$ und $\lambda_2=-i$ und zerfällt dort in Linearfaktoren:
+	$f(X)=(X-i)(X+i)$.
+\end{example}
+
+\begin{proposition}
+	\proplbl{1_6_14}
+	Für einen Körper $K$ sind äquivalent:
+	\begin{itemize}
+		\item Jedes Polynom $f \in K[X]$ mit $\deg(f)>0$ hat eine Nullstelle in $K$.
+		\item Jedes Polynom $f \in K[X]$ zerfällt in Linearfaktoren, also $f(X)=a\cdot \prod _{i=1}^n 
+		(X-\lambda_i)$ mit $n=\deg(f), a, \lambda_i \in K$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $1 \Rightarrow 2:$ Induktion nach $n=\deg(f)$ \\
+		Ist $n\le0$, so ist nichts zu zeigen. \\
+		Ist $n>0$, so hat $f$ eine Nullstelle $\lambda_n \in K$, somit $f(X)=(X-\lambda_n)\cdot g(X)$ mit $g(X) \in K[X]$
+		und $\deg(g)=n-1$, Nach IV ist $g(X)=a\cdot \prod _{i=1}^n (X-\lambda_i)$. Nach \propref{1_6_9} ist $f(X)=a\cdot \prod 
+		_{i=1}^n (X-\lambda_i)$.
+		\item $2 \Rightarrow 1:$ Sei $f \in K[X]$ mit $n=\deg(f)>0$. Damit gilt $f(X)=a\cdot \prod _{i=1}^n (X-\lambda_i)$.
+		Da $n>0$, hat $f$ z.B. die Nullstelle $\lambda_1$.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[algebraisch abgeschlossen]
+	Ein Körper $K$ heißt \begriff{algebraisch abgeschlossen}, wenn er eine 
+	der äquivalenten Bedingungen erfüllt. 
+\end{definition}
+
+\begin{theorem}[Fundamentalsatz der Algebra]
+	\proplbl{1_6_16}
+	Der Körper $\mathbb C$ ist algebraisch abgeschlossen.
+\end{theorem}
+
+\begin{remark}
+	Wir werden das Theorem zwar benutzen, aber nicht beweisen.
+\end{remark}

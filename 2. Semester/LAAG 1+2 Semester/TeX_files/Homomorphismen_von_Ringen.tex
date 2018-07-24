@@ -1,0 +1,82 @@
+\section{Homomorphismen von Ringen}
+
+Seien $R,S$ und $T$ Ringe.
+
+\begin{definition}[Ringhomomorphismus]
+	Eine Abbildung $f:R\to S$ ist ein \begriff{Ringhomomorphismus}, wenn für $x,y\in R$ 
+	gilt:
+	\begin{itemize}
+		\item (RH1:) $f(x+y)=f(x)+f(y)$
+		\item (RH2:) $f(xy)=f(x)\cdot f(y)$
+	\end{itemize}
+	Die Menge der Ringhomomorphismen $f:R\to R$ wird mit $\Hom(R,S)$ bezeichnet. Ein Homomorphismus $f:R\to S$ ist ein 
+	Mono-, Epi- oder Isomorphismus, wenn $f$ injektiv, surjektiv oder bijektiv ist. Gibt es einen Isomorphismus 
+	$f:R\to S$, so nennt man $R$ und $S$ isomorph und schreibt $R\cong S$. Die Elemente von $\End(R):= \Hom(R,R)$ nennt 
+	man \begriff{Endomorphismen}. Der Kern eines Ringhomomorphismus $f:R\to S$ ist $\Ker(f):= f^{-1}(\{0\})$.
+\end{definition}
+
+\begin{remark}
+	Ein Ringhomomorphismus $f:R\to S$ ist ein Gruppenhomomorphismus der abelschen Gruppen $(R,+)$ und 
+	$(S,+)$, der mit der Multiplikation verträglich ist, also eine strukturverträgliche Abbildung zwischen Ringen.
+\end{remark}
+
+\begin{example}
+	\begin{itemize}
+		\item $\id_R:R\to R$ ist ein Ringisomorphismus
+		\item Ist $R_0\le R$ ein Unterring von $R$, so ist $\iota: R_0 \to R$ ein Ringmonomorphismus
+		\item $\mathbb Z \to \mathbb Z\backslash n\mathbb Z$ mit $\overline a\mapsto a+n\mathbb Z$ it ein Ringepimorphismus
+		\item Sei $R$ kommutativ mit Einselement. Für $\lambda\in R$ ist die Auswertungsabbildung $R[X]\to R$ mit $f\mapsto 
+		f(\lambda)$ ein Ringepimorphismus. Dies ist die Aussage von \propref{1_6_8}
+		\item $\mathbb C \to \mathbb C$ mit $z\mapsto \overline z$ ist ein Ringisomorphismus
+	\end{itemize}
+\end{example}
+
+\begin{proposition}
+	Sind $f:R\to S$ und $g:S\to T$ Ringhomomorphismen, so auch $g\circ f:R\to T$.
+\end{proposition}
+\begin{proof}
+	Übung, analog zu \propref{3_2_5}
+\end{proof}
+
+\begin{lemma}
+	Ist $f:R\to S$ ein Ringisomorphismus, so auch $f^{-1}: S\to R$.
+\end{lemma}
+\begin{proof}
+	Nach \propref{3_2_7} wissen wir: $f^{-1}$ ist ein Isomorphismus der abelschen Gruppen $(S,+)\to (R,+)$. Die Verträglichkeit 
+	mit der Multiplikation zeigt man analog.
+\end{proof}
+
+\begin{proposition}
+	Sei $f\in \Hom(R,S)$. Genau dann ist $f$ ein Ringisomorphismus, wenn es $f'\in \Hom(S,R)$ mit $f'\circ 
+	f=\id_R$ und $f\circ f'=\id_S$ gibt.
+\end{proposition}
+\begin{proof}
+	Klar, analog zu \propref{3_2_8}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{3_3_7}
+	Der Kern $I:=\Ker(f)$ eines Ringhomomorphismus $f:R\to S$ ist eine Untergruppe von $(R,+)$ mit 
+	$x\cdot a, a\cdot x \in I$ für alle $a\in I$ und $x\in R$.
+\end{lemma}
+\begin{proof}
+	Nach \propref{3_2_13} ist $I$ eine Untergruppe von $(R,+)$. Für $x\in R$ und $a \in I$ ist $f(xa)=f(x)\cdot 
+	f(a)=f(x)\cdot 0=0$. Somit ist $xa\in I$. Analog ist $ax\in I$.
+\end{proof}
+
+\begin{proposition}
+	Sei $f\in \Hom(R,S)$. Genau dann ist $f$ injektiv, wenn $\Ker(f)=\{0\}$.
+\end{proposition}
+\begin{proof}
+	Klar aus \propref{3_2_14}, da $f:(R,+)\to (S,+)$ ein Gruppenhomomorphismus ist.
+\end{proof}
+
+\begin{definition}[Ideal]
+	Ist $I$ eine Untergruppe von $(R,+)$ und $xa,ax\in I$ mit $x\in R$ und $a\in I$, so nennt 
+	man $I$ ein \begriff{Ideal} von $R$ und schreibt $I\unlhd R$.
+\end{definition}
+
+\begin{example}
+	Der Kern des Ringhomomorphismus $\mathbb Z\to \mathbb Z\backslash n\mathbb Z$ mit $a\mapsto 
+	\overline a$ ist das Ideal $I=n\mathbb Z\unlhd \mathbb Z$.
+\end{example}

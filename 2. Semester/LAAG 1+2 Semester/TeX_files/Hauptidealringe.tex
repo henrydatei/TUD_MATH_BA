@@ -1,0 +1,80 @@
+\section{Hauptidealringe}
+
+Sei $R$ nullteilerfrei.
+
+\begin{definition}[Hauptidealring]
+	Ein Ring $R$ ist ein \begriff{Hauptidealring}, wenn $R$ nullteilerfrei ist und jedes Ideal von $R$ ein Hauptideal ist.
+\end{definition}
+
+\begin{example}
+	Ist $R=K$ ein Körper, so hat $R$ nur die Ideale $(0)$ und $(1)$, und somit ist $R$ ein Hauptidealring.
+\end{example}
+
+\begin{definition}[euklidische Gradfunktion]
+	Eine \begriff{euklidische Gradfunktion} auf $R$ ist eine Abbildung $\delta:R\backslash \{0\}\to \natur_0$ für die gilt: \\
+	Für jedes $a\in R$ und $0\neq b\in R$ gibt es $q,r\in R$ mit $a=bq+r$, wobei $r=0$ oder $\delta(r)<\delta(b)$.
+	
+	Ein nullteilerfreier Ring $R$ ist \begriff[Ring!]{euklidisch}, wenn es eine euklidische Gradfunktion auf $R$ gibt.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item Auf $R=\whole$ ist der Absolutbetrag 
+		\begin{align}
+			\delta(x)=\vert x\vert\notag
+		\end{align}
+		eine euklidische Gradfunktion. (\propref{1_4_6})
+		\item Auf $R=K[t]$, $K$ ein Körper, ist der Grad
+		\begin{align}
+			\delta(f) =\deg(f)\notag
+		\end{align}
+		eine euklidische Gradfunktion. (\propref{1_6_5})
+		\item $R=K$ ein Körper ist 
+		\begin{align}
+			\delta(x)=0\notag
+		\end{align}
+		eine euklidische Gradfunktion, da man in einem Körper jedes Element durch jedes Element (Ausnahme: 0) teilen kann.
+	\end{enumerate}
+\end{example}
+
+\begin{lemma}
+	\proplbl{8_3_5}
+	Sei $\delta:R\backslash \{0\}\to \natur_0$ eine euklidische Gradfunktion und $(0)\neq\unlhd R$ ein Ideal. Ist $0\neq a\in I$ mit $\delta(a)=\min\{\delta(b)\mid 0\neq b\in I\}$, so ist $I=(a)$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item "'$\supseteq$"': $a\in I\Rightarrow (a)\subset I$
+		\item "'$\subseteq$"': Sei $0\neq b\in I$. Schreibe $b=qa+r$ mit $q,r\in R$ und $r=0$ oder $\delta(r)<\delta(a)$. Da $r=\underbrace{b}_{\in I}-q\underbrace{a}_{\in I}\in I$ folgt wegen der Minimalität von $\delta(a)$, dass $r=0$, also $b\in (a)$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Ist $R$ euklidisch, so ist $R$ ein Hauptidealring.
+\end{proposition}
+\begin{proof}
+	Sei $I\unlhd R$ ein Ideal. Ist $I=(0)$, so ist $I$ ein Hauptideal. Andernfalls existiert ein $0\neq a\in I$ mit $\delta(a)$ minimal. Nach \propref{8_3_5} ist $I=(a)$ ein Hauptideal.
+\end{proof}
+
+\begin{conclusion}
+	Die Ringe $\whole$ und $K[t]$, $K$ ein Körper, sind Hauptidealringe.
+\end{conclusion}
+
+\begin{lemma}[Lemma von \person{Bézout}]
+	\proplbl{8_3_8}
+	Sei $R$ ein Hauptidealring und $a,b\in R$. Es existiert ein $c\in R$ mit $c=\ggT(a,b)$ und $(c)=(a,b)$. Insbesondere gibt es $x,y\in R$ mit $c=ax+by$ und $\ggT(x,y)=1$.
+\end{lemma}
+\begin{proof}
+	$R$ Hauptidealring $\Rightarrow\exists c\in R$ mit $(c)=(a,b)$, insbesondere $c=ax+by$ mit $x,y\in R$.
+	\begin{itemize}
+		\item $c=\ggT(a,b)$: $a,b\in (c)\Rightarrow c\mid a$ und $c\mid b$. Ist $d\in R$ mit $d\mid a$ und $d\mid b$, so ist $d\mid (ax+by)=c$
+		\item $\ggT(x,y)=1$: Ist $d\in R$ mit $d\mid x$ und $d\mid y$, so gelten $(cd)\mid (ax)$ und $(cd)\mid (by)\Rightarrow (cd)\mid (ax+by)=c\Rightarrow d\in R^\times$, also $d\sim 1$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{8_3_9}
+	Sei $R$ ein Hauptidealring, $p\in R$. Ist $p$ irreduzibel, so auch prim.
+\end{proposition}
+\begin{proof}
+	Seien $a,b\in R$ mit $p\mid (ab)$. Angenommen $p\nmid a$. DA $p$ irreduzibel ist, ist $\ggT(p,a)=1$, also $1=px+ay$ mit $x,y\in R$ nach \propref{8_3_8}. Also $p\mid (pbx+aby)=b$.
+\end{proof}

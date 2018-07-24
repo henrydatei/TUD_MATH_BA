@@ -1,0 +1,107 @@
+\section{Euklidische und unitäre Vektorräume}
+
+\begin{lemma}
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Dann ist $s(x,x)\in\real$ für alle $x\in V$.
+\end{lemma}
+\begin{proof}
+	Da $s$ hermitesch ist, ist $s(x,x)=\overline{s(x,x)}$, also $s(x,x)\in\real$.
+\end{proof}
+
+\begin{definition}[quadratische Form]
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Die \begriff{quadratische Form} zu $s$ ist die Abbildung
+	\begin{align}
+		q_s:\begin{cases}
+		V\to \real \\ x\mapsto s(x,x)
+		\end{cases}\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	Die quadratische Form $q_s$ erfüllt das $q_s(\lambda x)=\vert\lambda\vert^2\cdot q_s(x)$ für alle $x\in V$, $\lambda\in K$. Im Fall $K=\real$, $V=\real^n$, $x=(x_1,...,x_n)^t$, $s=s_A$, $A\in\Mat_n(\real)$ ist $q_s(x)=s_A(x,x)=x^tAx=\sum_{i,j=1}^n a_{ij}x_ix_j$ ein "'quadratisches Polynom in den Variablen $x_1,...,x_n$"'.
+\end{remark}
+
+\begin{proposition}[Polarisierung]
+	\proplbl{6_3_4}
+	Sei $s$ ein hermitesche Sesquilinearform auf $V$. Dann gilt für $x,y\in V$:
+	\begin{align}
+		s(x,y)&=\frac 1 2 (q_s(x+y)-q_s(x)-q_s(y))\quad K=\real\notag \\
+		s(x,y)&=\frac 1 4 (q_s(x+y)-q_s(x-y)+iq_s(x+iy)-iq_s(x-iy))\quad K=\comp\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Im Fall $K=\real$ ist
+	\begin{align}
+		q_s(x+y)-q_s(x)-q_s(y)&= s(x+y,x+y)-s(x,x)-s(y,y)\notag \\
+		&= s(x,x)+s(x,y)+s(y,x)+s(y,y)-s(x,x)-s(y,y)\notag \\
+		&= s(x,y)+s(y,x)-2s(x,y)\notag
+	\end{align}
+	Im Fall $K=\comp$: ÜA
+\end{proof}
+
+\begin{definition}[(semi)definit, euklidischer VR, unitärer VR]
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Ist $s(x,x)\ge 0$ für alle $x\in V$, so heißt $s$ \emph{positiv} \begriff{semidefinit}. Ist $s(x,x)>0$ für alle $0\neq x\in V$, so heißt $s$ \emph{positiv} \begriff{definit} (oder ein \emph{Skalarprodukt}).
+	
+	Eine hermitesche Matrix $A\in\Mat_n(K)$ heißt \emph{positiv (semi)definit}, wenn $s_A$ dies ist.
+	
+	Einen endlichdimensionalen $K$-VR zusammen mit positiv definiten hermiteschen Sesquilinearformen nennt man einen \begriff{euklidischen} bzw. \begriff{unitären} VR (oder auch \emph{Prähilbertraum}). Wenn nicht anderes angegeben, notieren wir die Sesquilinearform mit $\skalar{\cdot}{\cdot}$.
+\end{definition}
+
+\begin{example}
+	Der Standardraum $V=K^n$ zusammen mit dem Standardskalarprodukt ist ein euklidischer bzw. unitärer VR.
+\end{example}
+
+\begin{example}
+	Ist $A=\diag(\lambda_1,...,\lambda_n)$ mit $\lambda_i\in\real$, so ist $s_A$ genau dann positiv definit, wenn $\lambda_i>0$ für alle $i$, und positiv semidefinit, wenn $\lambda_i\ge 0$ für alle $i$.
+\end{example}
+
+\begin{proposition}
+	Ist $V$ ein unitärer VR und $U\subseteq V$ ein UVR, so ist $U$ mit der Einschränkung des Skalarprodukts wieder ein unitärer VR.
+\end{proposition}
+\begin{proof}
+	klar, die Einschränkung ist wieder positiv definit.
+\end{proof}
+
+\begin{definition}
+	Ist $V$ ein unitärer VR, so definiert man die Norm von $x\in V$ als
+	\begin{align}
+		\Vert x\Vert = \sqrt{\skalar{x}{x}}\in\real_{\ge 0}\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	Die Norm eines unitären VR erfüllt die folgenden Eigenschaften:
+	\begin{itemize}
+		\item Für $x\in V$ ist $\Vert x\Vert =0\iff x=0$
+		\item Für $x\in V$ und $\lambda\in K$ ist $\Vert \lambda x\Vert=\vert \lambda\vert \cdot \Vert x\Vert$
+		\item Für $x,y\in V$ ist $\Vert x+y\Vert \le \Vert x\Vert + \Vert y \Vert$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Das Skalarprodukt ist positiv definit.
+		\item klar
+		\item Wie im Fall im $\real^n$
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Ist $V$ ein unitärer VR, so gilt für $x,y\in V$:
+	\begin{align}
+		\vert \skalar{x}{y}\vert \le \Vert x\Vert\cdot \Vert y\Vert\notag
+	\end{align}
+	Dabei gilt Gleichheit genau dann, wenn $x$ und $y$ linear abhängig sind.
+\end{proposition}
+\begin{proof}
+	Für $y=0$ ist die Aussage klar. \\
+	Sei also $y\neq 0$. Für $\lambda,\mu\in K$ ist 
+	\begin{align}
+		0&\le \skalar{\lambda x+\mu y}{\lambda x+\mu y}\notag \\
+		&= \lambda\overline{\lambda}\cdot \skalar{x}{x}+\mu\overline{\mu}\cdot \skalar{y}{y}+\lambda\overline{\mu}\cdot \skalar{x}{y}+\mu\overline{\lambda}\cdot\skalar{y}{x}\notag
+	\end{align}
+	Setzt man $\lambda=\overline{\lambda}=\skalar{y}{y}>0$ und $\mu=-\skalar{x}{y}$ ein, so erhält man 
+	\begin{align}
+		0&\le \lambda\cdot\Vert x\Vert^2\Vert y\Vert^2 +\mu\overline{\mu}\lambda -\lambda\mu\overline{\mu}-\skalar{x}{y}\overline{\lambda}\skalar{y}{x}\notag \\
+		&= \lambda(\Vert x\Vert^2\Vert y\Vert^2-\vert\skalar{x}{y}\vert^2)\notag
+	\end{align}
+	Teilen durch $\lambda$ und Wurzelziehen liefert die Ungleichung. Gilt dort Gleichheit, so ist $\Vert \lambda x+\mu y\Vert=0$ folglich (da $\lambda\neq 0$) sind dann $x,y$ linear unabhängig. Ist $x=\alpha y$ mit $\alpha\in K$, so ist $\vert\skalar{x}{y}\vert =\vert \alpha\vert \cdot \Vert y\Vert^2=\Vert x\Vert \cdot\Vert y\Vert$
+\end{proof}

@@ -1,0 +1,160 @@
+In diesem ganzen Kapitel sei $R$ ein kommutativer Ring mit Einselement.
+
+\section{Moduln}
+
+\begin{definition}
+	Ein $R$-\begriff{Modul} ist ein Tripel $(M,+,\cdot)$ bestehend aus einer Menge $M$, einer Verknüpfung $+:M\times M\to M$ und der Abbildung $\cdot:R\times M\to M$ (Skalarmultiplikation) für die gelten:
+	\begin{itemize}
+		\item (M1): $(M,+)$ ist eine abelsche Gruppe
+		\item (M2): Addition und Skalarmultiplikation sind verträglich. Für alle $x,y\in M$ und $a,b\in R$ gelten
+		\begin{enumerate}
+			\item $a(x+y)=ax+ay$
+			\item $(a+b)x=ax+bx$
+			\item $a\cdot bx=ab\cdot x$
+			\item $1\cdot x=x$
+		\end{enumerate}
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item Ist $R=K$ ein Körper, so sind die $R$-Moduln genau die $K$-Vektorräume.
+		\item Ist $R=\whole$, so sind die $R$-Moduln genau die abelschen Gruppen mit der einzig möglichen Skalarmultiplikation 
+		\begin{align}
+			\whole\times A\to A,(k,a)\mapsto ka=\underbrace{1+...+1}_{k\text{-mal}}a=\underbrace{a+...+a}_{k\text{-mal}}\notag
+		\end{align}
+		vergleiche \propref{3_2_3}
+		\item Jedes Ideal $M\subseteq R$ ist ein $R$-Modul mit Einschränkung der Multiplikation als Skalarmultiplikation.
+		\item Ist $K$ ein Körper, $V$ ein $K$-Vektorraum und $f\in\End_K(V)$, so wird $V$ durch $P(t)\cdot x:=P(f)(x)$ zu einem Modul über dem Ring $R=K[t]$, siehe auch \propref{5_5_2}
+	\end{enumerate}
+\end{example}
+
+\begin{remark}
+	Sei $M$ ein $R$-Modul. Wie für Vektorräume überzeugt man sich leicht, dass $0x=0$, $a0=0$, $(-a)x=a(-x)=-ax$ für alle $a\in R$, $x\in M$. 
+	
+	Im Gegensatz zu Vektorräumen folgt aber aus $ax=0$ nicht, dass $a=0$ oder $x=0$, siehe zum Beispiel das $\whole$-Modul $M=\whole/n\whole$. Es ist
+	\begin{align}
+		n\cdot\overline{1}=\overline{n}=\overline{0}\in\whole/n\whole\notag
+	\end{align}
+	aber $0\neq n\in\whole$.
+\end{remark}
+
+\begin{definition}[Homomorphismus von $R$-Moduln]
+	Seien $M,M'$ $R$-Moduln. Eine Abbildung $f:M\to M'$ ein \begriff[Modul!]{Homomorphismus} von $R$-Moduln (oder $R$-Homomorphismus oder $R$-linear), wenn
+	\begin{align}
+		f(x+y)&=f(x)+f(y) \notag \\
+		f(ax) &= a\cdot f(x)\notag
+	\end{align}
+	Wir bezeichnen die Menge der $R$-Homomorphismen $f:M\to M'$ mit $\Hom_R(M,M')$. Wie üblich definiert man den \begriff[Modul!]{Kern} eines $R$-Homomorphismus, sowie die Begriffe \begriff[Modul!]{Monomorphismus}, \begriff[Modul!]{Epimorphismus}, \begriff[Modul!]{Isomorphismus}, \begriff[Modul!]{Endomorphismus} und \begriff[Modul!]{Automorphismus} von $R$-Moduln.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Ist $R=K$, so sind die $R$-Homomorphismen genau die lineare Abbildungen.
+		\item Ist $R=\whole$, so sind die $R$-Homomorphismen genau die Gruppenhomomorphismen.
+	\end{itemize}
+\end{example}
+
+\begin{example}
+	\proplbl{8_1_6}
+	Für jedes $a\in R$ ist die Abbildung
+	\begin{align}
+		\begin{cases}
+		M\to M \\ x\mapsto ax
+		\end{cases}\notag
+	\end{align}
+	einen Endomorphismus von $M$.
+\end{example}
+
+\begin{definition}[Untermodul, Erzeugendensystem]
+	Ein \begriff{Untermodul} ist eine nichtleere Teilmenge $N\subseteq M$, für die gilt:
+	\begin{itemize}
+		\item Sind $x,y\in N$, so ist auch $x+y\in N$.
+		\item Ist $a\in R$ und $x\in N$, so ist auch $ax\in N$.
+	\end{itemize}
+
+	Für eine Familie $(x_i)_{i\in I}$ ist
+	\begin{align}
+		\sum_{i\in I} Rx_i=\{\sum_{i\in I} ax_i\mid a\in R\text{, fast alle gleich 0}\}\notag
+	\end{align}
+	der von $(x_i)_{i\in I}$ \begriff[Untermodul!]{erzeugte Untermodul} von $M$. Ist $\sum_{i\in I} Rx_i=M$, so ist $(x_i)_{i\in I}$ ein \begriff[Modul!]{Erzeugendensystem} von $M$. Der $R$-Modul $M$ ist \begriff[Modul!]{endlich erzeugt}, wenn er ein endliches Erzeugendensystem besitzt.
+\end{definition}
+
+\begin{remark}
+	\proplbl{8_1_8}
+	Wieder ist der Kern eines $R$-Homomorphismus $f:M\to M'$ ein Untermodul von $M$. Leicht sieht man auch hier, dass $\sum_{i\in I} Rx_i$ ein Untermodul von $M$ ist, und zwar der kleinste, der alle $x_i$ enthält.
+\end{remark}
+
+\begin{example}
+	\begin{itemize}
+		\item Ist $R=K$ ein Körper, so sind die Untermoduln von $M$ genau die Untervektorräume.
+		\item Ist $R=\whole$, so sind die Untermoduln von $M$ genau die Untergruppen und der von einer Familie erzeugte Untermodul ist genau gleich der davon erzeugten Untergruppe. \\
+		Ist zum Beispiel $M=\whole$, so sind alle $n\whole$ Untermoduln von $M$.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[freie Familie, Basis]
+	Eine Familie $(x_i)_{i\in I}$ in $M$ ist \begriff[Familie!]{frei} oder ($R$-linear unabhängig), wenn es keine Familie $(\lambda_i)_{i\in I}$ von Elementen von $R$, fast alle gleich 0, aber nicht alle gleich 0, mit $\sum_{i\in I} \lambda_ix_i=0$ gibt.
+	
+	Ein freies Erzeugendensystem heißt \begriff[Modul!]{Basis}. Besitzt $M$ eine Basis, so nennt man $M$ \begriff[Modul!]{frei}.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{8_1_11}
+	Seien $M,M'$ $R$-Moduln, $(x_i)_{i\in I}$ eine Basis von $M$ und $(y_i)_{i\in I}$ eine Familie in $M'$. Dann gibt es genau eine $R$-lineare Abbildung $f:M\to M'$ mit $f(x_i)=y_i$ für alle $i$.
+\end{proposition}
+\begin{proof}
+	klar, siehe \propref{3_5_1}
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item Für $n\in\natur$ ist $M=R^n$ mit komponentenweiser Addition und Skalarmultiplikation ein endlich erzeugter freier $R$-Modul mit der üblichen Standardbasis.
+		\item Allerdings ist zum Beispiel der $\whole$-Modul $\whole/n\whole$ zwar endlich erzeugt aber nicht frei. Für $\overline{a}\in\whole/n\whole$ ist $n\overline{a}=\overline{0}$, also $\overline{a}$ linear abhängig.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[Summen von Moduln]
+	Die \begriff[Modul!]{Summe} einer Familie $(N_i)_{i\in I}$ von Untermoduln von $M$ ist
+	\begin{align}
+		\sum_{i\in I} N_i=\left\lbrace \sum_{i\in I} x_i\mid x_i\in N_i\text{, fast alle gleich 0}\right\rbrace \notag
+	\end{align}
+	Lässt sich jedes $x\in\sum_{i\in I} N_i$ eindeutig als $\sum_{i\in I} x_i$ mit $x_i\in N_i$ schreiben, so nennt man die Summe \begriff[Modul!]{direkt} und schreibt dafür auch $\bigoplus_{i\in I} N_i$.
+	
+	Ist $(M_i)_{i\in I}$ eine Familie von $R$-Moduln, so definiert man deren \begriff[Modul!]{(externe) direkte Summe} als das $R$-Modul 
+	\begin{align}
+		\bigoplus_{i\in I} M_i := \left\lbrace (x_i)_{i\in I}\in \prod_{i\in I} M_i\mid x_i=0\text{ für fast alle } i\in I\right\rbrace \notag
+	\end{align}
+	mit komponentenweiser Addition und Skalarmultiplikation.
+\end{definition}
+
+\begin{remark}
+	Wie auch für Vektorräume ist eine externe direkte Summe eine direkte Summe der entsprechenden Untermoduln und ist $M=\bigoplus_{i\in I} N_i$, so ist $M$ isomorph zur externen direkten Summe der $N_i$.
+\end{remark}
+
+\begin{definition}[Torsionsmodul]
+	Für $a\in R$ definiert man den $a$-\begriff{Torsionsmodul} von $M$ als
+	\begin{align}
+		M[a]:=\{x\in M\mid ax=0\}\notag
+	\end{align}
+	Die Elemente des Torsionsmoduls
+	\begin{align}
+		M_{tor}:=\bigcup_{0\neq a\in R} M[a]=\{x\in M\mid ax=0\text{ für ein } a\in R\backslash\{0\}\}\notag
+	\end{align}
+	nennt man die \begriff{Torsionselemente} von $M$.
+\end{definition}
+
+\begin{proposition}
+	Für $a\in R$ ist $M[a]$ ein Untermodul von $M$. Ist $R$ nullteilerfrei, so ist auch $M_{tor}$ ein Untermodul von $M$.
+\end{proposition}
+\begin{proof}
+	$M[a]$ ist der Kern des Endomorphismus $x\mapsto ax$ (\propref{8_1_6}), somit ein Untermodul (\propref{8_1_8}).  Seien $a,b\in R\backslash\{0\}$ und $x\in M[a]$, $y\in M[b]$. Ist $R$ nullteilerfrei so ist $ab\neq 0$ und 
+	\begin{align}
+		(ab)\cdot (x+y)=b\cdot \underbrace{ax}_{=0} + a\cdot \underbrace{by}_{=0}=0\notag
+	\end{align}
+	also $x+y\in M[ab]\subseteq M_{tor}$. Somit ist $M_{tor}$ in diesem Fall einer Untermodul von $M$.
+\end{proof}
+
+\begin{example}
+	Sei $R=\whole$ und $M=\whole/n\whole$, dann ist $M_{tor}=M=M[n]$.
+\end{example}

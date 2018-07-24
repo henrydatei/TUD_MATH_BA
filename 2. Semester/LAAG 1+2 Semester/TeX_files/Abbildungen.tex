@@ -1,0 +1,191 @@
+\section{Abbildungen}
+
+\begin{overview}[Abbildungen]
+	Eine \begriff{Abbildung} $f$ von eine Menge $X$ in einer Menge $Y$ ist eine Vorschrift, die jedem $x \in X$
+	auf eindeutige Weise genau ein Element $f(x) \in Y$ zuordnet. Man schreibt dies als 
+	\begin{align}
+	f:
+	\begin{cases}
+	X \to Y \\ x \mapsto y
+	\end{cases}\notag
+	\end{align}
+	oder $f: X \to Y, x \mapsto y$ oder noch einfacher $f: X \to Y$. Dabei heißt $X$ die
+	\begriff{Definitionsmenge} und $Y$ die \begriff{Zielmenge} von $f$. Zwei Abbildungen heißen \begriff[Abbildung!]{gleich}, wenn ihre
+	Definitionsmengen und Zielmengen gleich sind und sie jedem $x \in X$ das selbe Element
+	$y \in Y$ zuordnen. Die Abbildungen von $X$ nach $Y$ bilden wieder eine Menge, welche wir 
+	mit $\Abb(X,Y)$ bezeichnen.
+\end{overview}
+
+\begin{example}
+	\proplbl{1_2_2}
+	\begin{itemize}
+		\item Abbildungen mit Zielmenge $\mathbb R$ nennt man Funktion: $f: \mathbb R \to \mathbb
+		R, x \mapsto x^2$
+		\item Abbildungen mit Zielmenge $\subset$ Definitionsmenge: $f: \mathbb R \to \mathbb
+		R_{\le 0}, x \mapsto x^2$ \\
+		$\to$ Diese Abbildungen sind verschieden, da sie nicht die selbe Zielmenge haben.
+		\item $f: \{0,1\} \to \mathbb R, x \mapsto x^2$
+		\item $f: \{0,1\} \to \mathbb R, x \mapsto x$ \\
+		$\to$ Diese Funktionen sind gleich. Sie haben die gleichen Definitions- und Zielmengen 
+		und sie ordnen jedem Element der Definitionsmenge das gleiche Element der Zielmenge zu.
+	\end{itemize}
+\end{example}
+
+\begin{example}
+	\begin{itemize}
+		\item auf jeder Menge $X$ gibt es die \begriff[Abbildung!]{identische Abbildung} (Identität) \\ $\id: X \to X, x 
+		\mapsto x$
+		\item allgemein kann man zu jeder Teilmenge $A \subset X$ die \begriff[Abbildung!]{Inklusionsabbildung} zuordnen
+		$\iota_A: A \to X, x \mapsto x$
+		\item zu je zwei Mengen $X$ und $Y$ und einem festen $y_0 \in Y$ gibt es die \begriff[Abbildung!]{konstante
+			Abbildung} $c_{y_0}: X \to Y x \mapsto y_0$
+		\item zu jder Menge $X$ und Teilmenge $A \subset X$ definiert man die \begriff{charakteristische 
+			Funktion}\\ $\chi_A: X \to \mathbb R,
+		\begin{cases}
+		x \mapsto 1 \quad(x \in A) \\ x \mapsto 0 \quad(x \notin A)
+		\end{cases}
+		$
+		\item zu jeder Menge $X$ gibt es die Abbildung \\ $f: X \times X \to \mathbb R, (x,y) \mapsto
+		\delta_{x,y} \begin{cases} 1 \quad (x=y) \\ 0 \quad (x \neq y) \end{cases}$
+	\end{itemize}
+\end{example}
+
+\begin{example}[Eigenschaften von Funktionen]
+	\begin{itemize}
+		\item \begriff{injektiv}: Zuordnung ist eindeutig: $F(m_1) = F(m_2) \Rightarrow m_1=m_2$ \\
+		Bsp: $x^2$ ist nicht injektiv, da $F(-2)=F(2)=4$
+		\item \begriff{surjektiv}: $F(M)=N$ ($\forall n \in N \; \exists m \in M \mid F(m)=n$) \\
+		Bsp: $\sin(x)$ ist nicht surjektiv, da es kein $x$ für $y=27$ gibt
+		\item \begriff{bijektiv}: injektiv und surjektiv
+	\end{itemize}
+\end{example}
+
+\begin{example}
+	\begin{itemize}
+		\item Die identische Abbildung $\id_X:X\to X$ ist stets bijektiv.
+		\item Für jede Teilmenge $A\subseteq X$ ist die Inklusionsabbildung $\iota_A:A\to X$ injektiv, aber im Allgemeinen nicht surjektiv.
+		\item Die Funktion $f:\real\to\real_{\ge 0}$ mit $x\mapsto x^2$ ist surjektiv, aber nicht injektiv.
+		\item Die Funktion $f:\real\to\real$ mit $x\mapsto x^3$ ist bijektiv.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[Einschränkung]
+	\proplbl{1_2_6}
+	Sei $f: x \mapsto y$ eine Abbildung. Für $A \subset X$
+	definiert man die \begriff{Einschränkung}/Restrikton von $f$ auf $A$ als die Abbildung 
+	\begin{align}
+		f \vert_A:\begin{cases}
+		A \to Y \\ a \mapsto f(a)
+		\end{cases}\notag
+	\end{align}
+	Das \begriff{Bild} von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
+	Das \begriff{Urbild} einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
+	Man nennt $\Image(f) := f(X)$ das Bild von $f$.
+\end{definition}
+
+\begin{remark}
+	\proplbl{1_2_7}
+	Man ordnet der Abbildung $f: X \to Y$ auch die Abbildungen $\mathcal P(X) \to \mathcal P(Y)$ und
+	$\mathcal P(Y) \to \mathcal P(X)$ auf den Potenzmengen zu. Man benutzt hier das gleiche 
+	Symbol $f(…)$ sowohl für die Abbildung $f: X \to Y$ als auch für $f: P(X) \to P(Y)$, was 
+	unvorsichtig ist, aber keine Probleme bereiten sollte. \\
+	In anderen Vorlesungen wird für $y \in Y$ auch $f^{-1}(y)$ statt $f^{-1}(\{y\})$ geschrieben. \\
+\end{remark}
+
+\begin{remark}
+	\proplbl{1_2_8}
+	Genau dann ist $f: X \to Y$ surjektiv, wenn $\Image(f)=Y$ \\
+	Genau dann ist $f: X \to Y \begin{cases} $injektiv$ \\ $surjektiv$ \\ $bijektiv$ \end{cases}$, wenn
+	$|f^{-1}(\{y\})| = \begin{cases} \le 1 \\ \ge 1 \\ =1  \end{cases} \quad \forall y \in Y$ \\
+\end{remark}
+
+\begin{definition}[Komposition]
+	Sind $f: X \to Y$ und $g: Y \to Z$ Abbildungen, so ist die
+	\begriff{Komposition} $g \circ f$ die Abbildung
+	\begin{align}
+		g \circ f := \begin{cases}
+		X \to Z \\ x \mapsto f(g(x))
+		\end{cases}\notag
+	\end{align} Man kann 
+	die Komposition auffassen als eine Abbildung $\circ: \Abb(Y,Z) \times \Abb(X,Y) \to \Abb(X,Z)$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{1_2_10}
+	Die Abbildung von Kompositionen ist assoziativ, d.h. es gilt: 
+	\begin{align}
+		h \circ (g \circ f) = (h \circ g)\circ f\notag
+	\end{align}.
+\end{proposition}
+\begin{proof}
+	Sowohl $h\circ (g\circ f)$ als auch $(h\circ g)\circ f$ haben die Definitionsmenge $X$ und die Zielmenge 
+	$W$ und für jedes $x\in X$ ist $(h\circ (g\circ f))(x)=h((g\circ f)(x))=h(g(f(x)))=(h\circ g)(f(x)) = 
+	((h\circ g)\circ f)(x)$.
+\end{proof}
+
+\begin{definition}[Umkehrabbildung]
+	Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
+	genau ein $x_y \in X$ mit $f(x_y)=y$ (\propref{1_2_7}), durch 
+	\begin{align}
+		f^{-1}: \begin{cases}
+		Y \to X \\ y \mapsto x_y
+		\end{cases}\notag
+	\end{align} wird also eine 
+	Abbildung definiert, die \begriff{Umkehrabbildung} zu $f$. 
+\end{definition}
+
+\begin{proposition}
+	Ist die Abbildung $f: X \to Y$ bijektiv, so gelten
+	\begin{align}
+		f^{-1} \circ f = id_x \notag \\
+		f \circ f^{-1} = id_y \notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Es ist $f^{-1}\in \Abb(X,X)$ und $f\circ f^{-1}\in \Abb(Y,Y)$. Für $y\in Y$ ist $(f\circ f^{-1})(x)=
+	f(f^{-1}(y))=y=\id_Y$. Für $x\in X$ ist deshalb $f((f^{-1}\circ f)(x))=(f\circ (f^{-1}\circ f))(x)\overset{\propref{1_2_10}}{=}
+	((f\circ f^{-1})\circ f)(x)=(\id_Y \circ f)(x)=f(x)$. Da $f$ injektiv, folgt $f^{-1}\circ f=\id_X$.
+\end{proof}
+
+\begin{remark}
+	\proplbl{1_2_13}
+	Achtung, wir verwenden hier das selbe Symbol $f^{-1}$ für zwei verschiedene Dinge: Die Abbildung
+	$f^{-1}: \mathcal P(X) \to \mathcal P(Y)$ aus \propref{1_2_6} existiert für jede Abbildung $f: X \to Y$, aber die
+	Umkehrabbildung $f^{-1}: Y \to X$ aus \propref{1_2_10} existiert nur für bijektive Abbildungen $f: X \to Y$.
+\end{remark}
+
+\begin{definition}[Familie]
+	Seien $I$ und $X$ Mengen. Eine Abbildung $x: I \to X, i \mapsto
+	x_i$ nennt man \begriff{Familie} von Elementen von $X$ mit einer Indexmenge I (oder I-Tupel von 
+	Elementen von $X$) und schreibt diese auch als $(x_i)_{i \in I}$. Im Fall $I=\{1,2,...,n\}$
+	identifiziert man die I-Tupel auch mit den n-Tupeln aus \propref{1_1_8}. Ist $(x_i)_{i \in I}$ eine Familie von
+	Teilmengen einer Menge $X$, so ist 
+	\begin{itemize}
+		\item $\bigcup X_i = \{x \in X \mid \exists i \in I(x \in X)\}$
+		\item $\bigcap X_i = \{x \in X \mid \forall i \in I(x \in X)\}$
+		\item $\prod X_i = \{f \in \Abb(I,X) \mid \forall i \in I(f(i) \in X_i)\}$
+	\end{itemize}
+	Die Elemente von $\prod X_i$ schreibt man in der Regel als Familien $(x_i)_{i \in I}$.
+\end{definition}
+
+\begin{example}
+	Eine Folge ist eine Familie $(x_i)_{i \in I}$ mit der Indexmenge $\mathbb{N}_0$.
+\end{example}
+
+\begin{definition}[Graph]
+	Der \begriff{Graph} einer Abbildung $f: X \to Y$ ist die Menge
+	\begin{align}
+		\Gamma f: \{(x,y) \in X \times Y \mid y=f(x)\}\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}[Formal korrekte Definition einer Abbildung]
+	Eine Abbildung $f$ ist ein Tripel $(X,Y,\Gamma)$, wobei $\Gamma \subset X \times Y \quad \forall
+	x \in X$ genau ein Paar $(x,y)$ mit $y \in Y$ enthält. Die Abbildungsvorschrift schickt dann
+	$x \in X$ auf das eindeutig bestimmte $y \in Y$ mit $(x,y) \in \Gamma$. Es ist dann $\Gamma =
+	\Gamma_f$.
+\end{remark}
+
+\begin{remark}
+	In anderen Vorlesungen wird die Zielmenge nicht immer als Teil der Definition einer Abbildung aufgefasst, d.h. man betrachtet zwei Abbildungen $f:X\to Y$ und $g:X\to Z$ mit gleicher Definitionsmenge dann als gleich, wenn $f(x)=g(x)$ für alle $x\in X$. Dies ist gleichbedeutend mit $\Gamma_f=\Gamma_g$. So würde man dann zum Beispiel $f_1$ und $f_2$ aus \propref{1_2_2} als gleich auffassen.
+\end{remark}

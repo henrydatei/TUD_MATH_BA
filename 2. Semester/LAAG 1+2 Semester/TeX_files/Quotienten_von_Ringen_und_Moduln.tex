@@ -1,0 +1,185 @@
+\section{Quotienten von Ringen und Moduln}
+
+Seien $M$ und $M'$ zwei $R$-Moduln und $N\subseteq M$ ein Untermodul.
+
+\begin{definition}[Quotientenmodul]
+	Für $x\in M$ schreiben wir
+	\begin{align}
+		x+N:=\{x+y\mid y\in N\}\notag
+	\end{align}
+	Der \begriff{Quotientenmodul} (oder Faktormodul) von $M$ modulo $N$ ist
+	\begin{align}
+		\qraum{M}{N}:=\{x+N\mid x\in M\}\notag
+	\end{align}
+	zusammen mit der Addition
+	\begin{align}
+		(x+N)+(y+N):=(x+y)+N\quad (x,y\in M)\notag
+	\end{align}
+	und der Skalarmultiplikation
+	\begin{align}
+		r\cdot (x+N) := rx+N\quad (x\in M,r\in R)\notag
+	\end{align}
+	Sei $\pi_N:M\to \qraum{M}{N}$ die Abbildung gegeben durch $x\mapsto x+N$.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{8_5_2}
+	Addition und Skalarmultiplikation sind wohldefiniert und machen $\qraum{M}{N}$ zu einem $R$-Modul. Die Abbildung $\pi_N:M\to \qraum{M}{N}$ ist ein $R$-Epimorphismus mit Kern
+	\begin{align}
+		\Ker(\pi_N)=N\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item wohldefiniert: wie in \propref{3_7_5}
+		\item $\qraum{M}{N}$ ist $R$-Modul: wie in \propref{3_7_7}
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Durch $x\sim_N x' \iff x-x'\in N$ wird eine Äquivalenzrelation $\sim_N$ auf $M$ definiert, und $x+N$ ist eine $\sim_N$-Äquivalenzklasse $[x]_{\sim_N}=\{y\in M\mid x\sim_N y\}$.
+\end{remark}
+
+\begin{proposition}[Homomorphiesatz für Moduln]
+	\proplbl{8_5_4}
+	Sei $f\in\Hom_K(M,M')$ und $N\subseteq M$ ein Untermodul mit $N\subseteq \Ker(f)$. Dann gibt es genau ein $\overline{f}\in\Hom_K(\qraum{M}{N},M')$ mit $f=\overline{f}\circ \pi_N$.
+	\begin{center}
+		\begin{tikzpicture}
+		\node (M) at (0,0) {$M$};
+		\node (MS) at (3,0) {$M'$};
+		\node (Q) at (1.5,-1.5) {\qraum{$M$}{$N$}};
+		\draw[->, above] (M) to node {$f$} (MS);
+		\draw[->, below] (M)  to node {$\pi_N$} (Q);
+		\draw[->, right, dashed] (Q)  to node {$\overline{f}$} (MS);
+		\end{tikzpicture}
+	\end{center}
+\end{proposition}
+\begin{proof}
+	Analog zu \propref{3_7_9}. Man zeigt, dass jedes $\overline{f}\in\Hom_K(\qraum{M}{N},M')$
+	\begin{align}
+		\overline{f}(x+N)=f(x)\quad (x\in M)\notag
+	\end{align}
+	erfüllen muss, und dass dies wiederum eine wohldefinierte Abbildung liefert.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{8_5_5}
+	Durch $U\mapsto \pi_N(U)$ wird eine Bijektion gegeben zwischen
+	\begin{itemize}
+		\item den Untermoduln von $M$, die $N$ enthalten
+		\item den Untermoduln von $\qraum{M}{N}$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	Sei $\mathcal{U}$ die Menge der Untermoduln von $M$, die $N$ enthalten, $\overline{\mathcal{U}}$ die Menge der Untermoduln von $\qraum{M}{N}$.
+	\begin{itemize}
+		\item $U\in\mathcal{U}\Rightarrow \pi_N(U)\in\overline{\mathcal{U}}$: klar, da $\pi_N$ ein Homomorphismus ist
+		\item $\overline{U}\in\overline{\mathcal{U}}\Rightarrow \pi_N^{-1}\in\mathcal{U}$: klar, da $\pi_N$ ein Homomorphismus ist und $N=\Ker(\pi_N)=\pi_N^{-1}(\{0\})\subseteq \pi_N^{-1}(\overline{U})$
+		\item $\overline{U}\in\overline{\mathcal{U}}\Rightarrow\pi_N(\pi_N^{-1}(\overline{U}))=\overline{U}$: klar, da $\pi_N$ surjektiv
+		\item $U\in\mathcal{U}\Rightarrow \pi_N^{-1}(\pi_N(U))=U$:
+		\begin{align}
+			\pi_N^{-1}(\pi_N(U)) &= \bigcup_{x\in U} \pi_N^{-1}(\pi_N(x)) \notag \\
+			&= \bigcup_{x\in U} \pi_N^{-1}(x+N) \notag \\
+			&= \bigcup_{x\in U}(x+N) \notag \\
+			&= U+N=U\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Das Ideal $I\unlhd R$ ist ein Untermodul des $R$-Moduls $R$, somit haben wir ein $R$-Modul $\qraum{R}{I}$ definiert. Man kann $\qraum{R}{I}$ mit einer Ringstruktur ausstatten.
+\end{remark}
+
+\begin{definition}[Quotientenring]
+	Sei $I\unlhd R$ ein Ideal. Für $x\in R$ schreiben wir 
+	\begin{align}
+		x+I=\{x+a\mid a\in I\}\notag
+	\end{align}
+	Dann ist
+	\begin{align}
+		\qraum{R}{I}=\{x+I\mid x\in R\}\notag
+	\end{align}
+	der \begriff{Quotientenring} von $R$ modulo $I$ mit Addition und Skalarmultiplikation
+	\begin{align}
+		(x+I)+(x'+I) &= (x+x')+I\quad\forall x,x'\in R \notag \\
+		(x+I)\cdot (x'+I) &= (x\cdot x')+I\quad\forall x,x'\in R\notag
+	\end{align}
+	Und wieder $\pi_I:R\to\qraum{R}{I}$ mit $x\mapsto x+I$.
+\end{definition}
+
+\begin{proposition}
+	Addition und Multiplikation sind wohldefiniert und machen $\qraum{R}{I}$ zu einem kommutativen Ring mit Einselement. $\pi_I$ ist ein Ringhomomorphismus mit Kern
+	\begin{align}
+		\Ker(\pi_I) = I\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Addition wohldefiniert: \propref{8_5_2}
+		\item Multiplikation wohldefiniert: Sind $x,x',y,y'\in R$ mit
+		\begin{align}
+			x+I &= x'+I\notag \\
+			y+I &= y'+I\notag
+		\end{align}
+		Dann ist
+		\begin{align}
+			x-x' &= a\in R \quad\Rightarrow x = x'+a\notag \\
+			y-y' &= b\in R \quad\Rightarrow y = y'+a\notag
+		\end{align}
+		Also
+		\begin{align}
+			xy = (x'+a)(y'+b) &= x'y'+\underbrace{ay'+x'b+ab}_{\in I}\notag \\
+			%xy-x'y' = xy - (x-a)(x-b) = xb + ya - ab\in I \notag \\
+			\Rightarrow xy+I &= x'y'+I\notag
+		\end{align}
+		\item $\qraum{R}{I}$ ist Ring: R1 bis R3 folgen aus den entsprechenden Eigenschaften von $R$.
+		\item $\qraum{R}{I}$ ist kommutativ: folgt auch aus den Eigenschaften von $R$.
+		\item Einselement: $1+I$
+		\item $\pi_I$ ist ein Ringhomomorphismus: folgt nach Definition
+		\item $\Ker(\pi_I)$: klar
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Homomorphiesatz für Ringe]
+	Sei $\phi:R\to R'$ ein Ringhomomorphismus, $I\unlhd R$ ein Ideal mit $I\subseteq \Ker(\phi)$. Dann gibt es genau einen Ringhomomorphismus mit $\overline{\phi}:\qraum{R}{I}\to R'$, sodass $\overline{\phi}\circ \pi_I=\phi$.
+	\begin{center}
+		\begin{tikzpicture}
+		\node (R) at (0,0) {$M$};
+		\node (RS) at (3,0) {$M'$};
+		\node (Q) at (1.5,-1.5) {\qraum{$R$}{$I$}};
+		\draw[->, above] (R) to node {$\phi$} (RS);
+		\draw[->, below] (R)  to node {$\pi_I$} (Q);
+		\draw[->, right, dashed] (Q)  to node {$\overline{\phi}$} (RS);
+		\end{tikzpicture}
+	\end{center}
+\end{proposition}
+\begin{proof}
+	Man sieht, dass 
+	\begin{align}
+		\overline{\phi}(x+I)=\phi(x)\quad\forall x\in R\notag
+	\end{align}
+	gelten muss, und das dies auch ein wohldefinierter Ringhomomorphismus ist.
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item $R=\whole$, $\forall n\in\natur$ ist $n\whole$ ein Ideal.
+		\begin{align}
+			\qraum{\whole}{(n)}=\whole\backslash n\whole\notag
+		\end{align}
+		\item Sei $K$ ein Körper und sei $a\in K$. Dann ist $K[t]\to K$, $P\mapsto P(a)$ ist ein Ringepimorphismus. Der Kern $\Ker(\phi)=(t-a)$, also alle Polynome, die in $a$ eine Nullstelle haben. Es folgt
+		\begin{align}
+			\qraum{K[t]}{(t-a)}\cong K\notag
+		\end{align}
+	\end{itemize}
+\end{example}
+
+\smiley{} $\whole$ ist der Herr der Ringe \smiley{}
+
+\begin{example}
+	Sei $0\neq p\in K[t]$. $\qraum{K[t]}{(p)}$ ist ein Ring, aber auch ein $K[t]$-Modul und damit ein $K$-Vektorraum.
+	\begin{align}
+		\dim_K\left( \qraum{K[t]}{(p)}\right) = n= \deg(p)\notag
+	\end{align}
+	Ist $B=(1,\overline{t},...,\overline{t^{n-1}})$ eine Basis wobei $\overline{x}=\pi_{(p)}(x)$ $\forall x\in K[t]$.
+\end{example}

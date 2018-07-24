@@ -1,0 +1,122 @@
+\section{Orthogonalität}
+
+Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
+
+\begin{definition}[orthogonal, orthogonales Komplement]
+	Zwei Vektoren $x,y\in V$ heißen \begriff{orthogonal}, in Zeichen $x\perp y$, wenn $\skalar{x}{y}=0$. Zwei Mengen $X,Y\subseteq V$ sind \emph{orthogonal}, in Zeichen $X\perp Y$, wenn $x\perp y$ für alle $x\in X$ und $y\in Y$.
+	
+	Für $U\subseteq V$ bezeichnet 
+	\begin{align}
+		U^{\perp}=\{x\in V\mid x\perp u\text{ für alle } u\in U\}\notag
+	\end{align}
+	das \begriff{orthogonale Komplement} zu $U$.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{6_4_2}
+	Für $x,y\in V$ ist
+	\begin{itemize}
+		\item $x\perp y\iff y\perp x$
+		\item $x\perp 0$
+		\item $x\perp x\iff x=0$
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	klar
+\end{proof}
+
+\begin{proposition}
+	Für $U\subseteq V$ ist $U^\perp$ ein Untervektorraum von $V$ mit $U\perp U^\perp$ und $U\cap U^\perp \subseteq\{0\}$.
+\end{proposition}
+\begin{proof}
+	Linearität des Skalarprodukts im ersten Argument liefert, dass $U^\perp$ ein Untervektorraum ist. Die Aussage $U^\perp \perp U$ ist trivial, $U \perp U^\perp$ folgt dann aus \propref{6_4_2}. Ist $u\in U\cap U^\perp$, so ist insbesondere $u\perp u$, also $u=0$ nach \propref{6_4_2}.
+\end{proof}
+
+\begin{definition}[orthonormal]
+	Eine Familie $(x_i)_{i\in I}$ von Elementen von $V$ ist \emph{orthogonal}, wenn $x_i\perp x_j$ für alle $i\neq j$, und \begriff{orthonormal}, wenn zusätzlich $\Vert x_i\Vert=1$ für alle $i$. Eine orthogonale Basis nennt man eine \emph{Orthogonalbasis}, eine orthonormale Basis nennt man eine \emph{Orthonormalbasis}.
+\end{definition}
+
+\begin{remark}
+	\proplbl{6_4_5}
+	Eine Basis $B$ ist genau dann eine Orthonormalbasis, wenn die darstellende Matrix des Skalarprodukts bezüglich $B$ die Einheitsmatrix ist. (Beispiel: Standardbasis des Standardraum bezüglich des Standardskalarprodukts)
+\end{remark}
+
+\begin{lemma}
+	Ist die Familie $(x_i)_{i\in I}$ orthogonal und $x_i\neq 0$ für alle $i\in I$, so ist $(x_i)_{i\in I}$ linear unabhängig.
+\end{lemma}
+\begin{proof}
+	Ist $\sum_{i\in I} \lambda_i x_i=0$, $\lambda_i\in K$, fast alle gleich 0, so ist $0=\skalar{\sum_{i\in I} \lambda_i x_i}{x_j}=\sum_{i\in I} \lambda_i\skalar{x_i}{x_j}=\lambda_j\skalar{x_j}{x_j}$ Aus $x_j\neq 0$ folgt $\skalar{x_j}{x_j}>0$ und somit $\lambda_j=0$ für jedes $j\in I$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{6_4_7}
+	Ist $(x_i)_{i\in I}$ orthogonal und $x_i\neq 0$ für alle $i$, so ist $(y_i)_{i\in I}$ mit
+	\begin{align}
+		y_i=\frac{1}{\Vert x_i\Vert}x_i\notag
+	\end{align}
+	orthonormal.
+\end{lemma}
+\begin{proof}
+	Für alle $i$ ist $\skalar{y_i}{y_i}=\frac{1}{\Vert x_i\Vert^2}\skalar{x_i}{x_i}=1$. \\
+	Für alle $i\neq j$ ist $\skalar{y_i}{y_j}=\frac{1}{\Vert x_i\Vert\cdot \Vert x_j\Vert}\skalar{x_i}{x_j}=0$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{6_4_8}
+	Sei $U\subseteq V$ ein Untervektorraum und $B=(x_1,...,x_k)$ eine Orthonormalbasis von $U$. Es gibt genau einen Epimorphismus $\pr_U:V\to U$ mit $\pr_U\vert_U=\id_U$ und $\Ker(\pr_U)\perp U$, insbesondere also $x-\pr_U\perp U$ für alle $x\in V$, genannt die \begriff{orthogonale Projektion} auf $U$, und dieser ist geben durch
+	\begin{align}
+		x\mapsto\sum_{i=1}^k \skalar{x}{x_i}x_i
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Sei zunächst $pr_U$ durch (1) gegeben. Die Linearität von $\pr_U$ folgt aus (S1) und (S3). Für $u=\sum_{i=1}^k \lambda_i x_i\in U$ ist $\skalar{u}{x_j}=\skalar{\sum_{i=1}^k \lambda_i x_i}{x_j}=\sum_{i=1}^k \lambda_i\skalar{x_i}{x_j}=\lambda_j$, woraus $\pr_U(u)=u$. Somit ist $\pr_U\vert_U=\id_U$, und insbesondere ist $pr_U$ surjektiv. Ist $\pr_U(x)=0$, so ist $\skalar{x}{x_i}=0$ für alle $i$., woraus mit (S2) und (S4) sofort $x\perp U$ folgt. Somit ist $\Ker(\pr_U)\perp U$. \\
+	Für $x\in V$ ist $\pr_U(x-\pr_U(x))=\pr_U(x)-\pr_U(\pr_U(x))=\pr_U(x)-\pr_U(x)=0$, also $x-\pr_U(x)\in\Ker(\pr_U)\subseteq U^\perp$. \\
+	Ist $f:V\to U$ ein weiterer Epimorphismus mit $f\vert_U=\id_U$ und $\Ker(f)\perp U$, so ist 
+	\begin{align}
+		\underbrace{\pr_U(x)}_{\in U}-\underbrace{f(x)}_{\in U}=\underbrace{\pr_U(x)-x}_{\in U^\perp}-\underbrace{f(x)-x}_{\in U^\perp}\in U\cap U^\perp =\{0\}\notag
+	\end{align}
+	für jedes $x\in V$, somit $f=\pr_U$.
+\end{proof}
+
+\begin{theorem}[\person{Gram-Schmidt}-Verfahren]
+	\proplbl{6_4_9}
+	Ist $(x_1,...,x_n)$ eine Basis von $V$ und $k\le n$ mit $(x_1,...,x_k)$ orthonormal, so gibt es eine Orthonormalbasis $(y_1,...,y_n)$ von $V$ mit $y_i=x_i$ für $i=1,...,k$ und $\Span_K(y_1,...,y_l)=\Span_K(x_1,...,x_l)$ für $l=1,...,n$.
+\end{theorem}
+\begin{proof}
+	Induktion nach $d=n-k$. \\
+	\emph{$d=0$:} nichts zu zeigen \\
+	\emph{$d-1\to d$:} Für $i\neq k+1$ definiere $y_I=x_i$. Sei $U=\Span_K(x_1,...,x_k)$, $\tilde{x_{k+1}}=x_{k+1}-\pr_U(x_{k-1})$. Dann ist $\tilde{x_{k+1}}\in\Ker(\pr_U)\subseteq U^\perp$ (vgl. \propref{6_4_8}) und $\Span_K(x_1,...,x_k,\tilde{x_{k+1}})=\Span_K(x_1,...,x_{k+1})$. Setze $y_{k+1}=\frac{1}{\Vert \tilde{x_{k+1}}\Vert}\tilde{x_{k+1}}$. Dann ist $(y_1,...,y_n)$ eine Basis von $V$ mit $(y_1,...,y_{k+1})$ orthonormal (vgl. \propref{6_4_7}). Nach Induktionshypothese gibt es eine Orthonormalbasis von $V$, die das Gewünschte leistet.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{6_4_10}
+	Jeder endlichdimensionale euklidische bzw. unitäre Vektorraum $V$ besitzt eine Orthonormalbasis.
+\end{conclusion}
+\begin{proof}
+	Wähle irgendeine Basis von $V$ und wende \propref{6_4_9} mit $k=0$ an.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{6_4_11}
+	Ist $U$ ein Untervektorraum von $V$, so ist $V=U\oplus U^\perp$ und $(U^\perp)^\perp=U$.
+\end{conclusion}
+\begin{proof}
+	Wähle eine Orthonormalbasis von $U$ (vgl. \propref{6_4_10}), $B=(x_1,...,x_k)$ und ergänze diese zu einer Orthonormalbasis $(x_1,...,x_n)$ von $V$ (vgl. \propref{6_4_9}). Dann sind $x_{k+1},...,x_n\in U\perp$, da $U\cap U^\perp=\{0\}$ ist somit $V=U\oplus U^\perp$. Insbesondere ist $\dim_K(U^\perp)=n-\dim_K(U)$, woraus $\dim_K((U^\perp)^\perp)=\dim_K(U)$ folgt. Zusammen mit der trivialen Inklusion $U\subseteq (U^\perp)^\perp$ folgt $U=(U^\perp)^\perp$.
+\end{proof}
+
+\begin{conclusion}
+	Ist $s$ eine positiv definite hermitesche Sesquilinearform auf $V$ und $B$ eine Basis von $V$, so ist 
+	\begin{align}
+		\det(M_B(s))\in \real_{>0}\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	Wähle eine Orthonormalbasis $B'$ von $V$ bezüglich $s$. Dann ist $M_{B'}(s)=\mathbbm{1}_n$, folglich 
+	\begin{align}
+		\det(M_B(s))&=\det\left( (T_{B'}^B)^t\cdot \mathbbm{1}_n\cdot\overline{T_{B'}^B} \right)\notag \\
+		&= \det\left( (T_{B'}^B)^t \right) \cdot \det\left( \overline{T_{B'}^B} \right) \notag\\
+		&= \det\left( T_{B'}^B \right) \cdot\overline{\det\left( T_{B'}^B\right)}\notag \\
+		&= \vert \det\left( T_{B'}^B \right) \vert^2\notag \\
+		>0\notag
+	\end{align}
+\end{proof}

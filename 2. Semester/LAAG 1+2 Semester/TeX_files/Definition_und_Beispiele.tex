@@ -1,0 +1,159 @@
+\section{Definition und Beispiele}
+
+In diesem Kapitel sei $K$ ein Körper.
+
+\begin{example}
+	Ist $K=\mathbb R$, so haben wir für $K^3=\mathbb R^3=\mathbb R \times \mathbb R \times \mathbb R=
+	\{(a,b,c) | a,b,c \in \mathbb R\}$ eine geometrische Anschauung, nämlich den euklidischen Raum. Welche algebraische 
+	Struktur können wir hierauf sinnvollerweise definieren?
+\end{example}
+
+\begin{definition}[Vektorraum]
+	Ein $K$-\begriff{Vektorraum} (auch Vektorraum über $K$) ist ein Tripel $(V,+,\cdot)$ 
+	bestehend aus einer Menge $V$, einer Verknüpfung $+: V \times V \to V$, genannt Addition, und einer Abbildung 
+	$\cdot: K \times V \to V$, genannt Skalarmultiplikation, für die gelten:
+	\begin{itemize}
+		\item (V1): $(V,+)$ ist eine abelsche Gruppe
+		\item (V2): Addition und Skalarmultiplikation sind verträglich:
+		\begin{itemize}
+			\item $\lambda(x+y)=(\lambda\cdot x)+(\lambda\cdot y)$
+			\item $(\lambda+\mu)\cdot x = (\lambda\cdot x)+(\mu\cdot x)$
+			\item $\lambda(\mu\cdot x)=(\lambda\cdot\mu)\cdot x$
+			\item $1\cdot x = x$
+		\end{itemize}
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Wir haben sowohl im Körper $K$ als auch im Vektorraum $V$ eine Addition definiert, die wir mit 
+	dem selben Symbol $+$ notieren. Ebenso benutzen wir das Symbol $\cdot$ sowohl für die Multiplikation im Körper $K$ 
+	als auch für die Skalarmultiplikation. Zur Unterscheidung nennt man die Elemente von $V$ Vektoren und die Elemente 
+	von $K$ Skalare. Wir werden bald auch den Nullvektor mit 0 bezeichnen, also mit dem selben Symbol wie das neutrale 
+	Element im Körper $K$. Auch für Vektorräume gibt es notationelle Konvektionen: So bindet die Skalarmultiplikation 
+	stärker als die Addition und wird manchmal nicht notiert.
+\end{remark}
+
+\begin{example}
+	Für $n \in \mathbb N$ ist $V=K^n := \prod _{i=1}^n K = \{(x_1,x_2,...,x_n) \mid x_1,x_2,..,
+	x_n \in K\}$ mit komponentenweiser Addition und Skalarmultiplikation $\lambda(x_1,...,x_n)=(\lambda\cdot x_1,...,
+	\lambda\cdot x_n)$ ein $K$-Vektorraum, genannt der ($n$-dimensionale) Standardraum über $K$. \\ 
+	Insbesondere (Spezialfall $n=1$) ist $K$ ein $K$-Vektorraum. \\
+	Für $n=0$ definiert man $K^0$ als Nullraum $V=\{0\}$, der einzig möglichen Addition und Skalarmultiplikation einen 
+	$K$-Vektorraum bildet.
+\end{example}
+
+\begin{proposition}
+	ist $V$ ein $K$-Vektorraum, so gelten für $\lambda \in K$ und $x \in V$:
+	\begin{itemize}
+		\item $0\cdot x =0$
+		\item $\lambda\cdot 0=0$
+		\item $(-\lambda)\cdot x = \lambda\cdot(-x) = -\lambda\cdot x$. Insbesondere $(-1)x=-x$
+		\item Ist $\lambda\cdot x=0$, so ist $\lambda=0$ oder $x=0$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Es ist $0\cdot x=(0+0)\cdot x=0\cdot x+0\cdot x$, woraus $0=0\cdot x$
+		\item Es ist $\lambda\cdot 0=\lambda(0+0)=\lambda\cdot 0+0\cdot \lambda$, woraus $0=\lambda\cdot 0$
+		\item Es ist $\lambda\cdot x+(-\lambda\cdot x)=(\lambda+(-\lambda))\cdot x=0\cdot x=0$, also $(-\lambda)x=-(\lambda 
+		x)$
+		\item Ist $\lambda\cdot x=0$ und $\lambda\neq 0$, so ist $0=\lambda^{-1}\cdot\lambda\cdot x=1\cdot x=x$ 
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item Schränkt man die Multiplikation im Polynomring $K[X] \times K[X] \to K[X]$ zu einer Abbildung $K \times K[X]
+		\to K[X]$ ein, so wird $K[X]$ mit dieser Skalarmultiplikation zu einem $K$-Vektorraum. Die Skalarmultiplikation ist also
+		gegen $\lambda\cdot \sum _{k\ge 0} a_k\cdot X^k = \sum _{k\ge 0} \lambda\cdot a_k\cdot X^k$ ersetzt
+		wurden.
+		\item Schränkt man die komplexe Multiplikation $\mathbb C \times \mathbb C \to \mathbb C$ zu einer Abbildung 
+		$\mathbb R \times \mathbb C \to \mathbb C$ ein, so wird $\mathbb C$ mit dieser Skalarmultiplikation zu einem
+		$\mathbb R$-Vektorraum. Die Skalarmultiplikation ist gegeben durch $\lambda(x+iy)=\lambda\cdot x + i\cdot\lambda\cdot y$.
+		\item Verallgemeinerung von 1 und 2: Ist der Körper $K$ ein Unterring eines kommutativen Rings $R$ mit Einselement 
+		$1_K \in K$, so wird $R$ durch Einschränkung der Multiplikation $R \times R \to R$ zu einer Abbildung $K \times R
+		\to R$ zu einem $K$-Vektorraum.
+		\item Ist $X$ eine Menge, so wird die Menge der Abbildungen $\Abb(X,K)$ durch punktweise Addition $(f+g)(x)=f(x)+
+		g(x)$ und die Skalarmultiplikation $(\lambda\cdot f)(x)=\lambda\cdot f(x)$ zu einem $K$-Vektorraum. Im Spezialfall
+		$X=\{1,2,...,n\}$ erhält man den Standardraum $K^n$.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[Untervektorraum]
+	Sei $V$ ein $K$-Vektorraum. Ein \begriff{Untervektorraum} (Untervektorraum) von $V$ ist eine nichtleere
+	Teilmenge $W \subseteq V$ mit:
+	\begin{itemize}
+		\item (UV1): Für $x,y \in W$ ist $x+y\in W$.
+		\item (UV2): Für $x \in W$ und $\lambda \in K$ ist $\lambda\cdot x\in W$.
+	\end{itemize}
+	
+\end{definition}
+
+\begin{proposition}
+	Sei $V$ ein $K$-Vektorraum und $W \subseteq V$. Genau dann ist $W$ ein Untervektorraum von $V$, wenn $W$ mit geeigneter
+	Einschränkung der Addition und Skalarmultiplikation wieder ein $K$-Vektorraum ist.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $\Rightarrow$: Lassen sich $+$: $V \times V \to V$ und $\cdot$: $K \times V \to V$ einschränken zur Abbildung $+_w$: $W
+		\times W \to W$, $\cdot_w$: $K \times W \to W$ so gilt für $x,y \in W$ und $\lambda \in K$: $x+y=x +_w y \in W$ und
+		$\lambda\cdot x=\lambda \cdot_w x \in W$. Ist $(W,+_w,\cdot_w)$ ein $K$-Vektorraum, so ist insbesondere $W$ nicht leer. Somit
+		ist $W$ ein Untervektorraum.
+		\item $\Leftarrow$: Nach (UV1) und (UV2) lassen sich $+$ und $\cdot$ einschränken zu Abbildungen $+_w$: $W \times W \to W$ und 
+		$\cdot_w$: $K \times W \to W$. Nach (UV1) ist abgeschlossen und unter der Addition und für $x \in W$ ist auch $-x=
+		(-1)x \in W$ nach (UV2), $W$ ist somit Untergruppe von $(V,+)$. Insbesondere ist $(W,+)$ eine abelsche Gruppe (\propref{1_3_14}), erfüllt 
+		also (V1). Die Verträglichkeit (V2) ist für $\lambda,\mu \in K$ und $x,y \in W$ gegeben, da sie auch für $x,y \in V$ 
+		erfüllt ist. Somit ist $(W,+_w,\cdot_w)$ ein $K$-Vektorraum.
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\proplbl{2_1_9}
+	\begin{itemize}
+		\item Jeder $K$-Vektorraum hat triviale Untervektorraum $W=\{0\}$ und $W=V$
+		\item Ist $V$ ein $K$-Vektorraum und $x \in V$, so ist $W=K\cdot x=\{\lambda\cdot x \mid \lambda \in K\}$ ein Untervektorraum von $V$. 
+		Insbesondere besitzt z.B. der $\mathbb R$-Vektorraum $\mathbb R^2$ unendlich viele Untervektorraum, nämlich alle Ursprungsgeraden. Hieran 
+		sehen wir auch, dass die Vereinigung zweier Untervektorraum im Allgemeinen kein Untervektorraum ist. $\mathbb R\cdot (1,0) \cup \mathbb 
+		R\cdot (1,0) \subseteq \mathbb R^2$ verletzt (UV1).
+		\item Der $K$-Vektorraum $K[X]$ hat unter anderem die folgenden Untervektorraum:
+		\begin{itemize}
+			\item Den Raum $K$ der konstanten Polynome
+			\item Den Raum $K[X]_{\le 1}=\{aX+b \mid a,b \in K\}$ der linearen (oder konstanten) Polynome
+			\item allgemeiner den Raum $K[X]_{\le n}=\{f \in K[X] \mid \deg(f) \le n\}$ der Polynome von höchstens Grad $n$
+		\end{itemize}
+		\item In der Analysis werden Sie verschiedene Untervektorraum des $\mathbb R$-Vektorraum $\Abb(\mathbb R,\mathbb R)$ kennenlernen, etwa
+		den Raum $\mathcal C(\mathbb R,\mathbb R)$ der stetigen Funktionen und den Raum $\mathcal C^{-1}(\mathbb R,\mathbb 
+		R)$ der stetig differenzierbaren Funktionen. Die Menge der Polynomfunktionen $\{\tilde f\mid \tilde f\in \mathbb R[X]\}$ (vgl. \propref{1_6_7}) bildet
+		einen Untervektorraum des $\mathbb R$-Vektorraum $\mathcal C^{-1}(\mathbb R,\mathbb R)$
+	\end{itemize}
+\end{example}
+
+
+\begin{lemma}
+	\proplbl{2_1_10}
+	Ist $V$ ein Vektorraum und $(W_i)_{i \in I}$ eine Familie von Untervektorraum von $V$, so ist auch $W=\bigcap W_i$ 
+	ein Untervektorraum von $V$.
+\end{lemma}
+\begin{proof}
+	Da $0 \in W_i$ ist auch $0 \in W$, insbesondere $W\neq\emptyset$.
+	\begin{itemize}
+		\item (UV1): Sind $x,y \in W$, so ist auch $x,y \in W_i$ und deshalb $x+y\in \bigcap W_i = W$.
+		\item (UV2): Ist $x \in W$ und $\lambda \in K$, so ist auch $x \in W_i$ und somit $\lambda x\in \bigcap W_i=W$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Ist $V$ ein $K$-Vektorraum und $X \subseteq V$, so gibt es einen eindeutig bestimmten kleinsten Untervektorraum $W$ von $V$
+	mit $X \subseteq W$.
+\end{proposition}
+\begin{proof}
+	Sei $\mathcal V$ die Menge aller Untervektorraum von $X$, die $X$ enthalten. Sei $W=\bigcap \mathcal V$. Damit ist 
+	$W$ ein Untervektorraum (\propref{2_1_10}) von $V$ der $X$ enthält.
+\end{proof}
+
+\begin{definition}[Erzeugendensystem]
+	Ist $V$ ein $K$-Vektorraum und $X\subseteq V$, so nennt man den kleinsten Untervektorraum von 
+	$V$, der $X$ enthält den von $X$ erzeugten Untervektorraum von $V$ und bezeichnet diesen mit $\langle X\rangle$. Eine Mengen $X\subseteq V$ 
+	mit $\langle X\rangle=V$ heißt \begriff{Erzeugendensystem} von $V$. Der Vektorraum $V$ heißt endlich erzeugt, wenn er ein endliches Erzeugendensystem 
+	besitzt.
+\end{definition}
