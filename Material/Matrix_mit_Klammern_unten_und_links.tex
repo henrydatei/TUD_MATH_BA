@@ -1,6 +1,11 @@
 \documentclass[12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{bigdelim}
+
+\newcommand\undermat[2]{%
+	\makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+					\begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
 
 \begin{document}
 
@@ -18,17 +23,14 @@ A_{k} &= \left.\left(
  \end{align*}
  
 \begin{align}
- 	\left(\begin{array}{ccc|ccc}
- 	d_1 &&&&&\\
- 	& \ddots &&&& \\
- 	& & d_r &&&\\
- 	\hline
- 	&&& 0&&\\
- 	&&&& \ddots& \\
- 	&&&&& 0
- 	\end{array}\right)\\[-0.5\normalbaselineskip]
- 	%\hspace{-\tabcolsep}
- 	\underbrace{\hspace{1.7cm}}_{n-r}
+ 	\begin{array}{cccc|ccccc}
+ 	\ldelim({7}{*} &d_1 &&&&&& \rdelim){7}{*}& \\
+ 	&& \ddots &&&&&& \\
+ 	&& & d_r &&&&&\\ \cline{2-7}
+ 	&&&& 0&&&& \rdelim\}{3}{*}[m-r] \\
+ 	&&&&& \ddots&&& \\
+ 	&&&& \undermat{n-r}{&& 0&&}
+ 	\end{array}
 \end{align}
  
 
