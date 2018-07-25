@@ -717,26 +717,33 @@ backgroundcolor=lightgrey,%
 %}
 
 \makeatletter
-%update ntheorem macro to provide space between theorem numbers and any optional comment
+%update ntheorem macro to provide space between theorem numbers and any optional comment, adds in upper roman letters the chapter number. removes any numbering for theorem environments with just one counter
 \renewcommand{\thm@@thmline@name}[5]{%-       		
 	\def\thm@@thmline@name@tmp{%
 		\if\relax\detokenize{#3}\relax\else%
 			{\hspace*{2.2ex}#3}%
 		\fi%
 	}
-	\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
+	\let\thm@@thmline@name@numbering\relax
+	\StrCount{#5}{.}[\thm@@thmline@name@dot@number]
+	\ifnum\thm@@thmline@name@dot@number < 3%
+		\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
+	\else%
+		\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
+		\def\thm@@thmline@name@numbering{\rom{\thm@@thmline@name@chap@num}.#2}
+	\fi
 	\ifx\\#5\\%
 		\@dottedtocline{-2}{0em}{4.4em}%
-		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
+		{#1 \protect\numberline{\thm@@thmline@name@numbering:}{}}%
 		{#4}
 	\else
 		\ifHy@linktocpage\relax\relax
 			\@dottedtocline{-2}{0em}{1.3em}%
-			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
+			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{4.4em}%
-			{#1 \protect\numberline{\rom{\thm@@thmline@name@chap@num}.#2:}\thm@@thmline@name@tmp}%
+			\@dottedtocline{-2}{0em}{4.em}%
+			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
