@@ -38,7 +38,7 @@ Sei $K$ ein Körper.
 		\item Die \begriff{Nullmatrix} ist $0=(0)_{i,j} \in \Mat_{m\times n}(K)$.
 		\item Für $k,l \in \{1,...,n\}$ ist die $(k,l)$-\begriff{Basismatrix} gegeben durch $E_{kl}=(\delta_{jk}\delta_{jl})\in 
 		\Mat_{m\times n}(K)$.
-		\item Die \begriff{Einheitsmatrix} ist $1_n=(\delta_{ii})\in \Mat_n(K)$.
+		\item Die \begriff{Einheitsmatrix} ist $\mathbbm{1}_n=(\delta_{ii})\in \Mat_n(K)$.
 		\item Für $a_i,...,a_n \in K$ definiert man eine \begriff{Diagonalmatrix} $\diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$.
 		\item Für eine Permutation $\sigma\in S_n$ definiert man die \begriff{Permutationsmatrix} $P_\sigma := (\delta_{\sigma
 			(i),j})$.
@@ -175,7 +175,7 @@ Sei $K$ ein Körper.
 		\begin{pmatrix}d & -b\\-c & a\\\end{pmatrix}\in \Mat_2(K)\notag
 	\end{align}
 	Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
-	(ad-bc)\cdot 1_2$. Definiert man nun $\det(A)=ad-bc$ so sieht man: Ist $\det(A)\neq 0$, so ist $A$ invertierbar mit 
+	(ad-bc)\cdot \mathbbm{1}_2$. Definiert man nun $\det(A)=ad-bc$ so sieht man: Ist $\det(A)\neq 0$, so ist $A$ invertierbar mit 
 	$A^{-1}=\det(A)^{-1}\cdot \tilde A$. Ist $\det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar (\propref{1_4_13}). Mehr dazu in Kapitel IV.
 \end{example}
 
@@ -197,5 +197,5 @@ Sei $K$ ein Körper.
 	Für $A\in \GL_n(K)$ ist $A^t\in \GL_n(K)$ und $(A^{-1})^t = (A^t)^{-1}$
 \end{proposition}
 \begin{proof}
-	Aus $AA^{-1}=1$ folgt nach \propref{3_1_14}, dass $(A^{-1})^tA^t=1_n^t=1_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.
+	Aus $AA^{-1}=1$ folgt nach \propref{3_1_14}, dass $(A^{-1})^tA^t=\mathbbm{1}_n^t=\mathbbm{1}_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.
 \end{proof}

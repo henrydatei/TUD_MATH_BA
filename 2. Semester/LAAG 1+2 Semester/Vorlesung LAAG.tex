@@ -15,6 +15,10 @@
 \usepackage{calc}
 \usepackage{xstring}
 \usepackage[bb=boondox]{mathalfa} %spezielle Null mit \mathbb{0}, sollte auch mit 1 klappen, aber dafür haben wir \mathbbm{1}
+\usepackage{bigdelim}
+\newcommand\undermat[2]{%
+	\makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+					\begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
 
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}

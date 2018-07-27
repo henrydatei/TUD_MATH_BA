@@ -91,9 +91,9 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	Für $i,j\in \{1,...,m\}$, $\lambda \in K^{\times}$ und $\mu\in K$ definieren wir 
 	$m\times m$-Matrizen, die sogenannten \begriff{Elementarmatrizen}:
 	\begin{itemize}
-		\item $S_i(\lambda):=1_m + (\lambda-1)E_{ii}$
-		\item $Q_{ij}(\mu):= 1_m + \mu E_{ij}$
-		\item $P_{ij}:= 1_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
+		\item $S_i(\lambda):=\mathbbm{1}_m + (\lambda-1)E_{ii}$
+		\item $Q_{ij}(\mu):= \mathbbm{1}_m + \mu E_{ij}$
+		\item $P_{ij}:= \mathbbm{1}_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
 	\end{itemize}
 \end{definition}
 
@@ -171,9 +171,9 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	Es gibt von diesem Verfahren verschiedene Varianten und weitere Anwendungen: So kann man z.B. die Invertierbarkeit 
 	einer Matrix $A\in \Mat_n(K)$ prüfen und ggf. das Inverse bestimmen: Ist $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform, so ist $A$ 
 	genau dann invertierbar, wenn alle Zeilen von Null verschieden sind. Ist dies der Fall, so ist $r=n$ und $k_i=i$ für alle $i$, 
-	und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=1_n$. Dann ist 
+	und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=\mathbbm{1}_n$. Dann ist 
 	$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$ (vgl. \propref{3_8_11}). Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
-	auch an $1_n$ ausführt.
+	auch an $\mathbbm{1}_n$ ausführt.
 \end{remark}
 
 \begin{conclusion}
