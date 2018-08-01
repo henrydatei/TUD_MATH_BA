@@ -5,6 +5,12 @@
 \usepackage{enumitem}
 \usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
 \usepackage[ngerman]{babel}
+\usepackage[bb=boondox]{mathalfa}
+
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\id}{id}
 
 \title{\textbf{Wichtige Methoden der Linearen Algebra}}
 \author{\textsc{H. Haustein}, \textsc{P. Lehmann}}
@@ -13,14 +19,107 @@
 \maketitle
 
 \section{Basiswechsel}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Alle Vektoren $b_j$ der alten Basis als Linearkombination mit Vektoren $b'$ der neuen Basis darstellen
+	\begin{align}
+		b_j = \sum_{j=0}^n a_{ij}b'_i\notag
+	\end{align}
+	\item Matrix zusammenbauen
+	\begin{align}
+		T^B_{B'} = M^B_{B'}(\id) = \left(\begin{array}{c|c|c|c|c}
+			a_{11} & & a_{1j} & & a_{1n} \\
+			\vdots & \dots & \vdots & \dots & \vdots \\
+			a_{n1} & & a_{nj} & & a_{nn}
+		\end{array}\right)\notag
+	\end{align}
+\end{enumerate}
 
 \section{Lineare Gleichungssysteme}
+\subsection{Eliminierungsverfahren nach Gauss}
+Matrix in Zeilenstufenform bringen mit folgenden Methoden
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Multiplikation einer Zeile mit einer Zahl
+	\item Addition eines Vielfachen einer Zeile zu einer anderen Zeile
+	\item Vertauschung von zwei Zeilen
+\end{enumerate}
+
+\subsection{Cramer'sche Regel}
+\begin{align}
+	x_i = \frac{\det(a_1,...,a_{i-1},b,a_{i+1},...,a_n)}{\det(A)}\notag
+\end{align}
 
 \section{Determinanten}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Laplace'scher Entwicklungssatz: Entwicklung nach der $i$-ten Zeile
+	\begin{align}
+		\det(A) = \sum_{j=1}^n (-1)^{i+j}\cdot a_{ij}\cdot\det(A')\notag
+	\end{align}
+	\item Determinante einer Diagonalmatrix:
+	\begin{align}
+		\det(D) = \prod_{i=1}^n a_{ii}\notag
+	\end{align}
+\end{enumerate}
 
 \section{Eigenwerte und Eigenvektoren}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Das charakteristische Polynom bestimmen
+	\begin{align}
+		\chi = \det(A-\lambda\mathbb{1}_n)\notag
+	\end{align}
+	\item Das charakteristische Polynom 0 setzen und die $\lambda_i$'s ausrechnen.
+	\item Für jedes $\lambda_i$ die Eigenräume berechnen
+	\begin{align}
+		\Eig(A,\lambda_i) = \Ker(A-\lambda_i\mathbb{1}_n)\notag
+	\end{align}
+	\item Die $\lambda_i$ sind dann die Eigenwerte und die Eigenräume sind alle Vielfachen des Eigenvektors zum Eigenwert $\lambda_i$.
+\end{enumerate}
 
 \section{Diagonalisierung und Trigonalisierung}
+\subsection{Diagonalisierung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Die Eigenwerte und dazu die Vielfachheiten ausrechnen. Die Diagonalmatrix besteht dann auf der Hauptdiagonalen aus Eigenwerten mit ihrer Vielfachheit, also
+	\begin{align}
+		D = \diag(\underbrace{\lambda_1, ..., \lambda_1}_{\mu(\chi,\lambda_1)}, ..., \underbrace{\lambda_n, ..., \lambda_n}_{\mu(\chi,\lambda_n)})\notag
+	\end{align}
+	Allerdings ist $A$ nur dann diagonalisierbar, wenn für jeden Eigenwert gilt
+	\begin{align}
+		\dim(\Eig(A,\lambda)) = \mu(\chi,\lambda)\notag
+	\end{align}
+	\item Will man noch die Transformationsmatrizen $S$ und $S^{-1}$ berechnen, so muss man zu jedem Eigenraum eine Basis finden. Die Vereinigung bildet dann eine Basis $B$ von $V$.
+	\item Die Matrix $S^{-1}$ besteht dann aus den Basiselementen von $B$ als Spaltenvektoren, also
+	\begin{align}
+		S^{-1} = \left(\begin{array}{c|c|c}
+		&& \\
+		b_1 & \dots & b_n \\
+		&&
+		\end{array}\right)\notag
+	\end{align}
+	\item Das Invertieren von $S^{-1}$ gibt dann $S$ und es gilt $SAS^{-1}=D$.
+\end{enumerate}
+
+\subsection{Trigonalisierung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Eigenwerte und Eigenvektoren von $A$ bestimmen und zu einer Basis von $V$ erweitern
+	\begin{align}
+	S_1^{-1} = \left(\begin{array}{c|c|c|c}
+	&&& \\
+	v_1 & e_2 & \dots & e_n \\
+	&&&
+	\end{array}\right)\notag
+	\end{align}
+	\item Matrix $A_2$ berechnen
+	\begin{align}
+		A_2 = S_1AS_1^{-1}\notag
+	\end{align}
+	\item Den Vorgang mit der noch nicht trigonalisierten Matrix unten links wiederholen,
+	\begin{align}
+	S_2^{-1} = \left(\begin{array}{c|c|c|c|c}
+	&&&& \\
+	v_1 & v_2 & e_3 & \dots & e_n \\
+	&&&&
+	\end{array}\right)\notag
+	\end{align}
+\end{enumerate}
 
 \section{Jordan-Normalform}
 
