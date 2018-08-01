@@ -155,6 +155,31 @@
 	&= \arctan(x+1)\notag
 \end{align}
 
+\subsection{Mehrfachintegrale}
+\begin{align}
+	\int_{X\times Y\times Z} f(x,y,z)\,\mathrm{d}(x,y,z) = \int_X\int_Y\int_Z f\,\mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x\notag
+\end{align}
+
+\subsection{Der Transformationssatz}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item $f:V\subset \mathbb{R}^n\to\mathbb{R}$ integrierbar
+	\item $\phi:U\subset\mathbb{R}^n\to V$ Diffeomorphismus
+\end{enumerate}
+\begin{align}
+	\int_V f(x)\,\mathrm{d}x=\int_U f(\phi(y))\cdot\vert\phi(y)'\vert\,\mathrm{d}y\notag
+\end{align}
+
+\subsection{parametrisierte Integrale}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item $M\subset\mathbb{R}^n$ messbar, $P\subset\mathbb{R}^m$ Menge von Parametern offen, $f:M\times P\to\mathbb{R}$
+	\item $f(\cdot, p)$ integrierbar auf $M$ $\forall p$
+	\item $f(x,\cdot)$ stetig differenzierbar auf $P$ $\forall x$
+	\item $\exists g:M\to\mathbb{R}$ integrierbar mit $\vert f_p(x,p)\vert\le g$ $\forall x,p$
+\end{enumerate}
+\begin{align}
+	F(p)=\int_M f(x,p)\,\mathrm{d}x\Rightarrow F'(p)=\int_M f_p(x,p)\,\mathrm{d}x\notag
+\end{align}
+
 \section{Extremwerte}
 \subsection{ohne Nebenbedingung}
 \begin{enumerate}[label=\textbf{\arabic*.}]
