@@ -122,6 +122,22 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 \end{enumerate}
 
 \section{Jordan-Normalform}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Eigenwerte und deren Vielfachheit bestimmen
+	\item zu jedem Eigenwert den Jordan-Block mit Größe = Vielfachheit des Eigenwertes bestimmen
+	\item Die Jordan-Normalform besteht aus den Jordan-Blocken auf der Hauptdiagonalen
+	\item Will man noch die Transformationsmatrizen bestimmen, muss man noch zu jedem Eigenwert einen Eigenvektor bestimmen.
+	\item Kommt ein Eigenwert mehrfach (z.B. $n$-fach) vor, so muss man noch $\Ker\big((A-\lambda\mathbb{1}_n)^2\big)$, $\Ker\big((A-\lambda\mathbb{1}_n)^3\big)$, ..., $\Ker\big((A-\lambda\mathbb{1}_n)^{d-1}\big)$ bestimmen.
+	\item Dann kann man sich die Transformationsmatrix $S$ zusammenbauen:
+	\begin{align}
+		S = \left(\begin{array}{c|c|c|c|c|c|c}
+		EV & EV &  & EV & EV &  & EV \\
+		\text{zu }\lambda_1 & \text{zu }\lambda_1 & \dots & \text{zu }\lambda_1 & \text{zu }\lambda_2 & \dots & \text{zu }\lambda_n \\
+		\text{Potenz }1 & \text{Potenz }2 & & \text{Potenz }d-1 & \text{Potenz }1 & & \text{Potenz }d-1
+		\end{array}\right)\notag
+	\end{align}
+	\item Dann gilt $SAS^{-1}=J$.
+\end{enumerate}
 
 \section{Gram-Schmidt-Verfahren}
 
