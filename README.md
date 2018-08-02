@@ -1,7 +1,7 @@
 # TUD_MATH_BA
-Skript zu den Vorlesungen Analysis (Prof. Dr. Friedemann Schuricht) und Lineare Algebra (Prof. Dr. Arno Fehm) der TU Dresden
+Skript zu den Vorlesungen "Grundlagen der Analysis" (Prof. Dr. Friedemann Schuricht), "Lineare Algebra und analytische Geometrie" (Prof. Dr. Arno Fehm), "Programmieren für Mathematiker" (Prof. Dr. Wolfgang Walter), "Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten" (Prof. Dr. ??), "Maß und Integral" (Prof. Dr. ??), "Geometrie" (Prof. Dr. ??) und "Numerik" (Prof. Dr. ??) der TU Dresden
 
-Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
+Wer mithelfen möchte, diese Mitschriften zu vervollständigen, bitte melden.
 
 Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
 
