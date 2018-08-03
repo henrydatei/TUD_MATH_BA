@@ -1,0 +1,17 @@
+\section{Nilpotente Endomorphismen}
+
+\begin{definition}[nilpotent]
+	Ein $f\in\End_K(V)$ heißt \begriff{nilpotent}, wenn $f^k=0$ für ein $k\in\natur$. Analog heißt $A\in\Mat_n(K)$ nilpotent, wenn $A^k=0$ für $k\in\natur$. Das kleinste $k$ mit $f^k=0$ bzw. $A^k$ heißt die \begriff{Nilpotenzklasse} von $f$ bzw. $A$.
+\end{definition}
+
+\begin{definition}[\person{Jordan}-Matrix]
+	Für $k\in\natur$ definieren wir die \begriff{\person{Jordan}-Matrix}
+	\begin{align}
+		J_k=\begin{pmatrix}0&1&0&...&0 \\
+		\vdots&\ddots&\ddots&\ddots&\vdots\\
+		\vdots&\;&\ddots&\ddots&0\\
+		\vdots&\;&\;&\ddots&1\\
+		0&...&...&...&0\end{pmatrix} \in \Mat_k(K)\notag
+	\end{align}
+	weiter setzen wir für $\lambda\in K$ $J_k(\lambda):=\lambda\mathbbm{1}+J_k$.
+\end{definition}

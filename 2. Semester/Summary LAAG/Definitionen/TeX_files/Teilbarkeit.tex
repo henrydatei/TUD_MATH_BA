@@ -1,0 +1,185 @@
+\section{Teilbarkeit}
+
+\begin{definition}[Teilbarkeit]
+	Seien $a,b\in R$.
+	\begin{enumerate}
+		\item $a$ \begriff{teilt} $b$ (in Zeichen $a\mid b$): Es existiert $x\in R$ mit $b=ax$.
+		\item $a$ und $b$ sind \begriff{assoziiert} (in Zeichen $a\sim b$): Es existiert $x\in R^{\times}$ mit $b=ax$.
+	\end{enumerate}
+\end{definition}
+
+\begin{mathematica}[Teiler]
+	Möchte man mit Mathematica bzw. WolframAlpha überprüfen, ob $n$ von $m$ geteilt wird, also $m\mid n$ (!), kann man folge Funktion aufrufen:
+	\begin{align}
+		\texttt{Divisible[n,m]}\notag
+	\end{align}
+	Eine Liste der  Teiler einer Zahl $x$ erhält man mit
+	\begin{align}
+		\texttt{Divisors[x]}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{lemma}
+	Für $a,b,c,d\in R$ gelten
+	\begin{enumerate}
+		\item $a\mid a$
+		\item $a\mid b$ und $b\mid c$ $\Rightarrow$ $a\mid c$
+		\item $a\mid b$ und $a\mid c$ $\Rightarrow$ $a\mid (b+c)$
+		\item $a\mid b$ und $c\mid d$ $\Rightarrow$ $(ac)\mid (bd)$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	klar
+\end{proof}
+
+\begin{lemma}
+	Für $a,b,c,d\in R$ gelten
+	\begin{enumerate}
+		\item $a\sim a$
+		\item $a\sim b$ und $b\sim c$ $\Rightarrow$ $a\sim c$
+		\item $a\sim b$ $\Rightarrow$ $b\sim a$
+		\item $a\sim b$ und $c\sim d$ $\Rightarrow$ $(ac)\sim (bd)$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	klar, da $(R^\times,\cdot)$ eine Gruppe ist.
+\end{proof}
+
+\begin{remark}
+	Teilbarkeit auf $R$ ist insbesondere eine \begriff{Präordnung}, das heißt reflexiv und transitiv, und Assoziiertheit ist eine Äquivalenzrelation.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{8_2_5}
+	Sei $R$ nullteilerfrei und seien $a,b\in R$. Genau dann ist $a\sim b$, wenn $a\mid b$ und $b\mid a$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: $b=ax$ mit $x\in R^\times$ $\Rightarrow a=bx^{-1}$.
+		\item Rückrichtung: $b=ax$, $a=by$ mit $x,y\in R^\times$
+		\begin{align}
+			a=by&=axy \notag \\
+			a(1-xy)&= 0 \notag
+		\end{align}
+		Also $a=0$ und damit $b=0$ oder $xy=1$, also $x,y\in R^\times$. In beiden Fällen folgt $a\sim b$.
+	\end{itemize}
+\end{proof}
+
+\begin{*example}
+	Offenbar $2\mid -2$ und $-2\mid 2$. Es gilt $2\sim -2$ und $-2\sim 2$.
+\end{*example}
+
+\begin{proposition}
+	Sie $R$ nullteilerfrei. Mit $[a] := \{a'\in R\mid a\sim a'\}$
+	wird durch $[a][b]\iff a\mid b$ eine wohldefinierte Halbordnung auf $R/\sim\; := \{[a]\mid a\in R\}$
+	gegeben.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item wohldefiniert: $a\mid b$, $a\sim a'$, $b\sim b'$ $\Rightarrow a'\mid b'$: $ax=b$, $au=a'$, $bv=b$ mit $x\in R$ und $u,v\in R^\times$
+		\begin{align}
+			b'=bv=axv=a'\underbrace{u^{-1}vx}_{\in R}\notag
+		\end{align}
+		also $a'\mid b'$.
+		\item reflexiv: klar
+		\item transitiv: aus Transitivität von $\mid$
+		\item antisymmetrisch: \propref{8_2_5}
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[größter gemeinsamer Teiler, kleinstes gemeinsames Vielfaches]
+	Seien $a,b\in R$. Ein $c\in R$ ist ein \begriff{größter gemeinsamer Teiler} von $a$ und $b$ in Zeichen $c=\ggT(a,b)$, wenn gilt: $c\mid a$ und $c\mid b$ und ist $d\in R$ mit $d\mid a$ und $d\mid b$, so auch $d\mid c$.
+	
+	Ein $c\in R$ ist ein \begriff{kleinstes gemeinsames Vielfaches} von $a$ und $b$, in Zeichen $c=\kgV(a,b)$, wenn gilt: $a\mid c$ und $b\mid c$ und ist $d\in R$ mit $a\mid d$ und $b\mid d$, so ist $c\mid d$.
+\end{definition}
+
+\begin{mathematica}[ggT und kgV]
+	Die Funktionen für den größten gemeinsamen Teiler und das kleinste gemeinsame Vielfache in Mathematica bzw. WolframAlpha sind
+	\begin{align}
+		\texttt{GCD[6,12,4,32]}\notag \\
+		\texttt{LCM[6,12,4,32]}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{remark}
+	Wenn $\ggT$ und $\kgV$ in einem nullteilerfreien Ring $R$ existieren, sind sie eindeutig bestimmt, aber nur bis auf Assoziiertheit (\propref{8_2_5}).
+\end{remark}
+
+\begin{definition}[Primzahl, irreduzibel]
+	Sei $x\in R$. 
+	\begin{itemize}
+		\item $x$ ist \begriff{prim} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x\mid (ab)\Rightarrow x\mid a\lor x\mid b$.
+		\item $x$ ist \begriff{irreduzibel} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x=ab\Rightarrow a\in R^\times \lor b\in R^\times$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Leicht sieht man: Ist $p\in R$ prim und $a_1,...,a_n\in R$ mit $p\mid (a_1\dots a_n)$, so gilt $p\mid a_i$ für ein $i$.
+\end{remark}
+
+\begin{example}
+	\begin{itemize}
+		\item In $R=\whole$ gilt: $p$ prim $\iff p$ irreduzibel
+		\item Sei $f\in R=\ratio[t]$.
+		\begin{itemize}
+			\item $\deg(f)=1\Rightarrow f\sim (t-a)$ ist irreduzibel und prim (denn $(t-a)\mid g\iff g(a)=0$)
+			\item $\deg(f)=2$: $f=t^2-1$ ist nicht irreduzibel, $t^2-2$ ist irreduzibel
+		\end{itemize}
+	\end{itemize}
+\end{example}
+
+\begin{proposition}
+	\proplbl{8_2_12}
+	Sei $R$ nullteilerfrei und $0\neq p\in R\backslash R^\times$. Ist $p$ prim, so ist es auch irreduzibel.
+\end{proposition}
+\begin{proof}
+	Sei $p=ab$ mit $a,b\in R$. Da insbesondere $p\mid ab$ und $p$ prim ist, folgt $p\mid a$ oder $p\mid b$. Sei ohne Einschränkung $p\mid a$, das heißt $a=pa'$ mit $a'\in R$.
+	\begin{align}
+		&\Rightarrow p=ab = pa'b\notag \\
+		&\Rightarrow p(1-ab) = 0\notag \\
+		&\Rightarrow a'b=1\text{, insbesondere }b\in R^\times\notag
+	\end{align}
+	Somit ist $p$ irreduzibel.
+\end{proof}
+
+\begin{remark}
+	Erinnerung: Ein Ideal von $R$ ist eine Untergruppe $I\subseteq (R,+)$ mit 
+	\begin{align}
+		a\in I,r\in R\Rightarrow ra\in I\notag
+	\end{align}
+	also genau ein Untermodul des $R$-Moduls $R$.
+\end{remark}
+
+\begin{definition}[erzeugtes Ideal, Hauptideal]
+	Sei $A\subseteq R$. Das von $A$ \begriff[Ideal!]{erzeugte Ideal} mit
+	\begin{align}
+		\langle A\rangle :=\left\lbrace \sum_{i=1}^n r_ia_i\mid n\in \natur_0,a_1,...,a_n\in A,r_1,...,r_n\in R\right\rbrace \notag
+	\end{align}
+	Ist $A=\{a_1,...,a_n\}$, so schreibt man auch $(a_1,...,a_n)$ für $\langle A\rangle$. Ein Ideal der Form $I=(a)$ ist ein \begriff{Hauptideal}.
+\end{definition}
+
+\begin{remark}
+	Das von $A$ erzeugte Ideal $\langle A\rangle$ ist gleich dem von $A$ erzeugten Untermodul des $R$-Moduls $R$, und ist das kleinste Ideal von $R$, das $A$ enthält.
+\end{remark}
+
+\begin{remark}
+	Für $a\in R$ ist $(a)=Ra$ und für $a,b\in R$ sind äquivalent:
+	\begin{enumerate}
+		\item $a\mid b$
+		\item $b\in (a)$
+		\item $(b)\subseteq (a)$
+	\end{enumerate}
+	Für $R$ nullteilerfrei sind zudem äquivalent:
+	\begin{enumerate}
+		\item $a\sim b$
+		\item $(a)=(b)$
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	Jeder Ring hat die Ideale $(0)=\{0\}$ und $(1)=R$. Für jedes $a\in R^\times$ ist $(a)=(1)$, ist $R$ also ein Körper, so hat $R$ keine weiteren Ideale.
+\end{example}
+
+\begin{example}
+	In $R=\whole$: Für $n\in\whole$ ist $(n)=\whole\cdot n=n\whole$.
+\end{example}

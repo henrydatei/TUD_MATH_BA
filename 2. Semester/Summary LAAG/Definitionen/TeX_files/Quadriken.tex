@@ -1,0 +1,30 @@
+\section{Quadriken}
+
+Sei $n\in\natur$.
+
+\begin{definition}[Quadrik]
+	\proplbl{6_8_1}
+	Eine \begriff{Quadrik} ist eine Teilmenge von $\real^n$ mit
+	\begin{align}
+		Q=\{x\in\real^n\mid x^tAx+2b^tx+c=0\}\notag
+	\end{align}
+	mit $A\in\Mat_n(\real)$ symmetrisch, $b^t\in\real^n$ und $c\in\real$.
+\end{definition}
+
+\begin{definition}[Typen von Quadriken]
+	Sei $Q$ gegeben durch $(A,b,c)$ wie in \propref{6_8_1}. $Q$ heißt
+	\begin{itemize}
+		\item vom \begriff[Quadrik!]{kegeligen Typ}, wenn $\rk(A)=\rk(A,b)=\rk(\tilde{A})$
+		\item eine \begriff[Quadrik!]{Mittelpunktsquadrik}, wenn $\rk(A)=\rk(A,b)<\rk(\tilde{A})$
+		\item vom \begriff[Quadrik!]{parabolischen Typ}, wenn $\rk(A)<\rk(A,b)$
+		\item \begriff{ausgeartet}, wenn $\det(\tilde{A})=0$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Isometrie]
+	Eine \begriff{Isometrie} des $\real^n$ ist $f\in\Aff_{\real}(\real^n)$ mit
+	\begin{align}
+		f(x)=Ax+b\notag
+	\end{align}
+	mit $b\in\real^n$ und $A\in\GL_n(\real)$ ist orthogonal.
+\end{definition}
