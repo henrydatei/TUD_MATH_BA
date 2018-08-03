@@ -11,7 +11,7 @@ Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! 
 - Lösungen zu den Aufgaben LAAG 1: 
 - Lösungen zu den Aufgaben LAAG 2: [https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l](https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l)
 
-### Einführung in die Analysis
+### Einführung in die Analysis (WS2017/18 + SS2018)
 - Aufgabenblätter ANAG 1:
 - Aufgabenblätter ANAG 2: [https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d](https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d)
 - Lösungen zu den Aufgaben ANAG 1:
