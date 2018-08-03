@@ -3,8 +3,6 @@ Skript zu den Vorlesungen "Grundlagen der Analysis" (Prof. Dr. Friedemann Schuri
 
 Wer mithelfen möchte, diese Mitschriften zu vervollständigen, bitte melden.
 
-Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
-
 ### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX](https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX)
@@ -16,6 +14,8 @@ Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! 
 - Aufgabenblätter ANAG 2: [https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d](https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d)
 - Lösungen zu den Aufgaben ANAG 1:
 - Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
+
+- Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
 
 ### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
 
