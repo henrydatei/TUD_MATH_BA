@@ -14,7 +14,6 @@ Wer mithelfen möchte, diese Mitschriften zu vervollständigen, bitte melden.
 - Aufgabenblätter ANAG 2: [https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d](https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d)
 - Lösungen zu den Aufgaben ANAG 1:
 - Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
-
 - Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
 
 ### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
