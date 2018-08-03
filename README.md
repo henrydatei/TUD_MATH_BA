@@ -1,105 +1,25 @@
-# TUD_MATH_BA
-Skript zu den Vorlesungen Analysis (Prof. Dr. Friedemann Schuricht) und Lineare Algebra (Prof. Dr. Arno Fehm) der TU Dresden
+# TU Dresden: Mathematik - Bachelor
+Skript zu den Vorlesungen "Grundlagen der Analysis" (Prof. Dr. Friedemann Schuricht), "Lineare Algebra und analytische Geometrie" (Prof. Dr. Arno Fehm), "Programmieren für Mathematiker" (Prof. Dr. Wolfgang Walter), "Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten" (Prof. Dr. ??), "Maß und Integral" (Prof. Dr. ??), "Geometrie" (Prof. Dr. ??) und "Numerik" (Prof. Dr. ??) der TU Dresden
 
-Wer mithelfen möchte, dieses Skript zu vervollständigen, bitte melden.
+Wer mithelfen möchte, diese Mitschriften zu vervollständigen, bitte melden.
 
-Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
+### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
+- Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
+- Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX](https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX)
+- Lösungen zu den Aufgaben LAAG 1: 
+- Lösungen zu den Aufgaben LAAG 2: [https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l](https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l)
 
-### Fortschritt Analysis (2. Semester, SS2018)
-5. Differentiation ... fertig
-  
-    16. Wiederholung und Motivation ... fertig
-    
-    17. Ableitung ... fertig
-    
-    18. Richtungsableitung und partielle Ableitungen ... fertig
-    
-    19. Mittelwertsatz und Anwendung ... fertig
-    
-    20. Stammfunktionen ... fertig
-    
-6. Integration ... fertig
+### Einführung in die Analysis (WS2017/18 + SS2018)
+- Aufgabenblätter ANAG 1: [https://drive.google.com/open?id=1iZOk2PVgI4I3_chZ7cUN_vJgWoO_zPIM](https://drive.google.com/open?id=1iZOk2PVgI4I3_chZ7cUN_vJgWoO_zPIM)
+- Aufgabenblätter ANAG 2: [https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d](https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d)
+- Lösungen zu den Aufgaben ANAG 1:
+- Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
+- Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :)
 
-    21. Messbare Menge und messbare Funktion ... fertig
-    
-    22. Integration ... fertig
-    
-    23. Integration auf R ... fertig
-    
-    24. Satz von Fubini und Mehrfachintegrale ... fertig
-    
-7. Differentiation 2 ... fertig
+### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
 
-    25. Höhere Ableitungen und Taylorscher Satz ... fertig
-    
-    26. Extremwerte ... fertig
-    
-    27. Funktionsfolgen ... fertig
-    
-    28. Inverse und implizierte Funktionen ... fertig
+### Maß und Integral (WS2018/19)
 
-### Fortschritt Lineare Algebra (2. Semester, SS2018)
+### Geometrie (WS2018/19)
 
-1. Endomorphismen ... fertig
-
-    1. Eigenwerte ... fertig
-    
-    2. Das charakteristische Polynom ... fertig
-    
-    3. Diagonalisierbarkeit ... fertig
-    
-    4. Trigonalisierbarkeit ... fertig
-
-    5. Das Minimalpolynom ... fertig
-    
-    6. Nilpotente Endomorphismen ... fertig
-    
-    7. Die Jordan-Normalform ... fertig
-
-2. Skalarprodukte ... fertig
-
-    1. Das Standardskalarprodukt ... fertig
-    
-    2. Bilinearformen und Sesquilinearformen ... fertig
-    
-    3. Euklidische und unitäre VR ... fertig
-    
-    4. Orthononalität ... fertig
-    
-    5. Orthogonale und unitäre Endomorphismen ... fertig
-    
-    6. Selbstadjungierte Endomorphismen ... fertig
-    
-    7. Hauptachsentransformation ... fertig
-    
-    8. Quadriken ... fertig
-
-3. Dualität ... fertig
-
-    1. Das Lemma von Zorn ... fertig
-
-    2. Der Dualraum ... fertig
-
-    3. Die duale Abbildung ... fertig
-    
-    4. Die adjungierte Abbildung ... fertig
-    
-    5. Der Spektralsatz ... fertig
-
-    6. Tensorprodukte ... fertig
-
-4. Moduln ... fertig
-
-    1. Moduln ... fertig
-    
-    2. Teilbarkeit ... fertig
-    
-    3. Hauptidealringe ... fertig
-    
-    4. Faktorielle Ringe ... fertig
-    
-    5. Quotienten von Ringen und Moduln ... fertig
-    
-    6. Der Elementarteilersatz ... fertig
-    
-    7. Zyklische Vektorräume ... fertig
+### Numerik (WS2018/19)
