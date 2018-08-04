@@ -10,55 +10,9 @@ Sei $V$ ein $K$-Vektorraum.
 	Die Elemente von $V^*$ heißen \begriff{Linearformen} auf $V$.
 \end{definition}
 
-\begin{example}
-	Ist $V=K^n=\Mat_{n\times 1}(K)$, so wird $V^*=\Hom_K(V,K)$ durch $\Mat_{1\times n}(K)\cong K^n$. Wir können also die Elemente von $V$ als Spaltenvektoren und die Linearformen auf $V$ als Zeilenvektoren auffassen.
-\end{example}
-
-\begin{lemma}
-	Ist $B(x_1)_{i\in I}$ eine Basis von $V$, so gibt es zu jedem $i\in I$ genau $x_i^*\in V^*$ mit 
-	\begin{align}
-		x_i^*(x_j)=\delta_{ij}\quad\forall j\in I\notag
-	\end{align}
-\end{lemma}
-\begin{proof}
-	Siehe LAAG1 III.5.1, angewandt auf die Familie $(y_j)_{j\in I}$, $y_j\delta_{i.j}$ in $W=K$. %TODO: Verlinkung
-\end{proof}
-
-\begin{proposition}
-	Ist $B=(x_1)_{i\in I}$ eine Basis von $V$, so ist $B^*=(x_i^*)_{i\in I}$ linear unabhängig. Ist $I$ endlich, so ist $B^*$ eine Basis von $V^*$.
-\end{proposition}
-\begin{proof}
-	Ist $\phi=\sum_{i\in I} \lambda_ix_i^*$, $\lambda_i\in K$, fast alle gleich 0, so ist $\phi(x_j)=\sum_{i\in I} \lambda_j x_i^*(x_j)=\lambda_j$ für jedes $j\in I$. Ist also $\phi=0$, so ist $\lambda_j=\phi(x_j)=0\quad\forall j\in I$, $B^*$ ist somit linear unabhängig. \\
-	Ist zudem $I$ endlich und $\psi\in V^*$, so ist $\psi=\psi'=\sum_{i\in I} \psi(x_i)x_i^*$, denn $\psi'(x_j)=\sum_{i\in I} \psi(x_i)x_i^*(x_j)=\psi(x_i)\quad\forall j\in I$, und somit ist $B^*$ ein Erzeugendensystem von $V^*$.
-\end{proof}
-
 \begin{definition}[duale Basis]
 	Ist $B=(x_i)_{i\in I}$ eine endliche Basis von $V$, so nennt man $B^*=(x_i^*)_{i\in I}$ die zu $B$ \begriff{duale Basis}.
 \end{definition}
-
-\begin{conclusion}
-	\proplbl{7_2_6}
-	Zu jeder Basis $B$ von $V$ gibt es einen eindeutig bestimmtem Monomorphismus
-	\begin{align}
-		f_V\to V^*\text{ mit } f(B)=B^*\notag
-	\end{align}
-	Ist $\dim_K(V)<\infty$, so ist dieser ein Isomorphismus.
-\end{conclusion}
-
-\begin{conclusion}
-	\proplbl{7_2_7}
-	Zu jedem $=0\neq x\in V$ gibt es eine Linearform $\phi\in V$ mit $\phi(x)=1$.
-\end{conclusion}
-\begin{proof}
-	Ergänze $x_1=x$ zu einer Basis $(x_i)_{i\in I}$ von $V$ (\propref{7_1_11}) und $\phi=x_1^*$.
-\end{proof}
-
-\begin{example}
-	Ist $V=K^n$ mit Standardbasis $\mathcal{E}=(e_1,...,e_n)$, so können wir $V^*$ mit dem Vektorraum der Zeilenvektoren identifizieren, und dann ist
-	\begin{align}
-		e_i^* = e_i^t\notag
-	\end{align}
-\end{example}
 
 \begin{definition}[Bidualraum]
 	Der \begriff{Bidualraum} zu $V$ ist der $K$-Vektorraum
@@ -67,38 +21,6 @@ Sei $V$ ein $K$-Vektorraum.
 	\end{align}
 \end{definition}
 
-\begin{proposition}
-	Die kanonische Abbildung
-	\begin{align}
-		\iota:\begin{cases}
-		V\to V^{**} \\ x\to \iota_x
-		\end{cases}\text{ wobei } \iota_x(\phi)=\phi(x)\notag
-	\end{align}
-	ist ein Monomorphismus. Ist $\dim_K(V)<\infty$, so ist $\iota$ ein Isomorphismus.
-\end{proposition}
-\begin{proof}
-	\begin{itemize}
-		\item $\iota_x\in V^{**}$: 
-		\begin{itemize}
-			\item $\iota_x(\phi+\psi)=(\phi+\psi)(x)=\phi(x)+\psi(x)=\iota_x(\phi)+ \iota_x(\psi)$
-			\item $\iota_x(\lambda \phi)=(\lambda\phi)(x)=\lambda\phi(x)=\lambda\iota_x(\phi)$
-		\end{itemize}
-		\item $\iota$ linear: 
-		\begin{itemize}
-			\item $\iota_{x+y}(\phi)=\phi(x+y)=\phi(x)+\phi(y)=\iota_x(\phi)+\iota_y(\phi)= (\iota_x+\iota_y)(\phi)$
-			\item $\iota_{\lambda x}(\phi)=\phi(\lambda x)=\lambda\iota_x(\iota)=(\lambda\iota_x)(\phi)$
-		\end{itemize}
-		\item $\iota$ injektiv: Sei $0\neq x\in V$. Nach \propref{7_2_7} existiert $\phi\in V^*$ mit $\iota_x(\phi)=\phi(x)=1\neq 0$. Somit ist $\iota_x\neq 0$.
-		\item Ist $\dim_K(V)<\infty$, so ist $V\overset{\propref{7_2_6}}{\cong} V^* \overset{\propref{7_2_6}}{\cong} V^{**}$, insbesondere $\dim_K(V)=\dim_K(V^{**})$. Der Monomorphismus $\iota$ ist somit ein Isomorphismus.
-	\end{itemize}
-\end{proof}
-
-\begin{remark}
-	Sei $\dim_K(V)<\infty$. Im Gegensatz zu den Isomorphismen $V\to V^*$, die von der Wahl der Basis $B$ abhängen, ist der Isomorphismus $\iota:V\to V^{**}$ kanonisch (von der Wahl der Basis $B$ unabhängig).
-	
-	Die Voraussetzung, dass $\dim_K(V)<\infty$ ist hier essentiell: Für $\dim_K(V)=\infty$ ist $\iota$ nicht surjektiv.
-\end{remark}
-
 \begin{definition}[Annulator]
 	Für eine Teilmenge $U\subseteq V$ bezeichne
 	\begin{align}
@@ -106,44 +28,3 @@ Sei $V$ ein $K$-Vektorraum.
 	\end{align}
 	den \begriff{Annulator} von $U$.
 \end{definition}
-
-\begin{lemma}
-	$U^0$ ist ein Untervektorraum von $V^*$.
-\end{lemma}
-\begin{proof}
-	Klar.
-\end{proof}
-
-\begin{proposition}
-	\proplbl{7_2_14}
-	Ist $\dim_K(V)<\infty$ und $U\subseteq V$ ein Untervektorraum, so ist
-	\begin{align}
-		\dim_K(V)=\dim_K(U)+\dim_K(U^0)\notag
-	\end{align}
-\end{proposition}
-\begin{proof}
-	Ergänze eine Basis $(x_1,...,x_r)$ von $U$ zu einer Basis $B=(x_1,...,x_n)$ von $V$. Dann ist $B^*(x_1^*,...,x_n^*)$ eine Basis von $V^*$. Sei $C=(x_{r+1}^*,...,x_n^*)$. Dann ist $C$ eine Basis von $U^0$: 
-	\begin{itemize}
-		\item $B^*$ ist Basis $\Rightarrow C$ ist linear unabhängig.
-		\item $C\subseteq U^0$: Für $1\le j\le r < i\le n$ ist $x_i^*(x_j)=\delta_{ij}=0$.
-		\item $U^0\subseteq\Span_K(C)$: Ist $\phi=\sum_{i=1}^n \lambda_ix_i^*\in U^0$, so $0=\phi(x_j)= \lambda_j$ für alle $j\le r$, \\also $\phi\in\Span_K(x_{r+1}^*,...,x_n^*)$.
-	\end{itemize}
-\end{proof}
-
-\begin{conclusion}
-	\proplbl{7_2_15}
-	Ist $\dim_K(V)<\infty$ und $U\subset V$ ein Untervektorraum, so ist
-	\begin{align}
-		\iota(U)=U^{00}\notag
-	\end{align}
-\end{conclusion}
-\begin{proof}
-	Es ist klar, dass $\iota(U)\le U^{00}$. \\
-	Für $\phi\in U^0$ und $x\in U$ ist $\iota_x(\phi) = \phi(x) =0$. Mit \propref{7_2_14} ist
-	\begin{align}
-		\dim_K(U^{00}) &= \dim_K(V^*)-\dim_K(U^0) \notag \\
-		&=\dim_K(V^*) - (\dim_K(V)-\dim_K(U)) \notag \\
-		&\overset{\propref{7_2_6}}{=} \dim_K(U) \notag
-	\end{align}
-	und da $\iota$ injektiv ist, folgt $\iota(U)=U^{00}$.
-\end{proof}

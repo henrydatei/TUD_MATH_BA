@@ -2,87 +2,6 @@
 
 Sei $K$ ein Körper, $V$ ein $n$-dimensionaler $K$-Vektorraum, $f\in\End_K(V)$.
 
-\begin{remark}
-	Wir betrachten $V$ als $K[t]$-Modul mit $P(t)\cdot x=P(f)(x)$, vergleiche \proplbl{8_1_2}. \\
-	\emph{Erinnerung:} $V$ heißt $f$-zyklisch $\iff \exists x\in V$ mit $V=\Span_K(x,f(x),f^2(x),...)$. Ist $k$ minimal mit $f^k(x)\in\Span_K(x,f(x),f^2(x),...,f^{k-1}(x))$, so ist $\underbrace{(x,...,f^{k-1}(x))}_{B}$ eine Basis von $V$ und $M_B(f)=M_{\chi_f}$.
-\end{remark}
-
-\begin{proposition}
-	\proplbl{8_7_2}
-	Es gibt einen $K[t]$-Modul-Isomorphismus
-	\begin{align}
-		V\cong \bigoplus_{i=1}^m\qraum{K[t]}{(P_i)}\notag
-	\end{align}
-	mit normierten Polynomen $P_1,...,P_m\in K[t]$, die $P_i\mid P_{i+1}$ $\forall i$ erfüllen.
-\end{proposition}
-\begin{proof}
-	Nach \propref{8_6_13} ($K[t]$ Hauptidealring) ist 
-	\begin{align}
-		V\cong K[t]^r\oplus\bigoplus_{i=1}^m \qraum{K[t]}{K[t]\cdot P_i}\notag
-	\end{align}
-	mit $P_i\in K[t]\backslash K$, $P_i\mid P_{i+1}$ $\forall i$. Da $\dim_K(K[t])=\infty>\dim_K(V)$ ist, ist $r=0$, und wir können ohne Einschränkung $P_i$ normiert annehmen.
-\end{proof}
-
-\begin{lemma}
-	Für $P\in K[t]$ sei $W:=\qraum{K[t]}{(P)}$. Durch $f_t(x)=\overline{t}x$ wird $f_t\in\End_K(W)$ definiert, wobei $\overline{t}=t+(P)=\pi_{(P)}(t)\in \qraum{K[t]}{(P)}$. Genau dann ist $\phi\in\Hom_K(V,W)$ ein $K[t]$-Modul-Homomorphismus, wenn $\phi(f(x))=f_t(\phi(x))$ $\forall x\in V$.
-\end{lemma}
-\begin{proof}
-	\begin{itemize}
-		\item $f_t\in\End_K(W)$: klar
-		\item Es gilt
-		\begin{align}
-			\phi\text{ ist } K[t]\text{-Modul-Homomorphismus} &\iff \phi(ax)=a\phi(x)\quad\forall a\in K[t],\forall x\in V \notag \\
-			&\iff \phi(tx)=t\phi(x)\quad\forall x\in V \notag \\
-			&\iff \phi(f(x))=f_t(\phi(x))\quad\forall x\in V\notag
-		\end{align}
-	\end{itemize}
-\end{proof}
-
-\begin{proposition}
-	Genau dann ist $\qraum{K[t]}{(P)}$ (als $K[t]$-Modul), wenn $V$ $f$-zyklisch ist. In diesem Fall ist
-	\begin{align}
-		\chi_f=P_f=P\notag
-	\end{align}
-\end{proposition}
-\begin{proof}
-	\begin{itemize}
-		\item Hinrichtung: Der $K$-Vektorraum $W=\qraum{K[t]}{(P)}$ ist erzeugt von $1,\overline{t}=f_t(1),\overline{t}^2=f^2_t(1),...$, wobei $\overline{t}=t+(P)$ und somit ist $W$ $f_t$-zyklisch mit Basis $C=(1,\overline{t},\overline{t}^2,...,\overline{t}^{n-1})$, wobei $n=\deg(P)$. Auch ist $M_C(f_t)=M_P$. Ist $V\cong\qraum{K[t]}{(P)}$ so ist dann $V$ $f$-zyklisch.
-		\item Rückrichtung: Ist umgekehrt $V$ ein $K$-Vektorraum mit Basis $B=(x,f(x),...,f^{n-1}(x))$, so ist $M_B(f)=M_P$ für $P=\chi_f$. Der $K$-Vektorraum-Homomorphismus $\phi:V\to W=\qraum{K[t]}{(P)}$ gegeben durch $\phi(f^i(x))=t^i$ ist dann ein $K[t]$-Modul-Isomorphismus.
-		\item Ist $V\cong W$ als $K[t]$-Modul, so ist $\chi_f=\chi_{f_t}$, $P_f=P_{f_t}$. Aus $M_C(f_t)=M_P$ folgt somit 
-		\begin{align}
-			\chi_f=\chi_{f_t}=P\notag
-		\end{align}
-		Ist $0\neq Q\in K[t]$ mit $\deg(Q)<\deg(P)$, so ist
-		\begin{align}
-			Q(f_t)(1)=Q(\overline{t})\neq 0\notag
-		\end{align}
-		da $Q\neq 0$ und $C$ Basis, insbesondere $Q(f_t)\neq 0\in\End_K(\qraum{K[t]}{(P)})$. Da $P_{f_t}\mid \chi_{f_t}$ gilt, folgt 
-		\begin{align}
-			P_f=P_{f_t}=\chi_{f_t}=P\notag
-		\end{align}
-	\end{itemize}
-\end{proof}
-
-\begin{conclusion}
-	$V$ ist direkte Summe $f$-zyklischer Untervektorräume.
-\end{conclusion}
-
-\begin{conclusion}
-	Es gilt
-	\begin{align}
-		\chi_f\mid (P_f)^n\notag
-	\end{align}
-	Insbesondere haben $\chi_f$ und $P_f$ die selben irreduziblen Faktoren.
-\end{conclusion}
-\begin{proof}
-	In der Situation von \propref{8_7_2} ist
-	\begin{align}
-		\chi_f &= \prod_{i=1}^m P_i\notag \\
-		P_f &= \kgV(P_1,...,P_m)=P_m\notag
-	\end{align}
-	Da $P_i\mid P_m$ für alle $i$ folgt $\chi_f\mid (P_m)^m$, insbesondere $\chi_f\mid (P_m)^n$, denn $m\le n$.
-\end{proof}
-
 \begin{conclusion}[\person{Frobenius}-Normalform]
 	Es gibt eine Basis $B$ von $V$, für die 
 	\begin{align}
@@ -90,7 +9,3 @@ Sei $K$ ein Körper, $V$ ein $n$-dimensionaler $K$-Vektorraum, $f\in\End_K(V)$.
 	\end{align}
 	mit $P_1,...,P_m\in K[t]$ normiert, die $P_i\mid P_{i+1}$ erfüllen.
 \end{conclusion}
-
-\begin{remark}
-	Im Gegensatz zur \person{Jordan}-Normalform existiert die \person{Frobenius}-Normalform für beliebige Körper $K$ und beliebige Endomorphismen $f$. Man kann zeigen, dass die Frobenius-Normalform eines Endomorphismus $f$ eindeutig bestimmt ist.
-\end{remark}

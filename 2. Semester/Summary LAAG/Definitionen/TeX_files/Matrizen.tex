@@ -1,0 +1,38 @@
+\section{Matrizen}
+
+Sei $K$ ein Körper.
+
+\begin{definition}[Matrix]
+	Seien $m,n \in \mathbb N_0$. Eine $m\times n$-\begriff{Matrix} über $K$ ist ein rechteckiges 
+	Schema:
+	\begin{align}
+		\begin{pmatrix}
+		a_{11} & ... & a_{1n}\\
+		... &  & ...\\
+		a_{m1} & ... & a_{mn}\\
+		\end{pmatrix}\notag
+	\end{align}
+	Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \; j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
+	aus dem Kontext hervorgehen. Die $a_{ij}$ heißen die \begriff[Matrix!]{Koeffizienten} der Matrix $A$ und wir definieren $A_{i,j}=
+	a_{ij}$. Die Menge der $m\times n$-Matrizen über $K$ wird mit $\Mat_{m\times n}(K)$ oder $K^{m\times n}$ 
+	bezeichnet. Man nennt das Paar $(m,n)$ auch den \begriff[Matrix!]{Typ} von $A$. Ist $m=n$, so spricht man von \begriff[Matrix!]{quadratisch}en 
+	Matrizen und schreibt $\Mat_n(K)$. Zu einer Matrix $A=(a_{ij}) \in \Mat_{m\times n}(K)$ definiert man die zu $A$ 
+	\begriff[Matrix!]{transponierte Matrix} $A^t := (a_{ij})_{j,i} \in \Mat_{n\times m}(K)$.
+\end{definition}
+
+\begin{definition}[Addition und Skalarmultiplikation]
+	Seien $A=(a_{ij})$ und $B=(b_{ij})$ desselben Typs und 
+	$\lambda \in K$. Man definiert auf $\Mat_{m\times n}(K)$ eine koeffizientenweise \begriff[Matrix!]{Addition} und \begriff[Matrix!]{Skalarmultiplikation}.
+\end{definition}
+
+\begin{definition}[Matrizenmultiplikation]
+	Seien $m,n,r \in \mathbb N_0$. Sind $A=(a_{ij})\in \Mat_{m\times n}(K)$, 
+	$B=(b_{jk})\in \Mat_{n\times r}(K)$ so definieren wir die \begriff[Matrix!]{Matrizenmultiplikation} $C=AB$ als die Matrix $C=(c_{ik})\in \Mat_{m\times r}(K)$ mit 
+	$c_{ik}=\sum_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
+\end{definition}
+
+\begin{definition}[invertierbar]
+	Eine Matrix $A\in \Mat_n(K)$ heißt \begriff[Matrix!]{invertierbar} oder \begriff[Matrix!]{regulär}, wenn sie im Ring 
+	$\Mat_n(K)$ invertierbar ist, sonst \begriff[Matrix!]{singulär}. Die Gruppe $\GL_n(K)=\Mat_n(K)^{\times}$ der invertierbaren $n\times n$
+	-Matrizen heißt \begriff{allgemeine Gruppe}.
+\end{definition}

@@ -1,0 +1,58 @@
+\section{Abbildungen}
+
+\begin{definition}[Einschränkung]
+	\proplbl{1_2_6}
+	Sei $f: x \mapsto y$ eine Abbildung. Für $A \subset X$
+	definiert man die \begriff{Einschränkung}/Restrikton von $f$ auf $A$ als die Abbildung 
+	\begin{align}
+		f \vert_A:\begin{cases}
+		A \to Y \\ a \mapsto f(a)
+		\end{cases}\notag
+	\end{align}
+	Das \begriff{Bild} von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
+	Das \begriff{Urbild} einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
+	Man nennt $\Image(f) := f(X)$ das Bild von $f$.
+\end{definition}
+
+\begin{definition}[Komposition]
+	Sind $f: X \to Y$ und $g: Y \to Z$ Abbildungen, so ist die
+	\begriff{Komposition} $g \circ f$ die Abbildung
+	\begin{align}
+		g \circ f := \begin{cases}
+		X \to Z \\ x \mapsto f(g(x))
+		\end{cases}\notag
+	\end{align} Man kann 
+	die Komposition auffassen als eine Abbildung $\circ: \Abb(Y,Z) \times \Abb(X,Y) \to \Abb(X,Z)$.
+\end{definition}
+
+\begin{definition}[Umkehrabbildung]
+	Ist $f: X \to Y$ bijektiv, so gibt es zu jedem $y \in Y$
+	genau ein $x_y \in X$ mit $f(x_y)=y$ (\propref{1_2_7}), durch 
+	\begin{align}
+		f^{-1}: \begin{cases}
+		Y \to X \\ y \mapsto x_y
+		\end{cases}\notag
+	\end{align} wird also eine 
+	Abbildung definiert, die \begriff{Umkehrabbildung} zu $f$. 
+\end{definition}
+
+\begin{definition}[Familie]
+	Seien $I$ und $X$ Mengen. Eine Abbildung $x: I \to X, i \mapsto
+	x_i$ nennt man \begriff{Familie} von Elementen von $X$ mit einer Indexmenge I (oder I-Tupel von 
+	Elementen von $X$) und schreibt diese auch als $(x_i)_{i \in I}$. Im Fall $I=\{1,2,...,n\}$
+	identifiziert man die I-Tupel auch mit den n-Tupeln aus \propref{1_1_8}. Ist $(x_i)_{i \in I}$ eine Familie von
+	Teilmengen einer Menge $X$, so ist 
+	\begin{itemize}
+		\item $\bigcup X_i = \{x \in X \mid \exists i \in I(x \in X)\}$
+		\item $\bigcap X_i = \{x \in X \mid \forall i \in I(x \in X)\}$
+		\item $\prod X_i = \{f \in \Abb(I,X) \mid \forall i \in I(f(i) \in X_i)\}$
+	\end{itemize}
+	Die Elemente von $\prod X_i$ schreibt man in der Regel als Familien $(x_i)_{i \in I}$.
+\end{definition}
+
+\begin{definition}[Graph]
+	Der \begriff{Graph} einer Abbildung $f: X \to Y$ ist die Menge
+	\begin{align}
+		\Gamma f: \{(x,y) \in X \times Y \mid y=f(x)\}\notag
+	\end{align}
+\end{definition}

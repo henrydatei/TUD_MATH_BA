@@ -2,7 +2,7 @@
 \documentclass[ngerman,a4paper]{report}
 \usepackage[left=2.1cm,right=3.1cm,bottom=3cm,footskip=0.75cm,headsep=0.5cm]{geometry}
 \usepackage[ngerman]{babel}
-\usepackage[onehalfspacing]{setspace}
+%\usepackage[onehalfspacing]{setspace}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
 %\usepackage[T1]{fontenc}
@@ -626,7 +626,7 @@ backgroundcolor=lightgrey,%
 %change numbering of equations to be section by section
 \counterwithout{equation}{section}
 
-\title{\textbf{Lineare Algebra SS2018}}
+\title{\textbf{Lineare Algebra WS2017/18 + SS2018}}
 \author{Dozent: Prof. Dr. Arno Fehm}
 
 %remove page number from part{}-pages
@@ -642,7 +642,7 @@ backgroundcolor=lightgrey,%
 \maketitle
 
 \hypertarget{tocpage}{}
-\tableofcontents
+%\tableofcontents
 \bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
 
 \pagebreak
@@ -650,7 +650,36 @@ backgroundcolor=lightgrey,%
 \pagenumbering{arabic}
 \pagestyle{fancy}
 
-\setcounter{chapter}{4}
+\chapter{Grundbegriffe der Linearen Algebra}
+\input{./TeX_files/Logik_und_Mengen}
+\input{./TeX_files/Abbildungen}
+\input{./TeX_files/Gruppen}
+\input{./TeX_files/Ringe}
+\input{./TeX_files/Koerper}
+\input{./TeX_files/Polynome}
+
+\chapter{Vektorräume}
+\input{./TeX_files/Definition_und_Beispiele}
+\input{./TeX_files/Linearkombinationen}
+\input{./TeX_files/Basis_und_Dimension}
+\input{./TeX_files/Summen_von_VR}
+
+\chapter{Lineare Abbildungen}
+\input{./TeX_files/Matrizen}
+\input{./TeX_files/Homomorphismen_von_Gruppen}
+\input{./TeX_files/Homomorphismen_von_Ringen}
+\input{./TeX_files/Homomorphismen_von_VR}
+\input{./TeX_files/Der_VR_der_linearen_Abbildungen}
+\input{./TeX_files/Koordinatendarstellung_linearer_Abbildungen}
+\input{./TeX_files/Quotientenraeume}
+\input{./TeX_files/Rang}
+\input{./TeX_files/Lineare_Gleichungssysteme}
+
+\chapter{Determinanten}
+\input{./TeX_files/Das_Vorzeichen_einer_Permutation}
+\input{./TeX_files/Determinante_einer_Matrix}
+\input{./TeX_files/Minoren}
+\input{./TeX_files/Determinante_und_Spur_von_Endomorphismen}
 
 \chapter{Endomorphismen}
 \input{./TeX_files/Eigenwerte}
@@ -688,90 +717,88 @@ backgroundcolor=lightgrey,%
 \input{./TeX_files/Der_Elementarteilersatz}
 \input{./TeX_files/Zyklische_Vektorraeume}
 
-\part*{Anhang}
-\addcontentsline{toc}{part}{Anhang}
-\appendix
-\patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
-%\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
-%\titlespacing{command}{left}{before-sep}{after-sep}
-\renewcommand{\chaptername}{Anhang}
-\renewcommand{\thechapter}{\Alph{chapter}}
-\titleformat{\chapter}[hang]{\bfseries}{\LARGE\chaptername\ \thechapter:}{0.5em}{\LARGE\bfseries}
-\titlespacing{\chapter}{0pt}{-0.75cm}{0pt}
-\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
-
-%from ntheorem.sty
-%\def\thm@@thmline@name#1#2#3#4#5{%
+%\part*{Anhang}
+%\addcontentsline{toc}{part}{Anhang}
+%\appendix
+%\patchcmd{\chapter}{\thispagestyle{plainChapter}}{\thispagestyle{fancy}}{}{}
+%%\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
+%%\titlespacing{command}{left}{before-sep}{after-sep}
+%\renewcommand{\chaptername}{Anhang}
+%\renewcommand{\thechapter}{\Alph{chapter}}
+%\titleformat{\chapter}[hang]{\bfseries}{\LARGE\chaptername\ \thechapter:}{0.5em}{\LARGE\bfseries}
+%\titlespacing{\chapter}{0pt}{-0.75cm}{0pt}
+%\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+%
+%%from ntheorem.sty
+%%\def\thm@@thmline@name#1#2#3#4#5{%
+%%	\ifx\\#5\\%
+%%		\@dottedtocline{-2}{0em}{2.3em}%
+%%		{#1 \protect\numberline{#2}#3}%
+%%		{#4}
+%%	\else
+%%		\ifHy@linktocpage\relax\relax
+%%			\@dottedtocline{-2}{0em}{2.3em}%
+%%			{#1 \protect\numberline{#2}#3}%
+%%			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
+%%		\else
+%%			\@dottedtocline{-2}{0em}{2.3em}%
+%%			{\hyper@linkstart{link}{#5}%
+%%			{#1 \protect\numberline{#2}#3}\hyper@linkend}%
+%%			{#4}%
+%%		\fi
+%%	\fi
+%%}
+%
+%\makeatletter
+%%update ntheorem macro to provide space between theorem numbers and any optional comment, adds in upper roman letters the chapter number. removes any numbering for theorem environments with just one counter
+%\renewcommand{\thm@@thmline@name}[5]{%-       		
+%	\def\thm@@thmline@name@tmp{%
+%		\if\relax\detokenize{#3}\relax\else%
+%		{\hspace*{2.2ex}#3}%
+%		\fi%
+%	}
+%	\let\thm@@thmline@name@numbering\relax
+%	\StrCount{#5}{.}[\thm@@thmline@name@dot@number]
+%	\ifnum\thm@@thmline@name@dot@number < 3%
+%		\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
+%	\else%
+%		\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
+%		\def\thm@@thmline@name@numbering{\rom{\thm@@thmline@name@chap@num}.#2}
+%	\fi
 %	\ifx\\#5\\%
-%		\@dottedtocline{-2}{0em}{2.3em}%
-%		{#1 \protect\numberline{#2}#3}%
+%		\@dottedtocline{-2}{0em}{4.4em}%
+%		{#1 \protect\numberline{\thm@@thmline@name@numbering:}{}}%
 %		{#4}
 %	\else
 %		\ifHy@linktocpage\relax\relax
-%			\@dottedtocline{-2}{0em}{2.3em}%
-%			{#1 \protect\numberline{#2}#3}%
+%			\@dottedtocline{-2}{0em}{1.3em}%
+%			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
 %			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 %		\else
-%			\@dottedtocline{-2}{0em}{2.3em}%
-%			{\hyper@linkstart{link}{#5}%
-%			{#1 \protect\numberline{#2}#3}\hyper@linkend}%
-%			{#4}%
+%			\@dottedtocline{-2}{0em}{4.em}%
+%			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
+%			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 %		\fi
 %	\fi
 %}
-
-\makeatletter
-%update ntheorem macro to provide space between theorem numbers and any optional comment, adds in upper roman letters the chapter number. removes any numbering for theorem environments with just one counter
-\renewcommand{\thm@@thmline@name}[5]{%-       		
-	\def\thm@@thmline@name@tmp{%
-		\if\relax\detokenize{#3}\relax\else%
-			{\hspace*{2.2ex}#3}%
-		\fi%
-	}
-	\let\thm@@thmline@name@numbering\relax
-	\StrCount{#5}{.}[\thm@@thmline@name@dot@number]
-	\ifnum\thm@@thmline@name@dot@number < 3%
-		\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
-	\else%
-		\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
-		\def\thm@@thmline@name@numbering{\rom{\thm@@thmline@name@chap@num}.#2}
-	\fi
-	\ifx\\#5\\%
-		\@dottedtocline{-2}{0em}{4.4em}%
-		{#1 \protect\numberline{\thm@@thmline@name@numbering:}{}}%
-		{#4}
-	\else
-		\ifHy@linktocpage\relax\relax
-			\@dottedtocline{-2}{0em}{1.3em}%
-			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
-			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
-		\else
-			\@dottedtocline{-2}{0em}{4.em}%
-			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
-			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
-		\fi
-	\fi
-}
-\makeatother
-
-\chapter{Listen}
-\section{Liste der Theoreme}
-\theoremlisttype{allname}
-\listtheorems{theorem}
-
-\pagebreak
-\section{Liste der benannten Sätze, Lemmata und Folgerungen}
-\theoremlisttype{optname}
-\listtheorems{proposition,lemma,conclusion}
-
-\pagebreak
-\section{Liste der Mathematica/WolframAlpha-Befehle}
-\smiley{} für faule Mathematiker \smiley{} \\
-\theoremlisttype{allname}
-\listtheorems{mathematica}
-
-%\printglossary[type=\acronymtype]
-
-\printindex
+%\makeatother
+%
+%\chapter{Listen}
+%\section{Liste der Theoreme}
+%\theoremlisttype{allname}
+%\listtheorems{theorem}
+%
+%\pagebreak
+%\section{Liste der benannten Sätze, Lemmata und Folgerungen}
+%\theoremlisttype{optname}
+%\listtheorems{proposition,lemma,conclusion}
+%
+%\pagebreak
+%\section{Liste der Mathematica/WolframAlpha-Befehle}
+%\smiley{} für faule Mathematiker \smiley{} \\
+%\theoremlisttype{allname}
+%\listtheorems{mathematica}
+%
+%\printindex
 
 \end{document}

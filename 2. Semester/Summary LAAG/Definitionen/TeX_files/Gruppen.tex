@@ -1,0 +1,60 @@
+\section{Gruppen}
+
+\begin{definition}[(Halb-)Gruppe]
+	Sei $G$ eine Menge. Eine (innere, zweistellige) Verknüpfung
+	auf $G$ ist eine Abbildung $*: G \times G \to G, (x,y) \mapsto x*y$. Das Paar $(G,*)$ ist eine
+	\begriff[Gruppe!]{Halbgruppe}, wenn das folgende Axiom erfüllt ist:
+	\begin{itemize}
+		\item (G1) Für $x,y,z \in G$ ist $(x*y)*z=x*(y*z)$.
+	\end{itemize}
+		Eine Halbgruppe $(G,*)$ ist ein \begriff{Monoid}, wenn zusätzlich das folgende Axiom gilt:
+	\begin{itemize}
+		\item (G2) Es gibt ein Element $e \in G$, welches für alle $x \in G$ die Gleichung $x*e=e*x=x$
+		erfüllt. Dieses Element heißt dann \begriff{neutrales Element} der Verknüpfung $*$.  
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}[Eindeutigkeit des neutralen Elements]
+	Ein Monoid $(G,*)$ hat genau ein neutrales Element. 
+\end{proposition}
+\begin{proof}
+	Nach Definition besitzt $(G,*)$ mindestens ein neutrales Element. Seien $e_1,e_2\in G$ neutrale Elemente. Dann 
+	ist $e_1=e_1 * e_2=e_2$. Damit besitzt $(G,*)$ höchstens ein neutrales Element, also genau ein neutrales Element.
+\end{proof}
+
+\begin{definition}[(abelsche) Gruppe]
+	Eine \begriff{Gruppe} ist ein Monoid $(G,*)$ mit dem neutralen Element
+	$e$, in dem zusätzlich das folgende Axiom gilt:
+	\begin{itemize}
+		\item (G3) Für jedes $x \in G$ gibt es ein $x' \in G$ mit $x'*x=x*x'=e$.
+	\end{itemize}
+	Gilt weiterhin
+	\begin{itemize}
+		\item (G4) Für alle $x,y \in G$ gilt $x*y=y*x$, so heißt diese Gruppe \begriff[Gruppe!]{abelsch}.
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}[Eindeutigkeit des Inversen]
+	Ist $(G,*)$ eine Gruppe, so hat jedes $x \in G$ genau ein inverses Element.
+\end{proposition}
+\begin{proof}
+	Nach Definition hat jedes $x\in G$ mindestens ein Inverses. Seien $x',x''\in G$ inverse Elemente zu $x$. Dann ist 
+	$x'=x'*e=x'*(x*x'')=(x'*x)*x''=e*x''=x''$. Es gibt also genau ein Inverses zu $x$.
+\end{proof}
+
+\begin{definition}[Untergruppe]
+	Eine \begriff{Untergruppe} einer Gruppe $(G,\cdot)$ ist eine 
+	nichtleere Teilmenge $H \subset G$, für die gilt:
+	\begin{itemize}
+		\item (UG1) Für alle $x,y \in H$ ist $x \cdot y \in H$ (Abgeschlossenheit unter Multiplikation).
+		\item (UG2) Für alle $x \in H$ ist $x^{-1} \in H$ (Abgeschlossenheit unter Inversen).
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[erzeugte Untergruppe]
+	Ist $G$ eine Gruppe und $X \subseteq G$, so nennt man diese
+	kleinste Untergruppe von $G$, die $X$ enthält, die von $X$ \begriff[Untergruppe!]{erzeugte Untergruppe} von $G$ und
+	bezeichnet diese mit $\langle X\rangle$, falls $X = \{x_1,x_2,...,x_n\}$ enthält auch mit $\langle x_1,x_2,
+	...,x_n\rangle$. Gibt es eine endliche Menge $X \subset G$ mit $G=\langle X\rangle$, so nennt man $G$ endlich
+	erzeugt.
+\end{definition}

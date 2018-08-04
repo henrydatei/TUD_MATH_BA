@@ -13,23 +13,9 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	\end{itemize}
 \end{definition}
 
-\begin{example}[Äquivalenzrelation]
-	Eine \begriff{Äquivalenzrelation} ist eine reflexive, transitive und symmetrische Relation. Wir haben schon verschiedene Äquivalenzrelationen kennengelernt: Isomorphie von $K$-Vektorräumen und Ähnlichkeit von Matrizen.
-\end{example}
-
 \begin{definition}[Halbordnung]
 	Eine \begriff{Halbordnung} (oder \begriff{partielle Ordnung}) ist eine reflexive, transitive und antisymmetrische Relation $\le$. Eine totale Halbordnung heißt \begriff{Totalordnung} oder \begriff{lineare Ordnung}. Man schreibt $x<y$ für $x\le y\land x\neq y$.
 \end{definition}
-
-\begin{example}
-	\begin{enumerate}
-		\item Die natürliche Ordnung $\le$ auf $\real$, $\ratio$, $\whole$ und $\natur$ ist eine Z
-		Totalordnung.
-		\item Teilbarkeit $\vert$ ist eine Halbordnung auf $\natur$, aber Teilbarkeit ist keine Halbordnung auf $\whole$, da $1\vert -1$ und $-1\vert 1$, aber $1\neq -1$!
-		\item $\mathcal{P}(X)$ ist die Potenzmenge. ``$\subseteq$'' ist eine Halbordnung auf $\mathcal{P}$, aber für $\vert X\vert>1$ ist ``$\subseteq$'' keine Totalordnung.
-		\item Sei $(X,\le)$ eine Halbordnung, sei $Y\subseteq X$, so ist $(Y,\subseteq\vert_Y)$ eine Halbordnung.
-	\end{enumerate}
-\end{example}
 
 \begin{definition}[Kette]
 	Sei $(X,\le)$ eine Halbordnung, $Y\subseteq X$. $Y$ heißt \begriff{Kette}, wenn $(Y,\le\vert_Y)$ total ist.
@@ -42,68 +28,6 @@ Sei $K$ ein Körper und $U,V,W$ seien $K$-Vektorräume. Zudem sei $X$ eine Menge
 	
 	Analog: \begriff[Kette!]{maximales Element}, \begriff[Kette!]{obere Schranke}, \begriff[Kette!]{größtes Element}.
 \end{definition}
-
-\begin{center}
-	\begin{tikzpicture}
-		\node[place] (A) {1};
-		\node[place] (B) [below=of A] {3};
-		\node[place] (C) [left=of B] {2};
-		\node[place] (D) [right=of B] {5};
-		\node[place] (E) [right=of D] {7};
-		\node[place] (dots) [right=of E] {...};
-		
-		\node[place] (F) [below=of C] {4};
-		\node[place] (G) [below=of B] {6};
-		\node[place] (H) [below=of E] {15};
-		\node[place] (I) [right=of G] {10};
-		\node[place] (dots2) [right=of H] {...};
-		
-		\node[place] (J) [below=of F] {8};
-		\node[place] (K) [below=of J] {16};
-		\node[place] (L) [below=of K] {32};
-		
-		\draw[->,thick] (A.west) -- (C.north);
-		\draw[->,thick] (A.south) -- (B.north);
-		\draw[->,thick] (A.east) -- (D.north);
-		\draw[->,thick] (A.east) -- (E.north);
-		\draw[->,thick] (A.east) -- (dots.north);
-		
-		\draw[->,thick] (C.south) -- (F.north);
-		\draw[->,thick] (C.south) -- (G.north);
-		\draw[->,thick] (B.south) -- (G.north);
-		\draw[->,thick] (C.south) -- (I.north);
-		\draw[->,thick] (D.south) -- (I.north);
-		\draw[->,thick] (B.south) -- (H.north);
-		\draw[->,thick] (D.south) -- (H.north);
-		\draw[->,thick] (E.south) -- (dots2.north);
-		\draw[->,thick] (D.south) -- (dots2.north);
-		
-		\draw[->,thick] (F.south) -- (J.north);
-		\draw[->,thick] (J.south) -- (K.north);
-		\draw[->,thick] (K.south) -- (L.north);
-	\end{tikzpicture}
-	$Y=\{2^n\mid n\in\natur\}$ ist eine Kette
-\end{center}
-
-\begin{remark}
-	\begin{itemize}
-		\item Hat $Y$ ein kleinstes Element, so ist dies eindeutig bestimmt. Ein kleinstes Element ist minimal.
-		\item Jede endliche Halbordnung hat minimale Elemente. Jede endliche Totalordnung hat ein kleinstes Element. Analog für maximale Elemente und größtes Element.
-	\end{itemize}
-\end{remark}
-
-\begin{example}
-	$(\natur,\le)$ hat als kleinstes Element die 1, aber kein größtes Element oder maximale Elemente.
-\end{example}
-
-\begin{example}
-	$V=\real^3$, $\mathfrak{X}$ die Menge der Untervektorräume des $\real^3$. $(\mathfrak{X},\le)$ ist eine Halbordnung auf $Y\subseteq X$ mit $Y=\{U\in\mathfrak{X}\mid \dim_\real(U)\le 2\}$. 
-	\begin{itemize}
-		\item $Y$ hat ein kleinstes Element: $\{0\}$.
-		\item Es gibt unendlich viele maximale Elemente in $Y$, nämlich die Untervektorräume von $V$, die die Dimension 2 haben. Es gibt also kein größtes Element.
-		\item $V$ ist die obere Schranke von $Y$.
-	\end{itemize}
-\end{example}
 
 \begin{theorem}[Das Lemma von Zorn]
 	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
