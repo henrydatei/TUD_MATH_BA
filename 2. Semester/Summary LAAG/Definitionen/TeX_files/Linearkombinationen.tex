@@ -1,0 +1,26 @@
+\section{Linearkombinationen}
+
+Sei $V$ ein $K$-Vektorraum.
+
+\begin{definition}[Linearkombination]
+	\begin{itemize}
+		\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine \begriff{Linearkombination} eines $n$-Tupels $(x_1,...,x_n)$ von 
+		Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot
+		x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
+		\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb
+		N_0$ und $i_1,...,i_n \in I$ gibt, für die $x$ Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
+		\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $\Span_K(\mathcal F)$ 
+		bezeichnet.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[linear (un)abhängig]
+	\begin{itemize}
+		\item Sei $n\in \mathbb N_0$. Ein $n$-Tupel $(x_1,...,x_n)$ von Elementen von $V$ ist \begriff{linear abhängig}, wenn es 
+		$\lambda_1,...,\lambda_n \in K$ gibt, die nicht alle 0 sind und $\lambda_1\cdot x_1+...+\lambda_n\cdot x_n=0$ (*) 
+		erfüllen. Andernfalls heißt das Tupel \begriff{linear unabhängig}.
+		\item Eine Familie $(x_i)$ von Elementen von $V$ ist linear abhängig, wenn es $n\in \mathbb N_0$ und paarweise 
+		verschiedene $i_1,...,i_n \in I$ gibt, für die $(x_{i_1},...,x_{i_n})$ linear abhängig ist. Andernfalls linear 
+		unabhängig.
+	\end{itemize}
+\end{definition}

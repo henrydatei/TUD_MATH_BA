@@ -1,0 +1,214 @@
+\documentclass[ngerman,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
+\usepackage[ngerman]{babel}
+
+\title{\textbf{Wichtige Methoden der Analysis}}
+\author{\textsc{H. Haustein}, \textsc{P. Lehmann}}
+
+\begin{document}
+\maketitle
+
+\section{Wichtige Ungleichungen}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item geometrisches/arithmetisches Mittel
+	\begin{align}
+		\sqrt[n]{\prod_{i=1}^n x_i}\le \frac{\sum\limits_{i=1}^n x_i}{n}\notag
+	\end{align}
+	\item \textsc{Bernoulli}-Ungleichung
+	\begin{align}
+		(1+x)^\alpha &\ge 1 + \alpha x\,\forall x\ge -1, \alpha > 1 \notag \\
+		(1+x)^\alpha &\le 1+\alpha x \,\forall x\ge -1, 0 < \alpha < 1\notag
+	\end{align}
+	\item \textsc{Youn}'sche Ungleichung: $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$
+	\begin{align}
+		a\cdot b \le \frac{a^p}{p} + \frac{b^q}{q}\,\forall a,b\ge 0\notag
+	\end{align}
+	\item \textsc{Hölder}'sche Ungleichung: $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$
+	\begin{align}
+		\sum_{i=1}^{n} |x_i y_i| \le \left(\sum_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}\left(\sum_{i=1}^n |y_i|^q\right)^{\frac{1}{q}}\,\forall x,y\in\mathbb{R}\notag
+	\end{align}
+	\item \textsc{Minkowski}-Ungleichung: $p\in\mathbb{R}, p>1$
+	\begin{align}
+		\big(\sum_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}\notag
+	\end{align}
+\end{enumerate}
+
+\section{Grenzwerte berechnen}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Kann man die Grenze in die Funktion einsetzen und ausrechnen, ohne dass es zu Problemen kommt? 
+	\item Geschicktes Ausklammern im Nenner, dann kürzen im Zähler.
+	\item Regel von \textsc{l'Hospital} (mehrfach) verwenden, klappt aber nur, wenn Zähler und Nenner differenzierbar sind:
+	\begin{align}
+	\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=\lim\limits_{x\to x_0}\frac{f'(x)}{g'(x)}\notag
+	\end{align}
+\end{enumerate}
+
+\section{Reihen}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Cauchykriterium: undersuche Differenz von aufeinanderfolgenden Partialsummen, müssen kleiner als $\epsilon$ sein (Konvergenz für Folgen eigentlich)
+	\item eines (oder mehrere) der folgenden Kriterien prüfen:
+	\begin{itemize}
+		\item \emph{Majorantenkriterium} $\Vert x_k\Vert \le \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ konvergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergent
+		\item \emph{Minorantenkriterium} $\Vert x_k\Vert\ge \alpha_k\,\forall k\ge k_0,\sum_k \alpha_k$ divergent $\Rightarrow\;\sum_k \Vert x_k\Vert$ divergent
+		\item \emph{Quotientenkriterium} $\frac{\Vert x_{k+1}\Vert}{\Vert x_k\Vert} \le q < 1\,\forall k\ge k_0 \;\Rightarrow\;\sum_k \Vert x_k\Vert$ konvergiert
+		\item \emph{Wurzelkriterium} $\sqrt[k]{\Vert x_k\Vert}\le q < 1\,\forall k\ge k_0\;\Rightarrow\;\sum_k\Vert x_k\Vert$ konvergiert
+		\item\emph{Monotonie-Kriterium} Eine Reihe positiver Summanden konvergiert genau dann gegen einen Grenzwert, wenn ihre Partialsummen nach oben beschränkt sind
+		\item \emph{Leibnitz-Kriterium} $\sum_k (-1)^kx_k$ mit $\lim_{k\to\infty}x_k=0$ und $x_k\ge 0$ monoton fallend und $x_k\le 0$ monoton steigend $\Rightarrow\;\sum_k (-1)^kx_k$ konvergiert 
+	\end{itemize}
+	\item \emph{Konvergenzradius} Potenzreihe $\sum_{k=0}^\infty a_k(z-z_0)^k$ dann
+	\begin{align}
+		R = \frac{1}{\limsup\limits_{n\rightarrow\infty}\sqrt[k]{|a_k|}}\text{ wobei }0 = \frac{1}{\infty}, \frac{1}{0} = \infty \notag
+	\end{align}
+	\begin{itemize}
+		\item $\vert z-z_0\vert < R\Rightarrow$ absolut konvergent
+		\item $\vert z-z_0\vert > R\Rightarrow$ divergent
+		\item $\vert z-z_0\vert = R\Rightarrow$ keine Aussage,$z$ bestimmen (Fallunterscheidung!), in Reihe einsetzen und obige Kriterien testen
+	\end{itemize}
+\end{enumerate}
+
+\section{Stetigkeit}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item wenn funktioniert, Rechenregeln und Beispiele aus Vorlesung (elementare Funktionen sind stetig)
+	\item Summen, Produkte, Komposition, Skalarmultiplikation von/mit stetigen Funktionen sind wieder stetig
+	\item wenn Rechenregel nicht funktionieren, dann über Folgenstetigkeit argumentieren
+	\begin{align}
+		f(x_n) \to f(x_0) \forall \text{ Folgen } x_n \to x_0 \text{ in } D\notag
+	\end{align}
+\end{enumerate}
+
+\section{Partialbruchzerlegung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Bestimmung der Nullstellen des Nenner-Polynoms
+	\item Umschreiben des Polynoms (mit 3 Nullstellen $n_1,n_2,n_3$):
+	\begin{align}
+		\frac{f}{(x-n_1)(x-n_2)(x-n_3)}=\frac{A}{x-n_1}+\frac{B}{x-n_2}+\frac{C}{x-n_3}\notag
+	\end{align}
+	\item kommt eine Nullstelle doppelt vor, so ergibt sich
+	\begin{align}
+		\frac{f}{(x-n_1)^2}=\frac{A}{x-n_1}+\frac{B}{(x-n_1)^2}\notag
+	\end{align}
+	\item bei komplexen Nullstellen:
+	\begin{align}
+		\frac{A}{a-ib-z}+\frac{B}{a+ib-z} \text{ in die Form } \frac{C+Dz}{(a-z)^2+b^2}\notag
+	\end{align}
+	\item Multiplikation beider Seiten mit $x-n_1$, Kürzen auf der linken Seite nicht vergessen!
+	\item Einsetzen: $x=n_1$, Brüche mit $B$ und $C$ werden zu 0, linke Seite $= A$
+	\item diesem Schritt mit $n_2$ und $n_3$ wiederholen
+\end{enumerate}
+
+\section{Ableitung}
+\subsection{(normale) Ableitung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Rechenregeln verwenden:
+	\begin{align}
+		(f\pm g)' &= f'\pm g'\notag \\
+		(cf)' &= c\cdot f'\notag \\
+		(x^n)' &= nx^{n-1}\notag \\
+		(fg)' &= f'\cdot g + f\cdot g' \notag \\
+		\left(\frac{f}{g}\right)' &= \frac{f'\cdot g-f\cdot g'}{g^2}\notag \\
+		f(g(x))' &= f'(g(x))\cdot g'(x)\notag \\
+		(\ln f)' &= \frac{f'}{f}\notag
+	\end{align}
+	\item bei mehrdimensionalen Funktionen: komponentenweise ableiten
+	\item affin lineare Funktionen sind diffbar $Ax+b$ (folgt aus Definition diffbar Kap. 17)
+\end{enumerate}
+
+\subsection{Richtungsableitung und partielle Ableitung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Berechnung der Richtungsableitung von $f$ in $x$ in Richtung $v$:
+	\begin{align}
+		\mathrm{D}_vf(x)=\lim\limits_{t\to 0}\frac{f(x+tv)-f(x)}{t}\notag
+	\end{align}
+	\item bei partieller Ableitung: Behandeln aller Variablen, die nicht abzuleiten sind, als Konstanten
+\end{enumerate}
+
+\section{Integration}
+
+\subsection{partielle Integration}
+\begin{align}
+	\int f'\cdot g\;\mathrm{d}x=f(x)\cdot g(x)-\int f\cdot g'\;\mathrm{d}x\notag
+\end{align}
+\textbf{Beispiel:} 
+\begin{align}
+	\int x\cdot \ln(x) \;\mathrm{d}x\notag
+\end{align}
+\begin{align}
+	f'(x) &= x & g(x) &= \ln(x) \notag \\
+	f(x) &= \frac{1}{2}x^2 & g(x)' &= \frac{1}{x}\notag
+\end{align}
+\begin{align}
+	\int x\cdot \ln(x) \;\mathrm{d}x &= \frac{1}{2}x^2\cdot\ln(x)-\int \frac{1}{2}x^2\cdot\frac{1}{x}\;\mathrm{d}x = \frac{1}{2}x^2\cdot\ln(x)-\int \frac{1}{2}x\;\mathrm{d} \notag \\
+	&= \frac{1}{2}x^2\cdot\ln(x)-\frac{1}{4}x^2\notag
+\end{align}
+
+\subsection{Integration durch Substitution}
+\begin{align}
+	\int f(x)\;\mathrm{d}x = \int f(\phi(t))\cdot\phi'(t)\;\mathrm{d}t=F(\phi(x))\notag
+\end{align}
+\textbf{Beispiel:} Mit der Substitution $x=t-1$, $\mathrm{d}x=\mathrm{d}t$ ist
+\begin{align}
+	\int\frac{1}{x^2+2x+2}\;\mathrm{d}x &= \int\frac{1}{(x+1)^2+1}\;\mathrm{d}t = \int\frac{1}{t^2+1}\;\mathrm{d}t = \arctan(t) \notag \\
+	&= \arctan(x+1)\notag
+\end{align}
+
+\subsection{Mehrfachintegrale}
+\begin{align}
+	\int_{X\times Y\times Z} f(x,y,z)\,\mathrm{d}(x,y,z) = \int_X\int_Y\int_Z f\,\mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x\notag
+\end{align}
+
+\subsection{Der Transformationssatz}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item $f:V\subset \mathbb{R}^n\to\mathbb{R}$ integrierbar
+	\item $\phi:U\subset\mathbb{R}^n\to V$ Diffeomorphismus
+\end{enumerate}
+\begin{align}
+	\int_V f(x)\,\mathrm{d}x=\int_U f(\phi(y))\cdot\vert\phi(y)'\vert\,\mathrm{d}y\notag
+\end{align}
+
+\subsection{parametrisierte Integrale}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item $M\subset\mathbb{R}^n$ messbar, $P\subset\mathbb{R}^m$ Menge von Parametern offen, $f:M\times P\to\mathbb{R}$
+	\item $f(\cdot, p)$ integrierbar auf $M$ $\forall p$
+	\item $f(x,\cdot)$ stetig differenzierbar auf $P$ $\forall x$
+	\item $\exists g:M\to\mathbb{R}$ integrierbar mit $\vert f_p(x,p)\vert\le g$ $\forall x,p$
+\end{enumerate}
+\begin{align}
+	F(p)=\int_M f(x,p)\,\mathrm{d}x\Rightarrow F'(p)=\int_M f_p(x,p)\,\mathrm{d}x\notag
+\end{align}
+
+\section{Extremwerte}
+\subsection{ohne Nebenbedingung}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item alle partiellen Ableitungen Null setzen, das resultierende Gleichungssystem lösen $\to$ Kandidaten für Extremstellen
+	\item \textsc{Hesse}-Matrix aufstellen
+	\begin{align}
+		\text{Hess}(f)=\begin{pmatrix}f_{x_1x_1} & \dots & f_{x_1x_n} \\ \vdots & & \vdots \\ f_{x_nx_1} & \dots & f_{x_nx_n}\end{pmatrix}\notag
+	\end{align}
+	\item jeden Kandidaten in die \textsc{Hesse}-Matrix einsetzen, Definitheit ausrechnen
+	\begin{itemize}
+		\item $\det(A)<0\Leftrightarrow$ indefinit
+		\item $\det(A)>0, a_1<0\Leftrightarrow$ negativ definit (Maximum)
+		\item $\det(-A)>0, a_1>0\Leftrightarrow$ positiv definit (Minimum)
+	\end{itemize}
+\end{enumerate}
+
+\subsection{mit Nebenbedingung, Lagrange-Multiplikatoren}
+	\begin{enumerate}[label=\textbf{\arabic*.}]
+		\item Voraussetzungen prüfen: 
+		\begin{align}
+			& f:D\subseteq R^n\to R\text{, stetig, differenzierbar} \notag \\
+			& g: D\to R^m\text{, stetig, differenzierbar}\notag \\
+			&\text{rang}(g')=m \notag
+		\end{align}
+		\item Gleichungssystem lösen
+		\begin{align}
+			f'(x) + \lambda^Tg'(x)&=0\notag \\
+			g(x) &= 0\notag 
+		\end{align}
+		\item Lösung(en) sind Kandidaten für Extremalstellen!
+	\end{enumerate}
+\end{document}

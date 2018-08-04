@@ -1,0 +1,72 @@
+\section{Ringe}
+
+\begin{definition}[Ring]
+	Ein \begriff{Ring} ist ein Tripel $(R,+,\cdot)$ bestehend aus einer Menge
+	$R$, einer Verknüpfung $+: R \times R \to R$ (Addition) und einer anderen Verknüpfung
+	$\cdot: R \times R \to R$ (Multiplikation), sodass diese zusammen die folgenden Axiome 
+	erfüllen:
+	\begin{itemize}
+		\item (R1) $(R,+)$ ist eine abelsche Gruppe.
+		\item (R2) $(R,\cdot)$ ist eine Halbgruppe.
+		\item (R3) Für $a,x,y \in R$ gelten die Distributivgesetze $a(x+y)=ax+ay$ und $(x+y)a=xa+ya$.
+	\end{itemize}
+	Ein Ring heißt kommutativ, wenn $xy=yx$ für alle $x,y \in R$.\\
+	Ein neutrales Element der Multiplikation heißt Einselement von $R$.\\
+	Ein Unterring eines Rings $(R,+,\cdot)$ ist eine Teilmenge, die mit der geeigneten
+	Einschränkung von Addition und Multiplikation wieder ein Ring ist.
+\end{definition}
+
+\begin{theorem}
+	\proplbl{1_4_6}
+	Sei $b \neq 0 \in \mathbb{Z}$. Für jedes $a \in \mathbb{Z}$ gibt es 
+	eindeutig bestimmte $q,r \in \mathbb{Z}$ ($r$ ist "'Rest"'), mit $a=qb+r$ und $0 \le r < \vert b\vert$.
+\end{theorem}
+\begin{proof}
+	Existenz und Eindeutigkeit
+	\begin{itemize}
+		\item Existenz: oBdA nehmen wir an, dass $b>0$ (denn ist $a=qb+r$, so ist auch $a=(-q)(-b)+r$). Sei $q \in
+		\mathbb{Z}$ die größte Zahl mit $q \le \frac{a}{b}$, und sei $r=a-qb \in \mathbb{Z}$. Dann ist
+		$a \le \frac{a}{b}-q < 1$, woraus $0 \le r < b$ folgt.
+		\item Eindeutigkeit: Sei $a=qb+r=q'b+r'$ mit $q,q',r,r' \in \mathbb{Z}$ und $0 \le r,r' < |b|$. Dann ist
+		$(q-q')b=r-r'$ und $|r-r'|<|b|$. Da $q-q' \in \mathbb{Z}$ ist, folgt $r-r'=0$ und daraus wegen 
+		$b \neq 0$, dann $q-q'=0$.
+	\end{itemize}
+\end{proof}
+
+\begin{example}[Restklassenring]
+	Wir fixieren $n \in \mathbb{N}$. Für $a \in \mathbb{Z}$ sei
+	$\overline{a} := a+n\mathbb{Z} := \{a+nx \mid x \in \mathbb{Z}\}$ die \begriff{Restklasse} von "$a \bmod n$". 
+	Für $a,a' \in \mathbb{Z}$ sind äquivalent:
+	\begin{itemize}
+		\item $a+n\mathbb{Z}=a'+n\mathbb{Z}$
+		\item $a' \in a+n\mathbb{Z}$
+		\item $n$ teilt $a'-a$ (in Zeichen $n|a'-a$), d.h. $a'=a+nk$ für $k \in \mathbb{Z}$
+	\end{itemize}
+\end{example}
+\begin{proof}
+	\begin{itemize}
+		\item $1) \Rightarrow 2)$: klar, denn $0 \in \mathbb{Z}$
+		\item $2) \Rightarrow 3)$: $a' \in a+n\mathbb{Z} \Rightarrow a'=a+nk$ mit $k \in \mathbb{Z}$
+		\item $3) \Rightarrow 1)$: $a'=a+nk$ mit $k \in \mathbb{Z} \Rightarrow a+n\mathbb{Z}=\{a+nk+nx \mid 
+		x \in \mathbb{Z}\}=\{a+n(k+x) \mid x \in \mathbb{Z}\}=a+n\mathbb{Z}$
+	\end{itemize}
+	Insbesondere besteht $a+n\mathbb{Z}$ nur aus den ganzen Zahlen, die bei der Division durch $n$ den selben Rest lassen wie $a$.
+\end{proof}
+
+\begin{definition}[Charakteristik]
+	Sei $R$ ein Ring mit Einselement. Man definiert die \begriff{Charakteristik} von
+	$R$ als die kleinste natürliche Zahl $n$ mit $1+1+...+1=0$, falls so ein $n$ existiert, andernfalls
+	ist die Charakteristik $0$.
+\end{definition}
+
+\begin{definition}[Nullteiler]
+	Sei $R$ ein Ring mit Einselement. Ein $0 \neq x \in R$ ist ein \begriff{Nullteiler} von 
+	$R$, wenn er ein $0 \neq y \in R$ mit $xy=0$ oder $yx=0$ gibt. Ein Ring ohne Nullteiler ist
+	nullteilerfrei.
+\end{definition}
+
+\begin{definition}[Einheit]
+	Sei $R$ ein Ring mit Einselement. Ein $x \in R$ heißt invertierbar (oder
+	\begriff{Einheit} von $R$), wenn es ein $x' \in R$ mit $xx'=x'x=1$ gibt. Wir bezeichnen die invertierten
+	Elemente von $R$ mit $R^{\times}$.
+\end{definition}

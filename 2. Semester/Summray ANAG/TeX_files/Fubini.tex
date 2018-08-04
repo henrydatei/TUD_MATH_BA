@@ -1,0 +1,86 @@
+\section{Satz von \person{Fubini} und Mehrfachintegrale} \setcounter{equation}{0}
+\begin{theorem}[\person{Fubini}]
+	Sei $f:X\times Y\to\mathbb{R}$ integrierbar auf $X\times Y$. Dann \begin{enumerate}[label={\alph*)}]
+		\item Für Nullmenge $N\subset Y$ ist $x\to f(x,y)$ integrierbar auf $X$ $\forall y\in Y\setminus N$
+		\item Jedes $F:Y\to\mathbb{R}$ mit $F(y) := \int_X f(x,y) \D x$ $\forall y\in Y\setminus N$ ist integrierbar auf $Y$ und \begin{align}
+			\proplbl{fubini_fubini_eq}
+			\int_{X\times Y} f(x,y) \D(x,y) &= \int_Y F(y) \D y = \int_Y \left( \int_X f(x,y) \D x \right) \D y\notag
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+
+\begin{*definition}[iteriertes Integral, Mehrfachintegral]
+	Rechte Seite heißt iteriertes Integral bzw. Mehrfachintegral.
+\end{*definition}
+
+\begin{proposition}[Satz von \person{Tonelli}]
+	\proplbl{fubini_tonelli}
+	Sei $f:X\times Y\to\mathbb{R}$ messbar. Dann \begin{align}
+		\text{$f$ integrierbar} \;\;\Leftrightarrow\;\; \int_Y \left( \int_X \vert f(x,y)\vert \D x\right) \D y \quad\text{oder}\quad\int_X \left(\int_Y \vert f(x,y)\vert \D y \right) \D x\notag
+	\end{align}
+	existiert.
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{itemize}
+		\item["`$\Rightarrow$"'] Mit $f$ auch $\vert f \vert$ integrierbar und die Behauptung folgt
+		\item["`$\Leftarrow$"'] offenbar $f$ integrierbar auf $X\times Y$, $\{f_k\}$ wachsend, $f_k\to f$, mit Fubini: $\{\int_{X\times Y} f_k\diff (x,y)\}$ beschränkte Folge, mit majorisierter Konvergenz folgt $f$ integrierbar
+	\end{itemize}
+\end{proof}
+
+\subsection{Integration durch Koordinatentransformation}
+\begin{*definition}[Diffeomorphismus, diffeomorph]
+Sei $f:U\subset K^n\to V\subset K^m$ bijektiv, wobei $U$, $V$ offen.
+
+$f$ heißt Diffeomorphismus, falls $f$ und $f^{-1}$ stetig diffbar auf $U$ bzw. $V$ sind.
+
+$U$ und $V$ heißen dann diffeomorph.
+\end{*definition}
+
+\begin{theorem}[Transformationssatz]
+	Seien $U$, $V\subset\mathbb{R}^n$ offen, $\phi: U\to V$ Diffeomorphismus. Dann 
+	
+	\begin{tabularx}{\linewidth}{X@{\ \ }c@{\ \ }X}
+		\hfill$f:V\to\mathbb{R}$ integrierbar  & $\Leftrightarrow$ & $f(\phi(\,\cdot\,))\vert \det \phi'(y) \vert: U\to\mathbb{R}$ integrierbar
+	\end{tabularx}
+	und es gilt
+	\begin{align}
+		\int_U f(\phi(y))\cdot\vert\phi'(y)\vert \D y = \int_V f(x) \D x\notag
+	\end{align}
+\end{theorem}
+
+\begin{example}
+	Sei $V=B_R(0) \subset\mathbb{R}^3$ Kugel mit Radius $R > 0$.
+	
+	Zeige: $\displaystyle \vert B_R(0) \vert = \int_V 1\D (x,y,z) = \frac{4}{3}\pi R^3$
+	
+	Benutze Kugelkoordinaten (Polarkoordinaten in $\mathbb{R}^2$) mit \begin{align*}
+		\begin{pmatrix}
+			x \\ y \\ z
+		\end{pmatrix} &= \phi(r, \alpha, \beta) := \begin{pmatrix}
+			r \cos \alpha \cos \beta \\ r\sin \alpha \cos \beta \\ r \sin \beta
+		\end{pmatrix}
+	\end{align*}
+	Für $(r,\alpha,\beta)\in U: (0,R)\times(-\pi,\pi)\times\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$.
+	
+	Mit $H:= \{ (x,0,z)\in\mathbb{R}\mid x\le 0 \}$ und $\tilde{V} := V\setminus H$ gilt: $\vert H\vert_{\mathbb{R}^3} = 0$
+	
+	$\phi: U\to\tilde{V}$ \gls{diffbar}, injektiv, und \begin{align*}
+		\phi'(r,\alpha,\beta) &= \begin{pmatrix}
+			\cos\alpha \cos \beta & -r\sin \alpha\cos\beta & -r\cos\alpha\sin\beta \\
+			\sin\alpha\cos\beta & r \cos\alpha\cos\beta & -r\sin\alpha\sin\beta \\
+			\sin\beta & 0 & r\cos\beta
+		\end{pmatrix}
+	\end{align*}
+	$\Rightarrow$ Definiere $\phi'(r,\alpha,\beta) = r^2\cos\beta\neq 0$ auf $U$ \\
+	% @TODO: Label setzen
+	$\xRightarrow{Satz 27.8}$ $\phi:U\to\tilde{V}$ ist Diffeomorphismus
+	\begin{flalign*}
+	\;\;&\begin{aligned}\Rightarrow\;\; \vert B_R(0)\vert &= \int_V 1 \D (x,y,z) = \int_{\tilde{V}} 1 \D (x,y,z) + \int_H 1 \D (x,y,z) \\ & \overset{\eqref{fubini_trafo_trafosatz_eq}}{=} \int_U \vert \det \phi'(r,\alpha,\beta)\vert \D r \D \alpha \D \beta + \vert H \vert 
+	\overset{\text{Fubini}}{=} \int_0^R \int_{-\pi}^\pi \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} r^2 \cos\beta \D \beta \D \alpha \D r \\
+	&= \int_0^R \int_{-\pi}^\pi [r^2\sin \beta]_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \D \alpha  \D r = \int_0^R \int_{-\pi}^\pi 2 r^2 \D \alpha \D r
+	= \int_0^R 4 \pi r^2 \D r \\
+	& = \left.\frac{4}{3}\pi r^3\right|_0^R  = \frac{4}{3}\pi R^3
+	\end{aligned}\end{flalign*}
+\end{example}

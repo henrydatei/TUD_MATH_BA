@@ -2,7 +2,6 @@
 
 \begin{definition}
 	Für ein Polynom $P(t)=\sum_{i=0}^n c_it^i\in K[t]$ definieren wir $P(f)=\sum_{i=0}^m c_if^i\in\End_K(V)$, wobei $f^0=\id_V$, $f^1=f$, $f^2=f\circ f$, ...
-	Für ein Polynom $P(t)=\sum_{i=0}^n c_it^i\in K[t]$ definieren wir $P(f)=\sum_{i=0}^m c_if^i\in\End_K(V)$, wobei $f^0=\id_V$, $f^1=f$, $f^2=f\circ f$, ...
 	
 	Analog definiert man $P(A)$ für $A\in\Mat_n(K)$.
 \end{definition}
@@ -36,7 +35,7 @@
 \end{proposition}
 \begin{proof}
 	Nach \propref{lemma_5_3} gibt es $0\neq P\in K[t]$ mit $P(f)=0$ von minimalem Grad $d$. Indem wir durch den Leitkoeffizienten von $P$ teilen, können wir annehmen, dass $P$ normiert ist. \\
-	Sei $Q\in\mathcal{I}_f$. Polynomdivision liefert $R,H\in K[t]$ mit $Q=P\cdot H+R$ und $\deg(R)<\deg(P)=d$. Es folgt $R(f)=\underbrace{Q(f)}_{=0}-\underbrace{P(f)}_{=0}\cdot H(f)=0$. Aus der Minimalität von $d$ folgt $R=0$ und somit $P\vert Q$. \\
+	Sei $Q\in\mathcal{I}_f$. Polynomdivision liefert $R,H\in K[t]$ mit $Q=P\cdot H+R$ und $\deg(R)<\deg(P)=d$. Es folgt $R(f)=\underbrace{Q(f)}_{=0}-\underbrace{P(f)}_{=0}\cdot H(f)=0$. Aus der Minimalität von $d$ folgt $R=0$ und somit $P\mid Q$. \\
 	Ist $Q$ zudem normiert vom Grad $d$, so ist $H=1$, also $Q=P$, was die Eindeutigkeit zeigt.
 \end{proof}
 
@@ -45,6 +44,13 @@
 	
 	Analog definiert man das Minimalpolynom $P_A\in K[t]$ einer Matrix $A\in\Mat_n(K)$.
 \end{definition}
+
+\begin{mathematica}[Minimalpolynom]
+	Die Funktion für das Minimalpolynom $p$ mit der Variable $t$ in Mathematica bzw. WolframAlpha lautet:
+	\begin{align}
+		\texttt{MinimalPolynomial[p,x]}\notag
+	\end{align}
+\end{mathematica}
 
 \begin{example}
 	\begin{enumerate}
@@ -75,7 +81,7 @@
 	somit $\chi_{f\vert_W}=t^k+\sum_{i=0}^{k-1}c_it^i$, also $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
 \end{proof}
 
-\begin{theorem}[Satz von \person{Cayley-Hamiltion}]
+\begin{theorem}[Satz von \person{Cayley-Hamilton}]
 	\proplbl{theorem_5_9}
 	Für $f\in\End_K(V)$ ist $\chi_f(f)=0$.
 \end{theorem}
@@ -86,19 +92,19 @@
 		&= \sum\limits_{i=1}^{k-1} -c_ix_i+\sum\limits_{i=1}^{k-1}c_ix_i\notag \\
 		&= 0\notag
 	\end{align}
-	Aus $\chi_{f\vert_W}\vert \chi_f$ (\propref{beispiel_4_6}) folgt somit $\chi_f(f)(x)=0$, denn ist $\chi_f=Q\cdot \chi_{f\vert_W}$ mit $Q\in K[t]$, so ist $\chi_f(f)=Q(f)\circ\chi_{f\vert_W}(f)$, also $\chi_f(f)(x)=Q(f)(\underbrace{\chi_{f\vert_W}(f)(x)}_{=0})=0$. Da $x\in V$ beliebig war, folgt $\chi_f(f)=0\in\End_K(V)$.
+	Aus $\chi_{f\vert_W}\mid \chi_f$ (\propref{beispiel_4_6}) folgt somit $\chi_f(f)(x)=0$, denn ist $\chi_f=Q\cdot \chi_{f\vert_W}$ mit $Q\in K[t]$, so ist $\chi_f(f)=Q(f)\circ\chi_{f\vert_W}(f)$, also $\chi_f(f)(x)=Q(f)(\underbrace{\chi_{f\vert_W}(f)(x)}_{=0})=0$. Da $x\in V$ beliebig war, folgt $\chi_f(f)=0\in\End_K(V)$.
 \end{proof}
 
 \begin{conclusion}
 	\proplbl{folgerung_5_10}
-	Es gilt $P_f\vert \chi_f$. Insbesondere ist $\deg(P_f)\le n$.
+	Es gilt $P_f\mid \chi_f$. Insbesondere ist $\deg(P_f)\le n$.
 \end{conclusion}
 \begin{proof}
 	\propref{theorem_5_9} + \propref{satz_5_4}
 \end{proof}
 
 \begin{remark}
-	Ist $B$ eine Basis von $V$ und $A=M_B(f)$, so ist $P_A=P_f$. Insbesondere ist $P_A=P_B$ für $A\sim B$. Als Spezialfall von \propref{theorem_5_9} erhält man $\chi_A(A)=0$ und $P_A\vert \chi_A$.
+	Ist $B$ eine Basis von $V$ und $A=M_B(f)$, so ist $P_A=P_f$. Insbesondere ist $P_A=P_B$ für $A\sim B$. Als Spezialfall von \propref{theorem_5_9} erhält man $\chi_A(A)=0$ und $P_A\mid \chi_A$.
 \end{remark}
 
 \begin{remark}

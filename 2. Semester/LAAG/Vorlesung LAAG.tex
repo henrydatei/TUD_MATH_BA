@@ -5,7 +5,7 @@
 \usepackage[onehalfspacing]{setspace}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{chngcntr}
 \fi
 
@@ -14,6 +14,11 @@
 \usepackage{xparse}%better macros
 \usepackage{calc}
 \usepackage{xstring}
+\usepackage[bb=boondox]{mathalfa} %spezielle Null mit \mathbb{0}, sollte auch mit 1 klappen, aber dafür haben wir \mathbbm{1}
+\usepackage{bigdelim}
+\newcommand\undermat[2]{%
+	\makebox[0pt][l]{$\smash{\underbrace{\phantom{%
+					\begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
 
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}
@@ -88,7 +93,7 @@
 	citecolor=green,
 	filecolor=green,
 	linkcolor=blue,
-	urlcolor=green
+	urlcolor=blue
 }
 \usepackage{cleveref}
 \usepackage{bookmark}
@@ -217,6 +222,17 @@
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
 ]{*anmerkung}{Anmerkung}
+
+\newmdtheoremenv[%
+style=boxedtheorem,%
+topline=false,%
+rightline=false,%
+leftline=false,
+bottomline=false,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+backgroundcolor=lightgrey,%
+]{mathematica}{Mathematica/WolframAlpha-Befehle}
 
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
@@ -353,7 +369,7 @@
 	\IfBooleanTF{#1}%
 	{\index{#2#3#4}}%
 	{%
-		\uline{#3}%
+		\uline{#3} %
 		\index{#2#3#4}%
 	}%
 }
@@ -513,6 +529,7 @@
 \renewcommand{\Im}{\mathfrak{Im}}
 \renewcommand*{\arraystretch}{1.4}
 \newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\qraum}[2]{\sfrac{#1}{#2}}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -530,6 +547,8 @@
 \DeclareMathOperator{\Aff}{Aff}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\Bil}{Bil}
 \DeclareMathOperator{\Eig}{Eig}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\Ker}{Ker}
@@ -537,15 +556,21 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\ZR}{ZR}
+\DeclareMathOperator{\SR}{SR}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Hau}{Hau}
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\Orth}{O}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Uni}{U}
 \DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
 
 %change headings:
 \titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
@@ -625,6 +650,8 @@
 \pagenumbering{arabic}
 \pagestyle{fancy}
 
+\setcounter{chapter}{4}
+
 \chapter{Endomorphismen}
 \input{./TeX_files/Eigenwerte}
 \include{./TeX_files/Das_charakteristische_Polynom}
@@ -650,8 +677,16 @@
 \include{./TeX_files/Die_duale_Abbildung}
 \include{./TeX_files/Die_adjungierte_Abbildung}
 \include{./TeX_files/Der_Spektralsatz}
+\include{./TeX_files/Tensorprodukte}
 
 \chapter{Moduln}
+\input{./TeX_files/Moduln}
+\include{./TeX_files/Teilbarkeit}
+\include{./TeX_files/Hauptidealringe}
+\include{./TeX_files/Faktorielle_Ringe}
+\include{./TeX_files/Quotienten_von_Ringen_und_Moduln}
+\include{./TeX_files/Der_Elementarteilersatz}
+\include{./TeX_files/Zyklische_Vektorraeume}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
@@ -686,26 +721,33 @@
 %}
 
 \makeatletter
-%update ntheorem macro to provide space between theorem numbers and any optional comment
+%update ntheorem macro to provide space between theorem numbers and any optional comment, adds in upper roman letters the chapter number. removes any numbering for theorem environments with just one counter
 \renewcommand{\thm@@thmline@name}[5]{%-       		
 	\def\thm@@thmline@name@tmp{%
 		\if\relax\detokenize{#3}\relax\else%
 			{\hspace*{2.2ex}#3}%
 		\fi%
 	}
-	\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
+	\let\thm@@thmline@name@numbering\relax
+	\StrCount{#5}{.}[\thm@@thmline@name@dot@number]
+	\ifnum\thm@@thmline@name@dot@number < 3%
+		\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
+	\else%
+		\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
+		\def\thm@@thmline@name@numbering{\rom{\thm@@thmline@name@chap@num}.#2}
+	\fi
 	\ifx\\#5\\%
-		\@dottedtocline{-2}{0em}{2.4em}%
-		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
+		\@dottedtocline{-2}{0em}{4.4em}%
+		{#1 \protect\numberline{\thm@@thmline@name@numbering:}{}}%
 		{#4}
 	\else
 		\ifHy@linktocpage\relax\relax
 			\@dottedtocline{-2}{0em}{1.3em}%
-			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
+			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{2.4em}%
-			{#1 \protect\numberline{\rom{\thm@@thmline@name@chap@num}.#2:}\thm@@thmline@name@tmp}%
+			\@dottedtocline{-2}{0em}{4.em}%
+			{#1 \protect\numberline{\thm@@thmline@name@numbering:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
@@ -718,9 +760,15 @@
 \listtheorems{theorem}
 
 \pagebreak
-\section{Liste der benannten Sätze}
+\section{Liste der benannten Sätze, Lemmata und Folgerungen}
 \theoremlisttype{optname}
-\listtheorems{proposition,lemma}
+\listtheorems{proposition,lemma,conclusion}
+
+\pagebreak
+\section{Liste der Mathematica/WolframAlpha-Befehle}
+\smiley{} für faule Mathematiker \smiley{} \\
+\theoremlisttype{allname}
+\listtheorems{mathematica}
 
 %\printglossary[type=\acronymtype]
 

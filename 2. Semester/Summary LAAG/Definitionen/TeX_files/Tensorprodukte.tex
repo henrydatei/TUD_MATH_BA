@@ -1,0 +1,42 @@
+\section{Tensorprodukte}
+
+\begin{definition}[billineare Abbildung]
+	Eine Abbildung $\xi:V\times W\to U$ ist \begriff[Abbildung!]{bilinear}, wenn für jedes $v\in V$ die Abbildung 
+	\begin{align}
+		\begin{cases}
+		W\to U \\ w\mapsto \xi(v,w)
+		\end{cases}\notag
+	\end{align}
+	und für jedes $w\in W$ die Abbildung
+	\begin{align}
+	\begin{cases}
+	V\to U \\ v\mapsto \xi(v,w)
+	\end{cases}\notag
+	\end{align}
+	linear sind.
+	
+	Wir definieren
+	\begin{align}
+		\Bil_K(V,W,U)=\{\xi\in\Abb(V\times W,U)\mid \xi\text{ bilinear}\}\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[Tensorprodukt]
+	Ein \begriff{Tensorprodukt} von $V$ und $W$ ist ein Paar $(T,\tau)$ bestehend aus einem $K$-Vektorraum $T$ und einer bilinearen Abbildung $\tau\in\Bil_K(V,W,T)$ welche die folgende \begriff{universelle Eigenschaft} erfüllt: \\
+	\textit{Ist $U$ ein weiterer $K$-Vektorraum und $\xi\in\Bil_K(V,W,U)$ so gibt es genau ein $\xi_\otimes\in\Hom_K(T,U)$ mit $\xi=\xi_\otimes\circ\tau$.}
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V\times W & T \\ \; & U \\};
+		\path[-stealth]
+		(m-1-1) edge node [below] {$\xi$} (m-2-2)
+		edge node [above] {$\tau$} (m-1-2)
+		(m-1-2) edge [dashed] node [right] {$\xi_\otimes$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
+\end{definition}
+
+\begin{definition}[Vektorraum mit Basis $X$]
+	\proplbl{7_6_8}
+	Sei $X$ eine Menge. Der $K$-\begriff{Vektorraum mit Basis $X$} ist der Untervektorraum $V=\Span_K((\delta_x)_{x\in X})$ des $K$-Vektorraum $\Abb(X,K)$ mit $\delta_x(y)=\delta_{x,y}=\begin{cases}1&x=y\\0&x\neq y\end{cases}$
+\end{definition}

@@ -1,0 +1,32 @@
+\section{Homomorphismen von Gruppen}
+
+Seien $G,H$ zwei multiplikativ geschriebene Gruppen.
+
+\begin{definition}[Gruppenhomomorphismus]
+	Eine Abbildung $f: G \to H$ ist ein \begriff{Gruppenhomomorphismus}, wenn gilt:
+	\begin{itemize}
+		\item (GH): $f(xy)=f(x)\cdot f(y)$
+	\end{itemize}
+	Die Menge der Homomorphismen $f:G\to H$ bezeichnet man mit $\Hom(G,H)$.
+\end{definition}
+
+\begin{definition}[Arten von Homomorphismen]
+	Ein Homomorphismus ist
+	\begin{itemize}
+		\item ein \begriff{Monomorphismus}, wenn $f$ injektiv ist
+		\item ein \begriff{Epimorphismus}, wenn $f$ surjektiv ist
+		\item ein \begriff{Isomorphismus}, wenn $f$ bijektiv ist.
+	\end{itemize}
+	Die Gruppen $G$ und $H$ heißen \begriff{isomorph}, in Zeichen $G\cong H$, wenn 
+	es einen Isomorphismus $G\to H$ gibt.
+\end{definition}
+
+\begin{definition}[Kern]
+	Der \begriff{Kern} eines Gruppenhomomorphismus $f:G\to H$ ist $\Ker(f):= f^{-1}(\{1\})=\{x\in G \mid
+	f(x)=1_H\}$.
+\end{definition}
+
+\begin{definition}[Normalteiler]
+	Ist $N\le G$ mit $x^{-1}y\in N$ für alle $x\in G$ und $y\in N$, so nennt man $N$ 
+	einen \begriff{Normalteiler} von $G$ und schreibt $N\vartriangleleft G$.
+\end{definition}

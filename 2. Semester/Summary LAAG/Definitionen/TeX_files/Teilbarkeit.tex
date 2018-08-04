@@ -1,0 +1,31 @@
+\section{Teilbarkeit}
+
+\begin{definition}[Teilbarkeit]
+	Seien $a,b\in R$.
+	\begin{enumerate}
+		\item $a$ \begriff{teilt} $b$ (in Zeichen $a\mid b$): Es existiert $x\in R$ mit $b=ax$.
+		\item $a$ und $b$ sind \begriff{assoziiert} (in Zeichen $a\sim b$): Es existiert $x\in R^{\times}$ mit $b=ax$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[größter gemeinsamer Teiler, kleinstes gemeinsames Vielfaches]
+	Seien $a,b\in R$. Ein $c\in R$ ist ein \begriff{größter gemeinsamer Teiler} von $a$ und $b$ in Zeichen $c=\ggT(a,b)$, wenn gilt: $c\mid a$ und $c\mid b$ und ist $d\in R$ mit $d\mid a$ und $d\mid b$, so auch $d\mid c$.
+	
+	Ein $c\in R$ ist ein \begriff{kleinstes gemeinsames Vielfaches} von $a$ und $b$, in Zeichen $c=\kgV(a,b)$, wenn gilt: $a\mid c$ und $b\mid c$ und ist $d\in R$ mit $a\mid d$ und $b\mid d$, so ist $c\mid d$.
+\end{definition}
+
+\begin{definition}[Primzahl, irreduzibel]
+	Sei $x\in R$. 
+	\begin{itemize}
+		\item $x$ ist \begriff{prim} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x\mid (ab)\Rightarrow x\mid a\lor x\mid b$.
+		\item $x$ ist \begriff{irreduzibel} $\iff x\notin R^\times\cup \{0\}$ und $\forall a,b\in R$ gilt $x=ab\Rightarrow a\in R^\times \lor b\in R^\times$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[erzeugtes Ideal, Hauptideal]
+	Sei $A\subseteq R$. Das von $A$ \begriff[Ideal!]{erzeugte Ideal} mit
+	\begin{align}
+		\langle A\rangle :=\left\lbrace \sum_{i=1}^n r_ia_i\mid n\in \natur_0,a_1,...,a_n\in A,r_1,...,r_n\in R\right\rbrace \notag
+	\end{align}
+	Ist $A=\{a_1,...,a_n\}$, so schreibt man auch $(a_1,...,a_n)$ für $\langle A\rangle$. Ein Ideal der Form $I=(a)$ ist ein \begriff{Hauptideal}.
+\end{definition}

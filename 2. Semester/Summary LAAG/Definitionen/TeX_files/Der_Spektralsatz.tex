@@ -1,0 +1,40 @@
+\section{Der Spektralsatz}
+
+Sei $V$ ein endlichdimensionaler unitärer $K$-Vektorraum und $f\in\End_K(V)$.
+
+\begin{definition}[normaler Endomorphismus, normale Matrix]
+	Der Endomorphismus $f$ heißt \begriff[Endomorphismus!]{normal}, wenn
+	\begin{align}
+		f\circ f^{adj}=f^{adj}\circ f\notag
+	\end{align}
+	
+	Entsprechend heißt $A\in\Mat_n(K)$ \begriff[Matrix!]{normal}, wenn
+	\begin{align}
+		AA^*=A^*A\notag
+	\end{align}
+\end{definition}
+
+\begin{theorem}[Spektralsatz]
+	\proplbl{7_5_6}
+	Sei $f\in\End_K(V)$ ein Endomorphismus, für den $\chi_f$ in Linearfaktoren zerfällt. Genau dann besitzt $V$ eine Orthonormalbasis aus Eigenvektoren von $f$, wenn $f$ normal ist.
+\end{theorem}
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: Ist $B$ eine Orthonormalbasis aus Eigenvektoren von $f$, so ist $A=M_B(f)$ eine Diagonalmatrix. Dann ist auch $M_B(f^{adj})\overset{\propref{7_4_7}}{=}A^*$ eine Diagonalmatrix und $AA^*=A ^*A$. Somit ist $f$ normal.
+		\item Rückrichtung: Sei $f$ normal und $\chi_f(t)=\prod_{i=1}^n (t-\lambda_i)$. Beweis nach Induktion nach $n=\dim_K(V)$. \\
+		\emph{$n=0$}: klar \\
+		\emph{$n-1\to n$}: Wähle Eigenvektor zum Eigenwert $\lambda_1$, o.E. $\Vert x_1\Vert = 1$. Sei $U=K\cdot x_1$. Nach \propref{7_5_5} ist $f^{adj}(x_1)=\overline{\lambda_1}x_1$, insbesondere ist $U$ $f$-invariant und $f^{adj}$-invariant. Für $x\in U^\perp$ ist 
+		\begin{align}
+			\skalar{f(x)}{x_1}= \skalar{x}{f^{adj}(x_1)}=\skalar{x}{\overline{\lambda_1}x_1}=\lambda_1\skalar{x}{x_1}=0\notag
+		\end{align}
+		also $f(x)\in U^\perp$ und 
+		\begin{align}
+			\skalar{f^{adj}(x)}{x_1}=\skalar{x}{f(x_1)}=\skalar{x}{\lambda_1 x_1}=\overline{\lambda_1} \skalar{x}{x_1}=0\notag
+		\end{align}
+		also $f^{adj}(x)\in U^\perp$. Somit ist $V=U\oplus U^\perp$ eine Zerlegung in Untervektorräume, die sowohl $f$-invariant als auch $f^{adj}$-invariant sind. Insbesondere st $f^{adj}\vert_{U^\perp}=(f\vert_{U^\perp})^{adj}$, woraus folgt, dass auch $f\vert_{U^\perp}$ normal ist:
+		\begin{align}
+			f\vert_{U^\perp}\circ (f\vert_{U^\perp})^{adj}=f\circ f^{adj}\vert_{U^\perp}=f^{adj}\circ f\vert_{U^\perp} = f^{adj}\vert_{U^\perp}\circ f\vert_{U^\perp}=(f\vert_{U^\perp})^{adj}\circ f\vert_{U^\perp}\notag
+		\end{align}
+		Außerdem zerfällt auch $\chi_{f\vert_{U^\perp}}=\prod_{i=2}^n (t-\lambda_i)$ in Linearfaktoren. Nach Induktionshypothese existiert eine Orthonormalbasis $(x_2,...,x_n)$ von $U^\perp$ bestehend aus Eigenvektoren von $f\vert_{U^\perp}$ und $(x_1,...,x_n)$ ist dann eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$.
+	\end{itemize}
+\end{proof}

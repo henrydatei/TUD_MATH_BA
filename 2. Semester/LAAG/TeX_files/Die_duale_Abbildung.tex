@@ -43,7 +43,7 @@ Sei $f\in\Hom_K(V,W)$.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{3_3_4}
+	\proplbl{7_3_4}
 	Sind $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$ Basen von $V$ bzw. $W$, so ist
 	\begin{align}
 		M_{B^*}^{C^*}(f^*)=\left(M_C^B(f) \right)^t\notag
@@ -54,7 +54,7 @@ Sei $f\in\Hom_K(V,W)$.
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{3_3_5}
+	\proplbl{7_3_5}
 	Sind $V$ und $W$ endlichdimensional, und identifizieren wir $V=V^{**}$ und $W=W^{**}$, so ist $f=f^{**}$, das heißt $\iota\circ f=f^{**}\circ\iota$.
 	\begin{center}
 		\begin{tikzpicture}
@@ -72,7 +72,7 @@ Sei $f\in\Hom_K(V,W)$.
 \begin{proof}
 	Seien $B$ und $C$ Basen von $V$ bzw. $W$. Unter der Identifizierung ist $B^{**}=B$ und $C=C^{**}$, das heißt $\iota(x_i)=x_i^{**}$ bzw. $\iota(y_j)=y_j^{**}$, denn $\iota(x_i)(x_j^*)=x_j^*(x_i)=\delta_{ij} = x_i^{**}(x_j^*)\quad\forall i,j$ und somit 
 	\begin{align}
-		M_C^B(f^{**}) \overset{\propref{3_3_4}}{=} \left( M_{B^*}^{C^*}(f^*)\right)^t \overset{\propref{3_3_4}}{=} \left( M_C^B(f)\right)^{tt}=M_C^B(f)\notag
+		M_C^B(f^{**}) \overset{\propref{7_3_4}}{=} \left( M_{B^*}^{C^*}(f^*)\right)^t \overset{\propref{7_3_4}}{=} \left( M_C^B(f)\right)^{tt}=M_C^B(f)\notag
 	\end{align}
 	Also $f^{**}=f$.
 \end{proof}
@@ -89,7 +89,7 @@ Sei $f\in\Hom_K(V,W)$.
 		(f+g)^*(\phi)&=\phi\circ(f+g)=\phi\circ f+\phi\circ g=f^*(\phi)+g^*(\phi)=(f^*+g^*)(\phi) \notag \\
 		(\lambda f)^*(\phi)&=\phi\circ (\lambda f)=\lambda\cdot(\phi\circ f)=\lambda\circ f^*(\phi)=(\lambda f^*)(\phi)\notag
 	\end{align}
-	Die Abbildung ist somit linear. Nach \propref{3_3_5} ist sie injektiv. Da 
+	Die Abbildung ist somit linear. Nach \propref{7_3_5} ist sie injektiv. Da 
 	\begin{align}
 		 \dim_K(V,W)&=\dim_K(V)\cdot \dim_K(W)\notag \\
 		 &=\dim_K(V^*)\cdot \dim_K(W^*) \notag \\
@@ -99,7 +99,7 @@ Sei $f\in\Hom_K(V,W)$.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{3_3_7}
+	\proplbl{7_3_7}
 	Sind $V,W$ endlichdimensional so ist
 	\begin{align}
 		\Image(f^*)&=\Ker(f)^0\notag \\
@@ -123,7 +123,7 @@ Sei $f\in\Hom_K(V,W)$.
 		also $\phi=f^*(\psi)$. %TODO: Verlinkung
 		\item Mit der Identifizierung $V=V^{**}$ ist
 		\begin{align}
-			\Image(f)^0\overset{\propref{3_3_5}}{=}\Image(f^{**})^0=\Ker(f^*)^{00}\overset{\propref{3_2_15}}{=}\Ker(f^*)\notag
+			\Image(f)^0\overset{\propref{7_3_5}}{=}\Image(f^{**})^0=\Ker(f^*)^{00}\overset{\propref{7_2_15}}{=}\Ker(f^*)\notag
 		\end{align}
 	\end{itemize}
 \end{proof}
@@ -137,14 +137,14 @@ Sei $f\in\Hom_K(V,W)$.
 \begin{proof}
 	\begin{align}
 		\rk(f) &= \dim_K(\Image(f))\notag \\
-		&\overset{\propref{3_2_14}}{=} \dim_K(W)-\dim_K(\Image(f)^0)\notag \\
+		&\overset{\propref{7_2_14}}{=} \dim_K(W)-\dim_K(\Image(f)^0)\notag \\
 		&\overset{LAAG1.III.7.13}{=} \dim_K(W^*)-\dim_K(\Ker(f^*)) \notag \\
 		&= \rk(f^*)\notag %TODO: Verlinkung
 	\end{align}
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{3_3_9}
+	\proplbl{7_3_9}
 	Ist $\dim_K(V)<\infty$ und $U\subseteq V$ ein Untervektorraum, so lässt sich jede Linearform auf $U$ zu einer Linearform auf $V$ fortsetzen.
 \end{conclusion}
 \begin{proof}
@@ -156,10 +156,10 @@ Sei $f\in\Hom_K(V,W)$.
 \end{proof}
 
 \begin{remark}
-	\propref{3_3_9} gilt auch ohne die Voraussetzung $\dim_K(V)<\infty$, siehe Übung.
+	\propref{7_3_9} gilt auch ohne die Voraussetzung $\dim_K(V)<\infty$, siehe Übung.
 \end{remark}
 
 \begin{remark}
 	Ein homogenes lineares Gleichungssystem $Ax=0$ hat als Lösungsraum $L(A,0)\subseteq K^n$ ein Untervektorraum des $K^n$. Unter der Identifizierung $K^n=(K^n)^{**}$ ist $L(A,0)$ der Annulator der Linearformen beschrieben durch die Zeilen $a_1,...,a_m\in (K^n)^*$ von $A$. Wir wollen umgekehrt zu einem Untervektorraum $W\subseteq K^n$ ein $A=(a_1,...,a_m)\in\Mat_{n\times m}(K)$ mit $W=L(A,0)$ finden. Ist $W=\Span_K(b_1,...,b_r)$, so ist $W=\Image(f_B)$ mit $B=(b_1,...,b_r)\in\Mat_{n\times r}(K)$. \\
-	$\Rightarrow W\overset{\propref{3_3_7}}{=}\Ker(f^*_B)^0$ und $M_{\mathcal{E}^t}(f^*_B)=B^t$. Wenn man also eine Basis $(a_1,...,a_s)$ von $L(B^t,0)$ bestimmt und daraus eine Matrix $A=(a_1^t,...,a_s^t)\in\Mat_{s\times n}(K)$ bildet, so ist $W=L(A,0)$.
+	$\Rightarrow W\overset{\propref{7_3_7}}{=}\Ker(f^*_B)^0$ und $M_{\mathcal{E}^t}(f^*_B)=B^t$. Wenn man also eine Basis $(a_1,...,a_s)$ von $L(B^t,0)$ bestimmt und daraus eine Matrix $A=(a_1^t,...,a_s^t)\in\Mat_{s\times n}(K)$ bildet, so ist $W=L(A,0)$.
 \end{remark}

@@ -13,8 +13,8 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 	\begin{align}
 		A\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}=\begin{henrysmatrix}3\\3\end{henrysmatrix},\;A\cdot\begin{henrysmatrix} 1\\-1\end{henrysmatrix}=\begin{henrysmatrix}-1\\1\end{henrysmatrix}\notag
 	\end{align}
-	$\Rightarrow$ mit $B=\left( \begin{henrysmatrix}1\\1\end{henrysmatrix},\begin{henrysmatrix}1\\-1\end{henrysmatrix}\right)$ ist $M_B(f)=\begin{henrysmatrix}3&0\\0&-1\end{henrysmatrix}$. \\%TODO figure
-	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{henrysmatrix}1\\-1\end{henrysmatrix}$ %TODO fix drawing!
+	$\Rightarrow$ mit $B=\left( \begin{henrysmatrix}1\\1\end{henrysmatrix},\begin{henrysmatrix}1\\-1\end{henrysmatrix}\right)$ ist $M_B(f)=\begin{henrysmatrix}3&0\\0&-1\end{henrysmatrix}$. \\
+	Der Endomorphismus $f=f_A$ streckt also entlang der Achse $\real\cdot \begin{henrysmatrix}1\\1\end{henrysmatrix}$ um den Faktor 3 und spiegelt entlang der Achse $\real\cdot \begin{henrysmatrix}1\\-1\end{henrysmatrix}$
 	\begin{center}
 		\begin{tikzpicture}
 		\draw[->,thick] (-2,0) -- (2,0) node[right] {$x_1$};
@@ -87,7 +87,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \begin{proposition}
 	\proplbl{satz_eig_direkte_summe}
 	Sind $\lambda_1,...,\lambda_m\in K$ paarweise verschieden, so ist 
-	\[\sum\limits_{i=1}^m \Eig(f,\lambda_i)=\bigoplus_{i=0}^{m}\Eig(f,\lambda_i).\]
+	\[\sum\limits_{i=1}^m \Eig(f,\lambda_i)=\bigoplus_{i=1}^{m}\Eig(f,\lambda_i).\]
 \end{proposition}
 \begin{proof}
 	Seien $x_i,y_i\in\Eig(f,\lambda_i)$ für $i=1,...,m$. Ist $\sum_{i=1}^m x_i=\sum_{i=1}^m y_i$, so ist $\sum_{i=1}^m \underbrace{x_i-y_i}_{z_i}=0$.\\
@@ -97,6 +97,15 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \begin{definition}[EW und EV für Matrizen]
 	Sei $A\in\Mat_n(K)$. Man definiert Eigenwerte, Eigenvektoren, etc von $A$ als Eigenwerte, Eigenvektoren von $f_A\in\End_K(K^n)$.
 \end{definition}
+
+\begin{mathematica}[Eigenwerte und Eigenvektoren]
+	Um die Eigenwerte und Eigenvektoren einer Matrix $A$ zu berechnen, gibt es in Mathematica bzw. WolframAlpha verschiedene Möglichkeiten:
+	\begin{itemize}
+		\item \texttt{Eigenvalues[A]}: liefert eine Liste der Eigenwerte
+		\item \texttt{Eigenvectors[A]}: liefert eine Liste der Eigenvektoren
+		\item \texttt{Eigensystem[A]}: liefert zu jeden Eigenwert den Eigenvektor
+	\end{itemize}
+\end{mathematica}
 
 \begin{proposition}
 	Sei $B$ eine Basis von $V$ und $\lambda\in K$. Genau dann ist $\lambda$ ein EW von $f$, wenn $\lambda$ ein EW von $A=M_B(f)$ ist. Insbesondere haben ähnliche Matrizen die selben EW.

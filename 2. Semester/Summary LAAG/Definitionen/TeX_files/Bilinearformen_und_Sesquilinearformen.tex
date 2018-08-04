@@ -1,0 +1,33 @@
+\section{Bilinearformen und Sesquilinearformen}
+
+Sei $K=\real$ oder $K=\comp$.
+
+\begin{definition}[Bilinearform, Sesquilinearform]
+	Eine \begriff{Bilinearform} ($K=\real$) bzw. \begriff{Sesquilinearform} ($K=\comp$) ist eine Abbildung $s:V\times V\to K$ für die gilt:
+	\begin{itemize}
+		\item Für $x,x',y\in V$ ist $s(x+x',y)=s(x,y)+s(x',y)$
+		\item Für $x,y,y'\in V$ ist $s(x,y+y')=s(x,y)+s(x,y')$
+		\item Für $x,y\in V$, $\lambda\in K$ ist $s(\lambda x,y)=\lambda s(x,y)$
+		\item Für $x,y\in V$, $\lambda\in K$ ist $s(x,\lambda y)=\kringel{white}{\overline{\lambda}} s(x,y)$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Sei $s$ eine Sesquilinearform auf $V$ und $B=(v_1,...,v_n)$ eine Basis von $V$. Die \begriff[Sesquilinearform!]{darstellende Matrix} von $s$ bzgl. $B$ ist
+	\begin{align}
+		M_B(s)=(s(v_i,v_j))_{i,j}\in\Mat_n(K)\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[ausgeartet]
+	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{ausgeartet}, wenn eine der äquivalenten Bedingungen aus \propref{6_2_10} erfüllt ist, sonst \emph{nicht-ausgeartet}.
+\end{definition}
+
+\begin{definition}[symmetrisch, hermitesch]
+	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{symmetrisch}, wenn bzw. \begriff{hermitesch}, wenn
+	\begin{align}
+		s(x,y)=\overline{s(y,x)}\quad\text{ für alle }x,y\in V\notag
+	\end{align}
+	
+	Eine Matrix $A\in\Mat_n(K)$ heißt \emph{symmetrisch} bzw. \emph{hermitesch}, wenn $A=A^*=\overline{A}^t=\overline{A^t}$.
+\end{definition}

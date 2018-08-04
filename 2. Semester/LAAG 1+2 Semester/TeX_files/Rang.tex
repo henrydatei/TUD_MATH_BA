@@ -1,0 +1,130 @@
+\section{Rang}
+
+Seien $V,W$ zwei endlichdimensionale $K$-Vektorräume und $f\in \Hom_K(V,W)$.
+
+\begin{definition}[Rang]
+	Der \begriff{Rang} von $f$ ist $\rk(f)=\dim_K(\Image(f))$.
+\end{definition}
+
+\begin{remark}
+	Nach \propref{3_7_13} ist $\rk(f)=\dim_K(V)-\dim_K(\Ker(f))$. Also ist $f$ genau dann injektiv, wenn $\rk(f)=\dim_K(V)$. Auch sehen wir, 
+	dass $\rk(f)\le \min\{\dim_K(V),\dim_K(W)\}$.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{3_8_3}
+	Sei $U$ ein weiterer endlichdimensionaler $K$-Vektorraum und $g\in \Hom_K(U,V)$.
+	\begin{itemize}
+		\item Ist $g$ surjektiv, dann ist $\rk(f\circ g)=\rk(f)$.
+		\item Ist $f$ injektiv, dann ist $\rk(f\circ g)=\rk(g)$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	Dies folgt sofort aus $\Image(f\circ g)=f(\Image(g))$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{3_8_4}
+	Sei $r\in \mathbb N_0$. Genau dann ist $\rk(f)=r$, wenn es $B$ von $V$ und $C$ von $W$ gibt, für die 
+	\begin{align}
+		M_C^B(f)=E_r&=\sum_{i=1}^r E_{ii}\notag \\ 
+		E_r&=\begin{pmatrix}
+		1 & 0 & \dots & \dots & \dots & 0 \\
+		0 & \ddots & \ddots & \; & \; & \vdots \\
+		\vdots & \ddots & 1 & \ddots & \; & \vdots\\
+		\vdots & \; & \ddots & 0 & \ddots & \vdots\\
+		\vdots & \; & \; & \ddots & \ddots & 0\\
+		0 & \dots & \dots & \dots & 0 & 0\\
+		\end{pmatrix}\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Rückrichtung: Ist $M_C^B(f)=E_r$ und $C=(y_1,...,y_n)$, so ist $\Image(f)=\Span_K(y_1,...,y_r)$, also $\rk(f)=r$.
+		\item Hinrichtung: Sei $r=\rk(f)$. Setze $U=\Ker(f)$ und $W=\Image(f)$. Wähle Basis $(y_1,...,y_r)$ und ergänze diese zu einer Basis $C$ von 
+		$W$. Wähle für $i=1,...,r$ ein $x_i\in f^{-1}(y_i)$. Dann ist $(x_1,...,x_r)$ linear unabhängig und mit $U'=\Span_K(x_1,...,x_r)$ ist
+		$f|_{U'}:U'\to W_0$ ein Isomorphismus nach \propref{3_5_1}. Insbesondere ist $U\cap U'=\{0\}$ und mit \propref{3_7_11} folgt $V=U\oplus U'$. Ist also $(x_{r+1},...,x_n)$ 
+		eine Basis von $U$, so ist $B=(x_1,...,x_n)$ eine Basis von $V$ (\propref{2_4_9}). Diese Basis erfüllt $M_C^B(f)=E_r$.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[Rang einer Matrix]
+	Der Rang einer \begriff[Rang!]{Matrix} $A\in \Mat_{m\times n}(K)$ ist $\rk(A)=\rk(f_A)$, wobei $f_A:K^n\to K^m$ 
+	die durch $A$ beschriebene lineare Abbildung ist.
+\end{definition}
+
+\begin{mathematica}[Rang einer Matrix]
+	Auch für den Rang einer Matrix $A$ hat Mathematica bzw. WolframAlpha eine Funktion
+	\begin{align}
+		\texttt{MatrixRank[A]}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{remark}
+	\proplbl{3_8_6}
+	Sei $A=(a_{ij})\in \Mat_{m\times n}(K)$. Man fasst die Spalten $a_j=(a_{1j},...,a_{mj})^t$ als Elemente des $K^m$ auf 
+	und definiert den Spaltenraum $\SR(A)=\Span_K(a_1,...,a_n)\subseteq K^m$. Entsprechend definiert man den Zeilenraum $\ZR(A)=\Span_K(
+	\tilde a_1^t,..,\tilde a_m^t)\subseteq K^n$. Es ist $\Image(f_A)=\SR(A)$ und folglich $\rk(A)=\dim_K(\SR(A))$. Außerdem ist $\SR(A^t)=\ZR(A)$ 
+	und deshalb $\rk(A^t)=\dim_K(\ZR(A))$. Man nennt $\rk(A)$ deshalb auch den \begriff[Rang!]{Spaltenrang} von $A$ und $\rk(A^t)$ den \begriff[Rang!]{Zeilenrang} von $A$.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{3_8_7}
+	Ist $A\in \Mat_{m\times n}(K)$, $S\in \GL_m(K)$, $T\in \GL_n(K)$, so ist $\rk(SAT)=\rk(A)$.
+\end{lemma}
+\begin{proof}
+	$\rk(SAT)=\rk(f_{SAT})=\rk(f_S\circ f_A\circ f_T)=\rk(f_A)=\rk(A)$, da $f_S$ und $f_T$ bijektiv sind (\propref{3_8_3}).
+\end{proof}
+
+\begin{proposition}
+	\proplbl{3_8_8}
+	Für jedes $A\in \Mat_{m\times n}(K)$ gibt es $S\in \GL_m(K)$ und $T\in \GL_n(K)$ mit $SAT=E_r$, wobei $r=\rk(A)$.
+\end{proposition}
+\begin{proof}
+	Es gibt Basen $B$ von $K^n$ und $C$ von $K^m$ mit $M_C^B(f_A)=E_r$ (\propref{3_8_4}). Mit den Standardbasen $E_n$ bzw. $E_m$ gilt: $M_C^B(f_A)=T_C^{E_m}
+	\cdot M_{E_m}^{E_n}(f_A)\cdot (T_B^{E_n})^{-1}=SAT$ mit $S=T_C^{E_m}\in \GL_m(K)$ und $T=(T_B^{E_n})^{-1}\in \GL_n(K)$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_8_9}
+	Seien $A,B\in \Mat_{m\times n}(K)$. Genau dann gibt es $S\in \GL_m(K)$ und $T\in \GL_n(K)$ mit $B=SAT$, wenn 
+	$\rk(A)=\rk(B)$.
+\end{conclusion}
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: \propref{3_8_7}
+		\item Rückrichtung: $r=\rk(A)=\rk(B)\Rightarrow$ Nach \propref{3_8_8} gibt $S_1,S_2\in \GL_m(K)$ und $T_1,T_2\in \GL_n(K)$ mit $S_1AT_1=E_r=S_2BT_2 \Rightarrow 
+		B=S_2^{-1}\cdot SAT_1\cdot T_2^{-1}$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{3_8_10}
+	Für $A\in \Mat_{m\times n}(K)$ ist $\rk(A)=\rk(A^t)$, anders gesagt: $\dim_K(\SR(A))=\dim_K(\ZR(A))$.
+\end{proposition}
+\begin{proof}
+	Mit \propref{3_8_8} ergibt sich: $SAT=E_r$ mit $r=\rk(A)$, $S\in \GL_m(K)$ und $T\in \GL_n(K)$. Aus $E_r^t=(SAT)^t=T^tA^tS^t$, folgt, 
+	dass $\rk(A^t)=\rk(E_r^t)=\rk(A)$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_8_11}
+	Für $A\in \Mat_n(K)$ sind äquivalent:
+	\begin{itemize}
+		\item $A\in \GL_n(K)$, d.h. es gibt $S\in \GL_n(K)$ mit $SA=AS=\mathbbm{1}_n$
+		\item $\rk(A)=n$
+		\item Die Spalten von $A$ sind linear unabhängig.
+		\item Die Zeilen von $A$ sind linear unabhängig.
+		\item Es gibt $S\in \GL_n(K)$ mit $SA=\mathbbm{1}_n$.
+		\item Es gibt $T\in \GL_n(K)$ mit $AT=\mathbbm{1}_n$.
+	\end{itemize}
+\end{conclusion}
+\begin{proof}
+	\begin{itemize}
+		\item $(1)\iff (2)$: \propref{3_5_11} und \propref{3_7_14}
+		\item $(2)\iff (3)$: \propref{3_8_6}
+		\item $(2)\iff (4)$: \propref{3_8_6} und \propref{3_8_10}
+		\item $(1)\iff (5)\land (6)$: trivial
+		\item $(5)\land (6)\iff (2)$: \propref{3_8_9}
+	\end{itemize}
+\end{proof}

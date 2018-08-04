@@ -1,0 +1,77 @@
+\section{Stammfunktionen}
+\setcounter{equation}{0}
+Sei $f:D\subset K^n\to K^{m\times n}$
+
+\begin{boldenvironment}[Frage]
+	Existiert eine Funktion $F$ mit $F' = f$ auf $D$?
+\end{boldenvironment}
+
+\begin{*definition}[Stammfunktion, unbestimmtes Integral]
+	$F: D\subset K^n\to K^m$ heißt Stammfunktion oder unbestimmtes Integral von $f$ auf $D$, falls $F$ diffbar und $F'(x) = f(x)$ $\forall x\in D$
+\end{*definition}
+
+Betrachte zunächst den Spezialfall $n=m=1$. Sei $f:D\subset K\to K$, $D$ offen. Die Beispiele zur Differentiation liefern folgende Stammfunktionen
+
+\begin{minipage}{0.45\linewidth}
+	\begin{flushleft}
+		für $K=\mathbb{R}$ und $K = \mathbb{C}$:
+	\end{flushleft}
+	\vspace*{1mm}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\linewidth}{llX}
+		\toprule
+		$f(x)$ & \multicolumn{2}{l}{Stammfunktion $F(x)$} \\
+		\midrule
+		$\sin x$ & $-\cos x$ & \\
+		$\cos x$ & $\sin x$ & \\
+		$e^x$ & $e^x$ & \\
+		$x^k$ & $\frac{1}{k+1} x^{k+1}$ & ($k\in\mathbb{Z}\setminus\{-1\})$ \\
+		\bottomrule
+	\end{tabularx}
+\end{minipage}
+\hfill%
+\begin{minipage}{0.45\linewidth}
+	\begin{flushleft}
+		für $K=\mathbb{R}$:
+	\end{flushleft}
+	\vspace*{1mm}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\linewidth}{llX}
+		\toprule
+		$f(x)$ & \multicolumn{2}{l}{Stammfunktion $F(x)$} \\
+		\midrule
+		$a^x$ & $\frac{a^x}{\ln a}$ & \\
+		$x^\alpha$ & $\frac{1}{\alpha + 1} x^{\alpha + 1}$ & ($x > 0$, $\alpha \in \mathbb{R}\setminus \{ - 1\})$ \\
+		$\frac{1}{x}$ & $\ln\vert x\vert$ & ($x\in\mathbb{R}\setminus \{0\}$) \\
+		$\frac{1}{1+x^2}$ & $\arctan x$ & \\
+		\bottomrule
+	\end{tabularx}
+\end{minipage}
+	
+\begin{proposition}[partielle Integration]
+	Seien $f,g:D\subset K\to K$, $D$ Gebiet mit zugehörigen Stammfunktion $F, G:D\to K$.
+	
+	Falls $f\cdot G:D\to K$ Stammfunktion, dann auch $(F\cdot g):D\to K$ mit 
+	\begin{align}
+		\int F\cdot g \D x = F(x) G(x) - \int f\cdot G\D x\notag
+	\end{align}
+\end{proposition}
+
+\begin{proposition}[Integration durch Substitution]
+	Sei $f:D\subset K\to K$, $D$ Gebiet, mit Stammfunktion $F:D\to K$ und sei $\phi:D\to D$ \gls{diffbar}. Dann hat $f(\phi(.))\cdot \phi'(.):D\to K$ eine Stammfunktion mit \begin{align}
+		\proplbl{stammfunktion_substitution_eq}
+		\int f(\phi(x))\cdot\phi'(x)\D x &= F(\phi(x))\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	$F(\phi(.))$ ist nach der Kettenregel auf $D$ diffbar mit 
+	\begin{align*}
+		\frac{\D}{\D x} F(\phi(x)) &= F'(\phi(x)) \cdot \phi'(x) = f(\phi(x)) \cdot \phi'(x)
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	Sei $f:I\subset \mathbb{R}\to \mathbb{R}$, $I$ offenes Intervall, $f(x)\neq 0$ auf $I$, dann gilt \begin{align}
+		\int \frac{f'(x)}{f(x)} \D x = \ln \vert f(x) \vert\notag
+	\end{align}
+\end{proposition}

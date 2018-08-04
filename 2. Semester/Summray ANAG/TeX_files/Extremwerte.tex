@@ -1,0 +1,89 @@
+\section{Extremwerte} \setcounter{equation}{0}
+\subsection{Lokale Extrema ohne Nebenbedingung}
+
+\begin{*definition}[definit, semidefinit, indefinit]
+	$f^{(k)}(x)$ für $k\ge $ heißt positiv definit (negativ definit), falls \begin{align}
+		f^{(k)}(x) y^k > 0 \;(< 0) \quad\forall y\in\mathbb{R}\setminus \{0\}\notag
+	\end{align}
+	und positiv (negativ) semidefinit mit $\ge$ ($\le$).
+	
+	$f^{(k)}$ heißt indefinit, falls \begin{align}
+		\exists y_1, y_2\in\mathbb{R}^n\setminus \{0\}: f^{(k)}(x) y_1^k < 0 < f^{(k)} (x) y_2^k\notag
+	\end{align}
+\end{*definition}
+
+\begin{proposition}[Hinreichende Extremwertbedingung]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen, $f\in C^k(D,\mathbb{R})$, $x\in D$, $k\ge 2$ und sei \begin{align}
+		f'(x) = \dotsc = f^{(k-1)} = 0\notag
+	\end{align}
+	Dann: \begin{enumerate}[label={\alph*)}]
+		\item $f$ hat strenges lokales Minimum (Maximum), falls $f^{(k)}(x)$ positiv (negativ) definit
+		\item \proplbl{extremwerte_hinreichende_bedinung_b}
+		$f$ hat weder Minimum noch Maximum, falls $f^{(k)}(x)$ indefinit.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	Taylorscher Satz!
+\end{proof}
+
+\begin{boldenvironment}[Test Definitheit in Anwendungen]
+	\person{Hesse}-Matrix $A\in\mathbb{R}^{n\times}$ ist \begin{itemize}
+		\item positiv (negativ) definit $\Leftrightarrow$ alle Eigenwerte sind positiv (negativ) 
+		\item indefinit $\Rightarrow$ $\exists$ positive und negative Eigenwerte
+	\end{itemize}
+\end{boldenvironment}
+
+\begin{boldenvironment}[\person{Sylvester}'sches Definitheitskriterium]
+	Für $n=2$ gilt
+	\begin{itemize}
+		\item $\det(A)<0\Leftrightarrow$ indefinit
+		\item $\det(A)>0, a_1<0\Leftrightarrow$ negativ definit (Maximum)
+		\item $\det(-A)>0, a_1>0\Leftrightarrow$ positiv definit (Minimum)
+	\end{itemize}
+\end{boldenvironment}
+
+\begin{boldenvironment}[Algo Bestimmung Art und Lage Extremwerte]\vspace*{0pt}
+	Gegeben sei eine Fkt. $f: \real^n \to \real$
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Bestimme $n$-partielle Ableitung von $f$ und suche Pkte., die $f=0$ erfüllen
+		\item Bestimme Hesse-Matrix von $f$
+		\item setze gefundene Pkte.  in Hesse Matrix von $f$ ein und berechne die $\det(Hess(f))$, damit bekommt man die Art der Extremwerte.
+	\end{enumerate}
+\end{boldenvironment}
+
+\subsection{Lokale Extrema mit Gleichungsnebenbedingung}
+\begin{proposition}[Lagrange-Multiplikatorregel, notwendige Bedingung]
+	Seien $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $g:D\to\mathbb{R}^m$ stetig, diffbar, $D$ offen und sei $x\in D$ lokales Extremum von $f$ bezüglich $G$, d.h. \begin{align*}\exists r > 0: f(x)\; \substack{\le \\ \ge}\; f(y)\quad\forall y\in B_r(x)\end{align*} mit $g(y) = 0$.
+	
+	Falls $g'(x)$ regulär, d.h. \begin{align}
+	\mathrm{rang}\; g'(x) = m\notag \end{align}dann
+	\begin{align}
+	\exists \lambda\in\mathbb{R}^m: f'(x) + \transpose{\lambda} g'(x) = 0\notag\end{align}
+\end{proposition}
+
+\begin{*definition}[Lagrangescher Multiplikator]
+	$\lambda$ oben heißt Lagrangescher Multiplikator
+\end{*definition}
+
+\begin{boldenvironment}[Finden Extremwerte mit Lagrange-Multiplikatoren]\vspace*{0pt}
+	Gegeben seien $f: \real^n \to \real$ und $g: \real^n \to \real^m$
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Berechnene $f'(x) + \transpose{\lambda} g'(x) = 0$, wobei $\lambda \in \real^m$ ($f'$ und $g'$ mit vollst. Reduktion in Kap. 18)
+		\item Beachte es müssen gleich viele Gleichung für Unbekannte sein
+		\item Gleichungssystem lösen und alle Unbekannten angeben
+	\end{enumerate}
+\end{boldenvironment}
+
+\subsection{Globale Extrema mit Abstrakter Nebenbedinung}
+\begin{boldenvironment}[Frage]
+	Bestimme sogenannte globale Extremalstelle $x_{\min}$, $x_{\max}$.
+\end{boldenvironment}
+
+\begin{boldenvironment}[Strategie]\vspace*{0pt}
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Bestimmte lokale Extrema in $D$
+		\item Bestimme globale Extrema auf $\partial D$
+		\item Vergleiche Extrema aus a) und b)
+	\end{enumerate}
+\end{boldenvironment}

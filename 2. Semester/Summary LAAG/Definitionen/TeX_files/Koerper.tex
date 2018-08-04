@@ -1,0 +1,36 @@
+\section{Körper}
+
+\begin{definition}[Körper]
+	Ein \begriff{Körper} ist ein kommutativer Ring $(K,+,\cdot)$ mit Einselement 
+	$1 \neq 0$, in dem jedes Element $x \neq x \in K$ invertierbar ist.
+\end{definition}
+
+\begin{definition}[Teilkörper]
+	Ein \begriff{Teilkörper} eines Körpers $(K,+,\cdot)$ ist die Teilemenge $L 
+	\subset K$, die mit der geeigneten Einschränkung von Addition und Multiplikation wieder ein
+	Körper ist.
+\end{definition}
+
+\begin{example}[Endliche Primkörper]
+	Für jede Primzahl $p$ ist $\mathbb Z /p \mathbb Z$ ein Körper. Ist $\overline{a}\neq \overline{0}$, so gilt 
+	$p$ teilt nicht $a$ und somit gibt es nach \propref{1_5_7} $b,k \in \mathbb Z$ mit \\
+	\begin{align}
+		ab+kp &= 1 \notag \\
+		\overline{(ab+kp)} &= \overline{1} = \overline{(ab)} = \overline{a} \cdot \overline{b} \notag
+	\end{align}
+	und somit ist $\overline{a}$ invertierbar in $\mathbb Z /p \mathbb Z$. Somit sind für $n \in \mathbb N$
+	äquivalent:
+	\begin{itemize}
+		\item $\mathbb Z /n \mathbb Z$ ist ein Körper
+		\item $\mathbb Z /n \mathbb Z$ ist nullteilerfrei
+		\item $n$ ist Primzahl
+	\end{itemize}
+\end{example}
+\begin{proof}
+	\begin{itemize}
+		\item 1 $\Rightarrow$ 2: \propref{1_4_13}
+		\item 2 $\Rightarrow$ 3: \propref{1_4_12}
+		\item 3 $\Rightarrow$ 1: gegeben
+	\end{itemize}
+	Insbesondere ist $\mathbb Z /p \mathbb Z$ nullteilerfrei, d.h. aus $p\vert ab$ folgt $p\vert a$ oder $p\vert b$.
+\end{proof}

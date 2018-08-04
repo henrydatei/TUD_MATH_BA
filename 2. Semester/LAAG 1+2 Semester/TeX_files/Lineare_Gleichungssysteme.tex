@@ -1,0 +1,184 @@
+\section{Lineare Gleichungssysteme}
+
+Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
+
+\begin{definition}[Lineares Gleichungssystem]
+	Unter einem \begriff{Linearen Gleichungssystem} verstehen wir eine Gleichung der Form $Ax=b$. 
+	Diese heißt \begriff{homogen}, wenn $b=0$, sonst \begriff{inhomogen} und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein \begriff{Lösungsraum}.
+\end{definition}
+
+\begin{mathematica}[Lineare Gleichungssysteme]
+	Für das Lösen von Linearen Gleichungssystemen gibt es in WolframAlpha bzw. Mathematica verschiedene Verfahren:
+	\begin{itemize}
+		\item \texttt{Solve[]}:
+		\begin{align}
+			\texttt{Solve[a == 2 b \&\& b == 5 \&\& c + a == b, \{a, b, c\}]}\notag
+		\end{align}
+		\item \texttt{LinearSolve[]}: Braucht 2 Argumente: Zum einen die Koeffizientenmatrix $A$ und den Ergebnisvektor $b$. Rückgabe ist dann der Variablenvektor $x$.
+		\begin{align}
+			\texttt{LinearSolve[\{\{1, 1\}, \{0, 1\}\}, \{6, 10\}]}\notag
+		\end{align}
+	\end{itemize}
+\end{mathematica}
+
+\begin{remark}
+	Ist $A=(a_{ij})$, $b=(b_1,...,b_m)^t$, so schreibt man das Lineare Gleichungssystem $Ax=b$ auch
+	\begin{align}
+	\begin{vmatrix}
+		a_{11}x_1 + \dots + a_{1n}x_n & = & b_1\\
+		\vdots & \vdots & \vdots\\
+		a_{m1}x_1 + \dots + a_{mn}x_n & = & b_m\\
+	\end{vmatrix}\notag
+	\end{align}
+\end{remark}
+
+\begin{remark}
+	Das homogene System $Ax=0$ hat als Lösungsraum den Untervektorraum $L(A,0)=\Ker(f_A)$ der Dimension $\dim_K(L(A,0))=n-\rk(A)$. Das 
+	inhomogene System hat entweder $L(A,b)=\emptyset$ oder der Lösungsraum ist der affine Unterraum $L(A,b)=f^{-1}(b)=x_0+L(A,0)$, wobei 
+	$x_0\in L(A,b)$ beliebig. Man erhält so alle Lösungen des inhomogenen Systems, wenn man eine Lösung und die Lösungen des homogenen 
+	Systems kennt.
+\end{remark}
+
+\begin{definition}[Zeilenstufenform]
+	Die Matrix $A=(a_{ij})$ hat \begriff{Zeilenstufenform}, wenn es ganze Zahlen $0\le r \le m$ und $1\le 
+	k_1<...<k_r\le n$ gibt mit:
+	\begin{itemize}
+		\item für $1\le i \le r$ und $1\le j < k_i$ ist $a_{ij}=0$
+		\item für $1\le i \le r$ ist $a_{ik_{i}}\neq 0$ (sogenannte \begriff{Pivotelemente})
+		\item für $r<i\le m$ und $1\le j\le n$ ist $a_{ij}=0$
+	\end{itemize}
+	\begin{align}
+		\begin{pmatrix}
+		0 & \dots & 0 & a_{1k_{1}} & * & \dots & \dots & *\\
+		0 & \dots & \dots & 0 & a_{2k_{2}} & * & \dots & *\\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & a_{rk_{r}}\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & 0\\
+		\vdots & \; & \; & \; & \; & \; & \; & \vdots\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & 0\\
+		\end{pmatrix}\notag
+	\end{align}
+\end{definition}
+
+\begin{lemma}
+	Sei $A$ in Zeilenstufenform. Dann ist $\rk(A)=r$.
+\end{lemma}
+\begin{proof}
+	Wegen $\rk(A)=\rk(A^t)=\dim_K(\ZR)$ genügt es zu zeigen, dass die ersten $r$ Zeilen $a_1,...,a_r$ linear unabhängig sind. Ist $\sum
+	_{i=1}^r \lambda a_i=0$, so ist insbesondere $0=\sum_{i=1}^r \lambda_i a_{ik_{i}}=\lambda_1 a_{1k_{1}}$, also $\lambda_1
+	=0$, und dann immer so weiter.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{3_9_6}
+	Sei $A$ in Zeilenstufenform.
+	\begin{itemize}
+		\item Ist $b_i\neq 0$ für ein $r<i\le m$, so ist $L(A,b)=\emptyset$.
+		\item Ist $b_i=0$ für alle $r<i\le m$, so erhält man alle $x\in L(A,b)$, indem man erst $x_j\in K$ für $j\in \{1,..,n\}
+		\backslash \{k_1,...,k_r\}$ beliebig wählt und dann für $i=r,r-1,...,1$ rekursiv $x_{k_{i}}=a_{1k_{i}}^{-1}\cdot (b_i-\sum
+		_{j=k_i+1}^n a_{ij}\cdot x_j)\quad (*)$ setzt.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Klar.
+		\item Sicher erhält man auf diese Weise Lösungen $x\in L(A,b)$. Umgekehrt muss jede solche Lösung $(*)$ erfüllen, man erhält auf 
+		diese Weise also alle.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[Elementarmatrizen]
+	Für $i,j\in \{1,...,m\}$, $\lambda \in K^{\times}$ und $\mu\in K$ definieren wir 
+	$m\times m$-Matrizen, die sogenannten \begriff{Elementarmatrizen}:
+	\begin{itemize}
+		\item $S_i(\lambda):=\mathbbm{1}_m + (\lambda-1)E_{ii}$
+		\item $Q_{ij}(\mu):= \mathbbm{1}_m + \mu E_{ij}$
+		\item $P_{ij}:= \mathbbm{1}_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Multiplikation einer dieser Matrizen von links an die Matrix $A$ hat folgende Wirkung:
+	\begin{itemize}
+		\item $S_i(\lambda)\cdot A$: Multiplikation der $i$-ten Zeile mit $\lambda$
+		\item $Q_{ij}(\mu)\cdot A$: Addition des $\mu$-fachen der $j$-ten Zeile zur $i$-ten Zeile
+		\item $P_{ij}$: Vertauschung von $i$-ter und $j$-ter Zeile
+	\end{itemize}
+	Man spricht dann von sogenannten elementaren Zeilenumformungen der Matrix $A$ von Typ I, II oder III.
+\end{remark}
+
+\begin{lemma}
+	Es sind $S_i(\lambda),Q_{ij}(\mu),P_{ij}\in \GL_m(K)$. Dann ist $S_i(\lambda)^{-1}=S_i(\lambda^{-1}), Q_{ij}(\mu)
+	^{-1}=Q_{ij}(-\mu),P_{ij}^{-1}=P_{ij}$. Insbesondere gilt: Ist $E$ eine der Elementarmatrizen, so ist $\ZR(EA)=\ZR(A)$ und $L(EA,0)=
+	L(A,0)$. Weiterhin ist $\rk(EA)=\rk(A)$.
+\end{lemma}
+\begin{proof}
+	Inverse nachprüfen. Da $E\in \GL_m(K)$ sind $f_E,f_{E^t}\in Aut_K(K^m)$, also $\ZR(EA)=\SR((EA)^t)=\Image(f_{A^tE^t})=\Image(f_{A^t}\circ
+	f_{E^t})=\Image(f_{A^t})=\ZR(A)$ und $L(EA,0)=\Ker(f_{EA})=\Ker(f_E\circ f_A)=\Ker(f_A)=L(A,0)$.
+\end{proof}
+
+\begin{remark}
+	Anders gesagt: Elementare Zeilenumformungen verändern den Lösungsraum eines homogenen linearen Gleichungssystems 
+	nicht.
+\end{remark}
+
+\begin{theorem}[Eliminierungsverfahren nach \person{Gauß}]
+	\proplbl{3_9_11}
+	Zu jeder Matrix $A\in \Mat_{m\times n}(K)$ gibt es $l\in \mathbb N_0$ und 
+	Elementarmatrizen $E_1,...,E_l$ vom Typ II und III für die $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform ist. 
+\end{theorem}
+\begin{proof}
+	Seien $a_1,...,a_n$ die Spalten von $A$. \\
+	Ist $A=0$ so ist nichts zu tun. \\
+	Sei nun $A\neq 0$ und sei $k_1$ minimal mit $a_{k_1}\neq 0$. Es gibt also ein $i$ mit $a_{ik_1}\neq 0$. Durch Vertauschen der ersten 
+	und der $i$-ten Zeile erreichen wir, dass $a_{1k_1}=0$, d.h. wir multiplizieren $A$ mit $E_1=P_{1i}$. Nun addieren wir für $i=2,..,m$ 
+	ein geeignetes Vielfaches der ersten Zeile zur $i$-ten Zeile, um $a_{ik_1}=0$, d.h. wir multiplizieren $A$ mit $E_i=Q_{i1}(\mu_i)$ für 
+	$\mu_i=\frac{a_{ik_1}}{a_{1k_1}}$. Nach diesen Umformungen haben wir eine Matrix der Form:
+	\begin{align}\begin{pmatrix}
+		0 & \dots & 0 & a_{1k_1} & * & \dots & *\\
+		0 & \dots & \dots & 0 & \textcolor{red}{*} & \textcolor{red}{\dots} & \textcolor{red}{*}\\
+		\vdots & \vdots & \vdots & \vdots & \textcolor{red}{\vdots} & \textcolor{red}{\vdots} & \textcolor{red}{\vdots}\\
+		0 & \dots & \dots & 0 & \textcolor{red}{*} & \textcolor{red}{\dots} & \textcolor{red}{*}\\
+		\end{pmatrix}\notag\end{align}
+	und können nun mit dem \textcolor{red}{Rest der Matrix $A=:A'$} von vorne beginnen. Die nun folgenden Zeilenumformungen werden die 
+	erste Zeile und die ersten $k_1$ Spalten nicht mehr ändern, und weil $A'$ weniger Zeilen und Spalten als $A$ hat, bricht das Verfahren 
+	nach endlich vielen Schritten ab.
+\end{proof}
+
+\begin{mathematica}[\person{Gauss}-Verfahren]
+	Auch für das \person{Gauss}-Verfahren hat Mathematica bzw. WolframAlpha eine Funktion. Sie gibt die Matrix nach Ausführung des \person{Gauss}-Algorithmus zurück.
+	\begin{align}
+		\texttt{RowReduce[\{\{1, 4\}, \{2, 5\}\}]}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{conclusion}
+	Zu jeder Matrix $A$ gibt es eine invertierbare Matrix $S\in \GL_n(K)$ für die $SA$ in Zeilenstufenform ist.
+\end{conclusion}
+\begin{proof}
+	folgt direkt aus \propref{3_9_11} mit $S=E_l\cdot ... \cdot E_1$
+\end{proof}
+
+\begin{remark}
+	Der Beweis für das Eliminierungsverfahren (\propref{3_9_11}) liefert ein Verfahren, die Elementarmatrizen $E_1,...,E_l$ zu finden. 
+	Damit erhält man ein Verfahren ein lineares Gleichungssystem zu lösen. Setzt man $S=E_l\cdot ... \cdot E_1$, $A'=SA$ und $b'=Sb$, so 
+	ist $L(A,b)=L(A',b')$: $Ax=b\Rightarrow SAx=Sb$ bzw. $A'x=b' \Rightarrow S^{-1}A'x=S^{-1}b'$. \\
+	Das Gleichungssystem kann dann mit \propref{3_9_6} gelöst werden. Praktisch führt man die elementaren Zeilenumformungen an $A$ parallel dazu auch an $b$ 
+	durch.
+\end{remark}
+
+\begin{remark}
+	Es gibt von diesem Verfahren verschiedene Varianten und weitere Anwendungen: So kann man z.B. die Invertierbarkeit 
+	einer Matrix $A\in \Mat_n(K)$ prüfen und ggf. das Inverse bestimmen: Ist $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform, so ist $A$ 
+	genau dann invertierbar, wenn alle Zeilen von Null verschieden sind. Ist dies der Fall, so ist $r=n$ und $k_i=i$ für alle $i$, 
+	und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=\mathbbm{1}_n$. Dann ist 
+	$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$ (vgl. \propref{3_8_11}). Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
+	auch an $\mathbbm{1}_n$ ausführt.
+\end{remark}
+
+\begin{conclusion}
+	Jedes $A\in \GL_m(K)$ ist ein Produkt von Elementarmatrizen.
+\end{conclusion}
+\begin{proof}
+	$A^{-1}=S'=E_s\cdot ... \cdot E_1 \Rightarrow A=(E_s\cdot ... \cdot E_1)^{-1}=E_1^{-1}\cdot ... \cdot E_s^{-1}$
+\end{proof}

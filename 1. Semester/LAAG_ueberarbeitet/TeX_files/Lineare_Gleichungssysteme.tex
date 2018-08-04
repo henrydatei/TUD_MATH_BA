@@ -7,6 +7,20 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	Diese heißt \begriff{homogen}, wenn $b=0$, sonst \begriff{inhomogen} und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein \begriff{Lösungsraum}.
 \end{definition}
 
+\begin{mathematica}[Lineare Gleichungssysteme]
+	Für das Lösen von Linearen Gleichungssystemen gibt es in WolframAlpha bzw. Mathematica verschiedene Verfahren:
+	\begin{itemize}
+		\item \texttt{Solve[]}:
+		\begin{align}
+			\texttt{Solve[a == 2 b \&\& b == 5 \&\& c + a == b, \{a, b, c\}]}\notag
+		\end{align}
+		\item \texttt{LinearSolve[]}: Braucht 2 Argumente: Zum einen die Koeffizientenmatrix $A$ und den Ergebnisvektor $b$. Rückgabe ist dann der Variablenvektor $x$.
+		\begin{align}
+			\texttt{LinearSolve[\{\{1, 1\}, \{0, 1\}\}, \{6, 10\}]}\notag
+		\end{align}
+	\end{itemize}
+\end{mathematica}
+
 \begin{remark}
 	Ist $A=(a_{ij})$, $b=(b_1,...,b_m)^t$, so schreibt man das Lineare Gleichungssystem $Ax=b$ auch
 	\begin{align}
@@ -56,6 +70,7 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 \end{proof}
 
 \begin{proposition}
+	\proplbl{3_9_6}
 	Sei $A$ in Zeilenstufenform.
 	\begin{itemize}
 		\item Ist $b_i\neq 0$ für ein $r<i\le m$, so ist $L(A,b)=\emptyset$.
@@ -130,6 +145,13 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	nach endlich vielen Schritten ab.
 \end{proof}
 
+\begin{mathematica}[\person{Gauss}-Verfahren]
+	Auch für das \person{Gauss}-Verfahren hat Mathematica bzw. WolframAlpha eine Funktion. Sie gibt die Matrix nach Ausführung des \person{Gauss}-Algorithmus zurück.
+	\begin{align}
+		\texttt{RowReduce[\{\{1, 4\}, \{2, 5\}\}]}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{conclusion}
 	Zu jeder Matrix $A$ gibt es eine invertierbare Matrix $S\in \GL_n(K)$ für die $SA$ in Zeilenstufenform ist.
 \end{conclusion}
@@ -138,10 +160,10 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 \end{proof}
 
 \begin{remark}
-	Der Beweis für das Eliminierungsverfahren liefert ein Verfahren, die Elementarmatrizen $E_1,...,E_l$ zu finden. 
+	Der Beweis für das Eliminierungsverfahren (\propref{3_9_11}) liefert ein Verfahren, die Elementarmatrizen $E_1,...,E_l$ zu finden. 
 	Damit erhält man ein Verfahren ein lineares Gleichungssystem zu lösen. Setzt man $S=E_l\cdot ... \cdot E_1$, $A'=SA$ und $b'=Sb$, so 
 	ist $L(A,b)=L(A',b')$: $Ax=b\Rightarrow SAx=Sb$ bzw. $A'x=b' \Rightarrow S^{-1}A'x=S^{-1}b'$. \\
-	Das Gleichungssystem kann dann gelöst werden. Praktisch führt man die elementaren Zeilenumformungen an $A$ parallel dazu auch an $b$ 
+	Das Gleichungssystem kann dann mit \propref{3_9_6} gelöst werden. Praktisch führt man die elementaren Zeilenumformungen an $A$ parallel dazu auch an $b$ 
 	durch.
 \end{remark}
 
@@ -150,7 +172,7 @@ Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
 	einer Matrix $A\in \Mat_n(K)$ prüfen und ggf. das Inverse bestimmen: Ist $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform, so ist $A$ 
 	genau dann invertierbar, wenn alle Zeilen von Null verschieden sind. Ist dies der Fall, so ist $r=n$ und $k_i=i$ für alle $i$, 
 	und man findet weitere Elementarmatrizen $E_{l+1},...,E_s$ vom Typ I und II, für die $E_s\cdot ... \cdot E_1\cdot A=1_n$. Dann ist 
-	$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$. Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
+	$S'=E_s\cdot ... \cdot E_1\cdot A=A^{-1}$ (vgl. \propref{3_8_11}). Praktisch erhält man $A^{-1}$, indem man die Zeilenumformungen an $A$ parallel dazu 
 	auch an $1_n$ ausführt.
 \end{remark}
 

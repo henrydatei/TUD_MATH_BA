@@ -1,0 +1,140 @@
+\section{Messbarkeit}\setcounter{equation}{0}
+Wir führen zunächst das \lebesque-Maß ein und behandeln dann messbare Mengen und messbare Funktionen.
+
+\subsection{\lebesque-Maß}
+\begin{*definition}[Quader, Volumen]
+	Wir definieren die Menge 
+	\begin{align*}
+		\mathcal{Q} &:= \left\{ I_1 \times \dotsc \times I_n \subset\mathbb{R}^n \mid I_j\subset\mathbb{R}\text{ beschränktes Intervall} \right\}
+	\end{align*}
+	$\emptyset$ ist auch als beschränktes Intervall zugelassen. $Q\in\mathcal{Q}$ heißt Quader.
+	
+	Sei $\vert I_j\vert :=$ Länge des Intervalls $I_j\subset\mathbb{R}$ (wobei $\vert\emptyset\vert = 0$), dann heißt 
+	\begin{align}
+		\proplbl{messbarkeit_definition_volumen_eq}
+		v(Q) &:= \vert I_1\vert \cdot \dots \cdot \vert I_n\vert \quad \text{für}\; Q = I_1\times \dotsc\times I_n \in\mathbb{Q}\notag
+	\end{align}
+	Volumen von $Q$
+\end{*definition}
+
+\begin{*definition}[\person{Lebesgue}-Maß]
+	Dafür betrachte eine (Mengen-) Funktion $\vert .\vert :\mathcal{P}(\mathbb{R}^n)\to [0,\infty]$ mit \begin{align}
+		\proplbl{messbarkeit_definition_lebesque_mass}
+		\vert \mu \vert &= \inf \left\{ \left. \sum_{j=1}^{\infty} v(Q_j) \;\right|\; M\subset\bigcup\limits_{j=1}^\infty Q_j, \; \text{$Q_j\in\mathcal{Q}$ Quader} \right\}\quad\forall M\subset\mathbb{R}^n,
+	\end{align}
+	die man \person{Lebegue}-Maß auf $\mathbb{R}^n$ nennt.
+\end{*definition}
+
+\begin{proposition}
+	Es gilt: 
+	\begin{align}
+		M_1 \subset M_2 &\Rightarrow \vert M_1 \vert \le \vert M_2\vert\notag
+	\end{align}
+	und die Abbildung $\mu\mapsto \vert \mu\vert$ ist $\sigma$-subadditiv, d.h. 
+	\begin{align}
+		\left\vert \bigcup_{j=1}^\infty M_k\right\vert &\le \sum_{k=1}^\infty \vert M_k\vert, \quad\text{für } M_j\subset\mathbb{R}^n, \;j\in\mathbb{N}_{\ge 1}\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item klar
+		\item Finde Quader $Q_{k_j}$ mit $M_k\subset\bigcup Q_{k_j}$, $\sum v(Q_{k_j})\le\vert M_k\vert+\frac{\varepsilon}{2^k}$. Wegen $\bigcup_{k=1}^\infty M_k\subset \bigcup_{j,k=1}^\infty v(Q_{k_j}) \le \sum_{k=1}^\infty \vert M_k\vert + \epsilon$ folgt 
+		\begin{align*}
+		\left\vert\bigcup_{k=1}^\infty M_k\right\vert \le \sum_{j,k=1}^\infty v(Q_{k_j}) \le \sum_{k=1}^\infty \vert M_k\vert + \epsilon
+		\end{align*}
+	\end{itemize}
+\end{proof}
+
+\begin{*definition}[Nullmenge]
+	$N\subset\mathbb{R}^n$ heißt Nullmenge, falls $\vert N \vert = 0$. Offenbar gilt:
+\end{*definition}
+
+\begin{conclusion}
+	Es ist $v(Q) = \vert Q\vert$ $\forall Q\in\mathcal{Q}$
+	
+	Damit im folgenden Stets $\vert Q\vert$ statt $v(Q)$
+\end{conclusion}
+\begin{proof}
+	$v(Q) = v(\cl Q)$ und $\vert Q\vert = \vert \cl Q\vert\Rightarrow Q$ abgeschlossen. Finde neue Quader $Q_j$ mit $Q\subset\bigcup Q_j$ und $\sum v(Q_j)\le\vert Q\vert+\varepsilon$. Da $Q$ kompakt $\Rightarrow$ Überdeckung durch endlich viele $Q_j$, geeignete Zerlegung von $Q_j\Rightarrow v(Q)\le\sum v(Q_j)\Rightarrow \vert Q\vert\le v(Q)\le\vert Q\vert+\varepsilon$
+\end{proof}
+
+\begin{*definition}
+	Eine Eigenschaft gilt f.ü. auf $M\subset\mathbb{R}^n$, falls eine Nullmenge existiert, sodass die Eigenschaft $\forall x\in M\setminus N$ gilt. Man sagt auch, dass die Eigenschaft für fast alle $x\in M$ gilt.
+\end{*definition}
+
+\subsection{Messbare Mengen}
+\begin{*definition}[messbar]
+	Eine Menge $M\subset\mathbb{R}^n$ heißt messbar, falls 
+	\begin{align}
+		\vert \tilde{M}\vert = \vert \tilde{M}\cap M\vert + \vert \tilde{M}\setminus M\vert \quad\forall \tilde{M}\in\mathbb{R}\notag
+	\end{align}
+	Beim Nachweis der Messbarkeit muss man nur "`$\ge$"' prüfen.
+\end{*definition}
+
+\begin{proposition}
+	\begin{enumerate}[label={(\alph*)}]
+		\item $\emptyset$, $\mathbb{R}^n$ sind messbar
+		\item $M\subset\mathbb{R}^n$ messbar $\Rightarrow$ $M^C = \mathbb{R}^n\setminus M$ messbar 
+		\item $M_1, M_2, \dotsc\subset\mathbb{R}^n$ messbar $\Rightarrow$ $\bigcup_{j=1}^\infty M_j$, $\bigcap_{j=1}^\infty M_j$ messbar
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\hspace*{0pt}
+	\begin{itemize}[topsep=\dimexpr-\baselineskip / 2\relax]
+		\item wegen $\vert\emptyset\vert = 0$ und: $\vert \tilde{M}\vert \le \vert\tilde{M}\setminus\emptyset\vert = \vert\tilde{M}\vert$
+		\item wegen $\tilde{M}\cap M = \tilde{M}\setminus M^C$, $\tilde{M}\setminus M = \tilde{M}\cap M^C$ $\Rightarrow$ Behauptung
+		\item offenbar $M_1\cap...\cap M_k$ messbar und $M_1\cup...\cup M_k$ messbar, wähle $A=\bigcup M_j\Rightarrow A$ messbar
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Es gilt: \begin{enumerate}[label={(\alph*)}]
+		\item alle Quader sind Messbar ($Q\in\mathcal{Q}$)
+		\item Offene und abgeschlossene $M\subset\mathbb{R}^n$ sind messbar
+		\item alle Nullmengen sind messbar
+		\item Sei $M\subset\mathbb{R}^n$ messbar, $M_0\subset\mathbb{R}^n$, beide Mengen unterscheiden sich voneinander nur um eine Nullmenge, d.h. $\vert (M\setminus M_0)\cup (M_0\setminus M)\vert = 0$ \\
+		$\Rightarrow$ $M_0$ messbar.
+	\end{enumerate}
+\end{proposition}
+
+\subsection{Messbare Funktionen}
+\begin{*definition}[messbar]
+	Eine Funktion $f:D\subset\mathbb{R}\to\overline{\mathbb{R}}$ heißt messbar, falls $D$ messbar ist und $f^{-1}(U)$ für jede offene Menge $U\subset\overline{\mathbb{R}}$ messbar ist.
+\end{*definition}
+
+\begin{*definition}[charakteristische Funktion]
+	Für $M\subset\mathbb{R}^n$ heißt $\chi_\mu:\mathbb{R}^n\to\mathbb{R}$ mit \begin{align*}
+		\chi_\mu = \begin{cases}
+			1, &x\in M\\ 0, &x\in\mathbb{R}^n\setminus M
+		\end{cases}
+	\end{align*}
+	charakteristische Funktion von $M$.
+\end{*definition}
+
+\begin{*definition}[Treppenfunktion]
+	Eine Funktion $h:\mathbb{R}^n\to\mathbb{R}$ heißt Treppenfunktion, falls es $M_1, \dotsc, M_k\subset\mathbb{R}^n$  und $c_1,\dotsc,c_k\in\mathbb{R}$ gibt mit 
+	\begin{align}
+		h(x) = \sum_{j=1}^k a_j \chi_{\mu_j}(x)\notag
+	\end{align}
+\end{*definition}
+
+\begin{*definition}[Nullfortsetzung]
+	Für $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ definieren wir die Nullfortsetzung $\overline{f}:\mathbb{R}^n\to\overline{\mathbb{R}}$ durch \begin{align}
+		\overline{f}(x) &:= \begin{cases}
+			f(x), &x\in D\\ 0,&x\in\mathbb{R}^n\setminus D
+		\end{cases}\notag
+	\end{align}
+\end{*definition}
+
+\rule{0.4\linewidth}{0.1pt}
+
+\begin{example}
+	Folgende Funktionen sind messbar
+	\begin{itemize}
+		\item Stetige Funktionen auf offenen und abgeschlossenen Mengen, insbesondere konstante Funktionen sind messbar
+		\item Funktionen auf offenen und abgeschlossenen Mengen, die f.ü. mit einer stetigen Funktion übereinstimmen
+		\item $\tan$, $\cot$ auf $\mathbb{R}$ (setzte z.b. $\tan\left(\frac{\pi}{2}+k\pi\right) = \cot(k\pi) = 0$ $\forall k$)
+		\item $x\to \sin\frac{1}{x}$ auf $[-1,1]$ (setzte beliebigen Wert in $x=0$)
+		\item $\chi_M:\mathbb{R}\to\mathbb{R}$ ist für $\vert\partial M\vert = 0$ messbar auf $\mathbb{R}$ (dann ist $\chi$ auf $\inn M$, $\ext M$ stetig)
+	\end{itemize}
+\end{example}

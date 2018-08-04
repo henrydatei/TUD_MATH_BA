@@ -1,0 +1,170 @@
+\section{Richtungsableitung und partielle Ableitung}
+ \setcounter{equation}{0}
+Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$.
+
+\begin{boldenvironment}[Ziel]
+	Zurückführung der Berechnung der Ableitung $f(x)$ auf die Berechnung der Ableitung für Funktionen $\tilde{f}:\tilde{D}\subset K\to K$
+	\begin{itemize}
+		\item Reduktionssatz $\Rightarrow$ man kann sich bereits auf $m=1$ einschränken
+		\item für Berechnung der Ableitung von $f$ ist neben den Rechen- und Kettenregeln auch der Differentialquotient verfügbar
+	\end{itemize}
+\end{boldenvironment}
+
+\begin{boldenvironment}[Idee]
+	Betrachte $f$ auf Geraden $t\to x + t\cdot z$ durch $x$ $\Rightarrow$ skalares Argument $t$, $t\in K$ $\Rightarrow$ Differentialquotient.
+	
+	Spezialfall: $z = e_j$ $\Rightarrow$ Partielle Ableitung
+\end{boldenvironment}
+
+\begin{*definition}[Richtungsableitung]
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$, $z\in K^n$.
+	
+	Falls $a\in L(K, K^m)$ ($\cong K^m$) existiert mit\begin{align}
+		\proplbl{richtungsableitung_definition}
+		f(x + t\cdot z) = f(x) + t\cdot a + o(t),\;t\to 0,\; t\in K,
+	\end{align}
+	dann heißt $f$ diffbar in $x$ in Richtung $z$ und $D_zf(x) := a$ heißt Richtungsableitung von $f$ in $x$ in Richtung $z$
+\end{*definition}
+
+\begin{proposition}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$, $z\in K^n$. Dann:
+	\begin{align}
+		\text{$f$ diffbar in $x$ in Richtung $z$ mit $D_zf(x)\in L(K,K^m)$} \iff\lim\limits_{t\to 0}\frac{f(x+tz)-f(x)}{t}=a\text{ existiert und } D_zf(x)=a\notag
+	\end{align}
+\end{proposition}
+
+\begin{proposition}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ diffbar in $x\in D$.\\
+	$\Rightarrow$ Richtungsableitung $D_zf(x)$ existiert $\forall z\in K^n$ und 
+	\begin{align}
+		D_zf(x) = f'(x) \cdot z\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Definition Ableitung mit $f(y) = f(x) ...$, $y=x+tz$, Ausrechnen, Behauptung
+\end{proof}
+
+\subsection{Anwendung: Eigenschaften des Gradienten}
+\begin{*definition}[Niveaumenge]
+	Sei $f:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ diffbar in $x\in D$.
+	$N_C:= \{ x\in D \mid f(x) = C \}$ heißt Niveaumenge von $f$ für $x\in \mathbb{R}$.
+\end{*definition}	
+
+\begin{*definition}[Tangentialvektor]
+	Sei $\gamma: (-\delta, \delta)\to N_C$ ($\delta > 0$) Kurve mit $\gamma(0) = 0$, $\gamma$ diffbar in $0$.
+	
+	Ein $z\in\mathbb{R}\setminus \{0\}$ mit $z = \gamma'(0)$ für eine derartige Kurve $\gamma$ heißt Tangentialvektor an $N_C$ in $x$.
+	
+	Offenbar gilt
+	\begin{align}
+		\phi(t) &= f(\gamma(t)) = c \notag \\
+		\phi'(0) &= f'(\gamma(0))\cdot \gamma'(0) = 0 \notag \\
+		D_{\gamma'(0)}f(x) &= \langle f'(x),\gamma'(0)\rangle = 0\notag
+	\end{align}
+\end{*definition}
+
+\begin{proposition}[Eigenschaften des Gradienten]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}$, $D$ offen, $f$ \gls{diffbar} in $x\in D$. Dann:
+\begin{enumerate}[label={\arabic*)}]
+	\item Gradient $f'(x)$ steht senkrecht auf der Niveaumenge $N_{f(x)}$, d.h. $\langle f'(x), z\rangle = 0$ $\forall$ Tangentialvektoren $z$ an $N_{f(x)}$ in $x$
+	\item Richtungsableitung $D_zf(x) = 0$ $\forall$ Tangentialvektoren $z$ an $N_{f(x)}$ in $x$
+	\item Gradient $f(x)$ zeigt in Richtung des steilsten Anstieges von $f$ in $x$ und $\vert f'(x)\vert$ ist der steilste Anstieg, d.h. falls $f'(x)\neq 0$ gilt für Richtung $\tilde{z} := \frac{f'(x)}{\vert f'(x)\vert}$ \begin{align*}
+		D_{\tilde{z}} f(x) = \max \left\lbrace D_z f(x) \in\mathbb{R} \mid z\in\mathbb{R}^n \text{ mit } \vert z \vert = 1 \right\rbrace = \vert f(x)\vert
+	\end{align*}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\begin{enumerate}[label={\arabic*)},topsep=\dimexpr -\baselineskip / 2 \relax]
+		\item klar, siehe Definition Tangentialvektor
+		\item analog oben
+		\item für $\vert z \vert = 1$ gilt
+		\zeroAmsmathAlignVSpaces \begin{align*}
+			&\mathrm{D}_z f(x) = \langle f'(x), z \rangle = \vert f'(x) \vert \langle \tilde{z},z\rangle \\
+			\le\; &\vert f'(x) \vert  \vert \tilde{z}\vert \vert z \vert = \vert f'(x)\vert = \frac{\langle f'(x), f'(x)\rangle}{\vert f'(x) \vert} = \langle f'(x), \tilde{z} \rangle = D_{\tilde{z}}f(x)
+		\end{align*}
+		$\Rightarrow$ Behauptung
+	\end{enumerate}
+\end{proof}
+
+\begin{*definition}[partielle Ableitung]
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $x\in D$ (nicht notwendigerweise \gls{diffbar} in $x$).
+	
+	Falls Richtungsableitung $D_{e_j} f(x)$ existiert, heißt $f$ partiell diffbar bezüglich $x_j$ im Punkt $x$ und $D_{e_j} f(x)$ heißt partielle Ableitung von $f$ bezüglich $x_j$ in $x$.
+\end{*definition}
+
+\begin{remark}
+	Zur Berechnung von $\frac{\partial}{\partial x_j} f(x)$ differenziert man skalare Funktionen \\ $x_j\to f(x_1, \dotsc, x_j, \dotsc, x_n)$ (d.h. alle $x_k$ mit $k\neq j$ werden als Parameter angesehen).
+\end{remark}
+
+\begin{conclusion}
+	Sei $f:D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} in $x\in D$ \zeroAmsmathAlignVSpaces  \begin{align}
+	\proplbl{richtungsableitung_partielle_ableitung_ausrechnen}
+	\Rightarrow \;\; D_z f(x) = \sum_{j=1}^n z_j \frac{\partial}{\partial x_j} f(x) \quad \forall z = (z_1, \dotsc, z_n)\in\mathbb{R}\notag
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	Definition $D_zf(x)=f'(x)z$, $z$ zerteilen als Summe $z_j\cdot e_j$, $f'$ reinziehen, zusammenfassen
+\end{proof}
+
+\begin{theorem}[Vollständige Reduktion]
+	Sei $f=(f_1, \dotsc, f_m): D\subset K^n\to K^m$, $D$ offen, $f$ \gls{diffbar} in $x\in D$. Dann:
+	\begin{align}
+		\proplbl{richtungsableitung_vollstaendige_reduktion_eq}
+		f'(x) \overset{(a)}{=}\begin{pmatrix}
+			f_1'(x) \\ \vdots \\ f_m'(x)
+		\end{pmatrix} \overset{(b)}{=} \left( \frac{\partial}{\partial x_1} f(x)\;\dotsc\;\frac{\partial}{\partial x_n}f(x) \right) \overset{(c)}{=} \underbrace{\begin{pmatrix}
+			\frac{\partial }{\partial x_1} f_1(x) & \dots & \frac{\partial}{\partial x_n} f_1(x) \\
+			\vdots & & \vdots
+			\\ \frac{\partial}{\partial x_1} f_m(x) & \dots & \frac{\partial}{\partial x_n} f_m(x)
+		\end{pmatrix}}_{\mathcal{\text{\begriff{\person{Jacobi}-Matrix}}}}\in K^{m\times n}\notag
+	\end{align}
+\end{theorem}
+
+\begin{proof}\hspace*{0pt}
+\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr -\baselineskip / 2 \relax]
+	\item Reduktion auf skalare Funktionen
+	\item Benutze $f'(x)\cdot z = D_z f(x)$
+	\item $f_j'(x) = \left( \frac{\partial}{\partial x_1} f_j(x), \dotsc, \frac{\partial}{\partial x_n} f_j(x) \right)$, sonst analog zu b)
+\end{enumerate}
+\end{proof}
+
+\subsection{\texorpdfstring{$\mathbf{\mathbb{R}}$}{R}-differenzierbar und \texorpdfstring{$\mathbf{\mathbb{C}}$}{C}-differenzierbar}
+
+Jede $\mathbb{C}$-diffbare Funktion $f:D\subset \mathbb{C}^n\to \mathbb{C}^m$ ist auch $\mathbb{R}$-diffbar. Die Umkehrung gilt i.A. nicht!
+
+\begin{*definition}[$\mathbb{R}$-differenzierbar]
+	$f:D\subset X\to Y$, $D$ offen, $(X,Y) = (\mathbb{R}^n, \mathbb{C}^m)$ bzw. $(\mathbb{C}^n,\mathbb{R}^m)$ oder $(\mathbb{C}^n, \mathbb{C}^m)$ heißt $\mathbb{R}$-diffbar in $z_0\in D$, falls Ableitung $A:X\to Y$ $\real$-linear ist.
+\end{*definition}
+
+\begin{proposition}
+	Sei $f:D\subset\mathbb{C}\to\mathbb{C}$, $D$ offen, $z_0\in D$. Dann: 
+	\begin{align}
+		f\;\mathbb{C}\text{-diffbar in }z_0 \; \; \Leftrightarrow \;\;f\;\mathbb{R}\text{-\gls{diffbar} in }z_0 \text{ mit }f_x(z) = -i f_y(z_0)\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{itemize}[topsep=\dimexpr - \baselineskip / 2 \relax]
+		\item["`$\Rightarrow$"'] vgl. oben
+		\item["`$\Leftarrow$"'] $z=x+iy$, Zerteilen in Real- und Imaginärteil
+	\end{itemize}
+\end{proof}
+
+\subsection{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}
+
+\begin{*definition}[\person{Cauchy}-\person{Riemann}-Differentialgleichungen]
+Falls $\mathbb{R}$-diffbar in $z_0$ ist 
+\begin{align*}
+	f_x(z_0) &= u_x(x_0, y_0) + i v_x(x_0, y_0),& f_y(z_0) &= u_y(x_0, y_0) + iv_y(x_0, y_0)
+\end{align*}
+folglich \begin{align}
+	f\text{ ist $\comp$-diffbar } \;\Leftrightarrow\;\underbrace{\begin{alignedat}{2}
+		u_x(x_0, y_0) &=& &v_y(x_0, y_0) \\
+		u_y(x_0, y_0) &=&-&v_x(x_0, y_0)
+	\end{alignedat}}_{\mathclap{\text{\begriff{\person{Cauchy}-\person{Riemann}-Differentialgleichungen}}}}\notag
+\end{align}
+\end{*definition}

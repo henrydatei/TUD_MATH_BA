@@ -165,3 +165,23 @@ Mathematik \smiley{}
 		$\frac{\vert r_k(x)\cdot R_l(x)\vert}{\vert x-x_0\vert^{k+l}}=\frac{\vert r_k(x)\vert}{\vert x-x_0\vert^k}\cdot\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\to 0$
 	\end{enumerate}
 \end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item offenbar in $K^n$: $\vert x-x_0\vert^k=\mathcal{O}(\vert x-x_0\vert^k)=o(\vert x-x_0\vert^{k-1})$, $x\to x_0$
+		\item sei $f:D\subseteq K^n\to K^m$ stetig in $x_0\in D$, dann gilt für $x\to x_0$
+		\begin{itemize}
+			\item $f(x)\cdot o(\vert x-x_0\vert^k)=(f(x_0)+o(1))\cdot o(\vert x-x_0\vert^k)=o(\vert x-x_0\vert^k)$
+			\item $\frac{1}{f(x)+o(1)}=\frac{1}{f(x)}+o(1)=\frac{1}{f(x_0)}+o(1)$, da alle Terme gegen $\frac{1}{f(x_0)}$ konvergieren. \\
+			\emph{beachte:} $o(1)$ steht jeweils für verschiedene Funktionen mit dieser Eigenschaft
+		\end{itemize}
+		\item in $\real$ gilt für $x\to 0$:
+		\begin{itemize}
+			\item $x^5=o(\vert x\vert^4)$, $x^5=o(\vert x\vert)$, $x^5=\mathcal{O}(\vert x\vert^5)$, $x^5=\mathcal{O}(\vert x\vert^3)$
+			\item $e^x=\mathcal{O}(1)=3+\mathcal{O}(1)$, $e^x=1+o(1)\neq 2+o(1)$
+			\item $\sin(x)=\mathcal{O}(\vert x\vert)$, $\sin(x)=o(1)$, $x^3\cdot\sin(x)=o(\vert x\vert^3)$, $e^x\cdot \sin(x)=o(1)$
+			\item $(1-\cos(x))x^2=\mathcal{O}(\vert x\vert^2)x^2=o(\vert x\vert^3)$
+			\item $\frac{1}{o(1)+\cos(x)}=e^x+o(1)=1+o(1)$
+		\end{itemize}
+	\end{itemize}
+\end{example}

@@ -1,0 +1,37 @@
+\section{Funktionsfolgen}\setcounter{equation}{0}
+
+Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ diffbar für $k\in\mathbb{N}$
+
+\begin{boldenvironment}[Frage]
+	Wann konvergiert $\{ f_k\}_{k\in\mathbb{N}}$ gegen diffbare Funktion $f$ mit $f_k'\to f'$
+\end{boldenvironment}
+
+\begin{proposition}[Differentiation bei Funktionsfolgen]
+	Sei $f_k:D\subset K^n\to K^m$, $D$ offen, beschränkt, $f_k$ diffbar $\forall k$ und\begin{enumerate}[label={(\alph*)}]
+		\item $f_k'\to: g$ gleichmäßig auf $B_r(x)\subset D$
+		\item $\{ f_k(x_0)\}_{k}$ konvergiert für ein $x_0\in B_r(x)$
+	\end{enumerate}
+	$\Rightarrow$ $f_k\to: f$ gleichmäßig auf $B_r(x)$ und $f$ ist diffbar auf $B_r(x)$ mit 
+	\begin{align*}
+		f_k'(y) \rightarrow f'(y) \quad\forall y\in B_r(x)
+	\end{align*}
+\end{proposition}
+
+\subsection{Anwendung auf Potenzreihen}
+	Sei $f:B_R(x_0)\subset K\to K$ gegeben durch eine Potenzreihe 
+	\begin{align}
+		\proplbl{funktionsfolgen_potenzreihe}
+		f(x) &= \sum_{k=0}^\infty a_k(x  - x_0)^k\quad\forall x\in B_r(x_0)\notag
+	\end{align}
+
+\begin{boldenvironment}[Wiederholung]
+	$R=\frac{1}{\limsup_{k\to \infty} \sqrt[k]{\vert a_k\vert}}$
+\end{boldenvironment}
+
+\begin{proposition}
+	Sei $f:B_r(x_0)\subset K\to K$ Potenzreihe \\
+	\hspace*{1.5ex}$\Rightarrow$ $f$ ist diffbar auf $B_r(x_0)$ mit 
+	\begin{align}
+		f'(x) &= \sum_{k=1}^\infty k a_k (x - x_0)^{k-1}\quad\forall x\in B_r(x_0)\notag
+	\end{align}
+\end{proposition}

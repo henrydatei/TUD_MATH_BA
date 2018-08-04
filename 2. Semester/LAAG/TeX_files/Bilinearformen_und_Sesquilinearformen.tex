@@ -13,7 +13,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{definition}
 
 \begin{remark}
-	Im Fall $K=\real$ ist $\lambda=\overline{\lambda}$. Wir werden der Einfachheit halber auch in diesem Fall von Sesquilinearformen sprechen, vgl. \propref{2_1_12}
+	Im Fall $K=\real$ ist $\lambda=\overline{\lambda}$. Wir werden der Einfachheit halber auch in diesem Fall von Sesquilinearformen sprechen, vgl. \propref{6_1_12}
 \end{remark}
 
 \begin{example}
@@ -39,7 +39,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{example}
 
 \begin{lemma}
-	\proplbl{2_2_6}
+	\proplbl{6_2_6}
 	Seien $v,w\in V$. Mit $x=\Phi_B^{-1}(v)$, $y=\Phi_B^{-1}(w)$ und $A=M_B(s)$ ist $s(v,w)=x^tA\overline{y}=s_A(x,y)$.
 \end{lemma}
 \begin{proof}
@@ -52,13 +52,13 @@ Sei $K=\real$ oder $K=\comp$.
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-		\item injektiv: \propref{2_2_6}
+		\item injektiv: \propref{6_2_6}
 		\item surjektiv: Für $A\in\Mat_n(K)$ wird durch $s(v,w)=\Phi_B^{-1}(v)^t\cdot A\cdot \overline{\Phi_B^{-1}(w)}$ eine Sesquilinearform auf $V$ mit $M_B(s)=(s(v_i,w_j))_{i,j}= (e_i^tA\overline{e_j})_{i,j}=(e_iAe_j)_{i,j}=A$ definiert.
 	\end{itemize}
 \end{proof}
 
 \begin{proposition}[Transformationsformel]
-	\proplbl{2_2_8}
+	\proplbl{6_2_8}
 	Seien $B$ und $B'$ Basen von $V$ und $s$ eine Sesquilinearform auf $V$. Dann gilt:
 	\begin{align}
 		M_{B'}(s)=(T_B^{B'})^t\cdot M_B(s)\cdot \overline{T_B^{B'}}\notag
@@ -67,8 +67,8 @@ Sei $K=\real$ oder $K=\comp$.
 \begin{proof}
 	Seien $v,w\in V$. Definiere $A=M_B(s)$, $A'=M_{B'}(s)$, $T=T_B^{B'}$ und $x,y,x',y'\in K^n$ mit $v=\Phi_B(x)=\Phi_B(x')$, $w=\Phi_B(y)=\Phi_B(y')$. Dann ist $x=Tx'$, $y=Ty'$ und somit
 	\begin{align}
-		(x')^tA'\overline{y'}&\overset{\propref{2_2_6}}{=}s(v,w)\notag \\
-		&\overset{\propref{2_2_6}}{=}x^tA\overline{y}\notag \\
+		(x')^tA'\overline{y'}&\overset{\propref{6_2_6}}{=}s(v,w)\notag \\
+		&\overset{\propref{6_2_6}}{=}x^tA\overline{y}\notag \\
 		&= (Tx')^tA\overline{Ty'} \notag \\
 		&= (x')^tT^tA\overline{T}\overline{y'}\notag
 	\end{align} 
@@ -76,7 +76,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{proof}
 
 \begin{example}
-	\proplbl{2_2_9}
+	\proplbl{6_2_9}
 	Sei $s$ das Standardskalarprodukt auf dem $K^n$ und $B=(b_1,...,b_n)$ eine Basis des $K^n$. Dann ist 
 	\begin{align}
 		M_B(s)=(T_{\mathcal{E}}^B)^t\cdot M_{\mathcal{E}}(s)\cdot \overline{T_{\mathcal{E}}^B}=B^t\cdot \mathbbm{1}_n\cdot \overline{B}=B^tB\notag
@@ -85,7 +85,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{example}
 
 \begin{proposition}
-	\proplbl{2_2_10}
+	\proplbl{6_2_10}
 	Sei $s$ eine Sesquilinearform auf $V$. Dann sind äquivalent:
 	\begin{itemize}
 		\item Es gibt $0\neq v\in V$ mit $s(v,w)=0$ für alle $w\in V$.
@@ -99,7 +99,7 @@ Sei $K=\real$ oder $K=\comp$.
 \end{proof}
 
 \begin{definition}[ausgeartet]
-	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{ausgeartet}, wenn eine der äquivalenten Bedingungen aus \propref{2_2_10} erfüllt ist, sonst \emph{nicht-ausgeartet}.
+	Eine Sesquilinearform $s$ auf $V$ heißt \begriff{ausgeartet}, wenn eine der äquivalenten Bedingungen aus \propref{6_2_10} erfüllt ist, sonst \emph{nicht-ausgeartet}.
 \end{definition}
 
 \begin{definition}[symmetrisch, hermitesch]
@@ -111,8 +111,16 @@ Sei $K=\real$ oder $K=\comp$.
 	Eine Matrix $A\in\Mat_n(K)$ heißt \emph{symmetrisch} bzw. \emph{hermitesch}, wenn $A=A^*=\overline{A}^t=\overline{A^t}$.
 \end{definition}
 
+\begin{mathematica}[symmetrische bzw. hermitesche Matrizen]
+	Wie für vieles Andere auch, hat Mathematica bzw. WolframAlpha auch dafür eine Funktion:
+	\begin{align}
+		\texttt{SymmetricMatrixQ[A]}\notag \\
+		\texttt{HermitianMatrixQ[A]}\notag
+	\end{align}
+\end{mathematica}
+
 \begin{proposition}
-	\proplbl{2_2_13}
+	\proplbl{6_2_13}
 	Sei $s$ eine Sesquilinearform auf $V$ und $B$ eine Basis von $V$. Genau dann ist $s$ hermitesch, wenn $M_B(s)$ dies ist.
 \end{proposition}
 \begin{proof}
@@ -124,5 +132,5 @@ Sei $K=\real$ oder $K=\comp$.
 	Für $A,B\in\Mat_n(K)$ und $S\in\GL_n(K)$ ist $(A+B)^*=A^*+B^*$, $(AB)^*=B^*A^*$, $(A^*)^*=A$ und $(S^{-1})^*=(S^*)^{-1}$.
 \end{proposition}
 \begin{proof}
-	\propref{2_1_8}, III.1.14, III.1.15 %TODO: Verlinkung
+	\propref{6_1_8}, III.1.14, III.1.15 %TODO: Verlinkung
 \end{proof}

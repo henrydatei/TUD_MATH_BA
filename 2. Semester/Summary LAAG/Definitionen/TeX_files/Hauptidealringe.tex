@@ -1,0 +1,30 @@
+\section{Hauptidealringe}
+
+Sei $R$ nullteilerfrei.
+
+\begin{definition}[Hauptidealring]
+	Ein Ring $R$ ist ein \begriff{Hauptidealring}, wenn $R$ nullteilerfrei ist und jedes Ideal von $R$ ein Hauptideal ist.
+\end{definition}
+
+\begin{example}
+	Ist $R=K$ ein Körper, so hat $R$ nur die Ideale $(0)$ und $(1)$, und somit ist $R$ ein Hauptidealring.
+\end{example}
+
+\begin{definition}[euklidische Gradfunktion]
+	Eine \begriff{euklidische Gradfunktion} auf $R$ ist eine Abbildung $\delta:R\backslash \{0\}\to \natur_0$ für die gilt: \\
+	Für jedes $a\in R$ und $0\neq b\in R$ gibt es $q,r\in R$ mit $a=bq+r$, wobei $r=0$ oder $\delta(r)<\delta(b)$.
+	
+	Ein nullteilerfreier Ring $R$ ist \begriff[Ring!]{euklidisch}, wenn es eine euklidische Gradfunktion auf $R$ gibt.
+\end{definition}
+
+\begin{lemma}[Lemma von \person{Bézout}]
+	\proplbl{8_3_8}
+	Sei $R$ ein Hauptidealring und $a,b\in R$. Es existiert ein $c\in R$ mit $c=\ggT(a,b)$ und $(c)=(a,b)$. Insbesondere gibt es $x,y\in R$ mit $c=ax+by$ und $\ggT(x,y)=1$.
+\end{lemma}
+\begin{proof}
+	$R$ Hauptidealring $\Rightarrow\exists c\in R$ mit $(c)=(a,b)$, insbesondere $c=ax+by$ mit $x,y\in R$.
+	\begin{itemize}
+		\item $c=\ggT(a,b)$: $a,b\in (c)\Rightarrow c\mid a$ und $c\mid b$. Ist $d\in R$ mit $d\mid a$ und $d\mid b$, so ist $d\mid (ax+by)=c$
+		\item $\ggT(x,y)=1$: Ist $d\in R$ mit $d\mid x$ und $d\mid y$, so gelten $(cd)\mid (ax)$ und $(cd)\mid (by)\Rightarrow (cd)\mid (ax+by)=c\Rightarrow d\in R^\times$, also $d\sim 1$.
+	\end{itemize}
+\end{proof}

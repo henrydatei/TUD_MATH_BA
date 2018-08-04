@@ -1,0 +1,44 @@
+In diesem ganzen Kapitel seien
+\begin{itemize}
+	\item $K=\real$ oder $K=\comp$
+	\item $n\in\natur$
+	\item $V$ ein $n$-dimensionaler $K$-VR
+\end{itemize}
+
+\section{Das Standardskalarprodukt}
+
+Sei zunächst $K=\real$.
+
+\begin{definition}[Standardskalarprodukt in $\real$]
+	Auf den Standardraum $V=\real^n$ definiert man das \begriff{Standardskalarprodukt in $\real$} $\langle.\rangle:\real^n\times\real^n\to \real$ durch
+	\begin{align}
+		\skalar{x}{y}=x^ty=\sum_{i=1}^n x_iy_i\notag
+	\end{align}
+\end{definition}
+
+Sei nun $K=\comp$.
+
+\begin{definition}[komplexe Konjugation, Absolutbetrag]
+	Für $x,y\in\real$ und $z=x+iy\in\comp$ definiert man $\overline{z}=x-iy$ heißt \begriff{komplexe Konjugation}.. Man definiert den \begriff{Absolutbetrag} von $z$ als
+	\begin{align}
+		\vert z\vert &=\sqrt{z\overline{z}}=\sqrt{x^2+y^2}\in\real_{\ge 0}\notag
+	\end{align}
+	Für $A=(a_{ij})_{i,j}\in\Mat_{m\times n}(\comp)$ sehen wir
+	\begin{align}
+		\overline{A}&= (\overline{a_{ij}})_{i,j}\in\Mat_{m\times n}(\comp)\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[Standardskalarprodukt in $\comp$]
+	Auf $K=\comp^n$ definiert man das \begriff{Standardskalarprodukt in $\comp$} $\langle\cdot,\cdot\rangle:\comp^n\times\comp^n\to \comp$ durch
+	\begin{align}
+	\langle x,y\rangle=x^t\overline{y}=\sum_{i=1}^n x_i\overline{y}_i\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[euklidische Norm in $\comp$]
+	Auf $V=\comp$ definiert man die \begriff{euklidische Norm in $\comp$} $\Vert \cdot \Vert:\comp^n\to \real_{\ge 0}$ durch
+	\begin{align}
+	\Vert x\Vert =\sqrt{\langle  x,x\rangle}\notag
+	\end{align}
+\end{definition}

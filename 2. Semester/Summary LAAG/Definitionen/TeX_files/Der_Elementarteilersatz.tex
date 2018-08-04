@@ -1,0 +1,84 @@
+\section{Der Elementarteilersatz}
+
+Sei $R$ Hauptidealring.
+
+\begin{definition}
+	Seien $a,b,x,y\in R$. Für $i,j\in\{1,...,n\}$ ist
+	\begin{align}
+		E_{ij} = (\delta_{\sigma,i},...,\delta_{\mu,j})_{\sigma,\mu}\in\Mat_n(\real)\notag
+	\end{align}
+	Sei
+	\begin{align}
+		E_{ij}(a,b,x,y) = \mathbbm{1}_n-E_{ii}-E_{jj}+aE_{ii}+bE_{ij}+xE_{jj}+yE_{ji}\notag
+	\end{align}
+	%TODO: Matrix ergänzen von Pascal
+\end{definition}
+
+\begin{theorem}[Elementarteilersatz für Matrizen, \person{Smith}-Normalform]
+	\proplbl{8_6_4}
+	Sei $A\in\Mat_{m\times n}(\real)$. Es gibt $0\le r \le\min\{n,m\}$, $S\in\GL_m(R)$, $T\in\GL_n(R)$
+	mit 
+	\begin{align}
+		SAT &= \begin{pmatrix}d_1 & & & \\ & \ddots & & \\ & & d_r & \\ & & & \mathbb{0}\end{pmatrix} \notag \\
+		\mathbb{0} &\in\Mat_{m-r\times n-r}\notag
+	\end{align}
+	wobei $d_i\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,n-1$
+\end{theorem}
+\begin{proof}
+	Induktion nach $\min\{m,n\}$. Für $a\in R$ sei $\delta(a)\in\natur_0\cup\{\infty\}$ die Anzahl der Primelemente in der Primfaktorzerlegung von $a$, mit $\delta(0):=\infty$, und $\delta(A):=\min_{ij}\{\delta(a_{ij})\}$. Wir können annehmen, dass $\delta(A)\le \delta(SAT)$ für alle $S\in \GL_m(R)$ und $T\in \GL_n(R)$. Durch Zeilen- und Spaltenvertauschungen erreichen wir, dass $\delta(a_{11})=\delta(A)$.
+	\begin{itemize}
+		\item \emph{1. Behauptung:} $a_{11}\mid a_{i1}$ für alle $i$. Gäbe es ein $i\ge 1$ für dass $a_{11}\nmid a_{i1}$, so sei $c=\ggT(a_{11},a_{i1})=xa_{11}+ya_{i1}$ mit $\ggT(x,y)=1$, also $ax-by=1$ mit $a,b\in R$. Multiplikation mit $E_{1i}(x,y,a,b)$ von links erzeugt an der Position $(1,1)$ das Element $c$, und $\delta(c)<\delta(a_{11})=\delta(A)$, im Widerspruch zur Minimalität von $\delta(A)$. \\
+		Analog zeigt man, dass $a_{11}\mid a_{1j}$ für alle $j$. Durch Zeilen- und Spaltenumformungen können wir deshalb nun $a_{i1}=0$ für alle $i>1$ und $a_{1j}$ für alle $j>1$ erreichen.
+		\item\emph{2. Behauptung:} $a_{11}\mid a_{ij}$ für alle $i,j$. Gäbe es $i>1$ und $j>1$ mit $a_{11}\nmid a_{ij}:=b$, so können wir die $j$-te Spalte zur ersten Spalte addieren, was $a_{11}$ nicht ändert und $a_{1i}=b$ bewirkt. Wider können wir Behauptung 1 anwenden und erhalten den Widerspruch, dass $a_{11}\mid b$. Damit ist nach diesem Umformungen
+		\begin{align}
+			A=\begin{pmatrix}a_{11} & \\ & a_{11}\cdot A'\end{pmatrix}\notag
+		\end{align}
+		mit $A'\in\Mat_{(m-1)\times (n-1)}(R)$. Wir wenden nun die Induktionshypothese auf $A'$ an und sind fertig.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Elementarteilersatz für Moduln]
+	\proplbl{8_6_8}
+	Sei $R$ ein Hauptidealring, $M\cong R^m$ ein endlich erzeugter freier $R$-Modul, $N\subseteq M$ ein Untermodul. Dann existiert $r\in\natur$, eine Basis $B'=(x'_1,...,x'_m)$ von $M$ und $d_1,...,d_r\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für $i=1,...,r-1$ für die $(d_1x'_1,...,d_rx'_r)$ eine Basis von $N$ ist.
+\end{proposition}
+\begin{proof}
+	Sei $B=(x_1,...,x_m)$ eine Basis von $M$. Nach \propref{8_6_7} ist $N$ endlich erzeugt, also 
+	\begin{align}
+		N=\sum_{j=1}^n Ry_j\quad\text{ mit }\quad y_j=\sum_{i=1}^m a_{ij}x_i\quad a_{ij}\in R\notag
+	\end{align}
+	Wir betrachten die lineare Abbildung $f:R^n\to M$ gegeben durch $f(e_j)=y_j$. Dann ist $\Image(f)=N$ und 
+	\begin{align}
+		M_B^{\mathcal{E}}(f)=A=(a_{ij})\in\Mat_{m\times n}(R)\notag
+	\end{align}
+	Nach \propref{8_6_4} existieren $S\in\GL_m(R)$, $T\in\GL_n(R)$ mit
+	\begin{align}
+		SAT=D=\diag(d_1,...,d_r,\mathbb{0})\notag
+	\end{align}
+	Es gibt somit Basen $\mathcal{E}'=(e'_1,...,e'_n)$ von $R^n$, $B'=(x'_1,...,x'_m)$ von $M$ mit $M_{B'}^{\mathcal{E}'}(f)=D$. Somit ist $N=\Image(f)=\sum_{i=1}^n R\cdot f(e'_i)=\sum_{j=1}^r Rd_jx'_j$. Da $(x'_1,...,x'_r)$ frei und $R$ nullteilerfrei ist, ist auch $(d_1x'_1,...,d_rx'_r)$ frei, also eine Basis von $N$.
+\end{proof}
+
+\begin{theorem}[Hauptsatz über endlich erzeugte Moduln über Hauptidealringen]
+	\proplbl{8_6_13}
+	Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. Dann ist
+	\begin{align}
+		M = F\oplus M_{tor}\notag
+	\end{align}
+	wobei $F\cong R^r$ ein endlich erzeugter freier $R$-Modul ist und
+	\begin{align}
+		M_{tor} \cong \bigoplus_{i=1}^n \qraum{R}{Rd_i}\notag
+	\end{align}
+	mit Nichteinheiten $d_1,...,d_n\in R\backslash\{0\}$, die $d_i\mid d_{i+1}$ für $i=1,...,n-1$ erfüllen.
+\end{theorem}
+\begin{proof}
+	Sei $M=\sum_{j=1}^m Ry_j$. Betrachte die lineare Abbildung $f:R^m\to M$ gegeben durch $f(e_j)=y_j$ und dem Untermodul $N=\Ker(f)\subseteq R^m$. Nach \propref{8_6_8} existiert eine Basis $(x_1,...,x_s)$ von $R^m$, $n\le s$ und $d_1,...,d_n\in R\backslash\{0\}$ mit $d_i\mid d_{i+1}$ für die $(d_1x_1,...,d_nx_n)$ eine Basis von $N$ ist. Nach dem Homomorphiesatz ist
+	\begin{align}
+		M=\Image(f)&\cong\qraum{R^m}{N}=\qraum{\bigoplus_{i=1}^s Rx_i}{\bigoplus_{i=1}^n Rd_ix_i} \notag \\
+		&\cong \qraum{R^s}{\bigoplus_{i=1}^n Rd_ie_i}\notag \\
+		&\cong \bigoplus_{i=1}^n \qraum{R}{Rd_i}\oplus \underbrace{R^{s-n}}_{F}\notag
+	\end{align}
+	Ist $d_i\in R^\times$, so ist $\qraum{R}{Rd_i}=0$, wir können diese $i$ daher weglassen. Dabei ist $\bigoplus_{i=1}^n \qraum{R}{Rd_i}$ genau der Torsionsmodul $M_{tor}$:
+	\begin{itemize}
+		\item "'$\subseteq$"': Mit $d:=d_1\cdot ... \cdot d_n\in R\backslash\{0\}$ ist $d\cdot (x_i)_{1,...,n}=(dx_i)_{1,...,n}=(0,...,0)$ (Vielfache von $Rd_i$ machen das Element zu 0)
+		\item "'$\supseteq$"': Ist $d\in R\backslash\{0\}$, $x\in\bigoplus_{i=1}^n\qraum{R}{Rd_i}$, $y\in R^{s-n}$ mit $d\cdot (x,y)=0$, so ist $d\cdot y=0$ und deshalb $y=0$.
+	\end{itemize}
+\end{proof}

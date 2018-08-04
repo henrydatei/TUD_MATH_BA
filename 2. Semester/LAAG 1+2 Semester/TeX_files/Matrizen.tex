@@ -1,0 +1,201 @@
+\section{Matrizen}
+
+Sei $K$ ein Körper.
+
+\begin{definition}[Matrix]
+	Seien $m,n \in \mathbb N_0$. Eine $m\times n$-\begriff{Matrix} über $K$ ist ein rechteckiges 
+	Schema:
+	\begin{align}
+		\begin{pmatrix}
+		a_{11} & ... & a_{1n}\\
+		... &  & ...\\
+		a_{m1} & ... & a_{mn}\\
+		\end{pmatrix}\notag
+	\end{align}
+	Man schreibt dies auch als $A=(a_{ij})_{i=1,...,n \; j=1,...,m}$ oder $A=(a_{ij})_{i,j}$, wenn $m$ und $n$ 
+	aus dem Kontext hervorgehen. Die $a_{ij}$ heißen die \begriff[Matrix!]{Koeffizienten} der Matrix $A$ und wir definieren $A_{i,j}=
+	a_{ij}$. Die Menge der $m\times n$-Matrizen über $K$ wird mit $\Mat_{m\times n}(K)$ oder $K^{m\times n}$ 
+	bezeichnet. Man nennt das Paar $(m,n)$ auch den \begriff[Matrix!]{Typ} von $A$. Ist $m=n$, so spricht man von \begriff[Matrix!]{quadratisch}en 
+	Matrizen und schreibt $\Mat_n(K)$. Zu einer Matrix $A=(a_{ij}) \in \Mat_{m\times n}(K)$ definiert man die zu $A$ 
+	\begriff[Matrix!]{transponierte Matrix} $A^t := (a_{ij})_{j,i} \in \Mat_{n\times m}(K)$.
+\end{definition}
+
+\begin{mathematica}[Matrizen]
+	Matrizen werden in Mathematica bzw. WolframAlpha folgendermaßen dargestellt:
+	\begin{align}
+		&\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\notag \\
+		\Rightarrow&\Big\lbrace\texttt{\{1,2,3\},\{4,5,6\},\{7,8,9\}}\Big\rbrace\notag
+	\end{align}
+	Wenn Mathematica als Ergebnis eine Matrix ausgibt, so lässt sich diese als Zeile schlecht lesen. Mit dem Suffix \texttt{//MatrixForm} lässt sich der Output als Matrix formatieren:
+	\begin{align}
+		&\texttt{\{\{1,2,3\},\{4,5,6\},\{7,8,9\}\}*3 //MatrixForm}\notag \\
+		\Rightarrow&\begin{pmatrix}3&6&9\\12&15&18\\21&24&27\end{pmatrix}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{example}
+	\begin{itemize}
+		\item Die \begriff{Nullmatrix} ist $0=(0)_{i,j} \in \Mat_{m\times n}(K)$.
+		\item Für $k,l \in \{1,...,n\}$ ist die $(k,l)$-\begriff{Basismatrix} gegeben durch $E_{kl}=(\delta_{jk}\delta_{jl})\in 
+		\Mat_{m\times n}(K)$.
+		\item Die \begriff{Einheitsmatrix} ist $\mathbbm{1}_n=(\delta_{ii})\in \Mat_n(K)$.
+		\item Für $a_i,...,a_n \in K$ definiert man eine \begriff{Diagonalmatrix} $\diag(a_1,...,a_n)=(\delta_{ij}\cdot a_i)$.
+		\item Für eine Permutation $\sigma\in S_n$ definiert man die \begriff{Permutationsmatrix} $P_\sigma := (\delta_{\sigma
+			(i),j})$.
+		\item Für $a_1,...,a_n$ definiert man einen \begriff{Zeilenvektor} $(a_1,...,a_n)\in \Mat_{1\times n}(K)$ bzw. einen 
+		\begriff{Spaltenvektor} $(a_1,...,a_n)^t$.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[Addition und Skalarmultiplikation]
+	Seien $A=(a_{ij})$ und $B=(b_{ij})$ desselben Typs und 
+	$\lambda \in K$. Man definiert auf $\Mat_{m\times n}(K)$ eine koeffizientenweise \begriff[Matrix!]{Addition} und \begriff[Matrix!]{Skalarmultiplikation}.
+\end{definition}
+
+\begin{mathematica}[Matrizenoperationen]
+	Die komponentenweise Addition bzw. Skalarmultiplikation von Matrizen $A$ und $B$ lässt sich in Mathematica bzw. WolframAlpha folgendermaßen realisieren:
+	\begin{align}
+		\texttt{A+B}\notag \\
+		\texttt{A*B}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{proposition}
+	\proplbl{3_1_4}
+	$(\Mat_{m\times n},+,\cdot)$ ist ein $K$-Vektorraum der Dimension $\dim_K(\Mat_{m\times n})=n\cdot m$ mit 
+	Basismatrix als Basis.
+\end{proposition}
+\begin{proof}
+	Dies ist klar, weil wir $\Mat_{m\times n}$ mit dem Standardraum $K^{mn}$ identifizieren können. Wir haben die 
+	Elemente nur als $m\times n$-Matrix statt als $mn$-Tupel geschrieben.
+\end{proof}
+
+\begin{definition}[Matrizenmultiplikation]
+	Seien $m,n,r \in \mathbb N_0$. Sind $A=(a_{ij})\in \Mat_{m\times n}(K)$, 
+	$B=(b_{jk})\in \Mat_{n\times r}(K)$ so definieren wir die \begriff[Matrix!]{Matrizenmultiplikation} $C=AB$ als die Matrix $C=(c_{ik})\in \Mat_{m\times r}(K)$ mit 
+	$c_{ik}=\sum_{j=1}^n a_{ij}\cdot b_{jk}$. Kurz geschrieben "'Zeile $\cdot$ Spalte"'.
+\end{definition}
+
+\begin{mathematica}[Matrizenmultiplikation]
+	Die Matrizenmultiplikation in Mathematica und WolframAlpha für Matrizen $A$ und $B$ geht so:
+	\begin{align}
+		\texttt{A.B}\text{ oder }\texttt{Dot[A,B]}\notag
+	\end{align}
+\end{mathematica}
+
+\begin{example}
+	\proplbl{3_1_6}
+	\begin{itemize}
+		\item Für $A\in \Mat_n(K)$ ist $0\cdot A=0$ und $1\cdot A=A$.
+		\item Für $\sigma \in S_n$ und $A\in \Mat_{n\times r}(K)$ geht $P_{\sigma}\cdot A$ aus $A$ durch Permutation der 
+		Zeilen hervor.
+	\end{itemize}
+\end{example}
+
+\begin{lemma}
+	\proplbl{3_1_7}
+	Für $m,n,r \in \mathbb N_0$ und $A=(a_{ij})\in \Mat_{m\times n}(K)$, $B=(b_{jk})\in \Mat_
+	{n\times r}(K)$ und $\lambda\in K$ gilt:
+	\begin{align}
+		A(\lambda B)=(\lambda A)B=\lambda(AB)\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Schreibe $A=(a_{ij})$, $B=(b_{jk})$. Dann ist $A(\lambda B)=\sum_{j=1}^n a_{ij}\cdot \lambda b_{jk}=\sum
+	_{j=1}^n \lambda a_{ij} \cdot b_{jk}=(\lambda A)B=\lambda \cdot \sum_{j=1}^n a_{ij}b_{jk}=\lambda
+	(AB)$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{3_1_8}
+	Matrizenmultiplikation ist assoziativ:
+	\begin{align}
+		A(BC)=(AB)C\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Sei $D=BC\in \Mat_{n\times s}(K)$, $E=AB \in \Mat_{m\times r}(K)$. Schreibe $A=(a_{ij})$ usw. Für $i,l$ ist $(AD)=
+	\sum_{j=1}^n a_{ij}d_{jl}=\sum_{j=1}^n a_{ij}\cdot \sum_{k=1}^r b_{jk}c_{kl}=\sum
+	_{j=1}^n \sum_{k=1}^n a_{ij}b_{jk}c_{kl}$. \\
+	$(EC)=\sum_{k=1}^n e_{ik}c_{kl}=\sum_{k=1}^r \sum_{j=1}^n a_{ij}b_{jk}c_{kl}$. Also ist 
+	$AD=EC$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{3_1_9}
+	Für $m,n,r\in \mathbb N_0$ und $A,A'\in \Mat_{m\times n}(K)$, $B,B'\in \Mat_{n\times r}(K)$ ist
+	 \begin{align}
+	 	(A+A')B&=AB+A'B\notag \\
+	 	A(B'+B)&=AB'+AB\notag
+	 \end{align}
+\end{lemma}
+\begin{proof}
+	Schreibe $A=(a_{ij})$ etc. Dann ist $(A+A')B=\sum_{j=1}^n (a_{ij}+a'{ij})b_{jk}=\sum_{j=1}^n 
+	a_{ij}+b_{jk} + \sum_{j=1}^n a'_{ij}+b_{jk}=(AB+A'B)$. Rest analog.
+\end{proof}
+
+\begin{proposition}
+	Mit der Matrizenmultiplikation wird $\Mat_n(K)$ zu einem Ring mit Einselement $1$.
+\end{proposition}
+\begin{proof}
+	Nach \propref{3_1_4}, \propref{3_1_8} und \propref{3_1_9} ist $\Mat_n(K)$ ein Ring und dass $\mathbbm{1}_n$ ein neutrales Element ist, haben wir schon in \propref{3_1_6} gesehen
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item Für $n=1$ können wir dem Ring $\Mat_n(K)$ mit $K$ identifizieren, der Ring ist also ein Körper, 
+		insbesondere ist er kommutativ.
+		\item Für $n\ge 2$ ist $\Mat_n(K)$ nicht kommutativ.
+	\end{itemize}
+\end{example}
+
+\begin{definition}[invertierbar]
+	Eine Matrix $A\in \Mat_n(K)$ heißt \begriff[Matrix!]{invertierbar} oder \begriff[Matrix!]{regulär}, wenn sie im Ring 
+	$\Mat_n(K)$ invertierbar ist, sonst \begriff[Matrix!]{singulär}. Die Gruppe $\GL_n(K)=\Mat_n(K)^{\times}$ der invertierbaren $n\times n$
+	-Matrizen heißt \begriff{allgemeine Gruppe}.
+\end{definition}
+
+\begin{mathematica}[Matizen invertieren]
+	Das Inverse einer Matrix $A$ in Mathematica bzw. WolframAlpha lässt sich mit der Funktion
+	\begin{align}
+		\texttt{Inverse[A]}\notag
+	\end{align}
+	berechnen.
+\end{mathematica}
+
+\begin{example}
+	\proplbl{3_1_13}
+	Sei $n=2$. Zu
+	\begin{align}
+		A=\begin{pmatrix}a & b\\c & d\\\end{pmatrix} \in \Mat_2(K)\notag
+	\end{align} 
+	definiert man
+	\begin{align}
+		\tilde A=
+		\begin{pmatrix}d & -b\\-c & a\\\end{pmatrix}\in \Mat_2(K)\notag
+	\end{align}
+	Man prüft nach, dass $A\cdot \tilde A=\tilde A\cdot A=
+	(ad-bc)\cdot \mathbbm{1}_2$. Definiert man nun $\det(A)=ad-bc$ so sieht man: Ist $\det(A)\neq 0$, so ist $A$ invertierbar mit 
+	$A^{-1}=\det(A)^{-1}\cdot \tilde A$. Ist $\det(A)=0$ so $A$ ist Nullteiler und somit nicht invertierbar (\propref{1_4_13}). Mehr dazu in Kapitel IV.
+\end{example}
+
+\begin{lemma}
+	\proplbl{3_1_14}
+	Für $A,A_1,A_2\in \Mat_{m\times n}(K)$ und $B=\Mat_{n\times r}(K)$ ist 
+	\begin{itemize}
+		\item $(A^t)^t=A$
+		\item $(A_1+A_2)^t=A_1^t + A_2^t$
+		\item $(AB)^t=B^tA^t$
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	Übung
+\end{proof}
+
+\begin{proposition}
+	\proplbl{3_1_15}
+	Für $A\in \GL_n(K)$ ist $A^t\in \GL_n(K)$ und $(A^{-1})^t = (A^t)^{-1}$
+\end{proposition}
+\begin{proof}
+	Aus $AA^{-1}=1$ folgt nach \propref{3_1_14}, dass $(A^{-1})^tA^t=\mathbbm{1}_n^t=\mathbbm{1}_n$. Somit ist $(A^{-1})^t$ das Inverse zu $A^t$.
+\end{proof}

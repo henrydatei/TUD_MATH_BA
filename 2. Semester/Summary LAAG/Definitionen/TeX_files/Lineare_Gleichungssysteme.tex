@@ -1,0 +1,60 @@
+\section{Lineare Gleichungssysteme}
+
+Sei $A\in \Mat_{m\times n}(K)$ und $b\in K^m$.
+
+\begin{definition}[Lineares Gleichungssystem]
+	Unter einem \begriff{Linearen Gleichungssystem} verstehen wir eine Gleichung der Form $Ax=b$. 
+	Diese heißt \begriff{homogen}, wenn $b=0$, sonst \begriff{inhomogen} und $L(A,b)=\{x\in K^n\mid Ax=b\}$ ist sein \begriff{Lösungsraum}.
+\end{definition}
+
+\begin{definition}[Zeilenstufenform]
+	Die Matrix $A=(a_{ij})$ hat \begriff{Zeilenstufenform}, wenn es ganze Zahlen $0\le r \le m$ und $1\le 
+	k_1<...<k_r\le n$ gibt mit:
+	\begin{itemize}
+		\item für $1\le i \le r$ und $1\le j < k_i$ ist $a_{ij}=0$
+		\item für $1\le i \le r$ ist $a_{ik_{i}}\neq 0$ (sogenannte \begriff{Pivotelemente})
+		\item für $r<i\le m$ und $1\le j\le n$ ist $a_{ij}=0$
+	\end{itemize}
+	\begin{align}
+		\begin{pmatrix}
+		0 & \dots & 0 & a_{1k_{1}} & * & \dots & \dots & *\\
+		0 & \dots & \dots & 0 & a_{2k_{2}} & * & \dots & *\\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & a_{rk_{r}}\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & 0\\
+		\vdots & \; & \; & \; & \; & \; & \; & \vdots\\
+		0 & \dots & \dots & \dots & \dots & \dots & \dots & 0\\
+		\end{pmatrix}\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[Elementarmatrizen]
+	Für $i,j\in \{1,...,m\}$, $\lambda \in K^{\times}$ und $\mu\in K$ definieren wir 
+	$m\times m$-Matrizen, die sogenannten \begriff{Elementarmatrizen}:
+	\begin{itemize}
+		\item $S_i(\lambda):=\mathbbm{1}_m + (\lambda-1)E_{ii}$
+		\item $Q_{ij}(\mu):= \mathbbm{1}_m + \mu E_{ij}$
+		\item $P_{ij}:= \mathbbm{1}_m + E_{ij} + E_{ji} - E_{ii} - E_{jj}$
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}[Eliminierungsverfahren nach \person{Gauß}]
+	\proplbl{3_9_11}
+	Zu jeder Matrix $A\in \Mat_{m\times n}(K)$ gibt es $l\in \mathbb N_0$ und 
+	Elementarmatrizen $E_1,...,E_l$ vom Typ II und III für die $E_l\cdot ... \cdot E_1\cdot A$ in Zeilenstufenform ist. 
+\end{theorem}
+\begin{proof}
+	Seien $a_1,...,a_n$ die Spalten von $A$. \\
+	Ist $A=0$ so ist nichts zu tun. \\
+	Sei nun $A\neq 0$ und sei $k_1$ minimal mit $a_{k_1}\neq 0$. Es gibt also ein $i$ mit $a_{ik_1}\neq 0$. Durch Vertauschen der ersten 
+	und der $i$-ten Zeile erreichen wir, dass $a_{1k_1}=0$, d.h. wir multiplizieren $A$ mit $E_1=P_{1i}$. Nun addieren wir für $i=2,..,m$ 
+	ein geeignetes Vielfaches der ersten Zeile zur $i$-ten Zeile, um $a_{ik_1}=0$, d.h. wir multiplizieren $A$ mit $E_i=Q_{i1}(\mu_i)$ für 
+	$\mu_i=\frac{a_{ik_1}}{a_{1k_1}}$. Nach diesen Umformungen haben wir eine Matrix der Form:
+	\begin{align}\begin{pmatrix}
+		0 & \dots & 0 & a_{1k_1} & * & \dots & *\\
+		0 & \dots & \dots & 0 & \textcolor{red}{*} & \textcolor{red}{\dots} & \textcolor{red}{*}\\
+		\vdots & \vdots & \vdots & \vdots & \textcolor{red}{\vdots} & \textcolor{red}{\vdots} & \textcolor{red}{\vdots}\\
+		0 & \dots & \dots & 0 & \textcolor{red}{*} & \textcolor{red}{\dots} & \textcolor{red}{*}\\
+		\end{pmatrix}\notag\end{align}
+	und können nun mit dem \textcolor{red}{Rest der Matrix $A=:A'$} von vorne beginnen. Die nun folgenden Zeilenumformungen werden die erste Zeile und die ersten $k_1$ Spalten nicht mehr ändern, und weil $A'$ weniger Zeilen und Spalten als $A$ hat, bricht das Verfahren nach endlich vielen Schritten ab.
+\end{proof}

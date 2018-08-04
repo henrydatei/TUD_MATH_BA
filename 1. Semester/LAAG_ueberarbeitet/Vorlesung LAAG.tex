@@ -5,20 +5,23 @@
 \usepackage[onehalfspacing]{setspace}
 \ifpdf
 \usepackage[utf8]{inputenc} %not recommended with lualatex
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
+\usepackage{chngcntr}
 \fi
 
 \usepackage{zref-base}
 \usepackage{etoolbox}
 \usepackage{xparse}%better macros
-\usepackage{chngcntr}
 \usepackage{calc}
+\usepackage{xstring}
+\usepackage[bb=boondox]{mathalfa} %spezielle Null mit \mathbb{0}, sollte auch mit 1 klappen, aber dafür haben wir \mathbbm{1}
 
 \usepackage{scalerel,stackengine}
 \usepackage{tocloft}
 
 \ifluatex
 \usepackage{fontspec}
+\usepackage{eufrac}
 %awesome package for debugging spacing issues
 %\usepackage{lua-visual-debug}
 %\usepackage{luacode}
@@ -52,8 +55,10 @@
 \usepgfplotslibrary{fillbetween}
 \usepackage{pgf}
 \usepackage{tikz}
-\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri}
 \usetikzlibrary{matrix}
+\usetikzlibrary{arrows,cd} % for commutative diagrams
+\usetikzlibrary{babel}
 \usepackage{color}
 \usepackage{wasysym}
 \usepackage{tcolorbox}
@@ -82,7 +87,7 @@
 	citecolor=green,
 	filecolor=green,
 	linkcolor=blue,
-	urlcolor=green
+	urlcolor=blue
 }
 \usepackage{cleveref}
 \usepackage{bookmark}
@@ -200,19 +205,20 @@
 	innerleftmargin=10pt,%
 ]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
-\newmdtheoremenv[%
-	outerlinewidth=3pt,%
-	linecolor=black,%
-	topline=false,%
-	rightline=false,%
-	bottomline=false,%
-	leftline=false,
-	innertopmargin=0pt,%
-	innerbottommargin=-0pt,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	skipabove=5pt,%	
-	skipbelow=10pt,%
-]{overview}[theorem]{Überblick}
+%\newmdtheoremenv[%
+%	outerlinewidth=3pt,%
+%	linecolor=black,%
+%	topline=false,%
+%	rightline=false,%
+%	bottomline=false,%
+%	leftline=false,
+%	innertopmargin=0pt,%
+%	innerbottommargin=-0pt,%
+%	frametitlefont=\normalfont\bfseries\color{black},%
+%	skipabove=5pt,%	
+%	skipbelow=10pt,%
+%]{overview}[theorem]{Überblick}
+\newtheorem{overview}[theorem]{Überblick}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -224,6 +230,17 @@
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
 ]{*anmerkung}{Anmerkung}
+
+\newmdtheoremenv[%
+style=boxedtheorem,%
+topline=false,%
+rightline=false,%
+leftline=false,
+bottomline=false,%
+innertopmargin=\topskip,%
+innerbottommargin=\topskip,%
+backgroundcolor=lightgrey,%
+]{mathematica}{Mathematica/WolframAlpha-Befehle}
 
 %Hinweis-Theoremstyle and environment
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
@@ -329,7 +346,7 @@
 		\ifnumcomp{\value{chapter}}{=}{\zref@extractdefault{#1@chapter}{default}{0}}%
 		{%same chapter
 			\ifmmode 
-				\cref{#1}%
+				\ref{#1}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
@@ -342,7 +359,7 @@
 				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{1}}.##1##3%
 			}%
 			\ifmmode 
-				\cref{#1}%
+				\ref{#1}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
@@ -360,7 +377,7 @@
 	\IfBooleanTF{#1}%
 	{\index{#2#3#4}}%
 	{%
-		\uline{#3}%
+		\uline{#3} %
 		\index{#2#3#4}%
 	}%
 }
@@ -535,8 +552,11 @@
 \DeclareMathOperator{\diam}{diam}
 
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aff}{Aff}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\Bil}{Bil}
 \DeclareMathOperator{\Eig}{Eig}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\Ker}{Ker}
@@ -549,7 +569,6 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Image}{Im}
-\DeclareMathOperator{\Abb}{Abb}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Hau}{Hau}
 \DeclareMathOperator{\pr}{pr}
@@ -558,6 +577,8 @@
 \DeclareMathOperator{\Uni}{U}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
 
 %change headings:
 \titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
@@ -611,7 +632,7 @@
 	\markright{\thesection.\ #1}{}}
 
 %change numbering of equations to be section by section
-%\counterwithout{equation}{section}
+\counterwithout{equation}{section}
 
 \title{\textbf{Lineare Algebra WS2017/18}}
 \author{Dozent: Prof. Dr. Arno Fehm}
@@ -636,6 +657,9 @@
 \pagestyle{fancy}
 \pagenumbering{arabic}
 \pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
 
 \chapter{Grundbegriffe der Linearen Algebra}
 \input{./TeX_files/Logik_und_Mengen}
@@ -707,9 +731,10 @@
 		\if\relax\detokenize{#3}\relax\else%
 			{\hspace*{2.2ex}#3}%
 		\fi%
-	}%
+	}
+	\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
 	\ifx\\#5\\%
-		\@dottedtocline{-2}{0em}{2.3em}%
+		\@dottedtocline{-2}{0em}{2.4em}%
 		{#1 \protect\numberline{#2\thm@@thmline@name@tmp}{}}%
 		{#4}
 	\else
@@ -718,8 +743,8 @@
 			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\else
-			\@dottedtocline{-2}{0em}{1.3em}%
-			{#1 \protect\numberline{#2:}\thm@@thmline@name@tmp}%
+			\@dottedtocline{-2}{0em}{2.4em}%
+			{#1 \protect\numberline{\rom{\thm@@thmline@name@chap@num}.#2:}\thm@@thmline@name@tmp}%
 			{\hyper@linkstart{link}{#5}{#4}\hyper@linkend}%
 		\fi
 	\fi
@@ -734,7 +759,13 @@
 \pagebreak
 \section{Liste der benannten Sätze}
 \theoremlisttype{optname}
-\listtheorems{proposition}
+\listtheorems{proposition, lemma}
+
+\pagebreak
+\section{Liste der Mathematica/WolframAlpha-Befehle}
+\smiley{} für faule Mathematiker \smiley{} \\
+\theoremlisttype{allname}
+\listtheorems{mathematica}
 
 %\printglossary[type=\acronymtype]
 

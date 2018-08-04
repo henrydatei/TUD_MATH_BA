@@ -1,0 +1,57 @@
+\section{Polynome}
+
+In diesem Abschnitt sei $R$ ein kommutativer Ring mit Einselement.\\
+
+\begin{definition}[Polynom]
+	Sei $R[X]$ die Menge der Folgen in $R$ (siehe \propref{1_2_13}), die fast überall 0 sind, also
+	\begin{align}
+		R[X]:=\{(a_k)_{k \in \mathbb N_0} \mid \forall k(a_k \in R) \land \exists n_0: \forall k>n_0(a_k=0)\} \notag
+	\end{align}
+\end{definition}
+
+Wir definieren Addition und Multiplikation auf $R[X]$:
+\begin{itemize}
+	\item $(a_k)_{k \in \mathbb N_0}+(b_k)_{k \in \mathbb N_0}=(a_k+b_k)_{k \in \mathbb N_0}$
+	\item $(a_k)_{k \in \mathbb N_0}\cdot (b_k)_{k \in \mathbb N_0}=(c_k)_{k \in \mathbb N_0}$ mit 
+	$c_k = \sum _{j=0}^{k} a_jb_{k-j}$
+\end{itemize}
+
+\begin{theorem}[Polynomdivision]
+	\proplbl{1_6_5}
+	Sei $K$ ein Körper und sei $0 \neq g \in K[X]$. Für jedes Polynom
+	$f \in K[X]$ gibt es eindeutig bestimmte $g,h,r \in K[X]$ mit $f=gh+r$ und $\deg(r)<\deg(g)$. 
+\end{theorem}
+\begin{proof}
+	Existenz und Eindeutigkeit
+	\begin{itemize}
+		\item Existenz: Sei $n=\deg(f)$, $m=\deg(g)$, $f=\sum _{k=0}^{n} a_kX^k$, $g=\sum _{k=0}^{m} b_kX^k$ \\
+		Induktion nach $n$ bei festem $g$. \\
+		IA: Ist $n<m$, so wählt man $h=0$ und $r=f$.\\
+		IB: Wir nehmen an, dass die Aussage für alle Polynome vom Grad kleiner als $n$ gilt.\\
+		IS: Ist $n \ge m$, so betrachtet man $f_1=f-\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)$. Da $\frac{a_n}{b_m}\cdot 
+		X^{n-m}\cdot g(X)$ ein Polynom vom Grad $n-m+\deg(g)=n$ mit Leitkoeffizient $\frac{a_n}{b_m}\cdot b_m=a_n$ ist, ist
+		$\deg(f_1)<n$. Nach IB gibt es also $h_1, r_1 \in K[X]$ mit $f_1=gh_1+r_1$ und $\deg(r)<\deg(g)$. Somit ist 
+		$f(X)=f_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}\cdot g(X)=gh+r$ mit $h(X)=h_1(X)+\frac{a_n}{b_m}\cdot X^{n-m}, r=r_1$.
+		\item Eindeutigkeit: Sei $n=\deg(f), m=\deg(g)$. Ist $f=gh+r=gh'+r'$ und $\deg(r),\deg(r')<m$, so ist $(h-h')g=r'-r$ und
+		$\deg(r'-r)<m$. Da $\deg(h-h')=\deg(h'-h)+m$ muss $\deg(h-h')<0$, also $h'-h=0$ sein. Somit $h'=h$ und $r'=r$.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[Nullstelle]
+	\proplbl{1_6_7}
+	Sei $f(X)=\sum_{k \ge 0} a_kX^k \in \mathbb R[X]$. Für $\lambda \in
+	\mathbb R$ definiert man die Auswertung von $f$ in $\lambda$ $f(\lambda)=\sum_{k \ge 0} a_k\lambda^k
+	\in \mathbb R$. Das Polynom $f$ liefert auf diese Weise eine Abbildung $\tilde f: \mathbb R \to \mathbb R$ und
+	$\lambda \mapsto f(\lambda)$. \\
+	Ein $\lambda \in \mathbb R$ $f(\lambda)=0$ ist eine \begriff{Nullstelle} von $f$.
+\end{definition}
+
+\begin{definition}[algebraisch abgeschlossen]
+	Ein Körper $K$ heißt \begriff{algebraisch abgeschlossen}, wenn er eine 
+	der äquivalenten Bedingungen erfüllt. 
+\end{definition}
+
+\begin{theorem}[Fundamentalsatz der Algebra]
+	\proplbl{1_6_16}
+	Der Körper $\mathbb C$ ist algebraisch abgeschlossen.
+\end{theorem}

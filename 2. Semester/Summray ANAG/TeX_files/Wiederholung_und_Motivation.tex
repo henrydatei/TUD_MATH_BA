@@ -1,0 +1,96 @@
+\section{Wiederholung und Motivation}
+Sei $K^n$ $n$-dim. VR über Körper mit $K=\mathbb{R}$ oder $K=\mathbb{C}, n\in\mathbb{N}_{\ge 0}$.
+\begin{itemize}
+	\item Elemente sind alle $x=(x_1, \dotsc, x_n)\in K^n$ mit $x_1, \dotsc, x_n\in K$.
+	\item Standardbasis ist $\{e_1, \dotsc, e_n\}$
+	\item alle Normen auf $K^n$ sind äquivalent $\Rightarrow$ Konvergenz unabhängig von der Norm, verwende in der Regel euklidische Norm
+	\item Skalarprodukt
+	\begin{itemize}
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} x_j\cdot y_j$ in $\mathbb{R}^n$
+		\item $\langle x,y \rangle = \sum\limits_{j=1}^{n} \overline{x}_j\cdot y_j$ in $\mathbb{C}^n$
+	\end{itemize}
+	\item \textsc{Cauchy}-\textsc{Schwarz}-Ungleichung ($\vert \langle x,y\rangle \vert \le \vert x \vert \cdot \vert y \vert\,\quad\forall x,y\in K^n$)
+\end{itemize}
+
+\subsection{Lineare Abbildungen}
+Eine lineare Abbildung ist homogen und additiv
+\begin{itemize}
+	\item Lineare Abbildung $A: K^n \rightarrow K^m$ ist darstellbar durch $m\times n$-Matrizen bezüglich der Standardbasis 
+	\begin{itemize}
+		\item lineare Abbildung ist stetig auf endlich-dimensionalen Räumen (unabhängig von der Norm)
+		\item transponierte Matrix: $A^T\in K^{n\times m}$
+		\item $x^T\cdot y = \langle x,y\rangle$
+		\item $x\cdot y^T = x\otimes y$, sogenanntes Tensorprodukt
+	\end{itemize}	
+	 \item $L(K^n,K^m) = \{ A: K^n \to K^m\mid \text{ $A$ linear}\}$ (Menge der linearen Abbildung, ist normierter Raum)
+	\begin{itemize}
+		 \item $\Vert A\Vert= \sup\{ \vert Ax\vert \mid \vert x \vert \le 1 \}$ (Operatornorm, $\Vert A \Vert$ hängt i.A. von Normen auf $K^n, K^m$ ab)
+		 \item in der Regel wird euklidische Norm verwendet: $\vert A \vert = \sqrt{\sum_{k,l} \vert a_{kl} \vert^2}$
+		 \item $L(K^n, K^m)$ ist isomorph zu $K^{m\times n}$ als VR \\
+		 $\Rightarrow$ $L(K^n, K^m)$ ist $m\cdot n$-dim. VR
+		 \item Es gilt: 
+		 \begin{align}
+		 	\vert Ax \vert \le \Vert A \Vert\cdot \vert x \vert \text{ und } \vert Ax\vert \le \vert A \vert \cdot\vert x \vert\notag
+		 \end{align}
+	\end{itemize}
+	\item Abbildung $\tilde{f}: K^n \to K^m$ heißt affin linear, falls $\tilde{f}(x) = Ax + a$ für lineare Abbildung $A:K^n\to K^m, a\in K^m$
+\end{itemize}
+
+\subsection{\textsc{Landau}-Symbole}
+
+\begin{*definition}[Landau-Symbole]
+	Sei $f:D\subset K^n \to K^m$, $g:D\subset K^n \to K$, $x_0 \in \overline{D}$. Dann:
+	\begin{itemize}
+		\item $f(x) = o(g(x))$ für $x\to x_o$ gdw. $\lim\limits_{\substack{x\to x_0 \\ x\neq x_0}} \frac{\vert f(x) \vert}{g(x)} = 0$
+		\item $f(x) = \mathcal{O}(g(x))$ für $x\to x_0$ gdw. $\exists \delta > 0, c \ge 0: \frac{\vert f(x) \vert}{\vert g(x) \vert} \le c \;\forall x\in \left( B_\delta(x_0)\setminus \{ x_0\}\right) \cap D$
+	\end{itemize}
+\end{*definition}
+
+\begin{*definition}[Anschmiegen]
+	$f(x) + \underbrace{f(x_0) + A(x-x_0)}_{\tilde{A}(x)} = o(\vert x-x_0\vert)$, \\
+	d.h. die Abweichung wird schneller klein als $\vert x-x_0\vert$!
+\end{*definition}
+
+\begin{proposition}[Rechenregeln für \person{Landau}-Symbole]
+	Für $r_k,\tilde{r}_l,R_l:D\subset K^n\to K^m,x_0\in D,k,l\in\natur$ mit
+	\begin{align}
+		r_k(x)=o(\vert x-x_0\vert^k) \notag \\
+		\tilde{r}_l=o(\vert x-x_0\vert^l) \notag \\
+		R_l(x)=\mathcal{O}(\vert x-x_0\vert ^l) \notag
+	\end{align}
+	für $x\to x_0$
+	\begin{enumerate}
+		\item $r_k(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j\le k$ \\
+		$R_l(x)=o(\vert x-x_0\vert^j)=\mathcal{O}(\vert x-x_0\vert^j)\quad j<l$
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=o(\vert x-x_0\vert^{k-j})\quad j\le k$ \\
+		$\frac{R_l(x)}{\vert x-x_0\vert^j}=\mathcal{O}(\vert x-x_0\vert^{l-j})=o(\vert x-x_0\vert^{l-j-1})\quad j\le l$
+		\item $r_k(x)\pm \tilde{r}_l(x)=o(\vert x-x_0\vert ^k)\quad k\le l$
+		\item $r_k(x)\cdot \tilde{r}_l(x)=o(\vert x-x_0\vert^{k+l}),r_k(x)\cdot R_l(x)=o(\vert x-x_0\vert^{k+l})$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Sei $\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\le c$ nahe $x_0$, d.h. auf $(B_{\delta}(x_0)\backslash\{x_0\})\cap D$ für ein $\delta>0$
+	\begin{enumerate}
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j}=\frac{r_k(x)}{\vert x-x_0\vert^k}\vert x-x_0\vert^{k-j}\to 0$, folgl. $\frac{r_k(x)}{\vert x-x_0\vert^{\delta}}$ auch beschränkt nahe $x_0$ \\
+		$\frac{R_l(x)}{\vert  x-x_0\vert^j}=\frac{R_l(x)}{\vert x-x_0\vert^l}\vert x-x_0\vert^{l-j}\to 0$, Rest wie oben
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{k-j}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\to 0$ \\
+		$\frac{R_l(x)}{\vert x-x_0\vert^j \vert x-x_0\vert^{l-j}}=\frac{R_l(x)}{\vert x-x_0\vert^l}\le c$ nahe $x_0$, Rest wie oben
+		\item $\frac{r_k(x)}{\vert x-x_0\vert^k}\pm\frac{\tilde{r}_l(x)}{\vert x-x_0\vert^k}\overset{(2)}{=}o(1)\pm\underbrace{o(\vert x-x_0\vert^{l-k})}_{o(1)}\to 0$
+		\item $\frac{r_k(x)\cdot \tilde{r}_l(x)}{\vert x-x_0\vert^{k+l}}=\frac{r_k(x)}{\vert x-x_0\vert^k}\cdot\frac{\tilde{r}_l(x)}{\vert x-x_0\vert^l}\to 0$ \\
+		$\frac{\vert r_k(x)\cdot R_l(x)\vert}{\vert x-x_0\vert^{k+l}}=\frac{\vert r_k(x)\vert}{\vert x-x_0\vert^k}\cdot\frac{\vert R_l(x)\vert}{\vert x-x_0\vert^l}\to 0$
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item offenbar in $K^n$: $\vert x-x_0\vert^k=\mathcal{O}(\vert x-x_0\vert^k)=o(\vert x-x_0\vert^{k-1})$, $x\to x_0$
+		\item in $\real$ gilt für $x\to 0$:
+		\begin{itemize}
+			\item $x^5=o(\vert x\vert^4)$, $x^5=o(\vert x\vert)$, $x^5=\mathcal{O}(\vert x\vert^5)$, $x^5=\mathcal{O}(\vert x\vert^3)$
+			\item $e^x=\mathcal{O}(1)=3+\mathcal{O}(1)$, $e^x=1+o(1)\neq 2+o(1)$
+			\item $\sin(x)=\mathcal{O}(\vert x\vert)$, $\sin(x)=o(1)$, $x^3\cdot\sin(x)=o(\vert x\vert^3)$, $e^x\cdot \sin(x)=o(1)$
+			\item $(1-\cos(x))x^2=\mathcal{O}(\vert x\vert^2)x^2=o(\vert x\vert^3)$
+			\item $\frac{1}{o(1)+\cos(x)}=e^x+o(1)=1+o(1)$
+		\end{itemize}
+	\end{itemize}
+\end{example}

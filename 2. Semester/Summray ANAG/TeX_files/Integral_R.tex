@@ -1,0 +1,50 @@
+\section{Integration auf \texorpdfstring{$\mathbb{R}$}{R}} \setcounter{equation}{0}
+
+\subsection{Integrale konkret ausrechnen}
+\begin{theorem}[Hauptsatz der Differential- und Integralrechnung]
+	Sei $f:I\to\mathbb{R}$ stetig und integrierbar auf Intervall $I\subset\mathbb{R}$ und sei $x_0\in I$. Dann
+	\begin{enumerate}[label={\alph*)}]
+		\item $\tilde{F}:I\to \mathbb{R}$ mit $\tilde{F}(x) := \int_{x_0}^x f(y) \D y$ $\forall x\in I$ ist Stammfunktion von $f$ auf $I$.
+		\item Für jede Stammfunktion $F:I\to \mathbb{R}$ auf $F$ gilt: \begin{align}
+			F(b) - F(a) = \int_a^b f(x) \D x \quad\forall a,b\in I\notag
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{enumerate}[label={\alph*},topsep=\dimexpr-\baselineskip/2\relax]
+		\item Fixiere $x\in I$. Dann gilt für $t\neq 0$ \begin{align*}
+			\frac{\tilde{F}(x + t) - \tilde{F}(x)}{t} &= \frac{1}{t} \left( \int_{x_0}^{x + t} f \D y - \int_{x_0}^{x} f \D y \right) = \frac{1}{t} \int_x^{x + t} f \D y =: \phi(t),
+		\end{align*}
+		wobei nach alle Integrale existieren. Mit Mittelwertsatz der Integralrechnung:\\
+		$\Rightarrow\forall t\neq 0$ $\exists \xi_t\in [x, x+t]$ (bzw. $[x + t, x]$ für $t < 0$): $\phi(t) = \frac{1}{\vert t \vert} f(\xi) \vert t \vert = f(\xi_t)$ \\
+		$\Rightarrow\tilde{F}'(x) = \lim\limits_{t\to 0} \phi(t) = f(x)\Rightarrow$ Behauptung
+		
+		\item Für eine beliebige Stammfunktion $F$ von $f$ gilt: $F(x) = \tilde{F}(x) + c$ für ein $c\in \mathbb{R}\Rightarrow F(b)-F(a)=\tilde{F}(b)-\tilde{F}(a)=\int_{x_0}^b f\diff x-\int_{x_0}^a f\diff x=\int_a^b f\diff x$
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Differenz von Funktionswerten]
+	Sei $f:D\subset\mathbb{R}^n\to\mathbb{R}^m$, $D$ offen, $f$ stetig \gls{diffbar}, $[x,y]\subset D$. Dann \begin{align*}
+		f(y) - f(x) &= \int_0^1 f'(x + t(y - x)) \cdot (y - x) \D t = \int_0^1 f(x + t(y - x)) \D t (y - x)
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	\NoEndMark
+	Sei $f = (f_1, \dotsc, f_n)$, $\phi_k: [0,1]\to\mathbb{R}$ mit $\phi_k(t) := f_K(x + t(y - x))$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
+	$\Rightarrow$ & $\phi_t$ ist diffbar auf $[0,1]$ mit $\phi_k'(t) = f'(x + t(y - x)) \cdot (y - x)$ \\
+	$\Rightarrow$ & $f_k(y) - f_k(x) = \phi_k(1) - \phi_k(0) = \int_0^1 \phi_k'(t) \D t\beha$
+	 \hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+\end{proof}
+
+\subsection{Uneigentliche Integrale}
+\begin{proposition}
+	Sei $f:[a,b]\to\mathbb{R}$ stetig für $a$, $b\in\mathbb{R}$. Dann \begin{center}
+			$f$ integrierbar auf $(a,b]$ \ \ $\Leftrightarrow$ \ \ $\displaystyle \lim\limits_{\substack{x\downarrow a \\ x\neq a}} \int_a^b \vert f \vert \D x$ existiert
+	\end{center}
+\end{proposition}
+\begin{proof}
+	Hinrichtung: Majorisierte Konvergenz, Rückrichtung: Majorisierte Konvergenz
+\end{proof}

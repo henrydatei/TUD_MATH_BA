@@ -37,7 +37,7 @@ Sei $V$ ein $K$-Vektorraum.
 \end{definition}
 
 \begin{conclusion}
-	\proplbl{3_2_6}
+	\proplbl{7_2_6}
 	Zu jeder Basis $B$ von $V$ gibt es einen eindeutig bestimmtem Monomorphismus
 	\begin{align}
 		f_V\to V^*\text{ mit } f(B)=B^*\notag
@@ -46,11 +46,11 @@ Sei $V$ ein $K$-Vektorraum.
 \end{conclusion}
 
 \begin{conclusion}
-	\proplbl{3_2_7}
+	\proplbl{7_2_7}
 	Zu jedem $=0\neq x\in V$ gibt es eine Linearform $\phi\in V$ mit $\phi(x)=1$.
 \end{conclusion}
 \begin{proof}
-	Ergänze $x_1=x$ zu einer Basis $(x_i)_{i\in I}$ von $V$ (\propref{3_1_11}) und $\phi=x_1^*$.
+	Ergänze $x_1=x$ zu einer Basis $(x_i)_{i\in I}$ von $V$ (\propref{7_1_11}) und $\phi=x_1^*$.
 \end{proof}
 
 \begin{example}
@@ -88,8 +88,8 @@ Sei $V$ ein $K$-Vektorraum.
 			\item $\iota_{x+y}(\phi)=\phi(x+y)=\phi(x)+\phi(y)=\iota_x(\phi)+\iota_y(\phi)= (\iota_x+\iota_y)(\phi)$
 			\item $\iota_{\lambda x}(\phi)=\phi(\lambda x)=\lambda\iota_x(\iota)=(\lambda\iota_x)(\phi)$
 		\end{itemize}
-		\item $\iota$ injektiv: Sei $0\neq x\in V$. Nach \propref{3_2_7} existiert $\phi\in V^*$ mit $\iota_x(\phi)=\phi(x)=1\neq 0$. Somit ist $\iota_x\neq 0$.
-		\item Ist $\dim_K(V)<\infty$, so ist $V\overset{\propref{3_2_6}}{\cong} V^* \overset{\propref{3_2_6}}{\cong} V^{**}$, insbesondere $\dim_K(V)=\dim_K(V^{**})$. Der Monomorphismus $\iota$ ist somit ein Isomorphismus.
+		\item $\iota$ injektiv: Sei $0\neq x\in V$. Nach \propref{7_2_7} existiert $\phi\in V^*$ mit $\iota_x(\phi)=\phi(x)=1\neq 0$. Somit ist $\iota_x\neq 0$.
+		\item Ist $\dim_K(V)<\infty$, so ist $V\overset{\propref{7_2_6}}{\cong} V^* \overset{\propref{7_2_6}}{\cong} V^{**}$, insbesondere $\dim_K(V)=\dim_K(V^{**})$. Der Monomorphismus $\iota$ ist somit ein Isomorphismus.
 	\end{itemize}
 \end{proof}
 
@@ -115,7 +115,7 @@ Sei $V$ ein $K$-Vektorraum.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{3_2_14}
+	\proplbl{7_2_14}
 	Ist $\dim_K(V)<\infty$ und $U\subseteq V$ ein Untervektorraum, so ist
 	\begin{align}
 		\dim_K(V)=\dim_K(U)+\dim_K(U^0)\notag
@@ -131,7 +131,7 @@ Sei $V$ ein $K$-Vektorraum.
 \end{proof}
 
 \begin{conclusion}
-	\proplbl{3_2_15}
+	\proplbl{7_2_15}
 	Ist $\dim_K(V)<\infty$ und $U\subset V$ ein Untervektorraum, so ist
 	\begin{align}
 		\iota(U)=U^{00}\notag
@@ -139,11 +139,11 @@ Sei $V$ ein $K$-Vektorraum.
 \end{conclusion}
 \begin{proof}
 	Es ist klar, dass $\iota(U)\le U^{00}$. \\
-	Für $\phi\in U^0$ und $x\in U$ ist $\iota_x(\phi) = \phi(x) =0$. Mit \propref{3_2_14} ist
+	Für $\phi\in U^0$ und $x\in U$ ist $\iota_x(\phi) = \phi(x) =0$. Mit \propref{7_2_14} ist
 	\begin{align}
 		\dim_K(U^{00}) &= \dim_K(V^*)-\dim_K(U^0) \notag \\
 		&=\dim_K(V^*) - (\dim_K(V)-\dim_K(U)) \notag \\
-		&\overset{\propref{3_2_6}}{=} \dim_K(U) \notag
+		&\overset{\propref{7_2_6}}{=} \dim_K(U) \notag
 	\end{align}
 	und da $\iota$ injektiv ist, folgt $\iota(U)=U^{00}$.
 \end{proof}

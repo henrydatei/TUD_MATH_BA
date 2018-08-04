@@ -23,7 +23,7 @@
 	Ist $\lambda$ ein EW von $f$, so ist $\dim_K(\Eig(f,\lambda))\ge 1$. Sind also $\lambda_1,...,\lambda_n$ paarweise verschiedene EW von $f$, so ist
 	\begin{align}
 		n=\dim_K(V)&\ge \dim_K\left( \sum\limits_{i=1}^m \Eig(f,\lambda_i)\right) \notag \\
-		&\overset{\text{\propref{satz_eig_direkte_summe}}}{=} \dim_K\left( \bigoplus_{i=0}^{m} \Eig(f,\lambda_i)\right) \notag \\
+		&\overset{\propref{satz_eig_direkte_summe}}{=} \dim_K\left( \bigoplus_{i=0}^{m} \Eig(f,\lambda_i)\right) \notag \\
 		&= \sum\limits_{i=1}^m \dim_K(\Eig(f,\lambda_i)) \notag \\
 		&\ge m \notag
 	\end{align}
@@ -36,11 +36,11 @@
 \end{proof}
 
 \begin{definition}[$a$ teilt $b$]
-	Sei $R$ ein kommutativer Ring mit seien $a,b\in R$. Man sagt, $a$ \begriff{teilt} $b$ (in Zeichen $a\vert b$), wenn es $x\in R$ mit $b=ax$ gibt.
+	Sei $R$ ein kommutativer Ring mit seien $a,b\in R$. Man sagt, $a$ \begriff{teilt} $b$ (in Zeichen $a\mid b$), wenn es $x\in R$ mit $b=ax$ gibt.
 \end{definition}
 
 \begin{definition}[Vielfachheit]
-	Für $0\neq P\in K[t]$ und $\lambda\in K$ nennt man $\mu(P,\lambda)=\max\{r\in \natur_{>0}\mid (t-r)^r\vert P\}$ die \begriff{Vielfachheit} der Nullstelle $\lambda$ von $P$.
+	Für $0\neq P\in K[t]$ und $\lambda\in K$ nennt man $\mu(P,\lambda)=\max\{r\in \natur_{>0}\mid (t-r)^r\mid P\}$ die \begriff{Vielfachheit} der Nullstelle $\lambda$ von $P$.
 \end{definition}
 
 \begin{lemma}
@@ -48,8 +48,8 @@
 	Genau dann ist $\mu(P,\lambda)\ge 1$, wenn $\lambda$ eine Nullstelle von $P$ ist.
 \end{lemma}
 \begin{proof}
-	$(\Rightarrow)$: $t-\lambda\vert P\Rightarrow P(t)=(t-\lambda)\cdot Q(t)$ mit $Q(t)\in K[t]\Rightarrow P(\lambda)=0\cdot Q(\lambda)=0$. \\
-	$(\Leftarrow)$: $P(\lambda)=0\overset{I.6.9}{=}t-\lambda\vert P(t)\Rightarrow \mu(P,\lambda)\ge 1$.
+	$(\Rightarrow)$: $(t-\lambda)\mid P\Rightarrow P(t)=(t-\lambda)\cdot Q(t)$ mit $Q(t)\in K[t]\Rightarrow P(\lambda)=0\cdot Q(\lambda)=0$. \\
+	$(\Leftarrow)$: $P(\lambda)=0\overset{I.6.9}{=}(t-\lambda)\mid P(t)\Rightarrow \mu(P,\lambda)\ge 1$.
 	%TODO: Verlinkung
 \end{proof}
 
@@ -58,7 +58,7 @@
 	Ist $P(t)=(t-\lambda)^r\cdot Q(t)$ mit $Q(t)\in K[t]$ und $Q(\lambda)\neq 0$, so ist $\mu(P,\lambda)=r$
 \end{lemma}
 \begin{proof}
-	Offensichtlich ist $\mu(P,\lambda)\ge r$. Wäre $\mu(P,\lambda)\ge r+l$, so $(t-\lambda)^{r+l}\vert P(t)$ also $(t-\lambda)^r\cdot Q(t)=(t-\lambda)^{r^+l}\cdot R(t)$ mit $R(t)\in K[t]$, folglich $t-\lambda\vert Q(t)$, insbesondere $Q(\lambda)=0$. \\
+	Offensichtlich ist $\mu(P,\lambda)\ge r$. Wäre $\mu(P,\lambda)\ge r+l$, so $(t-\lambda)^{r+l}\mid P(t)$ also $(t-\lambda)^r\cdot Q(t)=(t-\lambda)^{r^+l}\cdot R(t)$ mit $R(t)\in K[t]$, folglich $(t-\lambda)\mid Q(t)$, insbesondere $Q(\lambda)=0$. \\
 	(Denn wir dürfen kürzen: $R$ ist nullteilerfrei, genau so wie $K[t]$). \\
 	$(t-\lambda)^r(Q(t)-(t-\lambda)R(t))=0\Rightarrow Q(t)=(t-\lambda)R(t)$.
 \end{proof}
@@ -91,18 +91,18 @@
 	\begin{align}
 		A=M_B(f)=\begin{pmatrix}\lambda\mathbbm{1}_s&*\\0&A'\end{pmatrix}\notag
 	\end{align}
-	mit einer Matrix $A'\in \Mat_{n-s}(K)$, also $\chi_f(t)=\chi_A(t)\overset{\text{\propref{beispiel_2_8}}}{=}\chi_{\lambda\mathbbm{1}}\cdot\chi_{A'}(t)=(t- \lambda)^s\cdot \chi_{A'}(t)$ und somit $\dim_K(\Eig(f,\lambda))=s\le \mu(x_f,\lambda)$.
+	mit einer Matrix $A'\in \Mat_{n-s}(K)$, also $\chi_f(t)=\chi_A(t)\overset{\propref{beispiel_2_8}}{=}\chi_{\lambda\mathbbm{1}}\cdot\chi_{A'}(t)=(t- \lambda)^s\cdot \chi_{A'}(t)$ und somit $\dim_K(\Eig(f,\lambda))=s\le \mu(x_f,\lambda)$.
 \end{proof}
 
-\begin{proposition}
-	Genau dann ist $f$ diagonalisierbar, wenn $\chi_f$ in Linearfaktoren zerfällt und $\dim_K(\Eig(f,\lambda))=\mu(x_f,\lambda)$ für alle $\lambda\in K$.
+\begin{proposition}[Diagonalisierungssatz]
+	Genau dann ist $f$ diagonalisierbar, wenn $\chi_f$ in Linearfaktoren zerfällt und $\dim_K(\Eig(f,\lambda))=\mu(\chi_f,\lambda)$ für alle $\lambda\in K$.
 \end{proposition}
 \begin{proof}
 	Es gilt
 	\begin{align}
-		\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))&\overset{\text{\propref{satz_eig_direkte_summe}}}{=} \dim_K(\bigoplus\limits_{\lambda\in K}\Eig(f,\lambda)) \notag \\
+		\dim_K(\sum\limits_{\lambda\in K}\Eig(f,\lambda))&\overset{\propref{satz_eig_direkte_summe}}{=} \dim_K(\bigoplus\limits_{\lambda\in K}\Eig(f,\lambda)) \notag \\
 		&\overset{\text{II.4.12}}{=}\sum\limits_{\lambda\in K}\dim_K(\Eig(f,\lambda)) \notag \\
-		&\overset{\text{\propref{lemma_3_10}}}{\le}\sum\limits_{\lambda\in K}\mu(\chi_f,\lambda) \\
+		&\overset{\propref{lemma_3_10}}{\le}\sum\limits_{\lambda\in K}\mu(\chi_f,\lambda) \\
 		&\le \deg(\chi_f) \\
 		&= n \notag
 	\end{align}

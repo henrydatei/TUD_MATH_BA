@@ -1,0 +1,56 @@
+\section{Determinante einer Matrix}
+
+\begin{definition}[Determinantenabbildung]
+	Eine Abbildung $\delta:\Mat_n(R)\to R$ heißt \begriff{Determinantenabbildung}, wenn gilt:
+	\begin{itemize}
+		\item (D1): $\delta$ ist linear in jeder Zeile: sind $a_1,...,a_n$ die Zeilen von $A$ und ist $i\in \{1,...,n\}$ und $a_i=\lambda'a'_i + 
+		\lambda''a''_i$ mit $\lambda',\lambda''\in R$ und den Zeilenvektoren $a'_i,a''_i$, so ist $\delta(A)=\lambda'\cdot \delta(a_1,...,
+		a'_i,...,a_n) + \lambda''\cdot \det(a_1,...,a''_i,...,a_n)$.
+		\item (D2): $\delta$ ist alternierend: sind $a_1,...,a_n$ die Zeilen von $A$ und $i,j\in \{1,...,n\}$, $i\neq j$ mit $a_i=a_j$, so ist 
+		$\delta(A)=0$.
+		\item (D3): $\delta$ ist normiert: $\delta(\mathbbm{1}_n)=1$.
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}
+	\proplbl{4_2_8}
+	Es gibt genau eine Determinantenabbildung $\delta:\Mat_n(R)\to R$ und diese ist gegeben durch die 
+	Leibnitzformel 
+	\begin{align}
+		\det(a_{ij})=\sum_{\sigma\in S_n} \sgn(\sigma)\cdot \prod_{i=1}^n a_{i,\sigma(i)} = \sum_{\sigma
+			\in A_n}\prod_{i=1}^n a_{i,\sigma(i)} - \sum_{\sigma\in S_n\backslash A_n}\prod_{i=1}^n a_{i,\sigma(i)}\notag
+	\end{align}
+\end{theorem}
+\begin{proof}
+	Eindeutigkeit der Abbildung folgt wegen D3 aus \propref{4_2_7}. Bleibt nur noch zu zeigen, dass $\det$ auch die Axiome D1 bis D3 erfüllt. \\
+	D1: klar \\
+	D3: klar \\
+	D2: Seien $\mu\neq v$ mit $a_{\mu}=a_v$. Mit $\tau=\tau_{\mu v}$ ist $S_n\backslash A_n = A_n\tau$, somit 
+	\begin{align}
+		\det(a_{ij})&=
+		\sum_{\sigma\in A_n} \prod_{i=1}^n a_{i,\sigma(i)}-\sum_{\sigma\in A_n\tau} \prod_{i=1}^n a_{i,\sigma\tau(i)} \notag \\
+		&=
+		\sum_{\sigma\in A_n} \left( \prod_{i=1}^n a_{i,\sigma(i)} - \prod_{i=1}^n a_{i,\sigma\tau(i)} \right) \notag
+	\end{align}
+	nach \propref{4_1_10}. Da $a_{ij}=a_{\tau(i),j}$ 
+	für alle $i,j$ ist 
+	\begin{align}
+		\prod_{i=1}^n a_{i,\sigma(i)}&=\prod_{i=1}^n a_{\tau(i),\sigma\tau(i)} \notag \\
+		&=\prod_{i=1}^n a_{i,\sigma\tau(i)} \notag
+	\end{align}
+	für jedes $\sigma\in S_n$, woraus $\det(a_{ij})=0$ folgt.
+\end{proof}
+
+\begin{theorem}[Determinantenmultiplikationssatz]
+	\proplbl{4_2_11}
+	Für $A,B\in \Mat_n(R)$ ist 
+	\begin{align}
+		\det(AB)=\det(A)\cdot \det(B)\notag
+	\end{align}
+\end{theorem}
+\begin{proof}
+	Fixiere $A$ und betrachte die Abbildung $\delta: \Mat_n(R)\to R$ mit $B\mapsto \det(AB^{-1})$. Diese Abbildung erfüllt die Axiome 
+	D1 und D2. sind $b_1,...,b_n$ die Zeilen von $B$, so hat $AB^{-1}$ die Spalten $Ab_1^t,...,Ab_n^t$, es werden die Eigenschaften 
+	von $\det$ auf $\delta$ übertragen. \\
+	$\Rightarrow \det(AB)=\delta(B^t)=\delta(\mathbbm{1}_n)\cdot \det(B^t)=\det(A)\cdot \det(B)$.
+\end{proof}

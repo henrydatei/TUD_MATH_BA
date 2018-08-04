@@ -1,0 +1,25 @@
+\section{Euklidische und unitäre Vektorräume}
+
+\begin{definition}[quadratische Form]
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Die \begriff{quadratische Form} zu $s$ ist die Abbildung
+	\begin{align}
+		q_s:\begin{cases}
+		V\to \real \\ x\mapsto s(x,x)
+		\end{cases}\notag
+	\end{align}
+\end{definition}
+
+\begin{definition}[(semi)definit, euklidischer VR, unitärer VR]
+	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Ist $s(x,x)\ge 0$ für alle $x\in V$, so heißt $s$ \emph{positiv} \begriff{semidefinit}. Ist $s(x,x)>0$ für alle $0\neq x\in V$, so heißt $s$ \emph{positiv} \begriff{definit} (oder ein \emph{Skalarprodukt}).
+	
+	Eine hermitesche Matrix $A\in\Mat_n(K)$ heißt \emph{positiv (semi)definit}, wenn $s_A$ dies ist.
+	
+	Einen endlichdimensionalen $K$-VR zusammen mit positiv definiten hermiteschen Sesquilinearformen nennt man einen \begriff{euklidischen} bzw. \begriff{unitären} VR (oder auch \emph{Prähilbertraum}). Wenn nicht anderes angegeben, notieren wir die Sesquilinearform mit $\skalar{\cdot}{\cdot}$.
+\end{definition}
+
+\begin{definition}
+	Ist $V$ ein unitärer VR, so definiert man die Norm von $x\in V$ als
+	\begin{align}
+		\Vert x\Vert = \sqrt{\skalar{x}{x}}\in\real_{\ge 0}\notag
+	\end{align}
+\end{definition}

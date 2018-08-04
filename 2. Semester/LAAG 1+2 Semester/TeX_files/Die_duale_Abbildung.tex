@@ -1,0 +1,165 @@
+\section{Die duale Abbildung}
+
+Sei $f\in\Hom_K(V,W)$.
+
+\begin{remark}
+	Ist $\phi\in W^*=\Hom_K(W,K)$ eine Linearform auf $W$, so ist $\phi\circ f\in \Hom_K(V,K)=V^*$ eine Linearform auf $V$.
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V & W \\ \; & K \\};
+		\path[-stealth]
+		(m-1-1) edge node [above] {$f$} (m-1-2)
+		(m-1-1) edge [dashed,.] node [below] {$f^*(\phi)$} (m-2-2)
+		(m-1-2) edge node [right] {$\phi$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
+\end{remark}
+
+\begin{definition}[duale Abbildung]
+	Die zu $f$ duale Abbildung ist
+	\begin{align}
+		f^*:
+		\begin{cases}
+			W^*\to V^* \\
+			\phi\mapsto \phi\circ f
+		\end{cases} \notag
+	\end{align}
+\end{definition}
+
+\begin{lemma}
+	Es ist $f^*\in\Hom_K(W^*,V^*)$.
+\end{lemma}
+\begin{proof}
+	Sind $\phi,\psi\in W^*$ und $\lambda\in K$ ist 
+	\begin{align}
+		f^*(\phi+\psi) &= (\phi+\psi)\circ f \notag \\
+		&= \phi\circ f + \psi\circ f \notag \\
+		&= f^*(\phi) + f^*(\psi) \notag \\
+		f^*(\lambda\phi) &= (\lambda\phi)\circ f \notag \\
+		&= \lambda\cdot(\phi\circ f) \notag \\
+		&= \lambda\cdot f^*(\phi) \notag
+	\end{align}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{7_3_4}
+	Sind $B=(x_1,...,x_n)$ und $C=(y_1,...,y_m)$ Basen von $V$ bzw. $W$, so ist
+	\begin{align}
+		M_{B^*}^{C^*}(f^*)=\left(M_C^B(f) \right)^t\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Sei $A=M_C^B(f)=(a_{ij})_{i,j}$ und $B=M_{B^*}^{C^{*}}(f^*)=(b_{ji})_{j,i}$. Dann ist $f(x_j)=\sum_{i=1}^m a_{ij}y_i$, also $a_{ji}=y_i^*(f(x_j))=f^*(y_i^*)(x_j)$ und $f^*(y_i^*)=\sum_{j=1}^n b_{ji}x_j^*$, also $b_{ji}=f^*(y_i^*)(x_j)=a_{ij}$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{7_3_5}
+	Sind $V$ und $W$ endlichdimensional, und identifizieren wir $V=V^{**}$ und $W=W^{**}$, so ist $f=f^{**}$, das heißt $\iota\circ f=f^{**}\circ\iota$.
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+		{V & W \\ V^{**} &W^{**} \\};
+		\path[-stealth]
+		(m-1-1) edge node [left] {$\iota_V\cong$} (m-2-1)
+		edge node [above] {$f$} (m-1-2)
+		(m-2-1) edge node [below] {$f^{**}$} (m-2-2)
+		(m-1-2) edge node [right] {$\iota_W\cong$} (m-2-2);
+		\end{tikzpicture}
+	\end{center}
+\end{conclusion}
+
+\begin{proof}
+	Seien $B$ und $C$ Basen von $V$ bzw. $W$. Unter der Identifizierung ist $B^{**}=B$ und $C=C^{**}$, das heißt $\iota(x_i)=x_i^{**}$ bzw. $\iota(y_j)=y_j^{**}$, denn $\iota(x_i)(x_j^*)=x_j^*(x_i)=\delta_{ij} = x_i^{**}(x_j^*)\quad\forall i,j$ und somit 
+	\begin{align}
+		M_C^B(f^{**}) \overset{\propref{7_3_4}}{=} \left( M_{B^*}^{C^*}(f^*)\right)^t \overset{\propref{7_3_4}}{=} \left( M_C^B(f)\right)^{tt}=M_C^B(f)\notag
+	\end{align}
+	Also $f^{**}=f$.
+\end{proof}
+
+\begin{conclusion}
+	Sind $V,W$ endlichdimensional, so liefert die Abbildung $f\mapsto f^*$ einen Isomorphismus von $K$-Vektorräumen.
+	\begin{align}
+		\Hom_K(V,W)\to \Hom_K(W^*,V^*)\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	Sind $f,g\in\Hom_K(V,W)$ und $\lambda\in K$, $\phi\in W^{*}$, so ist
+	\begin{align}
+		(f+g)^*(\phi)&=\phi\circ(f+g)=\phi\circ f+\phi\circ g=f^*(\phi)+g^*(\phi)=(f^*+g^*)(\phi) \notag \\
+		(\lambda f)^*(\phi)&=\phi\circ (\lambda f)=\lambda\cdot(\phi\circ f)=\lambda\circ f^*(\phi)=(\lambda f^*)(\phi)\notag
+	\end{align}
+	Die Abbildung ist somit linear. Nach \propref{7_3_5} ist sie injektiv. Da 
+	\begin{align}
+		 \dim_K(V,W)&=\dim_K(V)\cdot \dim_K(W)\notag \\
+		 &=\dim_K(V^*)\cdot \dim_K(W^*) \notag \\
+		 &= \dim_K(\Hom_K(W^*,V^*))\notag
+	\end{align}
+	ist sie auch ein Isomorphismus.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{7_3_7}
+	Sind $V,W$ endlichdimensional so ist
+	\begin{align}
+		\Image(f^*)&=\Ker(f)^0\notag \\
+		\Ker(f^*)&=\Image(f)^0\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $\Image(f^*)\subseteq\Ker(f)^0$: Ist $\phi\in W^*$, $x\in \Ker(f)$, so ist
+		\begin{align}
+			f^*(\phi)(x)=(\phi\circ f)(x)=\phi(0)=0\notag
+		\end{align}
+		\item $\Ker(f)^0\subseteq\Image(f^*)$: Sei $\phi\in\Ker(f)^0$. Setze eine Basis $(x_1,...,x_r)$ von $\Ker(f)$ zu einer Basis $(x_1,...,x_n)$ von $V$ fort. Dann sind $f(x_{r+1}),...,f(x_n)$ linear unabhängig nach der Kern-Bild-Formel (\propref{3_7_13}), es gibt also $\psi\in W^*$ mit 
+		\begin{align}
+			\psi(f(x_i))=\phi(x_i)\quad\forall i\notag
+		\end{align}
+		Es folgt
+		\begin{align}
+			f^*(\psi)(x_i)=\psi(f(x_i))=\phi(x_i)\quad\forall i\notag
+		\end{align}
+		also $\phi=f^*(\psi)$.
+		\item Mit der Identifizierung $V=V^{**}$ ist
+		\begin{align}
+			\Image(f)^0\overset{\propref{7_3_5}}{=}\Image(f^{**})^0=\Ker(f^*)^{00}\overset{\propref{7_2_15}}{=}\Ker(f^*)\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Sind $V,W$ endlichdimensional, so ist
+	\begin{align}
+		\rk(f)=\rk(f^*)\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	\begin{align}
+		\rk(f) &= \dim_K(\Image(f))\notag \\
+		&\overset{\propref{7_2_14}}{=} \dim_K(W)-\dim_K(\Image(f)^0)\notag \\
+		&\overset{\propref{3_7_13}}{=} \dim_K(W^*)-\dim_K(\Ker(f^*)) \notag \\
+		&= \rk(f^*)\notag
+	\end{align}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{7_3_9}
+	Ist $\dim_K(V)<\infty$ und $U\subseteq V$ ein Untervektorraum, so lässt sich jede Linearform auf $U$ zu einer Linearform auf $V$ fortsetzen.
+\end{conclusion}
+\begin{proof}
+	Ist $f:U\to V$ die Inklusionsabbildung, so ist $f^*:V^*\to U^*$, $\phi\mapsto\phi\vert_U$ und
+	\begin{align}
+		\rk(f^*)=\rk(f)=\dim_K(U)=\dim_K(U^*)\notag
+	\end{align}
+	$f^*$ ist somit surjektiv.
+\end{proof}
+
+\begin{remark}
+	\propref{7_3_9} gilt auch ohne die Voraussetzung $\dim_K(V)<\infty$, siehe Übung.
+\end{remark}
+
+\begin{remark}
+	Ein homogenes lineares Gleichungssystem $Ax=0$ hat als Lösungsraum $L(A,0)\subseteq K^n$ ein Untervektorraum des $K^n$. Unter der Identifizierung $K^n=(K^n)^{**}$ ist $L(A,0)$ der Annulator der Linearformen beschrieben durch die Zeilen $a_1,...,a_m\in (K^n)^*$ von $A$. Wir wollen umgekehrt zu einem Untervektorraum $W\subseteq K^n$ ein $A=(a_1,...,a_m)\in\Mat_{n\times m}(K)$ mit $W=L(A,0)$ finden. Ist $W=\Span_K(b_1,...,b_r)$, so ist $W=\Image(f_B)$ mit $B=(b_1,...,b_r)\in\Mat_{n\times r}(K)$. \\
+	$\Rightarrow W\overset{\propref{7_3_7}}{=}\Ker(f^*_B)^0$ und $M_{\mathcal{E}^t}(f^*_B)=B^t$. Wenn man also eine Basis $(a_1,...,a_s)$ von $L(B^t,0)$ bestimmt und daraus eine Matrix $A=(a_1^t,...,a_s^t)\in\Mat_{s\times n}(K)$ bildet, so ist $W=L(A,0)$.
+\end{remark}

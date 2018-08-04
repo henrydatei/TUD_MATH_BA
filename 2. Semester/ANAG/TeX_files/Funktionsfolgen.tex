@@ -10,41 +10,55 @@ Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{diffbar} für $k\in\m
 	alle $f_k$ stetig, $f_k\to f$ gleichmäig auf $D$ $\xRightarrow{\text{\propref{chap_14_19}}}$ $f$ stetig
 \end{boldenvironment}
 
-\begin{example}
+\begin{*example}
 	Sei $f_k:\mathbb{R}\to\mathbb{R}$ mit $f_k(x) = \frac{\sinh^2 x}{k}$.
 	
 	Wegen $\vert f_k(x)\vert \le \frac{1}{k}$ $\forall k$ $\Rightarrow$ $f_k\to f$ gleichmäßig auf $\mathbb{R}$ für $f=0$
 
 	Aber $f_k'(x) = k\cdot\cosh^2 x \cancel{\rightarrow} f'(x) = 0$
+\end{*example}
+
+\begin{example}
+	Sei $f_k:\mathbb{R}\to\mathbb{R}$ mit $f_k(x) = \sqrt{x^2 + \frac{1}{k}}$, wobei $f(x) = \vert x \vert$\\
+	$\Rightarrow$ alle $f_k$ \gls{diffbar}, $f_k \to f$ gleichmäßig auf $[-1,1]$ 
+	und $(\vert f_k(x)  - f(x)\vert \le f_k(0)\frac{1}{\sqrt{k}}$ \emph{aber} $f$ nicht \gls{diffbar} %TODO abbildung
+\end{example}
+
+\begin{example}
+	Sei $f_k:\mathbb{R}\to\mathbb{R}$ mit $f_k(x) = \frac{\sin kx}{x}$, $\Rightarrow f_k \to f(x) = 0$ gleichmäßig auf $\real$ (da $\vert f_k(x) \vert \le \frac{1}{k} \forall x \in \real$) \\
+	\emph{aber} $f^{'}_{k}(x) = \cos kx \not\to f^{'}(x) = 0$
 \end{example}
 
 \begin{proposition}[Differentiation bei Funktionsfolgen]
 	\proplbl{funktionsfolgen_differentiation}
-	Sei $f_K:D\subset K^n\to K^n$, $D$ offen, beschränkt, $f_k$ \gls{diffbar} $\forall k$ und\begin{enumerate}[label={(\alph*)}]
-		\item $f_k'\rightarrow: g$ gleichmäßig auf $B_r(x)\subset D$
-		\item \proplbl{funktionsfolgen_differentiation_b} $\{ f_k(x_0)\}$ konvergiert für ein $x_0\in B_r(x)$
+	Sei $f_K:D\subset K^n\to K^m$, $D$ offen, beschränkt, $f_k$ \gls{diffbar} $\forall k$ und\begin{enumerate}[label={(\alph*)}]
+		\item $f_k'\to: g$ gleichmäßig auf $B_r(x)\subset D$
+		\item \proplbl{funktionsfolgen_differentiation_b} $\{ f_k(x_0)\}_{k}$ konvergiert für ein $x_0\in B_r(x)$
 	\end{enumerate}
-	$\Rightarrow$ $f_k\rightarrow: f$ gleichmäßig auf $B_r(x)$ und $f$ ist \gls{diffbar} auf $B_r(x)$ mit \begin{align*}
+	$\Rightarrow$ $f_k\to: f$ gleichmäßig auf $B_r(x)$ und $f$ ist \gls{diffbar} auf $B_r(x)$ mit 
+	\begin{align*}
 		f_k'(y) \rightarrow f'(y) \quad\forall y\in B_r(x)
 	\end{align*}
 \end{proposition}
 
 \begin{underlinedenvironment}[Hinweis]
-	Betrachte $f_k(x) := \frac{x^k}{k^2} + k$ auf $(0,1)$ um zu sehen, dass Voraussetzung \ref{funktionsfolgen_differentiation_b} wichtig ist.
+	Betrachte $f_k(x) := \frac{\sin x}{k} + k$ auf $\real$ um zu sehen ($g = 0$), dass Voraussetzung \ref{funktionsfolgen_differentiation_b} wichtig ist.
 \end{underlinedenvironment}
 
 \begin{proof}
-	Für $\epsilon > 0$ $\exists k\in \mathbb{N}$ mit \begin{align}
+	Für $\epsilon > 0$ $\exists k_0\in \mathbb{N}$ mit 
+	\begin{align}
 		\proplbl{funktionsfolgen_differentiation_beweis_1}
-		\vert f_k(x_0) - f_l(x_0)\vert < \epsilon \quad k,l \ge k_0
+		\vert f_k(x_0) - f_l(x_0)\vert < \epsilon \quad \forall k,l \ge k_0 \text{ und }\\
+		\Vert g(y) - f^{y}_k\Vert < \epsilon, \Vert f^{'}_k(y) - f^{'}_k(y)\Vert < \epsilon \forall k,l \ge k_0, y \in B_r(x)
 	\end{align}
 	Weiter gilt (eventuell für größeres $k_0$) $\Vert g(z) - f_k'(z)\Vert < \epsilon$ und  \begin{align}
 		\proplbl{funktionsfolgen_differentiation_beweis_2}
 		\Vert f_k'(y) - f_l'(y)\Vert < \epsilon \quad\forall k,l\ge k_0,\;z,y\in B_r(x)
 	\end{align}
-	Schrankensatz: $\forall z,y\in B_r(x)$, $k,l\ge k_0$ $\exists \xi\in [z,y]$ mit {\zeroAmsmathAlignVSpaces**\begin{align}
+	Schrankensatz: $\forall z,y\in B_r(x)$, $k,l\ge k_0$ $\exists \xi\in [y,z]$ mit {\zeroAmsmathAlignVSpaces**\begin{align}
 		\proplbl{funktionsfolgen_differentiation_beweis_3}
-		\left\vert \left(f_k(y) - f_l(y)\right) - \left( f_k(z) - f_l(z)\right)\right\vert \le \Vert f_k'(\xi) - f_l'(\xi)\Vert \cdot \vert y - z\vert \le \epsilon \vert y -z\vert < 2r\cdot\epsilon
+		\left\Vert \left(f_k(y) - f_l(y)\right) - \left( f_k(z) - f_l(z)\right)\right\Vert \le \Vert f_k'(\xi) - f_l'(\xi)\Vert \cdot \vert y - z\vert \le \epsilon \vert y -z\vert < 2r\cdot\epsilon
 	\end{align}}
 	{\zeroAmsmathAlignVSpaces*\begin{flalign}
 		\notag\Rightarrow\;\;\vert f_k(y) - f_l(y)\vert &\le \vert \big(f_k(y) - f_l(y)\big) - \big(f_k(x_0) - f_l(x_0)\big)\vert + \vert f_k(x_0) - f_l(x_0)\vert& \\
@@ -80,13 +94,14 @@ Betrachte $f_k:D\subset K^n\to K^m$, $D$ offen, $f_k$ \gls{diffbar} für $k\in\m
 \end{proof}
 
 \subsection{Anwendung auf Potenzreihen}
-Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
-	\proplbl{funktionsfolgen_potenzreihe}
-	f(x) &= \sum_{k=0}^\infty a_k(x  - x_0)^k\quad\forall x\in B_{\underbrace{\text{\scriptsize$R$}}_{\mathclap{\text{Konvergenzradius}}}}(x_0)
-\end{align}
+	Sei $f:B_R(x_0)\subset K\to K$ gegeben durch eine Potenzreihe 
+	\begin{align}
+		\proplbl{funktionsfolgen_potenzreihe}
+		f(x) &= \sum_{k=0}^\infty a_k(x  - x_0)^k\quad\forall x\in B_{\underbrace{\text{\scriptsize$R$}}_{\mathclap{\text{Konvergenzradius}}}}(x_0)
+	\end{align}
 
 \begin{boldenvironment}[Wiederholung]
-	$R=\frac{1}{\limsup \sqrt[k]{\vert a_k\vert}}$
+	$R=\frac{1}{\limsup_{k\to \infty} \sqrt[k]{\vert a_k\vert}}$
 \end{boldenvironment}
 
 \begin{boldenvironment}[Frage]
@@ -96,15 +111,17 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 \begin{proposition}
 	\proplbl{funktionsfolgen_satz_3}
 	Sei $f:B_r(x_0)\subset K\to K$ Potenzreihe gemäß \eqref{funktionsfolgen_potenzreihe} \\
-	\hspace*{1.5ex}$\Rightarrow$ $f$ ist \gls{diffbar} auf $B_r(x_0)$ mit \begin{align}
+	\hspace*{1.5ex}$\Rightarrow$ $f$ ist \gls{diffbar} auf $B_r(x_0)$ mit 
+	\begin{align}
 		\proplbl{funktionsfolgen_satz_3_eq}
 		f'(x) &= \sum_{k=1}^\infty k a_k (x - x_0)^{k-1}\quad\forall x\in B_r(x_0)
 	\end{align}
 \end{proposition}
 
 \begin{conclusion}
-	Sei $f:B_r(x_0)\subset K\to K$ Potenzreihe gemäß \eqref{funktionsfolgen_potenzreihe} \\
-	\hspace*{1.5ex}$\Rightarrow$ $f\in C^\infty (B_r(x_0), K)$ und \begin{align}
+	Sei $f:B_R(x_0)\subset K\to K$ Potenzreihe gemäß \eqref{funktionsfolgen_potenzreihe} \\
+	\hspace*{1.5ex}$\Rightarrow$ $f\in C^\infty (B_R(x_0), K)$ und 
+	\begin{align}
 		\proplbl{funktionsfolgen_eq_8}
 		a_k = \frac{1}{k!}\cdot f^{(k)})(x_0)
 	\end{align}
@@ -113,20 +130,24 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 
 \begin{proof}
 	$k$-fache Anwendung von \cref{funktionsfolgen_satz_3} liefert $f\in C^k(B_r(x_0), K)$ $\forall k\in \mathbb{N}$\\
-	\ $\xRightarrow{\eqref{funktionsfolgen_satz_3_eq}}$ $f'(x) = a_1$, $f''(x_0) = 2a_k$, $\dotsc$ rekursiv folgt \eqref{funktionsfolgen_eq_8}.
+	$\xRightarrow{\eqref{funktionsfolgen_satz_3_eq}}$ $f'(x) = a_1$, $f''(x_0) = 2a_k$, $\dotsc$ rekursiv folgt \eqref{funktionsfolgen_eq_8}.
 \end{proof}
 
 \begin{proof}[\propref{funktionsfolgen_satz_3}]
-	Betrache die Partialsummen\begin{align*}
-		f_k(x) := \sum_{j=0}^k a_j(x- x_0)^j\quad\forall x\in B_r(x_0)
+	Betrache die Partialsummen
+	\begin{align*}
+		f_k(x) := \sum_{j=0}^k a_j(x- x_0)^j\quad\forall x\in B_R(x_0)
 	\end{align*}
-	\ $\Rightarrow$ $f_k(x_0)\xrightarrow{k\to\infty} f(x_0)$ und $f_k$ \gls{diffbar} mit \begin{align*}
-		f_k'(x) = \sum_{j=1}^k j a_j(x - x_0)^{j-1}\quad\forall x\in B_r(x_0)
+	$\Rightarrow$ $f_k(x_0)\xrightarrow{k\to\infty} f(x_0)$ und $f_k$ \gls{diffbar} mit 
+	\begin{align*}
+		f_k'(x) = \sum_{j=1}^k j a_j(x - x_0)^{j-1}\quad\forall x\in B_R(x_0)
 	\end{align*}
-	Wegen \begin{align*}
-	\limsup\limits_{k\to\infty} \sqrt[k]{(k+1)\vert a_{k+1}\vert} = \limsup \sqrt[k]{k\left(1 + \frac{1}{k}\right)} \cdot \left( \sqrt[k+1]{\vert a_{k+1}\vert}\right)^{\frac{k+1}{k}} = \limsup \sqrt[k]{\vert a_k\vert} = \frac{1}{R}
+	Wegen 
+	\begin{align*}
+		\limsup\limits_{k\to\infty} \sqrt[k]{(k+1)\vert a_{k+1}\vert} = \limsup \sqrt[k]{k\left(1 + \frac{1}{k}\right)} \cdot \left( \sqrt[k+1]{\vert a_{k+1}\vert}\right)^{\frac{k+1}{k}} = \limsup \sqrt[k]{\vert a_k\vert} = \frac{1}{R}
 	\end{align*}
-	hat die Potenzreihe \begin{align*}
+	hat die Potenzreihe 
+	\begin{align*}
 		g(x) := \sum_{k=1}^\infty k a_k(x-x_0)^{k-1}
 	\end{align*}
 	den Konvergenzradius $R$ \\
@@ -141,16 +162,18 @@ Sei $f:B_r(x_0)\subset K\to K$ gegen durch eine Potenzreihe \begin{align}
 \begin{example}
 	Es gilt \begin{align}
 		\proplbl{funktionsfolgen_eq_9}
-		\ln(1+x) = \sum_{k=0}^\infty \frac{(-1)^k}{k+1}x^{k+1}\quad\forall x\in (-1,1)\subset \mathbb{R}
+		\ln(1+x) = f(x) = \sum_{k=0}^\infty \frac{(-1)^k}{k+1}x^{k+1}\quad\forall x\in (-1,1)\subset \mathbb{R}
 	\end{align}
 \end{example}
 	
 \begin{proof}
-	$f(x)$ sei Potenzreihe \eqref{funktionsfolgen_eq_9}, hat Konvergenzradius $R=1$, $x_0=0$ \\
-	$\xRightarrow{\text{\cref{funktionsfolgen_satz_3}}}$ $f$ \gls{diffbar} auf $(-1,1)$ und \begin{align*}
+	$f(x)$ sei Potenzreihe in \eqref{funktionsfolgen_eq_9}, hat Konvergenzradius $R=1$, $x_0=0$ \\
+	$\xRightarrow{\text{\cref{funktionsfolgen_satz_3}}}$ $f$ \gls{diffbar} auf $(-1,1)$ und 
+	\begin{align*}
 		f'(x) = \sum_{k=0}^\infty (-x)^k = \frac{1}{1-(-x)} = \frac{1}{1+x}\qquad\text{geometrische Reihe}
 	\end{align*}
-	und\begin{align*}
+	und
+	\begin{align*}
 		\frac{\D}{\D x}\ln (1+x) &= \frac{1}{1+x} = f'(x) \\
 		f(x) &= \ln(1+x) + \mathrm{const}
 	\end{align*}
