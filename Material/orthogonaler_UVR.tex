@@ -1,0 +1,23 @@
+\documentclass{report}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{amssymb}
+
+\begin{document}
+	\begin{tikzpicture}
+		\draw[blue] (2.75,-2) -- (2.75,3);
+		\node[blue] at (3.2,3) (Komp) {$U^\perp$};
+		
+		\draw[thick] (0,0) -- (4,0);
+		\draw[thick] (0,0) -- (1.5,1.5);
+		\draw[thick] (4,0) -- (5.5,1.5);
+		\draw[thick] (1.5,1.5) -- (5.5,1.5);
+		\node at (3.5,0.4) (U) {$U$};
+		\node at (0,2.5) (R) {$\mathbb{R}^3$};
+		
+		\coordinate (c2) at (2.75,0.75);
+		\draw ($(c2) + (0:0.4)$) arc (0:90:0.4); % radius=4mm, initial=0, final=90
+		\draw[thick] (2.90,0.90) circle (0.01);
+	\end{tikzpicture}
+\end{document}
