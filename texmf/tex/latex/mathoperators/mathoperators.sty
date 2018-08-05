@@ -1,0 +1,110 @@
+\ProvidesPackage{mathoperators}
+
+%Provides some common math related commands and operators
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{scalerel,stackengine}
+\RequirePackage{calc}
+
+%transpose
+\newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
+%new macro for "equals" ^=
+\newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}     % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\lebesque}{\textsc{Lebesgue}}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+\renewcommand*{\arraystretch}{1.4}
+\newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\qraum}[2]{\sfrac{#1}{#2}}
+
+% Math Operators
+\DeclareMathOperator{\inn}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\D}{d}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ext}{ext}
+\DeclareMathOperator{\diam}{diam}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\ZR}{ZR}
+\DeclareMathOperator{\SR}{SR}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Hau}{Hau}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Uni}{U}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
+
+\endinput
