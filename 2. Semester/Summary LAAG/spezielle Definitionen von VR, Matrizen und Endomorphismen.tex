@@ -1,0 +1,46 @@
+\documentclass[ngerman,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[left=2.1cm,right=3.1cm,bottom=3cm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[bb=boondox]{mathalfa}
+\usepackage{tabularx}
+
+\renewcommand{\arraystretch}{1.2}
+
+\title{\textbf{spezielle Definitionen von Vektorräumen, Matrizen und Endomorphismen}}
+\author{\textsc{H. Haustein}, \textsc{P. Lehmann}}
+
+\begin{document}
+	\maketitle
+
+\section{Vektorräume}
+	\begin{tabularx}{\textwidth}{l|c|X}
+		\textbf{Definition} & \textbf{Erklärung} & \textbf{Bemerkungen} \\
+		\hline
+		unitär / euklidisch & Es gibt ein Skalarprodukt. & Man kann Abstände und Winkel messen. \begin{align}
+			\cos\sphericalangle(a,b)=\frac{\langle a,b\rangle}{\Vert a\Vert\cdot\Vert b\Vert}\notag
+		\end{align}
+	\end{tabularx}
+
+\section{Matrizen}
+	\begin{tabularx}{\textwidth}{l|c|X}
+		\textbf{Definition} & \textbf{Erklärung} & \textbf{Bemerkungen} \\
+		\hline
+		hermitesch / symmetrisch & $A^T = \overline{A}$ & diagonalisierbar \\
+		unitär / orthogonal & $A^{-1} = (\overline{A})^T$ & \\
+		normal & $A(\overline{A})^T = (\overline{A})^TA$ & Jede selbstadjungierte oder hermitesche oder unitäre Matrix ist normal. \\
+		selbstadjungiert & $A = (\overline{A})^T$ & \\
+	\end{tabularx}
+
+\section{Endomorphismen}
+	\begin{tabularx}{\textwidth}{l|c|X}
+		\textbf{Definition} & \textbf{Erklärung} & \textbf{Bemerkungen} \\
+		\hline
+		selbstadjungiert & $\langle f(v),w\rangle = \langle v,f(w)\rangle$ & $\Leftrightarrow A$ symmetrisch \\
+		unitär / orthogonal & $\langle v,w\rangle = \langle f(v),f(w)\rangle$ & \\
+		normal & $\langle (f\circ f^{adj})(v),w\rangle = \langle (f^{adj}\circ f)(v),w\rangle$ &
+	\end{tabularx}
+\end{document}
