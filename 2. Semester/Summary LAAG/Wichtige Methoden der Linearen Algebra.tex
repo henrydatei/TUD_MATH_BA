@@ -121,8 +121,8 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 	\end{align}
 \end{enumerate}
 
-\subsection{Minimal Polynom}
-Betrachte Potenzen des Endomorphismus $a \in End(V)$ ($A$ ist die Matrix dazu) und finde geeignete Linearkombination. z.B:
+\subsection{Minimal-Polynom}
+Betrachte Potenzen des Endomorphismus $a \in \text{End}(V)$ ($A$ ist die Matrix dazu) und finde geeignete Linearkombination. z.B:
 	\begin{align}
 		A=\begin{pmatrix}
 			1 & -1 & -1\\
@@ -132,8 +132,8 @@ Betrachte Potenzen des Endomorphismus $a \in End(V)$ ($A$ ist die Matrix dazu) u
 	\end{align}
 Betrachte Basisvektor $e_1$ und Multipliziere mit Potenzen von $A$. Das sieht dann so aus:
 	\begin{align}
-	A^3 \cdot e_1 = -4A^2\cdot e_1 - T\cdot e_1 + e_1\notag \\
-	\Rightarrow \text{Minimalpolynom: } \mu_A (X) = X^3 + 4X^2+X -I = \underline{0}\notag
+	A^3 \cdot e_1 &= -4A^2\cdot e_1 - A\cdot e_1 + e_1\notag \\
+	\Rightarrow \text{Minimalpolynom: } \mu_A (X) &= X^3 + 4X^2+X -\mathbb{1}_3 = \underline{0}\notag
 	\end{align}
 
 \section{Jordan-Normalform}
@@ -142,7 +142,7 @@ Betrachte Basisvektor $e_1$ und Multipliziere mit Potenzen von $A$. Das sieht da
 	\item zu jedem Eigenwert den Jordan-Block mit Größe = Vielfachheit des Eigenwertes bestimmen
 	\item Die Jordan-Normalform besteht aus den Jordan-Blocken auf der Hauptdiagonalen
 	\item Will man noch die Transformationsmatrizen bestimmen, muss man noch zu jedem Eigenwert einen Eigenvektor bestimmen.
-	\item Kommt ein Eigenwert mehrfach (z.B. $n$-fach) vor, so muss man noch $\Ker\big((A-\lambda\mathbb{1}_n)^2\big)$, $\Ker\big((A-\lambda\mathbb{1}_n)^3\big)$, ..., $\Ker\big((A-\lambda\mathbb{1}_n)^{d-1}\big)$ bestimmen.
+	\item Kommt ein Eigenwert mehrfach (z.B. $d$-fach) vor, so muss man noch $\Ker\big((A-\lambda\mathbb{1}_n)^2\big)$, $\Ker\big((A-\lambda\mathbb{1}_n)^3\big)$, ..., $\Ker\big((A-\lambda\mathbb{1}_n)^{d-1}\big)$ bestimmen.
 	\item Dann kann man sich die Transformationsmatrix $S$ zusammenbauen:
 	\begin{align}
 		S = \left(\begin{array}{c|c|c|c|c|c|c}
