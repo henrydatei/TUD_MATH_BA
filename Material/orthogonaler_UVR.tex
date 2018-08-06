@@ -5,7 +5,7 @@
 \usepackage{amssymb}
 
 \begin{document}
-	\begin{tikzpicture}
+	\begin{center}\begin{tikzpicture}
 		\draw[blue] (2.75,-2) -- (2.75,3);
 		\node[blue] at (3.2,3) (Komp) {$U^\perp$};
 		
@@ -19,5 +19,23 @@
 		\coordinate (c2) at (2.75,0.75);
 		\draw ($(c2) + (0:0.4)$) arc (0:90:0.4); % radius=4mm, initial=0, final=90
 		\draw[thick] (2.90,0.90) circle (0.01);
-	\end{tikzpicture}
+	\end{tikzpicture}\end{center}
+
+	\begin{center}\begin{tikzpicture}
+		\draw[->] (-7,0) -- (-1,0);
+		\draw[->] (-4,-3) -- (-4,3);
+		\draw[thick] (-7,-1.5) -- (-1,1.5);
+		\draw[fill=black] (-3,0.5) circle (0.05);
+		\node at (-5,2) (real) {$\mathbb{R}^2$};
+		\node at (-1,1.8) (gerade) {$L$};
+		\node at (-1.7,0.5) (punkt) {$x=\left(\begin{array}{c}x_1 \\ x_2\end{array}\right)$};
+		
+		\draw[->] (1,0) -- (7,0);
+		\draw[->] (4,-3) -- (4,3);
+		\draw[thick] (2.5,3) -- (5.5,-3);
+		\draw[fill=black] (4.5,-1) circle (0.05);
+		\node at (5,2) (real) {$\left(\mathbb{R}^2\right)^*$};
+		\node at (2.2,3) (annulator) {$L^0$};
+		\node at (5.7,-1) (punkt2) {$a=(a_1,a_2)$};
+	\end{tikzpicture}\end{center}
 \end{document}
