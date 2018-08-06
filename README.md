@@ -1,8 +1,6 @@
 # TU Dresden: Mathematik - Bachelor
 Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. ??), **Maß und Integral** (Prof. Dr. ??), **Geometrie** (Prof. Dr. ??) und **Numerik** (Prof. Dr. ??) der TU Dresden
 
-Wer mithelfen möchte, diese Mitschriften zu vervollständigen, bitte melden.
-
 ### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX](https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX)
