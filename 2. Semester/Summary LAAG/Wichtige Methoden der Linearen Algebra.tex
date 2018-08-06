@@ -121,20 +121,22 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 	\end{align}
 \end{enumerate}
 
-\subsection{Minimal-Polynom}
-Betrachte Potenzen des Endomorphismus $a \in \text{End}(V)$ ($A$ ist die Matrix dazu) und finde geeignete Linearkombination. z.B:
+\subsection{Minimalpolynom}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Betrachte Potenzen des Endomorphismus $a \in \text{End}(V)$ ($A$ ist die Matrix dazu) und finde geeignete Linearkombination. z.B:
 	\begin{align}
 		A=\begin{pmatrix}
-			1 & -1 & -1\\
-			1 & -2 & 1\\
-			0 & 1 & -3
+		1 & -1 & -1\\
+		1 & -2 & 1\\
+		0 & 1 & -3
 		\end{pmatrix}\notag
 	\end{align}
-Betrachte Basisvektor $e_1$ und Multipliziere mit Potenzen von $A$. Das sieht dann so aus:
+	\item Betrachte Basisvektor $e_1$ und Multipliziere mit Potenzen von $A$. Das sieht dann so aus:
 	\begin{align}
-	A^3 \cdot e_1 &= -4A^2\cdot e_1 - A\cdot e_1 + e_1\notag \\
-	\Rightarrow \text{Minimalpolynom: } \mu_A (X) &= X^3 + 4X^2+X -\mathbb{1}_3 = \underline{0}\notag
+		A^3 \cdot e_1 &= -4A^2\cdot e_1 - A\cdot e_1 + e_1\notag \\
+		\Rightarrow \text{Minimalpolynom: } \mu_A (X) &= X^3 + 4X^2+X -\mathbb{1}_3 = \underline{0}\notag
 	\end{align}
+\end{enumerate}
 
 \section{Jordan-Normalform}
 \begin{enumerate}[label=\textbf{\arabic*.}]
@@ -155,6 +157,21 @@ Betrachte Basisvektor $e_1$ und Multipliziere mit Potenzen von $A$. Das sieht da
 \end{enumerate}
 
 \section{Gram-Schmidt-Verfahren}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Eine orthogonale Basis ist gegeben $(w_1,...,w_n)$. Die Basis $(v_1,...,v_n)$ lässt sich dann so orthgonalisieren:
+	\begin{align}
+		v_1 &= w_1 \notag \\
+		v_2 &= w_2 - \frac{\langle v_1,w_2 \rangle}{\langle v_1,v_1 \rangle}v_1 \notag \\
+		v_3 &= w_3 - \frac{\langle v_1,w_3\rangle}{\langle v_1,v_1\rangle}v_1 - \frac{\langle v_2,w_3\rangle}{\langle v_2,v_2\rangle}v_2 \notag \\
+		\vdots \notag \\
+		v_n &= w_n - \sum_{i=1}^{n-1} \frac{\langle v_i,w_n\rangle}{\langle v_i,v_i\rangle}v_i\notag
+	\end{align}
+	\item Jetzt noch normalisieren:
+	\begin{align}
+		v'_i = \frac{1}{\Vert v_i\Vert}v_i\notag
+	\end{align}
+	\item Dann ist $(v'_1,...,v'_n)$ eine Orthonormalbasis.
+\end{enumerate}
 
 \section{Smith-Normalform}
 \end{document}
