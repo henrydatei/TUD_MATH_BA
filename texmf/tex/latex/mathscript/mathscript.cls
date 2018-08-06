@@ -47,7 +47,7 @@
 		%old pdflatex needs explicitly utf-8-support
 		\RequirePackage[utf8]{inputenc}
 		\RequirePackage{chngcntr}
-		\RequirePackage{eufrac}
+		\RequirePackage{eufrak}
 	\fi
 \fi
 
