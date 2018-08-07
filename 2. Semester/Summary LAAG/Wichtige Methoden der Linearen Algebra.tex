@@ -67,11 +67,11 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 		\chi = \det(A-\lambda\mathbb{1}_n)\notag
 	\end{align}
 	\item Das charakteristische Polynom 0 setzen und die $\lambda_i$'s ausrechnen.
-	\item Für jedes $\lambda_i$ die Eigenräume berechnen
+	\item F\"ur jedes $\lambda_i$ die Eigenr\"aume berechnen
 	\begin{align}
 		\Eig(A,\lambda_i) = \Ker(A-\lambda_i\mathbb{1}_n)\notag
 	\end{align}
-	\item Die $\lambda_i$ sind dann die Eigenwerte und die Eigenräume sind alle Vielfachen des Eigenvektors zum Eigenwert $\lambda_i$.
+	\item Die $\lambda_i$ sind dann die Eigenwerte und die Eigenr\"aume sind alle Vielfachen des Eigenvektors zum Eigenwert $\lambda_i$.
 \end{enumerate}
 
 \section{Diagonalisierung und Trigonalisierung}
@@ -81,7 +81,7 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 	\begin{align}
 		D = \diag(\underbrace{\lambda_1, ..., \lambda_1}_{\mu(\chi,\lambda_1)}, ..., \underbrace{\lambda_n, ..., \lambda_n}_{\mu(\chi,\lambda_n)})\notag
 	\end{align}
-	Allerdings ist $A$ nur dann diagonalisierbar, wenn für jeden Eigenwert gilt
+	Allerdings ist $A$ nur dann diagonalisierbar, wenn f\"ur jeden Eigenwert gilt
 	\begin{align}
 		\dim(\Eig(A,\lambda)) = \mu(\chi,\lambda)\notag
 	\end{align}
@@ -141,7 +141,7 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 \section{Jordan-Normalform}
 \begin{enumerate}[label=\textbf{\arabic*.}]
 	\item Eigenwerte und deren Vielfachheit bestimmen
-	\item zu jedem Eigenwert den Jordan-Block mit Größe = Vielfachheit des Eigenwertes bestimmen
+	\item zu jedem Eigenwert den Jordan-Block mit Gr\"o{\ss}e = Vielfachheit des Eigenwertes bestimmen
 	\item Die Jordan-Normalform besteht aus den Jordan-Blocken auf der Hauptdiagonalen
 	\item Will man noch die Transformationsmatrizen bestimmen, muss man noch zu jedem Eigenwert einen Eigenvektor bestimmen.
 	\item Kommt ein Eigenwert mehrfach (z.B. $d$-fach) vor, so muss man noch $\Ker\big((A-\lambda\mathbb{1}_n)^2\big)$, $\Ker\big((A-\lambda\mathbb{1}_n)^3\big)$, ..., $\Ker\big((A-\lambda\mathbb{1}_n)^{d-1}\big)$ bestimmen.
@@ -158,7 +158,7 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 
 \section{Gram-Schmidt-Verfahren}
 \begin{enumerate}[label=\textbf{\arabic*.}]
-	\item Eine orthogonale Basis ist gegeben $(w_1,...,w_n)$. Die Basis $(v_1,...,v_n)$ lässt sich dann so orthgonalisieren:
+	\item Eine orthogonale Basis ist gegeben $(w_1,...,w_n)$. Die Basis $(v_1,...,v_n)$ l\"asst sich dann so orthgonalisieren:
 	\begin{align}
 		v_1 &= w_1 \notag \\
 		v_2 &= w_2 - \frac{\langle v_1,w_2 \rangle}{\langle v_1,v_1 \rangle}v_1 \notag \\
