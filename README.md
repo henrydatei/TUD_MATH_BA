@@ -14,6 +14,9 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 - Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
 - Tafel-Bilder gibt es [hier](https://photos.app.goo.gl/ssEPX9AZkWuSExo3A). Alle! :smile:
 
+### Programmieren für Mathematiker (WS2017/18 + SS2018)
+- Eigenes Repository mit meinen Programmen: [https://github.com/henrydatei/TU_PROG](https://github.com/henrydatei/TU_PROG)
+
 ### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
 
 ### Maß und Integral (WS2018/19)
