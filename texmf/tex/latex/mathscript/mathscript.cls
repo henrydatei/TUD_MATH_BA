@@ -16,13 +16,14 @@
 	\let\tempa\@empty
 	\IfEq{#1}{firstnumber}{\def\tempa{changebreak}}{%
 		\IfEq{#1}{firstname}{\def\tempa{break}}{%
-			\PackageWarning{mathscript}{Unknown Value}
+			\PackageWarning{mathscript}{Unknown Value for key `order'}
 		}
 	}
 	\edef\theoremheader@order@val{\tempa}	
 }
 
-%possible values: all you can imagine. usefull values: in this class predefined theorem-environment-names
+%possible values: all you can imagine.
+%usefull values: theorem-names defined in this class, new theorems defined by \newmdtheoremenv
 \listadd{\theorem@disable}{\@empty}
 \DeclareOptionX{disable}{%
 	\listadd{\theorem@disable}{#1}
@@ -139,6 +140,7 @@
 % 						End Packages							%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%tweak \newmdtheoremenv to create an empty environment if this very enviroment is disabled
 \RenewDocumentCommand{\newmdtheoremenv}{O{} m o m o}{%
 	\ifinlist{#2}{\theorem@disable}{%
 		\IfStrEq{#2}{theorem}{\newtheorem{#2}{}[section]}{\newtheorem{#2}{}[theorem]}
