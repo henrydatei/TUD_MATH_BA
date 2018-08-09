@@ -58,6 +58,33 @@ Sei zunächst $K=\real$.
 	siehe Analysis, siehe VI.§3
 \end{proof}
 
+\begin{*anmerkung}
+	Der Beweis dieser Ungleichung wird im Skript später noch behandelt, war aber für mich nicht verständlich, deswegen hier noch mal ein einfach zu verstehender Beweis: Wir betrachten dazu das Skalarprodukt
+	\begin{align}
+		0\le \skalar{x-\lambda y}{x-\lambda y}\notag
+	\end{align}
+	Mit dem Anwenden der Rechenregeln ergibt sich:
+	\begin{align}
+		\skalar{x-\lambda y}{x-\lambda y} &= \skalar{x-\lambda y}{x}-\skalar{x-\lambda y}{\lambda y}\notag \\
+		&= \skalar{x-\lambda y}{x}-\overline{\lambda}\skalar{x-\lambda y}{y} \notag \\
+		&= \skalar{x}{x}-\skalar{\lambda y}{x}-\overline{\lambda}\skalar{x}{y}+\overline{\lambda}\skalar{\lambda y}{y} \notag \\
+		&= \skalar{x}{x}-\lambda\skalar{y}{x}-\overline{\lambda}\skalar{x}{y}+\lambda\overline{\lambda}\skalar{y} {y}\notag
+	\end{align}
+	Jetzt setzen wir
+	\begin{align}
+		\lambda = \frac{\skalar{x}{y}}{\skalar{y}{y}}=\frac{\skalar{x}{y}}{\Vert y\Vert^2}\notag
+	\end{align}
+	Also ergibt sich
+	\begin{align}
+		\skalar{x-\lambda y}{x-\lambda y} &= \skalar{x}{x}-\frac{\skalar{x}{y}}{\skalar{y}{y}}\skalar{y}{x}-\overline{\lambda}\skalar{x}{y}+\overline{\lambda}\frac{\skalar{x}{y}}{\skalar{y}{y}}\skalar{y}{y} \notag \\
+		&= \Vert x\Vert^2 - \frac{\skalar{x}{y}}{\Vert y\Vert^2}\skalar{y}{y} \notag \\
+		&\le \Vert x\Vert^2-\frac{\skalar{x}{y}}{\Vert y\Vert^2} \notag \\
+		\frac{\skalar{x}{y}}{\Vert y\Vert^2} &\le \Vert x\Vert^2 \notag \\
+		\skalar{x}{y} &\le \Vert x\Vert^2\cdot \Vert y\Vert^2 \notag \\
+		\Rightarrow\vert\skalar{x}{y}\vert &\le \Vert x\Vert\cdot \Vert y\Vert\notag
+	\end{align}
+\end{*anmerkung}
+
 \begin{proposition}
 	Die euklidische Norm erfüllt die folgenden Eigenschaften:
 	\begin{itemize}
