@@ -119,6 +119,12 @@ Matrix in Zeilenstufenform bringen mit folgenden Methoden
 		&&&&
 		\end{array}\right)\notag
 	\end{align}
+	\item Hat $A$ die Dimension $n$, so muss man die Prozedur genau $n-1$-mal wiederholen. Da man für jede weitere $S$-Matrix die vorherige $S$-Matrix braucht, "'verfeinert"' man die $S$-Matrizen immer weiter. 
+	\item Ist dieser "'Verfeinerungsprozess"' mit den Matrizen $S_{n-1}$ und $S_{n-1}^{-1}$ abgeschlossen, so gilt:
+	\begin{align}
+		T = S_{n-1}\cdot A \cdot S_{n-1}^{-1}\notag
+	\end{align}
+	\textbf{Achtung!} Im letzten Schritt der Diagonalisierung multipliziert man mit $A$, nicht mit $A_{n-1}$!
 \end{enumerate}
 
 \subsection{Minimalpolynom}
