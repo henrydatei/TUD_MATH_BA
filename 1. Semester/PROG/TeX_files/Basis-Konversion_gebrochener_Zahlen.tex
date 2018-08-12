@@ -1,0 +1,51 @@
+\section{Basis-Konversion gebrochener Zahlen}
+
+Festkommadarstellung (nur Betrag der Zahl, ohne Vorzeichen):
+\begin{center}
+	\begin{tabular}{rcccccccccc}
+		Gewichte & $B^{k}$ & $B^{k-1}$ & ... & $B^1$ & $B^0$ & . & $B^{-1}$ & $B^{-2}$ & ... & $B^{-l}$ \\
+		Ziffern & $m_k$ & $m_{k+1}$ & ... & $m_{-1}$ & $m_0$ & . & $m_{1}$ & $m_{2}$ & ... & $m_{l}$ \\
+	\end{tabular}
+\end{center}
+Also: $\sum\limits_{i=k}^l m_i\cdot B^{-i}$.
+
+Die Konvertierung des ganzzahligen Anteils vor dem "'."' läuft wie gehabt. Um den gebrochenen Anteil zu konvertieren, multipliziert man wiederholt mit der Zielbasis $b$ und nimmt den jeweiligen ganzzahligen Anteil als Nachkommaziffern (von links nach rechts). Mit dem gebrochenen Anteil macht man weiter. Wir wollen die Zahl $[0.625]_{10}$ ins Zweiersystem konvertieren:
+\begin{align}
+	0.625 \cdot 2 &= \textbf{1}.25 \notag \\
+	0.25 \cdot 2 &= \textbf{0}.5 \notag \\
+	0.5 \cdot 2 &= \textbf{1} \notag
+\end{align}
+Also gilt: $[0.625]_{10}=[0.101]_2$.
+
+Wieder anders herum:
+\begin{align}
+	0.101 \cdot 1010 &= \textbf{110}.010 \notag \\
+	0.010 \cdot 1010 &= \textbf{10}.100 \notag \\
+	0.100 \cdot 1010 &= \textbf{101}.0 \notag
+\end{align}
+Also gilt $[0.101]_2 = [0.110|10|101]_2 = [0.625]_{10}$.
+
+Jetzt wollen wir $[0.1]_{10}$ ins Zweiersystem konvertieren:
+\begin{align}
+	0.1 \cdot 2 &= \textbf{0}.2 \notag \\
+	0.2 \cdot 2 &= \textbf{0}.4 \\
+	0.4 \cdot 2 &= \textbf{0}.8 \notag \\
+	0.8 \cdot 2 &= \textbf{1}.6 \notag \\
+	0.6 \cdot 2 &= \textbf{1}.2 \notag \\
+	0.2 \cdot 2 &= \textbf{0}.4
+\end{align}
+Wie man sieht, sind die Zeilen (1) und (2) gleich, das heißt, diese Konvertierung wird unendlich lange laufen. Also: $[0.1]_{10}=[0.0\overline{0011}]_2$. Aber es muss gelten: $[0.1]_{10}\cdot [10]_{10}=[1]_{10}$. Aber es stimmt: $[0.0\overline{0011}]_2\cdot [1010]_2=[0.\overline{1}]_2=[1]_2$.
+
+Entsprechend gilt:
+\begin{align}
+	[0.2]_{10} &= [0.\overline{0011}]_2 \notag \\
+	[0.3]_{10} &= [0.01\overline{0011}]_2 \notag \\
+	[0.4]_{10} &= [0.011\overline{0011}]_2 \notag \\
+	[0.5]_{10} &= [0.1]_2 \notag \\
+	[0.6]_{10} &= [0.1\overline{0011}]_2 \notag \\
+	[0.7]_{10} &= [0.1011\overline{0011}]_2 \notag \\
+	[0.8]_{10} &= [0.11\overline{0011}]_2 \notag \\
+	[0.9]_{10} &= [0.111\overline{0011}]_2 \notag
+\end{align}
+
+Problem: Rundungen schon bei $\frac{1}{10}\Rightarrow$ falsche Nachkommastellen. Die Lösung sind hier Gleitkommazahlen.
