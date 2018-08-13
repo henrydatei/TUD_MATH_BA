@@ -86,7 +86,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Graphics-related packages
-\RequirePackage[table]{xcolor}
+\RequirePackage[table,dvipsnames]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{tcolorbox}
 
@@ -109,6 +109,34 @@
 %enumeration
 \RequirePackage{enumerate}
 \RequirePackage{enumitem} 		%customize label
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Pakete für Programmierung
+
+\RequirePackage{lmodern}
+\RequirePackage{listings}
+
+%Konfiguration dazu
+\definecolor{lightlightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{lila}{rgb}{0.8,0,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.8,0.26}
+
+\lstset{language=[95]Fortran,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{lila},
+  commentstyle=\color{lightgray},
+  morecomment=[l]{!\ },% Comment only with space after !
+  stringstyle=\color{mygreen}\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\color{mygray}\ttfamily,
+  identifierstyle=\color{blue},
+  xleftmargin=.2\textwidth, 
+  xrightmargin=.2\textwidth
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Index related packages

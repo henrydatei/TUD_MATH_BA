@@ -1,0 +1,45 @@
+\section{Gleitkommazahlen}
+
+Gleitkommazahlen werden auch Fließkommazahlen, Gleitpunktzahlen, Fließpunktzahlen oder floating-point-numbers genannt.
+
+Das \begriff{Gleitkommaformat} $R=(b,l,\underline{e},\overline{e})$ besteht aus
+\begin{itemize}
+	\item einer Basis $b$
+	\item einer Mantissenlänge $l$
+	\item einem Exponentenbereich von $\underline{e}$ bis $\overline{e}$.
+\end{itemize}
+
+Eine \begriff{Gleitkommazahl} ist entweder 0 oder $x=(-1)^s\cdot m\cdot b^e$ mit
+\begin{itemize}
+	\item Vorzeichenbit $s\in \{0,1\}$
+	\item Mantisse $m=[0.m_1m_2m_3...m_l]_b$ mit Mantissenziffern $m_i\in\{0,1,2,...,b-1\}$
+	\item $e\in\{\underline{e},\underline{e}+1,\underline{e}+2,...,\overline{e}\}$
+\end{itemize}
+
+Schauen wir uns das Beispiel $R(2,3,-1,+2)$ an. Eine solche Zahl benötigt 1 bit für $s$, 2 bits für $e$ und 3 bits für $m$.
+\begin{center}
+	\begin{tabular}{l|cccccccc}
+		$m=$\textbf{ 0.} & \textbf{111} & \textbf{110} & \textbf{101} & \textbf{100} & \textbf{011} & \textbf{010} & \textbf{001} & \textbf{000} \\
+		\hline
+		$e=-1$ & \textcolor{Green}{$\frac{7}{16}$} & \textcolor{Green}{$\frac{6}{16}$} & \textcolor{Green}{$\frac{5}{16}$} & \textcolor{Green}{$\frac{4}{16}$} & \textcolor{red}{$\frac{3}{16}$} & \textcolor{red}{$\frac{2}{16}$} & \textcolor{red}{$\frac{1}{16}$} & 0 \\
+		$e=0$ & \textcolor{Green}{$\frac{14}{16}$} & \textcolor{Green}{$\frac{12}{16}$} & \textcolor{Green}{$\frac{10}{16}$} & \textcolor{Green}{$\frac{8}{16}$} & \textcolor{Cyan}{$\frac{6}{16}$} & \textcolor{Cyan}{$\frac{4}{16}$} & \textcolor{Cyan}{$\frac{2}{16}$} & \textcolor{Cyan}{0} \\
+		$e=1$ & \textcolor{Green}{$\frac{28}{16}$} & \textcolor{Green}{$\frac{24}{16}$} & \textcolor{Green}{$\frac{20}{16}$} & \textcolor{Green}{$\frac{16}{16}$} & \textcolor{Cyan}{$\frac{12}{16}$} & \textcolor{Cyan}{$\frac{8}{16}$} & \textcolor{Cyan}{$\frac{4}{16}$} & \textcolor{Cyan}{0} \\
+		$e=2$ & \textcolor{Green}{$\frac{56}{16}$} & \textcolor{Green}{$\frac{48}{16}$} & \textcolor{Green}{$\frac{40}{16}$} & \textcolor{Green}{$\frac{32}{16}$} & \textcolor{Cyan}{$\frac{24}{16}$} & \textcolor{Cyan}{$\frac{16}{16}$} & \textcolor{Cyan}{$\frac{8}{16}$} & \textcolor{Cyan}{0} \\
+	\end{tabular}
+\end{center}
+
+Es gibt also auch mehrere Darstellungen für eine Zahl! Die \textcolor{Cyan}{Cyan} eingefärbten Zahlen können auch anders dargestellt werden. 
+
+\textcolor{Green}{Grüne} Zahlen sind sogenannte \begriff[Gleitkommazahl!]{normalisierte Gleitkommazahlen}, ihre erste Mantissenziffer ist $\neq 0$. Die \textcolor{red}{roten} Zahlen sind \begriff[Gleitkommazahl!]{denormalisierte Gleitkommazahlen}: Ihre ersten Mantissenziffer ist $m_1=0$ und ihr Exponent $e=\underline{e}$. Da das erste Mantissenbit häufig eine 1 ist, wird angenommen, dass das erste Mantissenbit eine 1 ist und wird deswegen nicht gespeichert (hidden bit). Das sorgt dafür, dass bei 3 bit Genauigkeit mit 4 bit Genauigkeit gerechnet werden kann. Ist das erste Mantissenbit eine 0, gibt es dafür eine spezielle Exponentenkennung.
+
+Ein Zahlenstrahl mit diesen Zahlen ist besonders dicht um 0, aber ab 2 werden die Abstände sehr groß.
+
+Die größte darstellbare Zahl ist $x_{max}=0.1111...1=(1-b^l)\cdot b^{\overline{e}}$. \\
+Der kleinste darstellbare normalisierte Betrag ist $x_{min,N} = 0.10000...0=b^{\underline{e}-1}$. \\
+Der kleinste darstellbare denormalisierte Betrag ist $x_{min,D} = 0.0000...1=b^{\underline{e}-l}$.
+
+Doch es gibt eine Probleme:
+\begin{itemize}
+	\item absolute/relative Fehler bei Zahlen, die zwischen 2 darstellbaren Zahlen liegen $\Rightarrow$ Rundungen bei nahezu jeder Rechnung!
+	\item Grundrechenarten können nicht darstellbare Zahlen erzeugen
+\end{itemize}
