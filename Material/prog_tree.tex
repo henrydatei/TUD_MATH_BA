@@ -8,24 +8,26 @@
 			child {node[circle,draw] (a) {\texttt{>=}}
 				child {node[circle,draw] (b) {\texttt{/}}
 					child {node[circle,draw] (c) {\texttt{/}}
-						child {node[circle,draw] (d) {$i$}}
-						child {node[circle,draw] (e) {$j$}}}
-					child {node[circle,draw] (f) {$x$}}}
-				child {node[circle,draw] (g) {$y$}}}
+						child {node[] (d) {$i$}}
+						child {node[] (e) {$j$}}}
+					child {node[] (f) {$x$}}}
+				child {node[] (g) {$y$}}}
 			child {node[circle,draw] (h) {\texttt{.AND.}}
 				child {node[circle,draw] (i) {\texttt{<}}
 					child {node[circle,draw] (j) {\texttt{-}}
 						child {node[circle,draw] (k) {\texttt{/}}
-							child {node[circle,draw] (l) {$y$}}
-							child {node[circle,draw] (m) {$z$}}}}
+							child {node[] (l) {$y$}}
+							child {node[] (m) {$z$}}}}
 					child {node[circle,draw] (q) {\texttt{-}}
 						child {node[circle,draw] (p) {\texttt{**}}
-							child {node[circle,draw] (n) {3}}
-							child {node[circle,draw] (o) {2}}}}}
+							child {node[] (n) {$x$}}
+							child {node[circle,draw] (o) {\texttt{**}}
+								child {node[] (w) {3}}
+								child {node[] (x) {2}}}}}}
 				child {node[circle,draw] (r) {\texttt{<=}}
-					child {node[circle,draw] (s) {$char$}}
+					child {node[] (s) {$char$}}
 					child {node[circle,draw] (t) {\texttt{//}}
-						child {node[circle,draw] (u) {'p'}}
-						child {node[circle,draw] (v) {'eter'}}}}};
+						child {node[] (u) {'p'}}
+						child {node[] (v) {'eter'}}}}};
 	\end{tikzpicture}
 \end{document}
