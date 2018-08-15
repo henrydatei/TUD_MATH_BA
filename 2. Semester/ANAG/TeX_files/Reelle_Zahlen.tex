@@ -115,7 +115,7 @@
 		\item[3)] Fallunterscheidung SeSt
 		\item[4)] Fallunterscheidung SeSt
 		\item[5)] $a = \frac{a}{b}\cdot a \overset{\text{4)}}{\Rightarrow} \vert a \vert = \vert \vert \frac{a}{b} \vert  \cdot \vert b \vert \vert \overset{\cdot \vert b \vert^{-1}}{\Rightarrow} \frac{\vert a \vert}{\vert b \vert} = \vert \frac{a}{b} \vert$
-		\item[6)] nach 1) $a \leq \vert a \vert, b \leq \vert b \vert \xRightarrow{\text{\propref{k_angeordneter_körper}}} a+b \leq \vert a \vert + \vert b \vert$ analog $-a-b \leq \vert a + \vert b\vert \Rightarrow$ Behauptung
+		\item[6)] nach 1) $a \leq \vert a \vert, b \leq \vert b \vert \xRightarrow{\text{\propref{k_angeordneter_koerper}}} a+b \leq \vert a \vert + \vert b \vert$ analog $-a-b \leq \vert a + \vert b\vert \Rightarrow$ Behauptung
 		\item[7)] $\vert a \vert = \vert a+b-b \vert \overset{\text{6)}}{\leq} \vert a+ b \vert + \vert b \vert \Rightarrow \vert a \vert - \vert b \vert \leq \vert a + b \vert $ analog $\vert b \vert - \vert a \vert \leq \vert a + b \vert \Rightarrow$ Behauptung
 		\item[8)] für $n = 0,1$, $a = 0$ klar\\
 		Zeige: $(1+a)^n > 1 + na \forall n \leq 2, a \neq 0$ durch voll. Induktion ÜA
@@ -137,8 +137,8 @@
 
 \begin{proof}
 	\begin{itemize}
-		\item[a)] $0_K \overset{\text{\propref{k_angeordneter_körper}}}{<} 1 \overset{\text{voll. Ind.}}{\Rightarrow} 0_k < n 1_k \forall n \in \mathbb{N}
-		\xRightarrow[\text{Vielfache}]{\text{\propref{k_angeordneter_körper}}}(-n)1_K = -(n1_k) < 0_K \Rightarrow n 1_K \neq 0_K \forall n \in \mathbb{Z}_{\neq 0} \Rightarrow f$ auf $\mathbb{Q}$ definiert
+		\item[a)] $0_K \overset{\text{\propref{k_angeordneter_koerper}}}{<} 1 \overset{\text{voll. Ind.}}{\Rightarrow} 0_k < n 1_k \forall n \in \mathbb{N}
+		\xRightarrow[\text{Vielfache}]{\text{\propref{k_angeordneter_koerper}}}(-n)1_K = -(n1_k) < 0_K \Rightarrow n 1_K \neq 0_K \forall n \in \mathbb{Z}_{\neq 0} \Rightarrow f$ auf $\mathbb{Q}$ definiert
 		\item[b)] Sei $f(\frac{m}{m^{'}}) = f(\frac{n}{n^{'}}) \Rightarrow \frac{m1_K}{m^{'}1_K} = \frac{n 1_K}{n^{'}1_K} \Rightarrow (m1_K)(n^{'}1_K) = (n 1_K)(m^{'}1_K)$\\
 		$\Rightarrow (mn^{'})1_K = (nm^{'})1_K \Rightarrow (mn^{'}-m^{'}n)1_K = 0_K \xRightarrow{\text{a)}} mn^{'} = m^{'}n =_{\mathbb{Z}} 0 \Rightarrow \frac{m}{m^{'}} =_{\mathbb{Q}} \frac{n}{n^{'}} \Rightarrow f$ injektiv
 		\item[c)] $f(\frac{m}{m^{'}}+\frac{n}{n^{'}}) = f(\frac{mn^{'} + m^{'}n}{m{'}n^{'}}) = \frac{mn^{'} + m^{'}n}{m{'}n^{'}}\frac{1_K}{1_K} \overset{\text{b)}}{=} \frac{m1_K}{m^{'}1_K} + \frac{n1_K}{n^{'}1_K} \overset{f\text{ inj}}{=} f(\frac{m}{m^{'}}) + f(\frac{n}{n^{'}})$\\

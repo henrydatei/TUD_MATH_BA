@@ -75,7 +75,7 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 			\vert M \vert = \int_Y \psi \D y
 		\end{align}
 		
-		\item Falls $\vert M \vert = 0$, folgt $\psi(y) = 0$ \gls{fü} auf $Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		\item Falls $\vert M \vert = 0$, folgt $\psi(y) = 0$ \gls{fue} auf $Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & \propref{fubini_folgerung_nullmenge} bewiesen.
 		\end{tabularx}
 		\end{itemize}
@@ -83,12 +83,12 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 		\rule{0.5\linewidth}{0.1pt}
 		
 		\begin{itemize}
-		\item $\{ \chi_{R_k}\}$ monoton fallend mit $\psi_{R_k}\to\chi_M$ \gls{fü} auf $X\times Y$ und $\chi_{R_k}$ integrierbar auf $X\times Y$ \\
+		\item $\{ \chi_{R_k}\}$ monoton fallend mit $\psi_{R_k}\to\chi_M$ \gls{fue} auf $X\times Y$ und $\chi_{R_k}$ integrierbar auf $X\times Y$ \\
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & $\{ \chi_{R_k}\}$ ist $L^1$-CF zu $\chi_M$ und \[\int_{X\times Y} \psi_{R_k} \D (x,y) \to \int_{X\times Y} \chi_M \D (x,y).\]
 		\end{tabularx}
 		
-		\item Nach \propref{fubini_folgerung_nullmenge} existiert Nullmenge $\tilde{N}\subset Y$ mit $\chi_{R_k}(\,\cdot\, , y)\to \chi_M(\,\cdot \, , y)$ \gls{fü} auf $X$ $\forall y\in Y\setminus\tilde{N}$ \\
+		\item Nach \propref{fubini_folgerung_nullmenge} existiert Nullmenge $\tilde{N}\subset Y$ mit $\chi_{R_k}(\,\cdot\, , y)\to \chi_M(\,\cdot \, , y)$ \gls{fue} auf $X$ $\forall y\in Y\setminus\tilde{N}$ \\
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\xRightarrow{\eqref{fubini_fubini_beweis_3},\eqref{fubini_fubini_beweis_4}}$ & $\chi_{R_k} (\,\cdot\, , y)$ integrierbar auf $X$ $\forall k\in \mathbb{N}$, $y\in Y\setminus\tilde{N}$ \\
 		$\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ & $\chi_M(\,\cdot\, ,y)$ integrierbar auf $X$ $\forall y\in Y\setminus\tilde{N}$ mit
@@ -106,7 +106,7 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 		$\Rightarrow$ & $\displaystyle \int_{X\times Y} h_k(x,y) \D (x,y) \overset{\text{a)}}{=} \int_Y \left( \int_X h_k \D x\right) \D y$
 		\end{tabularx}
 		
-		Analog zu \ref{fubini_fubini_beweis_teil_a} folgt: $h_k(\,\cdot\, , y)\to f(\,\cdot\,,y)$ \gls{fü} auf $X$ für \gls{fa} $y\in Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		Analog zu \ref{fubini_fubini_beweis_teil_a} folgt: $h_k(\,\cdot\, , y)\to f(\,\cdot\,,y)$ \gls{fue} auf $X$ für \gls{fa} $y\in Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\xRightarrow[\text{Konvergenz}]{\text{Majorisierte}}$ & Behauptung für $f$.
 		\end{tabularx}
 		
@@ -140,7 +140,7 @@ Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,
 		$\Rightarrow$ & $f$ ist integrierbar auf $X\times Y$
 		\end{tabularx}
 		
-		Offenbar sind die $\{ f_k \}$ wachsend, $f_k\to \vert f \vert$ \gls{fü} auf $X\times Y$. Falls oberes Integral in \eqref{fubini_tonelli_eq} existiert, gilt \begin{align*}
+		Offenbar sind die $\{ f_k \}$ wachsend, $f_k\to \vert f \vert$ \gls{fue} auf $X\times Y$. Falls oberes Integral in \eqref{fubini_tonelli_eq} existiert, gilt \begin{align*}
 			\int_{X\times Y} f(x,y) \D(x,y) \overset{\text{Fubini}}{=} \int_Y \left( \int_X f_k \D x\right) \D y \le \int_Y \left( \int_X \vert f \vert \D x \right)\D y < \infty
 		\end{align*}
 		\begin{tabularx}{\linewidth}{r@{\ \ }X}
