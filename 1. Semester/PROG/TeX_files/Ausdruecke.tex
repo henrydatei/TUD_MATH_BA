@@ -1,0 +1,62 @@
+\section{Ausdrücke}
+
+\begin{*anmerkung}
+	Beliebtes Klausuren-Thema!
+\end{*anmerkung}
+
+Ein Ausdruck (= expression) wird in Fortran folgendermaßen ausgewertet:
+\begin{enumerate}
+	\item Konstanten und Objekte werden ausgewertet
+	\item geklammerte Ausdrücke werden von innen nach außen ausgewertet
+	\item Funktionen werden aufgerufen
+	\item Operatoren höherer Priorität werden vor Operatoren niedrigerer Priorität behandelt
+	\item sind die Prioritäten gleich, so wird von links nach rechts gearbeitet (Ausnahme: \texttt{**})
+\end{enumerate}
+
+Ein \begriff{Ausdrucksbaum} zeigt auf, wie in Fortran Ausdrücke ausgewertet werden: Für den Ausdruck (auch Infix-Notation)
+\begin{align}
+	\texttt{logo = i / j / x >= y .OR. - y / z < - x ** 3 ** 2 .AND. char <= 'p' // 'eter'}\notag
+\end{align}
+sieht der Baum folgendermaßen aus:
+\begin{center}
+	\begin{tikzpicture}[level/.style={sibling distance=60mm/#1}]
+	\node[circle,draw] (root) {\texttt{.OR.}}
+	child {node[circle,draw] (a) {\texttt{>=}}
+		child {node[circle,draw] (b) {\texttt{/}}
+			child {node[circle,draw] (c) {\texttt{/}}
+				child {node[] (d) {$i$}}
+				child {node[] (e) {$j$}}}
+			child {node[] (f) {$x$}}}
+		child {node[] (g) {$y$}}}
+	child {node[circle,draw] (h) {\texttt{.AND.}}
+		child {node[circle,draw] (i) {\texttt{<}}
+			child {node[circle,draw] (j) {\texttt{-}}
+				child {node[circle,draw] (k) {\texttt{/}}
+					child {node[] (l) {$y$}}
+					child {node[] (m) {$z$}}}}
+			child {node[circle,draw] (q) {\texttt{-}}
+				child {node[circle,draw] (p) {\texttt{**}}
+					child {node[] (n) {$x$}}
+					child {node[circle,draw] (o) {\texttt{**}}
+						child {node[] (w) {3}}
+						child {node[] (x) {2}}}}}}
+		child {node[circle,draw] (r) {\texttt{<=}}
+			child {node[] (s) {$char$}}
+			child {node[circle,draw] (t) {\texttt{//}}
+				child {node[] (u) {'p'}}
+				child {node[] (v) {'eter'}}}}};
+	\end{tikzpicture}
+\end{center}
+
+Es gibt verschiedene Notationen um Ausdrücke aufzuschreiben:
+\begin{itemize}
+	\item \begriff{Präfix-Notation}: Task $\to$ rekursiv linke Seite $\to$ rekursiv rechte Seite
+	\item \begriff{Infix-Notation}: rekursiv linke Seite $\to$ Task $\to$ rekursiv rechte Seite
+	\item \begriff{Postfix-Notation}: rekursiv linke Seite $\to$ rekursiv rechte Seite $\to$ Task
+\end{itemize}
+
+Für unseren Ausdruck bedeutet das:
+\begin{itemize}
+	\item Präfix-Notation: \texttt{= logo .OR. >= / / i j x y .AND. < NEG / y z NEG ** x ** 3 2 <= char // ‚p‘ ‚eter‘}
+	\item Postfix-Notation: \texttt{logo i j / x / y >= y z / NEG x 3 2 ** ** NEG < char ‚p‘ ‚eter‘ // <= .AND. .OR. =}
+\end{itemize}

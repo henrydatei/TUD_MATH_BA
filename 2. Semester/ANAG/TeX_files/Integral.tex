@@ -28,7 +28,7 @@ Man verifiziert leicht
 		(Beschränktheit) Es ist $\vert \int_M h\D x \vert \le \int _M \vert h \vert \D x$ $\forall h\in T^{1}(M)$
 		\item Für $h\in T^1(M)$ gilt: \\
 		\begin{tabularx}{\linewidth}{X@{\ \ }c@{\ \ }X}
-			\hfill $\displaystyle \int_M \vert h \vert \D x = 0$ & $\Leftrightarrow$ & $h=0$ \gls{fü} auf $M$
+			\hfill $\displaystyle \int_M \vert h \vert \D x = 0$ & $\Leftrightarrow$ & $h=0$ \gls{fue} auf $M$
 		\end{tabularx}
 	\end{enumerate}
 
@@ -48,7 +48,7 @@ sinnvoll:
 	\proplbl{integral_messbare_funktion_forderung}
 	h_k\to f\text{ in geeigneter Weise }\;\; &\Rightarrow\;\;\int_M h_k \D x \to \int_m f \D x
 \end{align}
-nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_messbare_funktion_forderung} eine Folge von Treppenfunktionen $\{ h_k\}$ mit $h_k(x)\to f(x)$ \gls{fü} auf $M$ betrachten, \emph{aber} es gibt zu viele konvergente Folgen für einen konsistenten Integralbegriff.
+nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_messbare_funktion_forderung} eine Folge von Treppenfunktionen $\{ h_k\}$ mit $h_k(x)\to f(x)$ \gls{fue} auf $M$ betrachten, \emph{aber} es gibt zu viele konvergente Folgen für einen konsistenten Integralbegriff.
 
 \begin{example}
 	\proplbl{integral_funktion_beispiel_striktere_konvergenz}
@@ -57,7 +57,7 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 			k\cdot \alpha_k&\text{auf }(0,\frac{1}{k}) \\ 0&\text{sonst}
 		\end{cases}
 	\end{align*}
-	Offenbar konvergiert $h_k$ gegen $0$ \gls{fü} auf $\mathbb{R}$ und man hat $h_k\to 0$ \gls{fü} auf $\mathbb{R}$ und $\int_{\mathbb{R}} h_k \D x = \alpha_k$
+	Offenbar konvergiert $h_k$ gegen $0$ \gls{fue} auf $\mathbb{R}$ und man hat $h_k\to 0$ \gls{fue} auf $\mathbb{R}$ und $\int_{\mathbb{R}} h_k \D x = \alpha_k$
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & je nach Wahl der Folge $\alpha_n$ liegt ganz unterschiedliches Konvergenzverhalten der Folge $\int_{\mathbb{R}} h_k \D x$ vor \\
 		$\Rightarrow$ & kein eindeutiger Grenzwert in \eqref{integral_messbare_funktion_forderung} möglich \\
@@ -90,7 +90,7 @@ nach \propref{messbarkeit_funktion_approximation} sollte man in \eqref{integral_
 	\end{align*}
 	
 	\stepcounter{equation}
-	Messbare Funktion $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ heißt \begriff{integrierbar} auf $M\subset D$, falls Folge von Treppenfunktionen $\{ h_k\}$ in $T^1(M)$ existiert mit $\{ h_k\}$ ist $L1$-CF auf $M$ und $H_k\to f$ \gls{fü} auf $M$.\marginnote{\leqnos\begin{align}\proplbl{integral_funktion_definition}\,\end{align}Formel (3) unbekannt}[-1.5\baselineskip]
+	Messbare Funktion $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ heißt \begriff{integrierbar} auf $M\subset D$, falls Folge von Treppenfunktionen $\{ h_k\}$ in $T^1(M)$ existiert mit $\{ h_k\}$ ist $L1$-CF auf $M$ und $H_k\to f$ \gls{fue} auf $M$.\marginnote{\leqnos\begin{align}\proplbl{integral_funktion_definition}\,\end{align}Formel (3) unbekannt}[-1.5\baselineskip]
 	
 	Für integrierbare Funktion $f$ heißt eine solche Folge $\{h_k\}$ \begriff{zugehörige $L^1$-CF} auf $M$.
 	
@@ -122,7 +122,7 @@ Menge der auf $M$ integrierbaren Funktionen ist \mathsymbol*{L1}{$L^1$} \begin{a
 \begin{remark}\vspace*{0pt}
 	\begin{enumerate}[label={\alph*)},topsep=\dimexpr -\baselineskip / 2\relax]
 		\item Integral in \eqref{integral_lebesque_funktion_definition} kann als vorzeichenbehaftetes Volumen des Zylinders im $\mathbb{R}^{n+1}$ unter (über) dem Graphen von $f$ interpretiert werden.
-		\item Sei $0\le h_1 \le h_2 \le \dotsc$ monotone Folge von integrierbaren Treppenfunktionen mit $h_k\to f$ \gls{fü} auf $M$ und sei Folge $\{ \int_M h_k\D x\}$ in $\mathbb{R}$ beschränkt \\
+		\item Sei $0\le h_1 \le h_2 \le \dotsc$ monotone Folge von integrierbaren Treppenfunktionen mit $h_k\to f$ \gls{fue} auf $M$ und sei Folge $\{ \int_M h_k\D x\}$ in $\mathbb{R}$ beschränkt \\
 		$\Rightarrow$ \eqref{integral_lebesque_funktion_definition} gilt und monotone Folge $\{ \int_m h_k \D x \}$ konvergiert in $\mathbb{R}$ (d.h. $\{ h_k \}$ ist $L^1$-CF zu $f$)
 		\item $\{ h_k\}$ aus \propref{integral_funktion_beispiel_striktere_konvergenz} ist nur dann $L^1$-CF, falls $\alpha_k\to 0$.
 	\end{enumerate}
@@ -159,10 +159,10 @@ $\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_f
 	\item Sei $f:M\subset\mathbb{R}\to\overline{\mathbb{R}}$ integrierbar und seien $\{ h_k\}$, $\{ \tilde{h}_k \}$ zugehörigen $L^1$-CF in $T^1(M)$.\\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & $\forall \epsilon > 0$ $\exists k_0$ mit \[ \int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x \le \int_M \vert h_k - h_l\vert + \vert \tilde{h}_k - \tilde{h}_l \vert \D x < \epsilon \quad\forall k,l\ge k_0  \] \\
-		$\Rightarrow$ & $\{ h_k - \tilde{h}_k \}$ ist $L^1$-CF mit $(h_k - \tilde{h}_k)\to 0$ \gls{fü} auf $M$.
+		$\Rightarrow$ & $\{ h_k - \tilde{h}_k \}$ ist $L^1$-CF mit $(h_k - \tilde{h}_k)\to 0$ \gls{fue} auf $M$.
 	\end{tabularx}
 
-	Da $\{ \int_M h_k \D x\}$, $\{ \int_M \tilde{h}_k \D x \}$ in $\mathbb{R}$ konvergieren, bleibt zu zeigen: $\{ h_k\}$ ist $L^1$-CF 	in $T^1(M)$ mit $h_k\to 0$ \gls{fü} auf $M$
+	Da $\{ \int_M h_k \D x\}$, $\{ \int_M \tilde{h}_k \D x \}$ in $\mathbb{R}$ konvergieren, bleibt zu zeigen: $\{ h_k\}$ ist $L^1$-CF 	in $T^1(M)$ mit $h_k\to 0$ \gls{fue} auf $M$
 	\begin{flalign}
 		\Rightarrow &\int_M h_k \D x \xrightarrow{k\to\infty} 0&
 	\end{flalign}
@@ -216,7 +216,7 @@ $\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_f
 			\int_M f \D x &= \int_{M_1}  f \D x + \int_{M_2} f \D x
 		\end{align*}
 		\item\proplbl{integral_funktion_rechenregeln_d}
-		Sei $f = \tilde{f}$ \gls{fü} auf $M$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		Sei $f = \tilde{f}$ \gls{fue} auf $M$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
 			$\Rightarrow$ & $\tilde{f}$ ist integrierbar auf $M$ mit
 		\end{tabularx}
 		\begin{align*}
@@ -235,7 +235,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 	Seien $\{ h_k\}$ und $\{ \tilde{h}_k \}$ aus $T^1(\mathbb{R})^n$ $L^1$-CF zu $f$ und $g$.
 	
 	\begin{enumerate}[label={zu \alph*)},leftmargin=\widthof{\texttt{zu a) }},topsep=\dimexpr-\baselineskip/2\relax]
-		\item Es ist $h_k + \tilde{h}_k\to f + g$ \gls{fü} auf $M$.
+		\item Es ist $h_k + \tilde{h}_k\to f + g$ \gls{fue} auf $M$.
 		
 		Wegen \begin{align*}
 			\int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x &\le \underbrace{\int_M \vert h_k - h_l\vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}} + \underbrace{\int_M \vert \tilde{h}_k - \tilde{h}_l \vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}}
@@ -275,11 +275,11 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		\item\proplbl{integral_funktion_eigenschaften_monotonie}
 		(Monotonie)
 		Seien $f$, $g$ integrierbar auf $M$. Dann \begin{center}
-			$f\le g$ \gls{fü} auf $M$ \ \ $\Rightarrow$ \ \ $\displaystyle\int_M f\D x \le \int_M g \D x$
+			$f\le g$ \gls{fue} auf $M$ \ \ $\Rightarrow$ \ \ $\displaystyle\int_M f\D x \le \int_M g \D x$
 		\end{center}
 		\item\proplbl{integral_funktion_eigenschaften_nullfunktion}
 		 Sei $f$ integrierbar auf $M$, dann \begin{center}
-				$\displaystyle \int_M \vert f \vert \D x = 0$\ \ $\Leftrightarrow$ \ \ $f = 0$ \gls{fü}
+				$\displaystyle \int_M \vert f \vert \D x = 0$\ \ $\Leftrightarrow$ \ \ $f = 0$ \gls{fue}
 		\end{center}
 	\end{enumerate}
 	In Analogie zur Treppenfunktion ist $\Vert f\Vert _1 := \int_M \vert f \vert \D x$ auf $L^1(M)$ eine Halbnorm, aber keine Norm ($\Vert f \Vert = 0$ $\cancel{\Leftrightarrow}$ $f = 0$). $\Vert f\Vert_1$ heißt \begriff{$L^1$-Halbnorm} von $f$.
@@ -293,7 +293,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 	\NoEndMark
 	\begin{enumerate}[label={zu \alph*)},topsep=\dimexpr -\baselineskip / 2\relax,leftmargin=\widthof{\texttt{zu b)\ }}]
 		\item Sei $f$ integrierbar auf $M$ und sei $\{ h_k \}$ $L^1$-CF zu $f$ \\
-		\ $\Rightarrow$ $\vert h_k \vert\to \vert f \vert$ \gls{fü} auf $M$.
+		\ $\Rightarrow$ $\vert h_k \vert\to \vert f \vert$ \gls{fue} auf $M$.
 		
 		Wegen $\int_M \left\vert \vert h_k \vert - \vert h_l \vert\right\vert \D x$\marginnote{$\vert\vert \alpha\vert - \vert\beta\vert\vert \le \vert \alpha - \beta\vert$ $\forall \alpha,\beta\in\mathbb{R}$} $\overset{\cref{integral_treppenfunktion_grundlegende_folgerung}}{\le}$ $\int_M \vert h_k - h_l \vert \D x$ ist $\{ \vert h_k\vert \}$ $L^1$-CF zu $\vert f \vert$ \\
 		\ $\Rightarrow$ $\vert f \vert$ ist integrierbar.
@@ -305,14 +305,14 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		\end{align*}
 		Da $\{ \vert h_k \vert \}$ $L^1$-CF zu $\vert f \vert$ ist, folgt die Behauptung durch Grenzübergang.
 		
-		\item Nach den Rechenregeln ist $g - f$ integrierbar, wegen $\vert g - f\vert = g - f$ \gls{fü} auf $M$ folgt \begin{align*}
+		\item Nach den Rechenregeln ist $g - f$ integrierbar, wegen $\vert g - f\vert = g - f$ \gls{fue} auf $M$ folgt \begin{align*}
 			0 \le \left\vert \int_M g - f\D x\right\vert\overset{\ref{integral_funktion_eigenschaften_beschraenktheit}}{\le} \int_M \vert g - f\vert \D x \overset{ \cref{integral_funktion_rechenregeln}\;\ref{integral_funktion_rechenregeln_a}}{=} \int_M g \D x - \int_M f \D x
 		\end{align*}
 		$\Rightarrow$ Behauptung
 		
-		\item[zu a)] für "`$\Leftarrow$"' wähle $f^\pm$ ($ f = f^+ - f^-$) jeweils eine monotone Folge von \gls{tf} $\{ h_k^\pm \}$ gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen}. Folglich liefert $H_k = h_k^+ - h_k^-$ eine Folge von \gls{tf} mit $h_k\to f$ \gls{fü} auf $M$.
+		\item[zu a)] für "`$\Leftarrow$"' wähle $f^\pm$ ($ f = f^+ - f^-$) jeweils eine monotone Folge von \gls{tf} $\{ h_k^\pm \}$ gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen}. Folglich liefert $H_k = h_k^+ - h_k^-$ eine Folge von \gls{tf} mit $h_k\to f$ \gls{fue} auf $M$.
 		
-		Wegen $\vert h_k \vert \le \vert f \vert$ \gls{fü} auf $M$ ist $\int_M \vert h_k\vert \D x \le \int_M \vert f \vert \D x$.
+		Wegen $\vert h_k \vert \le \vert f \vert$ \gls{fue} auf $M$ ist $\int_M \vert h_k\vert \D x \le \int_M \vert f \vert \D x$.
 		
 		Folglich ist die monotone Folge $\int_M \vert h_k\vert \D x$ in $\mathbb{R}$ beschränkt \\
 		$\Rightarrow$ konvergent.
@@ -325,7 +325,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		\end{align*}
 		Als konvergente Folge ist $\{ \int_M \vert h_k \vert \D x \}$ \person{Cauchy}-Folge in $\mathbb{R}$ und folglich ist $\{ h_k \}$ $L^1$-CF und sogar $L^1$-CF zu $f$ \\
 		$\Rightarrow$ $f$ integrierbar
-		\item Für $f=0$ \gls{fü} auf $M$ ist offenbar $\int_M \vert f\vert \D x = 0$.
+		\item Für $f=0$ \gls{fue} auf $M$ ist offenbar $\int_M \vert f\vert \D x = 0$.
 		
 		Sei nun $\int_M \vert f \vert \D x = 0$, mit $M_k := \{ x\in M \mid \vert f \vert \ge \frac{1}{k} \}$ $\forall k\in\mathbb{N}$ ist \begin{align*}
 			0 = \int_{M\setminus M_k} \vert f \vert \D x + \int_{M_k} \vert f \vert \D x \ge \int_{M\setminus M_k}0 \D x + \int_{M_k}\frac{1}{k}\D x \ge \frac{1}{k}\vert M_k\vert \ge 0
@@ -342,10 +342,10 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 	\proplbl{integral_funktion_lemma_weitere_eigenschaften}
 	Sei $f$ auf $M$ integrierbar\begin{enumerate}[label={\alph*)}]
 		\item Für $\alpha_1$, $\alpha_2\in\mathbb{R}$ gilt:\begin{center}
-			$\alpha_1\le f \le \alpha_2$ \gls{fü} auf $M$ \ \ $\Rightarrow$ \ \ $\displaystyle \alpha_1 \vert M \vert \le \int_M f \D x \le \alpha_2 \vert M \vert$
+			$\alpha_1\le f \le \alpha_2$ \gls{fue} auf $M$ \ \ $\Rightarrow$ \ \ $\displaystyle \alpha_1 \vert M \vert \le \int_M f \D x \le \alpha_2 \vert M \vert$
 		\end{center}
-		\item Es gilt $f\ge 0$ \gls{fü} auf $M$ \ \ $\Rightarrow$ \ \ $\int_M f \D x\ge 0$
-		\item Es gilt: $\tilde{M}\subset M$ messbar, $f\ge 0$ \gls{fü} auf $M$ \\
+		\item Es gilt $f\ge 0$ \gls{fue} auf $M$ \ \ $\Rightarrow$ \ \ $\int_M f \D x\ge 0$
+		\item Es gilt: $\tilde{M}\subset M$ messbar, $f\ge 0$ \gls{fue} auf $M$ \\
 		\ $\Rightarrow$ \ \ $\displaystyle \int_{\tilde{M}} f \D x \le \int_M f \D x$
 		
 		(linkes Integral nach \propref{integral_funktion_rechenregeln} \ref{integral_funktion_rechenregeln_b})
@@ -358,7 +358,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 		\item 
 		Wegen $\int_M \alpha_j \D x = \alpha_j \vert M \vert $ für $\vert M \vert$ endlich folgt a) direkt aus der Monotonie des Integrals.
 		\item folgt mit $\alpha_1=0$ aus a)
-		\item folgt, da $\chi_{\tilde{M}}\cdot f \le f$ \gls{fü} auf $M$ und aus der Monotonie\hfill\csname\InTheoType Symbol\endcsname
+		\item folgt, da $\chi_{\tilde{M}}\cdot f \le f$ \gls{fue} auf $M$ und aus der Monotonie\hfill\csname\InTheoType Symbol\endcsname
 	\end{enumerate}
 \end{proof}
 
@@ -369,7 +369,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 		& \lim\limits_{k\to\infty} \int_M \vert f_k - f\vert \D x = 0 \quad(\Vert f_k - f\Vert\to0)\\
 		\Rightarrow\;\;&\lim\limits_{k\to\infty} \int_M f_k \D x = \int_M f\D x
 	\end{align*}
-	Weiterhin gibt es eine Teilfolge $\{ f_{k'}\}$ mit $f_{k'}\to f$ \gls{fü} auf $M$.
+	Weiterhin gibt es eine Teilfolge $\{ f_{k'}\}$ mit $f_{k'}\to f$ \gls{fue} auf $M$.
 \end{proposition}
 
 \begin{proof}
@@ -386,13 +386,13 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	$\Rightarrow$ & $\displaystyle M_\epsilon \subset\bigcup_{l=j}^\infty \{ \vert f_{k_l} - f \vert > \epsilon \}$ $\forall j\in\mathbb{N}$ \\
 	$\Rightarrow$ & $\displaystyle M_\epsilon \le \sum_{l=j}^\infty \left\vert \left\{ f_{k_l} - f\vert > \epsilon \right\} \right\vert \le \frac{1}{\epsilon} \sum_{l=j}^\infty \int _M \vert f_{k_l} - f\vert \D x \le \frac{1}{\epsilon} \sum_{l=j}^\infty \frac{1}{2^{l+1}} = \frac{1}{2^j \epsilon}\quad\forall j\in\mathbb{N}$\\
 	$\Rightarrow$ & $M_\epsilon = 0$ $\forall\epsilon > 0$ \\
-	$\Rightarrow$ & $f_{k_l} \xrightarrow{l\to\infty} f$ \gls{fü} auf $M$ \hfill\csname\InTheoType Symbol\endcsname
+	$\Rightarrow$ & $f_{k_l} \xrightarrow{l\to\infty} f$ \gls{fue} auf $M$ \hfill\csname\InTheoType Symbol\endcsname
 	\end{tabularx}
 \end{proof}
 
 \begin{proposition}[Majorantenkriterium]
 	\proplbl{integral_funktion_majorantenkriterium}
-	Seien $f$, $g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar, $M$ messbar, $\vert f \vert \le g$ \gls{fü} auf $M$, $g$ integrierbar auf $M$ \\
+	Seien $f$, $g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar, $M$ messbar, $\vert f \vert \le g$ \gls{fue} auf $M$, $g$ integrierbar auf $M$ \\
 	$\;\Rightarrow$ $f$ integrierbar auf $M$
 	
 	Man nennt $g$ auch \begriff{integrierbare Majorante} von $f$.
@@ -404,7 +404,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 		\proplbl{integral_funktion_lemma_majorante_eq}
 		0 \le h_1 \le h_2 \le \dotsc \le f\quad \text{ und }\quad  \int_M h_k \D x\text{ beschränkt}
 	\end{align}
-	$\Rightarrow$ $\{ h_k\}$ ist $L^1$-CF zu $f$ und falls $\{ h_k\}\to f$ \gls{fü} auf $M$ ist $f$ integrierbar (vgl \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen})
+	$\Rightarrow$ $\{ h_k\}$ ist $L^1$-CF zu $f$ und falls $\{ h_k\}\to f$ \gls{fue} auf $M$ ist $f$ integrierbar (vgl \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen})
 \end{lemma}
 
 \begin{proof}
@@ -414,7 +414,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	Da $\{ \int_M h_k \D x \}$ konvergent ist in $\mathbb{R}$ als monoton beschränkte Folge ist diese CF in $\mathbb{R}$ \\
 	$\Rightarrow$ $\{ h_k\}$ ist $L^1$-CF
 	
-	Falls noch $h_k\to f$ \gls{fü} $\Rightarrow$ $\{h_k\}$ ist $L^1$-CF zu $f$ $\Rightarrow$ $f$ ist integrierbar
+	Falls noch $h_k\to f$ \gls{fue} $\Rightarrow$ $\{h_k\}$ ist $L^1$-CF zu $f$ $\Rightarrow$ $f$ ist integrierbar
 \end{proof}
 
 \begin{proof}[\propref{integral_funktion_majorantenkriterium}]
@@ -424,7 +424,7 @@ In der Vorüberlegung zum Integral wurde eine gewisse Stetigkeit der Integralabb
 	Es existiert eine Folge $\{ h_k \}$ von Treppenfunktionen mit \begin{align*}
 		0 \le h_1 \le h_2 \le \dotsc \le \vert f \vert \le g
 	\end{align*}
-	auf $M$ und $\{ h_k\}\to\vert f \vert$ \gls{fü} auf $M$.
+	auf $M$ und $\{ h_k\}\to\vert f \vert$ \gls{fue} auf $M$.
 	
 	Da $\{ \int_M h_k \D x \}$ beschränkt ist in $\mathbb{R}$ da $g$ integrierbar ist \\
 	{\renewcommand{\arraystretch}{1.3}\begin{tabularx}{\linewidth}{r@{\ \ }X}
@@ -480,7 +480,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	
 	Alle $g_k$ sind messbar nach \propref{messbarkeit_funktionen_komposition}, \propref{integral_funktion_majorantenkriterium}
 	
-	Für jedes $k\in\mathbb{N}$ wählen wir gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen} eine Folge $\{ h_{k_l} \}_l$ von Treppenfunktionen mit $0\le h_{k_1} \le h_{k_2} \le \dotsc \le g_k$, $h_{k_l}\xrightarrow{l\to\infty} g_k$ \gls{fü} auf $M$.
+	Für jedes $k\in\mathbb{N}$ wählen wir gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen} eine Folge $\{ h_{k_l} \}_l$ von Treppenfunktionen mit $0\le h_{k_1} \le h_{k_2} \le \dotsc \le g_k$, $h_{k_l}\xrightarrow{l\to\infty} g_k$ \gls{fue} auf $M$.
 	
 	Nach \propref{integral_funktion_lemma_majorante} ist $\{ h_{k_l}\}_l$ $L^1$-CF zu $g_k$.
 	
@@ -497,14 +497,14 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 	
 	Mit $\tilde{A}_l := \bigcup_{k=l}^\infty A_k$ folgt $\vert \tilde{A}_l\vert \le \frac{1}{2^{l-1}}$ und $\vert \tilde{h}_k - f \vert \le \frac{2}{k}$ auf $(B_k(0)\cap M)\setminus \tilde{A}_l$ $\forall k>l$.
 	
-	Folglich $\tilde{h}_l\to f$ \gls{fü} auf $M$ und wegen der Monotonie ist $\{ \tilde{h}_k\}$ $L^1$-CF zu $f$ \\
+	Folglich $\tilde{h}_l\to f$ \gls{fue} auf $M$ und wegen der Monotonie ist $\{ \tilde{h}_k\}$ $L^1$-CF zu $f$ \\
 	$\Rightarrow$ $\int_M f \D x \overset{\text{Def}}{=} \lim\limits_{k\to\infty} \int_M \tilde{h}_k \D x \overset{\text{Monotonie}}{\le}\liminf\limits_{k\to\infty} \int_M f_k \D x$\\
 	$\Rightarrow$ Behauptung
 \end{proof}
 
 \begin{theorem}[Monotone Konvergenz]
 	\proplbl{integral_grenzwertsatz_monotone_konvergenz}
-	Seien $f_k:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ integrierbar auf $M\subset D$ $\forall k\in\mathbb{N}$ mit $f_1 \le f_2 \le \dotsc $ \gls{fü} auf $M$ \\
+	Seien $f_k:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ integrierbar auf $M\subset D$ $\forall k\in\mathbb{N}$ mit $f_1 \le f_2 \le \dotsc $ \gls{fue} auf $M$ \\
 	\ $\Rightarrow$ $f$ ist integrierbar auf $M$ und \begin{align*}
 		\left( \int_M f \D x = \right) \int_M \lim\limits_{k\to\infty} f_k(x) \D x &= \lim\limits_{k\to\infty} \int_M f_k \D x
 	\end{align*}
@@ -512,7 +512,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 \end{theorem}
 
 \begin{remark}
-	\propref{integral_grenzwertsatz_monotone_konvergenz} bleibt richtig, falls man $f_1 \ge f_2 \ge \dotsc$ \gls{fü} auf $M$ hat.
+	\propref{integral_grenzwertsatz_monotone_konvergenz} bleibt richtig, falls man $f_1 \ge f_2 \ge \dotsc$ \gls{fue} auf $M$ hat.
 	
 	Ferner ist wegen der Monotonie die Beschränktheit der Folge $\{ \int_M f_k \D x \}$ für die Existenz des Grenzwertes ausreichend.
 \end{remark}
@@ -529,7 +529,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 
 \begin{theorem}[Majorisierte Konvergenz]
 	\proplbl{integral_grenzwertsatz_majorisierte_konvergenz}
-	Seien $f_k$, $g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar für $k\in\mathbb{N}$ und sei $g$ integrierbar auf $M\subset D$ mit $\vert f_k\vert \le g$ \gls{fü} auf $M$ $\forall k\in\mathbb{N}$ und $f_k\to:f$ \gls{fü} auf $M$
+	Seien $f_k$, $g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar für $k\in\mathbb{N}$ und sei $g$ integrierbar auf $M\subset D$ mit $\vert f_k\vert \le g$ \gls{fue} auf $M$ $\forall k\in\mathbb{N}$ und $f_k\to:f$ \gls{fue} auf $M$
 	\begin{align}
 		\proplbl{integral_grenzwertsatz_majorisierte_konvergenz_eq}
 		\Rightarrow\;\;\lim\limits_{k\to\infty} \int_M \vert f_k - f\vert \D x = 0
@@ -541,7 +541,7 @@ Keine Gleichheit hat man z.B. für $\{ h_k\}$ aus \propref{integral_funktion_bei
 \end{theorem}
 
 \begin{proof}
-	Nach dem Majorantenkriterium sind alle $f_k$ \gls{fü} integrierbar auf $M$.
+	Nach dem Majorantenkriterium sind alle $f_k$ \gls{fue} integrierbar auf $M$.
 	
 	Nach \propref{integral_grenzwertsatz_fatou} gilt:\begin{align*}
 		\int_M 2g \D x = \int_M \liminf\limits_{k\to\infty} \vert 2g - \vert f_k - f\vert \vert \D x \le \liminf\limits_{k\to\infty} \int_M 2g - \vert f_k - f \vert \D x
