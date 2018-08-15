@@ -237,6 +237,7 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \end{*definition}
 
 \begin{lemma}
+	\proplbl{intervallschacht_angeord_koerper}
 	Sei $\mathcal{X} = \{X_n\}_{n\in\mathbb{N}}$ Intervallschachtelung im angeordneten Körper $K$\\
 	$\Rightarrow \bigcap_{n\in\mathbb{N}} X_n$ enthält höchstens ein Element.
 \end{lemma}
@@ -324,23 +325,71 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	Betr. Relation "`$\le$"': $R:=\{ ([\{x_n\}],[\{y_n\}])\in\mathbb{R}\times\mathbb{R} | x_n \le y_n\,\forall n\in\mathbb{N}\}$
 \end{*definition}
 \begin{proposition}
-	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper. (d.h Totalordnung ist verträglich mit Addition und Multiplikation.)
+	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper. (d.h Totalordnung $R$ ist verträglich mit Addition und Multiplikation.)
 \end{proposition}
 
 \begin{proof}
-	kommt bald ...
+	$R=$ ist offenbar reflexiv, antisymmetrisch, transitiv (ÜA/SeSt).
+	
+	Sei $\mathcal{X} \sim \tilde{\mathcal{X}}, \mathcal{Y} \sim \tilde{\mathcal{Y}} \Rightarrow $ insbesondere $\tilde{x}_n \le x_n^{'}, \tilde{y}_n \le y_n^{'}$.
+	Sei $[\mathcal{X}] \le [Y]$ d.h. $x_n \le y_n^{'} \forall n$ und angenommen $\exists m\colon \tilde{X}_m > \tilde{Y}_m$
+	$\Rightarrow l(X_n) + l(Y_n) = x_n^{'} - \underset{\ge 0}{\tilde{x}_n \le x_n^{'}} - y_n \ge \tilde{x}_n - \tilde{y}_n^{'} \ge \tilde{x}_m - \tilde{y}_m^{'} > 0 \forall n \Rightarrow$ Widerspruch.
+	$\Rightarrow \tilde{x}_n \le \tilde{y}_n^{'} \forall n \Rightarrow R$ unabhängig vom Repräsentaten $\Rightarrow R$ Ordnung auf $\real$.
+	\begin{itemize}
+		\item Angenommen $[\mathcal{X}] \not \le [\mathcal{Y}] \Rightarrow \exists m\colon y_n \le y_m^{'} < x_n \le x_n^{'} \forall n$
+		$\Rightarrow [\mathcal{Y}] \le [\mathcal{X}] \Rightarrow R$ Totalordnung
+		\item Ordnung verträglich mit Addition, Multiplikation ÜA/SeSt
+	\end{itemize}
 \end{proof}
 
 \begin{proposition}
 	$\mathbb{R}$ ist archimedisch angeordneter Körper.
 \end{proposition}
+
+\begin{proof}
+	Sei $[\{X_n\}] = [\{ [x_n,x_n^{'}]\}] \in \real$. (beachte $x_n, x_n^{'} \in \ratio$)
+	$\xRightarrow[\text{angeordneter Körper}]{\ratio \text{ archimedisch}} \exists k \in \natur: k >_{\ratio} x_n^{'} >_{\ratio} > x_n \forall n$
+	$\Rightarrow [\{X_n\}] < [\{[k,k]\}] \in \natur_{\real}.$
+\end{proof}
+
 \begin{theorem}
 	$\mathbb{R}$ ist vollständiger, archimedisch angeordneter Körper.
 \end{theorem}
+
+\begin{proof}
+	Sei $\{X_n\} = \{[x_n, x_n^{'}]\}$ Intervallschachtelung in $\real$, d.h. $x_n,x_n^{'} \in \real$
+	(beachte $x_n, x_n^{'}$ sind Äquivalenzrelationen von Intervallverschachtelungen in $\ratio$!)
+	Zu zeigen: $\bigcap_{n\in\mathbb{N}} X_n \neq \emptyset:$
+	Sei $x_n = \left[ \{ [p_{nk},q_{nk}]\}_k \right], x_n^{'} = \left[ \{ [p_{nk},q_{nk}]\}_k \right]$.
+	Setze $p_n := p_{nk^{'}}, q_n := q_{nn^{'}}, p^{'}_n := p_{nn}^{'}, q_n^{'} := q_{nn}$
+	oBdA $l([p_n,q_n]), l([p_n^{'}, q_{n}^{'}]) < \frac{1}{n}$
+	$p_{n-1} < p_n< q_n < q_{n-1} \Rightarrow x := \left[ \{[p_k,q_k^{'}]\}_k\right] \in \real$ (denn $\{Q_k\} \subset I_{\ratio}$),
+	da $Q_{k+1} < Q_k \neq \emptyset, l(Q_k) \le l([p_k,q_k]) + l([p_k^{'},q_k^{'}]) \overset{k \text{ groß}}{<} \epsilon)$
+	$\Rightarrow x_n \le x \le x_{''}$ da $f(p_nk) \le_K{\real} x_n \le x_k^{'} \le f(q_{kk}^{'})$
+	$\Rightarrow p_{nk} \le_K{\epsilon} q_{kk}^{'}$, analog $p_{kk} \le_{\ratio} q_{nk}^{'}$
+	$\Rightarrow x \in \bigcap_{n\in\mathbb{N}} X_n \Rightarrow \real $ vollständig.  
+\end{proof}
+
 \begin{theorem}
 	Sei $K$ vollständiger, archimedisch angeordneter Körper\\
-	$\Rightarrow K$ ist isomorph zu $\mathbb{R}$ bzgl. Körperstruktur und Ordnung.
+	$\Rightarrow K$ ist isomorph zu $\mathbb{R}$ bzgl. Körperstruktur und Ordnung. (d.h. $\real$ strukturell eindeutig)
 \end{theorem}
+
+\begin{proof}
+	Sei $x \in K \xRightarrow[\ref{k_archimedisch_angeordneter_koerper}]{\ref{intervallschacht_angeord_koerper}} \exists$ Intervallverschatelung $\{X_n\} \in I_{\ratio}\colon \{x\} = \bigcap_{n\in\mathbb{N}} X_n$
+	
+	Definiere Abbildung $I: K \to \real$ mit $I(x) = \left[ \{ X_n \}\right]$ ist injektiv (vergleiche Äquivalenzrelation Intervallschachtelung) und surjektiv da $K$ vollständig ist.
+	
+	$I$ erhält Körperstruktur und Ordnung (analoge Argumente zu bisherigen $\to$ SeSt!)
+\end{proof}
+
+\underline{Notation in $\real$:}
+
+\begin{itemize}
+	\item Variable $x$ statt $\left[ \{x_n \} \right]$ bzw. $\left[\{[x_n,x_n^{'}]\}\right]$ (rationale Zahlen auch als $\frac{m}{m^{'}}$)
+	\item konkrete Zahl Dezimaldarstellung (Approximation analog zu Intervallschachtelungen in $I_{\ratio} \Rightarrow$ Reihen)
+	\item Brüche für rationale Zahlen $\frac{3}{5}$ (einige wenige Symbole für spezielle irrationale Zahlen ($\sqrt{2}, \pi, \dots$))
+\end{itemize}
 
 \begin{*definition}
 	Sei $M\subset K$, $K$ angeordneter Körper.
@@ -372,10 +421,25 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
+\begin{example}
+	\begin{itemize}
+		\item $K=\real$:
+			\begin{itemize}
+				\item $b = \sup[a,b) = \sup[a,b] = \max[a,b] = \max[-\infty,b]$
+				\item $a = \inf(a,b) = \inf(0,\infty)$ kein Minimum!
+				\item $M = \{\frac{1}{n} \in \real \mid n \in \natur_{\neq 0}\} \Rightarrow \inf M = 0, \max M = 1$
+			\end{itemize}
+		\item $K = \ratio$: 
+		$M = \{q \in \ratio \mid q^2 <2\} \Rightarrow \sup M$ existiert nicht in $\ratio$!
+	\end{itemize}
+\end{example}
+
 \begin{theorem}
 	Sei $K$ archimedisch angeordneter Körper. Dann
 	\[ K \text{ vollständig } \Leftrightarrow \sup M \slash \inf M \text{ ex. }\forall M\in K, M\neq \emptyset \text{ nach oben \slash unten beschränkt} \]
 \end{theorem}
+
+
 
 \subsection{Anwendung: Wurzeln, Potenzen, Logarithmen in \texorpdfstring{$\mathbb{R}$}{R}}
 
