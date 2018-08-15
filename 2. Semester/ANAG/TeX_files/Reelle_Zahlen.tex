@@ -421,6 +421,15 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $s,\tilde{s}$ Supremum von $M \Rightarrow s \le \tilde{s}, \tilde{s} \le s \Rightarrow s = \tilde{s}$
+		\item Angenommen $\exists \epsilon > 0: \sup M > x + \epsilon \forall x \in M$
+
+		$\Rightarrow \sup M-\epsilon $ ist obere Schranke $< \sup M \Rightarrow$ Widerspruch $\beha$
+	\end{enumerate}
+\end{proof}
+
 \begin{example}
 	\begin{itemize}
 		\item $K=\real$:
@@ -436,10 +445,25 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 
 \begin{theorem}
 	Sei $K$ archimedisch angeordneter Körper. Dann
-	\[ K \text{ vollständig } \Leftrightarrow \sup M \slash \inf M \text{ ex. }\forall M\in K, M\neq \emptyset \text{ nach oben \slash unten beschränkt} \]
+	\begin{align}
+	K \text{ vollständig } \Leftrightarrow \sup M \slash \inf M \text{ ex. }\forall M\in K, M\neq \emptyset \text{ nach oben \slash unten beschränkt}\notag
+	\end{align}
 \end{theorem}
 
-
+\begin{proof}
+	$sup$ $\inf$ analog!
+	$\Rightarrow$: $M \subset K$ nach oben beschränkt, $\neq \emptyset \to \exists x_0 \in M$ und obere Schranke $x^{'} \in K$. Definiere $X_n = [x_n, x_n^{'}] \subset K$ rekursiv.
+	$Y_n := \frac{x_n + x_n^{'}}{2}$ (Mittelpunkt zwischen den zwei Schranken)$\begin{cases}
+	\text{obere Schranke }x_{n+1}:= x_n, x_{n+1}^{'} := y_n\\
+	\text{sonst } x_{n+1}:= y_n, x_{n+1}^{'} := x_n^{'}
+	\end{cases}$
+	
+	$\Rightarrow \forall n x_n^{'}$ obere Schranke, $x_n$ nicht, $l(X_n) = \frac{1}{2^n}(x_0^{'}-x_0)$
+	
+	$\xRightarrow{\ref{k_archimedisch_angeordneter_koerper}} \{X_n\}$ ist Intervallschachtelung $\xRightarrow{\text{ vollst.}} x \in \bigcap_{n\in\mathbb{N}} X_n$. Angenommen $\exists y \in M\colon x < y \to \exists m: l(X_n) < y - x > 0$
+	
+	$\xRightarrow{y \le x_m^{'}}$ Widerspruch $\Rightarrow$ obere Schranke von ... für später!!!
+\end{proof}
 
 \subsection{Anwendung: Wurzeln, Potenzen, Logarithmen in \texorpdfstring{$\mathbb{R}$}{R}}
 

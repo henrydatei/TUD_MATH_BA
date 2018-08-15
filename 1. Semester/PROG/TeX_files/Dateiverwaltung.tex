@@ -1,0 +1,19 @@
+\section{Dateiverwaltung}
+
+Dateien werden mit \texttt{open} geöffnet und mit \texttt{close} geschlossen. Es gibt dabei noch die Funktionen \texttt{backspace}, die den Cursor vor den aktuellen Datensatz platziert, aber möglichst nicht verwendet werden sollte, da dieser Prozess besonders bei großen Dateien sehr lange dauert. Die Funktion \texttt{rewind} setzt den Cursor an den Anfang der Datei, während \texttt{endfile} an den aktuellen Datensatz einen EOF-Datensatz anhängt.
+
+Alle diese Funktionen benötigen eine I/O-Unit, eine ganze, nichtnegative Zahl zur Identifikation einer externen Datei. Dabei ist die Tastatur auch eine Datei, von der mittels \texttt{read} eingelesen werden kann. Die I/O-Unit ist hier 5. Der Bildschirm ist auch eine Datei, auf den mittels \texttt{write} geschrieben werden kann (I/O-Unit 6).
+
+Häufig muss man in Fortran von einer Datei zeilenweise Zahlen einlesen. Das geht so:
+\begin{lstlisting}
+open(unit = 100, file = informationen.txt, action = "read") 
+
+integer, dimension(5) :: infos
+integer :: zeile
+
+do zeile = 1, 5
+ read(100,*) infos(zeile)
+end do
+\end{lstlisting}
+
+Der zweite * in der \texttt{read}-Anweisung kann mit einer Format-Angabe gefüllt werden. Mit diesen Format-Angaben kann man den Datentransfer steuern.
