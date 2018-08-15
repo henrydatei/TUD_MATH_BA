@@ -1,3 +1,172 @@
 \section{Felder (Arrays)}
 
 Bisher hatten wir nur Skalare als Variablen. Was aber, wenn wir nicht wissen, wie viele Variablen wir brauchen werden. Dann helfen uns Felder. Felder haben eine homogene Datenstruktur, das heißt alle Elemente haben den selben Datentyp, den \begriff{Elementtyp}. Es gibt sowohl ein- als auch mehrdimensionale Felder (die höchste Dimension ist 15), also Vektoren, Matrizen, Tensoren, ... Der lesende als auch schreibende Zugriff erfolgt mittels ganzzahliger Indizees, also \texttt{vector(3)}, \texttt{matrix(2,5)}, \texttt{tensor(3,4,6)}, ... Unzulässige Indexwerte ermöglichen beliebige Speicherzugriffe auch außerhalb des Feldes, wenn sie nicht beim Kompilieren erkannt werden. Es kann also folgender Laufzeitfehler auftreten: \texttt{Index out of bounds}.
+
+Der Feldtyp ist charakterisiert durch
+\begin{itemize}
+	\item den Elementtyp
+	\item den Rang: Anzahl der Dimensionen
+\end{itemize}
+
+Die geometrische Gestalt (= shape) eines Feldes kann entweder statisch oder dynamisch definiert werden, und zwar durch Ausdehnungen in jeder einzelnen Dimension
+\begin{lstlisting}
+! eine 3x3 Matrix
+integer, dimension(1:3, 1:3) :: matrix
+
+! eine dynamsiche Matrix, deren Groesse spaeter 5x5 wird
+integer, dimension(:,:), allocatable :: dynMatrix
+allocate(dynMatrix(1:5, 1:5))
+\end{lstlisting}
+
+Eindimensionale Felder kann man in Fortran wie folgt füllen: (seit Fortran-03 kann man statt \texttt{(/ /)}) auch \texttt{[ ]} benutzen)
+\begin{lstlisting}
+(/1, 3, 5, 7, 9/) = (/(i, i=1,9,2)/) = (/(2*i+1, i=0,4)/)
+\end{lstlisting}
+
+Die Speicherreihenfolge ist in Fortran immer spaltenweise (colum-major), das heißt der erste Index läuft am schnellsten, der letzte Index am langsamsten. Will man dagegen zeilenweise einlesen und ausgeben, so behilft man sich eines kleinen Tricks:
+\begin{lstlisting}
+real, dimension(3,2) :: A
+integer :: i
+
+read(*,*) A ! liesst spaltenweise ein
+read(*,*) (A(i:), i=1,3) ! liesst zeilenweise ein
+
+do i=1, 3
+ write(*,*) A(i:) ! gibt A zeilenweise aus
+end do
+\end{lstlisting}
+
+Es gibt auch eine Menge vordefinierter Matrix-Funktionen
+\begin{itemize}
+	\item\texttt{size(A,i)}: Anzahl der Elemente in $i$-ter Dimension
+	\item\texttt{lbound(A,i)}: kleinster Indexwert in $i$-ter Dimension
+	\item\texttt{ubound(A,i)}: größter Indexwert in $i$-ter Dimension
+	\item\texttt{size(A)}: $\sum_{i=1}^{r}$ \texttt{size(A,i)}: Gesamtzahl aller Elemente
+	\item\texttt{shape(A)}: \texttt{(/size(A,1), size(A,2), ..., size(A,r)/)}
+	\item\texttt{sum(A,1)}: Summation einzelner Spalten, Ergebnis ist ein Vektor
+	\item\texttt{sum(A,2)}: Summation einzelner Zeilen, Ergebnis ist ein Vektor
+	\item\texttt{sum(A)}: Summe aller Elemente
+	\item\texttt{prod(A)}: Produkt aller Elemente
+	\item\texttt{all(A == B)}: logisches UND, überprüft, ob beide Matrizen gleich sind (durch Vergleich der Einträge). Es können auch andere logische Verknüpfungen verwendet werden
+	\item\texttt{any(A == B)}: logisches ODER, überprüft ob mindesten ein Element in beiden Matrizen (an der selben Stelle) gleich ist
+	\item\texttt{transpose(A)}: transponiert Matrix
+	\item\texttt{dot\_product(v,w)}: Skalarprodukt der Vektoren $v$ und $w$
+	\item\texttt{matmul(A,B)}: Matrizenmultiplikation, geht auch mit einem Vektor
+	\item\texttt{forall(i=1:n, k=1:m)}: spart doppelte \texttt{do}-Schleifen
+\end{itemize}
+
+\subsection{Subarrays (Teilfelder)}
+
+Durch Angabe von Indexgrenzen kann man aus einem Feld einen Teil herausschneiden.
+\begin{align}
+	A = \begin{pmatrix}4&5&6&7&8\end{pmatrix} \quad\texttt{A(2:4)}\Rightarrow \begin{pmatrix}5&6&7\end{pmatrix} \notag \\
+	B = \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix} \quad\texttt{B(1:2,2:3)}\Rightarrow \begin{pmatrix}4&5\\7&8\end{pmatrix} \notag
+\end{align}
+
+Man kann das ganze natürlich auch komplizierter machen: Sei $A$ ein Quader ($5\times 5\times 5$). Das Teilfeld \texttt{C = A(3,1:5:2,(/4,1,2/))} nimmt aus dem Quader die 3. Schicht und in dieser Matrix die 1., 3. und 5. Zeile mit der 4., 1. und 2. Zeile
+\begin{align}
+	C = \begin{pmatrix}
+		\text{Speicherplatz 4} & \text{Speicherplatz 7} & \text{leer} & \text{Speicherplatz 1} & \text{leer}\\
+		\text{leer} & \text{leer} & \text{leer} & \text{leer} & \text{leer}\\
+		\text{Speicherplatz 5} & \text{Speicherplatz 8} & \text{leer} & \text{Speicherplatz 2} & \text{leer}\\
+		\text{leer} & \text{leer} & \text{leer} & \text{leer} & \text{leer}\\
+		\text{Speicherplatz 6} & \text{Speicherplatz 9} & \text{leer} & \text{Speicherplatz 3} & \text{leer}
+	\end{pmatrix}\notag
+\end{align}
+
+Felder können auch formale Argumente sein, aber nur, wenn sie fester Gestalt sind oder als Felder übernommener Gestalt, welche durch die Gestalt des aktuellen Arguments durch die Parameterassoziation (per Referenz) festgelegt ist. Wenn Felder Funktionsergebnisse sein sollen, so müssen die Indexbereiche zum Aufrufzeitpunkt der Funktion berechnet werden können; Indexgrenzen können beliebige Integer-Ausdrücke sein, die von den Werten und Eigenschaften der aktuellen Argumente und globalen Variablen oder Konstanten abhängen.
+
+\textbf{Wichtige Regel: } Keine \texttt{allocatable}-Felder als formale Argumente (sein Fortran-03 möglich), Feld-Ergebnis einer Funktion und als Typkomponenten.
+
+\begin{lstlisting}
+function fun(v,w)
+ real,dimension(:), intent(in) :: v,w
+ real,dimension(size(v),size(w)) :: fun
+ integer :: i,k
+ 
+ do i = 1, size(v)
+  do k = 1, size(w)
+   fun(i,k) = v(i) * w(k)
+  end do
+ end do
+end function fun
+
+function fun_effizient(v,w)
+ real,dimension(:), intent(in) :: v,w
+ real,dimension(size(v),size(w)) :: fun
+ real,dimension(size(v),size(w)) :: A,B
+ 
+ A = spread(source=v, dim=2, ncopies=size(w))
+ B = spread(source=w, dim=1, ncopies=size(v)) 
+ fun_effizient = A * B ! elementweise Multiplikation
+end function fun_effizient
+\end{lstlisting}
+
+\subsection{\texttt{pure} Prozeduren}
+
+\begin{*anmerkung}
+	völlig unwichtig
+\end{*anmerkung}
+
+Ein Unterprogramm welches keine Seiteneffekte hat ist eine bloßes bzw. reines (pure) Unterprogramm. Ein Unterprogramm erzeugt dann keine Seiteneffekte, wenn es weder seine Eingabedaten, noch die Daten verändert, die außerhalb des Unterprogrammes liegen, es sei denn, es wären seine Ausgabedaten. In einem reinen Unterprogramm haben die lokalen Variablen keine \texttt{save}-Attribute, noch werden die lokalen Variablen in der Datendeklaration initialisiert.
+
+Das \texttt{save}-Attribut ist bei Initialisierung von Variablen impliziert, d.h. eine Initialisierung in der Typdeklaration macht die Variable automatisch statisch (Lebensdauer = gesamte Programmlaufzeit).
+\begin{lstlisting}
+integer, save :: counter = 0
+\end{lstlisting}
+
+Reine Unterprogramme sind für das \texttt{forall}-Konstrukt notwendig: das \texttt{forall}-Konstrukt wurde für das parallele Rechnen konzipiert, weshalb hier der Computer entscheidet, wie das Konstrukt abgearbeitet werden soll. Dazu ist es aber notwendig, das es egal ist in welcher Reihenfolge das Konstrukt abgearbeitet wird. Gilt dies nicht - hat das Unterprogramm also Seiteneffekte - so kann das \texttt{forall}-Konstrukt nicht verwendet werden.
+
+Jedes Ein- und Ausgabeargument in einem reinen Unterprogramm muss mittels des \texttt{intent}- Attributs deklariert werden. Darüber hinaus muss jedes Unterprogramm, das von einem reinen Unterprogramm aufgerufen werden soll, ebenfalls ein reines Unterprogramm sein. Sonst ist das aufrufende Unterprogramm kein reines Unterprogramm mehr.
+
+\subsection{\texttt{elemental} Prozeduren}
+
+\begin{*anmerkung}
+	völlig unwichtig
+\end{*anmerkung}
+
+Ein Unterprogramm ist elementar, wenn es als Eingabewerte sowohl Skalare als auch Felder akzeptiert. Ist der Eingabewert ein Skalar, so liefert ein elementares Unterprogramm einen Skalar als Ausgabewert. Ist der Eingabewert ein Feld, so ist der Ausgabewert ebenfalls ein Feld.
+
+\texttt{sin} ist eine elementare Funktion. \texttt{sin(A)} liefert dann eine Matrix $A$ mit
+\begin{align}
+	\begin{pmatrix}
+		\sin(a_{11}) & \dots & \sin(a_{1n}) \\
+		\vdots & \ddots & \vdots \\
+		\sin(a_{m1}) & \dots & \sin(a_{mn})
+	\end{pmatrix}\notag
+\end{align}
+Der Sinus wird also \textit{elementweise} angewendet.
+
+\subsection{Die \texttt{reshape}-Funktion}
+
+Man kann die Gestalt von Feldern mit der \texttt{reshape}-Funktion ändern. Sei dazu
+\begin{lstlisting}
+integer, dimension(7) :: integervector = (/(i, i=1,13,2)/)
+\end{lstlisting}
+\begin{align}
+	\begin{pmatrix}
+		1 & 3 & 5 & 7 & 9 & 11 & 13
+	\end{pmatrix}\notag
+\end{align}
+\begin{lstlisting}
+reshape(source = integervector, shape = (/2,3/))
+\end{lstlisting}
+\begin{align}
+	\begin{pmatrix}
+		1 & 5 & 9 \\
+		3 & 7 & 11
+	\end{pmatrix}\notag
+\end{align}
+\begin{lstlisting}
+reshape(source = integervector, shape = (/5,3/), &
+& pad = (/(i+13, i=1,8)/))
+\end{lstlisting}
+\begin{align}
+	\begin{pmatrix}
+		1 & 3 & 5 \\
+		7 & 9 & 11 \\
+		13 & 14 & 15 \\
+		16 & 17 & 18 \\
+		19 & 20 & 21
+	\end{pmatrix}\notag
+\end{align}
