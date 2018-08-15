@@ -1,0 +1,121 @@
+\section{Unterprogramme}
+
+In Fortran gibt es 2 Arten von Unterprogrammen: Funktionen und Subroutinen. \begriff{Funktionen} berechnen aus übergebenen Argumenten einen neuen Wert, während \begriff{Subroutinen} auch Anweisungen wie \texttt{write(*,*)} ausführen können. Eine Funktion sieht in Fortran folgendermaßen aus:
+\begin{lstlisting}
+function funcName(x,y,z)
+ Anweisung1
+ Anweisung2
+ Anweisung3
+end function funcName
+\end{lstlisting}
+Eine Subroutine so:
+\begin{lstlisting}
+subroutine subName(x,y,z)
+ Anweisung1
+ Anweisung2
+ Anweisung3
+end subroutine subName
+\end{lstlisting}
+Der Aufruf von Funktionen oder Subroutinen geht so:
+\begin{lstlisting}
+ergebnis = funcName(bla, bla, blub)
+call subName(bla, bla, blub)
+\end{lstlisting}
+
+Die Variablen \texttt{x}, \texttt{y} und \texttt{z} sind sogenannte \begriff{formale Argumente}, die beim Aufruf des Unterprogramms im Hauptprogramm mit den \begriff{aktuellen Argumenten} \texttt{bla} und \texttt{blub} assoziiert werden. In vielen anderen Programmiersprachen (\textbf{Also nicht in Fortran!}) wird diese Assoziation als \begriff{call-by-value} realisiert, das heißt
+\begin{itemize}
+	\item Das aktuelle Argument wird ausgewertet und das Ergebnis wird in den korrekten Typ konvertiert.
+	\item Der Ergebniswert wird als Initialwert an das formale Argument im Unterprogramm übergeben.
+	\item Änderungen des formalen Arguments im Unterprogramm haben \textbf{keine} Auswirkungen auf das aktuelle Argument.
+\end{itemize}
+Fortran assoziiert hingegen mit \begriff{call-by-reference}, das heißt:
+\begin{itemize}
+	\item Das formale Argument wird für die gesamte Ausführungsdauer des Unterprogramms mit der Variable, die als aktuelles Argument übergeben wurde, assoziiert.
+	\item Das heißt, dass das formale Argument ein Alias für die als aktuelles Argument übergebene Variable ist \\
+	$\Rightarrow$ für die Dauer der Ausführung des Unterprogramms haben formales Argument und aktuelles Argument denselben l-Value \\
+	$\Rightarrow$ Änderungen des formales Arguments bewirken die \textbf{gleichen} Änderungen des aktuelles Arguments.
+\end{itemize}
+
+In Fortran wird immer call-by-reference benutzt, allerdings darf das aktuelle aktuelle Argument auch ein Ausdruck sein, für dessen Ergebnis eine versteckte Variable angelegt wird, die per Referenz an das formale Argument übergeben wird. $\Rightarrow$ In diesem Fall sollen keine Änderungen am formalen Argument vorgenommen werden.
+
+Unterprogramme werden in Fortran in 4 Schritten aufgerufen:
+\begin{enumerate}
+	\item Auswertung/Bestimmung des aktuellen Arguments
+	\item Assoziation der aktuellen Argumente mit den formalen Argumente (per Referenz)
+	\item Unterprogramm-Sprung
+	\item Rücksprung an die Aufrufstelle bei erreichen einer \texttt{return}-Anweisung oder \texttt{end} im aufgerufenen Unterprogramm
+\end{enumerate}
+
+Da Fortran per call-by-reference assoziiert, gibt es verbotene Seiteneffekte (side effects). Diese dürfen \texttt{nicht} in Unterprogrammen verwendet werden.
+\begin{itemize}
+	\item Veränderungen von Variablen im Ausdruck durch Funktionsauswertung in demselben Ausdruck ($\Rightarrow$ die Auswertung ist abhängig von der Auswertungsreihenfolge) \\
+	\texttt{Y = X + X * F(X)} $\to$ Zuerst werden alte \texttt{X} addiert, dann wird \texttt{X} modifiziert \\
+	\texttt{Z = F(X) * X + X} $\to$ \texttt{X} wird verändert, dann werden neue \texttt{X} addiert. \\
+	\texttt{if(x < f(x))} $\to$ besser wäre: \texttt{y = x; if(x < f(y))}
+	\item Assoziation mehrerer formaler Argumente mit demselben aktuellen Argument, wenn eines dieser formalen Argumente innerhalb des Unterprogramms verändert wird:
+	\begin{lstlisting}
+subroutine sub(a,b)
+ integer :: a, b
+ b = a + b
+end subroutine sub
+
+call sub(x,x)
+	\end{lstlisting}
+\end{itemize}
+
+Um solche Probleme zu vermeiden kann man formale Argumente mit einen Schreib- bzw. Leseschutz ausstatten. Dafür gibt es in Fortran das sogenannte \texttt{intent}-Attribut.
+\begin{lstlisting}
+subroutine test(a, input, output)
+ integer, intent(inout) :: a
+ integer, intent(in) :: input
+ integer, intent(out) :: output
+end subroutine test
+\end{lstlisting}
+\begin{itemize}
+	\item \texttt{a} muss einen definierten Anfangszustand haben
+	\item \texttt{input} hat einen Schreibschutz, es darf nur gelesen werden
+	\item \texttt{output} hat einen Leseschutz, es darf nur geschrieben werden
+\end{itemize}
+
+Das \texttt{optional}-Attribut kann für formale Argumente benutzt werden, die nicht zwingend für die korrekte Funktionsweise des Unterprogramms notwendig sind. Im Unterprogramm muss man dann prüfen, ob dieses Argument übergeben wurde:
+\begin{lstlisting}
+subroutine sub(a,b,opt)
+ integer :: a,b
+ integer, optional :: opt
+ 
+ if(present(opt))
+  b = a + opt
+ else
+  b = a
+ end if
+end subroutine sub
+\end{lstlisting}
+
+Ein Unterprogramm kann sich auch selbst aufrufen, wenn das Unterprogramm das Attribut \texttt{recursive} besitzt. Diese sind charakterisiert durch: Mehrere Instanzen (Aktivierungen) des rekursiven Unterprogramms sind gleichzeitig aktiv, das heißt mehrere Instanzen seines Aktivierungsblocks können gleichzeitig auf dem Laufzeitstapel liegen. Im Aktivierungsblock liegen alle Parameter, lokalen Variablen, eventuell. ich andere Informationen zur Aufrufverwaltung (z.B. Rücksprungadresse, ...); jede Aktivierungsblockinstanz ist eine vollständige Kopie mit eigenem Speicher.
+\begin{lstlisting}
+recursive function fakultaet(n) result (res)
+ integer, intent(in) :: n
+ integer :: res
+ 
+ if(n == 0) then
+  res = 1
+ else
+  res = n * fakultaet(n-1)
+ end if
+end function fakultaet
+\end{lstlisting}
+\begin{lstlisting}
+recursive function ggt(a,b) result (g)
+ integer :: a, b, g
+ 
+ if(b == 0) then
+  g = a
+ else
+  g = ggt(b, mod(a,b))
+ end if
+end function ggt
+\end{lstlisting}
+
+Man kann viele Funktionen und Subroutinen auch in sogenannten \begriff{Modulen} zusammenfassen, die dann im Hauptprogramm mit \texttt{use modulname} eingebunden werden können. Beim Kompilieren ist darauf zu achten, dass immer von "'unten nach oben"' kompiliert wird, also vom untersten Modul bis zum Hauptprogramm.
+
+Ein Modul definiert in der Regel einen ADT (abstrakter Datentyp), das heißt mindestens einen öffentlichen Datentyp samt aller notwendigen Grundoperationen auf/mit Objekten dieses Typs. Häufig wird die innere Struktur der Objekte (bzw. des Typs) vor Zugriffen von außen geschützt (Datenkapselung, information/data hiding, ...), um Fehler im Umgang mit diesen Objekten zu vermeiden (z.B. inkonsistente innere Zustände, ...).
