@@ -28,7 +28,7 @@ Man verifiziert leicht
 		(Beschränktheit) Es ist $\vert \int_M h\D x \vert \le \int _M \vert h \vert \D x$ $\forall h\in T^{1}(M)$
 		\item Für $h\in T^1(M)$ gilt: \\
 		\begin{tabularx}{\linewidth}{X@{\ \ }c@{\ \ }X}
-			\hfill $\displaystyle \int_M \vert h \vert \D x = 0$ & $\Leftrightarrow$ & $h=0$ \gls{fü} auf $M$
+			\hfill $\displaystyle \int_M \vert h \vert \D x = 0$ & $\Leftrightarrow$ & $h=0$ \gls{fue} auf $M$
 		\end{tabularx}
 	\end{enumerate}
 
@@ -159,7 +159,7 @@ $\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_f
 	\item Sei $f:M\subset\mathbb{R}\to\overline{\mathbb{R}}$ integrierbar und seien $\{ h_k\}$, $\{ \tilde{h}_k \}$ zugehörigen $L^1$-CF in $T^1(M)$.\\
 	\begin{tabularx}{\linewidth}{r@{\ \ }X}
 		$\Rightarrow$ & $\forall \epsilon > 0$ $\exists k_0$ mit \[ \int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x \le \int_M \vert h_k - h_l\vert + \vert \tilde{h}_k - \tilde{h}_l \vert \D x < \epsilon \quad\forall k,l\ge k_0  \] \\
-		$\Rightarrow$ & $\{ h_k - \tilde{h}_k \}$ ist $L^1$-CF mit $(h_k - \tilde{h}_k)\to 0$ \gls{fü} auf $M$.
+		$\Rightarrow$ & $\{ h_k - \tilde{h}_k \}$ ist $L^1$-CF mit $(h_k - \tilde{h}_k)\to 0$ \gls{fue} auf $M$.
 	\end{tabularx}
 
 	Da $\{ \int_M h_k \D x\}$, $\{ \int_M \tilde{h}_k \D x \}$ in $\mathbb{R}$ konvergieren, bleibt zu zeigen: $\{ h_k\}$ ist $L^1$-CF 	in $T^1(M)$ mit $h_k\to 0$ \gls{fue} auf $M$
@@ -216,7 +216,7 @@ $\xRightarrow[\eqref{integral_lebesque_funktion_definition}]{\propref{integral_f
 			\int_M f \D x &= \int_{M_1}  f \D x + \int_{M_2} f \D x
 		\end{align*}
 		\item\proplbl{integral_funktion_rechenregeln_d}
-		Sei $f = \tilde{f}$ \gls{fü} auf $M$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		Sei $f = \tilde{f}$ \gls{fue} auf $M$ \\\begin{tabularx}{\linewidth}{r@{\ \ }X}
 			$\Rightarrow$ & $\tilde{f}$ ist integrierbar auf $M$ mit
 		\end{tabularx}
 		\begin{align*}
@@ -235,7 +235,7 @@ Aussage \ref{integral_funktion_rechenregeln_d} bedeutet, dass eine Änderung der
 	Seien $\{ h_k\}$ und $\{ \tilde{h}_k \}$ aus $T^1(\mathbb{R})^n$ $L^1$-CF zu $f$ und $g$.
 	
 	\begin{enumerate}[label={zu \alph*)},leftmargin=\widthof{\texttt{zu a) }},topsep=\dimexpr-\baselineskip/2\relax]
-		\item Es ist $h_k + \tilde{h}_k\to f + g$ \gls{fü} auf $M$.
+		\item Es ist $h_k + \tilde{h}_k\to f + g$ \gls{fue} auf $M$.
 		
 		Wegen \begin{align*}
 			\int_M \vert (h_k + \tilde{h}_k) - (h_l + \tilde{h}_l)\vert \D x &\le \underbrace{\int_M \vert h_k - h_l\vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}} + \underbrace{\int_M \vert \tilde{h}_k - \tilde{h}_l \vert \D x}_{=\text{$L^1$-CF, $<\epsilon$}}
