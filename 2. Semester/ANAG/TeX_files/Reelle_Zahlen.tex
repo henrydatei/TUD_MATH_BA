@@ -241,6 +241,9 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	$\Rightarrow \bigcap_{n\in\mathbb{N}} X_n$ enthält höchstens ein Element.
 \end{lemma}
 
+\begin{proof}
+	Angenommen $a,b \in \bigcap_{n\in\mathbb{N}} X_n$ mit $\epsilon := b-a > 0 \Rightarrow l(X_n) > \epsilon \forall n \Rightarrow $ Widerspruch.
+\end{proof}
 
 \begin{*definition}
 	Archimedisch angeordneter Körper heißt \begriff[Körper]{vollständig}, falls $\bigcap_{n\in\mathbb{N}} X_n\neq \emptyset$ für jede Intervallschachtelung $\mathcal{X} = \{x_n\}$ in $K$.
@@ -253,6 +256,12 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 \begin{proposition}
 	$Q$ ist Äquivalenzrelation auf $I_\mathbb{Q}$.
 \end{proposition}
+
+\begin{proof}
+	$Q$ offenbar reflexiv und symmetrisch. Sei nun $\{X_n\} \sim \{Y_n\}$, \\
+	$\{Y_n\} \sim \{Z_n\}$, d.h. $X_n \cap Y_n \neq \emptyset$, $Y_n \cap Z_n \neq \emptyset \forall n$.
+	Angenommen $\exists m: X_m \cap Z_m = \emptyset$  und $[x_m, x_m^{'}], [z_m,z_m^{'}] \xRightarrow{o.B.d.A} l(Y_n) \Rightarrow$ Widerspruch $\Rightarrow [X_n] \sim [Z_n] \Rightarrow Q$ transitiv.
+\end{proof}
 
 \begin{*definition}
 	setze $\mathbb{R} := \{ [\mathcal{X}] \mid \mathcal{X}\in I_\mathbb{Q} \}$ Menge der \begriff{reellen Zahlen}.
@@ -288,13 +297,40 @@ Aussage gilt für \gls{fa} $n\in\mathbb{N}$, wenn höchstens für endlich viele 
 	\end{enumerate}
 \end{proposition}
 
+\begin{proof}
+	\begin{enumerate}[label={\arabic*)}]
+		\item für Addition (Multiplikation, Inverse Analog (eventuell Fallunterscheidung)) ÜA/SeSt
+		\begin{enumerate}[label={\alph*)}]
+			\item Zeige $\{X_n + Y_n\} \in I_{\ratio}$: offenbar $X_n + Y_n \neq \emptyset$, $X_{n+1} + Y_{n+1} \subset X_n + Y_n \forall n \in \natur$
+			
+			Sei $\epsilon > 0 \Rightarrow \exists m\colon l(X_n) < \frac{\epsilon}{2}, l(Y_n) <\frac{\epsilon}{2}$ (beachte: $l(X_{m+1}) \le l(X_m)$)
+			
+			$\Rightarrow l(X_m + Y_m) = x_m^{'} + y_m^{'} - x_m - y_m = l(X_m) + l(Y_m) < \epsilon \beha$
+			\item Addition unabhängig vom Repräsentaten: $\mathcal{X} \sim \tilde{\mathcal{X}}, \mathcal{Y}\sim \tilde{\mathcal{Y}} \Rightarrow x_n \le \tilde{x}_n^{'}, \tilde{x}_n \le x_n^{'}$ und $y_n \le \tilde{y}_n^{'}, \tilde{y}_n^{'} \le y_n^{'}$
+			
+			$\Rightarrow x_n + y_n \le \tilde{x}_n^{'}$, $\tilde{x}_n + \tilde{y}_n \le x_n^{'} + y_n^{'} \Rightarrow \mathcal{X} + \mathcal{Y} \sim \tilde{\mathcal{X}} + \tilde{\mathcal{Y}} \Rightarrow 1)$
+		\end{enumerate}
+		\item 
+		\begin{itemize}
+			\item offenbar $0_{\real}, 1_{\real}$ neutrale Elemente $0_{\real} \neq 1_{\real}$
+			\item Addition, Multiplikation, Kommutativität, Distributivität, Assoziativität (Nachrechnenen für Intervalle SeSt)
+			\item $X = [x,x^{'}]$ für $x=x^{'}$ ist stets $0 \in [x-x^{'}, x^{'}-x], 1\in [\frac{x}{x^{'}}, \frac{x^{'}}{x}] \xRightarrow{SeSt} -[\mathcal{X}], [\mathcal{X}]^{-1}$ invers.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
 \subsection{Ordnung auf \texorpdfstring{$\mathbb{R}$}{R}}
 \begin{*definition}
 	Betr. Relation "`$\le$"': $R:=\{ ([\{x_n\}],[\{y_n\}])\in\mathbb{R}\times\mathbb{R} | x_n \le y_n\,\forall n\in\mathbb{N}\}$
 \end{*definition}
 \begin{proposition}
-	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper.
+	$\mathbb{R}$ ist mit "`$\le$"' angeordneter Körper. (d.h Totalordnung ist verträglich mit Addition und Multiplikation.)
 \end{proposition}
+
+\begin{proof}
+	kommt bald ...
+\end{proof}
+
 \begin{proposition}
 	$\mathbb{R}$ ist archimedisch angeordneter Körper.
 \end{proposition}
