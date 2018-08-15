@@ -1,3 +1,4 @@
+\addtocounter{section}{20}
 \section{Messbarkeit}\setcounter{equation}{0}
 Wir führen zunächst das \lebesque-Maß ein und behandeln dann messbare Mengen und messbare Funktionen.
 
@@ -120,7 +121,7 @@ Nach \eqref{messbarkeit_satz_teilmenge_kleineres_mass_eq} und \eqref{messbarkeit
 \end{proof}
 
 \begin{*definition}
-	Eine Eigenschaft gilt \gls{fü} auf $M\subset\mathbb{R}^n$, falls eine Nullmenge existiert, sodass die Eigenschaft $\forall x\in M\setminus N$ gilt. Man sagt auch, dass die Eigenschaft für \gls{fa} $x\in M$ gilt.
+	Eine Eigenschaft gilt \gls{fue} auf $M\subset\mathbb{R}^n$, falls eine Nullmenge existiert, sodass die Eigenschaft $\forall x\in M\setminus N$ gilt. Man sagt auch, dass die Eigenschaft für \gls{fa} $x\in M$ gilt.
 \end{*definition}
 
 \begin{example}
@@ -130,7 +131,7 @@ Nach \eqref{messbarkeit_satz_teilmenge_kleineres_mass_eq} und \eqref{messbarkeit
 			1, &x\in\mathbb{Q} \\ 0,&x\in\mathbb{R}\setminus\mathbb{Q}
 		\end{cases}
 	\end{align*}
-	ist $f=0$ \gls{fü} auf $\mathbb{R}$.
+	ist $f=0$ \gls{fue} auf $\mathbb{R}$.
 \end{example}
 
 \subsection{Messbare Mengen}
@@ -387,14 +388,14 @@ Man sieht leicht
 	Es gilt:\begin{enumerate}[label={\alph*)}]
 		\item Sei $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar. Dann ist auch die Nullfortsetzung $\overline{f}:\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar
 		\item Sei $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar und $D'\subset D$ messbar. Dann ist $f$ auf $D'$ messbar, d.h. insbesondere $\left. f\right|_{D'}$ ist messbar.
-		\item Seien $f,g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$. Sei $f$ messbar und $f=g$ \gls{fü} auf $D$. Dann ist $g$ messbar.
+		\item Seien $f,g:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$. Sei $f$ messbar und $f=g$ \gls{fue} auf $D$. Dann ist $g$ messbar.
 	\end{enumerate}
 \end{proposition}
 
 \begin{example}
 	Die \person{Dirichlet}-Funktion ist auf $\mathbb{R}$ messbar.
 	
-	$h=0$ ist messbare Treppenfunktion auf $\mathbb{R}$ und stimmt mit der \person{Dirichlet}-Funktion \gls{fü} überein.
+	$h=0$ ist messbare Treppenfunktion auf $\mathbb{R}$ und stimmt mit der \person{Dirichlet}-Funktion \gls{fue} überein.
 \end{example}
 
 \begin{proof}\hspace*{0pt}
@@ -423,7 +424,7 @@ f:=\max(f_1, f_2):\mathbb{R}^n\to\mathbb{R},\;\;f(x) = \max \{ f_1(x), f_2(x) \}
 \end{align*}
 und analog: $\min(f_1, f_2)$, $\sup\limits_{k\in\mathbb{N}} f_k$, $\inf\limits_{k\in\mathbb{N}} f_k$, $\limsup\limits_{k\to\infty} f_k$, $\liminf\limits_{k\in\mathbb{N}} f_k$
 
-Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man auch $f_k\to f$ \gls{fü} auf $D$.
+Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man auch $f_k\to f$ \gls{fue} auf $D$.
 \end{*definition}
 
 \begin{proposition}[zusammengesetzte messbare Funktionen]
@@ -494,7 +495,7 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 	Sei $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$, $D$ messbar. Dann
 	\begin{center}
 	\begin{tabularx}{\linewidth}{r@{\ \ }c@{\ \ }X}
-		\hspace*{0.19\linewidth} $f$ messbar & $\Leftrightarrow$ & $\exists$ Folge $\{ h_k\}$ von Treppenfunktionen mit $h_k\to f$ \gls{fü} auf $D$
+		\hspace*{0.19\linewidth} $f$ messbar & $\Leftrightarrow$ & $\exists$ Folge $\{ h_k\}$ von Treppenfunktionen mit $h_k\to f$ \gls{fue} auf $D$
 	\end{tabularx}
 	\end{center}
 \end{proposition}
@@ -521,10 +522,10 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 		\end{itemize}
 		
 		\item["`$\Leftarrow$"']
-		Sei $\tilde{f}(x) := \limsup\limits_{k\to\infty} h_k(x)$ $\forall x\in D$ $\Rightarrow$ $f(x) = \tilde{f}(x)$ \gls{fü} auf $D$ \\
+		Sei $\tilde{f}(x) := \limsup\limits_{k\to\infty} h_k(x)$ $\forall x\in D$ $\Rightarrow$ $f(x) = \tilde{f}(x)$ \gls{fue} auf $D$ \\
 		Nach \propref{messbarkeit_funktionen_komposition}: $h_k$ messbar $\Rightarrow$ $\tilde{f}$ messbar
 		
-		Da $f=\tilde{f}$ \gls{fü} folgt $f$ messbar.
+		Da $f=\tilde{f}$ \gls{fue} folgt $f$ messbar.
 	\end{itemize}
 \end{proof}
 
@@ -532,7 +533,7 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 	\proplbl{messbarkeit_funktion_existenz_monotone_treppenfunktionen}
 	Sei $f:D\subset\mathbb{R}^n\to\overline{\mathbb{R}}$ messbar mit $f\ge 0$
 	
-	$\Rightarrow$ $\exists$ Folge $\{h_k\}$ von Treppenfunktionen mit $0 \le h_1 \le h_2 \le \dotsc \le f$ auf $D$ und $h_k\to f$ \gls{fü} auf $D$.
+	$\Rightarrow$ $\exists$ Folge $\{h_k\}$ von Treppenfunktionen mit $0 \le h_1 \le h_2 \le \dotsc \le f$ auf $D$ und $h_k\to f$ \gls{fue} auf $D$.
 \end{conclusion}
 
 \begin{proposition}
@@ -557,7 +558,7 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 	Folgende Funktionen sind messbar
 	\begin{itemize}
 		\item Stetige Funktionen auf offenen und abgeschlossenen Mengen (wähle $N=\emptyset$ im obigen Satz), insbesondere konstante Funktionen sind messbar
-		\item Funktionen auf offenen und abgeschlossenen Mengen, die \gls{fü} mit einer stetigen Funktion übereinstimmen
+		\item Funktionen auf offenen und abgeschlossenen Mengen, die \gls{fue} mit einer stetigen Funktion übereinstimmen
 		\item $\tan$, $\cot$ auf $\mathbb{R}$ (setzte z.b. $\tan\left(\frac{\pi}{2}+k\pi\right) = \cot(k\pi) = 0$ $\forall k$)
 		\item $x\to \sin\frac{1}{x}$ auf $[-1,1]$ (setzte beliebigen Wert in $x=0$)
 		\item $\chi_M:\mathbb{R}\to\mathbb{R}$ ist für $\vert\partial M\vert = 0$ messbar auf $\mathbb{R}$ (dann ist $\chi$ auf $\inn M$, $\ext M$ stetig)
@@ -565,7 +566,7 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 \end{example}
 
 \begin{underlinedenvironment}[Hinweis]
-	Die \person{Dirichlet}-Funktion ist stetig auf $\mathbb{R}\setminus\mathbb{Q}$ und somit nach \propref{messbarkeit_funktion_funktion_messbar} messbar. Man beachte aber, das dies nicht bedeutet, dass die \person{Dirichlet}-Funktion auf $\mathbb{R}$ \gls{fü} stetig ist! (sie ist nirgends stetig auf $\mathbb{R}$)
+	Die \person{Dirichlet}-Funktion ist stetig auf $\mathbb{R}\setminus\mathbb{Q}$ und somit nach \propref{messbarkeit_funktion_funktion_messbar} messbar. Man beachte aber, das dies nicht bedeutet, dass die \person{Dirichlet}-Funktion auf $\mathbb{R}$ \gls{fue} stetig ist! (sie ist nirgends stetig auf $\mathbb{R}$)
 \end{underlinedenvironment}
 
 \begin{lemma}[Egorov]
@@ -599,5 +600,5 @@ Bei punktweiser Konvergenz $f_k(x)\to f(x)$ für \gls{fa} $x\in D$ schreibt man 
 \begin{example}
 	Betrachte $f_k(x) = x^k$ auf $[0,1]$.
 	
-	Man hat $f_k(x) \to 0$ \gls{fü} auf $[0,1]$ und gleichmäßige Konvergenz auf $[0,\alpha]$ $\forall \alpha\in (0,1)$.
+	Man hat $f_k(x) \to 0$ \gls{fue} auf $[0,1]$ und gleichmäßige Konvergenz auf $[0,\alpha]$ $\forall \alpha\in (0,1)$.
 \end{example}

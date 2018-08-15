@@ -1,3 +1,4 @@
+\addtocounter{section}{7}
 \section{Grundlegende Ungleichungen}
 \begin{proposition}[geoemtrisches / arithemtisches Mittel]
 	\proplbl{ungleichung_arithmetisches_geometrisches_mittel}
@@ -39,7 +40,7 @@
 		&\leq \frac{m(1+x)+(n-m)\cdot1}{n}&\\ 
 		&=\frac{n + mx}{n} = 1 + \frac{m}{n}x \text{, für } \alpha \in \ratio \beha&
 		\shortintertext{Sei $\alpha \in \real$ angenommen $(1+x)^{\alpha} > 1 + \alpha x$ ($x\neq 0$ sonst klar!)}
-		& \overset{\text{\propref{k_archimedisch_angeordneter_körper}}}{\Rightarrow} \exists \in \ratio_{<1} 
+		& \overset{\text{\propref{k_archimedisch_angeordneter_koerper}}}{\Rightarrow} \exists \in \ratio_{<1} 
 		\begin{cases*}
 		x > 0&$\alpha<q< \frac{(1+x)^{\alpha}-1}{x}$\\
 		x < 0&$\alpha < q$
@@ -102,7 +103,7 @@
     $\Rightarrow \big(\sum\limits_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum\limits_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum\limits_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}$
 \end{proposition}
 \begin{proof}
-	$p=1$ Beh. folgt aus $\Delta$-Ungleichung $\vert x_i + y_i\vert \overset{\text{\propref{k_angeordneter_körper}}}{\leq} \vert x_i \vert + \vert y_i \vert \forall i$\\ $p>1$ sei $\frac{1}{p} + \frac{1}{q} = 1\Rightarrow q = \frac{p}{p-1}$, $z_i:=\vert x_i + y_i\vert^{p-1}\forall i$
+	$p=1$ Beh. folgt aus $\Delta$-Ungleichung $\vert x_i + y_i\vert \overset{\text{\propref{k_angeordneter_koerper}}}{\leq} \vert x_i \vert + \vert y_i \vert \forall i$\\ $p>1$ sei $\frac{1}{p} + \frac{1}{q} = 1\Rightarrow q = \frac{p}{p-1}$, $z_i:=\vert x_i + y_i\vert^{p-1}\forall i$
 	\begin{align*}
 	\mathcal{S}^{p\cdot q} &= \sum_{i=1}^{n} \vert z_i \vert^q\\
 	& = \sum_{i=1}^{n} \vert x_i+y_i \vert\cdot\vert z_i \vert^q\\
