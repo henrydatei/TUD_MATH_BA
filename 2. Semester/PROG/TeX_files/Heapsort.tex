@@ -1,0 +1,76 @@
+\section{Heapsort}
+
+\begin{*anmerkung}
+	Das folgende Kapitel ist ziemlich durcheinander; ich glaube Prof. Walter wusste selber nicht so richtig, was er wollte. Es empfiehlt sich ein Youtube-Tutorial anzuschauen, um zu verstehen, wie Heapsort funktioniert.
+\end{*anmerkung}
+
+Ein binärer \begriff{Heap} ist ein vollständiger Binärbaum mit der sogenannten \begriff{Heap-Eigenschaft}: Ein vollständiger Binärbaum hat alle Schichten ab der Wurzel voll besetzt bis auf eventuell die letzte, die von links nach rechts bis zum letzten Knoten besetzt ist. Die Vollständigkeit garantiert, dass ein eindimensionales Feld \texttt{A(1:n)} mit den Elementen des Heaps in Levelorder abgespeichert keine Lücken aufweist. Außerdem gilt:
+\begin{lstlisting}
+! Index des linken Kindknotens des Knotens mit Index i
+Left(i) = 2*i
+! Index des rechten Kindknotens des Knotens mit Index i
+Right(i) = 2*i+1
+! i/2 ist Index des Elternknotens
+Parent(i) = i/2
+\end{lstlisting}
+$\Rightarrow$ Dualität eines Heaps und eines vollständigen Binärbaums; außerdem Höhe $h=\Theta(\log_2 n)$.
+
+\textbf{Zusätzliche Heap-Eigenschaft}: $A_{\texttt{Parent(i)}} \ge A_\texttt{i}$, das heißt Schlüsselwert des Elternelements $\ge$ Schlüsselwerte der beiden Kindknoten.
+
+Um aus einem Feld $A$ einen Heap zu machen, brauchen wir eine Subroutine \texttt{Heapify}. Die folgenden Quelltexte sind nur ein Konzept, soweit ich weiß, muss man sie nirgendwo reproduzieren.
+\begin{lstlisting}
+n = size(A)
+
+subroutine Heapify(A,i)
+ r = Right(i)
+ l = Left(i)
+ maxix = i
+ 
+ if(l <= size .and. A_l > A_i) then
+  maxix = l
+ end if
+ if(r <= size .and. A_r > A_maxix) then
+  maxix = r
+ end if
+ if(maxix /= i) then
+  tausche(A_i,A_maxix)
+  Heapify(A,maxix)
+ end if
+end subroutine Heapify
+\end{lstlisting}
+
+Der Zeitaufwand für \texttt{Heapify(A,i)} ist proportional zur Höhe des Knotens mit Index $i$: \\
+$T_\texttt{Heapify}=\mathcal{O}(h)$ mit $h=$\texttt{height(A,i)}$=\mathcal{O}(\log_2 n)$.
+
+\begin{lstlisting}
+subroutine BuildHeap(A)
+ size = n
+ 
+ do i = n/2, 1, -1
+  Heapify(A,i)
+ end do
+end subroutine BuildHeap
+\end{lstlisting}
+
+Versuchen wir uns an einer Komplexitätsanalyse: $T_\texttt{BuildHeap}(n) = \mathcal{O}\left(\frac{n}{2}\log_2 n\right) = \mathcal{O}(n\log_2 n)$. Eine bessere Analyse bekommen wir, wenn die Höhe der Knoten betrachten: In einem Heap haben höchstens $\left\lceil\frac{n}{2^{n+1}}\right\rceil$ Knoten die Höhe $h$. \\
+$\Rightarrow$ Gesamtaufwand für \texttt{BuildHeap}:
+\begin{align}
+	\sum_{h=0}^{\lfloor\log_2 n\rfloor}\left\lceil\frac{n}{2^{h+1}}\right\rceil\cdot\mathcal{O}(h) &= \mathcal{O}\left( n\cdot\sum_{h=0}^{\lfloor\log_2 n\rfloor} h\cdot \left( \frac{1}{2}\right)^h\right) \notag \\
+	\sum_{k=0}^n x^k &= \frac{x^{n+1}-1}{x-1} \notag \\
+	0<x<1: \quad \sum_{k=0}^\infty k\cdot x^k &= \frac{1}{1-x}=(1-x)^{-1} \notag \\
+	\text{Differenzieren} \quad \sum_{k=1}^\infty k\cdot x^{k-1}&=\frac{1}{(1-x)^2} \notag \\
+	x=\frac{1}{2}:\quad \sum_{k=1}^\infty k\cdot \left(\frac{1}{2}\right) &= \frac{\frac{1}{2}}{\left( \frac{1}{2}\right)^2}=2 \notag \\
+	\Rightarrow T(n) &= \mathcal{O}(n)\notag
+\end{align}
+
+\begin{lstlisting}
+subroutine Heapsort(A)
+BuildHeap(A) ! O(n)
+ do i=1, 2, -1 ! n-1 Iterationen
+  tausche(A_i,A_1) ! O(1)
+  size = size - 1 ! O(1)
+  Heapify(A,1) ! O(log n)
+ end do
+end subroutine Heapsort
+\end{lstlisting}
+$\Rightarrow T_\texttt{Heapsort}(n)=\mathcal{O}(n)+(n-1)\mathcal{O}(\log_2 n)=\mathcal{O}(n\log_2 n)$

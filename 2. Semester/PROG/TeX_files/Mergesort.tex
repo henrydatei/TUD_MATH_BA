@@ -1,0 +1,99 @@
+\section{Mergesort}
+
+\subsection{2-Wege-Mergesort}
+
+Den Mergesort-Algorithmus gibt es in 2 Varianten: rekursiv und iterativ. Schauen wir uns zuerst die rekursive Variante an:
+\begin{enumerate}
+	\item falls $L$ leer oder nur 1 Element enthält $\to$ ok, return
+	\item divide: Teile $L$ in 2 möglichst gleich lange Teillisten $L_1$ und $L_2$ und mache darauf rekursive Aufrufe \texttt{Mergesort(L\_1)} und \texttt{Mergesort(L\_2)}.
+	\item conquer: Merge von $L_1$ und $L_2$
+\end{enumerate}
+
+\begin{lstlisting}
+! kann nur 10 Elemente sortieren, kann man aber anpassen
+
+subroutine _merge(lst, a, middle, b)
+ integer a
+ integer b
+ integer middle
+ integer lst(10)
+ integer tmp(10)
+ integer ai
+ integer bi
+ integer ti
+ integer x
+ ai = a
+ bi = middle
+ ti = a
+
+ do while ((ai < middle) .or. (bi < b))
+  if (ai == middle) then
+   tmp(ti+1) = lst(bi+1)
+   bi = bi + 1
+  else if (bi == b) then
+   tmp(ti+1) = lst(ai+1)
+   ai = ai + 1
+  else if (lst(ai+1) < lst(bi+1)) then
+   tmp(ti+1) = lst(ai+1)
+   ai = ai + 1
+  else
+   tmp(ti+1) = lst(bi+1)
+   bi = bi + 1
+  end if
+  
+  ti = ti + 1
+ end do
+ do x = a, b - 1
+  lst(x + 1) = tmp(x + 1)
+ end do
+end subroutine _merge
+
+recursive subroutine mergesort(lst, a, b)
+ integer a
+ integer b
+ integer lst(10)
+ integer diff
+ diff = b - a
+ 
+ if (diff < 2) then
+  return
+ else
+  diff = diff / 2
+  call mergesort(lst, a, a + diff)
+  call mergesort(lst, a + diff, b)
+  call _merge(lst, a, a + diff, b)
+ endif
+end subroutine mergesort
+\end{lstlisting}
+
+Mergesort ist nicht in situ. $T(n)=\mathcal{O}(n\log_2 n)$. All Lese- und Schreiboperationen sind streng sequenziell.
+
+Die iterative Variante verläuft ähnlich, verwendet aber 4 Listen $L_1$, $L_2$, $L_3$ und $L_4$.
+\begin{enumerate}
+	\item Init: Teile $L$ in 2 möglichst gleich große Teillisten $L_1$ und $L_2$
+	\item Erzeuge 2 Listen sortierter Paare, $L_3$ und $L_4$, indem positionell sich entsprechende Elemente von $L_1$ und $L_2$ jeweils zu einem sortierten Paar gemacht werden und in die zuletzt nicht benutzte Liste $L_3$ bzw. $L_4$ (immer abwechselnd) geschrieben werden
+	\item Erzeuge 2 Listen sortierter Quadrupel in $L_1$ und $L_2$
+	\item Erzeuge 2 Listen sortierter Oktupel in $L_3$ und $L_4$
+	\item ...
+\end{enumerate}
+
+Die Komplexität ist auch hier $T(n)=\mathcal{O}(n\log_2 n)$, tatsächlich ist die Zeit $T(n)=\Theta(n\log_2 n)$ immer die selbe, egal ob best- oder worst case.
+
+\subsection{$k$-Wege-Mergesort}
+
+Hier existiert nur eine rekursive Variante, in der die Liste in $k$ Teillisten aufgeteilt wird. Man kann aber auch mit $k$ Input-Listen und $k$ Output-Listen arbeiten. Noch einige Bemerkungen:
+\begin{itemize}
+	\item Für den Mergeschritt wird ein $k$-elementiger Vektor von Schlüsselwerten benötigt, um die jeweils aktuellen Kopfelemente der $k$ zu verschmelzenden Listen sortiert zu speichern.
+	\item Die Anzahl der Durchläufe reduziert sich gegenüber dem 2-Wege-Mergesort von $\lceil\log_2 n\rceil$ auf $\lceil\log_k n\rceil$, also um den Faktor $\frac{1}{\log_2 k}=\log_k 2$, zum Beispiel bei $k=1024=2^{10}$ Teillisten auf $\frac{1}{10}$.
+\end{itemize}
+
+\begin{tabularx}{\textwidth}{X|p{0.13\textwidth}p{0.1\textwidth}p{0.09\textwidth}p{0.1\textwidth}p{0.08\textwidth}|p{0.17\textwidth}}
+	\rowcolor{lightgray} \textbf{Markoschritt} & \textbf{produziert} & \textbf{$k$-Tupel sortieren} & \textbf{Anzahl Elemente} & \textbf{Aufwand Insertion-Schritt} & \textbf{Anzahl Tupel} & \textbf{Aufwand} \\
+	\hline
+	\textbf{1} & $k$-Tupel: $\mathcal{O}($ & $(k\log_2 k+$ & $0\cdot$ & $\mathcal{O}(k))$ & $\cdot\frac{n}{k})$ & $\mathcal{O}(n\log_2 k)$ \\
+	\textbf{2} & $k^2$-Tupel: $\mathcal{O}($ & $(k\log_2 k+$ & $k(k-1)\cdot$ & $\mathcal{O}(k))$ & $\cdot\frac{n}{k^2})$ & $\mathcal{O}(nk)$ \\
+	\textbf{3} & $k^3$-Tupel: $\mathcal{O}($ & $(k\log_2 k+$ & $(k^3-k)\cdot$ & $\mathcal{O}(k))$ & $\cdot\frac{n}{k^3})$ & $\mathcal{O}(nk)$ \\
+	\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+	\hline
+	&&&&&& $\Sigma = \mathcal{O}(kn\log_2 n)$ \\
+\end{tabularx}
