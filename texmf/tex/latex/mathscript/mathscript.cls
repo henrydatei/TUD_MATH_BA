@@ -61,8 +61,10 @@
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
+\RequirePackage{longtable} %Tabellen mit Seitenumbrüchen
 \RequirePackage{multirow}
 \RequirePackage{booktabs}	%improved rules
+\usepackage{colortbl} %einfärben von Spalten, Zeilen und Zellen
 
 \RequirePackage[title,titletoc]{appendix}
 

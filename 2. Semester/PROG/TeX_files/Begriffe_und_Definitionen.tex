@@ -1,0 +1,67 @@
+\section{Begriffe und Definitionen}
+
+Beim \begriff{linearen Suchen} sucht man in einem unsortierten Feld mit $n$ Elementen. Der Aufwand liegt zwischen 1 und $n$, ist also linear abhängig von der Anzahl der Elemente. $T(n)=\mathcal{O}(n)$
+
+Beim \begriff{binären Suchen} muss das Feld schon sortiert sein. Man fragt dabei den Schlüsselwert des mittleren Elements ab und kann so den zu durchsuchenden Bereich in jedem Schritt halbieren. $T(n)=\mathcal{O}(\log_2 n)$
+
+\begin{*anmerkung}
+	Dieses Verfahren wurde im letzten Semester schon in der Aufgabe zum Zahlenraten verwendet.
+\end{*anmerkung}
+
+Man kann Sortierverfahren nach ihrem Speicherplatzbedarf unterteilen: \begriff{in-situ Sortierverfahren} vs. \begriff{externes Sortierverfahren}
+%\begin{center}
+%	\begin{tabularx}{\textwidth}{l|l} %TODO: Tabelle
+%		\textbf{in-situ} & \textbf{extern} \\
+%		\hline
+%		\begin{itemize}
+%			\item alle $n$ Elemente sind schon zu Beginn (in beliebiger Anordnung) im Feld gespeichert
+%			\item die Elemente werden (bis auf eventuelle notwendige kurzzeitige Auslagerung eines Elements)
+%			immer in diesem Feld gehalten
+%			\item insbesondere wird nur eine sehr kleine Zahl zusätzlicher skalarer Varianten benötigt (und keine
+%			zusätzliche Datenstruktur mit $c \cdot n$ Elementen ($0 < c < 1$))
+%		\end{itemize} & 
+%		\begin{itemize}
+%			\item Sortierung erfolgt nicht nur im Originalfeld
+%			\item benötigt typischerweise $\mathcal{O}(n)$ zusätzlichen Speicherplatz
+%		\end{itemize} \\
+%	\end{tabularx}
+%\end{center}
+
+Ein Sortierverfahren ist \begriff{stabil}, wenn es die relative Ordnung von Elementen mit dem selben Schlüsselwert nicht ändert.
+
+Ein \begriff{Mikroschritt} bzw. eine \begriff{Elementaroperation} besteht in der Regel aus einem Vergleich von 2 Schlüsselwerten und einer Kopier- oder Tauschoperation. Ein \begriff{Makroschritt} bzw. \begriff{Durchlauf} besteht aus $\mathcal{O}(n)$ Mikroschritten, zum Beispiel der Durchlauf durch alle noch zu sortierenden Elemente.
+
+Die Zeitkomplexität von Algorithmen $T(n)$ wird mit den \person{Landau}-Operatoren angegeben:
+\begin{itemize}
+	\item $\mathcal{O}(g(n))=\{f(n):\exists c>0, n_0\in\natur_0\mid 0\le f(n)\le c\cdot g(n)\quad\forall n\ge n_0\}$ (Obergrenze)
+	\item $\Omega(g(n)) = \{f(n):\exists c>0, n_0\in\natur_0\mid 0\le c\cdot g(n)\le f(n)\quad\forall n\ge n_0\}$ (Untergrenze)
+	\item $\Theta(g(n)) = \{f(n):\exists c_1,c_2>0,n_0\in\natur_0\mid 0\le c_1\cdot g(n)\le f(n)\le c_2\cdot g(n)\quad\forall n\ge n_0\}$ (Sandwich)
+\end{itemize}
+
+Also gilt: $T(n) = \mathcal{O}(n^2) = \mathcal{O}(n^2\cdot\log n) = \mathcal{O}(n^2\cdot\sqrt{n}) = \mathcal{O}(n^3) = \dots = \mathcal{O}(2^n) = \mathcal{O}(n^n)$.
+
+\begin{*anmerkung}
+	Die Schreibweise kann ziemlich verwirren; es hilft sich $\mathcal{O}(n^2)$ als Menge vorzustellen, die alle Funktionen enthält, die maximal so schnell wie $n^2$ wachsen. Die Schreibweise $\mathcal{O}(n^2)=\mathcal{O}(n^2\cdot\log n)$ bedeutet dann nicht, dass diese Mengen gleich sind, sondern dass die eine Menge in der anderen enthalten ist: Es gilt also $\mathcal{O}(n^2)\in\mathcal{O}(n^2\cdot\log n)$, denn $x^2 \le x^2\cdot\log x$ für alle $x$.
+\end{*anmerkung}
+
+Sortieralgorithmen bekommen in der Regel 3 Komplexitätsangaben:
+\begin{itemize}
+	\item \begriff{worst case}: $\mathcal{O}(\dots)$ oder $\Theta(\dots)$
+	\item \begriff{average case}: $\mathcal{O}(\dots)$, $\Omega(\dots)$ oder $\Theta(\dots)$
+	\item \begriff{best case}: $\Omega(\dots)$
+\end{itemize}
+
+Im folgenden wird die \textbf{allgemeine Annahme} gelten: Sortiert wird immer in einem eindimensionalen Feld $A$ mit Indexmenge $I$ mit der Relation $\le$ bezüglich des Schlüssels in aufsteigender Reihenfolge.
+
+Es gibt mindestens 2 Möglichkeiten, Datenelemente im Feld $A$ zu sortieren:
+\begin{enumerate}
+	\item \begriff{direktes Sortieren}: Bewegen der Datenelemente inklusive key
+	\item \begriff{indirektes Sortieren}: Erzeugen einer Sortierpermutation $\sigma$ der Indizes, wobei nur die Indizes in einem eigenen Feld und nicht die Datenelemente bewegt werden
+\end{enumerate}
+Im sortierten Zustand gilt für alle $i,j\in I$:
+\begin{itemize}
+	\item direktes Sortieren: $i < j \Rightarrow A(i) \le A(j)$
+	\item indirektes Sortieren: $i < j \Rightarrow A(\sigma(i)) \le A(\sigma(j))$
+\end{itemize}
+
+Eine \begriff{Sortierpermutation} $\sigma$ einer Liste $A$ auf einer Indexmenge $I=\{1,\dots,n\}$ ist eine Permutation von $I$, das heißt $\{\sigma(1),\dots,\sigma(n)\}$ mit $\sigma(i)\neq\sigma(j)$ für $i\neq j$.

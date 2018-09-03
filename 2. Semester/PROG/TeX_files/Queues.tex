@@ -1,0 +1,67 @@
+\section{Queues}
+
+Eine \begriff{Queue} ist eine Warteschlange und sollte mit \texttt{pop} und \texttt{inject} implementiert werden. Es ist dabei in 2 verschiedene Prinzipien zu unterscheiden:
+\begin{itemize}
+	\item Beim \begriff{FIFO-Prinzip} (first-in-first-out) wird das erste Element, was in die Warteschlange kommt, bearbeitet und verlässt die Warteschlange (so wie bei der Kassenschlange in der Mensa).
+	\item Beim \begriff{LIFO-Prinzip} (last-in-first-out) wird das Element, was zuletzt in die Warteschlange kommt, bearbeitet (nach dem Prinzip bearbeite ich Mails: die neuste beantworte ich zuerst).
+\end{itemize}
+
+\smiley{} Professor Walter bevorzugt übrigens das LIFO-Prinzip in der Mensa. Er kommt zuletzt, hat aber als Erster sein Essen. \smiley{}
+
+Weiterhin gibt es noch Output-resticted-queues bzw. Input-restricted-queues. Das sind deques mit \texttt{push}, \texttt{pop}, \texttt{inject}, aber ohne \texttt{eject} bzw. eine deque mit \texttt{pop} und \texttt{eject} oder \texttt{push} und \texttt{inject}.
+
+\subsection{Grundoperationen auf einer Queue}
+
+Eine Queue hat 4 wichtige Funktionen:
+\begin{itemize}
+	\item \texttt{init(Q,n)}
+	\item \texttt{empty(Q)} bzw. \texttt{full(Q)}
+	\item \texttt{enqueue(Q,neu)}: \texttt{inject} am tail
+	\item \texttt{dequeue(Q)}: \texttt{pop} am head
+\end{itemize}
+
+Implementiert wird dies mit einem eindimensionalen Feld mit \texttt{maxlengh}, \texttt{index\_head}, \texttt{index\_tail} und \texttt{elems} (Pointer auf Feld \texttt{Q}). Hier sind die notwendigen Funktionen nur angedeutet, Details kann sich jeder selber denken.
+
+\begin{lstlisting}
+subroutine init(Q,n)
+ type(queue) :: Q
+ integer :: n
+ 
+ allocate(Q(0:n-1))
+ maxlengh = n
+ index_head = 0
+ index_tail = n-1
+end subroutine init
+
+function empty(Q)
+ type(queue) :: Q
+ logical :: empty
+ 
+ empty = mod(index_tail+1,n) == index_head
+
+end function empty
+
+function full(Q)
+type(queue) :: Q
+logical :: full
+
+ full = mod(index_tail+2,n) == index_head
+ ! ein Element bleibt ungenutzt
+
+end function full
+
+subroutine enqueue(Q,neu)
+ type(queue) :: Q
+ type(element) :: neu
+ 
+ ! ...
+ index_tail = mod(index_tail+1,n)
+end subroutine enqueue
+
+subroutine dequeue(Q)
+type(queue) :: Q
+
+! ...
+index_head = mod(index_head+1,n)
+end subroutine dequeue
+\end{lstlisting}

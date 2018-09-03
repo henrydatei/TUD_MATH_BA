@@ -1,0 +1,31 @@
+\section{Rechenaufwand für Grundoperationen}
+
+\begin{tabularx}{\textwidth}{p{0.17\textwidth}|p{0.16\textwidth}p{0.16\textwidth}|p{0.17\textwidth}p{0.2\textwidth}}
+	 & einfach verkettet & & doppelt verkettet & \\
+	 \hline
+	 Grundoperationen & linear & zyklisch & linear & zyklisch \\
+	 \hline\hline
+	 \texttt{access\_head} & konstant & konstant & konstant & konstant \\
+	 \hline
+	 \texttt{push} & konstant & konstant & konstant & konstant \\
+	 \hline
+	 \texttt{pop} & konstant & konstant & konstant & konstant \\
+	 \hline
+	 \texttt{access\_tail} [mit tail-Pointer] & $\mathcal{O}(n)$ [konstant] & konstant & $\mathcal{O}(n)$ [konstant] & konstant \\
+	 \hline
+	 \texttt{inject} [mit tail-Pointer] & $\mathcal{O}(n)$ [konstant] & konstant & $\mathcal{O}(n)$ [konstant] & konstant \\
+	 \hline
+	 \texttt{eject} [mit tail-Pointer] & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ [konstant] & konstant \\
+	 \hline
+	 \texttt{insert\_before} & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & konstant & konstant \\
+	 \hline
+	 \texttt{insert\_after} & konstant & konstant & konstant & konstant \\
+	 \hline
+	 \texttt{del\_elem} & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & konstant & konstant \\
+	 \hline
+	 \texttt{del\_after} & konstant & konstant & konstant & konstant \\
+	 \hline
+	 \texttt{trav\_forward} & konstant (pro Element) & konstant (pro Element) & konstant (pro Element) & konstant (pro Element) \\
+	 \hline
+	 \texttt{trav\_backward} & $\mathcal{O}(n)$ (pro Element) & $\mathcal{O}(n)$ (pro Element) & $\mathcal{O}(n)$ (pro Element) & $\mathcal{O}(n)$ (pro Element) \\
+\end{tabularx}
