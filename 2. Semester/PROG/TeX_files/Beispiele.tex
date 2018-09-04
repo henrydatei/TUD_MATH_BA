@@ -1,0 +1,150 @@
+\section{Beispiele}
+
+Neben der Zeitkomplexität $T(n)$ werden wir uns nun auch mit der Speicherkomplexität $S(n)$ beschäftigen.
+
+\begin{*anmerkung}
+	Es nicht unbedingt entscheidend, alle Komplexitäten auswendig zu lernen. Vielmehr sollte man wissen, wie die Algorithmen dahinter arbeiten und sich so die Komplexitäten herleiten.
+\end{*anmerkung}
+
+\subsection{Fakultät}
+\begin{lstlisting}
+recursive function fac (n) result (res) 
+ integer :: n
+ integer :: res
+ 
+ if (n == 1) then 
+  res = 1
+ else
+  res = n*fac(n-1)
+ end if
+end function fac
+\end{lstlisting}
+$\Rightarrow T(n) = \Theta(n)$, $S(n)=\Theta(n)$
+
+\begin{lstlisting}
+function fac_iterativ (n)
+ integer :: n, fac_iterativ, i
+ 
+ fac_iterativ = 1
+ 
+ do i = 1, n
+  fac_iterativ = fac_iterativ * i
+ end do
+end function fac_iterativ
+\end{lstlisting}
+$\Rightarrow T(n)=\Theta(n)$, $S(n)=\Theta(1)$
+
+\subsection{Reverse String}
+\begin{lstlisting}
+recursive function reverse (string) result (res)
+ character (*), intent (in) :: string
+ character (len (string)) :: res
+
+ if (len (string) == 0) then
+  res = ""
+ else
+  res = string(len(string):)//reverse(string(:len(string)-1))
+ end if
+end function reverse
+\end{lstlisting}
+$\Rightarrow T(n) = \Theta(n)$, $S(n)=\Theta(n)$
+
+\begin{lstlisting}
+program reverse_iterativ
+ character(80) :: str = "This is a string"
+ character :: temp
+ integer :: i, length
+
+ write(*,*) str
+ length = len_trim(str) 
+ ! Ignores trailing blanks. 
+ ! Use len(str) to reverse those as well
+ 
+ do i = 1, length/2
+  temp = str(i:i)
+  str(i:i) = str(length+1-i:length+1-i)
+  str(length+1-i:length+1-i) = temp
+ end do
+ 
+ write(*,*) str
+end program reverse_iterativ
+\end{lstlisting}
+$\Rightarrow T(n) = \Theta(n)$, $S(n)=\Theta(n)$
+
+\subsection{Primzahl}
+
+Um zu überprüfen, ob eine Zahl eine Primzahl ist, muss man immer bis zur Wurzel dieser Zahl auf Teiler prüfen. Egal ob man das rekursiv oder iterativ macht, $T(n)=\mathcal{O}(\sqrt{n})$. Die Speicherkomplexität ist beim rekursiven schwer vorher zu sagen, beim iterativen Algorithmus ist die $S(n)=\Theta(1)$.
+
+\subsection{\person{Fibinacci}-Zahlen}
+\begin{lstlisting}
+recursive function fibR(n) result(fib)
+ integer, intent(in) :: n
+ integer :: fib
+
+ select case (n)
+  case (:0); fib = 0
+  case (1); fib = 1
+  case default; fib = fibR(n-1) + fibR(n-2)
+ end select
+end function fibR
+\end{lstlisting}
+$\Rightarrow T(n) = \Theta(\Phi^n)$, $S(n)=\mathcal{O}(2^n)$
+
+\begin{lstlisting}
+function fibI(n)
+ integer, intent(in) :: n
+ integer, parameter :: fib0 = 0, fib1 = 1
+ integer :: fibI, back1, back2, i
+
+ select case (n)
+  case (:0); fibI = fib0
+  case (1); fibI = fib1
+  case default
+   fibI = fib1
+   back1 = fib0
+   do i = 2, n
+    back2 = back1
+    back1 = fibI
+    fibI   = back1 + back2
+   end do
+ end select
+end function fibI
+\end{lstlisting}
+$\Rightarrow T(n) = \Theta(n)$, $S(n)=\Theta(1)$
+
+Man kann die $n$-te \person{Fibonacci}-Zahl $F_n$ auch direkt berechnen:
+\begin{align}
+	F_n = \frac{\Phi^n-(1-\Phi^n)}{\sqrt{5}}\notag
+\end{align}
+Hier wird eine ganzzahlige Potenzierung benötigt, die eine Komplexität von $T(n)=\Theta(\log_2 n)$ hat.
+
+\subsection{Ganzzahliges Potenzieren}
+
+Wenn man naiv vorgeht, ist Potenzieren nichts anderes als Multiplikation $n$ mal mit sich selbst. Dann sind die Komplexitäten: $T(n)=\Theta(n)$, $S_{iter}(n)=\Theta(1)$ und $S_{rek}(n)=\Theta(n)$.
+
+Man kann den Prozess aber noch deutlich verbessern. Soll man zum Beispiel $5^{10}=5^8\cdot 5^2$ berechnen, so berechnet man $5^2=25$, $5^4=5^2\cdot 5^2=625$, $5^8=5^4\cdot 5^4=390.625$ und abschließend $5^{10}=5^2\cdot 5^8=9.765.625$.
+\begin{itemize}
+	\item rekursiv: $T(n)=\Theta(\log_2 n)$, $S(n)=\Theta(\log_2 n)$
+	\item iterativ: $T(n)=\Theta(\log_2 n)$, $S(n)=\Theta(1)$
+\end{itemize}
+
+Man kann das Potenzieren auch direkter machen: $x^n=e^{\ln x^n}=e^{n\cdot\ln x}$. Allerdings braucht man hier die Funktionen $e^x$ und $\ln$, die insgesamt langsamer als die iterative Methode sind.
+
+\subsection{Größter gemeinsamer Teiler}
+Es gilt:
+\begin{align}
+	\ggT(a,b) &= \ggT(a-b,b) = \ggT(a-2b,b) = ... \notag \\
+	&= \ggT(a\text{ mod } b,b) = \ggT(b, a\text{ mod } b) \notag
+\end{align}
+
+\begin{proposition}[von Lamé]
+	$\forall k\ge 1,k\in\natur$, wenn $a>b\ge 0$ und $b<F_{k+1}$ gilt, dann macht $\ggT(a,b)$ höchstens $k-1$ rekursive Aufrufe. Zwei aufeinanderfolgende \person{Fibonacci}-Zahlen sind der worst case für den euklidischen Algorithmus:
+	\begin{align}
+		\ggT(F_{k+1},F_k) = \ggT(F_k,F_{k+1}\text{ mod } f_k) = \ggT(F_k,F_{k-1})\notag
+	\end{align}
+\end{proposition}
+Da $F_k=\frac{\Phi^n}{\sqrt{5}}$ mit $\Phi=\frac{1+\sqrt{5}}{2}$ folgt
+\begin{itemize}
+	\item rekursiv: $T(n)=\mathcal{O}(\log_\Phi\min\{a,b\})$
+	\item iterativ: $T(n)=\mathcal{O}(\log_\Phi\min\{a,b\})$
+\end{itemize}

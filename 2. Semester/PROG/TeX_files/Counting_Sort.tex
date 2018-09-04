@@ -1,0 +1,48 @@
+\section{Counting Sort}
+
+Der Counting Sort-Algorithmus ist dann besonders gut, wenn alle möglichen Schlüsselwerte aus der Menge $S=\{0,1,2,...,k-1\}$ kommen. Wenn $k=\mathcal{O}(n)$, dann können wir mit Counting Sort in der Zeit $T(n)=\mathcal{O}(n)$ sortieren. Benötigt werden 3 eindimensionale Felder:
+\begin{itemize}
+	\item \texttt{A(1:n)} Originaldaten/-schlüsselwerte
+	\item \texttt{B(1:n)} für sortierte Werte
+	\item \texttt{C(0:k-1)} Feld von Zählern
+\end{itemize}
+Der Algorithmus zählt, wie oft jeder Wert in der Eingabe vorkommt. Diese Anzahlen speichert er in einem zusätzlichen Array mit $k$ Feldern ab. Mit Hilfe dieses Arrays wird anschließend für jeden Schlüsselwert die Zielposition in der Ausgabe berechnet.
+
+\begin{*anmerkung}
+	Der Counting Sort ist also dann besonders gut, wenn man alle Einwohner Deutschlands ($\sim$ 81 Millionen) nach ihrem Alter ($S=\{0,...,150\}$) sortieren möchte. \\
+	Der Counting Sort eignet sich nicht dafür die Studenten der PROG-Vorlesung ($\sim$ 30 \smiley{}) nach ihrem Nachnamen (40 Zeichen $\Rightarrow S=\{0,...,26^{40}\}$) zu sortieren.
+\end{*anmerkung}
+
+\begin{lstlisting}
+subroutine counting_sort_a(array)
+ integer, dimension(:), intent(inout) :: array
+
+ call counting_sort_mm(array, minval(array), maxval(array))
+end subroutine counting_sort_a
+
+subroutine counting_sort_mm(array, tmin, tmax)
+ integer, dimension(:), intent(inout) :: array
+ integer, intent(in) :: tmin, tmax
+ integer, dimension(tmin:tmax) :: cnt
+ integer :: i, z
+
+ cnt = 0 ! Initialize to zero to prevent false counts
+ 
+ forall (i=1:z)  
+  ! Not sure that this gives any benefit over a DO loop.
+  cnt(array(i)) = cnt(array(i))+1
+ end forall
+ 
+ ! ok - cnt contains the frequency of every value
+ ! let's unwind them into the original array
+ 
+ z = 1
+ do i = tmin, tmax
+  do while ( cnt(i) > 0 )
+   array(z) = i
+   z = z + 1
+   cnt(i) = cnt(i) - 1
+  end do
+ end do
+end subroutine counting_sort_mm
+\end{lstlisting}
