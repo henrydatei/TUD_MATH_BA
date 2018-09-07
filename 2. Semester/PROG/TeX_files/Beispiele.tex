@@ -140,7 +140,7 @@ Es gilt:
 \begin{proposition}[von Lamé]
 	$\forall k\ge 1,k\in\natur$, wenn $a>b\ge 0$ und $b<F_{k+1}$ gilt, dann macht $\ggT(a,b)$ höchstens $k-1$ rekursive Aufrufe. Zwei aufeinanderfolgende \person{Fibonacci}-Zahlen sind der worst case für den euklidischen Algorithmus:
 	\begin{align}
-		\ggT(F_{k+1},F_k) = \ggT(F_k,F_{k+1}\text{ mod } f_k) = \ggT(F_k,F_{k-1})\notag
+		\ggT(F_{k+1},F_k) = \ggT(F_k,F_{k+1}\text{ mod } F_k) = \ggT(F_k,F_{k-1})\notag
 	\end{align}
 \end{proposition}
 Da $F_k=\frac{\Phi^n}{\sqrt{5}}$ mit $\Phi=\frac{1+\sqrt{5}}{2}$ folgt
@@ -148,3 +148,72 @@ Da $F_k=\frac{\Phi^n}{\sqrt{5}}$ mit $\Phi=\frac{1+\sqrt{5}}{2}$ folgt
 	\item rekursiv: $T(n)=\mathcal{O}(\log_\Phi\min\{a,b\})$
 	\item iterativ: $T(n)=\mathcal{O}(\log_\Phi\min\{a,b\})$
 \end{itemize}
+
+\subsection{Binominialkoeffizient}
+
+Der Binominialkoeffizient lässt sich rekursiv wie folgt berechnen:
+\begin{align}
+	\binom{n}{k} = \binom{n-1}{k-1}+\binom{n-1}{k}\notag
+\end{align}
+$\Rightarrow T(n)=\mathcal{O}(2^n)$, $S(n)=\mathcal{O}(n)$
+
+Der Algorithmus klappt auch iterativ, deshalb $T(n)=\mathcal{O}(n^2)$, $S(n)=\Theta(n)$
+
+Man kann den Binominialkoeffizienten auch ganz normal ausrechnen:
+\begin{align}
+	\binom{n}{k}=\frac{n}{1}\cdot\frac{n-1}{2}\cdot\frac{n-2}{3}\cdot\dots\cdot\frac{n-k+1}{k}\notag
+\end{align}
+$\Rightarrow T(n)=\Theta(k)=\mathcal{O}(n)$, $S(n)=\Theta(1)$
+
+\subsection{Collatz-Funktion}
+
+Lothar Collatz hat 1937 eine interessante Rechenvorschrift für Zahlen entwickelt, deren Problem bis heute noch nicht gelöst wurde.
+
+\begin{lstlisting}
+collatzFun(p,n)
+ do while (n /= 1)
+  if(mod(n,2) == 1) then
+   n=p*n+1
+  else
+   n = n/2
+  end if
+ end do
+end collatzFun
+\end{lstlisting}
+
+Für $p=5$ ergibt sich:
+\begin{center}
+	\begin{tabular}{l|p{7cm}}
+		\rowcolor{lightgray} \textbf{$n$} & \texttt{collatzFun(5,n)} \\
+		\hline
+		1 & 1 \\
+		2 & $2\to 1$ \\
+		3 & $16\to 8\to 4\to 2\to 1$ \\
+		4 & $4\to 2\to 1$ \\
+		5 & $26\to 13\to 66\to 33\to 166\to 83\to 416\to 208\to 104\to 52\to 26\to\dots$
+	\end{tabular}
+\end{center}
+$\Rightarrow$ nicht immer berechenbar, das heißt, die Funktion kommt nie zum Ende
+
+Für $p=3$ (originales Collatz-Problem) ergibt sich:
+\begin{center}
+	\begin{tabular}{l|p{7cm}}
+		\rowcolor{lightgray} \textbf{$n$} & \texttt{collatzFun(3,n)} \\
+		\hline
+		1 & 1 \\
+		2 & $2\to 1$ \\
+		3 & $10\to 5\to 16\to 8\to 4\to 2\to 1$ \\
+		4 & $4\to 2\to 1$ \\
+		5 & $16\to 8\to 4\to 2\to 1$
+	\end{tabular}
+\end{center}
+
+Es stellt sich die Frage, ob dieses Problem immer berechenbar ist. Man hat gezeigt, dass es für $p=3$ bis zu $n<2^{61}$ berechenbar ist.
+
+\subsection{Multiplikation zweier $n$-stelliger Zahlen $x$ und $y$}
+
+Bei einer iterativen Multiplikation, so wie man sie schriftlich gelernt hat, beträgt die Komplexität $T(n)=\Theta(n^2)$ oder eben auch allgemein $T(x\cdot y)=\Theta(\log_b x\cdot\log_b y)=\Theta(m\cdot n)$ mit $m=\text{digits($x$)}$ und $n=\text{digits($y$)}$.
+
+Falls man bis jetzt die Vermutung hatte, dass rekursive Algorithmen immer schlechter als iterative Algorithmen sind, hier ist ein Gegenbeispiel: Wenn man die Zifferngruppen rekursiv halbiert ergibt sich eine Komplexität von $T(n)=\Theta(n^{\log_2 3})=\Theta(n^{1,525})$.
+
+Der \person{Schönhage-Strassen}-Algorithmus, eine diskrete Fourier-Transformation, war von 1971 bis 2007 (in der Vorlesung war es auch nicht aktueller) der schnellste Multiplikationsalgorithmus mit einer Komplexität von $T(n)=\Theta(n\cdot\log n\cdot\log\log n)$.
