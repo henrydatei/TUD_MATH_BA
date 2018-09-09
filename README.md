@@ -24,3 +24,10 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 ### Geometrie (WS2018/19)
 
 ### Numerik (WS2018/19)
+
+# TU Dresden: Nebenfach Volkswirtschaftslehre
+Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum) und **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt)
+
+### Einführung in die Volkswirtschaftslehre (WS2017/18)
+
+### Einführung in die Mikroökonomie (SS2018)
