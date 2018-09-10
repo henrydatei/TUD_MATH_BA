@@ -24,3 +24,15 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 ### Geometrie (WS2018/19)
 
 ### Numerik (WS2018/19)
+
+# TU Dresden: Nebenfach Volkswirtschaftslehre
+Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum) und **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) der TU Dresden
+
+### Einführung in die Volkswirtschaftslehre (WS2017/18)
+- Vorlesungsfolien: [https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM](https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM)
+- Übungsaufgaben: [https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH](https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH)
+
+### Einführung in die Mikroökonomie (SS2018)
+- Vorlesungsfolien: [https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb](https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb)
+- Übungsaufgaben: [https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4](https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4)
+- Tutoriumsaufgaben: [https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc](https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc)
