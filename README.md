@@ -33,10 +33,12 @@ Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr.
 ### Einführung in die Volkswirtschaftslehre (WS2017/18)
 - Vorlesungsfolien: [https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM](https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM)
 - Übungsaufgaben: [https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH](https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH)
+- Lösungen zu den Übungsaufgaben: [https://drive.google.com/open?id=1-rz5EFHl1z9QTSCdKAZLI9cT_sJJOr0-](https://drive.google.com/open?id=1-rz5EFHl1z9QTSCdKAZLI9cT_sJJOr0-)
 
 ### Einführung in die Mikroökonomie (SS2018)
 - Vorlesungsfolien: [https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb](https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb)
 - Übungsaufgaben: [https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4](https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4)
+- Lösungen zu den Übungsaufgaben: [https://drive.google.com/open?id=1l3B9Tfvxvp6dzxStuL4V7e7iSMkTGDH_](https://drive.google.com/open?id=1l3B9Tfvxvp6dzxStuL4V7e7iSMkTGDH_)
 - Tutoriumsaufgaben: [https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc](https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc)
 
 ### Einführung in die Makroökonomie (WS2018/19)
