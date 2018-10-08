@@ -1,0 +1,36 @@
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+\title{\textbf{Lineare Algebra und analytische Geometrie WS2018/19}}
+\author{Dozent: Prof. Dr. Ulrich Krähmer}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+
+\chapter{1}
+\input{./TeX_files/1}
+\include{./TeX_files/2}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
