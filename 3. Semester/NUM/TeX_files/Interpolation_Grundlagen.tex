@@ -1,0 +1,52 @@
+\section{Grundlagen}
+
+\textbf{Aufgabe:} \\
+Gegeben sind $n+1$ Datenpaare $(x_0,f_0),\dots, (x_n,f_n)$, alles reelle Zahlen und paarweise verschieden. \\
+Gesucht ist eine Funktion $F:\real\to\real$, die die \begriff{Interpolationsbedingungen}
+\begin{align}
+	\label{interpolationsbedingung}
+	F(x_0) = f_0, \, \dots, \, F(x_n)=f_n
+\end{align}
+genügt.
+
+\begin{*definition}[Stützstellen, Stützwerte]
+	Die $x_0$ bis $x_n$ werden \begriff{Stützstellen} genannt.
+	
+	Die $f_0$ bis $f_n$ werden \begriff{Stützwerte} genannt.
+\end{*definition}
+
+Die oben gestellte Aufgabe wird zum Beispiel durch 
+\begin{align}
+	F(x) = \begin{cases}
+		0 & x\notin \{x_0,\dots,x_n\} \\
+		f_i & x=x_i
+	\end{cases}\notag
+\end{align}
+gelöst. Weitere Möglichkeiten sind: Polygonzug, Treppenfunktion, Polynom, \dots
+\begin{itemize}
+	\item In welcher Menge von Funktionen soll $F$ liegen?
+	\item Gibt es im gewählten \begriff{Funktionenraum} für beliebige Datenpaare eine Funktion $F$, die den Interpolationsbedingungen genügt (eine solche Funktion heißt \begriff{Interpolierende})?
+	\item Ist die Interpolierende in diesem Raum eindeutig bestimmt?
+	\item Welche weiteren Eigenschaften besitzt die Interpolierende, zum Beispiel hinsichtlich ihrer Krümmung oder der Approximation einer Funktion $f:\real\to\real$ mit $f_k=f(x_k)$ für $k=0, \dots, n$
+	\item Wie sollte man die Stützstellen wählen, falls nicht vorgegeben?
+	\item Wie lässt sich die Interpolierende effizient bestimmen, gegebenenfalls auch unter der Berücksichtigung, dass neue Datenpaare hinzukommen oder dass sich nur die Stützwerte ändern? 
+\end{itemize}
+
+\begin{example}
+	\hspace*{1.5em}
+	\begin{center}
+		\begin{tabular}{c|cccccc}
+			$k$ & 0 & 1 & 2 & 3 & 4 & 5 \\
+			\hline
+			$x_k$ in s & 0 & 1 & 2 & 3 & 4 & 5 \\
+			\hline
+			$f_k$ in °C & 80 & 85,8 & 86,4 & 93,6 & 98,3 & 99,1
+		\end{tabular}
+	\end{center}
+Interpolation im
+\begin{itemize}
+	\item Raum der stetigen stückweise affinen Funktionen
+	\item Raum der Polynome höchstens 5. Grades
+	\item Raum der Polynome höchstens 4. Grades (Interpolation im Allgemeinen nicht lösbar, Regression nötig)
+\end{itemize}
+\end{example}

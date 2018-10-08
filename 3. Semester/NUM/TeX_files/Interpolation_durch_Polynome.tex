@@ -1,0 +1,47 @@
+\section{Interpolation durch Polynome}
+
+$\Pi_n$ bezeichne den Vektorraum der Polynome von Höchstgrad $n$ mit der üblichen Addition und Skalarmultiplikation. Für jedes $p\in\Pi_n$ gibt es $a_0,\dots,a_n\in\real$, sodass
+\begin{align}
+	p(x) = a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0
+\end{align}
+und umgekehrt.
+
+\subsection{Existenz und Eindeutigkeit}
+
+\begin{proposition}
+	Zu $n+1$ Datenpaaren $(x_0,f_0),\dots,(x_n,f_n)$ mit paarweise verschiedenen Stützstellen existiert genau ein Polynom $p\in\Pi_n$, dass die Interpolationsbedingung  \cref{interpolationsbedingung} erfüllt.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Existenz: Sei $j\in\{0,\dots,n\}$ und $L_j:\real\to\real$ mit
+		\begin{align}
+			L_j := \prod_{\substack{i=0\\ i\neq j}}^{n} \frac{x-x_i}{x_j-x_i}= \frac{(x-x_0)\cdot\dots\cdot(x-x_{j-1})(x-x_{j+1})\cdot\dots\cdot(x-x_n)} {(x_j-x_0)\cdot\dots\cdot(x_j-x_{j-1})(x_j-x_{j+1})\cdot\dots\cdot(x_j-x_n)}\notag
+		\end{align}
+		das \begriff{\person{Lagrange}-Basispolynom} vom Grad $n$. Offenbar gilt $L_j\in\Pi_n$ und 
+		\begin{align}
+			\label{1.3}
+			L_j(x_k)=\begin{cases}
+				1 & k=j \\ 0 & k\neq j
+			\end{cases} = \delta_{jk}
+		\end{align}
+		Definiert man $p:\real\to\real$ durch
+		\begin{align}
+			\label{1.4}
+			p(x) := \sum_{j=0}^{n} f_j\cdot L_j(x)
+		\end{align}
+		so ist $p\in\Pi_n$ und außerdem erfüllt $p$ wegen \cref{1.3} die Interpolationsbedingung \cref{interpolationsbedingung}
+		\item Eindeutigkeit: Angenommen es gibt Interpolierende $p,\tilde{p}\in\Pi_n$ mit $p\neq\tilde{p}$. Dann folgt $p-\tilde{p}\in\Pi_n$ und $(p-\tilde{p})(x_k)=p(x_k)-\tilde{p}(x_k)=0$ für $k=0,\dots,n$. Also hat $(p-\tilde{p})$ mindestens $n+1$ Nullstellen, hat aber Grad $n$. Das heißt, dass $(p-\tilde{p})$ das Nullpolynom sein muss.
+	\end{itemize}
+\end{proof}
+
+\begin{*definition}[Interpolationspolynom]
+	Das Polynom, dass die Interpolationsbedingung erfüllt, heißt \begriff{Interpolationspolynom} zu $(x_0,f_0),\dots,(x_n,f_n)$.
+\end{*definition}
+
+\begin{remark}
+	\begin{itemize}
+		\item Die Darstellung \cref{1.4} heißt \begriff{\person{Lagrange}-Form} des Interpolationspolynoms.
+		\item Um mittels \cref{1.4} einen Funktionswert $p(x)$ zu berechnen, werden $\mathcal{O}(n^2)$ Operationen genötigt; bei gleichabständigen Stützstellen kann man diesen Aufwand auf $\mathcal{O}(n)$ verringern. Ändern sich die Stützwerte, kann man durch Wiederverwendung von den $L_j(x)$ das $p(x)$ in $\mathcal{O}(n)$ Operationen berechnen.
+		\item Man kann zeigen, dass $L_0$ bis $L_n$ eine Basis von $Pi_n$ bilden.
+	\end{itemize}
+\end{remark}
