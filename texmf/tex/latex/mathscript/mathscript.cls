@@ -138,7 +138,8 @@
   numberstyle=\color{mygray}\ttfamily,
   identifierstyle=\color{blue},
   xleftmargin=.2\textwidth, 
-  xrightmargin=.2\textwidth
+  xrightmargin=.2\textwidth,
+  escapechar=\%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -283,6 +284,12 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=10pt,%
 ]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+\newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=10pt,%
+]{algorithm}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Algorithmus}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
