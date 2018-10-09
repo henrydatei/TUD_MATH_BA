@@ -42,3 +42,5 @@ Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr.
 - Tutoriumsaufgaben: [https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc](https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc)
 
 ### Einführung in die Makroökonomie (WS2018/19)
+- Vorlesungsfolien: 
+- Tutoriumsaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
