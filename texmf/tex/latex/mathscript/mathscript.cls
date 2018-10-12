@@ -44,6 +44,7 @@
 	\ifluatex
 		%new lualatex needs explicit fontspec to draw properly e.g. german umlauts
 		\RequirePackage{fontspec}
+		%\RequirePackage{lua-visual-debug} %for debugging
 	\else
 		%old pdflatex needs explicitly utf-8-support
 		\RequirePackage[utf8]{inputenc}
@@ -57,7 +58,7 @@
 \RequirePackage{parskip}  	%split paragraphs by vspace instead of intendations
 \RequirePackage{fancyhdr} 	%customize header / footer
 \RequirePackage{titlesec} 	%customize titles
-\RequirePackage{tocloft}
+\RequirePackage{tocloft}	%customize toc
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
@@ -105,9 +106,8 @@
 %Text-related packages
 %increase line spacing
 \RequirePackage[onehalfspacing]{setspace} %increase row-space
-\RequirePackage{parskip}	%split paragraphs by vspace instead of intendations
 \RequirePackage{ulem} 		%better underlines
-\RequirePackage{marginnote}
+\RequirePackage{marginnote}	%notes at the edge
 
 %enumeration
 \RequirePackage{enumerate}
@@ -280,11 +280,11 @@
 ]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
 
 \newmdtheoremenv[%
-hidealllines=true,%
-frametitlefont=\normalfont\bfseries\color{black},%
-innerleftmargin=0pt,%
-skipabove=5pt,%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=0pt,%
+	skipabove=5pt,%
+	innerleftmargin=10pt,%
 ]{erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
 
 \newmdtheoremenv[%
@@ -294,9 +294,9 @@ innerleftmargin=10pt,%
 ]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
 
 \newmdtheoremenv[%
-hidealllines=true,%
-frametitlefont=\normalfont\bfseries\color{black},%
-innerleftmargin=10pt,%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=10pt,%
 ]{algorithm}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Algorithmus}
 
 %unnumbered theorems
@@ -489,11 +489,11 @@ innerleftmargin=10pt,%
 %declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\IfBooleanTF{#1}%
-	{\index{#2#3#4}}%
-	{%
-		\uline{#3} %
-		\index{#2#3#4}%
-	}%
+		{\index{#2#3#4}}%
+		{%
+			\uline{#3}%
+			\index{#2#3#4}%
+		}%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
