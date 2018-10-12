@@ -86,6 +86,7 @@
 %further support for different equation setting
 \RequirePackage{cancel}
 \RequirePackage{xfrac}		%sfrac -> fractions e.g. 3/4
+\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Graphics-related packages

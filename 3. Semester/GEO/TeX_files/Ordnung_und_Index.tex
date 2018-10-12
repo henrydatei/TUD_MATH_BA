@@ -1,0 +1,148 @@
+\section{Ordnung und Index}
+
+Sei $G$ eine Gruppe, $g\in G$.
+
+\begin{definition}[Ordnung]
+	\begin{enumerate}[label=(\alph*)]
+		\item $\#G=\vert G\vert\in\natur\cup\{\infty\}$, die \begriff{Ordnung} von $G$.
+		\item $\ord(g)=\#\langle g\rangle$, die \underline{Ordnung} von $g$.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\# S_n=n!$
+		\item $\# A_n=\frac{1}{2}n!$ für $n\ge 2$
+		\item $\#\whole/n\whole=n$
+	\end{enumerate}
+\end{example}
+
+\begin{lemma}
+	\proplbl{1_2_3}
+	Für $X\subseteq G$ ist
+	\begin{align}
+		\langle X\rangle = \{g_1^{\varepsilon_1}\cdot\dots\cdot g_r^{\varepsilon_r}\mid r\in\natur_0,g_1,...,g_r\in X, \varepsilon_1,...,\varepsilon_r\in\{-1,1\}\}\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	klar, rechte Seite ist Untergruppe, die $X$ enthält, und jede solche enthält alle Ausdrücke der Form  $g_1^{\varepsilon_1}\cdot\dots\cdot g_r^{\varepsilon_r}$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{1_2_4}
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $\ord(g)=\infty$, so ist $\langle g\rangle=\{...,g^{-2},g^{-1},1,g^1,g^2,...\}$
+		\item Ist $\ord(g)=n$, so ist $\langle g\rangle=\{1,g,g^2,...,g^{n-1}\}$
+		\item Es ist $\ord(g)=\inf\{k\in\natur\mid g^k=1\}$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Nach \propref{1_2_3} ist $\langle g\rangle=\{g^k\mid k\in\whole\}$. Sei $m=\inf\{k\in\natur\mid g^k=1\}$.
+	\begin{itemize}
+		\item $\vert\{k\in\natur\mid g^k=1\}\vert=m$: Sind $g^a=g^b$ mit $0\le a<b<m$, so ist $g^{b-a}=1$, aber $0<b-a<m$, was ein Widerspruch zur Minimalität von $m$ ist.
+		\item $m=\infty\Rightarrow\ord(g)=\infty$: klar
+		\item $m<\infty\Rightarrow\langle g\rangle=\{g^k\mid 0\le k<m\}$: Für $k\in\whole$ schreibe $k=qm+r$ mit $q,r\in\whole$ und $0\le r<m$
+		\begin{align}
+			g^k=g^{qm+r}=(\underbrace{g^m}_{=1})^q\cdot g^r=g^r\in{^1,g,...,g^{m-1}}\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $\sigma\in S_n$ ein $k$-Zykel, so ist $\ord(\sigma)=k$.
+		\item Für $\overline{1}\in\whole/n\whole$ ist $\ord(\overline{1})=n$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Komplexprodukt, Nebenklasse]
+	Seien $A,B\subseteq G$, $H\le G$
+	\begin{enumerate}[label=(\alph*)]
+		\item $AB:=A\cdot B:=\{ab\mid a\in A,b\in B\}$ das \begriff{Komplexprodukt} von $A$ und $B$.
+		\item $gH:=\{g\}\cdot H=\{gh\mid h\in H\}$ die \begriff{Linksnebenklasse} von $H$ bezüglich $g$. \\
+		$Hg:=H\cdot \{g\}=\{hg\mid h\in H\}$ die \begriff{Rechtsnebenklasse} von $H$ bezüglich $g$.
+		\item $\lnkset{G}{H}:=\{gH\mid g\in G\}$ die Menge der Linksnebenklassen. \\
+		$\rnkset{G}{H}:=\{Hg\mid g\in G\}$ die Menge der Rechtsnebenklassen.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	Für $h\in H$ ist $hH=H=Hh$.
+\end{example}
+
+\begin{lemma}
+	\proplbl{1_2_8}
+	Seien $H\le G$, $g,g'\in G$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $gH=g'H\Leftrightarrow g'=gh$ für ein $h\in H$ \\
+		$Hg=Hg'\Leftrightarrow g'=gh$ für ein $h\in H$
+		\item Es ist $gH=g'H$ oder $gH\cap g'H=\emptyset$ und $Hg=Hg'$ oder $Hg\cap Hg'=\emptyset$.
+		\item Durch $gH\mapsto Hg^{-1}$ wird eine wohldefinierte Bijektion $\lnkset{G}{H}\to\rnkset{G}{H}$ gegeben.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Hinrichtung: $gH=g'H\Rightarrow g'=g'\cdot 1\in g'H=gH\Rightarrow$ es existiert $h\in H$ mit $g'=gh$ \\
+		Rückrichtung: $g'=gh\Rightarrow g'H=ghH=gH$
+		\item Ist $gH\cap g'H\neq\emptyset$, so existieren $h,h'\in H$ mit $gh=g'h'\Rightarrow gH=ghH=g'h'H=g'H$
+		\item wohldefiniert: $gH=g'H\overset{a)}{\Rightarrow}g'=gh$ mit $h\in H\Rightarrow H(g')^{-1}=Hh^{-1}g^{-1}=Hg^{-1}$ \\
+		bijektiv: klar, Umkehrabbildung: $Hg\mapsto g^{-1}H$ 
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Index]
+	Für $H\subseteq G$ ist
+	\begin{align}
+		(G:H):=\vert\lnkset{G}{H}\vert + \vert\rnkset{G}{H}\vert\in\natur\cup\{\infty\}\notag
+	\end{align}
+	der \begriff{Index} von $H$ in $G$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $(S_n:A_n)=2$ für $n\ge 2$
+		\item $(\whole:n\whole)=n$
+	\end{enumerate}
+\end{example}
+
+\begin{proposition}
+	\proplbl{1_2_11}
+	Der Index ist multiplikativ: Sind $K\le H\le G$, so ist
+	\begin{align}
+		(G:K)=(G:H)\cdot (H:K)\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Nach \propref{1_2_8} bilden die Nebenklassen von $H$ eine Partition von $G$, das heißt es gibt $(g_i)_{i\in I}$ in $G$ mit $G=\biguplus_{i\in I}g_iH$. Analog ist $H=\biguplus_{j\in J}h_jK$ mit $h_j\in H$. Dann gilt:
+	\begin{align}
+		H &= \biguplus_{j\in J} h_jK\overset{\propref{1_1_4}}{\Rightarrow} gH=\biguplus_{j\in J} gh_jK\text{ für jedes }g\in G \notag\\
+		G &= \biguplus_{i\in I} g_iH=\biguplus_{i\in I}\biguplus_{j\in J} g_ih_jK=\biguplus_{(i,j)\in I\times J} g_ih_jK \notag
+	\end{align}
+	Somit ist $(G:K)=\vert I\times J\vert=\vert I\vert\cdot\vert J\vert=(G:H)\cdot (H:K)$.
+\end{proof}
+
+\begin{conclusion}[Satz von \person{Lagrange}]
+	\proplbl{1_2_12}
+	Ist $G$ endlich und $H\le G$, so ist
+	\begin{align}
+		\# G=\#H\cdot (G:H)\notag
+	\end{align}
+	Insbesondere gilt $\#H\vert\# G$ und $(G:H)\vert \#G$.
+\end{conclusion}
+\begin{proof}
+	$\# G=(G:1)\overset{\propref{1_2_11}}{=}(G:H)(H:1)=(G:H)\cdot\#H$.
+\end{proof}
+
+\begin{conclusion}[kleiner Satz von \person{Fermat}]
+	Ist $G$ endlich und $n=\# G$, so ist $g^n=1$ für jedes $g\in G$.
+\end{conclusion}
+\begin{proof}
+	Nach \propref{1_2_12} gilt: $\ord(g)=\#\langle g\rangle\vert \#G=n$. Nach \propref{1_2_4} ist $g^{\ord(g)}=1$, somit auch
+	\begin{align}
+		g^n=(\underbrace{g^{\ord(g)}}_{=1})^{\frac{n}{\ord(g)}}=1\notag
+	\end{align}
+\end{proof}
+
+\begin{remark}
+	Nach \propref{1_2_12} ist die Ordnung jeder Untergruppe von $G$ ein Teiler der Gruppenordnung $\# G$. Umgekehrt gibt es im Allgemeinen aber nicht zu jedem Teiler $d$ von $\# G$ eine Untergruppe $H$ von $G$ mit $\# H=d$.
+\end{remark}

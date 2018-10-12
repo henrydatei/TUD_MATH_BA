@@ -31,6 +31,7 @@
 \end{example}
 
 \begin{remark}
+	\proplbl{1_1_4}
 	Ist $G$ eine Gruppe und $h\in G$, so ist die Abbildung
 	\begin{align}
 		\tau_h=\begin{cases}
@@ -140,3 +141,7 @@
 	\emph{$N>0$:} Wähle $i_1$ mit $\sigma(i_1)\neq i_1$, betrachte $i_1,\sigma(i_1),\sigma^2(i_1),...$. Da $\{1,...,n\}$ endlich und $\sigma$ bijektiv ist, existiert ein minimales $k\ge 2$ mit $\sigma^k(i_1)=i_1$. Setze $\tau_1=(i_1\,\sigma(i_1)...\sigma^{k-1}(i_1))$. Dann ist $\sigma=\tau_1\circ\tau_1^{-1}\sigma$, und nach Induktionshypothese ist $\tau_1^{-1}\sigma=\tau_2\circ...\circ\tau_m$ mit disjunkten Zyklen $\tau_2,...,\tau_m$. \\
 	Eindeutigkeit ist klar, denn jedes $i$ kann nur in einem Zykel $(i\,\sigma(i)...\sigma^{k-1}(i))$ vorkommen.
 \end{proof}
+
+\begin{*example}
+	$(1\, 2\, 3\, 4\, 5)(2\, 4)=(1\, 4\, 5)(2\, 3)=(2\, 3)(1\, 4\, 5)=(3\, 2)(1\, 4\, 5)=(3\, 2)(4\, 5\, 1)\neq (3\, 2)(1\, 5\, 4)$
+\end{*example}
