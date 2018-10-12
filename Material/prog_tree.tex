@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}[level/.style={sibling distance=60mm/#1}]
+		\node[circle,draw] (root) {\texttt{.OR.}}
+			child {node[circle,draw] (a) {\texttt{>=}}
+				child {node[circle,draw] (b) {\texttt{/}}
+					child {node[circle,draw] (c) {\texttt{/}}
+						child {node[] (d) {$i$}}
+						child {node[] (e) {$j$}}}
+					child {node[] (f) {$x$}}}
+				child {node[] (g) {$y$}}}
+			child {node[circle,draw] (h) {\texttt{.AND.}}
+				child {node[circle,draw] (i) {\texttt{<}}
+					child {node[circle,draw] (j) {\texttt{-}}
+						child {node[circle,draw] (k) {\texttt{/}}
+							child {node[] (l) {$y$}}
+							child {node[] (m) {$z$}}}}
+					child {node[circle,draw] (q) {\texttt{-}}
+						child {node[circle,draw] (p) {\texttt{**}}
+							child {node[] (n) {$x$}}
+							child {node[circle,draw] (o) {\texttt{**}}
+								child {node[] (w) {3}}
+								child {node[] (x) {2}}}}}}
+				child {node[circle,draw] (r) {\texttt{<=}}
+					child {node[] (s) {$char$}}
+					child {node[circle,draw] (t) {\texttt{//}}
+						child {node[] (u) {'p'}}
+						child {node[] (v) {'eter'}}}}};
+	\end{tikzpicture}
+\end{document}

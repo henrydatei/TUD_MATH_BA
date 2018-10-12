@@ -1,0 +1,9 @@
+\section{Ein- und Ausgabe}
+
+Die Aufgabe ist es, Dateien zu verwalten und den Datentransfer zwischen Dateien und internem Hauptspeicher zu organisieren. \begriff{Lesen} ist dabei immer von einer Datei in den Hauptspeicher, \begriff{Schreiben} von Hauptspeicher in eine Datei.
+
+Eine \begriff{Datei} ist normalerweise eine externe Datei, das heißt, sie liegt nicht im Hauptspeicher. Falls explizit gewünscht, kann eine Datei auch intern sein, dafür wird eine Zeichenkettenvariable als Datei verwendet. Eine Ansammlung von Daten heißt Datei. 
+
+Ein \begriff{Datensatz} ist die Zeile einer Textdatei. Er kann formatiert (Daten sind Sequenzen von Zeichen) oder unformatiert (Daten sind binär) sein.
+
+Der Dateizugriff kann dabei \begriff{sequenziell} erfolgen, das heißt es gibt eine lineare Anordnung der Datensätze und zu jedem Zeitpunkt gibt es eine aktuelle Position in der Datei. Der sequenzielle Zugriff geht dabei von "'begin of file"' (BOF) nach "'end of file"' (EOF). Ist der Dateizugriff direkt, so kann direkt über die Datensatznummer $i$ auf den $i$-ten Datensatz zugegriffen werden.

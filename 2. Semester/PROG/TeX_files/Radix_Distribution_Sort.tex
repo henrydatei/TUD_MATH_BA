@@ -1,0 +1,11 @@
+\section{Radix-/Distribution Sort}
+
+Wenn wir annehmen, dass der Schlüssel $z$ sich als Zahl mit $d$ Ziffern zur Basis $k$ darstellen lässt, also $z=[z_{d-1}z_{d-2}...z_1z_0]_k=\sum_{i=0}^{d-1}z_ik^i$, dann lässt sich mit Radix-/Distribution Sort in $T(n)=\Theta(d(n+k))$ sortieren. Falls $k=\mathcal{O}(n)$, dann $T(n)=\Theta(dn)$ und falls $d$ relativ klein ist, dann $T(n)=\Theta(n)$.
+
+\begin{lstlisting}
+subroutine RadixSort (A,B,k)
+ do i = 0, d-1
+  CountingSort(A,B,i,k)
+ end do
+end subroutine RadixSort
+\end{lstlisting}

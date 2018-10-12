@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{listings}
+
+\definecolor{lightlightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{lila}{rgb}{0.8,0,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.8,0.26}
+
+\lstset{language=[95]Fortran,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{lila},
+  commentstyle=\color{lightgray},
+  morecomment=[l]{!\ },% Comment only with space after !
+  stringstyle=\color{mygreen}\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\color{mygray}\ttfamily,
+  identifierstyle=\color{blue}
+}
+\begin{document}
+
+\begin{lstlisting}
+! Der folgende Fortran-Code ist bei Wikipedia geklaut.
+SUBROUTINE test( Argument1, Argument2, Argument3 )
+   REAL,              INTENT(IN) :: Argument1
+   CHARACTER(LEN= *), INTENT(IN) :: Argument2
+   INTEGER,           INTENT(IN), OPTIONAL :: Argument3
+   ! This makes sense
+   write(*,*) "Hallo Welt!"
+END SUBROUTINE test
+\end{lstlisting}
+\end{document}

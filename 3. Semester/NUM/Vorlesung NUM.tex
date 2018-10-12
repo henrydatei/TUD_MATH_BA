@@ -1,0 +1,46 @@
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+\title{\textbf{Numerik WS2018/19}}
+\author{Dozent: Prof. Dr. Andreas Fischer}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+
+\chapter{Interpolation}
+\input{./TeX_files/Interpolation_Grundlagen}
+\include{./TeX_files/Interpolation_durch_Polynome}
+
+\chapter{numerische Quadratur und Integration}
+
+\chapter{Lineare Gleichungssysteme}
+
+\chapter{Kondition}
+
+\chapter{Verfahren für nichtlineare Gleichungssysteme}
+
+\chapter{lineare Optimierung}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}

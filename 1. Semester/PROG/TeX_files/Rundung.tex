@@ -1,0 +1,26 @@
+\section{Rundung}
+
+Eine \begriff{Rundung} ist eine Funktion $O:\real\to\text{Gleitkomma-Raster }R$.
+
+Eine Rundung $O$ hat folgende Eigenschaften:
+\begin{enumerate}
+	\item $O(x)=x$ wenn $x\in R$
+	\item $x,y\in\real$ mit $x<y\Rightarrow O(x)<O(y)$
+	\item \textcolor{Gray}{$O(-x)=-O(x)$, nur manche Rundungen haben diese Eigenschaft}
+\end{enumerate}
+
+Es gibt verschiedene Rundungsmodi:
+\begin{itemize}
+	\item "'to nearest"': zur nächsten Gleitkommazahl, wenn 2 Gleitkommazahlen gleich weit weg sind, wird abwechselnd auf- und abgerundet
+	\item "'trancation"': Abschneiden der Nachkommastellen $\Rightarrow$ betragskleiner runden
+	\item "'augmentation"': zusätzliche Stellen hinzufügen $\Rightarrow$ betragsgrößer runden
+	\item "'upward"': nach oben runden
+	\item "'downward"': nac unten runden
+\end{itemize}
+
+Wenn $O$ eine Rundung mit einem Rundungsmodus, also $O\in \{\text{Rundungsmodi}\}$, ist und $\circ$ eine Grundrechenart, also $\circ\in\{+,-,\cdot,\div\}$, dann gilt für eine Gleitkommaoperation $\odot$ 
+\begin{align}
+	x,y\in R: x\odot y := O(x\circ y)\notag
+\end{align}
+
+\textbf{Auslöschung} in Summen von Gleitkommazahlen tritt auf, wenn die Größenordnung der exakten Summe wesentlich kleiner ist als die Größenordnung der Summanden (bzw. der Zwischenergebnisse).

@@ -1,0 +1,192 @@
+\section{Datentypen}
+
+Fortran besitzt 5 Datentypen. Für jeden Datentyp gibt es spezielle dazugehörige Funktionen:
+\begin{itemize}
+	\item \textbf{Integer} für ganze Zahlen
+	\item \textbf{Real} für reelle Zahlen
+	\item \textbf{Complex} für komplexe Zahlen
+	\item \textbf{Logical} für logische Werte
+	\item \textbf{Character} für Strings
+\end{itemize}
+
+\subsection{Der Datentyp \texttt{Integer}}
+	\begin{tabular}{l|l}
+		mögliche Argumente & \texttt{integer(kind=...)} \\
+		\hline
+		Darstellung & $\{\langle Z\rangle\}$ \\
+		\hline
+		Wert & mindestens 1 Ziffer, höchstens unendlich \\
+		\hline
+		Wertemenge & normalerweise im 2er-Komplement: $\left[ -2^{l-1},2^{l-1}-1 \right]$ \\
+		\hline
+		Operationen & \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/} (schneidet Nachkommastellen ab), \texttt{**} (schneidet Nachkommastellen ab)
+	\end{tabular}
+
+\textbf{Wichtige Funktionen:}
+\begin{itemize}
+	\item\texttt{sign(x,y)} gibt den Betrag von $x$, wenn $y\ge 0$ und $-\vert x\vert$, wenn $y<0$
+	\item\texttt{int(x)} schneidet die Nachkommastellen von $x$ ab
+	\item\texttt{floor(x)} rundet ab ($\lfloor x\rfloor$)
+	\item\texttt{ceiling(x)} rundet auf ($\lceil x\rceil$)
+	\item\texttt{selected\_int\_kind(k)} liefert KIND-Parameter des kleinsten INTEGER-Typs, der dem alle Zahlen mit $k$ Stellen darstellen kann
+\end{itemize}
+
+\subsection{Der Datentyp \texttt{Real}}
+	\begin{tabular}{l|l}
+		mögliche Argumente & \texttt{real(kind=...)} \\
+		\hline
+		Darstellung & $\{\langle Z\rangle\}.\{\langle Z\rangle\}E\pm\{\langle Z\rangle\}$ \\
+		\hline
+		Wert & mindestens 1 Ziffer, höchstens unendlich \\
+		\hline
+		Wertemenge &  \\
+		\hline
+		Operationen & \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{**}
+	\end{tabular}
+
+\textbf{Wichtige Funktionen:}
+\begin{itemize}
+	\item\texttt{aint(x)} schneidet die Nachkommastellen von $x$ ab
+	\item\texttt{real(x)} konvertiert zu REAL
+	\item\texttt{selected\_real\_kind(p,r)} liefert KIND-Parameter mit $p$ Ziffern in der Mantisse und $r$ Ziffern im Exponenten
+\end{itemize}
+
+\subsection{Der Datentyp \texttt{Complex}}
+	\begin{tabular}{l|l}
+		mögliche Argumente & \texttt{complex(kind=...)} \\
+		\hline
+		Darstellung & $(\langle\Re\rangle,\langle\Im\rangle)$ \\
+		\hline
+		Wert &$\Re$,$\Im$ vorzeichenbehaftete realle Konstanten \\
+		\hline
+		Wertemenge &  \\
+		\hline
+		Operationen & \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{**}
+	\end{tabular}
+
+\textbf{Wichtige Funktionen:}
+\begin{itemize}
+	\item\texttt{abs(c)} liefert den Betrag von $c$, also $\sqrt{x^2+y^2}$
+	\item\texttt{real(c)} liefert den Realteil von $c$
+	\item\texttt{aimag(c)} liefert den Imaginärteil von $c$
+	\item\texttt{conj(c)} liefert das konjugiert Komplexe zu $c$
+\end{itemize}
+
+\subsection{Der Datentyp \texttt{Logical}}
+	\begin{tabular}{l|l}
+		mögliche Argumente & \\
+		\hline
+		Darstellung & \texttt{.TRUE.}, \texttt{.FALSE.} \\
+		\hline
+		Wert & \texttt{.TRUE.} oder \texttt{.FALSE.} \\
+		\hline
+		Wertemenge & {\texttt{.TRUE.},\texttt{.FALSE.}} \\
+		\hline
+		Operationen & \texttt{.AND.}, \texttt{.OR.}, \texttt{.NOT.}, \texttt{.EQV.}, \texttt{.NEQV}
+	\end{tabular}
+
+\subsection{Der Datentyp \texttt{Character}}
+	\begin{tabular}{l|l}
+		mögliche Argumente & \texttt{character(len=...)} \\
+		\hline
+		Darstellung & Zeichen \\
+		\hline
+		Wert & einzelnes Zeichen oder Zeichenketten \\
+		\hline
+		Wertemenge & alle möglichen Zeichenfolgen mit $l$ Zeichen \\
+		\hline
+		Operationen & \texttt{//} (Konkardination: fügt 2 Strings zusammen)
+	\end{tabular}
+
+\textbf{Wichtige Funktionen:}
+\begin{itemize}
+	\item\texttt{ichar(c)} gibt den internen ganzzahligen Zeichencode von $c$
+	\item\texttt{char(i)} gibt den Zeichencode zu $c$
+	\item $\langle\text{Zeichenkette}\rangle$\texttt{(a:b)} gibt den Teilstring vom $a$-ten bis zum $b$-ten Zeichen
+	\item\texttt{len(zk)} gibt die Länge der Zeichenkette $zk$
+	\item\texttt{trim(zk)} liefert die Zeichenkette ohne anhängende Leerzeichen
+	\item\texttt{adjustl(zk)} Inhalt der Zeichenkette wird nach vorne geschoben
+	\item\texttt{repeat(zk,copies)} gibt einen String mit $copies$-facher Zeichenkette
+	\item\texttt{index, scan, verify} durchsucht einen String
+\end{itemize}
+
+Es gibt allerdings noch eine Reihe weiterer (mathematischer) Funktionen, das Ergebnis ist selbsterklärend:
+\begin{itemize}
+	\item\texttt{sin(x)}, \texttt{asin(x)}, \texttt{sinh(x)}
+	\item\texttt{cos(x)}, \texttt{acos(x)}, \texttt{cosh(x)}
+	\item\texttt{tan(x)}, \texttt{atan(x)}, \texttt{atan2(x,y)=atan(x/y)}
+	\item\texttt{sqrt(x)}
+	\item\texttt{exp(x)}
+	\item\texttt{log10(x)}
+\end{itemize}
+
+\subsection{INTEGER-Division}
+
+Die klassiche INTEGER-Division sieht so aus:
+\begin{center}
+	\begin{tabular}{ll}
+		Division: & $\frac{a}{b} =$ \texttt{a/b} \\
+		Rest der Division: & $a-\left(\frac{a}{b}\right)\cdot b =$ \texttt{mod(a,b)} \\
+		\hline
+		\textbf{Beispiele (Division)} & \textbf{Beispiele (Rest)} \\
+		\hline
+		$\frac{8}{5} \to 1$ & \texttt{mod(8,5)} $\to$ 3 \\
+		$\frac{-8}{5} \to -1$ & \texttt{mod(-8,5)} $\to$ -3 \\
+		$\frac{-8}{-5} \to 1$ & \texttt{mod(-8,-5)} $\to$ -3 \\
+		$\frac{8}{-5} \to -1$ & \texttt{mod(8,-5)} $\to$ 3
+	\end{tabular}
+\end{center}
+
+Das darf man aber nicht mit der nach unten abgerundeten REAL-Division verwechseln:
+\begin{center}
+	\begin{tabular}{ll}
+		Division: & $\left\lfloor\frac{a}{b}\right\rfloor =$ \texttt{floor(a/b)} = \texttt{floor(real(a)/real(b))} \\
+		Rest der Division: & $a-\left\lfloor\frac{a}{b}\right\rfloor\cdot b =$ \texttt{modulo(a,b)} \\
+		\hline
+		\textbf{Beispiele (Division)} & \textbf{Beispiele (Rest)} \\
+		\hline
+		$\frac{8.0}{5.0} \to 1$ & \texttt{modulo(8,5)} $\to$ 3 \\
+		$\frac{-8.0}{5.0} \to -2$ & \texttt{modulo(-8,5)} $\to$ 2 \\
+		$\frac{-8.0}{-5.0} \to 1$ & \texttt{modulo(-8,-5)} $\to$ -3 \\
+		$\frac{8.0}{-5.0} \to -2$ & \texttt{modulo(8,-5)} $\to$ -2
+	\end{tabular}
+\end{center}
+
+\subsection{Potenzieren}
+
+Die Potenz-Operation \texttt{**} ist die einzige Operation die von rechts nach links gelesen wird, bei allen anderen Operationen wird in Leserichtung, also von links nach rechts gearbeitet.
+\begin{itemize}
+	\item\texttt{2**3} $=2^3=8$
+	\item\texttt{2**(-3)} $\to$ \texttt{int($2^{-3}$)=int($\frac{1}{8}$)} $=0$
+	\item\texttt{(-3)**2} $=(-3)^2=9$
+	\item\texttt{-3**2} $=-3^2=-9$
+	\item\texttt{2**3**2} $=$ \texttt{2**(3**2)} $=2^9=512$
+	\item\texttt{(2**3)**2} $=(2^3)^2=64$
+\end{itemize}
+
+\subsection{Operator-Prioritäten}
+
+Operatoren haben in Fortran eine Priorität, die weiter gefasst ist als: "'Punktrechnung vor Strichrechnung"'. Operatoren mit der höchsten Priorität (12) werden zuerst ausgeführt; Operatoren mit der Priorität 1 zuletzt.
+\begin{enumerate}
+	\item selbstdefinierte Operatoren binär
+	\item\texttt{.EQV.} und \texttt{.NEQV.}
+	\item\texttt{.OR.}
+	\item\texttt{.AND.}
+	\item\texttt{.NOT.}
+	\item Vergleichsoperatoren
+	\item\texttt{//}
+	\item\texttt{+}, \texttt{-} als Addition beziehungsweise Subtraktion
+	\item\texttt{+}, \texttt{-} als Vorzeichen
+	\item\texttt{*}, \texttt{/}
+	\item\texttt{**}
+	\item selbstdefinierte Operatoren unär
+\end{enumerate}
+
+Jetzt noch ein kurzer Abschnitt zu Variablen in imperativen Programmiersprachen. Eine Variable wird durch ein 5-Tupel (N,T,G,L,R) beschrieben, das heißt
+\begin{itemize}
+	\item N - Name
+	\item T - Typ
+	\item G - Gültigkeitsbereich
+	\item L - l-Value (Zugriff auf die Variable)
+	\item R - r-Value (Wert der Variable)
+\end{itemize}

@@ -1,0 +1,122 @@
+\addtocounter{section}{7}
+\section{Grundlegende Ungleichungen}
+\begin{proposition}[geoemtrisches / arithemtisches Mittel]
+	\proplbl{ungleichung_arithmetisches_geometrisches_mittel}
+	Seien $x_1, \dotsc, x_n\in\mathbb{R}_{>0}$.
+	\[\Rightarrow \;\;\underbrace{\sqrt[n]{x_1\cdot x_2\cdot \dotsc \cdot x_n}}_{\text{\begriff{geometrisches Mittel}}} \le \underbrace{\frac{x_1 + \dotsc + x_n}{n}}_{\text{\begriff{arithmetisches Mittel}}}\]
+\end{proposition}
+\begin{proof}
+	Zeige zunächst mit vollständiger Induktion
+	\begin{align} %% add /nonumber to have no numbering
+	\prod_{i=1}^{n}x_i=1 \Rightarrow \sum\limits_{i=1}^{n} x_i \geq n \text{, mit } x_1=\dots=x_n \label{7_1_ind}
+	\end{align}
+	\begin{itemize}
+		\item (IA) $n = 1$ klar
+		\item (IS) (\ref{7_1_ind}) gelte für $n$, zeige (\ref{7_1_ind}) für $n+1$ d.h. $\prod_{i=1}^{n+1} = 1$, falls alle $x_i=1 \beha$. Sonst oBdA $x_n < 1$, $x_{n+1} > 1:$\\ mit $y_n:=x_n x_{n+1}$ gilt $x_1\cdot\dots\cdot x_{n-1}\cdot y_n=1$
+		\begin{align*}
+		\Rightarrow x_1 + \dots + x_{n+1} &= \underbrace{x_1+\dots+x_{n-1}}_{\geq \text{ (IV)}} + y_n - y_n + x_n+x_{n+1}\\ 
+		&\geq n + \underbrace{(x_{n+1} -1)}_{>n}\underbrace{(1-x_n)}_{>n}\\ 
+		&\Rightarrow (\ref{7_1_ind}) \quad\forall n \in \natur\\ 
+		\shortintertext{allgemein sei nun $g:=\big( \prod_{i=1}^{n} x_i \big)^{\frac{1}{n}} \Rightarrow \prod_{i=1}^{n} \frac{x_i}{g} = 1$}
+		&\Rightarrow \sum\limits_{i=1}^{n} \frac{x_i}{g} \geq n \beha\\ 
+		\shortintertext{Aussage über Gleichheit nach nochmaliger Durchsicht.}
+		\end{align*}
+	\end{itemize} 
+\end{proof}
+
+\begin{proposition}[allgemeine \person{Bernoulli}-Ungleichung]
+	\proplbl{bernoulli_ungleichung}
+	Seien $\alpha,x\in\mathbb{R}$. Dann
+	\begin{enumerate}[label={\arabic*)}]
+		\item $(1+x)^\alpha \ge 1 + \alpha x\,\forall x\ge -1, \alpha > 1$
+		\item $(1+x)^\alpha \le 1+\alpha x \,\forall x\ge -1, 0 < \alpha < 1$
+	\end{enumerate}
+\end{proposition}
+\begin{proof} % fix alignment
+	\begin{enumerate}
+		\item[2)] Sei $\alpha =\frac{m}{n} \in \ratio_{<1}\text{, d.h. } m\leq n$
+		\begin{align*}
+		&\Rightarrow (1+x)^\frac{m}{n} \overset{Definition}{=} \sqrt[n]{(1+x)^m\cdot1^{n-m}} \\
+		&\leq \frac{m(1+x)+(n-m)\cdot1}{n}&\\ 
+		&=\frac{n + mx}{n} = 1 + \frac{m}{n}x \text{, für } \alpha \in \ratio \beha&
+		\shortintertext{Sei $\alpha \in \real$ angenommen $(1+x)^{\alpha} > 1 + \alpha x$ ($x\neq 0$ sonst klar!)}
+		& \overset{\text{\propref{k_archimedisch_angeordneter_koerper}}}{\Rightarrow} \exists \in \ratio_{<1} 
+		\begin{cases*}
+		x > 0&$\alpha<q< \frac{(1+x)^{\alpha}-1}{x}$\\
+		x < 0&$\alpha < q$
+		\end{cases*} \\
+		&\Rightarrow 1+qx < (1+x)^{\alpha} \leq (1+x)^q \overset{\text{\propref{satz_potenz_r}}}{\Rightarrow} \lightning \beha 
+		\end{align*}
+		\item[1)] Sei $1+\alpha x \geq 0$, sonst klar
+		\begin{align*}
+		&\Rightarrow \alpha x \geq -1 \overset{2)}{\Rightarrow} (1+\alpha x)^{\frac{1}{\alpha}}\\
+		&\geq 1 +\frac{1}{\alpha}\alpha x = 1 +x &\\
+		&\Rightarrow \text{ Behauptung und Gleichheit ist Selbststudium.}
+		\end{align*}
+	\end{enumerate}   
+\end{proof}
+
+\begin{proposition}[\person{Young}'sche Ungleichung]
+	\proplbl{youngsche_ungleichung}
+	Seien $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p}+\frac{1}{q}=1$.\\
+	$\Rightarrow a\cdot b \le \frac{a^p}{p} + \frac{b^q}{q}\,\forall a,b\ge 0$
+	
+	\uline{Spezialfall:} $p=q=2: ab \le \frac{a^2+b^2}{2} \,\forall a,b\in \mathbb{R}$
+\end{proposition}
+\begin{proof} %fix formating
+	\begin{align*}
+	\shortintertext{Sei $a,b > 0$ (sonst klar!)} \\
+	&\Rightarrow \big(\frac{b^q}{a^p}\big)^{\frac{p}{q}} = \big(1+\big(\frac{b^q}{a^p} -1\big)\big)^{\frac{p}{q}}\\ 
+	&\overset{\text{Bernoulli}}{\leq} 1+ \frac{1}{q}\big(\frac{b^q}{a^p} -1\big)\\ 
+	&=\frac{1}{p}+\frac{1}{q}+\frac{1}{q}\frac{b^q}{a^p}-\frac{1}{q}\\
+	&\overset{\cdot a^p}{\Rightarrow} a^p\frac{b}a^{\frac{p}{q}} = a^{p(1-\frac{1}{q})}b = ab \leq \frac{a^p}{p} + \frac{b^q}{q} 
+	\end{align*}
+\end{proof}
+
+\begin{proposition}[\person{Hölder}'sche Ungleichung]
+	\proplbl{hoeldersche_ungleichung}
+	Sei $p,q\in\mathbb{R}, p,q > 1$ mit $\frac{1}{p} + \frac{1}{q} = 1$\\
+	$\Rightarrow \sum\limits_{i=1}^{n} |x_i y_i| \le \left(\sum\limits_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}\left(\sum\limits_{i=1}^n |y_i|^q\right)^{\frac{1}{q}}\,\forall x,y\in\mathbb{R}$
+\end{proposition}
+\begin{proof}
+	Faktoren rechts seien $\mathcal{X} \text{ und } \mathcal{Y}$ d.h.
+	\begin{align*}
+	\mathcal{X}^p &= \sum\limits_{i=1}^{n} \vert x_i \vert^{\frac{1}{p}}, \mathcal{Y}^p = \sum\limits\limits_{i=1}^{n} \vert y_i \vert^{\frac{1}{q}}\text{, falls } \mathcal{X}=0\\ 
+	&\Rightarrow x_i = 0\;\forall i \beha \text{, analog für } \mathcal{Y} =0\\
+	\shortintertext{Seien $\mathcal{X}, \mathcal{Y} > 0$} \\
+    &\overset{\text{Young}}{\Rightarrow} 
+	\frac{\vert x_i y_i \vert}{\mathcal{XY}} \leq \frac{1}{p}\frac{\vert x_i \vert^p}{\mathcal{X}^p}+ \frac{1}{q}\frac{\vert y_i \vert^q}{\mathcal{Y}^p} \forall i\\
+	&\Rightarrow \frac{1}{\mathcal{XY}}\sum\limits\limits_{i=1}^{n}\vert x_i y_i \vert \leq \frac{1}{p}\frac{\mathcal{X}^p}{\mathcal{X}^p}+\frac{1}{q}\frac{\mathcal{Y}^p}{\mathcal{Y}^p} = 1 \beha
+	\end{align*}
+\end{proof}
+
+\begin{remark}
+	\begin{itemize}
+		\item Ungleichung gilt auch für $x_i,y_i \in \comp$ (nur Beträge gehen ein)
+		\item für $p=q=2$ heißt Ungleichung \person{Cauchy-Schwarz}-Ungleichung (Gleichheit gdw. $\exists x \in \real x_i = \alpha y_i \text{ oder } y_i = \alpha x_i\;\forall i$)
+	\end{itemize}
+\end{remark}
+
+\begin{proposition}[\person{Minkowski}-Ungleichung]
+	\proplbl{minkowski_ungleichung}
+	Sei $p\in\mathbb{R}, p>1$\\
+    $\Rightarrow \big(\sum\limits_{i=1}^{n} \vert x_i + y_i \vert^p \big)^\frac{1}{p} \leq \big(\sum\limits_{i=1}^{n} \vert x_i \vert^p \big)^\frac{1}{p} + \big(\sum\limits_{i=1}^{n} \vert y_i \vert^p \big)^\frac{1}{p}\,\forall x,y\in \mathbb{R}$
+\end{proposition}
+\begin{proof}
+	$p=1$ Beh. folgt aus $\Delta$-Ungleichung $\vert x_i + y_i\vert \overset{\text{\propref{k_angeordneter_koerper}}}{\leq} \vert x_i \vert + \vert y_i \vert \forall i$\\ $p>1$ sei $\frac{1}{p} + \frac{1}{q} = 1\Rightarrow q = \frac{p}{p-1}$, $z_i:=\vert x_i + y_i\vert^{p-1}\forall i$
+	\begin{align*}
+	\mathcal{S}^{p\cdot q} &= \sum_{i=1}^{n} \vert z_i \vert^q\\
+	& = \sum_{i=1}^{n} \vert x_i+y_i \vert\cdot\vert z_i \vert^q\\
+	& \overset{\Delta\text{-Ungleichung}}{=} \sum_{i=1}^{n} \vert x_i\cdot z_i \vert + \sum_{i=1}^{n} \vert y_i\cdot z_i \vert\\
+	& \overset{\text{Hölder}}{\leq} \big(\mathcal{X+Y}\big)\big(\sum_{i=1}^{n} \vert z_i\vert^q \big)^\frac{1}{q}\\
+	& = \big(\mathcal{X+Y}\big)\mathcal{S}^\frac{p}{q}\\
+	&\Rightarrow S\leq \mathcal{X}+\mathcal{Y}\beha
+	\end{align*}
+\end{proof}
+
+\begin{remark}
+	\begin{itemize}
+    \item Ungleichung gilt auch für $x_i, y_i \in \mathbb{C}$
+    \item ist $\Delta$-Ungleichung für $p$-Normen
+    \end{itemize}
+\end{remark}

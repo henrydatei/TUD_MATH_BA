@@ -1,0 +1,319 @@
+\section{Satz von \person{Fubini} und Mehrfachintegrale} \setcounter{equation}{0}
+
+\begin{boldenvironment}[Ziel] Reduktion der Berechnung von Integralen auf $\mathbb{R}^n$ $\int_{\mathbb{R}^n} f \D x$ auf Integrale über $\mathbb{R}$.
+
+Betrachte Integrale auf $X\times Y$ mit $X=\mathbb{R}^p$, $Y=\mathbb{R}^q$, $(x,y)\in X\times Y$. $\vert M \vert_X$ Maß auf $X$, $\mathcal{Q}_X$ Quader in $X$ usw.
+\end{boldenvironment}
+
+\begin{theorem}[\person{Fubini}]
+	\proplbl{fubini_fubini}
+	Sei $f:X\times Y\to\mathbb{R}$ integrierbar auf $X\times Y$. Dann \begin{enumerate}[label={\alph*)}]
+		\item Für Nullmenge $N\subset Y$ ist $x\to f(x,y)$ integrierbar auf $X$ $\forall y\in Y\setminus N$
+		\item Jedes $F:Y\to\mathbb{R}$ mit $F(y) := \int_X f(x,y) \D x$ $\forall y\in Y\setminus N$ ist integrierbar auf $Y$ und \begin{align}
+			\proplbl{fubini_fubini_eq}
+			\int_{X\times Y} f(x,y) \D(x,y) &= \int_Y F(y) \D y = \int_Y \left( \int_X f(x,y) \D x \right) \D y
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+
+\begin{*definition}[iteriertes Integral, Mehrfachintegral]
+	Rechte Seite in \eqref{fubini_fubini_eq} heißt \begriff{iteriertes Integral} bzw. \begriff{Mehrfachintegral}.
+\end{*definition}
+
+\begin{remark}
+	Analoge Aussage gilt bei Vertauschungen von $X$ und $Y$ mit \begin{align}
+		\proplbl{fubini_fubini_eq_2}
+		\int_{X\times Y} f(x,y) \D (x,y) = \int_X \int_Y f(x,y) \D y \D x
+	\end{align}
+	
+	\propref{fubini_fubini} mit $f=\chi_{N}$ für Nullmenge $N\subset X\times Y$ liefert Beschreibung von Nullmengen in $X\times Y$.
+\end{remark}
+
+\begin{conclusion}
+	\proplbl{fubini_folgerung_nullmenge}
+	Sei $N\subset X\times Y$ Nullmenge und $N_Y := \{ x\in X \mid (x,y) \in N \}$ \\
+	$\Rightarrow$ $\exists$ Nullmenge $\tilde{N}\subset Y$ mit $\vert N_Y\vert_X = 0$ $\forall y\in Y\setminus \tilde{N}$
+	
+	\begin{underlinedenvironment}[Hinweis]
+		$\tilde{N}\neq \emptyset$ tritt z.B. auch auf für $N=\mathbb{R}\times \mathbb{Q} \subset \mathbb{R}\times\mathbb{R}$ ($\tilde{N} = \mathbb{Q}$)
+	\end{underlinedenvironment}
+\end{conclusion}
+
+\begin{proof}[\propref{fubini_fubini}, \propref{fubini_folgerung_nullmenge}]\hspace*{0pt}
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr-\baselineskip/2\relax]
+		\item \proplbl{fubini_fubini_beweis_teil_a}
+		Zeige: \propref{fubini_fubini} gilt für $f=\chi_M$ mit $M\subset X\times Y$ messbar, $\vert M \vert _{X\times Y} < \infty$
+		
+		\begin{itemize}
+		\item $\exists Q_{k_j}\in \mathcal{Q}_{X\times Y}$, paarweise disjunkt für festes $k$ mit $M\subset\bigcup_{j\in\mathbb{N}} Q_ {k_j} =: R_k$ \begin{align}
+			\proplbl{fubini_fubini_beweis_3}
+			\vert M \vert &\le \sum_{j=1}^\infty \vert Q_{k_j}\vert \le \vert M \vert + \frac{1}{k}, R_{k+1}\subset R_k
+		\end{align}
+		
+		
+		\item Wähle $Q_{k_j}' \in \mathcal{Q}_X$, $Q_{k_j}''\in \mathcal{Q}_Y$ mit $Q_{k_j} = Q_{k_j}'\times Q_{k_j}''$ $\forall k,j\in\mathbb{N}$
+		
+		\item Mit $M_Y := \{ x\in X \mid (x,y)\in M \}$ gilt: \begin{align}
+			\proplbl{fubini_fubini_beweis_4}
+			\vert M_Y\vert _X &\le \sum_{j=1}^\infty \vert Q_{k_j}' \vert_X \cdot \chi_{Q_{k_j}''}(y) =: \psi_k(y) \in [0,\infty]\quad\forall y\in Y
+		\end{align}
+		
+		\item Für festes $k$ ist $y\to \psi_{k_l}(y) := \sum_{j=1}^l \vert Q_{k_j}'\vert_X \cdot  \chi_{Q_{k_j}}(y)$ monoton wachense Folge und Treppenfuntion in $T^1(Y)$ mit $\psi_k(y) = \lim\limits_{l\to\infty} \psi_{k_l} (y)$ \\
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\displaystyle\int_Y \psi_{k_l}(y) \D y = \sum_{j=1}^l \vert Q_{k_j}'\vert_X \cdot \vert Q_{k_j}''\vert_Y = \sum_{j=1}^l \vert Q_{k_j}\vert_{X\times Y} \overset{\eqref{fubini_fubini_beweis_3}}{\le} \vert M \vert + \frac{1}{k}$
+		\end{tabularx}
+		
+		\item Nach \propref{integral_funktion_lemma_majorante} ist $\{ \psi_{k_l}\}_l$ $L^1$-CF zu $\psi_k$ und $\psi_k$ ist integrierbar auf $Y$ mit \begin{align}
+			\proplbl{fubini_fubini_beweis_5}
+			\vert M \vert \overset{\eqref{fubini_fubini_beweis_3}}{\le}\int_Y \psi_k \D y &= \sum_{j=1}^\infty \vert Q_{k_j}\vert _{X\times Y} \overset{\eqref{fubini_fubini_beweis_3}}{\le} \vert M \vert + \frac{1}{k}
+		\end{align}
+		
+		\item Da $\{ \psi_k \}$ monoton fallend (wegen $R_{k+1}\subset R_k$), existiert $\psi(y) = \lim\limits_{k\to\infty} \psi_k(y) \ge 0$ $\forall y\in Y$.
+		
+		\item Grenzwert \eqref{fubini_fubini_beweis_5} mittels majorisierter Konvergenz liefert \begin{align}
+			\proplbl{fubini_fubini_beweis_6}
+			\vert M \vert = \int_Y \psi \D y
+		\end{align}
+		
+		\item Falls $\vert M \vert = 0$, folgt $\psi(y) = 0$ \gls{fue} auf $Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & \propref{fubini_folgerung_nullmenge} bewiesen.
+		\end{tabularx}
+		\end{itemize}
+		\vspace*{\dimexpr-\baselineskip/2}
+		\rule{0.5\linewidth}{0.1pt}
+		
+		\begin{itemize}
+		\item $\{ \chi_{R_k}\}$ monoton fallend mit $\psi_{R_k}\to\chi_M$ \gls{fue} auf $X\times Y$ und $\chi_{R_k}$ integrierbar auf $X\times Y$ \\
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\{ \chi_{R_k}\}$ ist $L^1$-CF zu $\chi_M$ und \[\int_{X\times Y} \psi_{R_k} \D (x,y) \to \int_{X\times Y} \chi_M \D (x,y).\]
+		\end{tabularx}
+		
+		\item Nach \propref{fubini_folgerung_nullmenge} existiert Nullmenge $\tilde{N}\subset Y$ mit $\chi_{R_k}(\,\cdot\, , y)\to \chi_M(\,\cdot \, , y)$ \gls{fue} auf $X$ $\forall y\in Y\setminus\tilde{N}$ \\
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\xRightarrow{\eqref{fubini_fubini_beweis_3},\eqref{fubini_fubini_beweis_4}}$ & $\chi_{R_k} (\,\cdot\, , y)$ integrierbar auf $X$ $\forall k\in \mathbb{N}$, $y\in Y\setminus\tilde{N}$ \\
+		$\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ & $\chi_M(\,\cdot\, ,y)$ integrierbar auf $X$ $\forall y\in Y\setminus\tilde{N}$ mit
+		\[\psi(y) = \int_X \chi_{R_k}(x,y)\D x \to \int_X \chi_M (x,y) \D y\] für \gls{fa} $y\in Y$ \\
+		$\xRightarrow{\eqref{fubini_fubini_beweis_6}}$&  $\displaystyle \int_{X\times Y} \chi_M (x,y) \D (x,y) = \vert M \vert = \int_Y \left( \int_X \chi_m (x,y) \D x\right) \D y$
+		\end{tabularx}
+		
+		\item D.h. Behauptung für $f=\chi_M$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\xRightarrow[\text{des Integrals}]{\text{Linearität}}$ & Behauptung richtig für alle Treppenfunktionen
+		\end{tabularx}
+		\end{itemize}
+		\item Sei $f\ge 0$ integrierbar auf $X\times Y$
+		
+		Wähle zu $f$ monotone Folge von Treppenfunktionen $\{ h_k\}$ gemäß \propref{messbarkeit_funktion_existenz_monotone_treppenfunktionen} \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\displaystyle \int_{X\times Y} h_k(x,y) \D (x,y) \overset{\text{a)}}{=} \int_Y \left( \int_X h_k \D x\right) \D y$
+		\end{tabularx}
+		
+		Analog zu \ref{fubini_fubini_beweis_teil_a} folgt: $h_k(\,\cdot\, , y)\to f(\,\cdot\,,y)$ \gls{fue} auf $X$ für \gls{fa} $y\in Y$ \\ \begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\xRightarrow[\text{Konvergenz}]{\text{Majorisierte}}$ & Behauptung für $f$.
+		\end{tabularx}
+		
+		Allgemein: Zerlege $f = -f^- + f^+$ und argumentiere für $f^\pm$ separat.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Satz von \person{Tonelli}]
+	\proplbl{fubini_tonelli}
+	Sei $f:X\times Y\to\mathbb{R}$ messbar. Dann \begin{align}
+		\proplbl{fubini_tonelli_eq}
+		\text{$f$ integrierbar} \;\;\Leftrightarrow\;\; \int_Y \left( \int_X \vert f(x,y)\vert \D x\right) \D y \quad\text{oder}\quad\int_X \left(\int_Y \vert f(x,y)\vert \D y \right) \D x
+	\end{align}
+	existiert.
+\end{proposition}
+
+\begin{remark}\vspace*{0pt}
+	\begin{enumerate}[label={\alph*)},topsep=\dimexpr -\baselineskip/2\relax]
+		\item Falls eines der iterierten Integrale \eqref{fubini_tonelli_eq} mit $\vert f\vert$ existieren, dann gelte \eqref{fubini_fubini_eq}, \eqref{fubini_fubini_eq_2}
+		\item Existiert z.B. $\int_Y \left( \int_X \vert f \vert \D x \right) \D y$ heißt dies: $\exists$ Nullmenge $\tilde{N}\subset Y$ mit \[F(y) := \int_X \vert f(x,y)\vert \D x\quad\forall y\in Y\setminus \tilde{N}\] und mit $F(y) := 0$ $\forall y\in \tilde{N}$ ist $F$ integrierbar auf $Y$
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}\hspace*{0pt}
+	\NoEndMark
+	\begin{itemize}
+		\item["`$\Rightarrow$"'] Mit $f$ auch $\vert f \vert$ integrierbar und die Behauptung folgt aus \propref{fubini_fubini}
+		
+		\item["`$\Leftarrow$"'] Sei $W_k := (-k,k)^{p+q}\subset X\times Y$ Würfel, $f_k := \in \{ \vert f \vert, k\cdot \chi_{W_k} \}$ \\
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $f$ ist integrierbar auf $X\times Y$
+		\end{tabularx}
+		
+		Offenbar sind die $\{ f_k \}$ wachsend, $f_k\to \vert f \vert$ \gls{fue} auf $X\times Y$. Falls oberes Integral in \eqref{fubini_tonelli_eq} existiert, gilt \begin{align*}
+			\int_{X\times Y} f(x,y) \D(x,y) \overset{\text{Fubini}}{=} \int_Y \left( \int_X f_k \D x\right) \D y \le \int_Y \left( \int_X \vert f \vert \D x \right)\D y < \infty
+		\end{align*}
+		\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\{\int_{X\times Y} f_k \D (x,y)\}$ beschränkte Folge \\
+		$\xRightarrow[\text{Konvergenz}]{\text{Majorisierte}}$ & $\vert f \vert$ integrierbar $\xRightarrow{\text{\cref{integral_funktion_eigenschaften}}}$ $f$ integrierbar $\Rightarrow$ Behauptung \hfill\csname\InTheoType Symbol\endcsname
+	\end{tabularx}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{fubini_tonelli_folgerung}
+	Sei $f:\mathbb{R}^n\to\mathbb{R}$ integrierbar auf $\mathbb{R}^n$, $x = (x_1, \dotsc, x_n)\in\mathbb{R}^n$
+	\begin{flalign}
+		\proplbl{fubini_tonelli_folgerung_eq}
+		\Rightarrow\;\;\int_{\mathbb{R}^n} f(x) \D x = \int_\mathbb{R} \dotsc \left( \int_\mathbb{R} f(x_1, \dotsc, x_n) \D x_1 \right) \dotsc \D x_n
+	\end{flalign}
+\end{conclusion}
+\begin{proof}
+	Mehrfachanwendung von \propref{fubini_fubini}
+\end{proof}
+
+\begin{remark}\vspace*{0pt}
+	\begin{enumerate}[label={\arabic*)},topsep=\dimexpr -\baselineskip / 2\relax]
+		\item Die Reihenfolge der Integration in \eqref{fubini_tonelli_folgerung_eq} ist beliebig
+		\item Integrale reduzieren die Integration auf reelle Integrale über $\mathbb{R}$
+		\item Für $\int_M f \D x$ ist $(\chi_M f)$ gemäß \eqref{fubini_tonelli_folgerung_eq} zu integrieren, wo ggf. $\int_{\mathbb{R}}\dotsc$ durch $\int_a^b\dotsc$ mit geeigneten Grenzen ersetzt wird.
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	Sei $f:M\subset\mathbb{R}^2\to\mathbb{R}$ stetig, $M=[a,b]\times[c,d]$
+	
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $f$ messbar, beschränkt auf $M$ \\
+		$\Rightarrow$ & $f$ integrierbar auf $M$ \\
+		$\Rightarrow$ & $\chi_M f$ ist integrierbar auf $\mathbb{R}^2$
+	\end{tabularx}
+	\zeroAmsmathAlignVSpaces*
+	\begin{flalign*}
+		\;\; & \begin{aligned} \Rightarrow\;\; \int_M f \D x &= \int_{\mathbb{R}^2} \chi_M f \D x = \int_{\mathbb{R}}\int_\mathbb{R} \chi_M (x_1, x_2) f(x_1, x_2) \D x_1 \D x_2 \\
+		&= \int_\mathbb{R} \int_a^b \chi_{[c,d]} (x_2) f(x_1, x_2) \D x_1 \D x_2 = \int_c^d \int_a^b f(x_1, x_2) \D x_1 \D x_2\end{aligned} &
+	\end{flalign*}
+	
+	Z.B. $f(x_1, x_2) = x_1\cdot \sin x_2$, $M=[0,1]\times [0,\pi]$
+	\zeroAmsmathAlignVSpaces*
+	\begin{flalign*}
+		\;\;& \begin{aligned}\Rightarrow\;\; \int_M f \D x &= \int_0^\pi \int_0^1 x_1 \sin x_2 \D x_1 \D x_2 = \int_0^\pi \left[ \frac{1}{2} x_1^2 \sin x_2 \right]_0^1 \D x_2 \\
+		&= \int_0^\pi \frac{1}{2}\sin x_2 \D x_2 = \left[ - \frac{1}{2} \cos x_2 \right]_0^\pi = 1
+		\end{aligned} &
+	\end{flalign*}
+\end{example}
+
+\begin{example}
+	Sei $f:M\subset\mathbb{R}^2\to\mathbb{R}$ stetig, $M=\{ (x,y) \mid x^2 + y^2 = 1\}$ \\
+	\begin{tabularx}{\linewidth}{r@{\ \ }X}
+		$\Rightarrow$ & $\chi_M f$ integrierbar auf $\mathbb{R}^2$ \\
+		$\Rightarrow$ & $\displaystyle \int_M f \D (x,y) = \int_{\mathbb{R}}\int_{\mathbb{R}} \chi_M f \D y \D x = \int_{-1}^1 \int_{\sqrt{1 - x^2}}^{\sqrt{1 - x^2}} f(x,y) \D y \D x$
+	\end{tabularx}
+
+	Z.B. $f(x,y) = \vert y \vert$
+	\zeroAmsmathAlignVSpaces*
+	\begin{flalign*}
+		\;\;& \begin{aligned} \Rightarrow\;\; \int_M \vert y \vert \D (x,y) &= 2 \int_{-1}^1 \int_0^{\sqrt{1 - x^2}} y \D y \D x = 2 \int_{-1}^1 \left[ \frac{1}{2} y^2 \right]_0^{\sqrt{1 - x^2}} \D x \\
+		&= 2 \int_{-1}^1 \frac{1}{2} (1 - x^2) \D x = \left[ x - \frac{1}{3}x^3 \right]_{-1}^1 = \frac{4}{3}\end{aligned} &
+	\end{flalign*}
+\end{example}
+
+\begin{example}
+	Sei $f:M\subset\mathbb{R}^3\to\mathbb{R}$ stetig, $M$ Tetraeder mit Ecken $0$, $e_1$, $e_2$, $e_3$
+	\begin{align*}
+		\int_M f \D (x,y,z) = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} f(x,y,z) \D z \D y \D x
+	\end{align*}
+	
+	Z.B: $f(x,y,z) = 1$: \begin{align*}
+		\int_M 1 \D (x,y,z) &= \int_0^1 \int_0^{1-x} \int_0^{1-x-y} f(x,y,z) \D z \D y \D x = \int_0^1 \int_0^{1-x} [z]_0^{1-x-y} \D y \D x \\
+		&= \int_0^1 \int_0^{1-x} 1 - x - y \D y \D z = \int_0^1 [y - xy - \frac{y^2}{2}]_{y=0}^{1-x} \D x = \int_0^1 \frac{1}{2} - x + \frac{x^2}{2} \D x\\
+		& = \frac{1}{6},
+	\end{align*}
+	das Volumen eines Tetraeders.
+\end{example}
+
+\subsection{Integration durch Koordinatentransformation}
+\begin{*definition}[Diffeomorphismus, diffeomorph]
+Sei $f:U\subset K^n\to V\subset K^m$ bijektiv, wobei $U$, $V$ offen.
+
+$f$ heißt \begriff{Diffeomorphismus}, falls $f$ und $f^{-1}$ stetig \gls{diffbar} auf $U$ bzw. $V$ sind.
+
+$U$ und $V$ heißen dann \begriff{diffeomorph}.
+\end{*definition}
+
+\begin{theorem}[Transformationssatz]
+	\proplbl{fubini_trafo_trafosatz}
+	Seien $U$, $V\subset\mathbb{R}^n$ offen, $\phi: U\to V$ Diffeomorphismus. Dann 
+	
+	\begin{tabularx}{\linewidth}{X@{\ \ }c@{\ \ }X}
+		\hfill$f:V\to\mathbb{R}$ integrierbar  & $\Leftrightarrow$ & $f(\phi(\,\cdot\,))\vert \det \phi'(y) \vert: U\to\mathbb{R}$ integrierbar
+	\end{tabularx}
+	und es gilt
+	\begin{align}
+		\proplbl{fubini_trafo_trafosatz_eq}
+		\int_U f(\phi(y))\cdot\vert\phi'(y)\vert \D y = \int_V f(x) \D x
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	Vgl. Literatur (z.B. Königsberger Analysis 2, Kapitel 9)
+\end{proof}
+
+Sei $U=Q\in\mathcal{Q}$ Würfel, $V:= \phi(Q)$, $\tilde{y}\in \mathcal{Q}$, $x:= \phi(\tilde{y})$ \\
+$\xRightarrow{\eqref{fubini_trafo_trafosatz_eq}}$ $\vert V \vert = \int_V 1 \D y = \int_Q \vert \det \phi'(y) \vert \D y \overset{\text{$Q$ klein}}{\approx} \vert \det \phi'(\tilde{y})\vert \cdot \vert Q \vert$, d.h. $\vert \det \phi'(y) \vert$ beschreibt (infinitesimale) relative Veränderung des Maßes unter Transformation $\phi$.
+
+\begin{example}
+	Sei $V=B_R(0) \subset\mathbb{R}^3$ Kugel mit Radius $R > 0$.
+	
+	Zeige: $\displaystyle \vert B_R(0) \vert = \int_V 1\D (x,y,z) = \frac{4}{3}\pi R^3$
+	
+	Benutze Kugelkoordinaten (Polarkoordinaten in $\mathbb{R}^2$) mit \begin{align*}
+		\begin{pmatrix}
+			x \\ y \\ z
+		\end{pmatrix} &= \phi(r, \alpha, \beta) := \begin{pmatrix}
+			r \cos \alpha \cos \beta \\ r\sin \alpha \cos \beta \\ r \sin \beta
+		\end{pmatrix}
+	\end{align*}
+	Für $(r,\alpha,\beta)\in U: (0,R)\times(-\pi,\pi)\times\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$.
+	
+	Mit $H:= \{ (x,0,z)\in\mathbb{R}\mid x\le 0 \}$ und $\tilde{V} := V\setminus H$ gilt: $\vert H\vert_{\mathbb{R}^3} = 0$
+	
+	$\phi: U\to\tilde{V}$ \gls{diffbar}, injektiv, und \begin{align*}
+		\phi'(r,\alpha,\beta) &= \begin{pmatrix}
+			\cos\alpha \cos \beta & -r\sin \alpha\cos\beta & -r\cos\alpha\sin\beta \\
+			\sin\alpha\cos\beta & r \cos\alpha\cos\beta & -r\sin\alpha\sin\beta \\
+			\sin\beta & 0 & r\cos\beta
+		\end{pmatrix}
+	\end{align*}
+	$\Rightarrow$ Definiere $\phi'(r,\alpha,\beta) = r^2\cos\beta\neq 0$ auf $U$ \\
+	% @TODO: Label setzen
+	$\xRightarrow{Satz 27.8}$ $\phi:U\to\tilde{V}$ ist Diffeomorphismus
+	\begin{flalign*}
+	\;\;&\begin{aligned}\Rightarrow\;\; \vert B_R(0)\vert &= \int_V 1 \D (x,y,z) = \int_{\tilde{V}} 1 \D (x,y,z) + \int_H 1 \D (x,y,z) \\ & \overset{\eqref{fubini_trafo_trafosatz_eq}}{=} \int_U \vert \det \phi'(r,\alpha,\beta)\vert \D r \D \alpha \D \beta + \vert H \vert 
+	\overset{\text{Fubini}}{=} \int_0^R \int_{-\pi}^\pi \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} r^2 \cos\beta \D \beta \D \alpha \D r \\
+	&= \int_0^R \int_{-\pi}^\pi [r^2\sin \beta]_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \D \alpha  \D r = \int_0^R \int_{-\pi}^\pi 2 r^2 \D \alpha \D r
+	= \int_0^R 4 \pi r^2 \D r \\
+	& = \left.\frac{4}{3}\pi r^3\right|_0^R  = \frac{4}{3}\pi R^3
+	\end{aligned}\end{flalign*}
+\end{example}
+
+\begin{example}[Rotationskörper im $\mathbb{R}^3$]
+	Sei $g:[a,b]\to[0,\infty]$ stetiger, rotierender Graphen von $g$ um die $z$-Achse. \\
+	$\rightarrow$ Bestimme das Volumen des (offenen) Rotationskörpers $V\subset\mathbb{R}^3$.
+	
+	Benutze Zylinderkoordinaten:\begin{align*}
+		\begin{pmatrix}
+			x \\ y \\ z
+		\end{pmatrix} = \phi(r,\alpha, z) := \begin{pmatrix}
+			r\cos \alpha \\ r \sin\alpha \\ z
+		\end{pmatrix}
+	\end{align*}
+	auf \[U= \{ (r,\alpha,z) \in\mathbb{R}^3 \mid r \in (0, g(z)), \alpha\in (-\pi,\pi),z\in(a,b) \},\] mit $H:= \{ (x,0,z) \in\mathbb{R}^3 \mid x \le 0 \}$, $\tilde{V} := V \setminus H $ gilt $\vert H \vert = 0$ und $\phi:U\to\tilde{V}$ \gls{diffbar}, injektiv, sowie \begin{align*}
+		\phi'(r,\alpha,z) = \begin{pmatrix}
+			\cos \alpha & - r\sin \alpha & 0 \\ \sin \alpha & r \cos \alpha & 0 \\ 0 & 0 & 1
+		\end{pmatrix} = r > 0\text{ auf $U$}
+	\end{align*}
+	%@TODO: label setzten
+	$\xRightarrow{\text{Satz 27.8}}$ $\phi:U\to\tilde{V}$ ist Diffeomorphismus
+	
+	$V$ messbar (da offen) $\Rightarrow$ $\tilde{V}$ messbar, und offenbar $f=1$ integrierbar auf $\tilde{V}$ \\
+	\renewcommand{\arraystretch}{3}
+	\begin{tabularx}{\linewidth}{r@{\ \ }r@{\ }c@{\ }l@{\ }c@{\ }X}
+		$\Rightarrow$ & $\vert V \vert = \vert \tilde{V} \vert$ &=& $\displaystyle\int_{\tilde{V}} 1 \D (x,y,z)$ &$ \overset{\eqref{fubini_trafo_trafosatz_eq}}{=}$ &  $\displaystyle\int_U \vert \det \phi'(r,\alpha,z)\vert \D (x,y,z)$ \\
+		& & $\overset{\text{Fubini}}{=}$ &  $\displaystyle \int_a^b \int_{-\pi}^\pi \int_0^{g(z)} r \D r \D \alpha \D z$ &=& $\displaystyle\int_a^b \int_{-\pi}^\pi \left[ \frac{r^2}{2} \right]_0^{g(z)} \D \alpha \D z$ \\
+		& & =  & $\displaystyle\int_a^b \int_{-\pi}^\pi \frac{g(z)^2}{2} \D \alpha \D z$ &=& $\displaystyle\pi \int_a^b g(z)^2\D z$
+	\end{tabularx}
+	
+	
+	Z.B. $g(z) = R$ auf $[a,b]$: $\vert V \vert = \pi \int_a^b R^2 \D z = \pi R^2(b - a)$ (Volumen des Kreiszylinders)
+\end{example}

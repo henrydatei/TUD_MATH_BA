@@ -1,0 +1,59 @@
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+\title{\textbf{Programmieren für Mathematiker SS2018}}
+\author{Dozent: Prof. Dr. Wolfgang Walter}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+
+\chapter{Pointer}
+\input{./TeX_files/Allgemeines}
+\include{./TeX_files/Listen}
+\include{./TeX_files/Queues}
+\include{./TeX_files/Aufwand_fuer_Rechenoperationen}
+
+\chapter{Bäume/Trees und Rekursion}
+\input{./TeX_files/Baeume_Trees_und_Rekursion}
+
+\chapter{Suchen und Sortieren}
+\input{./TeX_files/Begriffe_und_Definitionen}
+\include{./TeX_files/3_einfache_Sortieralgorithmen}
+\include{./TeX_files/Quicksort}
+\include{./TeX_files/Mergesort}
+\include{./TeX_files/Heapsort}
+\include{./TeX_files/Priority_Queue}
+\include{./TeX_files/Counting_Sort}
+\include{./TeX_files/Radix_Distribution_Sort}
+
+\chapter{Rekursion, Iteration, Komplexität}
+\input{./TeX_files/Beispiele}
+
+\chapter{Grundrechenarten in Rechnern}
+\input{./TeX_files/Addition}
+\include{./TeX_files/Subtraktion}
+\include{./TeX_files/Multiplikation}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}

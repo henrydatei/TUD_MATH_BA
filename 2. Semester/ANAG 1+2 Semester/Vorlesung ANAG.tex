@@ -1,0 +1,108 @@
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+\usepackage[xindy,acronym]{glossaries}
+\makeglossaries
+
+\makeindex[name=symbols,title=Symbolverzeichnis,intoc]
+
+\newacronym{gdw}{gdw.}{genau dann wenn}
+\newacronym{fa}{fa.}{fast alle}
+\newacronym{fue}{f.ü.}{fast überall}
+\newacronym{obda}{oBdA}{ohne Beschränkung der Allgemeinheit}
+\newacronym{tf}{TF}{\begriff{Teilfolge}}
+\newacronym{hw}{Hw}{\begriff{Häufungswert}}
+\newacronym{cf}{CF}{\begriff{\person{Cauchy}-Folge}}
+\newacronym{hp}{HP}{\begriff{Häufungspunkt}}
+\newacronym{vr}{VR}{Vektorraum}
+\newacronym{diffbar}{diffbar}{differenzierbar}
+\newacronym{mws}{MWS}{Mittelwertsatz}
+%\newacronym{fü}{f.ü.}{fast überall}
+
+\title{\textbf{Analysis (WS2017/18 + SS2018)}}
+\author{Dozent: Prof. Dr. Friedemann Schuricht\\
+	Kursassistenz: Moritz Schönherr}
+
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\part{1. Semester}
+\pagestyle{fancy}
+\chapter{Grundlagen der Mathematik}
+\input{./TeX_files/Grundbegriffe_Logik} % +Fundament der Mathematik
+\chapter{Zahlenbereiche}
+\input{./TeX_files/Natuerliche_Zahlen}
+\include{./TeX_files/Ganze_und_Rationale_Zahlen}
+\include{./TeX_files/Reelle_Zahlen}
+\include{./TeX_files/Komplexe_Zahlen}
+
+\chapter{Metrische Räume und Konvergenz}
+\input{./TeX_files/Grundlegende_Ungleichungen}
+\include{./TeX_files/Metrische_Raeume}
+\include{./TeX_files/Konvergenz}
+\include{./TeX_files/Vollstaendigkeit}
+\include{./TeX_files/Kompaktheit}
+\include{./TeX_files/Reihen}
+
+\chapter{Funktionen und Stetigkeit}
+\input{./TeX_files/Funktionen}
+\include{./TeX_files/Stetigkeit}
+\include{./TeX_files/Anwendungen}
+
+\part{2. Semester}
+\pagestyle{fancy}
+
+\chapter{Differentiation}
+\input{./TeX_files/Wiederholung_und_Motivation}
+\include{./TeX_files/Ableitung}
+\include{./TeX_files/Richtungsableitung}
+\include{./TeX_files/Mittelwertsatz}
+\include{./TeX_files/Stammfunktion}
+
+\chapter{Integration}
+\input{./TeX_files/Integration}
+\include{./TeX_files/Messbarkeit}
+\include{./TeX_files/Integral}
+\include{./TeX_files/Integral_R}
+\include{./TeX_files/Fubini}
+
+\chapter{Differentiation II}
+\input{./TeX_files/Taylor}
+\include{./TeX_files/Extremwerte}
+\include{./TeX_files/Inverse_implizite_Funktionen}
+\include{./TeX_files/Funktionsfolgen}
+
+
+\phantomsection\addcontentsline{toc}{part}{Anhang}
+\part*{Anhang}
+\appendix
+
+\chapter{Listen}
+\section{Liste der Theoreme}
+\theoremlisttype{allname}
+\listtheorems{theorem}
+
+\pagebreak
+\section{Liste der benannten Sätze}
+\theoremlisttype{optname}
+\listtheorems{proposition}
+
+\printglossary[type=\acronymtype]
+\addcontentsline{toc}{chapter}{Akronyme}
+
+\printindex
+\printindex[symbols]
+
+\end{document}

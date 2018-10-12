@@ -1,0 +1,65 @@
+\section{Priority Queue}
+
+Eine Priority Queue ist eine Art von Warteschlange, die nicht nach dem FIFO-Prinzip arbeitet, sondern die Elemente entsprechend ihrer Priorität (ein spezieller Key) behandelt. Implementiert wird dies durch einen Heap in einem eindimensionalen Feld.
+
+\begin{*anmerkung}
+	Die Grundoperationen einer Priority Queue und deren Komplexitäten werden gerne in Klausuren abgefragt.
+\end{*anmerkung}
+
+Die Grundoperationen einer Priority Queue sind wie folgt:
+\begin{itemize}
+	\item \texttt{init(A)} $\to$ initiiert eine leeres Feld \texttt{A}
+	\item \texttt{empty(A)} $\to$ ist Feld leer?
+	\item \texttt{HeapInsert(A,key)} $\to$ neues Element mit \texttt{key} einfügen in \texttt{A}
+	\item \texttt{HeapExtractMax(A,key)} $\to$ key des Wurzelknotens wird in 2. Parameter (oder als Funktionswert) zurückgegeben und dieses Element aus \texttt{A} herausgenommen
+	\item \texttt{HeapUpdate(A,key,max)} $\to$ Kombination aus \texttt{HeapExtractMax} und \texttt{HeapInsert}: liefert in \texttt{max} den Key der Wurzel und ersetzt diesen Wert durch \texttt{key}
+	\item \texttt{Maximum(A)} $\to$ Funktion, liefert den key der Wurzel
+\end{itemize}
+
+\begin{lstlisting}
+subroutine HeapExtractMax(A, max)
+ if (size <= 0) error("empty heap")
+ 
+ max = A_1
+ A_1 = A_size
+ size = size - 1
+ Heapify(A,1)
+end subroutine HeapExtractMax
+\end{lstlisting}
+$\Rightarrow T(n)=\mathcal{O}(\log_2 n)$
+
+\begin{lstlisting}
+subroutine HeapUpdate(A, key, max)
+ if (size <= 0) error("empty heap")
+ 
+ max = A_1
+ A_1 = key
+ Heapify(A,1)
+end subroutine HeapUpdate
+\end{lstlisting}
+$\Rightarrow T(n)=\mathcal{O}(\log_2 n)$
+
+\begin{lstlisting}
+subroutine HeapInsert(A, key)
+ size = size + 1
+ i = size
+ 
+ do while (i > 1 .and. A_Parent(i) < key)
+  A_i = A_Parent(i)
+  i = Parent(i)
+ end do
+ A_i = key
+end subroutine HeapInsert
+\end{lstlisting}
+$\Rightarrow T(n)=\mathcal{O}(\log_2 n)$
+
+\begin{lstlisting}
+subroutine BuildHeapNew(A)
+ size = 1
+ 
+ do i = 2, n
+  HeapInsert(A,A_i)
+ end do
+end subroutine BuildHeapNew
+\end{lstlisting}
+$\Rightarrow T(n)=\mathcal{O}(\log_2 n)$

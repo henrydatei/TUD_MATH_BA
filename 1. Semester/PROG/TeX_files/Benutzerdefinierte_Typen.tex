@@ -1,0 +1,43 @@
+\section{Benutzerdefinierte Typen}
+
+In Modulen werden häufig Datentypen vom Benutzer definiert, zum Beispiel der Datentyp \texttt{kreis}
+\begin{lstlisting}
+type kreis
+ private !kein Zugriff auf Komponenten im Hauptprogramm
+ real :: radius
+ real :: mitteX
+ real :: mitteY
+end type kreis
+\end{lstlisting}
+
+Für diesen neuen Datentyp funktionieren die alten Operatoren wie \texttt{+} nicht mehr (was soll den die Summe aus 2 Kreisen sein?). Deswegen muss man sich eine neue Addition von Kreisen ausdenken:
+\begin{lstlisting}
+function add(kreis1, kreis2)
+ type(kreis), intent(in) :: kreis1, kreis2
+ type(kreis) :: add
+ 
+ add%raduis = kreis1%radius + kreis2%radius
+ add%mitteX = (kreis1%mitteX + kreis2%mitteX) / 2
+ add%mitteY = (kreis1%mitteY + kreis2%mitteY) / 2
+end function add
+\end{lstlisting}
+
+Wie man sieht kann man mit \% auf die einzelnen Komponenten zugreifen. Um jetzt wirklich im Programm \texttt{kreis1 + kreis2} zu benutzen, muss man noch den Operator \texttt{+} überladen. Dazu werden generische Schnittstellen benutzt. Man kann auch das Gleichheitszeichen, also die Zuweisung \texttt{=} überladen.
+\begin{lstlisting}
+interface operator(+)
+ module procedure add
+end interface operator(+)
+
+interface assignment(=)
+ module procedure gleich
+end interface assignment(=)
+\end{lstlisting}
+
+Diese Operatorüberladungen brauchen immer das \texttt{intent(in)}-Attribut in den Funktionen! Überladungen von \texttt{=} brauchen dagegen sowohl \texttt{inten(in)} als auch \texttt{intent(out)}.
+
+Mit dem \texttt{interface}-Block kann man auch lange und sperrige Namen von Funktionen einkürzen, so dass man statt \texttt{langUndSperrig(a,b)} auch \texttt{kurz(a,b)} verwenden kann:
+\begin{lstlisting}
+interface kurz
+ module procedure langUndSperrig
+end interface kurz
+\end{lstlisting}

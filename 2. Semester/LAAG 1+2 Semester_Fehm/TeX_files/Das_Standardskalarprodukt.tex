@@ -1,0 +1,175 @@
+In diesem ganzen Kapitel seien
+\begin{itemize}
+	\item $K=\real$ oder $K=\comp$
+	\item $n\in\natur$
+	\item $V$ ein $n$-dimensionaler $K$-VR
+\end{itemize}
+
+\section{Das Standardskalarprodukt}
+
+Sei zunächst $K=\real$.
+
+\begin{definition}[Standardskalarprodukt in $\real$]
+	Auf den Standardraum $V=\real^n$ definiert man das \begriff{Standardskalarprodukt in $\real$} $\langle.\rangle:\real^n\times\real^n\to \real$ durch
+	\begin{align}
+		\skalar{x}{y}=x^ty=\sum_{i=1}^n x_iy_i\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	\proplbl{6_1_2}
+	Das Standardskalarprodukt erfüllt die folgenden Eigenschaften:
+	\begin{itemize}
+		\item Für $x,x',y,y'\in\real^n$ und $\lambda\in\real$ ist:
+		\begin{align}
+			\langle x+x',y\rangle &= \langle x,y\rangle + \langle x',y\rangle\notag\\
+			\langle \lambda x,y\rangle =&= \lambda \langle x,y \rangle\notag \\
+			\langle x,y+y' \rangle &= \langle x,y \rangle + \langle x,y'\rangle\notag \\
+			\langle x,\lambda y \rangle &= \lambda \langle x,y \rangle\notag
+		\end{align}
+		\item Für $x,y\in\real^n$ ist $\langle x,y \rangle=\langle y,x\rangle$
+		\item Für $x\in\real^n$ ist $\langle x,y \rangle\ge 0$ und $\langle x,x\rangle=0\iff x=0$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item klar
+		\item klar
+		\item $\langle x,x\rangle=\sum_{i=1}^n x_i^2\ge x_j^2$ für jedes $j\Rightarrow \langle x,x\rangle\ge 0$ und $\langle x,x \rangle>0$ falls $x_j\neq 0$ für ein $j$.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[euklidische Norm in $\real$]
+	Auf $K=\real^n$ definiert man \begriff{euklidische Norm in $\real$} $\Vert \cdot \Vert:\real^n\to \real_{\ge 0}$ durch
+	\begin{align}
+		\Vert x\Vert =\sqrt{\langle  x,x\rangle}\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}[Ungleichung von \person{Cauchy-Schwarz}]
+	\proplbl{6_1_4}
+	Für $x,y\in\real^n$ gilt
+	\begin{align}
+		\vert \langle x,y \rangle\vert \le \Vert x\Vert \cdot \Vert y\Vert\notag
+	\end{align}
+	Gleichheit genau dann, wenn $x$ und $y$ linear abhängig sind.
+\end{proposition}
+\begin{proof}
+	siehe Analysis, siehe VI.§3
+\end{proof}
+
+\begin{*anmerkung}
+	Der Beweis dieser Ungleichung wird im Skript später noch behandelt, war aber für mich nicht verständlich, deswegen hier noch mal ein einfach zu verstehender Beweis: Wir betrachten dazu das Skalarprodukt
+	\begin{align}
+	0\le \skalar{x-\lambda y}{x-\lambda y}\notag
+	\end{align}
+	Mit dem Anwenden der Rechenregeln ergibt sich:
+	\begin{align}
+	\skalar{x-\lambda y}{x-\lambda y} &= \skalar{x-\lambda y}{x}-\skalar{x-\lambda y}{\lambda y}\notag \\
+	&= \skalar{x-\lambda y}{x}-\overline{\lambda}\skalar{x-\lambda y}{y} \notag \\
+	&= \skalar{x}{x}-\skalar{\lambda y}{x}-\overline{\lambda}\skalar{x}{y}+\overline{\lambda}\skalar{\lambda y}{y} \notag \\
+	&= \skalar{x}{x}-\lambda\skalar{y}{x}-\overline{\lambda}\skalar{x}{y}+\lambda\overline{\lambda}\skalar{y} {y}\notag
+	\end{align}
+	Jetzt setzen wir
+	\begin{align}
+	\lambda = \frac{\skalar{x}{y}}{\skalar{y}{y}}=\frac{\skalar{x}{y}}{\Vert y\Vert^2}\notag
+	\end{align}
+	Also ergibt sich
+	\begin{align}
+	\skalar{x-\lambda y}{x-\lambda y} &= \skalar{x}{x}-\frac{\skalar{x}{y}}{\skalar{y}{y}}\skalar{y}{x}-\overline{\lambda}\skalar{x}{y}+\overline{\lambda}\frac{\skalar{x}{y}}{\skalar{y}{y}}\skalar{y}{y} \notag \\
+	&= \Vert x\Vert^2 - \frac{\skalar{x}{y}}{\Vert y\Vert^2}\skalar{y}{y} \notag \\
+	&\le \Vert x\Vert^2-\frac{\skalar{x}{y}}{\Vert y\Vert^2} \notag \\
+	\frac{\skalar{x}{y}}{\Vert y\Vert^2} &\le \Vert x\Vert^2 \notag \\
+	\skalar{x}{y} &\le \Vert x\Vert^2\cdot \Vert y\Vert^2 \notag \\
+	\Rightarrow\vert\skalar{x}{y}\vert &\le \Vert x\Vert\cdot \Vert y\Vert\notag
+	\end{align}
+\end{*anmerkung}
+
+\begin{proposition}
+	Die euklidische Norm erfüllt die folgenden Eigenschaften:
+	\begin{itemize}
+		\item Für $x\in\real^n$ ist $\Vert x\Vert=0\iff x=0$
+		\item Für $x\in\real^n$ und $\lambda\in\real$ ist $\Vert \lambda x\Vert =\vert \lambda \vert \cdot \Vert x\Vert$
+		\item Für $x,y\in\real^n$ ist $\Vert x+y\Vert \le \Vert x\Vert +\Vert y\Vert$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item \propref{6_1_2}
+		\item \propref{6_1_2}
+		\item $\Vert x+y\Vert^2=\langle x+y,x+y \rangle=\langle x,x \rangle+2\langle x,y\rangle+\langle y,y\rangle\le \Vert x\Vert^2+2\Vert x\Vert \Vert y\Vert+\Vert y\Vert^2=(\Vert x\Vert +\Vert y\Vert)^2\overset{\propref{6_1_4}}{\Rightarrow}\Vert x+y\Vert \le \Vert x\Vert +\Vert y\Vert$
+	\end{itemize}
+\end{proof}
+
+Sei nun $K=\comp$.
+
+\begin{definition}[komplexe Konjugation, Absolutbetrag]
+	Für $x,y\in\real$ und $z=x+iy\in\comp$ definiert man $\overline{z}=x-iy$ heißt \begriff{komplexe Konjugation}.. Man definiert den \begriff{Absolutbetrag} von $z$ als
+	\begin{align}
+		\vert z\vert &=\sqrt{z\overline{z}}=\sqrt{x^2+y^2}\in\real_{\ge 0}\notag
+	\end{align}
+	Für $A=(a_{ij})_{i,j}\in\Mat_{m\times n}(\comp)$ sehen wir
+	\begin{align}
+		\overline{A}&= (\overline{a_{ij}})_{i,j}\in\Mat_{m\times n}(\comp)\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	\proplbl{6_1_7}
+	Komplexe Konjugation ist ein Ringautomorphismus von $\comp$ mit Fixkörper
+	\begin{align}
+		\{z\in\comp\mid z=\overline{z}\}&=\real\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	siehe LAAG1 H47
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{6_1_8}
+	Für $A,B\in\Mat_n(\comp)$ und $S\in\GL_n(\comp)$ ist $\overline{A+B}=\overline{A}+\overline{B}, \overline{AB}=\overline{A}\cdot \overline{B},\overline{A^t}=\overline{A}^t, \overline{S^{-1}}=\overline{S}^{-1}$
+\end{conclusion}
+\begin{proof}
+	\propref{6_1_7}, einfache Übung
+\end{proof}
+
+\begin{definition}[Standardskalarprodukt in $\comp$]
+	Auf $K=\comp^n$ definiert man das \begriff{Standardskalarprodukt in $\comp$} $\langle\cdot,\cdot\rangle:\comp^n\times\comp^n\to \comp$ durch
+	\begin{align}
+	\langle x,y\rangle=x^t\overline{y}=\sum_{i=1}^n x_i\overline{y}_i\notag
+	\end{align}
+\end{definition}
+
+\begin{proposition}
+	Das komplexe Standardskalarprodukt erfüllt die folgenden Eigenschaften:
+	\begin{itemize}
+		\item Für $x,x',y,y'\in\comp^n$ und $\lambda\in\comp$ ist:
+		\begin{align}
+		\langle x+x',y\rangle &= \langle x,y\rangle + \langle x',y\rangle\notag\\
+		\langle \lambda x,y\rangle =&= \lambda \langle x,y \rangle\notag \\
+		\langle x,y+y' \rangle &= \langle x,y \rangle + \langle x,y'\rangle\notag \\
+		\langle x,\lambda y \rangle &= \kringel{lightgrey}{\overline{\lambda}} \langle x,y \rangle\notag
+		\end{align}
+		\item Für $x,y\in\comp^n$ ist $\langle x,y \rangle=\kringel{lightgrey}{\overline{\langle y,x\rangle}}$
+		\item Für $x\in\comp^n$ ist $\langle x,y \rangle\in\real_{\ge 0}$ und $\langle x,x\rangle=0\iff x=0$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item klar
+		\item klar
+		\item $\langle x,x\rangle=\sum_{i=1}^n x_i\overline{x_i}=\sum_{i=1}^n \vert x_i\vert^2$
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[euklidische Norm in $\comp$]
+	Auf $V=\comp$ definiert man die \begriff{euklidische Norm in $\comp$} $\Vert \cdot \Vert:\comp^n\to \real_{\ge 0}$ durch
+	\begin{align}
+	\Vert x\Vert =\sqrt{\langle  x,x\rangle}\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	\proplbl{6_1_12}
+	Schränkt man das komplexe Skalarprodukt auf den $\real^n$ ein, so erhält man das Standardskalarprodukt auf dem $\real^n$. Wir werden ab jetzt die beiden Fälle $K=\real$ und $K=\comp$ parallel behandeln. Wenn nicht anders angegeben, werden wir die Begriffe für den komplexen Fall benutzen, aber auch den reellen Fall einschließen.
+\end{remark}

@@ -16,13 +16,14 @@
 	\let\tempa\@empty
 	\IfEq{#1}{firstnumber}{\def\tempa{changebreak}}{%
 		\IfEq{#1}{firstname}{\def\tempa{break}}{%
-			\PackageWarning{mathscript}{Unknown Value}
+			\PackageWarning{mathscript}{Unknown Value for key `order'}
 		}
 	}
 	\edef\theoremheader@order@val{\tempa}	
 }
 
-%possible values: all you can imagine. usefull values: in this class predefined theorem-environment-names
+%possible values: all you can imagine.
+%usefull values: theorem-names defined in this class, new theorems defined by \newmdtheoremenv
 \listadd{\theorem@disable}{\@empty}
 \DeclareOptionX{disable}{%
 	\listadd{\theorem@disable}{#1}
@@ -60,8 +61,10 @@
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
+\RequirePackage{longtable} %Tabellen mit Seitenumbrüchen
 \RequirePackage{multirow}
 \RequirePackage{booktabs}	%improved rules
+\usepackage{colortbl} %einfärben von Spalten, Zeilen und Zellen
 
 \RequirePackage[title,titletoc]{appendix}
 
@@ -86,7 +89,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Graphics-related packages
-\RequirePackage[table]{xcolor}
+\RequirePackage[table,dvipsnames]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{tcolorbox}
 
@@ -95,7 +98,7 @@
 \usepgfplotslibrary{fillbetween}
 \RequirePackage{pgf}
 \RequirePackage{tikz}
-\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri,decorations.fractals}
 \usetikzlibrary{matrix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,6 +112,35 @@
 %enumeration
 \RequirePackage{enumerate}
 \RequirePackage{enumitem} 		%customize label
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Pakete für Programmierung
+
+\RequirePackage{lmodern}
+\RequirePackage{listings}
+
+%Konfiguration dazu
+\definecolor{lightlightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{lila}{rgb}{0.8,0,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.8,0.26}
+
+\lstset{language=[95]Fortran,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{lila},
+  commentstyle=\color{lightgray},
+  morecomment=[l]{!\ },% Comment only with space after !
+  stringstyle=\color{mygreen}\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\color{mygray}\ttfamily,
+  identifierstyle=\color{blue},
+  xleftmargin=.2\textwidth, 
+  xrightmargin=.2\textwidth,
+  escapechar=\%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Index related packages
@@ -139,6 +171,7 @@
 % 						End Packages							%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%tweak \newmdtheoremenv to create an empty environment if this very enviroment is disabled
 \RenewDocumentCommand{\newmdtheoremenv}{O{} m o m o}{%
 	\ifinlist{#2}{\theorem@disable}{%
 		\IfStrEq{#2}{theorem}{\newtheorem{#2}{}[section]}{\newtheorem{#2}{}[theorem]}
@@ -247,10 +280,24 @@
 ]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
 
 \newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=0pt,%
+skipabove=5pt,%
+innerleftmargin=10pt,%
+]{erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
+
+\newmdtheoremenv[%
 	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=10pt,%
 ]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+
+\newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=10pt,%
+]{algorithm}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Algorithmus}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
