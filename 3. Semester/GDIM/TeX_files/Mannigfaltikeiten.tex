@@ -1,0 +1,159 @@
+\section{Mannigfaltigkeiten}
+
+\begin{*definition}
+	Sei $\phi \in C^q(V, \mathbb{R}^n)$, $V\subset \mathbb{R}^d$ offen, $q \ge 1$. $\phi$ heißt \begriff{regulär} in $x\in V$, falls\begin{flalign}
+	 \proplbl{eq:mf_def_regulaer}	\phi'(x)\!\!: \mathbb{R}^d \to \mathbb{R}^n \;\text{regulär}
+	\end{flalign}
+	Falls $\phi$ regulär $\forall x\in V$ heißt $\phi$ \begriff{regulär auf $V$} bzw. reguläre \begriff{$C^q$-Parametrisierung} (auch $C^q$-Immersion). $V$ heißt \begriff{Parameterbereich} und $\phi(V)$ \begriff{Spur} von $V$.
+\end{*definition}
+\propref{eq:mf_def_regulaer} impliziert\begin{flalign}
+	\proplbl{eq_mf_def_regulaer_2} d\le n
+\end{flalign}
+und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
+	\text{\propref{eq:mf_def_regulaer}}\tag{1'} \Leftrightarrow \rang \underbrace{\phi'(x)}_{\text{$n\times d$-Matrix}} = d
+\end{flalign}
+
+\begin{example}
+	\proplbl{mf_beispiel_11}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Reguläre Kurve: $\phi: I\subset\mathbb{R}\to \mathbb{R}^n$, $I$ offen, $\phi'(x) \neq 0$ ($\phi'(x)$ ist der Tangentialvektor)
+		\item $\phi:(0,2\pi)\to \mathbb{R}^2$, $\phi(t) := \transpose{(\cos kt, \sin kt)}$, $k\in \mathbb{N}_{\ge 2}$ ($k$-fach durchlaufener Einheitskreis)
+		\item $\phi: (-\pi, \pi)\to\mathbb{R}^2$, $\phi(t) = (1 + 2\cos t) \transpose{(\cos t, \sin t)}$ mit den besonderen Werte \begin{flalign*}
+			\phi\left( \pm \frac{2}{3}\pi \right) = \begin{pmatrix}
+				0 \\ 0
+			\end{pmatrix},\quad \phi(0) = \begin{pmatrix}
+				3 \\ 0
+			\end{pmatrix} &&
+		\end{flalign*}
+		Achtung: $\binom{1}{0}$ gehört \emph{nicht} zur Kurve. $\phi$ ist regulär (ÜA)
+		\item $\phi:(-1,1) \to \mathbb{R}^2$, $\phi(t) = \transpose{(t^3,\;  t^2 )}$ ist \emph{nicht} regulär, da $\phi'(0) = 0$.
+	\end{enumerate}
+\end{example}
+
+\begin{example}[Parametrisierung von Graphen]
+	\proplbl{mf_beispiel_2}
+	Sei $f\in C^q(V, \mathbb{R}^{n-d})$, $V\subset \mathbb{R}^d$ offen.
+	
+	Betrachte $\phi\!: V\to \mathbb{R}^n$ mit $\phi(x) := \big(x, f(x)\big)$. Offenbar ist $\phi \in C^q(V, \mathbb{R}^n)$ und $\phi'(x) = \big( \id_{\mathbb{R}^d}, f'(x)) \in \mathbb{R}^{n\times d}$. \\
+	$\Rightarrow$ $\phi$ stets regulär.
+\end{example}
+
+\subsection{Relativtopologie auf Teilmengen \texorpdfstring{$M\subset \mathbb{R}^n$}{M c R}}
+\begin{*definition}
+	$U\subset M$ heißt offen bezüglich $M$ genau dann wenn $\exists \tilde{U} \subset \mathbb{R}^n$ offen mit $U = \tilde{U} \cap M$.
+	
+	$U\subset M$ heißt Umgebung von $u\in M$ bezüglich $M$, falls $\exists U_0 \subset M$ offen bezüglich $M$ mit $u\in U_0 \subset U$.
+\end{*definition}
+
+\subsection{Mannigfaltigkeiten}
+\begin{*definition}
+	$M\subset \mathbb{R}^n$ heißt \begriff{$d$-dimensionale $C^q$-Mannigfaltigkeit} ($q \ge 1$) falls $\forall u\in M$ existiert eine Umgebung $U$ von $u$ bezüglich $M$ und $\phi: V\subset \mathbb{R}^d \to \mathbb{R}^n$, $V$ offen mit $\phi$ reguläre $C^q$-Parametrisierung und $\phi$ ist Homöomorphismus und $\phi(V) = U$.
+	
+	M heißt auch $C^q$-Untermannigfaltigkeit. Verwende Mannigfaltigkeit statt $C^1$-Mannigfaltigkeit
+\end{*definition}
+\begin{*definition}
+	$\phi^{-1}$ bzw. $(\phi^{-1}, U)$ heißt \begriff{Karte} von $M$ um $u\in M$. $\phi$ ist das zugehörige \begriff{Kartengebiet}, $\phi$ zugehörige \begriff{Parametrisierung}, $V$ zugehöriger \begriff{Parameterbereich}.
+	
+	Eine Menge $\lbrace \phi{-1}_\alpha \mid \alpha \in A\rbrace$ heißt \begriff{Atlas} von $M$, falls die zugehörigen Kartengebiete $U_\alpha$ die Mannigfaltigkeit überdecken (d.h. $\bigcup_{\alpha\in A} U_\alpha \supset M$).
+\end{*definition}
+\begin{*definition}
+	Eine reguläre Parametrisierung $\phi\!: V\subset \mathbb{R}^d\to U\subset \mathbb{R}^n$ heißt \begriff{Einbettung}, falls sie ein Homöomorphismus ist.
+\end{*definition}
+\begin{underlinedenvironment}[Vereinbarung]
+	Parametrisierungen in Verbindung mit Mannigfaltigkeiten sind \emph{immer} Homöomorphismen (also Einbettungen).
+\end{underlinedenvironment}
+
+\begin{example}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Der Kreis aus \propref{mf_beispiel_11} ist eine eindimensionale $C^{\infty}$-Mannigfaltigkeit (d.h. $C^q$-Mannigfaltigkeit $\forall q \in \mathbb{N}_{\ge 1}$, obwohl mehrfach durchlaufen). Ein Atlas benötigt mindestens zwei Karten.
+		\item Kurven aus \propref{mf_beispiel_11} 3), 4) sind keine Mannigfaltigkeiten
+		\item $M\subset \mathbb{R}^n$ offen ist $n$-dimensionale $C^\infty$-Mannigfaltigkeit, $\{ \id \}$ ist der zugehörige Atlas.
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	$M:= \graph f$ aus \propref{mf_beispiel_2}.
+	
+	Offenbar ist $\phi\!: V\subset \mathbb{R}^d\to M\subset \mathbb{R}^n$ Homöomorphismus und reguläre $C^q$-Parametrisierung\\
+	 $\Rightarrow$ $M$ ist $d$-dimensionale $C^q$-Mannigfaltigkeit.
+\end{example}
+
+\begin{example}
+	Sei $f\!:D\subset \mathbb{R}^n\to \mathbb{R}^{n-d}$, $D$ offen, $f\in C^q$ ($q\ge 1$), $\rang f'(x) = n-d$ $\forall u\in D$. Definiere \begin{flalign} \tag{\star} M&:= \{ u\in D \mid f(u) = 0 \}&\end{flalign}
+	
+	Fixiere $\tilde{u} = (\tilde{x}, \tilde{y})\in M$, wobei $\tilde{u	} = (x_1, \dotsc, x_d, y_1, \dotsc, y_{n-d})\in \mathbb{R}^n$.
+	
+	\begin{tabularx}{\linewidth}{r@{\ }X}
+		$\star$ $\Rightarrow$ & $f_y(\tilde{x}, \tilde{y})\in \mathbb{R}^{(n-d)\times(n-d)}$ regulär \\
+		$\xRightarrow[\text{Funktion}]{\text{implizite}}$ & $\exists$ Umgebung $V\subset \mathbb{R}^d$ von $\tilde{x}$, Umgebung $W\subset \mathbb{R}^{n-d}$ von $\tilde{y}$ und $\psi \in C^q(V,W)$ mit $(x, \psi(x))\in M$, $\psi: V\to W$ \\
+		$\Rightarrow$ & $\phi: V\subset \mathbb{R}^d \to \mathbb{R}^n$ mit $\phi(x) := (x, \psi(x))$ ist reguläre $C^q$-Parametrisierung, Homöomorphismus und $\phi(V)$ ist Umgebung von $\tilde{u} \in M$ bezüglich M \\
+		$\Rightarrow$ & $M$ ist $d$-dimensionale $C^q$-Mannigfaltigkeit
+	\end{tabularx}
+\end{example}
+\begin{underlinedenvironment}[Bemerkung]
+	$M = \graph f$ und $M=\{f=0\}$ sind grundlegende Konstruktionen von Mannigfaltigkeiten. Jede Mannigfaltigkeit hat -- lokal -- diese Eigenschaft.
+\end{underlinedenvironment}
+
+\begin{proposition}[lokale Darstellung einer Mannigfaltigkeit als Graph]
+	Es gilt
+	
+	\begin{tabularx}{\linewidth}{p{4.5cm}cX}
+		$M\subset\mathbb{R}^n$ ist $d$-dimensionale $C^q$-Mannigfaltigkeit & $\Leftrightarrow$ & $\forall u \in M\,\exists$ Umgebung $U$ von $u$ bezüglich $M$, $W\subset \mathbb{R}^d$ offen, $f\in C^q( W, \mathbb{R}^{n-d})$ und Permutation $\Pi$ von Koordinaten in $\mathbb{R}^n$, sodass
+		
+		$\psi(W) = U$ und $\psi(u) = \Pi(w, f(w))$ $\forall w\in W$
+		
+		(d.h. $U$ ist Graph von $f$).
+	\end{tabularx}
+
+	\begin{underlinedenvironment}[Somit]
+		$M$ ist $C^q$-Mannigfaltigkeit genau dann wenn $M$ lokal Graph einer $C^\infty$-Funktion ist.
+	\end{underlinedenvironment}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\vspace*{\dimexpr-\baselineskip+1mm\relax}
+	\begin{itemize}
+		\item[($\Leftarrow$)] Sei $M$ Mannigfaltigkeit. Fixiere $\tilde{u}\in M$. Sei $\phi\!:\tilde{V}\subset \mathbb{R}^d \to \tilde{U}\subset \mathbb{R}^n$ zugehörige $C^q$-Parametrisierung von $\tilde{u} = \phi(\tilde{x})$.
+		
+		$\phi'(x)$ ist regulär $\Rightarrow$ $\phi'_I (\tilde{x}) \in \mathbb{R}^{d\times d}$ regulär für die Zerlegung von $\phi$ in\begin{flalign*}
+			\phi(x) = \Pi \begin{pmatrix} \phi_{\text{I}}(x) \\ \phi_{\text{II}}(x)\end{pmatrix},\quad \phi_{\text{I}}(x) \in \mathbb{R}^d,\quad \phi_{\text{II}}(x) \in \mathbb{R}^{n-d}
+		\end{flalign*}
+		
+		Zerlege ebenso $u = \Pi(v,w)$, $v\in \mathbb{R}^{d}$, $w\in \mathbb{R}^{n-d}$ (d.h. auch $\tilde{u} = \Pi(\tilde{v}, \tilde{w})$)\par
+		\begin{tabularx}{\linewidth}{r@{\ }X}
+			$\xRightarrow[\text{Funktion}]{\text{Inverse}}$ &
+			Damit existieren\par
+			\begin{minipage}[t]{\linewidth}
+				\begin{itemize}
+					\item $V\subset \tilde{V}$ offen, mit obigem $\tilde{x} \in V$, $W\subset \mathbb{R}^d$ offen, $\tilde{\nu}\in W$
+					\item $\phi^{-1}_{\text{I}}\!\!: W\to V$ als Homöomorphismus, $C^q$-Abbildung, $\phi_{\text{I}}^{-1}(\tilde{\nu}) = \tilde{x}$
+				\end{itemize}
+			\end{minipage}
+			\vspace*{1mm}
+			
+			Definiere $f(v) := \phi_{\text{II}}\big(\phi^{-1}(v)\big)$ $\forall v\in W$. Offenbar ist $f\in C^q(W, \mathbb{R}^{n-d})$ und damit
+			
+			\vspace*{1mm}
+			\hspace*{1em} $\psi(v) := \phi\big(\phi_{\text{I}}^{-1}(v)\big) = \Pi\left[\phi_{\text{I}}\big(\phi_{\text{I}}^{-1}(v)\big),\phi_{\text{II}}\big(\phi_{\text{I}}^{-1}(v)\big)\right] = \Pi(v, f(v))$
+			 \\
+			$\Rightarrow$ & $\psi(\tilde{\nu}) = \Pi(\tilde{v}, \tilde{w}) = \tilde{u}$ und $\psi(W) = \phi(V)\subset M$ \\
+			$\xRightarrow[\text{morphismus}]{\phi \text{ Homöo-}}$ & $\phi(V)$ ist offen in M \\
+			$\Rightarrow$ & $U := \psi(W)$ offen bezüglich $M$ \\
+			$\Rightarrow$ &$U$ ist Umgebung von $\tilde{u}$ bezüglich $M$
+		\end{tabularx}
+		Da $\tilde{u}$ beliebig war, folgt die Behauptung.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Charakterisierung von Mannigfaltigkeiten über umgebenden Raum]
+	Es gilt:
+	
+	\begin{tabularx}{\linewidth}{p{5cm}@{\ }c@{\ }X}
+	Sei $M\subset \mathbb{R}^n$ ist $d$-dimensionale Mannigfaltigkeit & $\Leftrightarrow$ & $\forall u\in M\;\exists$ Umgebung $\tilde{U}$ von $u$ bezüglich dem $\mathbb{R}^n$, $\tilde{V}\subset\mathbb{R}^n$ offen sowie
+	
+	$\tilde{\phi}\!: \tilde{U}\to \tilde{V}$ mit $\tilde{\phi}$ ist $C^q$-Diffeomorphismus und
+	
+	\vspace*{1mm}
+	\hspace*{1em}$\tilde{\phi}(\tilde{U}\cap M) = \tilde{V} \cap (\underbrace{\mathbb{R}^d \times \{ 0 \}}_{\in \mathbb{R}^n})$
+	\end{tabularx}
+\end{proposition}

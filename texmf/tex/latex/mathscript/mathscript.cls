@@ -29,6 +29,12 @@
 	\listadd{\theorem@disable}{#1}
 }
 
+\newif\ifreset@section@after@chapter
+\reset@section@after@chapterfalse
+\DeclareOptionX{sectionreset}{%
+	\reset@section@after@chaptertrue
+}
+
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptionsX
 \LoadClass[ngerman,a4paper]{report}
@@ -44,6 +50,7 @@
 	\ifluatex
 		%new lualatex needs explicit fontspec to draw properly e.g. german umlauts
 		\RequirePackage{fontspec}
+%		\RequirePackage{lua-visual-debug}
 	\else
 		%old pdflatex needs explicitly utf-8-support
 		\RequirePackage[utf8]{inputenc}
@@ -656,7 +663,9 @@ innerleftmargin=10pt,%
 %changes pagestyle; instead of empty page the normal footer is printed
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
 %usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
+\ifreset@section@after@chapter
 \pretocmd{\chapter}{\setcounter{section}{0}}{}{}
+\fi
 
 \pagestyle{fancy}
 \pagenumbering{arabic}
