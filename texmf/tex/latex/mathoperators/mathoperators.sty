@@ -13,6 +13,11 @@
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
 				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
+%fraction with backslash
+\newcommand\bsfrac[2]{%
+	\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
+}
+
 %General newcommands!
 \newcommand{\comp}{\mathbb{C}} % complex set C
 \newcommand{\real}{\mathbb{R}} % real set R
@@ -63,8 +68,11 @@
 \renewcommand{\Re}{\mathfrak{Re}}
 \renewcommand{\Im}{\mathfrak{Im}}
 \renewcommand*{\arraystretch}{1.4}
+
 \newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\qraum}[2]{\sfrac{#1}{#2}}
+\newcommand{\lnkset}[2]{\nicefrac{#1}{#2}} % Menge der Linksnebenklassen
+\newcommand{\rnkset}[2]{\bsfrac{#1}{#2}} % Menge der Rechtsnebenklassen
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -107,5 +115,6 @@
 \DeclareMathOperator{\ggT}{ggT}
 \DeclareMathOperator{\kgV}{kgV}
 \DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\ord}{ord}
 
 \endinput
