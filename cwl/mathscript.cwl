@@ -81,10 +81,14 @@
 \end{underlinedPlain}
 \begin{hint}
 \end{hint}
+\begin{plainenvironment}[title]
+\end{plainenvironment}
 \begin{underlinedenvironment}[title]
 \end{underlinedenvironment}
 \begin{boldEnvironment}[title]
 \end{boldEnvironment}
+\begin{repetition}
+\end{repetition}
 \proplbl{label}#l
 \propref{ref}#r
 \begriff{term}%text

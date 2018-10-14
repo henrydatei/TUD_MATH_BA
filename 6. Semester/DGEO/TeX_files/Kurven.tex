@@ -1,0 +1,239 @@
+\section{Kurven}
+
+\begin{underlinedenvironment}[Konvention]
+	Die Abbildung $\phi\!:U\subset\mathbb{R}^n\to V\subset\mathbb{R}^m$, $U$ und $V$ offen oder abgeschlossen, sind implizit \begriff{glatt} (d.h. $\in C^\infty$) vorausgesetzt, wenn nicht anders bestimmt.
+	
+	Bei abgeschlossenen Mengen sind diese Abbildungen glatt auf einer Umgebung von $U$.
+\end{underlinedenvironment}
+
+\begin{definition}
+	Wenn $U$, $V\subset\mathbb{R}^n$, dann ist $f\!:U\to V$ \begriff{Diffeomorphismus}, wenn $f$ bijektiv ist und $f$, $f^{-1}\in C^\infty$.
+\end{definition}
+
+\begin{definition}
+	Eine (glatte) \begriff{Kurve} $\gamma\!: I\to \mathbb{R}^n$ ist eine glatte Abbildung.
+\end{definition}
+
+\begin{example}
+	$\gamma(t) = (\cos t, \sin t)$, $t\in [0,2\pi)$, $\gamma:[0,2\pi)\to\mathbb{R}^2$
+\end{example}
+
+\section{Länge einer Kurve}
+\begin{definition}
+	Sei $\gamma\!:I=[a,b]\to \mathbb{R}^n$ eine stetige Kurve. Dann \begin{align}
+		L(\gamma) := \sup \left\lbrace \left. \sum_{i=0}^{N-1} \Vert \gamma(t_{i+1}) - \gamma(t_i) \Vert \;\right|\; a = t_0 \le t_1 \le t_2 \le \dotsc \le t_N = b,\; n\in\mathbb{N}\right\rbrace \in [0,\infty]
+	\end{align}
+	$L(\gamma)$ heißt \begriff{Länge} der Kurve $\gamma$. $\gamma$ heißt \begriff{rektifizierbar}, wenn $L(\gamma) < \infty$.
+\end{definition}
+
+\begin{underlinedenvironment}[Bemerkung]
+	Wenn $\gamma\!:I\to\mathbb{R}^n$ stetige Kurve ist, wobei $I$ halboffen / offen ist, definiert man $L(\gamma)$ als Supremum der Längen über abgeschlossene Teilintervalle: \begin{align}
+		L(\gamma) := \sup\limits_{[a,b]\subset I} L\left(\left.\gamma_{\rule{0pt}{2mm}}\right|_{[a,b]}\right)
+	\end{align}
+\end{underlinedenvironment}
+
+\begin{proposition}
+	Sei $\gamma:I\to\mathbb{R}^n$ glatte Kurve. Dann gilt: \begin{align}
+		L(\gamma) = \int_a^b \Vert \dot{\gamma}(t)\Vert\, \mathrm{d}t, \quad \dot{\gamma}(t) := \frac{\mathrm{d}\gamma}{\mathrm{d}t}
+	\end{align}
+\end{proposition}
+
+\begin{underlinedenvironment}[Bemerkung]
+	Eigentlich reicht hier $C^1$.
+\end{underlinedenvironment}
+
+\begin{repetition}
+	\begin{itemize}
+		\item Gleichmäßige Stetigkeit:
+		
+		Sei $f\!:D\subset X\to Y$, $X$, $Y$ metrische Räume, $D$ offen. $f$ ist gleichmäßig stetig auf $M\subset D$, falls \begin{align*}
+			\forall \epsilon > 0\;\exists \delta > 0: d\big( f(x), f(\tilde{x})\big) < \epsilon \quad\forall x, \tilde{x}\in M \text{ mit } d(x,\tilde{x}) < \delta
+		\end{align*}
+		\item Zwischenwertsatz:
+		
+		Sei $f\!:D\subset\mathbb{R}^n\to \mathbb{R}$, $D$ offen, $f$ differenzierbar auf $D$ und seien $x$, $y\in D$ mit $[x,y]\subset D$. Dann \begin{align*}
+			\exists \xi \in (x,y): f(y) - f(x) = f'(\xi) \cdot (y - x),
+		\end{align*}
+		wobei $[x,y] := \{ x + t(y - x) \mid t\in [0,1]\}$
+		\item Schrankensatz:
+		
+		Sei $f\!:D\subset K^n\to K^m$, $D$ offen, $f$ differenzierbar auf D. Seien $x,y\in D$, $[x,y]\subset D$. Dann: \begin{align*}
+			\exists \xi \in (x,y): \vert f(x) - f(y) \vert \le f'(\xi) (y - x) \le \Vert f'(\xi) \Vert \cdot \vert y - x\vert
+		\end{align*}
+		
+		\item Mittelwertsatz der Integralrechnung
+		
+		Sei $M\subset\mathbb{R}^n$ kompakt und zusammenhängend, und sei $f\!:M\to\mathbb{R}$ stetig \begin{align*}
+			\Rightarrow \exists \xi\in M: \int_M f\;\mathrm{d}x = f(\xi) \cdot \vert M \vert
+		\end{align*}
+	\end{itemize}
+\end{repetition}
+
+\begin{proof}\hspace*{0pt}
+	\vspace*{\dimexpr-\baselineskip+1mm\relax}
+	\begin{enumerate}[label={\arabic*)}]
+		\item Die Größe $\sum_{i=0}^N \Vert \gamma(t_{i+1}) - \gamma(t_i)\Vert$, die in der Definition der Länge vorkommt, wird immer größer, wenn man die Zerlegung des Intervalls verfeinert, also Punkte hinzufügt (Dreiecksungleichung!)
+		\item Es reicht, anzunehmen, dass $I$ abgeschlossen ist, weil für offene / halboffene Intervalle $I$ beide Seiten gleich dem Suprema über abgeschlossene Teilintervalle ist
+		\item Für glatte Funktionen $\gamma\!: I=[c,d] \to \mathbb{R}^n$ gilt der Schrankensatz: \begin{align*}
+			\Vert \gamma(c) - \gamma(d) \Vert \le \left(\sup\limits_{t\in [c,d]} \Vert \dot{\gamma}(t)\right) \Vert \cdot (d-c)
+		\end{align*}
+	\end{enumerate}
+	Damit gilt: \begin{align*}
+		&\sum_{i=0}^{N-1} \Vert \gamma(t_{i+1}) - \gamma(t_i)\Vert \le \sum_{i=0}^{N-1} \sup\limits_{[t_i, t_{i+1}]} \Vert \dot{\gamma})(t)\Vert \cdot ( t_{i+1} - t_i)\le \sup\limits_{t\in I=[a,b]} \Vert \dot{\gamma}(t) \Vert \cdot (b - a) \\
+		\Rightarrow\;\;& L(\gamma) \le \sup\limits_{t\in[a,b]} \Vert \dot{\gamma}(t)\Vert \cdot (b- a) < \infty
+	\end{align*}
+	
+	Sei nun $\epsilon > 0$ beliebig, $a = t_0 < t_1 < \dotsc < t_N = b$ eine Zerlegung des Intervalls, so ist \begin{align*}
+		L(\gamma) - \sum_{i=0}^{N-1} \Vert \gamma(t_{i+1}) - \gamma(t_i) \Vert < \epsilon
+	\end{align*}
+	Sei nun $\gamma(t) = \big(\gamma_j(t)\big)_{j=1}^n$, $\gamma_j\!:I\to\mathbb{R}$ eine $C^\infty$-Funktion, dann gibt es nach dem Mittelwertsatz $\forall i\in \{ 1,\dotsc, N \}$ ein $\tau^{(j)}_i\in [t_i, t_ {i+1}]$, sodass \begin{align*}
+		\gamma_j(t_{i+1}) - \gamma_j(t_i) = \dot{\gamma_j}\left(\tau_i^{(j)}\right)(t_{i+1} - t_i),\quad j=1,\dotsc, n.
+	\end{align*}
+	Auf der anderen Seite gilt nach dem dem Mittelwertsatz der Integralrechnung \begin{align*}
+		\exists \tilde{\tau}_i\in [t_{i},t_{i+1}]: \int_{t_i}^{t_{i+1}} \Vert \dot{\gamma}(t)\Vert  \;\mathrm{d}t = \dot{\gamma}(\tilde{\tau}_i)\cdot(t_{i+1}-t_i)
+	\end{align*}
+	Es folgt: \begin{align*}
+		\int_{t_i}^{t_{i+1}} \Vert \dot{\gamma}(t)\Vert \;\mathrm{d}t - \Vert \gamma(t_{i+1}) - \gamma(t_i) \Vert = (t_{i+1} - t_i) \underbrace{\left\lbrace \Vert \dot{\gamma}(\tilde{\tau}_i)\Vert - \sqrt{\sum_{j=1}^{N}\dot{\gamma}_j\left( \tau_i^{(j)}\right)}  \right\rbrace}_{(\star)}
+	\end{align*}
+	Da $\gamma$ als glatt vorausgesetzt war, ist $j$ gleichmäßig stetig auf $I=[a,b]$, daher gilt: \begin{align}
+		\tag{\star\star} \forall \epsilon > 0\;\exists \delta > 0: [t_{i+1}-t_i] < \delta \Rightarrow \vert (\star)\vert < \epsilon
+	\end{align}
+	Wenn wir die Zerlegung des Intervalls verkleinern, sodass $\vert t_{i+1} - t_i\vert < \delta$ $\forall i$, dann gilt $(\star\star)$ (nach Bemerkung 1) am Anfang des Beweises) sowie $\vert (\star)\vert < \epsilon$ $\forall i=1,\dotsc, N$. Es folgt \begin{align*}
+		\left| \int_a^b \Vert \dot{\gamma}(t)\Vert \;\mathrm{d}t - L(\gamma)\right| &= \left| \sum_{i=0}^{N-1} \left( \int_{t_i}^{t_{i+1}} \Vert \dot{\gamma}(t)\Vert\;\mathrm{d}t - \Vert \gamma(t_{i+1}) - \gamma(t_i)\Vert \right) + \sum_{i=1}^{N}\Vert \gamma(t_{i+1}) - \gamma(t_i)\Vert - L(\gamma) \right| \\
+		&\le \sum_{i=0}^{N-1} (t_{i+1} - t_i)\cdot \epsilon + \epsilon = (b - a) \cdot \epsilon + \epsilon
+	\end{align*}
+	Da $\epsilon > 0$ beliebig war, folgt die Gleichheit.
+\end{proof}
+
+\begin{underlinedenvironment}[Bemerkung]
+	Die Länge einer Kurve sollte eine geometrische Größe sein, d.h. sie sollte von der Parametrisierung nicht abhängen.
+	Umparametrisierung der Kurve: wenn $\gamma\!: I\to\mathbb{R}^n$ eine glatte Kurve ist, $\phi\!:I\subset\mathbb{R}\to J\subset\mathbb{R}$ eine glatte, bijektive Abbildung mit glattem $\phi^{-1}$ ist, dann ist auch $\tilde{\gamma}:= \gamma\circ\phi^{-1}$ auch eine glatte Kurve (sie heißt \begriff{Umparametrisierung} von $\gamma$ durch $\phi$).
+	
+	Intuitiv denkt man, dass die Eigenschaften von $\gamma$ und $\tilde{\gamma}$ gleich sein müssen -- bei $\tilde{\gamma}$ "`fließt die Zeit nur anders"'.
+	
+	Tatsächlich gilt: $L(\gamma) = L(\gamma\circ \phi^{-1})$ in obiger Situation.
+\end{underlinedenvironment}
+\begin{underlinedenvironment}[Bemerkung]
+	Für die Umparametrisierung findet sich: entweder ist $\phi' > 0$ oder $\phi' < 0$ auf dem Inneren von $I$. Ist $\phi' > 0$, so heißt $\phi$ \begriff{orientierungserhaltend}, sonst \begriff{orientierungsumkehrend}.
+\end{underlinedenvironment}
+\begin{plainenvironment}[Beobachtung]
+	Wenn $\dot{\gamma}(t_0) = 0$, $\phi\!:I\to J$ Umparametrisierung $\Rightarrow$ $(\gamma\circ\phi^{-1})\big(\phi(t_0)\big) = 0$
+\end{plainenvironment}
+
+\begin{definition}
+	Eine Kurve $\gamma\!:I\to\mathbb{R}^n$ heißt \begriff{regulär}, wenn $\dot{\gamma}(t) \neq 0$ $\forall t\in I$.
+\end{definition}
+
+\begin{example}\hspace*{0pt}
+	\vspace*{\dimexpr-\baselineskip+1mm\relax}
+	\begin{enumerate}[label={\arabic*)}]
+		\item $\gamma(t) = (t^3, t^6)$, $t\in\mathbb{R}$. $\dot{\gamma}(0) = 0$ $\Rightarrow$ nicht regulär\\
+		$\gamma_2(t) = (t, t^2)$ $\rightarrow$ regulär
+		\item $\gamma(t) = (t^2, t^6), t\in \mathbb{R}$, $\gamma(t) = (t^2, t^5)$ nicht regulär
+	\end{enumerate}
+\end{example}
+\begin{underlinedenvironment}[Bemerkung]
+	"`regulär"' ist eine echte Einschränkung, aber in der Praxis sind die meisten Kurven stückweise regulär
+\end{underlinedenvironment}
+
+\begin{definition}
+	Eine Kurve $\gamma\!:I\to\mathbb{R}^n$ heißt \begriff{\person{Frechet}-regulär}, wenn $\forall t\in I$ die Vektoren \begin{align}
+		\dot{\gamma}(t),\;\ddot{\gamma}(t), \;\dotsc, \; \gamma^{(n-1)}(t)
+	\end{align}
+	linear unabhängig sind.
+\end{definition}
+
+\begin{underlinedenvironment}[Bemerkung]
+	Für $n=2$ ist es einfach die Bedingung der Regularität.
+\end{underlinedenvironment}
+
+Warum steht in der Definition $n-1$ anstannt $n$? Wir möchten eigentlich auf $\dot{\gamma}$, $\ddot{\gamma}$, $\dotsc$, $\gamma^{(n-1)}$ das \person{Gram}-\person{Schmidt}-Verfahren anwenden, aber so, dass die resultierende orthonormale Basis positiv orientiert ist bezüglich der Standardbasis $\mathcal{E}$ des $\mathbb{R}^n$.
+
+\begin{repetition}
+	\begin{*definition}
+		Eine Basis $\mathcal{B}$ im $\mathbb{R}^n$ heißt \begriff{positiv orientert} bezüglich der Standardbasis $\mathcal{E}$, wenn $\det T_{\mathcal{B}}^{\mathcal{E}} > 0$, sonst \begriff{negativ orientiert}.
+	\end{*definition}
+	\begin{underlinedenvironment}[$n=2$]
+		$n$-ter Vektor durch die Bedingung "`positiv orientiert"' bereits festgelegt.
+	\end{underlinedenvironment}
+\end{repetition}
+
+\begin{conclusion}[\person{Gram}-\person{Schmidt}-Verfahren]
+	Seien $v_1$, $\dotsc$, $v_{n-1}\in\mathbb{R}^n$ linear unabhängig. Dann existiert genau eine positiv orientierte Orthonormalbasis (bezüglich der Standardbasis) $e_1, \dotsc, e_n$ mit folgenden Eigenschaften:\begin{enumerate}[label={\arabic*)}]
+		\item $\forall i\in\{1,\dotsc, n-1\}$: $\Span (e_1,\dotsc,e_i) = \Span(v_1,\dotsc,v_i)$
+		\item $\forall i\in \{1,\dotsc,n-1\}$: $\langle e_i,v_i\rangle = 0$
+	\end{enumerate}
+\end{conclusion}
+\begin{proof}[Skizze]
+	Wende das \person{Gram}-\person{Schmidt}-Verfahren von $_1,\dotsc,v_{n1-}$ an $\Rightarrow$ existiert eindeutige $e_1,\dotsc,e_{n-1}$ mit obigen Eigenschaften.
+	
+	$e_n$ ist durch die $e_1,\dotsc,e_{n-1}$ und die Orientierungsbedingung eindeutig festgelegt.
+\end{proof}
+
+\begin{underlinedenvironment}[Bemerkung]
+	Nach dem \person{Gram}-\person{Schmidt}-Formeln hängen die Vektoren $e_1,\dotsc,e_n$ glatt von den $v_1,\dotsc,v_n$ ab.
+\end{underlinedenvironment}
+
+\begin{definition}
+	Sei $\gamma\!:I\to\mathbb{R}^n$ eine \person{Frenet}-Kurve. Das (begleitende) \begriff{\person{Frenet}-$n$-Bein} von $\gamma$ ist die (glatte) Familie von Vektoren $e_i\!:I\to\mathbb{R}^n$, $i=1\dotsc,n$, die aus den \person{Gram}-\person{Schmidt}-Verfahren angewandt auf $\dot{\gamma}(t)$, $\ddot{\gamma}(t)$, $\dotsc$, $\gamma^{(n-1)}(t)$, $t\in I$ entstehen.
+\end{definition}
+
+\begin{definition}
+	Eine Kurve $\gamma\!:I\to\mathbb{R}^n$ heißt nach der \begriff{Bogenlänge}\begriff*{Länge} parametrisiert, wenn $\Vert \dot{\gamma}(t)\Vert = 1$ $\forall t\in I$.
+\end{definition}
+
+\begin{underlinedenvironment}[Bemerkung]
+	In diesem Fall gilt $\forall a < b\in I$: $L(\gamma) = b - a$.\\
+	Wenn $\gamma\!:I\to\mathbb{R}$ regulär ist, dann ist \begin{align*}
+		s(t) = \int_c^t \Vert \dot{\gamma}(t)\Vert\;\mathrm{d}\tau = L\left( \left.\gamma_{\rule{0pt}{2mm}}\right|_{[c,t]}\right)
+	\end{align*}
+	eine Umparametrisierung $s\!:[c,d]\to [0,L(\gamma)]$, d.h. jede reguläre Kurve besitzt eine positiv orientierte Parametrisierung nach der Bogenlänge.
+\end{underlinedenvironment}
+
+\begin{underlinedenvironment}[Beobachtung]
+	Ist $\gamma$ nach der Bogenlänge parametrisiert, ist $e_1(t) = \dot{\gamma}(t)$ $\forall t\in I$.
+	
+	Weiterhin ist \begin{align*}
+		&1 = \Vert \dot{\gamma}(t)\Vert^2 = \langle \dot{\gamma}(t), \dot{\gamma}(t) \rangle &
+		\xRightarrow[]{\frac{\mathrm{d}}{\mathrm{d}t}} \;& 0 = 2 \langle \ddot{\gamma}(t), \dot{\gamma}(t)\rangle &
+		\Rightarrow\;& \ddot{\gamma}(t) \perp \dot{\gamma}(t)
+	\end{align*}
+	Für $n=2$ folgt: $\ddot{\gamma}(t) = \kappa (t) e_2(t)$, $\kappa\!:I\to\mathbb{R}$ glatt.
+\end{underlinedenvironment}
+
+\begin{example}
+	Sei $\gamma(t) = (R\cos t, R\sin t)$, $t\in [0,2\pi)$. $\Vert \dot{\gamma}(t)\Vert = R$.
+	
+	Parametrisierung nach Bogenlänge: \begin{align*}
+		\gamma(s) &= \left(R\cos \frac{s}{R}, R\sin \frac{s}{R}\right),\quad s\in[0,2\pi R]\\
+		\dot{\gamma}(s) &= \left(-\sin \frac{s}{R},\cos\frac{s}{R} \right)&
+		\ddot{\gamma}(s) &= \left(- \frac{1}{R}\cos \frac{s}{R}, -\frac{1}{R}\sin \frac{s}{R}\right) \\
+		e_1(s) &= (-\sin s, \cos s) & e_2(s) &= (-\cos s, -\sin s)\\
+		\kappa(t) &= \frac{1}{R}
+	\end{align*}
+\end{example}
+
+\begin{definition}
+	Sei $\gamma\!:I\to\mathbb{R}$ nach der Bogenlänge parametrisiert. Dann heißt die (eindeutig bestimmte) Funktion $\kappa\!:I\to\mathbb{R}$ mit $\ddot{\gamma}(t) = \kappa(t) \cdot e_2(t)$ die \begriff{Krümmungsfunktion} von $\gamma$.
+\end{definition}
+
+\begin{proposition}[\person{Frenet}, Hauptsatz der Kurventhoerie]
+	Sei $\gamma\!:I\to\mathbb{R}^n$ eine \person{Frenet}-Kurve, parametrisiert nach der Bogenlänge. Dann existieren (glatte) Funktionen $\kappa_1, \dotsc, \kappa_1{n-2}\!:I\to(0,\infty$ und $\kappa_1{n-1}\!:I\to\mathbb{R}$, sodass das begleitende \person{Frenet}-$n$-Bein $e_1,\dotsc, e_n$ folgende Differentialgleichungen erfüllt: \begin{equation}
+		\begin{gathered}
+			\begin{aligned}
+			\dot{e_1} &= \kappa_1 e_2 \\
+			\dot{e}_i &= \kappa_i e_{i+1} - \kappa_1{i-1},\quad i=2,\dotsc,n-1\\
+			\dot{e}_n &= -\kappa_1{n-1} e_{n-1}
+			\end{aligned}
+		\end{gathered}
+	\end{equation}
+	($\kappa_1,\dotsc,\kappa_{n-1}$ heißen \person{Frenet}-Krümmungen von $\gamma$)
+	
+	Umgekehrt: gegeben sei
+	\begin{itemize}
+		\item $t_0\in\mathbb{R}$, $p\in\mathbb{R}^n$,
+		\item eine positiv orientierte Orthonormalbasis $e_1^{(0)}, \dotsc, e_n^{(0)}$ in $\mathbb{R}^n$, sowie
+		\item glatte Funktionen $\kappa_1,\dotsc,\kappa_{n-2}\!:[t_0,d]\to(0,\infty)$, $\kappa_{n-1}\!:[t_0,d]\to\mathbb{R}$,
+	\end{itemize}
+	dann existiert genau eine \person{Frenet}-Kurve $\gamma\![t_0,d]\to\mathbb{R}^n$ mit Krümmungen $\kappa_1,\dotsc,\kappa_{n-1}$ und $\gamma(t_0) = p$, $e_i(t_0) = e_i^{(0)}$ $\forall i=1,\dotsc,n$.
+\end{proposition}

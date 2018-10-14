@@ -1,0 +1,45 @@
+\documentclass[ngerman,a4paper,order=firstname,sectionreset]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+\title{\textbf{Differentialgeometrie WS2018/19 + SS2019}}
+\author{Dozent: Dr. Vadim Alekseev}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+
+\chapter{Kurven, Länge von Kurven, Parametrisierung}
+\input{./TeX_files/Kurven}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+\chapter{Listen}
+\section{Liste der Theoreme}
+\theoremlisttype{allname}
+\listtheorems{theorem}
+
+\pagebreak
+\section{Liste der benannten Sätze}
+\theoremlisttype{optname}
+\listtheorems{proposition}
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
