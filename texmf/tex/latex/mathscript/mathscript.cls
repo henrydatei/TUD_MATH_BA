@@ -30,9 +30,9 @@
 }
 
 \newif\ifreset@section@after@chapter
-\reset@section@after@chapterfalse
+\reset@section@after@chaptertrue
 \DeclareOptionX{sectionreset}{%
-	\reset@section@after@chaptertrue
+	\reset@section@after@chapterfalse
 }
 
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -660,7 +660,7 @@
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
 %usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
 \ifreset@section@after@chapter
-\pretocmd{\chapter}{\setcounter{section}{0}}{}{}
+	\pretocmd{\chapter}{\setcounter{section}{0}}{}{}
 \fi
 
 \pagestyle{fancy}
