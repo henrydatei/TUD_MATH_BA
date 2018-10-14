@@ -139,15 +139,52 @@ Nach einem Resultat von \person{Erdös}/\person{Vertesi} (1980) gilt sogar, dass
 \begin{example}[\person{Runge}]
 	$f:\real\to\real$, $f(x)=\frac{1}{1+25x^2}$ \\
 	äquidistante Stützstellen $x_0,...,x_n$, $p\in\Pi_n$ als Interpolationspolynom
+	\begin{center}
+		\begin{tabular}{l|p{8cm}}
+			\textbf{Stützstellen} & \textbf{interpoliertes Polynom} \\
+			\hline
+			2 & $1-\frac{25x^2}{26}$ \\
+			\hline
+			4 & $3,31565x^4 - 4,27719x^2 + 1$ \\
+			\hline
+			8 & $53,6893x^8 - 102,815x^6 + 61,3672x^4 - 13,203x^2 + 1$ \\
+			\hline
+			16 & $15403,1x^{16} - 49713,5x^{14} + 63743,8x^{12} - 41870x^{10} + 15206x^8 - 3100,35x^6 + 351,984x^4 - 22,7759x^2 + 1$
+		\end{tabular}
+	\end{center}
 	\begin{center}\begin{tikzpicture}
 		\begin{axis}[
-		xmin=-1.5, xmax=1.5, xlabel=$x$,
-		ymin=-1.5, ymax=1.5, ylabel=$y$,
-		samples=400,
+		xmin=-1, xmax=1, xlabel=$x$,
+		ymin=-1.5, ymax=3, ylabel=$y$,
+		samples=1200,
 		axis y line=middle,
 		axis x line=middle,
+		width=0.9\textwidth,
+		height=0.5\textheight,
+		restrict x to domain=-1:1,
+		restrict y to domain=-1.5:2
 		]
-		\addplot+[mark=none] {1/(1+25*x^2)};
+		\addplot+[mark=none, line width=1mm] {1/(1+25*x^2)};
+		\addlegendentry{Runge-Funktion}
+		\addplot+[mark=none] {1-(25*x^2)/(26)};
+		\addlegendentry{Interpolation 2 Stützstellen}
+		\addplot+[mark=none, color=darkgreen] {3.31565*x^4 - 4.27719*x^2 + 1};
+		\addlegendentry{Interpolation 4 Stützstellen}
+		\addplot+[mark=none, color=black] {53.6893*x^8 - 102.815*x^6 + 61.3672*x^4 - 13.203*x^2 + 1};
+		\addlegendentry{Interpolation 8 Stützstellen}
+		\addplot+[mark=none, color=lime] {15403.1*x^16 - 49713.5*x^14 + 63743.8*x^12 - 41870*x^10 + 15206*x^8 - 3100.35*x^6 + 351.984*x^4 - 22.7759*x^2 + 1};
+		\addlegendentry{Interpolation 16 Stützstellen}
 		\end{axis}
 		\end{tikzpicture}\end{center}
 \end{example}
+
+\begin{*anmerkung}
+	Wer mit Mathematica selber diese Polynome berechnen will, muss folgende Befehle benutzen:
+	\begin{itemize}
+	\item Funktion definieren: \verb|f[x_]:=1/(1+25x^2)|
+	\item Interpolationspolynome ausrechnen: \texttt{Expand[InterpolatingPolynomial[Table[\{i,f[i]\},} \\
+	\texttt{\{i,-1,-1,Schrittweite\}],\{x\}]]}
+	\item plotten: \texttt{Plot[{f[x],InterpolatingPolynomial[Table[\{i,f[i]\},\{i,-1,-1,Schrittweite\}} \\
+	\texttt{],\{x\}]},\{x,-1,1\}]}
+	\end{itemize}
+\end{*anmerkung}
