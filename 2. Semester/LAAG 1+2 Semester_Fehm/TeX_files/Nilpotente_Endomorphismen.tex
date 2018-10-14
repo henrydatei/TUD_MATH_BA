@@ -33,7 +33,7 @@ Da $\dim_K(V)=n<\infty$ gibt es ein $d$ mit $\Ker(f^d)=\Ker(f^{d+i})$ und $\Imag
 
 \begin{proposition}[Lemma von \person{Fitting}]
 	\proplbl{satz_6_4}
-	Seien $V_i=\Ker(f^i)$, $W_i=\Image(f^i)$, $d=\min\{i:V_i=V_{i+1}\}$. Dann sind 
+	Seien $V_i=\Ker(f^i)$, $W_i=\Image(f^i)$, $d=\min\{i\mid V_i=V_{i+1}\}$. Dann sind 
 	\begin{align}
 		\{0\}&=V_0\subsetneq V_1\subsetneq ...\subsetneq V_d=V_{d+1}=...\notag \\
 		V&= W_0\supsetneq W_1\supsetneq ... \supsetneq W_d=W_{d+1}=...\notag
@@ -41,7 +41,7 @@ Da $\dim_K(V)=n<\infty$ gibt es ein $d$ mit $\Ker(f^d)=\Ker(f^{d+i})$ und $\Imag
 	Folgen $f$-invarianter UVR und $V=V_d\oplus W_d$.
 \end{proposition}
 \begin{proof}
-	Da $f^i$ und $f^j$ für beliebige $i,j$ kommutieren, sind $V_i$ und $V_j$ nach \propref{lemma_6_3} $f$-invariant für jedes $i$. Aus $\dim_K(V_i)+\dim_K(W_i)=n$ folgt $d=\min\{i:W_i=W_{i+1}\}$, insbesondere ist $\Image(f^d)=\Image(f^{d+1})=f(\Image(f^d))$, somit $W_{d+i}=\Image(f^{d+i})=W_d$ für $i\ge 0$, also auch $V_d=V_{d+i}$ für alle $i\ge 0$. \\
+	Da $f^i$ und $f^j$ für beliebige $i,j$ kommutieren, sind $V_i$ und $V_j$ nach \propref{lemma_6_3} $f$-invariant für jedes $i$. Aus $\dim_K(V_i)+\dim_K(W_i)=n$ folgt $d=\min\{i\mid W_i=W_{i+1}\}$, insbesondere ist $\Image(f^d)=\Image(f^{d+1})=f(\Image(f^d))$, somit $W_{d+i}=\Image(f^{d+i})=W_d$ für $i\ge 0$, also auch $V_d=V_{d+i}$ für alle $i\ge 0$. \\
 	Insbesondere ist $f^d\vert_{W_d}:W_d\to W_{2d}=W_d$ surjektiv, also auch injektiv, also $V_d\cap W_d=\{0\}$. Aus der Dimensionsformel II.4.12 folgt dann $\dim_K(V_d+W_d)=\dim_K(V_d)+\dim_K(W_d)=\dim_K(V)$. Folglich ist $V_d+W_d=V$ und $V_d\cap W_d=\{0\}$, also $V=V_d\oplus W_d$.
 \end{proof}
 

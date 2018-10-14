@@ -29,6 +29,12 @@
 	\listadd{\theorem@disable}{#1}
 }
 
+\newif\ifreset@section@after@chapter
+\reset@section@after@chapterfalse
+\DeclareOptionX{sectionreset}{%
+	\reset@section@after@chaptertrue
+}
+
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptionsX
 \LoadClass[ngerman,a4paper]{report}
@@ -87,6 +93,7 @@
 %further support for different equation setting
 \RequirePackage{cancel}
 \RequirePackage{xfrac}		%sfrac -> fractions e.g. 3/4
+\RequirePackage{nicefrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Graphics-related packages
@@ -488,12 +495,8 @@
 
 %declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
-	\IfBooleanTF{#1}%
-		{\index{#2#3#4}}%
-		{%
-			\uline{#3}%
-			\index{#2#3#4}%
-		}%
+	\index{#2#3#4}%
+	\IfBooleanTF{#1}{}{\uline{#3}\ }%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
@@ -656,7 +659,9 @@
 %changes pagestyle; instead of empty page the normal footer is printed
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
 %usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
+\ifreset@section@after@chapter
 \pretocmd{\chapter}{\setcounter{section}{0}}{}{}
+\fi
 
 \pagestyle{fancy}
 \pagenumbering{arabic}

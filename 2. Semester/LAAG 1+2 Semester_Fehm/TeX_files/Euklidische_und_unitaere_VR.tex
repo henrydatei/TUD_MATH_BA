@@ -38,16 +38,16 @@
 	Im Fall $K=\comp$: ÜA
 \end{proof}
 
-\begin{definition}[(semi)definit, euklidischer VR, unitärer VR]
+\begin{definition}[(semi)definit, euklidischer Vektorraum, unitärer Vektorraum]
 	Sei $s$ eine hermitesche Sesquilinearform auf $V$. Ist $s(x,x)\ge 0$ für alle $x\in V$, so heißt $s$ \emph{positiv} \begriff{semidefinit}. Ist $s(x,x)>0$ für alle $0\neq x\in V$, so heißt $s$ \emph{positiv} \begriff{definit} (oder ein \emph{Skalarprodukt}).
 	
 	Eine hermitesche Matrix $A\in\Mat_n(K)$ heißt \emph{positiv (semi)definit}, wenn $s_A$ dies ist.
 	
-	Einen endlichdimensionalen $K$-VR zusammen mit positiv definiten hermiteschen Sesquilinearformen nennt man einen \begriff{euklidischen} bzw. \begriff{unitären} VR (oder auch \emph{Prähilbertraum}). Wenn nicht anderes angegeben, notieren wir die Sesquilinearform mit $\skalar{\cdot}{\cdot}$.
+	Einen endlichdimensionalen $K$-Vektorraum zusammen mit positiv definiten hermiteschen Sesquilinearformen nennt man einen \begriff{euklidischen} bzw. \begriff{unitären} Vektorraum (oder auch \emph{Prähilbertraum}). Wenn nicht anderes angegeben, notieren wir die Sesquilinearform mit $\skalar{\cdot}{\cdot}$.
 \end{definition}
 
 \begin{example}
-	Der Standardraum $V=K^n$ zusammen mit dem Standardskalarprodukt ist ein euklidischer bzw. unitärer VR.
+	Der Standardraum $V=K^n$ zusammen mit dem Standardskalarprodukt ist ein euklidischer bzw. unitärer Vektorraum.
 \end{example}
 
 \begin{example}
@@ -55,21 +55,21 @@
 \end{example}
 
 \begin{proposition}
-	Ist $V$ ein unitärer VR und $U\subseteq V$ ein UVR, so ist $U$ mit der Einschränkung des Skalarprodukts wieder ein unitärer VR.
+	Ist $V$ ein unitärer Vektorraum und $U\subseteq V$ ein Untervektorraum, so ist $U$ mit der Einschränkung des Skalarprodukts wieder ein unitärer Vektorraum.
 \end{proposition}
 \begin{proof}
 	klar, die Einschränkung ist wieder positiv definit.
 \end{proof}
 
 \begin{definition}
-	Ist $V$ ein unitärer VR, so definiert man die Norm von $x\in V$ als
+	Ist $V$ ein unitärer Vektorraum, so definiert man die Norm von $x\in V$ als
 	\begin{align}
 		\Vert x\Vert = \sqrt{\skalar{x}{x}}\in\real_{\ge 0}\notag
 	\end{align}
 \end{definition}
 
 \begin{proposition}
-	Die Norm eines unitären VR erfüllt die folgenden Eigenschaften:
+	Die Norm eines unitären Vektorraums erfüllt die folgenden Eigenschaften:
 	\begin{itemize}
 		\item Für $x\in V$ ist $\Vert x\Vert =0\iff x=0$
 		\item Für $x\in V$ und $\lambda\in K$ ist $\Vert \lambda x\Vert=\vert \lambda\vert \cdot \Vert x\Vert$
@@ -85,7 +85,7 @@
 \end{proof}
 
 \begin{proposition}
-	Ist $V$ ein unitärer VR, so gilt für $x,y\in V$:
+	Ist $V$ ein unitärer Vektorraum, so gilt für $x,y\in V$:
 	\begin{align}
 		\vert \skalar{x}{y}\vert \le \Vert x\Vert\cdot \Vert y\Vert\notag
 	\end{align}
