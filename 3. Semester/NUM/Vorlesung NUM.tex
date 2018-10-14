@@ -1,4 +1,4 @@
-\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\documentclass[ngerman,a4paper,order=firstname,sectionreset]{../../texmf/tex/latex/mathscript/mathscript}
 \usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
 
 \title{\textbf{Numerik WS2018/19}}
@@ -57,6 +57,16 @@
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
 \appendix
+
+\chapter{Listen}
+\section{Liste der Theoreme}
+\theoremlisttype{allname}
+\listtheorems{theorem}
+
+\pagebreak
+\section{Liste der benannten Sätze, Lemmata und Folgerungen}
+\theoremlisttype{optname}
+\listtheorems{proposition,lemma,conclusion}
 
 %\printglossary[type=\acronymtype]
 
