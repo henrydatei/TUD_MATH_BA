@@ -350,6 +350,10 @@
 
 \newtheorem{overview}[theorem]{Überblick}
 
+\newmdtheoremenv[
+	outerlinewidth=0.1pt,
+]{repetition}{Wiederholung}
+
 %various unnumbered thereoms and environment (usually included in theorems like above)
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
 %to achieve the underlining, this needed to put in the theoremstyle definition
@@ -367,6 +371,9 @@
 \newtheoremstyle{underlinedPlain}%
 {\item[\hskip\labelsep \uline{\theorem@headerfont ##1\theorem@separator}]}%
 {\item[\hskip\labelsep \uline{\theorem@headerfont ##1\ \theorem@headerfont(##3)\theorem@separator}]}
+
+\newtheoremstyle{plainEnvironment}{}%
+{\item[\hskip\labelsep {##1\theorem@headerfont ##3\theorem@separator}]}
 
 \newtheoremstyle{underlinedEnvironment}{}%
 {\item[\hskip\labelsep \uline{##1\theorem@headerfont ##3\theorem@separator}]}
@@ -391,6 +398,15 @@
 	innerrightmargin=0,%
 	skipbelow=0pt,%
 ]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
+
+\theoremstyle{plainEnvironment}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+	innerbottommargin=0pt,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{plainenvironment}{\hspace*{\dimexpr -\mdflength{innerleftmargin}\relax}}
 
 \theoremstyle{underlinedEnvironment}
 \newmdtheoremenv[%
@@ -659,7 +675,7 @@
 %changes pagestyle; instead of empty page the normal footer is printed
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
 %usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
-\ifreset@section@after@chapter
+\ifreset@section@after@chapter\else
 	\pretocmd{\chapter}{\setcounter{section}{0}}{}{}
 \fi
 
