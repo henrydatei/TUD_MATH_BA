@@ -1,1 +1,71 @@
 \section{Interpolation durch Polynomsplines}
+
+\subsection{Polynomsplines}
+
+Zur Abkürzung bezeichne $\Delta$ eine Zerlegung des Intervall $[a,b]$ durch die Stützstellen $a=:x_0<...<x_n:=b$.
+
+\begin{definition}[Polynomspline]
+	Ein \begriff{Polynomspline} vom Grad $m\in\natur$ und Glattheit $l\in\natur$ zur Zerlegung $\Delta$ ist eine Funktion $s\in C^l[a,b]$ mit
+	\begin{align}
+		s_k := s\vert_{[x_k,x_{k+1}]}\in\Pi_n\quad\text{für } k=0,...,n-1\notag
+	\end{align}
+	Dabei bezeichnet $s\vert_{[x_k,x_{k+1}]}$ die Einschränkung von $s$ auf das Intervall $[x_k,x_{k+1}]$. Die Menge aller Splines wird mit $\mathcal{S}^l_m(\Delta)$ bezeichnet.
+	
+	Folglich ist ein Polynomspline $s\in\mathcal{S}^l_m(\Delta)$ auf jedem der Teilintervall $[x_k,x_{k+1}]$ ein Polynom vom Höchstgrad $m$. Außerdem ist $s\in\mathcal{S}^l_m(\Delta)$ in allen Punkten $x\in[a,b]$ (also auch in den Stützstellen) $l$-mal stetig differenzierbar. $\mathcal{S}^l_m(\Delta)$ ist mit der üblichen Addition und Multiplikation ein Vektorraum. Speziell ist $\mathcal{S}^0_1(\Delta)$ die Menge aller stetigen stückweise affin linearen Funktionen.
+\end{definition}
+
+\subsection{Interpolation durch kubische Polynomsplines}
+
+Gegeben sei eine Zerlegung $\Delta$ und die Stützwerte $f_0,...,f_n$. Gesucht ist eine Funktion $s\in\mathcal{S}^l_3(\Delta)$ mit $l=1,2$ derart, dass
+\begin{align}
+	\label{1.6}
+	s(x_k)=f_k\quad\text{für } k=0,...,n
+\end{align}
+Jede derartige Funktion heißt \begriff{kubischer Interpolationspline}.
+
+\textbf{Konstruktion eines solchen Splines:}
+\begin{align}
+	h_k &:= x_{k-1}-x_k\quad\text{für } k=0,...,n-1 \notag \\
+	m_k &:= s'(x_k) \quad\text{für } k=0,...,n-1\notag
+\end{align}
+Wegen $l\in\{1,2\}$ ist $s$ zunächst stetig differenzierbar. Wegen $s_k=s\vert_{[x_k,x_{k+1}]}$ für $k=0,...,n-1$ und $m=3$ kann man folgenden Ansatz für $s_k$ benutzen:
+\begin{align}
+	\label{1.7}
+	s_k(x)=a_k(x-x_k)^3+b_k(x-x_k)^2+c_k(x-x_k)+d_k
+\end{align}
+Aus den Interpolationsbedingungen \cref{1.6} und der stetigen Differenzierbarkeit aller Funktionen in $s\in\mathcal{S}^l_m(\Delta)$ für $l\ge 1$ ergeben sich folgende Forderungen an $s_k$, $k=0,...,n-1$:
+\begin{equation}
+	\label{1.8}
+	\begin{split}
+		s_k(x_k) &= f_k \quad\text{und }\quad s_k(x_{k+1}) = f_{k+1} \\
+		s'_k(x_k) &= m_k \quad\text{und }\quad s'_k(x_{k+1}) = m_{k+1}
+	\end{split}
+\end{equation}
+Diese liefern:
+\begin{equation}
+	\label{1.9}
+	\begin{split}
+		d_k &= s_k(x_k)=f_k \\
+		c_k &= s'_k(x_k)=m_k
+	\end{split}
+\end{equation}
+und damit:
+\begin{align}
+	s_k(x_{k+1}) &= a_kh_k^3 + b_kh_k^2+m_kh_k + f_k = f_{k+1} \notag \\
+	s'_k(x_{k+1}) &= 3a_kh_k^2 + 2b_kh_k + m_k = m_{k+1} \notag
+\end{align}
+Damit ergeben sich $a_k$ und $b_k$ als eindeutige Lösung für das lineare Gleichungssystem
+\begin{align}
+	\label{1.10}
+	\begin{pmatrix}
+		h_k^3 & h_k^2 \\ 3h_k^2 & 2h_k
+	\end{pmatrix}
+	\begin{pmatrix}
+		a_k \\ b_k
+	\end{pmatrix}=
+	\begin{pmatrix}
+		f_{k+1}-f_k-m_kf_k \\
+		m_{k+1}-m_k
+	\end{pmatrix}
+\end{align}
+Die Determinante ist $-h_k^4\neq 0$.

@@ -59,7 +59,7 @@ mit Koeffizienten $c_0,\dots,c_n\in\real$. Die Berechnung des Koeffizienten $c_j
 \end{align}
 Seien $c_0$ bis $c_{j-1}$ bereits ermittelt. Dann folgt:
 \begin{align}
-	f_j \overset{!}{=} p(x_j) = \underbrace{c_0 + \sum_{k=1}^{j-1} c_k(x_j-x_0)\dots(x_j-x_{k-1})}_{\text{bekannt}} + c_j \underbrace{(x_j-x_0)\dots(x_j-x_{j-1})}_{\text{unbekannt}}\notag
+	f_j \overset{!}{=} p(x_j) = \underbrace{c_0 + \sum_{k=1}^{j-1} c_k(x_j-x_0)\dots(x_j-x_{k-1})}_{\text{bekannt}} + c_j \underbrace{(x_j-x_0)\dots(x_j-x_{j-1})}_{\text{bekannt}}\notag
 \end{align} 
 
 \begin{remark}
@@ -188,3 +188,55 @@ Nach einem Resultat von \person{Erdös}/\person{Vertesi} (1980) gilt sogar, dass
 	\texttt{],\{x\}]},\{x,-1,1\}]}
 	\end{itemize}
 \end{*anmerkung}
+
+\begin{proposition}
+	\proplbl{1_2_9}
+	Sei $f\in C^{n+1}[a,b]$ und gelte $a\le x_0<...<x_n\le b$. Mit $p_n\in\Pi_n$ werde das zu den Datenpaaren $(x_0,f(x_0)),...,(x_n,f(x_n))$ gehörende Interpolationspolynom bezeichnet. Dann existiert zu jedem $x\in[a,b]$ eine Zahl $\xi\in(a,b)$, so dass
+	\begin{align}
+		f(x)-p_n(x) &= \frac{f^{n+1}(\xi(x))}{(n+1)!}w(x) \quad\text{für alle }x\in[a,b] \notag \\
+		\text{wobei } w(x) &= (x-x_0)\cdot ...\cdot (x-x_n)\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Für $x=x_k$ mit $k=0,...,n$ ist nicht zu zeigen, da $p_n$ die Interpolationsbedingung erfüllt. Sei nun $x\in[a,b]$ fest gewählt mit $x\notin\{x_0,...,x_n\}$. Weiter seien
+	\begin{align}
+		K=\frac{f(x)-p_n(x)}{w(x)} \quad\text{und }\quad F:\begin{cases}
+		[a,b]\to \real \\ t\mapsto f(t)-p_n(t)-Kw(t)
+		\end{cases}\notag
+	\end{align} 
+	Man stellt unter Beachtung der Interpolationsbedingung fest, dass $F(x_0)=F(x_1)=...=F(x_n)=0$ und $F(x)=0$. Also besitzt $F$ mindestens $n+2$ paarweise verschiedene Nullstellen in $[a,b]$. Da $F\in C^{n+1}[a,b]$ erhält man durch $n+1$-fache Anwendung des Satzes von Rolle, dass $F^{(n+1)}$ mindestens eine Nullstelle $\xi(x)$ in $(a,b)$ besitzt. Also folgt 
+	\begin{align}
+		0=F^{(n+1)}(\xi(x))=f^{(n+1)}(\xi(x))-\underbrace{p_n^{(n+1)}(\xi(x))}_{=0} - K\underbrace{w^{(n+1)}(\xi(x))}_{\text{Konstante}}\notag
+	\end{align}
+	Da $w^{(n+1)}=(n+1)!$, erhält man
+	\begin{align}
+		K=\frac{f^{(n+1)}(\xi(x))}{(n+1)!}\notag
+	\end{align}
+	Da $x\in[a,b]$ beliebig gewählt war, ist die Behauptung bewiesen.
+\end{proof}
+
+\begin{example}
+	Sei $f\in C^2[a,b]$ mit $\Vert f\Vert_\infty\le M$. Weiter sei $a=x_0<x_1=x_0+h=b$. Mit \propref{1_2_9} folgt:
+	\begin{align}
+		\vert f(x)-p_2(x)\vert &= \left|\frac{f''(\xi(x))}{2}(x-x_0)(x-x_1)\right| \notag \\
+		&\le \frac{1}{2} M\cdot \lambda(x)h\cdot (1-\lambda(x))h \notag \\
+		&\le \frac{1}{2} M\cdot h^2\underbrace{\lambda(x)(1-\lambda(x))}_{\le \sfrac{1}{4}} \notag \\
+		&\le \frac{1}{8} M\cdot h^2\notag
+	\end{align}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (0,0) -- (5,0);
+			
+			\draw (0,0.1) -- (0,-0.1);
+			\draw (5,0.1) -- (5,-0.1);
+			\draw (3,0.1) -- (3,-0.1);
+			\node at (0,-0.4) (1) {$x_0$};
+			\node at (3,-0.4) (2) {$x$};
+			\node at (5,-0.4) (3) {$x_1$};
+			
+			\draw[decoration={brace}, decorate] (0,0.3) -- (5,0.3);
+			\node at (2.5,0.7) (h) {$h$};
+		\end{tikzpicture}
+	\end{center}
+$\Rightarrow x=x_0+\lambda\cdot(x_1-x_0)=\lambda x_1+(1-\lambda)x_0$
+\end{example}
