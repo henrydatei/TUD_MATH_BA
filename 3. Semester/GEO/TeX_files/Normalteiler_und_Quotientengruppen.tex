@@ -15,6 +15,7 @@ Sei $G$ eine Gruppe.
 \end{example}
 
 \begin{lemma}
+	\proplbl{1_3_3}
 	Sei $H\le G$ und $N\unlhd G$.
 	\begin{enumerate}[label=(\alph*)]
 		\item $H\unlhd G\Leftrightarrow gH=Hg$ für alle $g\in G$
@@ -42,3 +43,31 @@ Sei $G$ eine Gruppe.
 		\item $gN\cdot g'N=g\cdot Ng'\cdot N\overset{a)}{=}g\cdot g'N=gg'N$
 	\end{enumerate}
 \end{proof}
+
+\begin{proposition}
+	Sei $N\unlhd G$. Dann ist $\lnkset{G}{N}$ mit dem Komplexprodukt als Verknüpfung eine Gruppe, und $\pi_N:G\to\lnkset{G}{N}$, $g\mapsto gN$ ein Gruppenhomomorphismus mit Kern $N$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Komplexprodukt ist Verknüpfung auf $\lnkset{G}{N}$: \propref{1_3_3}
+		\item Gruppenaxoime übertragen sich von $G$ auf $\lnkset{G}{N}$: klar
+		\item $\pi_N$ ist ein Homomorphismus: \propref{1_3_3}
+		\item $\Ker(\pi_N)=N$: \propref{1_2_8}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Die Normalteiler sind genau die Gruppenhomomorphismen.
+\end{conclusion}
+
+\begin{definition}[Quotientengruppe]
+	Für $N\unlhd G$ heißt $\lnkset{G}{N}$ zusammen mit dem Komplexprodukt als Verknüpfung die \begriff{Quotientengruppe} von $G$ nach $N$ (oder $G$ modulo $N$).
+\end{definition}
+
+\begin{lemma}
+	Sei $N\unlhd G$. Für $H\le G$ ist $\pi_N(H)=\lnkset{HN}{N}\le\lnkset{G}{N}$, und $H\mapsto \pi(H)$ liefert eine Bijektion zwischen 
+	\begin{itemize}
+		\item den $H\le G$ mit $N\le H$ und
+		\item den $H\le\lnkset{G}{N}$
+	\end{itemize}
+\end{lemma}
