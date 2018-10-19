@@ -1,0 +1,44 @@
+\section{Normalteiler und Quotientengruppen}
+
+Sei $G$ eine Gruppe.
+
+\begin{definition}[normal, Normalteiler]
+	Eine Untergruppe $H\le G$ ist \begriff{normal} (in Zeichen $H\unlhd G$), wenn $g^{-1}hg\in H$ für alle $h\in H$ und $g\in G$. Ein \begriff{Normalteiler} von $G$ ist eine normale Untergruppe von $G$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $G$ abelsch, so ist jede Untergruppe von $G$ ein Normalteiler.
+		\item Ist $\phi: G\to H$ ein Gruppenhomomorphismus, so ist $\Ker(\phi)\unlhd G$, denn $\phi(h)=1\Rightarrow\phi(g^{-1}hg)=\phi(g)^{-1}\phi(h)\phi(g)=1$ $\forall g\in G$.
+		\item Jede Gruppe $G$ hat die trivialen Normalteiler $1\unlhd G$ und $G\unlhd G$.
+	\end{enumerate}
+\end{example}
+
+\begin{lemma}
+	Sei $H\le G$ und $N\unlhd G$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $H\unlhd G\Leftrightarrow gH=Hg$ für alle $g\in G$
+		\item $HN=NH$, $HN\le G$, $N\unlhd HN$, $H\cap N\le N$, $H\cap N\unlhd H$
+		\item Sind $N,H\unlhd G$, so ist $H\cap N\unlhd G$, $HN\unlhd G$
+		\item Für $g,g'\in G$ ist $gN\cdot g'N=gg'N$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Hinrichtung: $\forall g\in G$, $\forall h\in H$: $g^{-1}hg\in H\Rightarrow gHg^{-1}\subseteq H\Rightarrow Hg=gH$ und $g^{-1}H\subseteq Hg^{-1}\Rightarrow gH=Hg$ \\
+		Rückrichtung: $\forall g\in G$: $gH=Hg \Rightarrow\exists h'\in H$: $gh'=hg\Rightarrow g^{-1}hg=h\in H$
+		\item \begin{itemize}
+			\item $HN=\bigcup_{n\in\natur} hN=\bigcup_{n\in\natur} Nh=NH$
+			\item $HN\cdot NH=H\cdot NH\cdot N=H\cdot HN\cdot N=HN$ \\
+			$(HN)^{-1}=N^{-1}H^{-1}=NH=HN$
+			\item $N\unlhd HN$: klar
+			\item $H\cap N\le N$: klar
+			\item $H\cap N\unlhd H$: $n\in H\cap N$, $h\in H\Rightarrow h^{-1}nh\in H\cap N$
+		\end{itemize}
+		\item \begin{itemize}
+			\item $H\cap N\unlhd G$: $h\in H\cap N$, $g\in G\Rightarrow g^{-1}hg\in H\cap N$
+			\item $HN\unlhd G$: $g\in G\Rightarrow gHN\overset{a)}{=}Hg\cdot N=H\cdot gN\overset{a)}{=}H\cdot Ng=HNg$
+		\end{itemize}
+		\item $gN\cdot g'N=g\cdot Ng'\cdot N\overset{a)}{=}g\cdot g'N=gg'N$
+	\end{enumerate}
+\end{proof}
