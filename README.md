@@ -1,5 +1,5 @@
 # TU Dresden: Mathematik - Bachelor
-Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm, Prof. Dr. Ulrich Krähmer), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm) und **Numerik** (Prof. Dr. Andreas Fischer) der TU Dresden
+Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm, Prof. Dr. Ulrich Krähmer), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm) und **Einführung in die Numerik** (Prof. Dr. Andreas Fischer) der TU Dresden
 
 ### [Fehm] Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
@@ -25,7 +25,7 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 
 ### Geometrie (WS2018/19)
 
-### Numerik (WS2018/19)
+### Einführung in die Numerik (WS2018/19)
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
