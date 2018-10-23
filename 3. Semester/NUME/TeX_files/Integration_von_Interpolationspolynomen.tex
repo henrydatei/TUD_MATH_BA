@@ -1,1 +1,15 @@
 \section{Integration von Interpolationspolynomen}
+
+Für eine Funktion $f\in C[a,b]$ ist eine Näherung für den Wert des bestimmten Integrals
+\begin{align}
+	J(f) := \int_a^b f(x)\diff x\notag
+\end{align}
+gesucht. Seien $a\le x_0<...<x_n\le b$ Stützstellen und $f_k=f(x_k)$ für $k=0,...,n$. Weiter bezeichne $p_n\in\Pi_n$ das zugehörige Interpolationspolynom. Dann kann man
+\begin{align}
+	Q_n(f) := J(p_n) = \int_a^b p_n(x)\diff x\notag
+\end{align}
+als Näherung für $J(f)$ verwenden. Mit der \person{Lagrange}-Form des Interpolationspolynoms sieht man, dass
+\begin{align}
+	Q_n(f)=\int_a^b \sum_{k=0}^n f_k\cdot L_k(x)\diff x=\sum_{k=0}^n f_k\cdot\int_a^b L_k(x)\diff x\notag
+\end{align}
+das heißt die Quadraturformel $Q_n(f)$ ist die gewichtete Summe von Funktionswerten der Funktion $f$ mit den Gewichten $\int_a^b L_k(x)\diff x$.

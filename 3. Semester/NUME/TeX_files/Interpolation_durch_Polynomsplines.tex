@@ -135,11 +135,7 @@ Die Determinante ist $-h_k^4\neq 0$.
 	\begin{align}
 		s'(x_0)=m_0,...,s'(x_n)=m_n\notag
 	\end{align}
-	genügt. Außerdem gilt:
-	\begin{align}
-		s\vert_{[x_k,x_{k+1}]}=s_k\quad\text{für } k=0,...,n-1\notag
-	\end{align}
-	mit $s_k$ entsprechend \cref{1.7}, wobei sich $a_k,b_k,c_k,d_k$ aus \cref{1.9} und \cref{1.10} ergeben.
+	genügt. Außerdem gilt: $s\vert_{[x_k,x_{k+1}]}=s_k$ für k=0,...,n-1 mit $s_k$ entsprechend \cref{1.7}, wobei sich $a_k,b_k,c_k,d_k$ aus \cref{1.9} und \cref{1.10} ergeben.
 \end{proposition}
 
 Für die Wahl der $m_k$ gibt es verschiedene Möglichkeiten, zum Beispiel:
@@ -154,6 +150,27 @@ Damit ein kubischer Interpolationsspline $s$ zu $\mathcal{S}^2_3(\Delta)$ gehör
 \begin{align}
 	s''_k(x_{k+1})=s''_{k+1}(x_{k+1})\quad\text{für } k=0,...,n-2\notag
 \end{align}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[bend left] (0,0) to (2,1);
+		\draw[out=0] (2,1) to [in=180] (4,2);
+		\draw[out=0] (4,2) to [in=120] (6,0);
+		
+		\node at (1,2.5) (s1) {$s_k$};
+		\node at (3,2.5) (s2) {$s_{k+1}$};
+		\node at (5,2.5) (s3) {$s_{k+2}$};
+		
+		\draw[dashed] (2,0) -- (2,2.7);
+		\draw[dashed] (4,0) -- (4,2.7);
+		\node at (2,-0.3) (a) {$x_{k+1}$};
+		\node at (4,-0.3) (b) {$x_{k+2}$};
+		
+		\draw[->] (1.5,0) -- (1.9,0);
+		\draw[->] (2.5,0) -- (2.1,0);
+		\draw[->] (3.5,0) -- (3.9,0);
+		\draw[->] (4.5,0) -- (4.1,0);
+	\end{tikzpicture}
+\end{center}
 Mit \cref{1.7} ergibt sich $s''(x)=6a_k(x-x_0)+2b_k$ für $x\in[x_k,x_{k+1}]$ und damit $s''_k(x_{k+1}) = 6a_kh_k+2b_k$ und $s''_{k+1}(x_{k+1})=2b_{k+1}$, also 
 \begin{align}
 	\label{1.11}
@@ -217,6 +234,7 @@ für $k=0,...,n-2$ gegeben sind. Die Systemmatrix und die erweiterte Systemmatri
 	Fügt man beide Gleichungen geeignet zum obigen System hinzu, erhält man ein lineares Gleichungssystem mit einer regulären trigonales Systemmatrix. Dieses kann in $\mathcal{O}(n)$ Operationen gelöst werden.
 	\item \textbf{Vollständige Randbedingungen:} Sind $f'(a)$ und $f'(b)$ bekannt, dann können die zusätzlichen Bedingungen
 	\begin{align}
+		\label{1.13}
 		s'(x_0)=f'(a)\quad\text{und}\quad s'(x_n)=f'(b)
 	\end{align}
 	mittels $m_0=f'(a)$ und $m_n=f'(b)$ geeignet in das Gleichungssystem eingefügt werden, so dass man analog zu Fall (a) eine trigonale reguläre Systemmatrix erhält.
@@ -250,32 +268,47 @@ ist ein Skalarprodukt bzw. eine Norm in $L^2[a,b]$ definiert.
 	\proplbl{satz_1_6}
 	Seien $f\in C^2[a,b]$, $\Delta$ eine Zerlegung von $[a,b]$ und $f_k:=f(x_k)$ für $k=0,...,n$. Für einen Interpolationsspline $s\in\mathcal{S}^2_3(\Delta)$, der die natürlichen, vollständigen oder periodischen Randbedingungen (bei letzteren gelte \cref{1.14}) erfüllt, gilt:
 	\begin{align}
-		\Vert s''\Vert^2_2 = \Vert f''\Vert_2^2 - \Vert f''-s''\Vert_2^2 \le \Vert f''\Vert_2^2
+		\Vert s''\Vert^2_2 = \Vert f''\Vert_2^2 - \Vert f''-s''\Vert_2^2 \le \Vert f''\Vert_2^2\notag
 	\end{align}
 \end{proposition}
 \begin{proof}
 	Durch Nachrechnen sieht man
 	\begin{align}
-		\int_a^b (f''(x))^2\diff x-\int_a^b (f''(x)-s''(x))^2\diff x = \int_a^b (s''(x))^2\diff x + 2\int_a^b (f''(x)-s''(x))s''(x)\diff x \notag
+		\int_a^b (f''(x))^2\diff x-\int_a^b (f''(x)-s''(x))^2\diff x = \int_a^b (s''(x))^2\diff x + 2\int_a^b \left[ f''(x)-s''(x)\right] s''(x)\diff x \notag
 	\end{align}
-	Es wird nun $J:=\int_a^b (f''(x)-s''(x))s''(x)\diff x=0$ gezeigt. Mit Hilfe partieller Integration folgt
+	Es wird nun $J:=\int_a^b \left[ f''(x)-s''(x)\right] s''(x)\diff x=0$ gezeigt. Mit Hilfe partieller Integration folgt
 	\begin{align}
-		J=(f'(x)-s'(x))s''(x)\vert_a^b - \int_a^b (f'(x)-s'(x))s'''(x)\diff x\notag
+		J=\left[ f'(x)-s'(x)\right] s''(x)\vert_a^b - \int_a^b \left[ f'(x)-s'(x)\right] s'''(x)\diff x\notag
 	\end{align}
 	wobei $s'''$ auf jedem Teilintervall $[x_k,x_{k+1}]$ konstant ist. Dies ergibt wegen \cref{1.6}
 	\begin{align}
-		\int_a^b (f'(x)-s'(x))s'''(x)\diff x &= \sum_{k=0}^{n-1} s'''(x_k+\frac{h_k}{2})\int_{x_k}^{x_{x+1}}(f'(x)-s'(x))\diff x \notag \\
-		&= \sum_{k=0}^{n-1} s'''(x_k+\frac{h_k}{2})(f(x_{k+1})-s(x_{k+1})-f(x_k)+s(x_k)) \notag \\
+		\int_a^b \left[ f'(x)-s'(x)\right] s'''(x)\diff x &= \sum_{k=0}^{n-1} s'''\left(x_k+\frac{h_k}{2}\right)\int_{x_k}^{x_{x+1}}f'(x)-s'(x)\diff x \notag \\
+		&= \sum_{k=0}^{n-1} s'''\left(x_k+\frac{h_k}{2}\right)\big(\big[f(x_{k+1})-s(x_{k+1})\big]-\big[f(x_k)-s(x_k)\big]\big) \notag \\
 		&= 0 \notag
 	\end{align}
 	und damit 
 	\begin{align}
-		J=(f'(x)-s'(x))s''(x)\vert_a^b = (f'(b)-s'(b))s''(b)-(f'(a)-s'(a))s''(a)\notag
+		J=\left[ f'(x)-s'(x)\right] s''(x)\vert_a^b = \left[ f'(b)-s'(b)\right] s''(b)-\left[ f'(a)-s'(a)\right] s''(a)\notag
 	\end{align}
 	Nutzt man nun noch \cref{1.12}, \cref{1.13} bzw. \cref{1.14} mit \cref{1.15}, so folgt $J=0$.
 \end{proof}
 
+\begin{*anmerkung}
+	\begin{itemize}
+		\item \cref{1.12}: natürliche Randbedingungen: $s''(a)=s''(b)=0$
+		\item \cref{1.13}: vollständige Randbedingungen: $s(a')=f'(a)$, $s'(b)=f'(b)$
+		\item \cref{1.14} und \cref{1.15}: periodische Randbedingungen: $s'(a)=s'(b)$, $s''(a)=s'(b)$, $f'(a)=f'(b)$
+	\end{itemize}
+\end{*anmerkung}
+
 \subsection{Interpolationsfehler bei kubischer $C^2$-Interpolation}
+
+\begin{*anmerkung}
+	Die \person{Cauchy-Schwarz}-Ungleichung hat folgende Form:
+	\begin{align}
+		\vert\skalar{f}{g}\vert \le \Vert f\Vert_2\cdot\Vert g\Vert_2\notag
+	\end{align}
+\end{*anmerkung}
 
 \begin{proposition}
 	Seien $f\in C^2[a,b]$, $\Delta$ eine Zerlegung von $[a,b]$ und $f_k:=f(x_k)$ für $k=0,...,n$. Für einen Interpolationsspline $s\in\mathcal{S}^2_3(\Delta)$, der die natürlichen, vollständigen oder periodischen Randbedingungen (bei letzteren gelte \cref{1.14}) erfüllt, gilt:
@@ -287,13 +320,18 @@ ist ein Skalarprodukt bzw. eine Norm in $L^2[a,b]$ definiert.
 \begin{proof}
 	Die Funktion $r:=f-s$ hat wegen \cref{1.6} die $n+1$ Nullstellen $x_0,...,x_n$. Der maximale Abstand benachbarter Nullstellen ist $h$. Nach dem Satz von Rolle besitzt $r'$ mindestens $n$ Nullstellen. Der Abstand zweier Nullstellen von $r'$ ist durch $2h$ nach oben beschränkt. Sei $z\in [a,b]$ so gewählt, dass $\vert r'(z)\vert=\Vert r'\Vert_\infty$. Dann gilt $\vert z-z^0\vert\le h$ für die $z$ am nächsten liegende Nullstelle $z^0$ von $r'$. O.B.d.A. sei $z^0\le z$. Mit der \person{Cauchy-Scharz}-Ungleichung folgt:
 	\begin{align}
-		\Vert r'\Vert_\infty^2 &= \vert r'(z)-r'(z^0)\vert^2 \notag \\
 		\label{1.16}
-		&= \left|\int_{z^0}^z r''(x)\cdot 1\diff x\right|^2  \\
-		&\le \int_{z^0}^z r''(x)^2\diff x\cdot \int_{z^0}^z 1^2\diff x\notag \\
-		&\le h\Vert r''\Vert_2^2\notag
+		\begin{split}
+		\Vert r'\Vert_\infty^2 &= \vert r'(z)-\underbrace{r'(z^0)}_{z^0\text{ NST}}\vert^2 \\
+		&\overset{\ast}{=} \left|\int_{z^0}^z r''(x)\cdot 1\diff x\right|^2  \\
+		&\overset{\tiny{\text{CS}}}{\underset{\tiny{\text{UG}}}{\le}} \int_{z^0}^z r''(x)^2\diff x\cdot \underbrace{\int_{z^0}^z 1^2\diff x}_{=z-z^0\le h} \\
+		&\le h\Vert r''\Vert_2^2
+		\end{split}
 	\end{align}
-	Sei nun $y\in[a,b]$ so gewählt, dass $\vert r(y)\vert=\Vert r\\Vert_\infty$. Dann gilt $\vert y-y_0\vert\le \sfrac{h}{2}$ für die $y$ am nächsten liegende Nullstelle $y^0$ von $r$. O.B.d.A. sei $y^0\le y$. Mit \cref{1.16} ergibt sich
+	$\ast$: Anwendung des Hauptsatzes der Integralrechnung
+	
+	
+	Sei nun $y\in[a,b]$ so gewählt, dass $\vert r(y)\vert=\Vert r\Vert_\infty$. Dann gilt $\vert y-y_0\vert\le \sfrac{h}{2}$ für die $y$ am nächsten liegende Nullstelle $y^0$ von $r$. O.B.d.A. sei $y^0\le y$. Mit \cref{1.16} ergibt sich
 	\begin{align}
 		\Vert r\Vert_\infty = \vert r(y)-r(y^0)\vert=\left|\int_{y^0}^y r'(x)\diff x\right|\le\max\vert r'(x)\vert\cdot \int_{y^0}^y \diff x\le \frac{1}{2}\Vert r'\Vert_\infty\le \frac{1}{2}h^{\sfrac{3}{2}}\Vert r''\Vert_2\notag
 	\end{align}
