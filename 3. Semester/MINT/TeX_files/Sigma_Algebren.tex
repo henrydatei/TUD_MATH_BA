@@ -1,9 +1,46 @@
-\chapter{Sigma-Algebren}
-\begin{definition}[Sigma Algebra]
-	Eine $\sigma$-Algebra über einer beliebigen Grundmenge $X \neq \emptyset$ ist eine Familie von Mengen in $\mathcal{P}(X), \mathcal{A} \subset \mathcal{P}(X)$:
+\section{Sigma-Algebren}
+
+\textbf{Ziel:} Charakterisierung der Definitionsgebiete von Maßen.
+
+\begin{definition}[$\sigma$-Algebra, messbar]
+	Eine \begriff{$\sigma$-Algebra} über einer beliebigen Grundmenge $X \neq \emptyset$ ist eine Familie von Mengen in $\mathcal{P}(X), \mathcal{A} \subset \mathcal{P}(X)$:
 	\begin{itemize}
-		\item[($\Sigma 1$)] $X \in \mathcal{A}$
-		\item[($\Sigma 2$)] $A \in \mathcal{A} \to A^C = X \setminus A \in \mathcal{A}$
-		\item[($\Sigma 3$)] $(A_n)_{n\in \natur} \subset \mathcal{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathcal{A}$
+		\item (S1): $X \in \mathcal{A}$
+		\item (S2): $A \in \mathcal{A} \to A^C = X \setminus A \in \mathcal{A}$
+		\item (S3): $(A_n)_{n\in \natur} \subset \mathcal{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathcal{A}$
 	\end{itemize}
+	Eine Menge $A\in\mathcal{A}$ heißt \begriff{messbar}.
 \end{definition}
+
+\begin{proposition}[Eigenschaften einer $\sigma$-Algebra]
+	Sei $\mathcal{A}$ eine $\sigma$-Algebra über $X$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\emptyset\in\mathcal{A}$
+		\item $A,B\in\mathcal{A}\Rightarrow A\cup B\in\mathcal{A}$
+		\item $(A_n)_{i\in\natur}\subset\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n\in\mathcal{A}$
+		\item $A,B\in\mathcal{A}\Rightarrow A\cap B\in\mathcal{A}$
+		\item $A,B\in\mathcal{A}\Rightarrow A\setminus B\in\mathcal{A}$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\emptyset=X^C\in\mathcal{A}$
+		\item $A_1=A$, $A_2=B$m $A_3=A_4=...=\emptyset\Rightarrow A\cup B=\bigcup_{n\in \natur} A_n\in\mathcal{A}$
+		\item $A_n\in\mathcal{A}\xRightarrow{\text{S2}}A_n^C\in\mathcal{A}\xRightarrow{\text{S3}}\bigcup_{n\in \natur} A_n^C\in\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n=\left(\bigcap_{n\in \natur} A_n^C\right)^C\in\mathcal{A}$
+		\item wie (b)
+		\item $A\setminus B=A\cap B^C\in\mathcal{A}$
+	\end{enumerate}
+\end{proof}
+
+\textbf{Fazit:} Auf einer $\sigma$-Algebra kann man alle üblichen Mengenoperationen abzählbar oft durchführen ohne $\mathcal{A}$ zu verlassen!
+
+\begin{example}
+	$X\neq\emptyset$ Menge, $A,B\subset X$
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathcal{P}(X)$ ist eine $\sigma$-Algebra (größtmögliche)
+		\item $\{\emptyset,X\}$ ist eine $\sigma$-Algebra (kleinstmögliche)
+		\item $\{\emptyset,A,A^C,X\}$ ist eine $\sigma$-Algebra
+		\item $\{\emptyset,B,X\}$ ist eine $\sigma$-Algebra, wenn $B=\emptyset$ oder $B=X$
+		\item $\mathcal{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine $\sigma$-Algebra
+	\end{enumerate}
+\end{example}
