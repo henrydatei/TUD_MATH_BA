@@ -1,1 +1,36 @@
 \section{spezielle \person{Newton-Cotes}-Formeln}
+
+Für $n=1$ erhält man die \begriff{Trapezformel} mit $x_0=a$, $x_1=b$ und $h=b-a$ wie folgt:
+\begin{align}
+	Q_1(f)=f_0\int_a^b L_0(x)\diff x+f_1\int_a^b L_1(x)\diff x\notag
+\end{align}
+Mit 
+\begin{align}
+	L_0(x)=\frac{x-x_1}{x_0-x_1}=\frac{b-x}{h}\quad&\text{und}\quad L_1(x)=\frac{x-x_0}{x_1-x_0} = \frac{x-a}{h} \notag \\
+	\int_a^b L_0(x)\diff x=\frac{1}{h}\int_a^b (b-x)\diff x=\frac{1}{h}\left( bx-\frac{1}{2}x^2\right)\Bigg|_a^b&=\frac{1}{h} \left( \frac{b^2}{2}-ab+\frac{a^2}{2}\right) =\frac{h}{2}\notag \\
+	\int_a^b L_1(x)\diff x&=\frac{h}{2}\notag
+\end{align}
+folgt
+\begin{align}
+	Q_1(f)=\frac{h}{2}(f_0+f_1)\notag
+\end{align}
+
+Für Polynomgrad $n=2$ erhält man auf ähnliche Weise die \begriff{\person{Simpson}-Formel} (auch \begriff{\person{Kepler}'sche Fassregel} genannt):
+\begin{align}
+	Q_2(f)=\frac{h}{3}(f_0+4f_1+f_2)\notag
+\end{align}
+
+Für Polynomgrade bis $n=6$ findet man weitere Formeln in der Literatur. Formeln nur $n>6$ werden aus numerischen Gründen nicht verwendet. Es können dann negative Gewichte auftreten.
+
+\begin{proposition}
+	\begin{enumerate}[label=(\alph*)]
+		\item Sei $f\in C^2[a,b]$. Dann gilt:
+		\begin{align}
+			\vert Q_1(f)-J(f)\vert \le \frac{1}{12}h^3\Vert f''\Vert_\infty\notag
+		\end{align}
+		\item Sei $f\in C^4[a,b]$. Dann gilt:
+		\begin{align}
+			\vert Q_2(f)-J(f)\vert \le \frac{1}{12}h^5\Vert f^{(4)}\Vert_\infty\notag
+		\end{align}
+	\end{enumerate}
+\end{proposition}
