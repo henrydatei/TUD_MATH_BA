@@ -1,0 +1,58 @@
+\section{Abelsche Gruppen}
+
+Sei $G$ ein Gruppe.
+
+\begin{definition}[zyklische Gruppe]
+	Eine Gruppe $G$ ist \begriff[Gruppe!]{zyklisch} $\Leftrightarrow G=\langle g\rangle$ für ein $g\in G$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\whole=\langle 1\rangle$
+		\item $\whole/n\whole=\langle\overline{1}\rangle$
+		\item $C_n=\langle (1\, 2\, ...\, n)\rangle\le S_n$
+		\item Ist $\#G=p$ eine Primzahl, so ist $G$ zyklisch (Übung 6)
+	\end{enumerate}
+\end{example}
+
+\begin{lemma}
+	\proplbl{1_4_3}
+	Die Untergruppen von $(\whole,+)$ sind genau die $\langle k\rangle=\whole k$ mit $k\in\natur_0$ und für $k_1,...,k_r\in\whole$ ist $\langle k_1,...,k_r\rangle=\langle k\rangle$ mit
+	\begin{align}
+		k=\ggT(k_1,...,k_r)\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Zwei Beweise sind möglich:
+	\begin{enumerate}
+		\item Jede Untergruppe von $\whole$ ist ein Ideal von $(\whole,+,\cdot)$ und $\whole$ ist ein Hauptidealring.
+		\item Sei $H\le\whole$. Setze $k=\min\{H\cap N\}$, ohne Einschränkung $H\neq\{0\}$.
+		\begin{itemize}
+			\item $H=\langle k\rangle$: $n\in H\Rightarrow n=qk+r$ mit $q,r\in\whole$, $0\le r<k\Rightarrow r=n-\underbrace{qk}_{k+...+k}\in H\xRightarrow[\text{mal}]{k\text{ mini-}}r=0\Rightarrow n\in\langle k\rangle$
+			\item $\langle k_1,...,k_r\rangle=\langle k\rangle\Rightarrow k=\ggT(k_1,...,k_r)$: \\
+			$k_i\in\langle k\rangle\Rightarrow k\vert k_i\quad\forall i$ \\
+			$k\in\langle k_1,...,k_r\rangle\Rightarrow k=n_1k_1+...+n_rk_r$ mit $n_i\in\whole$ $\exists d\vert k_i\Rightarrow d\vert k\Rightarrow k=\ggT(k_1,...,k_r)$
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Klassifikation von zyklischen Gruppen]
+	Sei $G=\langle g\rangle$ zyklisch. Dann ist $G$ abelsch und
+	\begin{enumerate}[label=(\alph*)]
+		\item $G\cong (\whole,+)$ \emph{oder}
+		\item $G\cong (\whole/n\whole,+)$ mit $n=\#G<\infty$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Betrachte 
+	\begin{align}
+		\phi: \begin{cases}
+		\whole\to G\\ k\mapsto g^k
+		\end{cases}\notag
+	\end{align}
+	$\phi$ ist ein Homomorphismus und surjektiv, da $G=\langle g\rangle$. Nach \propref{1_3_9} ist $G=\Image(\phi)\cong \lnkset{\whole}{\Ker(\phi)}$. Nach \propref{1_4_3} ist $\Ker(\phi)=\langle n\rangle$ für ein $n\in\natur_0$.
+	\begin{itemize}
+		\item \emph{$n=0$}, so ist $\Ker(\phi)=\langle 0\rangle$, also $\phi$ injektiv und $G\cong\whole$.
+		\item \emph{$n>0$}, so ist $G\cong\whole/n\whole$ und $n=\#\whole/n\whole=\#G$.
+	\end{itemize}
+\end{proof}

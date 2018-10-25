@@ -184,3 +184,23 @@ Sei $G$ eine Gruppe.
 		\end{align}
 	\end{itemize}
 \end{proof}
+
+\begin{definition}[innere Automorphismen, Zentrum, charakteristische Gruppe]
+	\begin{enumerate}[label=(\alph*)]
+		\item $\Inn(G)=\Image(\int)\le\Aut(G)$, die Gruppe der \begriff{inneren Automorphismen} von $G$
+		\item $\Z(G)=\Ker(\int)=\{g\in G\mid xg=gx\quad\forall x\in G\}$, das \begriff{Zentrum} von $G$
+		\item $H\le G$ ist \begriff[Gruppe!]{charakteristisch} $\Leftrightarrow\forall\sigma\in\Aut(G)$: $H=H^\sigma$
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Konjugation ist eine Äquivalenzrelation
+		\item $H\le G$ ist normal $\Leftrightarrow H=H^\sigma\quad\forall\sigma\in\Inn(G)$
+		\item Deshalb gilt für $H\le G$: $H$ ist charakteristisch $\Rightarrow$ $H$ ist normal
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	$\Z(G)$ ist charakteristisch in $G$
+\end{example}
