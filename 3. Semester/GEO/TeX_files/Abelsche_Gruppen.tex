@@ -56,3 +56,68 @@ Sei $G$ ein Gruppe.
 		\item \emph{$n>0$}, so ist $G\cong\whole/n\whole$ und $n=\#\whole/n\whole=\#G$.
 	\end{itemize}
 \end{proof}
+
+\begin{proposition}
+	Sei $G=(G,+)=\langle g \rangle$ zyklisch der Ordnung $n \in \natur$.
+	\begin{itemize}
+		\item Zu jedem $d \in \natur$ mit $d\mid n$ hat $G$ genau eine Untergruppe der Ordnung $d$, nämlich $U_d=\langle \frac{n}{d}g\rangle$
+		\item Für $d \mid n$ und $d^{'}\mid n$ ist $U_d \leq U_{d^{'}} \Leftrightarrow d \mid d^{'}$
+		\item Für $h_1, \dots , h_k \in \whole$ ist $\langle h_1 g, \dots, h_r g \rangle = \langle eg\rangle = U_{\frac{n}{e}}$ mit $e = \ggT(h_1,\dots,h_r,n)$
+		\item Für $k \in \whole$ ist $\ord(kg)= \frac{n}{\ggT(k,n)}$
+	\end{itemize}
+\end{proposition}
+
+\begin{proof}
+	Betrachte wieder $\phi \colon \begin{cases}
+	\overline{k} &\to G \\
+	k &\to kg
+	\end{cases}$
+	\begin{enumerate}
+		\item Nach 3.7 und 4.3 liefert $\phi$ Bijektion $\{ e \in \natur \mid n\whole \leq e\whole \} \overset{1.1}{\rightarrow} \{ H \leq G \}$ und $n\whole \leq e\whole \Leftrightarrow e \mid n.$ Ist $H = \phi(e\whole) = \langle e\whole \rangle$, so ist $H \cong \lnkset{e\whole}{n\whole}$, also $n = (\whole \colon n \whole) = (\whole \colon e\whole)\cdot(e\whole \colon n\whole) = e \cdot \#H$
+		\item $U_d \leq U_{d^{'}} \Leftrightarrow \langle \frac{n}{d}g \rangle \leq \langle \frac{n}{d^{'}}g \rangle = \frac{n}{d}\whole \leq \frac{n}{d^{'}}\whole \Leftrightarrow \frac{n}{d^{'}} \mid \frac{n}{d} \Leftrightarrow d \mid d^{'}$
+		\item Mit $H = \langle h_1, \dots, h_r,n \rangle \leq \whole$ ist $n\whole \leq H$, $\phi(H) = \langle h_1 g, \dots, h_r g$. Nach 4.3 ist $H = \langle e \rangle$ mit $e = \ggT(h_1, \dots, h_r, n)$, somit $\langle h_1 g, \dots, h_r g \rangle = \phi(e\whole) = U_{\frac{n}{e}}$
+		\item $\ord(hg) = \#\langle hg \rangle \overset{c)}{=} \#U_{\frac{n}{e}}$ mit $e = \ggT(h,n)$
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	Seien $a,b \in G$. Kommutieren $a \text{ und } b$ und sind $\ord(a)$ und $\ord(b)$ teilerfremd, so ist
+	\begin{align}
+		\ord(a,b) = \ord(a)\cdot \ord(b) \notag
+	\end{align}
+\end{lemma}
+
+\begin{proof}
+	Nach 2.12 ist $\langle a \rangle \cap \langle b \rangle = 1$. Ist $(ab)^k = 1 = a^k b^k$, so ist $a^k = b^{-k} \in \langle a \rangle \cap \langle b \rangle = 1$, also $a^k = b^k = 1$. Somit ist $(ab)^k = 1 \Leftrightarrow a^k = 1 \text{ und } b^k =1$ und damit $\ord(ab) = \kgV(\ord(a), \ord(b)) = \ord(a) \cdot \ord(b)$
+\end{proof}
+
+\begin{conclusion}
+	Ist $G$ abelsch und sind $a,b \in G$ mit $\ord(a) = m < \infty$, $\ord(b) = n = \infty$, so existiert $c \in G$ mit
+	\begin{align}
+		\ord(c) = \kgV(\ord(a), \ord(b)) \notag
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	Schreibe $m = m_0 m^{'}$ und $n = n_0 n^{'}$ mit $m_0 n_0 = \kgV(m,n)$ und $\ggT(m_0, n_0) = 1 \Rightarrow \ord(a^{m^{'}}) = m_0$, $\ord(b^{n^{'}}) = n_0 \Rightarrow \ord(b^{n^{'}} \cdot a^{m^{'}}) \overset{4.6}{=} m_0 \cdot n_0 = \kgV(m,n)$.
+\end{proof}
+
+\begin{theorem}[Struktursatz für endlich erzeugte abelsche Gruppen]
+	Jede endliche erzeugte abelsche Gruppe $G$ ist eine direkte Summe zyklischer Gruppen
+	\begin{align}
+		G \cong \whole^{r} \oplus\bigoplus_{i=1}^n \qraum{\whole}{d_i \whole} \notag
+	\end{align}
+	mit eindeutig bestimmten $d_1, \dots, d_k > 1$ die $d_1 \mid d_{i+1}$ für alle $i$ erfüllen.
+\end{theorem}
+
+\begin{proof}
+	\begin{itemize}
+		\item Existenz: LAAG 2. VIII. 6.14
+		\item Eindeutigkeit: Für $d \in \natur$ ist 
+		\begin{align}
+			\# \qraum{G}{dG} &= \#\left( \qraum{\whole}{d \whole}\right)^r \oplus \bigoplus_{i=1}^k \qraum{\left(\qraum{\whole}{d_\whole}\right)}{d\cdot\left(\qraum{\whole}{d_i\whole}\right)} \notag \\
+			&\overset{4.5}{=} d^r \cdot \prod_{i=1}^{n} \frac{d_i}{\ggT(d,d_i)}\notag
+		\end{align} 
+	\end{itemize}
+und daraus kann man $r, k, d_1, \dots , d_k$ erhalten.
+\end{proof}
