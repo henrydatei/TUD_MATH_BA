@@ -16,9 +16,9 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 \begin{example}
 	\proplbl{mf_beispiel_11}
 	\begin{enumerate}[label={\arabic*)}]
-		\item Reguläre Kurve: $\phi: I\subset\mathbb{R}\to \mathbb{R}^n$, $I$ offen, $\phi'(x) \neq 0$ ($\phi'(x)$ ist der Tangentialvektor)
-		\item $\phi:(0,2\pi)\to \mathbb{R}^2$, $\phi(t) := \transpose{(\cos kt, \sin kt)}$, $k\in \mathbb{N}_{\ge 2}$ ($k$-fach durchlaufener Einheitskreis)
-		\item $\phi: (-\pi, \pi)\to\mathbb{R}^2$, $\phi(t) = (1 + 2\cos t) \transpose{(\cos t, \sin t)}$ mit den besonderen Werte \begin{flalign*}
+		\item Reguläre Kurve: $\phi\colon I\subset\mathbb{R}\to \mathbb{R}^n$, $I$ offen, $\phi'(x) \neq 0$ ($\phi'(x)$ ist der Tangentialvektor)
+		\item $\phi\colon(0,2\pi)\to \mathbb{R}^2$, $\phi(t) := \transpose{(\cos kt, \sin kt)}$, $k\in \mathbb{N}_{\ge 2}$ ($k$-fach durchlaufener Einheitskreis)
+		\item $\phi\colon (-\pi, \pi)\to\mathbb{R}^2$, $\phi(t) = (1 + 2\cos t) \transpose{(\cos t, \sin t)}$ mit den besonderen Werte \begin{flalign*}
 			\phi\left( \pm \frac{2}{3}\pi \right) = \begin{pmatrix}
 				0 \\ 0
 			\end{pmatrix},\quad \phi(0) = \begin{pmatrix}
@@ -26,7 +26,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 			\end{pmatrix} &&
 		\end{flalign*}
 		Achtung: $\binom{1}{0}$ gehört \emph{nicht} zur Kurve. $\phi$ ist regulär (ÜA)
-		\item $\phi:(-1,1) \to \mathbb{R}^2$, $\phi(t) = \transpose{(t^3,\;  t^2 )}$ ist \emph{nicht} regulär, da $\phi'(0) = 0$.
+		\item $\phi\colon(-1,1) \to \mathbb{R}^2$, $\phi(t) = \transpose{(t^3,\;  t^2 )}$ ist \emph{nicht} regulär, da $\phi'(0) = 0$.
 	\end{enumerate}
 \end{example}
 
@@ -34,7 +34,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	\proplbl{mf_beispiel_2}
 	Sei $f\in C^q(V, \mathbb{R}^{n-d})$, $V\subset \mathbb{R}^d$ offen.
 	
-	Betrachte $\phi\!: V\to \mathbb{R}^n$ mit $\phi(x) := \big(x, f(x)\big)$. Offenbar ist $\phi \in C^q(V, \mathbb{R}^n)$ und $\phi'(x) = \big( \id_{\mathbb{R}^d}, f'(x)) \in \mathbb{R}^{n\times d}$. \\
+	Betrachte $\phi\colon V\to \mathbb{R}^n$ mit $\phi(x) := \big(x, f(x)\big)$. Offenbar ist $\phi \in C^q(V, \mathbb{R}^n)$ und $\phi'(x) = \big( \id_{\mathbb{R}^d}, f'(x)) \in \mathbb{R}^{n\times d}$. \\
 	$\Rightarrow$ $\phi$ stets regulär.
 \end{example}
 
@@ -47,7 +47,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 
 \subsection{Mannigfaltigkeiten}
 \begin{*definition}
-	$M\subset \mathbb{R}^n$ heißt \begriff{$d$-dimensionale $C^q$-Mannigfaltigkeit} ($q \ge 1$) falls $\forall u\in M$ existiert eine Umgebung $U$ von $u$ bezüglich $M$ und $\phi: V\subset \mathbb{R}^d \to \mathbb{R}^n$, $V$ offen mit $\phi$ reguläre $C^q$-Parametrisierung und $\phi$ ist Homöomorphismus und $\phi(V) = U$.
+	$M\subset \mathbb{R}^n$ heißt \begriff{$d$-dimensionale $C^q$-Mannigfaltigkeit} ($q \ge 1$) falls $\forall u\in M$ existiert eine Umgebung $U$ von $u$ bezüglich $M$ und $\phi\colon V\subset \mathbb{R}^d \to \mathbb{R}^n$, $V$ offen mit $\phi$ reguläre $C^q$-Parametrisierung und $\phi$ ist Homöomorphismus und $\phi(V) = U$.
 	
 	M heißt auch $C^q$-Untermannigfaltigkeit. Verwende Mannigfaltigkeit statt $C^1$-Mannigfaltigkeit
 \end{*definition}
@@ -57,7 +57,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	Eine Menge $\lbrace \phi{-1}_\alpha \mid \alpha \in A\rbrace$ heißt \begriff{Atlas} von $M$, falls die zugehörigen Kartengebiete $U_\alpha$ die Mannigfaltigkeit überdecken (d.h. $\bigcup_{\alpha\in A} U_\alpha \supset M$).
 \end{*definition}
 \begin{*definition}
-	Eine reguläre Parametrisierung $\phi\!: V\subset \mathbb{R}^d\to U\subset \mathbb{R}^n$ heißt \begriff{Einbettung}, falls sie ein Homöomorphismus ist.
+	Eine reguläre Parametrisierung $\phi\colon V\subset \mathbb{R}^d\to U\subset \mathbb{R}^n$ heißt \begriff{Einbettung}, falls sie ein Homöomorphismus ist.
 \end{*definition}
 \begin{underlinedenvironment}[Vereinbarung]
 	Parametrisierungen in Verbindung mit Mannigfaltigkeiten sind \emph{immer} Homöomorphismen (also Einbettungen).
@@ -74,20 +74,20 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 \begin{example}
 	$M:= \graph f$ aus \propref{mf_beispiel_2}.
 	
-	Offenbar ist $\phi\!: V\subset \mathbb{R}^d\to M\subset \mathbb{R}^n$ Homöomorphismus und reguläre $C^q$-Parametrisierung\\
+	Offenbar ist $\phi\colon V\subset \mathbb{R}^d\to M\subset \mathbb{R}^n$ Homöomorphismus und reguläre $C^q$-Parametrisierung\\
 	 $\Rightarrow$ $M$ ist $d$-dimensionale $C^q$-Mannigfaltigkeit.
 \end{example}
 
 \begin{example}
 	\proplbl{mf_bsp_5}
-	Sei $f\!:D\subset \mathbb{R}^n\to \mathbb{R}^{n-d}$, $D$ offen, $f\in C^q$ ($q\ge 1$), $\rang f'(x) = n-d$ $\forall u\in D$. Definiere \begin{flalign} \tag{\star} M&:= \{ u\in D \mid f(u) = 0 \}&&\end{flalign}
+	Sei $f\colon D\subset \mathbb{R}^n\to \mathbb{R}^{n-d}$, $D$ offen, $f\in C^q$ ($q\ge 1$), $\rang f'(x) = n-d$ $\forall u\in D$. Definiere \begin{flalign} \tag{\star} M&:= \{ u\in D \mid f(u) = 0 \}&&\end{flalign}
 	
 	Fixiere $\tilde{u} = (\tilde{x}, \tilde{y})\in M$, wobei $\tilde{u	} = (x_1, \dotsc, x_d, y_1, \dotsc, y_{n-d})\in \mathbb{R}^n$.
 	
 	\begin{tabularx}{\linewidth}{r@{\ }X}
 		$\star$ $\Rightarrow$ & $f_y(\tilde{x}, \tilde{y})\in \mathbb{R}^{(n-d)\times(n-d)}$ regulär \\
-		$\xRightarrow[\text{Funktion}]{\text{implizite}}$ & $\exists$ Umgebung $V\subset \mathbb{R}^d$ von $\tilde{x}$, Umgebung $W\subset \mathbb{R}^{n-d}$ von $\tilde{y}$ und $\psi \in C^q(V,W)$ mit $(x, \psi(x))\in M$, $\psi: V\to W$ \\
-		$\Rightarrow$ & $\phi: V\subset \mathbb{R}^d \to \mathbb{R}^n$ mit $\phi(x) := (x, \psi(x))$ ist reguläre $C^q$-Parametrisierung, Homöomorphismus und $\phi(V)$ ist Umgebung von $\tilde{u} \in M$ bezüglich M \\
+		$\xRightarrow[\text{Funktion}]{\text{implizite}}$ & $\exists$ Umgebung $V\subset \mathbb{R}^d$ von $\tilde{x}$, Umgebung $W\subset \mathbb{R}^{n-d}$ von $\tilde{y}$ und $\psi \in C^q(V,W)$ mit $(x, \psi(x))\in M$, $\psi\colon V\to W$ \\
+		$\Rightarrow$ & $\phi\colon V\subset \mathbb{R}^d \to \mathbb{R}^n$ mit $\phi(x) := (x, \psi(x))$ ist reguläre $C^q$-Parametrisierung, Homöomorphismus und $\phi(V)$ ist Umgebung von $\tilde{u} \in M$ bezüglich M \\
 		$\Rightarrow$ & $M$ ist $d$-dimensionale $C^q$-Mannigfaltigkeit
 	\end{tabularx}
 \end{example}
@@ -116,7 +116,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	\vspace*{\dimexpr-\baselineskip+1mm\relax}
 	\begin{itemize}
 		\item[($\Rightarrow$)] Klar nach z.B. \propref{mf_beispiel_2}
-		\item[($\Leftarrow$)] Sei $M$ Mannigfaltigkeit. Fixiere $\tilde{u}\in M$. Sei $\phi\!:\tilde{V}\subset \mathbb{R}^d \to \tilde{U}\subset \mathbb{R}^n$ zugehörige $C^q$-Parametrisierung von $\tilde{u} = \phi(\tilde{x})$.
+		\item[($\Leftarrow$)] Sei $M$ Mannigfaltigkeit. Fixiere $\tilde{u}\in M$. Sei $\phi\colon\tilde{V}\subset \mathbb{R}^d \to \tilde{U}\subset \mathbb{R}^n$ zugehörige $C^q$-Parametrisierung von $\tilde{u} = \phi(\tilde{x})$.
 		
 		$\phi'(x)$ ist regulär $\Rightarrow$ $\phi'_I (\tilde{x}) \in \mathbb{R}^{d\times d}$ regulär für die Zerlegung von $\phi$ in\begin{flalign*}
 			\phi(x) = \Pi \begin{pmatrix} \phi_{\text{I}}(x) \\ \phi_{\text{II}}(x)\end{pmatrix},\quad \phi_{\text{I}}(x) \in \mathbb{R}^d,\quad \phi_{\text{II}}(x) \in \mathbb{R}^{n-d}
@@ -129,7 +129,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 			\begin{minipage}[t]{\linewidth}
 				\begin{itemize}
 					\item $V\subset \tilde{V}$ offen, mit obigem $\tilde{x} \in V$, $W\subset \mathbb{R}^d$ offen, $\tilde{\nu}\in W$
-					\item $\phi^{-1}_{\text{I}}\!\!: W\to V$ als Homöomorphismus, $C^q$-Abbildung, $\phi_{\text{I}}^{-1}(\tilde{\nu}) = \tilde{x}$
+					\item $\phi^{-1}_{\text{I}}\colon W\to V$ als Homöomorphismus, $C^q$-Abbildung, $\phi_{\text{I}}^{-1}(\tilde{\nu}) = \tilde{x}$
 				\end{itemize}
 			\end{minipage}
 			\vspace*{1mm}
@@ -155,7 +155,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	\begin{tabularx}{\linewidth}{p{5cm}@{\ }c@{\ }X}
 	$M\subset \mathbb{R}^n$ ist $d$-dimensionale Mannigfaltigkeit & $\Leftrightarrow$ & $\forall u\in M\;\exists$ Umgebung $\tilde{U}$ von $u$ bezüglich dem $\mathbb{R}^n$, $\tilde{V}\subset\mathbb{R}^n$ offen sowie
 	
-	$\tilde{\psi}\!: \tilde{U}\to \tilde{V}$ mit $\tilde{\psi}$ ist $C^q$-Diffeomorphismus und
+	$\tilde{\psi}\colon \tilde{U}\to \tilde{V}$ mit $\tilde{\psi}$ ist $C^q$-Diffeomorphismus und
 	
 	\vspace*{1mm}
 	\hspace*{1em}$\tilde{\psi}(\tilde{U}\cap M) = \tilde{V} \cap (\underbrace{\mathbb{R}^d \times \{ 0 \}}_{\in \mathbb{R}^n})$
@@ -174,7 +174,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 		
 		Zerlege nach dem Schema $u=(v,w)\in \mathbb{R}^{d}\times\mathbb{R}^{n-d}$ obiges $\tilde{u} = (\tilde{v}, f(\tilde{v}))$.
 		
-		Definiere $\hat{U} := W\times \mathbb{R}^{n-d} =: \hat{V}$ und $\tilde{\phi}\!: \hat{V} \to \hat{U}$ mit $\tilde{\phi}(v,w) := (v, f(v) + w)$
+		Definiere $\hat{U} := W\times \mathbb{R}^{n-d} =: \hat{V}$ und $\tilde{\phi}\colon \hat{V} \to \hat{U}$ mit $\tilde{\phi}(v,w) := (v, f(v) + w)$
 		
 		$\Rightarrow$ $\tilde{\phi}\in C^q$, $\tilde{\phi}'(\tilde{v}, 0) = \begin{pmatrix}
 			\id_{d} & 0 \\ f'(v) & \id_{n-d}
@@ -186,11 +186,11 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 
 \begin{conclusion}
 	\proplbl{mf_folg_3}
-	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit und $\phi\!: V\subset \mathbb{R}^d\to U\subset M$ eine Parametrisierung von $U$
+	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit und $\phi\colon V\subset \mathbb{R}^d\to U\subset M$ eine Parametrisierung von $U$
 	
 	\vspace*{-0.5\baselineskip}
 	\begin{tabularx}{\linewidth}{@{}r@{\ \ }X}
-	$\Rightarrow$ & $\exists \tilde{U}$, $\tilde{V}\subset\mathbb{R}^n$ offen und $\tilde{\phi}\!: \tilde{V}\to \tilde{U}$ mit $U\subset\tilde{U}$ und $V\times \{ 0\} \subset \tilde{V}$ sowie $\tilde{\phi}$ ist $C^q$-Diffeomorphismus mit $\tilde{\phi}(x,0) = \phi(x)$ $\forall x\in V$.
+	$\Rightarrow$ & $\exists \tilde{U}$, $\tilde{V}\subset\mathbb{R}^n$ offen und $\tilde{\phi}\colon \tilde{V}\to \tilde{U}$ mit $U\subset\tilde{U}$ und $V\times \{ 0\} \subset \tilde{V}$ sowie $\tilde{\phi}$ ist $C^q$-Diffeomorphismus mit $\tilde{\phi}(x,0) = \phi(x)$ $\forall x\in V$.
 	\end{tabularx}
 \end{conclusion}
 
@@ -220,7 +220,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	\vspace*{\dimexpr-\baselineskip+1mm\relax}
 	\begin{itemize}
 		\item[($\Leftarrow$)] Gemäß \propref{mf_bsp_5} erhält man eine lokale Parametrisierung $\Rightarrow$ Behauptung
-		\item[($\Rightarrow$)] Fixiere $\tilde{u}\in M$. Wähle $\tilde{U}$, $\tilde{V}\subset \mathbb{R}^n$, $\tilde{\psi}\!:\tilde{U}\to\tilde{V}$ gemäß \propref{mf_satz_2}.
+		\item[($\Rightarrow$)] Fixiere $\tilde{u}\in M$. Wähle $\tilde{U}$, $\tilde{V}\subset \mathbb{R}^n$, $\tilde{\psi}\colon\tilde{U}\to\tilde{V}$ gemäß \propref{mf_satz_2}.
 		
 		Sei $f:= ( \tilde{\psi}_{d+1}, \dotsc, \tilde{\psi}_n)$. Offenbar ist $f\in C^q(\tilde{U}, \mathbb{R}^{n-d})$.
 		
@@ -240,7 +240,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 
 \begin{lemma}[Kartenwechsel]
 	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit und $\phi_1^{-1}$, $\phi_2^{-1}$ Karten mit Kartengebieten $U_1\cap U_2 \neq \emptyset$.\par
-	\hspace*{1mm}$\Rightarrow$ $\phi_2^{-1} \circ \phi_1\!: \phi_1^{-1} (U_1\cap U_2) \to \phi_2^{-1} (U_1\cap U_2)$ ist $C^q$-Diffeomorphismus.
+	\hspace*{1mm}$\Rightarrow$ $\phi_2^{-1} \circ \phi_1\colon \phi_1^{-1} (U_1\cap U_2) \to \phi_2^{-1} (U_1\cap U_2)$ ist $C^q$-Diffeomorphismus.
 \end{lemma}
 
 \begin{proof}
@@ -248,13 +248,13 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 \end{proof}
 
 \begin{*definition}
-	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale Mannigfaltigkeit. Ein Vektor $v\in\mathbb{R}^n$ heißt \begriff{Tangentialvektor} von $u\in M$, falls eine stetig differentierbare Kurve $\gamma\!:(-\delta, \delta)\to M$ ($\delta > 0$) existiert mit $\gamma(0) = u$ und $\gamma'(0) = v$.
+	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale Mannigfaltigkeit. Ein Vektor $v\in\mathbb{R}^n$ heißt \begriff{Tangentialvektor} von $u\in M$, falls eine stetig differentierbare Kurve $\gamma\colon(-\delta, \delta)\to M$ ($\delta > 0$) existiert mit $\gamma(0) = u$ und $\gamma'(0) = v$.
 	
 	Die Menge aller Tangentialvektoren heißt \begriff{Tangentialraum}.
 \end{*definition}
 
 \begin{proposition}
-	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit, $u\in M$, $\phi\!: V\to M$ zugehörige Parametrisierung von $u$.\par
+	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit, $u\in M$, $\phi\colon V\to M$ zugehörige Parametrisierung von $u$.\par
 	\hspace*{1mm}$\Rightarrow$ $T_u M$ ist $d$-dimensionale ($\mathbb{R}$-) Vektorraum und \begin{flalign}
 		\proplbl{mf_def_tangentialraum}
 		T_u M &= \underbrace{\phi'(x)}_{\mathclap{\in L(\mathbb{R}^d, \mathbb{R}^n)}} \cdot (\mathbb{R}^d)
@@ -262,8 +262,8 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 	mit $x:= \phi^{-1}(u)$, wobei $T_u M$ unabhängig von spezieller Parametrisierung $\phi$ ist.
 \end{proposition}
 \begin{proof}
-	Sei $\gamma\!:(-\delta, \delta)\to M$ $C^1$-Kurve mit $\gamma(0) = u$\\
-	\hspace*{1em}$\Rightarrow$ $g:= \phi^{-1}\circ\gamma$ ist $C^1$-Kurve $g\!:(-\delta, \delta) \to \mathbb{R}^d$ mit $g(0) = x$ und \begin{flalign}
+	Sei $\gamma\colon(-\delta, \delta)\to M$ $C^1$-Kurve mit $\gamma(0) = u$\\
+	\hspace*{1em}$\Rightarrow$ $g:= \phi^{-1}\circ\gamma$ ist $C^1$-Kurve $g\colon(-\delta, \delta) \to \mathbb{R}^d$ mit $g(0) = x$ und \begin{flalign}
 		\proplbl{mf_satz_6_beweis}
 		\tag{\star} \gamma'(0) = \phi'(x)\cdot g'(0), \quad \phi'(x)\text{ ist regulär.}
 	\end{flalign}
@@ -327,7 +327,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 \begin{proof}\hspace*{0pt}
 	\vspace*{\dimexpr-\baselineskip+1mm\relax}
 	\begin{itemize}
-		\item Betrachte $f\!:\mathbb{R}^{n\times n}\to\mathbb{R}^{n\times n}_{\text{sym}}$ mit $f(A) = \transpose{A}A$ \\
+		\item Betrachte $f\colon\mathbb{R}^{n\times n}\to\mathbb{R}^{n\times n}_{\text{sym}}$ mit $f(A) = \transpose{A}A$ \\
 		\hspace*{1mm} $\Rightarrow$ $f$ ist stetig differenzierbar mit $f'(A) B = \transpose{A} B + \transpose{B}A \in \mathbb{R}^{n\times n}_{\text{sym}}$ $\forall B\in \mathbb{R}^{n\times n}$.
 		
 		\item $\id$ ist ein regulärer Wert von $f$, denn sei $f(A) = \id$, $S\in \mathbb{R}^{n\times n}_{\text{sym}}$ \\
