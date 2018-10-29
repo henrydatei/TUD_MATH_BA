@@ -121,3 +121,39 @@ Sei $G$ ein Gruppe.
 	\end{itemize}
 und daraus kann man $r, k, d_1, \dots , d_k$ erhalten.
 \end{proof}
+
+\begin{lemma}
+	Sei $G=(G,+) = \langle g\rangle$ zyklisch der Ordnung $n \in \natur_0$. Die Endomorphismen von $G$ sind genau die 
+	\begin{align}
+		\phi_{\overline{k}}: \begin{cases}
+		G &\to G \\
+		x &\to kx
+		\end{cases} \text{ für } \overline{k} = k + n\whole \in \qraum{\whole}{n\whole}
+	\end{align}
+	Dabei ist $\phi_{\overline{l}}\circ\phi_{\overline{k}} = \phi_{\overline{kl}}$ für $\overline{k}, \overline{l} \in \qraum{\whole}{n\whole}$.\notag
+\end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+		\item $\phi_{\overline{k}}$ wohldefiniert $\overline{k_1} = \overline{k_2} \Rightarrow k_2 = k_1 +an$ mit $a \in \whole$, $k_2 x = k_1 x + a n \cdot x = k_1 x \forall x \in G$
+		\item $\phi_{\overline{k}} \in \Hom(G,G)$: Klar, da $G$ abelsch
+		\item $\overline{k}=\overline{l} \phi_{\overline{k}} = \phi_{\overline{l}}$\\
+		$\phi_{\overline{k}} = \phi_{\overline{l}} \Rightarrow \phi_{\overline{k}}(g) = \phi_{\overline{k}}(g) \Rightarrow (k-l)g = 0 \overset{\ord(g) =n}{\Rightarrow} n \mid (k-l) \Rightarrow \overline{k} = \overline{l}$
+		\item $\phi \in \Hom(G,G) \Rightarrow \phi = \phi_{\overline{k}}$ für ein $k \in \whole$, $\phi(g) = kg$ für ein $k \Rightarrow \phi = \phi_{\overline{k}}$
+		\item $\phi_{\overline{l}} \circ \phi_{\overline{k}} = \phi_{\overline{kl}} \colon l(kx) = (lk)x$
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Ist $G$ zyklisch von Ordnung $n \in \natur$, so ist
+	\begin{align}
+		\Aut(G) \cong \left( \qraum{\whole}{\whole}\right)^{\times}\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	$\Aut(G) \subseteq \Hom(G,G) = \{ \phi_{\overline{k}} \colon k \in \qraum{\whole}{n\whole} \}$\\
+	\begin{align}
+		\phi_{\overline{k}} \in \Aut(G) &\Leftrightarrow \text{ existiert } \overline{l} \in \qraum{\whole}{n\whole} \text{ mit }\notag\\ \phi_{\overline{l}} \circ \phi_{\overline{k}} = \phi_{\overline{1}} &\Leftrightarrow \text{ existiert } \overline{l} \in \qraum{\whole}{n\whole}
+	\end{align}
+\end{proof}
