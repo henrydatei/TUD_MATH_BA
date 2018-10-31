@@ -26,6 +26,7 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 ### Geometrie (WS2018/19)
 
 ### Einführung in die Numerik (WS2018/19)
+- erste praktische Aufgabe: Interpolation [https://github.com/henrydatei/Interpolation_Octave](https://github.com/henrydatei/Interpolation_Octave)
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
