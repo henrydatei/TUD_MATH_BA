@@ -1,0 +1,174 @@
+\section{Direkte und semidirekte Produkte}
+
+Sei $G$ eine Gruppe und $n\in\natur$.
+
+\begin{definition}[direktes Produkt]
+	Das \begriff{direkte Produkt} von Gruppen $G_1,...,G_n$ ist das kartesische Produkt
+	\begin{align}
+		G=\prod_{i=1}^n G_1 = G_1\times ...\times G_n=\bigtimes_{i=1}^n G_1\notag
+	\end{align}
+	mit komponentenweiser Multiplikation.
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Wir identifizieren $G_j$ mit der Untergruppe
+		\begin{align}
+			G_j = \prod_{i\neq j} 1 = 1\times ...\times 1\times G_j\times 1 \times ...\times 1\notag
+		\end{align}
+		von $\prod_{i=1}^n G_j$.
+		\item Für $i\neq j$, $g_i\in G_i$, $g_j\in G_j$ gilt dann
+		\begin{align}
+			\label{1.1}
+			g_ig_j=g_jg_i
+		\end{align}
+	\end{enumerate}
+\end{remark}
+
+\begin{definition}[internes direktes Produkt]
+	Seien $H_1,...,H_n\le G$. Dann ist $G$ das \begriff{interne direkte Produkt} von $H_1,...,H_n$, in Zeichen
+	\begin{align}
+		G = \prod_{i=1}^n H_i = H_1\times ...\times H_n=\bigtimes_{i=1}^n H_i\notag
+	\end{align} 
+	wenn
+	\begin{align}
+		\begin{cases}
+		H_1\times ...\times H_n &\to G \\
+		(g_1,...,g_n) &\mapsto g_1\cdot ...\cdot g_n
+		\end{cases}\notag
+	\end{align}
+	ein Gruppenisomorphismus ist.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{1_5_4}
+	Seien $U,V\le G$. Dann sind äquivalent:
+	\begin{enumerate}[label=(\roman*)]
+		\item $G=U\times V$
+		\item $U\unlhd G$, $V\unlhd G$, $U\cap V=1$, $UV=G$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $(i)\Rightarrow (ii)$: Im externen direkten Produkt $U\times V$ gilt:
+		\begin{itemize}
+			\item $UV=U\times V$: Für $u\in U$, $v\in V$ ist $(u,v)=(u,1)\cdot (1,v)\in UV$
+			\item $U\cap V=1$: klar
+			\item $U\unlhd U\times V$: Für $g=(u,v)\in U\times V$ und $u_0=(u_0,1)\in U$ ist 
+			\begin{align}
+				u_0^g = g^{-1}u_0g=(u^{-1},v^{-1})(u_0,1)(u,v)=(u_0^u,1)\in U\notag
+			\end{align}
+		\end{itemize}
+		\item $(ii)\Rightarrow (i)$: betrachte 
+		\begin{align}
+			\phi: \begin{cases}
+			U\times V\to G \\ (u,v)\mapsto w
+			\end{cases}\notag
+		\end{align}
+		\begin{itemize}
+			\item \cref{1.1} gilt: Für $u\in U$, $v\in V$ gilt in $G$:
+			\begin{align}
+				u^{-1}v^{-1}uv=\underbrace{(v^{-1})^uv}_{\in V} = \underbrace{u^{-1}u^v}_{\in U}\cap V=1\Rightarrow uv=vu\notag
+			\end{align}
+			\item $\phi$ ist Homomorphismus: $\phi((u_1,v_1)(u_2,v_2)) = \phi(u_1u_2,v_1v_2) = u_1u_2v_1v2 \overset{\cref{1.1}}{=} u_1v_1u_2v_2 = \phi(u_1,v_1)\cdot \phi(u_2,v_2)$
+			\item $\phi$ surjektiv: $\Image(\phi)=UV=G$
+			\item $\phi$ injektiv: $1=\phi(u,v) = uv\Rightarrow u=v^{-1}\in U\cap V = 1\Rightarrow (u,v) = (1,1)$
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Seien $H_1,...,H_n\le G$. Dann sind äquivalent:
+	\begin{enumerate}[label=(\roman*)]
+		\item $G=H_1\times ...\times H_n$
+		\item $G=H_1...H_n$ und $\forall i$: $H_i\unlhd G$ und $H_{i-1}\cap H_i=1$
+	\end{enumerate}
+\end{conclusion}
+\begin{proof}
+	Induktion nach $n$. \\
+	\emph{$n=1$:} trivial \\
+	\emph{$n>1$:} Setze $U=H_1...H_{n-1}$ und $V=H_n$. Dann ist $U\unlhd G$ (\propref{1_3_3} c) und $V\unlhd G$, $UV=H_1...H_n=G$, $U\cap V=1$. Somit ist $\phi: U\times V\to G$ ein Isomorphismus nach \propref{1_5_4}. Da $H_i\unlhd U$ für $i<n$ folgt nach Induktionshypothese, dass
+	\begin{align}
+		\phi':\begin{cases}
+		H_1...H_{n-1} &\to U \\ (h_1,...,h_{n-1}) &\mapsto h_1...h_{n-1}
+		\end{cases}\notag
+	\end{align}
+	Somit ist 
+	\begin{align}
+		\phi\circ (\phi'\times \id_{H_n}):\begin{cases}
+		H_1...H_n &\to G \\ (h_1...h_n) &\mapsto \phi(\phi'((h_1,...,h_{n-1}),h))=h_1...h_n
+		\end{cases}\notag
+	\end{align}
+	ein Isomorphismus.
+\end{proof}
+
+\begin{definition}[internes semidirektes Produkt]
+	Seien $H,N\le G$. Dann ist $G$ das \begriff{interne semidirekte Produkt} von $H$ und $N$, in Zeichen
+	\begin{align}
+		G=H\ltimes N = N\rtimes H\notag
+	\end{align}
+	wenn $N\unlhd G$, $H\cap N=1$ und $NH=G$.
+\end{definition}
+
+\begin{remark}
+	\proplbl{1_5_7}
+	Ist $G=H \ltimes N$, so ist
+	\begin{align}
+		\alpha: \begin{cases}
+		H\to \Aut(N) \\ h \mapsto \Int(h)\vert_N
+		\end{cases}\notag
+	\end{align}
+	ein Gruppenhomomorphismus. Im Fall $G=H\times N$ ist $\alpha(h)=\id_N$ für alle $h\in H$. Für $h_1,h_2\in H$ und $n_1,n_2\in N$ ist
+	\begin{align}
+		h_1n_1\cdot h_2n_2 &= h_1h_2h_2^{-1}n_1h_2n_2 \notag \\
+		&= h_1h_2\cdot \underbrace{n_1^{h_2}}_{\in N}\cdot n_2 \notag \\
+		\label{1.2}
+		&= h_1h_2\cdot n_1^{\alpha(h_2)}\cdot n_2
+	\end{align}
+\end{remark}
+
+\begin{definition}[semidirektes Produkt]
+	Seien $H,N$ Gruppen und $\alpha\in\Hom(H,\Aut(N))$. Das \begriff{semidirekte Produkt} $H\ltimes_{\alpha}N$ von $H$ und $N$ bezüglich $\alpha$ ist das kartesische Produkt $H\times N$ mit der Multiplikation
+	\begin{align}
+		(h_1,n_1)\cdot (h_2,n_2) = (h_1h_2,n_1^{\alpha(h_2)}n_2)\notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Wir identifizieren $H,N$ mit der Teilmenge $H\times 1$ bzw. $N\times 1$ von $H\ltimes_{\alpha} N$.
+		\item Ist $\alpha\in\Hom(H,\Aut(N))$ trivial, also $\alpha(h)=\id_N$ für alle $h\in H$, so ist $H\ltimes_{\alpha} N=H \times N$, das direkte Produkt.
+	\end{enumerate}
+\end{remark}
+
+\begin{proposition}
+	Seien $H,N$ Gruppen, $\alpha\in\Hom(H,\Aut(N))$. Dann ist $G=H\ltimes_{\alpha} N$ eine Gruppe, und diese ist das interne semidirekte Produkt von $H\le G$ und $N\unlhd G$, wobei
+	\begin{align}
+		\Int(h)\vert_N = \alpha(h)\quad\forall h\in H\notag
+	\end{align}
+\end{proposition}
+
+\begin{conclusion}
+	Sei $G=H\ltimes N$ und $\alpha$ wie in\propref{1_5_7}. Dann ist
+	\begin{align}
+		\phi :\begin{cases}
+		H\ltimes_{\alpha} N &\to G \\ (h,n) &\mapsto hn
+		\end{cases}\notag
+	\end{align}
+	ein Isomorphismus. Insbesondere ist $G$ durch $H$, $N$ und $\alpha$ bis auf Isomorphie eindeutig bestimmt.
+\end{conclusion}
+\begin{proof}
+	\begin{itemize}
+		\item $\phi$ ist Homomorphismus: $\phi((h_1,n_1)\cdot (h_2,n_2)) = \phi(h_1h_2,n_1^{\alpha(h_2)}n_2) = h_1h_2n_1^{\alpha(h_2)}n_2 \overset{\cref{1.2}}{=} h_1h_2n_1n_2 = \phi(h_1,n_1)\cdot \phi(h_2,n_2)$
+		\item $\phi$ ist surjektiv: $\Image(\phi)=HN=G$
+		\item $\phi$ ist injektiv: $H\cap N=1$
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	Sei $G=H\ltimes N$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $H=N=C_2$: $\Aut(N)=\{\id_{C_2}\}\Rightarrow\alpha\in\Hom(C_2,\Aut(C_2))=1$ (konstante Abbildung) $\Rightarrow G = H\ltimes_{\alpha} N=H\times N\cong C_2\times C_2\cong V_4$
+		\item $H=C_2$, $N=C_3$: $\Aut(N)\cong (\whole/n\whole)^\times\cong C_2 \Rightarrow \alpha\in\Hom(C_2,\Aut(C_3))=\{\id_{C_2}, 1\}\Rightarrow H\ltimes_{\alpha} N = H\times N\cong C_6$ oder $H\ltimes_{\id_{C_2}}N\cong S_3$
+	\end{enumerate}
+\end{example}
