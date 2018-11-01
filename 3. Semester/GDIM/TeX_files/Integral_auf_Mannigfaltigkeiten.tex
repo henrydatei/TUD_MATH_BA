@@ -1,0 +1,70 @@
+\section{Integral auf Mannigfaltigkeiten}
+
+\begin{underlinedenvironment}[Frage]
+	$\displaystyle \int_M f\,\mathrm{d}a$ für Mannigfaltigkeit $M$?
+\end{underlinedenvironment}
+
+\begin{underlinedenvironment}[Idee]
+	Überdecke $M$ mit Kartengebieten $U_{\beta}$ ($\beta \in \xi$) und suche Integrale $\int_{U_\beta}f\,\mathrm{d}a$ geeignet zusammen.
+\end{underlinedenvironment}
+
+\begin{underlinedenvironment}[Problem]
+	$U_\beta$ überlappen sich im Allgemeinem
+\end{underlinedenvironment}
+
+\begin{underlinedenvironment}[Ausweg]
+	Zerlege die Funktion $\alpha=1$ geeignet als $1 = \sum_{j=1}^\infty \alpha_j$.
+\end{underlinedenvironment}
+
+\begin{*definition}
+	Die Menge der stetigen Funktionen $\alpha_j\colon M\to[0,1]$, $j\in\mathbb{N}$ heißt \begriff{Zerlegung der Eins} (ZdE) auf $M\subset\mathbb{R}^n$, falls \begin{enumerate}[label={\roman*)}]
+		\item $\displaystyle \sum_{j=1}^\infty \alpha_j(u) = 1$ $\forall u\in M$
+		\item Zerlegung ist lokal-endlich, d.h. $\forall u\in M$ existiert eine Umgebung $U(u)$ bezüglich $M$ mit \begin{align*}
+			\alpha_j = 0\text{ auf }U(u)\text{ für f.a. }j\in\mathbb{N}
+		\end{align*}
+	\end{enumerate}
+\end{*definition}
+\begin{*definition}
+	Sei $\mathcal{U}$ eine bezüglich $M$ offene Überdeckung von $M\subset\mathbb{R}^n$. Die Zerlegung der Eins $\{\alpha_j \}$ ist $\mathcal{U}$ untergeordnet, falls $\forall j$ $\exists U_j\in \mathcal{U}\colon$ $\supp \alpha_j\subset U_j$. $\supp \alpha_j := \overline{\{ u\in M \mid \alpha_j(u)\neq 0\}}$ ist der \begriff{Träger} von $\alpha_j$.
+\end{*definition}
+
+\begin{proposition}[Existenz der Zerlegung der Eins]
+	Sei $M\subset\mathbb{R}^n$ und sei $\mathcal{U}$ eine bezüglich $M$ offene Überdeckung von $M$\\
+	\hspace*{0.5em}$\Rightarrow$ es existiert eine Zerlegung der Eins $\{\alpha_j\}$ von $M$, die $\mathcal{U}$ untergeordnet ist.
+\end{proposition}
+\begin{remark}\hspace*{0.5em}
+	\vspace*{-1.5em}
+	\begin{itemize}
+		\item Betrachte später die Überdeckung $\mathcal{U}$ einer Mannigfaltigkeit $M$ mit Kartengebieten
+		\item $\alpha_j$ in Wahrheit in $C^\infty$
+	\end{itemize}
+\end{remark}
+
+\begin{proof}
+	Sei $\mathcal{U} = \bigcup_{\alpha\in A} U_\alpha$.
+	\vspace*{-0.8\baselineskip}
+	\begin{enumerate}[label={\alph*)}]
+		\item $U_\alpha\in\mathcal{U}$ offen bezüglich $M$ $\Rightarrow$ $\exists W_\alpha\subset\mathbb{R}^n\colon U_\alpha = W_\alpha\cap M$. Setzte $W = \bigcup_{\alpha\in A} W_\alpha$ offen im $\mathbb{R}^n$.
+		
+		Sei $K_{j} := \{ u\in W \mid \mathrm{dist}_{W^\complement} u \ge \frac{1}{j} \} \cap \overline{B_j(0)}$. Offenbar sind die $K_j$ kompakt \\
+		\hspace*{0.5em} $\Rightarrow$ $K_j \subset K_{j+1}$ $\forall j\in\mathbb{N}$ und $\bigcup_{i\in\mathbb{N}} K_j = W$. ($\{K_j\}$ heißt kompakte Ausschöpfung von $W$).
+		
+		\item Sei $u\in K_{j+1}\setminus \inn K_{j+1}$ (kompakt) $\subset \inn K_{j+2}\setminus K_{j-1}$ (offen) \\\begin{tabularx}{\linewidth}{r@{$\;\;$}X}
+			$\Rightarrow$ & $\exists \alpha\in A$: $u\in W_\alpha$ \\
+			$\Rightarrow$ & $\exists$ Kugel $B_r(u)$, offen im $\mathbb{R}^n$ ($r > 0$): $B_r(u) \subset W_\alpha \cap (\inn K_{j+2}\setminus K_{j-1})$ \\
+			$\Rightarrow$ & $K_{j+1}\setminus \inn K_j$ wird von endlich vielen Kugeln $B_r(u)$ überdeckt \\
+			$\Rightarrow$ & $\exists$ Folge $\{u_j\}$ in $W$ mit $\bigcup_{j=1}^\infty B_{r_j}(u_j) = W$ und für $u\in W$ gilt:
+			
+			\hspace*{0.5em}$\exists$ Umgebung $U$ mit $U\cap B_{r_j}(u_j)\neq \emptyset$ nur für endlich viele $j$
+		\end{tabularx}
+		\item Betrachte $\gamma_j\colon W\to [0,1]$ mit\begin{align*}
+			\gamma_j (v) := \begin{cases}
+				e^{\frac{1_j}{\vert v - u_j\vert - v_j}}, & \text{für }\vert v - u_j\vert \le r_j,\\
+				0, & \text{sonst}
+			\end{cases}
+		\end{align*}
+		Offenbar gilt $\gamma_j(r)>0$ auf $B_{r_j}(u_j)$, $\gamma_j\in C^\infty(W)$. Setzte $\gamma(u) = \sum_{j=1}^\infty \gamma_j(u)$, $\alpha_j(u) := \frac{\gamma_j(u)}{\gamma(u)}$ $\forall u\in W$.
+		
+		Offenbar ist $\{\alpha_j \}$ eine Zerlegung der Eins von $W$, damit auch von $M$ und ist offenbar $\mathcal{U}$ untergeordnet.
+	\end{enumerate}
+\end{proof}

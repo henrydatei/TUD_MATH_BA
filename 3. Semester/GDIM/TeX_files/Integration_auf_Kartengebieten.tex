@@ -260,6 +260,7 @@
 \end{underlinedenvironment}
 
 \begin{example}
+	\proplbl{integration_mf_beispiel_3}
 	Halbspähre $S_{+}^{n-1} = \{ x\in\mathbb{R}^n\mid \vert x \vert = 1, x_4 > 0 \}$.
 	
 	Offenbar ist $S_+^{n-1}$ Graph von $g(x) = \sqrt{1 - \vert x \vert^2}$ $\forall x\in B_1(0)$
@@ -279,8 +280,114 @@
 			&= \sum^n \kappa_n
 		\end{aligned}&
 	\end{flalign*}
-	Sei $\omega_n  = v_{n-1}(S_{n-1}) = 2v_{n-1}(S_+^{n-1})$ Oberfläche, dann $\omega_n = n\cdot\kappa_n$, z.B. \begin{enumerate}[label={\uline{$n$=\arabic*:}},start=2,leftmargin=4em]
+	Sei $\omega_n  = v_{n-1}(S_{n-1}) = 2v_{n-1}(S_+^{n-1})$ Oberfläche, dann gilt \begin{align}\omega_n = n\cdot\kappa_n,
+	\end{align}
+	z.B. \begin{enumerate}[label={\uline{$n$=\arabic*:}},start=2,leftmargin=4em]
 		\item $2\pi = 2\cdot \pi$
 		\item $4\pi = 3\cdot \frac{4}{3}\pi$
 	\end{enumerate}
 \end{example}
+
+\begin{underlinedenvironment}[Hinweis]
+	$v_n(B_r(0)) = \mathcal{L}^n(B_r(0)) =r^n \kappa_n$ (verwende Trafosatz),\\
+	$v_{n-1}(\partial B_r(0)) = r^{n-1}\omega_n = r^{n-1}n\kappa_n$ (\propref{integration_mf_beispiel_3} mit $B_r(0)$ statt $B_1(0)$)
+\end{underlinedenvironment}
+
+\begin{example}[Kurvenintegral]
+	Betrachte Kurve $\phi\colon I\subset\mathbb{R}\to\mathbb{R}^n$, $I$ offenes Intervall, sodass $C:= \phi(I)$ $1$-dimensionale Mannigfaltigkeit ist (beachte: $\phi$ regulär für $\phi'(x)\neq 0$).
+	
+	Offenbar ist $\det (\transpose{\phi'(t)}\phi'(t)) = \vert \phi'(t)\vert^2$. Für $f\colon C\to\mathbb{R}^n$ ist (falls es existiert) \begin{align}
+		\proplbl{eq:integration_mf_11}
+		\int_C f \mathrm{d}a = \int_a^b f(\phi(t))\vert\phi'(t)\vert \,\mathrm{d}t.
+	\end{align}
+	Das Integral heißt \begriff{Kurvenintegral} von $f$ über $C$. Der $1$-dimensionale Inhalt \begin{align}
+		\proplbl{eq:integration_mf_12}
+		v_1(C) = \int_a^b \vert \phi'(t)\vert\,\mathrm{d}t
+	\end{align}
+	heißt \begriff{Bogenlänge} der Kurve $C$.
+	
+	Falls $\vert\phi'(t)\vert = 1$ $\forall t\in I$ heißt $\phi$ \begriff{Bogenlänge-Parametrisierung} von $C$ (denn: $v_1(\phi(t_2-t_1)) = t_2 - t_1$, d.h. die Parameter liefern die Bogenlänge). 
+	
+	Mit \begin{align}
+	\proplbl{eq:integration_mf_star}
+	\tag{\star}\sigma(s) := \int_a^b \vert \phi'(t)\vert\mathrm{d}t
+	\end{align}
+	ist $\psi\colon (0,v_1(C))\to\mathbb{R}^n$ mit $\psi(I) = \phi(\sigma^{-1}(I))$ stets die Bogenlängenparametrisierung von $C$. Denn: Offenbar ist $\sigma\in C^1$ und streng monoton wachsend $\Rightarrow$ $\sigma^{-1}\in C^1$ existiert.
+	\begin{flalign*}
+	\Rightarrow\;\; & \vert\psi'(\tau)\vert = \vert\psi'(\sigma^{-1}(\tau))\cdot\left(\sigma^{-1}\right)'(\tau)\vert = \vert \phi'(\sigma^{-1}(\tau))\vert\cdot \frac{1}{\vert \sigma'(\sigma^{-1}(\tau))} \overset{\eqref{eq:integration_mf_star}}{=} 1,
+	\end{flalign*}
+	d.h. ohne Beschränkung der Allgemeinheit kann man die Kurve stets als Bogenlängenparametrisierung angeben.
+\end{example}
+
+\begin{*definition}
+	Eine beliebige stetige Kurve $\phi\colon [a,b]\to\mathbb{R}^n$, $C= \phi([a,b])$, heißt \begriff{rektifizierbar}, falls \begin{align*}
+		l(C) := \sup\limits_{Z} \left\lbrace \left. \sum_{j=1}^k \vert \phi(t_j) - \phi(t_{j-1})\vert\;\right|\; \{ t_0,\dotsc, t_k\} \in Z\right\rbrace < \infty,
+	\end{align*}
+	wobei $Z$ die Menge der Zerlegungen $a = t_0 < t_1 < \dotsc < t_k = t_1$, $k\in\mathbb{N}$ ist.
+\end{*definition}
+
+\begin{proposition}[Rektifizierbare Kurven]
+	Sei $\phi\colon [a,b]\to \mathbb{R}^n$ stetig differenzierbar. Dann: \begin{enumerate}[label={\arabic*)}]
+		\item $\phi$ ist rektifizierbar
+		\item $C:= \phi([a,b])$ sei $1$-dimensionale Mannigfaltigkeit mit Parametrisierung $\phi$ \\
+		\hspace*{0.5em} $\Rightarrow$ $l(C) = v_d(C)$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}\hspace*{0pt}
+	\vspace*{-0.8\baselineskip}
+	\begin{enumerate}[label={zu \arabic*)},leftmargin=4.5em]
+		\item $\phi$ ist Lipschitz-stetig auf $[a,b]$ mit Lipschitz-Konstante $L = \max_{t\in [a,b]} \vert\phi'(t)\vert$ {\zeroAmsmathAlignVSpaces*\begin{flalign*}
+			\;\;\Rightarrow\;\;&\sum_{j=1}^k \vert\phi(t_j) - \phi(t_{j-1})\vert \le L\sum_{j=1}^k \vert t_j - t_{j-1}\vert = L\vert b - a\vert \text{ für jede Zerlegung $\{t_0,\dotsc,t_k\}\in Z$} \\
+			\Rightarrow\;\;& l(\phi([a,b])) < L(b-a)\\
+			\Rightarrow\;\;&\phi\text{ rektifizierbar}&
+		\end{flalign*}}
+		\item Für beliebige Zerlegung $\{t_0,\dotsc,t_k\}$ gilt \begin{flalign}
+			\notag&\sum_{j=1}^k \vert\phi(t_j)-\phi(t_{j-1})\vert = \sum_{j=1}^k \left\vert \int_{t_{j-1}}^{t_j} \phi'(t)\mathrm{d}t\right\vert \le \sum_{j=1}^k \int_{t_{j-1}}^{t_j} \vert\phi'(t)\vert\,\mathrm{d}t = \int_a^b \vert\phi'(t)\vert\,\mathrm{d}t& \\
+			\proplbl{eq:integration_mf_star_star}
+			\tag{\star\star}\;\;\Rightarrow\;\;&´l(C) \le \int_a^b \vert\phi'(t)\vert \,\mathrm{d}t = v_1(C)
+		\end{flalign}
+		Sei $l(t) := l(\phi([a,b]))$ $\forall t\in[a,b]$ und sei $h\in\mathbb{R}$, $t+h\in [a,b]$ {\allowdisplaybreaks\zeroAmsmathAlignVSpaces\begin{flalign*}
+			\;\;\xRightarrow{h>0} \;\; & \left.\left\vert \int_t^{t+h}\phi'(\tau)\mathrm{d}\tau\right\vert = \vert\phi(t+h)-\phi(t)\vert \le \underbrace{l(t+h) - l(t)}_{\mathclap{l(\phi([t,t+h]))}} \overset{\eqref{eq:integration_mf_star_star}}{\le} \int_t^{t+h}\vert\phi'(\tau)\vert\,\mathrm{d}\tau\qquad\right| \cdot\frac{1}{h} & \\
+			\Rightarrow\;\;& l \text{ ist differenzierbar mit }l'(t) = \vert\phi'(t)\vert \\
+			\Rightarrow\;\;& l(b) = \int_a^b l'(t)\mathrm{d}t = \int_a^b \vert\phi'(t)\vert\,\mathrm{d}t = v_1(C)
+		\end{flalign*}
+		}
+	\end{enumerate}
+\end{proof}
+
+\begin{example}[Umfang des Einheitskreises]
+	Betrachte $\phi\colon (-\pi,\pi)\to\mathbb{R}^2$ mit $\phi(t) = \binom{\cos t}{\sin t}$. Dann ist $C:= \phi((-\pi,\pi))$ eine $1$-dimensionale Mannigfaltigkeit (der Einheitskreis ohne den Punkt $(-1\mid 0)$).
+	\begin{align*}
+		v_1(C) = \int_{-\pi}^\pi \vert\phi'(t)\vert\,\mathrm{d}t = \int_{-\pi}^\pi \left\vert\begin{pmatrix}
+			-\sin t\\\cos t
+		\end{pmatrix}\right\vert\,\mathrm{d}t = \int_{-\pi}^\pi \mathrm{d}t = 2\pi
+	\end{align*}
+	(beachte: $\phi$ ist Bogenlängenparametrisierung)
+\end{example}
+
+\begin{proposition}[Eigenschaften des Integrals]
+	\proplbl{integration_mf_7}
+	Seien $f$, $g$, $f_k\colon U\to \mathbb{R}$, $U$ Kartengebiet der Mannigfaltigkeit $M\subset\mathbb{R}^n$. Dann: \begin{enumerate}[label={\arabic*)}]
+		\item $f$ integrierbar auf $U$ $\Leftrightarrow$ $\vert f \vert$ integrierbar auf $M$ $\Leftrightarrow$ $f^+$ und $f^-$ integrierbar auf $U$
+		\item $f$, $g$ integrierbar, $c\in\mathbb{R}$ $\Leftrightarrow$ $\int_U cf \pm g\mathrm{d}a = c\int_Uf\mathrm{d}a \pm\int_U g\mathrm{d}a$
+		\item $f$, $g$ integrierbar auf $U$, $g$ beschränkt auf $U$ $\Rightarrow$ $\cdot g$ integrierbar auf $U$
+		\item $f$, $g$ integrierbar, $f\le g$ auf $U$ $\Rightarrow$ $\int_Uf\,\mathrm{d}a\le\int_Ug\,\mathrm{d}a$
+		\item (Monotone Konvergenz)
+		
+		Seien $f_k$ integrierbar auf $U$, $f_1\le f_2\le \dotsc$, Folge $\int_U f_k\,\mathrm{d}a$ beschränkt und $f(u) = \lim_{k\to\infty} f_k(u)$ $\forall u\in U$ \\
+		\hspace*{0.5em}$\Rightarrow$ $f$ integrierbar auf $U$ mit $\int_U f\,\mathrm{d}a = \lim_{k\to\infty} \int f_k\,\mathrm{d}a$
+		\item (Majorisierte Konvergenz)
+		
+		Seien $f_k$, $g$ integrierbar auf $U$, $\vert f_k\vert\le g$ $\forall k$, $f(u) = \lim_{k\to\infty} f_k(u)$ $\forall u\in U$ \\
+		\hspace*{0.5em}$\Rightarrow$ $f$ ist integrierbar auf $U$ mit $\int_U f\,\mathrm{d}a = \lim_{k\to\infty} \int_U f_k\,\mathrm{d}a$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Sei $\phi\colon V\to U$ Parametrisierung des Kartengebiets $U$. Somit:\begin{itemize}
+		\item $f$ integrierbar auf $U$ $\Leftrightarrow$ $f(\phi(\,\cdot\,))\sqrt{g^\phi(\,\cdot\,)}$ integrierbar auf $V$, und \item $f\le g$ auf $U$ $\Leftrightarrow$ $f(\phi(\,\cdot\,))\sqrt{g^\phi(\,\cdot\,)} \le g(\phi(\,\cdot\,))\sqrt{g^\phi(\,\cdot\,)}$ auf $V$,
+		\item $f(u) = \lim_{k\to\infty} f_k(u)\in U$ $\Leftrightarrow$ $f(\phi(x)) = \lim_{k\to\infty}  f_k(x)$ $\forall x\in V$,
+	\end{itemize}
+	somit folgen die Behauptungen direkt aus den Eigenschaften des Lebesgue-Integrals (Kapitel 22).
+\end{proof}

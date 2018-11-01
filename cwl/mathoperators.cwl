@@ -61,6 +61,7 @@
 \id#*\math
 \graph#*\math
 \diam#*\math
+\supp#*\math
 \End#*\math
 \Aff#*\math
 \Aut#*\math
