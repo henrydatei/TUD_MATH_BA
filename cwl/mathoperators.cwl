@@ -91,6 +91,8 @@
 \kgV#*\math
 \rang#*\math
 \ord#*\math
+\bigcupdot#*\math
+\BIGboxplus#*\math
 # special names
 \lebesque%*n
 # text related macros

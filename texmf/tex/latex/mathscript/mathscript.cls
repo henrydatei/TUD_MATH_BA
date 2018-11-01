@@ -703,6 +703,7 @@
 
 %change numbering of equations to be section by section
 \counterwithout{equation}{section}
+\pretocmd{\section}{\setcounter{equation}{0}}{}{}
 
 %appendix:
 \let\old@appendix\appendix

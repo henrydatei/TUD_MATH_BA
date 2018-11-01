@@ -239,6 +239,7 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 \end{underlinedenvironment}
 
 \begin{lemma}[Kartenwechsel]
+	\proplbl{mf_lemma_5}
 	Sei $M\subset\mathbb{R}^n$ $d$-dimensionale $C^q$-Mannigfaltigkeit und $\phi_1^{-1}$, $\phi_2^{-1}$ Karten mit Kartengebieten $U_1\cap U_2 \neq \emptyset$.\par
 	\hspace*{1mm}$\Rightarrow$ $\phi_2^{-1} \circ \phi_1\colon \phi_1^{-1} (U_1\cap U_2) \to \phi_2^{-1} (U_1\cap U_2)$ ist $C^q$-Diffeomorphismus.
 \end{lemma}
@@ -344,3 +345,90 @@ und sei in \cref{chap:mf} stehts erfüllt. Folglich: \begin{flalign}
 		\item auch $\transpose{A}\in O(n)$, somit stehts $A^{-1} = A^T$.
 	\end{itemize}
 \end{underlinedenvironment}
+
+\begin{*definition}
+	$(n-1)$-dimensionale Mannigfaltigkeit heißt \begriff{Hyperfläche}.
+	
+	Die Abbildung $\nu\colon M\to\mathbb{R}^n$, $M\subset\mathbb{R}$ Mannigfaltigkeit, heißt \begriff{Einheitsnormalenfeld}, falls $\nu(n)\in N_u M$, $\Vert \nu(u)\vert = 1$ $\forall u\in M$ und $\nu$ stetig auf $M$.
+\end{*definition}
+
+\begin{lemma}
+	Sei $M\subset\mathbb{R}^n$ zusammenhängende Hyperfläche
+	
+	\hspace{0.5em}$\Rightarrow$ Es existiert kein Einheitsnormalenfeld oder genau 2.
+\end{lemma}
+
+\begin{proof}\hspace*{0pt}
+	\vspace*{-0.8\baselineskip}
+	\begin{enumerate}[label={\alph*)}]
+		\item Falls $\nu$ Einheitsnormalenfeld auf $M$, dann auch $-\nu$.
+		\item Seien $\nu$, $\tilde{\nu}$ Einheitsnormalenfelder auf $M$ \\
+		\hspace*{0.5em}$\Rightarrow$ $s(u) := \langle \nu(u), \tilde{\nu}(\nu)\rangle = \pm 1$.
+		
+		Mit $\dim N_u M = 1$, $\nu$ stetig auf $M$ und $M$ zusammenhängend \\
+		\hspace*{0.5em}$\Rightarrow$ $s(u) = 1$ oder $s(u) = -1$ $\forall u\in M$ \\
+		\hspace*{0.5em}$\Rightarrow$ $\tilde{\nu} = \nu$ oder $\nu = -\tilde{\nu}$
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	Das Möbius-Band: klebe die Enden eines $2d$-Streifens verdreht zusammen \\
+	\hspace*{0.5em}$\Rightarrow$ besitzt kein Einheitsnormalenfeld.
+\end{example}
+
+\begin{*definition}
+	Eine Hyperfläche $M\subset\mathbb{R}^n$ heißt \begriff{orientierbar}, falls ein Einheitsnormalenfeld $\nu\colon M\to\mathbb{R}^n$ existiert. $\nu$ heißt \begriff{Orientierung}, $(M,\nu)$ \begriff{orientierte Mannigfaltigkeit}.
+\end{*definition}
+
+\begin{example}
+	Konstruiere ein Einheitsnormalenfeld für Hyperfläche $M = \{ f = 0\}$.
+	
+	Sei $f\in C^1(V,\mathbb{R})$, $V\subset\mathbb{R}^n$, $0$ regulärer Wert von $f$. Dann ist \begin{align*}
+		M := \{ u\in V \mid f(u) = 0 \}
+	\end{align*}
+	eine Hyperfläche.
+	
+	Offenbar ist $\nu(u) = \frac{f'(u)}{\vert f'(u)\vert}$ Einheitsnormalenfeld auf $M$, denn der Gradient $f'(u)$ steht senkrecht auf Niveaumengen von $f$.
+\end{example}
+
+\begin{*definition}
+	Seien $a_1$, $\dotsc$, $a_{n-1}\in\mathbb{R}^n$, $A = (a_1|\dotsc|a_{n-1})\in\mathbb{R}^{n\times(n-1)}$ und $A_k\in\mathbb{R}^{(n-1)\times(n-1)}$ sei Matrix $A$ ohne $k$-te Zeile. Dann heißt \begin{align*}
+		a_1\land \dotsc \land a_{n-1} := \alpha = \begin{pmatrix}
+			\alpha_1\\\vdots\\\alpha_n
+		\end{pmatrix}\in\mathbb{R}^n
+	\end{align*}
+	mit $\alpha_k := (-1)^{k-1}\det A_k$ \begriff{äußeres Produkt} von $a_1$, $\dotsc$, $a_{n-1}$.
+	
+	(später: $\alpha\perp\alpha_j$ $\forall j$, $\vert\alpha\vert $ = Volumen des von $\alpha_1$, $\dotsc$, $\alpha_1{n-1}$ aufgespannten Parallelisotops.)
+\end{*definition}
+
+\begin{example}
+	Für $n=3$ ist $a_1\land a_2 = a_1\times a_2$ das Kreuzprodukt.
+\end{example}
+
+\begin{lemma}
+	Seien $a_1$, $\dotsc$, $a_{n-1}\in\mathbb{R}^n$. 
+	\zeroAmsmathAlignVSpaces*
+	\begin{flalign}
+	\proplbl{eq:mf_gleichung_4}
+	\;\;\Rightarrow\;\; & \langle b,a_{1}\land\dotsc\land a_{n-1}\rangle = \det(b \mid a_1\mid \dotsc\mid a_{n-1})\quad\forall b\in\mathbb{R^n} \\
+	\notag & a_1\land\dotsc\land a_{n-1}\perp a_j \quad\forall j\in 1,\dotsc,n-1 \\
+	\notag & a_1\land \dotsc \land a_{n-1} = \begin{cases}
+		=0 & \text{falls $a_j$ linear abhängig},\\
+		\neq 0, & \text{falls $a_j$ linear unabhängig}
+	\end{cases}&
+	\end{flalign}
+\end{lemma}
+
+\begin{proof}
+	Für \propref{eq:mf_gleichung_4} entwickle $\det(\dotsc)$ nach erster Spalte $b$. 
+	$b = a_j$ in \propref{eq:mf_gleichung_4} liefert zweite Behauptung, \eqref{eq:mf_gleichung_4} liefert auch 3. Behauptung.
+\end{proof}
+
+\begin{example}
+	Konstruiere ein Einheitsnormalenfeld mittels Parametrisierung $\phi$. Sei $M = \phi(V)$ Hyperfläche mit zugehöriger Parametrisierung $\phi\colon V\subset\mathbb{R}^{n-1}\to\mathbb{R}^n$, $V$ offen.\\\begin{tabularx}{\linewidth}{r@{$\;\,$}X}
+		$\Leftrightarrow$ & $\frac{\partial}{\partial x_i}\phi(x) = \phi'(x) e_j \in T_{\phi(x)} M$ $\forall x\in V$, $j=1,\dotsc,n-1$. (beachte: $\phi_{x_j}(x)\in\mathbb{R}^n$) \\
+		$\Rightarrow$ & $N(x) := \phi_{x_j}(x)\land \dotsc\land \phi_{x_{n-1}}(x)\in N_{\phi(x)} M$ $\forall x\in V$ \\
+		$\Rightarrow$ & $\nu(x) := \frac{N(x)}{\vert N(x)\vert}$ ist Einheitsnormalenfeld auf $M$ (beachte: $\phi'$ regulär $\forall x$)
+	\end{tabularx}
+\end{example}

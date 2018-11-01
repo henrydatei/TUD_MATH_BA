@@ -89,6 +89,9 @@
 \end{boldEnvironment}
 \begin{repetition}
 \end{repetition}
+\begin{proof}
+\begin{proof}[title]
+\end{proof}
 \proplbl{label}#l
 \propref{ref}#r
 \begriff{term}%text
