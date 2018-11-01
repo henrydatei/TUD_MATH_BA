@@ -152,7 +152,7 @@
 	\end{align*}
 	setzt man \begin{align}
 		\proplbl{eq:integration_mf_4}
-		\int_U f\;\mathrm{d}a := \int_V f(\phi(x))\cdot\sqrt{g^\phi(x)} \;^\mathrm{d}x
+		\int_U f\;\mathrm{d}a := \int_V f(\phi(x))\cdot\sqrt{g^\phi(x)} \;\mathrm{d}x
 	\end{align}
 	als Integral von $f$ über dem Kartengebiet $U$ falls dieses existiert. $f$ heißt dann \begriff{integrierbar} auf $U$.
 \end{*definition}
@@ -191,7 +191,7 @@
 \end{proof}
 
 \begin{*definition}
-	¸Falls $f=1$ integrierbar über einem Kartengebiet $U\subset M$ ist, dann heißt \begin{align}
+	Falls $f=1$ integrierbar über einem Kartengebiet $U\subset M$ ist, dann heißt \begin{align}
 		v_d(U) = \int_U 1 \mathrm{d}a
 	\end{align}
 	der \begriff{$d$-dimensionale Inhalt von $U$}. $\sqrt{g^\phi(x)}$ heißt \begriff{Flächenelement} von $U$ bezüglich $U$.
@@ -209,9 +209,9 @@
 	Sei $M:= \{ u = (u_1,u_2,u_3)\in\mathbb{R}^3\mid\vert u \vert = r, u_1> 0 \}$ (Halbsphäre mit Radius $r$).	Berechne $\int_M f\mathrm{d}a$.
 	
 	Parametrisierung von $M$ (Kugelkoordinaten): \begin{align*}
-		\phi(x_1,x_2) = \begin{pmatrix}
+		\phi(x_1,x_2) = r \cdot \begin{pmatrix}
 			\cos x_2 \cdot \cos x_1 \\ \cos x_2 \cdot \sin x_1 \\ \sin x_2
-		\end{pmatrix}\cdot r
+		\end{pmatrix}
 	\end{align*}
 	für $(x_1,x_2)\in \left( -\frac{\pi}{2},\frac{\pi}{2}\right)\times \left( -\frac{\pi}{2},\frac{\pi}{2}\right) = V$.
 	
@@ -220,9 +220,9 @@
 	
 	{\zeroAmsmathAlignVSpaces*
 	\begin{align*}
-		\phi'(x) &= \begin{pmatrix}
+		\phi'(x) &= r \cdot \begin{pmatrix}
 			-\cos x_2\cdot\sin x_1 & -\sin x_2\cdot \cos x_1 \\ \cos x_2\cdot \cos x_1 & -\sin x_2\cdot \sin x_1 \\ 0 & \cos x_2
-		\end{pmatrix}\cdot r \\
+		\end{pmatrix} \\
 		\transpose{\phi'(x)}\cdot \phi(x) &= r^2\begin{pmatrix}
 			\cos^2 x_2 & 0 \\ 0 & 1
 		\end{pmatrix}, \quad \sqrt{g^\phi(x)} = \cos^2 x_2
