@@ -68,3 +68,73 @@
 		Offenbar ist $\{\alpha_j \}$ eine Zerlegung der Eins von $W$, damit auch von $M$ und ist offenbar $\mathcal{U}$ untergeordnet.
 	\end{enumerate}
 \end{proof}
+
+\begin{*defintion}
+	Sei $M\subset\mathbb{R}^n$, $f\colon M\rightarrow\mathbb{R}^n$, $\supp f\subset U\subset M$, $U$ Kartengebiet von $M$.
+	
+	$f$ heißt \begriff{integrierbar auf $M$}, falls die Einschränkung $f|_U$ integrierbar auf Kartengebiet $U$ und \begin{align}
+		\int_M f\mathrm{d}a := \int_U f|_U\,\mathrm{d}a
+	\end{align}
+	heißt \begriff{Integral} von $f$ auf $M$.
+\end{*defintion}
+
+\begin{lemma}[Kriterium für Integrierbarkeit
+	\proplbl{integral_mf_lemma_2}
+	Sei $M\subset\mathbb{R}^n$ eine Mannigfaltigkeit, $f\colon M\to\mathbb{R}$, $\supp f\subset U\subset M$, $U$ Kartengebiet von $M$ und sei $\{x_j\}$ eine Zerlegung der Eins auf $M$. Dann: \\\begin{tabularx}{\linewidth}{X@{$\;\;$}c@{$\;\;$}X}
+		\hfill $f$ integrierbar auf $M$ & $\Leftrightarrow$ & \begin{minipage}[t]{\linewidth}
+			\vspace*{-1\baselineskip}
+			\begin{enumerate}[label={\roman*)}]
+				\item $f_{x_j}$ integrierbar auf $M$ $\forall j\in\mathbb{N}$
+				\item $\sum_{j=1}^nfty \int_m \vert f \vert \alpha_j\,\mathrm{d}a < \infty$
+			\end{enumerate}
+		\end{minipage}
+	\end{tabularx}
+	\begin{flalign}
+		\proplbl{eq:integral_mf_2}
+		\;\;\Rightarrow\;\; & \sum_M f\mathrm{d}a = \sum_{j=1}^\infty \int_M \alpha_j \mathrm{d}a
+	\end{flalign}
+\end{lemma}
+
+\begin{proof}\hspace{0pt}
+	\vspace{-0.8\baselineskip}	
+	\begin{enumerate}[label={\alpha*)}]
+		\item Sei $f$ integrierbar auf $M$ $\xRightarrow{\propref{integration_mf__7}}$ i) und \begin{flalign}
+			\sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a = \lim\limits_{k\to\infty} \sum_{j=1}^k \int \vert f \vert \alpha_j\,\mathrm{d}a \le \int_M \vert f \vert \,\mathrm{d}a < \infty \quad\Rightarrow\;\;\text{ii)} \quad\xRightarrow[\text{Konvergenz}]{\text{majorisierte}} \text{\eqrefeq:integral_mf_2}
+		\end{flalign}
+		\item gelten i) und ii) $\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ $\vert f \vert$ integrierbar $\Rightarrow$ $f$ integrierbar
+	\end{enumerate}
+\end{proof}
+
+\begin{*definition}
+	Sei $M\subset\mathbb{R}^n$ eine Mannigfaltigkeit und $\mathcal{U}$ eine offene Überdeckung bezüglich $M$ von $M$ mit Kartengebieten.
+
+	$f\colon M\to\mathbb{R}$ heißt \begriff{integrierbar auf Mannigfaltigkeit $M$}, falls die Zerlegung der Eins $\{\alpha_j\}$ auf $M$ existiert, die $\mathcal{U}$ untergeordnet ist, sodass \begin{enumerate}[label={\roman*)}]
+		\item $f\alpha_j$ integrierbar $\forall j\in\mathbb{N}$ (auf $M$)
+		\item $\sum_{j=1}^\infty \int_M \vet f \vert\alpha_j\,\mathrm{d}a < \infty$
+	\end{enumerate}
+	und damit definiere sich \begin{align}
+		\proplbl{eq:integral_mf_3}
+		\int_M f \mathrm{d} a = \sum_{j=1}^\infty \int_M f\alpha_j \,\mathrm{d}a,
+	\end{align}
+	und heißt \begriff{Integral von $f$ auf $M$}.
+\end{*definition}
+
+\begin{proposition}[Rechtfertigung des Integralbegriffs]
+	$f$ ist integrierbar auf $M$ und $\int_M f \mathrm{d}a$ sind unabhängig von konkreter Überdeckung $\mathcal{U}$ und Zerlegung der Eins $\{\alpha_j\$.
+\end{proposition}
+
+\begin{proof}
+	Sei $\colon M\to\mathbb{R}$ integrierbar auf $M$ mit $\{\alpha_j\}$, $\mathcal{U}$ gemäß Definition. Sei $\{\tilde{\alpha}_j\}$ eine weitere Zerlegung der Eins, die einer Überdeckung $\tilde{\mathcal{U}}$ durch Kartengebiete untergeordnet ist. Dann sind zu zeigen: \begin{enumerate}[label={\roman*')}]
+		\item $f\tilde{\alpha}_j$ ist integrierbar auf $M$ $\forall j$ und 
+		\item $\sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a < \infty$ und
+		\item $\sum_{j=1}^\infty \int_M f\alpha_j\,\mathrm{d}a = \sum_{j=1}^\infty \int_m f \tilde{\alhpha}_j\,\mathrm{d}a$
+	\end{enumerate}
+	\begin{enumerate}[label={zu \roman*')},leftmargin=5em]
+		$f\alpha_j$ sind integrierbar auf $M$ nach Voraussetzung \\
+		\hspace{0.5em}$\xRightarrow{\propref{integration_mf_7}}$ $f\tilde{\alpha}_k \alpha_j$ ist integrierbar auf $M$ $\forall k,j\in\mathbb{N}$ und \begin{align*}
+			\sum\int_M \vert f \tilde{\alpha}_k\vert \alpha_j\,\mathrm{d}a \le \sum_{j=1}^\infty \vert f \vert\alpha_j \,\mathrm{d}a < \infty
+		\end{align*}
+		\hspace{0.5em}$\xRightarrow{\propref{integral_mf_lemma_2}}$ $f\tilde{\alpha}_k$ und $\vert f \tilde{\alpha}_k$ integrierbar auf $M$ $\forall $k$ $\Rightarrow$ i') und \begin{equation}\begin{split}
+			\tag{\star}
+			\int_m f \tilde{\alpha_k}\,\mathrm{d}a &= \int_{j=1\^\infty \int_M f\tilde{\alpha}_j\,\mathrm{d}a\qquad\text{bzw.}\\
+			\int_M \vert f \vert \tilde{\alpha}_k \,\mathrm{d}a&= \int_{j=1}^\infty \int \vert f \vert \tilde{\alpha}_k \alpha_j \,\mathrm{d}a
