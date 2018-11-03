@@ -32,13 +32,13 @@
 	Sei $M\subset\mathbb{R}^n$ und sei $\mathcal{U}$ eine bezüglich $M$ offene Überdeckung von $M$\\
 	\hspace*{0.5em}$\Rightarrow$ es existiert eine Zerlegung der Eins $\{\alpha_j\}$ von $M$, die $\mathcal{U}$ untergeordnet ist.
 \end{proposition}
-\begin{remark}\hspace*{0.5em}
+\begin{*remark}\hspace*{0.5em}
 	\vspace*{-1.5em}
 	\begin{itemize}
 		\item Betrachte später die Überdeckung $\mathcal{U}$ einer Mannigfaltigkeit $M$ mit Kartengebieten
 		\item $\alpha_j$ in Wahrheit in $C^\infty$
 	\end{itemize}
-\end{remark}
+\end{*remark}
 
 \begin{proof}
 	Sei $\mathcal{U} = \bigcup_{\alpha\in A} U_\alpha$.
@@ -69,38 +69,41 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{*defintion}
+\begin{*definition}
 	Sei $M\subset\mathbb{R}^n$, $f\colon M\rightarrow\mathbb{R}^n$, $\supp f\subset U\subset M$, $U$ Kartengebiet von $M$.
 	
 	$f$ heißt \begriff{integrierbar auf $M$}, falls die Einschränkung $f|_U$ integrierbar auf Kartengebiet $U$ und \begin{align}
 		\int_M f\mathrm{d}a := \int_U f|_U\,\mathrm{d}a
 	\end{align}
 	heißt \begriff{Integral} von $f$ auf $M$.
-\end{*defintion}
+\end{*definition}
 
-\begin{lemma}[Kriterium für Integrierbarkeit
+\begin{lemma}[Kriterium für Integrierbarkeit]
 	\proplbl{integral_mf_lemma_2}
-	Sei $M\subset\mathbb{R}^n$ eine Mannigfaltigkeit, $f\colon M\to\mathbb{R}$, $\supp f\subset U\subset M$, $U$ Kartengebiet von $M$ und sei $\{x_j\}$ eine Zerlegung der Eins auf $M$. Dann: \\\begin{tabularx}{\linewidth}{X@{$\;\;$}c@{$\;\;$}X}
-		\hfill $f$ integrierbar auf $M$ & $\Leftrightarrow$ & \begin{minipage}[t]{\linewidth}
+	Sei $M\subset\mathbb{R}^n$ eine Mannigfaltigkeit, $f\colon M\to\mathbb{R}$, $\supp f\subset U\subset M$, $U$ Kartengebiet von $M$ und sei $\{x_j\}$ eine Zerlegung der Eins auf $M$. Dann: \\
+	\begin{tabularx}{\linewidth}{X@{$\;\;$}c@{$\;\;$}X}
+		$f$ integrierbar auf $M$ & $\Leftrightarrow$ & \begin{minipage}[t]{\linewidth}
 			\vspace*{-1\baselineskip}
 			\begin{enumerate}[label={\roman*)}]
 				\item $f_{x_j}$ integrierbar auf $M$ $\forall j\in\mathbb{N}$
-				\item $\sum_{j=1}^nfty \int_m \vert f \vert \alpha_j\,\mathrm{d}a < \infty$
+				\item $\sum_{j=1}^\infty \int_m \vert f \vert \alpha_j\,\mathrm{d}a < \infty$
 			\end{enumerate}
 		\end{minipage}
 	\end{tabularx}
 	\begin{flalign}
 		\proplbl{eq:integral_mf_2}
-		\;\;\Rightarrow\;\; & \sum_M f\mathrm{d}a = \sum_{j=1}^\infty \int_M \alpha_j \mathrm{d}a
+		\quad\Rightarrow\;\; & \sum_M f\mathrm{d}a = \sum_{j=1}^\infty \int_M \alpha_j \mathrm{d}a&
 	\end{flalign}
 \end{lemma}
 
 \begin{proof}\hspace{0pt}
 	\vspace{-0.8\baselineskip}	
-	\begin{enumerate}[label={\alpha*)}]
-		\item Sei $f$ integrierbar auf $M$ $\xRightarrow{\propref{integration_mf__7}}$ i) und \begin{flalign}
-			\sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a = \lim\limits_{k\to\infty} \sum_{j=1}^k \int \vert f \vert \alpha_j\,\mathrm{d}a \le \int_M \vert f \vert \,\mathrm{d}a < \infty \quad\Rightarrow\;\;\text{ii)} \quad\xRightarrow[\text{Konvergenz}]{\text{majorisierte}} \text{\eqrefeq:integral_mf_2}
+	\begin{enumerate}[label={\alph*)}]
+		\item Sei $f$ integrierbar auf $M$ $\xRightarrow{\propref{integration_mf_7}}$ i) und
+		\begin{flalign}
+			\sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a = \lim\limits_{k\to\infty} \sum_{j=1}^k \int \vert f \vert \alpha_j\,\mathrm{d}a \le \int_M \vert f \vert \,\mathrm{d}a < \infty
 		\end{flalign}
+		$\Rightarrow$ ii) $\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ \eqref{eq:integral_mf_2}
 		\item gelten i) und ii) $\xRightarrow[\text{Konvergenz}]{\text{majorisierte}}$ $\vert f \vert$ integrierbar $\Rightarrow$ $f$ integrierbar
 	\end{enumerate}
 \end{proof}
@@ -110,7 +113,7 @@
 
 	$f\colon M\to\mathbb{R}$ heißt \begriff{integrierbar auf Mannigfaltigkeit $M$}, falls die Zerlegung der Eins $\{\alpha_j\}$ auf $M$ existiert, die $\mathcal{U}$ untergeordnet ist, sodass \begin{enumerate}[label={\roman*)}]
 		\item $f\alpha_j$ integrierbar $\forall j\in\mathbb{N}$ (auf $M$)
-		\item $\sum_{j=1}^\infty \int_M \vet f \vert\alpha_j\,\mathrm{d}a < \infty$
+		\item $\sum_{j=1}^\infty \int_M \vert f \vert\alpha_j\,\mathrm{d}a < \infty$
 	\end{enumerate}
 	und damit definiere sich \begin{align}
 		\proplbl{eq:integral_mf_3}
@@ -120,21 +123,190 @@
 \end{*definition}
 
 \begin{proposition}[Rechtfertigung des Integralbegriffs]
-	$f$ ist integrierbar auf $M$ und $\int_M f \mathrm{d}a$ sind unabhängig von konkreter Überdeckung $\mathcal{U}$ und Zerlegung der Eins $\{\alpha_j\$.
+	$f$ ist integrierbar auf $M$ und $\int_M f \mathrm{d}a$ sind unabhängig von konkreter Überdeckung $\mathcal{U}$ und Zerlegung der Eins $\{\alpha_j\}$.
 \end{proposition}
 
 \begin{proof}
-	Sei $\colon M\to\mathbb{R}$ integrierbar auf $M$ mit $\{\alpha_j\}$, $\mathcal{U}$ gemäß Definition. Sei $\{\tilde{\alpha}_j\}$ eine weitere Zerlegung der Eins, die einer Überdeckung $\tilde{\mathcal{U}}$ durch Kartengebiete untergeordnet ist. Dann sind zu zeigen: \begin{enumerate}[label={\roman*')}]
+	Sei $\colon M\to\mathbb{R}$ integrierbar auf $M$ mit $\{\alpha_j\}$, $\mathcal{U}$ gemäß Definition. Sei $\{\tilde{\alpha}_j\}$ eine weitere Zerlegung der Eins, die einer Überdeckung $\tilde{\mathcal{U}}$ durch Kartengebiete untergeordnet ist. Dann sind zu zeigen: \begin{enumerate}[label={\roman*')},leftmargin=4em]
 		\item $f\tilde{\alpha}_j$ ist integrierbar auf $M$ $\forall j$ und 
 		\item $\sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a < \infty$ und
-		\item $\sum_{j=1}^\infty \int_M f\alpha_j\,\mathrm{d}a = \sum_{j=1}^\infty \int_m f \tilde{\alhpha}_j\,\mathrm{d}a$
+		\item $\sum_{j=1}^\infty \int_M f\alpha_j\,\mathrm{d}a = \sum_{j=1}^\infty \int_m f \tilde{\alpha}_j\,\mathrm{d}a$.
 	\end{enumerate}
-	\begin{enumerate}[label={zu \roman*')},leftmargin=5em]
-		$f\alpha_j$ sind integrierbar auf $M$ nach Voraussetzung \\
-		\hspace{0.5em}$\xRightarrow{\propref{integration_mf_7}}$ $f\tilde{\alpha}_k \alpha_j$ ist integrierbar auf $M$ $\forall k,j\in\mathbb{N}$ und \begin{align*}
-			\sum\int_M \vert f \tilde{\alpha}_k\vert \alpha_j\,\mathrm{d}a \le \sum_{j=1}^\infty \vert f \vert\alpha_j \,\mathrm{d}a < \infty
+	\begin{enumerate}[label={zu \roman*')},leftmargin=4em]
+		\item $f\alpha_j$ sind integrierbar auf $M$ nach Voraussetzung \\
+		\begin{tabularx}{\linewidth}{r@{$\;\;$}X}
+				$\xRightarrow{\propref{integration_mf_7}}$ & \begin{minipage}[t]{0.5\linewidth}
+					$f\tilde{\alpha}_k \alpha_j$ ist integrierbar auf $M$ $\forall k,j\in\mathbb{N}$ und
+					\[
+						\sum_{j=1}^\infty\int_M \vert f \tilde{\alpha}_k\vert \alpha_j\,\mathrm{d}a \le \sum_{j=1}^\infty \vert f \vert\alpha_j \,\mathrm{d}a < \infty
+					\]
+				\end{minipage} \\[1\parskip]
+				$\xRightarrow{\propref{integral_mf_lemma_2}}$ & $f\tilde{\alpha}_k$ und $\vert f \tilde{\alpha}_k\vert$ integrierbar auf $M$ $\forall k$ \\
+				$\Rightarrow$ & \begin{minipage}[t]{\linewidth} i') und
+					\begin{equation}
+					\proplbl{eq:integral_mf_star}
+					\tag{\star} \begin{aligned}
+					\begin{split}
+						\int_M f \tilde{\alpha}_k \, \mathrm{d}a &= \int_{j=1}^\infty \int_M f \tilde{\alpha}_j \, \mathrm{d}a \qquad \text{bzw.} \\
+						\int_M \vert f \vert \tilde{\alpha}_k \,\mathrm{d}a &= \int_{j=1}^\infty \int \vert f \vert \tilde{\alpha}_k \alpha_j \,\mathrm{d}a
+					\end{split}\end{aligned}
+					\end{equation}
+				\end{minipage}
+		\end{tabularx}
+		\item $f\alpha_j$ integrierbar auf $M$ nach Voraussetzungen
+		{\zeroAmsmathAlignVSpaces
+		\begin{flalign}
+			\;\;\xRightarrow[\text{mit }\{\tilde{\alpha}_j\}]{\propref{integral_mf_lemma_2}}\;\; & 
+					\label{eq:integral_mf_star_star}
+					\tag{\star\star} \int_M f \alpha_j\,\mathrm{d}a = \sum_{k=1}^\infty \int_M f\alpha_j \tilde{\alpha}_k\,\mathrm{d}a \quad\forall j& \\
+					\notag
+					& \text{und analog für $\vert f \vert$} \\
+			\proplbl{eq:integral_mf_raute}
+			\tag{\#}
+			\Rightarrow\;\;& \sum_{j=1}^\infty \sum_{k=1}^\infty \int_M \vert f \vert\alpha_j\alpha_k\,\mathrm{d}a = \sum_{j=1}^\infty \int_m \vert f \vert \alpha_j\,\mathrm{d}a \overset{\text{ii)}}{<} \infty \\
+			\notag
+			& \text{Doppelreihensatz, \eqref{eq:integral_mf_star_star} mit $\vert f \vert$ und ii) eerlauben die Vertauschung der Summation in \eqref{eq:integral_mf_raute}} \\
+			\proplbl{eq:integral_mf_plus}
+			\tag{+}
+			\xRightarrow{\eqref{eq:integral_mf_star}}\;\;& \sum_{k=1}^\infty \int_M \vert f \vert \tilde{\alpha}_k \,\mathrm{d}a = \sum_{j=1}^\infty \int_M \vert f \vert \alpha_j\,\mathrm{d}a \\
+			\notag 
+			\Rightarrow\;\;& \text{ii')}
+		\end{flalign}}
+		\item Analog erhält man \eqref{eq:integral_mf_plus} mit $f$ statt $\vert f \vert$ $\Rightarrow$ iii')
+	\end{enumerate} 
+\end{proof}
+
+\begin{*definition}
+	Sei $M\subset\mathbb{R}^n$, $M$ Mannigfaltigkeit, $A\subset M$ Teilmenge. Die Funktion $f\colon A\to\mathbb{R}$ heißt \begriff{integrierbar auf $A$}, falls \begin{align*}
+		f_A := \begin{cases}
+			f, &\text{auf $A$},\\
+			0, & \text{sonst}
+		\end{cases}
+	\end{align*}
+	integrierbar auf $M$ ist. $A\subset M$ heißt (endlich) \begriff{messbar} in $M$ falls die Funktion $f= \equiv 1$ auf $A$ integrierbar ist. \begin{align*}
+		v_d(A) = \int_A \mathrm{d}a
+	\end{align*}
+	heißt \begriff{$d$-dimensionaler Inhalt} ($d$-dimensionales Maß) von $A$
+\end{*definition}
+\begin{underlinedenvironment}[beachte]
+	Für $A\subset\mathbb{R}^n$ Lebesgue-messbar ist $\lambda^n(A) = \infty$ möglich. Hier ist $v_d(A) < \infty$ für $A\subset M$ messbar.
+\end{underlinedenvironment}
+
+\begin{*definition}
+	$A\subset M$ heißt \begriff{$d$-Nullmenge}, falls $v_d(A) = 0$.
+\end{*definition}
+\begin{underlinedenvironment}[beachte]
+	$d$-Nullmengen auf $M$ entsprechend $\mathcal{L}^d$-Nullmengen im Parameterbereich.
+\end{underlinedenvironment}
+
+\begin{proposition}
+	Sei $M\subset\mathbb{R}^n$ eine Mannigfaltigkeit, $A\subset M$ kompakt bezüglich $M$, $f\colon A\to\mathbb{R}$ stetig
+	
+	\hspace*{0.5em}$\Rightarrow$ $f$ integrierbar auf $A$
+\end{proposition}
+
+\begin{underlinedenvironment}[Hinweis]
+	\ \\
+	\vspace{-1.5\baselineskip}
+	\begin{itemize}
+		\item $A\subset M$ ist kompakt bezüglich $M$, z.B. $A = \phi(U)$ für Parametrisierung und $U\subset\mathbb{R}^n$ kompakt
+		\item somit sind alle kompakten $A\subset M$ messbar
+	\end{itemize}
+\end{underlinedenvironment}
+
+\begin{proof}\hspace*{0pt}
+	\vspace*{-0.8\baselineskip}
+	\begin{enumerate}[label={\alph*)}]
+	\item Sei $A\subset U$ für ein Kartengebiet $U\subset M$ mit zugehöriger Parametrisierung $\phi\colon V\subset\mathbb{R}^d\to U$ \\
+	\hspace*{0.5em}$\Rightarrow$ $B:= \phi^{-1}(A)$ kompakt im $\mathbb{R}^d$ (da $\phi$ Homöomorphismus)
+	
+	Da $f(\phi(\,\cdot\,))\sqrt{g^\phi(\,\cdot\,)}$ stetig auf $B$ \\
+	\hspace*{0.5em}$\Rightarrow$ auch integrierbar auf $B$ $\Rightarrow$ $f$ integrierbar auf $A$
+	
+	\item (allgemeiner Fall)
+	
+	Sei $\{\alpha_j\}$ eine Zerlegung der Eins zur Mannigfaltigkeit $M$. $\forall v\in A$ $\exists$ Umgebung $U(v)\subset M$: $\alpha_j = 0$ auf $U(v)$ für fast alle $j\in\mathbb{N}$.
+	
+	$\{ U(v)\}_{v\in A}$ ist eine offene Überdeckung von $A$.\\
+	\begin{tabularx}{\linewidth}{>{$}r<{$}@{$\;\,$}X}
+		\Rightarrow & bereits endlich viele überdecken kompaktes $A$ \\
+		\Rightarrow & $\forall m\in\mathbb{N}$: $\alpha_j = 0$ auf $A$ $\forall j > m$ \\
+		\Rightarrow & $f_A(u) = \sum_{j=1}^m f_A(u)\alpha_j$ $\forall u\in M$ 
+	\end{tabularx}
+
+	$\supp f_A \alpha_j$ ist abgeschlossene Teilmenge der kompakten Menge $A$ $\Rightarrow$ selbst kompakt \\
+	\hspace*{0.5em}$\xRightarrow{\text{a)}}$ $f_A \alpha_j$ integrierbar auf $M$ $\forall j$
+	
+	Wegen \begin{align*}
+		\sum_{j=1}^\infty \int_M \vert f_A\vert \alpha_j\,\mathrm{d}a = \sum_{j=1}^m \int \vert f_A\vert\alpha_j \,\mathrm{d}a < \infty
+	\end{align*}
+	$\Rightarrow$ $f_A$ integrierbar auf $M$
+	\end{enumerate}
+\end{proof}
+
+Übertragung der Eigenschaften aus \propref{integration_mf_7}:
+
+\begin{proposition}[Eigenschaften des Integrals]
+	Sei $M\subset\mathbb{R}^n$ Mannigfaltigket und $f$, $g$, $f_k\colon M\to\mathbb{R}$. Dann: \begin{enumerate}[label={\arabic*)}]
+		\item $f$ integrierbar auf $M$ $\Leftrightarrow$ $\vert f \vert$ integrierbar auf $M$ $\Leftrightarrow$ $f^+$ und $f^-$ integrierbar auf $M$
+		\item $f$, $g$ integrierbar auf $M$, $c\in\mathbb{R}$ \begin{flalign*}
+			\;\;\Rightarrow\;\;& \int_M cf \pm g\mathrm{d}a = c\int_M f\mathrm{d}a \pm \int_M g\mathrm{d}a&
+		\end{flalign*}
+		\item $f$, $g$ integrierbar auf $M$, $g$ beschränkt auf $M$ \\
+		\hspace*{0.5em} $\Rightarrow$ $f\cdot g$ integrierbar auf $M$
+		\item (Monotone Konvergenz)
+		
+		Seien $f_1\le f_2 \le \dotsc$ auf $M$, alle $f_k$ integrierbar auf $M$. Die Folge $\int_M f_k\,\mathrm{d}a$ sei beschränkt, $f(u) := \lim_{k\to\infty}\to\infty f_k(u)$ $\forall u\in M$\begin{flalign*}
+		\quad\Rightarrow\;\;&f\text{ integrierbar auf $M$ mit }\int_M f\mathrm{da} = \lim\limits_{k\to\infty} \int_M f_k \mathrm{d}a&
+		\end{flalign*}
+		\item (Majorisierte Konvergenz)
+		
+		Seien $_k$, $g$ integrierbar auf $M$, $\vert f_k\vert \le g$ auf $M$ $\forall k$ und $f(u) := \lim_{k\to\infty} f_k(u)$ $\forall u\in M$ \begin{flalign*}
+		\quad\Rightarrow\;\;&f \text{ integrierbar auf $M$ mit } \int_M f\mathrm{d}a = \lim\limits_{k\to\infty} \int_M f_k\mathrm{d}a &
+		\end{flalign*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Sei $\{\alpha_j \}$ eine Zerlegung der Eins zu $M$.
+	
+	\begin{underlinedenvironment}[beachte]
+		$f$ ist integrierbar auf $M$ $\xRightarrow{\text{Def.}}$ $f\alpha_j$ ist integrierbar auf einem Kartengebiet $U_j\subset M$
+	\end{underlinedenvironment}
+	\vspace*{-\dimexpr \parskip + \baselineskip\relax}
+	Damit folgen (1) -- (3) leicht aus \propref{integration_mf_7}.
+	\begin{enumerate}[label={zu \arabic*)},leftmargin=4em,start=4]
+		\item ähnlich zu 5)
+		\item Fixiere ein $j\in\mathbb{N}$. $f_k \alpha_j$ ist integrierbar auf einem Kartenbegiet $\forall U$, \begin{align*}
+			\lim\limits_{k\to\infty} f_k(u)\alpha_j(u) = f(u) \alpha_j(u)
 		\end{align*}
-		\hspace{0.5em}$\xRightarrow{\propref{integral_mf_lemma_2}}$ $f\tilde{\alpha}_k$ und $\vert f \tilde{\alpha}_k$ integrierbar auf $M$ $\forall $k$ $\Rightarrow$ i') und \begin{equation}\begin{split}
+		Mit $\vert f_k \alpha_j\vert \le g\alpha_j$ $\xRightarrow{\propref{integration_mf_7}}$ $f\alpha_j$ integrierbar und \begin{align}
+			\proplbl{eq:integral_mf_star_2}
 			\tag{\star}
-			\int_m f \tilde{\alpha_k}\,\mathrm{d}a &= \int_{j=1\^\infty \int_M f\tilde{\alpha}_j\,\mathrm{d}a\qquad\text{bzw.}\\
-			\int_M \vert f \vert \tilde{\alpha}_k \,\mathrm{d}a&= \int_{j=1}^\infty \int \vert f \vert \tilde{\alpha}_k \alpha_j \,\mathrm{d}a
+			\lim\limits_{k\to\infty} \int_M f_k \alpha_j \mathrm{d}a = \int_M f\alpha_j \mathrm{d}a
+		\end{align}
+		Wegen $\vert f\alpha_j \vert \le g\alpha_j$ $\forall j$: \begin{align*}
+			\sum_{j=1}^\infty \int_M \vert f\alpha_j\vert\,\mathrm{d}a \le \sum_{j=1}^\infty \int_M g\alpha_j\,\mathrm{d}a \overset{\text{$g$ intbar}}{<} \infty
+		\end{align*}
+		$\Rightarrow$ $f$ integrierbar auf $M$ mit \begin{align*}
+			\int_M f\mathrm{d}a = \sum_{j=1}^\infty \int_M f\alpha_j\,\mathrm{d}a
+		\end{align*}
+		
+		Sei $\epsilon > 0$, dann existiert ein $m\in \mathbb{N}$ mit \begin{align*}
+			\left\vert\sum_{j=m+1}^\infty \int_M f\alpha_j\,\mathrm{d}a \right\vert < \epsilon
+		\end{align*}
+		und es existiert ein $k_0\in\mathbb{N}$ mit \begin{align*}
+			 \left\vert\int_M f\alpha_j\,\mathrm{d}a - \int_M f_k\alpha_j \,\mathrm{d}a \right\vert < \frac{\epsilon}{m}\quad\forall j=1,\dotsc,m \;\forall k\ge k_0\qquad \text{(nach \eqref{eq:integral_mf_star_2})}
+		\end{align*}
+		\begin{flalign*}
+			\quad\Rightarrow\;\;&
+			\begin{aligned}[t]
+				\left\vert\int_M f\mathrm{d}a - \int_M f_k\,\mathrm{da} \right\vert &\le \begin{multlined}[t][0.7\linewidth]
+				\left\lvert\sum_{j=1}^m \left( \int_M f\alpha_j\,\mathrm{d}a - \int_M f_k \alpha_j\,\mathrm{d}a\right)\right\vert \\ + \left\vert\sum_{j=m+1}^\infty \int_M f\alpha_j\,\mathrm{d}a \right\vert + \left\vert \sum_{j=m+1}^\infty \int_M g\alpha_j \,\mathrm{d}a\right\vert
+				\end{multlined}\\
+				& \le \frac{\epsilon}{m}\cdot m + \epsilon + \epsilon = 3\epsilon\quad\forall k\ge k_0
+			\end{aligned}&
+		\end{flalign*}
+		$\xRightarrow[\text{bel}]{\epsilon > 0}$ $\lim_{k\to\infty} \int_M f_k\,\mathrm{d}a = \int_M f\mathrm{d}a$.
+	\end{enumerate}
+\end{proof}

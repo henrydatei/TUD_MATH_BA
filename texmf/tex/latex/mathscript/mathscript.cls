@@ -677,7 +677,7 @@
 %changes pagestyle; instead of empty page the normal footer is printed
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{plainChapter}}{}{}
 %usually, after a new chapter the section counter needs to be reset manually. Instead, automatic reset
-\ifreset@section@after@chapter\else
+\ifreset@section@after@chapter
 	\pretocmd{\chapter}{\setcounter{section}{0}}{}{}
 \fi
 
