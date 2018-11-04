@@ -1,0 +1,92 @@
+\section{Gruppenwirkungen}
+
+Sei $G$ eine Gruppe und $X$ eine Menge.
+
+\begin{definition}[Wirkung, $G$-Menge]
+	Eine (rechts-)\begriff{Wirkung} von $G$ auf $X$ ist eine Abbildung
+	\begin{align}
+		\begin{cases}
+			X\times G\to X \\ (x,g)\mapsto x^g
+		\end{cases}\notag
+	\end{align}
+	mit $x\in X$ und $h,g\in G$, wobei
+	\begin{itemize}
+		\item (W1): $x^{1_G}=x$
+		\item (W2): $(x^g)^h=x^{gh}$
+	\end{itemize}
+	Eine \begriff{$G$-Menge} ist eine Menge $X$ zusammen mit einer Wirkung von $G$ auf $X$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item Die symmetrische Gruppe $G=\Sym(X)$ wirkt auf $X$ durch $x^\sigma=\sigma(x)$ mit $x\in X$, $\sigma\in G$. So wirkt zum Beispiel $S_n$ auf $X=\{1,...,n\}$.
+		\item $G$ wirkt auf $X=G$ durch Multiplikation $x^g=xg$, die sogenannte \begriff{reguläre Darstellung} von $G$.
+		\item $G$ wirkt auf $X=G$ durch Konjugation: $x^g=g^{-1}xg$.
+		\item $G$ wirkt auf der Menge $\UG(G)$ der Untergruppen von $G$ durch Konjugation $H^g=\{h^g\mid h\in H\}$ mit $H\le G$.
+		\item Sind $H,N$ Gruppen, so liefert jedes $\alpha\in\Hom(H,\Aut(N))$ eine Wirkung von $H$ auf $N$ durch $n^h=n^{\alpha(h)}$.
+		\item Ist $K$ ein Körper, so wirkt $K^\times$ auf $K$ durch $x^y=xy$ mit $x\in K$ und $y\in K^\times$.
+		\item Ist $K$ ein Körper, $n\in\natur$, so wirkt $\GL_n(K)^{op}$ auf $K^n$ durch Multiplikation $x^A=Ax$
+	\end{enumerate}
+\end{example}
+
+\begin{*anmerkung}
+	$^{op}$ ist nötig, weil die Multiplikation "'falsch herum"' definiert wurde. g) wäre ein Beispiel für eine Linkswirkung, also ist es dann mit $^{op}$ eine Rechtswirkung.
+\end{*anmerkung}
+
+\begin{remark}
+	Wirkt $G$ auf $X$, so ist für jedes $g\in G$ die Abbildung
+	\begin{align}
+		\sigma_g: \begin{cases}
+			X\to X \\ x\mapsto x^g
+		\end{cases} \notag
+	\end{align}
+	bijektiv, da $\sigma_g\circ\sigma_{g^{-1}}=\sigma_{g^{-1}}\sigma_g=\sigma_1=\id_X$, also $\sigma_g\in\Sym(X)$ und
+	\begin{align}
+		\begin{cases}
+			G\to \Sym(G) \\ g\mapsto \sigma_g
+		\end{cases}\notag
+	\end{align}
+	ist ein Gruppenhomomorphismus. Umgekehrt liefert jeder Homomorphismus $\sigma: G\to\Sym(G)$ eine Wirkung von $G$ auf $X$ durch $x^g=x^{\sigma(g)}$. Somit steht die Menge der Wirkungen von $G$ auf $X$ in natürlicher Bijektion zu $\Hom(G,\Sym(X))$.
+\end{remark}
+
+\begin{definition}[Fixpunkt, Stabilisator, Bahn, Bahnraum, $G$-invariant, treu, transitiv, frei]
+	Sei $X$ eine $G$-Menge, $g_0\in G$, $x_0\in X$
+	\begin{enumerate}[label=(\alph*)]
+		\item $x_0$ ist ein \begriff{Fixpunkt} von $g_0\Leftrightarrow x_0^{g_0}=x_0$
+		\item $\Fix(G) = X^G = \{x\in X\mid x^g=x\quad\forall g\in G\}$, die Menge der Fixpunkte von $X$ unter $G$
+		\item $G_{x_0} = \Stab(x_0) = \{g\in G\mid x_0^g = x\}$ der \begriff{Stabilisator} von $x_0$ in $G$
+		\item $x_0^G = \{x_0^g \mid g\in G\}$, die \begriff{Bahn} von $x_0$ unter G
+		\item $\lnkset{X}{G} = \{x^G\mid x\in X\}$, der \begriff{Bahnenraum}
+		\item $Y\le X$ ist \begriff{$G$-invariant} $\Leftrightarrow Y^g = \{y^g\mid y\in Y\}\le Y$
+		\item Die Wirkung von $G$ auf $X$ ist
+		\begin{itemize}
+			\item \begriff{treu}, wenn $\bigcap_{x\in X} G_x=1$
+			\item \begriff{transitiv}, wenn gilt: $\forall x,y\in X\exists g\in G$: $x^g=y$
+			\item \begriff{frei}, wenn $G_x=1$ für alle $x\in X$
+		\end{itemize}
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Der Stabilisator $G_{x_0}$ besteht aus den $g\in G$, die $x_0$ als Fixpunkt haben.
+		\item Die Wirkung von $G$ auf $X$ ist
+		\begin{itemize}
+			\item transitiv, wenn es nur eine Bahn gibt, also $\vert\lnkset{X}{G}\vert = 1$
+			\item frei, wenn kein $1\neq g\in G$ einen Fixpunkt hat
+			\item treu, wenn kein $1\neq g\in G$ alle $x\in X$ als fixiert
+		\end{itemize}
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	Für $n>1$ wirkt $G=S_n$ auf $X=\{1,...,n\}$ transitiv, treu, aber für $n\ge 3$ nicht frei. Der Stabilisator $G_n$ von $n\in X$ ist eine Untergruppe von $S_n$ isomorph zu $S_{n-1}$.
+\end{example}
+
+\begin{example}
+	Die reguläre Darstellung von $G$ auf $X=G$ ist frei und transitiv:
+	\begin{itemize}
+		\item frei: $x^g=x\Rightarrow xg=x\Rightarrow g=1$
+		\item transitiv: $x,y\in X=G\Rightarrow$ für $g=x^{-1}y$ ist $x^g=y$
+	\end{itemize}
+\end{example}

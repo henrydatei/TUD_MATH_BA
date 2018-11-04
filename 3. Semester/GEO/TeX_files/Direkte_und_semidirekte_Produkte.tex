@@ -147,6 +147,45 @@ Sei $G$ eine Gruppe und $n\in\natur$.
 		\Int(h)\vert_N = \alpha(h)\quad\forall h\in H\notag
 	\end{align}
 \end{proposition}
+\begin{proof}
+	Seien $h_1$, $h_2$, $h_3$, $h\in H$ und $n_0$, $n_1$, $n_2$, $n_3$, $n\in N$.
+	\begin{itemize}
+		\item neutrales Element: 
+		\begin{align}
+			(1_H,1_N)(h,n) &= (h,1_N^{\alpha(h)}n) = (h,n) \notag \\
+			(h,n)(1_H,1_N) &= (h,n^{\alpha(1_H)}1_H) \overset{(\ast)}{=} (h,n) \notag
+		\end{align}
+		$(\ast)$: $\alpha(1_H)=\id$
+		\item Assoziativität:
+		\begin{align}
+			[(h_1,n_1)(h_2,n_2)](h_3,n_3) &= (h_1h_2,n_1^{\alpha(h_2)}n_2)(h_3,n_3) = (h_1h_2h_3,(n_1^{\alpha(h_2)}n_2)^{\alpha(h_3)}n_3) \overset{(\ast)}{=} (h_1h_2h_3,n_1^{\alpha(h_2)\alpha(3)}n_2^{\alpha(h_3)}n_3) \notag \\
+			(h_1,n_1)[(h_2,n_2)(h_3,n_3)] &= (h_1,n_1)(h_2h_2,n_2^{\alpha(h_3)}n_3) = (h_1h_2h_3,n_1^{\alpha(h_2)\alpha(3)}n_2^{\alpha(h_3)}n_3) \notag
+		\end{align}
+		$(\ast)$: $\alpha(h_3)$ ist ein Automorphismus und $\alpha$ ist ein Homomorphismus
+		\item Inverses: $(h,n)^{-1}=(h^{-1},(n^{-1})^{\alpha(h^{-1})})$
+		\item $H\le G$:
+		\begin{align}
+			(h_1,1)(h_2,1) &= (h_1h_2,1^{\alpha(h_2)}1) = (h_1h_2,1)\in H \notag \\
+			(h,1)^{-1} &= (h^{-1},1)\in H \notag
+		\end{align}
+		\item $N\le G$:
+		\begin{align}
+			(1,n_1)(1,n_2) &= (1,n_1^{\alpha(1)}n_2) = (1,n_1n_2)\in N \notag \\
+			(1,n)^{-1} &= (1,(n^{-1})^{\alpha(1^{-1})}) = (1,n^{-1})\in N \notag
+		\end{align}
+		\item $H\cap N=1$: klar
+		\item $HN=G$: $(h,1)(1,n)=(h,1^{\alpha(1)}n)=(h,n)\in G$
+		\item $N\unlhd G$: $(h,n)^{-1}(1,n_0)(h,n)=(h^{-1},(n^{-1})^{\alpha(h^{-1})})(h,n_0^{\alpha(h)}n)=(1,...)\in N$
+		\item $\Int(h)\vert_N=\alpha(h)$:
+		\begin{align}
+			n^{\Int(h)\vert_N} &= (h,1)^{-1} (1,n)(h,1) \notag \\
+			&= (h^{-1},1)(h,n^{\alpha(h)}1) \notag \\
+			&= (1,1^{\alpha(h)}n^{\alpha(h)}) \notag \\
+			&= (1,n^{\alpha(h)}) \notag \\
+			&= n^{\alpha(h)} \notag
+		\end{align}
+	\end{itemize}
+\end{proof}
 
 \begin{conclusion}
 	Sei $G=H\ltimes N$ und $\alpha$ wie in\propref{1_5_7}. Dann ist
