@@ -80,11 +80,16 @@ Für Polynomgrade bis $n=6$ findet man weitere Formeln in der Literatur. Formeln
 		\end{align}
 		mit $\zeta\in (a,b)$. Deshalb und wegen \cref{2.3} folgt aus \cref{2.4} weiter
 		\begin{align}
-			\vert Q_2(f)-J(f)\vert =\left|\int_a^b f(x)-p_2(x)\diff x\right|\le\frac{1}{12}h^5\Vert f^{(4)}\Vert_\infty
+			\vert Q_2(f)-J(f)\vert =\left|\int_a^b f(x)-p_2(x)\diff x\right|\le\frac{1}{12}h^5\Vert f^{(4)}\Vert_\infty\notag
 		\end{align}
 	\end{enumerate}
 \end{proof}
 
 \begin{remark}
-	Durch verfeinerte Abschätzungen kann man in \propref{2_3_1} b) $\vert Q_2(f)-J(f)\vert\le \frac{1}{90}h^5\Vert f^{(4)}\Vert_\infty$ erreichen. Auch für Quadraturformeln $Q_n(f)$ mit $n>2$ lassen sich entsprechende Ergebnisse für den Quadraturfehler herleiten, insbesondere hat der Quadraturfehler für $n=3$ mit $f\in C^4[a,b]$ die Ordnung $h^5$ und für $n=4$ mit $f\in C^6[a,b]$ die Ordnung $h^7$.
+	Durch verfeinerte Abschätzungen kann man in \propref{2_3_1} b) 
+	\begin{align}
+		\label{2.5}
+		\vert Q_2(f)-J(f)\vert\le \frac{1}{90}h^5\Vert f^{(4)}\Vert_\infty
+	\end{align}
+	erreichen. Auch für Quadraturformeln $Q_n(f)$ mit $n>2$ lassen sich entsprechende Ergebnisse für den Quadraturfehler herleiten, insbesondere hat der Quadraturfehler für $n=3$ mit $f\in C^4[a,b]$ die Ordnung $h^5$ und für $n=4$ mit $f\in C^6[a,b]$ die Ordnung $h^7$.
 \end{remark}

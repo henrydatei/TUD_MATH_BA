@@ -1,1 +1,30 @@
 \section{Zusammengesetzte \person{Newton-Cotes}-Formeln}
+
+Um den Quadraturfehler weiter zu reduzieren, bietet es sich unter Berücksichtigung der Abschätzung des Quadraturfehlers in \propref{2_3_1} an, das Intervall $[a,b]$ in $r$ Teilintervalle zu zerlegen und auf jedem der Teilintervalle dieselbe Quadraturformel (niedriger Ordnung) anzuwenden. Dazu wird das Intervall $[a,b]$ in $l=rn$ Elementarintervalle gleicher Länge zerlegt, wobei $n$ die Ordnung des auf jedem Teilintervall zu verwendenden Interpolationspolynoms ist. Mit $f_0,...,f_l$ werden die Funktionswerte an den Stellen $x_k=a+kh$ für $k=0,...,l$ bezeichnet, wobei $h=\frac{b-a}{l}$ die Länge des Elementarintervalls ist. Die \begriff{zusammengesetzte Trapezformel} ist dann gegeben durch:
+\begin{align}
+	T_h(f) = \frac{h}{2}(f_0+2f_1+2f_2+...+2f_{l-1}+f_l)\notag
+\end{align}
+die \begriff{zusammengesetzte \person{Simpson}-Formel} durch
+\begin{align}
+	S_h(f) = \frac{h}{3}(f_0+4f_1+2f_2+4f_3+...+2f_{l-2}+4f_{l-1}+f_l)\notag
+\end{align}
+
+\begin{proposition}
+	\begin{enumerate}[label=(\alph*)]
+		\item Für $f\in C^2[a,b]$ gilt
+		\begin{align}
+			\vert T_h(f) - J(f)\vert \le \frac{b-a}{12}h^2\Vert f''\Vert_\infty\notag
+		\end{align}
+		\item Für $f\in C^4[a,b]$ gilt
+		\begin{align}
+			\vert S_h(f) - J(f)\vert \le \frac{b-a}{180}h^4\Vert f^{(4)}\Vert_\infty\notag
+		\end{align}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Wendet man \propref{2_3_1} auf die \person{Simpson}-Formel (unter Beachtung von \cref{2.5}) für $[x_k,x_{k+2}]$ anstelle von $[a,b]$ an, so folgt
+	\begin{align}
+		\vert S_h(f)-J(f)\vert = \left| S_h(f)-\sum_{k=0}^{r-1} \int_{x_{2k}}^{x_{2k+2}} f(x)\diff x\right| \le \frac{1}{90} rh^5 \Vert f^{(4)}\Vert_\infty \le \frac{b-a}{2\cdot 90} h^4\Vert f^{(4)}\Vert_\infty\notag
+	\end{align}
+	und damit Behauptung b). Behauptung a) zeigt man auf ähnliche Weise.
+\end{proof}
