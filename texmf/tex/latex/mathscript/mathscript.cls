@@ -89,6 +89,7 @@
 \RequirePackage{bbm} 		%unitary matrix
 \RequirePackage{wasysym}	%add some symbols
 \RequirePackage[bb=boondox]{mathalfa} %special zero using \mathbb{0}
+\RequirePackage{systeme}
 
 %further support for different equation setting
 \RequirePackage{cancel}

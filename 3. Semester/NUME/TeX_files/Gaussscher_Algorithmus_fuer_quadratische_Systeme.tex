@@ -1,1 +1,130 @@
 \section{\person{Gauss}'scher Algorithmus für quadratische Systeme}
+
+\subsection{Grundform des \person{Gauss}'schen Algorithmus}
+
+\begin{example}
+	\begin{align}
+		\sysdelim{.}{.}\systeme{2x_1-2x_2+4x_3=10@E_{*},x_1+3x_2+6x_3=25,-x_1+2x_2+x_3=6}\notag
+	\end{align}
+	$E_1$ behalten $\to E_1'$, $E_2-\frac{1}{2}E_1\to E_2'$, $E_3+\frac{1}{2}E_1\to E_3'$
+	\begin{align}
+		\sysdelim{.}{.}\systeme{2x_1-2x_2+4x_3=10@E'_{*},4x_2+4x_3=20,x_2+3x_3=11}\notag
+	\end{align}
+	$E_1'$ behalten $\to E_1''$, $E_2'$ behalten $\to E_2''$, $E_3'-\frac{1}{4}E_2'\to E_3''$
+	\begin{align}
+		\sysdelim{.}{.}\systeme{2x_1-2x_2+4x_3=10@E''_{*},4x_2+4x_3=20,2x_3=6}\notag
+	\end{align}
+	$\Rightarrow x_3=3$, $x_2=2$, $x_1=1$
+\end{example}
+
+Alle drei Systeme sind äquivalent, das heißt ihre Lösungsmengen sind gleich. Das letzte System wird \begriff{Dreieckssystem} oder System in \begriff{Zeilenstufenform} oder \begriff{gestaffeltes System} genannt.
+
+Gegeben seien $A=(a_{ij})\in\real^{n\times n}$ und $b=(b_i)\in\real^n$. Gesucht ist, falls vorhanden, eine Lösung des linearen Gleichungssystems
+\begin{align}
+	\begin{array}{ccccccc}
+		a_{11}x_1 & + & ... & + & a_{1n}x_n & = & b_1 \\
+		\vdots & && & \vdots & \vdots & \vdots \\
+		a_{n1}x_1 & + & ... & + & a_{nn}x_n & = & b_n
+	\end{array}\notag
+\end{align}
+bzw. in Matrix-Schreibweise: $Ax=b$.
+
+\subsubsection*{Prinzipielles Vorgehen}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Vorwärtselimination (unter Voraussetzung der Durchführbarkeit): Schrittweise Transformation der erweiterten Koeffizientenmatrix
+	\begin{align}
+		(A,b) = (A^{(1)},b^{(1)})\to (A^{(2)},b^{(2)})\to ...\to (A^{(n)},b^{(n)})=(U,z)\notag
+	\end{align}
+	wobei $U$ eine obere Dreiecksmatrix ist. Der Eliminationsschritt $(A^{(k)},b^{(k)})\to(A^{(k+1)},b^{(k+1)})$ für $k=1,...,n-1$ verwendet die Eliminationsfaktoren
+	\begin{align}
+		l_{ik} = \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}\notag
+	\end{align}
+	um die $i$-te Zeile der neuen Matrix aus der alten Matrix zu bestimmen
+	\begin{align}
+		\text{neue Zeile }i &= \text{alte Zeile }i &\text{für } i=1,...,k \notag \\
+		\text{neue Zeile }i &= \text{alte Zeile }i - l_{ik}\cdot\text{neue Zeile }k &\text{für } i=k+1,...,n\notag
+	\end{align}
+	\item Rücksubstitution (unter Voraussetzung der Durchführbarkeit): Lösung des Gleichungssystems $Ux=z$ nach $x$ für gegebenes $U,z$
+\end{enumerate}
+
+\begin{algorithm}[Vorwärtselimination]
+	\proplbl{3_1_2}
+	Input: $n$, $A$, $b$
+\begin{lstlisting}
+do k= 1, n-1
+ do i = k+1, n
+  %$l_{ik}$% = %$a_{ik}$% / %$a_{kk}$%
+  %$b_i$% = %$b_i$% - %$l_{ik}b_k$%
+  do j = k+1, n 
+   %$a_{ij}$% = %$a_{ij}$% - %$l_{ik}a_{kj}$%
+  end do
+ end do
+end do
+\end{lstlisting}
+	Output: $(U,z)$ und $l_{ik}$ für $i>k$. $U$ steht in der oberen Hälfte von $A$ mit Hauptdiagonale, $b$ enthält $z$, die Zahlen $l_{ik}$ lassen sich in der unteren Hälfte von $A$ abspeichern.
+\end{algorithm}
+
+\begin{algorithm}[Rücksubstitution]
+	\proplbl{3_1_3}
+	Input: $n$, $U$, $z$
+\begin{lstlisting}
+do i = n, 1, -1
+ s = 0
+ do j = i+1, n
+  s = s + %$u_{ij}x_j$%
+ end do
+end do
+\end{lstlisting}
+	Output: $x$
+\end{algorithm}
+
+Der Aufwand bei uneingeschränkter Durchführbarkeit von \propref{3_1_2} ist $\sim \frac{2}{3}n^3$ und \propref{3_1_3} ist $\sim n^2$
+
+\subsubsection*{Durchführbarkeit}
+
+Der \propref{3_1_2} ist genau dann durchführbar, wenn $a_{kk}^{(k)}\neq 0$ für alle $k=1,...,n-1$ gilt. Gilt auch $a_{nn}^{(n)}\neq 0$, so folgt $u_{ii}\neq 0$ für $i=1,...,n$ und damit die Durchführbarkeit von \propref{3_1_3}.
+
+\begin{definition}[streng diagonaldominant]
+	Eine Matrix $A=(a_{ij})\in\real^{n\times n}$ heißt \begriff{streng diagonaldominant}, wenn
+	\begin{align}
+		\vert a_{ii}\vert > \sum_{\substack{j=1\\ j\neq i}}^{n}\vert a_{ij}\vert\quad\text{für alle } i=0,...,n\notag
+	\end{align}
+\end{definition}
+
+\begin{lemma}
+	Ist die Matrix $A\in\real^{n\times n}$ streng diagonaldominant, so sind \propref{3_1_2} und \propref{3_1_3} durchführbar
+\end{lemma}
+\begin{proof}[nicht in der Vorlesung]
+	Die Matrix $A^{(1)}$ sei streng diagonaldominant. Weiter seien die Matrizen $A^{(k)}$ für ein $k\in\{1,...,n-1\}$ durch Vorwärtselimination erzeugt und streng diagonaldominant. Dies zieht $\vert a_{kk}^{(k)}\vert >0$ nach sich, so dass die Erzeugung von $A^{(k+1)}$ durch Vorwärtselimination wohldefiniert ist. Es wird nun gezeigt, dass $A^{(k+1)}$ wieder streng diagonaldominant ist. Da $A^{(1)}=A$ als streng diagonaldominant vorausgesetzt wurde, folgt dann die Durchführbarkeit der gesamten Vorwärtselimination durch vollständige Induktion. Sei $i>k$ eine Zeile der Matrix $A^{(k+1)}$. Dann hat man
+	\begin{align*}
+		\sum_{\substack{j=1\\ j\neq i}}^n \vert a_{ij}^{(k+1)}\vert \sum_{\substack{j=k+1\\ j\neq i}}\vert a_{ij}^{(k+1)}\vert &= \sum_{\substack{j=k+1\\ j\neq i}}^n \left|a_{ij}^{(k)} - \frac{a_{kj}^{(k)} a_{ik}^{(k)}}{a_{kk}^{(k)}}\right| \\
+		&\le \sum_{\substack{j=k+1\\ j\neq i}}^n \vert a_{ij}^{(k)}\vert + \left|\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}\right| \sum_{\substack{j=k+1\\ j\neq i}}^n \vert a_{kj}^{(k)}\vert \\
+		&< \vert a_{ii}^{(k)}\vert - \vert a_{ik}^{(k)}\vert + \left|\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}\right| \left( \vert a_{kk}^{(k)}\vert - \vert a_{ki}^{(k)}\vert  \right) \\
+		&= \vert a_{ii}^{(k)}\vert  - \left|\frac{a_{ik}^{(k)} a_{ki}^{(k)}}{a_{kk}^{(k)}}\right| \\
+		&\le \left| a_{ii}^{(k)} - \frac{a_{ik}^{(k)} a_{ki}^{(k)}}{a_{kk}^{(k)}} \right| \\
+		&= \vert a_{ii}^{(k+1)}\vert
+	\end{align*}
+	Falls $i\le k$, so ändert sich $A^{(k+1)}$ gegenüber $A^{(k)}$ bezüglich der Zeile $i$ nicht. Also ist $A^{(k+1)}$ streng diagonaldominant und man schließt auf die Durchführbarkeit der Vorwärtselimination für $k=1,...,n-1$ und insbesondere auf $\vert a_{ii}^{(n)}\vert >0$ für $i=1,...,n$. DIe Matrix $A^{(n)}$ enthält die Matrix $U$ im oberen Dreieck, deren Diagonalelemente sind gerade $a_{11}^{(n)},...,a_{nn}^{(n)}$, also ist auch die Rücksubstitution wohldefiniert.
+\end{proof}
+
+\subsection{Pivotisierung}
+
+Die Regularität der Matrix $A\in\real^{n\times n}$ ist zwar äquivalent zur Lösbarkeit des linearen Gleichungssystems $Ax=b$, für jeden beliebigen Vektor $b\in\real^n$, jedoch sichert die Regularität nicht die Durchführbarkeit der Grundform des \person{Gauss}'schen Algorithmus. Um die Durchführbarkeit bei regulärem $A$ zu erzwingen, kann man eine \begriff[Pivotisierung!]{Spaltenpivotisierung} der Matrix durchführen. Dabei werden in jedem Durchlauf der Vorwärtselimination auf bestimmte Weise Zeilen der Matrix $(A,b)$ vertauscht:
+\begin{itemize}
+	\item Bestimme $p=p(k)\in\{k,...,n\}$, sodass $\vert a_{pk}^{(k)}=\max\limits_{k\le i\le n}\vert a_{ik}^{(k)}\vert$. \\
+	$k$-te Spalte von $A^{(k)}$ heißt \begriff{Pivotspalte}, $a_{pk}^{(k)}$ heißt \begriff{Pivotelement}, die Regularität von $A$ sichert dann $a_{pk}^{(k)}\neq 0$
+	\item Vertausche die Zeilen $p$ und $k$ in der Matrix $(A^{(k)},b^{(k)})$. \\
+	\emph{praktisch:} Zeilentausch nicht ausführen, sondern einen Permutationsvektor mitführen. \\
+	\emph{formal:} Beschreibung der Zeilen- und Spaltenvertauschungen durch Permutationsmatrizen. Dazu sei $\pi:\{1,...,n\}\to\{1,...,n\}$ eine Permutation und $e_i$ bezeichne den $i$-ten kanonischen Einheitsvektor. Dann heißt $P_\pi=(e_{\pi(1)},...,e_{\pi(n)})$ \begriff{Permutationsmatrix}.
+\end{itemize}
+
+\begin{proposition}
+	Ist die Matrix $A$ regulär, so ist der \person{Gauss}'sche Algorithmus mit Spaltenpivotisierung (bei exakter Arithmetik) durchführbar.
+\end{proposition}
+
+Weitere Pivotisierungstechniken sind insbesondere die \begriff[Pivotisierung!]{Zeilenpivotisierung} (in Analogie zur Spaltenpivotisierung) und die \begriff[Pivotisierung!]{vollständige Pivotisierung}.
+
+\subsection{LU-Faktorisierung}
+
+\subsection{\person{Gauss}'scher Algorithmus für trigonale Systeme}
