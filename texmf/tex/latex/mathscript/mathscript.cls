@@ -640,6 +640,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 %Settings
 
+%disable brackets left for linear systems by systeme-package
+\sysdelim..
+
 \pdfstringdefDisableCommands{%
 	\def\\{}%
 	\def\texttt#1{<#1>}%
