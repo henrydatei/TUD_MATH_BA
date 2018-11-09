@@ -1,0 +1,55 @@
+\section{p-Gruppen}
+
+Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
+
+\begin{definition}[$p$-Gruppe]
+	$G$ ist eine \begriff{$p$-Gruppe} $\Leftrightarrow\#G=p^n$ für ein $n\in\natur_0$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{1_7_2}
+	Sei $G$ eine $p$-Gruppe und $X$ eine endliche $G$-Menge. Dann ist
+	\begin{align}
+		\#\Fix_X(G) \equiv \#X\mod p\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Sei $x\in X$.
+	\begin{itemize}
+		\item $x\in\Fix_X(G)\Rightarrow (G:G_x)=1$
+		\item $x\notin\Fix_X(G)\Rightarrow 1\neq (G:G_x)\mid \#G=p^n\Rightarrow (G:G_x)\equiv 0\mod p$
+		\item Ist $X=\biguplus_{i=1}^n x_i^G$, so ist
+		\begin{align}
+			\#X = \sum_{i=1}^n (G:G_i) \equiv \#\Fix_X(G)\mod p\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}[Satz von \person{Cauchy}]
+	Teilt $p$ die Ordnung von $G$, so hat $G$ ein Element der Ordnung $p$.
+\end{conclusion}
+\begin{proof}
+	Sei $X=\{g_1,...,g_p\in G^p\mid g_1\cdot ...\cdot g_p=1 \}$. Es ist $\#X=(\#P)^{p-1}$ und $C_p=\langle (1\, 2\, ...\, p)\rangle\le S_p$ wird auf $X$ durch $(g_1,...,g_p)^{\sigma}=(g_{\sigma(1)},...,g_{\sigma(p)})$ beschrieben. Mit \propref{1_7_2} gilt:
+	\begin{align}
+		\#\Fix_X(C_p) \equiv \#X \equiv (\#G)^{p-1} \equiv 0\mod p\notag
+	\end{align}
+	Da $(1,...,1)\in \Fix_X(C_p)$ folgt $\#\Fix_X(C_p)\ge p\ge 2$, es existiert also $1\neq g\in G$ mit $(g,...,g)\in X$, das heißt $\ord(g)=p$.
+\end{proof}
+
+\begin{conclusion}
+	Jede nicht-triviale $p$-Gruppe hat eine nicht-triviales Zentrum.
+\end{conclusion}
+\begin{proof}
+	Betrachte Wirkung von $G$ auf $X=G$ durch Konjugation (\propref{1_6_2} c). Dann
+	\begin{align}
+		\#\Z(G) \equiv \Fix_X(G)\overset{\propref{1_7_2}}{\equiv} \#G\equiv 0\mod p\notag
+	\end{align}
+	insbesondere ist $\Z(G)\neq 1$.
+\end{proof}
+
+\begin{lemma}
+	$\#G=p\Rightarrow G$ ist zyklisch.
+\end{lemma}
+\begin{proof}
+	Sei $1\neq g\in G\Rightarrow 1\neq\ord(g)\mid \# G\Rightarrow \ord(g)=p\Rightarrow G=\langle g\rangle$ ist zyklisch.
+\end{proof}

@@ -18,6 +18,7 @@ Sei $G$ eine Gruppe und $X$ eine Menge.
 \end{definition}
 
 \begin{example}
+	\proplbl{1_6_2}
 	\begin{enumerate}[label=(\alph*)]
 		\item Die symmetrische Gruppe $G=\Sym(X)$ wirkt auf $X$ durch $x^\sigma=\sigma(x)$ mit $x\in X$, $\sigma\in G$. So wirkt zum Beispiel $S_n$ auf $X=\{1,...,n\}$.
 		\item $G$ wirkt auf $X=G$ durch Multiplikation $x^g=xg$, die sogenannte \begriff{reguläre Darstellung} von $G$.
@@ -34,6 +35,7 @@ Sei $G$ eine Gruppe und $X$ eine Menge.
 \end{*anmerkung}
 
 \begin{remark}
+	\proplbl{1_6_3}
 	Wirkt $G$ auf $X$, so ist für jedes $g\in G$ die Abbildung
 	\begin{align}
 		\sigma_g: \begin{cases}
@@ -84,9 +86,127 @@ Sei $G$ eine Gruppe und $X$ eine Menge.
 \end{example}
 
 \begin{example}
+	\proplbl{1_6_7}
 	Die reguläre Darstellung von $G$ auf $X=G$ ist frei und transitiv:
 	\begin{itemize}
 		\item frei: $x^g=x\Rightarrow xg=x\Rightarrow g=1$
 		\item transitiv: $x,y\in X=G\Rightarrow$ für $g=x^{-1}y$ ist $x^g=y$
 	\end{itemize}
 \end{example}
+
+\begin{lemma}
+	\proplbl{1_6_8}
+	Sei $X$ eine $G$-Menge.
+	\begin{enumerate}[label=(\alph*)]
+		\item Für $x\in X$ ist $G_x\le G$.
+		\item Für $x,y\in X$ ist $x^G=y^G$ oder $x^G\cap y^G=\emptyset$.
+		\item $\bigcap_{x\in X}=\Ker(\sigma)$, $\sigma:G\to\Sym(X)$ wie in \propref{1_6_3}
+		\item Für $x\in X$ und $g\in G$ ist $G_{x^g}=(G_x)^g$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Seien $x,y\in X$, $g,h\in G$
+	\begin{enumerate}[label=(\alph*)]
+		\item Sei $x^g=x$ und $x^h=x$. Dann
+		\begin{align}
+			x^{g^h}&=(x^g)^h=x^h=x\Rightarrow gh\in G_x \notag \\
+			x^{g^{-1}} &= (x^g)^{g^{-1}} = x^1 = x\RightTorque g^{-1}\in G_x \notag
+		\end{align}
+		\item $x^g=y^h\Rightarrow x^G=(x^g)^G=(y^h)^H=y^H$
+		\item $g\in\bigcap_{x\in X} G_x\Rightarrow\forall x\in X$: $x^g=x\Leftrightarrow \sigma_g=\sigma(g)\id_X$
+		\item $h\in G_{x^g}\Leftrightarrow (x^g)^h=x^g\Leftrightarrow x^{ghg^{-1}}=x\Leftrightarrow h^{g^{-1}}\in G_x\Leftrightarrow h\in (G_x)^g$
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[\person{Cayley}]
+	Ist $n=\#G<\infty$, so ist $G$ isomorph zu einer Untergruppe der $S_n$.
+\end{proposition}
+\begin{proof}
+	Betrachte die reguläre Darstellung $\sigma:G\to\Sym(G)$. Da diese Wirkung frei ist (\propref{1_6_7}), also insbesondere treu, ist $\sigma$ injektiv (\propref{1_6_8} c), somit $G\cong \Image(\sigma)\le\Sym(G)$. Eine Aufzählung $G=\{g_1,...,g_n\}$ liefert einen Isomorphismus
+	\begin{align}
+		\phi:\begin{cases}
+			S_n\to \Sym(X) \\ \tau\mapsto (g_i\mapsto g_{\tau(i)})
+		\end{cases}\notag
+	\end{align}
+	und somit ist $G\cong \phi^{-1}(\Image(\sigma))\le S_n$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{1_6_10}
+	Für eine $G$-Menge $X$ und $x\in X$ ist
+	\begin{align}
+		\phi:\begin{cases}
+			\rnkset{G}{G_x}\to x^G \\ G_xg\mapsto x^g
+		\end{cases}\notag
+	\end{align}
+	eine Bijektion.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item $\phi$ wohldefiniert: $G_xg=G_xg'\Rightarrow g'=gh$ mit $h\in G_x\Rightarrow x^{g'}=x^{hg}=x^g$
+		\item $\phi$ surjektiv: klar
+		\item $\phi$ injektiv: $x^g=x^{g'}\Leftrightarrow x=x^{g'g^{-1}}\Leftrightarrow g'g^{-1}\in G_x\Leftrightarrow g'\in G_xg\Leftrightarrow Gx_g'=G_xg$
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Bahn-Stabilisator-Satz]
+	\proplbl{1_6_11}
+	Sei $X$ eine $G$-Menge, $x\in X$. Dann ist
+	\begin{align}
+		\# x^G = (G:G_x) \notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	\propref{1_6_10}
+\end{proof}
+
+\begin{conclusion}[Bahngleichung]
+	Ist $X$ eine $G$-Menge und $X=\biguplus_{i=1}^n x_i^G$ die Zerlegung von $X$ in Bahnen (vgl. \propref{1_6_8} c) so ist
+	\begin{align}
+		\# X= \sum_{i=1}^{n} (G:G_i)\notag
+	\end{align}
+\end{conclusion}
+
+\begin{definition}[Zentralisator, Normalisator]
+	\begin{enumerate}[label=(\alph*)]
+		\item Für $h\in H$ ist 
+		\begin{align}
+			C_G(h) = \{g\in G\mid gh=hg\}\notag
+		\end{align}
+		der \begriff{Zentralisator} von $h$.
+		\item Für $H\le G$ ist 
+		\begin{align}
+		N_G(h) = \{g\in G\mid gH=Hg\}\notag
+		\end{align}
+		der \begriff{Normalisator} von $H$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Der Zentralisator von $h$ ist der Stabilisator von $h$ unter der Wirkung von $G$ auf $X=G$ durch Konjugation (\propref{1_6_2} c). Es ist die größte Untergruppe $H$ mit $h\in \Z(h)$.
+		\item Der Normalisator von $H\le G$ ist der Stabilisator von $H$ unter der Wirkung von $G$ auf $X=\UG(G)$ durch Konjugation (\propref{1_6_2} d). Dies ist die größte Untergruppe $N$ von $G$ mit $H\unlhd N$.
+	\end{enumerate}
+\end{remark}
+
+\begin{conclusion}
+	\proplbl{1_6_15}
+	Für $h\in G$ und $H\le G$ ist $C_G(h)\le G$ und $H\unlhd N_G(H)\le G$ und 
+	\begin{enumerate}[label=(\alph*)]
+		\item $(G:C_G(h))$ ist genau die Anzahl der zu $h$ konjugierten Elemente von $G$
+		\item $(G:N_G(H))$ ist genau die Anzahl der zu $H$ konjugierten Untergruppen von $G$
+	\end{enumerate}
+\end{conclusion}
+\begin{proof}
+	\propref{1_6_11}
+\end{proof}
+
+\begin{conclusion}[Klassengleichung]
+	Sei $G$ endlich mit Zentrum $Z=\Z(G)$ und sei $x_1,...,x_n$ ein Repräsentantensystem der Konjugationsklassen in $G\setminus Z$. Dann ist
+	\begin{align}
+		\#G = \#Z + \sum_{i=1}^n (G:C_G(x_i))\notag
+	\end{align}
+\end{conclusion}
+\begin{proof}
+	aus \propref{1_6_11} und \propref{1_6_15}, da $G=Z\uplus G\setminus Z=Z\uplus\biguplus_{i=1}^n x_i^G$.
+\end{proof}
