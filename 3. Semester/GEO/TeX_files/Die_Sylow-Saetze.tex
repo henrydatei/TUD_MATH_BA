@@ -1,1 +1,84 @@
 \section{Die \person{Sylow}-Sätze}
+Sei $G$ eine endliche Gruppe und $p \in \natur$ prime.
+\begin{definition}
+	Sei $H \leq G$.
+	\begin{enumerate}
+		\item $H$ ist $p$-Sylow-Untergruppe von $G$ (oder $p$-Sylowgruppe von $G$) $:\Leftrightarrow H$ ist $p$-Gruppe und $p \nmid (G \colon H)$
+		\item $\Syl_p(G) = \{H \leq G \colon \text{ ist } p\text{-Sylowgruppe von } G\}$
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Schreib $\#G = p^k \cdot m$ mit $p \nmid m$. Dann gilt für $H \leq G$. $H \in \Syl_p(G) \Leftrightarrow \#H=p^k$.
+\end{remark}
+
+\begin{example}
+	\begin{itemize}
+		\item $\Syl_3(S_3) = \{A_3\}$
+		\item $\Syl_2(S_3) = \{\langle(12)\rangle , \langle(13)\rangle, \langle(23)\rangle\}$
+		\item $Syl_2(S_4) \ni D_4$
+	\end{itemize}
+\end{example}
+
+\begin{proposition}
+	\proplbl{1_8_4}
+	Es gilt $\Syl_p(G) \neq \emptyset$.
+\end{proposition}
+
+\begin{proof}
+	Induktion nach $n:=\#G=p^k\cdot m, p\nmid m.$
+	\begin{itemize}
+		\item $n=1$: $1 \in \Syl_2(1)$!
+		\item $n>1$: Ist $p\nmid n$, so ist $1 \in \Syl_p(G)$. Sei also $k \geq 1$.
+		\begin{itemize}
+			\item 1. Fall: Es existiert $H \lneqq G$ mit $p \nmid (G:H)$. Nach Induktionhypothese existiert $S \in \Syl_p(H)$. Da $p \nmid (G:S)=(G:H)(H:S)$ ist $S \in \Syl_p(G)$.
+			\item 2. Fall: Es ist $p \mid (G:H)$ für alle $H \lneqq G$. Nach Klassengleichung \propref{1_6_16} ist $0 \equiv n = \#(Z(G)) + \sum_{i=1}^{r} (G:C_G(x_i)) = \ord{Z(G)} \mod p$, wobei $G \ Z(G) = \biguplus_{i=1}^{r}x_i^G$, also $p \mid \#Z(G)$. Nach \propref{1_7_3} (Cauchy) $g \in Z(G)$ mit $\ord(g) = p$. \\
+			$\Rightarrow N:=\langle g \rangle \unlhd G$, $\#N = p$, $\# G /N = p^{k-1}m$. Nach Induktionshyptothese existiert $\bar{S}\in \Syl_p(G/N)$, d.h. setze $S:= \pi_N^{-1}(\bar{S}) \leq G$. Dann ist $\#S = \#\ker(\pi_N)\#\bar{(S}=p\cdot p^{k-1} = p^k$, d.h. $S \in \Syl_p(G)$.
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Ist $k \in \natur$ mit $p^k \mid \#G$, so existiert $H \leq G$ mit $\#H = p^k$.
+\end{conclusion}
+
+\begin{proof}
+	\propref{1_8_4} und \propref{1_7_9}.
+\end{proof}
+
+\begin{theorem}[\person{Sylow}-Sätze]
+	Sei $G$ eine endliche Gruppe.
+	\begin{enumerate}
+		\item Jede $p$-Gruppe $H \leq G$ ist in einer $p-$Sylowgruppe von $G$ enthalten.
+		\item Je zwei $p$-Sylowgruppen von $G$ konjugieren.
+		\item Für die Anzahl $s_p := \#\Syl_p(G)$ gilt $s_p = (G:N_G(S)) = 1 \mod p$, wobei $S \in \Syl_p(G)$ beliebig.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Wird noch ergänzt!
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{1_8_7}
+	Sei $S \in \Syl_p(G)$. Genau dann ist $S\leq G$, wenn $s_p = 1$.
+\end{conclusion}
+
+\begin{conclusion}
+	Schreibe $\#G = p^k m$, $p \nmid m$. Dann gilt $s_p\mid m$ und $p \mid s_{p-1}$.
+\end{conclusion}
+
+\begin{example}
+	Sei $\#G = pq$, mit Primzahlen $p<q$. Wähle $P \in \Syl_p(G)$, $Q \in \Syl_q(G)$.
+	\begin{itemize}
+		\item $s_q\mid p$ und $q \mid s_{q-1} \overset{p<q}{\Rightarrow} s_q = 1 \overset{\propref{1_8_7}}{\Rightarrow} Q \unlhd G.$ \\
+		$\Rightarrow G = P \ltimes Q$ (denn $P \cap Q = 1$ und $PQ=G$).
+		\item $s_p \mid q$ und $q \mid s_q -1 \Rightarrow s_p = 1$ oder $s_p = q$ und $q \equiv 1 \mod p$
+		\begin{itemize}
+			\item 1. Fall mit $q\neq 1 \mod p$: Dann ist $s_p = 1 \Rightarrow P \unlhd G$\\
+			$\Rightarrow G = P \times Q \cong C_p \times C_q \cong C_{pq}$
+			\item 2. Fall mit $q=1 \mod p$: \\
+			$\Aut(Q) \cong \Aut(C_q) \overset{\propref{1_4_14}}{\cong} C_{q-1}$ hat genau eine Untergruppe mit Ordnung $p$, also ist $\Hom(P,\Aut(Q))\neq 1$. Es kann deshalb entweder $G \ltimes Q = P \times Q \cong C_{pq}$ abelsch oder $G = P \ltimes Q \cong C_p \unlhd_{\alpha} C_q$ mit $\alpha \neq 1$ nicht abelsch geben, z.B. $S_3 \cong C_2 \unlhd_{\alpha} C_3$.
+		\end{itemize}
+	\end{itemize}
+\end{example}
