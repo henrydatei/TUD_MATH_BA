@@ -26,6 +26,7 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 \end{proof}
 
 \begin{conclusion}[Satz von \person{Cauchy}]
+	\proplbl{1_7_3}
 	Teilt $p$ die Ordnung von $G$, so hat $G$ ein Element der Ordnung $p$.
 \end{conclusion}
 \begin{proof}
@@ -37,6 +38,7 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{1_7_4}
 	Jede nicht-triviale $p$-Gruppe hat eine nicht-triviales Zentrum.
 \end{conclusion}
 \begin{proof}
@@ -48,8 +50,57 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 \end{proof}
 
 \begin{lemma}
+	\proplbl{1_7_5}
 	$\#G=p\Rightarrow G$ ist zyklisch.
 \end{lemma}
 \begin{proof}
 	Sei $1\neq g\in G\Rightarrow 1\neq\ord(g)\mid \# G\Rightarrow \ord(g)=p\Rightarrow G=\langle g\rangle$ ist zyklisch.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{1_7_6}
+	$G/ Z(G)$ zyklisch $\Rightarrow G$ ist stabil. 
+\end{lemma}
+
+\begin{proof}
+	Sei $a \in G$ mit $G/Z(G) = \langle aZ(G)\rangle$. \\
+	Dann ist 
+	\begin{align}
+		G = \bigcup_{k \in \whole} a^k Z(G).\notag
+	\end{align}
+	Sind nun $x,y \in G$, so ist\\
+	$x=a^k c$, $y=a^l d$ mit $k,l\in\whole,c,d \in Z(G)$\\
+	$\Rightarrow xy=a^k c a^l d = a^l d a^k c = yx$
+\end{proof}
+
+\begin{proposition}
+	Ist $\#G = p^2$, so ist $G$ abelsch.
+\end{proposition}
+
+\begin{proof}
+	Nach \propref{1_7_4} ist $Z(G) \neq 1.$\\
+	$\Rightarrow \#G/Z(G) \mid p$\\
+	$\overset{\propref{1_7_5}}{\Rightarrow} G/Z(G)$ ist zyklisch \\
+	$\overset{\propref{1_7_6}}{\Rightarrow} G$ ist abelsch.  
+\end{proof}
+
+\begin{remark}
+	Mit dem Struktursatz \propref{1_4_8} erhalten wir
+	\begin{align}
+		\#G = p \Rightarrow &G \cong \whole/p\whole \\
+		\#G = p^2 \Rightarrow &G \cong \whole/p^2\whole \text{ oder } \\
+		                      &G \cong \whole / p\whole \bigoplus \whole /p\whole
+	\end{align}
+\end{remark}
+
+\begin{proposition}
+	Ist $\#G = p^k$ und $l \leq k$, so gibt es $H \leq G$ mit $\#H = p^l.$
+\end{proposition}
+
+\begin{proof}
+	Induktion nach $l$:
+	\begin{itemize}
+		\item $l = 0$: trivial Untergruppe!
+		\item $l-1 \to l:$ Nach $\propref{1_7_4}$ ist $\#Z(G) = p^a, a > 0$, nach \propref{1_7_3} (Cauchy) existiert somit ein $g \in Z(G)$ mit $\ord(g) = p$. Da $g \in Z(G)$ ist $\langle g \rangle \unlhd G$ und $\# G / \langle g \rangle = p^{k-1}$. Nach Induktionshypothese ist Untergruppe $H_0 \leq G/\langle g \rangle$ mit $\#H_0 = p^{l-1}$. Betrachte den $\hom \pi_{\langle g \rangle} : G \to G / \langle g \rangle \Rightarrow H:= \pi_{\langle g \rangle}^{-1}(H_0) \leq G$, $\#H = \# \ker (\pi_{\langle g \rangle}) \cdot \#H_0 = p\cdot p^{l-1} = p^l$.
+	\end{itemize}
 \end{proof}
