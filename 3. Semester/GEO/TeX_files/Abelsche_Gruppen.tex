@@ -96,6 +96,7 @@ Sei $G$ ein Gruppe.
 \end{proof}
 
 \begin{conclusion}
+	\proplbl{1_4_7}
 	Ist $G$ abelsch und sind $a,b \in G$ mit $\ord(a) = m < \infty$, $\ord(b) = n = \infty$, so existiert $c \in G$ mit
 	\begin{align}
 		\ord(c) = \kgV(\ord(a), \ord(b)) \notag
@@ -167,3 +168,26 @@ und daraus kann man $r, k, d_1, \dots , d_k$ erhalten.
 	\end{align}
 	ist die \begriff{\person{Euler}'sche Phi-Funktion}.
 \end{definition}
+
+\begin{example}
+	$p$ prime $\Rightarrow$ $\phi(p) = p-1$, da $\whole / p\whole$ Körper ist.
+\end{example}
+
+\begin{proposition}
+	Ist $K$ ein Körper und $H\leq K^{\times}$ abelsch, so ist $H$ zyklisch.
+\end{proposition}
+
+\begin{proof}
+	Setze $m=\max\{\ord(h) \colon h \in H\}$. Nach \propref{1_4_7} gilt $\ord(h) \mid m \forall h \in H$.\\
+	$\Rightarrow$ Jedes $n \in H$ ist Nullstelle von $f = X^m -1 \in K[X]$.\\
+	$\Rightarrow$ $\# H \leq \deg f = m \leq \# H$\\
+	$\Rightarrow \# H = m$.\\
+	Ist $h \in H$ mit $m = \ord(h)$, so ist dann $H = \langle h \rangle$ 
+\end{proof}
+
+\begin{conclusion}
+	Für $p \in \natur$ prime ist
+	\begin{align}
+		\Aut(C_p) \cong (\whole / p \whole)^{\times} \cong C_{p-1}.\notag
+	\end{align}
+\end{conclusion}
