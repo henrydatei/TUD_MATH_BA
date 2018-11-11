@@ -36,7 +36,7 @@
 \end{plainenvironment}
 
 \begin{proposition}
-	Seien $a_1$, $\dotsc$, $a_n\in\mathbb{R}^n$ und das Volumen $v(a_1,\dotsc,a_n) := \mathcal{L}^n(p(a_1,\dotsc,a_n))$.
+	Seien $a_1$, $\dotsc$, $a_n\in\mathbb{R}^n$ und das Volumen $v(a_1,\dotsc,a_n) := \mathcal{L}^n(P(a_1,\dotsc,a_n))$.
 	
 	\hspace*{0.5em}$\Rightarrow$\begin{minipage}[t]{0.8\linewidth}
 		\vspace{-0.5\baselineskip}
@@ -101,7 +101,7 @@
 \end{*remark}
 
 \begin{proof}
-	Sei $\alpha_1{ij} = \langle \alpha_i,\alpha_j\rangle$, dann ist \begin{align*}
+	Sei $\alpha_{ij} = \langle \alpha_i,\alpha_j\rangle$, dann ist \begin{align*}
 		\transpose{A}A = \begin{pmatrix}
 			\alpha_{11} & \dots & \alpha_{1d} \\ \vdots & & \vdots \\ \alpha_{d1} & \dots & \alpha_{dd}
 		\end{pmatrix}.
@@ -135,7 +135,7 @@
 	
 	\begin{flalign}
 		\proplbl{eq:integration_mf_3}
-		\;\;\Rightarrow\;\; & v_d(a_1,\dotsc,a_d) = \sqrt{\det(\transpose{\phi'(x)}\phi'(x)}\cdot v_d(b_1,\dotsc,b_d)&
+		\;\;\Rightarrow\;\; & v_d(a_1,\dotsc,a_d) = \sqrt{\det(\transpose{\phi'(x)}\phi'(x))}\cdot v_d(b_1,\dotsc,b_d)&
 	\end{flalign}
 	
 	$\transpose{\phi'(x)}\phi'(x)$ heißt \begriff{Maßtensor} von $\phi$ in $x$ und $g^\phi(x)= \det(\transpose{\phi'(x)}\phi'(x))$ heißt \begriff{Gram'sche Determinante} von $\phi$ in $x$.
@@ -161,7 +161,7 @@
 	\vspace*{-1.5\baselineskip}
 	\begin{itemize}
 		\item Die rechte Seite in \eqref{eq:integration_mf_4} ist Lebesgue-Integral im $\mathbb{R}^d$.
-		\item Damit definiert \eqref{eq:integration_mf_4} sinnvoll ist, sollte die rechte Seite unabhängig von $\phi$ sein.
+		\item Damit Definition \eqref{eq:integration_mf_4} sinnvoll ist, sollte die rechte Seite unabhängig von $\phi$ sein.
 		\item Mittels des Hausdorff-Maßes $\mathcal{H}^d$ kann $\int_U f \mathrm{d}a$ vollkommen analog zum Lebesgue-Integral definiert werden.
 		\item Für $n$-dimensionale Mannigfaltigkeit $M\subset\mathbb{R}^n$: $\int_u f\mathrm{d}a$ = Lebesgue-Integral $\int_U f\mathrm{d}x$.
 	\end{itemize}
@@ -225,10 +225,10 @@
 		\end{pmatrix} \\
 		\transpose{\phi'(x)}\cdot \phi(x) &= r^2\begin{pmatrix}
 			\cos^2 x_2 & 0 \\ 0 & 1
-		\end{pmatrix}, \quad \sqrt{g^\phi(x)} = \cos^2 x_2
+		\end{pmatrix}, \quad \sqrt{g^\phi(x)} = r^2 \cos x_2
 	\end{align*}}
 	Damit lässt sich dann obiges Integral berechnen: \begin{align*}
-		\int_M f\mathrm{d}a &= r^2 \int_V f(\phi(x))\cdot\cos^2 x_2\mathrm{d}x = r^2 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos x_2\cdot \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} f(\phi(x_1)) \mathrm{d}x_1 \mathrm{d}x_2
+		\int_M f\mathrm{d}a &= r^2 \int_V f(\phi(x))\cdot\cos x_2\mathrm{d}x = r^2 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos x_2\cdot \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} f(\phi(x_1)) \mathrm{d}x_1 \mathrm{d}x_2
 	\intertext{z.B. mit $f(u) = u_1^2 + u_2^2$:}
 		\int_M u_1^2 + u_2^2\mathrm{d}a &= r^4\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos^3 x_2\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \mathrm{d}x_1 \mathrm{d}x_2 = \pi r^4 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos^3 x_2 \mathrm{d}x_2 = \left[ \sin x_2 - \frac{1}{3}\sin^3 x_2\right]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\\
 		&= \pi r^4 \left(1 - \frac{1}{3}\right)\cdot 2 = \frac{4}{3}\pi r^4,
@@ -261,7 +261,7 @@
 
 \begin{example}
 	\proplbl{integration_mf_beispiel_3}
-	Halbspähre $S_{+}^{n-1} = \{ x\in\mathbb{R}^n\mid \vert x \vert = 1, x_4 > 0 \}$.
+	Halbsphäre $S_{+}^{n-1} = \{ x\in\mathbb{R}^n\mid \vert x \vert = 1, x_4 > 0 \}$.
 	
 	Offenbar ist $S_+^{n-1}$ Graph von $g(x) = \sqrt{1 - \vert x \vert^2}$ $\forall x\in B_1(0)$
 	{\zeroAmsmathAlignVSpaces \begin{flalign*}
