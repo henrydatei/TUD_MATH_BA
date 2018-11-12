@@ -81,6 +81,7 @@
 %Math related packages
 %basic ams-math and enhancments
 \RequirePackage{amsmath,amssymb,amsfonts,mathtools}
+\RequirePackage{blkarray}
 
 %add some font-related stuff
 \RequirePackage{latexsym}
