@@ -59,33 +59,28 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 
 \begin{lemma}
 	\proplbl{1_7_6}
+	$\lnkset{G}{\Z(G)}$ zyklisch $\Rightarrow G$ ist abelsch. 
 \end{lemma}
 \begin{proof}
-<<<<<<< HEAD
-	Sei $a \in G$ mit $G/Z(G) = \langle aZ(G)\rangle$. \\
-	Dann ist 
+	Sei $a \in G$ mit $\lnkset{G}{\Z(G)} = \langle a\Z(G)\rangle$. Dann ist 
 	\begin{align}
-		G = \bigcup_{k \in \whole} a^k Z(G).\notag
-=======
->>>>>>> cc429783bb7f6d578c8b54a51d5fb2a0f8aa72eb
+		G = \bigcup_{k \in \whole} a^k \Z(G).\notag
 	\end{align}
+	Sind nun $x,y \in G$, so ist $x=a^k c$, $y=a^l d$ mit $k,l\in\whole,c,d \in \Z(G)\Rightarrow x\cdot y=a^k c\cdot a^l d = a^l d\cdot a^k c = y\cdot x$
 \end{proof}
 
 \begin{proposition}
 	Ist $\#G = p^2$, so ist $G$ abelsch.
 \end{proposition}
 \begin{proof}
+	Nach \propref{1_7_4} ist $\Z(G) \neq 1$. $\Rightarrow \#\lnkset{G}{\Z(G)} \mid p\xRightarrow{\propref{1_7_5}} \lnkset{G}{\Z(G)}$ ist zyklisch $\xRightarrow{\propref{1_7_6}} G$ ist abelsch.  
 \end{proof}
 
 \begin{remark}
 	Mit dem Struktursatz \propref{1_4_8} erhalten wir
 	\begin{align}
-<<<<<<< HEAD
-		\#G = p \Rightarrow &G \cong \whole/p\whole \notag\\
-		\#G = p^2 \Rightarrow &G \cong \whole/p^2\whole \text{ oder } \notag\\
-		                      &G \cong \whole / p\whole \bigoplus \whole /p\whole \notag
-=======
->>>>>>> cc429783bb7f6d578c8b54a51d5fb2a0f8aa72eb
+		\#G = p &\Rightarrow G \cong \whole/p\whole\notag \\
+		\#G = p^2 &\Rightarrow G \cong \whole/p^2\whole \text{ oder } G \cong \whole / p\whole \oplus \whole /p\whole \notag
 	\end{align}
 \end{remark}
 
@@ -94,4 +89,7 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 	Ist $\#G = p^k$ und $l \leq k$, so gibt es $H \leq G$ mit $\#H = p^l.$
 \end{proposition}
 \begin{proof}
+	Induktion nach $l$: \\
+	\emph{$l=0$:} trivial Untergruppe! \\
+	\emph{$l-1\to l$:} Nach $\propref{1_7_4}$ ist $\#\Z(G) = p^a, a > 0$, nach \propref{1_7_3} (\person{Cauchy}) existiert somit ein $g \in \Z(G)$ mit $\ord(g) = p$. Da $g \in \Z(G)$ ist $\langle g \rangle \unlhd G$ und $\# \lnkset{G}{\langle g\rangle} = p^{k-1}$. Nach Induktionshypothese ist Untergruppe $H_0 \leq \lnkset{G}{\langle p\rangle}$ mit $\#H_0 = p^{l-1}$. Betrachte den $\hom \pi_{\langle g \rangle} : G \to \lnkset{G}{\langle p\rangle} \Rightarrow H:= \pi_{\langle g \rangle}^{-1}(H_0) \leq G$, $\#H = \# \Ker (\pi_{\langle g \rangle}) \cdot \#H_0 = p\cdot p^{l-1} = p^l$.
 \end{proof}
