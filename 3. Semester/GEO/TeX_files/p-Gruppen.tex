@@ -59,37 +59,33 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 
 \begin{lemma}
 	\proplbl{1_7_6}
-	$G\ Z(G)$ zyklisch $\Rightarrow G$ ist stabil. 
 \end{lemma}
-
 \begin{proof}
+<<<<<<< HEAD
 	Sei $a \in G$ mit $G/Z(G) = \langle aZ(G)\rangle$. \\
 	Dann ist 
 	\begin{align}
 		G = \bigcup_{k \in \whole} a^k Z(G).\notag
+=======
+>>>>>>> cc429783bb7f6d578c8b54a51d5fb2a0f8aa72eb
 	\end{align}
-	Sind nun $x,y \in G$, so ist\\
-	$x=a^k c$, $y=a^l d$ mit $k,l\in\whole,c,d \in Z(G)$\\
-	$\Rightarrow xy=a^k c a^l d = a^l d a^k c = yx$
 \end{proof}
 
 \begin{proposition}
 	Ist $\#G = p^2$, so ist $G$ abelsch.
 \end{proposition}
-
 \begin{proof}
-	Nach \propref{1_7_4} ist $Z(G) \neq 1.$\\
-	$\Rightarrow \#G/Z(G) \mid p$\\
-	$\overset{\propref{1_7_5}}{\Rightarrow} G/Z(G)$ ist zyklisch \\
-	$\overset{\propref{1_7_6}}{\Rightarrow} G$ ist abelsch.  
 \end{proof}
 
 \begin{remark}
 	Mit dem Struktursatz \propref{1_4_8} erhalten wir
 	\begin{align}
+<<<<<<< HEAD
 		\#G = p \Rightarrow &G \cong \whole/p\whole \notag\\
 		\#G = p^2 \Rightarrow &G \cong \whole/p^2\whole \text{ oder } \notag\\
 		                      &G \cong \whole / p\whole \bigoplus \whole /p\whole \notag
+=======
+>>>>>>> cc429783bb7f6d578c8b54a51d5fb2a0f8aa72eb
 	\end{align}
 \end{remark}
 
@@ -97,11 +93,5 @@ Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
 	\proplbl{1_7_9}
 	Ist $\#G = p^k$ und $l \leq k$, so gibt es $H \leq G$ mit $\#H = p^l.$
 \end{proposition}
-
 \begin{proof}
-	Induktion nach $l$:
-	\begin{itemize}
-		\item $l = 0$: trivial Untergruppe!
-		\item $l-1 \to l:$ Nach $\propref{1_7_4}$ ist $\#Z(G) = p^a, a > 0$, nach \propref{1_7_3} (Cauchy) existiert somit ein $g \in Z(G)$ mit $\ord(g) = p$. Da $g \in Z(G)$ ist $\langle g \rangle \unlhd G$ und $\# G / \langle g \rangle = p^{k-1}$. Nach Induktionshypothese ist Untergruppe $H_0 \leq G/\langle g \rangle$ mit $\#H_0 = p^{l-1}$. Betrachte den $\hom \pi_{\langle g \rangle} : G \to G / \langle g \rangle \Rightarrow H:= \pi_{\langle g \rangle}^{-1}(H_0) \leq G$, $\#H = \# \ker (\pi_{\langle g \rangle}) \cdot \#H_0 = p\cdot p^{l-1} = p^l$.
-	\end{itemize}
 \end{proof}

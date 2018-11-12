@@ -127,4 +127,25 @@ Weitere Pivotisierungstechniken sind insbesondere die \begriff[Pivotisierung!]{Z
 
 \subsection{LU-Faktorisierung}
 
+Der $k$-te Schritt von \propref{3_1_2} (ohne Pivotisierung) lässt sich schreiben als 
+\begin{align}
+	\begin{split}
+	A^{(k+1)} &= L_kA^{(k)} \\
+	b^{k+1} &= L_kb^{(k)}
+	\end{split}
+\end{align}
+mit der \person{Gauss}'schen Eliminationsmatrix
+\begin{align}
+	L_k = \begin{blockarray}{cccccc}
+	a & b & c & d & e \\
+	\begin{block}{(ccccc)c}
+	1 & 1 & 1 & 1 & 1 & f \\
+	0 & 1 & 0 & 0 & 1 & g \\
+	0 & 0 & 1 & 0 & 1 & h \\
+	0 & 0 & 0 & 1 & 1 & i \\
+	0 & 0 & 0 & 0 & 1 & j \\
+	\end{block}
+	\end{blockarray}
+\end{align}
+
 \subsection{\person{Gauss}'scher Algorithmus für trigonale Systeme}
