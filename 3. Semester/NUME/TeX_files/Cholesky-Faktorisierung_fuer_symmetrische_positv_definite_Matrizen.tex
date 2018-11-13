@@ -1,1 +1,26 @@
 \section{\person{Cholesky}-Faktorisierung für symmetrische positiv definite Matrizen}
+
+\begin{definition}[positiv definit]
+	Eine Matrix $A\in\real^{n\times n}$ heißt \begriff{positiv definit}, wenn
+	\begin{align}
+		x^TAx>0\quad\forall x\in\real^n\backslash\{0\}\notag
+	\end{align}
+\end{definition}
+
+Bekannt sind folgende Zusammenhänge:
+\begin{itemize}
+	\item Falls $A$ symmetrisch ist, besitzt $A$ nur reelle Eigenwerte.
+	\item Sei $A$ symmetrisch. Dann ist $A$ genau dann positiv definit, wenn alle Eigenwerte von $A$ positiv sind.
+	\item Eine Matrix $A$ ist genau dann positiv definit, wenn ihr symmetrischer Anteil $\frac{1}{2}(A+A^T)$ positiv definit ist.
+\end{itemize}
+
+\subsection{Existenz der \person{Cholesky}-Faktorisierung}
+
+\begin{proposition}
+	Sei $A\in\real^{n\times n}$ symmetrisch und positiv definit. Dann existiert genau eine untere Dreiecksmatrix $L=(l_{ik})$ mit $l_{kk}>0$, sodass
+	\begin{align}
+		A=LL^T\notag
+	\end{align}
+\end{proposition}
+
+\subsection{Berechnung des \person{Cholesky}-Faktors}
