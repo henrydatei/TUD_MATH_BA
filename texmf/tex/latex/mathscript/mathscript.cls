@@ -139,6 +139,7 @@
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
   morecomment=[l]{!\ },% Comment only with space after !
+  morekeywords={compute, solve},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,

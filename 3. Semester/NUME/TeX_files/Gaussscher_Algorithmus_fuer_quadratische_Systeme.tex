@@ -120,6 +120,7 @@ Die Regularität der Matrix $A\in\real^{n\times n}$ ist zwar äquivalent zur Lö
 \end{itemize}
 
 \begin{proposition}
+	\proplbl{3_1_6}
 	Ist die Matrix $A$ regulär, so ist der \person{Gauss}'sche Algorithmus mit Spaltenpivotisierung (bei exakter Arithmetik) durchführbar.
 \end{proposition}
 
@@ -129,6 +130,7 @@ Weitere Pivotisierungstechniken sind insbesondere die \begriff[Pivotisierung!]{Z
 
 Der $k$-te Schritt von \propref{3_1_2} (ohne Pivotisierung) lässt sich schreiben als 
 \begin{align}
+	\label{3.1}
 	\begin{split}
 	A^{(k+1)} &= L_kA^{(k)} \\
 	b^{k+1} &= L_kb^{(k)}
@@ -136,16 +138,156 @@ Der $k$-te Schritt von \propref{3_1_2} (ohne Pivotisierung) lässt sich schreibe
 \end{align}
 mit der \person{Gauss}'schen Eliminationsmatrix
 \begin{align}
-	L_k = \begin{blockarray}{cccccc}
-	a & b & c & d & e \\
-	\begin{block}{(ccccc)c}
-	1 & 1 & 1 & 1 & 1 & f \\
-	0 & 1 & 0 & 0 & 1 & g \\
-	0 & 0 & 1 & 0 & 1 & h \\
-	0 & 0 & 0 & 1 & 1 & i \\
-	0 & 0 & 0 & 0 & 1 & j \\
+	L_k = \begin{blockarray}{cccccccc}
+	 &  &  & k &  &  &  &\\
+	\begin{block}{(ccccccc)c}
+	1 &  &  &  &  &  &  &  \\
+	 & 1 &  &  &  &  &  &  \\
+	 &  & \ddots &  &  &  &  &  \\
+	 &  &  & 1 &  &  &  & k\text{-te Zeile} \\
+	 &  &  & -l_{k+1,k} & 1 &  &  &  \\
+	 &  &  & \vdots &  & \ddots &  &  \\
+	 &  &  & -l_{n,k} &  &  & 1 &  \\
 	\end{block}
-	\end{blockarray}
+	\end{blockarray}\notag
 \end{align}
 
+\begin{proposition}
+	Es gelten
+	\begin{align}
+		L_k^{-1} = 
+		\begin{pmatrix}
+			1 &  &  &  &  &  &  \\
+			& 1 &  &  &  &  &  \\
+			&  & \ddots &  &  &  &  \\
+			&  &  & 1 &  &  &   \\
+			&  &  & l_{k+1,k} & 1 &  &  \\
+			&  &  & \vdots &  & \ddots &  \\
+			&  &  & l_{n,k} &  &  & 1  \\
+		\end{pmatrix} \notag \\
+		L_1^{-1}\cdot ...\cdot L_{n-1}^{-1} = 
+		\begin{pmatrix}
+			1 & & & & \\
+			l_{21} & 1 & & & \\
+			l_{31} & l_{32} & 1 & & \\
+			\vdots & \vdots & & \ddots & \\
+			l_{n1} & l_{n2} & l_{n3} & \dots & 1 \\
+		\end{pmatrix}= L \notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Zunächst erkennt man, dass $L_k=\mathbbm{1}-l_ke_k^T$, wobei $\mathbbm{1}\in\real^{n\times n}$ die Einheitsmatrix und $e_k\in\real^n$ den $k$-ten kanonischen Einheitsvektor bezeichnen. Damit erhält man
+		\begin{align}
+		L_k(\mathbbm{1}+l_ke_k^T) &= (\mathbbm{1}-l_ke_k^T)(\mathbbm{1}+l_ke_k^T) \notag \\
+		&= \mathbbm{1} - l_ke_k^T + l_ke_k^T - l_ke_k^Tl_ke_k^T \notag \\
+		&\overset{(\ast)}{=} \mathbbm{1} \notag
+		\end{align}
+		$(\ast)$ $l_ke_k^T=0$, da $l_k$ erst an der $k+1$-ten Stelle einen Wert hat, aber $e_k$ nur an der $k$-ten Stelle eine 1 hat
+		\item Es wird durch vollständige Induktion gezeigt, dass
+		\begin{align}
+			\label{3.2}
+			L_1^{-1}\cdot ...\cdot L_{n-1}^{-1} = \mathbbm{1} + \sum_{i=1}^{k} l_ie_i^T
+		\end{align}
+		für $k=1,...,n-1$ gilt. Daraus ergibt sich unmittelbar die zweite Aussage des Satzes. Für $k=1$ folgt \cref{3.2} direkt aus Teil (a). Sei nun \cref{3.2} für ein $k<n-1$ erfüllt. Dann folgt mit $e_i^Tl_{k+1}=0$ für $i<k$, dass
+		\begin{align}
+			L_1^{-1}\cdot ...\cdot L_{k+1}^{-1} &= \left(\mathbbm{1} + \sum_{i=1}^k l_ie_i^T\right)L_{k+1}^{-1} \notag \\
+			&= \left(\mathbbm{1} + \sum_{i=1}^k l_ie_i^T \right) \left( \mathbbm{1} + l_{k+1}e_{k+1}^T\right) \notag \\
+			&= \mathbbm{1} + \sum_{i=1}^k l_ie_i^T + l_{k+1}e_{k+1}^T + \sum_{i=1}^k l_ie_i^Tl_{k+1}e_{k+1}^T \notag \\
+			&= \mathbbm{1} + \sum_{i=1}^{k+1} l_ie_i^T \notag 
+		\end{align}
+	\end{enumerate}
+\end{proof}
+
+Aus $A^{(k+1)}=L_kA^{(k)}$ nach \cref{3.1} folgt
+\begin{align}
+	A=A^{(1)} = L_1^{-1}A^{(2)} = ... = L_1^{-1}\cdot ...\cdot L^{-1}_{n-1} A^{(n)} = L\cdot U\notag
+\end{align}
+und analog $b=Lz$.
+
+\begin{proposition}
+	\proplbl{3_1_8}
+	Seien $A\in\real^{n\times n}$, $b\in\real^n$ gegeben. Falls \propref{3_1_2} ohne Pivotisierung durchführbar ist, dann gilt $A=LU$ mit der oberen Dreiecksmatrix $U=A^{(n)}$ und der unteren Dreiecksmatrix $L=(l_{ik})$ mit
+	\begin{align}
+		l_{ik} = \begin{cases}
+			0 & i<k \\ 1 & i=k \\ l_{ik} & i>k
+		\end{cases}\notag
+	\end{align}
+\end{proposition}
+
+\begin{algorithm}[LU-Version der Grundform des \person{Gauss}'schen Algorithmus]
+	Input: $A,b$
+	\begin{lstlisting}
+compute L,U
+solve Lz=b
+solve Ux=z
+	\end{lstlisting}
+	Output: $x,L,U$
+\end{algorithm}
+
+Der Aufwand an Rechenoperationen bei uneingeschränkter Durchführbarkeit: $\frac{2}{3}n^3 + 2n^2$.
+
+Ein Vorteil der LU-Version besteht darin, dass man mit einer ermittelten LU-Faktorisierung von $A$ das Gleichungssystem $Ax=b$ für mehrere rechte Seiten $b$ mit dem Aufwand von je $2n^2$ lösen kann.
+
+\begin{proposition}
+	Sei $A\in\real^{n\times n}$ regulär. Dann gibt es eine durch Zeilenvertauschungen aus $A$ hervorgegangene Matrix $\tilde{A}$, für die \propref{3_1_2} ohne Pivotisierung durchführbar ist und $\tilde{A}=\tilde{L}\tilde{U}$.
+\end{proposition}
+\begin{proof}
+	Nach \propref{3_1_6} ist der \person{Gauss}'sche Algorithmus mit Spaltenpivotisierung durchführbar. Wendet man die dabei vorkommenden Zeilenvertauschungen vor Beginn von \propref{3_1_2} auf $A$ an, entsteht die Matrix $\tilde{A}$. Für $A=\tilde{A}$ liefert \propref{3_1_8} die Darstellung $\tilde{A}=\tilde{L}\tilde{U}$. Die Regularität von $U$ folgt aus der Regularität von $A$ mit dem Determinantenmultiplikationssatz.
+\end{proof}
+
 \subsection{\person{Gauss}'scher Algorithmus für trigonale Systeme}
+
+Sei $A\in\real^{n\times n}$ trigonal, das heißt
+\begin{align}
+	\label{3.3}
+	A = \begin{pmatrix}
+		\alpha_1 & \beta_1 & & & & \\
+		\gamma_2 & \alpha_2 & \beta_2 & & & \\
+		& \gamma_3 & \alpha_3 & \beta_3 & & \\
+		& & \ddots & \ddots & \ddots & \\
+		& & & \gamma_{n-1} & \alpha_{n-1} & \beta_{n-1} \\
+		& & & & \gamma_n & \alpha_n \\
+	\end{pmatrix}
+\end{align}
+
+Die Speicherung kann mittels geeigneter Vektoren, etwa
+\begin{align}
+	\label{3.4}
+	\alpha = (\alpha_1,...,\alpha_n)^T\quad \beta=(\beta_1,...,\beta_{n-1},0)^T\quad \gamma =(0,\gamma_2,...,\gamma_n)^T
+\end{align}
+erfolgen. Angenommen \propref{3_1_2} ist ohne Pivotisierung durchführbar. Dann gibt es eine LU-Faktorisierung von $A$. Aus der Trigonalität von $A$ und aus $A=LU$ ergibt sich die folgende Gestalt für $L$ und $U$
+\begin{align}
+	\label{3.5}
+	L = \begin{pmatrix}
+		1 & & & & \\
+		l_2 & 1 & & & \\
+		& l_3 & 1 & & \\
+		& & \ddots & \ddots & \\
+		& & & l_n & 1 \\
+	\end{pmatrix}\quad\text{und}\quad U=\begin{pmatrix}
+		d_1 & \beta_1 & & & \\
+		& d_2 & \beta_2 & & \\
+		& & \ddots & \ddots & \\
+		& & & \ddots & \beta_{n-1} \\
+		& & & & d_n \\ 
+	\end{pmatrix}
+\end{align}
+mit $d_1=\alpha_1$ und $l_k=\frac{\gamma_k}{d_{k-1}}$, $d_k=\alpha_k-l_k\beta_k$ für $k=2,...,n$.
+
+\begin{algorithm}[LU-Faktorisierung einer trigonalen Matrix ohne Pivotisierung]
+	\proplbl{3_1_11}
+	Input: $\alpha, \beta, \gamma$ entsprechend \cref{3.3} und \cref{3.4}
+	\begin{lstlisting}
+%$d_1$% = %$\alpha_1$%
+do k = 2, n
+ %$l_k$% = %$\gamma_k$% / %$d_{k-1}$%
+ %$d_k$% = %$\alpha_k$% - %$l_k\beta_k$%
+end do
+	\end{lstlisting}
+	Output: $l=(0,l_2,...,l_n)^T$, $d=(d_1,...,d_n)^T$ für \cref{3.5}
+\end{algorithm}
+
+\begin{remark}
+	Der Aufwand für \propref{3_1_11} beträgt etwa $3n$ Operationen. Auch das Lösen der Dreieckssysteme $Lz=b$ und $Ux=z$ ist billig (je etwa $2n^2$). Bei Spaltenpivotisierung kommt in $U$ im Allgemeinen eine zweite Nebendiagonale hinzu. Die dargestellte Verfahrensweise lässt sich auf Systeme mit Bandmatrizen erweitern, die mehr als je eine untere bzw. obere Nebendiagonale besitzen.
+\end{remark}
