@@ -1,0 +1,56 @@
+\section{Endliche Gruppen}
+
+Sei $G$ eine endliche Gruppe und $n \in \natur$.
+
+\begin{definition}[Einfache Gruppe]
+	Eine Gruppe $G$ heißt \begriff{einfach}, wenn $G \neq 1$ und es kein $1 \neq N \unlhd G$ gibt. %TODO negation of \unlhd? please FIXME!!!
+\end{definition}
+
+\begin{remark}
+	Die einfachen Gruppen sind die grundlegenden ``Bausteine'' der Gruppen, siehe Kapitel 1.10.
+\end{remark}
+
+\begin{example}
+	\begin{enumerate}
+		\item $C_n$ ist einfach $\Leftrightarrow n$ ist prim
+		\item Sei $G$ endlich abelsch. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p, p$ prim
+		\item Sei $G$ eine $p$-Gruppe. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p, p$ prim (\propref{1_7_4})
+		\item $A_2 = \{\id\}$ und damit einfach, $A_3$ ist einfach, da $A_3 \cong C_3$, $A_4$ ist nicht einfach (da $V_4 \unlhd A_4$ gilt). Was ist mit $A_n$ für $n \geq 5$?
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Typ]
+	Sei $\sigma \in S_n$. Ist $\sigma = \sigma_1\cdots \sigma_k$ eine Zerlegung in paarweise disjunkte Zykel $\sigma_i$ mit $\ord(\sigma_i)=r_i$, wobei $r_1 \geq r_2 \geq \dots \geq r_k \geq 2$, so heißt
+	\begin{align}
+	\Typ{\sigma} := (r_1,\dots,r_k,1,\dots,1)\notag
+	\end{align}
+	(mit $\#\Fix(\sigma)$ vielen Einsen) der \begriff{Typ} von $\sigma$.
+\end{definition}
+
+\begin{example}
+	Für $\sigma = (12)(25) \in S_5$ ist $\Typ(\sigma) = (3,1,1)$.
+\end{example}
+
+\begin{definition}[Partition]
+	Eine \begriff{Partition} von $n$ ist eine endliche Folge $(r_1,\dots,r_k)$ mit $r_1,\dots,r_k \in \natur,r_1\geq\dots\geq r_k$ und $n = \sum_{i=1}^{k} r_i$.
+\end{definition}
+
+\begin{lemma}
+	$\{\Typ(\sigma) \colon \sigma \in S_n\}$ ist die Menge der Partitionen von $n$.
+\end{lemma}
+
+\begin{proposition}
+	Für $\sigma, \sigma^{'} \in S_n$ sind äquivalent:
+	\begin{enumerate}
+		\item $\sigma, \sigma^{'}$ sind kongruent in $S_n$.
+		\item $\Typ(\sigma) = \Typ(\sigma^{'})$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Mit $(i_1\dots i_k)^{\tau}  = (i_1^{\tau} \dots i^{\tau}_k)$ (für $\tau in S_n$) sind beide Richtungen leicht zu zeigen.
+\end{proof}
+
+\begin{lemma}
+	Ist $n \geq 5$, so sind je zwei $3$-Zykel konjugiert in $A_n$.
+\end{lemma}
