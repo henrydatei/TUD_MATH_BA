@@ -76,7 +76,7 @@ Sei $G$ eine endliche Gruppe und $p \in \natur$ prim
 	Sei $\#G = pq$, mit Primzahlen $p<q$. Wähle $P \in \Syl_p(G)$, $Q \in \Syl_q(G)$.
 	\begin{itemize}
 		\item $s_q\mid p$ und $q \mid s_{q}-1 \xRightarrow{p<q} s_q = 1 \xRightarrow{\propref{1_8_7}} Q \unlhd G. \Rightarrow G = P \ltimes Q$ (denn $P \cap Q = 1$ und $PQ=G$).
-		\item $s_p \mid q$ und $q \mid s_q -1 \Rightarrow s_p = 1$ oder($s_p = q$ und $q \equiv 1 \mod p$)
+		\item $s_p \mid q$ und $q \mid s_q -1 \Rightarrow s_p = 1$ oder ($s_p = q$ und $q \equiv 1 \mod p$)
 		\begin{itemize}
 			\item \textbf{1. Fall} mit $q\neq 1 \mod p$: Dann ist $s_p = 1 \Rightarrow P \unlhd G\Rightarrow G = P \times Q \cong C_p \times C_q \cong C_{pq}$
 			\item \textbf{2. Fall} mit $q=1 \mod p$: $\Aut(Q) \cong \Aut(C_q) \overset{\propref{1_4_14}}{\cong} C_{q-1}$ hat genau eine Untergruppe mit Ordnung $p$, also ist $\Hom(P,\Aut(Q))\neq 1$. Es kann deshalb entweder $G =P \ltimes Q = P \times Q \cong C_{pq}$ abelsch oder $G = P \ltimes Q \cong C_p \ltimes_{\alpha} C_q$ mit $\alpha \neq 1$ nicht abelsch geben, z.B. $S_3 \cong C_2 \ltimes_{\alpha} C_3$.
