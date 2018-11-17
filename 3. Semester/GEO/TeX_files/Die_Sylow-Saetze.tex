@@ -55,10 +55,39 @@ Sei $G$ eine endliche Gruppe und $p \in \natur$ prim
 		wobei $S \in \Syl_p(G)$ beliebig.
 	\end{enumerate}
 \end{theorem}
-
-%\begin{proof}
-%	Fixiere $S_0 \in \Syl_p(G)$ und betrachte Wirkung von $G$ auf $X = S_0^G \subseteq \Syl_p(G)$ durch Konjugation. Aus $p \nmid (G \colon S_0)$ folgt mit \propref{1_6_11}, dass $p \nmid \#X$. Ist also $H \leq G$ eine $p$-Gruppe, so gibt es ein $S \in \Fix_X(H)$. Man zeigt, dass auch $HS$ eine $p$-Gruppe ist, also $H \leq S$. Hieraus folgen (a) und (b). Setzt man $H = S_0$, so erhält man $\Fix_X(S_0) = \{S_0\}$, woraus (c) mit Hilfe von \propref{1_7_2} folgt.
-%\end{proof} % was Fehm proof from the online pdf, very shortened! the oen from the lecture is much more detailed, maybe use this one!
+\begin{proof}
+	Fixiere $S_0\in\Syl_p(G)$. Definiere $X=\{S_0^g\mid g\in G\}\subseteq \Syl_p(G)$.
+	\begin{itemize}
+		\item \textbf{Behauptung 1} $p\nmid \#X$: Wirkung von $G$ auf $X$ durch Konjugation ist transitiv und $G_{S_0}=N_G(S_0)\unlhd S_0$. Dann
+		\begin{align}
+			\# X = \# S_0^G \overset{\propref{1_6_11}}{=} (G:G_{S_0}) \mid (G:S_0) \notag
+		\end{align}
+		und $p\nmid (G:S_0)$, somit $p\nmid \# X$.
+		\item \textbf{Behauptung 2} $H\le G$ $p$-Gruppe, $S\in\Fix_X(H)\Rightarrow H\le S$: Sei $G_0=N_G(S)$. Dann:
+		\begin{itemize}
+			\item $S\unlhd G_0$, $H\le G_0\Rightarrow S\unlhd HS\le G_0\le G$
+			\item $\lnkset{HS}{S}\cong \lnkset{H}{H\cap S}$ ist $p$-Gruppe, da $H$ $p$-Gruppe und $S$ $p$-Gruppe $\Rightarrow HS$ ist $p$-Gruppe
+			\item $p\nmid (G:S)\Rightarrow (HS:S)\mid (G:S)\Rightarrow p\nmid (HS:S)\Rightarrow (HS:S)=1$, also $HS=S$ und damit $H\le S$.
+		\end{itemize}
+	\end{itemize}
+	Jetzt zu den Beweisen der \person{Sylow}-Sätze.
+	\begin{enumerate}[label=(\alph*)]
+		\item Sei $H\le G$ $p$-Gruppe.
+		\begin{align}
+			\#\Fix_X(H)\overset{\propref{1_7_2}}{\equiv} \# X \not\equiv 0\mod p\notag
+		\end{align}
+		Also existiert $S=S_0^g\in\Fix_X(H)$. Mit Behauptung 2 folgt $H\le S\in\Syl_p(G)$.
+		\item Sei $H\in\Syl_p(G)$. Nach dem Beweis von (a) ist $H\le S_0^g$ für ein $g\in G$. Also $H=S_0^g$ ist konjugiert zu $S_0$.
+		\item Nach (b) ist $\Syl_p(G)=X$, also
+		\begin{align}
+			s_p = \# X = (G:N_G(S_0)) \notag
+		\end{align}
+		Es ist $S_0\in\Fix_X(S_0)$ und für $S\in\Fix_X(S_0)$ ist $S_0\le S$, also $S_0=S$ nach Behauptung 2, das heißt es gibt genau einen Fixpunkt. Es folgt $\#\Fix_X(S_0)=1$ und deshalb
+		\begin{align}
+			s_p = \# X \overset{\propref{1_7_2}}{\equiv} \#\Fix_X(S_0) \equiv 1\mod p\notag
+		\end{align}
+	\end{enumerate}
+\end{proof}
 
 \begin{conclusion}
 	\proplbl{1_8_7}
