@@ -7,50 +7,79 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 \end{definition}
 
 \begin{remark}
-	Die einfachen Gruppen sind die grundlegenden ``Bausteine'' der Gruppen, siehe Kapitel 1.10.
+	Die einfachen Gruppen sind die grundlegenden "'Bausteine'" der Gruppen, siehe Kapitel 1.10.
 \end{remark}
 
 \begin{example}
-	\begin{enumerate}
-		\item $C_n$ ist einfach $\Leftrightarrow n$ ist prim
-		\item Sei $G$ endlich abelsch. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p, p$ prim
-		\item Sei $G$ eine $p$-Gruppe. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p, p$ prim (\propref{1_7_4})
-		\item $A_2 = \{\id\}$ und damit einfach, $A_3$ ist einfach, da $A_3 \cong C_3$, $A_4$ ist nicht einfach (da $V_4 \unlhd A_4$ gilt). Was ist mit $A_n$ für $n \geq 5$?
+	\begin{enumerate}[label=(\alph*)]
+		\item $C_n$ ist einfach $\Leftrightarrow n$ ist prim, da dann $\#C_n$ keine weiteren Teiler hat, also auch keine Untergruppen
+		\item Sei $G$ endlich abelsch. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p$, $p$ prim
+		\item Sei $G$ eine $p$-Gruppe. Dann: $G$ ist einfach $\xLeftrightarrow{\propref{1_7_4}} G \cong C_p$,$ p$ prim
+		\item $A_2 = \{\id\}$ und damit einfach
+		\item $A_3$ ist einfach, da $A_3 \cong C_3$
+		\item $A_4$ ist nicht einfach (da $V_4 \unlhd A_4$ gilt)
 	\end{enumerate}
 \end{example}
 
 \begin{definition}[Typ]
 	Sei $\sigma \in S_n$. Ist $\sigma = \sigma_1\cdots \sigma_k$ eine Zerlegung in paarweise disjunkte Zykel $\sigma_i$ mit $\ord(\sigma_i)=r_i$, wobei $r_1 \geq r_2 \geq \dots \geq r_k \geq 2$, so heißt
 	\begin{align}
-	\Typ{\sigma} := (r_1,\dots,r_k,1,\dots,1)\notag
+	\Typ(\sigma) := (r_1,\dots,r_k,\underbrace{1,\dots,1}_{=\#\Fix(\sigma)})\notag
 	\end{align}
-	(mit $\#\Fix(\sigma)$ vielen Einsen) der \begriff{Typ} von $\sigma$.
+	der \begriff{Typ} von $\sigma$.
 \end{definition}
 
 \begin{example}
-	Für $\sigma = (12)(25) \in S_5$ ist $\Typ(\sigma) = (3,1,1)$.
+	Sei $\sigma = (12)(25) \in S_5$. Die Zykelzerlegung ist $\sigma=(1\, 5\, 2)$. Also ist $\Typ(\sigma)=(3,1,1)$. Die beiden Fixpunkte sind 3 und 4.
 \end{example}
 
 \begin{definition}[Partition]
-	Eine \begriff{Partition} von $n$ ist eine endliche Folge $(r_1,\dots,r_k)$ mit $r_1,\dots,r_k \in \natur,r_1\geq\dots\geq r_k$ und $n = \sum_{i=1}^{k} r_i$.
+	Eine \begriff{Partition} von $n$ ist eine endliche Folge $(r_1,\dots,r_k)$ mit $r_1,\dots,r_k \in \natur$, $r_1\geq\dots\geq r_k$ und $n = \sum_{i=1}^{k} r_i$.
 \end{definition}
 
 \begin{lemma}
-	$\{\Typ(\sigma) \colon \sigma \in S_n\}$ ist die Menge der Partitionen von $n$.
+	$\{\Typ(\sigma) \mid \sigma \in S_n\}$ ist genau die Menge der Partitionen von $n$.
 \end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item Hinrichtung: klar
+		\item Rückrichtung: Ist $(r_1,...,r_k)$ eine Partition von $n$, so ist $(r_1,...,r_k)=\Typ(\sigma)$ für
+		\begin{align}
+			\sigma = (1\, ...\, r_1)(r_1+1\, ...\, r_1+r_2)...(1+\sum_{i=1}^{k-1}r_i \, ...\, n)\notag
+		\end{align}
+	\end{itemize}
+\end{proof}
 
 \begin{proposition}
-	Für $\sigma, \sigma^{'} \in S_n$ sind äquivalent:
-	\begin{enumerate}
-		\item $\sigma, \sigma^{'}$ sind kongruent in $S_n$.
-		\item $\Typ(\sigma) = \Typ(\sigma^{'})$
+	\proplbl{1_9_8}
+	Für $\sigma, \sigma' \in S_n$ sind äquivalent:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\sigma, \sigma'$ sind konjugiert in $S_n$.
+		\item $\Typ(\sigma) = \Typ(\sigma')$
 	\end{enumerate}
 \end{proposition}
-
 \begin{proof}
-	Mit $(i_1\dots i_k)^{\tau}  = (i_1^{\tau} \dots i^{\tau}_k)$ (für $\tau in S_n$) sind beide Richtungen leicht zu zeigen.
+	Schreibe $\sigma=\sigma_1...\sigma_k$ paarweise disjunkte Zykel, $r_\nu = \ord(\sigma_\nu)$, $r_1\ge ...\ge r_k$, $\sigma_\nu=(i_{\nu,1}\, ...\, i_{\nu,r_\nu})$, $\{1,...,n\}=\{i_{\nu,\mu} \mid \nu,\mu\}$
+	\begin{itemize}
+		\item (a) $\Rightarrow$ (b): Ist $\sigma'=\sigma^\tau$ mit $\tau\in S_n$, so ist
+		\begin{align}
+			\sigma^\tau = \sigma_1^\tau...\sigma_k^\tau \quad\text{und}\quad \sigma_\nu^\tau = (i_{\nu,1}^\tau\, ...\, i_{\nu,r_\nu}^\tau)\notag
+		\end{align}
+		Insbesondere $\Typ(\sigma)=\Typ(\sigma')$.
+		\item (b) $\Rightarrow$ (a): Ist $\Typ(\sigma)=\Typ(\sigma')$, so ist $\sigma'=\sigma_1'...\sigma_k'$ mit paarweise disjunkten Zykeln mit $\ord(\sigma_\nu')=r_\nu$ und $\sigma_\nu'=(i_{\nu,1}'\, ...\, i_{\nu,r_\nu}')$ und deshalb wieder $\{1,...,n\}=\{i_{\nu,\mu}' \mid \nu=1,...,k,\mu=1,...,r_\nu\}$. Mit $\tau\in S_n$ definiert durch 
+		\begin{align}
+			i_{\nu,\mu}^\tau = i_{\nu,\mu}'\notag
+		\end{align}
+		ist dann $\sigma^\tau=\sigma_1^\tau...\sigma_k^\tau$ mit $\sigma_\nu^\tau = (i_{\nu,1}^\tau\, ...\, i_{\nu,r_\nu}^\tau)=(i_{\nu,1}'\, ...\, i_{\nu,r_\nu}')=\sigma_\nu'$.
+	\end{itemize}
 \end{proof}
 
 \begin{lemma}
 	Ist $n \geq 5$, so sind je zwei $3$-Zykel konjugiert in $A_n$.
 \end{lemma}
+\begin{proof}
+	Seien $\sigma=(i_1\, i_2\, i_3)$ und $\sigma'=(i_1'\, i_2'\, i_3')$. Nach \propref{1_9_8} existiert $\tau\in S_n$ mit $\sigma'=\sigma^\tau$. Ist $\tau\in A_n$, so sind wir fertig. Andernfalls gibt es wegen $n\ge 5$ $j_1\neq j_2\in\{1,...,n\}\setminus \{i_1',i_2',i_3'\}$. Dann ist $\tau(j_1,j_2)\in A_n$ und
+	\begin{align}
+		\sigma^{\tau(j_1,j_2)} = (\sigma^\tau)^{(j_1,j_2)} = (\sigma')^{(j_1,j_2)} = \sigma'\notag
+	\end{align}
+\end{proof}
