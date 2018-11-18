@@ -22,5 +22,100 @@ Bekannt sind folgende Zusammenhänge:
 		A=LL^T\notag
 	\end{align}
 \end{proposition}
+\begin{proof}
+	Mittels vollständiger Induktion. Für $n=1$ gilt $A=(a_{11})$ mit $a_{11}>0$ (wegen positiver Definitheit). Also gilt die Behauptung genau für $L=(l_{11})$ mit $l_{11}=\sqrt{a_{11}}$. Sei nun die Behauptung für $n-1$ erfüllt. Die Matrix $A$ kann man wegen ihrer Symmetrie mit geeigneten $A_{n-1}\in\real^{(n-1)\times (n-1)}$, $a\in\real^{n-1}$ und $a_{nn}\in\real$ schreiben als
+	\begin{align}
+		\label{3.6}
+		A = \begin{pmatrix}
+			A_{n-1} & a \\ a^T & a_{nn}
+		\end{pmatrix}
+	\end{align}
+	Aus der positiven Definitheit von $A$ folgt
+	\begin{align}
+		0 < \begin{henrysmatrix}
+			x \\ 0
+		\end{henrysmatrix}^T A \begin{henrysmatrix}
+			x \\ 0
+		\end{henrysmatrix} = x^TA_{n-1}x
+	\end{align}
+	das heißt $A_{n-1}$ ist positiv definit. Nach Induktionsvoraussetzung gibt es genau eine untere Dreiecksmatrix $L_{n-1}=(l_{ij}^{(n-1)})$ mit $l_{kk}^{(n-1)}>0$ für $k=1,...,n-1$ . Um $A$ als Produkt der Form $L_nL_n^T$ mit einer unteren Dreiecksmatrix $L_n\in\real^{n\times n}$ mit ausschließlich positiven Hauptdiagonalelementen darzustellen, ist der Ansatz
+	\begin{align}
+		L_n = \begin{pmatrix}
+			L_{n-1} & 0 \\ c^T & l_{nn}
+		\end{pmatrix}\notag
+	\end{align}
+	mit freien Parametern $c\in\real^{n-1}$ und $l_{nn}>0$ die einzige Möglichkeit. Der Ansatz liefert
+	\begin{align}
+		L_nL_n^T = \begin{pmatrix}
+			L_{n-1} & 0 \\ c^T & l_{nn}
+		\end{pmatrix} \begin{pmatrix}
+			L^T_{n-1} & c \\ 0 & l_{nn}
+		\end{pmatrix} = \begin{pmatrix}
+			L_{n-1}L^T_{n-1} & L_{n-1}c \\ c^TL^T_{n-1} & c^Tc+l_{nn}^2
+		\end{pmatrix} = \begin{pmatrix}
+			A_{n-1} & a \\ a ^T & a_{nn}
+		\end{pmatrix}\notag
+	\end{align}
+	Also müssen $c$ und $l_{nn}$ den Bedingungen $L_{n-1}c=a$ und $c^Tc+l_{nn}^2=a_{nn}$ genügen. Da $L_{n-1}$ regulär ist, folgt  
+	\begin{align}
+		\label{3.7}
+		c=L_{n-1}^{-1}a
+	\end{align}
+	so dass $c$ eindeutig bestimmt ist. Es wird nun gezeigt, dass $a_{nn}-c^Tc>0$ ist und damit $l_{nn}^2>0$ folgt. Somit ist dann $l_{nn}$ in $L_n$ durch die Bedingung $l_{nn}>0$ eindeutig festgelegt auf $l_{nn}=\sqrt{a_{nn}-c^Tc}$. Da $A$ positiv definit ist und die Darstellung \cref{3.6} mit $A_{n-1}=L_{n-1}L_{n-1}^T$ nach Induktionsvoraussetzung angenommen werden kann, folgt
+	\begin{align}
+		0 < (x^T,y)A\begin{henrysmatrix}
+			x \\ y
+		\end{henrysmatrix} = x^TL_{n-1}L_{n-1}^Tx+2ya^Tx+y^2a_{nn}\notag
+	\end{align}
+	für alle $(x,y)\in \real^{n-1}\times\real$ mit $(x^T,y)\neq 0$. Setzt man speziell $(x,y)=(\hat{x},\hat{y})$ mit
+	\begin{align}
+		\hat{x} = (L_{n-1}^T)^{-1}L_{n-1}^{-1}a\quad\text{und}\quad\hat{y}=-1\notag
+	\end{align}
+	so folgt mit \cref{3.7} das Gewünschte. 
+	\begin{align}
+		0 < a^T(L_{n-1}^T)^{-1}L_{n-1}^{-1}a-2a^T(L_{n-1}^T)^{-1}L_{n-1}^{-1}a+a_{nn} = -c^Tc+a_{nn}\notag
+	\end{align}
+\end{proof}
 
 \subsection{Berechnung des \person{Cholesky}-Faktors}
+
+Sei $A$ wieder symmetrisch und positiv definit. Aus $A=LL^T$ folgt durch elementweises Vergleichen beider Matrizen
+\begin{align}
+	a_{ik} = (LL^T)_{ik} = \sum_{j=1}^{l}l_{ij}(L^T)_{ij} = \sum_{j=1}^k l_{ij}l_{kj}\notag
+\end{align}
+Dies sind $\frac{n(n+1)}{2}$ Gleichungen für $\frac{n(n+1)}{2}$ Unbekannte $l_{ik}$, da $A$ symmetrisch ist. Diese Gleichungen lassen sich durch spaltenweise Bestimmung der $l_{ik}$ in $L$ wie folgt lösen.
+
+\begin{algorithm}[\person{Cholesky}-Faktorisierung]
+	\proplbl{3_2_3}
+	Input: $n$, $A$ symmetrisch und positiv definit
+	\begin{lstlisting}
+do k = 1, n
+ %$l_{kk}$% = %$\sqrt{a_{kk} - \sum_{j=1}^{k-1}l_{kj}^2}$%
+ do i = k+1, n
+  %$l_{ik}$% = %$\left(a_{ik} - \sum_{j=1}^{k-1}l_{ij}l_{kj}\right)$% / %$l_{kk}$%
+ end do
+end do
+	\end{lstlisting}
+	Output: $l_{ik}$ für $1\le k\le i\le n$
+\end{algorithm}
+
+\begin{remark}
+	Der Aufwand von \propref{3_2_3} beträgt etwa $\frac{n^3}{3}$ Operationen. Der Algorithmus ist genau dann durchführbar, wenn $A$ symmetrisch und positiv definit ist. Andernfalls entsteht im Verlauf des Verfahrens ein nicht-positiver Wert unter der Wurzel. Um das Ziehen der Quadratwurzel zu vermeiden, kann man anstelle von $A=LL^T$ die Umformung
+	\begin{align}
+		A = LL^T = LD^{-1}D^2D^{-1}L^T\notag
+	\end{align}
+	mit $D = \diag(l_{11},...,l_{nn})$ verwenden. Dann ist $\tilde{L}=LD^{-1}$ genau eine untere Dreiecksmatrix mit $l_{kk}=1$ für $k=1,...,n$ und $\tilde{D}=D^2$ eine Diagonalmatrix mit $\tilde{D}=\diag(l_{11}^2,...,l_{nn}^2)$, sodass die sogenannte \begriff{LDL-Faktorisierung} $A=LL^T=\tilde{L}\tilde{D}\tilde{L}^T$ folgt.
+\end{remark}
+
+\begin{algorithm}[Wurzelfreie \person{Cholesky}-Faktorisierung]
+	Input: $n$, $A$ symmetrisch und positiv definit
+	\begin{lstlisting}
+do k = 1, n
+ %$\widetilde{d_{kk}}$% = %$a_{kk} - \sum_{j=1}^{k-1}\widetilde{l_{kj}}^2\widetilde{d_{jj}}$%
+ do i = k+1, n
+  %$\widetilde{l_{ik}}$% = %$\left(a_{ik} - \sum_{j=1}^{k-1}\widetilde{d_{jj}}\widetilde{l_{ij}}\widetilde{l_{kj}}\right)$% / %$\widetilde{d_{kk}}$%
+ end do
+end do
+	\end{lstlisting}
+	Output: $\widetilde{l_{ik}}$, $\widetilde{d_{kk}}$ für $1\le k\le i\le n$
+\end{algorithm}
