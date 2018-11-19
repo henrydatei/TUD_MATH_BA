@@ -4,11 +4,8 @@ Sei $V$ ein $K$-Vektorraum.
 
 \begin{definition}[Linearkombination]
 	\begin{itemize}
-		\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine \begriff{Linearkombination} eines $n$-Tupels $(x_1,...,x_n)$ von 
-		Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot
-		x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
-		\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb
-		N_0$ und $i_1,...,i_n \in I$ gibt, für die $x$ Linearkombination von $(x\cdot i_1,...,x\cdot i_n)$ ist.
+		\item Sei $n \in \mathbb N_0$. Ein $x \in V$ ist eine \begriff{Linearkombination} eines $n$-Tupels $(x_1,...,x_n)$ von Elementen von $V$, wenn es $\lambda_1,...,\lambda_n \in K$ gibt mit $x=\lambda_1\cdot x_1,...,\lambda_n \cdot x_n$. Der Nullvektor ist stets eine Linearkombination von $(x_1,...,x_n)$ auch wenn $n=0$.
+		\item Ein $x\in V$ ist eine Linearkombination einer Familie $(x_i)$ von Elementen von $V$, wenn es $n \in \mathbb{N}_0$ und $i_1,...,i_n \in I$ gibt, für die $x$ Linearkombination von $(x_{i_1},...,x_{i_n})$ ist.
 		\item Die Menge aller $x \in V$, die Linearkombination von $\mathcal F=(x_i)$ sind, wird mit $\Span_K(\mathcal F)$ 
 		bezeichnet.
 	\end{itemize}
@@ -22,7 +19,7 @@ Sei $V$ ein $K$-Vektorraum.
 		\item Auch die Menge der Linearkombinationen einer Familie $\mathcal F=(x_1,...,x_n)$ hängt nur von der Menge $X=
 		\{x_i \mid i \in I\}$ ab. Man sagt deshalb auch, $x$ ist Linearkombination von $X$ und schreibt $\Span_K(X)=\Span_K(
 		\mathcal F)$, also $\Span_K(X)=\{\sum _{i=1}^n \lambda_i\cdot n_i \mid n \in \mathbb N_0, x_i \in X, \lambda_1,
-		...,\lambda_n \in K\}$. Nach Definition in $0 \in \Span_K(X)$ auch für $X=\emptyset$.
+		...,\lambda_n \in K\}$. Nach Definition ist stets $0 \in \Span_K(X)$ auch für $X=\emptyset$.
 		\item Wie schon bei Polynomen schreibt man hier gerne formal unendliche Summen $x=\sum_{i \in I} \lambda_i
 		\cdot x_i$, bei denen nur endlich viele $\lambda_i$ von 0 verschieden sind.
 	\end{itemize}
