@@ -1,1 +1,137 @@
 \section{Lineare Quadratmittelprobleme}
+
+Das lineare Gleichungssystem $Ax=b$ mit $A\in\real^{m\times n}$ und $b\in\real^m$ besitzt genau dann eine Lösung, wenn $\rang(A)=\rang((A,b))$. Falls $m>n$, so heißt das Gleichungssystem \begriff[lineares Gleichungssystem!]{überbestimmt}. Im Allgemeinen gilt dann $\rang(A)\le n<\rang((A,b))$, so dass das Gleichungssystem keine Lösung besitzt. Der Fall der Nichtlösbarkeit kann auch für $m\le n$ eintreten, falls $\rang(A)<m$. Anstelle des Systems $Ax=b$ betrachtet man folgende \begriff{Ersatzaufgabe}:
+\begin{align}
+	\label{3.8}
+	\Vert Ax-b\Vert_2\to\min
+\end{align}
+die als \begriff{lineares Quadraturmittelproblem} bezeichnet wird. Kurz schreibt man dafür auch $Ax\cong b$.
+
+\begin{proposition}
+	\proplbl{3_3_1}
+	Seien $A\in\real^{m\times n}$ und $b\in\real^m$ gegeben. Da ist das lineare Quadraturmittelproblem \cref{3.8} lösbar.
+\end{proposition}
+\begin{proof}
+	Die restringierte Optimierungsaufgabe 
+	\begin{align}
+		\label{3.9}
+		f(y) = \Vert y-b\Vert_2\to\min\quad\text{mit } y\in L=\{Ax\mid x\in\real^n\}
+	\end{align}
+	ist offenbar genau dann lösbar, wenn \cref{3.8} eine Lösung besitzt. Wegen $f(0)=\Vert b\Vert_2$ und $0\in L$ hat
+	\begin{align}
+		\label{3.10}
+		f(y)\to\min\quad\text{mit } y\in L, \, \Vert y-b\Vert_2\le \Vert b\Vert_2
+	\end{align}
+	dieselbe Lösungsmenge wie \cref{3.9}. Der zulässige Bereich $\{x\in L\mid \Vert y-b\Vert_2\le \Vert b\Vert_2\}$ dieser Optimierungsaufgabe ist nicht-leer, abgeschlossen und beschränkt. Da zudem $f:\real^m\to\real$ stetig ist, besitzt \cref{3.10} nach dem Satz von \person{Weierstrass} eine Lösung. Also sind auch \cref{3.9} und \cref{3.8} lösbar.
+\end{proof}
+
+\begin{example}
+	Seien
+	\begin{align}
+		A = \begin{henrysmatrix}
+		1 \\1
+		\end{henrysmatrix}\quad\text{und}\quad b=\begin{henrysmatrix}
+		2 \\0
+		\end{henrysmatrix}\notag
+	\end{align}
+	Dann ist der lineare Teilraum $L$ gegeben durch $L=\left\lbrace \begin{henrysmatrix}1\\1\end{henrysmatrix}x\Bigg| x\in\real\right\rbrace$. Anschaulich ergibt sich, dass eine Lösung $y^*\in L$ von \cref{3.9} der Bedingung $(y^*-b)\perp L$ genügen muss. Daraus folgt
+	\begin{align}
+		\left(\begin{henrysmatrix}
+		 y_1^* \\ y_2^*
+		\end{henrysmatrix} - \begin{henrysmatrix}
+		2 \\ 0
+		\end{henrysmatrix}\right)^T\begin{henrysmatrix}
+		1\\1
+		\end{henrysmatrix} x=0\quad\text{und}\quad \begin{henrysmatrix}
+		y_1^* \\ y_2^*
+		\end{henrysmatrix} = \begin{henrysmatrix}
+		1\\1
+		\end{henrysmatrix} x\notag
+	\end{align}
+	für alle $x\in\real$. Einzige Lösung von \cref{3.9} ist damit $y^*=(1,1)^T$. Somit ist $x^*=1$ die einzige Lösung von \cref{3.8}.
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[->] (-3,0) -- (3,0);
+		\draw[->] (0,-3) -- (0,3);
+		
+		\draw (-3,-3) -- (3,3);
+		\node at (3.5,3.5) (L) {$L$};
+		
+		\draw[fill=black] (2,0) circle (0.1);
+		\node at (2,-0.5) (b) {$b$};
+		\draw[dashed] (1,1) -- (2,0);
+		\draw[fill=black] (1,1) circle (0.05);
+		\node at (1,1.5) (y) {$y^*$};
+		\node at (3.2,0.5) (k) {kleinster Abstand};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\subsection{Die \person{Gauss}'schen Normalgleichungen}
+
+\begin{proposition}
+	\proplbl{3_3_3}
+	Seien $A\in\real^{m\times n}$ und $b\in\real^m$ gegeben. Dann gilt:
+	\begin{enumerate}[label=(\alph*)]
+		\item Jede Lösung des linearen Quadraturmittelproblems \cref{3.8} löst die \\ \begriff{\person{Gauss}'schen Normalgleichungen}
+		\begin{align}
+			\label{3.11}
+			A^TAx = A^Tb
+		\end{align}
+		und umgekehrt.
+		\item Falls $\rang(A)=n$ (dies impliziert $m\ge n$), so ist $A^TA$ positiv definit und \cref{3.8} besitzt genau eine Lösung, nämlich $x^*=(A^TA)^{-1}A^Tb$.
+		\item Falls $\rang(A)<n$, so ist $A^TA$ positiv semidefinit und singulär und \cref{3.8} besitzt unendlich viele Lösungen.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Die Zielfunktion $\phi:\real^n\to\real$ der zu \cref{3.8} äquivalenten Aufgabe
+		\begin{align}
+			\label{3.12}
+			\phi(x) = \frac{1}{2}\Vert Ax-b\Vert_2^2\to\min
+		\end{align}
+		lässt sich schreiben als
+		\begin{align}
+			\phi(x) &= \frac{1}{2}(Ax-b)^T(Ax-b) \notag \\
+			&= \frac{1}{2} (x^TA^TAx - 2b^TAx+b^Tb)\notag
+		\end{align}
+		Die notwendige Optimalitätsbedingung für \cref{3.12} lautet $\nabla\phi(x)=0$, das heißt
+		\begin{align}
+			A^TAx = A^Tb\notag
+		\end{align}
+		Also ist jede Lösung von \cref{3.8} auch eine Lösung der \person{Gauss}'schen Normalgleichungen \cref{3.11}. Da $\phi$ eine konvexe Funktion ist (wegen $\nabla^2\phi(x)=A^TA$ positiv semidefinit), ist \cref{3.11} zugleich eine hinreichende Optimalitätsbedingung, das heißt jede Lösung von \cref{3.11} löst \cref{3.8}.
+		\item Sei $\rang(A)=n$. Dann hat $A$ vollen Spaltenrang und $Ax\neq 0$ für alle $x\neq 0$. Folglich gilt $x^TA^TAx=(x^TA^T)(Ax)=\Vert Ax\Vert_2^2>0$ für alle $x\neq 0$. Also ist $A$ positiv definit und damit regulär. Somit sind die \person{Gauss}'schen Normalgleichungen \cref{3.11} eindeutig lösbar, ihre Lösung ist $x^*=(A^TA)^{-1}A^Tb$. Wegen Teil (a) ist dies auch die einzige Lösung von \cref{3.8}.
+		\item Sei $\rang(A)>n$. Dann gibt es $\hat{x}\neq 0$ mit $A\hat{x}=0$. Folglich ist einerseits $A$ positiv semidefinit (denn $x^TA^TAx=\Vert Ax\Vert_2^2\ge 0$) aber andererseits $A^TA\hat{x}=0$ und $A^TA$ daher singulär. Da nach \propref{3_3_1} das lineare Quadraturmittelproblem \cref{3.8} eine Lösung besitzt, muss nach Teil (a) auch \cref{3.11} lösbar sein. Aufgrund der Singularität von $A^TA$ hat \cref{3.11} unendlich viele Lösungen.
+	\end{enumerate}
+\end{proof}
+
+Sei $x^*$ eine Lösung von \cref{3.8}. Dann gilt wegen \propref{3_3_3} 
+\begin{align}
+	0 = A^TAx^* - A^Tb = A^T(Ax^*-b)\notag
+\end{align}
+Dies ist äquivalent zu folgenden Aussagen
+\begin{itemize}
+	\item $0=x^TA^T(Ax^*-b)$
+	\item $(Ax^*-b)\perp Ax$
+	\item $(Ax^*-b)\perp L$
+\end{itemize}
+
+\begin{algorithm}[Prinzip des Normalgleichungsverfahrens]
+	Input: $A\in\real^{m\times n}$ mit $\rang(A)=n$, $b\in\real^m$
+	\begin{lstlisting}
+G = transpose(A) * A
+c = transpose(A) * b
+compute L ! als Cholesky-Faktor von G
+solve Lz=c
+solve transpose(L)x = z
+	\end{lstlisting}
+	Output: $x$, $L$
+\end{algorithm}
+
+\begin{remark}
+	Der Aufwand beträgt etwa $mn^2$ Operationen zur Berechnung der unteren Hälfte von $G$, $\frac{n^3}{3}$ für die \person{Cholesky}-Faktorisierung sowie je $n^2$ für die Lösung der Dreieckssysteme. Offenbar ist der Aufwand für kleine $n$ günstig. Nachteilig bezüglich numerischer Fehler kann sich beim Normalgleichungsverfahren die schlechte Kondition (siehe später) der Matrix $A^TA$ auswirken. Abhilfe schaffen geeignete Nachiterationen oder andere Verfahren (\person{Householder}, SVD) zur Lösung des linearen Quadraturmittelproblems.
+\end{remark}
+
+\subsection{Orthonormalisierungsverfahren nach \person{Householder}}
+
+\subsection{Anwendung der Ausgleichsrechnung}

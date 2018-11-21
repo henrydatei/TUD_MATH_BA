@@ -119,3 +119,5 @@ end do
 	\end{lstlisting}
 	Output: $\widetilde{l_{ik}}$, $\widetilde{d_{kk}}$ für $1\le k\le i\le n$
 \end{algorithm}
+
+Der Aufwand beträgt etwa $\frac{n^3}{3}$. Hat man die Faktorisierung $A=\tilde{L}\tilde{D}\tilde{L}^T$ bestimmt, so ist auch die $LU$-Faktorisierung von $A$ bekannt: $A=\tilde{L}U$ mit $U=\tilde{D}\tilde{L}^T$.

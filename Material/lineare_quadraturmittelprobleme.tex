@@ -1,0 +1,20 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+	\begin{tikzpicture}
+		\draw[->] (-3,0) -- (3,0);
+		\draw[->] (0,-3) -- (0,3);
+		
+		\draw (-3,-3) -- (3,3);
+		\node at (3.5,3.5) (L) {$L$};
+		
+		\draw[fill=black] (2,0) circle (0.1);
+		\node at (2,-0.5) (b) {$b$};
+		\draw[dashed] (1,1) -- (2,0);
+		\draw[fill=black] (1,1) circle (0.05);
+		\node at (1,1.5) (y) {$y^*$};
+		\node at (3.2,0.5) (k) {kleinster Abstand};
+	\end{tikzpicture}
+\end{document}
