@@ -10,7 +10,7 @@ In diesem ganzen Kapitel seien
 Sei zunächst $K=\real$.
 
 \begin{definition}[Standardskalarprodukt in $\real$]
-	Auf den Standardraum $V=\real^n$ definiert man das \begriff{Standardskalarprodukt in $\real$} $\langle.\rangle:\real^n\times\real^n\to \real$ durch
+	Auf den Standardraum $V=\real^n$ definiert man das \begriff{Standardskalarprodukt in $\real$} $\langle\cdot,\cdot\rangle:\real^n\times\real^n\to \real$ durch
 	\begin{align}
 		\skalar{x}{y}=x^ty=\sum_{i=1}^n x_iy_i\notag
 	\end{align}
@@ -28,7 +28,7 @@ Sei zunächst $K=\real$.
 			\langle x,\lambda y \rangle &= \lambda \langle x,y \rangle\notag
 		\end{align}
 		\item Für $x,y\in\real^n$ ist $\langle x,y \rangle=\langle y,x\rangle$
-		\item Für $x\in\real^n$ ist $\langle x,y \rangle\ge 0$ und $\langle x,x\rangle=0\iff x=0$
+		\item Für $x\in\real^n$ ist $\langle x,x \rangle\ge 0$ und $\langle x,x\rangle=0\iff x=0$
 	\end{itemize}
 \end{proposition}
 \begin{proof}
@@ -40,7 +40,7 @@ Sei zunächst $K=\real$.
 \end{proof}
 
 \begin{definition}[euklidische Norm in $\real$]
-	Auf $K=\real^n$ definiert man \begriff{euklidische Norm in $\real$} $\Vert \cdot \Vert:\real^n\to \real_{\ge 0}$ durch
+	Auf $V=\real^n$ definiert man \begriff{euklidische Norm in $\real$} $\Vert \cdot \Vert:\real^n\to \real_{\ge 0}$ durch
 	\begin{align}
 		\Vert x\Vert =\sqrt{\langle  x,x\rangle}\notag
 	\end{align}
@@ -104,7 +104,7 @@ Sei zunächst $K=\real$.
 Sei nun $K=\comp$.
 
 \begin{definition}[komplexe Konjugation, Absolutbetrag]
-	Für $x,y\in\real$ und $z=x+iy\in\comp$ definiert man $\overline{z}=x-iy$ heißt \begriff{komplexe Konjugation}.. Man definiert den \begriff{Absolutbetrag} von $z$ als
+	Für $x,y\in\real$ und $z=x+iy\in\comp$ definiert man $\overline{z}=x-iy$ heißt \begriff{komplexe Konjugation}. Man definiert den \begriff{Absolutbetrag} von $z$ als
 	\begin{align}
 		\vert z\vert &=\sqrt{z\overline{z}}=\sqrt{x^2+y^2}\in\real_{\ge 0}\notag
 	\end{align}
@@ -134,7 +134,7 @@ Sei nun $K=\comp$.
 \end{proof}
 
 \begin{definition}[Standardskalarprodukt in $\comp$]
-	Auf $K=\comp^n$ definiert man das \begriff{Standardskalarprodukt in $\comp$} $\langle\cdot,\cdot\rangle:\comp^n\times\comp^n\to \comp$ durch
+	Auf $V=\comp^n$ definiert man das \begriff{Standardskalarprodukt in $\comp$} $\langle\cdot,\cdot\rangle:\comp^n\times\comp^n\to \comp$ durch
 	\begin{align}
 	\langle x,y\rangle=x^t\overline{y}=\sum_{i=1}^n x_i\overline{y}_i\notag
 	\end{align}
@@ -151,7 +151,7 @@ Sei nun $K=\comp$.
 		\langle x,\lambda y \rangle &= \kringel{lightgrey}{\overline{\lambda}} \langle x,y \rangle\notag
 		\end{align}
 		\item Für $x,y\in\comp^n$ ist $\langle x,y \rangle=\kringel{lightgrey}{\overline{\langle y,x\rangle}}$
-		\item Für $x\in\comp^n$ ist $\langle x,y \rangle\in\real_{\ge 0}$ und $\langle x,x\rangle=0\iff x=0$
+		\item Für $x\in\comp^n$ ist $\langle x,x \rangle\in\real_{\ge 0}$ und $\langle x,x\rangle=0\iff x=0$
 	\end{itemize}
 \end{proposition}
 \begin{proof}
@@ -163,7 +163,7 @@ Sei nun $K=\comp$.
 \end{proof}
 
 \begin{definition}[euklidische Norm in $\comp$]
-	Auf $V=\comp$ definiert man die \begriff{euklidische Norm in $\comp$} $\Vert \cdot \Vert:\comp^n\to \real_{\ge 0}$ durch
+	Auf $V=\comp^n$ definiert man die \begriff{euklidische Norm in $\comp$} $\Vert \cdot \Vert:\comp^n\to \real_{\ge 0}$ durch
 	\begin{align}
 	\Vert x\Vert =\sqrt{\langle  x,x\rangle}\notag
 	\end{align}
