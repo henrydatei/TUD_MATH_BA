@@ -34,6 +34,10 @@ Sei $G$ eine Gruppe und $X$ eine Menge.
 	$^{op}$ ist nötig, weil die Multiplikation "'falsch herum"' definiert wurde. g) wäre ein Beispiel für eine Linkswirkung, also ist es dann mit $^{op}$ eine Rechtswirkung.
 \end{*anmerkung}
 
+\begin{*example}
+	The additive group of the real numbers $(\real, +)$ acts on the phase space $V = \real^3$ of ``well-behaved'' systems in classical mechanics (and in more general dynamical systems) by time translation: if $t$ is in $\real$ and $x$ is in the phase space, then $x$ describes a state of the system, and $t + x$ is defined to be the state of the system $t$ seconds later if $t$ is positive or $-t$ seconds ago if $t$ is negative.
+\end{*example}
+
 \begin{remark}
 	\proplbl{1_6_3}
 	Wirkt $G$ auf $X$, so ist für jedes $g\in G$ die Abbildung
@@ -159,6 +163,12 @@ Sei $G$ eine Gruppe und $X$ eine Menge.
 \begin{proof}
 	\propref{1_6_10}
 \end{proof}
+
+\begin{*example}
+	Da bei Prof Fehm, die Verbindung zwischen Algebra und Geometrie keine Beachtung geschenkt wird, hier mal ein sehr anschauliches Beispiel von Wikipedia.\\
+	One can use the orbit-stabilizer theorem \propref{1_6_11} to count the automorphisms of a graph. Consider the cubical graph, and let $G$ denote its automorphism group. Then G acts on the set of vertices $\{1,2,\dots,8\}$, and this action is transitive as can be seen by composing rotations about the center of the cube. Thus, by the orbit-stabilizer theorem, we have that $|G|=|G\cdot 1||G_{1}|=8|G_{1}|$. Applying the theorem now to the stabilizer $G_{1}$, we obtain $|G_{1}|=|(G_{1})\cdot 2||(G_{1})_{2}|$ . Any element of $G$ that fixes $1$ must send $2$ to either $2$, $4$ or $5$. There are such automorphisms; consider for example the map that transposes $2$ and $4$, transposes $6$ and $8$, and fixes the other vertices. Thus, $\left|(G_{1})\cdot 2\right|=3$. Applying the theorem a third time gives $|(G_{1})_{2}|=|((G_{1})_{2})\cdot 3||((G_{1})_{2})_{3}|$. Any element of $G$ that fixes $1$ and $2$ must send $3$ to either $3$ or $6$, and one easily finds such automorphisms. Thus, $\left|((G_{1})_{2})\cdot 3\right|=2$. One also sees that $((G_{1})_{2})_{3}$ consists only of the identity automorphism, as any element of $G$ fixing $1$, $2$ and $3$ must also fix $4$ and consequently all other vertices. Combining the preceding calculations, we now obtain $|G|=8\cdot 3\cdot 2\cdot 1=48$. 
+	% https://en.wikipedia.org/wiki/Group_action#Orbit-stabilizer_theorem_and_Burnside's_lemma 
+\end{*example}
 
 \begin{conclusion}[Bahngleichung]
 	Ist $X$ eine $G$-Menge und $X=\biguplus_{i=1}^n x_i^G$ die Zerlegung von $X$ in Bahnen (vgl. \propref{1_6_8} c) so ist
