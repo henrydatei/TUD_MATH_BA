@@ -134,4 +134,61 @@ solve transpose(L)x = z
 
 \subsection{Orthonormalisierungsverfahren nach \person{Householder}}
 
+Ziel ist zunächst die Beschreibung eines Verfahrens zur sogenannten $QR$-Faktorisierung einer Matrix $A\in\real^{m\times n}$, das heißt es sollen Matrizen $Q\in\real^{m\times n}$ und $R\in\real^{m\times n}$ bestimmt werden, so dass
+\begin{align}
+	A = QR\notag
+\end{align}
+gilt, wobei $Q$ eine orthogonale Matrix ($Q^{-1}=Q^T$) und $R$ eine verallgemeinerte obere Dreiecksmatrix der Form
+\begin{align}
+	R &= \begin{pmatrix}
+	R_1 \\ 0
+	\end{pmatrix} \quad\text{(falls $m\ge n$)} \notag \\
+	R &= (R_1,R_2) \quad\text{(falls $m < n$)} \notag
+\end{align}
+mit einer oberen Dreiecksmatrix $R_1\in\real^{n\times n}$ bzw. einer oberen Dreiecksmatrix $R_1\in\real^{m\times m}$ und einer Matrix $R_2\in\real^{m\times (n-m)}$ ist. Später wird die $QR$-Zerlegung zur Lösung von Quadraturmittelproblemen (für den Fall $\rang(A)=n$) eingesetzt.
+
+\begin{proposition}
+	Sei $w\in\real^m$ gegeben mit $w^Tw=1$. Dann ist die \begriff{\person{Householder}-Matrix}
+	\begin{align}
+		H = \mathbbm{1} - 2ww^T\notag
+	\end{align}
+	symmetrisch und orthogonal, das heißt es gilt $H=H^T=H^{-1}$.
+\end{proposition}
+\begin{proof}
+	Offenbar gilt $H^T=\mathbbm{1}-2ww^T=H$. Weiter erhält man
+	\begin{align}
+		H^TH=(\mathbbm{1}-2ww^T)(\mathbbm{1}-2ww^T) = \mathbbm{1} - 4ww^T + 4w(w^Tw)w^T = 1\notag
+	\end{align}
+\end{proof}
+
+Die Wirkung einer \person{Householder}-Matrix $H$ auf einen Vektor $a\in\real^m$ (bei Multiplikation mit diesem Vektor) lässt sich wie folgt veranschaulichen. Zunächst hat man
+\begin{align}
+	Ha=(\mathbbm{1}-2ww^T)a = a-2ww^Ta = a-(2w^Ta)w\notag
+\end{align}
+Wegen $(a-w^Taw)^Tw=a^Tw-w^Ta=0$ (beachte $w^Tw=1$) liegt $a-w^Taw$ auf der Ebene $\mathcal{E}=\{y\in\real^m\mid y^Tw=0\}$ und $Ha$ liegt bezüglich dieser Ebene (als Spiegelebene) spiegelbildlich zu $a$.
+
+\begin{proposition}
+	Es seien $a\in\real^m$ mit $a\notin\Span(e_1)$ und 
+	\begin{align}
+		w = \frac{a+pe_1}{\Vert a+pe_1\Vert_2}\quad\text{mit } p\in\{\Vert a\Vert_2,\, -\Vert a\Vert_2\}\notag
+	\end{align}
+	gegeben. Dann gilt
+	\begin{align}
+		Ha = -pe\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Wegen $a\notin\Span(e_1)$ folgt $a+pe_1\neq 0$. Also ist $w$ wohldefiniert mit $w^Tw=1$ und man erhält
+	\begin{align}
+		\label{3.13}
+		Ha = (\mathbbm{1}-2ww^T)a = a-(2w^Ta)w = a-2\frac{a^T(a+pe_1)}{\Vert a+pe_1\Vert}\frac{a+pe_1}{\Vert a+pe_1\Vert_2}
+	\end{align}
+	Da $p\in\{\Vert a\Vert_2,\, -\Vert a\Vert_2\}$, gilt
+	\begin{align}
+		\Vert a+pe_1\Vert_2^2 = a^Ta+2pa^Te_1+p^2 = 2a^T(a+pe_1)\notag
+	\end{align}
+	Deshalb liefert \cref{3.13} $Ha = a-(a+pe_1) = -pe_1$.
+\end{proof}
+
+
 \subsection{Anwendung der Ausgleichsrechnung}
