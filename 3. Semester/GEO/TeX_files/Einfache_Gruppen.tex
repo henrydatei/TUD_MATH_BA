@@ -11,6 +11,7 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 \end{remark}
 
 \begin{example}
+	\proplbl{1_9_3}
 	\begin{enumerate}[label=(\alph*)]
 		\item $C_n$ ist einfach $\Leftrightarrow n$ ist prim, da dann $\#C_n$ keine weiteren Teiler hat, also auch keine Untergruppen
 		\item Sei $G$ endlich abelsch. Dann: $G$ ist einfach $\Leftrightarrow G \cong C_p$, $p$ prim
@@ -75,6 +76,7 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 \end{proof}
 
 \begin{lemma}
+	\proplbl{1_9_9}
 	Ist $n \geq 5$, so sind je zwei $3$-Zykel konjugiert in $A_n$.
 \end{lemma}
 \begin{proof}
@@ -83,3 +85,70 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 		\sigma^{\tau(j_1,j_2)} = (\sigma^\tau)^{(j_1,j_2)} = (\sigma')^{(j_1,j_2)} = \sigma'\notag
 	\end{align}
 \end{proof}
+
+\begin{lemma}
+	\proplbl{1_9_10}
+	Ist $n\geq 3$ wird $A_n$ von den $3$-Zykeln erzeugt.
+\end{lemma}
+
+\begin{proof}
+	Sei $\sigma \in A_n$. Schreibe $\sigma=\tau_1 \dots tau_{2r}$ mit Transpositionen $\tau_1,\dots,\tau_{2r} \in S_n$ (siehe \propref{1_1_11}). Es genügt zu zeigen, dass $\tau_1\tau_2$ Produkt ist von $3$-Zykeln ohne Einschränkung sei $\tau_1=(12)$.
+	\begin{itemize}
+		\item $\tau_2 = (12) = \tau_1\colon \tau_1\tau_2 = (123)(213)$
+		\item $\tau_2= (1k)$ für ein $k>2$: $\tau_1\tau_2 = (12k)$
+		\item $\tau_2= (2k)$ für ein $k>2$: analog
+		\item $\tau_2= (kl)$ für $l>k>2$: $\tau_1\tau_2 = (1kl)(1k2)$
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}
+	\proplbl{1_9_11}
+	Für $n\geq 5$ ist $A_n$ einfach.
+\end{theorem}
+
+\begin{proof}
+	Sei $1 \neq N \unlhd A_n$. Enthält $N$ ein $3$-Zykel, somit nach \propref{1_9_9} schon alle $3$-Zykel, daraus mit \propref{1_9_10} $N = A_n$ folgt. Sei $1 \neq \sigma \in N$ ist mit Zykelzerlegung $\sigma = \sigma_1\dots \sigma_k$.
+	\begin{itemize}
+		\item \textbf{Fall 1:} Zykelzerlegung enthält 2 Transpositionen, etwa $\sigma_1 = (12)$, $\sigma_2 = (34)$\\
+		$\Rightarrow \sigma^{'} := \sigma^{(123)} = (123)^{-1}(12)(34)\sigma_3\dots\sigma_k(123) = (23)(14)\sigma_3\dots\sigma_k \in N$\\
+		$\Rightarrow \sigma^{'}\cdot\sigma^{-1} = (13)(24) \in N$\\
+		$\Rightarrow \sigma^{''} := (\sigma^{'}\sigma^{-1})^{(153)} = (15)(24) \in N$\\
+		$\Rightarrow \sigma^{'}\sigma^{-1}\sigma^{''} = (135) \in N$
+		\item \textbf{Fall 2:} Zykelzerlegung von $\sigma$ enthält Zykel der Länge $m \geq 4$, etwa $\sigma_1 = (1\dots m)$\\
+		$\Rightarrow \sigma^{'}:=\sigma^{(123)} = (23145\dots m)\sigma_2\sigma_k \in N$\\
+		$\Rightarrow \sigma^{-1}\sigma^{'} :=(241)\in N$
+		\item \textbf{Fall 3:} Zykelzerlegung besteht aus $3$-Zykeln, etwa $\sigma_1 = (123)$, $\sigma_2=(456)$ ($\sigma_1 \cap \sigma_2 = \emptyset$) (dieser Fall existiert nur für $n \geq 6$)\\
+		$\Rightarrow \sigma^{'} := \sigma^{(234)} = (134)(256)\sigma\dots\sigma_k \in N$\\
+		$\Rightarrow \sigma^{-1}\sigma^{'} = (14235) \in N$\\
+		$\Rightarrow$ Fertig nach \text{Fall 2}!
+	\end{itemize} 
+\end{proof}
+
+\begin{conclusion}
+	Für $n\neq 4$ hat $S_n$ nur die Normalteiler $1,A_n,S_n$.
+\end{conclusion}
+
+\begin{proof}
+	Sei $N \unlhd S_n$.
+	\begin{itemize}
+		\item $n\leq 3$: klar mit V5 + \propref{1_9_8}
+		\item $n\geq 5$: $N \cap A_n \unlhd A_n \xRightarrow{\propref{1_9_11}} N \cap A_n \in \{1,A_n\}$
+		\begin{itemize}
+			\item $N \cap A_n = A_n$ : $A_n \leq N \leq S_n \xRightarrow{(S_n\colon A_n) =2} n \in \{A_n,S_n\}$
+			\item $N \cap A_n = 1$: $NA_n = N \times A_n \Rightarrow \#N \leq 2$, denn $\#N:\#A_n = \#NA_n \leq \#S_n = 2 \#A_n$. Wäre $N \neq 1$, so existiert $1\neq \sigma \in N$ mit $\ord(\sigma)=2$, also $\Typ(\sigma) = (2,\dots,2,1,\dots,1)$ im Widerspruch zu \propref{1_9_8}, denn es existiert $1\neq \sigma^{'} \neq \sigma$ konjugiert zu $\sigma$, insbesondere $\sigma^{'} \in N$, also ist $\#N \geq 3$.
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}
+		\item Man kann zeigen, dass es keine nicht zyklische einfachen Gruppen der Ordnung $\#G <\#A_5 = 60$ gibt!
+		\item Die endlichen einfachen Gruppen sind vollständig klassifiziert:
+		\begin{enumerate}
+			\item $C_p$ mit $p$ prime
+			\item $A_n$ mit $n \geq 5$
+			\item Einfache Gruppen von \person{Lie}-Typ
+			\item $26$ ``sporadische'' einfache Gruppen (z.B. Monster Gruppen mit Ordnung ca. $10^{53}$)
+		\end{enumerate}
+	\end{enumerate}
+\end{remark}
