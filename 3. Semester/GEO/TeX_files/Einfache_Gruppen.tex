@@ -95,9 +95,9 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 	Sei $\sigma \in A_n$. Schreibe $\sigma=\tau_1 \dots tau_{2r}$ mit Transpositionen $\tau_1,\dots,\tau_{2r} \in S_n$ (siehe \propref{1_1_11}). Es genügt zu zeigen, dass $\tau_1\tau_2$ Produkt ist von $3$-Zykeln ohne Einschränkung sei $\tau_1=(12)$.
 	\begin{itemize}
 		\item $\tau_2 = (12) = \tau_1\colon \tau_1\tau_2 = (123)(213)$
-		\item $\tau_2= (1k)$ für ein $k>2$: $\tau_1\tau_2 = (12k)$
-		\item $\tau_2= (2k)$ für ein $k>2$: analog
-		\item $\tau_2= (kl)$ für $l>k>2$: $\tau_1\tau_2 = (1kl)(1k2)$
+		\item $\tau_2 = (1k)$ für ein $k>2$: $\tau_1\tau_2 = (12k)$
+		\item $\tau_2 = (2k)$ für ein $k>2$: analog
+		\item $\tau_2 = (kl)$ für $l>k>2$: $\tau_1\tau_2 = (1kl)(1k2)$
 	\end{itemize}
 \end{proof}
 
@@ -107,7 +107,7 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 \end{theorem}
 
 \begin{proof}
-	Sei $1 \neq N \unlhd A_n$. Enthält $N$ ein $3$-Zykel, somit nach \propref{1_9_9} schon alle $3$-Zykel, daraus mit \propref{1_9_10} $N = A_n$ folgt. Sei $1 \neq \sigma \in N$ ist mit Zykelzerlegung $\sigma = \sigma_1\dots \sigma_k$.
+	Sei $1 \neq N \unlhd A_n$. Enthält $N$ ein $3$-Zykel, somit nach \propref{1_9_9} schon alle $3$-Zykel, daraus folgt mit \propref{1_9_10} $N = A_n$. Sei $1 \neq \sigma \in N$ ist mit Zykelzerlegung $\sigma = \sigma_1\dots \sigma_k$.
 	\begin{itemize}
 		\item \textbf{Fall 1:} Zykelzerlegung enthält 2 Transpositionen, etwa $\sigma_1 = (12)$, $\sigma_2 = (34)$\\
 		$\Rightarrow \sigma^{'} := \sigma^{(123)} = (123)^{-1}(12)(34)\sigma_3\dots\sigma_k(123) = (23)(14)\sigma_3\dots\sigma_k \in N$\\
@@ -142,7 +142,7 @@ Sei $G$ eine Gruppe und $n \in \natur$.
 
 \begin{remark}
 	\begin{enumerate}
-		\item Man kann zeigen, dass es keine nicht zyklische einfachen Gruppen der Ordnung $\#G <\#A_5 = 60$ gibt!
+		\item Man kann zeigen, dass es keine nicht zyklische einfachen Gruppen der Ordnung $\#G <\#A_5 = 60$ gibt! (Kann mit den Sylow-Sätzen (\propref{1_8_6}) gezeigt werden oder mit \person{Burnside}'s Lemma, welches wir in dieser Vorlesung nicht behandelt haben.)
 		\item Die endlichen einfachen Gruppen sind vollständig klassifiziert:
 		\begin{enumerate}
 			\item $C_p$ mit $p$ prime

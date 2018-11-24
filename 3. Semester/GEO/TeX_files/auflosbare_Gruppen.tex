@@ -10,7 +10,7 @@ Sei $G$ eine endliche Gruppe.
 		G = G_0 \gneq G_1 \gneq ... \gneq G_n = 1
 		\end{align}
 		Dabei ist $n$ die Länge der Normalreihe, und die Quotienten $G_{i-1}/G_i$ heißen die \begriff{Faktoren} der Normalreihe.
-		\item Eine Normalreihe $G_0, \dots, G_n$ von $G$ ist eine \begriff{Verfeinerung} einer Normalreihe $H_0,\dots,H_m$  von $G$ wenn $i_1,\dots,i_m$ mit $H_j = G_{i_{j}} \forall j$ gibt.
+		\item Eine Normalreihe $G_0, \dots, G_n$ von $G$ ist eine \begriff{Verfeinerung} einer Normalreihe $H_0,\dots,H_m$  von $G$, wenn $i_1,\dots,i_m$ mit $H_j = G_{i_{j}} \forall j$ gibt.
 		\item Eine \begriff{Kompositionsreihe} ist eine Normalreihe, die maximal bezüglich Verfeinerung ist.
 	\end{enumerate}
 \end{definition}
@@ -18,7 +18,7 @@ Sei $G$ eine endliche Gruppe.
 \begin{remark}
 	\begin{enumerate}
 		\item Für eine Normalreihe \propref{1_10_1} gilt nach \propref{1_3_7} + Ü27:\\ %TODO FIXME (1) needs to be linked?!
-		Genau dann ist $G_{i-1}/G_i$ einfach, wenn es kein $G_{i-1} \gneq N \gneq G_i$ mit $N \unrhd G_{i-1}$ gibt. Das heißt, genau dann ist eine Normalreihe eine Kompositionsreihe, wenn alle ihre Faktoren einfach sind. % different to the lecutre note, taken from the online version, because fehm avoided using the negation of the normal subgroup symbol!
+		Genau dann ist $G_{i-1}/G_i$ einfach, wenn es kein $G_{i-1} \gneq N \gneq G_i$ mit $N \unrhd G_{i-1}$ gibt. Das heißt, genau dann ist eine Normalreihe eine Kompositionsreihe, wenn alle ihre Faktoren einfach sind. % different to the lecutre notes, taken from the online version, because fehm avoided using the negation of the normal subgroup symbol!
 		\item Jede Normalreihe besitzt eine Verfeinerung, die eine Kompositionsreihe ist.
 	\end{enumerate}
 \end{remark}
@@ -44,7 +44,7 @@ Sei $G$ eine endliche Gruppe.
 \end{example}
 
 \begin{theorem}[\person{Jordan}-\person{Hölder}]
-	Je zwei Kompositionsreihen von $G$ haben die gleiche Länge und ihre Faktoren stimmen bis auf Isomorphie und reihenfolge überein.
+	Je zwei Kompositionsreihen von $G$ haben die gleiche Länge und ihre Faktoren stimmen bis auf Isomorphie und Reihenfolge überein.
 \end{theorem}
 
 \begin{proof}
@@ -53,7 +53,7 @@ Sei $G$ eine endliche Gruppe.
 	 	G = A_0 \gneq A_1 \gneq \dotsm \gneq A_m = 1,\notag \\
 	 	G = B_0 \gneq B_1 \gneq \dotsm \gneq B_m = 1\notag
 	 \end{align}
-	 Kompositionsreihen mit $m$ minimal. Es ist $N := A_1 \cap B_1 \unlhd G$ und $A_1 \unlhd B_1 \unlhd G$. Der Fallm $m = 0$ ist klar. Für $m > 0$ und $A_1 = B_1$ wende Induktionshypothese auf $N = A_1 = B_1$ an.
+	 Kompositionsreihen mit $m$ minimal. Es ist $N := A_1 \cap B_1 \unlhd G$ und $A_1 \unlhd B_1 \unlhd G$. Der Fall $m = 0$ ist klar. Für $m > 0$ und $A_1 = B_1$ wende Induktionshypothese auf $N = A_1 = B_1$ an.
 	 Für $A_1 \neq B_1$ ist $A_1 B_1 = G$ und wir können die beiden Kompositionsreihen vergleichen, indem wir zudem eine Kompositionsreihe von $N$ wählen.
 	 % online version! maybe is the lecture proof better?
 \end{proof}
@@ -61,7 +61,7 @@ Sei $G$ eine endliche Gruppe.
 \begin{definition}[Kompositionfaktoren, auflösbar]
 	\begin{enumerate}
 		\item Die Faktoren einer Kompositionsreihe von $G$ heißen die \begriff{Kompositionsfaktoren} von $G$.
-		\item $G$ ist \begriff{auflösbar}, wenn alle Kompoistionsfaktoren von $G$ zyklisch sind.
+		\item $G$ ist \begriff{auflösbar}, wenn alle Kompositionsfaktoren von $G$ zyklisch sind.
 	\end{enumerate}
 \end{definition}
 
