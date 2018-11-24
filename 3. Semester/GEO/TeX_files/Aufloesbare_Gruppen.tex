@@ -4,42 +4,43 @@ Sei $G$ eine endliche Gruppe.
 
 \begin{definition}[Normalreihe, Faktoren, Verfeinerung, Kompositionsreihe]
 	\proplbl{1_10_1}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item Eine \begriff{Normalreihe} von $G$ ist eine Folge von Untergruppen
 		\begin{align}
-		G = G_0 \gneq G_1 \gneq ... \gneq G_n = 1
+		\label{eq1}
+		G = G_0 \gneq G_1 \gneq ... \gneq G_n = 1 %TODO: Normalteiler-aber-ungleich-Symbol erzeugen
 		\end{align}
-		Dabei ist $n$ die Länge der Normalreihe, und die Quotienten $G_{i-1}/G_i$ heißen die \begriff{Faktoren} der Normalreihe.
+		Dabei ist $n$ die Länge der Normalreihe, und die Quotienten $\lnkset{G_{i-1}}{G_i}$ heißen die \begriff{Faktoren} der Normalreihe.
 		\item Eine Normalreihe $G_0, \dots, G_n$ von $G$ ist eine \begriff{Verfeinerung} einer Normalreihe $H_0,\dots,H_m$  von $G$, wenn $i_1,\dots,i_m$ mit $H_j = G_{i_{j}} \forall j$ gibt.
 		\item Eine \begriff{Kompositionsreihe} ist eine Normalreihe, die maximal bezüglich Verfeinerung ist.
 	\end{enumerate}
 \end{definition}
 
 \begin{remark}
-	\begin{enumerate}
-		\item Für eine Normalreihe \propref{1_10_1} gilt nach \propref{1_3_7} + Ü27:\\ %TODO FIXME (1) needs to be linked?!
-		Genau dann ist $G_{i-1}/G_i$ einfach, wenn es kein $G_{i-1} \gneq N \gneq G_i$ mit $N \unrhd G_{i-1}$ gibt. Das heißt, genau dann ist eine Normalreihe eine Kompositionsreihe, wenn alle ihre Faktoren einfach sind. % different to the lecutre notes, taken from the online version, because fehm avoided using the negation of the normal subgroup symbol!
+	\begin{enumerate}[label=(\alph*)]
+		\item Für eine Normalreihe \eqref{eq1} gilt nach \propref{1_3_7} + Ü27:
+		Genau dann ist $\lnkset{G_{i-1}}{G_i}$ einfach, wenn es kein $G_{i-1} \gneq N \gneq G_i$ mit $N \unrhd G_{i-1}$ gibt. Das heißt, genau dann ist eine Normalreihe eine Kompositionsreihe, wenn alle ihre Faktoren einfach sind. % different to the lecutre notes, taken from the online version, because fehm avoided using the negation of the normal subgroup symbol!
 		\item Jede Normalreihe besitzt eine Verfeinerung, die eine Kompositionsreihe ist.
 	\end{enumerate}
 \end{remark}
 
 \begin{example}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $S_3$ hat eine Kompositionsreihe
 		\begin{align}
-			S_3 > A_3 > 1 \notag
+			S_3 > A_3 > 1 \notag %TODO: Fix symbols
 		\end{align}
-		mit Faktoren $S_3 /A_3 \cong C_2$, $A_3/1 \cong C_3$.
+		mit Faktoren $\lnkset{S_3}{A_3} \cong C_2$, $\lnkset{A_3}{1} \cong C_3$.
 		\item $S_4$ hat die Kompositionsreihe
 		\begin{align}
-			S_4 > A_4 > V_4 > H=\langle (12)(34)\rangle > 1 \notag
+			S_4 > A_4 > V_4 > H=\langle (12)(34)\rangle > 1 \notag %TODO: Fix symbols
 		\end{align}
-		mit Faktoren $S_4/A_4 \cong C_2$, $A_4/V_4 \cong C_3$, $V_4/H \cong C_2 \text{ und } H/1\cong C_2$.
+		mit Faktoren $\lnkset{S_4}{A_4} \cong C_2$, $\lnkset{A_4}{V_4}4 \cong C_3$, $\lnkset{V_4}{H} \cong C_2$ und $\lnkset{H}{1}\cong C_2$.
 		\item $S_5$ hat die Kompositionsreihe
 		\begin{align}
-			S_5 > A_5 > 1\notag
+			S_5 > A_5 > 1\notag %TODO: Fix symbols
 		\end{align}
-		mit Faktoren $S_5/A_5 \cong C_2$, $A_5/1 \cong A_5$ nach \propref{1_9_11}.
+		mit Faktoren $\lnkset{S_5}{A_5} \cong C_2$, $\lnkset{A_5}{1} \cong A_5$ nach \propref{1_9_11}.
 	\end{enumerate}
 \end{example}
 
@@ -48,10 +49,10 @@ Sei $G$ eine endliche Gruppe.
 \end{theorem}
 
 \begin{proof}
-	 Induktion über die minimal Länge m einer Kompositionsreihe: Seien
+	 Induktion über die minimal Länge $m$ einer Kompositionsreihe: Seien
 	 \begin{align}
-	 	G = A_0 \gneq A_1 \gneq \dotsm \gneq A_m = 1,\notag \\
-	 	G = B_0 \gneq B_1 \gneq \dotsm \gneq B_m = 1\notag
+	 	G &= A_0 \gneq A_1 \gneq \dotsm \gneq A_m = 1,\notag \\ %TODO: Fix symbols
+	 	G &= B_0 \gneq B_1 \gneq \dotsm \gneq B_m = 1\notag
 	 \end{align}
 	 Kompositionsreihen mit $m$ minimal. Es ist $N := A_1 \cap B_1 \unlhd G$ und $A_1 \unlhd B_1 \unlhd G$. Der Fall $m = 0$ ist klar. Für $m > 0$ und $A_1 = B_1$ wende Induktionshypothese auf $N = A_1 = B_1$ an.
 	 Für $A_1 \neq B_1$ ist $A_1 B_1 = G$ und wir können die beiden Kompositionsreihen vergleichen, indem wir zudem eine Kompositionsreihe von $N$ wählen.
@@ -59,14 +60,14 @@ Sei $G$ eine endliche Gruppe.
 \end{proof}
 
 \begin{definition}[Kompositionfaktoren, auflösbar]
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item Die Faktoren einer Kompositionsreihe von $G$ heißen die \begriff{Kompositionsfaktoren} von $G$.
 		\item $G$ ist \begriff{auflösbar}, wenn alle Kompositionsfaktoren von $G$ zyklisch sind.
 	\end{enumerate}
 \end{definition}
 
 \begin{example}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $S_3$ hat Kompositionsfaktoren $C_2, C_3$: auflösbar
 		\item $S_4$ hat Kompositionsfaktoren $C_2,C_3,C_2,C_2$: auflösbar
 		\item $S_n$, $n \geq 5$ hat Kompositionsfaktoren $C_2, A_n$: nicht auflösbar
