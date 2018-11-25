@@ -16,6 +16,7 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 
 ### Programmieren für Mathematiker (WS2017/18 + SS2018)
 - Eigenes Repository mit meinen Programmen: [https://github.com/henrydatei/TU_PROG](https://github.com/henrydatei/TU_PROG)
+- Repository von Erik: [https://github.com/oakoneric/TUD_MATH_PROG](https://github.com/oakoneric/TUD_MATH_PROG)
 
 ### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
 
