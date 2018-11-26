@@ -51,7 +51,7 @@ Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr.
 ### Theoretische Mechanik (SS2018)
 - Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
 - Aufgaben: [https://www.magentacloud.de/lnk/VRvyM2eQ](https://www.magentacloud.de/lnk/VRvyM2eQ)
-- Lösungen [https://www.magentacloud.de/lnk/j3vysZwR](https://www.magentacloud.de/lnk/j3vysZwR)
+- Lösungen: [https://www.magentacloud.de/lnk/j3vysZwR](https://www.magentacloud.de/lnk/j3vysZwR)
 
 ### Experimentalphysik 1 (WS2017/18)
 - Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
