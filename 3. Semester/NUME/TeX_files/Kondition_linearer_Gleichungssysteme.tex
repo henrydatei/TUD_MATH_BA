@@ -1,1 +1,69 @@
 \section{Kondition linearer Gleichungssysteme}
+
+Seien $A\in\real^{n\times n}$ und $b\in\real^n$ mit $b\neq 0$ gegeben. Es stellt sich die Frage, wie sich die Fehler in $A$ bzw. $b$ auf die Lösung $x=A^{-1}b$ des linearen Gleichungssystems $Ax=b$ auswirken. Dazu seien $\Delta A\in\real^{n\times n}$ bzw. $\Delta b\in\real^n$ Störungen kleiner Norm, insbesondere soll $A+\Delta A$ noch regulär sein. Weiter sei
+\begin{align}
+	\Delta x = (A+\Delta A)^{-1}(b+\Delta b) - A^{-1}b\notag
+\end{align}
+der absolute Fehler zwischen den Lösungen des gestörten und des ungestörten Gleichungssystems in Abhängigkeit von den Fehlern $\Delta A$ und $\Delta b$ der Eingangsdaten $A$ und $b$. Es wird nun eine obere Schranke für de relativen Fehler 
+\begin{align}
+	\frac{\Vert \Delta x\Vert}{\Vert x\Vert}\notag
+\end{align}
+in Abhängigkeit von den relativen Fehlern der Eingangsdaten $\frac{\Vert \Delta A\Vert}{\Vert A\Vert}$ und $\frac{\Vert \Delta b\Vert}{\Vert b\Vert}$ gesucht.
+
+\subsection{Normen}
+
+\begin{proposition}
+	Sei $\Vert\cdot\Vert:\real^n\to [0,\infty)$ eine Vektornorm. Dann ist durch
+	\begin{align}
+		\Vert A\Vert_\ast = \sup_{\substack{x\in\real^n \\ x\neq 0}} \frac{\Vert Ax\Vert}{\Vert x\Vert} \quad\forall A\in\real^{n\times n}\notag
+	\end{align}
+	eine \begriff{Matrixnorm} $\Vert \cdot\Vert_\ast:\real^{n\times n}\to[0,\infty)$ definiert. Diese der Vektornorm \begriff[Matrixnorm!]{zugeordnete Matrixnorm} ist mit der Vektornorm \begriff[Matrixnorm!]{verträglich}, das heißt
+	\begin{align}
+		\Vert Ax\Vert \le \Vert A\Vert_\ast\Vert x\Vert\quad\forall A\in\real^{n\times n}\text{ und } b\in\real^n\notag
+	\end{align}
+	\begriff[Matrixnorm!]{submultiplikativ}, das heißt
+	\begin{align}
+		\Vert A\cdot B\Vert_\ast \le \Vert A\Vert_\ast\cdot \Vert B \Vert_\ast\quad\forall A,B\in\real^{n\times n}\notag
+	\end{align}
+	und es gilt $\Vert \mathbbm{1}\Vert_\ast = 1$.
+\end{proposition}
+
+Beispiele für eine Vektornorm und eine zugeordnete Matrixnorm sind:
+\begin{itemize}
+	\item Der \begriff{Maximum-Norm} $\Vert x\Vert_\infty = \max_{1\le i\le n} \vert x_i\vert$ ist die \begriff{Zeilensummen-Norm} $\Vert A\Vert_\infty = \max_{1\le i\le n}\sum_{k=1}^{n}\vert a_{ik}\vert$ zugeordnet.
+	\item Der \begriff{Summen-Norm} $\Vert x\Vert_1=\sum_{i=1}^n \vert x_i\vert$ ist die \begriff{Spaltensummen-Norm} $\Vert A\Vert_1 = \max_{1\le k\le n}\sum_{i=1}^n \vert a_{ik}\vert$ zugeordnet.
+	\item Der \begriff{euklidischen Norm} $\Vert x\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$ ist die \begriff{Spektralnorm} $\Vert A\Vert_2 = \sqrt{\rho(A^TA)}$ zugeordnet, wobei $\rho(B)=\max\{\vert \lambda\vert\mid \lambda \text{ ist Eigenwert von } B\}$. Also ist $\Vert A\Vert_2^2$ gleich dem betragsgrößten Eigenwert von $A^TA$.
+\end{itemize}
+
+\subsection{Störungslemma}
+
+\begin{lemma}[\person{von Neumann}'sches Störungslemma]
+	Seien $\Vert\cdot\Vert$ eine Vektornorm im $\real^n$ bzw. die zugeordnete Matrixnorm und $B\in\real^{n\times n}$ mit $\Vert B\Vert<1$. Dann ist $\mathbbm{1}+B$ regulär und es gilt
+	\begin{align}
+		\Vert (\mathbbm{1}+B)^{-1}\Vert \le \frac{1}{1-\Vert B\Vert}\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Mit der Dreiecksungleichung folgt für jedes $x\in\real^n$
+	\begin{align}
+		\label{3.17}
+		\begin{split}
+			\Vert (\mathbbm{1}+B)x\Vert &= \Vert x+Bx\Vert \\
+			&\ge \Vert x\Vert - \Vert Bx\Vert \\
+			&\ge \Vert x\Vert - \Vert B\Vert\Vert x\Vert \\
+			&= \Vert x\Vert (1-\Vert B\Vert) \\
+			&> 0
+		\end{split}
+	\end{align}
+	Also gilt $(\mathbbm{1}+B)x=0$ genau dann, wenn $x=0$. Somit ist $\mathbbm{1}+B$ regulär. Aus \cref{3.17} hat man
+	\begin{align}
+		\Vert y\Vert = \Vert (\mathbbm{1}+B)(\mathbbm{1}-B)^{-1}y\Vert \ge (1-\Vert B\Vert)\Vert (\mathbbm{1}+B)^{-1}y\Vert \notag
+	\end{align}
+	und damit
+	\begin{align}
+		\frac{\Vert (\mathbbm{1}+B)^{-1}y\Vert}{\Vert y\Vert} \le \frac{1}{1-\Vert B\Vert}\notag
+	\end{align}
+	für alle $y\in\real^n\backslash\{0\}$. Dies zieht unter Beachtung der Definition der zugeordneten Matrixnorm die zweite Behauptung des Lemmas nach sich.
+\end{proof}
+
+\subsection{Kondition}

@@ -140,14 +140,15 @@ Ziel ist zunächst die Beschreibung eines Verfahrens zur sogenannten $QR$-Faktor
 \end{align}
 gilt, wobei $Q$ eine orthogonale Matrix ($Q^{-1}=Q^T$) und $R$ eine verallgemeinerte obere Dreiecksmatrix der Form
 \begin{align}
-	R &= \begin{pmatrix}
+	R &= \begin{henrysmatrix}
 	R_1 \\ 0
-	\end{pmatrix} \quad\text{(falls $m\ge n$)} \notag \\
+	\end{henrysmatrix} \quad\text{(falls $m\ge n$)} \notag \\
 	R &= (R_1,R_2) \quad\text{(falls $m < n$)} \notag
 \end{align}
 mit einer oberen Dreiecksmatrix $R_1\in\real^{n\times n}$ bzw. einer oberen Dreiecksmatrix $R_1\in\real^{m\times m}$ und einer Matrix $R_2\in\real^{m\times (n-m)}$ ist. Später wird die $QR$-Zerlegung zur Lösung von Quadraturmittelproblemen (für den Fall $\rang(A)=n$) eingesetzt.
 
 \begin{proposition}
+	\proplbl{1_3_6}
 	Sei $w\in\real^m$ gegeben mit $w^Tw=1$. Dann ist die \begriff{\person{Householder}-Matrix}
 	\begin{align}
 		H = \mathbbm{1} - 2ww^T\notag
@@ -168,6 +169,7 @@ Die Wirkung einer \person{Householder}-Matrix $H$ auf einen Vektor $a\in\real^m$
 Wegen $(a-w^Taw)^Tw=a^Tw-w^Ta=0$ (beachte $w^Tw=1$) liegt $a-w^Taw$ auf der Ebene $\mathcal{E}=\{y\in\real^m\mid y^Tw=0\}$ und $Ha$ liegt bezüglich dieser Ebene (als Spiegelebene) spiegelbildlich zu $a$.
 
 \begin{proposition}
+	\proplbl{1_3_7}
 	Es seien $a\in\real^m$ mit $a\notin\Span(e_1)$ und 
 	\begin{align}
 		w = \frac{a+pe_1}{\Vert a+pe_1\Vert_2}\quad\text{mit } p\in\{\Vert a\Vert_2,\, -\Vert a\Vert_2\}\notag
@@ -190,5 +192,130 @@ Wegen $(a-w^Taw)^Tw=a^Tw-w^Ta=0$ (beachte $w^Tw=1$) liegt $a-w^Taw$ auf der Eben
 	Deshalb liefert \cref{3.13} $Ha = a-(a+pe_1) = -pe_1$.
 \end{proof}
 
+\propref{1_3_7} wird für die schrittweise \person{Householder}-Transformation einer Matrix $A\in\real^{n\times m}$ in eine verallgemeinerte obere Dreiecksmatrix ausgenutzt. Dazu sei $A^{(1)}=A$ eine Matrix von Rang $n$. Ohne Beschränkung der Allgemeinheit gelte $m>n$. Weiter sei $A^{(k)}$ für ein $k\in\{1,...,n+1\}$ in der Form
+\begin{align}
+	A^{(k)} = \begin{pmatrix}
+	a_{11}^{k} & \dots & a_{1k}^{(k)} & \dots & a_{1n}^{(k)} \\
+	& \ddots & \vdots & & \vdots \\
+	&& a_{kk}^{(k)} &  \dots & a_{kn}^{(k)} \\
+	&& \vdots & & \vdots \\
+	&& a_{mk}^{(k)} & \dots & a_{mn}^{(k)} 
+	\end{pmatrix}\notag
+\end{align}
+gegeben. Der Vektor $a^k=(0,...,0a_{kk}^{(k)},...,a_{mk}^{(k)})\in\real^m$ übernimmt die Rolle von $a$. Er soll durch Multiplikation mit $H_k\in\real^{m\times m}$ auf $p_ke_k$ transformiert werden, wobei
+\begin{align}
+	H_k &= \mathbbm{1} - 2w_kw_k^T \notag \\
+	w_k &= \frac{a^k+p_ke_k}{\Vert a^k+p_ke_k\Vert_2} \notag \\
+	p_k &\in \{\Vert a^k\Vert_2,-\Vert a^k\Vert_2\} \notag
+\end{align}
+Zur Vermeidung von Stellenauslöschung in $a^k+p_ke_k$ wird man
+\begin{align}
+	p_k = \begin{cases}
+	\Vert a_k\Vert_2 & \text{falls } a_{kk}^{(k)}\ge 0 \\
+	-\Vert a_k\Vert_2 & \text{falls } a_{kk}^{(k)}<0
+	\end{cases}\notag
+\end{align}
+wählen. Die Operation $A^{(k)}\mapsto H_kA^{(k)}$ lässt die ersten $k-1$ Zeilen und Spalten der Matrix $A^{(k)}$ unverändert und es gilt:
+\begin{align}
+	H_kA^{(k)} = A^{(k+1)}  = \begin{pmatrix}
+	a_{11}^{(k)} & \dots & a_{1,k-1}^{(k)} & a_{1k}^{(k+1)} & a_{1,k+1}^{(k+1)} & \dots & a_{1n}^{(k+1)} \\
+	& \ddots & \vdots  & \vdots & \vdots & & \vdots \\
+	&& a_{k-1,k-1}^{(k)} & a_{k-1,k}^{(k+1)} & a_{k-1,k+1}^{(k+1)} & \dots & a_{k-1,n}^{(k+1)} \\
+	&&& a_{kk}^{(k+1)} & a_{k,k+1}^{(k+1)} & \dots & a_{kn}^{(k+1)} \\
+	&&&& a_{k+1,k+1}^{(k+1)} & \dots & a_{k+1,n}^{(k+1)} \\
+	&&&& a_{m,k+1}^{(k+1)} & \dots & a_{mn}^{(k+1)}
+	\end{pmatrix} \notag
+\end{align}
+speziell mit $a_{kk}^{(k+1)}=-p_k$. Dabei garantiert die Bedingung $\rang\left(A^{(k)}\right)=n$ dasselbe für den Rang von $A^{(k+1)}$. Die Hintereinanderausführung von \person{Householder-Transformationen} liefert
+\begin{align}
+	\label{3.14}
+	R = A^{(n+1)} = H_nH_{n-1}\dots H_1A
+\end{align}
+Dabei ist $R$ eine verallgemeinerte obere Dreiecksmatrix. Wegen \propref{1_3_6} existiert
+\begin{align}
+	\label{3.15}
+	Q = (H_n\dots H_1)^{-1}
+\end{align}
+und es gilt
+\begin{align}
+	Q &= H_1^{-1}\dots H_n^{-1} = H_1\dots H_n \notag \\
+	Q^TQ &= (H_n^T\dots H_1^T)(H_1\dots H_n) = \mathbbm{1}\notag
+\end{align}
+das heißt $Q$ ist orthogonal. Wegen \cref{3.14} und \cref{3.15} folgt schließlich noch $A=QR$.
 
-\subsection{Anwendung der Ausgleichsrechnung}
+\begin{proposition}
+	Sei $A\in\real^{m\times n}$ mit $m\ge n=\rang(A)$ gegeben. Dann gibt es eine orthogonale Matrix $Q\in\real^{m\times m}$ und eine verallgemeinerte Dreiecksmatrix
+	\begin{align}
+		R = \begin{henrysmatrix}
+			R_1 \\ \mathbb{0}
+		\end{henrysmatrix}\in\real^{m\times n}\notag
+	\end{align}
+	mit einer regulären oberen Dreiecksmatrix $R_1\in\real^{n\times n}$, so dass $A=QR$.
+\end{proposition}
+
+\begin{proposition}
+	Seien $A\in\real^{m\times n}$ mit $m\ge n=\rang(A)$ und $b\in\real^m$ gegeben. Weiter seien Matrizen $Q$ und $R$ bzw. $R_1$ aus der $QR$-Zerlegung von $A$ bekannt und Vektoren $y_1\in\real^n$ und $y_2\in\real^{m-n}$ so gegeben , dass
+	\begin{align}
+		\begin{henrysmatrix}
+			y_1 \\ y_2
+		\end{henrysmatrix} = Q ^Tb\notag
+	\end{align}
+	gilt. Dann ist das lineare Quadraturmittelproblem \cref{3.8} äquivalent zum linearen Gleichungssystem
+	\begin{align}
+		R_1x=y_1\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Wegen $A=QR$ und $QQ^T=\mathbbm{1}$ gilt
+	\begin{align}
+		\Vert Ax-b\Vert_2^2 = \Vert QRx-QQ^Tb\Vert_2^2 = \Vert Q(Rx-Q^Tb)\Vert_2^2\notag
+	\end{align}
+	Da $\Vert Qz\Vert_2^2 = z^TQ^TQz=z^Tz=\Vert z\Vert_2^2$ für beliebige $z\in\real^m$ ist, folgt
+	\begin{align}
+		\Vert Ax-b\Vert_2^2 = \left\Vert \begin{henrysmatrix}
+			R_1x \\ \mathbb{0}
+		\end{henrysmatrix} - \begin{henrysmatrix}
+			y_1 \\ y_2
+		\end{henrysmatrix}\right\Vert_2^2 = \Vert R_1x-y_1\Vert_2^2 + \Vert y_2\Vert_2^2 \notag
+	\end{align}
+	Also nimmt $\Vert Ax-b\Vert_2^2$ sein Minimum genau dann an, wenn $x$ das lineare Gleichungssystem $R_1x=y_1$ löst.
+\end{proof}
+
+\subsection{Anwendung in der Ausgleichsrechnung}
+
+Gegeben seien Messpunkte $(t_i,y_i)\in\real\times\real$ für $i=1,...,m$ mit $t_i\neq t_j$ für $i\neq j$. Weiter seien sogenannte \begriff{Basisfunktionen} $\phi_j:\real\to\real$ und die Funktion $f:\real\times\real^n\to\real$ durch
+\begin{align}
+	f(t,x) = \sum_{j=1}^{n} x_j\phi_j(t)\quad\text{für } (t,x)\in\real\times\real^n\notag
+\end{align}
+gegeben. Gesucht ist ein  Parametervektor $x^\ast=(x_1,...,x_n)^T$, so dass
+\begin{align}
+	f(t_i,x^\ast) \approx y_i\quad\text{für } i=1,...,m\notag
+\end{align}
+Eine Möglichkeit ein solches $x^\ast$ zu bestimmen ist die Lösung des Optimierungsproblems (Ausgleichsproblems)
+\begin{align}
+	\label{3.16}
+	\sum_{i=1}^{m} (y_i - f(t_i,x))^2\to\min
+\end{align}
+Mit 
+\begin{align}
+	A = \begin{pmatrix}
+		\phi_1(t) & \dots & \phi_n(t_1) \\
+		\vdots && \vdots \\
+		\phi_1(t_m) & \dots & \phi_n(t_m)
+	\end{pmatrix} \quad\text{und}\quad b= \begin{henrysmatrix}
+		y_1 \\ \vdots  \\  y_m
+	\end{henrysmatrix}\notag
+\end{align}
+gilt $r(x)=\Vert ax-b\Vert_2^2$, man beachte $y_i-f(t_i,x)=y_i-\sum_{j=1}^n x_j\phi_j(t_i)=y_i-A_ix$, wobei $A_i$ die $i$-te Zeile von $A$ bezeichnet. Also ist \cref{3.16} ein lineares Quadraturmittelproblem.
+
+\begin{example}[Ausgleichsgerade]
+	Seien $m=3$ und $n=2$. Es seien $(t_1,y_1)=(0,1)$, $(t_2,y_2)=(3,8)$, $(t_3,y_3)=(4,10)$ und $\phi_1(t)=1$, $\phi_2(t)=t$ für $t\in\real$. Dann ist $f(t,x)=x_1+tx_2$, 
+	\begin{align}
+		A = \begin{pmatrix}
+			1 & 0 \\ 1 & 3 \\ 1 & 
+		\end{pmatrix}\quad\text{und}\quad b = \begin{henrysmatrix}
+			1 \\ 8 \\ 10
+		\end{henrysmatrix} \notag
+	\end{align}
+	und das Ausgleichsproblem \cref{3.16} hat die Lösung $x^\ast=(1.0385..., 2.2692...)^T$.
+\end{example}

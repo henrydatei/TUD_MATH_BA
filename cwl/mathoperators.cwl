@@ -8,6 +8,7 @@
 \qraum{set}{subset}#\math
 \lnkset{group}{subgroup}#\math
 \rnkset{group}{subgroup}#\math
+\properideal#*\math
 # shortcuts for different math stuff
 \comp#\math#%*
 \real#*\math

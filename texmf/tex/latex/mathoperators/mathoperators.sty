@@ -1,5 +1,6 @@
 \ProvidesPackage{mathoperators}
 
+\RequirePackage{xparse}
 %Provides some common math related commands and operators
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -16,6 +17,11 @@
 %fraction with backslash
 \newcommand\bsfrac[2]{%
 	\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
+}
+
+\DeclareRobustCommand{\properideal}{\mathrel{\text{$\m@th\proper@ideal$}}}
+\newcommand{\proper@ideal}{%
+  \ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}%
 }
 
 %General newcommands!
