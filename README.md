@@ -36,6 +36,12 @@ Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr.
 - Übungsaufgaben: [https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH](https://drive.google.com/open?id=1zj6mK0_1GKS_7HK3nYFKuMlOJAR104CH)
 - Lösungen zu den Übungsaufgaben: [https://drive.google.com/open?id=1-rz5EFHl1z9QTSCdKAZLI9cT_sJJOr0-](https://drive.google.com/open?id=1-rz5EFHl1z9QTSCdKAZLI9cT_sJJOr0-)
 
+# TU Dresden: Nebenfach Physik
+
+### Experimentalphysik 1 (WS2017/18)
+- Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
+- Mitschrift: [https://www.magentacloud.de/lnk/MuvSMJgb](https://www.magentacloud.de/lnk/MuvSMJgb) Passwort: 123456
+- Aufgaben: [https://www.magentacloud.de/lnk/wxvyMA1u](https://www.magentacloud.de/lnk/wxvyMA1u) Passwort: 123456
 ### Einführung in die Mikroökonomie (SS2018)
 - Vorlesungsfolien: [https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb](https://drive.google.com/open?id=1Qk6LVrcglHQD4FMTwe9mHemgGgr1setb)
 - Übungsaufgaben: [https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4](https://drive.google.com/open?id=16cOVAsbDz_ScfLXDXVh4pwMel5bEg8u4)
