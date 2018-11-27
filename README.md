@@ -1,5 +1,5 @@
 # TU Dresden: Mathematik - Bachelor
-Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm) und **Einführung in die Numerik** (Prof. Dr. Andreas Fischer) der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm) und **Einführung in die Numerik** (Prof. Dr. Andreas Fischer) der TU Dresden
 
 ### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
@@ -29,7 +29,7 @@ Skript zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schu
 - Hausaufgabe T6 (Test auf OPAL): [https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3](https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3) -> alle Vektoren als Zeilenvektoren eingeben!
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
-Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
+Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
 
 ### Einführung in die Volkswirtschaftslehre (WS2017/18)
 - Vorlesungsfolien: [https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM](https://drive.google.com/open?id=1Fvw9n3POEbsTNGVMdCoDq6zU8b9-e-zM)
@@ -47,6 +47,7 @@ Skript zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr.
 - Tutoriumsaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
+Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Karl Leo) und **Experimentalphysik 1** (Prof. Dr.  ??)
 
 ### Theoretische Mechanik (SS2018)
 - Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
