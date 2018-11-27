@@ -8,8 +8,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 - Lösungen zu den Aufgaben LAAG 2: [https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l](https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l)
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
-- Aufgabenblätter ANAG 1: [https://drive.google.com/open?id=1iZOk2PVgI4I3_chZ7cUN_vJgWoO_zPIM](https://drive.google.com/open?id=1iZOk2PVgI4I3_chZ7cUN_vJgWoO_zPIM)
-- Aufgabenblätter ANAG 2: [https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d](https://drive.google.com/open?id=1PuHKdDc9gfLg5GhORT75F4TedaxXFn-d)
+Aufgrund von Prof Schurichts Wunsch sind die Vorlesungsmaterialen von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
 - Lösungen zu den Aufgaben ANAG 1:
 - Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
 
@@ -18,6 +17,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 - Repository von Eric: [https://github.com/oakoneric/TUD_MATH_PROG](https://github.com/oakoneric/TUD_MATH_PROG)
 
 ### Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten (WS2018/19)
+Aufgrund von Prof Schurichts Wunsch sind die Vorlesungsmaterialen von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
 
 ### Maß und Integral (WS2018/19)
 
