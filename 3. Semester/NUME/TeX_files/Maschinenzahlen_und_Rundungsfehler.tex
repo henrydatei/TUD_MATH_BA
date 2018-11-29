@@ -1,1 +1,39 @@
 \section{Maschinenzahlen und Rundungsfehler}
+
+Ein Computer kann nur endlich viele Maschinenzahlen in normalisierter Gleitpunktdarstellung 
+\begin{align}
+	z = \sigma\cdot d_0d_1...d_{t-1}\cdot b^e\notag
+\end{align}
+exakt speichern, wobei
+\begin{itemize}
+	\item $b\in\natur$ mit $b\ge 2$ die Basis
+	\item $d_0d_1...d_{t-1}$ mit $d_0,d_1,...,d_{t-1}\in\{0,...,b-1\}$ die Mantisse mit den Ziffern $d_i$
+	\item $t\in\natur$ mit $t\ge 1$ die Mantissenlänge
+	\item $e\in\natur$ mit $-m\le e\le M$ der Exponent
+	\item $\sigma\in\{+1,-1\}$ das Vorzeichen
+\end{itemize}
+bedeuten. Zusätzlich ist 0 eine Maschinenzahl. Mit $\mathbb{M}=\mathbb{M}(b,t,m,M)$ wird die Menge aller Maschinenzahlen bezeichnet. Jede andere Zahl $x\in\real$, die im Computer gespeichert werden soll (auch Zwischenergebnisse), wird vorher auf eine Zahl $\rd(x)\in\mathbb{M}$ so gerundet, dass der durch die Rundung entstehende relative Fehler durch
+\begin{align}
+	\frac{\vert\rd(x)-x\vert}{\vert x\vert} = \min\limits_{z\in\mathbb{M}}\frac{\vert z-x\vert}{\vert x\vert}\quad\text{für } x\in\real\setminus\mathbb{M}\notag
+\end{align}
+gegeben ist. 
+
+\begin{lemma}
+	Für jedes $x\in\real\backslash\{0\}$ mit $b^{-m}\le \vert x\vert\le b^M$ gilt
+	\begin{align}
+		\frac{\vert\rd(x)-x\vert}{\vert x\vert} \le \text{\eps} = \frac{1}{2}b^{1-t}\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Ohne Beschränkung der Allgemeinheit sei $x>0$. Dann gibt es Zahlen $e\in\whole$ mit $m\le e\le M$ und eine (gegebenenfalls unendliche) Ziffernfolge $(x_k)\subset \{0,...,b-1\}$, so dass 
+	\begin{align}
+		x = (x_0x_1...x_{t-1}x_tx_{t+1}...)\cdot b^e\notag
+	\end{align}
+	Damit folgt
+	\begin{align}
+		\vert\rd(x)-x\vert &\le \frac{b}{2}b^{e-t} \notag \\
+		\frac{\vert\rd(x)-x\vert}{\vert x\vert} &\le \frac{b^{e-t+1}}{2b^e}\le \frac{1}{2}b^{1-t} \notag
+	\end{align}
+\end{proof}
+
+Die Zahl \eps wird als \begriff{Maschinengenauigkeit} bezeichnet und gibt den maximalen relativen Rundungsfehler für $x\in [-b^m,b^M]$ an.

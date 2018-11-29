@@ -38,6 +38,7 @@ Beispiele für eine Vektornorm und eine zugeordnete Matrixnorm sind:
 \subsection{Störungslemma}
 
 \begin{lemma}[\person{von Neumann}'sches Störungslemma]
+	\proplbl{3_4_2}
 	Seien $\Vert\cdot\Vert$ eine Vektornorm im $\real^n$ bzw. die zugeordnete Matrixnorm und $B\in\real^{n\times n}$ mit $\Vert B\Vert<1$. Dann ist $\mathbbm{1}+B$ regulär und es gilt
 	\begin{align}
 		\Vert (\mathbbm{1}+B)^{-1}\Vert \le \frac{1}{1-\Vert B\Vert}\notag
@@ -67,3 +68,76 @@ Beispiele für eine Vektornorm und eine zugeordnete Matrixnorm sind:
 \end{proof}
 
 \subsection{Kondition}
+
+\begin{proposition}
+	Es seinen $A\in\real^{n\times n}$ regulär, $\Delta A\in\real^{n\times n}$, $b\in\real^n\backslash\{0\}$, $\Delta b\in\real^n$ und $\Vert\cdot\Vert$ eine Vektornorm in $\real^n$ bzw. die zugeordnete Matrixnorm. Falls $\Vert A^{-1}\Vert\cdot \Vert\Delta A\Vert<1$, dann ist $A+\Delta A$ regulär und es gibt eindeutig bestimmte Vektoren $x,\Delta x\in\real^n$, so dass
+	\begin{align}
+		\label{3.18}
+		Ax=b\quad\text{und}\quad (A+\Delta A)(x+\Delta x)=b+\Delta b
+	\end{align}
+	und
+	\begin{align}
+		\label{3.19}
+		\frac{\Vert\Delta x\Vert}{\Vert x\Vert} \le \frac{\Vert A\Vert\cdot\Vert A^{-1}\Vert}{1-\Vert\Delta A\Vert\Vert A^{-1}\Vert}\left\lbrace \frac{\Vert\Delta A\Vert}{\Vert A\Vert} + \frac{\Vert \Delta b\Vert}{\Vert b\Vert}\right\rbrace  
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Mit $B=A^{-1}\Delta A$ ergibt sich
+	\begin{align}
+		A+\Delta A &= A(\mathbbm{1}+B) \notag \\
+		\Vert B\Vert = \Vert A^{-1}\Delta A\Vert &\le \Vert A^{-1}\Vert\Vert \Delta A\Vert < 1\notag
+	\end{align}
+	Wegen \propref{3_4_2} ist $\mathbbm{1}+B=\mathbbm{1}+A^{-1}\Delta A$ regulär und 
+	\begin{align}
+		\Vert (\mathbbm{1}+B)^{-1}\Vert \le \frac{1}{1-\Vert B\Vert} \le \frac{1}{1-\Vert A^{-1}\Vert\Vert \Delta A\Vert}\notag
+	\end{align}
+	Damit ist auch $A(\mathbbm{1}+B)=A+\Delta A$ regulär, es gilt $x=A^{-1}b$ sowie $\Delta x = -x + (A+\Delta A)^{-1}(b+\Delta b)$ und
+	\begin{align}
+		\label{3.20}
+		\Vert (A+\Delta A)^{-1}\Vert = \Vert (A(\mathbbm{1}+B))^{-1}\Vert = \Vert (\mathbbm{1}+B)^{-1}A^{-1}\Vert \le \frac{1}{1-\Vert A^{-1}\Vert\Vert \Delta A\Vert}\Vert A^{-1}\Vert
+	\end{align}
+	Aus \cref{3.18} erhält man durch Substitution und weiter wegen der schon gezeigten Regularität von $A+\Delta A$
+	\begin{align}
+		(A+\Delta A)\Delta x &= \Delta b-\Delta Ax \notag \\
+		\Delta x &= (A+\Delta A)^{-1}(b+\Delta b)\notag
+	\end{align}
+	Mit \cref{3.20} folgt
+	\begin{align}
+		\Vert \Delta x\Vert &\le \Vert (A+\Delta A)^{-1}\Vert\Vert \Delta b-\Delta Ax\Vert\notag \\
+		&\le \frac{1}{1-\Vert A^{-1}\Vert\Vert \Delta A\Vert}\Vert A^{-1}\Vert (\Vert \Delta b\Vert + \Vert\Delta A\Vert\Vert x\Vert)\notag
+	\end{align}
+	Wegen $\Vert Ax\Vert=\Vert b\Vert$ liefert dies
+	\begin{align}
+		\frac{\Vert\Delta x\Vert}{\Vert x\Vert} \le \frac{\Vert A^{-1}\Vert}{1-\Vert\Delta A\Vert\Vert A^{-1}\Vert}\left\lbrace \frac{\Vert\Delta b\Vert}{\Vert x\Vert}\frac{\Vert Ax\Vert}{\Vert b\Vert} + \Vert\Delta A\Vert\right\rbrace \notag
+	\end{align}
+	Da $\Vert Ax\Vert\le\Vert A\Vert\Vert x\Vert$ hat man schließlich \cref{3.19}.
+\end{proof}
+
+\begin{definition}[Konditionszahl]
+	Es sei $A\in\real^{n\times n}$ regulär und $\Vert\cdot\Vert$ eine Matrixnorm. Dann heißt
+	\begin{align}
+		\cond(A) = \Vert A\Vert\cdot\Vert A^{-1}\Vert\notag
+	\end{align}
+	die \begriff{Konditionszahl} der Matrix $A$ in der gewählten Norm.
+\end{definition}
+
+\begin{proposition}
+	Es sei $A\in\real^{n\times n}$ regulär und $\Vert\cdot\Vert$ eine Vektornorm in $\real^n$. Für die zugeordnete Matrixnorm und die damit gebildete Konditionszahl $\cond(A)$ gilt:
+	\begin{align}
+		\cond(A) = \frac{\max_{\Vert x\Vert = 1}\Vert Ax\Vert}{\min_{\Vert x\Vert = 1}\Vert Ax\Vert}\notag
+	\end{align}
+	und eine untere Schranke für den relativen Abstand der zu $A$ nächsten singulären Matrix
+	\begin{align}
+		\min\left\lbrace \frac{\Vert A-B\Vert}{\Vert A\Vert} \Bigg| B\in\real^{n\times n}\text{ singulär}\right\rbrace  \ge \cond{-1}(A)\notag
+	\end{align}
+\end{proposition}
+
+\begin{remark}
+	Falls $\cond(A)$ groß ist, heißt die Matrix $A$ bzw. das lineare Gleichungssystem $Ax=b$ \begriff[Konditionszahl!]{schlecht konditioniert}, andernfalls \begriff[Konditionszahl!]{gut konditioniert}.
+\end{remark}
+
+Sei $\tilde{x}$ so gegeben, dass der Defekt $\Vert A\tilde{x}-b\Vert$ klein ist. Selbst dann muss man bei großer von $A$ damit rechnen, dass
+\begin{align}
+	\frac{\Vert x-\tilde{x}\Vert}{\Vert x\Vert}\notag
+\end{align}
+groß ausfällt.

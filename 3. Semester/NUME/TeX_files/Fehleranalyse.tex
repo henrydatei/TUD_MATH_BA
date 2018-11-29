@@ -1,1 +1,19 @@
 \section{Fehleranalyse}
+
+\subsection{Die Kondition einer Aufgabe}
+
+Unter Aufgabe wird hier die Auswertung einer zumindest stetig differenzierbaren Abbildung
+\begin{align}
+	\Phi: D\to\real^n\notag
+\end{align}
+verstanden. Die Lösung der Aufgabe für ein Argument $a\in D\subset\real^n$ besteht also darin, $\Phi(a)$ zu ermitteln. Wir interessieren uns nun für die Frage, welchen Einfluss ein Fehler in $a$ (also die Verwendung der Maschinenzahl $\rd(a)$ statt $a$) auf das Ergebnis $\Phi(a)$ bei ansonsten exakter Rechnung hat. Dazu bezeichne $\tilde{a}\in D$ das fehlerbehaftete Argument. Für $\tilde{a}$ nahe bei $a$ erhält man aus der \person{Taylor}-Formel
+\begin{align}
+	\Phi(\tilde{a}) - \Phi(a) \approx\nabla\Phi(a)^T(\tilde{a}-a)= \frac{\partial \Phi_i(a)}{\partial a_j}_{\substack{i=1,...,m \\ j=1,...,n}} (\tilde{a}-a)\notag
+\end{align}
+und damit (unter der Bedingung $a_j\neq 0$ und $\Phi(a)_i\neq 0$)
+\begin{align}
+	\label{4.1}
+	\frac{\Phi_i(\tilde{a}) - \Phi_i(a)}{\Phi_i(a)} \approx \frac{1}{\Phi_i(a)}\sum_{j=1}^{n}\frac{\partial \Phi_i(a)}{\partial a_j} (\tilde{a_j}-a_j) = \sum_{j=1}^n \frac{a_j}{\Phi_i(a)}\frac{\partial\Phi_i(a)}{\partial a_j}\frac{\tilde{a_j}-a_j}{a_j}
+\end{align}
+
+\subsection{Stabilität von Algorithmen}
