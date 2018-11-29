@@ -8,7 +8,7 @@ Unter Aufgabe wird hier die Auswertung einer zumindest stetig differenzierbaren 
 \end{align}
 verstanden. Die Lösung der Aufgabe für ein Argument $a\in D\subset\real^n$ besteht also darin, $\Phi(a)$ zu ermitteln. Wir interessieren uns nun für die Frage, welchen Einfluss ein Fehler in $a$ (also die Verwendung der Maschinenzahl $\rd(a)$ statt $a$) auf das Ergebnis $\Phi(a)$ bei ansonsten exakter Rechnung hat. Dazu bezeichne $\tilde{a}\in D$ das fehlerbehaftete Argument. Für $\tilde{a}$ nahe bei $a$ erhält man aus der \person{Taylor}-Formel
 \begin{align}
-	\Phi(\tilde{a}) - \Phi(a) \approx\nabla\Phi(a)^T(\tilde{a}-a)= \frac{\partial \Phi_i(a)}{\partial a_j}_{\substack{i=1,...,m \\ j=1,...,n}} (\tilde{a}-a)\notag
+	\Phi(\tilde{a}) - \Phi(a) \approx\nabla\Phi(a)^T(\tilde{a}-a)= \left( \frac{\partial \Phi_i(a)}{\partial a_j}\right) _{\substack{i=1,...,m \\ j=1,...,n}} (\tilde{a}-a)\notag
 \end{align}
 und damit (unter der Bedingung $a_j\neq 0$ und $\Phi(a)_i\neq 0$)
 \begin{align}
