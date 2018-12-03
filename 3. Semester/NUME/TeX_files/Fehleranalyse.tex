@@ -16,4 +16,52 @@ und damit (unter der Bedingung $a_j\neq 0$ und $\Phi(a)_i\neq 0$)
 	\frac{\Phi_i(\tilde{a}) - \Phi_i(a)}{\Phi_i(a)} \approx \frac{1}{\Phi_i(a)}\sum_{j=1}^{n}\frac{\partial \Phi_i(a)}{\partial a_j} (\tilde{a_j}-a_j) = \sum_{j=1}^n \frac{a_j}{\Phi_i(a)}\frac{\partial\Phi_i(a)}{\partial a_j}\frac{\tilde{a_j}-a_j}{a_j}
 \end{align}
 
+\begin{definition}[relative Konditionszahlen, gut/schlecht konditioniert]
+	Es seien $D\subset\real^n$, $\Phi:D\to\real^m$ stetig differenzierbar und $a\in D$ mit $\Phi(a)\neq 0$. Dann heißen
+	\begin{align}
+		K_{ij} = \left|\frac{a_j}{\Phi_i(a)}\frac{\partial\Phi_i(a)}{\partial a_j}\right|\notag
+	\end{align}
+	\begriff[Konditionszahl!]{relative Konditionszahlen} der Aufgabe $\Phi(a)$. Die Aufgabe heißt \begriff[Konditionszahl!]{gut konditioniert}, wenn alle diese Konditionszahlen klein sind, sonst \begriff[Konditionszahl!]{schlecht konditioniert}.
+\end{definition}
+
+Mit \cref{4.1} folgt
+\begin{align}
+	\frac{\Phi_i(\tilde{a}) - \Phi_i(a)}{\Phi_i(a)}\approx \sum_{j=1}^n K_{ij}\frac{\tilde{a_j}-a}{a_j}\notag
+\end{align}
+Bei einer gut konditionierten Aufgabe verhält sich also der relative Fehler des Ergebnisses etwa wie die relativen Fehler der Eingangsdaten.
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item Mit $\Phi(a)=\sqrt{a}$ für $a>0$ erhält man $m=n=1$ und
+		\begin{align}
+			K_{11} = \left|\frac{a}{\sqrt{a}}\frac{1}{2\sqrt{a}}\right| = \frac{1}{2}\notag
+		\end{align}
+		Die Aufgabe ist für alle $a>0$ gut konditioniert.
+		\item Mit $\Phi(a) = a_1+a_2$ für $a_1+a_2\neq 0$ und $a_2\neq 0$ erhält man $m=1$, $n=2$ und
+		\begin{align}
+			K_{1j} = \left|\frac{a_j}{a_1+a_2}\cdot 1\right|\quad\text{für } j=1,2\notag
+		\end{align}
+		Die Aufgabe ist schlecht konditioniert, falls $a_1+a_2\approx 0$. Selbstauslöschung bei Subtraktion etwa gleich großer Zahlen, zum Beispiel:
+		\begin{align}
+			a_1 &= 1.23456789 &\tilde{a_1} = 1.234567885 \notag \\
+			a_2 &= -1.23456788 &\tilde{a_2} = -1.23456788 \notag \\
+			\Rightarrow a_1+a_2 &= 10^{-8} \notag \\
+			\Rightarrow \tilde{a_1} + \tilde{a_2} &= -0.5\cdot 10^{-8} \notag
+		\end{align}
+		Der relative Fehler des Ergebnisses beträgt $\frac{\tilde{a_1}+\tilde{a_2} - (a_1+a_2)}{a_1+a_2}=0.5$, also 50\%!
+	\end{enumerate}
+\end{example}
+
 \subsection{Stabilität von Algorithmen}
+
+Nun wird untersucht, wie sich die Rundungsfehler in einzelnen Rechenschritten eines Algorithmus auswirken. Dazu wird die Aufgabe $\Phi:D\subset\real\to\real^m$ zu Grunde gelegt. ($m=1$ ist keine Einschränkung, da die folgende Untersuchung auch für weitere Komponenten analog möglich ist) und ein allgemeiner Algorithmus mit stetig differenzierbaren Abbildungen $r_i:\real^{n+1}\to\real$ (mit $i=0,...,N$) betrachtet.
+
+\begin{algorithm}
+	Input: $a$
+	\begin{lstlisting}
+%$y_0$% = %$r_0$%(a)
+%$y_1$% = %$r_1$%(a, %$y_0$%)
+...
+	\end{lstlisting}
+	Output: $y_N$ ($=\Phi(a)$ bei exakter Rechnung)
+\end{algorithm}
