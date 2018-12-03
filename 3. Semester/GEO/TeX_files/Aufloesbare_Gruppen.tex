@@ -59,7 +59,7 @@ Sei $G$ eine endliche Gruppe.
 	 % online version! maybe is the lecture proof better?
 \end{proof}
 
-\begin{definition}[Kompositionfaktoren, auflösbar]
+\begin{definition}[Kompositionsfaktoren, auflösbar]
 	\begin{enumerate}[label=(\alph*)]
 		\item Die Faktoren einer Kompositionsreihe von $G$ heißen die \begriff{Kompositionsfaktoren} von $G$.
 		\item $G$ ist \begriff{auflösbar}, wenn alle Kompositionsfaktoren von $G$ zyklisch sind.
@@ -76,3 +76,78 @@ Sei $G$ eine endliche Gruppe.
 		\item $C_4 \text{ und } V_4$ haben Kompositionsfaktoren $C_2$ und $C_2$, aber $C_4 \not\cong V_4$.
 	\end{enumerate}
 \end{example}
+
+\begin{lemma}
+	Sei $N\unlhd G$, Genau dann ist $G$ auflösbar, wenn $N$ und $G/N$ auflösbar sind.
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{proposition}
+	Für $G$ sind äquivalent:
+	\begin{enumerate}
+		\item $G$ ist auflösbar.
+		\item $G$ hat eine Normalreihe mit zyklischen Faktoren.
+		\item $G$ hat eine Normalreihe mit abelschen Faktoren.
+		\item $G$ hat eine Normalreihe mit auflösbaren Faktoren.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{definition}[Kommutator, Kommutatoruntergruppe]
+	Seien $x,y \in G$, $H,K \leq G$.
+	\begin{enumerate}
+		\item $[x,y] := x^{-1}y^{-1}xy$, der \begriff{Kommutator} von $x$ und $y$
+		\item $[H,K] := \langle[h,k]\colon h \in H, k\in K\rangle$
+		\item $G^{'} := [G,G]$, die \begriff{Kommutatoruntergruppe} von $G$
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Genau dann kommutiren $x$ und $y$ (also $xy = yx$), wenn $[x,] = 1$. Es gilt $[x,y]^{-1} = [y,x]$.
+\end{remark}
+
+\begin{lemma}
+	Ist $\phi: G \to H$ ein Epimorphismus, so ist $\phi(G^{'}) = H^{'}$.
+\end{lemma}
+
+\begin{lemma}
+	$G^{'}$ ist der kleinste Normalteiler von $G$ mit $G/G^{'}$ abelsch.
+\end{lemma}
+
+\begin{definition}[Kommutatorreihe]
+	Wir definieren die \begriff{Kommutatorreihe}
+	\begin{align}
+	G = G^{(0)} \geq G^{(1)} \geq \dots\notag
+	\end{align}
+	induktiv durch $G^{(0)} = G$ und $G^{(n+1)} = (G^{(n)})^{'}$.
+\end{definition}
+
+\begin{proposition}
+	Ist $G = G_0 \gneq G_1 \gneq \dots \gneq G_n$ eine Normalreihe mit abelschen Faktoren (wir fordern ausnahmsweise nicht, dass $G_n = 1$), so ist $G^{(i)} \geq G$ für alle $i \leq n$. Insbesondere ist $G$ genau dann auflösbar, wenn $G^{(n)} = 1$ für ein $n$.
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{conclusion}
+	Ist $G$ auflösbar und $H \geq G$, so ist auch $H$ auflösbar.
+\end{conclusion}
+
+\begin{remark}
+	Das kleinste $n$ mit $G^{(n)} = 1$ heißt \begriff{Stufe} von $G$. (rank im englischen Sprachraum)
+\end{remark}
+
+\begin{remark}
+	Es gelten die folgenden tiefen Sätze:
+	\begin{itemize}
+		\item Satz von \person{Burnside}: Ist $\#G = p^{a}q^{b}$ mit $p,q$ prim, so ist $G$ auflösbar.
+		\item Satz von \person{Feit}-\person{Thompson}: Ist $\#G$ ungerade, so ist $G$ auflösbar.
+	\end{itemize}
+\end{remark}
