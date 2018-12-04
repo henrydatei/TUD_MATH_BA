@@ -54,9 +54,16 @@ Sei $G$ eine endliche Gruppe.
 	 	G &= A_0 \gneq A_1 \gneq \dotsm \gneq A_m = 1,\notag \\ %TODO: Fix symbols
 	 	G &= B_0 \gneq B_1 \gneq \dotsm \gneq B_m = 1\notag
 	 \end{align}
-	 Kompositionsreihen mit $m$ minimal. Es ist $N := A_1 \cap B_1 \unlhd G$ und $A_1 \unlhd B_1 \unlhd G$. Der Fall $m = 0$ ist klar. Für $m > 0$ und $A_1 = B_1$ wende Induktionshypothese auf $N = A_1 = B_1$ an.
-	 Für $A_1 \neq B_1$ ist $A_1 B_1 = G$ und wir können die beiden Kompositionsreihen vergleichen, indem wir zudem eine Kompositionsreihe von $N$ wählen.
-	 % online version! maybe is the lecture proof better?
+	 Kompositionsreihen mit $m$ minimal. 
+	 \begin{itemize}
+	 	\item $n = 0$: $G = 1$ klar
+	 	\item $n > 0$: $G \neq 1 \Rightarrow m > 0$. Es ist $N = A_1 \cap B_1 \unlhd G$, $A_1,B_1 \unlhd G$
+	 	\begin{itemize}
+	 		\item \textbf{1. Fall:} $A_1 = B_1$: Behauptung aus Induktionshypothese für $N = A_1 = B_1$
+	 		\item \textbf{2. Fall:} $A_1 \neq B_1$: Dann ist $A_1 \gneq A_1 B_1 \unlhd G$ und somit ist $A_1 B_1 = G$, denn $\lnkset{G}{A_1}$ ist einfach $\Rightarrow \lnkset{G}{A_1} = \lnkset{A_1 B_1}{A_1} \overset{\propref{1_3_10}}{\cong} \lnkset{B_1}{A_1 \cap B_1} = \lnkset{B_1}{N}$\\
+	 		$\lnkset{G}{B_1} \cong \lnkset{A_1}{N}$ insbesondere sind $\lnkset{A_1}{N}$ und $\lnkset{B_1}{N}$ einfach. Sei $N=N_0 > N_1 > \dots > N_l = 1$ Kompositionsreihe. Dann ist auch $A_ > N > N_1 > \dots > N_l$ ist Kompositionsreihe der Länge $l+1$. Da $A_1 > A_2 > \dots > A_n$ Kompostionsreihe minimaler Länge $n-1$ ist. Es folgt aus der Induktionhyptothese, dass $n-1 = l+1$ und das die Faktoren übereinstimmen. Ebenso sind $B_1 > B_2 > \dots > B_m$ und $B_1 > N_0 > N_1 > \dots > N_l$ Kompositionsreibe mit Länge $m-1$ und $l+1$. Da $l+1 = n-1 < n$ folgt aus Induktionshypothese, dass $l+1 = m-1$ und dass die Faktoren übereinstimmen. Also $m = l+2 = n$ und $A_0 > \dots > A_n$ und $B_0 > \dots > B_n$ haben Faktoren $\lnkset{G}{A_1} \cong \lnkset{B_1}{N}$, $\lnkset{A_1}{N} \cong \lnkset{G}{B_2}$, $\lnkset{N}{N_1}$, $\lnkset{N_1}{N_2}$, $\dots$, $\lnkset{N_{l-1}}{N_l}$
+	 	\end{itemize}
+	 \end{itemize}
 \end{proof}
 
 \begin{definition}[Kompositionsfaktoren, auflösbar]
@@ -67,6 +74,7 @@ Sei $G$ eine endliche Gruppe.
 \end{definition}
 
 \begin{example}
+	\proplbl{1_10_6}
 	\begin{enumerate}[label=(\alph*)]
 		\item $S_3$ hat Kompositionsfaktoren $C_2, C_3$: auflösbar
 		\item $S_4$ hat Kompositionsfaktoren $C_2,C_3,C_2,C_2$: auflösbar
@@ -78,14 +86,19 @@ Sei $G$ eine endliche Gruppe.
 \end{example}
 
 \begin{lemma}
+	\proplbl{1_10_7}
 	Sei $N\unlhd G$, Genau dann ist $G$ auflösbar, wenn $N$ und $G/N$ auflösbar sind.
 \end{lemma}
 
 \begin{proof}
-	
+	\begin{itemize}
+		\item $\Rightarrow$: Ist $N = N_0 > \dots > N_l = 1$ Kompositionsreihe, so kann $G > N_0 > \dots > N_l = 1$ zu einer Kompisitionsreihe von $G$ verfeinert werden, Kompositionsfaktoren von $N$ sind die Kompisitionsfaktoren von $G$. Somit ist $N$ auflösbar. Ist $\lnkset{G}{H} = H_0 > \dots > H_n$ Kompisitionsreihe von $\lnkset{G}{N}$, so kann $G = \pi^{-1}_{N}(H_0) > \pi^{-1}_{N}(H_1) > \dots > \pi^{-1}_{N}(H_k) = N > 1$ zu einer Kompositionsreihe verfeinert werden, die Kompositionsfaktoren von $\lnkset{G}{N}$ sind also Kompositionsfaktoren von $G$. Somit ist $\lnkset{G}{N}$ auflösbar.
+		\item $\Leftarrow$: Sind $N = N_0 > \dots > N_l$ und $\lnkset{G}{N}=H_0 > \dots > H_k$ Kompisitionsreihe, so ist $G = \pi^{-1}_{N}(H_0) > \dots > \pi^{-1}_{N}(H_k) = N > N_1 > \dots > N_l$ eine Kompositionsreihe von $G$ und ist damit auflösbar.
+	\end{itemize}
 \end{proof}
 
 \begin{proposition}
+	\proplbl{1_10_8}
 	Für $G$ sind äquivalent:
 	\begin{enumerate}
 		\item $G$ ist auflösbar.
@@ -96,7 +109,10 @@ Sei $G$ eine endliche Gruppe.
 \end{proposition}
 
 \begin{proof}
-	
+		\begin{itemize}
+			\item 1. $\Rightarrow$ 2. $\Rightarrow$ 3. $\xRightarrow{\propref{1_10_6}}$ 4.
+			\item 4. $\Rightarrow$ 1.: Induktion über die Länge der Normalreihe mit \propref{1_10_7}
+		\end{itemize}
 \end{proof}
 
 \begin{definition}[Kommutator, Kommutatoruntergruppe]
@@ -109,16 +125,36 @@ Sei $G$ eine endliche Gruppe.
 \end{definition}
 
 \begin{remark}
-	Genau dann kommutiren $x$ und $y$ (also $xy = yx$), wenn $[x,] = 1$. Es gilt $[x,y]^{-1} = [y,x]$.
+	Genau dann kommutieren $x$ und $y$ (also $xy = yx$), wenn $[x,y] = 1$. Es gilt $[x,y]^{-1} = [y,x]$.
 \end{remark}
 
 \begin{lemma}
+	\proplbl{1_10_11}
 	Ist $\phi: G \to H$ ein Epimorphismus, so ist $\phi(G^{'}) = H^{'}$.
 \end{lemma}
 
+\begin{proof}
+	Da $\phi([x,y]) = [\phi(x),\phi(y)]$ ist
+	\begin{align}
+	\phi(G^{'}) &= \phi(\langle\{ [x,y] \mid x,y \in H \}\rangle)\notag\\
+	&= \langle\phi([x,y] \mid x,y \in G) \rangle \notag\\
+	&= \langle\{[\phi(x),\phi(y)] \mid x,y \in G\}\rangle\notag \\
+	&= \langle \{ [x,y] \mid x,y \in H \}\rangle = H^{'} \notag
+	\end{align}
+\end{proof}
+
 \begin{lemma}
+	\proplbl{1_10_12}
 	$G^{'}$ ist der kleinste Normalteiler von $G$ mit $G/G^{'}$ abelsch.
 \end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+		\item $G^{'}$ ist charakteristisch $\Rightarrow G^{'} \unlhd G$
+		\item $\lnkset{G}{G^{'}} = \pi_{G^{'}} (G) \xRightarrow{\propref{1_10_11}} (\lnkset{G}{G^{'}})^{'} = \pi_{G^{'}}(G^{'}) = 1 \Rightarrow [x,y] = 1$ für alle $x,y \in \lnkset{G}{G^{'}}$, d.h. $\lnkset{G}{G^{'}}$ ist abelsch
+		\item Sei $N \unlhd G$ mit $\lnkset{G}{N}$ abelsch $\Rightarrow \pi_{N}(G^{'}) \overset{\propref{1_10_11}}{=} (\lnkset{G}{N})^{'} = 1 \Rightarrow G^{'} \leq \ker(\pi_{N}) = N$, d.h. $G^{'}$ ist der kleinste Normalteiler.
+	\end{itemize}
+\end{proof}
 
 \begin{definition}[Kommutatorreihe]
 	Wir definieren die \begriff{Kommutatorreihe}
@@ -129,16 +165,30 @@ Sei $G$ eine endliche Gruppe.
 \end{definition}
 
 \begin{proposition}
+	\proplbl{1_10_14}
 	Ist $G = G_0 \gneq G_1 \gneq \dots \gneq G_n$ eine Normalreihe mit abelschen Faktoren (wir fordern ausnahmsweise nicht, dass $G_n = 1$), so ist $G^{(i)} \geq G$ für alle $i \leq n$. Insbesondere ist $G$ genau dann auflösbar, wenn $G^{(n)} = 1$ für ein $n$.
 \end{proposition}
 
 \begin{proof}
-	
+	Induktion über $n$!
+	\begin{itemize}
+		\item \textbf{$n = 0$:} klar
+		\item \textbf{$n-1 \to n$:} Nach Induktionshypothese ist $G^{(n-1)} \leq G_{n-1}$, $\lnkset{G_{n-1}}{G_n}$ abelsch $\Rightarrow G^{(n)} = (G^{(n-1)})^{'} \leq (G_{n-1})^{'} \overset{\propref{1_10_12}}{\leq} G_n$.\\
+		insbesondere
+		\begin{itemize}
+			\item $\Rightarrow$: Kompostiionsreihe $G = G_0 > G_1 > \dots G_n$ ist NR mit abelschen Faktoren $\Rightarrow G^{(n)} \leq G_n = 1 \Rightarrow G^{(n)} = 1$
+			\item $\Leftarrow$: $G = G^{(0)} > G^{(1)} > \dots > G^{(n)} = 1$ mit $n$ minimal ist Normalreihe mit abelschen Faktoren $\xRightarrow{\propref{1_10_8}} G$ ist auflösbar.
+		\end{itemize}
+	\end{itemize}
 \end{proof}
 
 \begin{conclusion}
 	Ist $G$ auflösbar und $H \geq G$, so ist auch $H$ auflösbar.
 \end{conclusion}
+
+\begin{proof}
+	$G$ auflösbar $\xRightarrow{\propref{1_10_14}} G^{(n)} = 1$ für ein $n \Rightarrow H^{(n)} \leq G^{(n)} = 1 \Rightarrow H^{(n)} = 1 \xRightarrow{\propref{1_10_14}} H$ auflösbar.
+\end{proof}
 
 \begin{remark}
 	Das kleinste $n$ mit $G^{(n)} = 1$ heißt \begriff{Stufe} von $G$. (rank im englischen Sprachraum)
