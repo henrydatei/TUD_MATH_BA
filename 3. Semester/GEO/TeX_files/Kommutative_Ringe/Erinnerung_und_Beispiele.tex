@@ -1,0 +1,64 @@
+\section{Erinnerung und Beispiele}
+
+\begin{erinnerung}
+	Ein \begriff{Ring} ist eine abelsche Gruppe $(R,+)$ zusammen mit einer Verknüpfung $\cdot : R\times R \to R$ die Assoziativität und Distributivität erfüllt. Eine Teilmenge $\emptyset \neq S \subseteq R$ ist ein \begriff{Unterring} oder \begriff{Teilring} von $R$, wenn $S$ abgeschlossen unter Addition, Subtraktion und Multiplikation ist. Eine Abbildung $\phi : R \to R^{'}$ zwischen Ringen ist ein \begriff{Ringhomomorphismus}, wenn $\phi(r_1 + r_2) = \phi(r_1) + \phi(r_2) \text{ und } \phi(r_1 r_2) = \phi(r_1) \phi(r_2)$ und in diesem Fall ist
+	\begin{align}
+		\ker(\phi)=\phi^{-1}(\{0\}) \notag
+	\end{align}
+	der \begriff{Kern} von $\phi$.
+\end{erinnerung}
+
+\begin{remark}
+	In dieser Vorlesung bedeutet ``Ring'' \emph{immer} kommutativer Ring mit Einselement, d.h. $(R,\cdot)$ bildet ein kommutativer Monoid mit Einselement $1_R$. Wir fordern dann zusätzlich, dass Unterringe von $R$ das Einselement von $R$ enthalten und dass Ringhomomorphismen $\phi : R \to R^{'}$ das Einselement von $R$ auf das Einselement von $R^{'}$ abbilden.
+\end{remark}
+
+\begin{example}
+	\begin{enumerate}
+		\item Der Ring $\whole$ der ganzen Zahlen.
+		\item Der Restklassenring $\whole / n \whole$ für $n \in \natur$.
+		\item Die Körper $\ratio, \real, \comp$.
+		\item Der Nullring $R = \{0\}$
+	\end{enumerate}
+\end{example}
+
+Sei $R$ ein Ring. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
+
+\begin{proposition}
+	Ein Ringhomomorphismus $\phi: R \to R^{'}$ ist ein Isomorphismus (d.h. bijektiv), wenn es einen Ringhomomorphismus $\phi^{'}: R^{'} \to R$ mit $\phi^{'} \circ \phi = \id_R$ und $\phi \circ \phi^{'} = \id_{R^{'}}$.
+\end{proposition}
+
+\begin{proposition}
+	Ein Ringhomomorphismus $\phi: R \to R^{'}$ ist genau dann injectiv, wenn $\ker(\phi) =\{0\}$.
+\end{proposition}
+
+\begin{definition}
+	Für $x \in R$ heißt \begriff{invertierbar} oder eine \begriff{Einheit}, wenn es $y\in R$ mit $xy=1$ gibt, und die $R^{\times}$ der Einheiten bildet eine Gruppe unter Multiplikation.\\
+	Für $x \in R$ ist eine \begriff{Nullteiler}, wenn es $0 \neq y \in R$ mit $xy=0$ gibt, und $R$ ist \begriff{nullteilerfrei}, wenn es keinen Nullteiler $0\neq x \in R$ gibt.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item $\whole$ ist nullteilerfrei, $\whole^{\times} = \mu_2 = \{ \pm 1 \}$.
+		\item $\whole / n \whole$ ist genau dann nullteilerfrei, wenn $n$ prim ist.
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	Für eine Familie von Ringen $(R_i)$ wird $\Pi R_i$ durch komponentenweise Addition und Multiplikation zu einem Ring, genannt das \begriff{direkte Produkt} der $R_i$. Bezeichnet $1_{R_i}$ das Einselement von $R_i$, so ist $(1_{R_i})$ das Einselement von $\Pi R_i$ und 
+	\begin{align}
+		(\Pi R_i)^{\times} = \Pi R_i \notag
+	\end{align}
+\end{example}
+
+\begin{example}
+	Der \begriff{Polynomring} eine Variablen $x$ über $R$ ist 
+	\begin{align}
+		R[x] = \{ \sum_{i=0}^{\infty} a_i x^i \mid a_i \in R, \text{ fast alle } a_i = 0\} \notag
+	\end{align}
+	mit der Addition und Multiplikation
+	\begin{align}
+		\sum_{i=0}^{\infty} a_i x^i + \sum_{i=0}^{\infty} b_i x^i = \sum_{i=0}^{\infty} (a_i + b_i) x^i \notag \\
+		(\sum_{i=0}^{\infty} a_i x^i) + (\sum_{j=0}^{\infty} b_j x^j) = \sum_{k=0}^{\infty} (\sum_{i+j=k}^{\infty} a_i b_j) x^k \notag
+	\end{align}
+	Ist $f = \sum_{i=0}^n a_i x^i \in R[x]$ mit $a_n \neq 0$, so ist $\deg(f) = n$ der \begriff{Grad} von $f$ (mit $\deg(0) = -\infty$)
+\end{example}
