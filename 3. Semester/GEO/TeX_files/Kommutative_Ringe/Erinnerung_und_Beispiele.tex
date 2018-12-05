@@ -53,12 +53,111 @@ Sei $R$ ein Ring. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
 \begin{example}
 	Der \begriff{Polynomring} eine Variablen $x$ über $R$ ist 
 	\begin{align}
-		R[x] = \{ \sum_{i=0}^{\infty} a_i x^i \mid a_i \in R, \text{ fast alle } a_i = 0\} \notag
+		R[x] = \left\{ \sum_{i=0}^{\infty} a_i x^i \mid a_i \in R, \text{ fast alle } a_i = 0\right\} \notag
 	\end{align}
 	mit der Addition und Multiplikation
 	\begin{align}
 		\sum_{i=0}^{\infty} a_i x^i + \sum_{i=0}^{\infty} b_i x^i = \sum_{i=0}^{\infty} (a_i + b_i) x^i \notag \\
-		(\sum_{i=0}^{\infty} a_i x^i) + (\sum_{j=0}^{\infty} b_j x^j) = \sum_{k=0}^{\infty} (\sum_{i+j=k}^{\infty} a_i b_j) x^k \notag
+		\left(\sum_{i=0}^{\infty} a_i x^i\right) + \left(\sum_{j=0}^{\infty} b_j x^j\right) = \sum_{k=0}^{\infty} \left(\sum_{i+j=k}^{\infty} a_i b_j\right) x^k \notag
 	\end{align}
-	Ist $f = \sum_{i=0}^n a_i x^i \in R[x]$ mit $a_n \neq 0$, so ist $\deg(f) = n$ der \begriff{Grad} von $f$ (mit $\deg(0) = -\infty$)
+	Ist $f = \sum_{i=0}^n a_i x^i \in R[x]$ mit $a_n \neq 0$, so ist $\deg(f) = n$ der \begriff{Grad} von $f$ (mit $\deg(0) = -\infty$) und $\LC(f) = a_n$ der \begriff{Leitkoeffizient} von $f$, $f$ heißt \begriff{normiert}, wenn $\LC(f) = 1$.
 \end{example}
+
+\begin{proposition}
+	\proplbl{2_1_10}
+	Seien $f,g \in R[x]$.
+	\begin{enumerate}
+		\item $\deg(f + g) \leq \max\{ \deg(f), \deg(g) \}$
+		\item $\deg(f \cdot g) \leq \deg(f) + \deg(g)$
+		\item Ist $f \neq 0$ und $\LC(f)$ kein Nullteiler, so ist $\deg(fg) = \deg(f) + \deg(g)$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Siehe LAAG I.6.4.
+\end{proof}
+
+\begin{conclusion}
+	Ist $R$ nullteilerfrei, so auch $R[x]$ und $(R[x])^{\times} = R^{\times}$.
+\end{conclusion}
+
+\begin{proof}
+	\begin{itemize}
+		\item Ist $fg=0$, so ist
+		\begin{align}
+		-\infty = \deg(0) = \deg(fg) \overset{\propref{2_1_10}}{=} \deg(f) + \deg(g) \notag
+		\end{align}
+		folglich $f=0$ oder $g=0$.
+		\item 	Ist $fg = 1$, so ist
+		\begin{align}
+		0 = \deg(1) = \deg(fg) \overset{\propref{2_1_10}}{=} \deg(f) + \deg(g) \notag
+		\end{align}
+		folglich $\deg(f) = \deg(g) = 0$, d.h. $f,g \in R$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Universelle Eigenschaft des Polynomrings]
+	Ist $\phi : R \to S$ ein Ringhomomorphismus und $s \in S$, so gibt es genau einen Ringhomomorphismus $\phi_s : R[x] \to S$ mit 
+	\begin{align}
+	\phi_{s}|_R = \phi \text{ und } \phi_{s} (x) = S\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Ist $R[x] \to S$ ein Ringhomomorphismus mit $\phi_{s}|_R = \phi$ und $\phi_{s(x)} = S$, so ist
+	\begin{align}
+		\phi_{s}\left(\sum_{i\geq 0}^{\infty} a_i x^i\right) = \sum_{i=0}^{\infty} \phi_{s}(a_i) \phi_{s}(x^i) = \sum_{i\geq 0}^{\infty} \phi(a_i) s^i \notag
+	\end{align}
+		eindeutig bestimmt. Umgekehrt ist das so definierte $\phi_s$ ein Ringhomomorphismus (Übung), der $\phi_{s}|_R$ und $\phi_{s}(x) = s$ erfüllt.
+\end{proof}
+
+\begin{remark}
+	Insbesondere hat man für $a\in R$ den Einsetzungshomomorphismus:
+	\begin{align}
+		\varphi_{a}: \begin{cases}
+		R[x] &\to R \\
+		f &\mapsto f(a) 
+		\end{cases}\notag
+	\end{align}
+	gegeben durch $\varphi_{a}\mid_{R} = \id_R$ und $\varphi_{a}(x) = a$. Dies liefert eine Abbildung
+	\begin{align}
+	\begin{cases}
+	R[x] &\to \Abb(R,R) \\
+	f &\mapsto \tilde{f}, \tilde{f}(a) = \varphi_a(f) 
+	\end{cases}\notag
+	\end{align}
+	Diese Abbildung ist im Allgemeinen \emph{nicht injectiv}!!! Sei z.B. für $R = \whole / n\whole$ und $f = x^2 + x$ ist $f(0) = \overline{0}$, $f(\overline{1}) = \overline{0}$, aber $\tilde{f} = \tilde{0}$, aber $f\neq 0$.
+\end{remark}
+
+\begin{proposition}[Polynomdivision]
+	Sei $0 \neq g \in R[x]$ mit $\LC(g) \in R^{\times}$. Zu jedem Polynom $f \in R[x]$ gibt es eindeutig bestimmte $q_{1}r \in R[x]$ mit $f = qg +r$ und $\deg(r) < \deg(g)$.
+\end{proposition}
+
+\begin{proof}
+	Wie im Falle $R = K$ ein Körper.
+	\begin{itemize}
+		\item \textbf{Eindeutigkeit:} Sei $f = q_1 g+ r_1 = q_2 g + r_2$ und $\deg(r_1) <\deg(g) \Rightarrow r_1 - r_2 = (q_2 - q_1)g$. Da $\LC(g) \in R^{\times}$ ist $\LC(g)$ kein Nullteiler $\overset{\propref{2_1_10}}{\Rightarrow} \deg(r_1 - r_2) < \deg(g) = \deg(q_2 - q_1) + \deg(g)$ \\
+		$\Rightarrow \deg(q_2 - q_1) < 0 \Rightarrow q_1 = q_2$ und $r_1 = r_2$
+		\item \textbf{Existenz:} Sei $f = \sum_{i=0}^{n} a_i x^i$, $a_n \neq 0$ und $g = \sum_{j=0}^{m} b_j x^j$ mit $b_m \neq 0$. Nach Vorraussetzung ist $b_m \in R^{\times}$ es existiert also $b_m^{-1} \in R$.\\
+		Induktion nach $\deg(f) = n$:
+		\begin{itemize}
+			\item \textbf{$n < m$:} $q = 0$, $r = f$
+			\item \textbf{$n\geq m$:} $f_i = f - a_n b_m^{-1} x^{n-m} \cdot g \Rightarrow \deg(f_1) < \deg(f)$ mit Induktionshypothese folgt $f_1 = q_1 \cdot g + r_1$ mit $\deg(r) < m$ $\Rightarrow f = (q_1 + a_n b_m^{-1} x^{n-m})g + r$
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Ist $f \in R[x]$ und $a \in R$, $f(a) = 0$, so ist
+	\begin{align}
+		f(x) = (x-a)\cdot q(x) \text{ mit } q \in R[x]. \notag
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	Sei $f = q(x-a) + r$, $\deg(r) < \deg(x-a)$, d.h. $\deg(1) \leq 0 \Rightarrow 0 = f(a) = q(a-a) + r(a) \Rightarrow r(a) = 0$.
+\end{proof}
+
+\begin{conclusion}
+	Ist $R$ nullteilerfrei, so hat $0 = f \in R[x]$ höchstens $\deg(f)$ viele Nullstellen in $R$.
+\end{conclusion}
