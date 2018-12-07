@@ -24,7 +24,7 @@
 Seien $R, S$ Ringe. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
 
 \begin{proposition}
-	Ein Ringhomomorphismus $\phi: R \to S$ ist ein Isomorphismus (d.h. bijektiv), wenn es einen Ringhomomorphismus $\psi: S \to R$ mit $\psi \circ \phi = \id_R$ und $\phi \circ \psi = \id_{S}$.
+	Ein Ringhomomorphismus $\phi: R \to S$ ist ein Isomorphismus (d.h. bijektiv), wenn es einen Ringhomomorphismus $\psi: S \to R$ mit $\psi \circ \phi = \id_R$ und $\phi \circ \psi = \id_{S}$ gibt.
 \end{proposition}
 
 \begin{proposition}
@@ -44,9 +44,9 @@ Seien $R, S$ Ringe. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
 \end{example}
 
 \begin{example}
-	Für eine Familie von Ringen $(R_i)_{i \in I}$ wird $\prod_{i \in I} R_i$ durch komponentenweise Addition und Multiplikation zu einem Ring, genannt das \begriff{direkte Produkt} der $R_i$. Bezeichnet $1_{R_i}$ das Einselement von $R_i$, so ist $(1_{R_i})$ das Einselement von $\prod_{i \in I} R_i$ und 
+	Für eine Familie von Ringen $(R_i)_{i \in I}$ wird $\prod_{i \in \Lambda} R_i$ durch komponentenweise Addition und Multiplikation zu einem Ring, genannt das \begriff{direkte Produkt} der $R_i$. Bezeichnet $1_{R_i}$ das Einselement von $R_i$, so ist $(1_{R_i})$ das Einselement von $\prod_{i \in \Lambda} R_i$ und 
 	\begin{align}
-		(\prod_{i\in I} R_i)^{\times} = \prod_{i \in I}R_i \notag
+		\left(\prod_{i\in \Lambda} R_i\right)^{\times} = \prod_{i \in I}R_i \notag
 	\end{align}
 \end{example}
 
@@ -57,8 +57,8 @@ Seien $R, S$ Ringe. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
 	\end{align}
 	mit der Addition und Multiplikation
 	\begin{align}
-		\sum_{i=0}^{\infty} a_i x^i + \sum_{i=0}^{\infty} b_i x^i = \sum_{i=0}^{\infty} (a_i + b_i) x^i \notag \\
-		\left(\sum_{i=0}^{\infty} a_i x^i\right) + \left(\sum_{j=0}^{\infty} b_j x^j\right) = \sum_{k=0}^{\infty} \left(\sum_{i+j=k}^{\infty} a_i b_j\right) x^k \notag
+		\sum_{i=0}^{\infty} a_i x^i + \sum_{i=0}^{\infty} b_i x^i &= \sum_{i=0}^{\infty} (a_i + b_i) x^i \notag \\
+		\left(\sum_{i=0}^{\infty} a_i x^i\right) + \left(\sum_{j=0}^{\infty} b_j x^j\right) &= \sum_{k=0}^{\infty} \left(\sum_{i+j=k}^{\infty} a_i b_j\right) x^k \notag
 	\end{align}
 	Ist $f = \sum_{i=0}^n a_i x^i \in R[x]$ mit $a_n \neq 0$, so ist $\deg(f) = n$ der \begriff{Grad} von $f$ (mit $\deg(0) = -\infty$) und $\LC(f) = a_n$ der \begriff{Leitkoeffizient} von $f$, $f$ heißt \begriff{normiert}, wenn $\LC(f) = 1$.
 \end{example}
@@ -178,21 +178,18 @@ Seien $R, S$ Ringe. (Meisten Beweise sind LAAG1+2 Skript zu entnehmen!)
 	\begin{align}
 		R[x_i \colon i \in I] = \{ (_{\mu})_{\mu \in \natur_{0}} \colon a_{\mu} \in R, \text{ fast alle gleich } 0\} \notag
 	\end{align}
-	mit Addition
+	mit Addition und Multiplikation
 	\begin{align}
-		(a_{\mu})_{\mu \in \natur_{0}}^{(I)} + (b_{\mu})_{\mu \in \natur_{0}}^{(I)} := (a_{\mu} + b_{\mu})_{\mu \in \natur_{0}}^{(I)} \notag
-	\end{align}
-	und Multiplikation
-	\begin{align}
-		(a_{\lambda})_{\lambda \in \natur_{0}^{(I)}}\cdot (b_{\nu})_{\nu \in \natur_{0}^{(I)}} = \left( \sum_{\lambda + \nu = \mu} a_{\lambda}b_{\mu}\right)_{\mu \in \natur_{0}}^{(I)}, \notag
+		(a_{\mu})_{\mu \in \natur_{0}}^{(I)} + (b_{\mu})_{\mu \in \natur_{0}}^{(I)} &:= (a_{\mu} + b_{\mu})_{\mu \in \natur_{0}}^{(I)}\notag \\
+		(a_{\lambda})_{\lambda \in \natur_{0}^{(I)}}\cdot (b_{\nu})_{\nu \in \natur_{0}^{(I)}} &:= \left( \sum_{\lambda + \nu = \mu} a_{\lambda}b_{\mu}\right)_{\mu \in \natur_{0}}^{(I)}, \notag
 	\end{align}
 	gennant \begriff{Polynomring in kommutierenden Variablen} $x_i, i \in I$. Wir identifizieren den Ring $R$ mit den Unterring
 	\begin{align}
 		\{ (r\delta_{\mu,\underline{0}})_{\mu \in \natur_{0}}^{(I)}\colon r \in R \}. \notag
 	\end{align}
-	Wir schreiben $x_i := (\delta_{\mu\nu})_{\mu \in \natur_{0}}^{(I)},\quad \mu := (\delta_{ij})_{i \in I}$ und $x^{\mu} := \prod_{i \in I}x_i^{\mu_i}$. Damit ist dann
+	Wir schreiben $x_i := (\delta_{\mu\nu})_{\mu \in \natur_{0}}^{(I)}$, $\mu := (\delta_{ij})_{i \in I}$ und $x^{\mu} := \prod_{i \in I}x_i^{\mu_i}$. Damit ist dann
 	\begin{align}
-		(a_{\mu})_{\mu \in \natur_{0}}^{(I)} = \sum_{\mu \in \natur_{0}}^{(I)} a_{\mu} x^{\mu}. \notag
+		(a_{\mu})_{\mu \in \natur_{0}}^{(I)} = \sum_{\mu \in \natur_{0}^{(I)}} a_{\mu} x^{\mu}. \notag
 	\end{align}
 	Weiter schreiben wir
 	\begin{align}
