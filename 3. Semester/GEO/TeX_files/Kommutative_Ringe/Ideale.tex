@@ -15,6 +15,7 @@ Sei $R$ ein Ring. (Meisten Beweise finden sich wieder in LAAG1-2 Skript!)
 \end{example}
 
 \begin{remark}
+	\proplbl{2_2_3}
 	\begin{enumerate}
 		\item $I \leq R$ ist Ideal von $R \Leftrightarrow I + I \subseteq, R \cdot I \subseteq I, 0 \in I$
 		\item Ein Ideal von $R$ ist im Allgemeinen kein Unterring von $R$.
@@ -87,6 +88,7 @@ Sei $R$ ein Ring. (Meisten Beweise finden sich wieder in LAAG1-2 Skript!)
 \end{proof}
 
 \begin{lemma}
+	\proplbl{2_2_9}
 	\begin{enumerate}
 		\item Für $J \unlhd S$ ist $\phi^{-1}(J) \unlhd R$.
 		\item Ist $\phi$ surjektiv, so liefert $J \mapsto \phi^{-1}(J)$ eine Bijektion $\Phi$ zwischen
@@ -100,15 +102,14 @@ Sei $R$ ein Ring. (Meisten Beweise finden sich wieder in LAAG1-2 Skript!)
 \begin{proof}
 	(vgl. LAAG VIII.5.5)
 	Skizze:
-	\begin{enumerate}%TODO sync the enumerations!
+	\begin{enumerate}
 		\item $a \in \phi^{-1}(J)$, $r \in R$ $\Rightarrow \phi(ra) = \underbrace{\phi(r)}_{\in R}\underbrace{\phi(a)}_{\in J}\in J$
 		\item Umkehrabbildung: $I \mapsto \phi(I)$
 		\begin{itemize}
 			\item $\phi(\phi^{-1}(J))=J\colon \phi$ surjektiv
-			\item $\phi^{-1}(\phi(I)) = I\colon$ \propref{1_3.7}
-			\item $I \unlhd R \Rightarrow \phi(I) \unlhd S: A \in I, s \in S \xRightarrow{\phi \text{ surjektiv}} s = \phi(r)$ mit $r \in R$\\
-			$\Rightarrow s \phi(a) = \phi(r)\phi(a) = \phi(\underbrace{ra}_{\in I})$ mit $ra \in I$\\
-			$\Rightarrow s\phi(a) \in \phi(I)$
+			\item $\phi^{-1}(\phi(I)) = I\colon$ \propref{1_3_7}
+			\item $I \unlhd R \Rightarrow \phi(I) \unlhd S: A \in I, s \in S \xRightarrow{\phi \text{ surjektiv}} s = \phi(r)$ mit $r \in R$:\\
+			$\Rightarrow s \phi(a) = \phi(r)\phi(a) = \phi(ra)$ mit $ra \in I \Rightarrow s\phi(a) \in \phi(I)$
 		\end{itemize}
 	\end{enumerate}
 \end{proof}
@@ -136,16 +137,22 @@ Sei $R$ ein Ring. (Meisten Beweise finden sich wieder in LAAG1-2 Skript!)
 	\end{enumerate}
 \end{proposition}
 
-\begin{proof}
-	%TODO how to sync enumberations?
-	c) folgt aus a) $+$ b), denn Körper sind nullteilerfrei!
+\begin{proof} 
 	\begin{enumerate}
-		\item 
-	finish proof later ...
+		\item Beachte: $\pi_I(a)=0 \Leftrightarrow a \in I$\\
+		``$\Rightarrow$'': $a,b \in R$ $\pi_I(a)\cdot\pi_I(b) = 0$\\
+		$\Rightarrow 0 = \pi_I(a)\pi_I(b) = \pi_I(ab)$\\
+		$\Rightarrow ab \in I \xRightarrow{I \text{ prim}} a \in I \vee b \in I$\\
+		$\Rightarrow \pi_I(a) = 0 \vee \pi_I(b) = 0$\\
+		``$\Leftarrow$'': $I$ nicht prim $\Rightarrow$ existiert $a,b \in R$ mit $ab \in I$, $a \not\in I$, $b \not \in I$\\
+		$\Rightarrow$ $0 = \pi_I(ab) = \underbrace{\pi_I(a)}_{\neq 0}\underbrace{\pi_I(n)}_{\neq 0}$\\
+		$\Rightarrow$ $R/I$ ist nicht nullteilerfrei
+		\item $I$ maximal $\overset{\propref{2_2_9}b)}{\Longleftrightarrow}$ $R/I$ hat nur die Ideale $(0) = \pi_I(1)$ und $(1) = \pi_I(R)$ $\overset{\proplbl{2_2_9}d)}{\Longleftrightarrow}$ $R/I$ ist Körper %TODO here is somewhere a mistake, please check!
+		\item folgt aus 1) $+$ 2), denn Körper sind nullteilerfrei!
 	\end{enumerate}
 \end{proof}
 
-\begin{example}[Gegenbeispiel das die Umkehrung von \propref{2_2_11}c) nicht gilt!]
+\begin{example}[Gegenbeispiel, dass die Umkehrung von \propref{2_2_11}c) nicht gilt!]
 	In $R = \whole$: Ideale sind genau die Hauptideale
 	\begin{itemize}
 		\item $(n) = n\whole, n \in \natur_0$
@@ -155,5 +162,10 @@ Sei $R$ ein Ring. (Meisten Beweise finden sich wieder in LAAG1-2 Skript!)
 \end{example}
 
 \begin{proposition}
-	Jedes echte Ideal $I u$ ...
+	Jedes echte Ideal $I \unlhd R$ ist in einem maximalen Ideal von $R$ enthalten.
 \end{proposition}
+
+\begin{proof}
+	Lemma von Zorn. Die Vereinigung einer Kette echter Ideale ist wegen \propref{2_2_3}c)
+	wieder ein echtes Ideal.
+\end{proof}
