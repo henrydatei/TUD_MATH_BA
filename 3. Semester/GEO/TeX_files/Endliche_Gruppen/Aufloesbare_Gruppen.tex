@@ -52,7 +52,37 @@ Sei $G$ eine endliche Gruppe.
 	 \begin{align}
 	 	G &= A_0 \gneq A_1 \gneq \dotsm \gneq A_n = 1,\notag \\ %TODO: Fix symbols
 	 	G &= B_0 \gneq B_1 \gneq \dotsm \gneq B_m = 1\notag
-	 \end{align}
+	\end{align}
+	\begin{center}
+		\begin{tikzpicture}
+			\node at (0,0) (G) {$G$};
+			
+			\node at (1,1) (A1) {$A_1$};
+			\node at (3,1) (A2) {$A_2$};
+			\node at (5,1) (Adots) {$\dots$};
+			\node at (7,1) (An) {$A_n$};
+			
+			\node at (1,-1) (B1) {$B_1$};
+			\node at (3,-1) (B2) {$B_2$};
+			\node at (5,-1) (Bdots) {$\dots$};
+			\node at (7,-1) (Bm) {$B_m$};
+			
+			\node at (2,0) (N) {$N$};
+			\node at (4,0) (N1) {$N_1$};
+			\node at (6,0) (N2) {$N_2$};
+			\node at (8,0) (Ndots) {$\dots$};
+			\node at (10,0) (Nl) {$N_l$};
+			
+			\draw[red] (G) -- (A1);
+			\draw[red] (B1) -- (N);
+			\draw[blue] (G) -- (B1);
+			\draw[blue] (A1) -- (N);
+			
+			\draw (A1) -- (A2) -- (Adots) -- (An);
+			\draw (B1) -- (B2) -- (Bdots) -- (Bm);
+			\draw (N) -- (N1) -- (N2) -- (Ndots) -- (Nl);
+		\end{tikzpicture}
+	\end{center}
 	\emph{$n = 0$:} $G = 1$ klar \\
 	\emph{$n > 0$:} $G \neq 1 \Rightarrow m > 0$. Es ist $N = A_1 \cap B_1 \unlhd G$, $A_1B_1 \unlhd G$
 	\begin{itemize}
