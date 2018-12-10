@@ -57,6 +57,7 @@ Bei einer gut konditionierten Aufgabe verhält sich also der relative Fehler des
 Nun wird untersucht, wie sich die Rundungsfehler in einzelnen Rechenschritten eines Algorithmus auswirken. Dazu wird die Aufgabe $\Phi:D\subset\real\to\real^m$ zu Grunde gelegt. ($m=1$ ist keine Einschränkung, da die folgende Untersuchung auch für weitere Komponenten analog möglich ist) und ein allgemeiner Algorithmus mit stetig differenzierbaren Abbildungen $r_i:\real^{n+1}\to\real$ (mit $i=0,...,N$) betrachtet.
 
 \begin{algorithm}
+	\proplbl{4_2_3}
 	Input: $a$
 	\begin{lstlisting}
 %$y_0$% = %$r_0$%(a)
@@ -65,3 +66,62 @@ Nun wird untersucht, wie sich die Rundungsfehler in einzelnen Rechenschritten ei
 	\end{lstlisting}
 	Output: $y_N$ ($=\Phi(a)$ bei exakter Rechnung)
 \end{algorithm}
+
+Es stellt sich damit die Frage, wie sich die Rundungsfehler in in $y_0,...,y_{N-1}$ auf das Ergebnis des Algorithmus auswirken. Dazu betrachten wir die rekursiv definierten \begriff{Restabbildungen} $R_k:\real^{n+k+1}\to\real$ ($k=0,...,N-1$) mit
+\begin{align}
+	R_{N-1}(a,y_0,...,y_{N-1}) &= r_N(a,y_0,...,y_{N-1}) \notag \\
+	R_{N-2}(a,y_0,...,y_{N-2}) &= r_N(a,y_0,...,y_{N-2},r_N(a,y_0,...,y_{N-2})) \notag \\
+	&\vdots \notag \\
+	R_(a,y_0) &= \dots \notag
+\end{align}
+Für $k=0,...,N-1$ wird nun die Kondition der durch $y_k\mapsto R_k(a,y_0,...,y_k)$ definierten Abbildung betrachtet, um festzustellen, wie sich Rundungsfehler in $y_k$ auf das Ergebnis $y_N$ auswirken.
+
+\begin{definition}[relative Konditionszahlen, stabil, instabil]
+	Die Zahlen
+	\begin{align}
+		AK_k = \left|\frac{y_k}{R_k(a,y_0,...,y_k)}\cdot\frac{\partial R_k(a,y_0,...,y_k)}{\partial y_k}\right|
+	\end{align}
+	heißen \begriff[Konditionszahl!]{relative Konditionszahlen} des \propref{4_2_3} \emph{bezüglich der Zwischenergebnisse} $y_k$. Der \propref{4_2_3} wird \begriff[Algorithmus!]{stabil} (oder gutartig) genannt, wenn alle diese Konditionszahlen nicht wesentlich größer sind als die Konditionszahlen der Aufgabe $\Phi(a)$. Andernfalls heißt der Algorithmus \begriff[Algorithmus!]{instabil}.
+\end{definition}
+
+\begin{example}
+	Um die größere Nullstelle des Polynoms $x^2+2px+q$ zu bestimmen, kann man 
+	\begin{enumerate}[label=(\alph*)]
+		\item $\Phi(p,q)=-p+\sqrt{p^2-q}$ oder
+		\item $\Theta(p.q)=\frac{q}{-p-\sqrt{p^2-q}}$ (entsprechend dem Satz von \person{Vieta}, sofern $p^2\neq q$)
+	\end{enumerate}
+	verwenden. Wir setzen dabei 
+	\begin{align}
+		\label{4.2}
+		p>>1>q>0
+	\end{align}
+	voraus. Die relativen Konditionszahlen zur Aufgabe $\Phi(p,q)$ ergeben sich zu
+	\begin{align}
+		K_{11} &= \left|\frac{p}{-p+\sqrt{p^2-q}}\left(-1+\frac{p}{\sqrt{p^2-q}}\right)\right| = \left|\frac{p}{-p+\sqrt{p^2-q}}\left(\frac{-\sqrt{p^2-q}+p}{\sqrt{p^2-q}}\right)\right| \notag \\
+		&= \left|\frac{p}{\sqrt{p^2-q}}\right|\approx 1\notag \\
+		K_{12} &= \left|\frac{q}{-p+\sqrt{p^2-q}}\frac{1}{2\sqrt{p^2-q}}\right| = \left|\frac{q(p+\sqrt{p^2-q})}{-q} \frac{1}{2\sqrt{p^2-q}}\right| \notag \\
+		&= \left|\frac{p+\sqrt{p^2-q}}{2\sqrt{p^2-q}}\right| \approx 1\notag
+	\end{align}
+	Also sind die Aufgaben $\Phi(p,q)$ und $\Theta(p,q)$ für \cref{4.2} gut konditioniert. Die Umsetzung der Aufgabe $\Phi(p,q)$ erfolge mit dem Algorithmus 
+	\begin{align}
+		\label{4.3}
+		y_0 = p\cdot p\quad y_1 = y_0-q\quad y_2 = \sqrt{y_1}\quad y_3=-p+y_2
+	\end{align}
+	Es ergibt sich $N=3$, $n=2$, $R_2(p,q,y_0,y_1,y_2)=-p+y_2$ und
+	\begin{align}
+		AK_2 = \left|\frac{y_2}{R_2(p,q,y_0,y_1,y_2)}\frac{\partial R_2(p,q,y_0,y_1,y_2)}{\partial y_2}\right| = \left|\frac{y_2}{-p+y_2}\cdot 1\right| = \left|\frac{\sqrt{p^2-q}}{-p+\sqrt{p^2-q}}\right| >>1\notag
+	\end{align}
+	für \cref{4.2}. Der Algorithmus \cref{4.3} ist daher dann numerisch instabil. Betrachten wir nun den Algorithmus 
+	\begin{align}
+		\label{4.4}
+		y_0 = p\cdot p\quad y_1=y_0-q\quad y_2=\sqrt{y_1}\quad y_3 = -p-y_2\quad y_4 = \frac{q}{y_3}
+	\end{align}
+	Es ist $N=4$. Die Restabbildungen lauten dann
+	\begin{align}
+		R_3(p,q,y_0,y_1,y_2,y_3) &= \frac{q}{y_3} \notag \\
+		R_2(p,q,y_0,y_1,y_2) &= \frac{q}{-p-y_2} \notag \\
+		R_1(p,q,y_0,y_1) &= \frac{q}{-p-\sqrt{y_1}} \notag \\
+		R_0(p,q,y_0) &= \frac{q}{-p-\sqrt{y_0-q}} \notag 
+	\end{align}
+	Unter der Bedingung \cref{4.2} sind die Konditionszahlen $AK_0,...,AK_3$ kleiner gleich 1, so dass der Algorithmus \cref{4.4} dann numerisch stabil ist. Unter anderen Bedingungen kann das Stabilitätsverhalten der Algorithmen \cref{4.3} und \cref{4.4} anders sein, so dass bei der Implementierung eine Fallunterscheidung notwendig ist.
+\end{example}
