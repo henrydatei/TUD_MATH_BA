@@ -38,6 +38,7 @@ Vorausgesetzt $F$ ist differenzierbar, dann ist dieses Verfahren durchführbar, 
 \end{example}
 
 \begin{proposition}
+	\proplbl{5_1_3}
 	Es sei $D\subseteq\real^n$ offen, $F:D\to\real^m$ differenzierbar und $x^\ast\in D$ eine reguläre Nullstelle von $F$, das heißt $F(x ^\ast)=0$ und $F'(\ast)$ ist regulär. Weiter sei $F':D\to\real^{n\times n}$ \person{Lipschitz}-stetig in $D$, das heißt es gibt ein $L>0$, so dass
 	\begin{align}
 		\label{5.2}
@@ -77,4 +78,19 @@ Vorausgesetzt $F$ ist differenzierbar, dann ist dieses Verfahren durchführbar, 
 	Für $x^0\in B(x^\ast,\delta)$ erhält man damit und mit \cref{5.4} induktiv, dass der \propref{5_1_1} durchführbar ist und $\{x^k\}\subset B(x^\ast,\delta)$. Aus \cref{5.5} folgt daher die Konvergenz der Folge $\{x^k\}$ und \cref{5.3} für alle $k\in\natur$.
 \end{proof}
 
-Die Konvergenz der Folge $\{x^k\}$ gegen $x^\ast$ zusammen mit der Eigenschaft \cref{5.3} wird als \begriff{quadratische Konvergenz} der Folge $\{x^k\}$ gegen $x^\ast$ bezeichnet.
+Die Konvergenz der Folge $\{x^k\}$ gegen $x^\ast$ zusammen mit der Eigenschaft \cref{5.3} wird als \begriff{Q-quadratische Konvergenz} der Folge $\{x^k\}$ gegen $x^\ast$ bezeichnet.
+
+\begin{remark}
+	Es gibt zahlreiche Modifikationen des \person{Newton}-Verfahrens, zum Beispiel
+	\begin{itemize}
+		\item\textbf{Sekantenverfahren} für $n=1$: Dabei wird der Anstieg $F'(x^k)$ der Tangente $y=F'(x^k)(x-x^k)+F(x^k)$ an den Graphen von $F$ im Punkt $(x^k,F(x^k))$ durch den Anstieg
+		\begin{align}
+			\frac{F(x^k) - F(x^{k-1})}{x^k-x^{k-1}}\notag
+		\end{align}
+		der Sekante durch die Punkte $(x^k,F(x^k))$ und $(x^{k-1},F(x^{k-1}))$ des Graphen von $F$ ersetzt. Unter Voraussetzungen wie in \propref{5_1_3} lässt sich in einer Umgebung einer regulären Nullstelle $x^\ast$ die Konvergenz des Sekantenverfahrens gegen $x^\ast$ zeigen, genauer gibt es $c,\delta>0$ und $\kappa\in (0,1)$, so dass
+		\begin{align}
+			\Vert x^k-x^\ast\Vert \le c\kappa^{\tau^k}\notag
+		\end{align}
+		für alle Startwerte $x^0,x^1\in B(x^\ast,\delta)$ mit $x^0\neq x^1$ gilt, wobei $\tau = \frac{1+\sqrt{5}}{2}$. Die Folge $\{x^k\}$ ist mit der R-Ordnung $\tau$ gegen $x^\ast$ konvergent.
+	\end{itemize}
+\end{remark}
