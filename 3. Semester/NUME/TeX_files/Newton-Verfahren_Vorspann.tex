@@ -1,0 +1,23 @@
+Seien $D\subseteq\real^n$ und $F:D\to\real^n$. Dann heißt $x^\ast\in D$ \begriff{Nullstelle} der Funktion $F$, wenn $F(x^\ast)=0$ gilt. Wir interessieren uns für Methoden zur Bestimmung einer solchen Nullstelle.
+
+\setcounter{theorem}{0}
+\begin{proposition}[\person{Taylor}-Formel mit Integralrestglied]
+	\proplbl{5_0_1}
+	es seien $D\subseteq\real^n$ offen und konvex sowie $F:D\to\real^m$ stetig differenzierbar. Dann gilt
+	\begin{align}
+		F(x) = F(y) + F'(y)(x-y) + \int_0^1 \Big(F'(y+t(y-x)) - F'(y)\Big)(x-y)\diff t\notag
+	\end{align}
+	für beliebige $x,y\in\real^n$.
+\end{proposition}
+\begin{proof}
+	Sei $I\subset\real$ ein offenes Intervall. Nach dem Hauptsatz der Differential- und Integralrechnung gilt für eine stetig differenzierbare Funktion $\phi:I\to\real$ die Beziehung
+	\begin{align}
+		\label{5.1}
+		\phi(t) = \phi(0) + \int_0^t \phi'(\tau)\diff\tau
+	\end{align}
+	für alle $t\in I$. Seien $f:D\to\real$ stetig differenzierbar und $x,y\in D$. Dann gibt es ein offenes Intervall $I\supset [0,1]$, so dass $\phi:I\to\real$ durch $\phi(t) = f(y+t(x-y))$ wohldefiniert und stetig differenzierbar ist mit $\phi'(t)=f'(y+t(x-y))(x-y)$. Mit \cref{5.1} folgt damit für $t=1$
+	\begin{align}
+		f(x) = f(y) + f'(y)(x-y) + \int_0^1 \big(f'(y+\tau(x-y)) - f'(y)\big)(x-y)\diff\tau\notag
+	\end{align}
+	Setzt man noch $f=F_i$ für $i=1,...,n$, so folgt die Behauptung komponentenweise.
+\end{proof}

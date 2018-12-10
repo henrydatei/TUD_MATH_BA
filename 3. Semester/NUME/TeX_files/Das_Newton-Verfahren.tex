@@ -1,1 +1,80 @@
 \section{Das \person{Newton}-Verfahren}
+
+Das \person{Newton}-Verfahren beruht auf der Idee, die Gleichung $F(x) = 0$ für eine gegebene Näherung $y\in\real^n$ einer Nullstelle durch die linearisierte Gleichung 
+\begin{align}
+	F(y) + F'(y)(x-y) = 0\notag
+\end{align}
+zu ersetzen, eine Lösung $x$ dieser Gleichung (sofern möglich) zu berechnen und als neue Näherung für die Nullstelle zu verwenden.
+
+\begin{algorithm}[\person{Newton}-Verfahren]
+	\proplbl{5_1_1}
+	Input: $x^0\in\real^n$, $\varepsilon>0$ und $F$ in geeigneter Form
+	\begin{lstlisting}
+k = 0
+do while %$\Vert F(x^k)\Vert>\varepsilon$%
+ compute %$x^{k+1}$% 
+ ! als Loesung von %$F'(x^k)(x-x^k)+F(x^k)=0$%
+ k = k + 1
+end do
+	\end{lstlisting}
+	Output: $x ^k$
+\end{algorithm}
+
+Vorausgesetzt $F$ ist differenzierbar, dann ist dieses Verfahren durchführbar, wenn alle auftretenden Matrizen $F'(x ^k)\in\real^{n\times n}$ invertierbar sind.
+
+\begin{example}
+	Sei $n=1$. Aus $F'(x^k)(x-x^k)+F(x^k)=0$ erhält man eine eindeutige Lösung $x^{k+1}$, falls $F'(x^k)\neq 0$. Es folgt dann durch Umstellen
+	\begin{align}
+		x^{k+1} = x^k - \frac{F(x^k)}{F'(x^k)}\notag
+	\end{align}
+	Speziell sei $F:\real\to\real$ gegeben durch $F(x) = e^{-x}-x$ und $x^0=0.5$. Damit erhält man
+	\begin{align}
+		x^1 &= 0.5663... \notag \\
+		x^2 &= 0.56714316... \notag \\
+		x^3 &= 0.567143290409781... \notag \\
+		x^4 &= 0.567143290409784... \notag
+	\end{align}
+	also lokal sehr schnelle Konvergenz. Es werden nun Voraussetzungen dafür angegeben.
+\end{example}
+
+\begin{proposition}
+	Es sei $D\subseteq\real^n$ offen, $F:D\to\real^m$ differenzierbar und $x^\ast\in D$ eine reguläre Nullstelle von $F$, das heißt $F(x ^\ast)=0$ und $F'(\ast)$ ist regulär. Weiter sei $F':D\to\real^{n\times n}$ \person{Lipschitz}-stetig in $D$, das heißt es gibt ein $L>0$, so dass
+	\begin{align}
+		\label{5.2}
+		\Vert F'(x) - F'(y)\Vert \le L\Vert x-y\Vert\quad\forall x,y\in D 
+	\end{align} 
+	Dann gibt es eine Kugel $B(x^\ast,\delta)=\{x\in\real^n\mid \Vert x-x^\ast\Vert\le\delta\}\subset D$ um $x^\ast$, so dass \propref{5_1_1} für jeden Startvektor $x^0\in B(x^\ast,\delta)$ wohldefiniert ist. Falls der Algorithmus eine unendlich Folge $\{x ^k\}$ erzeugt und $\delta>0$ hinreichend klein ist, dann konvergiert $\{x^k\}$ gegen $x^\ast$ und es gibt ein $C>0$, so dass
+	\begin{align}
+		\label{5.3}
+		\Vert x^{k+1} - x^k\Vert \le C\Vert x^k-x^\ast\Vert^2
+	\end{align}
+	für alle $k\in\natur$ gilt.
+\end{proposition}
+\begin{proof}
+	Da $F'$ stetig in der offenen Menge $D$ ist, gibt es $\delta_1>0$ und $M\ge 1$, so dass $B(x^\ast,\delta_1)\subset D$ sowie
+	\begin{align}
+		\label{5.4}
+		F'(x)\text{ regulär und } \Vert F''(x)^{-1}\Vert\le M \quad\forall x\in B(x^\ast,\delta_1)
+	\end{align}
+	Weiter folgt wegen \propref{5_0_1} und \cref{5.2}
+	\begin{align}
+		\Vert F(x) - F(y) - F'(y)(x-y)\Vert &= \left\Vert \int_0^1 \Big(F'(y+\tau(y-x)) - F'(y)\Big)(x-y)\diff \tau\right\Vert \notag \\
+		&\le \int_0^1 \left\Vert \Big(F'(y+\tau(y-x)) - F'(y)\Big)(x-y) \right\Vert\diff\tau \notag \\
+		&\le \frac{1}{2} L\Vert x-y\Vert^2 \notag
+	\end{align}
+	für alle $x,y\in B(x^\ast,\delta_1)$. Daher, mit \cref{5.4} und \propref{5_1_1}, erhält man für $x^k\in B(x^\ast,\delta_1)$
+	\begin{align}
+		\Vert x^{k+1}-x^\ast\Vert &= \Vert x^k - F'(x^k)^{-1}F(x^k) - x^\ast\Vert \notag \\
+		&= \left\Vert -F'(x^k)^{-1}\Big(F(x^k) + F'(x ^k)(x^\ast-x^k)\Big)\right\Vert \notag \\
+		&\le M\Vert F(x^k) + F'(x^k)(x^\ast-x^k)\Vert \notag \\
+		&\le \frac{1}{2}ML\Vert x^k-x^\ast\Vert^2\notag
+	\end{align}
+	Sei nun $\delta\in [0,\delta_1)$ so gewählt, dass $ML\delta\le 1$. Dann folgt mit $x^k\in B(x^\ast,\delta)\subseteq B(x^\ast,\delta_1)$
+	\begin{align}
+		\label{5.5}
+		\Vert x^{k+1}-x^\ast\Vert \le \frac{1}{2}ML\Vert x^k-x^\ast\Vert^2\le \frac{1}{2}\Vert x^k-x^\ast\Vert
+	\end{align}
+	Für $x^0\in B(x^\ast,\delta)$ erhält man damit und mit \cref{5.4} induktiv, dass der \propref{5_1_1} durchführbar ist und $\{x^k\}\subset B(x^\ast,\delta)$. Aus \cref{5.5} folgt daher die Konvergenz der Folge $\{x^k\}$ und \cref{5.3} für alle $k\in\natur$.
+\end{proof}
+
+Die Konvergenz der Folge $\{x^k\}$ gegen $x^\ast$ zusammen mit der Eigenschaft \cref{5.3} wird als \begriff{quadratische Konvergenz} der Folge $\{x^k\}$ gegen $x^\ast$ bezeichnet.
