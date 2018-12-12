@@ -1,1 +1,140 @@
 \section{Gedämpftes \person{Newton}-Verfahren}
+
+Es wird eine Möglichkeit zur Erreichung globaler Konvergenzeigenschaften des \person{Newton}-Verfahrens vorgestellt. Dazu verwenden wird die Funktion
+\begin{align}
+	\upphi(x): \begin{cases}
+		\real^n&\to \real \\
+		x&\mapsto \frac{1}{2}\Vert F(x)\Vert_2^2
+	\end{cases}\notag
+\end{align}
+zur Beurteilung der Güter der Näherung $x$. Falls $F'(x)$ regulär und $d(x)\in\real^n$ die \person{Newton}-Richtung im Punkt $x$ ist, das heißt die Gleichung $F(x)+F'(x)d=0$ löst, dann folgt
+\begin{align}
+	\label{5.6}
+	\upphi'(x)d(x) = F(x)^TF'(x)d(x) = F(x)^TF'(x)\left(-F'(x)^{-1}F(x)\right) = -2\upphi(x)< 0
+\end{align}
+und
+\begin{align}
+	\label{5.7}
+	\begin{split}
+		\upphi(x+td(x)) &= \upphi(x) + t\upphi'(x)d(x)+o(t) \\
+		&= \upphi(x) - 2t\upphi(x) + o(t) \\
+		&= (1-2t)\upphi(x) + o(t)
+	\end{split}
+\end{align}
+das heißt $\upphi(x+td(x))<\upphi(x)$ für alle $t>0$ hinreichend klein. Die \person{Newton}-Richtung $d(x)$ ist also eine Abstiegsrichtung von $\upphi$ im Punkt $x$. Die Idee besteht nun darin, eine Iteration der Form
+\begin{align}
+	x^{k+1} = x^k + t_kd^k\notag
+\end{align}
+durchzuführen, wobei $d^k=d(x^k)$ die \person{Newton}-Richtung im Punkt $x^k$ und $t_k>0$ eine Schrittweite ist, die so gewählt wird, dass zumindest $\upphi(x^{k+1})<\upphi(x^k)$ gilt. Zur Bestimmung einer geeigneten Schrittweite wird im folgenden Algorithmus die \person{Armijo}-Schrittweitenstrategie verwendet. Dazu sei
+\begin{align}
+	S = \left\lbrace 2^{-i}\mid i\in\natur\right\rbrace = \left\lbrace 1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right\rbrace \notag
+\end{align}
+
+\begin{algorithm}
+	\proplbl{5_2_1}
+	Input: $x^0\in\real^n$, $\epsilon\ge 0$, $q\in (0,1)$ und $F$ in geeigneter Form
+	\begin{lstlisting}
+k = 0
+do while %$\Vert F(x^k)\Vert>\epsilon$%
+ compute %$d^k$%
+ ! als Loesung von %$F'(x^k)d^k+F(x^k)=0$%
+ compute %$t_k$% = %$\max\{t\in S\mid 
+ \upphi(x^k+td^k)\le (1-qt)\upphi(x^k)\}$%
+ %$x^{k+1}$% = %$x^k$% + %$t_kd^k$%
+ k = k + 1
+end do
+	\end{lstlisting}
+	Output: $x^k$
+\end{algorithm}
+
+Zur Formulierung des folgenden Satzes wird die Niveaumenge
+\begin{align}
+	W(x_0) = \{x\in\real^n\mid \upphi(x) \le \upphi(x^0)\}\notag
+\end{align}
+benötigt.
+
+\begin{proposition}
+	Es sei $F:\real^n\to\real^n$ differenzierbar. Weiter sei $F':\real^n\to\real^{n\times n}$ lokal \person{Lipschitz}-stetig und $F'$ regulär für alle $x\in W(x^0)$. Dann ist der \propref{5_2_1} wohldefiniert. Falls die vom Algorithmus erzeugte Folge $\{x^k\}$ eine gegen $x^\ast$ konvergente Teilfolge besitzt, so gilt $F(x^\ast)=0$ und es gibt $k_0\in\natur$, so dass $t_k=1$ für alle $k\ge k_0$ (Übergang ins ungedämpfte \person{Newton}-Verfahren). Außerdem konvergiert $\{x^k\}$ dann Q-quadratisch gegen $x^\ast$.
+\end{proposition}
+\begin{proof}
+	Sei $x^k\in W(x^0)$. Dann folgt nach Voraussetzung die Regularität von $F'(x^k)$. Somit ist die \person{Newton}-Richtung $d^k=d(x^k)$ und (unter Beachtung von \cref{5.7}) die Schrittweite $t_k\in S$ wohldefiniert. Also gilt $\upphi(x^{k+1})<\upphi(x^k)$ und somit $x^{k+1}\in W(x^0)$. Die Wohldefiniertheit des Algorithmus folgt damit induktiv, da $x^0\in W(x^0)$. \\
+	Wir zeigen nun, dass $F(x^\ast)=0$. Sei $\delta>0$ zunächst beliebig gewählt. Mit \propref{5_0_1} und \cref{5.6} folgt
+	\begin{align}
+		\label{5.8}
+		\begin{split}
+			\upphi(x+td(x)) &= \upphi(x) + t\upphi'(x)d(x) + \int_0^1 \Big(\upphi'(x+std(x)) - \upphi'(x)\Big)td(x)\diff s \\
+			&= (1-2t)\upphi(x) + \int_0^1 \Big(\upphi'(x+std(x)) - \upphi'(x)\Big)td(x)\diff s
+		\end{split}
+	\end{align}
+	für alle $x\in B(x^\ast,\delta)$. Nach Voraussetzung sind $F$ und $F'$ stetig in $\real^n$. Wegen $x^\ast\in W(x^0)$ ist nach Voraussetzung $F'(x^\ast)$ regulär. Wir können damit $\delta>0$ klein genug voraussetzen, so dass die Abbildung $x\mapsto d(x)=-F'(x)^{-1}F(x)$ stetig in $B(x^\ast,\delta)$ ist. Daher gibt es $c>0$ mit 
+	\begin{align}
+		\label{5.9}
+		\Vert d(x)\Vert \le c\quad\forall x\in B(x^\ast,\delta)
+	\end{align}
+	Die lokale \person{Lipschitz}-Stetigkeit von $F'$ zieht die lokale \person{Lipschitz}-Stetigkeit von $\upphi'=F^TF'$ nach sich, das heißt es gibt ein $L>0$, so dass
+	\begin{align}
+		\label{5.10}
+		\Vert \upphi'(x) - \upphi'(y)\Vert \le L\Vert x-y\Vert\quad\forall x,y\in B(x^\ast,\delta)
+	\end{align}
+	Da zumindest eine Teilfolge $\{x^k\}_N$ von $\{x^k\}$ gegen $x^\ast$ konvergiert, gibt es wegen \cref{5.9} ein $\overline{t}>0$ und ein $k_0\in\natur$, so dass
+	\begin{align}
+		\label{5.11}
+		x^k, x^k+td(x^k)\in B(x^\ast,\delta)\quad\forall k\in N\text{ mit } k\ge k_0\text{ und alle } t\in [0,\overline{t}] 
+	\end{align}
+	Somit liefert \cref{5.8} unter Beachtung von \cref{5.9} und \cref{5.10}
+	\begin{align}
+		\upphi(x^k+td(x^k)) &= (1-2t) + \max\limits_{s\in [0,1]}\left\lbrace \Vert \upphi'(x^k+std(x^k)) - \upphi'(x^k)\Vert \right\rbrace t\Vert d(x^k)\Vert \notag\\
+		&= (1-2t)\upphi(x^k) + t^2Lc^2 \notag
+	\end{align}
+	für alle $t\in [0,\overline{t}]$ und alle $k\in N$ mit $k\ge k_0$. Um die Schrittweitenbedingung vom \propref{5_2_1} zu realisieren, muss $t_k$ als größtes Element aus $S$ bestimmt werden, so dass
+	\begin{align}
+		\upphi(x^k + t_kd(x^k)) \le (1-qt_k)\upphi(x^k)\notag
+	\end{align}
+	gilt. Daraus folgt dann für $k\in N$ und $k\ge k_0$
+	\begin{align}
+		t_k\ge \min\left\lbrace \overline{t},\frac{(2-q)\upphi'(x^k)}{2Lc^2}\right\rbrace \notag
+	\end{align}
+	Angenommen $\upphi(x^\ast)>0$. Dann zieht dies $\upphi(x^k)\ge \frac{1}{2}\upphi(x^\ast)$ für unendlich viele $k\in N$ nach sich. Also gilt
+	\begin{align}
+		t_k\ge \hat{t} = \min\left\lbrace \overline{t},\frac{(2-q)\upphi'(x^\ast)}{4Lc^2}\right\rbrace >0\notag
+	\end{align}
+	für unendlich viele $k\in N$. Da $\{\upphi(x^k)\}$ monoton fällt und unendlich oft
+	\begin{align}
+		\upphi(x^{k+1}) = \upphi(x^k+t_kd(x^k)) \le (1-qt_k)\upphi(x^k) \le (1-q\hat{t})\upphi(x^k)\notag
+	\end{align}
+	erfüllt ist, muss $\{\upphi(x^k)\}$ gegen 0 konvergieren. Die Stetigkeit von $\upphi$ zieht dann $\upphi(x^\ast)=0$ (und damit einen Widerspruch zur Annahme) nach sich. Also ist $x^\ast$ eine Nullstelle von $F$. \\
+	Nun wird der Übergang ins ungedämpfte ($t_k=1$) \person{Newton}-Verfahren gezeigt. Mit \propref{5_0_1} erhält man
+	\begin{align}
+		\label{5.12}
+		F(x^k+d^k) = F(x^k) + F'(x^k)d^k + \int_0^1 \Big(F'(x^k+sd^k) - F'(x^k)\Big)d^k\diff s
+	\end{align}
+	Mit den getroffenen Glattheits- und Regularitätsvoraussetzungen ist $F'(x)$ regulär für alle $x\in B(x^\ast,\delta)$ (für $\delta$ hinreichend klein) und es gibt Zahlen $L_0,M>0$, so dass
+	\begin{align}
+		\Vert F'(x) - F'(y)\Vert &\le L_0\Vert x-y\Vert \notag \\
+		\Vert F'(x)^{-1}\Vert &\le M\notag
+	\end{align}
+	für alle $x,y\in B(x^\ast,\delta)$ gilt. Für $k\in N$ hinreichend groß folgt (unter Beachtung von $F(x^k) + F'(x^k)d^k=0$)
+	\begin{align}
+		\label{5.13}
+		\Vert d^k\Vert \le \Vert F'(x^k)^{-1}\Vert\Vert F(x^k)\Vert \le M\Vert F(x^k)\Vert
+	\end{align}
+	und (unter Beachtung von $F(x^\ast)=0$ und $\lim_{k\in N}x^k=x^\ast$)
+	\begin{align}
+		\Vert F'(x^k+sd^k) - F'(x^k)\Vert \le L_0\Vert d^k\Vert\le L_0M\Vert F(x^k)\Vert\quad\forall s\in [0,1]\notag
+	\end{align}
+	Aus \cref{5.12} erhält man damit für $k\in N$ hinreichend groß
+	\begin{align}
+		\Vert F(x^k+d^k)\Vert \le\max\limits_{s\in [0,1]} \left\lbrace \Vert F'(x^k + sd^k) - F'(x^k)\Vert\right\rbrace \Vert d^k\Vert\le L_0M^2\Vert F(x^k)\Vert^2\notag
+	\end{align}
+	Wählt man $\delta>0$ auch so klein, dass $\Vert F(x)\Vert\le L_0^{-1}M^{-2}\sqrt{1-q}$ für alle $x\in B(x^\ast,\delta)$, dann folgt weiter
+	\begin{align}
+		\Vert F(x^k+d^k)\Vert \le \sqrt{1-q}\Vert F(x^k)\Vert\notag 
+	\end{align}
+	und damit
+	\begin{align}
+		\label{5.14}
+		\upphi(x^k+d^k) \le (1-q)\upphi(x^k)
+	\end{align}
+	Für $\delta>0$ hinreichend klein zieht also $x^k\in B(x^\ast,\delta)$ nach sich, dass $t_k=1$ und wegen \cref{5.13} auch dass $x^{k+1}=x^k+d^k\in B(x^\ast,\delta)$. \\
+	Da unendlich viele Iterierte der Folge $\{x^k\}$ in der Kugel $B(x^\ast,\delta)$ liegen, gilt \cref{5.14} für unendlich viele $k\in \natur$. Wegen $\upphi(x^{k+1})<\upphi(x^k)$ für alle $k\in\natur$, folgt $\lim_{k\to\infty}\upphi(x^k)=0$. Da $\upphi$ stetig ist, muss $x^\ast$ eine Nullstelle von $\upphi$ und damit von $F$ sein. \propref{5_1_3} liefert damit schließlich die Q-quadratische Konvergenz der Folge $\{x^k\}$ gegen $x^\ast$.
+\end{proof}
