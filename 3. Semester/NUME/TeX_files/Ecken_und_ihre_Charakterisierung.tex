@@ -1,1 +1,58 @@
 \section{Ecken und ihre Charakterisierung}
+
+\begin{definition}[konvex, konvexes Polyeder]
+	Eine Menge $G\subseteq\real^n$ heißt \begriff{konvex}, wenn
+	\begin{align}
+		\lambda x + (1-\lambda)y\in G
+	\end{align}
+	für beliebige $x,y,\lambda\in G\times G\times (0,1)$ gilt. Gilt mit gewissen $d\in\real^p$ und $C\in\real^{p\times n}$, dass
+	\begin{align}
+		G=\{x\in\real^n\mid Cx\le d\}\notag
+	\end{align}
+	so heißt $G$ \begriff{konvexes Polyeder}.
+\end{definition}
+
+\begin{definition}[Ecke]
+	Seien $G\subseteq\real^n$ und $z\in G$ gegeben. Dann heißt $z$ \begriff{Ecke} von $G$, wenn 
+	\begin{align}
+		\frac{1}{2}x + \frac{1}{2}y = z\Rightarrow x=y=z\notag
+	\end{align}
+	für alle $x,y\in G$ gilt.
+\end{definition}
+
+\begin{definition}[Basislösung]
+	Sei $\rang(A)=m$. Ein Vektor $\overline{x}$ mit $A\overline{x}=b$ heißt \begriff{Basislösung} von $G_P$, wenn es Indexmengen $B,N\subseteq I=\{1,...,n\}$ gibt so dass
+	\begin{itemize}
+		\item $B\cup N=I$, $B\cap N=\emptyset$ und $\vert B\vert =m$
+		\item $A_B$ regulär und
+		\item $\overline{x}_N=0$
+	\end{itemize}
+	Eine Basislösung $\overline{x}$ heißt \begriff[Basislösung!]{zulässig}, wenn weiterhin $\overline{x}\ge 0$ gilt.
+	
+	Eine zulässige Basislösung $\overline{x}$ wird \begriff[Basislösung!]{nicht entartet} genannt, wenn $\overline{x}_B>0$ (das heißt $\overline{x}_i>0$ für $i\in B$). Andernfalls, wenn ein $j\in B$ existiert mit $\overline{x}_j=0$, so heißt $\overline{x}$ \begriff[Basislösung!]{entartet}. Die zu $i\in B$ bzw. $i\in N$ gehörenden Variablen $x_i$ werden \begriff{Basisvariable} bzw. \begriff{Nichtbasisvariable} zur Basislösung $\overline{x}$ genannt.
+\end{definition}
+
+\begin{proposition}
+	Sei $\rang(A)=m$. Dann ist jede zulässige Basislösung von $G_P$ eine Ecke von $G_P$ und umgekehrt.
+\end{proposition}
+\begin{proof}
+	Sei $\overline{x}$ eine zulässige Basislösung von $G_P$. Falls $\overline{x}=\frac{1}{2}x+\frac{1}{2}y$ für $x,y\in G_P$ gilt, so folgt wegen $x,y\ge 0$ und $\overline{x}_N=0$, dass
+	\begin{align}
+		\label{6.3}
+		x_N=y_N=\overline{x}_N=0
+	\end{align}
+	Damit und wegen $\overline{x}\in G_P$ sowie der Regularität von $A_B$ erhält man weiter
+	\begin{align}
+		\label{6.4}
+		\begin{split}
+			b &= A\overline{x} = A_B\overline{x}_B + A_N\overline{x}_N = A_B\overline{x}_N \\
+			\overline{x}_B &= A^{-1}_Bb
+		\end{split}
+	\end{align}
+	Analog folgt $x_B=y_B=A^{-1}_Bb$. Also ist $\overline{x}_B=x_B=y_B$. Daher und wegen \cref{6.3} muss $\overline{x}$ Ecke von $G_P$ sein. \\
+	Sei nun $\overline{x}$ Ecke von $G_P$ und $\mathcal{P}=\{i\in I\mid \overline{x}_i>0\}$. Angenommen die Spalten der Matrix $A_\mathcal{P}$ sind linear abhängig. Dann gibt es einen Vektor $w\in\real^n\backslash\{0\}$ mit $w_{I\setminus\mathcal{P}}=0$ und $Aw=0$. Für
+	\begin{align}
+		x(t) = \overline{x} + tw\notag
+	\end{align}
+	folgt $Ax(t)=A\overline{x} + tAw=b$. Wegen $\overline{x}_\mathcal{P}>0$ ergibt sich $x_\mathcal{P}(t)\ge 0$ und damit $x(t)\ge 0$ für alle $t$ mit $\vert t\vert$ hinreichend klein. Also gibt es ein $\overline{t}>0$, so dass $x(-\overline{t}),x(\overline{t})\in G_P$. Da $x(-\overline{t})\neq x(\overline{t})$ und $\frac{1}{2}x(-\overline{t}) + \frac{1}{2}x(\overline{t})=\overline{x}$ widerspricht dies der Voraussetzung, dass $\overline{x}$ Ecke von $G_P$ ist. Folglich ist die Annahme falsch, das heißt die Spalten von $A_\mathcal{P}$ sind linear unabhängig. Falls $\vert \mathcal{P}\vert=m$, setzen wir $B=\mathcal{P}$. Andernfalls kann wegen $\rang(A)=m$ die Menge $\mathcal{P}$ durch Hinzunahme von Indizes aus $I\setminus \mathcal{P}$ so zu $B$ ergänzt werden, dass die Spalten der Matrix $A_B$ linear unabhängig sind. Mit $N=I\setminus B$ sieht man, dass $\overline{x}$ alle Eigenschaften einer zulässigen Basislösung besitzt.
+\end{proof}
