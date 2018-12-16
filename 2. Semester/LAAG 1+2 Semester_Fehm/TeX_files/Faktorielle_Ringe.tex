@@ -25,8 +25,8 @@ Sei $R$ nullteilerfrei.
 	\emph{Behauptung:} $I=\bigcup_{n=1}^\infty I_n$ ist wieder ein Ideal von $R$. \\
 	\emph{Beweis:} schon in den Übungen zum Teil behandelt, aber hier noch mal kurz bewiesen
 	\begin{itemize}
-		\item $i\in I$, $r\in R\Rightarrow x\in I_n$ für ein $n\overset{I_n\unlhd}{\Rightarrow} rx\in I_n\subseteq I$
-		\item $x,y\in I\Rightarrow x\in I_n,y\in I_m$ mit $n,m\in\natur\overset{\text{Kette}}{\Rightarrow} x+y\in I_k\subseteq$ mit $k=\max\{n,m\}$
+		\item $i\in I$, $r\in R\Rightarrow x\in I_n$ für ein $n\xRightarrow{I_n\text{ Ideal}} rx\in I_n\subseteq I$
+		\item $x,y\in I\Rightarrow x\in I_n,y\in I_m$ mit $n,m\in\natur\xRightarrow{Kette} x+y\in I_k\subseteq$ mit $k=\max\{n,m\}$
 	\end{itemize}
 	Da $R$ Hauptidealring ist, ist somit $I=(x)$ für ein $x\in R$. Mit $I=\bigcup_{n\in\natur} I_n$ folgt $x\in I_n$ für ein $n$, und somit $(x)\subseteq I_n\subseteq I_m\subseteq I=(x)$, für $m\ge n$, also $I_n=I_m$.
 \end{proof}
@@ -43,7 +43,7 @@ Sei $R$ nullteilerfrei.
 \end{proof}
 
 \begin{*anmerkung}
-	Es gilt also euklidisch $\Rightarrow$ Hauptidealring $\Rightarrow$ faktoriell.
+	Es gilt also euklidisch $\subseteq$ Hauptidealring $\subseteq$ faktoriell.
 \end{*anmerkung}
 
 \begin{lemma}
