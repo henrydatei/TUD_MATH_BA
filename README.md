@@ -46,7 +46,7 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 - Tutoriumsaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
-Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Karl Leo) und **Experimentalphysik 1** (Prof. Dr.  ??)
+Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Karl Leo) und **Experimentalphysik 1** (Prof. Dr.  ??) der TU Dresden
 
 ### Theoretische Mechanik (SS2018)
 - Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
