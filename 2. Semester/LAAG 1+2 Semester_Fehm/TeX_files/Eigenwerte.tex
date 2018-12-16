@@ -1,11 +1,11 @@
-In diesem Kapitel seien $K$ ein Körper, $n\in\natur$ eine natürliche Zahl, $V$ ein $n$-dimensionaler $K$-VR und $f\in\End_K(V)$ ein Endomorphismus.
+In diesem Kapitel seien $K$ ein Körper, $n\in\natur$ eine natürliche Zahl, $V$ ein $n$-dimensionaler $K$-Vektorraum und $f\in\End_K(V)$ ein Endomorphismus.
 
 Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Basen zu finden, für die $M_B(f)$ eine besonders einfache oder kanonische Form hat.
 
 \section{Eigenwerte}
 
 \begin{remark}
-	Wir erinnern uns daran, dass $\End_K(V)=\Hom_K(V,V)$ sowohl einen $K$-VR als auch einen Ring bildet. Bei der Wahl einer Basis $B$ von $V$ wird $f\in\End_K(V)$ durch die Matrix $M_B(f)=M_B^B(f)$ beschrieben.	
+	Wir erinnern uns daran, dass $\End_K(V)=\Hom_K(V,V)$ sowohl einen $K$-Vektorraum als auch einen Ring bildet. Bei der Wahl einer Basis $B$ von $V$ wird $f\in\End_K(V)$ durch die Matrix $M_B(f)=M_B^B(f)$ beschrieben.	
 \end{remark}
 
 \begin{example}
@@ -34,7 +34,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \end{definition}
 
 \begin{remark}
-	Für jedes $\lambda\in K$ ist $\Eig (f,\lambda)$ ein UVR von $V$, da
+	Für jedes $\lambda\in K$ ist $\Eig (f,\lambda)$ ein Untervektorraum von $V$, da
 	\begin{align}
 		\Eig (f,\lambda) &= \{x\in V\mid f(x)=\lambda x\} \notag \\
 		&= \{x\in V\mid f(x)-\lambda\cdot\id_V(x)=0\} \notag \\
@@ -49,28 +49,28 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \end{remark}
 
 \begin{example}
-	Ist $A=\diag(\lambda_1,...,\lambda_n)$ und $f=f_A\in\End_K(K^n)$, so sind $\lambda_1,...,\lambda_n$ EW von $f$ und jedes $e_i$ ist ein EV zum EW $\lambda_i$.
+	Ist $A=\diag(\lambda_1,...,\lambda_n)$ und $f=f_A\in\End_K(K^n)$, so sind $\lambda_1,...,\lambda_n$ Eigenwerte von $f$ und jedes $e_i$ ist ein Eigenvektor zum Eigenwert $\lambda_i$.
 \end{example}
 
 \begin{proposition}
 	\proplbl{satz_diagonal_ev}
-	Sei $B$ eine Basis von $V$. Genau dann ist $M_B(f)$ eine Diagonalmatrix, wenn $B$ aus EV von $f$ besteht.
+	Sei $B$ eine Basis von $V$. Genau dann ist $M_B(f)$ eine Diagonalmatrix, wenn $B$ aus Eigenvektoren von $f$ besteht.
 \end{proposition}
 \begin{proof}
-	Ist $B=(x_1,...x_n)$ eine Basis aus EV zu EW $\lambda_1,....,\lambda_n$, so ist $M_B(f)= \diag(\lambda_1,...,\lambda_n)$ und umgekehrt.
+	Ist $B=(x_1,...x_n)$ eine Basis aus Eigenvektoren zu Eigenwerten $\lambda_1,....,\lambda_n$, so ist $M_B(f)= \diag(\lambda_1,...,\lambda_n)$ und umgekehrt.
 \end{proof}
 
 \begin{example}
 	Sei $K=\real$, $V=\real^2$ und $f_{\alpha}\in\End_K(\real^2)$ die Drehung um den Winkel $\alpha\in [0,2\pi)$ \\
 	\[\Rightarrow M_{\mathcal{E}}(f_{\alpha})=\begin{pmatrix}\cos(\alpha)&-\sin(\alpha) \\ \sin(\alpha) & \cos(\alpha)\end{pmatrix}\]
-	Für $\alpha=0$ hat $f_{\alpha}=\id_{\real^2}$ nur den EW 1. \\
-	Für $\alpha=\pi$ hat $f_{\alpha}=-\id_{\real^2}$ nur den EW -1. \\
-	Für $\alpha\neq 0,\pi$ hat $f_{\alpha}$ keine EW. %TODO figure
+	Für $\alpha=0$ hat $f_{\alpha}=\id_{\real^2}$ nur den Eigenwert 1. \\
+	Für $\alpha=\pi$ hat $f_{\alpha}=-\id_{\real^2}$ nur den Eigenwert -1. \\
+	Für $\alpha\neq 0,\pi$ hat $f_{\alpha}$ keine Eigenwerte. %TODO figure
 \end{example}
 
 \begin{lemma}
 	\proplbl{lemma_EW_lin_unabh}
-	Sind $\lambda_1,...,\lambda_n$ paarweise verschiedene EW von $f$ und ist $x_i$ ein EV zu $\lambda_i$ für $i=1,...,m$, so ist $(x_1,...,x_m)$ linear unabhängig.
+	Sind $\lambda_1,...,\lambda_n$ paarweise verschiedene Eigenwerte von $f$ und ist $x_i$ ein Eigenvektor zu $\lambda_i$ für $i=1,...,m$, so ist $(x_1,...,x_m)$ linear unabhängig.
 \end{lemma}
 \begin{proof}
 	Induktion nach $m$\\
@@ -94,8 +94,8 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 	o. E. seien $z_i\neq 0$ für $i=1,...,r$ und $z_i=0$ für $i=r+1,...,m$. Wäre $r>0$, so wären $(z_1,...,z_r)$ linear abhängig, aber $z_i=x_i-y_i\in\Eig(f,\lambda_i)\backslash\{0\}$, im Widerspruch zu \propref{lemma_EW_lin_unabh}. Somit ist $x_i=y_i$ für alle $i$ und folglich ist die Summe $\sum\Eig(f,\lambda_i)$ direkt.
 \end{proof}
 
-\begin{definition}[EW und EV für Matrizen]
-	Sei $A\in\Mat_n(K)$. Man definiert Eigenwerte, Eigenvektoren, etc von $A$ als Eigenwerte, Eigenvektoren von $f_A\in\End_K(K^n)$.
+\begin{definition}[Eigenwerte und Eigenvektoren für Matrizen]
+	Sei $A\in\Mat_n(K)$. Man definiert Eigenwerte, Eigenvektoren, etc. von $A$ als Eigenwerte, Eigenvektoren von $f_A\in\End_K(K^n)$.
 \end{definition}
 
 \begin{mathematica}[Eigenwerte und Eigenvektoren]
@@ -108,7 +108,7 @@ Das Ziel dieses Kapitels ist, die Geometrie von $f$ besser zu verstehen und Base
 \end{mathematica}
 
 \begin{proposition}
-	Sei $B$ eine Basis von $V$ und $\lambda\in K$. Genau dann ist $\lambda$ ein EW von $f$, wenn $\lambda$ ein EW von $A=M_B(f)$ ist. Insbesondere haben ähnliche Matrizen die selben EW.
+	Sei $B$ eine Basis von $V$ und $\lambda\in K$. Genau dann ist $\lambda$ ein Eigenvektor von $f$, wenn $\lambda$ ein Eigenwert von $A=M_B(f)$ ist. Insbesondere haben ähnliche Matrizen die selben Eigenwerte.
 \end{proposition}
 \begin{proof}
 	Dies folgt aus dem kommutativen Diagramm

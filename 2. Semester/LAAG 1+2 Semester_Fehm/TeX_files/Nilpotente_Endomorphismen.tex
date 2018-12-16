@@ -6,7 +6,7 @@
 		\item $f\{0\}=\Ker(f^0)\subseteq \Ker(f^1)\subseteq \Ker(f^2)\subseteq ...$
 		\item $V=\Image(f^0)\supseteq \Image(f^1)\supseteq \Image(f^2)\supseteq ...$
 	\end{itemize}
-Folgen von UVR von $V$. Nach der Kern-Bild-Formel \propref{3_7_13}III.7.13 ist
+Folgen von Untervektorräumen von $V$. Nach der Kern-Bild-Formel \propref{3_7_13}III.7.13 ist
 \begin{align}
 	\dim_K(\Ker(f^i))+\dim_K(\Image(f^i))=\dim_K(V)\quad\forall i\notag
 \end{align}
@@ -25,7 +25,7 @@ Da $\dim_K(V)=n<\infty$ gibt es ein $d$ mit $\Ker(f^d)=\Ker(f^{d+i})$ und $\Imag
 
 \begin{lemma}
 	\proplbl{lemma_6_3}
-	Seien $f,g\in\End_K(V)$. Wenn $f$ und  $g$ kommutieren, d.h. $f\circ g=g\circ f$, so sind die UVR $\Ker(g)$ und $\Image(g)$ $f$ invariant.
+	Seien $f,g\in\End_K(V)$. Wenn $f$ und  $g$ kommutieren, d.h. $f\circ g=g\circ f$, so sind die Untervektorräume $\Ker(g)$ und $\Image(g)$ $f$ invariant.
 \end{lemma}
 \begin{proof}
 	Ist $x\in\Ker(f)$, so ist $g(f(x))=f(g(x))=f(0)=0$, also $f(x)\in\Ker(g)$. Für $g(x)\in\Image(g)$ ist $f(g(x))=g(f(x))\in\Image(g)$.
@@ -38,7 +38,7 @@ Da $\dim_K(V)=n<\infty$ gibt es ein $d$ mit $\Ker(f^d)=\Ker(f^{d+i})$ und $\Imag
 		\{0\}&=V_0\subsetneq V_1\subsetneq ...\subsetneq V_d=V_{d+1}=...\notag \\
 		V&= W_0\supsetneq W_1\supsetneq ... \supsetneq W_d=W_{d+1}=...\notag
 	\end{align}
-	Folgen $f$-invarianter UVR und $V=V_d\oplus W_d$.
+	Folgen $f$-invarianter Untervektorräume und $V=V_d\oplus W_d$.
 \end{proposition}
 \begin{proof}
 	Da $f^i$ und $f^j$ für beliebige $i,j$ kommutieren, sind $V_i$ und $V_j$ nach \propref{lemma_6_3} $f$-invariant für jedes $i$. Aus $\dim_K(V_i)+\dim_K(W_i)=n$ folgt $d=\min\{i\mid W_i=W_{i+1}\}$, insbesondere ist $\Image(f^d)=\Image(f^{d+1})=f(\Image(f^d))$, somit $W_{d+i}=\Image(f^{d+i})=W_d$ für $i\ge 0$, also auch $V_d=V_{d+i}$ für alle $i\ge 0$. \\

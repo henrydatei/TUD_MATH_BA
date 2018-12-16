@@ -1,7 +1,7 @@
 \section{Die \person{Jordan}-Normalform}
 
 \begin{definition}[Hauptraum]
-	Der \begriff{Hauptraum} von $f$ zum EW $\lambda$ der Vielfachheit $r=\mu_a(f,\lambda)$ ist
+	Der \begriff{Hauptraum} von $f$ zum Eigenwert $\lambda$ der Vielfachheit $r=\mu_a(f,\lambda)$ ist
 	\begin{align}
 		\Hau(f,\lambda)=\Ker\Big( (f-\lambda\id_V)^r\Big) \notag
 	\end{align}
@@ -9,7 +9,7 @@
 
 \begin{lemma}
 	\proplbl{lemma_7_2}
-	$\Hau(f,\lambda)$ ist ein $f$-invarianter UVR der Dimension $\dim_K(\Hau(f,\lambda))= \mu_a(f,\lambda)$, auf dem $f-\lambda\id_V$ nilpotent ist und $\chi_{f\vert_{\Hau(f,\lambda)}}= (t-\lambda)^{\mu_a(f,\lambda)}$
+	$\Hau(f,\lambda)$ ist ein $f$-invarianter Untervektorraum der Dimension $\dim_K(\Hau(f,\lambda))= \mu_a(f,\lambda)$, auf dem $f-\lambda\id_V$ nilpotent ist und $\chi_{f\vert_{\Hau(f,\lambda)}}= (t-\lambda)^{\mu_a(f,\lambda)}$
 \end{lemma}
 \begin{proof}
 	$f$ kommutiert sowohl mit $f$ als auch mit $\id_V$, somit auch mit $(f-\lambda\id_V)^r$. Die $f$-Invarianz von $U=\Hau(f,\lambda)$ folgt aus \propref{lemma_6_3}. Nach \propref{folgerung_6_9} ist $\dim_K(U)=\mu_a(f-\lambda\id_V,0)$ und da $\chi_f(t)=\chi_{f-\lambda\id_V}(t-\lambda)$ ist $\mu_a(f,\lambda)=\mu(\chi_f,\lambda)= \mu_a(f-\lambda\id_V,0)$. Da $f-\lambda\id_V\vert_U$ nilpotent ist $\chi_{f-\lambda\id_V\vert_U}(t)= t^r$, somit $\chi_{f\vert_U}(t)=(t-\lambda)^r$.
@@ -17,12 +17,12 @@
 
 \begin{proposition}[Hauptraumzerlegung]
 	\proplbl{satz_7_3}
-	Ist $\chi_f(t)=\prod_{i=1}^m (t-\lambda_i)^{r_i}$ mit $\lambda_1,...,\lambda_m\in K$ paarweise verschieden und $r_1,...,r_m\in\natur$, so ist $V=\bigoplus_{i=1}^m V_i$ mit $V_i=\Hau(f,\lambda_i)$ eine Zerlegung in $f$-invariante UVR und für jedes $i$ ist $\chi_{f\vert_{V_i}}(t)=(t-\lambda_i)^{r_i}$.
+	Ist $\chi_f(t)=\prod_{i=1}^m (t-\lambda_i)^{r_i}$ mit $\lambda_1,...,\lambda_m\in K$ paarweise verschieden und $r_1,...,r_m\in\natur$, so ist $V=\bigoplus_{i=1}^m V_i$ mit $V_i=\Hau(f,\lambda_i)$ eine Zerlegung in $f$-invariante Untervektorräume und für jedes $i$ ist $\chi_{f\vert_{V_i}}(t)=(t-\lambda_i)^{r_i}$.
 \end{proposition}
 \begin{proof}
 	Induktion nach $m$.\\
 	\emph{$m=1$}: $r_1=n\overset{\propref{lemma_7_2}}{\Rightarrow} V=V_1$.\\
-	\emph{$m-1\to m$}: Nach \propref{satz_6_4} ist $V=V_1\oplus W_1$ mit $W_1=\Image((f-\lambda_i\id_V)^r)$ eine Zerlegung in $f$-invariante UVR mit $\dim_K(V_1)=r_1$, $\dim_K(W_1)=n-r_1$. Somit ist $\chi_f=\chi_{f\vert_{V_1}}\cdot \chi_{f\vert_{W_1}}$ und $\chi_{f\vert_{V_1}}\overset{\propref{lemma_7_2}}{=}(t-\lambda_1)^{r_1}$ also $\chi_{f\vert_{W_1}}=\prod_{i=2}^m (t-\lambda_i)^{r_i}$. Nach I.H. ist also $W_1=\bigoplus_{i=2}^m \Hau(f\vert_{W_1},\lambda_i)$. Es ist für $i\ge 2$ $\Hau(f\vert_{W_1},\lambda_i)\subseteq\Hau(f,\lambda_i)=V_i$ und da $\dim_K(\Hau(f\vert_{W_1},\lambda_i))=r_i=\dim_K(\Hau(f,\lambda_i))$ gilt Gleichheit. Damit ist
+	\emph{$m-1\to m$}: Nach \propref{satz_6_4} ist $V=V_1\oplus W_1$ mit $W_1=\Image((f-\lambda_i\id_V)^r)$ eine Zerlegung in $f$-invariante Untervektorräume mit $\dim_K(V_1)=r_1$, $\dim_K(W_1)=n-r_1$. Somit ist $\chi_f=\chi_{f\vert_{V_1}}\cdot \chi_{f\vert_{W_1}}$ und $\chi_{f\vert_{V_1}}\overset{\propref{lemma_7_2}}{=}(t-\lambda_1)^{r_1}$ also $\chi_{f\vert_{W_1}}=\prod_{i=2}^m (t-\lambda_i)^{r_i}$. Nach I.H. ist also $W_1=\bigoplus_{i=2}^m \Hau(f\vert_{W_1},\lambda_i)$. Es ist für $i\ge 2$ $\Hau(f\vert_{W_1},\lambda_i)\subseteq\Hau(f,\lambda_i)=V_i$ und da $\dim_K(\Hau(f\vert_{W_1},\lambda_i))=r_i=\dim_K(\Hau(f,\lambda_i))$ gilt Gleichheit. Damit ist
 	\begin{align}
 		V&=V_1\oplus W_1 \notag\\
 		&=V_1\oplus\bigoplus_{i=2}^m\Hau(f\vert_{W_1},\lambda_i)\notag \\
@@ -58,7 +58,7 @@
 	Die Paare $(\mu_1,k_1),...,(\mu_r,k_r)$ heißen die \begriff{\person{Jordan}-Invarianten} von $f$ und sind bis auf Reihenfolge eindeutig bestimmt.
 \end{theorem}
 \begin{proof}
-	Schreibe $\chi_f(t)=\prod_{i=1}^m (t-\lambda_i)^{r_i}$ mit $\lambda_1,...,\lambda_m\in K$ paarweise verschieden, $r_i\in\natur$. Sei $V_i=\Hau(f,\lambda_i)$. Nach \propref{satz_7_3} ist $V=\bigoplus_{i=1}^m V_i$ eine Zerlegung in $f$-invariante UVR. Für jedes $i$ wenden wir \propref{satz_6_13} auf $(f-\lambda_i\id_V)\vert_{V_i}$ an und erhalten eine Basis $B_i$ von $V_i$ und $k_{i,1}\ge ...\ge k_{i,s_i}$ mit 
+	Schreibe $\chi_f(t)=\prod_{i=1}^m (t-\lambda_i)^{r_i}$ mit $\lambda_1,...,\lambda_m\in K$ paarweise verschieden, $r_i\in\natur$. Sei $V_i=\Hau(f,\lambda_i)$. Nach \propref{satz_7_3} ist $V=\bigoplus_{i=1}^m V_i$ eine Zerlegung in $f$-invariante Untervektorräume. Für jedes $i$ wenden wir \propref{satz_6_13} auf $(f-\lambda_i\id_V)\vert_{V_i}$ an und erhalten eine Basis $B_i$ von $V_i$ und $k_{i,1}\ge ...\ge k_{i,s_i}$ mit 
 	\begin{align}
 		M_B((f-\lambda_i\id)\vert_{V_i})=\diag(J_{k_{i,1}},...,J_{k_{i,s_i}})\notag
 	\end{align}
@@ -89,7 +89,7 @@
 \begin{conclusion}
 	Genau dann ist $f$ diagonalisierbar, wenn 
 	\begin{align}
-		\chi_f(t)&=\prod_{i=1}^m (t-^\lambda_i)^{r_i}\quad \lambda_1,...,\lambda_m\in K\text{ paarweise verscheiden und} \notag \\
+		\chi_f(t)&=\prod_{i=1}^m (t-\lambda_i)^{r_i}\quad \lambda_1,...,\lambda_m\in K\text{ paarweise verscheiden und} \notag \\
 		P_f(t) &= \prod_{i=1}^m (t-\lambda_i)\notag
 	\end{align}
 \end{conclusion}

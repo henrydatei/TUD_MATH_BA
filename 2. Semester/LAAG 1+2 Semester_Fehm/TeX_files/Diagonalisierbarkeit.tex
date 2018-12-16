@@ -12,15 +12,15 @@
 	\end{align}.
 \end{lemma}
 \begin{proof}
-	$(\Rightarrow)$: Ist $B$ eine Basis aus EV von $f$ (vgl. \propref{satz_diagonal_ev}), so ist $B\le \bigcup\limits_{\lambda\in K}\Eig(f,\lambda)$, also $V=\Span_K(\bigcup\limits_{\lambda\in K}\Eig(f, \lambda))=\sum_{\lambda\in K}\Eig(f,\lambda)$. \\
-	$(\Leftarrow)$: Ist $V=\sum_{\lambda\in K}\Eig(f,\lambda)$, so gibt es $\lambda_1,...,\lambda_n \in K$ mit $V=\sum_{i=1}^r \Eig(f,\lambda_i)$. Wir wählen Basen $B_i$ von $\Eig(f,\lambda_i)$. Dann ist $\bigcup\limits_{i=1}^r B_i$ ein endliches Erzeugendensystem von $V$, enthält also eine Basis von $V$ (\propref{2_3_6}). Diese besteht aus EV von $f$.
+	$(\Rightarrow)$: Ist $B$ eine Basis aus Eigenvektoren von $f$ (vgl. \propref{satz_diagonal_ev}), so ist $B\le \bigcup\limits_{\lambda\in K}\Eig(f,\lambda)$, also $V=\Span_K(\bigcup\limits_{\lambda\in K}\Eig(f, \lambda))=\sum_{\lambda\in K}\Eig(f,\lambda)$. \\
+	$(\Leftarrow)$: Ist $V=\sum_{\lambda\in K}\Eig(f,\lambda)$, so gibt es $\lambda_1,...,\lambda_n \in K$ mit $V=\sum_{i=1}^r \Eig(f,\lambda_i)$. Wir wählen Basen $B_i$ von $\Eig(f,\lambda_i)$. Dann ist $\bigcup\limits_{i=1}^r B_i$ ein endliches Erzeugendensystem von $V$, enthält also eine Basis von $V$ (\propref{2_3_6}). Diese besteht aus Eigenvektoren von $f$.
 \end{proof}
 
 \begin{proposition}
 	Ist $\dim_K(V)=n$, so hat $f$ höchstens $n$ Eigenwerte. Hat $f$ genau $n$ Eigenwerte, so ist $f$ diagonalisierbar.
 \end{proposition}
 \begin{proof}
-	Ist $\lambda$ ein EW von $f$, so ist $\dim_K(\Eig(f,\lambda))\ge 1$. Sind also $\lambda_1,...,\lambda_n$ paarweise verschiedene EW von $f$, so ist
+	Ist $\lambda$ ein Eigenwert von $f$, so ist $\dim_K(\Eig(f,\lambda))\ge 1$. Sind also $\lambda_1,...,\lambda_n$ paarweise verschiedene Eigenwerte von $f$, so ist
 	\begin{align}
 		n=\dim_K(V)&\ge \dim_K\left( \sum\limits_{i=1}^m \Eig(f,\lambda_i)\right) \notag \\
 		&\overset{\propref{satz_eig_direkte_summe}}{=} \dim_K\left( \bigoplus_{i=0}^{m} \Eig(f,\lambda_i)\right) \notag \\
@@ -67,7 +67,7 @@
 	Sind $P,Q,R\in K[t]$ mit $PQ=PR$, und ist $P\neq 0$, so ist $Q=R$.
 \end{lemma}
 \begin{proof}
-	$PQ=PR\Rightarrow P(Q-R)=0\overset{K[t]\text{ nullteilerfrei}}{\Rightarrow} Q-R=0$, d.h. $Q=R$.
+	$PQ=PR\Rightarrow P(Q-R)=0\xRightarrow{K[t]\text{ nullteilerfrei}} Q-R=0$, das heißt $Q=R$.
 \end{proof}
 
 \begin{lemma}

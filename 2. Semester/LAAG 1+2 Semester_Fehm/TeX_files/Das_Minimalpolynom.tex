@@ -8,7 +8,13 @@
 
 \begin{remark}
 	\proplbl{5_5_2}
-	Die Abbildung $\quad\begin{cases}K[t]\to \End_K(V)\\ P\mapsto P(f)\end{cases}$ ist ein Homomorphismus von $K$-VR und Ringen. Sein Kern ist das Ideal 
+	Die Abbildung
+	\begin{align}
+		\begin{cases}
+			K[t]\to \End_K(V)\\ P\mapsto P(f)
+		\end{cases}\notag
+	\end{align}
+	ist ein Homomorphismus von $K$-Vektorraum und Ringen. Sein Kern ist das Ideal 
 	\begin{align}
 		\mathcal{I}_f:=\{P\in K[t]\mid P(f)=0\}\notag
 	\end{align}
@@ -62,12 +68,12 @@
 \end{example}
 
 \begin{definition}[$f$-zyklisch]
-	Ein $f$-invarianter UVR $W\le V$ heißt $f$-\begriff{zyklisch}, wenn es ein $x\in W$ mit $W=\Span_K(x,f(x),f^2(x),...)$ gibt.
+	Ein $f$-invarianter Untervektorraum $W\le V$ heißt $f$-\begriff{zyklisch}, wenn es ein $x\in W$ mit $W=\Span_K(x,f(x),f^2(x),...)$ gibt.
 \end{definition}
 
 \begin{lemma}
 	\proplbl{lemma_5_8}
-	Sei $x\in V$ und $x_i=f^i(x)$. Es gibt ein kleinstes $k$ mit $x_k\in\Span_K(x_0,x_1,...,x_{k-1})$, und $W=\Span_K(x_0,...,x_{k-1})$ ein $f$-zyklischer UVR von $V$ mit Basis $B=(x_0,...,x_{k-1})$ und $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
+	Sei $x\in V$ und $x_i=f^i(x)$. Es gibt ein kleinstes $k$ mit $x_k\in\Span_K(x_0,x_1,...,x_{k-1})$, und $W=\Span_K(x_0,...,x_{k-1})$ ein $f$-zyklischer Untervektorraum von $V$ mit Basis $B=(x_0,...,x_{k-1})$ und $M_B(f\vert_W)=M_{\chi_{f\vert_W}}$.
 \end{lemma}
 \begin{proof}
 	Da $\dim_K(V)=n$ ist $(x_0,...,x_n)$ linear abhängig, es gibt also ein kleinstes $k$ mit $(x_0,...,x_{k-1})$ linear unabhängig, aber $(x_0,...,x_k)$ linear abhängig, folglich $x_k\in\Span_K(x_0,...,x_{k-1})$. Mit $x_k=f(x_{k-1})=\sum_{i=0}^{k-1}-c_ix_i$ ist dann 

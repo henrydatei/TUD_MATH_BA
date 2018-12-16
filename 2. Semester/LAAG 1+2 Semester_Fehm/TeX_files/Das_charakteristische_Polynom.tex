@@ -2,10 +2,10 @@
 
 \begin{proposition}
 	\proplbl{satz_det_null}
-	Sei $\lambda\in K$. Genau dann ist $\lambda$ ein EW von $f$, wenn $\det(\lambda\cdot\id_V-f)=0$.
+	Sei $\lambda\in K$. Genau dann ist $\lambda$ ein Eigenwert von $f$, wenn $\det(\lambda\cdot\id_V-f)=0$.
 \end{proposition}
 \begin{proof}
-	Da $\Eig(f,\lambda)=\Ker(\lambda\cdot\id_V-f)$ ist $\lambda$ genau dann ein EW von $f$, wenn $\dim_K(\Ker(\lambda\cdot\id_V-f))>0$, also wenn $\lambda\cdot\id_V-f\notin\Aut_K(V)$. Nach \propref{4_4_6} bedeutet dies, dass $\det(\lambda\cdot\id_V-f)=0$
+	Da $\Eig(f,\lambda)=\Ker(\lambda\cdot\id_V-f)$ ist $\lambda$ genau dann ein Eigenwert von $f$, wenn $\dim_K(\Ker(\lambda\cdot\id_V-f))>0$, also wenn $\lambda\cdot\id_V-f\notin\Aut_K(V)$. Nach \propref{4_4_6} bedeutet dies, dass $\det(\lambda\cdot\id_V-f)=0$
 \end{proof}
 
 \begin{definition}[charakteristisches Polynom]
@@ -54,7 +54,7 @@
 		\alpha_{n-1}&=-\tr(f) \notag \\
 		\alpha_0 &= (-1)^n\cdot\det(f) \notag
 	\end{align}
-	Die Nullstellen von $\chi_f$ sind genau die EW von $f$.
+	Die Nullstellen von $\chi_f$ sind genau die Eigenwerte von $f$.
 \end{proposition}
 \begin{proof}
 	Sei $B$ eine Basis von $V$ und $A=M_B(f)=(a_{ij})_{i,j}$. Wir erinnern uns daran, dass $\tr(f)=\tr(A=\sum_{i=1}^n a_{ii}$. Es ist $\chi_f(t)=\det(t-\cdot 1_n-A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i=1}^n (t\delta_{i,\sigma(i)}-a_{i,\sigma(i)})$. \\

@@ -87,7 +87,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 	\end{align}
 \end{proposition}
 \begin{proof}
-	Sei zunächst $\pr_U$ durch \cref{gl1} gegeben. Die Linearität von $\pr_U$ folgt aus (S1) und (S3). Für $u=\sum_{i=1}^k \lambda_i x_i\in U$ ist $\skalar{u}{x_j}=\skalar{\sum_{i=1}^k \lambda_i x_i}{x_j}=\sum_{i=1}^k \lambda_i\skalar{x_i}{x_j}=\lambda_j$, woraus $\pr_U(u)=u$. Somit ist $\pr_U\vert_U=\id_U$, und insbesondere ist $\pr_U$ surjektiv. Ist $\pr_U(x)=0$, so ist $\skalar{x}{x_i}=0$ für alle $i$., woraus mit (S2) und (S4) sofort $x\perp U$ folgt. Somit ist $\Ker(\pr_U)\perp U$. \\
+	Sei zunächst $\pr_U$ durch \cref{gl1} gegeben. Die Linearität von $\pr_U$ folgt aus (S1) und (S3). Für $u=\sum_{i=1}^k \lambda_i x_i\in U$ ist $\skalar{u}{x_j}=\skalar{\sum_{i=1}^k \lambda_i x_i}{x_j}=\sum_{i=1}^k \lambda_i\skalar{x_i}{x_j}=\lambda_j$, woraus $\pr_U(u)=u$. Somit ist $\pr_U\vert_U=\id_U$, und insbesondere ist $\pr_U$ surjektiv. Ist $\pr_U(x)=0$, so ist $\skalar{x}{x_i}=0$ für alle $i$, woraus mit (S2) und (S4) sofort $x\perp U$ folgt. Somit ist $\Ker(\pr_U)\perp U$. \\
 	Für $x\in V$ ist $\pr_U(x-\pr_U(x))=\pr_U(x)-\pr_U(\pr_U(x))=\pr_U(x)-\pr_U(x)=0$, also $x-\pr_U(x)\in\Ker(\pr_U)\subseteq U^\perp$. \\
 	Ist $f:V\to U$ ein weiterer Epimorphismus mit $f\vert_U=\id_U$ und $\Ker(f)\perp U$, so ist 
 	\begin{align}
@@ -103,7 +103,7 @@ Sei $V$ ein euklidischer bzw. unitärer Vektorraum.
 \begin{proof}
 	Induktion nach $d=n-k$. \\
 	\emph{$d=0$:} nichts zu zeigen \\
-	\emph{$d-1\to d$:} Für $i\neq k+1$ definiere $y_I=x_i$. Sei $U=\Span_K(x_1,...,x_k)$, $\tilde{x_{k+1}}=x_{k+1}-\pr_U(x_{k-1})$. Dann ist $\tilde{x_{k+1}}\in\Ker(\pr_U)\subseteq U^\perp$ (vgl. \propref{6_4_8}) und $\Span_K(x_1,...,x_k,\tilde{x_{k+1}})=\Span_K(x_1,...,x_{k+1})$. Setze $y_{k+1}=\frac{1}{\Vert \tilde{x_{k+1}}\Vert}\tilde{x_{k+1}}$. Dann ist $(y_1,...,y_n)$ eine Basis von $V$ mit $(y_1,...,y_{k+1})$ orthonormal (vgl. \propref{6_4_7}). Nach Induktionshypothese gibt es eine Orthonormalbasis von $V$, die das Gewünschte leistet.
+	\emph{$d-1\to d$:} Für $i\neq k+1$ definiere $y_i=x_i$. Sei $U=\Span_K(x_1,...,x_k)$, $\widetilde{x_{k+1}}=x_{k+1}-\pr_U(x_{k-1})$. Dann ist $\widetilde{x_{k+1}}\in\Ker(\pr_U)\subseteq U^\perp$ (vgl. \propref{6_4_8}) und $\Span_K(x_1,...,x_k,\widetilde{x_{k+1}})=\Span_K(x_1,...,x_{k+1})$. Setze $y_{k+1}=\frac{1}{\Vert \widetilde{x_{k+1}}\Vert}\widetilde{x_{k+1}}$. Dann ist $(y_1,...,y_n)$ eine Basis von $V$ mit $(y_1,...,y_{k+1})$ orthonormal (vgl. \propref{6_4_7}). Nach Induktionshypothese gibt es eine Orthonormalbasis von $V$, die das Gewünschte leistet.
 \end{proof}
 
 \begin{conclusion}
