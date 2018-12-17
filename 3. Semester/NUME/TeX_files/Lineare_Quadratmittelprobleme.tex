@@ -299,7 +299,7 @@ Eine Möglichkeit ein solches $x^\ast$ zu bestimmen ist die Lösung des Optimier
 Mit 
 \begin{align}
 	A = \begin{pmatrix}
-		\phi_1(t) & \dots & \phi_n(t_1) \\
+		\phi_1(t_1) & \dots & \phi_n(t_1) \\
 		\vdots && \vdots \\
 		\phi_1(t_m) & \dots & \phi_n(t_m)
 	\end{pmatrix} \quad\text{und}\quad b= \begin{henrysmatrix}
@@ -312,7 +312,7 @@ gilt $r(x)=\Vert ax-b\Vert_2^2$, man beachte $y_i-f(t_i,x)=y_i-\sum_{j=1}^n x_j\
 	Seien $m=3$ und $n=2$. Es seien $(t_1,y_1)=(0,1)$, $(t_2,y_2)=(3,8)$, $(t_3,y_3)=(4,10)$ und $\phi_1(t)=1$, $\phi_2(t)=t$ für $t\in\real$. Dann ist $f(t,x)=x_1+tx_2$, 
 	\begin{align}
 		A = \begin{pmatrix}
-			1 & 0 \\ 1 & 3 \\ 1 & 
+			1 & 0 \\ 1 & 3 \\ 1 & 4
 		\end{pmatrix}\quad\text{und}\quad b = \begin{henrysmatrix}
 			1 \\ 8 \\ 10
 		\end{henrysmatrix} \notag
