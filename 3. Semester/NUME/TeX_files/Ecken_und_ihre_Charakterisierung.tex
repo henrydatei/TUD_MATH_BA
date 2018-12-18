@@ -33,6 +33,7 @@
 \end{definition}
 
 \begin{proposition}
+	\proplbl{6_1_4}
 	Sei $\rang(A)=m$. Dann ist jede zulässige Basislösung von $G_P$ eine Ecke von $G_P$ und umgekehrt.
 \end{proposition}
 \begin{proof}
@@ -55,4 +56,30 @@
 		x(t) = \overline{x} + tw\notag
 	\end{align}
 	folgt $Ax(t)=A\overline{x} + tAw=b$. Wegen $\overline{x}_\mathcal{P}>0$ ergibt sich $x_\mathcal{P}(t)\ge 0$ und damit $x(t)\ge 0$ für alle $t$ mit $\vert t\vert$ hinreichend klein. Also gibt es ein $\overline{t}>0$, so dass $x(-\overline{t}),x(\overline{t})\in G_P$. Da $x(-\overline{t})\neq x(\overline{t})$ und $\frac{1}{2}x(-\overline{t}) + \frac{1}{2}x(\overline{t})=\overline{x}$ widerspricht dies der Voraussetzung, dass $\overline{x}$ Ecke von $G_P$ ist. Folglich ist die Annahme falsch, das heißt die Spalten von $A_\mathcal{P}$ sind linear unabhängig. Falls $\vert \mathcal{P}\vert=m$, setzen wir $B=\mathcal{P}$. Andernfalls kann wegen $\rang(A)=m$ die Menge $\mathcal{P}$ durch Hinzunahme von Indizes aus $I\setminus \mathcal{P}$ so zu $B$ ergänzt werden, dass die Spalten der Matrix $A_B$ linear unabhängig sind. Mit $N=I\setminus B$ sieht man, dass $\overline{x}$ alle Eigenschaften einer zulässigen Basislösung besitzt.
+\end{proof}
+
+\begin{proposition}
+	Sei $G_P\neq 0$. Dann besitzt $G_P$
+	\begin{enumerate}[label=(\alph*)]
+		\item mindestens eine Ecke
+		\item  höchstens endlich viele Ecken
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	O.B.d.A. kann man zunächst $\rang(A)=m$ annehmen.
+	\begin{enumerate}[label=(\alph*)]
+		\item Zum Selbststudium empfohlen.
+		\item $G_P$ besitzt höchstens endlich viele zulässige Basislösungen (und damit nach \propref{6_1_4} höchstens endlich viele Ecken), da es maximal $\binom{n}{m}$ Teilmengen der Menge $I$ mit Kardinalität $m$ gibt, die als Indexmenge $B$ in Frage kommen (und für jede dieser Indexmengen $B$ gibt es höchstens eine Basislösung).
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Falls die Optimierungsaufgabe \cref{6.2} lösbar ist, dann gibt es eine Ecke $\overline{x}$ von $G_P$, die \cref{6.2} löst.
+\end{proposition}
+\begin{proof}
+	O.B.d.A. kann $\rang(A)=m$ angenommen werden. Sei $\mathcal{P}(x) = \{i\in I\mid x_i>0\}$. Unter allen Lösungen der Optimierungsaufgabe \cref{6.2} wähle man eine Lösung $\overline{x}$ so, dass $\mathcal{P}=\mathcal{P}(\overline{x})$ die minimal mögliche Anzahl von Elementen aufweist. 
+	\begin{itemize}
+		\item Falls die Matrix $A_\mathcal{P}$ Vollrang hat, so kann $\mathcal{P}$ erforderlichenfalls so durch geeignete Indizes aus $I\setminus\mathcal{P}$ zu $B$ ergänzt werden, dass $A_B$ dann regulär und $\overline{x}$ damit zulässige Basislösung (das heißt Ecke von $G_P$) ist.
+		\item Angenommen $A_\mathcal{P}$ besitzt keinen Vollrang. Dann gibt es ein $w\in\real^n\backslash\{0\}$ mit $w_{I\setminus\mathcal{P}}=0$ und $Aw=0$. Ähnlich wie im Beweis von \propref{6_1_4} erhält man ein $\overline{t}\in\real$, so dass $x(-\overline{t}),x(\overline{t})\in G_P$, $x_{I\setminus\mathcal{P}}=0$ und $x_i(\overline{t})=0$ für ein $i\in\mathcal{P}$. Auf Grund der Minimaleigenschaft von $\overline{x}$ gilt $c^T\overline{x}\le c^T(\overline{x}+tw)$ für $t\in\{-\overline{t},\overline{t}\}$ und es folgt $c^Tw=0$. Dies liefert $c^Tx(\overline{t})=c^T(\overline{x}+w\overline{t})=c^T\overline{x}$. Folglich ist $\overline{x}$ eine Lösung der Optimierungsaufgabe \cref{6.2} mit weniger als $\vert\mathcal{P}\vert$ Nullelementen. Dies widerspricht der Auswahl von $\overline{x}$.
+	\end{itemize}
 \end{proof}
