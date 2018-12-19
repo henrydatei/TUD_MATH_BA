@@ -3,14 +3,152 @@
 Sei $R$ ein Ring.
 
 \begin{definition}[teilerfremd]
-	Zwei Ideale $I,J \properideal R$ heißen \begriff{teilerfremd}, wenn $I+J = R$.
+	Zwei Ideale $I,J \unlhd R$ heißen \begriff{teilerfremd}, wenn $I+J = R$.
 \end{definition}
 
 \begin{example}
+	\proplbl{3_3_2}
 	\begin{enumerate}
 		\item Sei $R = \whole$, $n,m \in \whole$
 			\begin{itemize}
 				\item $(n) \cap (m) = (\kgV(n,m))$
+				\item $(n) \cdot (m) = (\ggT(n,m))$ (LAAG VIII 3.8) oder (I.4.3) %(\propref{1_4_3}) 
+				%TODO last reference isnt working, cos we need I.4.3, now we only have Lemma 4.3, which is BS!
 			\end{itemize}
+		Insbesondere sind $(n)$ und $(m)$ genau dann teilerfremd, wenn $(\ggT(n,m) = (1))$, also wenn $n$ und $m$ teilerfremd sind.
+		\item Sind $I,J \unlhd R$ maximal und voneinander verschieden, so auch teilerfremd.
 	\end{enumerate}
 \end{example}
+
+\begin{theorem}[Chinesischer Restsatz]
+	\proplbl{3_3_3}
+	Sind $I_1, \dots , I_k \unlhd R$ paarweise teilerfremd, so induzieren die Abbildungen
+	\begin{align}
+		\pi_i = \pi_{I_i} : R \to R/ I_i\notag
+	\end{align}
+	einen Isomorphismus
+	\begin{align}
+		\bar{\pi}: R/ \bigcap_{i=1}^{k} I_i \overset{\cong}{\to} \prod_{i=1}^{k} R/I_i \notag
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	Wende Homomorphiesatz an auf
+	\begin{align}
+	\pi: \begin{cases}
+	R &\to \prod_{i=1}^{n} R/I_i \\
+	x &\mapsto (\pi_1(x), \dots, \pi_n(x))
+	\end{cases} \notag
+	\end{align}
+	\begin{itemize}
+		\item $\Ker(\pi) = \bigcap_{i=1}^{k}\Ker(\pi_i) = \bigcap_{i=1}^{k} I_i$
+		\item $\pi$ ist surjektiv: Sei $y=(y_1, \dots, y_k) \in \prod_{i=1}^{k} R/I_i$. Für $i = 1,\dots,k$ wähle $x_i \in R$ mit $\pi_i(x) = y_i$. Fixiere ein $I$. Für $j \neq i$ ist $I_i + I_j = R$. Insbesondere existiert $a_j \in I_i$ und $b_j \in I_j$ mit $a_j + b_j = 1$. Setze $e_i = \prod_{j\neq i} b_j \in R$.
+		\begin{align}
+		\pi_{\nu}(e_i) = \prod_{j \neq i} \pi_{\nu}(b_j) = \begin{cases}
+		\prod_{j\neq i} \pi_i(1-a_j) \overset{(\ast)}{=} 1 & \nu = 1\\
+		\underbrace{\pi_{\nu}(b_{\nu})}_{=0}\prod_{\substack{j\neq i \\ j \neq \nu}} \pi_{\nu}(b_j) = 0 & \nu \neq i
+		\end{cases}\notag %TODO make the case clear when j \neq \nu!!! also what means the (*) over the equal sign?!
+		\end{align}
+		Für $x = \sum_{i=1}^{k}x_i \cdot e_i$ ist 
+		\begin{align}
+			\pi_{\nu}(x) = \sum_{i=1}^{k} \pi_{\nu}(x_i)\cdot\pi_{\nu}(e_i) = \pi_{\nu}(e_i) = y_{\nu} \notag
+		\end{align}
+		somit $\pi(x) = (\pi_1(x), \dots, \pi_k(x)) = (y_1, \dots, y_k)$. 
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{3_3_4}
+	Sind $u_1, \dots, u_k \in \natur$ paarweise teilerfremd, und $n = n_1\cdot n_2 \cdots n_k$, so ist
+	\begin{align}
+		\whole / n\whole &\cong \whole / n_1 \whole \times \cdots \times \whole / n_k \whole \notag \\
+		(\whole / n\whole)^{\times} &\cong (\whole / n_1 \whole)^{\times} \times \cdots \times (\whole / n_k \whole)^{\times} \notag
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	Sei $n = n_1 \cdot n_k = \kgV(n_1,\dots,n_k)$ \\
+	$\xRightarrow{\propref{3_3_2}} (n) = \bigcap_{i=1}^{n} (n_i)$\\
+	$\xRightarrow[\propref{3_3_2}]{\propref{3_3_3}} \whole / (n) \cong \prod_{i=1}^{k} \whole / (n_1)$\\
+	und die andere Aussage folgt mit \propref{3_1_8}. 
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}
+		\item Insbesondere gilt: Sind $n_1,\dots,n_k \in \natur$ paarweise teilerfremd und $n=n_1\cdots n_k$, so hat das System von Kongruenzen
+		\begin{align}
+			x &= x_1 \mod n_1 \notag \\
+			&\vdots \notag \\
+			x & = x_k \mod n_k \notag
+		\end{align}
+		für jede Wahl von $x_1, \dots, x_k \in \whole$ eine eindeutig bestimmte Lösung $x \in \{ 0, \dots, n-1 \}$, und die anderen Lösungen in $\whole$ sind genau die Zahlen der Form $x +nm$ nur mit $m \in \whole$.
+		\item Der Beweis liefert ein Verfahren, um $x$ zu bestimmen (modulo erweiterter euklidischer Algorithmus).
+		\item Es folgt auch: Sind $n,m$ teilerfremd, so ist $C_{nm} \cong C_n \times C_m$.
+		\item Die Vorraussetzung der Teilerfremdheit ist hier notwendig, so ist z.B. $C_4 \not \cong C_2 \times C_2$.
+	\end{enumerate}
+\end{remark}
+
+\begin{erinnerung}
+	\begin{align}
+		\varphi(n) = \#(\whole / n \whole)^{\times}\notag
+	\end{align}
+	Für $n = p$ Primzahl: $\varphi(p) = p-1$ und $(\whole/p \whole)^{\times} \cong C_{p-1}$ (vgl \propref{1_4_14}). Es ist %TODO fix references in other chapters, thats not usefull :/
+	\begin{align}
+		(\whole / n \whole)^{\times} &= \{ \bar{k} \mid \exists \bar{m} \in \whole\colon \bar{m}\cdot \bar{k} = \bar{1}\} \notag\\
+		&= \{ \bar{k} \mid \bar{1} \in \langle \bar{k} \rangle \} \notag\\
+		&= \{ \bar{k} \mid \ord{\whole / n \whole}(\bar{k}) = n \} \notag\\
+		&\overset{\propref{1_4_5}}{=} \{\bar{k} \mid \ggT(k,n) = 1\}\notag 
+	\end{align}
+\end{erinnerung}
+
+\begin{proposition}
+	Seien $n,m \in \natur$
+	\begin{enumerate}
+		\item Ist $\ggT(n,m) = 1$, so ist $\upphi(n\cdot m) = \phi(n)\cdot \varphi(m)$
+		\item Für $p \in \natur$ prim, $r \in \natur$ ist $\upphi(p^r) = (p-1)p^{r-1}$
+		\item Sind $p_1,\dots, p_k$ die verschiedenen Primteiler von $n$, so ist
+		\begin{align}
+		\upphi(n) = n \cdot \prod_{i=1}^{k}\left( 1- \frac{1}{p_i}\right) \notag
+		\end{align}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item \propref{3_3_4}
+		\item Für $k \in \{0,\dots,p^{r-1}\}$ gilt:
+		\begin{align}
+			\bar{k} \in (\whole / p^r \whole)^{\times} &\Longleftrightarrow \ggT(k, p^k) = 1\notag \\
+			&\Longleftrightarrow p \nmid k\notag \\
+			&\Longleftrightarrow k \not \in \{0, p, 2p, \dots, p^r-p\}\notag
+		\end{align}
+		Also $\#(\whole /p^r \whole)^{\times} = p^r - p^{r-1} = (p-1)p^{r-1}$
+		\item $n = p_i^{e_1}\cdots p_k^{e_k} \xRightarrow{a)} \upphi(n) = \prod_{i = 1}^{k} \upphi(p_i^{e_i}) \overset{b)}{=} \prod_{i=1}^{k} (p_i - 1)\cdot p_i^{e_i - 1}$\\
+		$= n \prod_{i=1}^{k}(p_i - 1)\cdot p_i^{-1} = n \prod_{i=1}^{k}(1-\frac{1}{p_i})$
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Sei $n \in \natur$ mit Primzerlegung
+	\begin{align}
+		n = \prod_{i=1}^{k} p_i^{r_i}\notag
+	\end{align}
+	Dann ist
+	\begin{align}
+		(\whole / n \whole)^{\times} \cong \prod_{i=1}^{k} (\whole / p_i^{r_i} \whole)^{\times}\notag
+	\end{align}
+	wobei gilt:
+	\begin{enumerate}
+		\item Für $p > 2$ prim und $r \in \natur$ ist
+		\begin{align}
+			(\whole / p^{r}\whole)^{\times} &\cong \whole / (p-1)p^{r-1}\whole \notag \\
+			&\cong \whole / (p-1) \whole \times \whole / p^{r-1} \whole \notag
+		\end{align} 
+		zyklisch.
+		\item Für $r \ge 2$ und $p =2$ ist
+		\begin{align}
+			(\whole /2^r \whole)^{\times} \cong \whole / 2 \whole \times \whole / 2^{r-2}\whole \notag
+		\end{align}
+		\item $(\whole / 2 \whole)^{\times} = \{1\}$
+	\end{enumerate}
+\end{theorem}
