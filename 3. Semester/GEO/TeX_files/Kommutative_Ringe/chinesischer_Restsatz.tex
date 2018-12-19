@@ -7,7 +7,7 @@ Sei $R$ ein Ring.
 \end{definition}
 
 \begin{example}
-	\proplbl{3_3_2}
+	\proplbl{2_3_2}
 	\begin{enumerate}
 		\item Sei $R = \whole$, $n,m \in \whole$
 			\begin{itemize}
@@ -21,7 +21,7 @@ Sei $R$ ein Ring.
 \end{example}
 
 \begin{theorem}[Chinesischer Restsatz]
-	\proplbl{3_3_3}
+	\proplbl{2_3_3}
 	Sind $I_1, \dots , I_k \unlhd R$ paarweise teilerfremd, so induzieren die Abbildungen
 	\begin{align}
 		\pi_i = \pi_{I_i} : R \to R/ I_i\notag
@@ -68,9 +68,9 @@ Sei $R$ ein Ring.
 
 \begin{proof}
 	Sei $n = n_1 \cdot n_k = \kgV(n_1,\dots,n_k)$ \\
-	$\xRightarrow{\propref{3_3_2}} (n) = \bigcap_{i=1}^{n} (n_i)$\\
-	$\xRightarrow[\propref{3_3_2}]{\propref{3_3_3}} \whole / (n) \cong \prod_{i=1}^{k} \whole / (n_1)$\\
-	und die andere Aussage folgt mit \propref{3_1_8}. 
+	$\xRightarrow{\propref{2_3_2}} (n) = \bigcap_{i=1}^{n} (n_i)$\\
+	$\xRightarrow[\propref{2_3_2}]{\propref{2_3_3}} \whole / (n) \cong \prod_{i=1}^{k} \whole / (n_1)$\\
+	und die andere Aussage folgt mit \propref{2_1_8}. 
 \end{proof}
 
 \begin{remark}
@@ -89,6 +89,7 @@ Sei $R$ ein Ring.
 \end{remark}
 
 \begin{erinnerung}
+	\proplbl{2_3_6}
 	\begin{align}
 		\varphi(n) = \#(\whole / n \whole)^{\times}\notag
 	\end{align}
@@ -115,7 +116,7 @@ Sei $R$ ein Ring.
 
 \begin{proof}
 	\begin{enumerate}
-		\item \propref{3_3_4}
+		\item \propref{2_3_4}
 		\item Für $k \in \{0,\dots,p^{r-1}\}$ gilt:
 		\begin{align}
 			\bar{k} \in (\whole / p^r \whole)^{\times} &\Longleftrightarrow \ggT(k, p^k) = 1\notag \\
@@ -128,7 +129,29 @@ Sei $R$ ein Ring.
 	\end{enumerate}
 \end{proof}
 
+\begin{lemma}
+	\proplbl{2_3_8}
+	Sei $p \in \natur$ prim, $e \in \natur$ mit $p^{e} > 2$. Dann gilt für $a,b \in \whole$:
+	\begin{align}
+		a \equiv 1 + bp^{e} \mod p^{e+1} \Rightarrow a^p \equiv 1 + bp^{e+1} \mod p^{e+2} \notag
+	\end{align}
+\end{lemma}
+
+\begin{proof}
+	Schreibe $a= 1 bp^{e} + b^{'}p^{e+1} = 1 + cp^{e}$ mit $c = b + b^{'}p$, $b^{'} \in \whole$.\\
+	$\Rightarrow a^p = \sum_{i=0}^{p} \binom{p}{i} c^i p^{e_i} = 1+cp^{e+1} + \sum_{i=2}^{p} \binom{p}{i} c^i p^{e_i}$
+	\begin{itemize}
+		\item für $2 \le i < p$ gilt: $p \mid \binom{p}{i}$ und $e_i \ge e + 1$. Also folgt $\binom{p}{i}c^i p^{e_i} \equiv 0 \mod p^{e + 2}$
+		\item für $i = p$ gilt: Es ist $e\cdot i = e\cdot p \ge 2$, dann $e \ge 2$ oder $p \ge 3$. Also folgt
+		\begin{align}
+			\binom{p}{p}c^{p}\cdot p^{cp} \equiv 0 \mod p^{e+2}\notag
+		\end{align}
+	\end{itemize}
+	Insgesamt: $a^p \equiv cp^{e+1} \equiv 1 + bp^{e+1} \mod p^{e+2}$.
+\end{proof}
+
 \begin{theorem}
+	\proplbl{2_3_9}
 	Sei $n \in \natur$ mit Primzerlegung
 	\begin{align}
 		n = \prod_{i=1}^{k} p_i^{r_i}\notag
@@ -152,3 +175,27 @@ Sei $R$ ein Ring.
 		\item $(\whole / 2 \whole)^{\times} = \{1\}$
 	\end{enumerate}
 \end{theorem}
+
+\begin{proof}[\propref{2_3_9}1)]
+	Zu zeigen ist, dass $G = (\whole / p^r \whole)^{\times}$ zyklisch ist, dann ist $G \cong \whole / \upphi(p^r) \whole$ \overset{\propref{3_3_7}}{=} $\whole/ (p-1)p^{r-1}\whole \underset{\propref{3_3_4}}{\cong} \whole / (p-1) \whole \bigsum \whole / p^{r-1} \whole$. Setze $H = (\whole / p \whole)^{\times}$. Der Ringhomomorphismus (z.B. aus \propref{3_2_8} mit $\phi = \pi(p)\cdot \whole \to \whole/p \whole (\ast)$)
+	\begin{align}
+		\pi: \begin{cases}
+		\whole / p^r \whole &\to \whole / p \whole \\
+		x + p^r \whole &\mapsto x + p\whole \notag
+		\end{cases}
+	\end{align}
+	$(\ast)$ mit Ideal $I = p^r \whole)$\\
+	liefert einen Gruppenhomomorphismus
+	\begin{align}
+		\pi^{\times} = \pi\mid_{G} \colon G \to H \notag
+	\end{align}
+	mit $N = \Ker(\pi^{\times}) \le G$. Es sind verschiedene Dinge zu zeigen:
+	\begin{itemize}
+		\item $\pi(G) \subseteq H$ und $\pi^{\times}(G) = H$: klar, denn für $x \in \whole$ gilt: $x + p^r \whole \in G \Leftrightarrow \ggT(x,p^r) = 1 \Leftrightarrow \ggT(x,p) = 1 \Leftrightarrow x + p\whole \in H$
+		\item $G/N \cong H$ \propref{1_3_9}
+		\item $\# N = p^{r-1}$: $\# N = \frac{\#G}{\#H} = \frac{\upphi(p^r)}{\upphi(p)} = \frac{(p\cdot 1)p^{r-1}}{p-1}$
+		\item $H$ ist zyklisch: \propref{2_3_6}
+		\item $N$ ist zyklisch: Sei $a = 1+p$ mit Restklassen $\bar{a} = 1+p + p\whole \in G \Rightarrow \bar{q} \in N$ und $\ord(\bar{a}) \mid \# N = p^{r-1}$. Es gilt $a \equiv 1+1p \mod p^2$. Mit \propref{2_3_8} folgt dass $a^p\equiv 1 + p^2 \mod p^3$. Die $r-2$-fache Anwendung von \propref{2_3_8} bringt $a^{p^{r-2}} \equiv 1 + p^{r-1 \mod p^r}$. Da $p^{r-1} \neq 0$ folgt $\bar{a}^{p^{r-2}} \not \equiv 1 \mod p^r$, also $\ord(\bar{a})_{G} = p^{r-1}$, damit $N = \langle \bar{a} \rangle$.
+		\item $G$ ist zyklisch: Sei $H = \langle \bar{n}(\bar{b}) \rangle$ mit $b \in \whole$. Da $\#H = p-1$ folgt $\ord(\pi(\bar{b})) = p-1$. Das bedeutet, dass $\ord(\bar{b}) \mid p-1$. Nach \propref{1_4_7} existiert $\bar{c} \in G$ mit $\ord(\bar{c}) = \kgV(\ord(\bar{a}, \bar{b})) = (p-1)\cdot p^r$, d.h. $G = \langle \bar{c} \rangle$.
+	\end{itemize}
+\end{proof}
