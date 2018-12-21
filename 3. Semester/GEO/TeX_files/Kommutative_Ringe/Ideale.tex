@@ -165,23 +165,21 @@ Sei $R$ ein Ring. (Die meisten Beweise finden sich wieder im LAAG 1+2 Skript!)
 \begin{proposition}
 	Jedes echte Ideal $I \properideal R$ ist in einem maximalen Ideal von $R$ enthalten.
 \end{proposition}
-
-\begin{erinnerung}[Lemma von \person{Zorn}]
-	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
-\end{erinnerung}
-
 \begin{proof}
-	% Replaced mathfrak with mathcal, the H in frak was looking fugly!!!
-	Sei $\mathcal{H} = \{ J \properideal R / I \mid I \subseteq J\}$. Wir wenden das Lemma von \person{Zorn} auf die Halbordnung $(\mathcal{H},\subseteq)$ an:
+	Sei $\mathcal{H} = \{ J \properideal R \mid I \subseteq J\}$. Wir wenden das Lemma von \person{Zorn} auf die Halbordnung $(\mathcal{H},\subseteq)$ an:
 	\begin{itemize}
 		\item $\mathcal{H} \neq 0$: $I \in \mathcal{H}$.
-		\item Sei $(J_{\lambda})_{\lambda \in \Lambda}$ eine nichtleere Kette in $\mathfrak{H}$. Dann ist $J = \bigcup_{\lambda} \in \mathcal{H}$ eine obere Schranke für $(J_{\lambda})$:
+		\item Sei $(J_{\lambda})_{\lambda \in \Lambda}$ eine nichtleere Kette in $\mathcal{H}$. Dann ist $J = \bigcup J_{\lambda} \in \mathcal{H}$ eine obere Schranke für $(J_{\lambda})$:
 		\begin{itemize}
 			\item $I \subseteq J$: klar, da $I \subseteq J_{\lambda}$ für ein $\lambda \in \Lambda$
-			\item $J \properideal R$: Sind $a,a^{'} \in J$, $r \in R$, so ist $a \in J_{\lambda}$ und $a^{'} \in J_{\lambda^{'}}$ für $\lambda, \lambda^{'} \in \Lambda$. Da $\Lambda$ eine Kette ist, folgt das (ohne Einschränkung) $J_{\lambda^{'}} \subseteq J_{\lambda}$. Also $a+a^{'} \in J_{\lambda} + J_{\lambda^{'}} \subseteq J_{\lambda} \subseteq J$ und $ra \in R: J_{\lambda} \subseteq J$
+			\item $J \unlhd R$: Sind $a,a' \in J$, $r \in R$, so ist $a \in J_{\lambda}$ und $a' \in J_{\lambda'}$ für $\lambda, \lambda' \in \Lambda$. Da $\Lambda$ eine Kette ist, folgt dass (ohne Einschränkung) $J_{\lambda'} \subseteq J_{\lambda}$. Also $a+a' \in J_{\lambda} + J_{\lambda'} \subseteq J_{\lambda} \subseteq J$ und $ra \in R: J_{\lambda} \subseteq J$
 			\item $J \neq R$: $J_{\lambda} \neq R$ für alle $\lambda \in \Lambda$. Also liegt die $1$ nicht in $J_{\lambda}$, also die $1$ auch nicht in $\bigcup J_{\lambda} = J$, d.h. $J \neq R.$
 		\end{itemize}
 	\end{itemize}
 	Nach dem Lemma von \person{Zorn} hat $\mathcal{H}$ ein maximales Element $J$, das auch ein maximales Ideal ist.
 \end{proof}
+
+\begin{erinnerung}[Lemma von \person{Zorn}]
+	Sei $(X,\le)$ eine Halbordnung, die nicht leer ist. Wenn jede Kette eine obere Schranke hat, dann hat $X$ ein maximales Element.
+\end{erinnerung}
 

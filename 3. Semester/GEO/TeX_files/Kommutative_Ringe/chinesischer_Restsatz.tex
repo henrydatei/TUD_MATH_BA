@@ -8,14 +8,13 @@ Sei $R$ ein Ring.
 
 \begin{example}
 	\proplbl{2_3_2}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item Sei $R = \whole$, $n,m \in \whole$
 			\begin{itemize}
 				\item $(n) \cap (m) = (\kgV(n,m))$
-				\item $(n) \cdot (m) = (\ggT(n,m))$ (LAAG VIII 3.8) oder (I.4.3) %(\propref{1_4_3}) 
-				%TODO last reference isnt working, cos we need I.4.3, now we only have Lemma 4.3, which is BS!
+				\item $(n) + (m) = (\ggT(n,m))$ (LAAG VIII 3.8) oder \propref{1_4_3}
 			\end{itemize}
-		Insbesondere sind $(n)$ und $(m)$ genau dann teilerfremd, wenn $(\ggT(n,m) = (1))$, also wenn $n$ und $m$ teilerfremd sind.
+		Insbesondere sind $(n)$ und $(m)$ genau dann teilerfremd, wenn $(\ggT(n,m)) = (1)$, also wenn $n$ und $m$ teilerfremd sind.
 		\item Sind $I,J \unlhd R$ maximal und voneinander verschieden, so auch teilerfremd.
 	\end{enumerate}
 \end{example}
@@ -24,11 +23,11 @@ Sei $R$ ein Ring.
 	\proplbl{2_3_3}
 	Sind $I_1, \dots , I_k \unlhd R$ paarweise teilerfremd, so induzieren die Abbildungen
 	\begin{align}
-		\pi_i = \pi_{I_i} : R \to R/ I_i\notag
+		\pi_i = \pi_{I_i} : R \to \lnkset{R}{I_i}\notag
 	\end{align}
 	einen Isomorphismus
 	\begin{align}
-		\bar{\pi}: R/ \bigcap_{i=1}^{k} I_i \overset{\cong}{\to} \prod_{i=1}^{k} R/I_i \notag
+		\bar{\pi}: \lnkset{R}{\bigcap_{i=1}^{k} I_i} \xrightarrow{\cong} \prod_{i=1}^{k} \lnkset{R}{I_i} \notag
 	\end{align}
 \end{theorem}
 
@@ -36,7 +35,7 @@ Sei $R$ ein Ring.
 	Wende Homomorphiesatz an auf
 	\begin{align}
 	\pi: \begin{cases}
-	R &\to \prod_{i=1}^{n} R/I_i \\
+	R &\to \prod_{i=1}^{n} \lnkset{R}{I_i} \\
 	x &\mapsto (\pi_1(x), \dots, \pi_n(x))
 	\end{cases} \notag
 	\end{align}
