@@ -454,6 +454,8 @@
 \crefname{definition}{Definition}{Definitionen}
 \crefname{remark}{Bemerkung}{Bemerkungen}
 \crefname{example}{Beispiel}{Beispiele}
+\crefname{erinnerung}{Erinnerung}{Erinnerungen}
+\crefname{algorithm}{Algorithmus}{Algorithmen}
 \crefname{*definition}{Definition}{Definitionen}
 \crefname{*remark}{Bemerkung}{Bemerkungen}
 \crefname{*example}{Beispiel}{Beispiele}

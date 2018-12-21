@@ -1,13 +1,13 @@
 \section{Teilbarkeit}
 
-Sei $R$ ein \begriff{nullteilfreier} Ring.
+Sei $R$ ein \textbf{nullteilfreier} Ring.
 
 \begin{definition}[teilt, assoziert, irreduzibel, prim, ggT, kgV]
 	\proplbl{2_4_1}
 	Seinen $x,y,z,p \in R$.
-	\begin{itemize}
+	\begin{enumerate}[label=(\alph*)]
 		\item $x$ \begriff{teilt} $y$ (in Zeichen $x \mid y$) $\Leftrightarrow \exists z \in R: xz = y$
-		\item $x$ ist \begriff{assoziert} zu $y$ (in Zeichen $x \sim y$) $\Leftrightarrow \exists x \in R^{\times}, xz = y$
+		\item $x$ ist \begriff{assoziert} zu $y$ (in Zeichen $x \sim y$) $\Leftrightarrow \exists z \in R^{\times}, xz = y$
 		\item $p$ ist \begriff{irreduzibel} $\Leftrightarrow p \not \in R^{\times} \cup \{  0\}$ und $\forall x,y \in R$:
 		\begin{align}
 			p = xy &\Rightarrow x \in R^{\times} \text{ oder } y \in R^{\times} \notag
@@ -16,38 +16,35 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 		\begin{align}
 			p \mid xy &\Rightarrow p \mid x \text{ oder } p \mid y \notag
 		\end{align}
-		\item $z$ ist \begriff{größter gemeinsamer Teiler} von $x,y$ (in Zeichen $z = \ggT(x,y)$) \\
-		$\Leftrightarrow  z \mid x$ und $z \mid y$ und $\forall a \in R: a\mid x$ und $a \mid y$\\
-		$\Rightarrow a \mid z$
-		\item $z$ ist \begriff{kleinstes gemeinsames Vielfaches} von $x,y$ (in Zeichen $z = \kgV(x,y)$)\\
-		$\Leftrightarrow x \mid z$ und $y \mid z$ und $\forall a \in R: x \mid a$ und $y \mid a$\\
-		$\Rightarrow a \mid a$ 
-	\end{itemize}
+		\item $z$ ist \begriff{größter gemeinsamer Teiler} von $x,y$ (in Zeichen $z = \ggT(x,y)$) $\Leftrightarrow  z \mid x$ und $z \mid y$ und $\forall a \in R: a\mid x$ und $a \mid y\Rightarrow a \mid z$
+		\item $z$ ist \begriff{kleinstes gemeinsames Vielfaches} von $x,y$ (in Zeichen $z = \kgV(x,y)$) $\Leftrightarrow x \mid z$ und $y \mid z$ und $\forall a \in R: x \mid a$ und $y \mid a \Rightarrow z \mid a$ 
+	\end{enumerate}
 \end{definition}
 
 \begin{remark}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $x \mid y \Leftrightarrow y \in (x) \Leftrightarrow (y) \subseteq (x)$
 		\item $x \sim y \Leftrightarrow x \mid y \text{ und } y \mid x \Leftrightarrow (x) = (y)$
 		\item $p$ prim $\Leftrightarrow (p)$ prim und $p \neq 0$
 		\item $p$ prim $\Rightarrow p$ irreduzibel
-		\item Analog zu e) und f) in \propref{2_4_1} kann ein $\ggT$ bzw. $\kgV$ von endlich vielen Elementen von $R$ definieren werden.
+		\item Analog zu e) und f) in \propref{2_4_1} kann man ein $\ggT$ bzw. $\kgV$ von endlich vielen Elementen von $R$ definieren.
 	\end{enumerate}
 \end{remark}
-
 \begin{proof}
-	4) $p = xy \Rightarrow p \mid xy \xRightarrow{p \text{ prim}} p \mid x \text{ oder } p\mid y$ Ohne Einschränkung $p \mid x$, d.h. $x = px^{'}$ mit $x^{'} \in R \Rightarrow p(1-x^{'}y) =0 \Rightarrow 1 - x^{'}y = 0 \Rightarrow 1 = x^{'}y \Rightarrow y \in R^{\times}$
+	\begin{itemize}
+		\item[d)] $p = xy \Rightarrow p \mid xy \xRightarrow{p \text{ prim}} p \mid x \text{ oder } p\mid y$, ohne Einschränkung $p \mid x$, das heißt $x = px'$ mit $x' \in R \Rightarrow p(1-x'y) =0 \Rightarrow 1 - x'y = 0 \Rightarrow 1 = x'y \Rightarrow y \in R^{\times}$
+	\end{itemize}
 \end{proof}
 
 \begin{definition}[euklidisch, Hauptidealring, faktoriell]
-	\begin{enumerate}
-		\item $R$ ist $euklidisch \Leftrightarrow$ es gibt eine euklidische Gradfunktion:
+	\begin{enumerate}[label=(\alph*)]
+		\item $R$ ist \begriff{euklidisch} $\Leftrightarrow$ es gibt eine euklidische Gradfunktion:
 		\begin{align}
-			\delta: R\setminus \{0\} \to \natural_0 \notag
+			\delta: R\setminus \{0\} \to \natur_0 \notag
 		\end{align}
 		mit $\forall x,y \in R\setminus \{0\} \exists q,r \in R$ mit $x = qy + r$ und $r=0$ oder $\delta(r) < \delta(y)$
 		\item $R$ ist \begriff{Hauptidelring} $\Leftrightarrow$ Jedes Ideal $I \unlhd R$ ist ein Hauptideal.
-		\item $R$ ist \begriff{faktoriell} $\Leftrightarrow$ jedes $0 \neq x \in R\setminus R^{\times}$ ist ein Produkt von Primelementen.
+		\item $R$ ist \begriff{faktoriell} $\Leftrightarrow$ Jedes $0 \neq x \in R\setminus R^{\times}$ ist ein Produkt von Primelementen.
 	\end{enumerate}
 \end{definition}
 
@@ -60,16 +57,18 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 \end{proof}
 
 \begin{example}
-	\item $\whole$, $K[x]$. euklidisch
-	\item $K$ Körper: euklidisch
-	\item $\whole[i] = \{ a+b\sqrt{-1} \mid a,b \in \whole \} \subseteq \comp$: euklidisch mit $(\delta(z) = \vert z \vert^2)$
-	\item $K[x,y], \whole[x]$: keine Hauptidealringe
-	\item $\whole[\sqrt{-5}] = \{ a+b\sqrt{-5} \mid a,b \in \whole \} \subseteq \comp$: nicht faktoriell, da $(6 = 2\cdot 3 = (1 + \sqrt{-5})(1-\sqrt{-5}))$
+	\begin{enumerate}[label=(\alph*)]
+		\item $\whole$, $K[x]$: euklidisch
+		\item $K$ Körper: euklidisch
+		\item $\whole[i] = \{ a+b\sqrt{-1} \mid a,b \in \whole \} \subseteq \comp$: euklidisch mit $\delta(z) = \vert z \vert^2$
+		\item $K[x,y], \whole[x]$: keine Hauptidealringe
+		\item $\whole[\sqrt{-5}] = \{ a+b\sqrt{-5} \mid a,b \in \whole \} \subseteq \comp$: nicht faktoriell, da $6 = 2\cdot 3 = (1 + \sqrt{-5})(1-\sqrt{-5})$
+	\end{enumerate}
 \end{example}
 
 \begin{remark}
 	Ist $R$ faktoriell, so gilt:
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $p$ irreduzibel $\Leftrightarrow p$ prim
 		\item Eine Darstellung von $0 \neq x \in R \setminus R^{\times}$ als Produkt von Primelementen ist eindeutig bis auf Reihenfolge und Assoziiertheit.
 	\end{enumerate}
