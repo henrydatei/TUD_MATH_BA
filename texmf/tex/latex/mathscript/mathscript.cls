@@ -473,7 +473,7 @@
 	\@bsphack
 	\begingroup
 	\label{#1}%
-	\zref@setcurrent{default}{\c@chapter}%
+	\zref@setcurrent{default}{\arabic{chapter}}%
 	\zref@wrapper@immediate{%
 		\zref@labelbyprops{#1@chapter}{default}%
 	}
@@ -514,7 +514,7 @@
 			}%
 		}%
 	}%
-	{\bfseries ???}%similar to \ref\cref: question marks in case of undefined labels
+	{\ifmmode\else\bfseries\fi ???}%similar to \ref\cref: question marks in case of undefined labels
 }
 
 %\makeatletter
