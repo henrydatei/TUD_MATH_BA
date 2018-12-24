@@ -1,0 +1,109 @@
+\section{Ringe von Brüchen}
+
+Sei $R$ ein Ring.
+
+\begin{remark}
+	\proplbl{2_5_1}
+	Wir möchten Unterringe von Körper charakterisieren. So ist z.B. jeder Unterring $R$ eines Körpers $K$ nullteilerfrei. Ist umgekehrt jeder nullteilerfreie Ring $R$ isomorph zu einem Unterring eines Körpers?
+\end{remark}
+
+\begin{definition}[multiplikativ]
+	Sei $S \subseteq R$. $S$ ist \begriff{multiplikativ} $\Leftrightarrow 1 \in S$ und für $s,t \in S$ ist $st \in S$. 
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item $S = R^{\times}$
+		\item $S = \{ 1, s, s^2, \dots \}$ für ein $s \in R$
+		\item $S = \{ x \in R \mid x \text{ ist kein Nullteiler} \}$
+		\item $S = R \setminus p$ für ein Primideal $\mathfrak{p} \unlhd R$
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Sei $S \subseteq R\setminus \{0\}$ multiplikativ und ohne Nullteiler. Definiere Äquivalenzrelation $\sim$ auf $R \times S$:
+	\begin{align}
+		(r,s) \sim (r^{'}, s^{'}) \Leftrightarrow r s^{'} = r^{'}s\notag 
+	\end{align}
+	Schreibe $\sfrac{r}{s}$ für die $\sim$-Äquivalenzklasse von $(r,s)$ und 
+	\begin{align}
+		S^{-1}R = R \times / \sim = \{ \frac{r}{s} \mid r \in R,s \in S\}\notag	
+	\end{align}
+	Für $r_1,r_2 \in R$ und $s_1, s_2 \in S$ definiere
+	\begin{align}
+		\frac{r_1}{s_1} + \frac{r_2}{s_2} &= \frac{r_1 s_2 + r_2 s_1}{s_1 s_2} \notag \\
+		\frac{r_1}{s_1} \cdot \frac{r_2}{s_2} &= \frac{r_1 r_2}{s_1 s_2} \notag
+	\end{align}
+\end{definition}
+
+\begin{lemma}
+	Addition und Multiplikation sind wohldefiniert und machen $S^{-1}R$ zu einem Ring.
+\end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+	\item $\sim$ ist Äquivalenzrelation: reflexiv, transitiv, symmetrisch (siehe Analysis Kapitel ? konstruktion rationaler Zahlen)
+	\item Multiplikation ist wohldefiniert:
+	\begin{align}
+	& &\frac{r_1}{s_1} \cdot \frac{r_2}{s_2} &= \frac{r_1 r_2}{s_1 s_2}, \frac{r_1}{s_1} = \frac{r_1^{'}}{s_1^{'}}\notag \\
+	&\Rightarrow &\frac{r_1^{'}}{s_1^{'}} \cdot \frac{r_2}{s_2} &= \frac{r_1^{'} r_2}{s_1^{'} s_2}\notag \\
+	&\Rightarrow &r_1 r_2 s_1^{'} s_2 = r_1^{'} r_2 s_1 s_2\notag \\
+	&\Rightarrow &\frac{r_1 r_2}{s_1 s_2} = \frac{r_1^{'} r_2}{s_^{'} s_2}\notag
+	\end{align}
+	\item Addition ist wohldefiniert: analog
+	\item $(S^{-1}R, + ,\cdot)$ ist ein Ring: Übung
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	Sei $S \subseteq R \setminus \{0\}$ multiplikativ und ohne Nullteiler. Dann definiert
+	\begin{align}
+		i: \begin{cases}
+			R &\to S^{-1}R \\
+			a &\mapsto \frac{q}{1}
+		\end{cases}\notag
+	\end{align}
+	einen injektiven Ringhomomorphismus mit $i(S) \subseteq (S^{-1}R)^{\times}$.
+\end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+	\item $i$ ist Ringhomomorphismus: klar!
+	\item $i$ ist injektiv: $i(r) = 0 \Rightarrow \frac{r}{1} = 0 = \frac{0}{1} \Rightarrow r = 0$
+	\item $i(S) \subseteq (S^{-1}R)^{\times}$: $i(s)\cdot \frac{1}{s} = \frac{s}{1} \cdot \frac{1}{s} = \frac{s}{s} = \frac{1}{1} = 1$
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Sei $R$ nullteilerfrei. Für $S = R \setminus \{0\}$ ist $S^{-1}R$ ein Körper und $i: R \to S^{-1}R$ ist injektiv.
+\end{conclusion}
+
+\begin{proof}
+	$\frac{r}{s} \neq 0 \Rightarrow r \neq 0 \Rightarrow \frac{s}{r} \in S^{-1}R, \frac{r}{s}\cdot \frac{s}{r} = 1.$
+\end{proof}
+
+\begin{definition}
+	Ist $R$ nullteilerfrei, so heißt
+	\begin{align}
+		\Quot(R) = (R\setminus \{0\})^{-1}R\notag
+	\end{align}
+	der \begriff{Quotientenkörper} von $R$. Wir identifizieren $R$ via $i$ mit einem Teilring von $\Quot(R)$.
+\end{definition}
+
+\begin{conclusion}
+	$R$ lässt sich in einem Körper einbetten, d.h. er ist isomorph zu einem Unterring einer Körpers $\Leftrightarrow R$ ist nullteilerfrei.
+\end{conclusion}
+
+\begin{proof}
+	\begin{itemize}
+	\item ``$\Rightarrow$'': \propref{2_5_1}
+	\item ``$\Leftarrow$'': $R \subseteq \Quot(R)$
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}
+	\item $\Quot(\whole) = \ratio$
+	\item $\Quot(\real) = \real$
+	\end{enumerate}
+\end{example}

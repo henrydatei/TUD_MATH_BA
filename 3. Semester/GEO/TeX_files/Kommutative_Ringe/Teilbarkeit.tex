@@ -5,7 +5,7 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 \begin{definition}[teilt, assoziert, irreduzibel, prim, ggT, kgV]
 	\proplbl{2_4_1}
 	Seinen $x,y,z,p \in R$.
-	\begin{itemize}
+	\begin{enumerate}
 		\item $x$ \begriff{teilt} $y$ (in Zeichen $x \mid y$) $\Leftrightarrow \exists z \in R: xz = y$
 		\item $x$ ist \begriff{assoziert} zu $y$ (in Zeichen $x \sim y$) $\Leftrightarrow \exists x \in R^{\times}, xz = y$
 		\item $p$ ist \begriff{irreduzibel} $\Leftrightarrow p \not \in R^{\times} \cup \{  0\}$ und $\forall x,y \in R$:
@@ -22,7 +22,7 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 		\item $z$ ist \begriff{kleinstes gemeinsames Vielfaches} von $x,y$ (in Zeichen $z = \kgV(x,y)$)\\
 		$\Leftrightarrow x \mid z$ und $y \mid z$ und $\forall a \in R: x \mid a$ und $y \mid a$\\
 		$\Rightarrow a \mid a$ 
-	\end{itemize}
+	\end{enumerate}
 \end{definition}
 
 \begin{remark}
@@ -43,7 +43,7 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 	\begin{enumerate}
 		\item $R$ ist $euklidisch \Leftrightarrow$ es gibt eine euklidische Gradfunktion:
 		\begin{align}
-			\delta: R\setminus \{0\} \to \natural_0 \notag
+			\delta: R\setminus \{0\} \to \natur_0 \notag
 		\end{align}
 		mit $\forall x,y \in R\setminus \{0\} \exists q,r \in R$ mit $x = qy + r$ und $r=0$ oder $\delta(r) < \delta(y)$
 		\item $R$ ist \begriff{Hauptidelring} $\Leftrightarrow$ Jedes Ideal $I \unlhd R$ ist ein Hauptideal.
@@ -74,3 +74,84 @@ Sei $R$ ein \begriff{nullteilfreier} Ring.
 		\item Eine Darstellung von $0 \neq x \in R \setminus R^{\times}$ als Produkt von Primelementen ist eindeutig bis auf Reihenfolge und Assoziiertheit.
 	\end{enumerate}
 \end{remark}
+
+\begin{proposition}
+	Sei $R$ ein Hauptidealring. Wenn $(0) \neq \mathfrak{p} \unlhd R$ ein Primideal ist, so ist $\mathfrak{p}$ maximal.
+\end{proposition}
+
+\begin{proof}
+	Sei $\mathfrak{p} \subseteq I \unlhd R$. Da $R$ ein Hauptidealring ist, kann man $\mathfrak{p} = (p)$ mit $p \in R$ prim schreiben. $p$ ist prim, insbesondere irreduzibel. Weiterhin gilt $I = (a)$ mit $a \in R$ und $a \mid p$. Da $p$ prim, gilt $a \sim 1$ oder $a \sim p$. Also $I = R$ oder $I = \mathfrak{p}$. Damit ist $\mathfrak{p}$ maximal.
+\end{proof}
+
+\begin{remark}
+	In jedem Hauptidealring gilt:
+	\begin{align}
+		(x) + (y) = (\ggT(x,y,)) \notag
+	\end{align}
+	anders gesagt
+	\begin{align}
+		\ggT(x,y) = ax + by \notag
+	\end{align}
+	mit $a,b \in R$. In euklidischen Ringen können $a$ und $b$ explizit bestimmt werden.
+\end{remark}
+
+\begin{proposition}[Erweiterter euklidischer Algorithmus]
+	Sei $R$ euklidisch mit euklidischer Gradfunktion $\delta$, und seien $x,y \in R$. Man setze $x_0 = x, x_1 = y, b_0 = 0, a_1 = 0, b_1 = 1$ und berechne iterativ $x_{i+1}, q_{i+1}, a_{i+1}, b_{i+1}$ für $i \ge 1$ als
+	\begin{align}
+		x_{i-1} &= q_{i+1}x_i + x_{i+1} &\qquad &x_{i+1} = 0 \text{ oder } \delta(x_{i+1}) < \delta(x_i) \notag \\
+		a_{i+1} &= a_{i-1} + q_{i+1}a_i & & \notag \\
+		b_{i+1} = b_{i-1} - q_{i+1}b_i & & \notag
+	\end{align}
+	solange bis $x_{k+1} = 0$. Dann ist
+	\begin{align}
+		\ggT(x,y) = x_k = a_k x + b_k y \notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Da $\delta(x_1) > \delta(x_2) > \dots >$ wird $x_{k+1} = 0$ irgendwann erreicht. Für jedes $i \le k$ ist 
+	\begin{align}
+		\ggT(x_{i-1}, x_i) &= \ggT(q_{i+1}x_i + x_{i+1}, x_i)\notag \\
+		&=\ggT(x_{i+1}, x_i) \notag \\
+		&= \ggT(x_i, x_{i+1}) \notag
+	\end{align}
+	somit im Allgemeinen:
+	\begin{align}
+		\ggT(x,y) &= \ggT(x_0,x_1) = \ggT(x_0,x_1) = \dots = \ggT(x_k, \underbrace{x_{k+1}}_{=0})\notag \\
+		&= x_k \notag
+	\end{align}
+	Per Induktion sieht man, dass $x_i = a_i x + b_i y$ für alle \\
+	$i \le k: x_{i-1} = a_{i-1} x + b_{i-1}y, x_i = a_i x + b_i y$ sowie\\
+	$x_{i-1} = q_{i+1 x_i + x_{i+1}}$\\
+	\begin{align}
+	\Rightarrow x_{i-1} &= x_{i-1}q_{i+1}x_i = (a_{i+1} - q_{i+1} q_i)x + (b_{i-1}-q_{i+1}b_i)y \notag\\
+	&= a_{i+1}x + b_{i+1}y\notag
+	\end{align}
+\end{proof}
+
+\begin{example}
+	$R = \whole, x = 5, y= 13$
+	\begin{align}
+	5 &= 0\cdot 13 + 5 \notag \\
+	13 &= 2\cdot 5 + 3 \notag \\
+	5 &= 1\cdot 3 + 2 \notag \\
+	3 &= 1\cdot 2 + 1 \notag \\
+	5 &= 2\cdot \underline{1} + 0 \notag \\
+	\end{align}
+	$\Rightarrow \ggT(5,13) = 1 = 2\cdot 13 - 5 \cdot 5$ %TODO somewhere here is an error!
+\end{example}
+
+\begin{example}
+	Bestimme $x \in \whole$ mit $x \in 1 \mod 5$ und $x \equiv 2 \mod 13$.\\
+	$b_1 = 2 \cdot 13 = 26$
+	\begin{align}
+		b_1 &= 1 \mod 5 \notag \\
+		b_1 &= 0 \mod 13\notag 
+	\end{align}
+	$b_2 = -5\cdot 5 = -25$
+	\begin{align}
+		b_2 &= 0 \mod 5\notag \\
+		b_2 &= 1 \mod 13\notag
+	\end{align}
+	Setze $x = 1\cdot b_1 + 2 \cdot b_2 = -24$. Die anderen sind $x = 25\cdot 13 = 41 + 65\whole$. %TODO somewhere here is an error!
+\end{example}
