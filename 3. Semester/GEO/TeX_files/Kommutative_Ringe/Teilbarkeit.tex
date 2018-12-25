@@ -85,7 +85,7 @@ Sei $R$ ein \textbf{nullteilfreier} Ring.
 \begin{remark}
 	In jedem Hauptidealring gilt:
 	\begin{align}
-		(x) + (y) = (\ggT(x,y,)) \notag
+		(x) + (y) = (\ggT(x,y)) \notag
 	\end{align}
 	anders gesagt
 	\begin{align}
@@ -95,11 +95,11 @@ Sei $R$ ein \textbf{nullteilfreier} Ring.
 \end{remark}
 
 \begin{proposition}[Erweiterter euklidischer Algorithmus]
-	Sei $R$ euklidisch mit euklidischer Gradfunktion $\delta$, und seien $x,y \in R$. Man setze $x_0 = x, x_1 = y, b_0 = 0, a_1 = 0, b_1 = 1$ und berechne iterativ $x_{i+1}, q_{i+1}, a_{i+1}, b_{i+1}$ für $i \ge 1$ als
+	Sei $R$ euklidisch mit euklidischer Gradfunktion $\delta$, und seien $x,y \in R$. Man setze $x_0 = x$, $x_1 = y$, $a_0=1$ $b_0 = 0$, $a_1 = 0$, $b_1 = 1$ und berechne iterativ $x_{i+1}$, $q_{i+1}$, $a_{i+1}$, $b_{i+1}$ für $i \ge 1$ als
 	\begin{align}
 		x_{i-1} &= q_{i+1}x_i + x_{i+1} &\qquad &x_{i+1} = 0 \text{ oder } \delta(x_{i+1}) < \delta(x_i) \notag \\
 		a_{i+1} &= a_{i-1} + q_{i+1}a_i & & \notag \\
-		b_{i+1} = b_{i-1} - q_{i+1}b_i & & \notag
+		b_{i+1} &= b_{i-1} - q_{i+1}b_i & & \notag
 	\end{align}
 	solange bis $x_{k+1} = 0$. Dann ist
 	\begin{align}
@@ -108,7 +108,7 @@ Sei $R$ ein \textbf{nullteilfreier} Ring.
 \end{proposition}
 
 \begin{proof}
-	Da $\delta(x_1) > \delta(x_2) > \dots >$ wird $x_{k+1} = 0$ irgendwann erreicht. Für jedes $i \le k$ ist 
+	Da $\delta(x_1) > \delta(x_2) > \dots$ wird $x_{k+1} = 0$ irgendwann erreicht. Für jedes $i \le k$ ist 
 	\begin{align}
 		\ggT(x_{i-1}, x_i) &= \ggT(q_{i+1}x_i + x_{i+1}, x_i)\notag \\
 		&=\ggT(x_{i+1}, x_i) \notag \\
@@ -116,41 +116,84 @@ Sei $R$ ein \textbf{nullteilfreier} Ring.
 	\end{align}
 	somit im Allgemeinen:
 	\begin{align}
-		\ggT(x,y) &= \ggT(x_0,x_1) = \ggT(x_0,x_1) = \dots = \ggT(x_k, \underbrace{x_{k+1}}_{=0})\notag \\
-		&= x_k \notag
+		\ggT(x,y) &= \ggT(x_0,x_1) = \dots = \ggT(x_k, \underbrace{x_{k+1}}_{=0}) = x_k \notag
 	\end{align}
-	Per Induktion sieht man, dass $x_i = a_i x + b_i y$ für alle \\
-	$i \le k: x_{i-1} = a_{i-1} x + b_{i-1}y, x_i = a_i x + b_i y$ sowie\\
-	$x_{i-1} = q_{i+1 x_i + x_{i+1}}$\\
+	Per Induktion sieht man, dass $x_i = a_i x + b_i y$ für alle $i \le k: x_{i-1} = a_{i-1} x + b_{i-1}y$, $x_i = a_i x + b_i y$ sowie $x_{i-1} = q_{i+1} x_i + x_{i+1}$\\
 	\begin{align}
-	\Rightarrow x_{i-1} &= x_{i-1}q_{i+1}x_i = (a_{i+1} - q_{i+1} q_i)x + (b_{i-1}-q_{i+1}b_i)y \notag\\
+	\Rightarrow x_{i+1} &= x_{i-1}q_{i+1}x_i = (a_{i+1} - q_{i+1} a_i)x + (b_{i-1}-q_{i+1}b_i)y \notag\\
 	&= a_{i+1}x + b_{i+1}y\notag
 	\end{align}
 \end{proof}
 
 \begin{example}
-	$R = \whole, x = 5, y= 13$
-	\begin{align}
-	5 &= 0\cdot 13 + 5 \notag \\
-	13 &= 2\cdot 5 + 3 \notag \\
-	5 &= 1\cdot 3 + 2 \notag \\
-	3 &= 1\cdot 2 + 1 \notag \\
-	5 &= 2\cdot \underline{1} + 0 \notag \\
-	\end{align}
-	$\Rightarrow \ggT(5,13) = 1 = 2\cdot 13 - 5 \cdot 5$ %TODO somewhere here is an error!
+	$R = \whole$, $x = \textcolor{red}{5}$, $y= \textcolor{blue}{13}$
+	\begin{center}\begin{tikzpicture}
+		\node at (0,0) (gleich) {$=$};
+		\node at (0,-1) (gleich) {$=$};
+		\node at (0,-2) (gleich) {$=$};
+		\node at (0,-3) (gleich) {$=$};
+		\node at (0,-4) (gleich) {$=$};
+		
+		\node at (1,0) (mal) {$\cdot$};
+		\node at (1,-1) (mal) {$\cdot$};
+		\node at (1,-2) (mal) {$\cdot$};
+		\node at (1,-3) (mal) {$\cdot$};
+		\node at (1,-4) (mal) {$\cdot$};
+		
+		\node at (2,0) (plus) {$+$};
+		\node at (2,-1) (plus) {$+$};
+		\node at (2,-2) (plus) {$+$};
+		\node at (2,-3) (plus) {$+$};
+		\node at (2,-4) (plus) {$+$};
+		
+		\node[red] at (-0.5,0) (erg1) {5};
+		\node at (-0.5,-1) (erg2) {13};
+		\node at (-0.5,-2) (erg3) {5};
+		\node at (-0.5,-3) (erg4) {3};
+		\node at (-0.5,-4) (erg5) {2};
+		
+		\node at (0.5,0) (fak1) {0};
+		\node at (0.5,-1) (fak2) {2};
+		\node at (0.5,-2) (fak3) {1};
+		\node at (0.5,-3) (fak4) {1};
+		\node at (0.5,-4) (fak5) {2};
+		
+		\node[blue] at (1.5,0) (quot1) {13};
+		\node at (1.5,-1) (quot2) {5};
+		\node at (1.5,-2) (quot3) {3};
+		\node at (1.5,-3) (quot4) {2};
+		\node at (1.5,-4) (quot5) {\textbf{1}};
+		
+		\node at (2.5,0) (plus1) {5};
+		\node at (2.5,-1) (plus2) {3};
+		\node at (2.5,-2) (plus3) {2};
+		\node at (2.5,-3) (plus4) {1};
+		\node at (2.5,-4) (plus5) {0};
+		
+		\draw[->] (quot1) -- (erg2);
+		\draw[->] (quot2) -- (erg3);
+		\draw[->] (quot3) -- (erg4);
+		\draw[->] (quot4) -- (erg5);
+		
+		\draw[->] (plus1) -- (quot2);
+		\draw[->] (plus2) -- (quot3);
+		\draw[->] (plus3) -- (quot4);
+		\draw[->] (plus4) -- (quot5);
+		\end{tikzpicture}\end{center}
+	$\Rightarrow \ggT(5,13) = 1 = 2\cdot 13 - 5 \cdot 5$
 \end{example}
 
 \begin{example}
-	Bestimme $x \in \whole$ mit $x \in 1 \mod 5$ und $x \equiv 2 \mod 13$.\\
+	Bestimme $x \in \whole$ mit $x \equiv 1 \mod 5$ und $x \equiv 2 \mod 13$.\\
 	$b_1 = 2 \cdot 13 = 26$
 	\begin{align}
-		b_1 &= 1 \mod 5 \notag \\
-		b_1 &= 0 \mod 13\notag 
+		b_1 &\equiv 1 \mod 5 \notag \\
+		b_1 &\equiv 0 \mod 13\notag 
 	\end{align}
 	$b_2 = -5\cdot 5 = -25$
 	\begin{align}
-		b_2 &= 0 \mod 5\notag \\
-		b_2 &= 1 \mod 13\notag
+		b_2 &\equiv 0 \mod 5\notag \\
+		b_2 &\equiv 1 \mod 13\notag
 	\end{align}
-	Setze $x = 1\cdot b_1 + 2 \cdot b_2 = -24$. Die anderen sind $x = 25\cdot 13 = 41 + 65\whole$. %TODO somewhere here is an error!
+	Setze $x = 1\cdot b_1 + 2 \cdot b_2 = -24$. Die anderen sind $x+5\cdot 13\whole=41+65\whole$.
 \end{example}
