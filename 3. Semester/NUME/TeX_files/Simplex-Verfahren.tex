@@ -1,1 +1,181 @@
 \section{Simplex-Verfahren}
+
+O.B.d.A setzen wir hier $\rang(A)=m$ voraus. Zur Bestimmung einer Lösung der Optimierungsaufgabe \cref{6.2} würde es also genügen, alle Ecken des Polyeders $G_P$ hinsichtlich ihres Zielfunktionswertes zu untersuchen. Um diesem im Allgemeinen nicht leistbaren Aufwand zu reduzieren, konstruiert man im Simplex-Verfahren eine Folge von Ecken von $G_P$, deren Elemente nicht steigende Zielfunktionswerte aufweisen. Sei $\overline{x}$ eine beliebige Ecke (zulässige Basislösung) von $G_P$ mit den Indexmengen $B$ und $N$. Dann gilt:
+\begin{align}
+	A_Bx_B + A_Nx_N = b\quad\text{und}\quad x_B=A_B^{-1}(b-A_Nx_N)\notag
+\end{align}
+Die Aufgabe \cref{6.2} kann damit äquivalent geschrieben werden als
+\begin{align}
+	c_B^TA_B^{-1}(b-A_Nx_N) + c_N^Tx_N+c_0\to\min \notag
+\end{align}
+bei $A^{-1}_B(b-A_Nx_N)\ge 0$, $x_N\ge 0$ und $x_B=A^{-1}_B(b-A_Nx_N)$. Mit den Bezeichnungen
+\begin{align}
+	P &= (p_{ik}) = -A_B^{-1}A_N \notag \\
+	p &= (p_i) = A_B^{-1}b \notag \\
+	q &= (q_k) = (c_N^T-c_B^TA_B^{-1}A_N)^T \notag \\
+	q_0 &= c_B^TA_B^{-1}b+c_0 \notag
+\end{align}
+ergibt sich die zu \cref{6.2} äquivalente Formulierung
+\begin{align}
+	\label{6.5}
+	q^Tx_N+q_0\to\min\quad\text{bei } Px_N+p\ge 0,\, x_N\ge 0,\, x_B=Px_N+p
+\end{align}
+
+\begin{proposition}
+	\proplbl{6_2_1}
+	Sei $\overline{x}$ eine Ecke von $G_P$ mit zugehörigen Indexmengen $B$ und $N$. Dann tritt genau einer der folgenden Fälle ein:
+	\begin{enumerate}[label=(\alph*)]
+		\item Wenn $q\ge 0$, dann löst 
+		\begin{align}
+			\overline{x} = \begin{henrysmatrix}
+				\overline{x}_B \\ \overline{x}_N
+			\end{henrysmatrix} = \begin{henrysmatrix}
+				p \\ 0
+			\end{henrysmatrix} = \begin{henrysmatrix}
+				A_B^{-1}b \\ 0
+			\end{henrysmatrix}\notag
+		\end{align}
+		sowohl \cref{6.5} als auch \cref{6.2}.
+		\item Es gibt ein $k\in N$ mit $q_k<0$ und $Pe_k\ge 0$ ($k$-te Spalte von $P$ ist nicht-negativ). Dann sind die Zielfunktionen des Problems \cref{6.5} und des Problems \cref{6.2} auf dem zulässigen Bereich nicht nach unten beschränkt und weder \cref{6.5} noch \cref{6.2} besitzen eine Lösung.
+		\item Es gibt ein $k\in N$ mit $q_k<0$ und für jedes derartige $k$ ist $\{i\in B\mid p_{ik}<0\}$ nicht leer. Dann ist mit $t_k\ge 0$ und $l\in B$ gegeben durch
+		\begin{align}
+			t_k = \frac{p_l}{-p_{lk}} = \min\left\lbrace\frac{p_i}{-p_{ik}}\,\Bigg|\, i\in B\colon p_{ik}<0 \right\rbrace \notag
+		\end{align}
+		der Vektor $\overline{x}$ mit
+		\begin{align}
+			\hat{x}_i = \overline{x}_i + t_k\begin{cases}
+				p_{ik} & i\in B \\ \delta_{ik} & i\in N
+			\end{cases}\notag
+		\end{align}
+		eine zulässige Basislösung von $G_P$ mit den Indexmengen
+		\begin{align}
+			\hat{B} &= (B\setminus \{l\})\cup \{k\} \notag \\
+			\hat{N} &= (N\setminus \{k\})\cup \{l\} \notag
+		\end{align}
+		für die Basis- bzw. Nichtbasisvariable. Weiter gilt $c^T\hat{x}+c_0\le c^T\overline{x}+c_0$, wobei $<$ immer angenommen wird, wenn $\overline{x}$ eine nicht entartete zulässige Basislösung ist.
+	\end{enumerate}
+	Die Fälle (a) und (b) werden \begriff{entscheidbar} genannt.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item  Wegen $p=A^{-1}_Bb\ge 0$ löst $(x_B,x_N)=(p,0)$ das Problem \cref{6.5} und damit auch \cref{6.2}. Nach \propref{6_1_3}, \propref{6_1_4} und \cref{6.4} gilt $(\overline{x}_B,\overline{x}_N)=(p,0)$.
+		\item Wegen $p=\overline{x}_B\ge 0$ erhält man für 
+		\begin{align}
+			x(\lambda)=\begin{henrysmatrix}
+				x_B(\lambda) \\ x_N(\lambda)
+			\end{henrysmatrix} \notag
+		\end{align}
+		mit $x_i(\lambda)=\lambda\delta_{ik}$ für $i\in N$ und $x_B(\lambda)=Px_N(\lambda)+p$, dass
+		\begin{align}
+			x_B(\lambda) = \lambda P[:,k]+p\ge 0,\, x_N(\lambda)\ge 0\quad\forall\lambda\ge 0\notag
+		\end{align}
+		wobei $P[:,k]$ die zum Index $k\in N$ gehörende Spalte der Matrix $P$ bezeichnet. Somit ist $x(\lambda)$ für jedes $\lambda\ge 0$ ein zulässiger Punkt der Optimierungsaufgabe \cref{6.5}. Für den Zielfunktionswert von \cref{6.5} an der Stelle $x(\lambda)$ ergibt sich
+		\begin{align}
+			q^Tx_N(\lambda) + q_0 = \lambda q_k+q_0\to -\infty\quad\text{für } \lambda\to\infty\notag
+		\end{align}
+		das heißt die Aufgabe \cref{6.5} und damit auch \cref{6.2} ist nicht lösbar.
+		\item Es wird zunächst gezeigt, dass $\hat{x}\in G_P$. Mit $\overline{x}_B=p\ge 0$ erhält man für $i\in B$
+		\begin{align}
+			\hat{x}_i = \overline{x}_i + t_kp_{ik} = \overline{x}_i + \frac{p_l}{-p_{lk}}p_{ik} \ge \begin{cases}
+				\overline{x}_i + \frac{p_i}{-p_{ik}}p_{ik} = p_i-p_i = 0 & p_{ik}<0 \\
+				\overline{x}_i \ge 0 & p_{ik}\ge 0 
+			\end{cases}\notag
+		\end{align}
+		Speziell gilt
+		\begin{align}
+			\label{6.6}
+			\hat{x}_l = 0
+		\end{align}
+		Für $i\in N$ folgt
+		\begin{align}
+			\label{6.7}
+			\hat{x}_i = \overline{x}_i + t_k\delta_{ik}\ge 0
+		\end{align}
+		Außerdem gilt mit der Definition von $P$
+		\begin{align}
+			A\hat{x} &= A_B(\overline{x}_B + t_kP[:,k]) + t_kA_N[:,k] \notag \\
+			&= b + t_kA_BP[:,k] + t_kA_N[:,k] \notag \\
+			&= b-t_kA_BA_B^{-1}A_N[:,k] + t_kA_N[:,k] \notag \\
+			&= b \notag
+		\end{align}
+		Somit ist die Zulässigkeit von $\hat{x}$ gezeigt. Es wird nun nachgewiesen, dass $\hat{x}$ eine Basislösung zu den Indexmengen $\hat{B}$ und $\hat{N}$ ist. Dazu bezeichne $a_l$ bzw. $a_k$ die $l$-te bzw. $k$-te Spalte von $A$. Weiter sei $(l)$ die Spaltennummer der Spalte $a_l$ innerhalb der Matrix $A_B$. Dann gilt
+		\begin{align}
+			A_{\hat{B}} &= A_B + (a_k-a_l)e_{(l)}^T \notag \\
+			1 + e^T_{(l)}A_B^{-1}(a_k-a_l) &= 1+ e^T_{(l)}(A_B^{-1}a_k - A_B^{-1}a_l) \notag \\
+			&= 1 + e^T_{(l)}(-P[:,k] - e_{(l)}) \notag \\
+			&= 1 - p_{lk} - 1 \notag \\
+			&= -p_{lk} > 0 \notag
+		\end{align}
+		und mit $v=a_k-a_l$
+		\begin{align}
+			\left( \mathbbm{1} - \frac{A_B^{-1}ve^T_{(l)}}{1 + e^T_{(l)}A_B^{-1}v}\right)A_B^{-1}A_{\hat{B}} &= \left( \mathbbm{1} - \frac{A_B^{-1}ve^T_{(l)}}{1 + e^T_{(l)}A_B^{-1}v}\right) (\mathbbm{1} + A_B^{-1}ve^T_{(l)}) \notag \\
+			&= \mathbbm{1} + A_B^{-1}ve^T_{(l)} \left( 1 + \frac{-1 - e^T_{(l)}A_B^{-1}v}{1 + e^T_{(l)}A_B^{-1}v}\right) \notag \\
+			&= \mathbbm{1} \notag
+		\end{align}
+		Also ist $A_{\hat{B}}$ regulär mit
+		\begin{align}
+			A_{\hat{B}}^{-1} = \left( \mathbbm{1} - \frac{A_B^{-1}ve^T_{(l)}}{1 + e^T_{(l)}A_B^{-1}v}\right)A_B^{-1} \notag
+		\end{align}
+		Dies kann auch direkt mit Hilfe der \person{Shermann-Morrison}-Formel geschlossen werden. Wegen \cref{6.6} und \cref{6.7} gilt $\hat{x}_{\hat{N}}=0$. Somit ist $\hat{x}$ Basislösung von $G_P$. Schließlich ergibt sich
+		\begin{align}
+			c^T\hat{x}+c_0 &= q^T\hat{x}_N + q_0 \notag \\
+			&= q^T\overline{x}_N + t_kq_k + q_0 \notag \\
+			&\le q^T\overline{x}_N + q_0 \notag \\
+			&= c^T\overline{x} + c_0 \notag
+		\end{align}
+		Bei einer nicht entarteten zulässigen Basislösung $\overline{x}$ ist die Schrittweite $t_k$ für jedes $k$ mit $q_k<0$ positiv, da $p_B$ in allen Komponenten positiv ist. Also folgt dann
+		\begin{align}
+			c^T\hat{x}+c_0 &= q^T\overline{x}_N + q_0 + t_kq_k \notag \\
+			&< q^T\overline{x}_N + q_0 \notag \\
+			&= c^T\overline{x} + c_0 \notag
+		\end{align}
+	\end{enumerate}
+\end{proof}
+
+\begin{algorithm}[Simplex-Verfahren]
+	\proplbl{6_2_2}
+	Input: $A\in\real^{m\times n}$ mit $\rang(A)=m$, $b\in\real^m$, $c\in\real^n$, $c_0\in\real$
+	\begin{lstlisting}
+r = 0
+do while "in %$x^r$% liegt kein entscheidbarer Fall vor"
+ choose %$k\in N$% mit %$q_k<0$%
+ compute %$l\in B$% und %$t_k\ge 0$% so dass &
+ & %$t_k = \frac{p_l}{-p_{lk}} = \min\left\lbrace\frac{p_i}{-p_{ik}}\,\Bigg|\, i\in B\colon p_{ik}<0 \right\rbrace$%
+ switch i
+  case %$i\in B$%:
+   %$x_i^{r+1}=x_i^r + t_kp_{ik}$%
+  break
+  case i=k:
+   %$x_i^{r+1}=x_i^r + t_k$%
+  break
+  case %$i\in N\setminus \{k\}$%:
+   %$x_i^{r+1}=x_i^r$%
+  break
+ end switch
+ %$\hat{B} = (B\setminus \{l\})\cup \{k\}$%
+ %$\hat{N} = (N\setminus \{k\})\cup \{l\}$%
+ r = r + 1
+end do
+	\end{lstlisting}
+	Output: $x^r$, gegebenenfalls liegt entscheidbarer Fall (b) - Nichtlösbarkeit - vor
+\end{algorithm}
+
+\begin{proposition}
+	Seien $\rang(A=m$ und $G_P\neq\emptyset$. Dann ist der \propref{6_2_2} wohldefiniert. Falls alle zulässigen Basislösungen von $G_P$ nicht entartet sind, dann bricht der Algorithmus nach endlich vielen Schritten mit einem entscheidbaren Fall ab.
+\end{proposition}
+\begin{proof}
+	Wegen Teil (a) von \propref{6_1_5} und \propref{6_1_4} gibt es mindestens eine zulässige Basislösung $x^0$. Die Durchführbarkeit der übrigen Schritte von \propref{6_2_2} ist unter Beachtung von \propref{6_2_1} offensichtlich. Nach Teil (c) von \propref{6_2_1} gilt für zwei aufeinander folgende von \propref{6_2_2} erzeugte Iterierte 
+	\begin{align}
+		c^Tx^{r+1} \le c^T x^r \notag
+	\end{align}
+	denn (nach Voraussetzung) sind alle zulässigen Basislösungen nicht entartet. Da es nach Teil (b) von \propref{6_1_5} nur endlich viele Basislösungen gibt und keine Basislösung mehr als als einmal unter den erzeugten Iterierten auftreten kann, bricht der \propref{6_2_2} nach endlich vielen Schritten mit einem entscheidbaren Fall ab.
+\end{proof}
+
+Es gibt Techniken, mit denen man einen Zyklus zwischen verschiedenen Darstellungen ein und derselben Ecke verhindert, so dass man die Forderung nach Nichtentartung in \propref{6_2_1} fallen lassen kann.
+
+\begin{proposition}
+	Die Aufgabe \cref{6.2} besitzt genau dann eine Lösung, wenn $G_P\neq\emptyset$ und eine Schranke $U\in\real$ existiert mit $c^Tx\ge U$ für alle $x\in G_P$. 
+\end{proposition}
+\begin{proof}[nur Beweisskizze]
+	Die Notwendigkeit der beiden Bedingungen für die Lösbarkeit von \cref{6.2} ist offensichtlich. Um zu sehen, dass sie auch hinreichend sind, können wir o.B.d.A. $\rang(A)=m$ voraussetzen. Wegen $G_P\neq\emptyset$ garantiert das Simplex-Verfahren (mit einer Technik, die auch bei entarteten zulässigen Basislösungen funktioniert) dann die Erreichung eines entscheidbaren Falles nach endlich vielen Schritten. Dabei kann der entscheidbare Fall (b) wegen $c^Tx\ge U$ für alle $x\in G_P$ nicht eintreten sondern nur der Abbruch mit einer Lösung. 
+\end{proof}
