@@ -1,1 +1,162 @@
 \section{Die Tableauform des Simplex-Verfahrens}
+
+Der Übergang von der Ecke $\overline{x}$ zur Ecke $\hat{x}$ zieht den Wechsel von $(B,N)$ zu $\hat{B} = (B\setminus \{l\})\cup \{k\}$ und $ \hat{N} = (N\setminus \{k\})\cup \{l\}$ nach sich. Das zu $\overline{x}$ gehörende Tableau
+\begin{center}
+	\begin{tabular}{c|c|c}
+		& $x_N^T$ & 1 \\
+		\hline
+		$x_B=$ & $P$ & $p$ \\
+		\hline
+		$z = $ & $q^T$ & $q_0$ \\
+	\end{tabular}
+\end{center}
+ist zeilenweise zu lesen, das heißt
+\begin{align}
+	x_i &= \sum_{j\in N} p_{ij}x_j + p_i \notag \\
+	z &= \sum_{j\in N} q_jx_j + q_0 \notag 
+\end{align}
+Das Element $p_{lk}$ heißt \begriff{Pivot}. Die Zeile zu $l\in B$ heißt \begriff{Pivotzeile}, die Spalte zu $k\in N$ \begriff{Pivotspalte}. Zur Vereinfachung bei Handrechnung kann man das Tableau auch durch eine sogenannte Kellerzeile ergänzen:
+\begin{align}
+	\text{Kellerzeile} = -\frac{\text{Pivotzeile (ohne Pivot)}}{\text{Pivot}}\notag
+\end{align}
+Durch Austausch von $x_l$ gegen $x_k$ erhält man das zu $\hat{x}$ gehörende Tableau
+\begin{center}
+	\begin{tabular}{c|c|c}
+		& $x_{\hat{N}}^T$ & 1 \\
+		\hline
+		$x_{\hat{B}}=$ & $\hat{P}$ & $\hat{p}$ \\
+		\hline
+		$z = $ & $\hat{q}^T$ & $\hat{q}_0$ \\
+	\end{tabular}
+\end{center}
+mit 
+\begin{center}
+	\begin{tabular}{p{6cm}|p{8cm}}
+		\textbf{Stellung im Tableau} & \textbf{Wert im neuen Tableau} \\
+		\hline
+		Element (außer Pivotzeile und -spalte) & $\text{Element} + \text{Pivotspaltenelement}\cdot \text{Kellerzeilenelement}$ \\
+		Pivotzeile (ohne Pivot) & Kellerzeile (ohne Pivot) \\
+		Pivotspalte (ohne Pivot) & $\frac{\text{Pivotspalte (ohne Pivot)}}{\text{Pivot}}$ \\
+		Pivot & $\frac{1}{\text{Pivot}}$ \\
+	\end{tabular}
+\end{center}
+
+\begin{example}
+	\begin{align}
+		-13x_1 + 37x_2 + 12x_3 + 48\to\min \notag \\
+		\text{bei } x_1-2x_2-x_3 &\le 2 \notag \\
+		2x_1-5x_2-x_3 &\le 4 \notag \\
+		x_1-3x_2-x_3&\le 1 \notag \\
+		x_1,x_2,x_3 &\ge 0 \notag
+	\end{align}
+	Durch Einführen der Schlupfvariablen $x_4,x_5,x_6\ge 0$ ergibt sich ein Problem in Standardform
+	\begin{align}
+	-13x_1 + 37x_2 + 12x_3 + 48\to\min \notag \\
+	\text{bei } x_1-2x_2-x_3+x_4 &= 2 \notag \\
+	2x_1-5x_2-x_3 + x_5 &= 4 \notag \\
+	x_1-3x_2-x_3 + x_6&= 1 \notag \\
+	x_1,x_2,x_3,x_4,x_5,x_6 &\ge 0 \notag
+	\end{align}
+	Offenbar kann man einer erste zulässige Basislösung $x^0$ ablesen. Das zugehörige Tableau (mit Pivot \textcolor{red}{-1} und Kellerzeile) lautet dann \\
+	\begin{minipage}[c]{0.6\textwidth}
+		\begin{center}
+			\begin{tabular}{c|ccc|c}
+				$T_0$ & $x_1$ & $x_2$ & $x_3$ & 1 \\
+				\hline
+				$x_4=$ & -1 & 2 & 1 & 2 \\
+				\hline 
+				$x_5=$ & -2 & 5 & 1 & 4 \\
+				\hline 
+				$x_6=$ & \textcolor{red}{-1} & 3 & 1 & 1 \\
+				\hline
+				$z=$ & -13 & 37 & 12 & 48 \\
+				\hline
+				& $\times$ & 3 & 1 & 1
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{align}
+			x^0 &= (0,0,0,2,4,1)^T\notag \\
+			B &= \{4,5,6\},\, N=\{1,2,3\}\notag \\
+			z(x^0) &= c^Tx^0 + c_0 = 48 \notag \\
+			&\text{nicht entscheidbar} \notag 
+		\end{align}
+	\end{minipage}
+	Dabei ist die Wahl der Pivotspalte $k=1\in N$ eindeutig, da nur ein negativer Zielfunktionskoeffizient vorhanden ist. Die Wahl  der Pivotzeile $l=6\in B$ ist auch eindeutig, da unter den Quotienten $\frac{p_i}{-p_{i,1}}$ mit $i\in \{B\mid p_{i,1}<0\}$ der Quotient $\frac{p_6}{-p_{6,1}}=\frac{1}{-(-1)}=1$ am kleinsten ist. Der Fortgang des Simplex-Verfahrens in Tableauform ist nun wie folgt: \\
+	\begin{minipage}[c]{0.6\textwidth}
+		\begin{center}
+			\begin{tabular}{c|ccc|c}
+				$T_1$ & $x_6$ & $x_2$ & $x_3$ & 1 \\
+				\hline
+				$x_4=$ & 1 & \textcolor{red}{-1} & 0 & 1 \\
+				\hline 
+				$x_5=$ & 2 & -1 & -1 & 2 \\
+				\hline 
+				$x_1=$ & -1 & 3 & 1 & 1 \\
+				\hline
+				$z=$ & 13 & -2 & -1 & 35 \\
+				\hline
+				& 1 & $\times$ & 0 & 1
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{align}
+		x^1 &= (1,0,0,1,2,0)^T\notag \\
+		B &= \{1,4,5\},\, N=\{2,3,6\}\notag \\
+		z(x^1) &= c^Tx^1 + c_0 = 35 \notag \\
+		&\text{nicht entscheidbar} \notag 
+		\end{align}
+	\end{minipage} \\
+	\begin{minipage}[c]{0.6\textwidth}
+		\begin{center}
+			\begin{tabular}{c|ccc|c}
+				$T_2$ & $x_6$ & $x_4$ & $x_3$ & 1 \\
+				\hline
+				$x_2=$ & 1 & -1 & 0 & 1 \\
+				\hline 
+				$x_5=$ & 1 & 1 & \textcolor{red}{-1} & 1 \\
+				\hline 
+				$x_1=$ & 2 & -3 & 1 & 4 \\
+				\hline
+				$z=$ & 11 & 2 & -1 & 33 \\
+				\hline
+				& 1 & 1 & $\times$ & 1
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{align}
+		x^2 &= (4,1,0,0,1,0)^T\notag \\
+		B &= \{1,2,5\},\, N=\{3,4,6\}\notag \\
+		z(x^2) &= c^Tx^2 + c_0 = 33 \notag \\
+		&\text{nicht entscheidbar} \notag 
+		\end{align}
+	\end{minipage} \\
+	\begin{minipage}[c]{0.6\textwidth}
+		\begin{center}
+			\begin{tabular}{c|ccc|c}
+				$T_3$ & $x_6$ & $x_4$ & $x_5$ & 1 \\
+				\hline
+				$x_2=$ & 1 & -1 & 0 & 1 \\
+				\hline 
+				$x_3=$ & 1 & 1 & -1 & 1 \\
+				\hline 
+				$x_1=$ & 3 & -2 & -1 & 5 \\
+				\hline
+				$z=$ & 10 & 1 & 1 & 32 \\
+				\hline
+				&  &  &  & 
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{align}
+		x^3 &= (5,1,1,0,0,0)^T\notag \\
+		B &= \{1,2,3\},\, N=\{4,5,6\}\notag \\
+		z(x^3) &= c^Tx^3 + c_0 = 32 \notag \\
+		&\text{entscheidbar, } x^3 \text{ ist Lösung} \notag 
+		\end{align}
+	\end{minipage}
+\end{example}
