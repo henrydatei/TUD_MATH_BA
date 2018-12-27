@@ -517,27 +517,11 @@
 	{\ifmmode\else\bfseries\fi ???}%similar to \ref\cref: question marks in case of undefined labels
 }
 
-%\makeatletter
 %declare new term to the index, output if no star is given to call position
-%\NewDocumentCommand{\begriff}{s O{} m O{}}{%
-%	\index{#2#3#4}%
-%	\IfBooleanTF{#1}\relax\uline{#3\/}%
-%	\futurelet\begriffnextchar\begriffspace%
-%}
-%\def\begriffspace{%
-%	\if\begriffnextchar.\else%
-%		\if\begriffnextchar,\else%
-%			\if\begriffnextchar;\else%
-%				\ %
-%			\fi%
-%		\fi%
-%	\fi%
-%}
-%\makeatother
-
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\index{#2#3#4}%
-	\IfBooleanTF{#1}{}{\uline{#3}\ }%
+	\IfBooleanTF{#1}{}{\uline{#3}}%
+	\futurelet\begriffnextchar\relax%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
