@@ -2,7 +2,7 @@
 
 Das \person{Newton}-Verfahren beruht auf der Idee, die Gleichung $F(x) = 0$ für eine gegebene Näherung $y\in\real^n$ einer Nullstelle durch die linearisierte Gleichung 
 \begin{align}
-	F(y) + F'(y)(x-y) = 0\notag
+	F(y) + F'(y)(x-y) \overset{!}{=} 0\notag
 \end{align}
 zu ersetzen, eine Lösung $x$ dieser Gleichung (sofern möglich) zu berechnen und als neue Näherung für die Nullstelle zu verwenden.
 
@@ -79,6 +79,10 @@ Vorausgesetzt $F$ ist differenzierbar, dann ist dieses Verfahren durchführbar, 
 \end{proof}
 
 Die Konvergenz der Folge $\{x^k\}$ gegen $x^\ast$ zusammen mit der Eigenschaft \cref{5.3} wird als \begriff{Q-quadratische Konvergenz} der Folge $\{x^k\}$ gegen $x^\ast$ bezeichnet.
+
+\begin{*anmerkung}
+	Es gibt neben der Q-quadratischen Konvergenz auch die R-quadratische Konvergenz. Das "'Q"' in Q-quadratischer Konvergenz kommt daher, dass man einen \textbf{Q}uotienten betrachtet: $\frac{\Vert x^{k+1}-x^\ast\Vert}{\Vert x^k-x^\ast\Vert}$. Das "'R"' in R-quadratischer Konvergenz steht für \textbf{R}adizieren, also das Wurzel-ziehen.
+\end{*anmerkung}
 
 \begin{remark}
 	Es gibt zahlreiche Modifikationen des \person{Newton}-Verfahrens, zum Beispiel

@@ -318,4 +318,16 @@ gilt $r(x)=\Vert ax-b\Vert_2^2$, man beachte $y_i-f(t_i,x)=y_i-\sum_{j=1}^n x_j\
 		\end{henrysmatrix} \notag
 	\end{align}
 	und das Ausgleichsproblem \cref{3.16} hat die Lösung $x^\ast=(1.0385..., 2.2692...)^T$.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[->] (0,0) -- (5,0);
+			\draw[->] (0,0) -- (0,7);
+			\node at (5.5,0) (t) {$t$};
+			\node at (0,7.5) (y) {$y$};
+			\draw[fill=black] (0,0.5) circle (0.1);
+			\draw[fill=black] (3,4) circle (0.1);
+			\draw[fill=black] (4,5) circle (0.1);
+			\draw[dashed] (0,1.0385) -- (5,6.19225);
+		\end{tikzpicture}
+	\end{center}
 \end{example}

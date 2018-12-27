@@ -4,7 +4,7 @@ Es wird eine Möglichkeit zur Erreichung globaler Konvergenzeigenschaften des \p
 \begin{align}
 	\upphi(x): \begin{cases}
 		\real^n&\to \real \\
-		x&\mapsto \frac{1}{2}\Vert F(x)\Vert_2^2
+		x&\mapsto \frac{1}{2}\Vert F(x)\Vert_2^2 \left(=\frac{1}{2}F(x)^TF(x)\right)
 	\end{cases}\notag
 \end{align}
 zur Beurteilung der Güte der Näherung $x$. Falls $F'(x)$ regulär und $d(x)\in\real^n$ die \person{Newton}-Richtung im Punkt $x$ ist, das heißt die Gleichung $F(x)+F'(x)d=0$ löst, dann folgt
@@ -21,7 +21,7 @@ und
 		&= (1-2t)\upphi(x) + o(t)
 	\end{split}
 \end{align}
-das heißt $\upphi(x+td(x))<\upphi(x)$ für alle $t>0$ hinreichend klein. Die \person{Newton}-Richtung $d(x)$ ist also eine Abstiegsrichtung von $\upphi$ im Punkt $x$. Die Idee besteht nun darin, eine Iteration der Form
+das heißt $\upphi(x+td(x))<\upphi(x)$ für alle $t>0$ hinreichend klein. Die \person{Newton}-Richtung $d(x)$ ist also eine Abstiegsrichtung von $\upphi$ im Punkt $x$. Falls $F'(x)$ singulär, dann liefert $-\nabla\upphi$ eine Abstiegsrichtung, falls $F'(x)^TF(x)\neq 0$. Die Idee besteht nun darin, eine Iteration der Form
 \begin{align}
 	x^{k+1} = x^k + t_kd^k\notag
 \end{align}
@@ -30,7 +30,7 @@ durchzuführen, wobei $d^k=d(x^k)$ die \person{Newton}-Richtung im Punkt $x^k$ u
 	S = \left\lbrace 2^{-i}\mid i\in\natur\right\rbrace = \left\lbrace 1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots\right\rbrace \notag
 \end{align}
 
-\begin{algorithm}
+\begin{algorithm}[gedämpftes \person{Newton}-Verfahren]
 	\proplbl{5_2_1}
 	Input: $x^0\in\real^n$, $\epsilon\ge 0$, $q\in (0,1)$ und $F$ in geeigneter Form
 	\begin{lstlisting}
