@@ -74,6 +74,22 @@ Es stellt sich damit die Frage, wie sich die Rundungsfehler in in $y_0,...,y_{N-
 	&\vdots \notag \\
 	R_(a,y_0) &= \dots \notag
 \end{align}
+
+\begin{*anmerkung}
+	Wer sich fragt, was das soll: Die $y_i$ sind die Zwischenschritte zur Berechnung eines Terms. Soll zum Beispiel der Term $(1+2)^3-5$ berechnet werden, so ist
+	\begin{align}
+		y_0 &= 1+2 = 3 \notag \\
+		y_1 &= y_0^3 \notag \\
+		y_2 &= y_1-5 \notag
+	\end{align}
+	Die Restabbildungen $R_i$ setzen Zwischenschritte ein:
+	\begin{align}
+		R_2 &= y_1 -5\notag \\
+		R_1 &= y_0^3 -5 \notag \\
+		R_0 &= (1+2)^3 - 5\notag
+	\end{align}
+\end{*anmerkung}
+
 Für $k=0,...,N-1$ wird nun die Kondition der durch $y_k\mapsto R_k(a,y_0,...,y_k)$ definierten Abbildung betrachtet, um festzustellen, wie sich Rundungsfehler in $y_k$ auf das Ergebnis $y_N$ auswirken.
 
 \begin{definition}[relative Konditionszahlen, stabil, instabil]
