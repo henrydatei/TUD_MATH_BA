@@ -1,1 +1,18 @@
 \section{Revidiertes Simplex-Verfahren}
+
+Hier wird auf die explizite Berechnung der Matrix $P$ verzichtet. Vielmehr wird beim Übergang von einer Ecke $x^r$ mit dem Indexmengen $B_r$ und $N_r$ zur nächsten Ecke $x^{r+1}$ mit den Indexmengen $B_{r+1}$ und $N_{r+1}$ ausgenutzt, dass sich die Indexmengen jeweils nur in einem Index ändern und der Unterschied der Matrix $A_{B_r}$ zur Matrix $A_{B_{r+1}}$ in der Änderung einer einzigen Spalte besteht.
+
+Die an der Ecke $x^{r+1}$ zur Bestimmung des neuen Pivots erforderlichen Vektoren, zum Beispiel $p^{r+1}$ und $q^{r+1}$, werden dann mit Hilfe der aus $A_{B_r}^{-1}$ mit $\mathcal{O}(m^2)$ Operationen zu gewinnenden Matrix $A_{B_{r+1}}^{-1}$ bestimmt, vergleiche die Aufdatierungsformel im Beweis von \propref{6_2_1}, zum Beispiel erhält man
+\begin{align}
+	p^{r+1} = A_{B_{r+1}}^{-1}b\notag
+\end{align}
+mit
+\begin{align}
+	A_{B_{r+1}}^{-1} &= \left(\mathbbm{1}-\frac{A_{B_r}^{-1}ve^T_{(l)}}{1+e^T_{(l)}A_{B_r}^{-1}v} \right) A_{B_r}^{-1}\notag \\
+	&= A_{B_r}^{-1} - \frac{1}{1+e^T_{(l)}(A_{B_r}^{-1}v)}(A_{B_r}^{-1}v)(e^T_{(l)}A_{B_r}^{-1})\notag
+\end{align}
+Die Matrizen $A_{B_r}^{-1}$ müssen nicht explizit gespeichert werden. Da mit geeigneten Vektoren $u,w,\tilde{w}\in\real^m$ offenbar
+\begin{align}
+	A_{B_{r+1}}^{-1} = (\mathbbm{1}+uw^T)A_{B_r}^{-1} = A_{B_r}^{-1} + u\tilde{w}^T\notag
+\end{align}
+genügt es, etwa $u,\tilde{w}$ für jeden Basiswechsel sowie $A_{B_0}$ zu speichern. Ein Restart ist hier nach einer größeren Anzahl von Basiswechseln empfehlenswert, um den Einfluss von Rundungsfehlern zu begrenzen.
