@@ -161,7 +161,8 @@ end do
 \end{algorithm}
 
 \begin{proposition}
-	Seien $\rang(A=m$ und $G_P\neq\emptyset$. Dann ist der \propref{6_2_2} wohldefiniert. Falls alle zulässigen Basislösungen von $G_P$ nicht entartet sind, dann bricht der Algorithmus nach endlich vielen Schritten mit einem entscheidbaren Fall ab.
+	\proplbl{6_2_3}
+	Seien $\rang(A)=m$ und $G_P\neq\emptyset$. Dann ist der \propref{6_2_2} wohldefiniert. Falls alle zulässigen Basislösungen von $G_P$ nicht entartet sind, dann bricht der Algorithmus nach endlich vielen Schritten mit einem entscheidbaren Fall ab.
 \end{proposition}
 \begin{proof}
 	Wegen Teil (a) von \propref{6_1_5} und \propref{6_1_4} gibt es mindestens eine zulässige Basislösung $x^0$. Die Durchführbarkeit der übrigen Schritte von \propref{6_2_2} ist unter Beachtung von \propref{6_2_1} offensichtlich. Nach Teil (c) von \propref{6_2_1} gilt für zwei aufeinander folgende von \propref{6_2_2} erzeugte Iterierte 
@@ -174,6 +175,7 @@ end do
 Es gibt Techniken, mit denen man einen Zyklus zwischen verschiedenen Darstellungen ein und derselben Ecke verhindert, so dass man die Forderung nach Nichtentartung in \propref{6_2_1} fallen lassen kann.
 
 \begin{proposition}
+	\proplbl{6_2_4}
 	Die Aufgabe \cref{6.2} besitzt genau dann eine Lösung, wenn $G_P\neq\emptyset$ und eine Schranke $U\in\real$ existiert mit $c^Tx\ge U$ für alle $x\in G_P$. 
 \end{proposition}
 \begin{proof}[nur Beweisskizze]

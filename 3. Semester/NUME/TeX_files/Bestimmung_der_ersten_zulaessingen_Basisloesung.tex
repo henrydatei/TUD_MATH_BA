@@ -1,1 +1,143 @@
 \section{Bestimmung einer ersten zulässigen Basislösung}
+
+O.B.d.A kann man in der Standardform $c^Tx+c_0\to\min$ bei $Ax=b$, $x\ge 0$ einer linearen Optimierungsaufgabe voraussetzen, dass
+\begin{align}
+	\label{6.8}
+	b\ge 0
+\end{align}
+gilt. Andernfalls multipliziere man die Gleichungen $Ax=b$ mit $b_i<0$ einfach mit -1. Anstelle des zulässigen Bereiches $G_P$ betrachten wir nun den erweiterten Bereich
+\begin{align}
+	\tilde{G}_P = \{(x,y)\in\real^n\times\real^m\mid y=-Ax+b,\, x,y\ge 0\}\notag
+\end{align}
+
+\begin{lemma}
+	Es gilt $G_P\times \{0\}\subset\tilde{G}_P$. Ist $(\overline{x},0)$ eine Ecke von $\tilde{G}_P$, so ist $\overline{x}$ Ecke von $G_P$ und umgekehrt.
+\end{lemma}
+\begin{proof}
+	Die erste Aussage folgt sofort aus der Definition der Mengen $G_P$ und $\tilde{G}_P$. Sei nun $(\overline{x},0)$ Ecke von $\tilde{G}_P$. Weiter seien $x^1,x^2\in G_P$ beliebig gegeben, so dass
+	\begin{align}
+		\frac{1}{2}(x^1+x^2) = \overline{x}\notag
+	\end{align}
+	Wegen $-Ax^1+b=0$ und $-Ax^2+b=0$ folgt zunächst $(x^1,0),(x^2,0)\in\tilde{G}_P$. Da $(\overline{x},0)$ Ecke von $\tilde{G}_P$ ist, folgt weiter $x^1=x^2=\overline{x}$. Also ist $\overline{x}$ Ecke von $G_P$. Die Umkehrung folgt leicht mit ähnlichen Überlegungen.
+\end{proof}
+
+Um also eine Ecke $\overline{x}$ von $G_P$ zu ermitteln, genügt es eine Ecke $\overline{x},\overline{y}$ von $\tilde{G}_P$ zu bestimmen, für die $\overline{y}=0$ gilt. Dies versucht man mit der Lösung folgender Hilfsaufgabe zu erreichen:
+\begin{align}
+	\label{6.9}
+	h(y) = \sum_{i=1}^{m}y_i\to\min\quad\text{bei } y = -Ax+b,\, x,y\ge 0
+\end{align}
+Die Zielfunktion $h$ von \cref{6.9} wird als \begriff{Hilfszielfunktion}, die Variablen $y_1,...,y_m$ werden als \begriff{künstliche Variablen} und das Vorgehen selbst wird als \begriff{Hilfszielfunktionsmethode} bezeichnet.
+
+Offenbar ist $(\overline{x},\overline{y})=(0,b)$ mit $x$ als Nichtvariable und $y$ als Basisvariable eine erste zulässige Basislösung von $\tilde{G}_P$. Also ist $\tilde{G}_P$ insbesondere nicht leer. Außerdem ist die Zielfunktion von \cref{6.9} wegen $y\ge 0$ auf $\tilde{G}_P$ durch 0 nach unten beschränkt. Mit \propref{6_2_4} folgt daher die Lösbarkeit der linearen Optimierungsaufgabe \cref{6.9}. Die Anwendung des Simplex-Verfahrens liefert daher (vergleiche \propref{6_2_3} und die Anmerkung danach) nach endlich vielen Schritten eine Lösung $(x^\ast,y^\ast)$ von \cref{6.9}. Die Darstellung der Hilfszielfunktion $h$ durch die Nichtbasisvariablen $x$ an der Basislösung $(0,b)$ ist dabei gegeben durch 
+\begin{align}
+	y_i = -(Ax)_i + b_i\quad\text{und}\quad \sum_{i=1}^m y_i = e^Ty = -e^T(Ax)+e^Tb\notag
+\end{align}
+Damit ergibt sich folgendes Anfangstableau für das Simplex-Verfahren zur Lösung von \cref{6.9}
+\begin{center}
+	\begin{tabular}{c|c|c}
+		& $x^T$ & 1 \\
+		\hline
+		$y=$ & $-A$ & $b$ \\
+		\hline
+		$z=$ & $c^T$ & $c_0$ \\
+		\hline
+		$h=$ & $-e^TA$ & $e^Tb$ \\
+	\end{tabular}
+\end{center}
+Sinnvollerweise wird in der Tableauform die Darstellung der eigentlichen Zielfunktion der Optimierungsaufgabe \cref{6.2} mit Hilfe der jeweiligen Nichtbasisvariablen in einer zusätzlichen Zeile simultan mit angepasst. Sobald eine künstliche Variable $y_i$ Nichtbasisvariable wird, kann die entsprechende Zeile gestrichen werden.
+
+Falls in der Lösung von \cref{6.9} $y^\ast\neq 0$ (das heißt $h(y^\ast)>0$) gilt, ist der zulässige Bereich $G_P$ der Ausgangsaufgabe \cref{6.2} leer. Andernfalls hat man mit $x^\ast$ eine erste Ecke von $G_P$ gefunden. Falls künstliche Variablen noch als Basisvariable auftreten, sind diese durch weitere Austauschschritte zu Nichtbasisvariablen zu machen; geht das nicht, sind Nullzeilen zu streichen.
+
+\begin{example}
+	\begin{align}
+		z(x) = x_1 - x_2 + 2x_3\to\min \notag \\
+		\text{bei } 2x_1 - 3x_2 + x_3 &\ge 3 \notag \\
+		x_1 - 2x_2 - x_3 &\ge 1 \notag \\
+		3x_1 - 5x_2 &\ge 4 \notag \\
+		x_1,x_2,x_3&\ge 0\notag
+	\end{align}
+	Einführen von Schlupfvariablen führt auf die Standardform
+	\begin{align}
+		z(x) = x_1 - x_2 + 2x_3\to\min \notag \\
+		\text{bei } 2x_1 - 3x_2 + x_3 - x_4 &= 3 \notag \\
+		x_1 - 2x_2 - x_3 - x_5 &= 1 \notag \\
+		3x_1 - 5x_2  - x_6 &= 4 \notag \\
+		x_1,x_2,x_3,x_4,x_5,x_6&\ge 0\notag
+	\end{align}
+	Das Hilfsproblem ergibt sich nun zu
+	\begin{align}
+		h(y) = y_1+y_2+y_3 \to\min \notag \\
+		\text{bei } y_1 &= -2x_1 + 3x_2 - x_3 + x_4 + 3 \notag \\
+		y_2 &= -x_1 + 2x_2 + x_3 + x_5 + 1 \notag \\
+		y_3 &= -3x_1 + 5x_2  + x_6 + 4 \notag \\
+		x_1,...,x_6,y_1,y_2,y_3&\ge 0\notag
+	\end{align}
+	Das Simplex-Verfahren (in Tableauform) zur Lösung der Hilfsaufgabe läuft nun wie folgt ab:
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{center}
+			\begin{tabular}{c|cccccc|c}
+				$H_0$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & 1 \\
+				\hline
+				$y_1 = $ & -2 & 3 & -1 & 1 & 0 & 0 & 3 \\
+				$y_2 = $ & \textcolor{red}{-1} & 2 & 1 & 0 & 1 & 0 & 1 \\
+				$y_3 = $ & -3 & 5 & 0 & 0 & 0 & 1 & 4 \\
+				\hline
+				$z = $ & 1 & -1 & 2 & 0 & 0 & 0 & 0 \\
+				\hline
+				$h= $ & -6 & 10 & 0 & 1 & 1 & 1 & 8 \\
+				\hline 
+				& $\times$ & 2 & 1 & 0 & 1 & 0 & 1 \\
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{center}
+			\begin{tabular}{c|cccccc|c}
+				$H_1$ & $y_2$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & 1 \\
+				\hline
+				$y_1 = $ &  & \textcolor{red}{-1} & -3 & 1 & -2 & 0 & 1 \\
+				$x_1 = $ &  & 2 & 1 & 0 & 1 & 0 & 1 \\
+				$y_3 = $ &  & -1 & -3 & 0 & -3 & 1 & 1 \\
+				\hline
+				$z = $ &  & 1 & 3 & 0 & 1 & 0 & 1 \\
+				\hline
+				$h= $ &  & -2 & -6 & 1 & -5 & 1 & 2 \\
+				\hline 
+				&  & $\times$ & -3 & 1 & -2 & 0 & 1 \\
+			\end{tabular}
+		\end{center}
+	\end{minipage} \\
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{center}
+			\begin{tabular}{c|cccccc|c}
+				$H_2$ & $y_2$ & $y_1$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & 1 \\
+				\hline
+				$x_2 = $ & &  & -3 & 1 & -2 & 0 & 1 \\
+				$x_1 = $ &  &  & -5 & 2 & -3 & 0 & 3 \\
+				$y_3 = $ &  &  & 0 & \textcolor{red}{-1} & -1 & 1 & 0 \\
+				\hline
+				$z = $ &  &  & 0 & 1 & -1 & 0 & 2 \\
+				\hline
+				$h= $ &  &  & 0 & -1 & -1 & 1 & 0 \\
+				\hline 
+				&  &  & $\times$ &  &  &  &  \\
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{center}
+			\begin{tabular}{c|cccccc|c}
+				$H_3$ & $y_2$ & $y_1$ & $x_3$ & $y_3$ & $x_5$ & $x_6$ & 1 \\
+				\hline
+				$x_2 = $ & &  & -3 &  & -3 & 1 & 1 \\
+				$x_1 = $ &  &  & -5 &  & -5 & 2 & 3 \\
+				$x_4 = $ &  &  & 0 &  & -1 & 1 & 0 \\
+				\hline
+				$z = $ &  &  & 0 &  & -2 & 1 & 2 \\
+				\hline
+				$h= $ &  &  & 0 &  & 0 & 0 & 0 \\
+			\end{tabular}
+		\end{center}
+	\end{minipage}
+	Somit ist $(\overline{x})=(3,1,0,0,0,0)$ eine zulässige Basislösung der Aufgabe in Standardform mit $B=\{1,2,4\}$ und $N=\{3,5,6\}$. Mit Tableau $H_3$ kann nun das Simplex-Verfahren zur Lösung der Standardaufgabe angeschlossen werden. Dies liefert nach zwei Schritten die Lösung der Aufgabe in Standardform zu $x^\ast=(\frac{3}{2},0,0,0,\frac{1}{2},\frac{1}{2})^T$ und $z(x^\ast)=\frac{3}{2}$.
+\end{example}
