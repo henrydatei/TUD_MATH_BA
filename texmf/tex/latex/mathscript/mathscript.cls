@@ -521,7 +521,11 @@
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\index{#2#3#4}%
 	\IfBooleanTF{#1}{}{\uline{#3}}%
-	\futurelet\begriffnextchar\relax%
+	\futurelet\begriffnextchar\begriffspace%
+}
+\def\begriffspace{%
+	\fullexpandarg%
+	\IfSubStr{.,;}{\begriffnextchar}{}{\ }%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
