@@ -525,7 +525,11 @@
 }
 \def\begriffspace{%
 	\fullexpandarg%
-	\IfSubStr{.,;}{\begriffnextchar}{}{\ }%
+	\StrLen{\detokenize{\begriffnextchar}}[\tmp]%
+	\ifnum\tmp > 1%
+	\else%
+		\IfSubStr{.,;}{\begriffnextchar}{}{\ }%
+	\fi%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
