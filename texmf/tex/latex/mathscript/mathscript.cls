@@ -514,22 +514,13 @@
 			}%
 		}%
 	}%
-	{\ifmmode\else\bfseries\fi ???}%similar to \ref\cref: question marks in case of undefined labels
+	{\begingroup\ifmmode\else\bfseries\fi ???\endgroup}%similar to \ref\cref: question marks in case of undefined labels
 }
 
 %declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
 	\index{#2#3#4}%
 	\IfBooleanTF{#1}{}{\uline{#3}}%
-	\futurelet\begriffnextchar\begriffspace%
-}
-\def\begriffspace{%
-	\fullexpandarg%
-	\StrLen{\detokenize{\begriffnextchar}}[\tmp]%
-	\ifnum\tmp > 1%
-	\else%
-		\IfSubStr{.,;}{\begriffnextchar}{}{\ }%
-	\fi%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
