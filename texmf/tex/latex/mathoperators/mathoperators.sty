@@ -1,6 +1,24 @@
 \ProvidesPackage{mathoperators}
 
 \RequirePackage{xparse}
+\RequirePackage{xkeyval}
+\RequirePackage{xstring}
+
+%\OptFractionAppearence - differenciate between multiple appearences of fraction
+%	- 0: simple slash: a/b 												(option slash)(default)
+%	- 1: fraction by slash, raised nominator, lowered denominator		(option lowerraise)
+\let\OptFractionAppearence\z@
+\DeclareOptionX{fractionappearence}{%
+	\IfStrEq{#1}{slash}{}{%
+		\IfStrEq{#1}{lowerraise}{%
+			\let\OptFractionAppearence\@ne
+		}{}%further options can be inserted here
+	}
+}
+
+\DeclareOptionX*{\PackageWarning{mathoperator}{Unknown option >\CurrentOption<}}
+\ProcessOptionsX
+
 %Provides some common math related commands and operators
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -85,8 +103,32 @@
 
 \newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\qraum}[2]{\sfrac{#1}{#2}}
-\newcommand{\lnkset}[2]{\nicefrac{#1}{#2}} % Menge der Linksnebenklassen
-\newcommand{\rnkset}[2]{\bsfrac{#1}{#2}} % Menge der Rechtsnebenklassen
+\newcommand{\lnkset}[2]{%Menge der Linksnebenklassen
+	\ifcase\OptFractionAppearence\relax%
+		\ifmmode%
+			#1\slash #2%
+		\else%
+			$#1\slash #2$%
+		\fi%
+	\or%
+		\nicefrac{#1}{#2}%
+	\else%
+		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
+	\fi%
+}
+\newcommand{\rnkset}[2]{%
+	\ifcase\OptFractionAppearence\relax%
+		\ifmmode%
+			#1\backslash#2%
+		\else%
+			$#1\backslash#2$%
+		\fi%
+	\or%
+		\bsfrac{#1}{#2}% Menge der Rechtsnebenklassen
+	\else%
+		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
+	\fi%
+}
 
 % Math Operators
 \DeclareMathOperator{\inn}{int} % Set of inner points
@@ -102,6 +144,9 @@
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\cond}{cond}
 \DeclareMathOperator{\rd}{rd}
+\undef\div
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\rot}{rot}
 
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aff}{Aff}
