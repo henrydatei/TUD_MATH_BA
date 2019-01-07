@@ -42,16 +42,87 @@ definierte Funktion $f:\real^n\to\real$ als \begriff{Zielfunktion}. Allgemein ka
 	\end{itemize}
 	Zur graphischen Lösung kann man $x_3=1-x_1-x_2$ eliminieren. Dies ergibt $-10x_1+5x_2+20\to\min$, bei
 	\begin{align}
-		x_1-x_2+0.4 &\le 0 \notag \\
-		-x_1+x_2-1 &\le 0 \notag \\
-		3x_1-x_2+0.2 &\le 0 \notag \\
-		x_1+x_2-1 &\le 0\notag \\
+		x_1-x_2+0.4 &\le 0 \quad\textcolor{blue}{x_2\ge 0.4+x_1} \notag \\
+		-x_1+x_2-1 &\le 0 \quad\textcolor{yellow}{x_2 \le 1+x_1} \notag \\
+		3x_1-x_2+0.2 &\le 0 \quad\textcolor{red}{x_2\ge 3x_1+0.2} \notag \\
+		x_1+x_2-1 &\le 0 \quad\textcolor{green}{x_2 \le 1-x_1}\notag \\
 		x_1,x_2 &\ge 0 \notag
 	\end{align}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+		\begin{scope}[transparency group]
+		\begin{scope}[blend mode=multiply]
+		\draw[->] (0,0) -- (10,0);
+		\draw[->] (0,0) -- (0,10);
+		\node at (10.3,0) (y) {$x$};
+		\node at (0,10.3) (x) {$y$};
+		
+		\draw (-0.1,5) -- (0.1,5);
+		\node at (-0.3,5) (1y) {1};
+		\draw (-0.1,2) -- (0.1,2);
+		\node at (-0.4,2) (0.4y) {0.4};
+		\draw (-0.1,1) -- (0.1,1);
+		\node at (-0.4,1) (0.4y) {0.2};
+		\draw (5,-0.1) -- (5,0.1);
+		\node at (5,-0.3) (1x) {1};
+		
+		\draw[yellow,thick] (0,5) -- (5,10);
+		\draw[green,thick] (0,5) -- (5,0);
+		\draw[blue,thick] (0,2) -- (8,10);
+		\draw[red,thick] (0,1) -- (3,10);
+		
+		\draw[yellow, fill=yellow, opacity=0.2] (0,5) -- (5,10) -- (10,10) -- (10,0) -- (0,0) -- (0,5);
+		\draw[green, fill=green, opacity=0.2] (0,5) -- (5,0) -- (0,0) -- (0,5);
+		\draw[blue, fill=blue, opacity=0.2] (0,2) -- (8,10) -- (0,10) --(0,2);
+		\draw[red, fill=red, opacity=0.2] (0,1) -- (3,10) -- (0,10) -- (0,1);
+		
+		\draw[dashed, thick, black] (0,2) -- (0.5,2.5) -- (1,4) -- (0,5) -- (0,2);
+		\node at (0.4,3.5) (GP) {$G_P$};
+		\end{scope}
+		\end{scope}
+		\end{tikzpicture}
+	\end{center}
 	Aus der graphischen Darstellung des zulässigen Bereiches und Parallelverschieben der Niveaulinie der Zielfunktion
 	\begin{align}
 		-2x_1+x_2 =c \notag
 	\end{align}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+		\draw[->] (0,0) -- (10,0);
+		\draw[->] (0,0) -- (0,10);
+		\node at (10.3,0) (y) {$x$};
+		\node at (0,10.3) (x) {$y$};
+		
+		\draw (-0.1,5) -- (0.1,5);
+		\node at (-0.3,5) (1y) {1};
+		\draw (-0.1,2) -- (0.1,2);
+		\node at (-0.4,2) (0.4y) {0.4};
+		\draw (-0.1,1) -- (0.1,1);
+		\node at (-0.4,1) (0.4y) {0.2};
+		\draw (5,-0.1) -- (5,0.1);
+		\node at (5,-0.3) (1x) {1};
+		
+		\draw[gray,thick] (0,5) -- (5,10);
+		\draw[gray,thick] (0,5) -- (5,0);
+		\draw[gray,thick] (0,2) -- (8,10);
+		\draw[gray,thick] (0,1) -- (3,10);
+		
+		\draw[dashed, thick, black, fill=gray] (0,2) -- (0.5,2.5) -- (1,4) -- (0,5) -- (0,2);
+		\node at (0.4,3.5) (GP) {$G_P$};
+		
+		\draw[cyan] (0,5) -- (2.5,10);
+		\draw[cyan] (0,4.5) -- (2.5,9.5);
+		\draw[cyan] (0,4) -- (2.5,9);
+		\draw[cyan] (0,3.5) -- (2.5,8.5);
+		\draw[cyan] (0,3) -- (2.5,8);
+		\draw[cyan] (0,2.5) -- (2.5,7.5);
+		\draw[cyan] (0,2) -- (2.5,7);
+		\draw[cyan, ultra thick] (0,1.5) -- (2.5,6.5);
+		\draw[cyan] (0,1) -- (2.5,6);
+		\draw[cyan] (0,0.5) -- (2.5,5.5);
+		\draw[cyan] (0,0) -- (2.5,5);
+		\end{tikzpicture}
+	\end{center}
 	erhält man das minimale $c$, bei dem die Niveaulinie und der zulässige Bereich noch den gemeinsamen Punkt $(x_1^\ast,x_2^\ast)=(0.1,0.5)$ haben und $c=0.3$. Zur Überführung der Optimierungsaufgabe in Standardform fügt man nicht-negative Schlupfvariablen $y_1,...,y_4$ hinzu:
 	\begin{align}
 		x_1-x_2+y_1+0.4 &= 0 \notag \\
