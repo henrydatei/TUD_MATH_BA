@@ -25,8 +25,8 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 
 ### Einführung in die Numerik (WS2018/19)
 - erste praktische Aufgabe P1: Interpolation [https://github.com/henrydatei/Interpolation_Octave](https://github.com/henrydatei/Interpolation_Octave)
-- erste praktische Aufgabe P1: Interpolation [https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_1_Interpolation](https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_1_Interpolation) -> Version von [oakoneric](https://github.com/oakoneric)
-- zweite praktische Aufgabe P2: Newton-Verfahren [https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_2_Newton](https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_2_Newton) -> Version von [oakoneric](https://github.com/oakoneric)
+- erste praktische Aufgabe P1 ([oakoneric](https://github.com/oakoneric)): Interpolation [https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_1_Interpolation](https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_1_Interpolation)
+- zweite praktische Aufgabe P2 ([oakoneric](https://github.com/oakoneric)): Newton-Verfahren [https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_2_Newton](https://github.com/oakoneric/TUD_Math_Numerik/tree/master/NUME_2_Newton)
 - Hausaufgabe T6 (Test auf OPAL): [https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3](https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3) -> alle Vektoren als Zeilenvektoren eingeben!
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
