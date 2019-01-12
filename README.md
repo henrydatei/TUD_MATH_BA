@@ -45,7 +45,7 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 
 ### Einführung in die Makroökonomie (WS2018/19)
 - Vorlesungsfolien: 
-- Tutoriumsaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
+- Übungssaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
 Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm) und **Experimentalphysik 1** (Prof. Dr. Karl Leo) der TU Dresden
