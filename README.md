@@ -22,6 +22,9 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 ### Maß und Integral (WS2018/19)
 
 ### Geometrie (WS2018/19)
+- Übungsaufgaben:
+- unvollständige Musterlösungen:
+- Lösungen der Übungsaufgaben ([oakoneric](https://github.com/oakoneric)): [https://github.com/oakoneric/TeX/tree/master/TeX_GEO%20%C3%9Cbungen](https://github.com/oakoneric/TeX/tree/master/TeX_GEO%20%C3%9Cbungen)
 
 ### Einführung in die Numerik (WS2018/19)
 - erste praktische Aufgabe P1: Interpolation [https://github.com/henrydatei/Interpolation_Octave](https://github.com/henrydatei/Interpolation_Octave)
