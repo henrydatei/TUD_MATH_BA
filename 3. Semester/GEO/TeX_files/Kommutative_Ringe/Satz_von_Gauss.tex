@@ -1,0 +1,39 @@
+\section{Satz von Gauss}
+
+Sei $R$ ein faktorieller Ring, $K= \Quot(R)$ und $p \in R$ prim.
+
+\begin{remark}
+	Ziel: $R$ faktoriell $\Rightarrow R[x]$ faktoriell.\\
+	Dafür studieren wir die folgenden Ringe:
+	%TODO make a tikz diagramm
+\end{remark}
+
+\begin{definition}
+	Für $f = \sum_{i \ge 0} a_i x^i \in K[x]$. Sei $v_p(f) := \min_{i \ge 0} v_p(a_i) \in \whole \cup \{\infty\}$.
+\end{definition}
+
+\begin{remark}
+	Seien $f,g \in K[x]$.
+	\begin{enumerate}
+		\item $f \in K[x] \Leftrightarrow v_p(f) \ge 0$ für alle $p \in R$ prim.
+		\item $v_p(f+g) \ge \min\{v_p(f), v_p(g)\}$ (betracht Koeffizientenweise)
+	\end{enumerate}
+\end{remark}
+
+\begin{definition}
+	Der Homomorphismus
+	\begin{align}
+	\pi_(p): \begin{cases}
+	R &\to \lnkset{R}{(p)} \\
+	x &\mapsto \bar{x} := x + (p)
+	\end{cases}\notag
+	\end{align}
+	setzt sich nach \propref{2_1_12} zu einem Homomorphismus
+	\begin{align}
+	\begin{cases}
+		R[x] &\to (R/(p))[x]\\
+		f=\sum_{i \ge 0} a_i x^i &\mapsto \bar{f} := \sum_{i \ge 0} \bar{a}_i x^i
+	\end{cases}\notag
+	\end{align}
+	fort, genannt Koeffizientenreduktion. Dbei ist $\bar{f} = 0 \Leftrightarrow \bar{a}_i = 0 \forall i \Leftrightarrow v_p(a_i) \ge 1 \forall i \Leftrightarrow v_p(f) > 0$.
+\end{definition}
