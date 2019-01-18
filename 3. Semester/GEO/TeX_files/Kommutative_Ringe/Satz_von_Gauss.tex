@@ -13,14 +13,16 @@ Sei $R$ ein faktorieller Ring, $K= \Quot(R)$ und $p \in R$ prim.
 \end{definition}
 
 \begin{remark}
+	\proplbl{6_6_3}
 	Seien $f,g \in K[x]$.
 	\begin{enumerate}
 		\item $f \in K[x] \Leftrightarrow v_p(f) \ge 0$ für alle $p \in R$ prim.
-		\item $v_p(f+g) \ge \min\{v_p(f), v_p(g)\}$ (betracht Koeffizientenweise)
+		\item $v_p(f+g) \ge \min\{v_p(f), v_p(g)\}$ (betrachte Koeffizientenweise)
 	\end{enumerate}
 \end{remark}
 
 \begin{definition}
+	\proplbl{2_6_4}
 	Der Homomorphismus
 	\begin{align}
 	\pi_(p): \begin{cases}
@@ -35,5 +37,107 @@ Sei $R$ ein faktorieller Ring, $K= \Quot(R)$ und $p \in R$ prim.
 		f=\sum_{i \ge 0} a_i x^i &\mapsto \bar{f} := \sum_{i \ge 0} \bar{a}_i x^i
 	\end{cases}\notag
 	\end{align}
-	fort, genannt Koeffizientenreduktion. Dbei ist $\bar{f} = 0 \Leftrightarrow \bar{a}_i = 0 \forall i \Leftrightarrow v_p(a_i) \ge 1 \forall i \Leftrightarrow v_p(f) > 0$.
+	fort, genannt Koeffizientenreduktion. Dabei ist $\bar{f} = 0 \Leftrightarrow \bar{a}_i = 0 \forall i \Leftrightarrow v_p(a_i) \ge 1 \forall i \Leftrightarrow v_p(f) > 0$.
 \end{definition}
+
+\begin{proposition}[Lemma von \person{Gauss}]
+	\proplbl{6_6_5}
+	Für $f,g \in K[x]$ ist $v_p(fg) = v_p(f)+v_p(g)$.
+\end{proposition}
+
+\begin{proof}
+	o.B.d.A. seien $f,g \neq 0$. Für $h= \sum_{i \ge 0} a_i x^i \in K[x]$, $c \in K^{\times}$ ist $v_p(c\cdot h) = \min v_p(c\cdot a_i) = v_p(c) + v_p(f)$. Wir können deshalb o.E. $f$ unf $g$ mit $c \in K^{\times}$ multiplizieren.
+	\begin{align}
+	&\Rightarrow f,g \in R[x] \text{ z.B. multiplikation mit Produkt der Nenner}\notag\\
+	&\text{o.E. } v_p(f),v_p(g) = 0\notag
+	\end{align}
+	Dann ist $\bar{f}, \bar{g} \neq 0$. Wegen $p$ prim ist $R/(p)$ nullteilerfrei und weiter $(R/(p))[x]$ nullteilerfrei. Somit folgt $\overline{fg} \overset{\propref{2_6_4}}{=} \bar{f}\bar{g} \neq 0$, d.h. $v_p(fg) = 0 = v_p(f)+v_p(g)$. %TODO something wrong with the bar/overline please check!
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{6_6_6} % the d d devil?! xD
+	Ist $f \in R[x]$ normiert und $f=gh$ mit $g,h \in K[x]$ normiert, so sind $g,h \in R[x]$.
+\end{conclusion}
+
+\begin{proof}
+	Sei $p \in R$ prim. Da $f \in R[x]$ ist $v_p(f) \ge 0$. Da $f,g,h$ normiert sind ist $v_p(f), v_p(h), v_p(g) \le 0$
+	\begin{align}
+		\Rightarrow 0 = v_p(f) = v_p(gh) = \underbrace{v_p(g)}_{\le 0} + \underbrace{v_p(h)}_{\le 0} \quad \Rightarrow v_p(g), v_p(h) = 0\notag
+	\end{align}
+	Sonit folgt $g,h \in R[x]$ (vgl. \propref{6_6_3}a).
+\end{proof}
+
+\begin{conclusion}
+	Sei $f \in R[x]$ normiert. Ist $a \in K$ mit $f(a)=0$, so ist $a \in R$.
+\end{conclusion}
+
+\begin{proof}
+	\begin{align}
+	\text{Sei } f(a) = 0 &\Rightarrow f(x) = f(x \cdot a)g(x) \text{ mit } g \in K[x] \text{ normiert}\notag \\
+	&\overset{\propref{6_6_6}}{\Rightarrow} x - a \in R[x]\text{, d.h. } a \in R. \notag
+	\end{align}
+\end{proof}
+
+\begin{definition}[Inhalt, primitiv]
+	Sei $f = \sum_{i =0}^{n} a_i x^i \in R[x]$. % we could add the example from eric here? maybe unnumbered`!
+	\begin{enumerate} %TODO 1) 
+		\item $I(f) = \ggT(a_0,\dots,a_n)$, der \begriff{Inhalt} von $f$.
+		\item $f$ \begriff{primitiv} $:\Leftrightarrow I(f) \sim 1$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	\proplbl{6_6_9}
+	\begin{enumerate} %TODO a)
+		\item $I(f)$ ist nur bis auf Einheiten bestimmt. Ist $P$ Vertretersystem der Primelement von $R$ modulo Assoziiertheit, so ist
+		\begin{align}
+			I(f) \sim \prod_{p \in P} p^{v_p(f)}\notag
+		\end{align}
+		\item Umformulierungen des Lemma von \person{Gauss}: $I(fg) = I(f)\cdot I(g)$.
+		\item Zu $f \in R[x]$ existiert $c \in R$, $f_0 \in R[x]$ primitiv mit $f = c\cdot f_0$, nämlich $c = I(f)$. Zu $f \in K[x]$ existiert $c \in K$, $f_0 \in R[x]$ primitiv mit $f = c \cdot f_0$ (erst mit Produkt den Nenner multiplizieren).
+	\end{enumerate}
+\end{remark}
+
+\begin{theorem}[Satz von \person{Gauss}]
+	Sei $R$ faktorieller Ring und $K = \Quot(R)$. Dann ist auch $R[x]$ faktoriell. Ein $f \in R[x]$ ist genau dann prim, wenn
+	\begin{enumerate}
+	\item $f$ ist ein Primelement von $R$ \textbf{oder}
+	\item $f$ ist primitiv und ist ein Primelement in $K[x]$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Sei $0 \neq f \in R[x]\setminus R^{\times}$, $g,h \in R[x]$.
+	\begin{itemize}
+	\item $f$ vom Typ(a) $\Rightarrow f$ prim in $R[x]:$ Sei $f = p \in R$ prim in $R$.
+	\begin{align}
+	p \mid gh &\Rightarrow 0 < v_p(gh) \overset{\propref{6_6_5}}{=} \underbrace{v_p(g)}_{\ge 0} + \underbrace{v_p(h)}_{\ge 0}\notag \\
+	&\Rightarrow \text{ o.E. } v_p(g) > 0\text{, d.h. }p \mid g. \notag
+	\end{align}
+	\item $f$ vom Typ(b) $\Rightarrow f$ prim in $R[x]$:\\
+	\begin{align}
+		f \mid gh \text{ in } R[x] &\Rightarrow f\mid gh \text{ in } K[x]\notag \\
+		&\xRightarrow[f \text{prim in } K[x]] \text{ o.E. } f \mid g \text{ in } K[x]\text{, d.h. existiert } q \in K[x] \text{ mit } g = q\cdot f.\notag %TODO fix xRightarrow or do something else here.
+	\end{align}
+	Für $p \in R$ prim ist: %TODO include notes by eric?!
+	\begin{align}
+		0\le v_p(g) = v_p(q) + \underbrace{v_p(f)}_{=0, f \text{ primitiv}} = v_p(q). \notag
+	\end{align}
+	Somit folgt $q \in R[x]$ und damit $f\mid g$ in $R[x]$.
+	\item $f$ ist Produkt von Elementen vom Typ(a) oder Typ(b). Schreibe $f = c f_0, c \in R, f_0 \in R[x]$ primitiv (\propref{6_6_9}c)). $c$ ist Produkt von Elementen vom Typ(a) (oder $c \in R^{\times}$):
+	Da $K[x]$ faktoriell ist, ist $f_0 = c_0 g_1,\dots,g_n$, $c \in K^{\times}, g_1, \dots, g_n \in K[x]$ prim. Nach $\propref{6_6_9}c)$ ist o.E. $g_1,\dots,g_n \in R[x]$ primitiv, also vom Typ(b).
+	Für $p \in R$ prim ist
+	\begin{align}
+	0 = v_p(f_0) = v_p(c_0) + \underbrace{v_p(g_1)}_{=0} +\cdots + \underbrace{v_p(g_n)}_{=0} = v_p(c_0)\notag \\
+	\Rightarrow c_0 \in R^{\times}.\notag
+	\end{align}
+	\item Somit ist $R[x]$ faktoriell. Ist $f \in R[x]$ prim, so ist $f = f_1\cdots f_n$ mit $f_i$ vom Typ(a) oder Typ(b): \\
+	$\Rightarrow n =1$, somit $f=f_1$ vom Typ(a) oder Typ(b).\\
+	Ist $f \in R[x]$ vom Typ(a), so ist $f \not \in R[x]^{\times} = R^{\times}$ und somit prim in $R[x]$.\\
+	Ist $f \in R[x]$ vom Typ(b), so ist $f \not \in K[x]^{\times}$, insbesondere $f \not \in R[x]^{\times}$, somit $f$ prim in $R[x]$.
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	Für $F$ Körper ist $F[x_1,\dots,x_n]$ faktoriell, aber für $n > 1$ kein Hauptidealring (vgl. V108)!
+\end{example}
