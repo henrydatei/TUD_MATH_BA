@@ -102,48 +102,48 @@ Sei $R$ ein Ring.
 \end{proof}
 
 \begin{example}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 	\item $\Quot(\whole) = \ratio$
 	\item $\Quot(\real) = \real$
-	\item Für einen Körper $K$ ist $K(x) : \Quot(K[x])$, der \begriff{rationale Funktionenkörper} einer Variable $x$ über $K$.
-	\item Für ein Primideal $\mathfrak{p} \unlhd R$ ist $R_{\mathfrak{p}} := (\lnkset{R}{\mathfrak{p}})^{-1}R$, die \begriff{Lokalisierung} von $R$ in $\mathfrak{p}$, z.B. $\whole_{(0)} = \ratio, \whole_{(2)} = \{\frac{m}{n} \colon m \in \whole_{(0)}, n \in \natur, n \text{ ungerade}\}$.
-	\item Mit $\whole[i] = \whole+\whole i := \{a+bi \colon a,b \in \whole\} \subset \comp$ ist $\Quot(\whole[i]) = \ratio[i] := \ratio + \ratio i = \{a+bi \colon a,b \in \ratio\}$ (siehe ÜA!, wie sieht Inverses zu $a+b i $ aus?)
+	\item Für einen Körper $K$ ist $K(x) := \Quot(K[x])$, der \begriff{rationale Funktionenkörper} einer Variable $x$ über $K$.
+	\item Für ein Primideal $\mathfrak{p} \unlhd R$ ist $R_{\mathfrak{p}} := (\rnkset{R}{\mathfrak{p}})^{-1}R$, die \begriff{Lokalisierung} von $R$ in $\mathfrak{p}$, z.B. $\whole_{(0)} = \ratio, \whole_{(2)} = \{\frac{m}{n} \mid m \in \whole_{(0)}, n \in \natur, n \text{ ungerade}\}$.
+	\item Mit $\whole[i] = \whole+\whole i := \{a+bi \mid a,b \in \whole\} \subset \comp$ ist $\Quot(\whole[i]) = \ratio[i] := \ratio + \ratio i = \{a+bi \mid a,b \in \ratio\}$ (siehe ÜA!, wie sieht Inverses zu $a+b i $ aus?)
 	\end{enumerate}
 \end{example}
 
 \begin{remark}
-	Ist $R$ Teilring einer Körpers $K$, so ist $\Quot(R) \cong \{s^{-1}r \colon r\in R, s \in R\setminus \{0\}\} \subset K$ und wir identifizieren $\Quot(R)$ mit diesem Teilkörper von $K$.
+	Ist $R$ Teilring einer Körpers $K$, so ist $\Quot(R) \cong \{s^{-1}r \mid r\in R, s \in R\backslash \{0\}\} \subset K$ und wir identifizieren $\Quot(R)$ mit diesem Teilkörper von $K$.
 \end{remark}
 
 \begin{proposition}
-	Sei $R$ faktoriell. Ist $P$ ein Vertretersystem der Primelemente von $R$ modulo Einheiten, und $K = \Quot(R)$, so hat jedes $x \in K^{\times}$ eine eindeutige Darstellung:
+	Sei $R$ faktoriell. Ist $\mathbb{P}$ ein Vertretersystem der Primelemente von $R$ modulo Einheiten, und $K = \Quot(R)$, so hat jedes $x \in K^{\times}$ eine eindeutige Darstellung:
 	\begin{align}
-		x = \mathfrak{u} \cdot \prod_{p\in P} p^{v_p(x)} \notag
+		x = u \cdot \prod_{p\in \mathbb{P}} p^{v_p(x)} \notag
 	\end{align}
-	mit $\mathfrak{u} \in R^{\times}$ und $v_p(x) \in \whole$ für alle $p \in P$, fast alle gleich Null.
+	mit $u \in R^{\times}$ und $v_p(x) \in \whole$ für alle $p \in P$, fast alle gleich Null.
 \end{proposition}
 
 \begin{proof}
-	Für $x \in R$ folgt dies mit \propref{2_4_7}b), vgl. LAAG VIII 4.7, mit $v_p(x) \in \natur_0$ für alle $p \in P$.
+	Für $x \in R$ folgt dies mit \propref{2_4_7}b), vgl. LAAG VIII 4.7, mit $v_p(x) \in \natur_0$ für alle $p \in \mathbb{P}$.
 	\begin{itemize}
-		\item \textbf{Existenz:} Für $x=\frac{r}{s}$ mit $r,s \in R\setminus {0}$ ist $r = \mathfrak{u} \cdot \prod_{p\in P} p^{v_p(r)}$ und $s = \mathfrak{w}\cdot \prod_{p\in P} p{v_p(s)}$, $\mathfrak{u}, \mathfrak{w} \in R^{\times}, v_p(r), v_p(s) \in \natur_0$.
-		\begin{align} %TODO \underbrace exponent maybe possbile?
-		\Rightarrow x = \underbrace{\mathfrak{u}\mathfrak{w}^{-1}}_{\in R^{\times}}\cdot \prod_{p\in P} p^{v_p(r)-v_p(s)}\text{, wobei } v_p(r) - v_p(s) \in \whole \notag
+		\item \textbf{Existenz:} Für $x=\frac{r}{s}$ mit $r,s \in R\backslash\{0\}$ ist $r = u \cdot \prod_{p\in\mathbb{P}} p^{v_p(r)}$ und $s = w\cdot \prod_{p\in\mathbb{P}} p^{v_p(s)}$, $u, w \in R^{\times}, v_p(r), v_p(s) \in \natur_0$.
+		\begin{align}
+		\Rightarrow x = \underbrace{uw^{-1}}_{\in R^{\times}}\cdot \prod_{p\in\mathbb{P}} p^{v_p(r)-v_p(s)}\quad\text{wobei } v_p(r) - v_p(s) \in \whole \notag
 		\end{align}
-		\item Ist $x=\mathfrak{u} \cdot \prod_{p\in P} p^{\nu_p} = \mathfrak{w} \cdot \prod_{p\in P} p^{\mu_p}$ mit $\mathfrak{u},\mathfrak{w} \in R^{\times}$, $\nu_p,\mu_p \in \whole$, fast alle gleich Null und $\eta_p = - \min\{0, \nu_p,\mu_p\}$, $y:= \prod_{p\in P} p^{\eta_p} \in R$, so ist $xy = \mathfrak{u} \prod_{p\in P} p^{\nu_p + \eta_p} = \mathfrak{w} \prod_{p\in P} p ^{\mu_p + \eta_p}$ Exponenten jeweils $\ge 0$ $\xRightarrow{\text{in }R}$ $\mathfrak{u} = \mathfrak{w}$ und $\nu_p + \eta_p = \mu_p + \eta_p$ für alle $p \in P$.  
+		\item \textbf{Eindeutigkeit:} Ist $x=u \cdot \prod_{p\in\mathbb{P}} p^{\nu_p} = w \cdot \prod_{p\in\mathbb{P}} p^{\mu_p}$ mit $u,w \in R^{\times}$, $\nu_p,\mu_p \in \whole$, fast alle gleich Null und $\eta_p = - \min\{0, \nu_p,\mu_p\}$, $y:= \prod_{p\in\mathbb{P}} p^{\eta_p} \in R$, so ist $xy = u \prod_{p\in\mathbb{P}} p^{\nu_p + \eta_p} = w \prod_{p\in\mathbb{P}} p ^{\mu_p + \eta_p}$, Exponenten jeweils $\ge 0$, $\xRightarrow{\text{in }R}$ $u = w$ und $\nu_p + \eta_p = \mu_p + \eta_p$ für alle $p \in \mathbb{P}$.  
 		\end{itemize}
 \end{proof}
 
-\begin{example} %TODO set option with alph
-	\begin{enumerate}
-		\item $R = \whole$; $R^{\times} = \{\pm 1\}, P = \{2,3,5,\dots\}, K = \ratio$
-		\item $R = F[x], F$ Körper, $R^{\times} = F^{\times}$, $P = \{f \in F[x]\colon f \text{ irreduzibel}, \LC(f) = 1\}, K = F(x)$ (Primelemente von $\whole_{(0)}[i]$)
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $R = \whole$; $R^{\times} = \{\pm 1\}, \mathbb{P} = \{2,3,5,\dots\}, K = \ratio$
+		\item $R = F[x], F$ Körper, $R^{\times} = F^{\times}$, $\mathbb{P} = \{f \in F[x]\mid f \text{ irreduzibel}, \LC(f) = 1\}, K = F(x)$ (Primelemente von $\whole_{(0)}[i]$)
 	\end{enumerate}
 \end{example}
 
-\begin{definition}[p-adische Bewertung, p-adic Valuation]
+\begin{definition}[p-adische Bewertung]
 	Die Abbildung
-	\begin{align} %TODO is it really v and not \nu?! literature uses \nu instead of v!
+	\begin{align}
 		v_p: \begin{cases}
 		K^{\times} &\to \whole\\
 		x &\to v_p(x)
@@ -155,46 +155,45 @@ Sei $R$ ein Ring.
 \begin{lemma}
 	\proplbl{2_5_15}
 	Sei $R$ faktoriell, $p \in R$ prim, $x,y \in \Quot(R)$.
-	\begin{enumerate} %TODO set option i)
+	\begin{enumerate}[label=(\alph*)]
 		\item $v_p(xy) = v_p(x) + v_p(y)$
 		\item $v_p(x+y) \ge \min \{v_p(x), v_p(y)\}$
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	\begin{enumerate} %TODO set option i), fix brackets!
+	\begin{enumerate}[label=(\alph*)]
 		\item klar
-		\item klar für $x,y \in R$: $p^n \mid x$ und $p^n \mid y \Rightarrow p^n \mid xy$. Für $x,y \in \Quot(R)$ schreibe $x = \frac{x_0}{y}$, $y = \frac{y_0}{a}$ mit $x_0, y_0, a \in R$
+		\item klar für $x,y \in R$: $p^n \mid x$ und $p^n \mid y \Rightarrow p^n \mid xy$. Für $x,y \in \Quot(R)$ schreibe $x = \frac{x_0}{a}$, $y = \frac{y_0}{a}$ mit $x_0, y_0, a \in R$
 		\begin{align}
-		\Rightarrow v_p(x+y) = v_p(\frac{x_0+y_0}{a}) &\overset{i)}{=} v_p(\frac{1}{a}) + v_p(x_0 + y_0) \notag \\
-		&\ge v_p(\frac{1}{a}) + \min\{v_p(x_0), v_p(y_0)\}\notag \\
-		&\overset{i)}{=} \min\{v_p(\frac{x_0}{a}), v_p(\frac{y_0}{a})\}\notag \\
-		&\ge v_p(\frac{1}{a}) + \min\{v_p(x_0), v_p(y_0)\}\notag \\
-		&\overset{i)}{=} \min\{v_p(\frac{x_0}{a}), v_p(\frac{y_0}{a})\}\notag
+		\Rightarrow v_p\left(x+y\right) = v_p\left(\frac{x_0+y_0}{a}\right) 
+		&\overset{(a)}{=} v_p\left(\frac{1}{a}\right) + v_p\left(x_0 + y_0\right) \notag \\
+		&\ge v_p\left(\frac{1}{a}\right) + \min\{v_p\left(x_0\right), v_p\left(y_0\right)\}\notag \\
+		&\overset{(a)}{=} \min\left\lbrace v_p\left(\frac{x_0}{a}\right), v_p\left(\frac{y_0}{a}\right)\right\rbrace \notag
 		\end{align}
 		\end{enumerate}
 \end{proof}
 
 \begin{remark}
 	Sei $R$ faktoriell.
-	\begin{enumerate} %TODO alph
-		\item Für $x \in K = \Quot(R)$ gilt: $x \in R \Leftrightarrow v_p(x) \ge 0$ für alle $p \in P$ prim
+	\begin{enumerate}[label=(\alph*)]
+		\item Für $x \in K = \Quot(R)$ gilt: $x \in R \Leftrightarrow v_p(x) \ge 0$ für alle $p \in R$ prim
 		\item Je zwei $x,y \in R$ haben ein $\ggT$ und ein $\kgV$:
 		\begin{align}
-		\ggT(x,y) &= \prod_{p\in P} p^{\min\{v_p(x), v_p(y)\}} \notag \\
-		\kgV(x,y) &= \prod_{p\in P} p^{\max\{v_p(x), v_p(y)\}} \notag
+		\ggT(x,y) &= \prod_{p\in \mathbb{P}} p^{\min\{v_p(x), v_p(y)\}} \notag \\
+		\kgV(x,y) &= \prod_{p\in \mathbb{P}} p^{\max\{v_p(x), v_p(y)\}} \notag
 		\end{align}
-		wobei $P$ ein Vertretersystem der Primelemente von $R$ modulo Einheiten ist. 
+		wobei $\mathbb{P}$ ein Vertretersystem der Primelemente von $R$ modulo Einheiten ist. 
 	\end{enumerate}
 \end{remark}
 
 \begin{definition}[diskrete Bewertung]
-	Ist $K$ ein Körper, so heißt jede Abbildung $v: K^{\times} \to \whole$, die (i) und (i) aus \propref{2_5_15} erfüllt, eine \begriff{diskrete Bewertung}. Wir setzen stets $v(0) := \infty$.
+	Ist $K$ ein Körper, so heißt jede Abbildung $v: K^{\times} \to \whole$, die (a) und (b) aus \propref{2_5_15} erfüllt, eine \begriff{diskrete Bewertung}. Wir setzen stets $v(0) := \infty$.
 \end{definition}
 
 \begin{remark}
 	Jede diskrete Bewertung $v: K \to \whole \cup \{\infty\}$ erfüllt
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $v(1) = v(-1) = 0$
 		\item $v(-x) = v(x) \quad \forall x \in K$
 		\item $v(x^{-1}) = -v(x) \quad \forall x \in K$
@@ -205,13 +204,13 @@ Sei $R$ ein Ring.
 	Sei $p \in \natur$ eine Primzahl. Die Abbildung
 	\begin{align}
 	\vert \cdot \vert_p: \begin{cases}
-	K &\to \real_{\ge 0} \\ %TODO really real?!
+	\ratio &\to \real_{\ge 0} \\
 	x &\mapsto p^{-v_p(x)} \notag
 	\end{cases}
 	\end{align}
 	heißt der \begriff{p-adische Absolutbetrag} und erfüllt
-	\begin{enumerate} %TODO i)
+	\begin{enumerate}[label=(\alph*)]
 		\item $\vert xy\vert_p = \vert x \vert_p \cdot \vert y\vert_p$
-		\item $\vert x+p\vert_p \le \max\{\vert x\vert_p, \vert y\vert_p\} (\le \vert x\vert_p + \vert y\vert_p)$
+		\item $\vert x+y\vert_p \le \max\{\vert x\vert_p, \vert y\vert_p\}\quad (\le \vert x\vert_p + \vert y\vert_p)$
 	\end{enumerate}
 \end{definition}

@@ -1,26 +1,21 @@
 \section{Irreduzibilitatskriterien}
 
-Sei $R$ ein \textbf{faktorieller} Ring, $K = \Quot(R)$.
+Sei $R$ ein faktorieller Ring, $K = \Quot(R)$.
 
 \begin{remark}
-	Sei $f \in K[x]$. Wir suchen hinreichende Kritierien dafür, dass $f \in K[x]$ irreduzibel ist.
-	\begin{enumerate}%TODO a)
-		\item Ist $c \in K^{\times}$ so gilt: $f$ ist irreduzibel $\Longrightarrow c \cdot f$ ist irreduzibel\\
-		Wir können also z.B. o.E. annehmen, dass $f$ normiert ist.
+	Sei $f \in K[x]$. Wir suchen hinreichende Kriterien dafür, dass $f \in K[x]$ irreduzibel ist.
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $c \in K^{\times}$ so gilt: $f$ ist irreduzibel $\Longrightarrow c \cdot f$ ist irreduzibel. Wir können also z.B. ohne Einschränkung annehmen, dass $f$ normiert ist.
 		\item $\deg(f) = 1$: $f$ ist irreduzibel und hat Nullstellen in $K$.
-		\item $\deg(f) \ge 2$: $f$ hat Nullstellen in $K \Rightarrow f$ reduzibel:\\
-		$f(a) = 0 \Rightarrow f(x) = (x-a)\cdot g(x)$, $\deg(g) = \deg(f) - 1 > 0$
-		\item $\deg(f) \le 3$: $f$ hat \textbf{keine} Nullstelle in $K \Rightarrow f$ ist irreduzibel:\\
-		$f=gh, gh \not \in K^{\times}\Rightarrow \deg g = 1$ oder $\deg h = 1$\\
-		\textbf{Achtung}: Für $\deg(f) \ge 4$ ist dies im Allgemeinen falsch!!!\\
-		z.B. $f = x^4 + 2x^2 + 1 = (x^2 +1)^2 \in \ratio[x]$
+		\item $\deg(f) \ge 2$: $f$ hat Nullstellen in $K \Rightarrow f$ reduzibel, da $f(a) = 0 \Rightarrow f(x) = (x-a)\cdot g(x)$, $\deg(g) = \deg(f) - 1 > 0$
+		\item $\deg(f) \le 3$: $f$ hat keine Nullstelle in $K \Rightarrow f$ ist irreduzibel, da $f=gh$, $gh \not \in K^{\times}\Rightarrow \deg(g) = 1$ oder $\deg(h) = 1$\\
+		\textbf{Achtung}: Für $\deg(f) \ge 4$ ist dies im Allgemeinen falsch! Zum Beispiel $f = x^4 + 2x^2 + 1 = (x^2 +1)^2 \in \ratio[x]$
 	\end{enumerate}
 \end{remark}
 
-\begin{proposition}[\person{Eisenstein}sches Irreduzibilitätskriterium]
+\begin{proposition}[\person{Eisenstein}'sches Irreduzibilitätskriterium]
 	\proplbl{2_7_2}
-	Sei $f = \sum_{i=0}^{n} a_i x^i \in R[x]\setminus R$ primitiv, und $p \in R$ prim mit $p\nmid a_n$, $p \mid a_i$ für $i = 0, \dots,n-1$, $p^2 \nmid a_0$.\\
-	Dann ist $f$ irreduzibel in $R[x]$ und somit auch in $K[x]$.
+	Sei $f = \sum_{i=0}^{n} a_i x^i \in R[x]\setminus R$ primitiv, und $p \in R$ prim mit $p\nmid a_n$, $p \mid a_i$ für $i = 0, \dots,n-1$, $p^2 \nmid a_0$. Dann ist $f$ irreduzibel in $R[x]$ und somit auch in $K[x]$.
 \end{proposition}
 
 \begin{proof}
@@ -29,7 +24,7 @@ Sei $R$ ein \textbf{faktorieller} Ring, $K = \Quot(R)$.
 
 \begin{example}
 	Ist $p \in R$ prim, $n > 0$ ist $f = X^n-p$ nach \propref{2_7_2} irreduzibel in $K[x]$
-	\begin{enumerate} %TODO a)
+	\begin{enumerate}[label=(\alph*)]
 		\item $R = \whole$: $x^2 -5$, $x^7 - 3$ irreduzibel in $\ratio[x]$
 		\item $R = F[t]$, $F$ Körper: $x^2-t$, $x^5 + t +1$ irreduzibel in $F[t][x] = F[t,x]$
 	\end{enumerate}
