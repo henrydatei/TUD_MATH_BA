@@ -134,7 +134,7 @@ solve transpose(L)x = z
 
 \subsection{Orthonormalisierungsverfahren nach \person{Householder}}
 
-Ziel ist zunächst die Beschreibung eines Verfahrens zur sogenannten $QR$-Faktorisierung einer Matrix $A\in\real^{m\times n}$, das heißt es sollen Matrizen $Q\in\real^{m\times n}$ und $R\in\real^{m\times n}$ bestimmt werden, so dass
+Ziel ist zunächst die Beschreibung eines Verfahrens zur sogenannten $QR$-Faktorisierung einer Matrix $A\in\real^{m\times n}$, das heißt es sollen Matrizen $Q\in\real^{m\times m}$ und $R\in\real^{m\times n}$ bestimmt werden, so dass
 \begin{align}
 	A = QR\notag
 \end{align}
@@ -183,7 +183,7 @@ Wegen $(a-w^Taw)^Tw=a^Tw-w^Ta=0$ (beachte $w^Tw=1$) liegt $a-w^Taw$ auf der Eben
 	Wegen $a\notin\Span(e_1)$ folgt $a+pe_1\neq 0$. Also ist $w$ wohldefiniert mit $w^Tw=1$ und man erhält
 	\begin{align}
 		\label{3.13}
-		Ha = (\mathbbm{1}-2ww^T)a = a-(2w^Ta)w = a-2\frac{a^T(a+pe_1)}{\Vert a+pe_1\Vert}\frac{a+pe_1}{\Vert a+pe_1\Vert_2}
+		Ha = (\mathbbm{1}-2ww^T)a = a-(2w^Ta)w = a-2\frac{a^T(a+pe_1)}{\Vert a+pe_1\Vert_2}\frac{a+pe_1}{\Vert a+pe_1\Vert_2}
 	\end{align}
 	Da $p\in\{\Vert a\Vert_2,\, -\Vert a\Vert_2\}$, gilt
 	\begin{align}
@@ -195,14 +195,14 @@ Wegen $(a-w^Taw)^Tw=a^Tw-w^Ta=0$ (beachte $w^Tw=1$) liegt $a-w^Taw$ auf der Eben
 \propref{1_3_7} wird für die schrittweise \person{Householder}-Transformation einer Matrix $A\in\real^{n\times m}$ in eine verallgemeinerte obere Dreiecksmatrix ausgenutzt. Dazu sei $A^{(1)}=A$ eine Matrix von Rang $n$. Ohne Beschränkung der Allgemeinheit gelte $m>n$. Weiter sei $A^{(k)}$ für ein $k\in\{1,...,n+1\}$ in der Form
 \begin{align}
 	A^{(k)} = \begin{pmatrix}
-	a_{11}^{k} & \dots & a_{1k}^{(k)} & \dots & a_{1n}^{(k)} \\
+	a_{11}^{(k)} & \dots & a_{1k}^{(k)} & \dots & a_{1n}^{(k)} \\
 	& \ddots & \vdots & & \vdots \\
 	&& a_{kk}^{(k)} &  \dots & a_{kn}^{(k)} \\
 	&& \vdots & & \vdots \\
 	&& a_{mk}^{(k)} & \dots & a_{mn}^{(k)} 
 	\end{pmatrix}\notag
 \end{align}
-gegeben. Der Vektor $a^k=(0,...,0a_{kk}^{(k)},...,a_{mk}^{(k)})\in\real^m$ übernimmt die Rolle von $a$. Er soll durch Multiplikation mit $H_k\in\real^{m\times m}$ auf $p_ke_k$ transformiert werden, wobei
+gegeben. Der Vektor $a^k=(0,...,a_{kk}^{(k)},...,a_{mk}^{(k)})\in\real^m$ übernimmt die Rolle von $a$. Er soll durch Multiplikation mit $H_k\in\real^{m\times m}$ auf $p_ke_k$ transformiert werden, wobei
 \begin{align}
 	H_k &= \mathbbm{1} - 2w_kw_k^T \notag \\
 	w_k &= \frac{a^k+p_ke_k}{\Vert a^k+p_ke_k\Vert_2} \notag \\
