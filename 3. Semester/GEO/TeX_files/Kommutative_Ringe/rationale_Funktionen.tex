@@ -1,0 +1,156 @@
+\section{Rationale Funktionen}
+
+Sei $K$ ein Körper.
+
+\begin{erinnerung}
+	$K(x) = \Quot(K[x])$ der rationale Funktionenkörper in der Variablen $x$ über $K$. Die Elemente $\phi\in K(x)$ können geschrieben werden als $\phi = \frac{f}{g}$ mit $f,g\in K[x]$ teilerfremd oder $\phi = c\cdot\prod_{p\in P_k} p^{v_p(\phi)}$, $c\in K^\times$, $v_p(\phi)\in\whole$ fast alle gleich Null und $P_k = \{p\in K[x]\mid p\text{normiert und irreduzibel}\}$.
+\end{erinnerung}
+
+\begin{definition}[Nullstelle, Polstelle]
+	Sei $\phi\in K(x)^\times$, $p\in P_k$. Ist $v_p(\phi)>0$, so nennt man $p$ eine \begriff{Nullstelle} von $\phi$ der Ordnung $v_p(\phi)$. Ist $v_p(\phi)<0$, so nennt man $p$ eine \begriff{Polstelle} von $\phi$ der Ordnung $-v_p(\phi)$.
+\end{definition}
+
+\begin{remark}
+	Jedes $\phi\in K(x)^\times$ hat nur endlich viele Null- und Polstellen. Genau dann hat $\phi$ keine Null- oder Polstellen, wenn $\phi$ konstant ist, also $\phi\in K$.
+\end{remark}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\frac{1}{x^2+1}\in\real(x)$ hat die einfache Polstelle $p=x^2+1$.
+		\item $\frac{1}{x^2+1}\in\comp(x)$ hat einfache Polstellen $x+i$ und $x-i$.
+		\item $\frac{x-1}{x^2-1}\in\ratio(x)$ hat einfache Polstelle $x+1$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[unendliche Stelle]
+	Wir bezeichnen mit
+	\begin{align}
+		v_\infty\left(\frac{f}{g}\right) = \deg(f)-\deg(g)\notag
+	\end{align}
+	$f,g\in K[x]$ die \begriff{unendliche Stelle} und schreiben $\deg(\infty)=1$. Wir sagen $\phi$ hat eine Null- bzw. Polstelle im Unendlichen, wenn $v_\infty>0$ bzw. $v_\infty<0$.
+\end{definition}
+
+\begin{lemma}
+	$v_\infty$ ist eine diskrete Bewertung.
+\end{lemma}
+\begin{proof}
+	zu zeigen: $v_\infty$ erfüllt \propref{2_5_15} (a), (b)
+	\begin{enumerate}[label=(\alph*)]
+		\item zeige $v_\infty(xy) = v_\infty(x) + v_\infty(y)$:
+		\begin{align}
+			v_\infty\left(\frac{f_1}{g_1}\cdot\frac{f_2}{g_2}\right) &= \deg(g_1g_2) - \deg(f_1f_2) \notag \\
+			&= \deg(g_1)+\deg(g_2) - \deg(f_1)-\deg(f_2)\notag \\
+			&= v_\infty\left(\frac{f_1}{g_1}\right) + v_\infty\left(\frac{f_2}{g_2}\right)\notag
+		\end{align}
+		\item zeige $v_\infty(x+y) \ge \min \{v_\infty(x), v_\infty(y)\}$:
+		\begin{align}
+			v_\infty(f_1+f_2) = -\deg(f_1+f_2) &\ge -\max\{\deg(f-1),\deg(f_2)\}\notag \\
+			&= \min\{-\deg(f_1),-\deg(f_2)\} \notag \\
+			&= \min\{v_\infty(f_1),v_\infty(f_2)\} \notag
+		\end{align}
+		\begin{align}
+			v_\infty\left(\frac{f_1}{g_1}+\frac{f_2}{g_2}\right) &= v_\infty\left(\frac{1}{g_1g_2}\right) + v_\infty(f_1g_2+f_2g_1) \notag \\
+			&\ge v_\infty\left(\frac{1}{g_1g_2}\right) + \min\{v_\infty(f_1g_2),v_\infty(f_2g_1)\} \notag \\
+			&\overset{(a)}{=} \min\left\lbrace v_\infty\left(\frac{f_1g_2}{g_1g_2}\right), v_\infty\left(\frac{f_2g_1}{g_1g_2}\right)\right\rbrace \notag
+		\end{align}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Produktformel]
+	Jede rationale Funktion $\phi|in K(x)^\times$ hat gleich viele Null- und Polstellen, wenn man Vielfachheit und Grad zählt:
+	\begin{align}
+		\sum_{p\in P_k\cup\{\infty\}} \deg(p)\cdot v_p(\phi) = 0\notag
+	\end{align}
+\end{proposition}
+\begin{proof}
+	Da alle $v_p$ \propref{2_5_15} (a) erfüllen, können wir ohne Einschränkung annehmen, dass $\phi = p_0\in P_k$ ist.
+	\begin{align}
+		&\Rightarrow v_p(\phi) = \begin{cases}
+			1 & p = p_0 \\ 0 & p\in P_k\backslash\{p_0\} \\ -\deg(p_0) & p = \infty
+		\end{cases} \notag \\
+		&\Rightarrow \sum_{p\in P_k\cup\{\infty\}} \deg(p)\cdot v_p(\phi) = \deg(p_0)\cdot 1 + \underbrace{\deg(\infty)}_{=1}\cdot -\deg(p_0) = 0\notag
+	\end{align}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_8_8}
+	Ist $v:K\to\whole\cup\{\infty\}$ eine diskrete Bewertung und sind $x,y\in K$ mit $v(x)\neq v(y)$, so ist
+	\begin{align}
+		v(x+y) = \min\{v(x),v(y)\}\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	ohne Einschränkung sei $v(x)<v(y)\Rightarrow v(x+y)\overset{(a)}{\ge}\min\{v(x),y(y)\}$ und $v(x) = v(x+y-y) \overset{(b)}{\ge}\min\{v(x+y),\underbrace{v(-y)}_{v(y)}\}$ \\
+	$\xRightarrow{x(y)>v(x)} \min{v(x+y),v(y)} = v(x+y)$ \\
+	$\Rightarrow v(x+y) = v(x) = \min\{v(x),v(y)\}$
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_8_9}
+	Ist $R$ ein Hauptidealring und $\mathbb{P}(R)$ ein Vertretersystem der Primelemente von $R$ modulo Einheiten, so lässt sich jedes $x\in\Quot(R)$ schreiben als
+	\begin{align}
+		 x = \sum_{p\in\mathbb{P}(R)}  \frac{\alpha_p}{p^{n_p}} \notag
+	\end{align}
+	mit $n_p\in\natur_0$, fast alle gleich Null und $\alpha_p\in R$ teilerfremd zu $p^{n_p}$ auch fast alle gleich Null. Dabei sind die $n_p$ eindeutig bestimmt und die $\alpha_p$ bis auf Vielfache von $p^{n_p}$.
+\end{proposition}
+\begin{proof}
+	Schreibe $x=y\cdot \prod_{i=1}^{k}p_i^{-n_i}$ mit $p_1,...,p_k\in\mathbb{P}(R)$ paarweise verschieden, $y\in R$, $n_i>0$, $p_i\nmid y$.
+	\begin{itemize}
+		\item \textbf{Existenz:} Induktion nach $k$ \\
+		\emph{$k=1$:} klar \\
+		\emph{$k>1$:} Sei $r=\sum_{i=1}^{k-1} p_i^{n_i}$, $s=p_k^{n_k}\Rightarrow \ggT(r,s)=1$ \\
+		$\Rightarrow$ es existieren $a,b\in R$ mit $ar+bs = \ggT(r,s)=1$ \\
+		$\Rightarrow \frac{1}{rs} = \frac{a}{s}+\frac{b}{r}$ \\
+		$\Rightarrow x = \frac{y}{rs} = \frac{yb}{r} + \frac{ya}{s} = \sum_{p\in\mathbb{P}(R)}\frac{\beta_p}{p^{n_p}} + \frac{ya}{p_k^{n_k}} = \sum_{p\in\mathbb{P}(R)} \frac{\alpha_p}{p^{n_p}}$ ohne Einschränkung $p\nmid \alpha_p$ falls $\alpha_p\neq 0$
+		\item \textbf{Eindeutigkeit:} Übung
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_8_10}
+	Seien $f,g\in K[x]$, $n=\deg(g)\ge 1$. Dann gibt es eindeutig bestimmte $f_0,f_1,...\in K[x]$ fast alle gleich Null, mit $\deg(f_i)<n$ und
+	\begin{align}
+		\sum_{i=0}^{\infty} f_ig^i\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	H91
+\end{proof}
+
+\begin{theorem}[Partialbruchzerlegung]
+	Jedes $\phi\in K(x)$ lässt sich schreiben als
+	\begin{align}
+		\phi = f + \sum_{p\in P_k}\sum_{i\ge 0} \frac{f_{p,i}}{p^i}\notag
+	\end{align}
+	mit eindeutig bestimmten $f\in K[x]$, $f_{p,i}\in K[x]$, $\deg(f_{p,i})<\deg(p)$, fast alle gleich Null. Genau dann ist $p\in P_k$ eine Polstelle von $\phi$, wenn $f_{p,i}\neq 0$ für ein $i$, und dann ist 
+	\begin{align}
+		v_p(f) = -\max\{i\mid f_{p,i}\neq 0\}\notag
+	\end{align}
+\end{theorem}
+\begin{proof}
+	\begin{itemize}
+		\item \textbf{Existenz:} Nach \propref{2_8_9} ist $\phi = \sum_{p\in P_k}\frac{\alpha_p}{p^{n_p}}$, $\ggT(\alpha_p,p^{n_p})=1$. Schreibe $\alpha_p = \sum_{i=0}^\infty f_{p,i}\cdot p^i$, $\deg(f_{p,i})<\deg(p)$ (vgl. \propref{2_8_10}) \\
+		$\Rightarrow \frac{\alpha_p}{p^{n_p}} = \sum_{i=0}^{n_p-1} \frac{f_{p,i}}{p^{n_p-1}} + \underbrace{\sum_{i = n_p}^\infty f_{p,i}\cdot p^{i-n_p}}_{\in K[x]}$
+		\item \textbf{Polstellen:} 
+		\begin{align}
+			v_{p_0}\left(\frac{f_{p,i}}{p^i}\right) = \begin{cases}
+			-i & p = p_0, f_{p,i}\neq 0 \\ v_{p_0}(f_{p,i})\ge 0 & p\neq p_0
+			\end{cases} \notag
+		\end{align}
+		$\xRightarrow{\propref{2_8_8}} v_{p_0}(\phi) = \min\{-i\mid f_{p_0,i} \neq 0\}$ falls $<0$
+		\item \textbf{Eindeutigkeit:} $\phi = f+\sum_p\sum_i \frac{f_{p,i}}{p^i}=0$ \\
+		$\Rightarrow f_{p,i}=0$ (sonst ist $v_p(\phi) <0$) $\Rightarrow f=0$ 
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	Sei $K=\comp$. $P_k = \{x-a\mid a\in \comp\}$. Folglich lässt sich jedes $\phi\in \comp(x)$ schreiben als
+	\begin{align}
+		\phi = f + \sum_{a\in\comp}\sum_{i=1}^\infty \frac{c_{a,i}}{(x-a)^i}\notag
+	\end{align}
+	mit eindeutig bestimmten $c_{a,i}\in\comp$, $f\in\comp[x]$ fast alle Null. Anders gesagt ist 
+	\begin{align}
+		\left\lbrace 1,x,x^2,...\right\rbrace \cup \left\lbrace \frac{1}{(x-a)^i}\,\Bigg\vert\, a\in\comp,i\ge 0\right\rbrace \notag
+	\end{align}
+	eine Basis des $\comp$-Vektorraums $\comp(x)$.
+\end{example}
