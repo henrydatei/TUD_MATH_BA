@@ -1,0 +1,24 @@
+\section{symmetrische Polynome}
+
+Sei $R$ ein Ring, $n\in\natur$, $R[\uline{x}]=R[x_1,...,x_n]$.
+
+\begin{definition}[allgemeines Polynom, elementarsymmetrisches Polynom]
+	Das Polynom
+	\begin{align}
+		f_{allg} = \prod_{i=1}^{n} (t-x_i) = t^n + \sum_{k=1}^{n} (-1)^k s_k(x_1,...,x_n)\cdot t^{n-k}\in R[x_1,...,x_n,t] \notag
+	\end{align}
+	mit $s_k = s_k(x_1,...,x_n) = \sum_{1\ge i_1<\dots< i_k\ge n} x_{i_1}\cdot \dots\cdot x_{i_k}\in R[\uline{x}]$ heißt das \begriff{allgemeine Polynom} vom Grad $n$ über $R$ und $s_k$ heißt das $k$-te \begriff{elementarsymmetrische Polynom} in $x_1,...,x_n$ über $R$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $s_1 = x_1+\dots +x_n$
+		\item $s_n = x_1\cdots x_n$
+	\end{enumerate}
+\end{example}
+
+\begin{remark}
+	Erinnerung: universelle Eigenschaft von $R[\uline{x}]$: Ist $\phi: R\to R'$ ein Ringhomomorphismus, $r_1,...,r_n\in R'$, so gibt es einen eindeutig bestimmten Ringhomomorphismus $\phi_r:R[\uline{x}]\to R'$ mit $\phi_r\vert_R=\phi$ und $\phi_r(x_i)=r_i\quad\forall i$.
+	
+	Ist $R$ ein Teilring von $R'$ und $\phi=\id_R$, so schreiben wir auch $f(r_1,...,r_n)$ für $\phi_r(f)$.
+\end{remark}
