@@ -20,6 +20,11 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
 
 ### Maß und Integral (WS2018/19)
+- Haus- und Übungsaufgaben: [https://drive.google.com/open?id=17U_-lcBcew9yBzAfi6zu5AbCHkQLgPMU](https://drive.google.com/open?id=17U_-lcBcew9yBzAfi6zu5AbCHkQLgPMU)
+- alle Musterlösungen: [https://drive.google.com/open?id=1lDKvJ_Ltep7galR6ac12YC4b6p39u4r9](https://drive.google.com/open?id=1lDKvJ_Ltep7galR6ac12YC4b6p39u4r9)
+- Weihnachtsaufgaben
+  - Aufgaben: [https://drive.google.com/open?id=1cifPtCUNakVBw3Y3aMKeYJeUsxScGBWC](https://drive.google.com/open?id=1cifPtCUNakVBw3Y3aMKeYJeUsxScGBWC)
+  - Musterlösungen: [https://drive.google.com/open?id=1FDSZLzOHWZFGYB80Nk9H9iqvZR8krU0z](https://drive.google.com/open?id=1FDSZLzOHWZFGYB80Nk9H9iqvZR8krU0z)
 
 ### Geometrie (WS2018/19)
 - Übungsaufgaben: [https://drive.google.com/open?id=1kXtr58m0XZOoong1rPhfQALoz_f06sap](https://drive.google.com/open?id=1kXtr58m0XZOoong1rPhfQALoz_f06sap)
