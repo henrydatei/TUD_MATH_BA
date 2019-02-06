@@ -38,6 +38,7 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 - Hausaufgabe T6 (Test auf OPAL): [https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3](https://drive.google.com/open?id=16ifpoC1JxIuxbKO6fHwKfx3He2AHq2m3) -> alle Vektoren als Zeilenvektoren eingeben!
 - Hausaufgabe T12 (Test auf OPAL, 1): [https://drive.google.com/file/d/1n8TVO9qtgXumlzl3JJxtwo6QqIdRfoPI](https://drive.google.com/file/d/1n8TVO9qtgXumlzl3JJxtwo6QqIdRfoPI) für Nullstellenberechnung
 - Hausaufgabe T12 (Test auf OPAL, 2): [https://drive.google.com/file/d/10oRV7V3T06WOdfRp4rPBEdAjp7bsnb32](https://drive.google.com/file/d/10oRV7V3T06WOdfRp4rPBEdAjp7bsnb32) für Newton-Verfahren
+- Übungsaufgaben: [https://drive.google.com/open?id=1JwXqS1UkhXnEmakiio5U8C5o1XUxbjKL](https://drive.google.com/open?id=1JwXqS1UkhXnEmakiio5U8C5o1XUxbjKL)
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
