@@ -22,8 +22,8 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 ### Maß und Integral (WS2018/19)
 
 ### Geometrie (WS2018/19)
-- Übungsaufgaben:
-- unvollständige Musterlösungen:
+- Übungsaufgaben: [https://drive.google.com/open?id=1kXtr58m0XZOoong1rPhfQALoz_f06sap](https://drive.google.com/open?id=1kXtr58m0XZOoong1rPhfQALoz_f06sap)
+- unvollständige Musterlösungen: [https://drive.google.com/open?id=11FEE2YK42dfjPl2qBHqoC9BjpS24K0Lz](https://drive.google.com/open?id=11FEE2YK42dfjPl2qBHqoC9BjpS24K0Lz)
 - Lösungen der Übungsaufgaben ([oakoneric](https://github.com/oakoneric)): [https://github.com/oakoneric/TeX/tree/master/TeX_GEO%20%C3%9Cbungen](https://github.com/oakoneric/TeX/tree/master/TeX_GEO%20%C3%9Cbungen)
 
 ### Einführung in die Numerik (WS2018/19)
