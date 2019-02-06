@@ -54,7 +54,7 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 - Tutoriumsaufgaben: [https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc](https://drive.google.com/open?id=1INV-P6hB2I1eNUtoXyydHhlnPf1chNYc)
 
 ### Einführung in die Makroökonomie (WS2018/19)
-- Vorlesungsfolien: 
+- Vorlesungsfolien: [https://drive.google.com/open?id=1FdffYgt80wllHGcC-201I7wy6ZIYDVkk](https://drive.google.com/open?id=1FdffYgt80wllHGcC-201I7wy6ZIYDVkk)
 - Übungssaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
