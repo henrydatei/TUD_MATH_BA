@@ -1,6 +1,6 @@
 \section{Maße}
 
-Sei $E$ eine beliebige nicht-leere Grundmenge.
+Sei $E \neq \emptyset$ beliebige Grundmenge.
 
 \begin{definition}[Maß]
 	Ein \begriff{Maß} $\mu$ ist eine Abbildung $\mu: \mathscr{A} \to [0,\infty]$ mit folgenden Eigenschaften:
@@ -19,19 +19,22 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 \end{align}
 
 \begin{definition}
+	Sei $\mu$ ein Maß auf $E$, $\mathscr{A}$ $\sigma-Algebra$. Dann heißt
 	\begin{itemize}
-		\item Es sei $\mathscr{A}$ eine $\sigma$-Algebra auf $E$ und $\mu$ ein Maß. Dann heißt $(E,\mathscr{A})$ \begriff{Messraum} und $(E,\mathscr{A},\mu)$.
-		\item Ein Maß mit $\mu(E) < \infty$ heißt \begriff{endliches Maß} und $(E,\mathscr{A},\mu)$ \begriff{endlicher Maßraum}.
-		\item Gilt $\mu(E)=1$, dann sprechen wir von einem \begriff{Wahrscheinlichkeitsmaß} (\begriff{W-Maß}) und \\ \begriff{Wahrscheinlichkeitsraum} (\begriff{W-Raum}).
-		\item Gibt es eine Folge $(A_n)_{n\in \natur} \subset \mathscr{A}$, sodass $A_n \uparrow E$ und $\mu(A_n) < \infty$, dann heißen $\mu$ und $(E,\mathscr{A},\mu)$ \begriff{$\sigma$-endlich}.
+		\item $(E,\mathscr{A})$ - \begriff{Messraum}
+		\item $(E,\mathscr{A},\mu)$ - \begriff{Maßraum}
+		\item $\mu(E) < \infty$ - \begriff{endlisches} Maß
+		\item $\exists (A_n)_{n \in \natur} \subset \mathscr{A}, A_n \uparrow E, \mu(A_n) < \infty (n \in \natur)$ - \begriff{$\sigma$-endliches} Maß
+		\item $\mu(E) = 1$ - \begriff{Wahrscheinlichkeitsmaß} ($W$-Maß)
+		analog: $\sigma$-endlicher Maßraum und $W$-Raum = Maßraum + $W$-Raum.
 	\end{itemize}
 \end{definition}
 
 \begin{proposition}[Eigenschaften von Maßen]
 	\proplbl{3_3} %TODO fix labels!
-	Es sei $\mu$ ein Maß auf $(E,\mathscr{A})$ und $A,B,A_n, B_n \in \mathscr{A}, n \in \natur$.
-	\begin{enumerate}
-		\item $A\cap B = \emptyset \Longrightarrow \mu(A \cup B) = \mu(A) + \mu(B)$ (additiv)
+	Es sei $\mu$ ein Maß auf $(E,\mathscr{A})$ und $A,A_n,B, B_n \in \mathscr{A}, n \in \natur$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $A\cap B = \emptyset \Longrightarrow \mu(A \coprod B) = \mu(A) + \mu(B)$ (additiv)
 		\item $A\subset B \Longrightarrow \mu(A) \leq \mu(B)$ (monoton)
 		\item $A \subset B$ \& $\mu(A) < \infty \Longrightarrow \mu(B\setminus A) = \mu(B) - \mu(A)$
 		\item $\mu(A \cup B) + \mu(A\cap B) = \mu(A) + \mu(B)$ (stark additiv)
