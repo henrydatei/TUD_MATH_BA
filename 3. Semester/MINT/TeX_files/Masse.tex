@@ -3,13 +3,13 @@
 Sei $E$ eine beliebige nicht-leere Grundmenge.
 
 \begin{definition}[Maß]
-	Ein \begriff{Maß} $\mu$ ist eine Abbildung $\mu: \mathcal{A} \to [0,\infty]$ mit folgenden Eigenschaften:
+	Ein \begriff{Maß} $\mu$ ist eine Abbildung $\mu: \mathscr{A} \to [0,\infty]$ mit folgenden Eigenschaften:
 	\begin{itemize}
-		\item ($M_0$) $\mathcal{A}$ ist eine $\sigma$-Algebra auf $E$
+		\item ($M_0$) $\mathscr{A}$ ist eine $\sigma$-Algebra auf $E$
 		\item ($M_1$) $\mu(\emptyset) = 0$
-		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathcal{A}$ paarweise disjunkt $\Longleftarrow \mu\big(\bigcup_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
+		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt $\Longleftarrow \mu\big(\bigcup_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
 	\end{itemize}
-	Gilt für $\mu: \mathcal{A} \to [0,\infty]$ nur $(M_1),(M_2)$, dann heißt $\mu$ \begriff{Prämaß}.
+	Gilt für $\mu: \mathscr{A} \to [0,\infty]$ nur $(M_1),(M_2)$, dann heißt $\mu$ \begriff{Prämaß}.
 \end{definition}
 
 Für auf- und absteigende Folgen von Mengen schreiben wir auch
@@ -20,16 +20,16 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 
 \begin{definition}
 	\begin{itemize}
-		\item Es sei $\mathcal{A}$ eine $\sigma$-Algebra auf $E$ und $\mu$ ein Maß. Dann heißt $(E,\mathcal{A})$ \begriff{Messraum} und $(E,\mathcal{A},\mu)$.
-		\item Ein Maß mit $\mu(E) < \infty$ heißt \begriff{endliches Maß} und $(E,\mathcal{A},\mu)$ \begriff{endlicher Maßraum}.
+		\item Es sei $\mathscr{A}$ eine $\sigma$-Algebra auf $E$ und $\mu$ ein Maß. Dann heißt $(E,\mathscr{A})$ \begriff{Messraum} und $(E,\mathscr{A},\mu)$.
+		\item Ein Maß mit $\mu(E) < \infty$ heißt \begriff{endliches Maß} und $(E,\mathscr{A},\mu)$ \begriff{endlicher Maßraum}.
 		\item Gilt $\mu(E)=1$, dann sprechen wir von einem \begriff{Wahrscheinlichkeitsmaß} (\begriff{W-Maß}) und \\ \begriff{Wahrscheinlichkeitsraum} (\begriff{W-Raum}).
-		\item Gibt es eine Folge $(A_n)_{n\in \natur} \subset \mathcal{A}$, sodass $A_n \uparrow E$ und $\mu(A_n) < \infty$, dann heißen $\mu$ und $(E,\mathcal{A},\mu)$ \begriff{$\sigma$-endlich}.
+		\item Gibt es eine Folge $(A_n)_{n\in \natur} \subset \mathscr{A}$, sodass $A_n \uparrow E$ und $\mu(A_n) < \infty$, dann heißen $\mu$ und $(E,\mathscr{A},\mu)$ \begriff{$\sigma$-endlich}.
 	\end{itemize}
 \end{definition}
 
 \begin{proposition}[Eigenschaften von Maßen]
 	\proplbl{3_3} %TODO fix labels!
-	Es sei $\mu$ ein Maß auf $(E,\mathcal{A})$ und $A,B,A_n, B_n \in \mathcal{A}, n \in \natur$.
+	Es sei $\mu$ ein Maß auf $(E,\mathscr{A})$ und $A,B,A_n, B_n \in \mathscr{A}, n \in \natur$.
 	\begin{enumerate}
 		\item $A\cap B = \emptyset \Longrightarrow \mu(A \cup B) = \mu(A) + \mu(B)$ (additiv)
 		\item $A\subset B \Longrightarrow \mu(A) \leq \mu(B)$ (monoton)
@@ -50,31 +50,31 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 	Die Aussagen von \propref{3_3} gelten auf für Prämaße, wenn das zu Grunge leigende Mengensystem groß genug ist. Genauer braucht man dafür:
 	\begin{itemize} %TODO hyperlink maybe points from prop 3.3?
 		\item a)-e) Stabilität unter endlichen vielen Wiederholungen von $\cup,\cap,\setminus$
-		\item f) $A_{n+1}\setminus A_n,\bigcup_{n}^{\infty} A_n \in \mathcal{A}$
-		\item g) $B_1 \setminus B_n,B_n \setminus B_{n+1},\bigcap_{n}^{\infty} B_n,B_1\setminus \bigcap_{n}^{\infty} \in \mathcal{A}$
-		\item h) $\bigcup_{n}^{m} A_n,\bigcup_{n}^{\infty} A_n \in \mathcal{A}$
+		\item f) $A_{n+1}\setminus A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{A}$
+		\item g) $B_1 \setminus B_n,B_n \setminus B_{n+1},\bigcap_{n}^{\infty} B_n,B_1\setminus \bigcap_{n}^{\infty} \in \mathscr{A}$
+		\item h) $\bigcup_{n}^{m} A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{A}$
 	\end{itemize}
 \end{remark}
 
 \begin{example}
 	\begin{enumerate}
-		\item (\begriff{Dirac-Maß}). Es sei $(E,\mathcal{A})$ ein beliebiger Messraum und $x \in E$ fest. Dann ist
+		\item (\begriff{Dirac-Maß}). Es sei $(E,\mathscr{A})$ ein beliebiger Messraum und $x \in E$ fest. Dann ist
 		\begin{align}
-			\delta_x: \mathcal{A} \to [0,1] \text{ mit } \delta_x(A) := \begin{cases}
+			\delta_x: \mathscr{A} \to [0,1] \text{ mit } \delta_x(A) := \begin{cases}
 				0 & x \not \in A,\\
 				1 & x \in A
 			\end{cases}\notag
 		\end{align}
 		ist ein W-Maß, das Dirac-Maß (auch \begriff{$\delta$-Funktion}, \begriff{Einheitsmasse})
-		\item Es sei $E=\real$ und $\mathcal{A}$ wie in Beispiel 2.3 e) %TODO set reference, once chap 2 has been typed!
-		(d.h. $A \in \mathcal{A} \Longleftrightarrow A \text{ oder } A^C \text{ abzählbar}$). Dann ist
+		\item Es sei $E=\real$ und $\mathscr{A}$ wie in Beispiel 2.3 e) %TODO set reference, once chap 2 has been typed!
+		(d.h. $A \in \mathscr{A} \Longleftrightarrow A \text{ oder } A^C \text{ abzählbar}$). Dann ist
 		\begin{align}
 		\gamma(A) := \begin{cases}
 		0 & A \text{ ist abzählbar},\\
 		1 & A^C \text{abzählbar}
 		\end{cases}\notag
-		\end{align} mit $A \in \mathcal{A}$ und $\gamma$ ist ein W-Maß.
-%		\item Es sei $(E, \mathcal{A})$ ein beliebiger Messraum. Dann ist
+		\end{align} mit $A \in \mathscr{A}$ und $\gamma$ ist ein W-Maß.
+%		\item Es sei $(E, \mathscr{A})$ ein beliebiger Messraum. Dann ist
 %		\begin{align}
 %	    \vert A\vert := \begin{cases}
 %		\#A & x \not \in A,\\

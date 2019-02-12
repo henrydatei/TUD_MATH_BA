@@ -25,6 +25,7 @@
 \RequirePackage{amsfonts}
 \RequirePackage{scalerel,stackengine}
 \RequirePackage{calc}
+\RequirePackage{mathrsfs} % Category-like letters for MINT with \mathscr
 
 %transpose
 \newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
@@ -128,6 +129,16 @@
 	\else%
 		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
 	\fi%
+}
+
+%%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sigmalg}{$\sigma$-Algebra}
+% declares the Bourbaki’s ‘dangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
+\DeclareFontFamily{U}{stixbbit}{}
+\DeclareFontShape{U}{stixbbit}{m}{it}{<-> stix-mathbbit}{}
+\DeclareRobustCommand{\stixdanger}{%
+  {\usefont{U}{stixbbit}{m}{it}\symbol{"F6}}%
 }
 
 % Math Operators

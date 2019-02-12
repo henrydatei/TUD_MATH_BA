@@ -2,45 +2,52 @@
 
 \textbf{Ziel:} Charakterisierung der Definitionsgebiete von Maßen.
 
-\begin{definition}[$\sigma$-Algebra, messbar]
-	Eine \begriff{$\sigma$-Algebra} über einer beliebigen Grundmenge $X \neq \emptyset$ ist eine Familie von Mengen in $\mathcal{P}(X), \mathcal{A} \subset \mathcal{P}(X)$:
+\begin{definition}[\sigmalg, messbar]
+	%Hint i declare a new command to make it faster to write sigma-algebra, its \sigmaalg.
+	Eine \begriff{\sigmalg} über einer beliebigen Grundmenge $X \neq \emptyset$ ist eine Familie von Mengen in $\mathscr{P}(X), \mathscr{A} \subset \mathscr{P}(X)$:
 	\begin{itemize}
-		\item (S1): $X \in \mathcal{A}$
-		\item (S2): $A \in \mathcal{A} \to A^C = X \setminus A \in \mathcal{A}$
-		\item (S3): $(A_n)_{n\in \natur} \subset \mathcal{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathcal{A}$
+		\item (S1): $X \in \mathscr{A}$
+		\item (S2): $A \in \mathscr{A} \to A^C = X \setminus A \in \mathscr{A}$
+		\item (S3): $(A_n)_{n\in \natur} \subset \mathscr{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathscr{A}$
 	\end{itemize}
-	Eine Menge $A\in\mathcal{A}$ heißt \begriff{messbar}.
+	Eine Menge $A\in\mathscr{A}$ heißt \begriff{messbar}.
 \end{definition}
 
-\begin{proposition}[Eigenschaften einer $\sigma$-Algebra]
-	Sei $\mathcal{A}$ eine $\sigma$-Algebra über $X$.
+\begin{proposition}[Eigenschaften einer \sigmalg]
+	Sei $\mathscr{A}$ eine \sigmalg über $X$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $\emptyset\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\cup B\in\mathcal{A}$
-		\item $(A_n)_{i\in\natur}\subset\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\cap B\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\setminus B\in\mathcal{A}$
+		\item $\emptyset\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\cup B\in\mathscr{A}$
+		\item $(A_n)_{i\in\natur}\subset\mathscr{A}\Rightarrow\bigcap_{n\in \natur}A_n\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\cap B\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\setminus B\in\mathscr{A}$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}[label=(\alph*)]
-		\item $\emptyset=X^C\in\mathcal{A}$
-		\item $A_1=A$, $A_2=B$m $A_3=A_4=...=\emptyset\Rightarrow A\cup B=\bigcup_{n\in \natur} A_n\in\mathcal{A}$
-		\item $A_n\in\mathcal{A}\xRightarrow{\text{S2}}A_n^C\in\mathcal{A}\xRightarrow{\text{S3}}\bigcup_{n\in \natur} A_n^C\in\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n=\left(\bigcap_{n\in \natur} A_n^C\right)^C\in\mathcal{A}$
+		\item $\emptyset=X^C\in\mathscr{A}$
+		\item $A_1=A$, $A_2=B$m $A_3=A_4=...=\emptyset\Rightarrow A\cup B=\bigcup_{n\in \natur} A_n\in\mathscr{A}$
+		\item $A_n\in\mathscr{A}\xRightarrow{\text{S2}}A_n^C\in\mathscr{A}\xRightarrow{\text{S3}}\bigcup_{n\in \natur} A_n^C\in\mathscr{A}\Rightarrow\bigcap_{n\in \natur}A_n=\left(\bigcap_{n\in \natur} A_n^C\right)^C\in\mathscr{A}$
 		\item wie (b)
-		\item $A\setminus B=A\cap B^C\in\mathcal{A}$
+		\item $A\setminus B=A\cap B^C\in\mathscr{A}$
 	\end{enumerate}
 \end{proof}
 
-\textbf{Fazit:} Auf einer $\sigma$-Algebra kann man alle üblichen Mengenoperationen abzählbar oft durchführen ohne $\mathcal{A}$ zu verlassen!
+\textbf{Fazit:} Auf einer \sigmalg kann man alle üblichen Mengenoperationen abzählbar oft durchführen ohne $\mathscr{A}$ zu verlassen!
 
 \begin{example}
 	$X\neq\emptyset$ Menge, $A,B\subset X$
 	\begin{enumerate}[label=(\alph*)]
-		\item $\mathcal{P}(X)$ ist eine $\sigma$-Algebra (größtmögliche)
+		\item $\mathscr{P}(X)$ ist eine $\sigma$-Algebra (größtmögliche)
 		\item $\{\emptyset,X\}$ ist eine $\sigma$-Algebra (kleinstmögliche)
 		\item $\{\emptyset,A,A^C,X\}$ ist eine $\sigma$-Algebra
 		\item $\{\emptyset,B,X\}$ ist eine $\sigma$-Algebra, wenn $B=\emptyset$ oder $B=X$
-		\item $\mathcal{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine $\sigma$-Algebra
+		\item $\mathscr{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine \sigmalg %TODO needs the proof still!
+		\item Spur-\sigmalg: $E \subset X,\mathscr{A} \sigma$-Algebra in $X \Rightarrow \mathscr{A}_E := \{E \cap A \mid A \in \mathscr{A}\}$ ist eine \sigmalg.
+		\item Urbild-\sigmalg: $f: X \to Y$ eine Abbildung, $X,Y$ Mengen, $\mathscr{A}_Y$ sei \sigmalg  in $Y$ $\Rightarrow \mathscr{A} := \{f^{-1}(A_Y)\mid A_Y \in \mathscr{A}\}$ eine \sigmalg.
 	\end{enumerate}
 \end{example}
+
+\begin{hint}
+	Test
+\end{hint}
