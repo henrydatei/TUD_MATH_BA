@@ -361,6 +361,14 @@
 	outerlinewidth=0.1pt,
 ]{repetition}{Wiederholung}
 
+\newmdtheoremenv[%
+	hidealllines=true,%
+	frametitlefont=\normalfont\bfseries\color{black},%
+	innerleftmargin=0pt,%
+	skipabove=5pt,%
+	innerleftmargin=10pt,%
+]{hint}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Hinweis}
+
 %various unnumbered thereoms and environment (usually included in theorems like above)
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
 %to achieve the underlining, this needed to put in the theoremstyle definition

@@ -66,6 +66,58 @@ $E$ ist Grundmenge.
 		\item Wäre $\sigma(\mathscr{G})$ eine Algebra, dann $\sigma(\mathscr{G}) \subset \delta(\mathscr{G})$\\
 		Grund: $\mathscr{G} \subset \delta(\mathscr{G})$ wegen Defintion und $\delta(\mathscr{G})$ wäre Algebra, damit folgt $\sigma(\mathscr{G}) \subset \delta(\mathscr{G})$ ($\sigma(\mathscr{G})$ minimale Algebra mit $\mathscr{G} \subset \sigma(\mathscr{G})$), dann folgt mit 1) und \propref{4_3}a) $\delta(\mathscr{G}) \subset \sigma(\mathscr{G})$
 		\item Zeige $\delta(\mathscr{G}) \cap$-stabil. Dann \propref{4_4} $\Rightarrow \delta(\mathscr{G})$ Algebra, fertig
-		\item $D \in \delta(\mathscr{G})$ fest und setze $\mathscr{D}_{D} = \{\}$
+		\item $D \in \delta(\mathscr{G})$ fest und behaupte $\mathscr{D}_{D} = \{Q \subset E \mid Q \cap D \in \delta(\mathscr{D})\}$ ist ein Dynkin-System:
+		\begin{itemize}
+			\item $(D_1) \emptyset \in \mathscr{D}_D$, da $Q=\emptyset$ setzen kann
+			\item $(D_2)$ Sei $Q \in \mathscr{D}_D$. zu zeigen: $Q^C \in \mathscr{D}_D$\\
+			\begin{align}
+				Q^C \cap D = (Q^C \cup D^C)\cap D &\overset{\ast}{=} (Q \cap D)^C \cap D \quad& \ast: \text{ de Morgan} \notag\\
+				&= ((Q \cap D)) \sqcup D^C)^C \in \delta(\mathscr{G}) \label{4_4_eq} \tag{\#}
+			\end{align}
+			Damit folgt aus der Definition von $\mathscr{D}_D$, dass $Q^C \in \mathscr{D}_D$. In \eqref{4_4_eq} wurde benutzt, das $Q \cap D \subset D$ und $D^C \not \subset D$
+			\item $(D_3)$ $(Q_n)_{n\in \natur} \subset \mathscr{D}_D$ disjunkt $\Rightarrow (Q_N \cap D)_{n \in \natur} \subset \delta(\mathscr{D})$ disjunkt (gilt wegen Def von $\mathscr{D}_D$)\\
+			$\delta(\mathscr{G}) \overset{D_3}{\ni} \sqcup_{n \in \natur} (Q \cap D) = (\sqcup_{n \in \natur Q_n)\cap D \in \delta(\mathscr{G}) \overset{\text{Def. }\mathscr{D}_D}{\Rightarrow} \sqcup_{n \in \natur Q_n \in \mathscr{D}_D$
+		\end{itemize}
+	\item Zeige $\delta(\mathscr{G}) \subset \mathscr{D}_D$ für $D \in \delta(\mathscr{G})$ fest aber beliebig\\
+	$\forall D \in \delta(\mathscr{G}) \colon \delta(\mathscr{G}) \cap D \in \delta(\mathscr{G}) \Rightarrow \delta(\mathscr{G}) \subset \delta(\mathscr{G})$ wäre die $\cap$-stabil\\
+	Klar $\mathscr{G} \subset \delta(\mathscr{G})$ und $\mathscr{G}$ sei $\cap$-stabil (Vorraussetzung) $\mathscr{G} \subset \mathscr{D}_G\quad \forall G \in \mathscr{D}_G$
+	\begin{align}
+		&\Rightarrow \delta(\mathscr{G}) \subset \mathscr{D}_G\quad \forall G \in \mathscr{G} \mathscr{D}_G\text{ Dynkin-System}\notag \\
+		&\overset{\text{Def. } \mathscr{D}_G}{\Rightarrow} G \cap D \in \delta(\mathscr{G}) \forall D \in \mathscr{G} \forall D \in \delta(\mathscr{G})\notag \\
+		&\overset{\text{Def. }\\mathscr{D}_D}{\Rightarrow} G \in \mathscr{D}_D \forall G \in \mathscr{G} \forall D \in \delta(\mathscr{G}) \quad \text{ Tausche } D \leftrightarrow G \notag \\
+		&\Rightarrow \mathscr{G} \subset \mathscr{D}_D \forall D \in \delta(\mathscr{G}) \notag\\
+		&\xRightarrow{\mathscr{D}_D \text{Dyn. Sys}} \delta(\mathscr{G}) \subset \mathscr{D}_D \forall D \in \delta(\mathscr{G}) \notag\\
+		&\Rightarrow \forall Q \in \delta(\mathscr{G}) \colon Q \cap D \in \delta(\mathscr{G})\notag \\
+		&\Rightarrow \delta(\mathscr{G}) \cap\text{-stabil}
+	\end{align}
 	\end{enumerate}
 \end{proof}
+
+Wir brauchen \propref{4_5} an 2 Stellen: hier und bei Produktmaßen
+
+\begin{proposition}[Eindeutigkeitssatz]
+	\proplbl{4_6}
+	$(E, \mathscr{A})$ beliebiger Messraum, $\mu, \nu$ zwei Maße und $\mathscr{A} = \sigma(\mathscr{G})$ und 
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathscr{G}$ ist $\cap$-stabil
+		\item $\exists (G_n)_{n \in \natur} \subset \mathscr{G}, G_n \uparrow E, \mu(G_n), \nu(G_n) < \infty$
+	\end{enumerate}
+	\begin{align}
+	\text{Dann: }\forall G \in \mathscr{G}\colon &\mu(G) = \nu(G) &\Rightarrow \forall A \in \sigma(G)\colon &\mu(A) = \nu(A)\notag \\
+	\text{Kurz: } &\mu_{\vert_G} = \nu(\vert_G) &\Rightarrow &\mu=nu\notag \\
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	$\forall n \colon \mathscr{D}_n := \{A \in \mathscr{A} \mid \mu(G_n \cap A) = \nu(G_n \cap A)\}$
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathscr{D}_n$ ist Dynkin-System $\forall n, n$ fest
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}[Sonderfall]
+	$\mu, \nu$ $W$-Maße (oder $\mu(E) = \nu(E) < \infty$), dann kann man b) weglassen\\
+	\underline{Grund:} $\mathscr{G} \rightsquigarrow \mathscr{G} \cup \{E\} = \{B\colon B \in \mathscr{G} \text{ oder }B = E\}$ und $G_n := E \uparrow E \Rightarrow$ b)
+\end{remark}
+
+%TODO finish proofs.
