@@ -112,7 +112,7 @@ Der \propref{3_1_2} ist genau dann durchführbar, wenn $a_{kk}^{(k)}\neq 0$ für
 
 Die Regularität der Matrix $A\in\real^{n\times n}$ ist zwar äquivalent zur Lösbarkeit des linearen Gleichungssystems $Ax=b$, für jeden beliebigen Vektor $b\in\real^n$, jedoch sichert die Regularität nicht die Durchführbarkeit der Grundform des \person{Gauss}'schen Algorithmus. Um die Durchführbarkeit bei regulärem $A$ zu erzwingen, kann man eine \begriff[Pivotisierung!]{Spaltenpivotisierung} der Matrix durchführen. Dabei werden in jedem Durchlauf der Vorwärtselimination auf bestimmte Weise Zeilen der Matrix $(A,b)$ vertauscht:
 \begin{itemize}
-	\item Bestimme $p=p(k)\in\{k,...,n\}$, sodass $\vert a_{pk}^{(k)}=\max\limits_{k\le i\le n}\vert a_{ik}^{(k)}\vert$. \\
+	\item Bestimme $p=p(k)\in\{k,...,n\}$, sodass $\vert a_{pk}^{(k)} \vert =\max\limits_{k\le i\le n}\vert a_{ik}^{(k)}\vert$. \\
 	$k$-te Spalte von $A^{(k)}$ heißt \begriff{Pivotspalte}, $a_{pk}^{(k)}$ heißt \begriff{Pivotelement}, die Regularität von $A$ sichert dann $a_{pk}^{(k)}\neq 0$
 	\item Vertausche die Zeilen $p$ und $k$ in der Matrix $(A^{(k)},b^{(k)})$. \\
 	\emph{praktisch:} Zeilentausch nicht ausführen, sondern einen Permutationsvektor mitführen. \\
