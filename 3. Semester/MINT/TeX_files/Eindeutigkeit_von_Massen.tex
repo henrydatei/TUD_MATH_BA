@@ -1,1 +1,71 @@
 \section{Eindeutigkeit von Maßen}
+\underline{Ziel:} $\lambda^d$ (oder algemeines Maß) auf Erzeuger $\mathscr{G}$ definieren und dann auf $\sigma(\mathscr{G})$ fortsetzen.\\
+\underline{Brauche:} Wohldefiniertheit $\Longleftrightarrow \exits!$ Fortsetzung\\
+\underline{Problem:} $\sigma(\mathscr{G})$ im Allgeimeinen nicht ``konstruierbar''\\
+Ab nun ist mit Algebra, die $\sigma$-Algebra gemeint.
+
+$E$ ist Grundmenge.
+
+\begin{definition}[\person{Dynkin}-System]
+	$\mathscr{D} \subset \mathscr{P}(E)$ heißt \begriff{\person{Dynkin}-System}, wenn
+	\begin{itemize}
+		\item $(D_1) E \in \mathscr{D}$
+		\item $(D_2) D \in \mathscr{D} \Rightarrow D^C \in \mthscr{D}$
+		\item $(D_3) (D_n)_{n\in \natur} \subset \mathscr{D}$ und paarweise Disjunktheit $\Rightarrow \coprod_{n \in \natur} D_n \in \mathscr{D}$
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item Jede $\sigma$-Algebra ist insbesondere eine \person{Dynkin}-System, da $(D_3)$ schwächer als $S_3$.
+		\item Wie in \propref{2_2}a)b) sieht man $\emptyset \in \mathscr{D}, A,B \in \mathscr{D}$ und $A \cap B = \emptyset \Rightarrow A \sqcup B \in \mathscr{D}$
+	\end{enumerate}
+\end{remark}
+
+\begin{proposition}
+	\begin{enumerate}[label=(\alph*)]
+		\item Für $\mathscr{G} \subset \mathscr{P}(E)$ beliebig existiert ein kleinstes (minimales) \person{Dynkin}-System $\mathscr{D}$ mit $\mathscr{G} \subset \mathscr{D}$ mit Notation $\delta(\mathscr{G})$. $\delta/\mathscr{G}$ ist von $\mathscr{G}$ rezeugtes \person{Dynkin}-System.
+		\item $\mathscr{G} \subset \delta(\mathscr{G}) \subset \sigma(\mathscr{G})$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item wie in \propref{2.4} wörtlich
+		\item 
+	\end{enumerate}
+\end{proof}
+
+\underline{Ziel:} Zusammenhang \person{Dynkin}-System $\leftrightarrow \sigma$-Algebra 
+\leftri
+\begin{lemma}
+	Ein \person{Dynkin}-System $\mathscr{D}$ ist eine Algebra $\Leftrightarrow \mathscr{D}$ ist $\cap$-stabil $(\forall D,F \in \mathscr{D}\colon D \cap F \in \mathscr{D})$  
+\end{lemma}
+
+\begin{proof}
+	\begin{itemize}
+		\item $(\Rightarrow)$ Wenn $\mathscr{D}$ Algebra dann insbesondere
+			\begin{enumerate}[label=(\alph*)]
+				\item $\mathscr{D}$ Dynkin-System, da $S_1=D_1, S_2=D_2, S_3 \to D_3$
+				\item $\mathscr{D} \cap$-stabil nach \propref{2_2}c)
+			\end{enumerate}
+		\item $(\Leftarrow)$ Sei $\mathscr{D}$ ein $\cap$-stabiles Dynkin-System. Zeige $S_3$, d.h. $(D_n)_{n\in \natur} \subset \mathscr{D} \Rightarrow \bigcap_{n\in \natur} D_n \in \mathscr{D}$\\
+		Idee: disjunkt machen, also $F_{n+1} := ((D_{n+1}\setminus D_n)\setminus D_{n-1})\cdots \setminus D_1$, wobei $F_1 := D_1$\\
+		Bemerke: $F_{n+1} = D_{n+1} \cap D_n^C \cap D_{n-1}^C \cap \cdots \cap D_1^C \in \mathscr{D}$, da $\cap$-stabil und $F_n$ disjunkt\\
+		$\Rightarrow D:= \bigcap_{n\in \natur} D_n = \coprod_{n \in \natur} F_n \in \mathscr{D}$ (wegen $D_3$)
+		\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	$\mathscr{G} \subset \mathscr{P}(E) cap$-stabil $\Rightarrow \delta(\mathscr{G}) = \sigma(\mathscr{G})$.
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\delta(\mathscr{G}) \subset \sigma(\mathscr{G})$ Klar!
+		\item Wäre $\sigma(\mathscr{G})$ eine Algebra, dann $\sigma(\mathscr{G}) \subset \delta(\mathscr{G})$\\
+		Grund: $\mathscr{G} \subset \delta(\mathscr{G})$ wegen Defintion und $\delta(\mathscr{G})$ wäre Algebra, damit folgt $\sigma(\mathscr{G}) \subset \delta(\mathscr{G})$ ($\sigma(\mathscr{G})$ minimale Algebra mit $\mathscr{G} \subset \sigma(\mathscr{G})$), dann folgt mit 1) und \propref{4_3}a) $\delta(\mathscr{G}) \subset \sigma(\mathscr{G})$
+		\item Zeige $\delta(\mathscr{G}) \cap$-stabil. Dann \propref{4_4} $\Rightarrow \delta(\mathscr{G})$ Algebra, fertig
+		\item $D \in \delta(\mathscr{G})$ fest und setze $\mathscr{D}_{D} = \{\}$
+	\end{enumerate}
+\end{proof}
