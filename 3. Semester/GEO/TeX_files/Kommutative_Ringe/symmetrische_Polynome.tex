@@ -1,0 +1,122 @@
+\section{symmetrische Polynome}
+
+Sei $R$ ein Ring, $n\in\natur$, $R[\uline{x}]=R[x_1,...,x_n]$.
+
+\begin{definition}[allgemeines Polynom, elementarsymmetrisches Polynom]
+	Das Polynom
+	\begin{align}
+		f_{allg} = \prod_{i=1}^{n} (t-x_i) = t^n + \sum_{k=1}^{n} (-1)^k s_k(x_1,...,x_n)\cdot t^{n-k}\in R[x_1,...,x_n,t] \notag
+	\end{align}
+	mit $s_k = s_k(x_1,...,x_n) = \sum_{1\ge i_1<\dots< i_k\ge n} x_{i_1}\cdot \dots\cdot x_{i_k}\in R[\uline{x}]$ heißt das \begriff{allgemeine Polynom} vom Grad $n$ über $R$ und $s_k$ heißt das $k$-te \begriff{elementarsymmetrische Polynom} in $x_1,...,x_n$ über $R$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $s_1 = x_1+\dots +x_n$
+		\item $s_n = x_1\cdots x_n$
+	\end{enumerate}
+\end{example}
+
+\begin{remark}
+	Erinnerung: universelle Eigenschaft von $R[\uline{x}]$: Ist $\phi: R\to R'$ ein Ringhomomorphismus, $r_1,...,r_n\in R'$, so gibt es einen eindeutig bestimmten Ringhomomorphismus $\phi_r:R[\uline{x}]\to R'$ mit $\phi_r\vert_R=\phi$ und $\phi_r(x_i)=r_i\quad\forall i$.
+	
+	Ist $R$ ein Teilring von $R'$ und $\phi=\id_R$, so schreiben wir auch $f(r_1,...,r_n)$ für $\phi_r(f)$.
+\end{remark}
+
+\begin{definition}[symmetrisches Polynom]
+	Die Gruppe $S_n$ wirkt auf $R[\uline{x}]$ durch Permutation der Variablen:
+	\begin{align}
+		f(x_1,...,x_n)^\sigma = f(x_{1^\sigma},...,x_{n^\sigma})\notag
+	\end{align}
+	wobei $f\in R[\uline{x}]$ und $\sigma\in S_n$. Ein Polynom $f\in R[\uline{x}]$ heißt \begriff{symmetrisch}, wenn $f=f^\sigma$ $\forall\sigma\in S_n$. Wir schreiben $S$ für die Menge der symmetrischen Polynome.
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item $S$ ist ein Teilring von $R[\uline{x}]$, der $R$ und $s_1,...,s_n$ enthält.
+		\item Insbesondere ist $f(s_1,...,s_n)$ für alle $f\in R[\uline{x}]$ symmetrisch.
+	\end{enumerate}
+\end{remark}
+
+\begin{lemma}
+	\proplbl{2_10_6}
+	Für $k=n$ ist $s_k(x_1,...,x_{n-1},0)$ das $k$-te elementarsymmetrische Polynom in $x_1,...,x_{n-1}$.
+\end{lemma}
+\begin{proof}
+	\begin{align}
+		s_k(x_1,...,x_n) = \sum_{1\ge i_1<\dots< i_k\ge n} x_{i_1}\cdots x_{i_k}\notag
+	\end{align}
+	Ist $i_k=n$, so ist $\phi_{x_1,...,x_{n-1},0}(x_{i_1}\cdots x_{i_k})=0$, somit
+	\begin{align}
+		s_k(x_1,...,x_{n-1},0) &= \sum_{1\ge i_1<\dots< i_k\ge n} \phi_{x_1,...,x_{n-1},0}(x_{i_1}\cdots x_{i_k}) \notag \\
+		&= \sum_{1\ge i_1<\dots< i_k\ge n-1} x_{i_1}\cdots x_{i_k} \notag
+	\end{align}
+\end{proof}
+
+\begin{definition}
+	Sei $f=\sum_\alpha a_\alpha x^\alpha\in R[\uline{x}]$. Wir definieren den \begriff{Totalgrad} von $f$ als
+	\begin{align}
+		\deg(f) = \max\left\lbrace \sum_{i=1}^n \alpha_i\mid a_\alpha\neq 0\right\rbrace \notag
+	\end{align}
+	und das \begriff{Gewicht} von $f$ als
+	\begin{align}
+		\w(f) = \max\left\lbrace \sum_{i=1}^n i\alpha_i\mid a_\alpha\neq 0\right\rbrace \notag
+	\end{align}
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\deg(s_k) = k$
+		\item $\w(f) = d\Rightarrow \deg(f(s_1,...,s_n))\le d$
+		\item $f=x_1+x_2\Rightarrow \deg(f) = 1$, $\w(f)=2$ \\
+		$f(s_1,s_2) = s_1+s_2$, $\deg(f(s_1,s_2)) = 2$
+	\end{enumerate}
+\end{example}
+
+\begin{theorem}[Hauptsatz über symmetrische Polynome]
+	Sei $f\in R[\uline{x}]$ symmetrisch vom Grad $\deg(f)=d$. Dann ist $f(x_1,...,x_n)=g(s_1,...,s_n)$ für ein eindeutig bestimmtes Polynom $g\in R[y_1,...,y_n]$ das vom Gewicht $\w(g)\le d$ ist.
+\end{theorem}
+\begin{proof}[Existenz]
+	Induktion nach $n$: \\
+	\emph{$n=1$:} klar \\
+	\emph{$n>1$:} Induktion nach $d$: \\
+	\emph{$d=0$:} klar \\
+	\emph{$d>0$:} Mit $\phi = \phi_{x_1,...,x_{n-1},0}$ ist $\deg(f)\le d$ \\
+	$\xRightarrow[\propref{2_10_6}]{n\text{-I.H.}} \phi(f)=g_1(\phi(s_1),...,\phi(s_{n-1}))$, $\w(g_1)\le d$ \\
+	$\Rightarrow f_1 = f(x_1,...,x_n)-g_1(s_1,...,s_{n-1})\in S$, $\deg(f_1)\le\max\{\deg(f),\w(g_1)\}\le d$, $f_1(x_1,...,x_{n-1},0) = \phi(f_1) = \phi(f) - g_1(\phi(s_1),...,\phi(s_{n-1})) = 0$ \\
+	$\Rightarrow x_n\mid f_1$ in $R[x_1,...,x_n]\xRightarrow{f_1\in S} x_i\mid f_1$ für alle $i\xRightarrow{x_i\text{ prim}} s_n=x_1\cdots x_n\mid f_1$ \\
+	$\Rightarrow f_1 = s_n\cdot f_2$ mit $f_2\in S$, $\deg(f_2)\le d-n$ \\
+	$\xRightarrow{d\text{-I.H.}} f_2=g_2(s_1,...,s_n)$, $\w(g_2)\le d-n$ \\
+	Mit $g=g_1+y_ng_2$ ist
+	\begin{align}
+		g(s_1,...,s_n) &= g_1(s_1,...,s_n)+s_ng_2(s_1,...,s_n) \notag \\
+		&= f-f_1 + s_nf_2 = f \notag \\
+		\w(g) &\le \max\{\underbrace{\w(g_1)}_{\le d},n+\underbrace{\w(g_2)}_{\le d-n}\} \le d\notag
+	\end{align}
+\end{proof}
+
+\begin{conclusion}
+	Der Ring $S$ der symmetrischen Polynome in $x_1,...,x_n$ ist isomorph zum Ring $R[x_1,...,x_n]$ selbst.
+\end{conclusion}
+\begin{proof}
+	$\phi_{s_1,...,s_{n}}:R[x]\to S$ ist surjektiv (Existenz) und injektiv (Eindeutigkeit)
+\end{proof}
+
+\begin{definition}[Diskriminante]
+	Die \begriff{Diskriminante} von $f_{allg}$ ist
+	\begin{align}
+		\Delta = \prod_{i<j} (x_i-x_j)^2 \notag
+	\end{align}
+\end{definition}
+
+\begin{remark}
+	$\Delta$ ist symmetrisch also Polynom in $s_1,...,s_n$.
+\end{remark}
+
+\begin{example}
+	Für $n=2$ ist
+	\begin{align}
+		\Delta = (x_1-x_2)^2 = s_1^2 - 4s_2\notag
+	\end{align}
+	Anders geschrieben: Die Diskriminante  von $f=x^2+bx+c$ ist $\Delta = b^2-4c$.
+\end{example}

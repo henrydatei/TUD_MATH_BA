@@ -25,6 +25,7 @@
 \RequirePackage{amsfonts}
 \RequirePackage{scalerel,stackengine}
 \RequirePackage{calc}
+\RequirePackage{mathrsfs} % Category-like letters for MINT with \mathscr
 
 %transpose
 \newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
@@ -101,6 +102,11 @@
 \newcommand{\BIGboxplus}{\mathop{\mathchoice{\raise-0.35em\hbox{\huge $\boxplus$}}{\raise-0.15em\hbox{\Large $\boxplus$}}{\hbox{\large $\boxplus$}}{\boxplus}}}
 \newcommand{\eps}{\textit{eps }}
 
+%%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
 \newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\qraum}[2]{\sfrac{#1}{#2}}
 \newcommand{\lnkset}[2]{%Menge der Linksnebenklassen
@@ -128,6 +134,16 @@
 	\else%
 		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
 	\fi%
+}
+
+%%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sigmalg}{$\sigma$-Algebra}
+% declares the Bourbaki’s ‘dangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
+\DeclareFontFamily{U}{stixbbit}{}
+\DeclareFontShape{U}{stixbbit}{m}{it}{<-> stix-mathbbit}{}
+\DeclareRobustCommand{\stixdanger}{%
+  {\usefont{U}{stixbbit}{m}{it}\symbol{"F6}}%
 }
 
 % Math Operators
@@ -187,5 +203,6 @@
 \DeclareMathOperator{\Typ}{Typ}
 \DeclareMathOperator{\LC}{LC}
 \DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\w}{w}
 
 \endinput

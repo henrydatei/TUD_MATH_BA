@@ -121,7 +121,7 @@
 
 %enumeration
 \RequirePackage{enumerate}
-\RequirePackage{enumitem} 		%customize label
+\RequirePackage[inline]{enumitem} 		%customize label
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Pakete für Programmierung
@@ -197,7 +197,8 @@
 		\BeforeBeginEnvironment{#2}{%
 			\begin{mdframed}[#1]}%
 		\AfterEndEnvironment{#2}{%
-		\end{mdframed}}%
+		\end{mdframed}%
+		}%
 	}
 }
 
@@ -605,7 +606,7 @@
 		\setlength{\@kringel@depth}{\dimexpr\@kringel@depth+0.3mm\relax}
 	\fi
 	%output the colorbox width given parameter: frame color, background color, computed width and height, and escaped content depending on math / text mode
-	\@kringel@outer{\dimexpr-\@kringel@contentheight/2-\@kringel@depth\relax}{\begin{tcolorbox}[colframe=#1,halign=center,valign=center,width=\dimexpr1.5\@kringel@contentwidth+1mm\relax,height=2.5\@kringel@contentheight,left=0pt,right=0pt,bottom=0pt,top=0pt,boxrule=0.8pt,colback=#2,boxsep=0pt,bean arc]
+	\@kringel@outer{\dimexpr-\@kringel@contentheight/2-\@kringel@depth\relax}{\begin{tcolorbox}[colframe=#1,halign=center,=center,width=\dimexpr1.5\@kringel@contentwidth+1mm\relax,height=2.5\@kringel@contentheight,left=0pt,right=0pt,bottom=0pt,top=0pt,boxrule=0.8pt,colback=#2,boxsep=0pt,bean arc]
 			\@kringel@inner{#3}
 	\end{tcolorbox}}
 }

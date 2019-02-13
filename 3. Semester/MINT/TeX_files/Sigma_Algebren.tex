@@ -3,44 +3,214 @@
 \textbf{Ziel:} Charakterisierung der Definitionsgebiete von Maßen.
 
 \begin{definition}[$\sigma$-Algebra, messbar]
-	Eine \begriff{$\sigma$-Algebra} über einer beliebigen Grundmenge $X \neq \emptyset$ ist eine Familie von Mengen in $\mathcal{P}(X), \mathcal{A} \subset \mathcal{P}(X)$:
+	Eine \begriff{$\sigma$-Algebra} über einer beliebigen Grundmenge $E \neq \emptyset$ ist eine Familie von Mengen in $\mathscr{P}(E), \mathscr{A} \subset \mathscr{P}(E)$:
 	\begin{itemize}
-		\item (S1): $X \in \mathcal{A}$
-		\item (S2): $A \in \mathcal{A} \to A^C = X \setminus A \in \mathcal{A}$
-		\item (S3): $(A_n)_{n\in \natur} \subset \mathcal{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathcal{A}$
+		\item (S_1): $E \in \mathscr{A}$
+		\item (S_2): $A \in \mathscr{A} \to A^C = E \setminus A \in \mathscr{A}$
+		\item (S_3): $(A_n)_{n\in \natur} \subset \mathscr{A} \Rightarrow \bigcup_{n\in \natur}A_n \in \mathscr{A}$
 	\end{itemize}
-	Eine Menge $A\in\mathcal{A}$ heißt \begriff{messbar}.
+	Eine Menge $A\in\mathscr{A}$ heißt \begriff{messbar}.
 \end{definition}
 
 \begin{proposition}[Eigenschaften einer $\sigma$-Algebra]
-	Sei $\mathcal{A}$ eine $\sigma$-Algebra über $X$.
+	Sei $\mathscr{A}$ eine $\sigma$-Algebra über $E$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $\emptyset\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\cup B\in\mathcal{A}$
-		\item $(A_n)_{i\in\natur}\subset\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\cap B\in\mathcal{A}$
-		\item $A,B\in\mathcal{A}\Rightarrow A\setminus B\in\mathcal{A}$
+		\item $\emptyset\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\cup B\in\mathscr{A}$
+		\item $(A_n)_{i\in\natur}\subset\mathscr{A}\Rightarrow\bigcap_{n\in \natur}A_n\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\cap B\in\mathscr{A}$
+		\item $A,B\in\mathscr{A}\Rightarrow A\setminus B\in\mathscr{A}$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}[label=(\alph*)]
-		\item $\emptyset=X^C\in\mathcal{A}$
-		\item $A_1=A$, $A_2=B$m $A_3=A_4=...=\emptyset\Rightarrow A\cup B=\bigcup_{n\in \natur} A_n\in\mathcal{A}$
-		\item $A_n\in\mathcal{A}\xRightarrow{\text{S2}}A_n^C\in\mathcal{A}\xRightarrow{\text{S3}}\bigcup_{n\in \natur} A_n^C\in\mathcal{A}\Rightarrow\bigcap_{n\in \natur}A_n=\left(\bigcap_{n\in \natur} A_n^C\right)^C\in\mathcal{A}$
+		\item $\emptyset=X^C\in\mathscr{A}$
+		\item $A_1=A$, $A_2=B$m $A_3=A_4=...=\emptyset\Rightarrow A\cup B=\bigcup_{n\in \natur} A_n\in\mathscr{A}$
+		\item $A_n\in\mathscr{A}\xRightarrow{\text{S2}}A_n^C\in\mathscr{A}\xRightarrow{\text{S3}}\bigcup_{n\in \natur} A_n^C\in\mathscr{A}\Rightarrow\bigcap_{n\in \natur}A_n=\left(\bigcap_{n\in \natur} A_n^C\right)^C\in\mathscr{A}$
 		\item wie (b)
-		\item $A\setminus B=A\cap B^C\in\mathcal{A}$
+		\item $A\setminus B=A\cap B^C\in\mathscr{A}$
 	\end{enumerate}
 \end{proof}
 
-\textbf{Fazit:} Auf einer $\sigma$-Algebra kann man alle üblichen Mengenoperationen abzählbar oft durchführen ohne $\mathcal{A}$ zu verlassen!
+\textbf{Fazit:} Auf einer $\sigma$-Algebra kann man alle üblichen Mengenoperationen abzählbar oft durchführen ohne $\mathscr{A}$ zu verlassen!
 
 \begin{example}
 	$X\neq\emptyset$ Menge, $A,B\subset X$
 	\begin{enumerate}[label=(\alph*)]
-		\item $\mathcal{P}(X)$ ist eine $\sigma$-Algebra (größtmögliche)
+		\item $\mathscr{P}(X)$ ist eine $\sigma$-Algebra (größtmögliche)
 		\item $\{\emptyset,X\}$ ist eine $\sigma$-Algebra (kleinstmögliche)
 		\item $\{\emptyset,A,A^C,X\}$ ist eine $\sigma$-Algebra
 		\item $\{\emptyset,B,X\}$ ist eine $\sigma$-Algebra, wenn $B=\emptyset$ oder $B=X$
-		\item $\mathcal{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine $\sigma$-Algebra
+		\item $\mathscr{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine \sigmalg %TODO needs the proof still!
+		\item Spur-$\sigma$-Algebra: $E \subset X,\mathscr{A}$ ist $\sigma$-Algebra in $X \Rightarrow \mathscr{A}_E := \{E \cap A \mid A \in \mathscr{A}\}$ ist eine $\sigma$-Algebra.
+		\item Urbild-$\sigma$-Algebra: $f: X \to Y$ eine Abbildung, $X,Y$ Mengen, $\mathscr{A}_Y$ sei $\sigma$-Algebra   in $Y$ $\Rightarrow \mathscr{A} := \{f^{-1}(A_Y)\mid A_Y \in \mathscr{A}\}$ eine $\sigma$-Algebra.
 	\end{enumerate}
 \end{example}
+
+\begin{hint}
+	Notation: $\mathscr{A}_i, i \in I$ beliebig viele beliebige Mengenfamilien in $\mathscr{P}(E)$
+	\begin{align}
+	\bigcap_{n\in I} \mathscr{A}_i := \{ A \mid \forall i \in I \colon A \in \mathscr{A}_i\}\notag
+	\end{align}
+\end{hint}
+
+\begin{proposition}
+	\begin{enumerate}[label=(\alph*)]
+		\item Der Schnitt $\mathscr{A} = \bigcap_{n\in I} \mathscr{A}_i, I$ beliebig, $\mathscr{A}_i$ $\sigma$-Algebra ist $\sigma$-Algebra.
+		\item $\forall \mathscr{G} \subset \mathscr{P}(E)$ existiert eine minimale $\sigma$-Algebra mit der Eigenschaft $\mathscr{G} \subset \mathscr{A}$. Dieses $\mathscr{A}$ heißt von $\mathscr{G}$ erzeugte $\sigma$-Algebra.\\
+		Notation: $\mathscr{A} = \sigma(\mathscr{G})$.
+		$\mathscr{G}$ heißt \begriff{Erzeuger von $\mathscr{A}$}.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item 
+		\begin{itemize}
+			\item (S1): $\forall x \in I\colon \emptyset \in \mathscr{A}_i \Rightarrow \emptyset \in \mathscr{A}$
+			\item (S2): 
+			\begin{align}
+				A \in \mathscr{A} &\Leftrightarrow \forall i \in I \colon A \in \mathscr{A}_i\notag \\
+				&\xRightarrow[S2]{\text{für }A_i} \forall i \in I \colon A^C \in \mathscr{A}_i \notag \\
+				&\Leftrightarrow A^C \in \mathscr{A} \notag
+			\end{align}
+			\item (S3): 
+			\begin{align}
+				(A_k)_{k \in \natur} \subset \mathscr{A} &\Rightarrow \forall i \in I \colon (A_k)_{k \in \natur} \subset \mathscr{A}_i\notag \\
+				&\xRightarrow[S3]{\text{für }A_i} \forall i \in I \colon A = \bigcup_{k\in \natur} A_k \in \mathscr{A}_i\notag \\
+				&\Rightarrow A \in \mathscr{A}\notag
+			\end{align} 
+		\end{itemize}
+		\item a) sagt:
+			\begin{align}
+				\mathscr{A} := \bigcap_{\substack{\mathscr{F} \sigma\text{-Algebra}\\ \mathscr{G} \subset \mathscr{F}}} \mathscr{F} \text{ ist } \sigma-\text{Algebra} \label{2_4_eq} \tag{\ast}
+			\end{align}
+		Dabei ist $\mathscr{G} \subset \mathscr{F}$, weil $\mathscr{F}=\mathscr{P}(E)$ Kandidat und dann \eqref{2_4_eq} wohldefiniert.
+		\begin{itemize}
+			\item Existenz: $\mathscr{A}$ reicht, weil $\mathscr{A}$ wohldefiniert und $\mathscr{G} \subset \mathscr{A}$ und $\mathscr{A}$ ist $\sigma$-Algebra.
+			\item Minimalität: Angenommen $\mathscr{A}^{'}$ ist $\sigma$-Algebra mit $\mathscr{G} \subset \mathscr{A}^{'}$. Dann folgt mit \eqref{2_4_eq} $\mathscr{A}^{'}$ tritt auf als $\mathscr{F}$ in \eqref{2_4_eq}. Das impliziert $\mathscr{A} \subset \mathscr{A}^{'}$, das heißt $\mathscr{A}$ ist kleiner, sogar minimal!
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathscr{A}$ ist $\sigma$-Algebra $\Rightarrow \mathscr{A} = \sigma(\mathscr{A})$ (Gleichheit gilt, da $\mathscr{A} \subset \mathscr{A}$, Minimalität von $\sigma(\mathscr{A})$)
+		\item $A \subset E \Rightarrow \sigma(\{A\}) = \{\emptyset, E, A, A^C\}$
+		\item $\mathscr{G} \subset \mathscr{H} \subset \mathscr{A} \Rightarrow \sigma(\mathscr{H}) \subset \sigma(\mathscr{A})$. Denn
+		\begin{align}
+		\mathscr{G} \subset \mathscr{H} \text{ und } \mathscr{H} \subset \sigma(\mathscr{H}) &\Rightarrow \mathscr{G} \subset \sigma(\mathscr{H}) \text{ $\sigma$-Algebra per Definition}\notag \\
+		&\Rightarrow \sigma(\mathscr{G})\sigma(\mathscr{H}) \notag
+		\end{align}
+	\end{enumerate}
+\end{remark}
+
+\begin{repetition}[offen, Topologie]
+	\begin{itemize}
+		\item $U \subset \real^{d}$ offen $\Leftrightarrow \forall x \in U \quad \exists \epsilon > 0 \colon B_{\epsilon}(x) \subset U$
+		\item Familie der offenen Mengen in $\real^d$: $\mathscr{O}  = \mathscr{O}(\real^p) = \{ U \subset \real^p \mid U \text{ offen}\}$
+		\item Allgemeine \begriff{Topologie} in $E$ hat folgende Eigenschaften:
+		\begin{itemize}
+			\item ($O_1$) $\emptyset, E \in \mathscr{O}$
+			\item ($O_2$) $U,V \in \mathscr{O} \Rightarrow U \cap V \in \mathscr{O}$
+			\item ($O_3$) $U_i \in \mathscr{O}, i \in I$ beliebig $\Rightarrow \bigcup_{n\in I} U_i \in \mathscr{O}$
+		\end{itemize}
+	\end{itemize}
+\end{repetition}
+
+\begin{hint}
+	$U_n \in \mathscr{O}, n \in \natur$, dann muss $\bigcap_{n\in \natur} U_n \not \in \mathscr{O}$ sein.
+\end{hint}
+
+\begin{definition}[\person{Borel}(sche) $\sigma$-Algebra]
+	\proplbl{2_6}
+	Die von $\mathscr{O} = \mathscr{O}(\real^d)$ erzeugte $\sigma$-Algebra in $\real^d$ heißt \begriff{\person{Borel}(sche) $\sigma$-Algebra}.\\
+	Notation: $\mathscr{B}(\real^d)$\\
+	$B \in \mathscr{B}(\real^d)$ heißt Borel-Menge oder Borel-messbar.
+\end{definition}
+
+\begin{*remark}
+	\propref{2_6} gilt ``mutatis umtanais'' auch in allgemeinen topologischen Räumen, d.h. in $(E, \mathscr{O})$ ist $\mathscr{B}(E) := \sigma(\mathscr{O})$.
+\end{*remark}
+
+\begin{proposition}
+	$\mathscr{O}, \mathscr{C}, \mathscr{K}$ = offene, abgeschlossene und kompakte Mengen $\subset \real^d$. Dann $\mathscr{B}(\real^d) = \sigma(\mathscr{O}) = \mathscr{C} = \mathscr{K}$.
+\end{proposition}
+
+\begin{proof}
+	Übungsaufgabe (vergleiche Beweis von \propref{2_8}).
+	\begin{itemize}
+		\item $U \in \mathscr{O} \Leftrightarrow U^C \in \mathscr{C}$
+		\item $K \in \mathscr{K} \Leftrightarrow K \in \mathscr{K}$ und beschränkt ($\Leftrightarrow \exists r > 0 \colon K \subset B_r(0)$) (\person{Heine}-\person{Borel})
+	\end{itemize}
+\end{proof}
+
+\subsection*{Weitere angenehme Erzeuger von $\mathscr{B}(\real^d)$}
+
+\begin{itemize}
+	\item $\mathscr{J}_{[rat]}^o = \{ (a_1,b_1) \times \cdots \times (a_d,b_d) \mid a_n, b_n \in \real [\ratio]\}$ offene [rationale] Erzeuger
+	\item $\mathscr{J}_{[rat]} = \{ (a_1,b_1) \times \cdots \times (a_d,b_d) \mid a_n, b_n \in \real [\ratio]\}$ abgeschlossene [rationale] Erzeuger
+\end{itemize}
+
+\begin{hint}
+	\begin{itemize}
+		\item $a \ge b \rightsquigarrow (a,b) = \emptyset$
+		\item $A \times \cdots \times \emptyset \times \cdots \times \Omega = \emptyset$
+	\end{itemize}
+\end{hint}
+
+\begin{proposition}
+	\proplbl{2_8}
+	In $\real^d$ gilt:
+	\begin{align}
+		\sigma(\mathscr{O}) = \sigma(\mathscr{J}) = \sigma(\mathscr{J}^o) = \sigma(\mathscr{J}_{rat}^o) = \sigma(\mathscr{J}_{rat})\notag
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Jedes $I \in \mathscr{J}^o$ ist eine offene Menge (DIY) $\Rightarrow \mathscr{J}_{rat}^o \subset \mathscr{J}^o \subset \mathscr{O}$
+		\item Sei $U \in \mathscr{O}$. Dann gilt:
+		\begin{align}
+		U = \bigcup_{\substack{I^{'} \in \mathscr{J}_{rat}^o\\ I^{'} \subset U}} I^{'} \label{2_8_eq}\tag{\ast\ast}
+		\end{align}
+		Klar in \eqref{2_8_eq} ist $\bigcup_{\dots} I^{'} \subset U$. Für $U \subset \bigcup_{\dots} I^{'}$ bemerken wir, weil $U$ offen ist gilt:
+		\begin{align}
+		\forall x \in U \exists \epsilon = \epsilon_x > 0 \colon B_{\epsilon}(x) \subset U \quad \text{vergleiche Abb} \notag %TODO add figure here from erics notes
+		\end{align} 
+		Eingeschriebenes (in $B_{\epsilon}(x)$) Rechteck $I \subset B_{\epsilon}(x), x \in I, I \in \mathscr{J^o}$.\\
+		WLOG (Without lose of generality): $I = I^{'} \subset \mathscr{J}_{rat}^o$ sonst zusammendrücken ($\ratio^d \subset \real^d$ dicht)\\
+		$\Rightarrow U = \bigcup_{x \in U} \{x\} \subset \bigcup_{I^{'} \in \mathscr{J}_{rat}^o} I^{'} \Rightarrow \eqref{2_8_eq}$. Die Vereinigung in \eqref{2_8_eq} ist abzählbar, da $\# \mathscr{J}_{rat}^o = \#(\ratio^d\times \ratio^d) = \#\natur$. Also 
+		\begin{align}
+			U\in \mathscr{O} &\xRightarrow{\eqref{2_8_eq}} U \in \sigma(\mathscr{J_{rat}^o})\notag \\
+			&\Rightarrow \mathscr{O} \subset \sigma(\mathscr{J_{rat}^o})\notag \\
+			&\Rightarrow \sigma(\mathscr{O}) \subset \sigma(\mathscr{J_{rat}^o}) \subset \sigma(\mathscr{J^o}) \subset \sigma(\mathscr{O})\notag
+		\end{align}
+		(Letzte zwei Inklusionen gelten, da $\mathscr{J}_{rat}^o \subset \mathscr{J}^o$) und (1).)
+		\item Jetzt drücke ich $\mathscr{J}_{rat}^o$ mit $\mathscr{J}_{rat}$ aus:
+		\begin{align}
+		(a_1,b_1) \times \cdots \times (a_d,b_d) &= \bigcup_{n\in \natur} [a_1 +\frac{1}{n}, b_1-\frac{1}{n}] \times \cdots \times [a_d +\frac{1}{n}, b_d-\frac{1}{n}] \notag \\
+		(\alpha_1,\beta_1) \times \cdots \times (\alpha_d,\beta_d) &= \bigcap_{k\in \natur} [\alpha_1 +\frac{1}{k}, \beta_1-\frac{1}{k}] \times \cdots \times [\alpha_d +\frac{1}{k}, \beta_d-\frac{1}{k}] \notag
+		\end{align}
+		natürlich ist $[\alpha_1 +\frac{1}{k}, \beta_1-\frac{1}{k}] \times \cdots \times [\alpha_d +\frac{1}{k}, \beta_d-\frac{1}{k}] \in \mathscr{J}_{rat}^o$ und die Vereinigung ist dann in $\sigma(\mathscr{J}_{rat}^o)$
+	\end{enumerate}
+		Dann folgt 1) $\mathscr{J}^o \subset \sigma(\mathscr{J})$ und 2) $\mathscr{J} \subset \sigma(\mathscr{J}^o)$.\\
+		Also gilt $\sigma(\mathscr{J}^o) = \sigma(\mathscr{J}^o_{rat}) = \sigma(\mathscr{J}_{rat}) \Rightarrow$ Behauptung 
+\end{proof}
+
+\begin{hint}
+	Beweis gilt statt für abgeschlossene Rechtecke $\mathscr{J}$ bzw. $\mathscr{J}_{rat}$ auch für halboffene Rechtecke, also Mengen der Art: $[a_1,b_1) \times \cdots \times [a_d,b_d)$.
+\end{hint}
+
+\begin{remark}
+	\begin{enumerate}
+		\item $\sigma(\real)$ wird auch durch jede dieser Familen erzeugt, wobei $D$ irgendeine dichte Teilmenge in $\real$ ist
+			\begin{itemize}
+				\item $\{(-\infty,a) \colon a \in D\}$
+				\item $\{(-\infty,b] \colon b \in D\}$
+				\item $\{(c,\infty) \colon c \in D\}$
+				\item $\{(f,+\infty) \colon f \in D\}$
+			\end{itemize}
+		\item Die Operation $\sigma(\cdot)$ ist im allgemeinen nicht explizit oder konstruktiv.
+	\end{enumerate}
+\end{remark}
