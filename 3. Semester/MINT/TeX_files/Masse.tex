@@ -7,10 +7,19 @@ Sei $E \neq \emptyset$ beliebige Grundmenge.
 	\begin{itemize}
 		\item ($M_0$) $\mathscr{A}$ ist eine $\sigma$-Algebra auf $E$
 		\item ($M_1$) $\mu(\emptyset) = 0$
-		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt $\Longleftarrow \mu\big(\bigcup_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
+		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt $\Longleftarrow \mu(\coprod_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
 	\end{itemize}
-	Gilt für $\mu: \mathscr{A} \to [0,\infty]$ nur $(M_1),(M_2)$, dann heißt $\mu$ \begriff{Prämaß}.
+	Gilt für $\mu: \mathscr{A} \to [0,\infty]$ nur $(M_1),(M_2)$, dann heißt $\mu$ 
 \end{definition}
+
+\begin{remark}
+	Wenn $\mu: \mathscr{F} \to [0,\infty]$ nur $M_1, M_2$ erfüllt, dann heißt $\mu$ \begriff{Prämaß}.
+	\begin{itemize}
+		\item ($M_1$) will impliziert, dass $\emptyset \in \mathscr{F}$
+		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathscr{F}$ paarweise disjunkt $\Rightarrow coprod_{n \in \natur} A_n \in \mathscr{F}$
+	\end{itemize}
+	Für eine $\sigma$-Algebra ist das immer wahr.
+\end{remark}
 
 Für auf- und absteigende Folgen von Mengen schreiben wir auch
 \begin{align}
@@ -26,22 +35,22 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 		\item $\mu(E) < \infty$ - \begriff{endlisches} Maß
 		\item $\exists (A_n)_{n \in \natur} \subset \mathscr{A}, A_n \uparrow E, \mu(A_n) < \infty (n \in \natur)$ - \begriff{$\sigma$-endliches} Maß
 		\item $\mu(E) = 1$ - \begriff{Wahrscheinlichkeitsmaß} ($W$-Maß)
-		analog: $\sigma$-endlicher Maßraum und $W$-Raum = Maßraum + $W$-Raum.
+		\item analog: $\sigma$-endlicher Maßraum und $W$-Raum = Maßraum + $W$-Raum.
 	\end{itemize}
 \end{definition}
 
 \begin{proposition}[Eigenschaften von Maßen]
-	\proplbl{3_3} %TODO fix labels!
+	\proplbl{3_4}
 	Es sei $\mu$ ein Maß auf $(E,\mathscr{A})$ und $A,A_n,B, B_n \in \mathscr{A}, n \in \natur$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $A\cap B = \emptyset \Longrightarrow \mu(A \coprod B) = \mu(A) + \mu(B)$ (additiv)
+		\item $A\cap B = \emptyset \Longrightarrow \mu(A \sqcup B) = \mu(A) + \mu(B)$ (additiv)
 		\item $A\subset B \Longrightarrow \mu(A) \leq \mu(B)$ (monoton)
 		\item $A \subset B$ \& $\mu(A) < \infty \Longrightarrow \mu(B\setminus A) = \mu(B) - \mu(A)$
 		\item $\mu(A \cup B) + \mu(A\cap B) = \mu(A) + \mu(B)$ (stark additiv)
 		\item $\mu(A \cup B) \leq \mu(A) + \mu(B)$ (subadditiv)
 		\item $A_n \uparrow A \Longrightarrow \mu(A)  = \sup_{n\in \natur} (A_n) = \lim_{n\to \infty} \mu(A_n)$ (stetig von unten)
 		\item $B_n \downarrow B$ \& $\mu(B_1) < \infty \Longrightarrow \mu(B_n)  = \sup_{n\in \natur} (B_n) = \lim_{n\to \infty} \mu(B_n)$ (stetig von oben)
-		\item $\mu\big(\bigcup_{n\in \natur} A_n\big) \leq \sum_{n\in \natur} \mu (A_n)$ ($\sigma$-additiv)
+		\item $\mu\big(\bigcup_{n\in \natur} A_n\big) \leq \sum_{n\in \natur} \mu (A_n)$ ($\sigma$-subadditiv)
 	\end{enumerate}
 \end{proposition}
 
@@ -50,14 +59,16 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 \end{proof}
 
 \begin{remark}
-	Die Aussagen von \propref{3_3} gelten auf für Prämaße, wenn das zu Grunge leigende Mengensystem groß genug ist. Genauer braucht man dafür:
+	Die Aussagen von \propref{3_3} gelten auf für Prämaße, wenn das zu Grunge leigende Mengensystem $\mathscr{F}$ groß genug ist. Genauer braucht man dafür:
 	\begin{itemize} %TODO hyperlink maybe points from prop 3.3?
 		\item a)-e) Stabilität unter endlichen vielen Wiederholungen von $\cup,\cap,\setminus$
-		\item f) $A_{n+1}\setminus A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{A}$
-		\item g) $B_1 \setminus B_n,B_n \setminus B_{n+1},\bigcap_{n}^{\infty} B_n,B_1\setminus \bigcap_{n}^{\infty} \in \mathscr{A}$
-		\item h) $\bigcup_{n}^{m} A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{A}$
+		\item f) $A_{n+1}\setminus A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{F}$
+		\item g) $B_1 \setminus B_n,B_n \setminus B_{n+1},\bigcap_{n}^{\infty} B_n,B_1\setminus \bigcap_{n}^{\infty} \in \mathscr{F}$
+		\item h) $\bigcup_{n}^{m} A_n,\bigcup_{n}^{\infty} A_n \in \mathscr{F}$
 	\end{itemize}
 \end{remark}
+
+\textbf{Problem:} Ich muss $\mu$ auf allen $A \in \mathscr{A}$ erklären, um Beispiele zu haben.
 
 \begin{example}
 	\begin{enumerate}
@@ -68,7 +79,7 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 				1 & x \in A
 			\end{cases}\notag
 		\end{align}
-		ist ein W-Maß, das Dirac-Maß (auch \begriff{$\delta$-Funktion}, \begriff{Einheitsmasse})
+		ist ein W-Maß, das Dirac-Maß (auch \begriff{$\delta$-Funktion}, \begriff{Einheitsmaße})
 		\item Es sei $E=\real$ und $\mathscr{A}$ wie in Beispiel 2.3 e) %TODO set reference, once chap 2 has been typed!
 		(d.h. $A \in \mathscr{A} \Longleftrightarrow A \text{ oder } A^C \text{ abzählbar}$). Dann ist
 		\begin{align}
@@ -84,6 +95,74 @@ Für auf- und absteigende Folgen von Mengen schreiben wir auch
 %		+\infty & x \in A
 %		\end{cases}\notag
 %		\end{align}
-		\item gibt noch mehr, werden später ergänzt!
+		\item $(X,\mathscr{A})$ beliebiger Messraum
+		\item \begriff{diskrete $W$-Maße}
+		\item \begriff{triviale Maße}: $(X,\mathscr{A})$ bei Messraum
+		%TODO finish
 	\end{enumerate}
 \end{example}
+
+\begin{definition}[d-dimensionales \person{Lebesgue}-Maß]
+	Die Mengenfunktion $\lambda^d$ auf $(\real^d, \mathscr{B}(\real^d))$ die jedem
+	\begin{align}
+		\bigtimes_{i=1}^{d} [a_1,b_i) \in \mathscr{J}, \quad a_i \le b_i \notag
+	\end{align}
+	den Wert
+	\begin{align}
+		\lambda^d(\bigtimes_{i=1}^{d} [a_1,b_i)) = \prod_{i=1}^{d}(b_i - a_i) \notag
+	\end{align}
+	zuweist, heißt (d-dimensionales) \begriff{\person{Lebesgue}-Maß}.
+\end{definition}
+
+\underline{Probleme:} 
+\begin{itemize}
+	\item $\lambda^d$ nur auf $\mathscr{J}$ definiert
+	\item $\mathscr{J}$ ist ``nur'' Erzeuger von $\mathscr{B}(\real^d)$
+	\item ist $\lambda^d$ wenigstens Prämaß?
+	\item Wie kann ich $\lambda^d$ von $\mathscr{J} \rightsquigarrow \sigma(\mathscr{J})$ fortsetzen?
+	\item Eindeutigkeit?
+\end{itemize}
+
+$\rightsquigarrow$ Setze Antwort ``ja'' voraus, zeige Eigenschaften.
+
+\begin{proposition}
+	$\lambda^d$ existiert als Maß auf $(\real^d, \mathscr{B}(\real^d))$ und es durch Werte auf $\mathscr{J}$ eineindeutig bestimmt, für alle $B \in \mathscr{B}(\real^d)$ gilt.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\lambda^d$ ist translationsinvariant: $\lambda^d(x+B) = \lambda^d(B)$, wobei $B \in \mathscr{B}(\real^d), x+B := \{x+b \colon b \in B\}$
+		\item $\lambda^d$ ist bewegungsinvariant: $\lambda^d(R^{-1}(B)) = \lambda^d(B)$, mit $\forall R:\real^d \to \real^d$ Bewegung, d.h. kombination aus Translation, Drehung, Spiegelung
+		\item $\lambda^d(M^{-1}(B)) = \vert \det(B)\vert^{-1} \lambda^d(B)\quad \forall M \in \GL(\real^d)$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	kommt noch. %TODO add proof here!
+\end{proof}
+
+\begin{hint}
+	a) - c) nur dann sinnvoll, wenn gilt:
+	\begin{align}
+		B \in \mathscr{B}(\real^d) \Rightarrow x+B, R^{-1}(B), M^{-1}(B) \in \mathscr{B}(\real^d) \notag
+	\end{align}
+\end{hint}
+
+\begin{lemma}
+	$(E, \mathscr{A})$ Messraum, $\mu: \mathscr{A} \to [0, \infty]$ eine additive Mengenfunktion $(\mu(\emptyset) =0, \mu(A\sqcup B) = \mu(A) + \mu(B)) \text{ und } \mu(E) < \infty$\\
+	Es ist $\mu$ ein Maß, wenn eine der folgenden Stetigkeiten gilt:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mu$ stetig von unten (\propref{3_4} f))
+		\item $\mu$ stetig von oben (\propref{3_4} g))
+		\item $\mu$ stetig bei $\emptyset$ (d.h. \propref{3_4} g) mit $B = \emptyset$)
+	\end{enumerate}
+	$\rightsquigarrow \sigma$-additiv $\longleftarrow$ Stetigkeit
+\end{lemma}
+
+\begin{proof}
+	\propref{3_4} zeigt a) $\Rightarrow$ b) $\Rightarrow$ c), brauche im Beweis nur ``additiv''. Zeige c) $\Rightarrow (M_2)$.\\
+	Sei $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt, $A = \coprod_{n \in \natur} A_n \in \mathscr{A}$ und $B_n := A \setminus (A_1 \sqcup A_2 \sqcup \cdots \sqcup A_n) \downarrow \emptyset$
+	\begin{align}
+		\mu(A) &= \mu(A \setminus (A_1 \sqcup A_2 \sqcup \cdots \sqcup A_n)) + \mu(A_1 \sqcup \cdots \sqcup A_n))\notag \\
+		&= \mu(B_n) + \sum_{i=1}^{n} \mu(A_i)\notag \\
+		&= 0 + \sum_{i=1}^{\infty} \mu(A_i) \notag
+	\end{align}
+	Dabei wurde zweimal additiv benutzt und im letzten Schritt $n \to \infty$.
+\end{proof}
