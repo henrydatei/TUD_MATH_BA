@@ -1,0 +1,155 @@
+\subsection{\person{Weibulls} Distribution - Graphs}
+
+\begin{center}
+    \begin{tabular}{p{5cm}|p{5cm}|p{5cm}}
+        $shape = 0.5$ & $shape = 1$ & $shape = 2$ \\
+        \hline
+        \multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Weibull PDF} ($scale = 1$)} \\
+        \hline
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {0.5*x^(-0.5)*exp(-x^0.5)};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    restrict y to domain=0:1,
+		    ]
+		    \addplot+[mark=none] {1/exp(x)};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {2*x^(1)*exp(-x^2)};
+		    \end{axis}
+        \end{tikzpicture} \\
+        \hline
+        \multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Weibull CDF} ($scale = 1$)} \\
+        \hline
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {1-exp(-x^0.5)};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    restrict y to domain=0:1,
+		    ]
+		    \addplot+[mark=none] {1-1/exp(x)};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {1-exp(-x^2)};
+		    \end{axis}
+        \end{tikzpicture} \\
+        \hline
+        \multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Hazard function} $\left(h = \frac{\text{PDF}}{1-\text{CDF}}\right)$} \\
+        \hline
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {(0.5*x^(-0.5)*exp(-x^0.5))/(1-(1-exp(-x^0.5)))};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    restrict y to domain=0:1,
+		    ]
+		    \addplot+[mark=none] {(1/exp(x))/(1-(1-1/exp(x)))};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {(2*x^(1)*exp(-x^2))/(1-(1-exp(-x^2)))};
+		    \end{axis}
+        \end{tikzpicture} \\
+        \hline
+        \multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Survival function} ($R = 1-\text{CDF}$)} \\
+        \hline
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {1-(1-exp(-x^0.5))};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    restrict y to domain=0:1,
+		    ]
+		    \addplot+[mark=none] {1-(1-1/exp(x))};
+		    \end{axis}
+        \end{tikzpicture} &
+        \begin{tikzpicture}[scale=0.6]
+            \begin{axis}[
+		    xmin=0, xmax=2, xlabel=$x$,
+		    ymin=0, ymax=1, ylabel=$y$,
+		    samples=400,
+		    axis y line=middle,
+		    axis x line=middle,
+		    ]
+		    \addplot+[mark=none] {1-(1-exp(-x^2))};
+		    \end{axis}
+        \end{tikzpicture} \\
+    \end{tabular}
+\end{center}

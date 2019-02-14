@@ -1,0 +1,94 @@
+In statistical analysis we want to estimate a population from a \begriff{random sample}. This is called \begriff{interference} about the parameter. Random samples are used to provide information about parameters in an underlying \begriff{population distribution}. Rather than estimating the full shape of the underlying distribution, we usually focus on one or two parameters.
+
+We want the error distribution to be centered on zero. Such an estimator is called \begriff{unbiased}. An biased estimator tends to have negative/positive errors, i.e. it usually underestimates/overestimates the parameter that is being estimated.
+
+We also want \begriff{error distribution} to be tightly concentrated on zero, i.e. to have a small spread.
+
+A good estimator should have a small bias and small standard error. These two criteria can be combined with into single value called the estimator's \begriff{mean squared error}. Most estimators that we will consider are unbiased, the spread of the error distribution is most important. 
+
+\begin{definition}[Standard error]
+    The \begriff{standard error} (SE) of an estimator $\hat{\theta}$ of a parameter $\theta$ is defined to be its standard deviation.
+\end{definition}
+
+\begin{example}
+    Standard error of the mean:
+    \begin{itemize}
+        \item Bias ($\mu$ error) = 0, i.e. $E(\hat{\theta})=\theta$
+        \item When population standard deviation is known: $\text{SE} = \frac{\sigma}{\sqrt{n}}$
+        \item When population standard deviation is unknown: $\text{SE} = \frac{s}{\sqrt{n}}$
+    \end{itemize}
+\end{example}
+
+Do not confuse SD (sample standard deviation) ($\to$ one sample) and SE (standard deviation of the sample mean $\bar{x}$) ($\to$ error from hypothetical samples)!
+
+\begin{definition}[Confidence interval for $\mu$ with known $\sigma$]
+    We can be $(1-\alpha)\cdot 100\%$ confident that the estimate for $\mu$ will be in the interval
+    \begin{align}
+        \bar{x} - z_{\nicefrac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} < \mu < \bar{x} + z_{\nicefrac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \notag
+    \end{align}
+    
+    Common exact values of $z_{\nicefrac{\alpha}{2}}$ with critical values from normal distribution:
+    \begin{center}
+        \begin{tabular}{c|c}
+            \textbf{confidence} & \textbf{value of $z_{\nicefrac{\alpha}{2}}$} \\
+            \hline
+            90\% & 1.645 \\
+            95\% & 1.96 \\
+            99\% & 2.575 \\
+        \end{tabular}
+    \end{center}
+\end{definition}
+
+\begin{definition}[Confidence interval for $\mu$ when $\sigma$ is unknown]
+    If we simply replace $\sigma$ by its sample variance the confidence level will be lower than 95\%. When the sample size is large, the confidence level is close to 95\% but the confidence level can be much lower if the sample size is small. 
+    
+    Critical value comes from the \person{Students} t distribution. The value of $t_{\nicefrac{\alpha}{2}}$ depends on the sample size through the use of degrees of freedom. The confidence interval is
+    \begin{align}
+        \bar{x} - t_{\nicefrac{\alpha}{2}}\frac{s}{\sqrt{n}} < \mu < \bar{x} + t_{\nicefrac{\alpha}{2}}\frac{s}{\sqrt{n}} \notag
+    \end{align}
+\end{definition}
+
+Consider estimation of a population mean, $\mu$, from a random sample of size $n$. A confidence interval will be of the form $\bar{x}\pm t_{\nicefrac{\alpha}{2}}\frac{s}{\sqrt{n}}$. If we want our estimate to be within $k$ of $\mu$, then we need $n$ to be large enough so that $t_{\nicefrac{\alpha}{2}}\frac{s}{\sqrt{n}} < k$. For 95\% confidence interval if $n$ is reasonably large the t-value in the inequality will be approximately 1.96: $1.96\frac{s}{\sqrt{n}}<k$ that can be re-written as $n>\left(\frac{1.96s}{k}\right)^2$. In practice, it is best to increase $n$ a little over this value in case the sample deviation was wrongly guessed.
+
+\begin{example}
+    If we expect that a particular type of measurement will have a standard deviation of about 8, and we want to estimate its mean, $\mu$, to within 2 of its correct value with probability 0.95, the sample size should be:
+    \begin{align}
+        n>\left(\frac{1.96\cdot 8}{2}\right)^2 = 61.5\notag
+    \end{align}
+    This suggests a sample size of at least 62. The more accurate trial-and-error method using a t-value would give a sample size of 64.
+\end{example}
+
+The sample proportion of successes is denoted by $\hat{p}$ and is an estimate of $p$. The estimation error is $\hat{p}-p$.
+\begin{align}
+    \hat{p} = \frac{\text{number of successes in sample}}{\text{sample size}} \notag
+\end{align}
+A 95\% confidence interval is $\hat{p} \pm 2\cdot\sqrt{\frac{p(1-p)}{n}}$
+
+\begin{example}
+    In a random sample of $n=36$ values, there were $x=17$ successes. We estimate the population proportion $\hat{p}$ with $\hat{p}=\frac{17}{36}=0.472$. A 95\% confidence interval for $\hat{p}$ is $0.472\pm 0.166$. We are therefor 95\% confident that the population of successes is between 30.6\% and 63.8\%. A sample size of $n=36$ is clearly too small to give a very accurate estimate.
+    
+    If the sample  size $n$ is small or $\hat{p}$ is close to either 0 or 1, this normal approximation is inaccurate and the confidence level for the interval can be considerably less than 95\%. Classical theory recommends to use the confidence interval for $\hat{p}$ only when $n>30$, $n\hat{p}>5$ and $n(1-\hat{p})>5$.
+\end{example}
+
+\begin{*anmerkung}[z-value or t-value?]
+    \begin{itemize}
+        \item If you know the variance of the population, then you should use the z-value from normal distribution.
+        \item If you don't know the variance of the population or the population is non-normal, then you should formally always use the t-value.
+        \item For most non-normal population distributions, the distribution of the sample mean becomes close to normal when the sample size increases (\begriff{Central Limit Theorem})
+        \item Even for relatively small samples, the distributions are virtually the same. Therefore, it is common to approximate the t-distribution using normal distribution for sufficiently large samples (e.g. $n>30$).
+    \end{itemize}
+\end{*anmerkung}
+
+\begin{definition}[Tolerance interval]
+    A $(1-\alpha)\cdot 100\%$ \begriff{tolerance interval} for $\gamma\cdot 100\%$ of the measurements in a normal population is given by $\bar{x}\pm Ks$ where $K$ is a tolerance factor. \begriff{Tolerance limits} are the endpoints of the tolerance interval.
+\end{definition}
+
+Do not mix up with confidence intervals! We focus on $\gamma$ (a certain percentage of measurements) rather than on a population parameter.
+
+If we knew $\mu$ and $\sigma$ then the tolerance factor $K$ is 1. Otherwise the tolerance factor depends on the level of confidence, $\gamma$ and the sample size $n$. 
+
+\begin{example}
+    A corporation manufactures field rifles. To monitor the process, an inspector randomly selected 50 firing pins from the production line. The sample mean $\bar{x}$ for all observations is 0.9958 inch and standard deviation $s$ is 0.0333. Assume that the distribution of pin lengths is normal. Find a 95\% tolerance interval for 90\% of the firing pin lengths.
+    
+    Given $n=50$, $\gamma=0.9$ and $\alpha=0.05$, work out $K$ (you can either use a special table or MATLAB function). $K=1.996$. The 95\% tolerance interval is (0.9293, 1.0623). Approximately 95 of 100 similarly constructed tolerance intervals will contain 90\% of the firing pin lengths in the population.
+\end{example}

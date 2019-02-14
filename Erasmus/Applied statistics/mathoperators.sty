@@ -1,0 +1,193 @@
+\ProvidesPackage{mathoperators}
+
+\RequirePackage{xparse}
+\RequirePackage{xkeyval}
+\RequirePackage{xstring}
+
+%\OptFractionAppearence - differenciate between multiple appearences of fraction
+%	- 0: simple slash: a/b 												(option slash)(default)
+%	- 1: fraction by slash, raised nominator, lowered denominator		(option lowerraise)
+\let\OptFractionAppearence\z@
+\DeclareOptionX{fractionappearence}{%
+	\IfStrEq{#1}{slash}{}{%
+		\IfStrEq{#1}{lowerraise}{%
+			\let\OptFractionAppearence\@ne
+		}{}%further options can be inserted here
+	}
+}
+
+\DeclareOptionX*{\PackageWarning{mathoperator}{Unknown option >\CurrentOption<}}
+\ProcessOptionsX
+
+%Provides some common math related commands and operators
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{scalerel,stackengine}
+\RequirePackage{calc}
+
+%transpose
+\newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
+%new macro for "equals" ^=
+\newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+%fraction with backslash
+\newcommand\bsfrac[2]{%
+	\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
+}
+
+\DeclareRobustCommand{\properideal}{\mathrel{\text{$\m@th\proper@ideal$}}}
+\newcommand{\proper@ideal}{%
+  \ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}%
+}
+
+\DeclareRobustCommand{\properidealright}{\mathrel{\text{$\m@th\proper@idealright$}}}
+\newcommand{\proper@idealright}{%
+	\ooalign{$\gneq$\cr\raise.22ex\hbox{$\rhd$}\cr}%
+}
+
+%General newcommands!
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+\newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\diff}{\mathrm{d}} % differential d
+\newcommand{\s}{\,\,}     % space after the function in the intergral
+\newcommand{\cont}{\mathcal{C}} % Contour C
+\newcommand{\fuk}{f(z) \s\diff z} % f(z) dz
+\newcommand{\diffz}{\s\diff z}
+\newcommand{\subint}{\int\limits} % lower boundaries for the integral
+\newcommand{\poly}{\mathcal{P}} % special P - polygon
+\newcommand{\defi}{\mathcal{D}} % D for the domain of a function
+\newcommand{\cover}{\mathcal{U}} % cover for a set
+\newcommand{\setsys}{\mathcal{M}} % set system M
+\newcommand{\setnys}{\mathcal{N}} % set system N
+\newcommand{\zetafunk}{f(\zeta)\s\diff \zeta} %f(zeta) d zeta
+\newcommand{\ztfunk}{f(\zeta)} % f(zeta)
+\newcommand{\bocirc}{S_r(z)}
+\newcommand{\prop}{\,|\,}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}} %tombstone
+\newcommand{\emptybra}{\{\varnothing\}} % empty set with set-bracket
+\newcommand{\realpos}{\real_{>0}}
+\newcommand{\realposr}{\real_{\geq0}}
+\newcommand{\naturpos}{\natur_{>0}}
+\newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
+\newcommand{\Realz}{\operatorname{Re}} % Real symbol
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+\newcommand{\foralln}{\forall n} %all n
+\newcommand{\forallnset}{\forall n \in \natur} %all n € |N
+\newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
+\newcommand{\conjz}{\overline{z}} % conjugated z
+\newcommand{\tildz}{\tilde{z}} % different z
+\newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
+\newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
+\newcommand{\beha}{\Rightarrow \text{ Behauptung}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\person}[1]{\textsc{#1}}
+\newcommand{\highlight}[1]{\emph{#1}}
+\newcommand{\realz}{\mathfrak{Re}}
+\newcommand{\imagz}{\mathfrak{Im}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\lebesque}{\textsc{Lebesgue}}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+\renewcommand*{\arraystretch}{1.4}
+\newcommand{\bigcupdot}{\bigcup \hspace{-0.35cm} \cdot}
+\newcommand{\BIGboxplus}{\mathop{\mathchoice{\raise-0.35em\hbox{\huge $\boxplus$}}{\raise-0.15em\hbox{\Large $\boxplus$}}{\hbox{\large $\boxplus$}}{\boxplus}}}
+\newcommand{\eps}{\textit{eps }}
+
+\newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\qraum}[2]{\sfrac{#1}{#2}}
+\newcommand{\lnkset}[2]{%Menge der Linksnebenklassen
+	\ifcase\OptFractionAppearence\relax%
+		\ifmmode%
+			#1\slash #2%
+		\else%
+			$#1\slash #2$%
+		\fi%
+	\or%
+		\nicefrac{#1}{#2}%
+	\else%
+		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
+	\fi%
+}
+\newcommand{\rnkset}[2]{%
+	\ifcase\OptFractionAppearence\relax%
+		\ifmmode%
+			#1\backslash#2%
+		\else%
+			$#1\backslash#2$%
+		\fi%
+	\or%
+		\bsfrac{#1}{#2}% Menge der Rechtsnebenklassen
+	\else%
+		\PackageWarning{mathoperator}{Unkown value for option >fractionAppearence<: \meaning\OptFractionAppearence}%
+	\fi%
+}
+
+% Math Operators
+\DeclareMathOperator{\inn}{int} % Set of inner points
+\DeclareMathOperator{\ext}{ext} % Set of outer points
+\DeclareMathOperator{\cl}{cl} % Closure
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\D}{d}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ext}{ext}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\rd}{rd}
+\undef\div
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\rot}{rot}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Abb}{Abb}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\ZR}{ZR}
+\DeclareMathOperator{\SR}{SR}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Hau}{Hau}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Uni}{U}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
+\DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Z}{Z}
+\DeclareMathOperator{\UG}{UG}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Typ}{Typ}
+\DeclareMathOperator{\LC}{LC}
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\SE}{SE}
+\DeclareMathOperator{\PDF}{PDF}
+
+\endinput
