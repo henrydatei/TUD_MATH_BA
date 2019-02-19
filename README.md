@@ -71,3 +71,6 @@ Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketz
 - Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
 - Mitschrift: [https://www.magentacloud.de/lnk/MuvSMJgb](https://www.magentacloud.de/lnk/MuvSMJgb) Passwort: 123456
 - Aufgaben: [https://www.magentacloud.de/lnk/wxvyMA1u](https://www.magentacloud.de/lnk/wxvyMA1u) Passwort: 123456
+
+# Erasmus-Semester in der University of Bristol, UK
+Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Applied Statistics**, **Introduction into Artificial Intelligience**, **Partial Differential Equations** und **Web Technologies**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
