@@ -1,0 +1,117 @@
+\subsection{Likelihood ratio test}
+
+In some cases we need to perform a hypothesis test to compare two models: big "general" model ($M_B$) and small "simple" model ($M_S$) nested into the bigger model. \\
+$H_0$: $M_S$ fits the data \\
+$H_A$: $M_S$ does not fit the data and $M_B$ should be used instead. \\
+
+We need to verify if $M_B$ fits the data significantly better.
+\begin{itemize}
+	\item \textbf{Measure how well a model fits the data:} The fit of any model can be described by the maximum possible likelihood for that model:
+	\begin{align}
+		L(M) = \max\{P(data\vert model)\}\notag
+	\end{align}
+	Calculate the maximum likelihood estimates for all unknown parameters and insert them into the likelihood function.
+	\item \textbf{Work out the \begriff{likelihood ratio}:} 
+	\begin{align}
+		R = \frac{L(M_B)}{L(M_S)} \ge 1\notag
+	\end{align}
+	Big values of $R$ suggests that $M_S$ does not fit as well as $M_B$.
+	\item \textbf{Work out log of likelihood ratio:} 
+	\begin{align}
+		\log(R) = l(M_B) - l(M_S) \ge 0\notag
+	\end{align}
+	Big values of $R$ suggests that $M_S$ does not fit as well as $M_B$.
+\end{itemize}
+
+\begin{example}
+	There are a number of defective items on  a production line in 20 days that follow \person{Poisson}($\lambda$) distribution: 1, 2, 3, 4, 2, 3, 2, 5, 5, 2, 4, 3, 5, 1, 2, 4, 0, 2, 2, 6. \\
+	$M_S$: the sample comes from \person{Poission}(2) \\
+	$M_B$: the sample comes from \person{Poission}($\lambda$) \\
+\end{example}
+
+\begin{example}
+	Clinical records give the survival time for 30 people: 9.73,5.56, 4.28, 4.87, 1.55, 6.20, 1.08, 7.17, 28.65, 6.10, 16.16, 9.92, 2.40, 6.19. In a clinical trial of a new drug treatment 20 people had survival times of: 22.07, 12.47, 6.42, 8.15, 0.64, 20.04, 17.49, 2.22, 3.00. Is there any difference in survival times for those using the new drug? \\
+	$M_S$: Both examples come from the same exponential($\lambda$) distribution. \\
+	$M_B$: The first sample comes from exponential($\lambda_1$) and the second sample from exponential($\lambda_2$).
+\end{example}
+
+\begin{definition}
+	If the data come from $L(M_S)$, and $L(M_B)$ has $k$ more parameters than $L(M_S)$ then
+	\begin{align}
+		X^2 &= 2\log(R) \notag \\
+		&= 2\big(l(M_B) - l(M_S)\big) \notag \\
+		&\approx \chi^2(k \text{ degrees of freedom}) \notag
+	\end{align}
+\end{definition}
+
+The main steps for the likelihood ratio test are:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Work out maximum likelihood estimates of all unknown parameters in $M_S$.
+	\item Work out maximum likelihood estimates of all unknown parameters in $M_B$.
+	\item Evaluate the test statistic: $\chi^2 = 2\big(l(M_B) - l(M_S)\big)$
+	\item The degrees of freedom for the test are the difference between the numbers of unknown parameters in two models. The p-value for the test is the upper tail probability of the $\chi^2(k \text{ degrees of freedom})$ distribution given the test statistic.
+	\item Interpret the p-value: small values give evidence that the null hypothesis ($M_S$ model) does not hold.
+\end{enumerate}
+
+\begin{example}
+	There are a number of defective items on  a production line in 20 days that follow \person{Poisson}($\lambda$) distribution: 1, 2, 3, 4, 2, 3, 2, 5, 5, 2, 4, 3, 5, 1, 2, 4, 0, 2, 2, 6.
+	\begin{center}
+		$\begin{array}{ccp{4cm}|p{7cm}}
+		&&null hypothesis & $H_0$: $\lambda = 2$ small model $M_S$ \\
+		\cline{3-4}
+		&&alternative hypothesis & $H_A$: $\lambda \neq 2$ big model $M_B$\\
+		\cline{3-4}
+		&&log-likelihood for the Poisson distribution & $l(\lambda) = \left(\sum_{i=1}^{20} x_i\right)\log(\lambda) - n\lambda$ \\
+		\cline{3-4}
+		\multirow{3.7}{3mm}{$M_B$}& \ldelim\{{3.5}{2mm}  & MLE for the unknown parameter& $\hat{\lambda} = \frac{\sum x_i}{n} = 2.9$ \\ \cline{3-4}
+		&  & Maximum possible value for the log-likelihood & $l(M_B) = 58\log(2.9) - 20\cdot 2.9 = 3.7532$ \\ \cline{3-4}
+		\multirow{3.7}{3mm}{$M_S$}& \ldelim\{{3.5}{2mm}  & MLE for the unknown parameter& no unknown parameter \\ \cline{3-4}
+		&  & Maximum possible value for the log-likelihood & $l(M_S) = 58\log(2) - 20\cdot 2 = 0.2025$ \\ \cline{3-4}
+		&&Likelihood ratio test & $\chi^2 = 2\big(l(M_B) - l(M_S)\big) = 7.101$ \\
+		\cline{3-4}
+		&&\multicolumn{2}{p{11cm}}{It should be compared to $\chi^2(1\text{ degree of freedom})$ since the difference in unknown parameters is equal to 1.} \\
+		\cline{3-4}
+		&&p-value & The p-value is 0.008 (the upper tail probability above 7.101) \\
+		\cline{3-4}
+		&&Interpreting p-value & The p-value is very small and we can conclude that there is  strong evidence that $M_B$ fits the data better than $M_S$: $\lambda\neq 2$.
+		\end{array}$
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=0, xmax=10, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=50,
+		axis y line=middle,
+		axis x line=middle,
+		domain=0:10,
+		restrict y to domain=0:1,
+		]
+		\addplot[name path=f,blue] {exp(-x/2)/(sqrt(2*pi) * sqrt(x))};
+		\path[name path=axis] (axis cs:7.101,0) -- (axis cs:10,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=7.101:10},];
+		\draw [dotted] (axis cs:7.101,0) -- (axis cs:7.101,0.6);
+		\node at (axis cs:8.5,0.4) (a) {p-value};
+		\draw (axis cs:8.5, 0.36) -- (axis cs: 7.5,0.0002);
+		\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=6, xmax=10, xlabel=$x$,
+		ymin=0, ymax=0.01, ylabel=$y$,
+		samples=50,
+		axis y line=middle,
+		axis x line=middle,
+		domain=0:10,
+		restrict y to domain=0:0.01,
+		]
+		\addplot[name path=f,blue] {exp(-x/2)/(sqrt(2*pi) * sqrt(x))};
+		\path[name path=axis] (axis cs:7.101,0) -- (axis cs:10,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=7.101:10},];
+		\draw [dotted] (axis cs:7.101,0) -- (axis cs:7.101,0.006);
+		\node at (axis cs:8.5,0.006) (a) {p-value};
+		\draw (axis cs:8.5, 0.0056) -- (axis cs: 7.5,0.002);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}

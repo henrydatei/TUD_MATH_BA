@@ -70,6 +70,7 @@
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
 \RequirePackage{longtable} %Tabellen mit Seitenumbrüchen
 \RequirePackage{multirow}
+\RequirePackage{bigdelim}
 \RequirePackage{booktabs}	%improved rules
 \usepackage{colortbl} %einfärben von Spalten, Zeilen und Zellen
 

@@ -114,6 +114,24 @@ The \begriff{\person{Students} t distribution} is the most widely used distribut
 \end{center}
 
 The \begriff{chi-square distribution} is usually used for estimating the variance in a normal distribution.
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	]
+	\addplot+[mark=none] {exp(-x/2)/(sqrt(2*pi) * sqrt(x))};
+	\addlegendentry{1 degree of freedom}
+	\addplot+[mark=none] {exp(-x/2) * sqrt(x)/sqrt(2*pi)};
+	\addlegendentry{3 degrees of freedom}
+	\addplot+[mark=none] {exp(-x/2) * x^(7/2)/(105 * sqrt(2*pi))};
+	\addlegendentry{9 degrees of freedom}
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 
 In a homogeneous \person{Poisson} process with a rate $\lambda$ events per unit time, the time until the first event happens has a distribution called an \begriff{exponential distribution}. All exponential distributions have their highest probability density at $x=0$ and steadily decrease as $x$ increases.
 \begin{center}

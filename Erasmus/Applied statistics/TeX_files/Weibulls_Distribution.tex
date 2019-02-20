@@ -101,6 +101,7 @@
 		    restrict y to domain=0:1,
 		    ]
 		    \addplot+[mark=none] {(1/exp(x))/(1-(1-1/exp(x)))};
+		   	\draw[blue] (axis cs: 0,1) -- (axis cs: 2,1);
 		    \end{axis}
         \end{tikzpicture} &
         \begin{tikzpicture}[scale=0.6]
