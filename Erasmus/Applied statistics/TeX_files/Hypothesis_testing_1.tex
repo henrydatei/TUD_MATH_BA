@@ -132,7 +132,7 @@ From the 200 simulated samples above (\person{Monte Carlo} simulation), it seems
             \hline
             alternative hypothesis & $H_A$: $\mu > 15$ \\
             \hline
-            T-test for $\mu$ & $\bar{x} = 16.138$, $z=\frac{16.138-15}{\frac{2.154}{\sqrt{13}}} = 1.906$, $P(t\ge 1.906) = 0.040$ (t-distribution with 12 degrees of freedom) \\
+            T-test for $\mu$ & $\bar{x} = 16.138$, $t=\frac{16.138-15}{\frac{2.154}{\sqrt{13}}} = 1.906$, $P(t\ge 1.906) = 0.040$ (t-distribution with 12 degrees of freedom) \\
             \hline
             p-value interpretation & Since this is below 0.05, we conclude that there is moderately strong evidence that the mean saturated fat content of the oils is higher than the claimed 15\%.
        \end{tabular}
@@ -216,11 +216,42 @@ whose distribution is fully known when $H_0$ is true (i.e. when $\theta_0$ is th
         \hline
         t-statistic & $t=\frac{\bar{x}-15}{\frac{s}{\sqrt{13}}} = 1.906$ \\
         \hline
-        rejection region & $P(T>1.782) = 0.05$ \\
+        rejection region & $P(T>1.782) = 0.05$ (t distribution with 12 degrees of freedom) \\
         \hline
-        Conclusion & $H_0$ is rejected at the 5\% significance level.
+        Conclusion & $t$ lies in the rejection region so $H_0$ is rejected at the 5\% significance level.
     \end{tabular}
     \end{center}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-3, xmax=3, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-3:3,
+		restrict y to domain=0:1,
+		width = 16cm,
+		height = 8cm,
+		]
+		\addplot[name path=f,blue] {4041576/((x^2+12)^(6.5))};
+		\path[name path=axis] (axis cs:1.782,0) -- (axis cs:3,0);
+		\draw (axis cs:1.782,0) -- (axis cs:1.782,1);
+		\draw [dotted] (axis cs:1.906,0) -- (axis cs:1.906,0.6);
+		\node at (axis cs:1,0.5) (a) {0.05};
+		\draw (axis cs:1, 0.46) -- (axis cs: 2.2,0.02);
+		\node at (axis cs: 2.0,0.95) (b) {1.782};
+		\node at (axis cs: 2.1,0.55) (c) {1.906};
+		\node[red] at (axis cs: 2.4,0.78) (d) {rejection region};
+		\begin{scope}[transparency group]
+		\begin{scope}[blend mode=multiply]
+			\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=1.782:3},];
+			\draw[red,fill=red,opacity=0.2] (axis cs: 1.782,0) -- (axis cs: 1.782,1) -- (axis cs: 3,1) -- (axis cs: 3,0) -- (axis cs: 1.782,0);
+		\end{scope}
+		\end{scope}
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
 \end{example}
 
 \begin{definition}[Type 1 + 2 error]

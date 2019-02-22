@@ -183,6 +183,56 @@ $H_A$: $\mu_1\neq\mu_2$ (The corresponding one-tailed alternative also holds.)
 	Adapted from \url{https://en.wikipedia.org/wiki/Pooled_variance}.
 \end{*anmerkung}
 
+\begin{example}[from MATLAB session]
+	When you sing in to your Facebook account, you are granted access to more than 1 million relying party (RP) websites. RP websites were categorized as server-flow or client-flow websites. Of the 40 server-flow sites studied, 20 were found to be vulnerable to impersonation attacks. Of the 54 client-flow sites, 41 were found to be vulnerable to impersonation attacks. Do these results indicate that a client-flow website is more likely to be vulnerable to an attack than a server-flow website? Test using $\alpha = 0.01$.
+	\begin{center}
+		\begin{tabular}{p{4cm}|p{7cm}}
+			Null hypothesis & $H_0$: $p_{server}=p_{client}\Rightarrow \frac{20}{40}=\frac{41}{54}$ \\
+			\hline
+			Alternative hypothesis & $H_A$: $p_{server} < p_{client}$ \\
+			\hline
+			pooled sample proportion & $p = \frac{40\cdot\frac{20}{40} + 54\cdot\frac{41}{54}}{40+54} = 0.6489$ \\
+			\hline
+			test statistic & $z=\frac{p_{client}-p_{server}}{\sqrt{0.6489(\frac{1}{40} + \frac{1}{54})}} = 2.6038$ \\
+			\hline
+			rejection region for $\alpha=0.01$ & \texttt{norminv(0.01)} = 2.3268 \\
+			\hline
+			Interpretation & $z$ lies in the rejection region so $H_0$ is rejected.
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-4, xmax=4, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-4:4,
+		restrict y to domain=0:1,
+		width = 16cm,
+		height = 8cm,
+		]
+		\addplot[name path=f,blue] {1/(sqrt(2*pi)) * exp(-x^2/2)};
+		\path[name path=axis] (axis cs:2.3263,0) -- (axis cs:4,0);
+		\draw (axis cs:2.3263,0) -- (axis cs:2.3263,1);
+		\draw [dotted] (axis cs:2.6038,0) -- (axis cs:2.6038,0.6);
+		\node at (axis cs:1.7,0.5) (a) {0.01};
+		\draw (axis cs:1.7, 0.46) -- (axis cs: 2.45,0.01);
+		\node at (axis cs: 2.7,0.95) (b) {2.3263};
+		\node at (axis cs: 2.95,0.55) (c) {2.6038};
+		\node[red] at (axis cs: 3.2,0.78) (d) {rejection region};
+		\begin{scope}[transparency group]
+		\begin{scope}[blend mode=multiply]
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=2.3263:4},];
+		\draw[red,fill=red,opacity=0.2] (axis cs: 2.3263,0) -- (axis cs: 2.3263,1) -- (axis cs: 4,1) -- (axis cs: 4,0) -- (axis cs: 2.3263,0);
+		\end{scope}
+		\end{scope}
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
 \subsection{Paired t-test}
 
 Testing whether two paired measurements $X$ and $Y$ have equal means is done in terms of the difference $D=Y-X$. The hypothesis \\
