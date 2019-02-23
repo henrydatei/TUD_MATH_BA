@@ -1,0 +1,219 @@
+\documentclass[british,a4paper,order=firstname]{mathscript}
+\usepackage{mathoperators}
+
+\title{\textbf{Applied statistics: Coursework 1}}
+\author{\person{Henry Haustein}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Table of contents}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\section{Task 1}
+\subsection{Part (1)}
+
+\subsection{Part (2)}
+
+\subsection{Part (3)}
+
+\subsection{Part (4)}
+
+\pagebreak
+\section{Task 2}
+\subsection{Part (1)}
+
+\subsection{Part (2)}
+
+\subsection{Part (3)}
+
+\pagebreak
+\section{Task 3}
+\subsection{Part (1)}
+
+\subsection{Part (2)}
+
+\pagebreak
+\section{Task 4}
+\subsection{Part (1)}
+The probability density function $f(t)$ is
+\begin{align}
+	f(t) = \frac{2t\cdot\frac{\exp(-t^2)}{100}}{100} = \frac{t\cdot\exp(-t^2)}{5000}\notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(x*exp(-x^2))/5000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+The cumulative distribution function $F(t)$ is then
+\begin{align}
+	F(t) &= \int_0^t f(\xi)\,\diff\xi \notag \\
+	&= \int_0^t \frac{\xi\cdot\exp(-\xi^2)}{5000}\,\diff\xi\notag \\
+	&= \frac{\exp(-t^2)\Big(\exp(t^2)-1\Big)}{10000} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(exp(-x^2)*(exp(x^2)-1))/10000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+For the survival function we get
+\begin{align}
+	R(t) &= 1 - F(t) \notag \\
+	&= \frac{\exp(-t^2)+9999}{10000} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(exp(-x^2)+9999)/10000};
+	\end{axis}
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0.9999, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	y tick label style={
+		/pgf/number format/.cd,
+		precision=5,
+		/tikz/.cd
+	},
+	]
+	\addplot+[mark=none] {(exp(-x^2)+9999)/10000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+To get the reliability of the component at $t=7$ we simply evaluate $R(7)$ which is 0.9999.
+
+The hazard function is defined as
+\begin{align}
+	h(t) &= \frac{f(t)}{1-F(t)} \notag \\
+	&= \frac{2t}{9999\cdot \exp(t^2)+1} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(2*x)/(9999*exp(x^2)+1)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+The hazard function describes how an item ages where $t$ affects the risk of failure. It is the frequency with which the item fails, expressed in failures per unit of time.
+
+\subsection{Part (2)}
+Given $h(x)\sim(\sqrt{x})^{-1}$ we will try to find out the $shape$-parameter of the \person{Weibull} distribution first.
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	yticklabels={,,},
+	xticklabels={,,}
+	]
+	\addplot+[mark=none] {1/sqrt(x)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+Comparing this graph to graphs of the hazard function with different $shape$-parameters we see that $shape=0.5$ fits best.
+\begin{center}
+	\begin{tabular}{p{5cm}|p{5cm}|p{5cm}}
+		$shape = 0.5$ & $shape = 1$ & $shape = 2$ \\
+		\hline
+		\multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Hazard function} $\left(h = \frac{\text{PDF}}{1-\text{CDF}}\right)$} \\
+		\hline
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {(0.5*x^(-0.5)*exp(-x^0.5))/(1-(1-exp(-x^0.5)))};
+		\end{axis}
+		\end{tikzpicture} &
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		restrict y to domain=0:1,
+		]
+		\addplot+[mark=none] {(1/exp(x))/(1-(1-1/exp(x)))};
+		\draw[blue] (axis cs: 0,1) -- (axis cs: 2,1);
+		\end{axis}
+		\end{tikzpicture} &
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {(2*x^(1)*exp(-x^2))/(1-(1-exp(-x^2)))};
+		\end{axis}
+		\end{tikzpicture} \\
+	    \end{tabular}
+\end{center}
+To get the $scale$-parameter of the distribution we use the other provided information:
+\begin{align}
+	5 &= \mu \notag \\
+	&= scale\cdot\Gamma\left(1+\frac{1}{shape}\right) \notag \\
+	&= scale\cdot\Gamma(3) \notag \\
+	\Rightarrow scale &= \frac{5}{2} \notag
+\end{align}
+Let's build the survival function:
+\begin{align}
+	R(t) &= 1-\Bigg(1-\exp\left(-\sqrt{\frac{x}{\nicefrac{5}{2}}}\right)\Bigg) \notag \\
+	&= \exp(-\sqrt{x}\cdot\sqrt{2.5})\notag
+\end{align}
+That mean that the probability of surviving 6 years (30 years) is $R(6) = 0.0208$ ($R(30) = 0.0002$).
+\end{document}
