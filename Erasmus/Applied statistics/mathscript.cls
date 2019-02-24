@@ -136,12 +136,12 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mygreen}{rgb}{0,0.8,0.26}
 
-\lstset{language=[95]Fortran,
+\lstset{language=Matlab,
   basicstyle=\ttfamily,
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
   morecomment=[l]{!\ },% Comment only with space after !
-  morekeywords={compute, solve, choose, break, switch},
+  morekeywords={compute, solve, choose, break, switch, sampsizepwr},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,

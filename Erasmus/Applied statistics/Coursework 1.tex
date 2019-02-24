@@ -20,8 +20,18 @@
 
 \section{Task 1}
 \subsection{Part (1)}
+In the given data were two out of 26 data points with an Al/Be ratio of more than 4.5. That means
+\begin{align}
+	\hat{p} = \frac{2}{26} = \frac{1}{13}\notag
+\end{align}
 
 \subsection{Part (2)}
+Using the following formula from the lecture we get the 95\% confidence interval:
+\begin{align}
+	\hat{p}&\pm 2\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \notag \\
+	\frac{1}{13} &\pm \underbrace{2\cdot\sqrt{\frac{\frac{1}{13}\cdot\frac{12}{13}}{26}}}_{0.1045} \notag
+\end{align}
+Our 95\% confidence interval is [-0.0276,0.1814] which means that we are 95\% sure that the true proportion lies between -0.0276 and 0.1814. 
 
 \subsection{Part (3)}
 
@@ -30,8 +40,77 @@
 \pagebreak
 \section{Task 2}
 \subsection{Part (1)}
+\begin{lstlisting}
+x = [-4.5, -1, -0.5, -0.15, 0, 0.01, 0.02, 0.05, ...
+0.15, 0.2, 0.5, 0.5, 1, 2, 3];
+m = mean(x);
+s = std(x);
+\end{lstlisting}
+\begin{center}
+	\begin{tabular}{p{4cm}|p{7cm}}
+		null hypothesis & $H_0$: $\mu = 0$ \\
+		\hline
+		alternative hypothesis & $H_A$: $\mu\neq 0$ \\
+		\hline
+		t-test for $\mu$ & $t=\frac{m-0}{\frac{s}{\sqrt{15}}} =\frac{0.0853}{\frac{1.6031}{\sqrt{15}}} = 0.2062$ \\
+		\hline
+		rejection region & \texttt{tinv(0.05,15)} = -1.7531 \\
+		\hline
+		conclusion & $t$ lies not in the rejection region so $H_0$ is accepted at the 10\% significance level.
+	\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=-3, xmax=3, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	domain=-3:3,
+	restrict y to domain=0:1,
+	width = 16cm,
+	height = 8cm,
+	]
+	\addplot[name path=f,blue] {116640000000*sqrt(15)/(143*pi*(x^2+15)^(8))};
+	\path[name path=axis] (axis cs:1.7531,0) -- (axis cs:3,0);
+	\path[name path=axis2] (axis cs:-3,0) -- (axis cs:-1.7531,0);
+	\draw (axis cs:1.7531,0) -- (axis cs:1.7531,1);
+	\draw (axis cs:-1.7531,0) -- (axis cs:-1.7531,1);
+	\draw [dotted] (axis cs:0.2062,0) -- (axis cs:0.2062,0.6);
+	\node at (axis cs:1,0.5) (a) {0.05};
+	\node at (axis cs:-1,0.5) (a2) {0.05};
+	\draw (axis cs:1, 0.46) -- (axis cs: 2.2,0.02);
+	\draw (axis cs:-1, 0.46) -- (axis cs: -2.2,0.02);
+	\node at (axis cs: 2.0,0.95) (b) {1.7531};
+	\node at (axis cs: -2.0,0.95) (b2) {-1.7531};
+	\node at (axis cs: 0.45,0.55) (c) {0.2062};
+	\node[red] at (axis cs: 2.4,0.78) (d) {rejection region};
+	\node[red] at (axis cs: -2.4,0.78) (d2) {rejection region};
+	\begin{scope}[transparency group]
+	\begin{scope}[blend mode=multiply]
+	\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=1.7531:3},];
+	\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis2,soft clip={domain=-3:-1.7531},];
+	\draw[red,fill=red,opacity=0.2] (axis cs: 1.7531,0) -- (axis cs: 1.7531,1) -- (axis cs: 3,1) -- (axis cs: 3,0) -- (axis cs: 1.7531,0);
+	\draw[red,fill=red,opacity=0.2] (axis cs: -1.7531,0) -- (axis cs: -1.7531,1) -- (axis cs: -3,1) -- (axis cs: -3,0) -- (axis cs: -1.7531,0);
+	\end{scope}
+	\end{scope}
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 
 \subsection{Part (2)}
+If we reduce the significance level our rejection region gets smaller. With $\alpha = 0.05$ the rejection region will start at \texttt{tinv(0.025,15)} = -2.1314. The $t$ calculated in part (1) won't change $\Rightarrow$ our decision won't change too.
+
+To get the type 2 error we use the MATLAB function \texttt{sampsizepwr} and $type\, 2\, error = 1-power$.
+\begin{lstlisting}
+testtype = 't';
+p0 = [0 1.6031];
+p1 = 0.0853;
+n = 15;
+power = sampsizepwr(testtype,p0,p1,[],n)
+\end{lstlisting}
+This gives $power = 0.0542\Rightarrow type\, 2\, error = 0.9458$. This is the probability of wrongly accepting $H_0$ when it is false.
 
 \subsection{Part (3)}
 
