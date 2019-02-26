@@ -140,8 +140,8 @@
   basicstyle=\ttfamily,
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
-  morecomment=[l]{!\ },% Comment only with space after !
-  morekeywords={compute, solve, choose, break, switch, sampsizepwr},
+  morecomment=[l]{!\,\% },% Comment only with space after !
+  morekeywords={sampsizepwr, makedist, kstest, fitdist},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,
@@ -150,8 +150,7 @@
   numberstyle=\color{mygray}\ttfamily,
   identifierstyle=\color{blue},
   xleftmargin=.2\textwidth, 
-  xrightmargin=.2\textwidth,
-  escapechar=\%
+  xrightmargin=.2\textwidth
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

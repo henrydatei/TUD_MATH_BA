@@ -117,8 +117,74 @@ This gives $power = 0.0542\Rightarrow type\, 2\, error = 0.9458$. This is the pr
 \pagebreak
 \section{Task 3}
 \subsection{Part (1)}
+First of all we need to prepare the data:
+\begin{lstlisting}
+raw = load('input_data.txt');
+data = reshape(raw,[1 500]); %produce a single vector
+\end{lstlisting}
+After that we do for every distribution (normal, exponential, uniform, lognormal, \person{Rayleigh}, gamma) the same procedure: 
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Estimate the parameter. This is often done with the function \texttt{<distribution>fit} but for estimating the parameters in the gamma distribution I used \texttt{fitdist(data', 'Gamma')} because \texttt{gamfit} doesn't work.
+	\item Creating the CDF with \texttt{makedist}.
+	\item Run the \person{Kolmogorov-Smirnov} test with \texttt{kstest}.
+\end{enumerate}
+\begin{lstlisting}
+%normal distribution
+[mu,sigma] = normfit(data)
+norm_cdf = makedist('Normal','mu',mu,'sigma',sigma);
+[h,p] = kstest(data,'CDF',norm_cdf)
+
+%exponential distribution
+mu = expfit(data)
+exp_cdf = makedist('Exponential','mu',mu);
+[h,p] = kstest(data,'CDF',exp_cdf)
+
+%uniform distribution
+[low,up] = unifit(data)
+uni_cdf = makedist('Uniform','lower',low,'upper',up);
+[h,p] = kstest(data,'CDF',uni_cdf)
+
+%lognormal distribution
+logmu = mean(log(data))
+logsigma = std(log(data))
+logn_cdf = makedist('Lognormal','mu',logmu,'sigma',logsigma);
+[h,p] = kstest(data,'CDF',logn_cdf)
+
+%rayleigh distribution
+b = raylfit(data)
+rayl_cdf = makedist('Rayleigh','b',b);
+[h,p] = kstest(data,'CDF',rayl_cdf)
+
+%gamma distribution
+distribution = fitdist(data','Gamma');
+a = distribution.a
+b = distribution.b
+gamma_cdf = makedist('Gamma','a',a,'b',b);
+[h,p] = kstest(data,'CDF',gamma_cdf)
+\end{lstlisting}
+
+Running this gives the following output. The best fitting distribution is marked green, the worst red.
+\begin{center}
+	\begin{tabular}{c|l|p{3cm}|p{3cm}}
+		\textbf{distribution}& \textbf{estimated parameters} & \multicolumn{2}{c}{\person{Kolmogorov-Smirnov} \textbf{test}} \\
+		 &  & $h$ & $p$ \\
+		\hline
+		normal & $\mu=2.3804$, $\sigma=1.2486$ & $h=1$ & $p=0.0158$ \\
+		\hline
+		exponential & $\mu=2.3804$ & $h=1$ & $p=2.2618\cdot 10^{-23}$ \\
+		\hline
+		\rowcolor{red}uniform & $lower=0.1478$, $upper=7.8807$ & $h=1$ & $p=1.5096\cdot 10^{-72}$ \\
+		\hline
+		lognormal & $\log(\mu)=0.7050$, $\log(\sigma)=0.6243$ & $h=1$ & $p=0.0017$ \\
+		\hline
+		\rowcolor{green}\person{Rayleigh} & $b=1.9003$ & $h=0$ & $p=0.8939$ \\
+		\hline
+		gamma & $a=3.2378$, $b=0.7352$ & $h=0$ & $p=0.2771$ \\
+	\end{tabular}
+\end{center}
 
 \subsection{Part (2)}
+\input{./TeX_files/materials/CW1_kstest}
 
 \pagebreak
 \section{Task 4}
