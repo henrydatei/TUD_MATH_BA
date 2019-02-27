@@ -1,0 +1,61 @@
+\subsection{A word of warning}
+
+The limitation of the bootstrap is the assumption that the distribution of the data represented by one sample is an accurate estimate of the population distribution. If the sample does not reflect the population distribution, then the random sampling performed in the bootstrap procedure may add another level of sampling error, resulting in inaccurate statistical estimations.
+
+It is important to get quality data that accurately reflects the population being sampled. The smaller the original sample, the less likely it is to accurately represent the entire population.
+
+We use bootstrap if
+\begin{itemize}
+	\item we have a small but representative random sample or
+	\item we have a not-normal distribution or aren't sure about it.
+\end{itemize}
+
+\subsection{Why to use it?}
+
+In normal population the mean $\mu$ is the parameter that is most often estimated. But other parameters are possible too:
+\begin{itemize}
+	\item standard deviation
+	\item interquartile range (upper quartile - lower quartile)
+	\item median
+	\item other percentiles (e.g. upper quartile)
+\end{itemize}
+These parameters can be estimated using the corresponding summary statistic from a random sample, but the error distribution may be difficult to obtain theoretically.
+
+Resampling techniques are normally used to estimate parameters and confidence intervals from sample data when parametric test assumptions are not met or for small samples from non-normal distributions.
+\begin{itemize}
+	\item non-parametric bootstrap
+	\item \textcolor{gray}{parametric bootstrap}
+	\item \textcolor{gray}{Jackknife}
+	\item \textcolor{gray}{permutation tests}
+\end{itemize}
+Non-parametric bootstrap means that only a random sample is known and no prior knowledge on the population density function.
+
+\begin{example}
+	Monthly rainfall in Dodoma, Tanzania has a skew distribution in some months. The distribution of a sample is provided below.
+	
+	\input{./TeX_files/materials/rainfall_dodoma_sample}
+	
+	If a normal distribution does not seem a reasonable model, an alternative is to treat the actual sample as the "population" for the simulation and take random samples with replacement from this sample. Such samples are called \begriff{bootstrap samples}. A simulation with these bootstrap samples can again show the error distribution and provide approximate values for the bias and standard error.
+	
+	\input{./TeX_files/materials/rainfall_dodoma_bs1}
+	\input{./TeX_files/materials/rainfall_dodoma_bs2}
+\end{example}
+
+\subsection{Bootstrap distribution}
+
+The standard error of a statistic is the standard deviation of the sample statistic. The standard error can be calculated as the standard deviation of the sampling distribution.
+
+Bootstrap sample is a random sample taken with replacement from the original sample, of the same size as the original sample. A bootstrap statistic is the statistic computed on a bootstrap sample. A bootstrap distribution is the distribution of many bootstrap statistics. The standard error of a statistic can be estimated using the standard deviation of the bootstrap distribution.
+
+Let $\hat{\theta}$ a statistic calculated from a sample ($\hat{\theta} = \bar{x}$). We draw $r$ observations with replacement to create a bootstrap sample and calculate the statistic $\hat{\theta}^\ast$ for this sample.
+\begin{itemize}
+	\item \textbf{bootstrap standard error:} the sample standard deviation of the bootstrap distribution:
+	\begin{align}
+		\SE_b = \sqrt{\frac{\sum (\hat{\theta}^\ast_b - \bar{\theta}^\ast)^2}{B-1}} \notag
+	\end{align}
+	where $B$ is the number of bootstrap replications (usually $B>10000$)
+	\item \textbf{bootstrap bias:} $\bar{\theta}^\ast-\hat{\theta}$
+	\item \textbf{bootstrap confidence intervals:} bootstrap percentile interval, t confidence interval with bootstrap standard error, bootstrap t-interval, etc.
+\end{itemize}
+
+\subsection{Bootstrap methods}
