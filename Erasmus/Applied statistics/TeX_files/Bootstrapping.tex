@@ -59,3 +59,34 @@ Let $\hat{\theta}$ a statistic calculated from a sample ($\hat{\theta} = \bar{x}
 \end{itemize}
 
 \subsection{Bootstrap methods}
+
+\begin{center}
+	\begin{tabular}{p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3.5cm}}
+		\textbf{Name} & \textbf{calculate} & \textbf{repeat} & \textbf{get distribution} & \textbf{confidence interval} \\
+		\hline
+		Bootstrap percentile CI or \person{Efron} method & $\hat{\theta}^\ast_b$ & $B$ times & $\left\lbrace \hat{\theta}^\ast_b\right\rbrace^B_{b=1}$ & $[q_{\nicefrac{\alpha}{2}},q_{1-\nicefrac{\alpha}{2}}]$ \\
+		\hline
+		Bootstrap CI - bootstrap t & $\frac{\hat{\theta}^\ast_b-\hat{\theta}}{\SE(\hat{\theta}^\ast_b)}$ & $B$ times & $\left\lbrace\frac{\hat{\theta}^\ast_b-\hat{\theta}}{\SE(\hat{\theta}^\ast_b)} \right\rbrace^B_{b=1}$ & $[\hat{\theta}-\SE(\hat{\theta})\cdot q_{1-\nicefrac{\alpha}{2}},\hat{\theta}-\SE(\hat{\theta})\cdot q_{\nicefrac{\alpha}{2}}]$ \\
+		\hline
+		Bootstrap CI symmetric t-percentile & $\frac{\hat{\theta}^\ast_b-\hat{\theta}}{\SE(\hat{\theta}^\ast_b)}$ & $B$ times & $\left\lbrace\frac{\hat{\theta}^\ast_b-\hat{\theta}}{\SE(\hat{\theta}^\ast_b)} \right\rbrace^B_{b=1}$ & $[\hat{\theta}-\SE(\hat{\theta})\cdot q_{1-\alpha},\hat{\theta}+\SE(\hat{\theta})\cdot q_{1-\alpha}]$ \\
+		\hline
+		Bootstrap CI \person{Hall} method & $\hat{\theta}^\ast_b-\hat{\theta}$ & $B$ times & $\left\lbrace \hat{\theta}^\ast_b - \hat{\theta} \right\rbrace^B_{b=1}$ & $[\hat{\theta}-q_{1-\nicefrac{\alpha}{2}},\hat{\theta} - q_{\nicefrac{\alpha}{2}}]$ \\
+	\end{tabular}
+\end{center}
+
+\textbf{Bootstrap using t CI - \textcolor{red}{not recommended}}
+\begin{align}
+	\hat{\theta}\pm t_{\nicefrac{\alpha}{2}}\cdot\SE_b\notag
+\end{align}
+Bootstrap standard error is the sample standard deviation of the bootstrap distribution
+\begin{align}
+	\SE_b = \sqrt{\frac{\sum (\hat{\theta}^\ast_b - \bar{\theta}^\ast)^2}{B-1}} \notag
+\end{align}
+where $B$ is the number of bootstrap replications (usually $B>10000$). The bootstrap bias is $\bar{\theta}^\ast-\hat{\theta}$. It can be useful when the standard error is difficult to derive. \textcolor{red}{It has a poor performance when distributions are highly skewed.}
+
+\textbf{Bootstrap percentile CI or \person{Elfron} method} \\
+For a 90\% confidence interval keep the middle 90\%, leaving 5\% in each tail and 5\% in the head. The 90\% confidence interval boundaries would be the 5th percentile and the 95th percentile. In case we have 10000 bootstrap replications: $\theta^\ast_1\le\theta^\ast_2\le\dots\le\theta^\ast_{10000}$ the 90\% confidence interval is $[\theta^\ast_{500},\theta^\ast_{9500}]$.
+\begin{itemize}
+	\item \textbf{Advantages:} A very intuitive and easy to implement method. Can also outperform some other bootstrap CI methods for skewed distributions.
+	\item \textbf{Disadvantages:} Can be too narrow for small samples.
+\end{itemize}
