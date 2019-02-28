@@ -5,23 +5,24 @@ Wenn man ein Integral hat: $\int_{t_0}^{t}F(t)\diff t$, also wird das $\diff t$ 
 %TODO graph
 \newline Wir messen Mengen:
 \begin{align}
-	\mu: \mathcal{F} \to [0,\infty] \text{ mit }\mathcal{F} \subset \mathcal{P}(X) \notag
+	\mu: \mathcal{F} \to [0,\infty] \text{ mit }\mathcal{F} \subset \mathcal{P}(E) \notag
 \end{align}
 Dabei ist:
 \begin{itemize}
-	\item $X$ eine beliebige Grundmenge
-	\item $\mathcal{P}(X)=\{A\mid A\subset X\}$ die Potenzmenge von $X$
+	\item $E$ eine beliebige Grundmenge
+	\item $\mathcal{P}(E)=\{A\mid A\subset X\}$ die Potenzmenge von $E$
 	\item $F \to \mu(F) \in [0,\infty]$
 \end{itemize}
 
 \textbf{Konvention:}
 \begin{itemize}
 	\item Familien von Mengen: $\mathcal{A}, \mathcal{B}, \mathcal{C}, \mathcal{F}, \dots, \mathcal{R}$
-	\item Mengen: $A, B, X$
+	\item Mengen: $A, B, E$
 	\item Maße: $\mu, \lambda, \nu, \rho, \delta$
+	\item Abbildungen: $\phi, \psi, \gamma, \eta$
 \end{itemize}
 
-\begin{example}[Flächenmessung]
+\begin{*example}[Flächenmessung]
 	%TODO needs graph! and no counting for this example!
 	\begin{align}
 		\mu(F) = g \cdot h &= \mu(F_1) + \mu(F_2) + \mu(F_3)\notag\\
@@ -32,7 +33,7 @@ Dabei ist:
 	$\mu(F) = \mu(\Delta_1)+\mu(\Delta_2)$ mit $\mu(\Delta) = 0.5 gh$\\ %TODO graph
 	Allgemein für Dreiecke: \\%TODO graph
 	$\mu(\Delta) = 0.5 gh \overset{!}{=} 0.5 g^{\prime}h^{\prime}$ und das ganze ist wohldefiniert!
-\end{example}
+\end{*example}
 Dreiecke lassen allgemeine Flächenberechnung zu - Triangulierung!
 %TODO graph
 

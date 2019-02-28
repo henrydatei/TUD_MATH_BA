@@ -2,9 +2,62 @@
 
 \underline{Ziel:} Fortsetzung von Prämaßen auf Erzeuger $\rightarrow \sigma(\text{Erzeuger})$
 \begin{*example}
-	$\lambda^d$ auf $mathscr{I}=$ halboffene Rechtecke und $\sigma(\mathscr{I}) = \mathscr{B}(\real^d)$. Wenn Fortsetzung existiert $\xRightarrow{\propref{4_6}}$ Fortsetzung eindeutig. 
+	$\lambda^d$ auf $\mathscr{I}=$ halboffene Rechtecke und $\sigma(\mathscr{I}) = \mathscr{B}(\real^d)$. Wenn Fortsetzung existiert $\xRightarrow{\propref{4_6}}$ Fortsetzung eindeutig. 
 \end{*example}
 
-\begin{definition}
-	Eine Famile $\mathscr{S} \subset $
+\begin{definition}[Halbring]
+	Eine Famile $\mathscr{S} \subset \mathscr{P}(E)$ heißt \begriff{Halbring} über $E$, wenn gilt:
+	\begin{itemize}
+		\item $(S_1)$ $\emptyset \in \mathscr{S}$
+		\item $(S_2)$ $S,T \in \mathscr{S} \Rightarrow S\cap T \in \mathscr{S}$
+		\item $(S_3)$ $\forall S,T \in \mathscr{S}, \exists S_1,\dots,S_m \in \mathscr{S}, m \in \natur$, disjunkt: $S\setminus T = \biguplus_{i=1}^{m} S_i$
+	\end{itemize}
 \end{definition}
+
+\begin{remark}
+	$\mathscr{I}$ ist Halbring in $\real^d$
+	\begin{enumerate}[label=(\alph*)]
+		\item $d=1:$ per Hand (trivial)
+		\item $d>1:$ Induktion (siehe Fubini) %TODO set reference!
+		\item Intuition: %TODO add figure for intution
+	\end{enumerate}
+\end{remark}
+
+Zentraler Satz der Maßtheorie:
+
+\begin{proposition}[\person{Carathéodory}, Fortsetzungssatz]
+	\proplbl{5_3}
+	Sei $\mathscr{S}$ ein Halbring über $E$ und $\mu: \mathscr{S} \to [0,\infty]$ Prämaß, d.h.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mu(\emptyset) = 0$
+		\item $\forall (S_i)_{i \in \natur} \subset \mathscr{S}$, disjunkt und $\biguplus_{i\in \natur} S_i \in \mathscr{S}$ gilt: $\mu\left(\biguplus_{i\in \natur} S_i\right) = \sum_{i \in \natur}\mu(S_i)$
+	\end{enumerate}
+	$\Rightarrow \exists$ Fortsetzung von $\mu$ zu einem Maß auf $\sigma(\mathscr{S})$.\\
+	\underline{Zusatz:} Wenn $(G_i)_{i \in \natur} \subset \mathscr{S}, G_i \uparrow E, \mu(G_i) < \infty \Rightarrow \exists !$ Fortsetzung.
+\end{proposition}
+
+\begin{remark}
+	\propref{5_3}b) $\equiv$ $\mu$ ist relativ zu $\mathscr{S}$ $\sigma$-additiv; Satz sagt: $\sigma$-additiv vererbt sich auf $\sigma(\mathscr{S})$\\
+	Hauptproblem bleibt aber die Existenz einer Fortsetzung.
+\end{remark}
+
+\begin{proof}[\propref{5_3}]
+	Beweisskizze: %TODO
+	Beweis:
+\end{proof}
+
+\begin{proposition}
+	$\lambda^1$ ist Prämaß auf $\mathscr{I}$.
+\end{proposition}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{conclusion}
+	$\lambda^1$ ist Maß auf $\sigma(\mathscr{I}) = \mathscr{B}(\R)$. Es ist das einzige Maß mit $\lambda^1[a,b) = b - a$.
+\end{conclusion}
+
+\begin{proof}
+	...
+\end{proof}
