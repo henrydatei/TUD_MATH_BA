@@ -34,8 +34,20 @@ Using the following formula from the lecture we get the 95\% confidence interval
 Our 95\% confidence interval is [-0.0276,0.1814] which means that we are 95\% sure that the true proportion lies between -0.0276 and 0.1814. 
 
 \subsection{Part (3)}
+To get the 95\% confidence interval via bootstrap I want to use the \texttt{bootci} function in MATLAB. 
+\begin{lstlisting}
+data = [3.75, 4.05, 3.81, 3.23, 3.13, 3.3, 3.21, 3.32, ...
+4.09, 3.9, 5.06, 3.85, 3.88, 4.06, 4.56, 3.6, 3.27, ...
+4.09, 3.38, 3.37, 2.73, 2.95, 2.25, 2.73, 2.55, 3.06];
+parameter = @(y) length(find(y > 4.5))/length(y);
+
+bootci(10000,{parameter, data},'alpha',0.05,'type',...
+'percentile')
+\end{lstlisting}
+That gives the 95\% confidence interval: [0,0.1923]
 
 \subsection{Part (4)}
+Yes, the confidence interval from the bootstrap procedure is more appropriate because it's not containing Al/Be ratios that are not possible like -0.0276. A negative ratio would suggest that there is a negative amount of data points in the sample which exceed 4.5. That is not possible. 
 
 \pagebreak
 \section{Task 2}
@@ -113,6 +125,37 @@ power = sampsizepwr(testtype,p0,p1,[],n)
 This gives $power = 0.0542\Rightarrow type\, 2\, error = 0.9458$. This is the probability of wrongly accepting $H_0$ when it is false.
 
 \subsection{Part (3)}
+$H_0$: $\mu=0$, normal distribution, small model $M_S$ \\
+$H_A$: $\mu\neq 0$, normal distribution, big model $M_B$ \\
+The log-likelihood function for normal distribution is
+\begin{align}
+	\label{log-likelihood}
+	-\frac{n}{2}\log(2\pi)-\frac{n}{2}\log(\sigma^2)-\frac{1}{2\sigma^2}\sum_{j=1}^{n} (x_j-\mu)^2
+\end{align}
+Let's start with the MLEs for $\mu$ and $\sigma$ in $M_B$:
+\begin{align}
+	\hat{\mu} &= \frac{1}{n}\sum_{j=1}^n x_j \notag \\
+	&= 0.0853 \notag \\
+	\widehat{\sigma^2} &= \frac{1}{n}\sum_{j=1}^n (x_j-\hat{\mu})^2 \notag \\
+	&= 2.3986 \notag
+\end{align}
+Maximum possible value for the log-likelihood $\xRightarrow{\cref{log-likelihood}}$ -27.8457. \\
+Now we'll calculate the MLE for $\sigma$ in $M_S$:
+\begin{align}
+	\widehat{\sigma^2} &= \frac{1}{n}\sum_{j=1}^n (x_j-\hat{\mu})^2 \notag \\
+	&= 2.3986 \notag
+\end{align}
+Maximum possible value for the log-likelihood $\xRightarrow{\cref{log-likelihood}}$ -27.8684. \\
+Likelihood ratio test:
+\begin{align}
+	\chi^2 &= 2\Big(l(M_B) - l(M_S)\Big) \notag \\
+	&= 0.0454 \notag
+\end{align}
+It should be compared to $\chi^2$(1 degree of freedom) since the difference in unknown parameters is equal to 1. The following piece of MATLAB code will calculate the p-value.
+\begin{lstlisting}
+p = chi2cdf(0.0454,1,'upper')
+\end{lstlisting}
+The p-value is 0.8313 which means that we accept $H_0$: The small model $M_S$ fits the data good enough. This is the same result as in part (1) and (2).
 
 \pagebreak
 \section{Task 3}

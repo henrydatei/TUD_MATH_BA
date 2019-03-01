@@ -141,7 +141,7 @@
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
   morecomment=[l]{!\,\% },% Comment only with space after !
-  morekeywords={sampsizepwr, makedist, kstest, fitdist},
+  morekeywords={sampsizepwr, makedist, kstest, fitdist,chi2cdf},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,
