@@ -5,9 +5,9 @@ Sei $E \neq \emptyset$ beliebige Grundmenge.
 \begin{definition}[Maß]
 	Ein \begriff{Maß} $\mu$ ist eine Abbildung $\mu: \mathscr{A} \to [0,\infty]$ mit folgenden Eigenschaften:
 	\begin{itemize}
-		\item ($M_0$) $\mathscr{A}$ ist eine $\sigma$-Algebra auf $E$
-		\item ($M_1$) $\mu(\emptyset) = 0$
-		\item ($M_2$) $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt $\Longleftarrow \mu(\coprod_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
+		\item $(M_0)$ $\mathscr{A}$ ist eine $\sigma$-Algebra auf $E$
+		\item $(M_1)$ $\mu(\emptyset) = 0$
+		\item $(M_2)$ $(A_n)_{n \in \natur} \subset \mathscr{A}$ paarweise disjunkt $\Longleftarrow \mu(\coprod_{n\in \natur} A_n\big) = \sum_{n\in \natur} \mu(A_n)$
 	\end{itemize}
 	Gilt für $\mu: \mathscr{A} \to [0,\infty]$ nur $(M_1),(M_2)$, dann heißt $\mu$ 
 \end{definition}
@@ -129,7 +129,7 @@ $\rightsquigarrow$ Setze Antwort ``ja'' voraus, zeige Eigenschaften.
 	$\lambda^d$ existiert als Maß auf $(\real^d, \mathscr{B}(\real^d))$ und es durch Werte auf $\mathscr{J}$ eineindeutig bestimmt, für alle $B \in \mathscr{B}(\real^d)$ gilt.
 	\begin{enumerate}[label=(\alph*)]
 		\item $\lambda^d$ ist translationsinvariant: $\lambda^d(x+B) = \lambda^d(B)$, wobei $B \in \mathscr{B}(\real^d), x+B := \{x+b \colon b \in B\}$
-		\item $\lambda^d$ ist bewegungsinvariant: $\lambda^d(R^{-1}(B)) = \lambda^d(B)$, mit $\forall R:\real^d \to \real^d$ Bewegung, d.h. kombination aus Translation, Drehung, Spiegelung
+		\item $\lambda^d$ ist bewegungsinvariant: $\lambda^d(R^{-1}(B)) = \lambda^d(B)$, mit $\forall R:\real^d \to \real^d$ Bewegung, d.h. Kombination aus Translation, Drehung, Spiegelung
 		\item $\lambda^d(M^{-1}(B)) = \vert \det(B)\vert^{-1} \lambda^d(B)\quad \forall M \in \GL(\real^d)$
 	\end{enumerate}
 \end{proposition}

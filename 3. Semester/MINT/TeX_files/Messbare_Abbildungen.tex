@@ -1,1 +1,132 @@
 \section{Messbare Abbildungen}
+
+Seien $(E, \sigA), (E^{'}, \sigA^{'})$ zwei Messräume\\
+$T: E \to E^{'}$ Abbildung ``$T$ respektiert'' $\sigA$ und $\sigA^{'}$ auf $E$ bzw. $E^{'}$\\
+Kenne die Frage (\propref{4_8}): $B \in \sigB (\Rd), x \in \Rd \to x + B \in \sigB (\Rd)$ (Beweis via $\mathscr{I}$= Erzeuger von $\sigB (\Rd)$)
+
+\begin{definition}[messbare Abbildung]
+	Eine Abbildung $T: E \to E^{'}$ heißt $(\sigA / \sigA^{'})$-messbar, wenn gilt
+	\begin{align}
+		\forall A^{'} \in \sigA^{'}: T^{-1}(A) \in \sigA
+	\end{align}
+	Notation: $T^{-1}(A) \subset \sigA = \{T^{-1}(A^{'}) \mid A^{'} \in \sigA^{'}\}$
+\end{definition}
+
+%TODO add remarks here
+
+\begin{lemma}
+	\proplbl{6_2}
+	Sei $\sigA^{'} = \sigma(\sigG^{'})$ für ein $\sigG^{'}$.
+	\begin{align}
+		T: E \to E^{'} \text{ ist } \sigA / \sigA^{'} \text{ messbar } \Leftrightarrow \forall G^{'} \in \sigG^{'}: T^{-1}(G^{'}) \in \sigA
+	\end{align}
+	d.h. Massbarkeit reicht am Erzeuger zu testen.
+\end{lemma}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{example}
+	Jede stetige Abbildung $T: \Rd \to \Rd$ ist Borel-$(\sigB (\Rd) / \sigB (\Rn))$ - messbar\\
+	Grund: $\sigB(\Rd) = \sigma(\sigO)$, $\sigO^n :=\{\text{offene Mengen }\subseteq \Rn\\}$
+	\begin{align}
+		f \text{ stetig } \Rightarrow f^{-1}(\sigO^n) \subset \sigO^d \subset \sigB (\Rd) \text{ und } \propref{6_2}
+	\end{align}
+\end{example}
+
+Achtung: stetig $\Rightarrow$ Borel-messbar $\not \Rightarrow$ stetig\\
+
+Beispiel\\
+
+\begin{proposition}
+	\proplbl{6_4}
+	Seien $(E_i, \sigA_i), i = 1,2,3$ Messräume und
+	\begin{itemize}
+		\item $T: E_1 \to E_2 \quad \sigA_1 / \sigA_2$- messbar
+		\item $T: E_2 \to E_3 \quad \sigA_2 / \sigA_3$- messbar
+	\end{itemize}
+	$\Rightarrow S \circ T: E_1 \to E_3$ ist $\sigA_1 / \sigA_3$-messbar.
+\end{proposition}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{lemma}[auch Definition]
+	$(T_i)_{i \in I}$ beliebig viele Abbildungen $T_i: E \to E_i$ und $(E_i, \sigA_i)$ sei Messraum für alle $i \in I$. Dann ist 
+	\begin{align}
+		\sigma(T_i, i \in I) &:= \sigma(\bigcup_{i \in I}T^{-1}_i(\sigA_i))\notag \\
+		&= \sigma( \{A \subset E \mid \exists i \in I\colon A \in T^{-1}_i(\sigA_i)\})
+	\end{align}
+	die kleinste $\sigma$-Algebra in $E$, sodass alle $T_i: E \to E_i$ gleichzeitig messbar sind.\\
+	Sprechweise: ``von den $(T_i)_{i\in I}$ erzeugte $\sigma$-Algebra''
+\end{lemma}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{proposition}[Bildmaß]
+	\proplbl{6_6}
+	$T: (E, \sigA) \to (E, \sigA^{'})$ messbar und $\nu$ sei Maß auf $(E, \sigA)$. Dann definiert
+	\begin{align}
+		\forall A^{'} \in \sigA^{'}: \nu^{'}(A^{'}) := \nu(T^{-1}(A^{'}))
+	\end{align}
+	ein Maß auf $(E^{'}, \sigA^{'})$.
+\end{proposition}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{definition}[Bildmaß]
+	\proplbl{6_7}
+	Das Maß $\nu^{'}$ aus \propref{6_6} heißt \begriff{Bildmaß} $\nu$ und $T$ (engl. image measure, push forward).\\
+	Notation: $T(\nu)$ oder $T\ast \nu$ oder $\nu \circ T^{-1}$
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\lambda^d(x+B) = \lambda^d(\tau_x^{-1}(B)) = \tau_x(\lambda^d)(B)$
+		\item W-Theorie: $(\Omega, \sigA, \probP)$ Wahrscheinlichkeitsraum, $\ProbP(\Omega) = 1$
+		\begin{align}
+			&\xi: (\Omega, \sigA) \to (\Rd, \sigB (\Rd)) &\text{''Zufallsvarible''} \notag \\
+			&\xi(\probP)(B) = \probP \circ \xi^{-1}(B) = \probP(\{ \xi \in B\}) &\text{''Verteilung von $\xi$''}\notag \\
+			&\{\xi \in B\} = \{ \omega \in \Omega \mid \xi(\omega) \in B \} = \xi^{-1}(B) &
+		\end{align}
+		konkret: $2$ mal Würfeln %TODO finish this later up!
+	\end{enumerate}
+\end{example}
+
+Achtung: $T: (E, \pows(E)) \to (E^{'}, \sigA^{'})$, die Potenzmenge $\pows(E)$ macht alle $T$ für alle $\sigA^{'}$ messbar.
+
+\begin{proposition}
+	\proplbl{6_9}
+	Sei $T = \Orth(\Rd) = \{T \in \R^{d\times d}\colon T^t \cdot T = \id_{\Rd}$ Orthogonale Matrizen\\
+	$\Rightarrow T(\lambda^d) = \lambda^d \to \vert \det (T)\vert = 1$
+\end{proposition}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{proposition}
+	\proplbl{6_10}
+	Sei $S \in \GL(\Rd)$ ($\det(S) \neq 0$). Dann
+	\begin{align}
+		S(\lambda^d) \overset{Def}{=} \lambda^d \circ S = \vert \det(S^{-1})\vert \lambda^d = \frac{1}{\vert \det(S)\vert}\lambda^d
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	...
+\end{proof}
+
+\begin{conclusion}
+	$\lambda^d$ invariant unter Bewegung.
+\end{conclusion}
+
+\begin{proof}
+	Bewegung $=$ Kombination aus Shifts $\tau_x$ und Matrizen $T$ mit $\vert \det(T)\vert = 1$ und \propref{6_10}.
+\end{proof}

@@ -48,13 +48,60 @@
 	\ooalign{$\gneq$\cr\raise.22ex\hbox{$\rhd$}\cr}%
 }
 
-%General newcommands!
-\newcommand{\comp}{\mathbb{C}} % complex set C
-\newcommand{\real}{\mathbb{R}} % real set R
-\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
+%%%%%%%% General newcommands %%%%%%%%%%%
+
+% Sets
+%%%%%%%%%%% Old ones, to be compatible with old latex scripts %%%%%%%%%%%
+
 \newcommand{\natur}{\mathbb{N}} % natural number Symbol
+\newcommand{\whole}{\mathbb{Z}} % whole number Symbol
 \newcommand{\ratio}{\mathbb{Q}} % rational number symbol
+\newcommand{\real}{\mathbb{R}} % real set R
+\newcommand{\comp}{\mathbb{C}} % complex set C
+\newcommand{\quat}{\mathbb{H}} % quaternion
 \newcommand{\field}{\mathbb{K}} % general field for the others above!
+
+%%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%%%%%%%%%%% new shorter ones %%%%%%%%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}} % natural number Symbol
+\newcommand{\Z}{\mathbb{Z}} % whole number Symbol
+\newcommand{\Q}{\mathbb{Q}} % rational number symbol
+\newcommand{\R}{\mathbb{R}} % real set R
+\newcommand{\Rn}{\mathbb{R}^n} % real set R^n
+\newcommand{\Rd}{\mathbb{R}^d} % real set R^n for MINT
+\undef{\H}
+\undef{\C}
+\newcommand{\C}{\mathbb{C}} % complex set C
+\newcommand{\H}{\mathbb{H}} % quaternion
+\newcommand{\F}{\mathbb{F}} % general field for the others above!
+
+\newcommand{\powerset}{\mathcal{P}} % Powerset
+\newcommand{\pows}{\mathcal{P}} % shoter one
+%%%%%%%%%%% p-adics %%%%%%%%%%%
+
+\newcommand{\pZ}{\mathbb{Z}_p}
+\newcommand{\pQ}{\mathbb{Q}_p}
+\newcommand{\pC}{\mathbb{C}_p}
+
+%%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
+
+%%% Metrics, Norms, etc %%%%
+\newcommand{\norm}{\Vert \cdot \Vert}
+\newcommand{\metric}{\vert \cdot \vert}
+
+
+%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%
+
+\newcommand{\sigA}{\mathscr{A}} % typical Sigma A for sigma algebras
+\newcommand{\sigB}{\mathscr{B}} % typical Sigma B for sigma algebras
+\newcommand{\sigG}{\mathscr{G}} % typical Generator for sigma algebras
+\newcommand{\sigO}{\mathscr{O}} % sigma algebra of open sets
+\newcommand{\probP}{\mathbb{P}} % probability measure
+
 \newcommand{\diff}{\mathrm{d}} % differential d
 \newcommand{\s}{\,\,}     % space after the function in the intergral
 \newcommand{\cont}{\mathcal{C}} % Contour C
@@ -77,8 +124,6 @@
 \newcommand{\naturpos}{\natur_{>0}}
 \newcommand{\Imag}{\operatorname{Im}} % Imaginary symbol
 \newcommand{\Realz}{\operatorname{Re}} % Real symbol
-\newcommand{\norm}{\Vert \cdot \Vert}
-\newcommand{\metric}{\vert \cdot \vert}
 \newcommand{\foralln}{\forall n} %all n
 \newcommand{\forallnset}{\forall n \in \natur} %all n â‚¬ |N
 \newcommand{\forallnz}{\forall n \geq _0} % all n >= n_0
@@ -87,7 +132,6 @@
 \newcommand{\lproofar}{"`$ \Leftarrow $"'} % "`<="'
 \newcommand{\rproofar}{"`$ \Rightarrow $"'} % "`=>"'
 \newcommand{\beha}{\Rightarrow \text{ Behauptung}}
-\newcommand{\powerset}{\mathcal{P}}
 \newcommand{\person}[1]{\textsc{#1}}
 \newcommand{\highlight}[1]{\emph{#1}}
 \newcommand{\realz}{\mathfrak{Re}}
@@ -102,10 +146,7 @@
 \newcommand{\BIGboxplus}{\mathop{\mathchoice{\raise-0.35em\hbox{\huge $\boxplus$}}{\raise-0.15em\hbox{\Large $\boxplus$}}{\hbox{\large $\boxplus$}}{\boxplus}}}
 \newcommand{\eps}{\textit{eps }}
 
-%%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
-
-\let\oldemptyset\emptyset
-\let\emptyset\varnothing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\skalar}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\qraum}[2]{\sfrac{#1}{#2}}
@@ -138,7 +179,7 @@
 
 %%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\sigmalg}{$\sigma$-Algebra}
+%\newcommand{\sigmalg}{$\sigma$-Algebra}
 % declares the Bourbaki’s ‘dangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
 \DeclareFontFamily{U}{stixbbit}{}
 \DeclareFontShape{U}{stixbbit}{m}{it}{<-> stix-mathbbit}{}
@@ -147,62 +188,105 @@
 }
 
 % Math Operators
-\DeclareMathOperator{\inn}{int} % Set of inner points
-\DeclareMathOperator{\ext}{ext} % Set of outer points
-\DeclareMathOperator{\cl}{cl} % Closure
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\D}{d}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\graph}{graph}
-\DeclareMathOperator{\Int}{int}
-\DeclareMathOperator{\Ext}{ext}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\cond}{cond}
-\DeclareMathOperator{\rd}{rd}
-\undef\div
-\DeclareMathOperator{\div}{div}
-\DeclareMathOperator{\rot}{rot}
+%%%%%% A
+\DeclareMathOperator{\Aff}{Aff} % Affine
+\DeclareMathOperator{\Aut}{Aut} % Automorphism
+\DeclareMathOperator{\Abb}{Abb} % Abbildung
 
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Aff}{Aff}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Abb}{Abb}
+%%%%%% B
 \DeclareMathOperator{\Bil}{Bil}
-\DeclareMathOperator{\Eig}{Eig}
-\DeclareMathOperator{\Mat}{Mat}
-\DeclareMathOperator{\Ker}{Ker}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\ZR}{ZR}
-\DeclareMathOperator{\SR}{SR}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Image}{Im}
-\DeclareMathOperator{\Sym}{Sym}
-\DeclareMathOperator{\Hau}{Hau}
-\DeclareMathOperator{\pr}{pr}
-\DeclareMathOperator{\Orth}{O}
-\DeclareMathOperator{\SO}{SO}
-\DeclareMathOperator{\Uni}{U}
-\DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\ggT}{ggT}
-\DeclareMathOperator{\kgV}{kgV}
-\DeclareMathOperator{\rang}{rang}
-\DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\Inn}{Inn}
-\DeclareMathOperator{\Z}{Z}
-\DeclareMathOperator{\UG}{UG}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\Stab}{Stab}
-\DeclareMathOperator{\Syl}{Syl}
-\DeclareMathOperator{\Typ}{Typ}
-\DeclareMathOperator{\LC}{LC}
-\DeclareMathOperator{\Quot}{Quot}
-\DeclareMathOperator{\w}{w}
+
+%%%%%% C
+\DeclareMathOperator{\cl}{cl} % Closure
+\DeclareMathOperator{\cond}{cond} % ? 
+\DeclareMathOperator{\curl}{curl} % Curl/Rotation
+
+%%%%%% D
+\DeclareMathOperator{\diam}{diam} % Diameter of a set
+\undef\div
+\DeclareMathOperator{\div}{div} % Divergence
+\DeclareMathOperator{\diag}{diag} % Diagonal matrix
+\DeclareMathOperator{\D}{d} % ?
+
+%%%%%% E
+\DeclareMathOperator{\Eig}{Eig} % Eigenspace
+\DeclareMathOperator{\End}{End} % Endomorphism
+\DeclareMathOperator{\ext}{ext} % Exterior
+\DeclareMathOperator{\Ext}{ext} % 2nd time?
+
+%%%%%% F
+\DeclareMathOperator{\Fix}{Fix} % Fix-points for group theory
+
+%%%%%% G
+\DeclareMathOperator{\ggT}{ggT} % Größte geimeinsamer Teiler (gcd)
+\DeclareMathOperator{\GL}{GL} % General Linear Group
+\DeclareMathOperator{\graph}{graph} % Graph
+\DeclareMathOperator{\grad}{grad} % Gradient
+
+%%%%%% H
+\DeclareMathOperator{\Hom}{Hom} % family of Homomorphisms
+\DeclareMathOperator{\Hau}{Hau} % Hauptraum (generalized Eigenspace)
+
+%%%%%% IJK
+\DeclareMathOperator{\Image}{Im} % Image
+\DeclareMathOperator{\Inn}{Inn} % Inner autommorphism
+\DeclareMathOperator{\inn}{int} % Set of inner points
+\DeclareMathOperator{\Int}{int} % 2nd time
+\DeclareMathOperator{\id}{id} % Identity
+
+\DeclareMathOperator{\kgV}{kgV} % kleinste gemeinsamer Teiler (lcd)
+
+%%%%%% LMN
+\DeclareMathOperator{\LC}{LC} % Leitkoeffizient
+
+\DeclareMathOperator{\Mat}{Mat} % Matrix
+
+
+%%%%%% OPQ
+\DeclareMathOperator{\ord}{ord} % Order of a group
+\DeclareMathOperator{\Orth}{O} % Orthogonal Group
+\DeclareMathOperator{\Out}{Out} % Outer Automorphism
+
+\DeclareMathOperator{\pr}{pr} % Projection
+
+\DeclareMathOperator{\Quot}{Quot} % Quotient
+
+%%%%%% R
+\DeclareMathOperator{\rd}{rd} % ?
+\DeclareMathOperator{\rk}{rk} % Rank of a matrix
+\DeclareMathOperator{\rot}{rot} % Rotation (Curl)
+\DeclareMathOperator{\rang}{rang} % Matrix Rank
+
+%%%%%% S
+\DeclareMathOperator{\sgn}{sgn} % Signum function
+\DeclareMathOperator{\SL}{SL} % Special Linear Group
+\DeclareMathOperator{\SO}{SO} % Special Orthogonal Group
+\DeclareMathOperator{\Span}{span} % Span
+\DeclareMathOperator{\SR}{SR} % Spaltenraum
+\DeclareMathOperator{\Stab}{Stab} % Stabilizer
+\DeclareMathOperator{\supp}{supp} % Support
+\DeclareMathOperator{\Syl}{Syl} % Sylow Group
+\DeclareMathOperator{\Sym}{Sym} % Symmetric Group
+\DeclareMathOperator{\SU}{SU} % Special Unitary Group
+
+%%%%%% T
+\DeclareMathOperator{\tr}{tr} % Trace operator
+\DeclareMathOperator{\Typ}{Typ} % Type
+
+%%%%%% UVW
+\DeclareMathOperator{\UG}{UG} % Untergruppe (subgroup) 
+\DeclareMathOperator{\Uni}{U} % Unitary Group
+
+\DeclareMathOperator{\w}{w} % ?
+
+%%%%%% XYZ
+\DeclareMathOperator{\ZR}{ZR} % Zeilenraum
+%\DeclareMathOperator{\Z}{Z} % ?
+
+
+% WHITESPACE COMMANDS
+\newcommand{\nl}{\\[\baselineskip]}      % wordwrap with empty Zeile line after w/o underfull-hbox-warning
+\newcommand{\enter}{$ $\newline}         % wordwrap w/o condition
+\newcommand\tab[1][1cm]{\hspace*{#1}}    % practical Tabulator
 
 \endinput

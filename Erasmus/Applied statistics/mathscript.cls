@@ -37,7 +37,7 @@
 
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptionsX
-\LoadClass[ngerman,a4paper]{report}
+\LoadClass[ngerman,a4paper]{article}
 
 \RequirePackage{ifpdf,ifluatex}
 
@@ -70,6 +70,7 @@
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
 \RequirePackage{longtable} %Tabellen mit Seitenumbrüchen
 \RequirePackage{multirow}
+\RequirePackage{bigdelim}
 \RequirePackage{booktabs}	%improved rules
 \usepackage{colortbl} %einfärben von Spalten, Zeilen und Zellen
 
@@ -105,7 +106,7 @@
 \RequirePackage{tcolorbox}
 
 \RequirePackage{pgfplots}
-\pgfplotsset{compat=1.10}
+\pgfplotsset{compat=1.13}
 \usepgfplotslibrary{fillbetween}
 \RequirePackage{pgf}
 \RequirePackage{tikz}
@@ -135,12 +136,12 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mygreen}{rgb}{0,0.8,0.26}
 
-\lstset{language=[95]Fortran,
+\lstset{language=Matlab,
   basicstyle=\ttfamily,
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
-  morecomment=[l]{!\ },% Comment only with space after !
-  morekeywords={compute, solve, choose, break, switch},
+  morecomment=[l]{!\,\% },% Comment only with space after !
+  morekeywords={sampsizepwr, makedist, kstest, fitdist,chi2cdf},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,
@@ -149,15 +150,14 @@
   numberstyle=\color{mygray}\ttfamily,
   identifierstyle=\color{blue},
   xleftmargin=.2\textwidth, 
-  xrightmargin=.2\textwidth,
-  escapechar=\%
+  xrightmargin=.2\textwidth
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Index related packages
 \RequirePackage[texindy]{imakeidx}
 \indexsetup{
-	level=\chapter*
+	level=\section*
 }
 \makeindex[intoc]
 
@@ -246,7 +246,7 @@
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
-]{proposition}[theorem]{Satz}
+]{proposition}[theorem]{Proposition}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -281,7 +281,7 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%	
 	skipbelow=10pt,%
-]{conclusion}[theorem]{Folgerung}
+]{conclusion}[theorem]{Conclusion}
 
 \newmdtheoremenv[%
 	hidealllines=true,%
@@ -289,7 +289,7 @@
 	innerleftmargin=0pt,%
 	skipabove=5pt,%
 	innerleftmargin=10pt,%
-]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+]{remark}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Remark}
 
 \newmdtheoremenv[%
 	hidealllines=true,%
@@ -297,21 +297,21 @@
 	innerleftmargin=0pt,%
 	skipabove=5pt,%
 	innerleftmargin=10pt,%
-]{erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
+]{erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Reminder}
 
 \newmdtheoremenv[%
 	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=10pt,%
 	skipabove=5pt,%
-]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+]{example}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Example}
 
 \newmdtheoremenv[%
 	hidealllines=true,%
 	frametitlefont=\normalfont\bfseries\color{black},%
 	innerleftmargin=10pt,%
 	skipabove=5pt,%
-]{algorithm}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Algorithmus}
+]{algorithm}[theorem]{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Algorithm}
 
 %unnumbered theorems
 \theoremstyle{nonumberbreak}
@@ -332,12 +332,12 @@
 	frametitlefont=\normalfont\bfseries\color{black},%
 	skipabove=5pt,%
 	innerleftmargin=10pt,%
-]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Bemerkung}
+]{*remark}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Remark}
 
 \newmdtheoremenv[%
 	hidealllines=true,%
 	innerleftmargin=10pt,%
-]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Beispiel}
+]{*example}{\hspace*{-10pt}\rule{5pt}{5pt}\hspace*{5pt}Example}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -345,7 +345,7 @@
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
-]{*anmerkung}{Anmerkung}
+]{*anmerkung}{Annotation}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -355,19 +355,11 @@
 	backgroundcolor=lightgrey,%
 ]{mathematica}{Mathematica/WolframAlpha-Befehle}
 
-\newtheorem{overview}[theorem]{Überblick}
+\newtheorem{overview}[theorem]{Overview}
 
 \newmdtheoremenv[
 	outerlinewidth=0.1pt,
 ]{repetition}{Wiederholung}
-
-\newmdtheoremenv[%
-	hidealllines=true,%
-	frametitlefont=\normalfont\bfseries\color{black},%
-	innerleftmargin=0pt,%
-	skipabove=5pt,%
-	innerleftmargin=10pt,%
-]{hint}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Hinweis}
 
 %various unnumbered thereoms and environment (usually included in theorems like above)
 %To get rid of the parentheses, a new theorem style is neccessary (definition of nonumberbreak from ntheorem.sty)
@@ -453,21 +445,21 @@
 \theorempostskip{5pt}
 \theoremsymbol{$\square$}
 
-\ifinlist{proof}{\theorem@disable}{\RenewEnviron{proof}{}{}}{\renewtheorem{proof}{Beweis}}
+\ifinlist{proof}{\theorem@disable}{\RenewEnviron{proof}{}{}}{\renewtheorem{proof}{Proof}}
 
 %cref: print correct translation
-\crefname{theorem}{Theorem}{Theoreme}
-\crefname{proposition}{Satz}{Sätze}
-\crefname{lemma}{Lemma}{Lemmata}
-\crefname{conclusion}{Folgerung}{Folgerungen}
-\crefname{definition}{Definition}{Definitionen}
-\crefname{remark}{Bemerkung}{Bemerkungen}
-\crefname{example}{Beispiel}{Beispiele}
-\crefname{erinnerung}{Erinnerung}{Erinnerungen}
-\crefname{algorithm}{Algorithmus}{Algorithmen}
-\crefname{*definition}{Definition}{Definitionen}
-\crefname{*remark}{Bemerkung}{Bemerkungen}
-\crefname{*example}{Beispiel}{Beispiele}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{conclusion}{Conclusion}{Conclusions}
+\crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\crefname{example}{Example}{Examples}
+\crefname{erinnerung}{Reminder}{Reminders}
+\crefname{algorithm}{Algorithm}{Algorithms}
+\crefname{*definition}{Definition}{Definitions}
+\crefname{*remark}{Remark}{Remarks}
+\crefname{*example}{Example}{Examples}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Additional features
@@ -665,25 +657,25 @@
 \reqnos
 
 %Headings
-\titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
-\counterwithout{section}{chapter}
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thepart}{\Alph{part}}
+%\titlelabel{\thetitle.\quad}%. behind section/sub... (3. instead of 3)
+%\counterwithout{section}{chapter}
+%\renewcommand{\thechapter}{\Roman{chapter}}
+%\renewcommand{\thepart}{\Alph{part}}
 %italic chapters (due to titlesec package some more stuff)
 %\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]
-\titleformat{\chapter}[display]{\bfseries}{\Large\chaptername\;\thechapter}{-5pt}{\huge\bfseries\itshape}
-\titlespacing{\chapter}{0pt}{0pt}{10pt}
-\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
+%\titleformat{\chapter}[display]{\bfseries}{\Large\chaptername\;\thechapter}{-5pt}{\huge\bfseries\itshape}
+%\titlespacing{\chapter}{0pt}{0pt}{10pt}
+%\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
 %\titlespacing{command}{left}{before-sep}{after-sep}
-\titlespacing{\subsection}{0pt}{0pt}{5pt}
+%\titlespacing{\subsection}{0pt}{0pt}{5pt}
 
 %change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
-\renewcommand{\cftbeforetoctitleskip}{0pt}
-\renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
+%\renewcommand{\cftbeforetoctitleskip}{0pt}
+%\renewcommand{\cfttoctitlefont}{\itshape\Huge\bfseries}
 %change indentations due to width of capital roman numbers
-\renewcommand{\cftchapnumwidth}{2.5em}
-\renewcommand{\cftsecindent}{2.5em}
-\renewcommand{\cftsubsecindent}{4.8em}
+%\renewcommand{\cftchapnumwidth}{2.5em}
+%\renewcommand{\cftsecindent}{2.5em}
+%\renewcommand{\cftsubsecindent}{4.8em}
 
 % Add new page-style (just footer), patch \chapter command to use this page style
 \fancypagestyle{plainChapter}{%

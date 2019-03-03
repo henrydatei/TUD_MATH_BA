@@ -2,6 +2,9 @@
 
 \textbf{Ziel:} Charakterisierung der Definitionsgebiete von Maßen.
 
+
+$\C \H$
+
 \begin{definition}[$\sigma$-Algebra, messbar]
 	Eine \begriff{$\sigma$-Algebra} über einer beliebigen Grundmenge $E \neq \emptyset$ ist eine Familie von Mengen in $\mathscr{P}(E), \mathscr{A} \subset \mathscr{P}(E)$:
 	\begin{itemize}
@@ -13,6 +16,7 @@
 \end{definition}
 
 \begin{proposition}[Eigenschaften einer $\sigma$-Algebra]
+	\proplbl{2_2}
 	Sei $\mathscr{A}$ eine $\sigma$-Algebra über $E$.
 	\begin{enumerate}[label=(\alph*)]
 		\item $\emptyset\in\mathscr{A}$
@@ -41,7 +45,7 @@
 		\item $\{\emptyset,X\}$ ist eine $\sigma$-Algebra (kleinstmögliche)
 		\item $\{\emptyset,A,A^C,X\}$ ist eine $\sigma$-Algebra
 		\item $\{\emptyset,B,X\}$ ist eine $\sigma$-Algebra, wenn $B=\emptyset$ oder $B=X$
-		\item $\mathscr{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine \sigmalg %TODO needs the proof still!
+		\item $\mathscr{A}=\{A\subset X\mid \#A\le \#\natur\text{ oder } \#A^C\le \#\natur\}$ ist eine $\sigma$-Algebra %TODO needs the proof still!
 		\item Spur-$\sigma$-Algebra: $E \subset X,\mathscr{A}$ ist $\sigma$-Algebra in $X \Rightarrow \mathscr{A}_E := \{E \cap A \mid A \in \mathscr{A}\}$ ist eine $\sigma$-Algebra.
 		\item Urbild-$\sigma$-Algebra: $f: X \to Y$ eine Abbildung, $X,Y$ Mengen, $\mathscr{A}_Y$ sei $\sigma$-Algebra   in $Y$ $\Rightarrow \mathscr{A} := \{f^{-1}(A_Y)\mid A_Y \in \mathscr{A}\}$ eine $\sigma$-Algebra.
 	\end{enumerate}
@@ -63,6 +67,8 @@
 	\end{enumerate}
 \end{proposition}
 
+
+
 \begin{proof}
 	\begin{enumerate}[label=(\alph*)]
 		\item 
@@ -82,9 +88,9 @@
 			\end{align} 
 		\end{itemize}
 		\item a) sagt:
-			\begin{align}
-				\mathscr{A} := \bigcap_{\substack{\mathscr{F} \sigma\text{-Algebra}\\ \mathscr{G} \subset \mathscr{F}}} \mathscr{F} \text{ ist } \sigma-\text{Algebra} \label{2_4_eq} \tag{\ast}
-			\end{align}
+%			\begin{align}
+%				\mathscr{A} := \bigcap_{\substack{\mathscr{F} \sigma\text{-Algebra}\\ \mathscr{G} \subset \mathscr{F}}} \mathscr{F} \text{ ist } \sigma-\text{Algebra} \label{2_4_eq} \tag{\ast}
+%			\end{align}
 		Dabei ist $\mathscr{G} \subset \mathscr{F}$, weil $\mathscr{F}=\mathscr{P}(E)$ Kandidat und dann \eqref{2_4_eq} wohldefiniert.
 		\begin{itemize}
 			\item Existenz: $\mathscr{A}$ reicht, weil $\mathscr{A}$ wohldefiniert und $\mathscr{G} \subset \mathscr{A}$ und $\mathscr{A}$ ist $\sigma$-Algebra.
@@ -172,7 +178,7 @@
 		\item Jedes $I \in \mathscr{J}^o$ ist eine offene Menge (DIY) $\Rightarrow \mathscr{J}_{rat}^o \subset \mathscr{J}^o \subset \mathscr{O}$
 		\item Sei $U \in \mathscr{O}$. Dann gilt:
 		\begin{align}
-		U = \bigcup_{\substack{I^{'} \in \mathscr{J}_{rat}^o\\ I^{'} \subset U}} I^{'} \label{2_8_eq}\tag{\ast\ast}
+		U = \bigcup_{\substack{I^{'} \in \mathscr{J}_{rat}^{o}\\ I^{'} \subset U}} I^{'} \label{2_8_eq}\tag{\ast\ast}
 		\end{align}
 		Klar in \eqref{2_8_eq} ist $\bigcup_{\dots} I^{'} \subset U$. Für $U \subset \bigcup_{\dots} I^{'}$ bemerken wir, weil $U$ offen ist gilt:
 		\begin{align}

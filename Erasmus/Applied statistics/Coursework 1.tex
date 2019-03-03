@@ -1,0 +1,407 @@
+\documentclass[british,a4paper,order=firstname]{mathscript}
+\usepackage{mathoperators}
+
+\title{\textbf{Applied statistics: Coursework 1}}
+\author{\person{Henry Haustein}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Table of contents}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\section{Task 1}
+\subsection{Part (1)}
+In the given data were two out of 26 data points with an Al/Be ratio of more than 4.5. That means
+\begin{align}
+	\hat{p} = \frac{2}{26} = \frac{1}{13}\notag
+\end{align}
+
+\subsection{Part (2)}
+Using the following formula from the lecture we get the 95\% confidence interval:
+\begin{align}
+	\hat{p}&\pm 2\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \notag \\
+	\frac{1}{13} &\pm \underbrace{2\cdot\sqrt{\frac{\frac{1}{13}\cdot\frac{12}{13}}{26}}}_{0.1045} \notag
+\end{align}
+Our 95\% confidence interval is [-0.0276,0.1814] which means that we are 95\% sure that the true proportion lies between -0.0276 and 0.1814. 
+
+\subsection{Part (3)}
+To get the 95\% confidence interval via bootstrap I want to use the \texttt{bootci} function in MATLAB. 
+\begin{lstlisting}
+data = [3.75, 4.05, 3.81, 3.23, 3.13, 3.3, 3.21, 3.32, ...
+4.09, 3.9, 5.06, 3.85, 3.88, 4.06, 4.56, 3.6, 3.27, ...
+4.09, 3.38, 3.37, 2.73, 2.95, 2.25, 2.73, 2.55, 3.06];
+parameter = @(y) length(find(y > 4.5))/length(y);
+
+bootci(10000,{parameter, data},'alpha',0.05,'type',...
+'percentile')
+\end{lstlisting}
+That gives the 95\% confidence interval: [0,0.1923]
+
+\subsection{Part (4)}
+Yes, the confidence interval from the bootstrap procedure is more appropriate because it's not containing Al/Be ratios that are not possible like -0.0276. A negative ratio would suggest that there is a negative amount of data points in the sample which exceed 4.5. That is not possible. 
+
+\pagebreak
+\section{Task 2}
+\subsection{Part (1)}
+\begin{lstlisting}
+x = [-4.5, -1, -0.5, -0.15, 0, 0.01, 0.02, 0.05, ...
+0.15, 0.2, 0.5, 0.5, 1, 2, 3];
+m = mean(x);
+s = std(x);
+\end{lstlisting}
+\begin{center}
+	\begin{tabular}{p{4cm}|p{7cm}}
+		null hypothesis & $H_0$: $\mu = 0$ \\
+		\hline
+		alternative hypothesis & $H_A$: $\mu\neq 0$ \\
+		\hline
+		t-test for $\mu$ & $t=\frac{m-0}{\frac{s}{\sqrt{15}}} =\frac{0.0853}{\frac{1.6031}{\sqrt{15}}} = 0.2062$ \\
+		\hline
+		rejection region & \texttt{tinv(0.05,15)} = -1.7531 \\
+		\hline
+		conclusion & $t$ is not in the rejection region so $H_0$ is accepted at the 10\% significance level.
+	\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=-3, xmax=3, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	domain=-3:3,
+	restrict y to domain=0:1,
+	width = 16cm,
+	height = 8cm,
+	]
+	\addplot[name path=f,blue] {116640000000*sqrt(15)/(143*pi*(x^2+15)^(8))};
+	\path[name path=axis] (axis cs:1.7531,0) -- (axis cs:3,0);
+	\path[name path=axis2] (axis cs:-3,0) -- (axis cs:-1.7531,0);
+	\draw (axis cs:1.7531,0) -- (axis cs:1.7531,1);
+	\draw (axis cs:-1.7531,0) -- (axis cs:-1.7531,1);
+	\draw [dotted] (axis cs:0.2062,0) -- (axis cs:0.2062,0.6);
+	\node at (axis cs:1,0.5) (a) {0.05};
+	\node at (axis cs:-1,0.5) (a2) {0.05};
+	\draw (axis cs:1, 0.46) -- (axis cs: 2.2,0.02);
+	\draw (axis cs:-1, 0.46) -- (axis cs: -2.2,0.02);
+	\node at (axis cs: 2.0,0.95) (b) {1.7531};
+	\node at (axis cs: -2.0,0.95) (b2) {-1.7531};
+	\node at (axis cs: 0.45,0.55) (c) {0.2062};
+	\node[red] at (axis cs: 2.4,0.78) (d) {rejection region};
+	\node[red] at (axis cs: -2.4,0.78) (d2) {rejection region};
+	\begin{scope}[transparency group]
+	\begin{scope}[blend mode=multiply]
+	\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=1.7531:3},];
+	\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis2,soft clip={domain=-3:-1.7531},];
+	\draw[red,fill=red,opacity=0.2] (axis cs: 1.7531,0) -- (axis cs: 1.7531,1) -- (axis cs: 3,1) -- (axis cs: 3,0) -- (axis cs: 1.7531,0);
+	\draw[red,fill=red,opacity=0.2] (axis cs: -1.7531,0) -- (axis cs: -1.7531,1) -- (axis cs: -3,1) -- (axis cs: -3,0) -- (axis cs: -1.7531,0);
+	\end{scope}
+	\end{scope}
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Part (2)}
+If we reduce the significance level our rejection region gets smaller. With $\alpha = 0.05$ the rejection region will start at \texttt{tinv(0.025,15)} = -2.1314. The $t$ calculated in part (1) won't change $\Rightarrow$ our decision won't change too.
+
+To get the type 2 error we use the MATLAB function \texttt{sampsizepwr} and $type\, 2\, error = 1-power$.
+\begin{lstlisting}
+testtype = 't';
+p0 = [0 1.6031];
+p1 = 0.0853;
+n = 15;
+power = sampsizepwr(testtype,p0,p1,[],n)
+\end{lstlisting}
+This gives $power = 0.0542\Rightarrow type\, 2\, error = 0.9458$. This is the probability of wrongly accepting $H_0$ when it is false.
+
+\subsection{Part (3)}
+$H_0$: $\mu=0$, normal distribution, small model $M_S$ \\
+$H_A$: $\mu\neq 0$, normal distribution, big model $M_B$ \\
+The log-likelihood function for normal distribution is
+\begin{align}
+	\label{log-likelihood}
+	-\frac{n}{2}\log(2\pi)-\frac{n}{2}\log(\sigma^2)-\frac{1}{2\sigma^2}\sum_{j=1}^{n} (x_j-\mu)^2
+\end{align}
+Let's start with the MLEs for $\mu$ and $\sigma$ in $M_B$:
+\begin{align}
+	\hat{\mu} &= \frac{1}{n}\sum_{j=1}^n x_j \notag \\
+	&= 0.0853 \notag \\
+	\widehat{\sigma^2} &= \frac{1}{n}\sum_{j=1}^n (x_j-\hat{\mu})^2 \notag \\
+	&= 2.3986 \notag
+\end{align}
+Maximum possible value for the log-likelihood $\xRightarrow{\cref{log-likelihood}}$ -27.8457. \\
+Now we'll calculate the MLE for $\sigma$ in $M_S$:
+\begin{align}
+	\widehat{\sigma^2} &= \frac{1}{n}\sum_{j=1}^n (x_j-\hat{\mu})^2 \notag \\
+	&= 2.3986 \notag
+\end{align}
+Maximum possible value for the log-likelihood $\xRightarrow{\cref{log-likelihood}}$ -27.8684. \\
+Likelihood ratio test:
+\begin{align}
+	\chi^2 &= 2\Big(l(M_B) - l(M_S)\Big) \notag \\
+	&= 0.0454 \notag
+\end{align}
+It should be compared to $\chi^2$(1 degree of freedom) since the difference in unknown parameters is equal to 1. The following piece of MATLAB code will calculate the p-value.
+\begin{lstlisting}
+p = chi2cdf(0.0454,1,'upper')
+\end{lstlisting}
+The p-value is 0.8313 which means that we accept $H_0$: The small model $M_S$ fits the data good enough. This is the same result as in part (1) and (2).
+
+\pagebreak
+\section{Task 3}
+\subsection{Part (1)}
+First of all we need to prepare the data:
+\begin{lstlisting}
+raw = load('input_data.txt');
+data = reshape(raw,[1 500]); %produce a single vector
+\end{lstlisting}
+After that we do for every distribution (normal, exponential, uniform, lognormal, \person{Rayleigh}, gamma) the same procedure: 
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Estimate the parameter. This is often done with the function \texttt{<distribution>fit} but for estimating the parameters in the gamma distribution I used \texttt{fitdist(data', 'Gamma')} because \texttt{gamfit} doesn't work.
+	\item Creating the CDF with \texttt{makedist}.
+	\item Run the \person{Kolmogorov-Smirnov} test with \texttt{kstest}.
+\end{enumerate}
+\begin{lstlisting}
+%normal distribution
+[mu,sigma] = normfit(data)
+norm_cdf = makedist('Normal','mu',mu,'sigma',sigma);
+[h,p] = kstest(data,'CDF',norm_cdf)
+
+%exponential distribution
+mu = expfit(data)
+exp_cdf = makedist('Exponential','mu',mu);
+[h,p] = kstest(data,'CDF',exp_cdf)
+
+%uniform distribution
+[low,up] = unifit(data)
+uni_cdf = makedist('Uniform','lower',low,'upper',up);
+[h,p] = kstest(data,'CDF',uni_cdf)
+
+%lognormal distribution
+logmu = mean(log(data))
+logsigma = std(log(data))
+logn_cdf = makedist('Lognormal','mu',logmu,'sigma',logsigma);
+[h,p] = kstest(data,'CDF',logn_cdf)
+
+%rayleigh distribution
+b = raylfit(data)
+rayl_cdf = makedist('Rayleigh','b',b);
+[h,p] = kstest(data,'CDF',rayl_cdf)
+
+%gamma distribution
+distribution = fitdist(data','Gamma');
+a = distribution.a
+b = distribution.b
+gamma_cdf = makedist('Gamma','a',a,'b',b);
+[h,p] = kstest(data,'CDF',gamma_cdf)
+\end{lstlisting}
+
+Running this gives the following output. The best fitting distribution is marked green, the worst red.
+\begin{center}
+	\begin{tabular}{c|l|p{3cm}|p{3cm}}
+		\textbf{distribution}& \textbf{estimated parameters} & \multicolumn{2}{c}{\person{Kolmogorov-Smirnov} \textbf{test}} \\
+		 &  & $h$ & $p$ \\
+		\hline
+		normal & $\mu=2.3804$, $\sigma=1.2486$ & $h=1$ & $p=0.0158$ \\
+		\hline
+		exponential & $\mu=2.3804$ & $h=1$ & $p=2.2618\cdot 10^{-23}$ \\
+		\hline
+		\rowcolor{red}uniform & $lower=0.1478$, $upper=7.8807$ & $h=1$ & $p=1.5096\cdot 10^{-72}$ \\
+		\hline
+		lognormal & $\log(\mu)=0.7050$, $\log(\sigma)=0.6243$ & $h=1$ & $p=0.0017$ \\
+		\hline
+		\rowcolor{green}\person{Rayleigh} & $b=1.9003$ & $h=0$ & $p=0.8939$ \\
+		\hline
+		gamma & $a=3.2378$, $b=0.7352$ & $h=0$ & $p=0.2771$ \\
+	\end{tabular}
+\end{center}
+
+\subsection{Part (2)}
+\input{./TeX_files/materials/CW1_kstest}
+
+\pagebreak
+\section{Task 4}
+\subsection{Part (1)}
+The probability density function $f(t)$ is
+\begin{align}
+	f(t) = \frac{2t\cdot\frac{\exp(-t^2)}{100}}{100} = \frac{t\cdot\exp(-t^2)}{5000}\notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(x*exp(-x^2))/5000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+The cumulative distribution function $F(t)$ is then
+\begin{align}
+	F(t) &= \int_0^t f(\xi)\,\diff\xi \notag \\
+	&= \int_0^t \frac{\xi\cdot\exp(-\xi^2)}{5000}\,\diff\xi\notag \\
+	&= \frac{\exp(-t^2)\Big(\exp(t^2)-1\Big)}{10000} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(exp(-x^2)*(exp(x^2)-1))/10000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+For the survival function we get
+\begin{align}
+	R(t) &= 1 - F(t) \notag \\
+	&= \frac{\exp(-t^2)+9999}{10000} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(exp(-x^2)+9999)/10000};
+	\end{axis}
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0.9999, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	y tick label style={
+		/pgf/number format/.cd,
+		precision=5,
+		/tikz/.cd
+	},
+	]
+	\addplot+[mark=none] {(exp(-x^2)+9999)/10000};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+To get the reliability of the component at $t=7$ we simply evaluate $R(7)$ which is 0.9999.
+
+The hazard function is defined as
+\begin{align}
+	h(t) &= \frac{f(t)}{1-F(t)} \notag \\
+	&= \frac{2t}{9999\cdot \exp(t^2)+1} \notag
+\end{align}
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=0.0001, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	]
+	\addplot+[mark=none] {(2*x)/(9999*exp(x^2)+1)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+The hazard function describes how an item ages where $t$ affects the risk of failure. It is the frequency with which the item fails, expressed in failures per unit of time.
+
+\subsection{Part (2)}
+Given $h(x)\sim(\sqrt{x})^{-1}$ we will try to find out the $shape$-parameter of the \person{Weibull} distribution first.
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=5, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	yticklabels={,,},
+	xticklabels={,,}
+	]
+	\addplot+[mark=none] {1/sqrt(x)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+Comparing this graph to graphs of the hazard function with different $shape$-parameters we see that $shape=0.5$ fits best.
+\begin{center}
+	\begin{tabular}{p{5cm}|p{5cm}|p{5cm}}
+		$shape = 0.5$ & $shape = 1$ & $shape = 2$ \\
+		\hline
+		\multicolumn{3}{c}{\cellcolor{gray!50}\textbf{Hazard function} $\left(h = \frac{\text{PDF}}{1-\text{CDF}}\right)$} \\
+		\hline
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {(0.5*x^(-0.5)*exp(-x^0.5))/(1-(1-exp(-x^0.5)))};
+		\end{axis}
+		\end{tikzpicture} &
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		restrict y to domain=0:1,
+		]
+		\addplot+[mark=none] {(1/exp(x))/(1-(1-1/exp(x)))};
+		\draw[blue] (axis cs: 0,1) -- (axis cs: 2,1);
+		\end{axis}
+		\end{tikzpicture} &
+		\begin{tikzpicture}[scale=0.6]
+		\begin{axis}[
+		xmin=0, xmax=2, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		]
+		\addplot+[mark=none] {(2*x^(1)*exp(-x^2))/(1-(1-exp(-x^2)))};
+		\end{axis}
+		\end{tikzpicture} \\
+	    \end{tabular}
+\end{center}
+To get the $scale$-parameter of the distribution we use the other provided information:
+\begin{align}
+	5 &= \mu \notag \\
+	&= scale\cdot\Gamma\left(1+\frac{1}{shape}\right) \notag \\
+	&= scale\cdot\Gamma(3) \notag \\
+	\Rightarrow scale &= \frac{5}{2} \notag
+\end{align}
+Let's build the survival function:
+\begin{align}
+	R(t) &= 1-\Bigg(1-\exp\left(-\sqrt{\frac{x}{\nicefrac{5}{2}}}\right)\Bigg) \notag \\
+	&= \exp(-\sqrt{x}\cdot\sqrt{2.5})\notag
+\end{align}
+That mean that the probability of surviving 6 years (30 years) is $R(6) = 0.0208$ ($R(30) = 0.0002$).
+\end{document}

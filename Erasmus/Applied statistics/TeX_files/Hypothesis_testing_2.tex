@@ -1,0 +1,376 @@
+\subsection{Likelihood ratio test}
+
+In some cases we need to perform a hypothesis test to compare two models: big "general" model ($M_B$) and small "simple" model ($M_S$) nested into the bigger model. \\
+$H_0$: $M_S$ fits the data \\
+$H_A$: $M_S$ does not fit the data and $M_B$ should be used instead. \\
+
+We need to verify if $M_B$ fits the data significantly better.
+\begin{itemize}
+	\item \textbf{Measure how well a model fits the data:} The fit of any model can be described by the maximum possible likelihood for that model:
+	\begin{align}
+		L(M) = \max\{P(data\vert model)\}\notag
+	\end{align}
+	Calculate the maximum likelihood estimates for all unknown parameters and insert them into the likelihood function.
+	\item \textbf{Work out the \begriff{likelihood ratio}:} 
+	\begin{align}
+		R = \frac{L(M_B)}{L(M_S)} \ge 1\notag
+	\end{align}
+	Big values of $R$ suggests that $M_S$ does not fit as well as $M_B$.
+	\item \textbf{Work out log of likelihood ratio:} 
+	\begin{align}
+		\log(R) = l(M_B) - l(M_S) \ge 0\notag
+	\end{align}
+	Big values of $R$ suggests that $M_S$ does not fit as well as $M_B$.
+\end{itemize}
+
+\begin{example}
+	There are a number of defective items on  a production line in 20 days that follow \person{Poisson}($\lambda$) distribution: 1, 2, 3, 4, 2, 3, 2, 5, 5, 2, 4, 3, 5, 1, 2, 4, 0, 2, 2, 6. \\
+	$M_S$: the sample comes from \person{Poission}(2) \\
+	$M_B$: the sample comes from \person{Poission}($\lambda$) \\
+\end{example}
+
+\begin{example}
+	Clinical records give the survival time for 30 people: 9.73,5.56, 4.28, 4.87, 1.55, 6.20, 1.08, 7.17, 28.65, 6.10, 16.16, 9.92, 2.40, 6.19. In a clinical trial of a new drug treatment 20 people had survival times of: 22.07, 12.47, 6.42, 8.15, 0.64, 20.04, 17.49, 2.22, 3.00. Is there any difference in survival times for those using the new drug? \\
+	$M_S$: Both examples come from the same exponential($\lambda$) distribution. \\
+	$M_B$: The first sample comes from exponential($\lambda_1$) and the second sample from exponential($\lambda_2$).
+\end{example}
+
+\begin{definition}
+	If the data come from $L(M_S)$, and $L(M_B)$ has $k$ more parameters than $L(M_S)$ then
+	\begin{align}
+		X^2 &= 2\log(R) \notag \\
+		&= 2\big(l(M_B) - l(M_S)\big) \notag \\
+		&\approx \chi^2(k \text{ degrees of freedom}) \notag
+	\end{align}
+\end{definition}
+
+The main steps for the likelihood ratio test are:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Work out maximum likelihood estimates of all unknown parameters in $M_S$.
+	\item Work out maximum likelihood estimates of all unknown parameters in $M_B$.
+	\item Evaluate the test statistic: $\chi^2 = 2\big(l(M_B) - l(M_S)\big)$
+	\item The degrees of freedom for the test are the difference between the numbers of unknown parameters in two models. The p-value for the test is the upper tail probability of the $\chi^2(k \text{ degrees of freedom})$ distribution given the test statistic.
+	\item Interpret the p-value: small values give evidence that the null hypothesis ($M_S$ model) does not hold.
+\end{enumerate}
+
+\begin{example}
+	There are a number of defective items on  a production line in 20 days that follow \person{Poisson}($\lambda$) distribution: 1, 2, 3, 4, 2, 3, 2, 5, 5, 2, 4, 3, 5, 1, 2, 4, 0, 2, 2, 6.
+	\begin{center}
+		$\begin{array}{ccp{4cm}|p{7cm}}
+		&&null hypothesis & $H_0$: $\lambda = 2$ small model $M_S$ \\
+		\cline{3-4}
+		&&alternative hypothesis & $H_A$: $\lambda \neq 2$ big model $M_B$\\
+		\cline{3-4}
+		&&log-likelihood for the Poisson distribution & $l(\lambda) = \left(\sum_{i=1}^{20} x_i\right)\log(\lambda) - n\lambda$ \\
+		\cline{3-4}
+		\multirow{3.7}{3mm}{$M_B$}& \ldelim\{{3.5}{2mm}  & MLE for the unknown parameter& $\hat{\lambda} = \frac{\sum x_i}{n} = 2.9$ \\ \cline{3-4}
+		&  & Maximum possible value for the log-likelihood & $l(M_B) = 58\log(2.9) - 20\cdot 2.9 = 3.7532$ \\ \cline{3-4}
+		\multirow{3.7}{3mm}{$M_S$}& \ldelim\{{3.5}{2mm}  & MLE for the unknown parameter& no unknown parameter \\ \cline{3-4}
+		&  & Maximum possible value for the log-likelihood & $l(M_S) = 58\log(2) - 20\cdot 2 = 0.2025$ \\ \cline{3-4}
+		&&Likelihood ratio test & $\chi^2 = 2\big(l(M_B) - l(M_S)\big) = 7.101$ \\
+		\cline{3-4}
+		&&\multicolumn{2}{p{11cm}}{It should be compared to $\chi^2(1\text{ degree of freedom})$ since the difference in unknown parameters is equal to 1.} \\
+		\cline{3-4}
+		&&p-value & The p-value is 0.008 (the upper tail probability above 7.101) \\
+		\cline{3-4}
+		&&Interpreting p-value & The p-value is very small and we can conclude that there is  strong evidence that $M_B$ fits the data better than $M_S$: $\lambda\neq 2$.
+		\end{array}$
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=0, xmax=10, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=50,
+		axis y line=middle,
+		axis x line=middle,
+		domain=0:10,
+		restrict y to domain=0:1,
+		]
+		\addplot[name path=f,blue] {exp(-x/2)/(sqrt(2*pi) * sqrt(x))};
+		\path[name path=axis] (axis cs:7.101,0) -- (axis cs:10,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=7.101:10},];
+		\draw [dotted] (axis cs:7.101,0) -- (axis cs:7.101,0.6);
+		\node at (axis cs:8.5,0.4) (a) {p-value};
+		\draw (axis cs:8.5, 0.36) -- (axis cs: 7.5,0.0002);
+		\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=6, xmax=10, xlabel=$x$,
+		ymin=0, ymax=0.01, ylabel=$y$,
+		samples=50,
+		axis y line=middle,
+		axis x line=middle,
+		domain=0:10,
+		restrict y to domain=0:0.01,
+		]
+		\addplot[name path=f,blue] {exp(-x/2)/(sqrt(2*pi) * sqrt(x))};
+		\path[name path=axis] (axis cs:7.101,0) -- (axis cs:10,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=7.101:10},];
+		\draw [dotted] (axis cs:7.101,0) -- (axis cs:7.101,0.006);
+		\node at (axis cs:8.5,0.006) (a) {p-value};
+		\draw (axis cs:8.5, 0.0056) -- (axis cs: 7.5,0.002);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+A \begriff{two-sample t-test} should be used to compare group means when you have independent samples. A \begriff{paired t-test} is needed when each sampled item in one group is associated with an item sampled from the other group.
+
+\subsection{Two-sample t-test}
+
+We can carry out a hypothesis test to verify if the two means are equal: \\
+$H_0$: $\mu_1 = \mu_2$ \\
+$H_A$: $\mu_1\neq\mu_2$ (The corresponding one-tailed alternative also holds.)
+
+\begin{definition}
+	If $\bar{x_1}$ and $\bar{x_2}$ come from Normal($\mu_1,\sigma$) and Normal($\mu_2,\sigma$) with sample sizes $n_1$ and $n_2$ then
+	\begin{align}
+		T = \frac{\bar{x_1}-\bar{x_2}}{\SE(\bar{x_1}-\bar{x_2})} \approx t(n_1+n_2-2\text{ degrees of freedom})\notag
+	\end{align}
+	provided $\mu_1=\mu_2$. For relatively large sample sizes (Central Limit Theorem) we can use Z-test instead of t-test.
+\end{definition} 
+
+\begin{example}
+	A botanist is interested in comparing the growth response of dwarf pea stems to two different levels of the hormone indoleacetic acid (IAA). The botanist measured the growth of pea stem segments in millimetres for $0.5\cdot 10^{-4}$ IAA level: 0.8, 1.8, 1.0, 0.1, 0.9, 1.7, 1.0, 1.4, 0.9, 1.2, 0.5 and for $10^{-4}$ IAA level: 1.0, 1.8, 0.8, 2.5, 1.6, 1.4, 2.6, 1.9, 1.3, 2.0, 1.1, 1.2. Test whether the larger hormone concentration results in greater growth of the pea plants.
+	\begin{center}
+		\begin{tabular}{p{4cm}|p{7cm}}
+			independent samples & $n_x = 11$, $n_y=12$ \\
+			\hline
+			Null hypothesis & $H_0$: $\mu_x=\mu_y$ \\
+			\hline
+			Alternative hypothesis & $H_A$: $\mu_x < \mu_y$ \\
+			\hline
+			The \begriff{pooled estimate} assumes that the variance is the same in both groups & $s^2 = \frac{10s_x^2 + 11s_y^2}{21} = 0.2896$ \\
+			\hline
+			test statistic & $t=\frac{1.027-1.6}{\sqrt{0.2896(\frac{1}{11} + \frac{1}{12})}} = -2.5496$ \\
+			\hline
+			p-value for 21 degrees of freedom in t-distribution & $P(t\le -2.5496) = 0.0093$ \\
+			\hline
+			Interpretation & There is very strong evidence that the mean growth of the peas is higher at the higher hormone concentration.
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-3, xmax=3, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-3:3,
+		restrict y to domain=0:1,
+		]
+		\addplot[name path=f,blue] {(1.38087*10^(14))/((x^2+21)^(11))};
+		\path[name path=axis] (axis cs:-3,0) -- (axis cs:-2.5496,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=-3:-2.5496},];
+		\draw [dotted] (axis cs:-2.5496,0) -- (axis cs:-2.5496,0.6);
+		\node at (axis cs:-1.7,0.3) (a) {p-value};
+		\draw (axis cs:-1.7, 0.26) -- (axis cs: -2.7,0.01);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{*anmerkung}[pooled variance]
+	In statistics, pooled variance (also known as combined, composite, or overall variance) is a method for estimating variance of several different populations when the mean of each population may be different, but one may assume that the variance of each population is the same. The numerical estimate resulting from the use of this method is also called the pooled variance.
+	
+	Under the assumption of equal population variances, the pooled sample variance provides a higher precision estimate of variance than the individual sample variances. This higher precision can lead to increased statistical power when used in statistical tests that compare the populations, such as the t-test.
+	\begin{align}
+		s^2 = \frac{\sum_{i=1}^k (n_i-1)s_i^2}{\sum_{i=1}^k (n_i-1)} \notag
+	\end{align}
+	Adapted from \url{https://en.wikipedia.org/wiki/Pooled_variance}.
+\end{*anmerkung}
+
+\begin{example}[from MATLAB session]
+	When you sing in to your Facebook account, you are granted access to more than 1 million relying party (RP) websites. RP websites were categorized as server-flow or client-flow websites. Of the 40 server-flow sites studied, 20 were found to be vulnerable to impersonation attacks. Of the 54 client-flow sites, 41 were found to be vulnerable to impersonation attacks. Do these results indicate that a client-flow website is more likely to be vulnerable to an attack than a server-flow website? Test using $\alpha = 0.01$.
+	\begin{center}
+		\begin{tabular}{p{4cm}|p{7cm}}
+			Null hypothesis & $H_0$: $p_{server}=p_{client}\Rightarrow \frac{20}{40}=\frac{41}{54}$ \\
+			\hline
+			Alternative hypothesis & $H_A$: $p_{server} < p_{client}$ \\
+			\hline
+			pooled sample proportion & $p = \frac{40\cdot\frac{20}{40} + 54\cdot\frac{41}{54}}{40+54} = 0.6489$ \\
+			\hline
+			test statistic & $z=\frac{p_{client}-p_{server}}{\sqrt{0.6489(\frac{1}{40} + \frac{1}{54})}} = 2.6038$ \\
+			\hline
+			rejection region for $\alpha=0.01$ & \texttt{norminv(0.01)} = 2.3268 \\
+			\hline
+			Interpretation & $z$ lies in the rejection region so $H_0$ is rejected.
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-4, xmax=4, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-4:4,
+		restrict y to domain=0:1,
+		width = 16cm,
+		height = 8cm,
+		]
+		\addplot[name path=f,blue] {1/(sqrt(2*pi)) * exp(-x^2/2)};
+		\path[name path=axis] (axis cs:2.3263,0) -- (axis cs:4,0);
+		\draw (axis cs:2.3263,0) -- (axis cs:2.3263,1);
+		\draw [dotted] (axis cs:2.6038,0) -- (axis cs:2.6038,0.6);
+		\node at (axis cs:1.7,0.5) (a) {0.01};
+		\draw (axis cs:1.7, 0.46) -- (axis cs: 2.45,0.01);
+		\node at (axis cs: 2.7,0.95) (b) {2.3263};
+		\node at (axis cs: 2.95,0.55) (c) {2.6038};
+		\node[red] at (axis cs: 3.2,0.78) (d) {rejection region};
+		\begin{scope}[transparency group]
+		\begin{scope}[blend mode=multiply]
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=2.3263:4},];
+		\draw[red,fill=red,opacity=0.2] (axis cs: 2.3263,0) -- (axis cs: 2.3263,1) -- (axis cs: 4,1) -- (axis cs: 4,0) -- (axis cs: 2.3263,0);
+		\end{scope}
+		\end{scope}
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\subsection{Paired t-test}
+
+Testing whether two paired measurements $X$ and $Y$ have equal means is done in terms of the difference $D=Y-X$. The hypothesis \\
+$H_0$: $\mu_x = \mu_y$ \\
+$H_A$: $\mu_x\neq \mu_y$ \\
+can be re-written as \\
+$H_0$: $\mu_d=0$ \\
+$H_A$: $\mu_d\neq 0$. \\
+This can reduce the paired data set to a univariate data set of differences. The hypothesis can be assigned using t-test:
+\begin{align}
+	t = \frac{\bar{d}-0}{\frac{s_d}{\sqrt{n}}} \notag
+\end{align}
+Z-test can be used for relatively large sample sizes.
+
+\begin{example}
+	A researcher studying congenital heard disease wants to compare the development of cyanotic children with normal children. Among the measurement of interest is the age at which the children speak their first word.
+	\begin{center}
+		\begin{tabular}{c|cc|c}
+			\textbf{pair of siblings} & \textbf{cyanotic sibling} & \textbf{normal sibling} & \textbf{difference} \\
+			\hline
+			1 & 11.8 & 9.8 & 2.0 \\
+			2 & 20.8 & 16.5 & 4.3 \\
+			3 & 14.5 & 14.5 & 0.0 \\
+			4 & 9.5 & 15.2 & -5.7 \\
+			5 & 13.5 & 11.8 & 1.7 \\
+			6 & 22.6 & 12.2 & 10.4 \\
+			7 & 11.1 & 15.2 & -4.1 \\
+			8 & 14.9 & 15.6 & -0.7 \\
+			9 & 16.5 & 17.2 & -0.7 \\
+			10 & 16.5 & 10.5 & 6.0 \\
+		\end{tabular}
+	\end{center}
+	The researcher wants to test whether cyanotic children speak their first word later on average than children without the disease.
+	\begin{center}
+		\begin{tabular}{p{4cm}|p{7cm}}
+			Null hypothesis & $H_0$: $\mu_d = 0$ \\
+			\hline
+			Alternative hypothesis & $H_A$: $\mu_d > 0$ \\
+			\hline
+			test statistic & $t = \frac{\bar{d}-0}{\frac{s_d}{\sqrt{n}}} = 0.8802$ \\
+			\hline
+			Interpretation & The p-value is well above zero (0.1997), so there is no evidence that the cyanotic children learn to speak later.
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=-3, xmax=3, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-3:3,
+		restrict y to domain=0:1,
+		]
+		\addplot[name path=f,blue] {(984375)/(8*(x^2+10)^(5.5))};
+		\path[name path=axis] (axis cs:0.8802,0) -- (axis cs:3,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=0.8802:3},];
+		\draw [dotted] (axis cs:0.8802,0) -- (axis cs:0.8802,0.6);
+		\node at (axis cs:1.7,0.4) (a) {p-value};
+		\draw (axis cs:1.7, 0.36) -- (axis cs: 1.2,0.08);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{example}
+	The blood pressure of 15 college-aged woman was measured before starting to take the pill and after 6 months of use.
+	\begin{center}
+		\begin{tabular}{c|cc}
+			 & \multicolumn{2}{c}{\textbf{blood pressure}} \\
+			 \textbf{subject} & \textbf{before pill} & \textbf{after pill} \\
+			 \hline
+			 1 & 70 & 68 \\
+			 2 & 80 & 72 \\
+			 3 & 72 & 62 \\
+			 4 & 76 & 70 \\
+			 5 & 76 & 58 \\
+			 6 & 76 & 66 \\
+			 7 & 72 & 68 \\
+			 8 & 78 & 52 \\
+			 9 & 82 & 64 \\
+			 10 & 64 & 72 \\
+			 11 & 74 & 74 \\
+			 12 & 92 & 60 \\
+			 13 & 74 & 74 \\
+			 14 & 68 & 72 \\
+			 15 & 84 & 74 \\
+		\end{tabular}
+	\end{center}
+	A two-tailed test is used as the pill might either increase or decrease blood pressure.
+	\begin{center}
+		\begin{tabular}{p{4cm}|p{7cm}}
+			Null hypothesis & $H_0$: $\mu_d = 0$ \\
+			\hline
+			Alternative hypothesis & $H_A$: $\mu_d \neq 0$ \\
+			\hline
+			test statistic & $t = \frac{\bar{d}-0}{\frac{s_d}{\sqrt{n}}} = -3.1054$ \\
+			\hline
+			Interpretation & The p-value (0.0072) is very small that gives strong evidence that the blood pressure has changed. The negative t-value suggests that the blood pressure has decreased.
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=-4, xmax=4, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-4:4,
+		restrict y to domain=0:1,
+		]
+		\addplot[name path=f,blue] {(116640000000*sqrt(15))/(143*pi*(x^2+15)^(8))};
+		\path[name path=axis] (axis cs:-4,0) -- (axis cs:-3.1054,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=-4:-3.1054},];
+		\draw [dotted] (axis cs:-3.1054,0) -- (axis cs:-3.1054,0.6);
+		\node at (axis cs:-2.2,0.4) (a) {p-value};
+		\draw (axis cs:-2.2, 0.36) -- (axis cs: -3.2,0.001);
+		\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=-4, xmax=-2, xlabel=$x$,
+		ymin=0, ymax=0.1, ylabel=$y$,
+		samples=400,
+		axis y line=middle,
+		axis x line=middle,
+		domain=-4:-2,
+		restrict y to domain=0:0.1,
+		]
+		\addplot[name path=f,blue] {(116640000000*sqrt(15))/(143*pi*(x^2+15)^(8))};
+		\path[name path=axis] (axis cs:-4,0) -- (axis cs:-3.1054,0);
+		\addplot [thick,color=blue,fill=blue,fill opacity=0.3] fill between[of=f and axis,soft clip={domain=-4:-3.1054},];
+		\draw [dotted] (axis cs:-3.1054,0) -- (axis cs:-3.1054,0.06);
+		\node at (axis cs:-3.6,0.05) (a) {p-value};
+		\draw (axis cs:-3.6, 0.046) -- (axis cs: -3.2,0.003);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
