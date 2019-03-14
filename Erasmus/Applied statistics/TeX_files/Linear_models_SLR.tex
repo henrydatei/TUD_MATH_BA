@@ -1,0 +1,132 @@
+\begin{example}
+	Suppose a chemical reaction produces higher yields of a product, the higher the ambient temperature
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=50, xmax=100, xlabel=temperature,
+		ymin=100, ymax=250, ylabel=yiels,
+		samples=400,
+		axis x line=bottom,
+		axis y line=left,
+		domain=50:100,
+		]
+		\addplot[mark=x,only marks] coordinates {
+			(50,120)
+			(53,115)
+			(54,125)
+			(55,119)
+			(56,120)
+			(59,140)
+			(62,145)
+			(64,143)
+			(67,147)
+			(71,157)
+			(72,160)
+			(74,175)
+			(75,159)
+			(76,177)
+			(79,180)
+			(80,185)
+			(82,182)
+			(85,185)
+			(87,188)
+			(89,200)
+			(93,195)
+			(94,203)
+			(95,204)
+			(97,212)
+		};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Simple linear regression is what we can use to investigate if a relationship between two variables exists when we don't know about the underlying process. We model a linear relationship between two variables and
+	\begin{enumerate}[label=(\alph*)]
+		\item quantify this pattern before
+		\item testing if we can believe it
+	\end{enumerate}
+\end{example}
+
+\subsection{Structure of simple linear regression models}
+
+\begin{definition}[simple linear regression]
+	For $n$ observed data pairs $\{(x_i,Y_i)\mid i=1,...,n\}$ \begriff{simple linear regression} assumes we have the relationship
+	\begin{align}
+		Y_i = \beta_0 + \beta_1x_i + \epsilon_i\notag
+	\end{align}
+	$Y$ is called the \begriff{respose variable} and $x$ the \begriff{explainatory variable}. $\beta_0$ and $\beta_1$ are \begriff{model parameters}. $\epsilon_i$ are error terms (spread around the regression line) and crucially, we assume $\epsilon_i\overset{i.i.d}{\sim}Normal(0,\sigma)$ in simple linear regression.
+\end{definition}
+
+\begin{definition}[alternative representations for simple linear regression models]
+	\begin{enumerate}[label=(\alph*)]
+		\item algebraic notation:
+		\begin{align}
+			Y_1 &= \beta_0 + \beta_1x_1 + \epsilon_1 \notag \\
+			Y_2 &= \beta_0 + \beta_1x_2 + \epsilon_2 \notag \\
+			\vdots  \notag \\
+			Y_n &= \beta_0 + \beta_1x_n + \epsilon_n \notag
+		\end{align}
+		\item Matrix notation:
+		\begin{align}
+			Y = \beta X + \epsilon \notag 
+		\end{align}
+		Because of the error term $\epsilon$, the response $Y$ is a random variable. So, $Y_i = E(Y_i)+\epsilon_i = \beta_0+\beta_1x_i+\epsilon_i$ and thus $E(Y_i) = \beta_0+\beta_1x_i$. This leads to the following notation
+		\item Random variable notation: 
+		\begin{align}
+			Y_i &\overset{i.i.d}{\sim}Normal(\beta_0+\beta_1x_i,\sigma) \notag \\
+			Y &\sim Normal(X\beta,\mathbbm{1}\sigma) \notag
+		\end{align}
+		Since the mean of the response is a linear function of the explanatory variables, there are often called simple linear models.
+	\end{enumerate}
+\end{definition}
+
+Given data, we want to estimate the parameters of the model. In this course, we always use Maximum Likelihood Estimation (MLE). That means, we find parameter values that maximise the likelihood of our model. The likelihood for an simple linear model is
+\begin{align}
+	L(\beta\mid X) = \prod_{i=1}^{n} f_{Normal}(Y_i,\mu=\beta_0+\beta_1x_i,\sigma) \notag
+\end{align}
+where $f_{Normal}$ is the PDF for the normal distribution with mean $\mu=\beta_0+\beta_1x_i$ and standard deviation $\sigma$ evaluated at $Y_i$. For linear models, it has been shown that MLE is equivalent to Ordinary Least Squares (OLS). For linear models exact equations for these parameter estimates exist
+\begin{align}
+	\hat{\beta} &= (X^TX)^{-1}X^TY \notag \\
+	\hat{\sigma}^2 &= \frac{1}{n-2}(Y-X\hat{\beta})^T(Y-X\hat{\beta})\notag
+\end{align}
+Fitted values for the response are: $\hat{Y} = X\hat{\beta}$
+
+\input{./TeX_files/materials/likelihood_function_revisited}
+
+In $Y_i=\beta_0+\beta_1x_i+\epsilon_i$, assuming we know $\beta_0=0$and $\sigma$, we can see that the likelihood is maximal for $\beta_1=1$. Seeming plausible given the data on the left.
+
+\subsection{Assumptions of simple linear models}
+
+All statistical models make assumptions. Linear models are no exception. They assume, most importantly:
+\begin{itemize}
+	\item \textbf{Linearity:} response variable is a linear combination of the explanatory variables
+	\item \textbf{Normality:} errors follow a normal distribution
+	\item \textbf{Constant error variance (homoscedasticity):} variance of the response variable (or errors) does not depend on the value of the explanatory variables. If this assumption is invalid it's called heteroscedasticity.
+	\item \textbf{Independence:} the errors are uncorrelated (ideally statistically independent). This means that the response variable observations are conditionally independent. Need this for the product in the likelihood function.
+	\item \textbf{Weak exogeneity:} the explanatory variables can be treated as fixed values, rather than random variables.
+\end{itemize}
+It is important to check that the most important assumptions hold (approximately) when fitting linear models to data.
+
+To check if the model assumptions hold, we look at the errors, or \begriff{residuals}: $\epsilon=Y-X\hat{\beta}$. Hypothesis testing on residuals is possible, but we will focus on residual plots for model checking. Perfect residual plots look like this:
+
+\input{./TeX_files/materials/perfect_residuals_1}
+\input{./TeX_files/materials/perfect_residuals_2}
+
+The following residual plots gone wrong. Note that these plots are not all from the same data.
+
+\input{./TeX_files/materials/wrong_residuals_1}
+\input{./TeX_files/materials/wrong_residuals_2}
+
+\subsection{Hypothesis testing on simple linear model parameters}
+
+How to test if the $x_i$s contribute information for the prediction of $Y$ in $Y_i=\beta_0+\beta_1x_i+\epsilon_i$? One way of doing this is to test the hypothesis that $Y$ does not change as the explanatory $x$ changes. In other words, we test the hypothesis \\
+$H_0$: $\beta_1=0$ \\
+$H_A$: $\beta_1\neq 0$ \\
+Fortunately, 'math boffins' have found that $\hat{\beta_1}$ follows a normal distribution with mean $\beta_1$ and standard error 
+\begin{align}
+	\sigma_{\hat{\beta_1}} = \frac{\sigma}{\sqrt{SS_{xx}}}\approx \frac{s}{\sqrt{SS_{xx}}}\notag
+\end{align}
+where $SS_{xx}=\sum(x_i-\bar{x})^2$ and $s^2=\frac{\sum (Y_i-\hat{Y_i})^2}{n-2}$. Since $\sigma$ is usually unknown, we need to use a \person{Student}'s t-test on
+\begin{align}
+	t = \frac{\hat{\beta_1}-\text{hypothesised value}}{\frac{s}{SS_{xx}}} \notag
+\end{align}
+with degrees of freedom based on the number of data points and model parameters. In practice, software will does this for us!
