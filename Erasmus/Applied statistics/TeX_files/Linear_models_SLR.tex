@@ -127,6 +127,6 @@ Fortunately, 'math boffins' have found that $\hat{\beta_1}$ follows a normal dis
 \end{align}
 where $SS_{xx}=\sum(x_i-\bar{x})^2$ and $s^2=\frac{\sum (Y_i-\hat{Y_i})^2}{n-2}$. Since $\sigma$ is usually unknown, we need to use a \person{Student}'s t-test on
 \begin{align}
-	t = \frac{\hat{\beta_1}-\text{hypothesised value}}{\frac{s}{SS_{xx}}} \notag
+	t = \frac{\hat{\beta_1}-\text{hypothesised value}}{\frac{s}{\sqrt{SS_{xx}}}} \notag
 \end{align}
 with degrees of freedom based on the number of data points and model parameters. In practice, software will does this for us!
