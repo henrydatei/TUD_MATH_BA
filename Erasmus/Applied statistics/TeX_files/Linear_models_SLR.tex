@@ -75,7 +75,7 @@
 			Y_i &\overset{i.i.d}{\sim}Normal(\beta_0+\beta_1x_i,\sigma) \notag \\
 			Y &\sim Normal(X\beta,\mathbbm{1}\sigma) \notag
 		\end{align}
-		Since the mean of the response is a linear function of the explanatory variables, there are often called simple linear models.
+		Since the mean of the response is a linear function of the explanatory variables, there are often called \begriff{simple linear models}.
 	\end{enumerate}
 \end{definition}
 
@@ -130,3 +130,33 @@ where $SS_{xx}=\sum(x_i-\bar{x})^2$ and $s^2=\frac{\sum (Y_i-\hat{Y_i})^2}{n-2}$
 	t = \frac{\hat{\beta_1}-\text{hypothesised value}}{\frac{s}{\sqrt{SS_{xx}}}} \notag
 \end{align}
 with degrees of freedom based on the number of data points and model parameters. In practice, software will does this for us!
+
+As an alternative for interference on parameter estimates, we can also compute confidence intervals. The $(1-\alpha)100\%$ confidence interval for the gradient $\beta_1$ is
+\begin{align}
+	\hat{\beta_1}\pm t_{\nicefrac{\alpha}{2}}s_{\hat{\beta_1}}\notag 
+\end{align}
+where $s_{\hat{\beta_1}} = \frac{s}{\sqrt{SS_{xx}}}$ and $t_{\nicefrac{\alpha}{2}}$ is based on $n-2$ degrees of freedom. $t_{\nicefrac{\alpha}{2}}$ is obtained from the \person{Stundent}'s t-distribution in the usual way. Some statistical software provides these values by default, but often (e.g. in MATLAB), only the standard errors for parameter estimates are provided.
+
+\subsection{Estimation and prediction for simple linear models}
+
+\begin{definition}[estimation]
+	\begriff[simple linear models!]{Estimation}: estimate mean value of $Y$ over many data points
+\end{definition}
+
+\begin{definition}[prediction]
+	\begriff[simple linear models!]{Prediction}: predict $Y$ for a particular value of $x$. This leads to higher error bounds (add error in mean to variation around mean).
+\end{definition}
+
+\input{./TeX_files/materials/estimation_prediction_slms}
+
+\textcolor{red}{Be careful with predictions far away from mean of explanatory variable or outside of region covered by data.}
+
+It's good practise to always check the fit visually\footnote{If you don't believe that have a look at \url{https://en.wikipedia.org/wiki/Anscombe\%27s_quartet}}. Looking at residual plots is also useful.
+
+\begin{definition}[Coefficient of Determination]
+	The \begriff{Coefficient of Determination}, $R^2$, is defined as
+	\begin{align}
+		R^2 = \frac{SS_{yy}-SSE}{SS_{yy}} \notag
+	\end{align}
+	where $SS_{yy}=\sum(Y_i-\bar{Y})^2$ and $SSE=\sum(Y_i-\hat{Y_i})^2$. $R^2$ can be interpreted as the proportion of the variance in the response variable that is explained by (or attributed to) the explanatory variable. There are other measures, similar to $R^2$ and there are a few issues making it problematic for assessing goodness of fit. We'll revisit this later in the course.
+\end{definition}
