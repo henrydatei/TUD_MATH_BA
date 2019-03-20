@@ -1,0 +1,115 @@
+Last lecture we've looked at simple linear regression ($Y_i=\beta_0 + \beta_1x_i + \epsilon_i$)
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=50, xmax=100, xlabel=temperature,
+	ymin=100, ymax=250, ylabel=yiels,
+	samples=400,
+	axis x line=bottom,
+	axis y line=left,
+	domain=50:100,
+	]
+	\addplot[mark=x,only marks, blue] coordinates {
+		(50,120)
+		(53,115)
+		(54,125)
+		(55,119)
+		(56,120)
+		(59,140)
+		(62,145)
+		(64,143)
+		(67,147)
+		(71,157)
+		(72,160)
+		(74,175)
+		(75,159)
+		(76,177)
+		(79,180)
+		(80,185)
+		(82,182)
+		(85,185)
+		(87,188)
+		(89,200)
+		(93,195)
+		(94,203)
+		(95,204)
+		(97,212)
+	};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+This lecture we'll look at multiple linear regression (more than one predictor)
+\input{./TeX_files/materials/multiple_linear_regression}
+
+\subsection{Structure of multiple linear regression models}
+
+Good news: simple linear models are a special case of \begriff{multiple linear regression} and with minor extensions everything we've looked at so far still applies. For $p$ predictors and data tuples $\{(x_{1i},x_{2i},...,x_{pi},Y_i)\mid i=1,...,n\}$, we assume the relationship
+\begin{align}
+	Y_i = \beta_0 + \sum_{j=1}^{p} \beta_jx_{ji} + \epsilon_i\notag
+\end{align}
+As before, we assume $\epsilon_i\overset{i.i.d}{\sim}Normal(0,\sigma)$. 
+
+The matrix notation, $Y=X\beta + \epsilon$, now becomes very convenient:
+\begin{align}
+	Y = \begin{pmatrix}
+		Y_1 \\ \vdots \\ Y_n
+	\end{pmatrix}\quad X = \begin{pmatrix}
+		1 & x_{11} & \dots & x_{p1} \\ \vdots & \vdots & \vdots & \vdots \\ 1 & x_{1n} & \dots &  x_{pn}
+	\end{pmatrix} \quad \beta = \begin{pmatrix}
+		\beta_0 \\ \vdots \\ \beta_p
+	\end{pmatrix}\quad \epsilon = \begin{pmatrix}
+		\epsilon_1 \\ \vdots \\ \epsilon_n
+	\end{pmatrix} \notag
+\end{align}
+
+As before, the random variable notation is
+\begin{align}
+	Y_i &\overset{i.i.d}{\sim} Normal\left(\beta_0 + \sum_{j=1}^{p} \beta_jx_{ji},\sigma\right) \notag \\
+	Y &\sim Normal(X\beta,\mathbbm{1}\sigma) \notag
+\end{align}
+
+Model fitting using Maximum Likelihood Estimation (MLE) proceeds in the same way as for simple linear models seen before and is equivalent to Ordinary Least Squares (OLS) fitting. The likelihood function is given by
+\begin{align}
+	L(\beta\mid X) = \prod_{i=1}^n f_{Normal}\left(Y_i,\mu=\beta_0+\sum_{j=1}^{p} \beta_jx_{ji},\sigma\right)\notag
+\end{align}
+where $f_{Normal}$ is the PDF for the normal distribution evaluated at $Y_i$. The exact equations for parameter MLEs are
+\begin{align}
+	\label{MLR_parameter_estimates}
+	\begin{split}
+		\hat{\beta} &= (X^TX)^{-1}X^TY \\
+		\hat{\sigma}^2 &= \frac{1}{n-(p+1)}(Y-X\hat{\beta})^T(Y-X\hat{\beta})
+	\end{split}
+\end{align}
+Fitted values for the response are: $\hat{Y} = X\hat{\beta}$. Parameter estimates for one explanatory variable describe the relationship between this variable and the response variable when all other explanatory variables are held fixed.
+
+\subsection{Assumptions of linear models}
+
+The assumptions for multiple linear regression models are the same as for simple linear models:
+\begin{itemize}
+	\item \textbf{Linearity:} response variable is a linear combination of the explanatory variables
+	\item \textbf{Normality:} errors follow a normal distribution
+	\item \textbf{Homoscedasticity:} variance of the response variable (or errors) is constant.
+	\item \textbf{Independence:} the errors are uncorrelated (ideally statistically independent).
+	\item \textbf{Weak exogeneity:} the explanatory variables can be treated as fixed values, rather than random variables.
+\end{itemize}
+However, there is one important addition:
+\begin{itemize}
+	\item \textbf{Lack of perfect multicollinearity:} if two explanatory variables are perfectly correlated, we can not solve the equation for parameter estimates (\cref{MLR_parameter_estimates}). Some (but not perfect!) correlation between explanatory variables my be permissible.
+\end{itemize}
+
+\subsection{Hypothesis testing on linear model parameters}
+
+\subsection{Model selection}
+
+\subsubsection{Hypothesis tests on model parameters}
+
+\subsubsection{$R^2$ and adjusted $R^2$}
+
+\subsubsection{F-test on linear models}
+
+\subsubsection{Quality measures based on the likelihood}
+
+\subsubsection{Likelihood-ratio test for nested models}
+
+\subsection{Automated or standardised model selection strategies}
