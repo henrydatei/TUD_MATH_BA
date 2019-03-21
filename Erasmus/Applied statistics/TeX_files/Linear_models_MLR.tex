@@ -100,9 +100,74 @@ However, there is one important addition:
 
 \subsection{Hypothesis testing on linear model parameters}
 
+Using a conceptionally similar approach as for simple linear models, we can test hypothesis about the $\beta$s and construct confidence intervals for them. Importantly, the test statistics depend on the entries of the matrix
+\begin{align}
+	(X^TX)^{-1} = \begin{pmatrix}
+		c_{00} & c_{01} & \dots & c_{0p} \\ \vdots & \vdots & \vdots & \vdots \\ c_{p0} & c_{p1} & \dots & c_{pp}
+	\end{pmatrix}\notag
+\end{align}
+as $\sigma_{\hat{\beta_j}}=\hat{\sigma}\cdot\sqrt{c_{jj}}$ ($j=1,...,p$). Off-diagonal entries determine the covariance of estimates and are important for the variance in prediction. Generally, $\sigma$ needs to be estimated, so in practise we use \person{Student}'s t-distribution and the test statistic
+\begin{align}
+	t = \frac{\hat{\beta_j}-\text{hypothesised value}}{\hat{\sigma}\sqrt{c_{jj}}} \notag
+\end{align}
+\textcolor{red}{Many details omitted - software does the work for us!}
+
 \subsection{Model selection}
 
+With the more general Linear Model formulation, we can create many different models. How to choose which model to use?
+
+\begin{example}
+	Consider the range of electric vehicles.
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[ 
+		xbar, xmin=0,
+		xlabel={Kilometers},
+		axis lines*=left,
+		symbolic y coords={%
+			{Smart EV},
+			{Focus Electric},
+			{BMW i3},
+			{Nissan Leaf},
+			{Tesla S 850}},
+		ytick=data,
+		nodes near coords, 
+		nodes near coords align={horizontal},
+		ytick=data,
+		]
+		\addplot coordinates {
+			(110,{Smart EV}) 
+			(122,{Focus Electric}) 
+			(130,{BMW i3}) 
+			(172,{Nissan Leaf})
+			(426,{Tesla S 850})};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Depends on battery size, driving style or ambient temperature? Or all factors?
+\end{example}
+
+The right model depends on the purpose: Find all relevant factors? Prediction of range on a given day?
+
+There is not one correct approach to model selection. What makes a good model depends on what it is designed for. Consequently, there are may different tools and techniques. Broadly, there are three types of model selection approaches:
+\begin{itemize}
+	\item Hypothesis tests on model parameters within models (include/exclude parameters).
+	\item Measures that describe the quality or goodness of fit of models.
+	\item Hypothesis tests comparing the fit of entire models (often related to measures from the previous point).
+\end{itemize}
+Fundamentally, model selection is at the heart of scientific inquiry. Statistical techniques offer one quantitative and rigorous approach. We'll go through a few of the most common statistical techniques.
+
 \subsubsection{Hypothesis tests on model parameters}
+
+We've encountered these already (test $H_0$: $\beta_j=0$). Could determine our model by fitting a full model that includes all conceivable explanatory variables first and than removing the explanatory variables for which we can't reject $H_0$.
+
+\textbf{Problems:}
+\begin{itemize}
+	\item Multiple comparisons: conducting many hypothesis tests means that some may be rejected/accepted by chance (there are ways of dealing with this, e.g. \person{Bonferroni} correction).
+	\item The model fit changes every time we remove an explanatory variable.
+\end{itemize} 
+
+While these tests are useful, we may want other approaches that allow us to test global hypotheses about models.
 
 \subsubsection{$R^2$ and adjusted $R^2$}
 
