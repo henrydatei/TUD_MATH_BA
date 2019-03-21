@@ -694,9 +694,9 @@
 \pagestyle{fancy}
 \pagenumbering{arabic}
 %remember chapter-title in \leftmark and \rightmark
-\renewcommand{\chaptermark}[1]{%
-	\markboth{\chaptername
-		\ \thechapter:\ #1}{}}
+%\renewcommand{\chaptermark}[1]{%
+%	\markboth{\chaptername
+%		\ \thechapter:\ #1}{}}
 %remember section title in \leftmark
 \renewcommand{\sectionmark}[1]{%
 	\markright{\thesection.\ #1}{}}
