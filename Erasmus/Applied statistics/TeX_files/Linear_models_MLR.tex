@@ -98,6 +98,8 @@ However, there is one important addition:
 	\item \textbf{Lack of perfect multicollinearity:} if two explanatory variables are perfectly correlated, we can not solve the equation for parameter estimates (\cref{MLR_parameter_estimates}). Some (but not perfect!) correlation between explanatory variables my be permissible.
 \end{itemize}
 
+Model checking works in the same way as for simple linear models, using residuals. Additionally, may want to plot each explanatory variables versus residuals.
+
 \subsection{Hypothesis testing on linear model parameters}
 
 Using a conceptionally similar approach as for simple linear models, we can test hypothesis about the $\beta$s and construct confidence intervals for them. Importantly, the test statistics depend on the entries of the matrix
@@ -171,10 +173,83 @@ While these tests are useful, we may want other approaches that allow us to test
 
 \subsubsection{$R^2$ and adjusted $R^2$}
 
+Last lecture we looked at the \begriff{coefficient of correlation}, $R^2$ (proportion of variance in response explained by explanatory variables). Could use this to distinguish between models: the closer to 1 it is, the better the model.
+
+\textbf{Problem:} $R^2$ always increases when we include more explanatory variables.
+
+\textbf{Solution:} Adjusted $R^2$, $R^2_a$: unlike $R^2$, this takes into account the sample size $n$ and the number of model parameters.
+
+\textbf{Warning:} I caution against relying on $R^2_a$ or $R^2$. They can only be usefully applied in particular circumstances.
+
 \subsubsection{F-test on linear models}
+
+Suppose we want to test a more general, global hypothesis about a linear model: \\
+$H_0$: $\beta_1=\beta_2=\dots=\beta_p=0$ \\
+$H_A$: At least one of the $\beta_j\neq 0$ \\
+i.e. we compare our specified model to a constant model that only has an intercept $\beta_0$. This is called \begriff{F-test} or Analysis of Variance (Global). It uses the F-distribution and the test statistic can be expressed in terms of $R^2$ (we skip the details).
+
+\textbf{Warnings}:
+\begin{itemize}
+	\item The test is very specific (we'll see a more general test in a moment). It asks if the improvement in model fit is larger than expected under $H_0$.
+	\item It makes several assumptions (e.g. normally distributed errors), so check model assumptions hold.
+	\item It doesn't tell us whether our model is correct.
+\end{itemize}
 
 \subsubsection{Quality measures based on the likelihood}
 
+Techniques so far rely on the variance in the response explained by models. Recall the analogy for MLE of maximising $P(data\mid parameters)$. Could use the maximum likelihood of models, $\hat{L}$, to compare them: highest $\hat{L}$ indicates best model.
+
+\textbf{Warning:} the likelihood faces the same problem as $R^2$ - it will always improve when more parameters are added to the model.
+
+\textbf{Solution:} penalty for parameters in measures for relative model quality.
+\begin{itemize}
+	\item \textbf{Akaike Information Criterion:}
+	\begin{align}
+		\text{AIC} = 2k-2\ln(\hat{L})\notag
+	\end{align}
+	where $k$ is the number of model parameters, including the intercept, but typically excluding the error variance (as this is included in all models). Model with smallest AIC is best.
+	\item \textbf{Bayesian Information Criterion:}
+	\begin{align}
+		\text{BIC} = \ln(n)k - 2\ln(\hat{L})\notag
+	\end{align}
+	Same idea, but penalty for parameters is stronger (based on different assumptions).
+\end{itemize}
+
+\textbf{Warning:} candidate models must be fitted to the same response data.
+
 \subsubsection{Likelihood-ratio test for nested models}
 
+The Likelihood-ratio test is a much more general version of the F-test. Consider a linear model, $M_1$ with parameters $\beta_{M_1}=\{\beta_1,\beta_2,...,\beta_p\}$. The test considers a restriction $M_0$ of $M_1$ where e.g. $\beta_{M_0} = \{\beta_1,\beta_2,...,\beta_q,0,...,0\}$ with $q<p$. We say $M_0$ is nested in $M_1$. We test the hypothesis: \\
+$H_0$: $\beta = \beta_{M_0}$ \\
+$H_A$: $\beta = \beta_{M_1}$ \\
+using the test statistic 
+\begin{align}
+	D = 2\ln\left(\frac{\widehat{L_{M_1}}}{\widehat{L_{M_0}}}\right) = 2\bigg(\ln\big(\widehat{L_{M_1}}\big) - \ln\big(\widehat{L_{M_0}}\big)\bigg) \notag
+\end{align}
+Under some conditions and assuming $H_0$, $D$ is asymptotically distributed as $D\sim\chi^2_{p-q}$. This is a flexible and very useful test (e.g. tests on individual parameters). Also works when error distribution is not normal.
+
 \subsection{Automated or standardised model selection strategies}
+
+Model selection is time consuming. So people have tried to come up with standardised or even automated procedures, e.g. stepwise regression. Many software packages, including MATLAB, implement such procedures. There are many flavours, but the basic idea is:
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Identify response $Y$ and all potentially important explanatory variables $x_1,...,x_p$.
+	\item Automatically work through models defined by all possible combinations of the $x_j$s, starting with simpler models.
+	\item At each step use standard hypothesis tests (or other measures) to assess if additional explanatory variables improve model.
+	\item Continue until some stopping criterion is reached.
+\end{enumerate}
+
+\textbf{Warning:} control of the process is relinquished to software that can be very intricate. Procedure conducts many statistical tests (multiple comparisons!). Because of these and other issues, many statisticians recommend not to use this approach.
+
+\begin{center}
+	\begin{tabular}{c|c}
+		\textbf{use} & \textbf{technique} \\
+		\hline
+		Hypothesis tests for single parameters & t-test, Likelihood-ratio test \\
+		Hypothesis tests for several parameters & F-test, Likelihood-ratio test \\
+		Measures for relative quality of models & $R^2$, $R^2_a$, AIC, BIC
+	\end{tabular}
+\end{center}
+
+\textbf{Warning}: none of these techniques tell you anything about the correctness of a model. So checking model assumptions separately is important!
+
+Remember, none of these techniques are perfect. Choose your approach depending on what you are trying to achieve with your models. Within this in mind, prediction intervals and residual plots could be also used in model selection.
