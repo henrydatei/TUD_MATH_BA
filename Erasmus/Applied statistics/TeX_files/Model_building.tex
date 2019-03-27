@@ -1,0 +1,147 @@
+So far, we have looked at linear models of the form
+\begin{align}
+	Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \dots + \beta_px_{pi} + \epsilon_i\notag
+\end{align}
+In this lecture, we extend this concept:
+\begin{itemize}
+	\item We look at how we can use different types of predictors to capture a wide range of relationships (e.g. capture non-linear relationship with linear model).
+	\item We'll think about how to formulate models, depending on their use.
+	\item We'll consider some common pitfalls in use of linear models.
+\end{itemize}
+
+\begin{example}
+	Consider energy usage in houses, based on their size.
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+			\begin{axis}[
+				xmin=0, xmax=3, xlabel=$x$,
+				ymin=4, ymax=8, ylabel=$y$,
+				title=\textbf{Linear fit},
+				axis x line=middle,
+				axis y line=middle,
+				samples=400
+			]
+			\addplot[blue, mark=x, only marks] coordinates	{
+				(0.00,4.00)
+				(0.10,4.42)
+				(0.20,4.81)
+				(0.30,5.18)
+				(0.40,5.51)
+				(0.50,5.82)
+				(0.60,6.11)
+				(0.70,6.37)
+				(0.80,6.60)
+				(0.90,6.81)
+				(1.00,7.00)
+				(1.10,7.17)
+				(1.20,7.31)
+				(1.30,7.43)
+				(1.40,7.53)
+				(1.50,7.61)
+				(1.60,7.68)
+				(1.70,7.72)
+				(1.80,7.75)
+				(1.90,7.75)
+				(2.00,7.75)
+				(2.10,7.72)
+				(2.20,7.68)
+				(2.30,7.63)
+				(2.40,7.56)
+				(2.50,7.48)
+				(2.60,7.39)
+				(2.70,7.28)
+				(2.80,7.16)
+				(2.90,7.03)
+			};
+			\addplot[mark=none] {0.96*x+5.4};
+			\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		xmin=0, xmax=3, xlabel=$x$,
+		ymin=4, ymax=8, ylabel=$y$,
+		title=\textbf{Polynomial fit},
+		axis x line=middle,
+		axis y line=middle,
+		samples=400
+		]
+		\addplot[blue, mark=x, only marks] coordinates	{
+			(0.00,4.00)
+			(0.10,4.42)
+			(0.20,4.81)
+			(0.30,5.18)
+			(0.40,5.51)
+			(0.50,5.82)
+			(0.60,6.11)
+			(0.70,6.37)
+			(0.80,6.60)
+			(0.90,6.81)
+			(1.00,7.00)
+			(1.10,7.17)
+			(1.20,7.31)
+			(1.30,7.43)
+			(1.40,7.53)
+			(1.50,7.61)
+			(1.60,7.68)
+			(1.70,7.72)
+			(1.80,7.75)
+			(1.90,7.75)
+			(2.00,7.75)
+			(2.10,7.72)
+			(2.20,7.68)
+			(2.30,7.63)
+			(2.40,7.56)
+			(2.50,7.48)
+			(2.60,7.39)
+			(2.70,7.28)
+			(2.80,7.16)
+			(2.90,7.03)
+		};
+		\addplot[mark=none] {0.1089*x^3-1.453*x^2+4.344*x+4};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+A simple linear models might tell us that a predictor is important, but it's no good prediction. Model building is a process that includes:
+\begin{itemize}
+	\item \textbf{Formulating a model:} model structure, we'll look at different types of predictors today.
+	\item \textbf{Model fitting:} last two lectures
+	\item \textbf{Model evaluation:} Check model assumptions hold, avoid common pitfalls
+\end{itemize}
+
+Before formulating a statistical model, it is good practice to explore the data. Look at scatter plots of predictors against the response and predictors against each other. Can help to develop an intuition for model structure. Look at distributions of response and predictors (e.g. look for outliers, can you capture the distribution with your model?) Think about what the model will be used for (e.g. prediction, or simply to find relevant explanatory variables).
+
+\subsection{Types of predictors}
+
+\subsubsection{qualitative vs quantitative}
+
+So far, we have looked at \begriff{quantitative predictors} (numerical variables), e.g. temperature, energy usage, waiting time before computer processes data, ... But we can have \begriff{qualitative predictors} as well (categorical variables), e.g. type of engine, type fuel used, type of processor used, ... These are included in models using \begriff{dummy variables}.
+
+\begin{example}
+	Consider the performance $Y_i$ of diesel engines for three different fuel types A, B and C. We use the model $Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \epsilon_i$, where $x_{1i}$ and $x_{2i}$ are dummy variables such that
+	\begin{align}
+		x_{1i} &= \begin{cases}
+		1 & \text{if fuel B is used} \\ 0 & \text{if not}
+		\end{cases} \notag \\
+		x_{2i} &= \begin{cases}
+		1 & \text{if fuel C is used} \\ 0 & \text{if not}
+		\end{cases} \notag 
+	\end{align}
+	The performance for fuel type A is captured in $\beta_0$.
+\end{example}
+
+Qualitative and quantitative predictors can be combined in models.
+
+\begin{example}
+	Consider fuel efficiency of car models from the 1950s (\textcolor{blue}{type 1}) and from the 1960s (\textcolor{red}{type 2}), depending on their weight. For car models $i=1,...,n$, we might consider the model $Y_i = \beta_0 + \beta_1x_i + \beta_2w_i + \epsilon_i$, where $Y_i$ is the efficiency in miles per gallon (MPG), $x_i$ is a dummy variable for the car type and $w_i$ is the weight of a car model. We might find:
+	\include{./TeX_files/materials/cartypes1}
+\end{example}
+
+\subsubsection{interaction terms}
+
+\subsubsection{polynomials of predictors}
+
+\subsubsection{data transformations}
+
+\subsection{Pitfalls}
