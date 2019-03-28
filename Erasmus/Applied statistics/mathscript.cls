@@ -65,6 +65,7 @@
 \RequirePackage{fancyhdr} 	%customize header / footer
 \RequirePackage{titlesec} 	%customize titles
 \RequirePackage{tocloft}	%customize toc
+\usepackage[bottom]{footmisc}
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)

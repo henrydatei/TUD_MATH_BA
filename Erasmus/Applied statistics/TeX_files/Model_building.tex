@@ -140,8 +140,118 @@ Qualitative and quantitative predictors can be combined in models.
 
 \subsubsection{interaction terms}
 
+So far, we have assumed that the effects of all explanatory variables are additive, e.g. as is $Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \epsilon_i$. What if the relationship between $Y_i$ and $x_{1i}$ depends on the value of $x_{2i}$? 
+
+Then we need to consider \begriff{interaction terms} in our model, e.g. $Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \beta_3x_{1i}x_{2i} + \epsilon_i$. Interpretation of model parameters:
+\begin{itemize}
+	\item $(\beta_1 + \beta_3x_2)$ represents the change in $Y$ for every unit increase in $x_1$, holding $x_2$ fixed.
+	\item $(\beta_2 + \beta_3x_1)$ represents the change in $Y$ for every unit increase in $x_2$, holding $x_1$ fixed.
+	\item In model checking: if interaction term is important, then the interacting explanatory variable must be important and t-tests on them are meaningless.
+\end{itemize}
+
+This is still a linear model - the effects captured by parameters are additive.
+
+\begin{example}
+	Fuel efficiency $Y_i$ of car models from \textcolor{blue}{1970}, \textcolor{red}{'76} and \textcolor{green}{'82} depending on their weight $w_i$. Consider interaction between year built and weight.
+	\begin{align}
+		Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \beta_3w_i + \beta_4x_{1i}w_i + \beta_5x_{2i}w_i + \epsilon_i\notag
+	\end{align}
+	This model has main effects for year and weight and interaction terms. Model fitting:
+	\include{./TeX_files/materials/cartypes2}
+	To test if interactions are important, could use the Likelihood-ratio test ($H_0$: $\beta_4=\beta_5=0$).
+\end{example}
+
 \subsubsection{polynomials of predictors}
+
+How to deal with non-linear relationships between variables?
+
+Can account for this in models using polynomials of predictors, e.g. $Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{1i}^2 + \epsilon_i$, where $\beta_0$ is the intercept, $\beta_1$ is a shift parameter and $\beta_2$ is the rate and direction of curvature. Higher-order polynomials are also possible.
+
+This is still a linear model - the effects captured by parameters are additive.
+
+\begin{example}
+	Consider data on energy usage in houses depending on their size and second-order model $Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{1i}^2 + \epsilon_i$.
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=0, xmax=3, xlabel=$x$,
+		ymin=4, ymax=8, ylabel=$y$,
+		axis x line=middle,
+		axis y line=middle,
+		samples=400
+		]
+		\addplot[blue, mark=x, only marks] coordinates	{
+			(0.00,4.00)
+			(0.10,4.42)
+			(0.20,4.81)
+			(0.30,5.18)
+			(0.40,5.51)
+			(0.50,5.82)
+			(0.60,6.11)
+			(0.70,6.37)
+			(0.80,6.60)
+			(0.90,6.81)
+			(1.00,7.00)
+			(1.10,7.17)
+			(1.20,7.31)
+			(1.30,7.43)
+			(1.40,7.53)
+			(1.50,7.61)
+			(1.60,7.68)
+			(1.70,7.72)
+			(1.80,7.75)
+			(1.90,7.75)
+			(2.00,7.75)
+			(2.10,7.72)
+			(2.20,7.68)
+			(2.30,7.63)
+			(2.40,7.56)
+			(2.50,7.48)
+			(2.60,7.39)
+			(2.70,7.28)
+			(2.80,7.16)
+			(2.90,7.03)
+		};
+		\addplot[mark=none] {0.1089*x^3-1.453*x^2+4.344*x+4};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+Interpreting model parameters:
+\begin{itemize}
+	\item $\beta_0$ can only be interpreted directly if range of data includes $x=0$.
+	\item $\beta_1$ no longer represents a slope and can't be interpreted in isolation.
+	\item The sign of $\beta_2$ indicates the direction of the curvature (concave upward or downward).
+\end{itemize}
+
+\textbf{Warning:} polynomials of predictors lead to correlations between predictors by design.
 
 \subsubsection{data transformations}
 
+\begriff{Data transformations} can help to address problems in model fit (e.g. when relationship is not linear, but residuals are normally distributed). There are many data transformations and there are two examples below, but in general I'd recommend to be cautious about this.
+\begin{itemize}
+	\item \begriff{Log-transform predictors}, response or both
+	\item \begriff{Code predictors}, so that their range is similar. E.g. for temperature $T$, code this as $x=\frac{T-100}{50}$. Can reduce computational rounding errors in model fit and can help to address problems with multicollinearity in polynomial regression models.
+\end{itemize}
+
+\textbf{Warning:} Data transformations do make residuals more normal and statistical tests performed on transformed data are not necessarily relevant for the original data.\footnote{\person{Feng} et al. (2014) \textit{Shanghai Arch Psychiatry}. 26: 105-109}
+
 \subsection{Pitfalls}
+
+Often there is not one correct way to build a model, especially for large data sets with many predictors.
+
+\begin{proposition}[\person{George Box}, 1919-2013]
+	Essentially, all models are wrong, but some are useful.
+\end{proposition} 
+
+Whether a model is useful or not often depends on how it is used. Things to consider are: prediction or data analysis, exploratory or for decision-making. There are many wrong ways of doing things. Common pitfalls are listed in the following.
+\begin{itemize}
+	\item \textbf{Multicollinearity} arises when predictors are correlated. This can be data-based or structural when new predictors are created from existing ones (e.g. in polynomial regression). This causes problems: parameter estimates can't be interpreted sensibly and statistical tests on them are meaningless. However, prediction from models within the range covered by the data is not affected by multicollinearity.
+	\item \textbf{Model assumptions are violated.} See previous lectures for model assumptions (e.g. normality and independence of errors).
+	\item \textbf{Extrapolation beyond the scope of the model.} Trends identified in data by a model do not necessarily hold beyond the range of the data\footnote{\url{https://xkcd.com/605/}}.
+	\item \textbf{Excluding important predictors.} Can lead to models that contain misleading associations between variables. Avoid by data exploration and considering background information on data.
+	\item \textbf{Parameter interpretation.} A common misconception is that parameter estimates always measure the effect of a predictor on the response independent from other predictors (e.g. not the case in models with interactions). Another misinterpretation is that significant p-values for a parameter indicate a cause-and-effect relationship. Unless we control for all other effects, they do not.
+	\item \textbf{Overfitting.} Recall \person{Occam}'s Razor (\cref{occams_razor}). An extreme case of overfitting is to use as many model parameters as there are data points. In less extreme cases, including too many predictors makes interpretation difficult.
+	\item \textbf{Power and sample size.} Small data sets can lead to poorly fitted models with large standard errors for parameter estimates. The more data, the better. General guidelines, such as number of data points per predictor, are not possible, as they depend on the context (e.g. effect size, variability in the data).
+\end{itemize}
