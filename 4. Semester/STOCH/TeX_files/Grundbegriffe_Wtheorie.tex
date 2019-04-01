@@ -1,0 +1,42 @@
+\chapter{Grundbegriffe der Wahrscheinlichkeitstheorie}
+
+\section{Wahrscheinlichkeitsräume}
+
+\subsection*{Ergebnisraum}
+
+Welche der möglichen Ausgänge eines zufälligen Geschehens interessieren uns?\\
+Würfeln? Augenzahl, nicht die Lage und die Fallhöhe
+
+\begin{definition}[Ergebnisraum]
+	Die Menge der relevanten Ergebnisse eines Zufallsgeschehens nennen wir \begriff{Ergebnisraum} und bezeichnen diesen mit $\Omega$.
+\end{definition}
+
+\begin{*example}
+	\begin{itemize}
+		\item Würfeln: $\Omega = \{1,2, \dots, 6\}$
+		\item Wartezeiten: $\Omega = \real_{+} = [0, \infty)$ (überabzählbar!)
+	\end{itemize}
+\end{*example}
+
+\subsection*{Ereignisse}
+
+Oft interessieren wir uns gar nicht für das konkrete Ergenis des Zufallsexperiments, sondern nur für das Eintreten gewisser Ereignisse.
+\begin{*example}
+	\begin{itemize}
+		\item Würfeln: Zahl ist $\ge 3$
+		\item Wartezeit: Wartezeit $\le 5$ Minuten
+	\end{itemize}
+\end{*example}
+$\longrightarrow$ Teilmenge aus Ereignisraum, also Element der Potenzmenge $\mathscr{P}(\Omega)$, denen eine Wahrscheinlichkeit zugeordnet werden kann, d.h. welche \begriff{messbar} (mb) sind.
+
+\begin{definition}[Ereignisraum, messbarer Raum]
+	Sei $\Omega \neq \emptyset$ ein Ergebnisraum und $\mathscr{F}$ eine $\sigma$-Algebra auf $\Omega$, d.h. eine Familie von Teilmenge von $\Omega$, sodass
+	\begin{enumerate}
+		\item $\Omega \in \mathscr{F}$
+		\item $A \in \mathscr{F} \Rightarrow A^C \in \mathscr{F}$
+		\item $A_1, A_2, \dots \in \mathscr{F} \Rightarrow \bigcap_{i \ge 1} \in \mathscr{F}$
+	\end{enumerate}
+	Dann heißt $(\Omega, \mathscr{F})$ \begriff{Ereignisraum} bzw. \begriff{messbarer Raum}.
+\end{definition}
+
+\subsection*{Wahrscheinlichkeiten}
