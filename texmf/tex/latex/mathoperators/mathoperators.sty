@@ -90,8 +90,33 @@
 %%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
 
 %%% Metrics, Norms, etc %%%%
-\newcommand{\norm}{\Vert \cdot \Vert}
-\newcommand{\metric}{\vert \cdot \vert}
+
+% Norms, Absolute, Scalar product
+% Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
+% Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
+{
+	\NewDocumentCommand#1{som}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
+    	{\mathopen{##2#2}##3\mathclose{##2#3}}
+	}
+}
+
+\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binar
+{
+	\NewDocumentCommand#1{somm}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
+    	{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
+	}
+}
+
+\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
+\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
+\xDeclarePairedDelimiter{\brackets}{(}{)}
 
 
 %%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%

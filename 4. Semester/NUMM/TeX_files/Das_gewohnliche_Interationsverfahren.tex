@@ -1,0 +1,74 @@
+\section{Fixpunkte}
+
+Seien ein Vektorraum $V$, eine Menge $U \subseteq V$ und eine Abbildung $\Phi: U \to V$ gegeben.
+Dann heißt $x^{*} \in U$ \begriff{Fixpunkt} der Abbildung $\Phi$, falls $\Phi(x^{*}) = x^{*}$ gilt.
+Die Aufgabe
+\begin{align}
+	\Phi(x) = x\notag
+\end{align}
+eigentlich die Aufgabe, diese Gleichung zu lösen) wird als \begriff{Fixpunktaufgabe} bezeichnet.
+Die Abbildung $\Phi$ heißt \begriff{Fixpunktabbildung}. Im Unterschied zur Fixpunktaufgabe heißt
+\begin{align}
+	F(x) = 0 \notag
+\end{align}
+\begriff{Nullstellenaufgabe}. 
+Zu jeder Nullstellenaufgabe gibt es eine äquivalente Fixpunktaufgabe (z.B. $F(x) = 0 \Leftrightarrow \Phi(x) = x $ mit $\Phi(x) := F(x) + x$) und umgekehrt (z.B.
+$\Phi(x) = x \Leftrightarrow F(x) = 0$ mit $F(x) := \Phi(x) -x$).
+
+\section{Der Fixpunktsatz von Banach}
+
+Der folgende Satz gibt (unter gewissen Bedingungen) eine konstruktive Möglichkeit an, einen Fixpunkt näherungsweise zu ermitteln.
+
+\begin{proposition}[Banach]
+	\proplbl{1_1_1}
+	%TODO use \norm here and find out why undefined control sequence for \norm shows up?!?!?
+	Seien $(V, \Vert \cdot \Vert)$ ein Banach-Raum, $U \subseteq V$ eine abgeschlossene Menge und $\Phi: U \to V$ eine Abbildung. Die Abbildung $\Phi$ sei \begriff{selbstabbildend}, d.h. es gilt
+	\begin{align}
+		\Phi(U) \subseteq U.\notag
+	\end{align}
+	Außerdem sei $\Phi$ \begriff{kontraktiv}, d.h. es gibt $\lambda \in [0,1)$, so dass
+	\begin{align}
+		\Vert\Phi(x) - \Phi(y)\Vert \le \lambda \Vert x-y\Vert, \text{für alle } x,y \in U.\notag
+	\end{align}
+	Dann besitzt $\Phi$ genau einen Fixpunkt $x^{*} \in U$. Weiterhin konvergiert die durch
+	\begin{align}
+		x^{k+1} := \Phi(x^k) \label{eq_1_1_1}
+	\end{align}
+	erzeugte Folge $\{x^k\}$ für jeden Startwert $x^0 \in U$ gegen $x^{*}$ und es gilt für alle $k \in \N$
+	\begin{align}
+		\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k+1} - x^k\Vert \text{ a posteriori Fehlerabschätzung},\\
+		\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda^{k+1}}{1 - \lambda}\Vert x^1 - x^0\Vert \text{ a priori Fehlerabschätzung},\\
+		\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k} - x^{*}\Vert \text{ Q-lineare Konvergenz mit Ordnung }\lambda.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Verlsesung zur Analysis.
+\end{proof}
+
+Die in \ref{1_1_1} vorkommende Zahl $\lambda \in [0,1)$ wird \begriff{Kontraktionskonstante} genannt. 
+
+\section{Gewöhnliches Iterationsverfahren}
+
+Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interationsverfahren} oder \begriff{Fixpunktiteration}. Kritisch ist dabei, ob die Vorraussetzungen ($\Phi$ ist selbstabbildend und kontraktiv) erfüllt werden können. Dies wird in diesem Abschnitt im Fall $V = \Rn$ mit einer beliebigen aber festen Vektornorm $\Vert \cdot \Vert$ untersucht. Die zugeordnete Matrixnorm wurde mit $\Vert \cdot \Vert_{\ast}$ bezeichnet.
+
+\begin{lemma}
+	Sei $S \subseteq \Rn$ offen und konvex und $\Phi: D \to \Rn$ stetig differenzierbar. Falls $L > 0$ existiert mit
+	\begin{align}
+		\Vert \Phi^{'}(x) \Vert_{\ast} \le L \text{ für alle } x \in D, \label{eq_1_1_5}
+	\end{align}
+	dann ist $\Phi$ Lipschitz-stetig in $D$ mit der Lipschitz-Konstante $L$, d.h. es gilt
+	\begin{align}
+		\Vert \Phi(x) - \Phi(y)\Vert \le L \Vert x-y \Vert \text{ für alle } x \in D. \label{eq_1_1_6}
+	\end{align}
+	Die Umkehrung dieser Aussage ist ebenfalls richtig.
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Sei \ref{eq_1_1_5} erfüllt. Mit Satz 5.1 aus der Vorlesung ENM folgt
+		\begin{align}
+		\Vert \Phi(x) - \Phi(y) \Vert_{\ast}
+		\end{align}
+	\end{enumerate}
+\end{proof}
