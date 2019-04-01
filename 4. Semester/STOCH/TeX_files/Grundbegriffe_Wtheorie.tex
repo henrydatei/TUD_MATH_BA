@@ -27,16 +27,88 @@ Oft interessieren wir uns gar nicht für das konkrete Ergenis des Zufallsexperim
 		\item Wartezeit: Wartezeit $\le 5$ Minuten
 	\end{itemize}
 \end{*example}
-$\longrightarrow$ Teilmenge aus Ereignisraum, also Element der Potenzmenge $\mathscr{P}(\Omega)$, denen eine Wahrscheinlichkeit zugeordnet werden kann, d.h. welche \begriff{messbar} (mb) sind.
+
+$\longrightarrow$ Teilmenge des Ereignisraums, also Element der Potenzmenge $\mathscr{P}(\Omega)$, denen eine Wahrscheinlichkeit zugeordnet werden kann, d.h. welche \begriff{messbar} (mb) sind.
 
 \begin{definition}[Ereignisraum, messbarer Raum]
 	Sei $\Omega \neq \emptyset$ ein Ergebnisraum und $\mathscr{F}$ eine $\sigma$-Algebra auf $\Omega$, d.h. eine Familie von Teilmenge von $\Omega$, sodass
 	\begin{enumerate}
 		\item $\Omega \in \mathscr{F}$
 		\item $A \in \mathscr{F} \Rightarrow A^C \in \mathscr{F}$
-		\item $A_1, A_2, \dots \in \mathscr{F} \Rightarrow \bigcap_{i \ge 1} \in \mathscr{F}$
+		\item $A_1, A_2, \dots \in \mathscr{F} \Rightarrow \bigcup_{i \ge 1} \in \mathscr{F}$
 	\end{enumerate}
 	Dann heißt $(\Omega, \mathscr{F})$ \begriff{Ereignisraum} bzw. \begriff{messbarer Raum}.
 \end{definition}
 
 \subsection*{Wahrscheinlichkeiten}
+
+Ordne Ereignisse Wahrscheinlichkeiten zu mittels der Abbildung
+
+\begin{align}
+	\mathbb{P}: \mathscr{F} \to [0,1]\notag
+\end{align}
+
+sodass
+
+\begin{align}
+	\text{Normierung } \mathbb{P}(\Omega) = 1 \tag{N}\label{eq_norm}\\
+	\sigma\text{-Additivität für paarweise disjunkte Ereignisse} \tag{A}\label{eq_addivtive}\\
+	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
+\end{align}
+
+\ref{eq_norm}, \ref{eq_addivtive} und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
+%TODO find out how to have (A) instead of A in the text with ref!!!
+
+\begin{definition}[Wahrscheinlichkeitsmaß, Wahrscheinlichkeitsverteilung]
+	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften \ref{eq_norm} und \ref{eq_addivtive}. Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
+\end{definition}
+
+Aus der Definition folgen direkt:
+
+\begin{proposition}[Rechenregeln für W-Maße]
+	Sei $\mathbb{P}$ ein W-Maß, Ereignissen $(\Omega, \mathscr{F}), A, B, A_1, A_2, \dots \in \mathscr{F}$. Dann gelten:
+	\begin{enumerate}
+		\item $\mathbb{P}(\emptyset) = 0$
+		\item endlich $\sigma$-Additivität: $\mathbb{P}(A\cup B) + \mathbb{P}(A\cap B) = \mathbb{P}(A) + \mathbb{P}(B)$ und insbesondere $\mathbb{P}(A) + \mathbb{P}(A^C) = 1$
+		\item Monotonie: $A \subseteq B \Rightarrow \mathbb{P}(A) \le \mathbb{P}(B)$
+		\item $\sigma$-Subadditivität:
+		\begin{align}
+			\mathbb{P}(\bigcup_{i \ge 1} A_i) \le \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
+		\end{align}
+		\item $\sigma$-Stetigkeit: Wenn $A_n \uparrow A$ (d.h. $A_1 \subseteq A_2 \subseteq \cdots$ und $A = \bigcup_{i=1}^{\infty} (A_i)$) oder $A_n \downarrow A$, so gilt:
+		\begin{align}
+			\mathbb{P}(A_n) \longrightarrow \mathbb{P}(A), n \to \infty \notag
+		\end{align}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	MINT bzw Schillings Buch Kapitel 3! %TODO set literature link to literature??!?!?!
+\end{proof}
+
+\begin{example}
+	Für ein beliebigen Ereignisraum $(\Omega, \mathscr{F})$ ($\Omega \neq \emptyset$) und eine beliebiges Element $\zeta \in \Omega$ definiere
+	\begin{align}
+		\delta_{\zeta}(A := \begin{cases}
+		1 & \zeta \in A \\
+		0 & \text{ sonst}
+		\end{cases}\notag
+	\end{align}
+	eine (degeneriertes) W-Maß auf $(\Omega, \mathscr{F})$, welches wir als \begriff{\person{Dirac}-Maß} oder \begriff{\person{Dirac}-Verteilung} bezeichnen.
+\end{example}
+
+\begin{example}
+	Würfeln mit fairen, $6$-(gleich)seitigen Würfel mit Ergebnismenge $\Omega=\{1, \dots, 6\}$ und Ereignisraum $\mathscr{F} = \mathscr{P}(\Omega)$ setzen wir als Symmetriegründen
+	\begin{align}
+		\mathbb{P}(A) = \frac{\# A}{6}.\notag
+	\end{align}
+	(Wobei $\# A$ oder auch $\vert A \vert$ die Kardinalität von $A$ ist.) Das definiert ein W-Maß.
+\end{example}
+
+\begin{example}
+	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\mathscr{B}(\real_{+}) = \mathscr{F}$. Eine mögliches W-Maß können wir dann durch
+	\begin{align}
+	\mathbb{P}(A) = \int_{A} \lambda e^{-\lambda x} dx\notag %TODO set a mathoperator for dx!!!
+	\end{align}
+	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gelte $\mathbb{P}(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
+\end{example} 
