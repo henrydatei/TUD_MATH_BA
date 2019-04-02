@@ -1,5 +1,5 @@
 # TU Dresden: Mathematik - Bachelor
-Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm) und **Einführung in die Numerik** (Prof. Dr. Andreas Fischer) der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm), **Einführung in die Numerik** (Prof. Dr. Andreas Fischer), **Stochastik** (Prof. Dr. Anita Behme), **Numerische Mathematik** (Prof. Dr. Andreas Fischer) und **Algebra und Zahlentheorie** (Prof. Dr. Arno Fehm) der TU Dresden
 
 ### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
@@ -40,6 +40,12 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 - Hausaufgabe T12 (Test auf OPAL, 2): [https://drive.google.com/file/d/10oRV7V3T06WOdfRp4rPBEdAjp7bsnb32](https://drive.google.com/file/d/10oRV7V3T06WOdfRp4rPBEdAjp7bsnb32) für Newton-Verfahren
 - Übungsaufgaben: [https://drive.google.com/open?id=1JwXqS1UkhXnEmakiio5U8C5o1XUxbjKL](https://drive.google.com/open?id=1JwXqS1UkhXnEmakiio5U8C5o1XUxbjKL)
 - Musterlösung der ersten Übungsaufgabe: [https://drive.google.com/open?id=1tQgqAgpxuxMlcVWcRI25eM7AqLsjbJNm](https://drive.google.com/open?id=1tQgqAgpxuxMlcVWcRI25eM7AqLsjbJNm)
+
+### Algebra und Zahlentheorie (SS 2019)
+
+### Stochastik (SS 2019)
+
+### Numerische Mathematik (SS 2019)
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
