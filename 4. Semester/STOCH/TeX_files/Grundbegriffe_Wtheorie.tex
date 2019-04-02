@@ -52,15 +52,15 @@ sodass
 
 \begin{align}
 	\text{Normierung } \mathbb{P}(\Omega) = 1 \tag{N}\label{eq_norm}\\
-	\sigma\text{-Additivität für paarweise disjunkte Ereignisse} \tag{A}\label{eq_addivtive}\\
+	\sigma\text{-Additivität für paarweise disjunkte Ereignisse} \tag{A}\label{eq_additive}\\
 	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
 \end{align}
 
-\ref{eq_norm}, \ref{eq_addivtive} und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
+(\ref{eq_norm}), (\ref{eq_additive}) und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
 %TODO find out how to have (A) instead of A in the text with ref!!!
 
 \begin{definition}[Wahrscheinlichkeitsmaß, Wahrscheinlichkeitsverteilung]
-	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften \ref{eq_norm} und \ref{eq_addivtive}. Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
+	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften (\ref{eq_norm}) und (\ref{eq_additive}). Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
 \end{definition}
 
 Aus der Definition folgen direkt:
@@ -69,11 +69,11 @@ Aus der Definition folgen direkt:
 	Sei $\mathbb{P}$ ein W-Maß, Ereignisse $(\Omega, \mathscr{F}), A, B, A_1, A_2, \dots \in \mathscr{F}$. Dann gelten:
 	\begin{enumerate}
 		\item $\mathbb{P}(\emptyset) = 0$
-		\item endliche $\sigma$-Additivität: $\mathbb{P}(A\cup B) + \mathbb{P}(A\cap B) = \mathbb{P}(A) + \mathbb{P}(B)$ und insbesondere $\mathbb{P}(A) + \mathbb{P}(A^C) = 1$
 		\item Monotonie: $A \subseteq B \Rightarrow \mathbb{P}(A) \le \mathbb{P}(B)$
+		\item endliche $\sigma$-Additivität: $\mathbb{P}(A\cup B) + \mathbb{P}(A\cap B) = \mathbb{P}(A) + \mathbb{P}(B)$ und insbesondere $\mathbb{P}(A) + \mathbb{P}(A^C) = 1$
 		\item $\sigma$-Subadditivität:
 		\begin{align}
-			\mathbb{P}(\bigcup_{i \ge 1} A_i) \le \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
+			\mathbb{P}\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
 		\end{align}
 		\item $\sigma$-Stetigkeit: Wenn $A_n \uparrow A$ (d.h. $A_1 \subseteq A_2 \subseteq \cdots$ und $A = \bigcup_{i=1}^{\infty} (A_i)$) oder $A_n \downarrow A$, so gilt:
 		\begin{align}
@@ -83,7 +83,36 @@ Aus der Definition folgen direkt:
 \end{proposition}
 
 \begin{proof}
-	MINT bzw Schillings Buch Kapitel 3! %TODO set literature link to literature??!?!?!
+	Beweise erst folgende Aussage: $A\cap B = \emptyset \Longrightarrow \probp(A \uplus B) = \probp(A) + \probp(B)$.\\
+	Es kann $\sigma$-Additivität verwendet werden, indem ``fehlende'' Mengen durch $\emptyset$ ergänzt werden:
+	\begin{align}
+		\probp(A \uplus B) = \probp(A \uplus B \uplus \emptyset \uplus \emptyset \dots) = \probp(A) + \probp(B) + \probp(\emptyset) + \dots = \probp(A) + \probp(B),\notag
+	\end{align}
+	wobei Maßeigenschaften verwendet wurden.
+	\begin{enumerate}
+		\item Definition des Maßes.
+		\item Da $A \subseteq B$ ist auch $B = A \uplus (B \setminus A) = A \uplus (B \setminus (A \cap B))$. Wende wieder Aussage von oben an, damit folgt
+		\begin{align}
+			\probp(B) = \probp(A \uplus (B \setminus A)) = \probp(A) + \probp(B \setminus A) \ge \probp(A) \label{eq_1_1_4}\tag{*}
+		\end{align}
+		\item Zerlege $A \cup B$ geschickt, dann sieht man mit oben gezeigter Aussage und (\ref{eq_1_1_4})
+		\begin{align}
+			\probp(A \cup B) + \probp(A \cap B) &= \probp(A \uplus (B \setminus (A \cap B)) + \probp(A \cap B)\notag \\
+			&= \probp(A) + \probp(B \setminus (A \cap B)) + \probp(A \cap B)\notag\\
+			&= \probp(A)+\probp(B).\notag	
+		\end{align}
+		Im letzten Schritt wurde (\ref{eq_1_1_4}) verwendet.
+		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
+		\item Definiere $F_1 := A_1, F_2 := A_2 \ A_1, \dots, F_{i+1} := A_{i+1}\ A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
+		\begin{align}
+			A_m = \biguplus_{i=1}^{m} F_i \Rightarrow A = \biguplus_{i=1}^{\infty} F_i = \biguplus_{i=1}^{\infty} A_i\notag
+		\end{align}
+		und
+		\begin{align}
+			\probp(A) = \probp\left( \biguplus_{i=1}^{\infty} F_i \right) = \sum_{i=1}^{\infty} \probp(F_i) = \lim\limits_{m \to \infty} \probp\left( \biguplus_{i=1}^{m} F_i \right) = \lim\limits_{m\to \infty} \probp(A_m). \notag
+		\end{align}
+	\end{enumerate}
+	Siehe Schillings Buch. %TODO set literature link to literature??!?!?!
 \end{proof}
 
 \begin{example}
