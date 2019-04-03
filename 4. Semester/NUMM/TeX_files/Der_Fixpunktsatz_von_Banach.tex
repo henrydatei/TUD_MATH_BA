@@ -1,0 +1,32 @@
+\section{Der Fixpunktsatz von \person{Banach}}
+
+Der folgende Satz gibt (unter gewissen Bedingungen) eine konstruktive Möglichkeit an, einen Fixpunkt näherungsweise zu ermitteln.
+
+\begin{proposition}[Banach]
+	\proplbl{1_1_1}
+	%TODO use \norm here and find out why undefined control sequence for \norm shows up?!?!?
+	Seien $(V, \Vert \cdot \Vert)$ ein Banach-Raum, $U \subseteq V$ eine abgeschlossene Menge und $\Phi: U \to V$ eine Abbildung. Die Abbildung $\Phi$ sei \begriff{selbstabbildend}, d.h. es gilt
+	\begin{align}
+	\Phi(U) \subseteq U.\notag
+	\end{align}
+	Außerdem sei $\Phi$ \begriff{kontraktiv}, d.h. es gibt $\lambda \in [0,1)$, so dass
+	\begin{align}
+	\Vert\Phi(x) - \Phi(y)\Vert \le \lambda \Vert x-y\Vert, \text{für alle } x,y \in U.\notag
+	\end{align}
+	Dann besitzt $\Phi$ genau einen Fixpunkt $x^{*} \in U$. Weiterhin konvergiert die durch
+	\begin{align}
+	x^{k+1} := \Phi(x^k) \label{eq_1_1_1}
+	\end{align}
+	erzeugte Folge $\{x^k\}$ für jeden Startwert $x^0 \in U$ gegen $x^{*}$ und es gilt für alle $k \in \natur$
+	\begin{align}
+	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k+1} - x^k\Vert \text{ a posteriori Fehlerabschätzung},\\
+	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda^{k+1}}{1 - \lambda}\Vert x^1 - x^0\Vert \text{ a priori Fehlerabschätzung},\\
+	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k} - x^{*}\Vert \text{ Q-lineare Konvergenz mit Ordnung }\lambda.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Verlesung zur Analysis.
+\end{proof}
+
+Die in \propref{1_1_1} vorkommende Zahl $\lambda \in [0,1)$ wird \begriff{Kontraktionskonstante} genannt. 
