@@ -4,7 +4,8 @@
 %programming related packages
 \RequirePackage{zref-base}
 \RequirePackage{etoolbox}
-\RequirePackage{xparse}%better macros
+\RequirePackage{xparse}                          % better macros, for \DeclarePairedDelimiter
+\RequirePackage{mleftright}                      % for \DeclarePairedDelimiter
 \RequirePackage{calc}
 \RequirePackage{xstring}
 \RequirePackage{xkeyval}
