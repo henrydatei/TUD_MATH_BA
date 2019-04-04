@@ -6,7 +6,7 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 	\proplbl{1_1_2}
 	Sei $S \subseteq \Rn$ offen und konvex und $\Phi: D \to \Rn$ stetig differenzierbar. Falls $L > 0$ existiert mit
 	\begin{align}
-	\Vert \Phi^{'}(x) \Vert_{\ast} \le L \text{ für alle } x \in D, \label{eq_1_1_5}
+	\Vert \Phi'(x) \Vert_{\ast} \le L \text{ für alle } x \in D, \label{eq_1_1_5}
 	\end{align}
 	dann ist $\Phi$ Lipschitz-stetig in $D$ mit der Lipschitz-Konstante $L$, d.h. es gilt
 	\begin{align}
@@ -19,26 +19,26 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 	\begin{enumerate}
 		\item Sei \ref{eq_1_1_5} erfüllt. Mit Satz 5.1 aus der Vorlesung ENM folgt %TODO find out which prop is meant!
 		\begin{align}
-		\Vert \Phi(x) - \Phi(y) \Vert_{\ast} = \Vert \int_{0}^{1} \Phi^{'}(y + t(x-y))(x-y) dt \Vert \le \Vert x-y \Vert \sup_{t \in [0,1]} \Vert \Phi^{'}(y+t(x-y))\Vert_{\ast}
+		\Vert \Phi(x) - \Phi(y) \Vert_{\ast} = \Vert \int_{0}^{1} \Phi'(y + t(x-y))(x-y) dt \Vert \le \Vert x-y \Vert \sup_{t \in [0,1]} \Vert \Phi'(y+t(x-y))\Vert_{\ast}
 		\end{align}
 		für alle $x,y \in D$. Also liefert \ref{eq_1_1_5} unter Beachtung der Konvexität von $D$ die Behauptung.
 		\item Sei nun \ref{eq_1_1_6} erfüllt. Angenommen es gibt $\hat{y} \in D$ mit
 		\begin{align}
-		\Vert \Phi^{'}(\hat{y})\Vert_{\ast} > L. \label{eq_1_1_7}
+		\Vert \Phi'(\hat{y})\Vert_{\ast} > L. \label{eq_1_1_7}
 		\end{align}
-		Unter Berücksichtigung der Definition der zugeordneten Matrixnorm $\Vert \Vert_{\ast}$ folgt, dass $d \in \Rn$ existiert mit $\Vert d \Vert = 1$ und $\Vert \Phi^{'}(\hat{y}d)\Vert = \Vert \Phi(\hat{y}) \Vert_{\ast}$. Wendet man nun ENM mit $x := \hat{y} + sd$ und $y := \hat{y}$ an, so folgt für alle $s > 0$ hinreichend klein
+		Unter Berücksichtigung der Definition der zugeordneten Matrixnorm $\Vert \Vert_{\ast}$ folgt, dass $d \in \Rn$ existiert mit $\Vert d \Vert = 1$ und $\Vert \Phi'(\hat{y}d)\Vert = \Vert \Phi(\hat{y}) \Vert_{\ast}$. Wendet man nun ENM mit $x := \hat{y} + sd$ und $y := \hat{y}$ an, so folgt für alle $s > 0$ hinreichend klein
 		\begin{align}
 		\Vert \Phi(\hat{y} + sd) - \Phi(\hat{y})\Vert \le L \Vert sd \Vert = sL
 		\end{align}
 		und 
 		\begin{align}
-		\Vert \Phi(\hat{y} + sd) - \Phi(\hat{y})\Vert &= \Vert \int_{0}^{1} \Phi^{'}(\hat{y} + tsd)(sd)dt\Vert\notag \\
-		&= \Vert \int_{0}^{1} \Phi^{'}(\hat{y} + tsd)(sd)dt + \int_{0}^{1} \Phi^{'}(\hat{y})(sd)(sd)dt\Vert - \int_{0}^{1} \Phi^{'}(\hat{y})(sd)(sd)dt\Vert\notag \\
-		&\ge s\Vert \Phi^{'}(\hat{y}d)\Vert - s\Vert d\Vert \sup_{t \in [0,1]}\Vert\Phi^{'}(\hat{y} + tsd) - \Phi^{'}(\hat{y})\Vert_{\ast} \notag \\
-		&= s (\Vert \Phi^{'}(\hat{y}) \Vert_{\ast} - \sup_{t \in [0,1]}\Vert\Phi^{'}(\hat{y} + tsd) - \Phi^{'}(\hat{y})\Vert_{\ast}) \notag\\
+		\Vert \Phi(\hat{y} + sd) - \Phi(\hat{y})\Vert &= \Vert \int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt\Vert\notag \\
+		&= \Vert \int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt + \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt\Vert - \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt\Vert\notag \\
+		&\ge s\Vert \Phi'(\hat{y}d)\Vert - s\Vert d\Vert \sup_{t \in [0,1]}\Vert\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})\Vert_{\ast} \notag \\
+		&= s (\Vert \Phi'(\hat{y}) \Vert_{\ast} - \sup_{t \in [0,1]}\Vert\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})\Vert_{\ast}) \notag\\
 		&= SL, \notag
 		\end{align}
-		wobei sich die letzte Ungleichung wegen \ref{eq_1_1_7} und der Stetigkeit von $\Phi^{'}$ ergibt. Offenbar hat man damit einen Widerspruch, so dass die Annahme falsch ist.
+		wobei sich die letzte Ungleichung wegen \ref{eq_1_1_7} und der Stetigkeit von $\Phi'$ ergibt. Offenbar hat man damit einen Widerspruch, so dass die Annahme falsch ist.
 	\end{enumerate}
 \end{proof}
 
@@ -49,14 +49,14 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 	\end{align}
 	Offenbar ist $\Phi: \R \to \R$ selbstabbildend. Weiter ergibt sich
 	\begin{align}
-	\Phi^{'}(x) = -1 - sin x \notag
+	\Phi'(x) = -1 - sin x \notag
 	\end{align}
-	Für $x \in D := (0,1)$ gilt daher $\vert \Phi^{'} (x)\vert > 1$. Mit \propref{1_1_2} folgt $\vert \Phi(x) - \Phi(y)\vert \ge \vert x-y\vert$ für mindestens ein Paar $(x,y) \in D \times D$. Somit ist $\Phi$ in $D$ nicht kontrahierend.
+	Für $x \in D := (0,1)$ gilt daher $\vert \Phi' (x)\vert > 1$. Mit \propref{1_1_2} folgt $\vert \Phi(x) - \Phi(y)\vert \ge \vert x-y\vert$ für mindestens ein Paar $(x,y) \in D \times D$. Somit ist $\Phi$ in $D$ nicht kontrahierend.
 	Definiert man $\Phi$ aber durch $\Phi(x) := \sfrac{1}{2}\cos x$, so ist die Fixpunktaufgabe $\sfrac{1}{2}\cos x = x$ wiederum zur Nullstellenaufgabe äquivalent und es folgt
 	\begin{align}
-	\Phi^{'}(x) = \frac{1}{2}\sin x. \notag
+	\Phi'(x) = \frac{1}{2}\sin x. \notag
 	\end{align} 
-	Damit hat man $\vert \Phi^{'}(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos x$ und $x^0 := 1$ ergibt:
+	Damit hat man $\vert \Phi'(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos x$ und $x^0 := 1$ ergibt:
 	\begin{align}
 	\text{ add table here!!!}
 	\end{align}
@@ -66,7 +66,7 @@ Nehmen wir an, die Voraussetzungen des Banachschen Fixpunktsatzes seien gegeben.
 Im Weiteren bezeichne $B(x^{\ast}, r) :=$ die abgeschlossene Kugel um $x^{\ast}$ mit Radius $r$ (bzgl. einer passenden Norm).
 
 \begin{proposition}[Ostrowski]
-	Seien $D \subseteq \Rn$ offen und $\Phi: D \to \Rn$ stetig differenzierbar. Die Abbildung $\Phi$ besitze einen Fixpunkt $x^{\ast} \in D$ mit $\Vert \Phi^{'}(x^{\ast})\Vert_{\ast} < 1$. Dann existiert $r > 0$, so dass das gewöhnliche Iterationsverfahren für jeden Startpunkt $x^0 \in B(x^{\ast}, r)$ gegen $x^{\ast}$ konvergiert.
+	Seien $D \subseteq \Rn$ offen und $\Phi: D \to \Rn$ stetig differenzierbar. Die Abbildung $\Phi$ besitze einen Fixpunkt $x^{\ast} \in D$ mit $\Vert \Phi'(x^{\ast})\Vert_{\ast} < 1$. Dann existiert $r > 0$, so dass das gewöhnliche Iterationsverfahren für jeden Startpunkt $x^0 \in B(x^{\ast}, r)$ gegen $x^{\ast}$ konvergiert.
 \end{proposition}
 
 \begin{proof}
