@@ -104,7 +104,7 @@ Aus der Definition folgen direkt:
 		\end{align}
 		Im letzten Schritt wurde (\ref{eq_1_1_4}) verwendet.
 		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
-		\item Definiere $F_1 := A_1, F_2 := A_2 \ A_1, \dots, F_{i+1} := A_{i+1}\ A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
+		\item Definiere $F_1 := A_1, F_2 := A_2 \ A_1, \dots, F_{i+1} := A_{i+1}\ A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$ %TODO fix set differences!
 		\begin{align}
 			A_m = \biguplus_{i=1}^{m} F_i \Rightarrow A = \biguplus_{i=1}^{\infty} F_i = \biguplus_{i=1}^{\infty} A_i\notag
 		\end{align}
@@ -143,6 +143,8 @@ Aus der Definition folgen direkt:
 	\end{align}
 	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\mathbb{P}(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
 \end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{proposition}[Konstruktion von WMaßen durch Dichten]
 	Sei $(\Omega, \mathscr{F})$ ein Eriegnisraum.
@@ -297,11 +299,14 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \begin{definition}[(kommutative) Verteilungsfunktion von $\probp$]
 	Sei $(\R, \borel(\R), \probp)$ WRaum, so heißt
 	\begin{align}
-		F: \R \to [0,1] \text{ mit } x \mapsto \probp((-\infty, x]). \notag
+		F: \R \to [0,1] \text{ mit } x \mapsto \probp((-\infty, x]) \notag
 	\end{align}
+	\begriff{(kommulative) Verteilungsfunktion von $\probp$}.\\
 	Ist $X$ eine reelle Zufallsvariable auf beliebigen WRaum $(\Omega, \sigF, \probp)$, so heißt
 	\begin{align}
 		F: \R \to [0,1] \text{ mit } x \mapsto \probp(X \le x) = \probp(X \in (-\infty, x]) \notag
 	\end{align} %TODO everything good with the X's here?
 	die (komulative) Verteilungsfunktion von $X$.
 \end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
