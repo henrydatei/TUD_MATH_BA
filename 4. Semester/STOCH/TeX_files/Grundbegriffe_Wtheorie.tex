@@ -57,7 +57,6 @@ sodass
 \end{align}
 
 (\ref{eq_norm}), (\ref{eq_additive}) und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
-%TODO find out how to have (A) instead of A in the text with ref!!!
 
 \begin{definition}[Wahrscheinlichkeitsmaß, Wahrscheinlichkeitsverteilung]
 	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften (\ref{eq_norm}) und (\ref{eq_additive}). Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
@@ -104,7 +103,7 @@ Aus der Definition folgen direkt:
 		\end{align}
 		Im letzten Schritt wurde (\ref{eq_1_1_4}) verwendet.
 		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
-		\item Definiere $F_1 := A_1, F_2 := A_2 \ A_1, \dots, F_{i+1} := A_{i+1}\ A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$ %TODO fix set differences!
+		\item Definiere $F_1 := A_1, F_2 := A_2 \setminus A_1, \dots, F_{i+1} := A_{i+1}\setminus A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
 		\begin{align}
 			A_m = \biguplus_{i=1}^{m} F_i \Rightarrow A = \biguplus_{i=1}^{\infty} F_i = \biguplus_{i=1}^{\infty} A_i\notag
 		\end{align}
@@ -113,7 +112,6 @@ Aus der Definition folgen direkt:
 			\probp(A) = \probp\left( \biguplus_{i=1}^{\infty} F_i \right) = \sum_{i=1}^{\infty} \probp(F_i) = \lim\limits_{m \to \infty} \probp\left( \biguplus_{i=1}^{m} F_i \right) = \lim\limits_{m\to \infty} \probp(A_m). \notag
 		\end{align}
 	\end{enumerate}
-	Siehe Schillings Buch. %TODO set literature link to literature??!?!?!
 \end{proof}
 
 \begin{example}
