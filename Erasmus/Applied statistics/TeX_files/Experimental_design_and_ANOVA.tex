@@ -85,8 +85,109 @@ Power analysis allows us to determine the sample size required to detect an effe
 
 \subsection{Introduction to ANOVA}
 
+Analysis of variance (ANOVA) is a statistical analysis for comparing means in experiments across different treatments. ANOVA is equivalent to analysing linear models. Before computers, ANOVA simplified calculations and it's still commonly used and referred to. 
+
+Intuition for ANOVA: consider the variation within and between treatments.
+\begin{center}
+	\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+			xmin=0.5, xmax=2.5, xlabel=treatment,
+			ymin=3, ymax=9, ylabel=some measure (some unit),
+			axis x line=bottom,
+			axis y line=left,
+		]
+		\addplot[blue, only marks, mark=x] coordinates {
+			(1.00,5.27)
+			(1.00,5.92)
+			(1.00,3.87)
+			(1.00,5.43)
+			(1.00,5.16)
+		};
+		\draw[cyan] (axis cs: 0.5,5) -- (axis cs: 1.5,5);
+		\addplot[red, only marks, mark=x] coordinates {
+			(2.00,6.73)
+			(2.00,7.61)
+			(2.00,7.15)
+			(2.00,6.99)
+			(2.00,7.14)
+		};
+		\draw[orange] (axis cs: 1.5,7) -- (axis cs: 2.5,7);
+		\end{axis}
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0.5, xmax=2.5, xlabel=treatment,
+	ymin=3, ymax=9, ylabel=some measure (some unit),
+	axis x line=bottom,
+	axis y line=left,
+	]
+	\addplot[blue, only marks, mark=x] coordinates {
+		(1.00,6.01)
+		(1.00,3.19)
+		(1.00,6.08)
+		(1.00,7.45)
+		(1.00,5.73)
+	};
+	\draw[cyan] (axis cs: 0.5,5) -- (axis cs: 1.5,5);
+	\addplot[red, only marks, mark=x] coordinates {
+		(2.00,8.03)
+		(2.00,7.73)
+		(2.00,6.70)
+		(2.00,7.29)
+		(2.00,6.21)
+	};
+	\draw[orange] (axis cs: 1.5,7) -- (axis cs: 2.5,7);
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+In ANOVA, we consider
+\begin{align}
+	F = \frac{\text{between-treatment variation}}{\text{within-treatment variation}} \notag
+\end{align}
+
 \subsubsection{One-way ANOVA}
+
+Consider a one-factor completely randomised design, i.e. a number pf $p$ factor levels and experimental units assigned randomly to them. We have seen that this can be modelled as
+\begin{align}
+	Y_i = \beta_0 + \beta_1x_{1i} + \dots + \beta_{p-1}x_{p-1,i} + \epsilon_i \notag
+\end{align}
+where the $x_{ji}$s are dummy variables for the factor levels. We wish to compare the means to response, $\mu_j$, across treatments $j$ and test the null hypothesis $H_0$: $\mu_1 = \mu_2 = \dots = \mu_p$. Suppose the model above, treatment 1 is the base level, them $\beta_0 = \mu_1$, $\beta_1 = \mu_2 - \mu_1$, ..., $\beta_{p-1} = \mu_p - \mu_1$. So the $H_0$ above is equivalent to $H_0$: $\beta_1 = \beta_2 = \dots = \beta_{p-1} = 0$. This is one-way ANOVA. It is the same as an F-test on the corresponding linear model. It shows that at least two treatment means differ. The F-statistic is computed from sums of squared errors (no model fitting required).
+
+\begin{example}
+	A study on the strength of different structural beams (\person{Hogg}, 1987). The MATLAB command is \texttt{anova1}.
+	
+	%TODO: Insert pic + table here
+	
+	... this suggests that at least two beams differ in strength.
+\end{example}
 
 \subsubsection{Two-way ANOVA}
 
+Consider a complete factorial design with two factors, one of which has three and the other has two levels. We have seen that this can be modelled as:
+\begin{align}
+	Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \beta_3w_{1i} + \beta_4x_{1i}w_{1i} + \beta_5x_{2i}w_{1i} + \epsilon_i \notag
+\end{align}
+where $x_{1i}$ and $x_{2i}$ are dummy variables for the first factor and $w_{1i}$ is a dummy variable for the second factor. Analogously to the one-way ANOVA, in two-way ANOVA, we perform a number of F-tests to compare the mean of the response across treatments. E.g. to test for interactions, we test $H_0$: $\beta_4 = \beta_5 = 0$. Testing if the mean response for levels of the first factor are equal, requires $H_0$: $\beta_1 = \beta_2 = 0$. Essentially, we use F-tests to compare nested models. These tests on multiple parameters simultaneously (e.g. if factors have more than 2 levels). They can show that at least two treatment means differ.
+
 \subsection{Observational data - sampling}
+
+Sometimes conducting experiments is not possible. Sampling methods are used to collect observational data in a systematic way. 
+
+\begin{example}
+	Opinion poll to assess the voting intentions of the population before elections. It's not enough to just ask people in Bristol.
+\end{example}
+
+Basic idea: consider a population. Ideally we would like to measure everyone. This is not possible. Sampling is the process of selecting a subset (a \begriff{statistical sample}) of units from the population to estimate whatever we are interested in for the whole population.
+\begin{itemize}
+	\item \textbf{Probability sampling:} every unit in the population has a probability of being selected and this can be calculated.
+	\item \textbf{Nonprobability sampling:} not the product of a randomised selection process.
+\end{itemize}
+
+Different sampling methods can be used, depending on information available, costs and accuracy requirements, e.g.
+\begin{itemize}
+	\item \textbf{Simple random sampling:} all units in the population have the same probability of being selected (if the sample is small, this may not be representative).
+	\item \textbf{Systematic sampling:} arrange population in some order, select units at regular intervals. If starting point or order is randomised, this is a probability sampling.
+	\item \textbf{Stratified sampling:} organise population according to some categories into separate \begriff{strata} and sample randomly from those.
+	\item There are many additional methods, e.g. \textbf{voluntary sampling}, \textbf{accidental sampling}, \textbf{quota sampling},...
+\end{itemize}
