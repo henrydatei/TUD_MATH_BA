@@ -1,9 +1,8 @@
 \ProvidesPackage{mathoperators}
 
-\RequirePackage{xparse}
+\RequirePackage{xparse}						 % for \DeclarePairedDelimiter
 \RequirePackage{xkeyval}
 \RequirePackage{xstring}
-\RequirePackage{bbm}                          % mathbb 1
 
 %\OptFractionAppearence - differenciate between multiple appearences of fraction
 %	- 0: simple slash: a/b 												(option slash)(default)
@@ -26,7 +25,9 @@
 \RequirePackage{amsfonts}
 \RequirePackage{scalerel,stackengine}
 \RequirePackage{calc}
-\RequirePackage{mathrsfs} % Category-like letters for MINT with \mathscr
+\RequirePackage{mathrsfs}                     % Category-like letters for MINT with \mathscr
+\RequirePackage{bbm}                          % mathbb 1
+\RequirePackage{mleftright}                   % for \DeclarePairedDelimiter
 
 %transpose
 \newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
@@ -60,7 +61,8 @@
 \newcommand{\real}{\mathbb{R}} % real set R
 \newcommand{\comp}{\mathbb{C}} % complex set C
 \newcommand{\quat}{\mathbb{H}} % quaternion
-\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\field}{\mathbb{F}} % general field for the others above!
+\newcommand{\Fp}{\mathbb{F}_p} % general field for the others above!
 
 %%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
 \let\oldemptyset\emptyset
@@ -72,7 +74,8 @@
 \newcommand{\Z}{\mathbb{Z}} % whole number Symbol
 \newcommand{\Q}{\mathbb{Q}} % rational number symbol
 \newcommand{\R}{\mathbb{R}} % real set R
-\newcommand{\Rn}{\mathbb{R}^n} % real set R^n
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rnn}{\mathbb{R}^{n \times n}} % real set R^nxn
 \newcommand{\Rd}{\mathbb{R}^d} % real set R^n for MINT
 \undef{\H}
 \undef{\C}
@@ -229,6 +232,7 @@
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\cond}{cond} % ? 
 \DeclareMathOperator{\curl}{curl} % Curl/Rotation
+\DeclareMathOperator{\chara}{char} % characteric Ring/Field
 
 %%%%%% D
 \DeclareMathOperator{\diam}{diam} % Diameter of a set
@@ -264,6 +268,7 @@
 \DeclareMathOperator{\id}{id} % Identity
 
 \DeclareMathOperator{\kgV}{kgV} % kleinste gemeinsamer Teiler (lcd)
+\DeclareMathOperator{\Ker}{Ker} % kernel of a morphisms
 
 %%%%%% LMN
 \DeclareMathOperator{\LC}{LC} % Leitkoeffizient
