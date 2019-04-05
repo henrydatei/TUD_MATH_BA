@@ -157,7 +157,52 @@ where the $x_{ji}$s are dummy variables for the factor levels. We wish to compar
 \begin{example}
 	A study on the strength of different structural beams (\person{Hogg}, 1987). The MATLAB command is \texttt{anova1}.
 	
-	%TODO: Insert pic + table here
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=0.5, xmax=3.5,
+		ymin=74, ymax=87,
+		boxplot/draw direction=y,
+		axis x line = bottom,
+		axis y line = left,
+		xtick={1,2,3},
+		xticklabels={steel, alloy1, alloy2},
+		ylabel=deflection under load (1/1000 in),
+		xlabel=type of beam
+		]
+		\addplot+ [boxplot prepared={
+			lower whisker=79, 
+			lower quartile=82.5,
+			median=84.5, 
+			upper quartile=86,
+			upper whisker=87},
+		] coordinates {};
+		\addplot+ [boxplot prepared={
+			lower whisker=74, 
+			lower quartile=75,
+			median=76.5, 
+			upper quartile=78,
+			upper whisker=82},
+		] coordinates {};
+		\addplot+ [boxplot prepared={
+			lower whisker=82, 
+			lower quartile=78,
+			median=79, 
+			upper quartile=79,
+			upper whisker=77},
+		] coordinates {};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		\begin{tabular}{c|c|c|c|c|c}
+			\textbf{Source} & \textbf{SS} & \textbf{degrees of freedom} & \textbf{MS} & \textbf{F} & \textbf{Prob} $>$ \textbf{F} \\
+			\hline
+			Groups & 184.8 & 2 & 92.4 & 15.4 & 0.0002 \\
+			Error & 102 & 17 & 6 & & \\
+			Total & 286.8 & 19 & &
+		\end{tabular}
+	\end{center}
 	
 	... this suggests that at least two beams differ in strength.
 \end{example}
@@ -169,6 +214,27 @@ Consider a complete factorial design with two factors, one of which has three an
 	Y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i} + \beta_3w_{1i} + \beta_4x_{1i}w_{1i} + \beta_5x_{2i}w_{1i} + \epsilon_i \notag
 \end{align}
 where $x_{1i}$ and $x_{2i}$ are dummy variables for the first factor and $w_{1i}$ is a dummy variable for the second factor. Analogously to the one-way ANOVA, in two-way ANOVA, we perform a number of F-tests to compare the mean of the response across treatments. E.g. to test for interactions, we test $H_0$: $\beta_4 = \beta_5 = 0$. Testing if the mean response for levels of the first factor are equal, requires $H_0$: $\beta_1 = \beta_2 = 0$. Essentially, we use F-tests to compare nested models. These tests on multiple parameters simultaneously (e.g. if factors have more than 2 levels). They can show that at least two treatment means differ.
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (-2,0) rectangle (2,2) node[text width=3.5cm,pos=.5] {Conduct a test for interaction between factor A and factor B};
+	\draw (-5,-4) rectangle (-1,-2) node[text width=3.5cm,pos=.5] {Conduct multiple comparisons of treatment means};
+	\draw (1,-4) rectangle (5,-2) node[text width=3.5cm,pos=.5] {Conduct tests for main effect A and main effect B};
+	\draw (-2,-8) rectangle (2,-6) node[text width=3.5cm,pos=.5] {Conduct multiple comparisons of main effect means};
+	\draw (4,-8) rectangle (8,-6) node[text width=3.5cm,pos=.5] {No further analysis of the factor};
+	
+	\draw[->] (0,0) -- (-3,-2);
+	\node[text width=2cm,rotate=33.7] at (-1.5,-1) (a) {interaction significant};
+	\draw[->] (0,0) -- (3,-2);
+	\node[text width=2.5cm,rotate=-33.7] at (1.9,-1) (b) {no interaction};
+	\draw[->] (3,-4) -- (0,-6);
+	\node[text width=2cm,rotate=33.7] at (1.5,-5) (c) {main effect significant};
+	\draw[->] (3,-4) -- (6,-6);
+	\node[text width=2.5cm,rotate=-33.7] at (4.9,-5) (d) {no main effect};
+	\end{tikzpicture}
+\end{center}
+
+Diagram from: \person{W. Mendenhall} and \person{T. Sincich}, \textit{Statistics for Engineering and the Sciences}, CRC Press, 2016.
 
 \subsection{Observational data - sampling}
 

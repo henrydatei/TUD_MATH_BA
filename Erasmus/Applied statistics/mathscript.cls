@@ -108,7 +108,7 @@
 
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.13}
-\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{fillbetween,statistics}
 \RequirePackage{pgf}
 \RequirePackage{tikz}
 \usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri,decorations.fractals}
