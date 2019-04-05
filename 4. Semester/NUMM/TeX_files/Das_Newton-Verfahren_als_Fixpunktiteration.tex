@@ -1,1 +1,55 @@
 \section{Das \person{Newton}-Verfahren als Fixpunktiteration}
+
+Sei $D \subseteq \Rn$ offen und $F: D \to \Rn$ stetig differenzierbar. Die Nullstellenaufgabe
+\begin{align}
+	F(x) = 0\notag
+\end{align}
+wird nun in eine äquivalente Fixpunktaufgabe überführt. Dazu nehmen wir an, dass $x^{\ast}$ eine reguläre Nullstelle von $F$ ist. Wegen der vorrausgesetzten Stetigkeit von $F'$ gibt es $r>0$ hinreichend klein, so dass $F'(x)$ für $x \in B(x^{\ast},r)$ regulär ist. Damit erhält man
+\begin{align}
+	F(x) = 0 \Leftrightarrow 0 = -F'(x)^{-1}F(x) \Leftrightarrow x = x - F'(x)^{-1}F(x).\notag
+\end{align}
+für $x \in B(x^{\ast},r)$. Definiert man $\Phi: B(x^{\ast},r) \to \Rn$ durch
+\begin{align}
+	\Phi(x):= x - F^{\ast}(x)^{-1}F(x). \label{eq_1_3_8}
+\end{align}
+so kann das Newton-Verfahren als Fuxpunktverfahren mit $\Phi$ als Fixpunktabbildung interpretiert werden. Ob $\Phi$ selbstabbildend und kontrahierent ist, müsste noch untersucht werden. Hier soll nur die Kontraktionseigeschaft in $B(x^{\ast},r)$ für $r>1$ hinreichend klein betrachtet werden. Die eigenschaft der Selbstabbdulng ergibt sich dann wie im Beweis zu \propref{1_3_4}.
+
+\begin{lemma}
+	Sei $D\subseteq \Rn$ offen und $F: D \to \Rn$ stetig differenzierbar. Weiter sei $x^{\ast}\in D$ eine reguläre Nullstelle von $F$. Dann ist $\Phi$ in $x^{\ast}$ differenzierbar mit $\Phi'(x^{\ast}) = 0$.
+\end{lemma}
+
+\begin{proof}
+	Wie zuvor gezeigt wurde, ist die durch \eqref{eq_1_3_8} definierte Abbildung $\Phi$ in $B(x^{\ast},r)\subset D$ hinreichend kleines $r>0$ wohldefiniert. Falls
+	\begin{align}
+		\lim_{x\to x^{\ast}} \frac{\norm{\Phi(x) - \Phi(x^{\ast}) - G(x-x^{\ast})}}{\norm{x-x^{\ast}}} \label{eq_1_4_9}
+	\end{align}
+	mit $G = 0\in \Rnn$ gilt, folgt die Behauptung des Lemmas aus der Definition der Fréchet-Differenzierbarkeit. Unter Beachtung von $\Phi(x^{\ast}) = x^{\ast}$ ergibt sich
+	\begin{align}
+	\Phi(x) - \Phi(x^{\ast}) = x - F'(x)^{-1}F(x) - x^{\ast} = -F'(x)^{-1}(F'(x))(x^{\ast}-x)+F(x))\notag
+	\end{align}
+	und mit Satz 5.1 aus der Vorlesung ENM folgt weiter
+	\begin{align}
+		\Phi(x) - \Phi(x^{\ast}) = F'(x)^{-1}\left( -F(x^{\ast}) + \int_{0}^{1} (F'(x+t(x^{\ast}-x)) - F'(x))(x^{\ast}-x)dt\right)\label{eq_1_4_10}
+	\end{align}
+	für alle $x \inn B(x^{\ast},r)$. Die Stetigkeit von $F'$ auf der kompakten Menge $B(x^{\ast},r)$ impliziert, dass $F'$ dort auch gleichmaäßig stetig ist. Also gibt es zu jedem $\epsilon > 0$ ein $\delta(\epsilon) > 0$, so dass auch
+	\begin{align}
+		\norm{x+t(x^{\ast}-x) - x}\le \delta(\epsilon) \quad \text{ die Beziehung } \norm{F'(x+t(x^{\ast}-x)) -F'(x)}_{\ast} \le \epsilon\notag
+	\end{align}
+	für beliebige $x \in B(x^{\ast},r)$ und $t \in [0,1]$ folgt. Damit hat man
+	\begin{align}
+		\lim_{x\to x^{\ast}}\max_{t\in[0,1]} \norm{F'(x+t(x^{\ast}-x)) -F'(x)}_{\ast} = 0 \notag
+	\end{align}
+	und
+	\begin{align}
+		\lim_{x\to x^{\ast}} \frac{\norm{\int_{0}^{1} (F'(x+t(x^{\ast} - x)) -F'(x))(x^{\ast}-x)dt}_{\ast}}{\norm{x-x^{\ast}}} = 0 \notag
+	\end{align}
+	Somit erhält man aus \eqref{eq_1_4_10} unter Beachtung von $F(x^{\ast}) = 0$ und der Regularität von $F'(x)$
+	\begin{align}
+		\lim_{x\to x^{\ast}} \frac{\norm{\Phi(x) - \Phi(x^{\ast})}}{\norm{x-x^{\ast}}O(x-x^{\ast})} = 0,\notag
+	\end{align} % different to the script!
+	d.h. \eqref{eq_1_4_9} ist für $G=0$ erfüllt.
+\end{proof}
+
+\begin{remark}
+	Falls $F$ in einer Umgebung von $x^{\ast}$ sogar zweimal stetig differenzierbar und damit $\Phi$ dort stetig differenzierbar ist, zeigt \propref{1_1_2}, dass $\norm{\Phi'(x)}_{\ast} \le L$ für alle $x \in D \cap B(x^{\ast},r(L))$ gilt. D.h. die Kontraktionskonstante der Fixpunktabbildung $\Phi$ in \eqref{eq_1_3_8} in einer Kugel $B(x^{\ast},r)$ konvergiert gegen $0$, wenn man den Radius $r$ gegen $0$ gehen lässt. Ferner gibt es Sätze, bei denen unter geeigneten Vorrausetzungen eine bestimmte lokale Konvergenzgeschwindingkeit (Q-Ordnung) gezeigt wird (etwa die Q Ordnung $2$, wenn insbesondere $\Phi'$ stetig ist und $\Phi'(x^{\ast}) = 0$ gilt).
+\end{remark}
