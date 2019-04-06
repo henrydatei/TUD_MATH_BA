@@ -114,10 +114,29 @@ Sei $K,L,M$ Körper.
 	$L\vert K$ endlich $:\Leftrightarrow [L:K] < \infty$.
 \end{definition}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{definition}[Unterring, Teilkörper]
 	Sei $L\vert K$ eine Körpererweiterung $a_1, a_2, \dots, a_n \in L$.
 	\begin{enumerate}
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``von ``$a_1, \dots, a_n$ über $K$ erzeugte'', ``$a_1, \dots, a_n$'' zu $K$ adjungieren)
+		\item $L | K$ ist \begriff{endlich erzeugt} $:\Leftrightarrow a_1, \dots , a_n \in L : L=K(a_1, \dots, a_n)$
+		\item $L | K$ ist \begriff{einfach} $:\Leftrightarrow$ existiert $a \in L: L=K(a)$  
 	\end{enumerate}
 \end{definition}
+
+\begin{remark}
+	\proplbl{1_1_15}
+	\begin{enumerate}[label=(\alph*)]
+		\item $L\vert K$ endlich $\Rightarrow L\vert K$ endlich erzeugt.
+		\item $K[a_1, \dots, a_n]$ ist das Bild des Homomorphismus
+		\begin{align}
+		\begin{cases}
+		K[x_1, \dots, x_n] &\to L\\
+		f &\mapsto f(a_1, \dots, a_n)
+		\end{cases}\notag
+		\end{align}
+		und $K(a_1, \dots , a_n) = \set{\alpha \beta \colon \alpha, \beta \in K[a_1, \dots, a_n], \beta \neq 0} \cong \Quot(K[a_1, \dots, a_n])$
+	\end{enumerate}
+\end{remark}

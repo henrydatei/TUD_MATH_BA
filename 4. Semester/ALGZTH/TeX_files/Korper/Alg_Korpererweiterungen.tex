@@ -1,0 +1,166 @@
+\section{Algebraische Körpererweiterungen}
+
+Sei $L \vert K$ eine Körpererweiterung.
+
+\begin{definition}[algebraisch, transzendent]
+	Sei $\alpha \in L$. Gibt es ein $0 \neq f \in K$ mit $f(\alpha) = 0$, so heißt $\alpha$ \begriff{algebraisch} über $K$, andernfalls \begriff{transzendent} über $K$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\alpha \in K \Rightarrow \alpha$ ist algebraisch über $K$ (denn $f(\alpha) = 0$ für $f = X - \alpha \in K$)
+		\item $\sqrt{-1} \in \Q(\sqrt{-1})$ ist algebraisch über $\Q$ (denn $f(\sqrt{-1})=0$ für $f = X^2 + 1 \in \Q$) \\
+		$\sqrt{-1} \in \C$ ist algebraisch über $\R$        
+	\end{enumerate}
+\end{example}
+
+\begin{remark}
+	\proplbl{1_2_3}
+	Sind $K \subseteq L \subseteq M$ Körper und $\alpha \in M$ algebraisch über $K$, so auch über $L$.
+\end{remark}
+
+\begin{lemma} 
+	\proplbl{1_2_4}
+	Genau dann ist $\alpha \in L$ algebraisch über $K$, wenn $1, \alpha, \alpha^2 , \dots$ $K$-linear abhängig sind.
+\end{lemma}
+
+\begin{proof}
+	Für $\lambda_0 , \lambda_1 , \dots \in K$, fast alle gleich Null, so ist
+	\begin{align}
+	\sum_{i=0}^\infty \lambda_i \alpha^i :\Leftrightarrow f(\alpha) = 0 \text{ für } f = \sum_{i=0}^\infty \lambda_i X^i \in K\notag
+	\end{align}
+\end{proof}
+
+\begin{lemma}
+	Betrachte den Epimorphismus
+	\begin{align}
+	\phi_{\alpha}:\begin{cases}
+	K[x] &\to K[\alpha]\\
+	f &\mapsto f(\alpha).
+	\end{cases}\notag
+	\end{align}
+	Genau dann ist $\alpha$ algebraisch über $K$, wenn $\Ker(\phi_\alpha) \neq (0)$. In diesem Fall ist $\Ker(\phi_\alpha) = (f_\alpha)$ mit einem eindeutig bestimmten irreduziblen, normierten $f_\alpha \in K$.
+\end{lemma}
+
+\begin{proof}
+	$K$ Hauptidealring $\Rightarrow \Ker(\phi_\alpha) = (f_\alpha)$, $f_\alpha \in K$, o.E. sei $f_{\alpha}$ normiert. Aus $K[\alpha] \subseteq L$ nullteilerfrei folgt, dass $\Ker(\phi_\alpha)$ prim ist. Somit ist $f_\alpha$ prim und im Hauptidealring also auch irreduzibel.
+\end{proof}
+
+\begin{definition}[Monimalpolynom, Grad]
+	Sei $\alpha \in L$ algebraisch über $K$, $\Ker(\phi_\alpha) = (f_\alpha)$ mit $f_\alpha \in K$ normiert und irreduzibel.
+	\begin{enumerate}
+		\item $\MinPol(\alpha\vert K)  f_\alpha$, das \begriff{Minimalpolynom} von $\alpha$ über $K$.
+		\item $\deg(\alpha\vert K) :\Leftrightarrow \deg(f_\alpha)$, der \begriff{Grad} von $\alpha$ über $K$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	\proplbl{1_2_7}
+	Sei $\alpha \in L$.
+	\begin{enumerate}
+		\item $\alpha$ transzendent über $K$ \\
+		$\Rightarrow K[\alpha] \cong K$, $K(\alpha) \cong_K K(X)$, $[K(\alpha) \colon K] = \infty$.
+		\item $\alpha$ algebraisch über $K$ \\
+		$\Rightarrow K[\alpha] = K(\alpha) \cong \lnkset{K}{\MinPol{\alpha}{K}}$ , $[ K(\alpha) \colon K)]  = \deg(\alpha \vert K) < \infty$ und \\
+		$1, \alpha, \dots , \alpha^{\deg(\alpha \vert K) -1}$ ist $K$-Basis von $K(\alpha)$. 
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\Ker(\phi_\alpha) = (0) \Rightarrow \phi_\alpha$ ist Isomorphismus (da zusätzlich injektiv) \\
+		$\Rightarrow K(\alpha) \cong_K \Quot(K[\alpha]) \cong_K \Quot(K) = K(X)$ \\
+		$\Rightarrow [K(\alpha) \colon K] = [K(x) \colon K] = \infty$
+		\item Sei $f = f_\alpha = \MinPol(\alpha \vert K)$, $n = \deg(\alpha \vert K) = \deg(f)$.
+		\begin{itemize}
+			\item $f$ irreduzibel $\Rightarrow (f) \neq (0)$ prim ${\xRightarrow{\text{GEO II.4.7}}} (f)$ ist maximal \\
+			$\Rightarrow K[\alpha] \cong \lnkset{K}{(f)}$ ist Körper $\Rightarrow K[\alpha] = K(\alpha)$
+			\item $1, \alpha, \dots , \alpha^{n-1}$ sind $K$-linear unabhängig: 
+			\begin{align}
+			\sum_{i=0}^{n-1} \lambda_i \alpha^i = 0 \Rightarrow \sum_{i=0}^{n-1} \lambda_i X^i \in (f) \quad \overset{\deg f = n}{\Longrightarrow} \quad \lambda_i = 0 \enskip \forall i \notag
+			\end{align}
+			$1, \alpha, \dots , \alpha^{n-1}$ ist Erzeugendensystem: Für $g \in K$ ist 
+			\begin{align}
+			g = qf + r \text{ mit } q,r \in K \text{ und } \deg(r) < \deg(f) = n \notag
+			\end{align}
+			und  
+			\begin{align}
+			g(\alpha) = q(\alpha) \underbrace{f(\alpha)}_{=0} + r(\alpha) = r(\alpha) \notag
+			\end{align}
+			somit $K = \Image(\phi_\alpha) = \set{g(\alpha) \colon g \in K} = \set{r(\alpha) \colon r \in K, \deg(r) < n} = \sum_{i=0}^{n-1} K \cdot \alpha^i$
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}[label=(\alph*)]
+		\item $p \in \Z$ prim $\Rightarrow$ $\sqrt{p} \in \C$ ist algebraisch über $\Q$. \\
+		Da $f(X) = X^2 - p$ irreduzibel in $\Q$ ist (GEO II.7.3), ist $\MinPol(\sqrt{p}:\Q) = X^2 - p$, $[\Q(\sqrt{p}) : \Q] = 2$.
+		\item Sei $\zeta_p = e^{\frac{2\pi i}{p}} \in \C$ ($p \in \N$ prim). Da $\Phi_p =  \frac{X^p-1}{X-1} = X^{p-1} + X^{p-2} + \cdots + X + 1 \in \Q$ irreduzibel in $\Q$ ist (GEO II.7.9), ist $\MinPol(\zeta_p \vert \Q) = \Phi_p$, $[\Q(\zeta_p) : \Q] = p-1$. Daraus folgt schließlich $[\C : \Q \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p \Rightarrow [\C : \Q] = \infty \Rightarrow [R : \Q] = \infty$.
+		\item $e \in \R$ ist transzendent über $\Q$ (\person{Hermite} 1873), 
+		$\pi \in \R$ ist transendent über $\Q$ (\person{Lindemann} 1882). \\
+		Daraus folgt: $[R : \Q] \ge [\Q(\pi): \Q] = \infty$. Jedoch ist unbekannt, ob z.B. $\pi + e$ transzendent ist.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	$L \vert K$ ist \begriff{algebraisch} $:\Leftrightarrow$ jedes $\alpha \in L$ ist algebraisch über $K$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{1_2_10}
+	$L \vert K$ endlich $\Rightarrow$ $L \vert K$ algebraisch.
+\end{proposition}
+
+\begin{proof}
+	$\alpha \in L$, $[L : K] = n$ $\Rightarrow 1, \alpha, \dots , \alpha^n$ $K$-linear abhängig $\xRightarrow{\propref{1_2_4}} \alpha$ algebraisch über $K$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{1_2_11}
+	Ist $L = K(\alpha_1, \dots, \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$, so ist $L \vert K$ endlich, insbesondere algebraisch.
+\end{conclusion}
+
+\begin{proof}
+	Induktion nach $n$:
+	\begin{itemize}
+		\item $n=0$: \checkmark
+		\item $n > 0$: $K_1 :=  K(\alpha_1, \dots, \alpha_{n-1})$ \\
+		$\Rightarrow L=K_1(\alpha_n)$, $\alpha_n$ algebraisch über $K_1$ (\proplbl{1_2_3}) \\
+		$\Rightarrow [L \colon K] = \underbrace{[K_1(\alpha_n) \colon K_1]}_{< \infty \text{ nach \propref{1_2_7}}}\cdot \underbrace{[K_1 : K]}_{< \infty \text{ nach IH}}$
+	\end{itemize}
+\end{proof}
+
+%\begin{proof_induction}[$n$]
+%	\ianfang[$n=0$] $\checkmark$
+%	\ischritt[$n > 0$] 
+%\end{proof_induction} 
+
+\begin{conclusion}
+	Es sind äquivalent:
+	\begin{enumerate}
+		\item $L \vert K$ ist endlich.
+		\item $L \vert K$ ist endlich erzeugt und algebraisch.
+		\item $L = K(\alpha_1, \dots , \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$.
+	\end{enumerate}
+\end{conclusion}
+
+\begin{proof}
+	\begin{itemize}
+		\item (1) $\Rightarrow$ (2): \propref{1_1_15} und \propref{1_2_10}
+		\item (2) $\Rightarrow$ (3): trivial
+		\item (3) $\Rightarrow$ (1): \propref{1_2_11}
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Nach \propref{1_2_7} ist
+	\begin{align}
+	\alpha \text{ algebraisch über } K :\Leftrightarrow K[\alpha] = K(\alpha) \notag
+	\end{align}
+	Direkter Beweis für $(\Rightarrow)$: \\
+	Sei $0 \neq \beta \in K[\alpha]$. Daraus folgt, dass $f(\beta) = 0$ für ein irreduzibles $0 \neq f = \sum_{i=0}^n a_i X^i \in K$. Durch Einsetzen von $\beta$ und Division durch $\beta$ erhält man (auch wegen der aus der Irreduzibilität
+	\begin{align}
+	\xRightarrow{a_0 \neq 0}\beta^{-1} = -a_0^{-1} ( a_1 + a_2 \beta + \dots + a_n \beta^{n-1}) \in K[\beta] \subseteq K[\alpha] \notag
+	\end{align}
+\end{remark}
