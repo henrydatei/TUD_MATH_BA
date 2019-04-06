@@ -47,6 +47,7 @@
 \rproofar%*n
 \beha#*\math
 \powerset#*\math
+\pows#*\math
 \realz#*\math
 \imagz#*\math
 \Re#*\math
@@ -93,6 +94,10 @@
 \kgV#*\math
 \rang#*\math
 \ord#*\math
+\MinPol#*\math
+\norm{content}#\math
+\set{content}#\math
+\abs{content}#\math
 \bigcupdot#*\math
 \BIGboxplus#*\math
 # special names
