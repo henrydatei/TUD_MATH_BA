@@ -1,6 +1,6 @@
 \ProvidesPackage{mathoperators}
 
-\RequirePackage{xparse}
+\RequirePackage{xparse}						 % for \DeclarePairedDelimiter
 \RequirePackage{xkeyval}
 \RequirePackage{xstring}
 
@@ -25,7 +25,9 @@
 \RequirePackage{amsfonts}
 \RequirePackage{scalerel,stackengine}
 \RequirePackage{calc}
-\RequirePackage{mathrsfs} % Category-like letters for MINT with \mathscr
+\RequirePackage{mathrsfs}                     % Category-like letters for MINT with \mathscr
+\RequirePackage{bbm}                          % mathbb 1
+\RequirePackage{mleftright}                   % for \DeclarePairedDelimiter
 
 %transpose
 \newcommand\transpose[1]{\ensuremath{#1^\mathsf{T}}}
@@ -59,7 +61,8 @@
 \newcommand{\real}{\mathbb{R}} % real set R
 \newcommand{\comp}{\mathbb{C}} % complex set C
 \newcommand{\quat}{\mathbb{H}} % quaternion
-\newcommand{\field}{\mathbb{K}} % general field for the others above!
+\newcommand{\field}{\mathbb{F}} % general field for the others above!
+\newcommand{\Fp}{\mathbb{F}_p} % general field for the others above!
 
 %%%% Alternative emptyset symbol %%%%%%%%%%%%%%%%%
 \let\oldemptyset\emptyset
@@ -71,7 +74,8 @@
 \newcommand{\Z}{\mathbb{Z}} % whole number Symbol
 \newcommand{\Q}{\mathbb{Q}} % rational number symbol
 \newcommand{\R}{\mathbb{R}} % real set R
-\newcommand{\Rn}{\mathbb{R}^n} % real set R^n
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Rnn}{\mathbb{R}^{n \times n}} % real set R^nxn
 \newcommand{\Rd}{\mathbb{R}^d} % real set R^n for MINT
 \undef{\H}
 \undef{\C}
@@ -90,8 +94,33 @@
 %%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
 
 %%% Metrics, Norms, etc %%%%
-\newcommand{\norm}{\Vert \cdot \Vert}
-\newcommand{\metric}{\vert \cdot \vert}
+
+% Norms, Absolute, Scalar product
+% Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
+% Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
+{
+	\NewDocumentCommand#1{som}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
+    	{\mathopen{##2#2}##3\mathclose{##2#3}}
+	}
+}
+
+\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binar
+{
+	\NewDocumentCommand#1{somm}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
+    	{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
+	}
+}
+
+\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
+\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
+\xDeclarePairedDelimiter{\brackets}{(}{)}
 
 
 %%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%
@@ -100,7 +129,10 @@
 \newcommand{\sigB}{\mathscr{B}} % typical Sigma B for sigma algebras
 \newcommand{\sigG}{\mathscr{G}} % typical Generator for sigma algebras
 \newcommand{\sigO}{\mathscr{O}} % sigma algebra of open sets
-\newcommand{\probP}{\mathbb{P}} % probability measure
+\newcommand{\probp}{\mathbb{P}} % probability measure
+\newcommand{\one}{\mathbbm{1}}  % characteristic function
+\newcommand{\borel}{\mathscr{B}} % Borel set
+\newcommand{\sigF}{\mathscr{F}} % typical sigma F for sigma algebra for stochastic lecture
 
 \newcommand{\diff}{\mathrm{d}} % differential d
 \newcommand{\s}{\,\,}     % space after the function in the intergral
@@ -200,6 +232,7 @@
 \DeclareMathOperator{\cl}{cl} % Closure
 \DeclareMathOperator{\cond}{cond} % ? 
 \DeclareMathOperator{\curl}{curl} % Curl/Rotation
+\DeclareMathOperator{\chara}{char} % characteric Ring/Field
 
 %%%%%% D
 \DeclareMathOperator{\diam}{diam} % Diameter of a set
@@ -235,11 +268,13 @@
 \DeclareMathOperator{\id}{id} % Identity
 
 \DeclareMathOperator{\kgV}{kgV} % kleinste gemeinsamer Teiler (lcd)
+\DeclareMathOperator{\Ker}{Ker} % kernel of a morphisms
 
 %%%%%% LMN
 \DeclareMathOperator{\LC}{LC} % Leitkoeffizient
 
 \DeclareMathOperator{\Mat}{Mat} % Matrix
+\DeclareMathOperator{\MinPol}{MinPol} % Minimal Polynomial
 
 
 %%%%%% OPQ

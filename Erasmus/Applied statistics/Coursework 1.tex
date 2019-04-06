@@ -236,8 +236,12 @@ The probability density function $f(t)$ is
 \begin{align}
 	f(t) = \frac{2t\cdot\frac{\exp(-t^2)}{100}}{100} = \frac{t\cdot\exp(-t^2)}{5000}\notag
 \end{align}
+\textcolor{red}{After the PDF was changed we have}
+{\color{red}\begin{align}
+	f(t) = \frac{2t\cdot\exp\left(\frac{-t^2}{100} \right) }{100} \notag
+\end{align}}
 \begin{center}
-	\begin{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
 	\begin{axis}[
 	xmin=0, xmax=5, xlabel=$x$,
 	ymin=0, ymax=0.0001, ylabel=$y$,
@@ -249,6 +253,19 @@ The probability density function $f(t)$ is
 	\addplot+[mark=none] {(x*exp(-x^2))/5000};
 	\end{axis}
 	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=20, xlabel=$x$,
+	ymin=0, ymax=0.2, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	domain=0:20
+	]
+	\addplot+[mark=none, color=red] {(2*x*exp(-x^2/100))/100};
+	\end{axis}
+	\end{tikzpicture}
 \end{center}
 The cumulative distribution function $F(t)$ is then
 \begin{align}
@@ -256,8 +273,13 @@ The cumulative distribution function $F(t)$ is then
 	&= \int_0^t \frac{\xi\cdot\exp(-\xi^2)}{5000}\,\diff\xi\notag \\
 	&= \frac{\exp(-t^2)\Big(\exp(t^2)-1\Big)}{10000} \notag
 \end{align}
+{\color{red}\begin{align}
+		F(t) &= \int_0^t f(\xi)\,\diff\xi \notag \\
+		&= \int_0^t \frac{2\xi\cdot\exp\left(\frac{-\xi^2}{100} \right) }{100}\,\diff\xi \notag \\
+		&= 1-\exp\left(\frac{-t^2}{100} \right)  \notag
+\end{align}}
 \begin{center}
-	\begin{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
 	\begin{axis}[
 	xmin=0, xmax=5, xlabel=$x$,
 	ymin=0, ymax=0.0001, ylabel=$y$,
@@ -269,12 +291,29 @@ The cumulative distribution function $F(t)$ is then
 	\addplot+[mark=none] {(exp(-x^2)*(exp(x^2)-1))/10000};
 	\end{axis}
 	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=20, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	domain=0:20
+	]
+	\addplot+[mark=none,color=red] {1-exp(-x^2/100)};
+	\end{axis}
+	\end{tikzpicture}
 \end{center}
 For the survival function we get
 \begin{align}
 	R(t) &= 1 - F(t) \notag \\
 	&= \frac{\exp(-t^2)+9999}{10000} \notag
 \end{align}
+{\color{red}\begin{align}
+		R(t) &=  1-F(t) \notag \\
+		&= \exp\left(\frac{-t^2}{100} \right) \notag
+\end{align}}
 \begin{center}
 	\begin{tikzpicture}[scale=0.9]
 	\begin{axis}[
@@ -306,15 +345,34 @@ For the survival function we get
 	\end{axis}
 	\end{tikzpicture}
 \end{center}
-To get the reliability of the component at $t=7$ we simply evaluate $R(7)$ which is 0.9999.
+\begin{center}
+		\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=20, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	domain=0:20
+	]
+	\addplot+[mark=none,color=red] {exp(-x^2/100)};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+To get the reliability of the component at $t=7$ we simply evaluate $R(7)$ which is 0.9999 \textcolor{red}{(0.6126)}.
 
 The hazard function is defined as
 \begin{align}
 	h(t) &= \frac{f(t)}{1-F(t)} \notag \\
 	&= \frac{2t}{9999\cdot \exp(t^2)+1} \notag
 \end{align}
+{\color{red}\begin{align}
+		h(t) &= \frac{f(t)}{1-F(t)} \notag \\
+		&= \frac{t}{50} \notag
+\end{align}}
 \begin{center}
-	\begin{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
 	\begin{axis}[
 	xmin=0, xmax=5, xlabel=$x$,
 	ymin=0, ymax=0.0001, ylabel=$y$,
@@ -324,6 +382,19 @@ The hazard function is defined as
 	restrict y to domain=0:1,
 	]
 	\addplot+[mark=none] {(2*x)/(9999*exp(x^2)+1)};
+	\end{axis}
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+	xmin=0, xmax=20, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	samples=400,
+	axis y line=middle,
+	axis x line=middle,
+	restrict y to domain=0:1,
+	domain=0:20
+	]
+	\addplot+[mark=none,color=red] {x/50};
 	\end{axis}
 	\end{tikzpicture}
 \end{center}

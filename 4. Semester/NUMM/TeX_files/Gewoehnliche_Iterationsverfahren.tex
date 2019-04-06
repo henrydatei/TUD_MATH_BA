@@ -1,0 +1,87 @@
+\section{Gewöhnliche Iterationsverfahren}
+
+Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interationsverfahren} oder \begriff{Fixpunktiteration}. Kritisch ist dabei, ob die Voraussetzungen ($\Phi$ ist selbstabbildend und kontraktiv) erfüllt werden können. Dies wird in diesem Abschnitt im Fall $V = \Rn$ mit einer beliebigen aber festen Vektornorm $\Vert \cdot \Vert$ untersucht. Die zugeordnete Matrixnorm wurde mit $\Vert \cdot \Vert_{\ast}$ bezeichnet.
+
+\begin{lemma}
+	\proplbl{1_1_2}
+	Sei $S \subseteq \Rn$ offen und konvex und $\Phi: D \to \Rn$ stetig differenzierbar. Falls $L > 0$ existiert mit
+	\begin{align}
+	\Vert \Phi'(x) \Vert_{\ast} \le L \text{ für alle } x \in D, \label{eq_1_1_5}
+	\end{align}
+	dann ist $\Phi$ Lipschitz-stetig in $D$ mit der Lipschitz-Konstante $L$, d.h. es gilt
+	\begin{align}
+	\Vert \Phi(x) - \Phi(y)\Vert \le L \Vert x-y \Vert \text{ für alle } x \in D. \label{eq_1_1_6}
+	\end{align}
+	Die Umkehrung dieser Aussage ist ebenfalls richtig.
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Sei \ref{eq_1_1_5} erfüllt. Mit Satz 5.1 aus der Vorlesung ENM folgt %TODO find out which prop is meant!
+		\begin{align}
+		\norm{\Phi(x) - \Phi(y)}_{\ast} = \norm{\int_{0}^{1} \Phi'(y + t(x-y))(x-y) dt} \le  \norm{x-y} \sup_{t \in [0,1]} \norm{\Phi'(y+t(x-y))}_{\ast}
+		\end{align}
+		für alle $x,y \in D$. Also liefert \ref{eq_1_1_5} unter Beachtung der Konvexität von $D$ die Behauptung.
+		\item Sei nun \ref{eq_1_1_6} erfüllt. Angenommen es gibt $\hat{y} \in D$ mit
+		\begin{align}
+		\norm{\Phi'(\hat{y})}_{\ast} > L. \label{eq_1_1_7}
+		\end{align}
+		Unter Berücksichtigung der Definition der zugeordneten Matrixnorm $\norm{\cdot}_{\ast}$ folgt, dass $d \in \Rn$ existiert mit $\Vert d \Vert = 1$ und $\norm{\Phi'(\hat{y}d)} = \norm{\Phi(\hat{y})}_{\ast}$. Wendet man nun ENM mit $x := \hat{y} + sd$ und $y := \hat{y}$ an, so folgt für alle $s > 0$ hinreichend klein
+		\begin{align}
+		\norm{\Phi(\hat{y} + sd) - \Phi(\hat{y})} \le L \norm{sd} = sL
+		\end{align}
+		und 
+		\begin{align}
+		\norm{\Phi(\hat{y} + sd) - \Phi(\hat{y})} &= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt}\notag \\
+		&= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt + \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt - \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt}\notag \\
+		&\ge s\norm{\Phi'(\hat{y}d)} - s\norm{d} \sup_{t \in [0,1]}\norm{\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})}_{\ast} \notag \\
+		&= s (\norm{\Phi'(\hat{y})}_{\ast} - \sup_{t \in [0,1]}\norm{\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})}_{\ast}) \notag\\
+		&> sL, \notag
+		\end{align}
+		wobei sich die letzte Ungleichung wegen \ref{eq_1_1_7} und der Stetigkeit von $\Phi'$ ergibt. Offenbar hat man damit einen Widerspruch, so dass die Annahme falsch ist.
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	Die Nullstellenaufgabe $\cos x - 2x = 0$ sei zu lösen. Eine mögliche Formulierung als Fixpunktaufgabe ist
+	\begin{align}
+	\Phi(x) = x \text{   mit  } \Phi(x) := -x + \cos x \notag
+	\end{align}
+	Offenbar ist $\Phi: \R \to \R$ selbstabbildend. Weiter ergibt sich
+	\begin{align}
+	\Phi'(x) = -1 - \sin x \notag
+	\end{align}
+	Für $x \in D := (0,1)$ gilt daher $\vert \Phi' (x)\vert > 1$. Mit \propref{1_1_2} folgt $\vert \Phi(x) - \Phi(y)\vert \ge \abs{x-y}$ für mindestens ein Paar $(x,y) \in D \times D$. Somit ist $\Phi$ in $D$ nicht kontrahierend.
+	Definiert man $\Phi$ aber durch $\Phi(x) := \sfrac{1}{2}\cos x$, so ist die Fixpunktaufgabe $\sfrac{1}{2}\cos x = x$ wiederum zur Nullstellenaufgabe äquivalent und es folgt
+	\begin{align}
+	\Phi'(x) = \frac{1}{2}\sin x. \notag
+	\end{align} 
+	Damit hat man $\vert \Phi'(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos x$ und $x^0 := 1$ ergibt:
+	\begin{align}
+	\text{ add table here!!!}
+	\end{align} %TODO add plot!
+\end{example}
+
+Nehmen wir an, die Voraussetzungen des Banachschen Fixpunktsatzes seien gegeben. Dann hängt die Konvergenzgeschwindigkeit der Fixpunktiteration offenbar von der Kontraktionskonstanten $\lambda \in [0,1)$ ab. Je kleiner $\lambda$ ist, desto schneller ist ist die Konvergenzgeschwindigkeit. Unter Umständen kann die Umformulierung einer Fixpunktaufgabe mit Hilfe einer anderen Fixpunktabbildung helfen, die Konvergenzgeschwindigkeit zu verbessern (ggf. auf Kosten der Größe der Menge $U$, in der die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind.) Ein Beispiel zu Konstruktion einer Fixpunktabbildung mit lokal beliebig kleiner Kontraktionskonstante gibt Abschnitt 1.4. In Abschnitt 2.1 wird gezeigt, wie Fixpunktabbildungen zu iterativen Lösung von linearen Gleichungssystemen eingesetzt werden können.
+Im Weiteren bezeichne $B(x^{\ast}, r) :=$ die abgeschlossene Kugel um $x^{\ast}$ mit Radius $r$ (bzgl. einer passenden Norm).
+
+\begin{proposition}[Ostrowski]
+		\proplbl{1_3_4}
+	Seien $D \subseteq \Rn$ offen und $\Phi: D \to \Rn$ stetig differenzierbar. Die Abbildung $\Phi$ besitze einen Fixpunkt $x^{\ast} \in D$ mit $\Vert \Phi'(x^{\ast})\Vert_{\ast} < 1$. Dann existiert $r > 0$, so dass das gewöhnliche Iterationsverfahren für jeden Startpunkt $x^0 \in B(x^{\ast}, r)$ gegen $x^{\ast}$ konvergiert.
+\end{proposition}
+
+\begin{proof}
+	Da $\Phi$ stetig differenzierbar ist und $\norm{\Phi'(x*)}_{\ast} < 1$, gibt es $\lambda \in[0,1]$ und $r > 0$, sodass
+	\begin{align}
+		\norm{\Phi'(x)}_{\ast} \le \lambda \quad \text{ für alle } x\in B(x*,r).\notag
+	\end{align}
+	Nach \propref{1_1_2} gilt daher
+	\begin{align}
+		\norm{\Phi(x) - \Phi(y)}\le \lambda\norm{x-y} \quad\text{ für alle }x,y \in B(x*,r).
+	\end{align}
+	Insbesondere folgt hieraus
+	\begin{align}
+		\norm{\Phi(x) - \Phi(x*)} = \norm{\Phi(x) - x*} \le \lambda \norm{x-x*} \quad \text{ für alle } x \in B(x*,r)
+	\end{align}
+	und damit $\Phi(x) \in B(x*,r)$ für alle $x \in B(x*,r)$. Also ist $\Phi$ bzgl. $B(x*,r)$ selbstabbildend und kontraktiv. Daher liefert \propref{1_1_1} die gewünschte Aussage.
+\end{proof}

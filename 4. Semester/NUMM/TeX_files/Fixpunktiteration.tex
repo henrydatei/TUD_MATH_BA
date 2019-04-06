@@ -1,0 +1,79 @@
+Seien eine reguläre Matrix $A \in \R^{n \times n}$ und $b \in Rn$ gegeben. In diesem Kapitel werden iterative Verfahren zur Lösung des linearen Gleichungssystems
+\begin{align}
+Ax = b\label{eq_2_2_1}
+\end{align}
+betrachtet.
+%TODO fix counter, this equation should be the 1 and the one in the following section, 2!
+\section{Fixpunktiteration}
+
+Grundidee dieser Verfahren ist die geeignete Umformulierung des System $Ax = b$ als Fixpunktaufgabe und die Anwendung des gewöhnlichen Iterationsverfahrens. Die hier betrachtete (zu \eqref{eq_2_2_1} äquivalente) Fixpunktaufgabe lautet
+\begin{align}
+	x = x - B^{-1}(Ax - b),\notag
+\end{align}
+wobei $B \in \R^{n \times n}$ eine noch zu wählende reguläre Matrix ist. Bei Wahl eines Startpunktes $x^0 \in \Rn$ ergibt sich das gewöhnliche Iterationsverfahren damit zu
+\begin{align}
+	x^{k+1} := x^{k} - B^{-1}(A x^k -b) = (I - B^{-1}A)x^{k} + B^{-1}b, \qquad k = 0,1,2,\dots \label{eq_2_2_2} %TODO add underbraces for M = I - B^{-1}A and c = B^{-1}b
+\end{align}
+Mit den Bezeichnung $M := I - B^{-1}A$ und $c:= B^{-1}b$ untersuchen wir deshalb die Iterationsverschrift
+\begin{align}
+	x^{k+1} := Mx^k + c. \label{eq_2_2_3}
+\end{align}
+Die zugehörige Fixpunktabbildung $\Phi: \Rn \to \Rn$ ist damit offenbar gegeben durch
+\begin{align}
+	\Phi(x) := Mx + c.\notag
+\end{align}
+\begin{proposition}
+	\proplbl{2_2_1}
+	Es sei $B \in \Rnn$ regulär und mit $M:= I - B^{-1}A$ gelte
+	\begin{align}
+		\lambda := \norm{M}_{\ast} < 1 \label{eq_2_1_4}
+	\end{align}
+	wobei $\norm{\cdot}_{\ast}$ die einer Vektornorm $\norm{\cdot}$ zugeordnete Matrixnorm bezeichnet. Dann gilt:
+	\begin{enumerate} %TODO add alph
+		\item Die für eine beliebiges $x^0 \in \Rn$ durch \eqref{eq_2_2_3} erzeugte Folge $\set{x^k}$ konvergiert gegen die eindeutige Lösung $x*$ des linearen Gleichungssystems \eqref{eq_2_2_1}.
+		\item Die Abschätzungen \eqref{eq_1_2_2} - \eqref{eq_1_2_4} sind für alle $k \in \N$ erfüllt.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Direkte Folgerung aus dem Banachschen Fixpunktsatz (\propref{1_1_1})
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+	In \propref{2_2_1}a) kann die Folgerung \eqref{eq_2_1_4} durch die Bedingung
+	\begin{align}
+	\rho(M) < 1\label{eq_2_1_5}
+	\end{align}
+	ersetzt werden. Da
+	\begin{align}
+		\rho(C) \le \norm{C}_{\ast} \quad \text{ für alle } C \in \Rnn \notag
+	\end{align}
+	für jede beliebige zugeordnete Matrixnorm $\norm{\cdot}_{\ast}$ gilt (vgl. Übungsaufgabe), ist \eqref{eq_2_1_5} eine schwächere Forderung als \eqref{eq_2_1_4}. Andererseits gibt es zu jedem Paar $(C,\epsilon) \in \Rnn \times (0,\infty)$ eine zugeordnete Matrixnorm $\norm{\cdot}_{(C,\epsilon)}$, so dass
+	\begin{align}
+		\norm{C}_{(C,\epsilon)} \le \rho(C) + \epsilon. \notag
+	\end{align}
+	Dabei ist $\rho(C)$ der \begriff{Spektralradius} der Matrix $C \in \Rnn$, d.h.
+	\begin{align}
+		\rho(C) := \max_{i = 1,\dots,n}\abs{\lambda_i}, \notag
+	\end{align}
+	wobei $\lambda_1,\dots,\lambda_n \in \C$ die Eigenwerte der Matrix $C \in \Rnn$ bezeichnen. Man kann weiter zeigen, dass \eqref{eq_2_1_5} auch notwendig dafür ist, dass die durch \eqref{eq_2_2_2} erzeugte Folge $\set{x^k}$ für jedes $x^0$ gegen $x*$ konvergiert.
+\end{remark}
+
+Um eine Matrix $B$ zu finden, so dass einerseits der Aufwand pro Iteration \eqref{eq_2_2_2} niedrig und andererseits die Bedingung \eqref{eq_2_1_4} bzw. \eqref{eq_2_1_5} erfüllt ist, betrachten wir die folgende Zerlegung
+\begin{align}
+	A = L + D + R \notag
+\end{align}
+
+der Matrix $A$, wobei $D:= \diag(a_{11}, \dots, a_{nn})$ die aus den Diagonalelementen von $A$ bestehende Diagonalmatrix bezeichnet und $L$ bzw. $R$ eine untere bzw. obere Dreiecksmatrix ist mit
+
+\begin{align}
+	L = \dots \text{ bzw. } R = \dots \notag %TODO set matrices!
+\end{align}
+
+\subsection{Das \person{Jacobi}-Verfahren}
+
+\subsection{Das \person{Gauss-Seidel}-Verfahren}
+
+\subsection{SOR-Verfahren}

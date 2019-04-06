@@ -64,7 +64,7 @@ The sample proportion of successes is denoted by $\hat{p}$ and is an estimate of
 \begin{align}
     \hat{p} = \frac{\text{number of successes in sample}}{\text{sample size}} \notag
 \end{align}
-A 95\% confidence interval is $\hat{p} \pm 2\cdot\sqrt{\frac{p(1-p)}{n}}$
+A 95\% confidence interval is\footnote{To get the correct result, you would have to multiply by 1.96 instead of 2. You can also use 2 for a quick calculation.} $\hat{p} \pm 2\cdot\sqrt{\frac{p(1-p)}{n}}$
 
 \begin{example}
     In a random sample of $n=36$ values, there were $x=17$ successes. We estimate the population proportion $\hat{p}$ with $\hat{p}=\frac{17}{36}=0.472$. A 95\% confidence interval for $\hat{p}$ is $0.472\pm 0.166$. We are therefor 95\% confident that the population of successes is between 30.6\% and 63.8\%. A sample size of $n=36$ is clearly too small to give a very accurate estimate.

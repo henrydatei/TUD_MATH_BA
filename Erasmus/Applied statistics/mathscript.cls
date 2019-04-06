@@ -65,6 +65,7 @@
 \RequirePackage{fancyhdr} 	%customize header / footer
 \RequirePackage{titlesec} 	%customize titles
 \RequirePackage{tocloft}	%customize toc
+\usepackage[bottom]{footmisc}
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
@@ -107,7 +108,7 @@
 
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.13}
-\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{fillbetween,statistics}
 \RequirePackage{pgf}
 \RequirePackage{tikz}
 \usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri,decorations.fractals}
@@ -694,9 +695,9 @@
 \pagestyle{fancy}
 \pagenumbering{arabic}
 %remember chapter-title in \leftmark and \rightmark
-\renewcommand{\chaptermark}[1]{%
-	\markboth{\chaptername
-		\ \thechapter:\ #1}{}}
+%\renewcommand{\chaptermark}[1]{%
+%	\markboth{\chaptername
+%		\ \thechapter:\ #1}{}}
 %remember section title in \leftmark
 \renewcommand{\sectionmark}[1]{%
 	\markright{\thesection.\ #1}{}}

@@ -4,7 +4,8 @@
 %programming related packages
 \RequirePackage{zref-base}
 \RequirePackage{etoolbox}
-\RequirePackage{xparse}%better macros
+\RequirePackage{xparse}                          % better macros, for \DeclarePairedDelimiter
+\RequirePackage{mleftright}                      % for \DeclarePairedDelimiter
 \RequirePackage{calc}
 \RequirePackage{xstring}
 \RequirePackage{xkeyval}
@@ -406,13 +407,13 @@
 	skipbelow=0pt,%
 ]{interpretation}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Interpretation}
 
-\theoremstyle{underlinedPlain}
-\newmdtheoremenv[%
-	hidealllines=true,%
-	innerleftmargin=1em,%
-	innerrightmargin=0,%
-	skipbelow=0pt,%
-]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
+%\theoremstyle{underlinedPlain}
+%\newmdtheoremenv[%
+%	hidealllines=true,%
+%	innerleftmargin=1em,%
+%	innerrightmargin=0,%
+%	skipbelow=0pt,%
+%]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
 
 \theoremstyle{plainEnvironment}
 \newmdtheoremenv[%
