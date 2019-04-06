@@ -50,15 +50,14 @@
 	\end{itemize}
 \end{example}
 
-\begin{example}[Eigenschaften von Funktionen]
-	\begin{itemize}
-		\item \begriff{injektiv}: Zuordnung ist eindeutig: $F(m_1) = F(m_2) \Rightarrow m_1=m_2$ \\
-		Bsp: $x^2$ ist nicht injektiv, da $F(-2)=F(2)=4$
-		\item \begriff{surjektiv}: $F(M)=N$ ($\forall n \in N \; \exists m \in M \mid F(m)=n$) \\
-		Bsp: $\sin(x)$ ist nicht surjektiv, da es kein $x$ für $y=27$ gibt
-		\item \begriff{bijektiv}: injektiv und surjektiv
-	\end{itemize}
-\end{example}
+\begin{definition}[Eigenschaften von Abbildungen]
+	Sei $f: X \to Y$ eine Abbildung.
+	\begin{enumerate}
+		\item $f$ ist \begriff{injektiv},wenn $\forall x,y \in X (f(x) = f(y) \Rightarrow x=y)$.
+		\item $f$ ist \begriff{surjektiv}, wenn $\forall y \in Y \exists x \in X (f(x)=y)$ ($\forall n \in N  \exists m \in M \mid f(m)=n$).
+		\item $f$ ist \begriff{bijektiv}, wenn $f$ injektiv und surjektiv ist.
+	\end{enumerate}
+\end{definition}
 
 \begin{example}
 	\begin{itemize}
@@ -72,14 +71,20 @@
 \begin{definition}[Einschränkung]
 	\proplbl{1_2_6}
 	Sei $f: x \mapsto y$ eine Abbildung. Für $A \subset X$
-	definiert man die \begriff{Einschränkung}/Restrikton von $f$ auf $A$ als die Abbildung 
+	definiert man die \begriff{Einschränkung}/\begriff{Restrikton} von $f$ auf $A$ als die Abbildung 
 	\begin{align}
 		f \vert_A:\begin{cases}
 		A \to Y \\ a \mapsto f(a)
 		\end{cases}\notag
 	\end{align}
-	Das \begriff{Bild} von $A$ unter $f$ ist $f(A) := \{f(a): a \in A\}$. \\
-	Das \begriff{Urbild} einer Menge $B \subset Y$ unter $f$ ist $f^{-1} := \{x \in X: f(x) \in B\}$. \\
+	Das \begriff{Bild} von $A$ unter $f$ ist 
+	\begin{align}
+		f(A) := \{f(a): a \in A\}. \notag
+	\end{align}
+	Das \begriff{Urbild} einer Menge $B \subset Y$ unter $f$ ist
+	\begin{align}
+		f^{-1} := \{x \in X: f(x) \in B\}. \notag
+	\end{align}
 	Man nennt $\Image(f) := f(X)$ das Bild von $f$.
 \end{definition}
 
