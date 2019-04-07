@@ -2,7 +2,7 @@
 
 Der folgende Satz gibt (unter gewissen Bedingungen) eine konstruktive Möglichkeit an, einen Fixpunkt näherungsweise zu ermitteln.
 
-\begin{proposition}[Banach]
+\begin{proposition}[\person{Banach}]
 	\proplbl{1_1_1}
 	%TODO use \norm here and find out why undefined control sequence for \norm shows up?!?!?
 	Seien $(V, \Vert \cdot \Vert)$ ein Banach-Raum, $U \subseteq V$ eine abgeschlossene Menge und $\Phi: U \to V$ eine Abbildung. Die Abbildung $\Phi$ sei \begriff{selbstabbildend}, d.h. es gilt
@@ -19,9 +19,9 @@ Der folgende Satz gibt (unter gewissen Bedingungen) eine konstruktive Möglichke
 	\end{align}
 	erzeugte Folge $\{x^k\}$ für jeden Startwert $x^0 \in U$ gegen $x^{*}$ und es gilt für alle $k \in \natur$
 	\begin{align}
-	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k+1} - x^k\Vert \text{ a posteriori Fehlerabschätzung}, \label{eq_1_2_2}\\
-	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda^{k+1}}{1 - \lambda}\Vert x^1 - x^0\Vert \text{ a priori Fehlerabschätzung},\label{eq_1_2_3_}\\
-	\Vert x^{k+1} - x^{*}\Vert \le \frac{\lambda}{1 - \lambda}\Vert x^{k} - x^{*}\Vert \text{ Q-lineare Konvergenz mit Ordnung }\lambda. \label{eq_1_2_4}
+	\Vert x^{k+1} - x^{*}\Vert &\le \frac{\lambda}{1 - \lambda}\Vert x^{k+1} - x^k\Vert &\text{ a posteriori Fehlerabschätzung}, \label{eq_1_2_2}\\
+	\Vert x^{k+1} - x^{*}\Vert &\le \frac{\lambda^{k+1}}{1 - \lambda}\Vert x^1 - x^0\Vert &\text{ a priori Fehlerabschätzung},\label{eq_1_2_3_}\\
+	\Vert x^{k+1} - x^{*}\Vert &\le \frac{\lambda}{1 - \lambda}\Vert x^{k} - x^{*}\Vert &\text{ Q-lineare Konvergenz mit Ordnung }\lambda. \label{eq_1_2_4}
 	\end{align}
 \end{proposition}
 

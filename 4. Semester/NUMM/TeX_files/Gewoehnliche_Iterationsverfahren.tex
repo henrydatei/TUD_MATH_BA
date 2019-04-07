@@ -1,6 +1,6 @@
 \section{Gewöhnliche Iterationsverfahren}
 
-Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interationsverfahren} oder \begriff{Fixpunktiteration}. Kritisch ist dabei, ob die Voraussetzungen ($\Phi$ ist selbstabbildend und kontraktiv) erfüllt werden können. Dies wird in diesem Abschnitt im Fall $V = \Rn$ mit einer beliebigen aber festen Vektornorm $\Vert \cdot \Vert$ untersucht. Die zugeordnete Matrixnorm wurde mit $\Vert \cdot \Vert_{\ast}$ bezeichnet.
+Durch \cref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interationsverfahren} oder \begriff{Fixpunktiteration}. Kritisch ist dabei, ob die Voraussetzungen ($\Phi$ ist selbstabbildend und kontraktiv) erfüllt werden können. Dies wird in diesem Abschnitt im Fall $V = \Rn$ mit einer beliebigen aber festen Vektornorm $\Vert \cdot \Vert$ untersucht. Die zugeordnete Matrixnorm wurde mit $\Vert \cdot \Vert_{\ast}$ bezeichnet.
 
 \begin{lemma}
 	\proplbl{1_1_2}
@@ -17,12 +17,12 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 
 \begin{proof}
 	\begin{enumerate}
-		\item Sei \ref{eq_1_1_5} erfüllt. Mit Satz 5.1 aus der Vorlesung ENM folgt %TODO find out which prop is meant!
+		\item Sei \cref{eq_1_1_5} erfüllt. Mit Satz 5.1 aus der Vorlesung ENM folgt %TODO find out which prop is meant!
 		\begin{align}
-		\norm{\Phi(x) - \Phi(y)}_{\ast} = \norm{\int_{0}^{1} \Phi'(y + t(x-y))(x-y) dt} \le  \norm{x-y} \sup_{t \in [0,1]} \norm{\Phi'(y+t(x-y))}_{\ast}
+		\norm{\Phi(x) - \Phi(y)}_{\ast} = \norm{\int_{0}^{1} \Phi'(y + t(x-y))(x-y) \diff t} \le  \norm{x-y} \sup_{t \in [0,1]} \norm{\Phi'(y+t(x-y))}_{\ast}
 		\end{align}
-		für alle $x,y \in D$. Also liefert \ref{eq_1_1_5} unter Beachtung der Konvexität von $D$ die Behauptung.
-		\item Sei nun \ref{eq_1_1_6} erfüllt. Angenommen es gibt $\hat{y} \in D$ mit
+		für alle $x,y \in D$. Also liefert \cref{eq_1_1_5} unter Beachtung der Konvexität von $D$ die Behauptung.
+		\item Sei nun \cref{eq_1_1_6} erfüllt. Angenommen es gibt $\hat{y} \in D$ mit
 		\begin{align}
 		\norm{\Phi'(\hat{y})}_{\ast} > L. \label{eq_1_1_7}
 		\end{align}
@@ -32,13 +32,13 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 		\end{align}
 		und 
 		\begin{align}
-		\norm{\Phi(\hat{y} + sd) - \Phi(\hat{y})} &= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt}\notag \\
-		&= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)dt + \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt - \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)dt}\notag \\
+		\norm{\Phi(\hat{y} + sd) - \Phi(\hat{y})} &= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)\diff t}\notag \\
+		&= \norm{\int_{0}^{1} \Phi'(\hat{y} + tsd)(sd)\diff t + \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)\diff t - \int_{0}^{1} \Phi'(\hat{y})(sd)(sd)\diff t}\notag \\
 		&\ge s\norm{\Phi'(\hat{y}d)} - s\norm{d} \sup_{t \in [0,1]}\norm{\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})}_{\ast} \notag \\
 		&= s (\norm{\Phi'(\hat{y})}_{\ast} - \sup_{t \in [0,1]}\norm{\Phi'(\hat{y} + tsd) - \Phi'(\hat{y})}_{\ast}) \notag\\
 		&> sL, \notag
 		\end{align}
-		wobei sich die letzte Ungleichung wegen \ref{eq_1_1_7} und der Stetigkeit von $\Phi'$ ergibt. Offenbar hat man damit einen Widerspruch, so dass die Annahme falsch ist.
+		wobei sich die letzte Ungleichung wegen \cref{eq_1_1_7} und der Stetigkeit von $\Phi'$ ergibt. Offenbar hat man damit einen Widerspruch, so dass die Annahme falsch ist.
 	\end{enumerate}
 \end{proof}
 
@@ -58,30 +58,59 @@ Durch \ref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interatio
 	\end{align} 
 	Damit hat man $\vert \Phi'(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos x$ und $x^0 := 1$ ergibt:
 	\begin{align}
-	\text{ add table here!!!}
-	\end{align} %TODO add plot!
+		x^1 &= 0.270\dots \notag \\
+		x^2 &= 0.481\dots \notag \\
+		x^3 &= 0.433\dots \notag \\
+		x^4 &= 0.4517\dots \notag \\
+		x^5 &= 0.4498 \dots \notag \\
+		x^6 &= 0.45025\dots \notag \\
+		x^7 &= 0.450167\dots \notag \\
+		x^8 &= 0.450187\dots \notag
+	\end{align}
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=0, xmax=1, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		axis x line=middle,
+		axis y line=middle,
+		samples=400,
+		]
+		\addplot[mark=none,blue] {x};
+		\addplot[mark=none,blue] {0.5*cos(deg(x))};
+		\draw[dotted] (axis cs: 0.27,0) -- (axis cs: 0.27,0.8);
+		\draw[dotted] (axis cs: 0.481,0) -- (axis cs: 0.481,0.8);
+		\draw[dotted] (axis cs: 0.433,0) -- (axis cs: 0.433,0.8);
+		\draw[dotted] (axis cs: 0.4517,0) -- (axis cs: 0.4517,0.8);
+		\draw[dotted] (axis cs: 0.4498,0) -- (axis cs: 0.4498,0.8);
+		\draw[dotted] (axis cs: 0.45025,0) -- (axis cs: 0.45025,0.8);
+		\draw[dotted] (axis cs: 0.450167,0) -- (axis cs: 0.450167,0.8);
+		\draw[dotted] (axis cs: 0.450187,0) -- (axis cs: 0.450187,0.8);
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
 \end{example}
 
 Nehmen wir an, die Voraussetzungen des Banachschen Fixpunktsatzes seien gegeben. Dann hängt die Konvergenzgeschwindigkeit der Fixpunktiteration offenbar von der Kontraktionskonstanten $\lambda \in [0,1)$ ab. Je kleiner $\lambda$ ist, desto schneller ist ist die Konvergenzgeschwindigkeit. Unter Umständen kann die Umformulierung einer Fixpunktaufgabe mit Hilfe einer anderen Fixpunktabbildung helfen, die Konvergenzgeschwindigkeit zu verbessern (ggf. auf Kosten der Größe der Menge $U$, in der die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind.) Ein Beispiel zu Konstruktion einer Fixpunktabbildung mit lokal beliebig kleiner Kontraktionskonstante gibt Abschnitt 1.4. In Abschnitt 2.1 wird gezeigt, wie Fixpunktabbildungen zu iterativen Lösung von linearen Gleichungssystemen eingesetzt werden können.
 Im Weiteren bezeichne $B(x^{\ast}, r) :=$ die abgeschlossene Kugel um $x^{\ast}$ mit Radius $r$ (bzgl. einer passenden Norm).
 
-\begin{proposition}[Ostrowski]
+\begin{proposition}[\person{Ostrowski}]
 		\proplbl{1_3_4}
 	Seien $D \subseteq \Rn$ offen und $\Phi: D \to \Rn$ stetig differenzierbar. Die Abbildung $\Phi$ besitze einen Fixpunkt $x^{\ast} \in D$ mit $\Vert \Phi'(x^{\ast})\Vert_{\ast} < 1$. Dann existiert $r > 0$, so dass das gewöhnliche Iterationsverfahren für jeden Startpunkt $x^0 \in B(x^{\ast}, r)$ gegen $x^{\ast}$ konvergiert.
 \end{proposition}
 
 \begin{proof}
-	Da $\Phi$ stetig differenzierbar ist und $\norm{\Phi'(x*)}_{\ast} < 1$, gibt es $\lambda \in[0,1]$ und $r > 0$, sodass
+	Da $\Phi$ stetig differenzierbar ist und $\norm{\Phi'(x^\ast)}_{\ast} < 1$, gibt es $\lambda \in[0,1]$ und $r > 0$, sodass
 	\begin{align}
-		\norm{\Phi'(x)}_{\ast} \le \lambda \quad \text{ für alle } x\in B(x*,r).\notag
+		\norm{\Phi'(x)}_{\ast} \le \lambda \quad \text{ für alle } x\in B(x^\ast,r).\notag
 	\end{align}
 	Nach \propref{1_1_2} gilt daher
 	\begin{align}
-		\norm{\Phi(x) - \Phi(y)}\le \lambda\norm{x-y} \quad\text{ für alle }x,y \in B(x*,r).
+		\norm{\Phi(x) - \Phi(y)}\le \lambda\norm{x-y} \quad\text{ für alle }x,y \in B(x^\ast,r).
 	\end{align}
 	Insbesondere folgt hieraus
 	\begin{align}
-		\norm{\Phi(x) - \Phi(x*)} = \norm{\Phi(x) - x*} \le \lambda \norm{x-x*} \quad \text{ für alle } x \in B(x*,r)
+		\norm{\Phi(x) - \Phi(x^\ast)} = \norm{\Phi(x) - x^\ast} \le \lambda \norm{x-x^\ast} \quad \text{ für alle } x \in B(x^\ast,r)
 	\end{align}
-	und damit $\Phi(x) \in B(x*,r)$ für alle $x \in B(x*,r)$. Also ist $\Phi$ bzgl. $B(x*,r)$ selbstabbildend und kontraktiv. Daher liefert \propref{1_1_1} die gewünschte Aussage.
+	und damit $\Phi(x) \in B(x^\ast,r)$ für alle $x \in B(x^\ast,r)$. Also ist $\Phi$ bzgl. $B(x^\ast,r)$ selbstabbildend und kontraktiv. Daher liefert \propref{1_1_1} die gewünschte Aussage.
 \end{proof}
