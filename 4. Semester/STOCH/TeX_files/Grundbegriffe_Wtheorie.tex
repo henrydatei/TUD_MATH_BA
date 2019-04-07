@@ -56,10 +56,10 @@ sodass
 	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
 \end{align}
 
-(\ref{eq_norm}), (\ref{eq_additive}) und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
+\cref{eq_norm}, \cref{eq_additive} und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
 
 \begin{definition}[Wahrscheinlichkeitsmaß, Wahrscheinlichkeitsverteilung]
-	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften (\ref{eq_norm}) und (\ref{eq_additive}). Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
+	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften \cref{eq_norm} und \cref{eq_additive}. Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
 \end{definition}
 
 Aus der Definition folgen direkt:
@@ -95,13 +95,13 @@ Aus der Definition folgen direkt:
 		\begin{align}
 			\probp(B) = \probp(A \uplus (B \setminus A)) = \probp(A) + \probp(B \setminus A) \ge \probp(A) \label{eq_1_1_4}\tag{*}
 		\end{align}
-		\item Zerlege $A \cup B$ geschickt, dann sieht man mit oben gezeigter Aussage und (\ref{eq_1_1_4})
+		\item Zerlege $A \cup B$ geschickt, dann sieht man mit oben gezeigter Aussage und \cref{eq_1_1_4}
 		\begin{align}
 			\probp(A \cup B) + \probp(A \cap B) &= \probp(A \uplus (B \setminus (A \cap B)) + \probp(A \cap B)\notag \\
 			&= \probp(A) + \probp(B \setminus (A \cap B)) + \probp(A \cap B)\notag\\
 			&= \probp(A)+\probp(B).\notag	
 		\end{align}
-		Im letzten Schritt wurde (\ref{eq_1_1_4}) verwendet.
+		Im letzten Schritt wurde \cref{eq_1_1_4} verwendet.
 		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
 		\item Definiere $F_1 := A_1, F_2 := A_2 \setminus A_1, \dots, F_{i+1} := A_{i+1}\setminus A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
 		\begin{align}
@@ -160,7 +160,7 @@ Aus der Definition folgen direkt:
 		\end{enumerate}
 		dann definiert $\rho$ ein WMaß $\probp$ auf $(\Omega, \mathscr{F})$ durch 
 		\begin{align}
-		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \mathscr{B}(\Omega).
+		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \mathscr{B}(\Omega).\notag
 		\end{align}
 		Das Integral interpretieren wir stets als Lebesgue-Integral bzw. Lebesgue-Maß $\lambda$.
 		$\rho$ bezeichnet wir als \begriff{Dichte}, \begriff{Dichtefunktion}/\begriff{Wahrscheinlichkeitsdichte} von $\probp$ und nennen ein solches $\probp$ \begriff{(absolut)stetig (bzgl. denn Lebesgue-Maß)}.
