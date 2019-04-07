@@ -42,6 +42,7 @@ Die zugehörige Fixpunktabbildung $\Phi: \Rn \to \Rn$ ist damit offenbar gegeben
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{remark}
+	\proplbl{2_2_2}
 	In \propref{2_2_1}a) kann die Folgerung \eqref{eq_2_1_4} durch die Bedingung
 	\begin{align}
 	\rho(M) < 1\label{eq_2_1_5}
@@ -105,14 +106,14 @@ zu wählen. Dieses Verfahren heißt \begriff{Gesamtschrittverfahren} oder \begri
 \begin{proposition}
 	Die Matrix $A$ sei streng diagonaldominant (vgl. Definition 3.1 der Vorlesung ENM). Dann ist die Matrix $B$ aus \eqref{eq_1_2_6} regulär und es gilt
 	\begin{align}
-	\norm{M_J}_{\infty} \le \lambda_{SD} := \max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}} < 1.
+	\norm{M_J}_{\infty} \le \lambda_{SD} := \max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}} < 1. \notag
 	\end{align}
 \end{proposition}
 
 \begin{proof}
 	Die Regularität von $B$ ergibt sich sofort aus der strengen Diagonaldominanz von $A$. Nutzt man die Definition der Zeilensummennorm $\norm{\cdot}_{\infty}$ erhält man sofort
 	\begin{align}
-		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}}  = \lambda_{SD}.
+		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}}  = \lambda_{SD}.\notag
 	\end{align}
 	Die vorrausgesetzte strenge Diagonaldominanz von $A$ sichert $\lambda_{SD} < 1$.
 \end{proof}
@@ -141,7 +142,7 @@ zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begri
 \begin{proposition}
 	Die Matrix $A$ sei streng diagonaldominant ($\nearrow$ Definition 3.1 der Vorlesung ENM). Dann ist die Matrix $B$ aus \eqref{1_2_8} regulär und es gilt
 	\begin{align}
-		\norm{M_{GS}}_{\infty} \le \lambda_{SD} <1.
+		\norm{M_{GS}}_{\infty} \le \lambda_{SD} <1. \notag
 	\end{align}
 \end{proposition}
 
@@ -182,3 +183,67 @@ zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begri
 
 \subsection{SOR-Verfahren}
 
+Um dieses verfahren zu beschreiben, nehmen wir an, dass für ein $\omega \neq 0$ die Matrix
+
+\begin{align}
+	B:=L + \frac{1}{\omega}D \label{eq_2_2_11}
+\end{align}
+regulär ist. Damit ergibt sich die Iterationsvorschrift
+
+\begin{align}
+	x^{k+1} := x^k - \brackets{L+\frac{1}{\omega}D}^{-1}(Ax^k - b) = M(\omega)x^k + c(\omega)\notag
+\end{align}
+
+\begin{align}
+	M(\omega) := I -  \brackets{L + \frac{1}{\omega} D^{-1} A} 
+	= \brackets{L + \frac{1}{\omega} D}^{-1}
+%	\brackts{\frac{1-\omega}{\omega} D - R} \notag
+\end{align}
+
+und
+
+\begin{align}
+	c(\omega) :=  \brackets{L+\frac{1}{\omega}D}^{-1}b.
+\end{align}
+
+Für $\omega = 1$ erhält man offenbar als Spezialfall das Gauß-Seidel-Verfahren, so dass der folgende Satz auch dafür Anwendung finden kann. Man beachte dazu \propref{2_2_2}.
+
+\begin{proposition}
+	Die Matrix $A$ sei symmetrisch und positiv definit. Dann ist die Matrix $B$ aus \eqref{eq_2_2_11} regulär (für jedes $\omega \neq 0$). Falls $\omega \in (0,2)$, dann gilt
+	\begin{align}
+		\rho(M(\omega)) < 1\notag
+	\end{align}
+	und umgekehrt.
+\end{proposition}
+
+\begin{proof}
+	Da $A$ positiv definit ist, gilt $e_i^TA e_i = a_{ii} > 0$ für $i = 1, \dots, n$. Also ist $D$ positiv definit und damit $B$ reguläar für alle $\omega \neq 0$.\\
+	Sei $\lambda \in \C$ ein Eigenwert von $M(\omega)$ und $z \in \Cn$ ein zugehöriger Eigenvektor. Mit
+	\begin{align}
+		A = A - M(\omega)^T AM(\omega) + M(\omega)^T AM(\omega) \notag
+	\end{align}
+	sowie (unter Berücksichtigung der Definition von $M$ und von $A = A^T$ und $R = L^T$)
+	\begin{align}
+	A - M(\omega)^T AM(\omega) 
+	&= A - (I - B^{-1}A)^T A(I-B^{-1}A)\notag\\
+	&= AB^T A + AB^{-1}A - AB^{T-1}AB^{-1}A\notag\\
+	&= (B^{-1}A)^T (B + B^T - A)(B^{-1}A)\notag\\
+	&= (B^{-1}A)^T \brackets{L + \frac{1}{\omega}D + L^T + \frac{1}{\omega}D - L - D - L^T})(B^{-1}A)\notag\\
+	&= (B^{-1}A)^T\brackets{\frac{2 -\omega}{\omega}D}(B^{-1}A)\notag
+	\end{align}
+	ergibt sich daher
+	\begin{align}
+		z^H Az = (AB^{T-1}z)^H\brackets{\frac{2 -\omega}{\omega}D}(B^{-1}Az) + z^H M(\omega)^T AM(\omega)z.\notag
+	\end{align}
+	Da die Diagonalmatrix $D$ postiv definit ist, besitzt $\frac{2-\omega}{\omega}D$ dieselbe Eigenschaft für $\omega \in (0,2)$. Es folgt
+	\begin{align}
+		(AB^{T-1}z)^H \brackets{\frac{2 -\omega}{\omega}D} (B^{-1 Az}) > 0 \notag
+	\end{align}
+	und damit
+	\begin{align}
+		\abs{\lambda} < 1.
+	\end{align}
+	Also gilt $\rho(M(\omega)) = \max_{i = 1,\dots,n}\abs{\lambda_i} < 1$, sofern $\omega \in (0,2)$. Die Umkehrung der Aussage ergibt sich aus dem Satz von \person{Kahan} ($\nearrow$ Übungsaufgabe). %TODO add later.
+\end{proof}
+
+Es ist nun naheliegend, dass man $\omega \in(0,2)$ so wählen möchte, dass $\rho(\omega)$ möglichst klein ist. Dies ist in bestimmten Fällen näherungsweise möglich, ansonsten beschränkt man sich auf geeignete Heuristiken zur wahl von $\omega$. Auf der Fixpunktiteration \eqref{eq_2_2_3} beruhende Verfahren werden häufig auch \begriff{Splitting-Methoden} gennant. es gibt noch weitere solche Verfahren, auf die hier nicht eingegangen wird.
