@@ -69,11 +69,116 @@ Um eine Matrix $B$ zu finden, so dass einerseits der Aufwand pro Iteration \eqre
 der Matrix $A$, wobei $D:= \diag(a_{11}, \dots, a_{nn})$ die aus den Diagonalelementen von $A$ bestehende Diagonalmatrix bezeichnet und $L$ bzw. $R$ eine untere bzw. obere Dreiecksmatrix ist mit
 
 \begin{align}
-	L = \dots \text{ bzw. } R = \dots \notag %TODO set matrices!
+	L = 
+	\begin{pmatrix}
+		0      &        &        &           & \\
+		a_{21} & 0      &        &           & \\
+		a_{31} & a_{32} & 0      &           & \\
+		\vdots &        & \ddots & \ddots    & \\
+		a_{n1} & \cdots & \cdots & a_{n,n-1} & 0
+	\end{pmatrix}
+	 \bzw R = 
+	 \begin{pmatrix}
+	 0      & a_{12} & a_{13} & \dots     & a_{1n}\\
+	        & 0      & a_{23} & \dots     & a_{2n}\\
+	        &        & \ddots & \ddots    & \vdots\\
+	        &        &        & 0         & a_{n-1,n}\\
+	        &        &        & a_{n,n-1} & 0
+	 \end{pmatrix}.\notag
 \end{align}
 
 \subsection{Das \person{Jacobi}-Verfahren}
+Wir setzen hier voraus, dass $D$ regulär ist und wählen
+\begin{align}
+	B:= D \label{eq_1_2_6}
+\end{align}
+Damit ergibt sich die Iterationsvorschrift
+\begin{align}
+	x^{k+1} = x^k - D^{-1}(Ax^k - b) = -D^{-1}(L+R)x^k+D^{-1}b. \label{eq_1_2_7}
+\end{align}
+In \eqref{eq_2_2_3} ist entsprechend
+\begin{align}
+	M:= M_J := -D^{-1}(L+R) \text{ und } c:= c_J := D^{-1}b\notag 
+\end{align}
+zu wählen. Dieses Verfahren heißt \begriff{Gesamtschrittverfahren} oder \begriff{Jacobi-Verfahren}. Der Aufwand pro Schritt (Brechnung von $x^{k+1}$ aus $x^k$) beträgt $\Landau(n^2)$ bei voll besetzter Matrix $A$ und mindestens $\Landau(n)$, falls $A$ schwach besetzt ist.
+
+\begin{proposition}
+	Die Matrix $A$ sei streng diagonaldominant (vgl. Definition 3.1 der Vorlesung ENM). Dann ist die Matrix $B$ aus \eqref{eq_1_2_6} regulär und es gilt
+	\begin{align}
+	\norm{M_J}_{\infty} \le \lambda_{SD} := \max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}} < 1.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Die Regularität von $B$ ergibt sich sofort aus der strengen Diagonaldominanz von $A$. Nutzt man die Definition der Zeilensummennorm $\norm{\cdot}_{\infty}$ erhält man sofort
+	\begin{align}
+		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}}  = \lambda_{SD}.
+	\end{align}
+	Die vorrausgesetzte strenge Diagonaldominanz von $A$ sichert $\lambda_{SD} < 1$.
+\end{proof}
 
 \subsection{Das \person{Gauss-Seidel}-Verfahren}
+Wir setzen hier voraus, dass $L + D$ regulär ist und wählen
+
+\begin{align}
+	B := L + D \label{1_2_8}
+\end{align}
+
+Damit ergibt sich die Iterationsvorschrift
+
+\begin{align}
+	x^{k+1} = x^k - (L+D)^{-1}(Ax^k - b) = - (L+D)^{-1}R x^k + (L+D)^{-1}b. \label{1_2_9}.
+\end{align}
+
+In \eqref{eq_2_2_3} ist entsprechend
+
+\begin{align}
+	M:= M{GS} := - (L+D)^{-1}R \text{ und } c:= c_{GS} := (L+D)^{-1}b \notag
+\end{align}
+
+zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begriff{Gauß-Seidel-Verfahren}. Der Aufwand pro Schritt beträgt im ungünstigsten Fall $\Landau(n^2)$. Verbesserungen sind möglich, wenn eine Sparse-Struktur in $A$ ausgenutzt werden kann.
+
+\begin{proposition}
+	Die Matrix $A$ sei streng diagonaldominant ($\nearrow$ Definition 3.1 der Vorlesung ENM). Dann ist die Matrix $B$ aus \eqref{1_2_8} regulär und es gilt
+	\begin{align}
+		\norm{M_{GS}}_{\infty} \le \lambda_{SD} <1.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	Die Regularität von $B$ folgt sofort aus der strengen Diagonaldominanz von $A$. Weiter ergibt sich
+	\begin{align}
+		\norm{M_{GS}}_{\infty} = \norm{(L+D)^{-1}R}_{\infty} = \sup_{\norm{y}_{\infty}=1} \norm{(L+D)^{-1}Ry}_{\infty}. \notag
+	\end{align}
+	Um für einen festen Vektor $y$ mit $\norm{y}_{\infty} = 1$ eine Abschätzung für die rechte Seite zu erhalten, setzen wir $z:= (L+D)^{-1}Ry$. Damit gilt
+	\begin{align}
+		(D+L)z = Ry \label{1_2_10}
+	\end{align}
+	und
+	\begin{align}
+	z_1 = \frac{1}{a_{11}} \sum_{j=1}^{n} a_{1j}y_j. \notag
+	\end{align}
+	Daraus folgt (da $\lambda_{SD} < 1$ wegen der strengen Diagonaldominanz von $A$)
+	\begin{align}
+		\abs{z_1} 
+		\le \frac{1}{\abs{a_{11}}} \sum_{j=2}^{n} \abs{a_{1j}}\abs{y_j} 
+		\le \sum_{j=2}^{n} \abs{a_{1j}} \le \lambda_{SD} < 1.\notag
+	\end{align}
+	Nehmen wir nun an, dass
+	\begin{align}
+		\abs{z_1} \le \text{ für } i = 1, \dots, k-1, \notag
+	\end{align}
+	für ein $k \in \set{2,\dots,n}$ gilt. Dann folgt wegen \eqref{1_2_10} und $\norm{y}_{\infty} = 1$
+	\begin{align}
+		\abs{z_k} = \frac{1}{\abs{a_{kk}}} \abs{-\sum_{i=1}^{k-1} a_{ki}z_i + \sum_{i=k+1}^{n} a_{ki}y_i} 
+		\le \frac{1}{\abs{a{kk}}} \brackets{\sum_{i=1}^{k-1} \abs{a_{ki}} + \sum_{i=k+1}^{n} \abs{a_{ki}}} \le \lambda_{SD}. \notag
+	\end{align}
+	Somit hat man induktiv $\abs{z_k} \le \lambda_{SD}$ für $k = 1, \dots, n$ und damit
+	\begin{align}
+		\norm{(L+D)^{-1}Ry}_{\infty} = \norm{z}_{\infty} \le \lambda_{SD} \notag
+	\end{align}
+	für beliebige $y$ mit $\norm{y}_{\infty} = 1$.
+\end{proof}
 
 \subsection{SOR-Verfahren}
+
