@@ -137,7 +137,7 @@ Aus der Definition folgen direkt:
 	\proplbl{1_1_7}
 	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\mathscr{B}(\real_{+}) = \mathscr{F}$. Eine mögliches W-Maß können wir dann durch
 	\begin{align}
-	\mathbb{P}(A) = \int_{A} \lambda e^{-\lambda x} dx\notag %TODO set a mathoperator for dx!!!
+	\mathbb{P}(A) = \int_{A} \lambda e^{-\lambda x} \diff x\notag %TODO set a mathoperator for dx!!!
 	\end{align}
 	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\mathbb{P}(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
 \end{example}
@@ -155,12 +155,12 @@ Aus der Definition folgen direkt:
 		\item Umgekehrt definiert jedes WMaß $\probp$ auf $(\Omega, \mathscr{F})$ definiert Folge $\rho(\omega) = \probp(\set{\omega}), \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
 		\item $\Omega \subset \Rn, \mathscr{F} = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
-			\item $\int_{\Omega} \rho(x)dx = 1$
+			\item $\int_{\Omega} \rho(x)\diff x = 1$
 			\item $\set{x \in \Omega \colon f(x) \le c} \in \mathscr{B}(\Omega)$ für alle $c > 0$ 
 		\end{enumerate}
 		dann definiert $\rho$ ein WMaß $\probp$ auf $(\Omega, \mathscr{F})$ durch 
 		\begin{align}
-		\probp(A) = \int_{A} \rho(x) dx = \int_{A} \rho d \lambda, \quad A \in \mathscr{B}(\Omega).
+		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \mathscr{B}(\Omega).
 		\end{align}
 		Das Integral interpretieren wir stets als Lebesgue-Integral bzw. Lebesgue-Maß $\lambda$.
 		$\rho$ bezeichnet wir als \begriff{Dichte}, \begriff{Dichtefunktion}/\begriff{Wahrscheinlichkeitsdichte} von $\probp$ und nennen ein solches $\probp$ \begriff{(absolut)stetig (bzgl. denn Lebesgue-Maß)}.
@@ -184,11 +184,11 @@ Aus der Definition folgen direkt:
 		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0, x \not\in \Omega$. Das erzeugte WMaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den WMaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
 		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete WMaß auf $\Omega \subset \Rn$ als WMaß auf $\Rn, \mathscr{B}(\Rn)$ intepretieren
 		\begin{align}
-			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} d\left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\notag
+			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\notag
 		\end{align}
 		stetige und diskrete WMaße lassen sich kombiniere z.B.
 		\begin{align}
-			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\one_{[0,1]}(x)dx, A \in \mathscr{B}(\R)\notag
+			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\one_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
 		\end{align}
 		ein WMaß auf $(\R, \mathscr{B}(\R))$.
 	\end{itemize}
@@ -209,7 +209,7 @@ Abschließend erinnern wir uns an:
 Insbesondere definiert z.B.
 
 \begin{align}
-	\probp([0,a]) = \int_{0}^{a} \lambda e^{-\lambda x}dx = 1 - e^{-\lambda a}, a > 0 \notag
+	\probp([0,a]) = \int_{0}^{a} \lambda e^{-\lambda x}\diff x = 1 - e^{-\lambda a}, a > 0 \notag
 \end{align}
 
 bereits die Exponentialverteilung aus \propref{1_1_7}.

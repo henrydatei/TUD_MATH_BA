@@ -4,7 +4,7 @@ Sei $D \subseteq \Rn$ offen und $F: D \to \Rn$ stetig differenzierbar. Die Nulls
 \begin{align}
 	F(x) = 0\notag
 \end{align}
-wird nun in eine äquivalente Fixpunktaufgabe überführt. Dazu nehmen wir an, dass $x^{\ast}$ eine reguläre Nullstelle von $F$ ist. Wegen der vorausgesetzten Stetigkeit von $F'$ gibt es $r>0$ hinreichend klein, so dass $F'(x)$ für $x \in B(x^{\ast},r)$ regulär ist. Damit erhält man
+wird nun in eine äquivalente Fixpunktaufgabe überführt. Dazu nehmen wir an, dass $x^{\ast}$ eine reguläre Nullstelle von $F$ ist. Wegen der vorrausgesetzten Stetigkeit von $F'$ gibt es $r>0$ hinreichend klein, so dass $F'(x)$ für $x \in B(x^{\ast},r)$ regulär ist. Damit erhält man
 \begin{align}
 	F(x) = 0 \Leftrightarrow 0 = -F'(x)^{-1}F(x) \Leftrightarrow x = x - F'(x)^{-1}F(x).\notag
 \end{align}
@@ -29,7 +29,7 @@ so kann das Newton-Verfahren als Fixpunktverfahren mit $\Phi$ als Fixpunktabbild
 	\end{align}
 	und mit Satz 5.1 aus der Vorlesung ENM folgt weiter
 	\begin{align}
-		\Phi(x) - \Phi(x^{\ast}) = F'(x)^{-1}\left( -F(x^{\ast}) + \int_{0}^{1} (F'(x+t(x^{\ast}-x)) - F'(x))(x^{\ast}-x)\diff t\right)\label{eq_1_4_10}
+		\Phi(x) - \Phi(x^{\ast}) = F'(x)^{-1}\left( -F(x^{\ast}) + \int_{0}^{1} (F'(x+t(x^{\ast}-x)) - F'(x))(x^{\ast}-x)dt\right)\label{eq_1_4_10}
 	\end{align}
 	für alle $x \inn B(x^{\ast},r)$. Die Stetigkeit von $F'$ auf der kompakten Menge $B(x^{\ast},r)$ impliziert, dass $F'$ dort auch gleichmäßig stetig ist. Also gibt es zu jedem $\epsilon > 0$ ein $\delta(\epsilon) > 0$, so dass auch
 	\begin{align}
@@ -41,7 +41,7 @@ so kann das Newton-Verfahren als Fixpunktverfahren mit $\Phi$ als Fixpunktabbild
 	\end{align}
 	und
 	\begin{align}
-		\lim_{x\to x^{\ast}} \frac{\norm{\int_{0}^{1} (F'(x+t(x^{\ast} - x)) -F'(x))(x^{\ast}-x)\diff t}_{\ast}}{\norm{x-x^{\ast}}} = 0 \notag
+		\lim_{x\to x^{\ast}} \frac{\norm{\int_{0}^{1} (F'(x+t(x^{\ast} - x)) -F'(x))(x^{\ast}-x)dt}_{\ast}}{\norm{x-x^{\ast}}} = 0 \notag
 	\end{align}
 	Somit erhält man aus \cref{eq_1_4_10} unter Beachtung von $F(x^{\ast}) = 0$ und der Regularität von $F'(x)$
 	\begin{align}
@@ -51,5 +51,5 @@ so kann das Newton-Verfahren als Fixpunktverfahren mit $\Phi$ als Fixpunktabbild
 \end{proof}
 
 \begin{remark}
-	Falls $F$ in einer Umgebung von $x^{\ast}$ sogar zweimal stetig differenzierbar und damit $\Phi$ dort stetig differenzierbar ist, zeigt \propref{1_1_2}, dass $\norm{\Phi'(x)}_{\ast} \le L$ für alle $x \in D \cap B(x^{\ast},r(L))$ gilt. D.h. die Kontraktionskonstante der Fixpunktabbildung $\Phi$ in \cref{eq_1_3_8} in einer Kugel $B(x^{\ast},r)$ konvergiert gegen $0$, wenn man den Radius $r$ gegen $0$ gehen lässt. Ferner gibt es Sätze, bei denen unter geeigneten Voraussetzungen eine bestimmte lokale Konvergenzgeschwindigkeit (Q-Ordnung) gezeigt wird (etwa die Q-Ordnung $2$, wenn insbesondere $\Phi'$ stetig ist und $\Phi'(x^{\ast}) = 0$ gilt).
+	Falls $F$ in einer Umgebung von $x^{\ast}$ sogar zweimal stetig differenzierbar und damit $\Phi$ dort stetig differenzierbar ist, zeigt \propref{1_1_2}, dass $\norm{\Phi'(x)}_{\ast} \le L$ für alle $x \in D \cap B(x^{\ast},r(L))$ gilt. D.h. die Kontraktionskonstante der Fixpunktabbildung $\Phi$ in \cref{eq_1_3_8} in einer Kugel $B(x^{\ast},r)$ konvergiert gegen $0$, wenn man den Radius $r$ gegen $0$ gehen lässt. Ferner gibt es Sätze, bei denen unter geeigneten Vorrausetzungen eine bestimmte lokale Konvergenzgeschwindingkeit (Q-Ordnung) gezeigt wird (etwa die Q Ordnung $2$, wenn insbesondere $\Phi'$ stetig ist und $\Phi'(x^{\ast}) = 0$ gilt).
 \end{remark}
