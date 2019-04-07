@@ -93,47 +93,6 @@
 
 %%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
 
-%%% Metrics, Norms, etc %%%%
-
-% Norms, Absolute, Scalar product
-% Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
-% Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
-\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
-{
-	\NewDocumentCommand#1{som}{
-   		\IfNoValueTF{##2}
-	    {\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
-    	{\mathopen{##2#2}##3\mathclose{##2#3}}
-	}
-}
-
-\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binar
-{
-	\NewDocumentCommand#1{somm}{
-   		\IfNoValueTF{##2}
-	    {\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
-    	{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
-	}
-}
-
-\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
-\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
-\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
-\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
-\xDeclarePairedDelimiter{\brackets}{(}{)}
-
-
-%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%
-
-\newcommand{\sigA}{\mathscr{A}} % typical Sigma A for sigma algebras
-\newcommand{\sigB}{\mathscr{B}} % typical Sigma B for sigma algebras
-\newcommand{\sigG}{\mathscr{G}} % typical Generator for sigma algebras
-\newcommand{\sigO}{\mathscr{O}} % sigma algebra of open sets
-\newcommand{\probp}{\mathbb{P}} % probability measure
-\newcommand{\one}{\mathbbm{1}}  % characteristic function
-\newcommand{\borel}{\mathscr{B}} % Borel set
-\newcommand{\sigF}{\mathscr{F}} % typical sigma F for sigma algebra for stochastic lecture
-
 \newcommand{\diff}{\mathrm{d}} % differential d
 \newcommand{\s}{\,\,}     % space after the function in the intergral
 \newcommand{\cont}{\mathcal{C}} % Contour C
@@ -209,6 +168,35 @@
 	\fi%
 }
 
+%%% Metrics, Norms, etc %%%%
+
+% Norms, Absolute, Scalar product
+% Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
+% Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
+{
+	\NewDocumentCommand#1{som}{
+		\IfNoValueTF{##2}
+		{\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
+		{\mathopen{##2#2}##3\mathclose{##2#3}}
+	}
+}
+
+\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binar
+{
+	\NewDocumentCommand#1{somm}{
+		\IfNoValueTF{##2}
+		{\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
+		{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
+	}
+}
+
+\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
+\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
+\xDeclarePairedDelimiter{\brackets}{(}{)}
+
 %%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\newcommand{\sigmalg}{$\sigma$-Algebra}
@@ -218,6 +206,17 @@
 \DeclareRobustCommand{\stixdanger}{%
   {\usefont{U}{stixbbit}{m}{it}\symbol{"F6}}%
 }
+
+%%%%%%%%%%% Measure Theory %%%%%%%%%%%%%%%%%%
+
+\newcommand{\sigA}{\mathscr{A}} % typical Sigma A for sigma algebras
+\newcommand{\sigB}{\mathscr{B}} % typical Sigma B for sigma algebras
+\newcommand{\sigG}{\mathscr{G}} % typical Generator for sigma algebras
+\newcommand{\sigO}{\mathscr{O}} % sigma algebra of open sets
+\newcommand{\probp}{\mathbb{P}} % probability measure
+\newcommand{\one}{\mathbbm{1}}  % characteristic function
+\newcommand{\borel}{\mathscr{B}} % Borel set
+\newcommand{\sigF}{\mathscr{F}} % typical sigma F for sigma algebra for stochastic lecture
 
 % Math Operators
 %%%%%% A
@@ -281,6 +280,7 @@
 \DeclareMathOperator{\ord}{ord} % Order of a group
 \DeclareMathOperator{\Orth}{O} % Orthogonal Group
 \DeclareMathOperator{\Out}{Out} % Outer Automorphism
+\DeclareMathOperator{\Landau}{O} % Big ``O'' (Landau)
 
 \DeclareMathOperator{\pr}{pr} % Projection
 
@@ -323,5 +323,10 @@
 \newcommand{\nl}{\\[\baselineskip]}      % wordwrap with empty Zeile line after w/o underfull-hbox-warning
 \newcommand{\enter}{$ $\newline}         % wordwrap w/o condition
 \newcommand\tab[1][1cm]{\hspace*{#1}}    % practical Tabulator
+
+% sords in math env %
+\newcommand{\und}{\text{ und }}
+\renewcommand{\mit}{\text{ mit }}  % overrides \mit - Used to turn on math italic typestyle.
+\newcommand{\bzw}{\text{ bzw. }}
 
 \endinput
