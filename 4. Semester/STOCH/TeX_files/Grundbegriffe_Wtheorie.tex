@@ -147,13 +147,13 @@ Aus der Definition folgen direkt:
 \begin{proposition}[Konstruktion von WMaßen durch Dichten]
 	Sei $(\Omega, \mathscr{F})$ ein Eriegnisraum.
 	\begin{itemize}
-		\item $\Omega$ abzählbar, $\mathscr{F} \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
+		\item $\Omega$ abzählbar, $\mathscr{F} = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
 		\begin{align}
 			\probp(A) = \sum_{\omega \in \Omega} \rho(\omega), A \in \mathscr{F} \notag
 		\end{align}
 		ein (diskretes) WMaß $\probp$ auf $(\Omega, \mathscr{F})$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
 		\item Umgekehrt definiert jedes WMaß $\probp$ auf $(\Omega, \mathscr{F})$ definiert Folge $\rho(\omega) = \probp(\set{\omega}), \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
-		\item $\Omega \in \Rn, \mathscr{F} = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
+		\item $\Omega \subset \Rn, \mathscr{F} = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
 			\item $\int_{\Omega} \rho(x)dx = 1$
 			\item $\set{x \in \Omega \colon f(x) \le c} \in \mathscr{B}(\Omega)$ für alle $c > 0$ 
@@ -228,53 +228,53 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 
 \section{Zufallsvariablen}
 
-Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \mathscr{F})$ zu einem Modellausschnitt $\Omega^{'}, \mathscr{F}^{'}$ überzugehen. 
-Es handelt sich also um Abbildungen $X: \Omega \to \Omega^{'}$.
-Damit wir auch jedem Ereignis in $\mathscr{F}^{'}$ eine Wheit zuordnen können, benötigen wir	
+Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \mathscr{F})$ zu einem Modellausschnitt $\Omega', \mathscr{F}'$ überzugehen. 
+Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
+Damit wir auch jedem Ereignis in $\mathscr{F}'$ eine Wheit zuordnen können, benötigen wir	
 \begin{align}
-	A^{'} \in \mathscr{F}^{'} \Rightarrow X^{'} A^{'} \in \mathscr{F} \notag		
+	A' \in \mathscr{F}' \Rightarrow X' A' \in \mathscr{F} \notag		
 \end{align}
 d.h. $X$ sollte messbar sein.
 
 \begin{definition}[Zufallsvariable]
-	Seien $(\Omega, \mathscr{F})$ und $(\Omega^{'}, \mathscr{F}^{'})$ Ereignisräume. Dann heißt jede messbare Abbildung
+	Seien $(\Omega, \mathscr{F})$ und $(\Omega', \mathscr{F}')$ Ereignisräume. Dann heißt jede messbare Abbildung
 	\begin{align}
-		X: \Omega \to \Omega^{'}\notag
+		X: \Omega \to \Omega'\notag
 	\end{align}
-	Zufallsvariable (von $(\Omega, \mathscr{F})$) nach $(\Omega^{'}, \sigF^{'})$/ auf $(\Omega^{'}, \sigF^{'})$ oder \begriff{Zufallselement}.
+	Zufallsvariable (von $(\Omega, \mathscr{F})$) nach $(\Omega', \sigF')$/ auf $(\Omega', \sigF')$ oder \begriff{Zufallselement}.
 \end{definition}
 
 \begin{example}
 	\begin{enumerate}
-		\item Ist $\Omega$ abzählbar und $\sigF = \pows(\Omega)$, so ist jede Abbildung $X: \Omega \to \Omega^{'}$ messbar und damit eine Zufallsvariable.
+		\item Ist $\Omega$ abzählbar und $\sigF = \pows(\Omega)$, so ist jede Abbildung $X: \Omega \to \Omega'$ messbar und damit eine Zufallsvariable.
 		\item Ist $\Omega \subset \Rn$ und $\sigF = \borel(\Omega)$, so ist jede stetige Funktion $X: \Omega \to \R$ messbar und damit eine Zufallsvariable.
 	\end{enumerate}
 \end{example}
 
 \begin{proposition}
-	Sei $(\Omega, \sigF, \probp)$ ein WRaum und $X$ eine Zufallsvariable von $(\Omega, \sigF)$ nach $(\Omega^{'}, \sigF^{'})$. Dann definiert
+	Sei $(\Omega, \sigF, \probp)$ ein WRaum und $X$ eine Zufallsvariable von $(\Omega, \sigF)$ nach $(\Omega', \sigF')$. Dann definiert
 	\begin{align}
-		\probp^{'}(A^{'}) := \probp\left(X^{-1}(A^{'})\right) = \probp\left(\set{X \in A^{'}}\right), A^{'} \in \sigF^{'}\notag
+		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right), A' \in \sigF'\notag
 	\end{align}
-	ein WMaß auf $(\Omega^{'}, \sigF^{'})$ auf $(\Omega^{'}, \sigF^{'})$, welches wir als \begriff{WVerteilung von X unter $\probp$} bezeichnet.
+	ein WMaß auf $(\Omega', \sigF')$ auf $(\Omega', \sigF')$, welches wir als \begriff{WVerteilung von X unter $\probp$} bezeichnet.
 \end{proposition}
 
 \begin{proof}
 	Aufgrund der Messbarkeit von $X$ ist die Definition sinnvoll. Zudem gelten
 	\begin{align}
-		\probp^{'}(\Omega^{'}) = \probp(X^{-1}(\Omega^{'})) = \probp(\Omega) = 1\notag
+		\probp'(\Omega') = \probp(X^{-1}(\Omega')) = \probp(\Omega) = 1\notag
 	\end{align}
-	und für $A_1^{'}, A_2^{'}, \dots \in \sigF^{'}$ paarweise disjunkt.
+	und für $A_1', A_2', \dots \in \sigF'$ paarweise disjunkt.
 	\begin{align}
-		\probp^{'}\left( \bigcup_{i \ge 1} A_i^{'}\right) &= \probp\left(X^{-1}\left( \bigcup_{i \ge 1} A_i^{'} \right)\right) \notag \\
-		&= \probp\left( \bigcup_{i \ge 1} X^{-1}(A_i^{'}) \right) \notag \\
-		&= \sum_{1 \ge 1} \probp(X^{-1}A_i^{'}) \notag
+		\probp'\left( \bigcup_{i \ge 1} A_i'\right) &= \probp\left(X^{-1}\left( \bigcup_{i \ge 1} A_i' \right)\right) \notag \\
+		&= \probp\left( \bigcup_{i \ge 1} X^{-1}(A_i') \right) \notag \\
+		&= \sum_{1 \ge 1} \probp(X^{-1}A_i') \notag
 	\end{align}
-	da auch $X^{-1}A_1^{'}, X^{-1}A_2^{'}, \dots$ paarweise disjunkt
+	da auch $X^{-1}A_1', X^{-1}A_2', \dots$ paarweise disjunkt
 	\begin{align}
-		&= \sum_{1 \ge 1} \probp^{'}(A_i^{'})\notag
+		&= \sum_{1 \ge 1} \probp'(A_i')\notag
 	\end{align}
-	Also ist $\probp^{'}$ ein WMaß. %TODO put in 1 align to have everything aligned?
+	Also ist $\probp'$ ein WMaß. %TODO put in 1 align to have everything aligned?
 \end{proof}
 
 \begin{*remark}
