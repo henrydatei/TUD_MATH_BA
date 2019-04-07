@@ -188,7 +188,7 @@ Aus der Definition folgen direkt:
 		\end{align}
 		stetige und diskrete WMaße lassen sich kombiniere z.B.
 		\begin{align}
-			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\one_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
+			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
 		\end{align}
 		ein WMaß auf $(\R, \mathscr{B}(\R))$.
 	\end{itemize}
@@ -215,7 +215,7 @@ Insbesondere definiert z.B.
 bereits die Exponentialverteilung aus \propref{1_1_7}.
 
 \begin{definition}[Gleichverteilung]
-	Ist $\Omega$ endlich, so heißt das WMaß mit konstanter Zähldichte $\rho(\omega) = \frac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $U(\Omega)$ notiert (U = Uniform).
+	Ist $\Omega$ endlich, so heißt das WMaß mit konstanter Zähldichte $\rho(\omega) = \sfrac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $U(\Omega)$ notiert (U = Uniform).
 	Ist $\Omega \subset \Rn$ eine Borelmenge mit Lebesgue-Maß $0 < \lambda^n(\Omega) < \infty$ so heißt das WMaß auf $(\Omega, \borel(\Omega))$ mit konstanter Dichtefunktion $\rho(x) = \sfrac{1}{\lambda^n(x)}$ die \begriff{(stetige)  Gleichverteilung} auf $\Omega$. 
 	Sie wird ebenso mit $U(\Omega)$ notiert.
 \end{definition}
@@ -282,14 +282,14 @@ d.h. $X$ sollte messbar sein.
 		\item Aus Gründen der Lesbarkeit schreiben wir in der Folge $\probp(X \in A) = \probp(\set{\omega \colon X(\omega) \in A})$
 		\item Ist $X$ die Identität, so fallen die Begriffe WMaß und WVerteilung zusammen.
 		\item In der (weiterführenden) Literatur zu WTheorie wird oft auf die Angabe eines zugrundeliegenden WRaumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
-		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\omega) / \borel(\Omega)$.
+		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\Omega) / \borel(\Omega)$.
 		\item Für die Verteilung von $X$ unter $\probp$ schreibe $\probp_{X}$ und $X \sim \probp_{X}$ für die Tatsache, dass $X$ gemäß $\probp_{X}$ verteilt ist.
 	\end{itemize}
 \end{*remark}
 
 \begin{definition}[identisch verteilt, reellen Zufallsvariablen]
 	Zwei Zufallsvariablen sind \begriff{identisch verteilt}, wenn sie dieselbe Verteilung haben.
-	Von besonderen Interesse sind für uns die Zufallsvariablen, die nach $(\R, \borel(\R))$ abbilden, sogenannten \begriff{reellen Zufallsvariablen}.
+	Von besonderen Interesse sind für uns die Zufallsvariablen, die nach $(\R, \borel(\R))$ abbilden, sogenannte \begriff{reelle Zufallsvariablen}.
 \end{definition}
 
 Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine reelle Zufallsvariable durch die Werte $(-\infty, c], c \in \R$ eindeutig festgelegt.
@@ -304,7 +304,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 	\begin{align}
 		F: \R \to [0,1] \text{ mit } x \mapsto \probp(X \le x) = \probp(X \in (-\infty, x]) \notag
 	\end{align} %TODO everything good with the X's here?
-	die (komulative) Verteilungsfunktion von $X$.
+	die (kommulative) Verteilungsfunktion von $X$.
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
