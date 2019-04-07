@@ -1,8 +1,86 @@
 \section{Einschrittverfahren}
-
 \subsection{Grundlagen}
 
+Anstelle der gesuchten Lösungsfunktion $y$: $[a,b]\to\real^m$ einer AWA ist man an möglichst guten Näherungen $y^k\in\real^m$ ($k=0,1,2,...,N$) für die Funktionswerte $y(x_k)\in\real^m$ der Funktion $y$ an \begriff{Gitterpunkten} $x_k\in [a,b]$ interessiert. Auf Grundlage der Paare $(x_k,y^k)$ ($k=0,1,...,N-1$) ist es auch möglich, eine Näherungsfunktion $y$ zu erzeugen (etwa durch Interpolation).
+
+Einschrittverfahren bilden eine Klasse von Verfahren, die Näherungen $y^k$ zu erzeugen. Das \begriff{Gitter} $\{x_0,...,x_N\}$ is so gewählt, dass
+\begin{align}
+	x_0=a<x_1<x_2<\dots < x_{N-1} < x_N = b\notag
+\end{align}
+Außerdem setzen wir
+\begin{align}
+	h_k = x_{k+1}-x_k\quad\text{für} k=0,...,N-1\notag
+\end{align}
+und bezeichnen $h_k$ als \begriff{Schrittweite}. Falls $h=h_0=\dots=h_{N-1}$, so heißen die Gitterpunkte bzw. das Gitter \begriff[Gitter!]{gleichabständig} oder \begriff[Gitter!]{äquidistant}.
+
+Ein Verfahren zur Erzeugung einer Folge $y^0,...,y^N$ heißt \begriff{Einschrittverfahren} für das AWA \cref{3_1_1}, wenn
+\begin{align}
+	\label{3_1_3}
+	y^{k+1} = y_k + h_k\Phi(x_k,y_k,y^{k+1},h_k) \quad\text{für} k=0,...,N-1
+\end{align}
+Dabei bezeichnet $\Phi(x,y,z,h)$ den Funktionswert einer \begriff{Verfahrensfunktion}
+\begin{align}
+	\Phi: [a,b]\times\real^m\times \real^m\times (0,b-a]\to \real^m\notag
+\end{align}
+die das jeweilige Einschrittverfahren definiert. Man beachte, dass $y^0$ bereits durch die Anfangsbedingung in \cref{3_1_1} gegeben ist. Ein Einschrittverfahren heißt \begriff[Einschrittverfahren!]{implizit}, falls $\Phi$ tatsächlich von $z$ abhängt. Dann ist zur Bestimmung von $y^{k+1}$ aus \cref{3_1_3} die Lösung eines im Allgemeinen nichtlinearen Gleichungssystems erforderlich. Falls $\Phi$ nicht von $z$ abhängt, heißt das Einschrittverfahren \begriff[Einschrittverfahren!]{explizit}. Das explizite \begriff{\person{Euler}-Verfahren} (auch \begriff{Polygonzugverfahren} genannt) ist gegeben durch
+\begin{align}
+	\label{3_1_4}
+	\Phi(x,y,z,h) = f(x,y)
+\end{align}
+das heißt
+\begin{align}
+	y^{k+1} = y^k + h_kf(x_k,y^k) \notag
+\end{align}
+Für das implizite \person{Euler}-Verfahren gilt die Vorschrift
+\begin{align}
+	y^{k+1} = y^k + h_kf(x_k + h_k,y^{k+1}) \notag
+\end{align}
+Um die Güte der Näherungen $y^k$ zu beurteilen, untersuchen wir zunächst den lokalen Diskretisierungsfehler eines Einschrittverfahrens.
+
 \subsection{Lokaler Diskretisierungsfehler und Konsistenz}
+
+\begin{definition}[lokaler Diskretisierungsfehler]
+	Seien $y$: $[a,b]\to \real^m$ Lösung des Differentialgleichung $y'=f(x,y)$ und $\Phi$ die Verfahrensfunktion eines Einschrittverfahrens. Für $x\in[a,b)$ und $h>0$ mit $x+h\le b$ heißt
+	\begin{align}
+		\label{3_1_5}
+		\Delta(x,h) = y(x+h) - \bigg( y(x) + h\Phi\big(x,y(x),y(x+h),h\big)\bigg)
+	\end{align}
+	\begriff{lokaler Diskretisierungsfehler} und 
+	\begin{align}
+		\frac{\Delta(x,h)}{h} = \frac{y(x+h)-y(x)}{h} - \Phi(x,y(x),y(x+h),h)
+	\end{align}
+	relativer lokaler Diskretisierungsfehler des Einschrittverfahrens.
+\end{definition}
+
+Der lokale Diskretisierungsfehler gibt also die Abweichung zwischen exakter Lösung $y(x+h)$ an der Stelle $x+h$ und der Näherung an dieser Stelle an, wobei angenommen wird, dass die Näherung unter Verwendung der exakten Lösung $y(x)$ (und ggf. $y(x+h)$) berechnet wird. Die Bezeichnung relativer Diskretisierungsfehler ist bezüglich der Schrittweite $h$ zu verstehen.
+
+\begin{definition}[konsistent, Konsistenzordnung]
+	Ein Einschrittverfahren heißt \begriff{konsistent} zur Differentialgleichung $y'=f(x,y)$, wenn
+	\begin{align}
+		\lim\limits_{h\downarrow 0} \left\Vert\frac{\Delta(x,h)}{h}\right\Vert =0\quad\forall x\in [a,b) \notag
+	\end{align}
+	für jede Lösung $y$: $[a,b]\to\real^m$ der Differentialgleichung gilt. Gibt es außerdem $p\ge 1$, $M>0$, $\tilde{h}>0$, so dass
+	\begin{align}
+		\left\Vert\frac{\Delta(x,h)}{h}\right\Vert \le Mh^p\quad\forall (x,h)\in [a,b)\times (0,\tilde{h})\text{ mit } x+h\le b \notag
+	\end{align}
+	für jede Lösung $y$: $[a,b]\to\real^m$ der Differentialgleichung gilt, so hat das Einschrittverfahren (für diese Differentialgleichung) die \begriff{Konsistenzordnung} $p$.
+\end{definition}
+
+\begin{proposition}
+	Sei $f$: $[a,b]\times \real^m\to\real^m$ stetig differenzierbar. Dann hat das explizite \person{Euler}-Verfahren die Konsistenzordnung 1.
+\end{proposition}
+\begin{proof}
+	Mit \cref{3_1_4} folgt
+	\begin{align}
+		\Delta(x,h) = y(x+h) - y(x) - hf(x,y(x)) \notag
+	\end{align}
+	Da $y$ die Differentialgleichung $y'=f(x,y)$ löst und $f$ stetig differenzierbar ist, muss $y$ zweimal stetig differenzierbar sein. Aus der \person{Taylor}-Formel erhält man für $i\in\{1,...,m\}$
+	\begin{align}
+		\Delta(x,h)_i &= y'_i(x)h + \frac{1}{2}y''_i(\xi_i(x,h))h^2 - hf_i(x,y(x)) \notag \\
+		&= \frac{1}{2} y''_i(\xi_i(x,h))h^2 \notag
+	\end{align}
+	für ein $\xi_i(x,h)\in (x,x+h)$. Die Stetigkeit von $y''$ auf $[a,b]$ und Division durch $h$ liefert die Behauptung mit $M=\frac{1}{2}\max_{1\le i\le m}\max_{\xi\in[a,b]}\Vert y''_i(\xi)\Vert$ und $\tilde{h}=b-a$.
+\end{proof}
 
 \subsection{Konvergenz von Einschrittverfahren}
 
