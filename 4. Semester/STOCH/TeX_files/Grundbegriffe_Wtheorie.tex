@@ -65,6 +65,7 @@ sodass
 Aus der Definition folgen direkt:
 
 \begin{proposition}[Rechenregeln für W-Maße]
+	\proplbl{1_4}
 	Sei $\mathbb{P}$ ein W-Maß, Ereignisse $(\Omega, \mathscr{F}), A, B, A_1, A_2, \dots \in \mathscr{F}$. Dann gelten:
 	\begin{enumerate}
 		\item $\mathbb{P}(\emptyset) = 0$
@@ -109,7 +110,7 @@ Aus der Definition folgen direkt:
 		\end{align}
 		und
 		\begin{align}
-			\probp(A) = \probp\left( \biguplus_{i=1}^{\infty} F_i \right) = \sum_{i=1}^{\infty} \probp(F_i) = \lim\limits_{m \to \infty} \probp\left( \biguplus_{i=1}^{m} F_i \right) = \lim\limits_{m\to \infty} \probp(A_m). \notag
+			\probp(A) = \probp\left( \biguplus_{i=1}^{\infty} F_i \right) = \sum_{i=1}^{\infty} \probp(F_i) = \lim\lim_{m \to \infty} \probp\left( \biguplus_{i=1}^{m} F_i \right) = \lim\lim_{m\to \infty} \probp(A_m). \notag
 		\end{align}
 	\end{enumerate}
 \end{proof}
@@ -145,6 +146,7 @@ Aus der Definition folgen direkt:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{proposition}[Konstruktion von WMaßen durch Dichten]
+	\proplbl{1_8}
 	Sei $(\Omega, \mathscr{F})$ ein Eriegnisraum.
 	\begin{itemize}
 		\item $\Omega$ abzählbar, $\mathscr{F} = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
@@ -197,6 +199,7 @@ Aus der Definition folgen direkt:
 Abschließend erinnern wir uns an:
 
 \begin{proposition}[Eindeutigkeitssatz für WMaße]
+	\proplbl{1_9}
 	Sei $(\Omega, \mathscr{F})$ Ereignisraum und $\probp$ ein WMaß auf $(\Omega, \mathscr{F})$. 
 	Sei $\mathscr{F} = \omega(\mathscr{G})$ für ein $\cap$-stabiles Erzeugendensystem $\mathscr{G} \subset \mathscr{P}(\Omega)$. 
 	Dann ist $\probp$ bereits durch seine Einschränkung $\probp_{\mid \mathscr{G}}$ eindeutig bestimmt.
@@ -295,6 +298,7 @@ d.h. $X$ sollte messbar sein.
 Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine reelle Zufallsvariable durch die Werte $(-\infty, c], c \in \R$ eindeutig festgelegt.
 
 \begin{definition}[(kommutative) Verteilungsfunktion von $\probp$]
+	\proplbl{2_5}
 	Sei $(\R, \borel(\R), \probp)$ WRaum, so heißt
 	\begin{align}
 		F: \R \to [0,1] \text{ mit } x \mapsto \probp((-\infty, x]) \notag
@@ -308,3 +312,122 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example}
+	$(\R, \borel(\R),\probp)$ mit $\probp$ Exponentialverteilung mit Parameter $\lambda > 0$
+	\begin{align}
+		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{\lambda x} \quad A \in \borel(\R)\notag
+	\end{align}
+	Dann ist
+	\begin{align}
+		F(x) = \probp((-\infty, 0)) = \begin{cases}
+		0 &x \le 0\\
+		\int_{0}^{x} \lambda e^{\lambda x} = 1 - e^{-\lambda x} &x > 0
+		\end{cases}\notag
+	\end{align}
+\end{example}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			xmin=-5, xmax=5, xlabel=$x$,
+			ymin=0, ymax=1, ylabel=$y$,
+			axis x line=middle,
+			axis y line=middle,
+			samples=400,
+			xticklabels={,,},
+			domain=0:5,
+			]
+			\addplot[mark=none,blue] {(1/(1+exp(-0.07056*x^3 - 1.5976*x))-0.5)*2};
+			\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+\begin{example}
+	Das Würfeln mit einem fairen, sechseitigen Würfel kann mittels einer reellen Zufallsvariablen
+	\begin{align}
+		X: \set{1,2,\dots, 6} \to \R \mit x \mapsto x\notag
+	\end{align}
+	modelliert werden. Es folgt als Verteilungsfunktion
+	\begin{align}
+		F(x) &= \probp'(X \le x) = \probp(X^{-1}(-\infty,x]) = \probp((-\infty,x])\notag\\
+		&= \frac{1}{6}\sum_{i=1}^{6} \indi_{i \le x}\notag
+	\end{align}
+\end{example}
+
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=-5, xmax=6, xlabel=$x$,
+	ymin=0, ymax=1, ylabel=$y$,
+	axis x line=middle,
+	axis y line=middle,
+	samples=400,
+	xticklabels={,,},
+	domain=0:5,
+	]
+	\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
+	\draw[blue,thick] (axis cs: 0,0) -- (axis cs: 1,0);
+	\draw[blue,thick] (axis cs: 1,0.2) -- (axis cs: 2,0.2);
+	\draw[blue,thick] (axis cs: 2,0.4) -- (axis cs: 3,0.4);
+	\draw[blue,thick] (axis cs: 3,0.6) -- (axis cs: 4,0.6);
+	\draw[blue,thick] (axis cs: 4,0.8) -- (axis cs: 5,0.8);
+	\draw[blue,thick] (axis cs: 5,1) -- (axis cs: 6,1);
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+Allgemein
+
+\begin{proposition}
+	Ist $\probp$ ein WMaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion, so gelten
+	\begin{enumerate}
+		\item $F$ ist monoton wachsend
+		\item $F$ ist rechtsseitig stetig
+		\item $\lim_{x\to -\infty} F(x) = 0$, $\lim_{x\to \infty} F(x) = 1$
+	\end{enumerate}
+	Umgekehrt existiert zu jeder Funktion $F: \R \to [0,1]$ mit Eigenschaften 1-3 eine reelle Zufallsvariable auf $((0,1), \borel((0,1)U((0,1))$ mit Verteilungsfunktion $F$.
+	%TODO refs for the enum above 
+\end{proposition}
+
+\begin{proof}
+	Ist $F$ Verteilungsfunktion, so folgt mit \propref{1_4}
+	\begin{align}
+		 x \le y \Rightarrow F(x) = \probp((-\infty,x]) \overset{\propref{1_4}.3}{\le} \probp((-\infty,y]) = F(y)\notag
+	\end{align}
+	und
+	\begin{align}
+		\lim_{m \downarrow c} F(x) = \lim_{m \downarrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}{=} \probp((-\infty, x]) = F(c)\notag
+	\end{align}
+	sowie
+	\begin{align}
+		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
+		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag\\
+	\end{align}
+	Umgekehrt wähle
+	\begin{align}
+		X(u) := \inf\set{x \in \R \colon F(x) \ge 0}, \quad u \in (0,1)\notag\\
+	\end{align}
+	Dann ist $X$ eine ``linkseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
+	Wegen 3 gilt:
+	\begin{align}
+		-\infty < X(u) < \infty\notag
+	\end{align}
+	und zudem
+	\begin{align}
+		\set{X \le x} = (0, F(x)) \cap (0,1) \in \borel((0,1))\notag
+	\end{align}
+	Da diese halboffene Mengen ein Erzeugendensystem von $\borel(\R)$ bilden, folgt bereits die Messbarkeit von $X$, also ist $X$ eine ZV. Insbesondere hat die Menge $\set{X \le x}$ gerade \person{Lebesgue}-Maß $F(x)$ und damit hat $X$ die Verteilungsfunktion $F$.
+\end{proof}
+
+\begin{conclusion}
+	Ist $\probp$ WMaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion. Dann besitzt $\probp$ genau eine Dichtefunktion $\rho$, wenn $F$ stetig differenzierbar ist, denn dann gelten
+	\begin{align}
+		F(x) = \int_{-\infty}^{x} \rho(x) \diff x, \bzw \rho(x) = F'(x)\notag
+	\end{align}
+\end{conclusion}
+
+\begin{proof}
+	Folgt aus \propref{1_8}, der \propref{2_5} der Verteiltungsfunktion und dann Eindeutigkeitssatz \propref{1_9}.
+\end{proof}

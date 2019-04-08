@@ -1,0 +1,83 @@
+\section{Erste Standardmodelle der WTheorie} %TODO maybe a chapter have to see
+
+\subsection{Diskrete Verteilungen}
+
+\subsection{Diskrete Gleichverteilungen}
+
+%TODO restructure! looks like this is just a new section in the chapter Grundbegriffe der WTheorie!
+
+Erinnerung:
+\begin{definition} %TODO def 1.10?!
+	Ist $\Omega$ endlich, so heißt WMaß mit Zähldichte
+	\begin{align}
+		\rho(\omega) = \frac{1}{\omega}\quad, \omega \in \Omega\notag
+	\end{align}
+	\begriff{(diskrete) Gleichverteilung} auf $\Omega \to U(\Omega)$\notag
+\end{definition}
+Es gilt das für jedes $A \in \pows(\Omega)$
+\begin{align}
+	\probp\brackets{\frac{\abs{A}}{\abs{\Omega}}}\notag
+\end{align}
+Anwendungsbeispiele sind faires Würfeln, faierer Münzwurf, Zahlenlotto, ...
+
+\subsection{Urnenmodelle}
+
+Ein ``Urnenmodell'' ist eine abstrakte Darstellung von Zufallsvariablen, bei den zufällig Stichproben aus einer gegebenen Menge ``gezogen'' werden.
+\begin{*definition}[Urne]
+	Eine Urne ist ein Behältnis in welchem sich farbige/nummerierte Kugeln befinden, die ansonsten ununterscheidbar sind.
+\end{*definition}
+Aus der Urne ziehe blind/zufällig ein oder mehrere Kugeln und notiere Farbe/Zahl.
+
+%TODO Urnenbild?
+
+\subsection{Urnenmodell mit Zurücklegen: Multinomial-Verteilung}
+
+Gegeben: Urne mit $N$ Kugeln, verschiedenfarbig:
+\begin{align}
+	\text{mit Farben aus } E, \quad \abs{E} \ge 2\notag
+\end{align}
+Ziehe: $n$ Stichproben/Kugeln, wobei nach jedem Zug die Kugel wieder zurückgelegt wird. Uns interessiert die Farbe in jedem Zug, setze also
+\begin{align}
+	\Omega = E^n \und \sigF = \pows(\Omega) \notag
+\end{align}
+Zur Bestimmung einer geeigneten WMaßes, nummerieren wir die Kugeln mit $1,\dots, N$, so dass die Kugeln der Farbe $a \in E$ eine Nummer aus $F_{a} \subset \set{1,\dots, N}$ tragen. Würden wir die Nummern notieren, sei wäre
+\begin{align}
+	\overline{\Omega} = \set{1,\dots, N}^n \und \overline{\sigF} = \pows(\overline{\Omega})\notag
+\end{align}
+und wir könnten die Gleichverteilung $\overline{\probp} = U(\overline{\Omega})$ als WMaß für einem einzelnen Zug verwenden. Für den Übergang zu $\Omega$ konstruiere Zufallsvariablen. Die Farbe in $i$-ten Zug wird beschrieben durch
+\begin{align}
+	X_i: \overline{\Omega} \to E \mit \overline{\omega} = (\overline{\omega}_1, \dots, \overline{\omega}_n) \mapsto a, \text{, falls} \overline{\omega}_i \in F_a\notag
+\end{align}
+Der Zufallsvektor
+\begin{align}
+	X = (X_1, \dots, X_n): \overline{\Omega} \to \Omega\notag
+\end{align}
+beschreibt die Abfolge der Farben. Für jedes $\omega \in \Omega$ gilt dann
+\begin{align}
+	\set{X = \omega} = F_{\omega_1} \times \cdots \times F_{\omega_n} = \bigtimes_{i=1}^{n} F_{\omega_i}\notag
+\end{align}
+und damit
+\begin{align}
+	\probp(\set{\omega}) 
+	&= \overline{\probp}(X^{-1}(\set{\omega})) = \probp(X=\omega)\notag\\
+	&= \frac{\abs{F_{\omega_1} \cdots \abs{F_{\omega_n}}}}{\abs{\overline{\Omega}}}\notag\\
+	&= \prod_{i=1}^{n} \frac{\abs{F_{\omega}}}{N} =: \prod_{i=1}^{n} \rho(\omega_i)\notag
+\end{align}
+Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  3 (Unabhängigkeit)). %TODO ref?!?!?!
+Sehr oft interessiert bei einem Urnenexperiment nicht sie Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farben $a \in E$ nach $n$ Zügen.
+\newline Dies enspricht
+\begin{align}
+	 \hat{\Omega} 
+	 &= \set{k = (k_a)_{a \in E} \in \N_{0}^{\abs{E}} \colon \sum_{a \in E} k_a = n}\notag\\
+	 \sigF &= \pows\brackets{\hat{\Omega}}\notag
+\end{align}
+Den Übergang $\Omega \to \overline{\Omega}$ beschreiben wir durch die Zufallsvariablen
+\begin{align}
+	Y_a(\omega): \Omega \to \N_{0} \mit \omega = (\omega_1,\dots, \omega_n)\mapsto \sum_{i=1}^{n} \indi_{\set{a}}(\omega_i)\notag
+\end{align}
+und
+\begin{align}
+	Y = \brackets{Y_a}_{a\in E}: \Omega \to \hat{\Omega}\notag
+\end{align}
+
+% % % % % % % % % % % % % % % % % % % % 4th lecture % % % % % % % % % % % % % % % % % % % % % % %
