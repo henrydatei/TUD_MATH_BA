@@ -1,64 +1,83 @@
 \section{Aufgabe und Lösbarkeit}
 
-Es seien $a,b\in\real$ mit $a<b$, eine stetige Funktion $f$: $[a,b]\times\real^m\to\real^m$ und $y^0\in\real^m$ gegeben. Unter \begriff{Anfangswertaufgabe} (AWA) 1. Ordnung versteht man das Problem, eine stetige Funktion $y$: $[a,b]\to\real^m$ zu ermitteln, so dass $y$ auf $(a,b)$ stetig differenzierbar ist und
+Es seien $a,b \in \R$ mit $a < b$, eine stetige Funktion $f$: $[a,b] \times \R^m \to \R^m$ und $y^0 \in \R^m$ gegeben. Unter \begriff{Anfangswertaufgabe} (AWA) 1. Ordnung versteht man das Problem, eine stetige Funktion $y$: $[a,b] \to \R^m$ zu ermitteln, so dass $y$ auf $(a,b)$ stetig differenzierbar ist und
+
 \begin{align}
-	y'(x) = f(x,y(x)) \quad\text{mit}\quad y(a)=y^0 \notag
+	y'(x) = f(x,y(x)) \quad \mit \quad y(a)=y^0 \notag
 \end{align}
-für alle $x\in [a,b]$ gilt. Eine solche Funktion wollen wir \begriff[Anfangswertaufgabe!]{Lösung} der AWA nennen. Kürzer schreibt man für die AWA auch
+
+für alle $x \in [a,b]$ gilt. Eine solche Funktion wollen wir \begriff[Anfangswertaufgabe!]{Lösung} der AWA nennen. Kürzer schreibt man für die AWA auch
+
 \begin{align}
 	\label{3_1_1}
-	y'=f(x,y) \quad\text{mit}\quad y(a)=y^0
+	y'=f(x,y) \quad \mit \quad y(a)=y^0
 \end{align}
+
 Die Existenz und Eindeutigkeit einer Lösung einer AWA hängen von den Eingangsinformationen $a,b,f$ und $y^0$ ab. Es gilt folgender Satz zur (globalen) Existenz und Eindeutigkeit einer Lösung auf $[a,b]$:
 
-\begin{proposition}[\person{Picard-Lindelöf}: globale Version]
-	Es sein $f$: $[a,b]\times \real^m\to\real^m$ stetig und es existiere $L>0$, so dass
+\begin{proposition}[\person{Picard-Lindelöf}: eine globale Version]
+	Es sein $f$: $[a,b] \times \R^m \to \R^m$ stetig und es existiere $L>0$, so dass
 	\begin{align}
 		\label{3_1_2}
-		\Vert f(x,y)-f(x,z)\Vert \le L\Vert y-z\Vert\quad\forall (x,y),(x,z)\in [a,b]\times \real^m
+		\norm{f(x,y)-f(x,z)} \le L \norm{y-z} \quad \forall (x,y),(x,z) \in [a,b] \times \R^m
 	\end{align}
-	Dann besitzt \cref{3_1_1} für jedes $y^0\in\real^m$ eine eindeutige Lösung.
+	Dann besitzt \cref{3_1_1} für jedes $y^0 \in \R^m$ eine eindeutige Lösung.
 \end{proposition}
 
 Die Bedingung \cref{3_1_2} ist eine globale Lipschitz-Bedingung an $f$ bezüglich der zweiten Veränderlichen. Es ist leicht, AWA anzugeben, in denen diese Bedingung nicht erfüllt ist und keine Lösung in ganz $[a,b]$ existiert, zum Beispiel
-\begin{align}
-	y'= y^2\quad\text{mit}\quad y(0)=1\notag
-\end{align}
-Dafür erhält man für beliebige $x,y,z\in\real$
-\begin{align}
-	\vert f(x,y)-f(x,z)\vert = \vert y^2-z^2\vert = \vert y+z\vert\vert y-z\vert\notag
-\end{align}
-das heißt die Bedingung \cref{3_1_2} kann in diesem Beispiel (global) nicht gelten. Die Lösung der AWA lautet $y(x)=\frac{-1}{x-1}$ für $x\in[0,1)$. Für Intervalle $[0,b]$ mit $b\ge 1$ existiert keine Lösung. Eine Abschwächung der Lipschitz-Bedingung \cref{3_1_2} gestattet folgender
 
-\begin{proposition}[\person{Picard-Lindelöf}: lokale Version]
-	Es sei $f$: $[a,b]\times \real^m\to\real^m$ stetig und zu jeder kompakten Menge $Y\subset\real^m$ existiere $L_Y>0$, so dass
+\begin{align}
+	y'= y^2 \quad \mit \quad y(0) = 1 \notag
+\end{align}
+
+Dafür erhält man für beliebige $x,y,z \in \R$
+
+\begin{align}
+	\abs{f(x,y) - f(x,z)} = \abs{y^2 - z^2} = \abs{y+z} \abs{y-z} \notag
+\end{align}
+
+das heißt die Bedingung \cref{3_1_2} kann in diesem Beispiel (global) nicht gelten. Die Lösung der AWA lautet $y(x) = \sfrac{-1}{x-1}$ für $x \in [0,1)$. Für Intervalle $[0,b]$ mit $b \ge 1$ existiert keine Lösung. Eine Abschwächung der Lipschitz-Bedingung \cref{3_1_2} gestattet folgender
+
+\begin{proposition}[\person{Picard-Lindelöf}: eine lokale Version]
+	Es sei $f$: $[a,b] \times \R^m \to \R^m$ stetig und zu jeder kompakten Menge $\mathcal{Y} \subset \R^m$ existiere $L_Y > 0$, so dass
 	\begin{align}
-		\Vert f(x,y)-f(x,z)\Vert \le L_y\Vert y-z\Vert\quad\forall (x,y),(x,z)\in [a,b]\times Y \notag
+		\norm{f(x,y)-f(x,z)} \le L_y \norm{y-z} \quad \forall (x,y),(x,z) \in [a,b] \times \mathcal{Y} \notag
 	\end{align}
-	Dann gibt es für jedes $y^0\in\real^m$ ein Teilintervall $I\subseteq [a,b]$ mit $a\in I$, so dass die AWA \cref{3_1_1} auf $I$ eine eindeutige Lösung besitzt.
+	Dann gibt es für jedes $y^0 \in \R^m$ ein Teilintervall $\mathcal{I} \subseteq [a,b]$ mit $a \in \mathcal{I}$, so dass die AWA \cref{3_1_1} auf $\mathcal{I}$ eine eindeutige Lösung besitzt.
 \end{proposition}
 
-Seien $g$: $[a,b]\times \real^n\to\real$ stetig und $\eta\in\real^n$. Jede explizite Differentialgleichung $n$-ter Ordnung
+Seien $g$: $[a,b]\times \R^n \to \R$ stetig und $\eta \in \R^n$. Jede explizite Differentialgleichung $n$-ter Ordnung
+
 \begin{align}
 	y^{(n)} = g(x,y,y',y'',...,y^{(n-1)})\notag
 \end{align}
+
 mit den Anfangsbedingungen
+
 \begin{align}
-	y(a) = \eta_1,\quad y'(a)=\eta_2,\quad y''(a)=\eta_3,\quad\dots\quad y^{(n-1)}(a)=\eta_n\notag
+	y(a) = \eta_1, \quad y'(a) = \eta_2, \quad y''(a) = \eta_3, \quad \dots \quad y^{(n-1)}(a) = \eta_n\notag
 \end{align}
+
 kann mittels Substitution
+
 \begin{align}
-	y_1 = y,\quad y_2=y',\quad y_3=y'',\quad\dots\quad y_n=y^{(n-1)}\notag
+	y_1 = y,\quad y_2=y', \quad y_3=y'', \quad \dots \quad y_n = y^{(n-1)}\notag
 \end{align}
+
 in eine AWA 1. Ordnung überführt werden:
+
 \begin{align}
 	\begin{pmatrix}
-	y_1' \\ \vdots \\ y_n'
-	\end{pmatrix} = \begin{pmatrix}
-	y_2 \\ \vdots \\ y_n \\ g(x,y_1,...,y_n)
-	\end{pmatrix} \quad\text{mit}\quad \begin{pmatrix}
+		y_1' \\ \vdots \\ y_n'
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		y_2 \\ \vdots \\ y_n \\ g(x,y_1,...,y_n)
+	\end{pmatrix} 
+	\quad \mit \quad 
+	\begin{pmatrix}
 	y_1(a) \\ \vdots \\ y_n(a)
-	\end{pmatrix} = \begin{pmatrix}
+	\end{pmatrix} = 
+	\begin{pmatrix}
 	\eta_1 \\ \vdots \\ \eta_n
 	\end{pmatrix} \notag
 \end{align}
