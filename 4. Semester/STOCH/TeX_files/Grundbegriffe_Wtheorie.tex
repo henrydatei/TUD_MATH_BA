@@ -316,13 +316,13 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \begin{example}
 	$(\R, \borel(\R),\probp)$ mit $\probp$ Exponentialverteilung mit Parameter $\lambda > 0$
 	\begin{align}
-		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{\lambda x} \quad A \in \borel(\R)\notag
+		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{-\lambda x} \quad A \in \borel(\R)\notag
 	\end{align}
 	Dann ist
 	\begin{align}
-		F(x) = \probp((-\infty, 0)) = \begin{cases}
+		F(x) = \probp((-\infty, x)) = \begin{cases}
 		0 &x \le 0\\
-		\int_{0}^{x} \lambda e^{\lambda x} = 1 - e^{-\lambda x} &x > 0
+		\int_{0}^{x} \lambda e^{-\lambda y} \diff y = 1 - e^{-\lambda x} &x > 0
 		\end{cases}\notag
 	\end{align}
 \end{example}
@@ -378,7 +378,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 	\end{tikzpicture}
 \end{center}
 
-Allgemein
+Allgemein:
 
 \begin{proposition}
 	Ist $\probp$ ein WMaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion, so gelten
@@ -387,7 +387,7 @@ Allgemein
 		\item $F$ ist rechtsseitig stetig
 		\item $\lim_{x\to -\infty} F(x) = 0$, $\lim_{x\to \infty} F(x) = 1$
 	\end{enumerate}
-	Umgekehrt existiert zu jeder Funktion $F: \R \to [0,1]$ mit Eigenschaften 1-3 eine reelle Zufallsvariable auf $((0,1), \borel((0,1)U((0,1))$ mit Verteilungsfunktion $F$.
+	Umgekehrt existiert zu jeder Funktion $F: \R \to [0,1]$ mit Eigenschaften 1-3 eine reelle Zufallsvariable auf $((0,1), \borel((0,1)), \mathrm{U}((0,1))$ mit Verteilungsfunktion $F$.
 	%TODO refs for the enum above 
 \end{proposition}
 
@@ -398,16 +398,16 @@ Allgemein
 	\end{align}
 	und
 	\begin{align}
-		\lim_{m \downarrow c} F(x) = \lim_{m \downarrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}{=} \probp((-\infty, x]) = F(c)\notag
+		\lim_{m \searrow c} F(x) = \lim_{m \searrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}{=} \probp((-\infty, c]) = F(c)\notag
 	\end{align}
 	sowie
 	\begin{align}
-		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
+		\lim_{x\to -\infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
 		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag\\
 	\end{align}
 	Umgekehrt wähle
 	\begin{align}
-		X(u) := \inf\set{x \in \R \colon F(x) \ge 0}, \quad u \in (0,1)\notag\\
+		X(u) := \inf\set{x \in \R \colon F(x) \ge u}, \quad u \in (0,1)\notag\\
 	\end{align}
 	Dann ist $X$ eine ``linkseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
 	Wegen 3 gilt:
