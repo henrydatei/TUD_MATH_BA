@@ -349,6 +349,14 @@
 ]{*anmerkung}{Anmerkung}
 
 \newmdtheoremenv[%
+hidealllines=true,%
+frametitlefont=\normalfont\bfseries\color{black},%
+innerleftmargin=0pt,%
+skipabove=5pt,%
+innerleftmargin=10pt,%
+]{*erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
+
+\newmdtheoremenv[%
 	style=boxedtheorem,%
 	hidealllines=true,%
 	innertopmargin=\topskip,%
