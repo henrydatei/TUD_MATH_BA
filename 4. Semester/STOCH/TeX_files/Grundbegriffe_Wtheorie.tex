@@ -313,7 +313,8 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{example}
-	$(\R, \borel(\R),\probp)$ mit $\probp$ Exponentialverteilung mit Parameter $\lambda > 0$
+	\proplbl{2_2_6}
+	Sei $(\R, \borel(\R),\probp)$ mit $\probp$ Exponentialverteilung mit Parameter $\lambda > 0$
 	\begin{align}
 		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{-\lambda x} \diff x \quad A \in \borel(\R)\notag
 	\end{align}
@@ -322,25 +323,14 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 		F(x) = \probp((-\infty, x)) = \begin{cases}
 		0 &x \le 0\\
 		\int_{0}^{x} \lambda e^{-\lambda y} \diff y = 1 - e^{-\lambda x} &x > 0
-		\end{cases}\notag
+		\end{cases}.\notag
 	\end{align}
 \end{example}
 
 \begin{center}
-	\begin{tikzpicture}
-		\begin{axis}[
-			xmin=-5, xmax=5, xlabel=$x$,
-			ymin=0, ymax=1, ylabel=$y$,
-			axis x line=middle,
-			axis y line=middle,
-			samples=400,
-			xticklabels={,,},
-			domain=0:5,
-			]
-			\addplot[mark=none,blue] {(1/(1+exp(-0.07056*x^3 - 1.5976*x))-0.5)*2};
-			\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
-		\end{axis}
-	\end{tikzpicture}
+	\input{./tikz/bsp_exp_verteilung}
+%	\caption{Verteilung zu \propref{2_2_6}} 
+	%TODO fix caption?
 \end{center}
 
 \begin{example}
@@ -356,25 +346,9 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \end{example}
 
 \begin{center}
-	\begin{tikzpicture}
-	\begin{axis}[
-	xmin=-5, xmax=6, xlabel=$x$,
-	ymin=0, ymax=1, ylabel=$y$,
-	axis x line=middle,
-	axis y line=middle,
-	samples=400,
-	xticklabels={,,},
-	domain=0:5,
-	]
-	\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
-	\draw[blue,thick] (axis cs: 0,0) -- (axis cs: 1,0);
-	\draw[blue,thick] (axis cs: 1,0.2) -- (axis cs: 2,0.2);
-	\draw[blue,thick] (axis cs: 2,0.4) -- (axis cs: 3,0.4);
-	\draw[blue,thick] (axis cs: 3,0.6) -- (axis cs: 4,0.6);
-	\draw[blue,thick] (axis cs: 4,0.8) -- (axis cs: 5,0.8);
-	\draw[blue,thick] (axis cs: 5,1) -- (axis cs: 6,1);
-	\end{axis}
-	\end{tikzpicture}
+	\input{./tikz/wurfelverteilung}
+%	\caption{Verteilung zu \propref{2_2_6}} 
+	%TODO fix caption?
 \end{center}
 
 Allgemein:

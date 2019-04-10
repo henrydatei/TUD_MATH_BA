@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+	\begin{axis}[
+		xmin=-5, xmax=5, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		axis x line=middle,
+		axis y line=middle,
+		samples=400,
+		xticklabels={,,},
+		domain=0:5,
+		]
+		\addplot[mark=none,blue] {(1/(1+exp(-0.07056*x^3 - 1.5976*x))-0.5)*2};
+		\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
+	\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{axis}[
+		xmin=-5, xmax=6, xlabel=$x$,
+		ymin=0, ymax=1, ylabel=$y$,
+		axis x line=middle,
+		axis y line=middle,
+		samples=400,
+		xticklabels={,,},
+		domain=0:5,
+		]
+		\draw[blue,thick] (axis cs: -5,0) -- (axis cs:0,0);
+		\draw[blue,thick] (axis cs: 0,0) -- (axis cs: 1,0);
+		\draw[blue,thick] (axis cs: 1,0.2) -- (axis cs: 2,0.2);
+		\draw[blue,thick] (axis cs: 2,0.4) -- (axis cs: 3,0.4);
+		\draw[blue,thick] (axis cs: 3,0.6) -- (axis cs: 4,0.6);
+		\draw[blue,thick] (axis cs: 4,0.8) -- (axis cs: 5,0.8);
+		\draw[blue,thick] (axis cs: 5,1) -- (axis cs: 6,1);
+	\end{axis}
+\end{tikzpicture}
