@@ -1,0 +1,55 @@
+\chapter{Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
+
+\section{Bedingte Wahrscheinlichkeiten}
+
+\begin{example}
+	Das Würfeln mit $2$ fairen, sechseitigen Würfeln können wir mit 
+	\begin{align}
+		\Omega = \set{(i,j,), i,j \in \set{1,\dots,6}}\notag
+	\end{align}
+	und $\probp = \Gleich(\Omega)$. Da $\abs{\Omega} = 36$ gilt also
+	\begin{align}
+		\probp(\set{\omega}) = \frac{1}{36} \quad \forall \omega \in \Omega.\notag
+	\end{align}
+	Betrachte das Ereignis
+	\begin{align}
+		A = \set{(i,j) \in \Omega : i + j = 8},\notag
+	\end{align}
+	dann folgt
+	\begin{align}
+		\probp(A) = \frac{5}{36}.\notag
+	\end{align}
+	Werden die beiden Würfel nach einander ausgeführt, so kann nach dem ersten Wurf eine Neubewertung der Wahrscheinlichkeit von $A$ erfolgen.\\
+	Ist z.B.:
+	\begin{align}
+		B = \set{(i,j) \in \Omega, i = 4}\notag
+	\end{align}
+	eingetreten, so kann die Summe $8$ nur durch eine weitere $4$ realisiert werden, also mit Wahrscheinlichkeit
+	\begin{align}
+		\frac{1}{6} = \frac{\abs{A \cap B}}{\abs{B}}\notag 
+	\end{align}
+	Diese Eintreten von $B$ führt also dazu, dass das Wahrscheinlichkeitsmaß $\probp$ durch ein neues Wahrscheinlichkeitsmaß $\probp_{B}$ ersetzt werden muss. Hierbei sollte gelten:
+	\begin{itemize}
+		\item[(R)] Renormierung: $\probp_{B} = 1$
+		\item[(P)] Proportionalität: Für alle $A \subset \sigF$ mit $A \subseteq B$ gilt
+		\begin{align}
+			\probp_{B}(A) = c_B \probp(A)\notag
+		\end{align}
+		eine Konstante $c_B$.
+	\end{itemize}
+\end{example}
+
+\begin{lemma}
+	Sei $(\Omega, \sigF, \probp)$ WRaum und $B \in \sigF$ mit $\probp(B) > 0$. Dann gibt es genau ein WMaß $\probp_B$ auf $(\Omega, \sigF)$ mit den Eigenschaften (R) und (P). Dieses ist gegeben durch
+	\begin{align}
+		\probp_{B}(A) = \frac{\probp(A\cap B)}{\probp(B)} \quad \forall A \in \sigF.\notag
+	\end{align}
+\end{lemma}
+
+\begin{proof}
+	Offenbar erfüllt $\probp_{B}$ wie definiert (R) und (P). Umgekehrt erfülle $\probp_{B}$ (R) und (P). Dann folgt für $A \in \sigF$:
+	\begin{align}
+		\probp_{B}(A) = \probp_{B}(A\cap B) + \underbrace{\probp_{B}(A\setminus B)}_{0, \text{ wegen } (R)} \overset{(P)}{=}
+	\end{align}
+	%TODO finish the proof from eric.
+\end{proof}

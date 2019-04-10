@@ -51,7 +51,7 @@ sodass
 \begin{align}
 	\text{Normierung } \mathbb{P}(\Omega) = 1 \tag{N}\label{eq_norm}\\
 	\sigma\text{-Additivität für paarweise disjunkte Ereignisse} \tag{A}\label{eq_additive}\\
-	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
+	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{i \ge 1} \mathbb{P}(A_i)\notag
 \end{align}
 
 \cref{eq_norm}, \cref{eq_additive} und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
@@ -71,7 +71,7 @@ Aus der Definition folgen direkt:
 		\item endliche $\sigma$-Additivität: $\mathbb{P}(A\cup B) + \mathbb{P}(A\cap B) = \mathbb{P}(A) + \mathbb{P}(B)$ und insbesondere $\mathbb{P}(A) + \mathbb{P}(A^C) = 1$
 		\item $\sigma$-Subadditivität:
 		\begin{align}
-			\mathbb{P}\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{1 \ge 1} \mathbb{P}(A_i)\notag
+			\mathbb{P}\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{i \ge 1} \mathbb{P}(A_i)\notag
 		\end{align}
 		\item $\sigma$-Stetigkeit: Wenn $A_n \uparrow A$ (d.h. $A_1 \subseteq A_2 \subseteq \cdots$ und $A = \bigcup_{i=1}^{\infty} (A_i)$) oder $A_n \downarrow A$, so gilt:
 		\begin{align}
@@ -270,11 +270,11 @@ d.h. $X$ sollte messbar sein.
 	\begin{align}
 		\probp'\left( \bigcup_{i \ge 1} A_i'\right) &= \probp\left(X^{-1}\left( \bigcup_{i \ge 1} A_i' \right)\right) \notag \\
 		&= \probp\left( \bigcup_{i \ge 1} X^{-1}(A_i') \right) \notag \\
-		&= \sum_{1 \ge 1} \probp(X^{-1}A_i') \notag
+		&= \sum_{i \ge 1} \probp(X^{-1}A_i') \notag
 	\end{align}
 	da auch $X^{-1}A_1', X^{-1}A_2', \dots$ paarweise disjunkt
 	\begin{align}
-		&= \sum_{1 \ge 1} \probp'(A_i')\notag
+		&= \sum_{i \ge 1} \probp'(A_i')\notag
 	\end{align}
 	Also ist $\probp'$ ein WMaß. %TODO put in 1 align to have everything aligned?
 \end{proof}
@@ -376,11 +376,26 @@ Allgemein:
 	sowie
 	\begin{align}
 		\lim_{x\to -\infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
-		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag\\
+		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag
 	\end{align}
+	%TODO Alternative way to set the proof:
+%		\begin{enumerate}
+%		\item \begin{align}
+%		x \le y \Rightarrow F(x) = \probp((-\infty,x]) \overset{\propref{1_4}.3}{\le} \probp((-\infty,y]) = F(y)\notag
+%		\end{align}
+%		\item 
+%		\begin{align}
+%		\lim_{x \searrow c} F(x) = \lim_{x \searrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}{=} \probp((-\infty, c]) = F(c)\notag
+%		\end{align}
+%		\item
+%		\begin{align}
+%		\lim_{x\to -\infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
+%		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag\\
+%		\end{align}
+%	\end{enumerate}
 	Umgekehrt wähle
 	\begin{align}
-		X(u) := \inf\set{x \in \R \colon F(x) \ge u}, \quad u \in (0,1)\notag\\
+		X(u) := \inf\set{x \in \R \colon F(x) \ge u}, \quad u \in (0,1)\notag
 	\end{align}
 	Dann ist $X$ eine ``linkseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
 	Wegen 3 gilt:
