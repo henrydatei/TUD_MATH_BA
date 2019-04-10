@@ -33,8 +33,8 @@ Aus der Urne ziehe man blind/zufällig eine oder mehrere Kugeln und notiere Farb
 \begin{center}
 %	\input{./tikz/urne_mit_kugeln}
 %	\caption{Verteilung zu \propref{2_2_6}} 
-	%TODO fix caption?
     \includegraphics{../../Material/urne_mit_kugeln.pdf}
+    \captionof{figure}{Urnenmodell} % needs \usepackage[font=small,labelfont=bf]{caption}
 \end{center}
 
 \subsection{Urnenmodell mit Zurücklegen: Multinomial-Verteilung}
@@ -89,39 +89,38 @@ und
 
 Wir erhalten
 \begin{align}
-	\probp_{Y = k} &= \probp(Y_a = k_a, \quad a \in E)\notag\\
-	&= \sum_{\omega \in \Omega:Y(\omega) = k} \prod_{i=1}^{n} \rho(w)\notag\\
-	&= \sum_{\omega \in \Omega:Y(\omega) = k} \prod_{a \in E} \rho(\omega) = \begin{bmatrix}
+	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\\
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\\
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \begin{pmatrix}
 	n \\
 	(k)_{a\in E}
-	\end{bmatrix}
+	\end{pmatrix}
 	\prod_{a \in E} \rho(a)^{k_a}\notag
 \end{align}
 wobei
 \begin{align}
-	\binom{n}{k_1, \dots, k_l} = \begin{cases}
-	\frac{n!}{k_1 ! k_2 ! \cdots k_l !} & \sum_{i=1}^{l} k_i = n\\
+	\binom{n}{(k_1, \dots, k_l)} = \begin{cases}
+	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} & \sum_{i=1}^{l} k_i = n\\
 	0 & \sonst
 	\end{cases}\notag
 \end{align}
-der \begriff{Multinomialkoeffizient} welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
+der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
 
 \begin{definition}
 	Sei $l > 2, p = (p_1, \dots, p_l)$ eine Zähldichte und $n \in \N$, dann heißt die Verteilung auf \\
 	$\set{k = (k_i)_{i=1,\dots,l} \in \N_{0}^{l} : \sum_{i=1}^{l} k_i = n}$ mit Zähldichte
 	\begin{align}
 		m((k_1,\dots,k_l)) = \binom{n}{k_1, \dots, k_l}\prod_{i=1}^{l} p_i^{k_i}\notag
-%		\end{bmatrix}
 	\end{align}
 	\begriff{Multinomialverteilung mit Parametern $n$ und $p$}. Wir schreiben auch $\Multi(n,p)$.
 \end{definition}
 
 \begin{example}
-	Eine Urne enthalte nur schwarze $1$ und weiße $0$ Kugeln $E=\set{0,1}$ und es sei $\rho(1) = 1$ gerade die Proportion der schwarzen Kugeln (= Wahrscheinlichkeit bei einem Zug schwarze zu ziehen), dann ist Wahrscheinlichkeit in $n$ Zügen $k$-mal schwarz zu ziehen:
+	Eine Urne enthalte nur schwarze ``$1$'' und weiße ``$0$'' Kugeln, d.h. $E=\set{0,1}$, und es sei $\rho(1) = p$ gerade die Proportion der schwarzen Kugeln (= Wahrscheinlichkeit bei einem Zug schwarz zu ziehen), dann ist Wahrscheinlichkeit in $n$ Zügen $k$-mal schwarz zu ziehen:
 	\begin{align}
-		\binom{n}{k}\prod_{i=0,1} \rho(\omega)^{k_i} = \binom{n}{k}p^k(1-p)^{n-k}.\notag
+		\binom{n}{k}\prod_{i=0,1} \rho(i)^{k_i} = \binom{n}{k} p^k (1-p)^{n-k}.\notag
 	\end{align}
-	Ein solches (wiederholtes) Experiment mit nur zwei möglichen Ereignissen wird fester Wheit $p = [0,1]$ für eines der Ergebnisse nennen wir auch \begriff{(wiederholtes) Bernoulliexperiment}.
+	Ein solches (wiederholtes) Experiment mit nur zwei möglichen Ereignissen und fester Wahrscheinlichkeit $p \in [0,1]$ für eines der Ergebnisse nennen wir auch \begriff{(wiederholtes) Bernoulliexperiment}.
 \end{example}
 
 \begin{definition}
@@ -129,7 +128,7 @@ der \begriff{Multinomialkoeffizient} welcher die Anzahl der Möglichkeiten besch
 	\begin{align}
 		\rho(k) = \binom{n}{k}p^k (1-p)^{n-k} \mit k \in \set{0,1,\dots,n}.\notag
 	\end{align}
-	\begriff{Binomialverteilung auf $\set{0, \dots,n}$ mit Parameter $p$} (auch\begriff{Erfolgswahrscheinlichkeit}). Wir schreiben auch $\Bin(n,p)$. Im Fall $n = 1$ nennen wir die Verteilung mit Zähldichte
+	\begriff{Binomialverteilung auf $\set{0, \dots,n}$ mit Parameter $p$} (auch \begriff{Erfolgswahrscheinlichkeit}). Wir schreiben auch $\Bin(n,p)$. Im Fall $n = 1$ nennen wir die Verteilung mit Zähldichte
 	\begin{align}
 		\rho(0) = 1-p \und \rho(1) = p\notag
 	\end{align}
@@ -141,58 +140,61 @@ Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$,
 	\abs{E} \ge 2.\notag
 \end{align}
 Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln werde \emph{nicht} in die Urne zurückgelegt.
+
+\subsection{Urnenmodell ohne Zurücklegen: Hypergeometrische Verteilung}
+Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln werde \emph{nicht} in die Urne zurückgelegt.
 \begin{example}
 	Eine Urne enthalte $S$ schwarze ``$1$'' und $W$ weiße Kugeln ``$0$'' Kugeln, $(E = \set{0,1}, S + W =N)$. Dann ist die Wahrscheinlichkeit in $n$ Zügen ohne Zurücklegen gerade $s$ schwarze und $w$ weiße Kugeln zu ziehen
 	\begin{align}
-		\rho(w) = \frac{\binom{W}{w}\binom{S}{s}}{\binom{N}{n}} \mit 0 \le s \le S,\; 0 \le w \le W,\; s+w = n,\; S+W = N.\notag
+		\rho(w) = \frac{\binom{W}{w}\binom{S}{s}}{\binom{N}{n}}, \quad 0 \le s \le S, 0 \le w \le W, s+w = n, S+W = N.\notag
 	\end{align}
 \end{example}
 
 \begin{proof}
-	Hausaufgabe! %TODO add nummer later
+	Hausaufgabe! %TODO add number later
 \end{proof}
 
 \begin{definition}
-	Seinen $N \in \N, W \le N, n \in \N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
+	Seinen $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
 	\begin{align}
-		\rho(w) = \frac{\binom{wW}{w}\binom{N-W}{n-w}}{\binom{N}{n}} \mit w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
+		\rho(w) = \frac{\binom{wW}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
 	\end{align}
 	die \begriff{Hypergeometrische Verteilung} mit Parametern $N,W,n$. Wir schreiben $\Hyper(N,W,n)$.
 \end{definition}
 
 \section{\person{Poisson}-Approximation un \person{Poisson}-Verteilung}
 
-$\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ mühsam auszuwerten. Für seltene Ereignisse $(n \text{ groß},p \text{ klein})$ verwende daher:
-
+$\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ mühsam auszuwerten. Für seltene Ereignisse ($n$ groß, $p$ klein) verwende daher:
 \begin{proposition}[Poisson-Approximation]
-	Sei $\lambda$ und $(p_n)_{n\in\N}$ eine Folge in $[0,1]$ mit
+	Sei $\lambda > 0$ und $(p_n)_{n\in\N}$ eine Folge in $[0,1]$ mit
 	\begin{align}
 		np_n \to \lambda,\quad n \to \infty.\notag
 	\end{align}
-	Dann gilt $\forall k \in \N$ für die Zähldichte der $\Bin(n,p_n)$-Verteilung
+	Dann gilt $\forall k \in \N_0$ für die Zähldichte der $\Bin(n,p_n)$-Verteilung
 	\begin{align}
 		\lim_{n \to \infty} \binom{n}{k}p_n^k(1-p)^{n-k} = e^{-\lambda} \frac{\lambda^k}{k!}.\notag
 	\end{align}
 \end{proposition}
 \begin{proof}
 	Sei $k \in \N_{0}$ fix, dann
-	\begin{align} %TODO fix alignment and now there are tags, but \notag is added?!
-		\binom{n}{k} = \frac{n!}{k!(n-k)!} &= \frac{n^k}{k!}\frac{n(n-1)\cdots(n-k+1)}{n^k}\notag\\
-		&= \frac{n^k}{k!}\cdot 1 (1-\frac{1}{n}\cdots \frac{1}{\frac{k-1}{n}})\notag\\
-		&\overset{n \to \infty}{~} \frac{n^k}{k!},\notag
+	\begin{align}
+		\binom{n}{k} = \frac{n!}{k!(n-k)!} &= \frac{n^k}{k!}\frac{n(n-1)\cdots(n-k+1)}{n^k}\\
+		&= \frac{n^k}{k!}\cdot 1 \cdot (1-\frac{1}{n}\cdots \frac{k-1}{n})\\
+		\overset{n \to \infty}&{\sim} \frac{n^k}{k!},
 	\end{align}
-	wobei $a(l) \overset{n \to \infty}{\sim} b(l) \Leftrightarrow \frac{a(l)}{b(l)} \xrightarrow{n\to \infty} 1$. Damit
-	\begin{align}%TODO fix alignment
-		\binom{n}{k}p_n^k (1-p)^{n-k} &\overset{n \to \infty}{\sim} \frac{n^k}{k!}p_n^k(1-p_n)^{n-k}\notag\\
-		&\overset{n \to \infty}{\sim} \frac{\lambda^k}{k!}(1-p_n)^n\notag\\
-		&=\frac{\lambda^n}{k!}\brackets{1 - \frac{np_n}{n}}^n\notag\\
-		&\xrightarrow{n \to \infty} \frac{\lambda^n}{k!}e^{-\lambda}.\notag
+	wobei $a(l) \overset{n \to \infty}{\sim} b(l) \Leftrightarrow \frac{a(l)}{b(l)} \xRightarrow{n\to \infty} 1$. Damit
+	\begin{align}
+		\binom{n}{k}p^k (1-p)^{n-k} \overset{n \to \infty}&{\sim} \frac{n^k}{k!}p_n^k(1-p_n)^{n-k}\\
+		\overset{n \to \infty}&{\sim} \frac{\lambda^k}{k!}(1-p_n)^n\\
+		&= \frac{\lambda^n}{k!}\brackets{1 - \frac{np_n}{n}}^n\\
+		&\xRightarrow{n \to \infty} \frac{\lambda^n}{k!}e^{-\lambda}.
 	\end{align}
 \end{proof}
 Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn 
 \begin{align}
 	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1\notag
 \end{align}
+
 \begin{definition}
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definiert Wahrscheinlichkeitsmaß mit
 	\begin{align}
