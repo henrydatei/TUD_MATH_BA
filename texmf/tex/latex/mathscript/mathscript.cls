@@ -66,6 +66,7 @@
 \RequirePackage{fancyhdr} 	%customize header / footer
 \RequirePackage{titlesec} 	%customize titles
 \RequirePackage{tocloft}	%customize toc
+\RequirePackage[font=small,labelfont=bf]{caption} 
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)
@@ -96,6 +97,7 @@
 
 %further support for different equation setting
 \RequirePackage{cancel}
+\RequirePackage{aligned-overset}
 \RequirePackage{xfrac}		%sfrac -> fractions e.g. 3/4
 \RequirePackage{nicefrac}
 
