@@ -31,13 +31,13 @@ Oft interessieren wir uns gar nicht für das konkrete Ergenis des Zufallsexperim
 $\longrightarrow$ Teilmenge des Ereignisraums, also Element der Potenzmenge $\mathscr{P}(\Omega)$, denen eine Wahrscheinlichkeit zugeordnet werden kann, d.h. welche \begriff{messbar} (mb) sind.
 
 \begin{definition}[Ereignisraum, messbarer Raum]
-	Sei $\Omega \neq \emptyset$ ein Ergebnisraum und $\mathscr{F}$ eine $\sigma$-Algebra auf $\Omega$, d.h. eine Familie von Teilmenge von $\Omega$, sodass
+	Sei $\Omega \neq \emptyset$ ein Ergebnisraum und $\sigF$ eine $\sigma$-Algebra auf $\Omega$, d.h. eine Familie von Teilmenge von $\Omega$, sodass
 	\begin{enumerate}
-		\item $\Omega \in \mathscr{F}$
-		\item $A \in \mathscr{F} \Rightarrow A^C \in \mathscr{F}$
-		\item $A_1, A_2, \dots \in \mathscr{F} \Rightarrow \bigcup_{i \ge 1} \in \mathscr{F}$
+		\item $\Omega \in \sigF$
+		\item $A \in \sigF \Rightarrow A^C \in \sigF$
+		\item $A_1, A_2, \dots \in \sigF \Rightarrow \bigcup_{i \ge 1} \in \sigF$
 	\end{enumerate}
-	Dann heißt $(\Omega, \mathscr{F})$ \begriff{Ereignisraum} bzw. \begriff{messbarer Raum}.
+	Dann heißt $(\Omega, \sigF)$ \begriff{Ereignisraum} bzw. \begriff{messbarer Raum}.
 \end{definition}
 
 \subsection*{Wahrscheinlichkeiten}
@@ -45,37 +45,36 @@ $\longrightarrow$ Teilmenge des Ereignisraums, also Element der Potenzmenge $\ma
 Ordne Ereignissen Wahrscheinlichkeiten zu mittels der Abbildung
 
 \begin{align}
-	\mathbb{P}: \mathscr{F} \to [0,1]\notag
+	\probp: \sigF \to [0,1]\notag
 \end{align}
 sodass
 \begin{align}
-	\text{Normierung } \mathbb{P}(\Omega) = 1 \tag{N}\label{eq_norm}\\
-	\sigma\text{-Additivität für paarweise disjunkte Ereignisse} \tag{A}\label{eq_additive}\\
-	A_1, A_2, \dots \in \mathscr{F} \Rightarrow \mathbb{P}(\bigcup_{i \ge 1} A_i) = \sum_{i \ge 1} \mathbb{P}(A_i)\notag
+	&\text{Normierung } \probp(\Omega) = 1 \label{eq_norm}\tag{N}\\
+	&\sigma\text{-Additivität für paarweise disjunkte Ereignisse} 
+	A_1, A_2, \dots \in \sigF \Rightarrow \probp(\bigcup_{i \ge 1} A_i) = \sum_{i \ge 1} \probp(A_i) \label{eq_additive}\tag{A}
 \end{align}
-
-\cref{eq_norm}, \cref{eq_additive} und die Nichtnegativität von $\mathbb{P}$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
+\eqref{eq_norm}, \eqref{eq_additive} und die Nichtnegativität von $\probp$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
 
 \begin{definition}[Wahrscheinlichkeitsmaß, Wahrscheinlichkeitsverteilung]
-	Sei $(\Omega, \mathscr{F})$ ein Ereignisraum und $\mathbb{P}: \mathscr{F} \to [0,1]$ eine Abbildung mit Eigenschaften \cref{eq_norm} und \cref{eq_additive}. Dann heißt $\mathbb{P}$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
+	Sei $(\Omega, \sigF)$ ein Ereignisraum und $\probp: \sigF \to [0,1]$ eine Abbildung mit Eigenschaften \eqref{eq_norm} und \eqref{eq_additive}. Dann heißt $\probp$ \begriff{Wahrscheinlichkeitsmaß} oder auch \begriff{Wahrscheinlichkeitsverteilung}.
 \end{definition}
 
 Aus der Definition folgen direkt:
 
 \begin{proposition}[Rechenregeln für W-Maße]
 	\proplbl{1_4}
-	Sei $\mathbb{P}$ ein W-Maß, Ereignisse $(\Omega, \mathscr{F}), A, B, A_1, A_2, \dots \in \mathscr{F}$. Dann gelten:
+	Sei $\probp$ ein W-Maß, Ereignisse $(\Omega, \sigF), A, B, A_1, A_2, \dots \in \sigF$. Dann gelten:
 	\begin{enumerate}
-		\item $\mathbb{P}(\emptyset) = 0$
-		\item Monotonie: $A \subseteq B \Rightarrow \mathbb{P}(A) \le \mathbb{P}(B)$
-		\item endliche $\sigma$-Additivität: $\mathbb{P}(A\cup B) + \mathbb{P}(A\cap B) = \mathbb{P}(A) + \mathbb{P}(B)$ und insbesondere $\mathbb{P}(A) + \mathbb{P}(A^C) = 1$
+		\item $\probp(\emptyset) = 0$
+		\item Monotonie: $A \subseteq B \Rightarrow \probp(A) \le \probp(B)$
+		\item endliche $\sigma$-Additivität: $\probp(A\cup B) + \probp(A\cap B) = \probp(A) + \probp(B)$ und insbesondere $\probp(A) + \probp(A^C) = 1$
 		\item $\sigma$-Subadditivität:
 		\begin{align}
-			\mathbb{P}\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{i \ge 1} \mathbb{P}(A_i)\notag
+			\probp\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{i \ge 1} \probp(A_i)\notag
 		\end{align}
 		\item $\sigma$-Stetigkeit: Wenn $A_n \uparrow A$ (d.h. $A_1 \subseteq A_2 \subseteq \cdots$ und $A = \bigcup_{i=1}^{\infty} (A_i)$) oder $A_n \downarrow A$, so gilt:
 		\begin{align}
-			\mathbb{P}(A_n) \longrightarrow \mathbb{P}(A), n \to \infty \notag
+			\probp(A_n) \longrightarrow \probp(A), n \to \infty \notag
 		\end{align}
 	\end{enumerate}
 \end{proposition}
@@ -94,13 +93,13 @@ Aus der Definition folgen direkt:
 		\begin{align}
 			\probp(B) = \probp(A \uplus (B \setminus A)) = \probp(A) + \probp(B \setminus A) \ge \probp(A) \label{eq_1_1_4}\tag{*}
 		\end{align}
-		\item Zerlege $A \cup B$ geschickt, dann sieht man mit oben gezeigter Aussage und \cref{eq_1_1_4}
+		\item Zerlege $A \cup B$ geschickt, dann sieht man mit oben gezeigter Aussage und \eqref{eq_1_1_4}
 		\begin{align}
 			\probp(A \cup B) + \probp(A \cap B) &= \probp(A \uplus (B \setminus (A \cap B)) + \probp(A \cap B)\notag \\
 			&= \probp(A) + \probp(B \setminus (A \cap B)) + \probp(A \cap B)\notag\\
 			&= \probp(A)+\probp(B).\notag	
 		\end{align}
-		Im letzten Schritt wurde \cref{eq_1_1_4} verwendet.
+		Im letzten Schritt wurde \eqref{eq_1_1_4} verwendet.
 		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
 		\item Definiere $F_1 := A_1, F_2 := A_2 \setminus A_1, \dots, F_{i+1} := A_{i+1}\setminus A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
 		\begin{align}
@@ -114,51 +113,51 @@ Aus der Definition folgen direkt:
 \end{proof}
 
 \begin{example}
-	Für ein beliebigen Ereignisraum $(\Omega, \mathscr{F})$ ($\Omega \neq \emptyset$) und eine beliebiges Element $\xi \in \Omega$ definiere
+	Für ein beliebigen Ereignisraum $(\Omega, \sigF)$ ($\Omega \neq \emptyset$) und eine beliebiges Element $\xi \in \Omega$ definiere
 	\begin{align}
 		\delta_{\xi}(A := \begin{cases}
 		1 & \xi \in A \\
 		0 & \text{ sonst}
 		\end{cases}\notag
 	\end{align}
-	eine (degeneriertes) W-Maß auf $(\Omega, \mathscr{F})$, welches wir als \begriff{\person{Dirac}-Maß} oder \begriff{\person{Dirac}-Verteilung} bezeichnen.
+	eine (degeneriertes) W-Maß auf $(\Omega, \sigF)$, welches wir als \begriff{\person{Dirac}-Maß} oder \begriff{\person{Dirac}-Verteilung} bezeichnen.
 \end{example}
 
 \begin{example}
-	Würfeln mit fairem, $6$-(gleich)seitigem Würfel mit Ergebnismenge $\Omega=\{1, \dots, 6\}$ und Ereignisraum $\mathscr{F} = \mathscr{P}(\Omega)$ setzen wir als Symmetriegründen
+	Würfeln mit fairem, $6$-(gleich)seitigem Würfel mit Ergebnismenge $\Omega=\{1, \dots, 6\}$ und Ereignisraum $\sigF = \mathscr{P}(\Omega)$ setzen wir als Symmetriegründen
 	\begin{align}
-		\mathbb{P}(A) = \frac{\# A}{6}.\notag
+		\probp(A) = \frac{\# A}{6}.\notag
 	\end{align}
 	(Wobei $\# A$ oder auch $\vert A \vert$ die Kardinalität von $A$ ist.) Das definiert ein W-Maß.
 \end{example}
 
 \begin{example}
 	\proplbl{1_1_7}
-	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\mathscr{B}(\real_{+}) = \mathscr{F}$. Eine mögliches W-Maß können wir dann durch
+	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\mathscr{B}(\real_{+}) = \sigF$. Eine mögliches W-Maß können wir dann durch
 	\begin{align}
-	\mathbb{P}(A) = \int_{A} \lambda e^{-\lambda x} \diff x\notag %TODO set a mathoperator for dx!!!
+	\probp(A) = \int_{A} \lambda e^{-\lambda x} \diff x\notag %TODO set a mathoperator for dx!!!
 	\end{align}
-	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\mathbb{P}(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
+	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\probp(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{proposition}[Konstruktion von WMaßen durch Dichten]
+\begin{proposition}[Konstruktion von Wahrscheinlichkeitsmaßen durch Dichten]
 	\proplbl{1_8}
-	Sei $(\Omega, \mathscr{F})$ ein Eriegnisraum.
+	Sei $(\Omega, \sigF)$ ein Eriegnisraum.
 	\begin{itemize}
-		\item $\Omega$ abzählbar, $\mathscr{F} = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
+		\item $\Omega$ abzählbar, $\sigF = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
 		\begin{align}
-			\probp(A) = \sum_{\omega \in \Omega} \rho(\omega), A \in \mathscr{F} \notag
+			\probp(A) = \sum_{\omega \in \Omega} \rho(\omega), A \in \sigF \notag
 		\end{align}
-		ein (diskretes) WMaß $\probp$ auf $(\Omega, \mathscr{F})$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
-		\item Umgekehrt definiert jedes WMaß $\probp$ auf $(\Omega, \mathscr{F})$ definiert Folge $\rho(\omega) = \probp(\set{\omega}), \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
-		\item $\Omega \subset \Rn, \mathscr{F} = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
+		ein (diskretes) Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
+		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}), \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
+		\item $\Omega \subset \Rn, \sigF = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
 			\item $\int_{\Omega} \rho(x)\diff x = 1$
 			\item $\set{x \in \Omega \colon f(x) \le c} \in \mathscr{B}(\Omega)$ für alle $c > 0$ 
 		\end{enumerate}
-		dann definiert $\rho$ ein WMaß $\probp$ auf $(\Omega, \mathscr{F})$ durch 
+		dann definiert $\rho$ ein Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ durch 
 		\begin{align}
 		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \mathscr{B}(\Omega).\notag
 		\end{align}
@@ -176,30 +175,30 @@ Aus der Definition folgen direkt:
 
 \begin{*remark}
 	\begin{itemize}
-		\item Die Eineindeutige Beziehung zwischen Dichte und WMaß überträgt sich nicht auf den stetigen Fall.
+		\item Die Eineindeutige Beziehung zwischen Dichte und Wahrscheinlichkeitsmaß überträgt sich nicht auf den stetigen Fall.
 		\begin{itemize}
-			\item Nicht jedes WMaß auf $(\Omega, \mathscr{B}(\Omega)), \Omega \subset \Rn$ besitzt eine Dichte.
-			\item Zwei Dichtefunktionen definieren dasselbe WMaß, wenn sie sich nur auf einer Menge von Lebesgue-Maß $0$ unterscheiden.
+			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{B}(\Omega)), \Omega \subset \Rn$ besitzt eine Dichte.
+			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge von Lebesgue-Maß $0$ unterscheiden.
 		\end{itemize}
-		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0, x \not\in \Omega$. Das erzeugte WMaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den WMaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
-		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete WMaß auf $\Omega \subset \Rn$ als WMaß auf $\Rn, \mathscr{B}(\Rn)$ intepretieren
+		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0, x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
+		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $\Rn, \mathscr{B}(\Rn)$ intepretieren
 		\begin{align}
 			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\notag
 		\end{align}
-		stetige und diskrete WMaße lassen sich kombiniere z.B.
+		stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombiniere z.B.
 		\begin{align}
 			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
 		\end{align}
-		ein WMaß auf $(\R, \mathscr{B}(\R))$.
+		ein Wahrscheinlichkeitsmaß auf $(\R, \mathscr{B}(\R))$.
 	\end{itemize}
 \end{*remark}
 
 Abschließend erinnern wir uns an:
 
-\begin{proposition}[Eindeutigkeitssatz für WMaße]
+\begin{proposition}[Eindeutigkeitssatz für Wahrscheinlichkeitsmaße]
 	\proplbl{1_9}
-	Sei $(\Omega, \mathscr{F})$ Ereignisraum und $\probp$ ein WMaß auf $(\Omega, \mathscr{F})$. 
-	Sei $\mathscr{F} = \omega(\mathscr{G})$ für ein $\cap$-stabiles Erzeugendensystem $\mathscr{G} \subset \mathscr{P}(\Omega)$. 
+	Sei $(\Omega, \sigF)$ Ereignisraum und $\probp$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$. 
+	Sei $\sigF = \omega(\mathscr{G})$ für ein $\cap$-stabiles Erzeugendensystem $\mathscr{G} \subset \mathscr{P}(\Omega)$. 
 	Dann ist $\probp$ bereits durch seine Einschränkung $\probp_{\mid \mathscr{G}}$ eindeutig bestimmt.
 \end{proposition}
 
@@ -217,33 +216,33 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 
 \begin{definition}[Gleichverteilung]
     \proplbl{1_10}
-	Ist $\Omega$ endlich, so heißt das WMaß mit konstanter Zähldichte $\rho(\omega) = \sfrac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $U(\Omega)$ notiert (U = Uniform).
-	Ist $\Omega \subset \Rn$ eine Borelmenge mit Lebesgue-Maß $0 < \lambda^n(\Omega) < \infty$ so heißt das WMaß auf $(\Omega, \borel(\Omega))$ mit konstanter Dichtefunktion $\rho(x) = \sfrac{1}{\lambda^n(x)}$ die \begriff{(stetige)  Gleichverteilung} auf $\Omega$. 
+	Ist $\Omega$ endlich, so heißt das Wahrscheinlichkeitsmaß mit konstanter Zähldichte $\rho(\omega) = \sfrac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $\Gleich(\Omega)$ notiert (U = Uniform).
+	Ist $\Omega \subset \Rn$ eine Borelmenge mit Lebesgue-Maß $0 < \lambda^n(\Omega) < \infty$ so heißt das Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))$ mit konstanter Dichtefunktion $\rho(x) = \sfrac{1}{\lambda^n(x)}$ die \begriff{(stetige)  Gleichverteilung} auf $\Omega$. 
 	Sie wird ebenso mit $U(\Omega)$ notiert.
 \end{definition}
 
 \subsection*{WRäume}
 
 \begin{definition}[Wahrscheinlichkeitsraum]
-	Ein Tripel $(\Omega, \mathscr{F}, \probp)$ mit $\Omega, \mathscr{F}$ Ereignisraum und $\probp$ WMaß auf $(\Omega, \mathscr{F})$, nennen wir \\ \begriff{Wahrscheinlichkeitsraum}.
+	Ein Tripel $(\Omega, \sigF, \probp)$ mit $\Omega, \sigF$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$, nennen wir \\ \begriff{Wahrscheinlichkeitsraum}.
 \end{definition}
 
 \section{Zufallsvariablen}
 
-Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \mathscr{F})$ zu einem Modellausschnitt $\Omega', \mathscr{F}'$ überzugehen. 
+Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
 Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
-Damit wir auch jedem Ereignis in $\mathscr{F}'$ eine Wheit zuordnen können, benötigen wir	
+Damit wir auch jedem Ereignis in $\sigF'$ eine Wheit zuordnen können, benötigen wir	
 \begin{align}
-	A' \in \mathscr{F}' \Rightarrow X' A' \in \mathscr{F} \notag		
+	A' \in \sigF' \Rightarrow X' A' \in \sigF \notag		
 \end{align}
 d.h. $X$ sollte messbar sein.
 
 \begin{definition}[Zufallsvariable]
-	Seien $(\Omega, \mathscr{F})$ und $(\Omega', \mathscr{F}')$ Ereignisräume. Dann heißt jede messbare Abbildung
+	Seien $(\Omega, \sigF)$ und $(\Omega', \sigF')$ Ereignisräume. Dann heißt jede messbare Abbildung
 	\begin{align}
 		X: \Omega \to \Omega'\notag
 	\end{align}
-	Zufallsvariable (von $(\Omega, \mathscr{F})$) nach $(\Omega', \sigF')$/ auf $(\Omega', \sigF')$ oder \begriff{Zufallselement}.
+	Zufallsvariable (von $(\Omega, \sigF)$) nach $(\Omega', \sigF')$/ auf $(\Omega', \sigF')$ oder \begriff{Zufallselement}.
 \end{definition}
 
 \begin{example}
@@ -258,7 +257,7 @@ d.h. $X$ sollte messbar sein.
 	\begin{align}
 		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right), A' \in \sigF'\notag
 	\end{align}
-	ein WMaß auf $(\Omega', \sigF')$ auf $(\Omega', \sigF')$, welches wir als \begriff{WVerteilung von X unter $\probp$} bezeichnet.
+	ein Wahrscheinlichkeitsmaß auf $(\Omega', \sigF')$ auf $(\Omega', \sigF')$, welches wir als \begriff{Wahrscheinlichkeitsverteilung von X unter $\probp$} bezeichnet.
 \end{proposition}
 
 \begin{proof}
@@ -274,16 +273,16 @@ d.h. $X$ sollte messbar sein.
 	\end{align}
 	da auch $X^{-1}A_1', X^{-1}A_2', \dots$ paarweise disjunkt
 	\begin{align}
-		&= \sum_{i \ge 1} \probp'(A_i')\notag
+		&= \sum_{i \ge 1} \probp'(A_i').\notag
 	\end{align}
-	Also ist $\probp'$ ein WMaß. %TODO put in 1 align to have everything aligned?
+	Also ist $\probp'$ ein Wahrscheinlichkeitsmaß. %TODO put in 1 align to have everything aligned?
 \end{proof}
 
 \begin{*remark}
 	\begin{itemize}
 		\item Aus Gründen der Lesbarkeit schreiben wir in der Folge $\probp(X \in A) = \probp(\set{\omega \colon X(\omega) \in A})$
-		\item Ist $X$ die Identität, so fallen die Begriffe WMaß und WVerteilung zusammen.
-		\item In der (weiterführenden) Literatur zu WTheorie wird oft auf die Angabe eines zugrundeliegenden WRaumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
+		\item Ist $X$ die Identität, so fallen die Begriffe Wahrscheinlichkeitsmaß und Wahrscheinlichkeitsverteilung zusammen.
+		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden WRaumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
 		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\Omega) / \borel(\Omega)$.
 		\item Für die Verteilung von $X$ unter $\probp$ schreibe $\probp_{X}$ und $X \sim \probp_{X}$ für die Tatsache, dass $X$ gemäß $\probp_{X}$ verteilt ist.
 	\end{itemize}
@@ -316,7 +315,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 	\proplbl{2_2_6}
 	Sei $(\R, \borel(\R),\probp)$ mit $\probp$ Exponentialverteilung mit Parameter $\lambda > 0$
 	\begin{align}
-		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{-\lambda x} \diff x \quad A \in \borel(\R)\notag
+		\probp(A) = \int_{A \cap [0,\infty)}\lambda e^{-\lambda x} \diff x \quad A \in \borel(\R).\notag
 	\end{align}
 	Dann ist
 	\begin{align}
@@ -341,7 +340,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 	modelliert werden. Es folgt als Verteilungsfunktion
 	\begin{align}
 		F(x) &= \probp'(X \le x) = \probp(X^{-1}(-\infty,x]) = \probp((-\infty,x])\notag\\
-		&= \frac{1}{6}\sum_{i=1}^{6} \indi_{i \le x}\notag
+		&= \frac{1}{6}\sum_{i=1}^{6} \indi_{i \le x}.\notag
 	\end{align}
 \end{example}
 
@@ -354,13 +353,13 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 Allgemein:
 
 \begin{proposition}
-	Ist $\probp$ ein WMaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion, so gelten
+	Ist $\probp$ ein Wahrscheinlichkeitsmaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion, so gelten
 	\begin{enumerate}
 		\item $F$ ist monoton wachsend
 		\item $F$ ist rechtsseitig stetig
-		\item $\lim_{x\to -\infty} F(x) = 0$, $\lim_{x\to \infty} F(x) = 1$
+		\item $\lim\limits_{x\to -\infty} F(x) = 0$, $\lim\limits_{x\to \infty} F(x) = 1$
 	\end{enumerate}
-	Umgekehrt existiert zu jeder Funktion $F: \R \to [0,1]$ mit Eigenschaften 1-3 eine reelle Zufallsvariable auf $((0,1), \borel((0,1)), \mathrm{U}((0,1))$ mit Verteilungsfunktion $F$.
+	Umgekehrt existiert zu jeder Funktion $F: \R \to [0,1]$ mit Eigenschaften 1-3 eine reelle Zufallsvariable auf $((0,1), \borel((0,1)), \Gleich((0,1))$ mit Verteilungsfunktion $F$.
 	%TODO refs for the enum above 
 \end{proposition}
 
@@ -404,13 +403,13 @@ Allgemein:
 	\end{align}
 	und zudem
 	\begin{align}
-		\set{X \le x} = (0, F(x)) \cap (0,1) \in \borel((0,1))\notag
+		\set{X \le x} = (0, F(x)) \cap (0,1) \in \borel((0,1)).\notag
 	\end{align}
 	Da diese halboffene Mengen ein Erzeugendensystem von $\borel(\R)$ bilden, folgt bereits die Messbarkeit von $X$, also ist $X$ eine ZV. Insbesondere hat die Menge $\set{X \le x}$ gerade \person{Lebesgue}-Maß $F(x)$ und damit hat $X$ die Verteilungsfunktion $F$.
 \end{proof}
 
 \begin{conclusion}
-	Ist $\probp$ WMaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion. Dann besitzt $\probp$ genau eine Dichtefunktion $\rho$, wenn $F$ stetig differenzierbar ist, denn dann gelten
+	Ist $\probp$ Wahrscheinlichkeitsmaß auf $(\R, \borel(\R))$ und $F$ die zugehörige Verteilungsfunktion. Dann besitzt $\probp$ genau eine Dichtefunktion $\rho$, wenn $F$ stetig differenzierbar ist, denn dann gelten
 	\begin{align}
 		F(x) = \int_{-\infty}^{x} \rho(x) \diff x, \bzw \rho(x) = F'(x)\notag
 	\end{align}
