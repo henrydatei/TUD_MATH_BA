@@ -99,12 +99,12 @@ und
 
 Wir erhalten
 \begin{align}
-	\probp_{Y = k} &= \probp(Y_a = k_a, \enskip a \in E)\\
+	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\\
 	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\\
-	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \begin{bmatrix}
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \begin{pmatrix}
 	n \\
 	(k)_{a\in E}
-	\end{bmatrix}
+	\end{pmatrix}
 	\prod_{a \in E} \rho(a)^{k_a}\notag
 \end{align}
 wobei
