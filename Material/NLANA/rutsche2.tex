@@ -1,0 +1,30 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\draw[->] (0,0) -- (5,0);
+	\draw[->] (0,0) -- (0,5);
+	\node at (5.2,0) (x) {$x$};
+	\node at (0,5.2) (y) {$u$};
+
+	\draw (1,4) to [bend right=10] (4.5,0.5);
+	\draw[dashed] (1,4) to [bend right=50] (4.5,0.5);
+	\draw[dashed] (1,4) to [bend left=30] (4.5,0.5);
+	\node at (1.2,4.2) (a) {$(x_0,u_0)$};
+	\node at (5.2,0.5) (a) {$(x_1,u_1)$};
+
+	\draw (1,0.1) -- (1,-0.1);
+	\draw (4.5,0.1) -- (4.5,-0.1);
+	\draw (3,0.1) -- (3,-0.1);
+	\node at (1,-0.3) (a) {$x_0$};
+	\node at (3,-0.3) (a) {$x$};
+	\node at (4.5,-0.3) (a) {$x_1$};
+
+	\draw[dotted] (3,0) -- (3,5);
+	\draw[black, fill=black] (3,1.67) circle (0.05);
+\end{tikzpicture}
+
+\end{document}

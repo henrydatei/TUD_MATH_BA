@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\draw plot [smooth] coordinates {(-1,-0.7) (0,0) (2.5,5) (5,0) (6,-0.7)};
+	\draw (0.5,5) to [bend left=12] (4.5,4.5);
+	\draw[fill=blue!50] plot [smooth] coordinates {(-1,-0.7) (0,0) (2.5,5) (5,0) (6,-0.7)};
+
+	\node at (2.5,2.5) (a) {Hindernis};
+	\node at (5.2,4.5) (b) {$K(x)$};
+	\node at (5.5,0.3) (c) {$\varphi(x)$};
+\end{tikzpicture}
+
+\end{document}
