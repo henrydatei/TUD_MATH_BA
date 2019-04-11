@@ -20,7 +20,7 @@ Würfeln? Augenzahl, nicht die Lage und die Fallhöhe
 
 \subsection*{Ereignisse}
 
-Oft interessieren wir uns gar nicht für das konkrete Ergebnis des Zufallsexperiments, sondern nur für das Eintreten gewisser Ereignisse.
+Oft interessieren wir uns gar nicht für das konkrete Ergenis des Zufallsexperiments, sondern nur für das Eintreten gewisser Ereignisse.
 \begin{*example}
 	\begin{itemize}
 		\item Würfeln: Zahl ist $\ge 3$
@@ -51,7 +51,7 @@ sodass
 \begin{align}
 	&\text{Normierung } \probp(\Omega) = 1 \label{eq_norm}\tag{N}\\
 	&\sigma\text{-Additivität für paarweise disjunkte Ereignisse} 
-	A_1, A_2, \dots \in \sigF \Rightarrow \probp(\bigcup_{i \ge 1} A_i) = \sum_{i \ge 1} \probp(A_i) \label{eq_additive}\tag{A}
+	A_1, A_2, \dots \in \sigF \Rightarrow \probp\brackets{\bigcup_{i \ge 1} A_i} = \sum_{i \ge 1} \probp(A_i) \label{eq_additive}\tag{A}
 \end{align}
 \eqref{eq_norm}, \eqref{eq_additive} und die Nichtnegativität von $\probp$ werden als \begriff{\person{Kolmogorov}sche Axiome} bezeichnet (nach Kolomogorov: Grundbegriffe der Wahrscheinlichkeitstheorie, 1933)
 
@@ -115,7 +115,7 @@ Aus der Definition folgen direkt:
 \begin{example}
 	Für ein beliebigen Ereignisraum $(\Omega, \sigF)$ ($\Omega \neq \emptyset$) und eine beliebiges Element $\xi \in \Omega$ definiere
 	\begin{align}
-		\delta_{\xi}(A := \begin{cases}
+		\delta_{\xi}(A) := \begin{cases}
 		1 & \xi \in A \\
 		0 & \text{ sonst}
 		\end{cases}\notag
@@ -137,21 +137,21 @@ Aus der Definition folgen direkt:
 	\begin{align}
 	\probp(A) = \int_{A} \lambda e^{-\lambda x} \diff x\notag %TODO set a mathoperator for dx!!!
 	\end{align}
-	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\probp(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maß als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
+	für einen Parameter $\lambda > 0$ festlegen. (Offenbar gilt $\probp(\Omega) = 1$ und die $\sigma$-Additivität aufgrund der Additivität des Integrals.) Wir bezeichnen diese Maße als \begriff{Exponentialverteilung}. (Warum gerade dieses Maß für Wartezeiten gut geeignet ist $\nearrow$ später) %TODO add later a ref!!!
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{proposition}[Konstruktion von Wahrscheinlichkeitsmaßen durch Dichten]
 	\proplbl{1_8}
-	Sei $(\Omega, \sigF)$ ein Ereignisraum.
+	Sei $(\Omega, \sigF)$ ein Eriegnisraum.
 	\begin{itemize}
 		\item $\Omega$ abzählbar, $\sigF = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
 		\begin{align}
 			\probp(A) = \sum_{\omega \in \Omega} \rho(\omega), A \in \sigF \notag
 		\end{align}
 		ein (diskretes) Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
-		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}), \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
+		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}),\; \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
 		\item $\Omega \subset \Rn, \sigF = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
 			\item $\int_{\Omega} \rho(x)\diff x = 1$
@@ -175,21 +175,21 @@ Aus der Definition folgen direkt:
 
 \begin{*remark}
 	\begin{itemize}
-		\item Die Eineindeutige Beziehung zwischen Dichte und Wahrscheinlichkeitsmaß überträgt sich nicht auf den stetigen Fall.
+		\item Die eineindeutige Beziehung zwischen Dichte und Wahrscheinlichkeitsmaß überträgt sich nicht auf den stetigen Fall.
 		\begin{itemize}
-			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{B}(\Omega)), \Omega \subset \Rn$ besitzt eine Dichte.
+			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{B}(\Omega)),\; \Omega \subset \Rn$ besitzt eine Dichte.
 			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge von Lebesgue-Maß $0$ unterscheiden.
 		\end{itemize}
-		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0, x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
-		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $\Rn, \mathscr{B}(\Rn)$ interpretieren
+		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0,\; x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
+		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Rn))$ intepretieren
 		\begin{align}
 			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\notag
 		\end{align}
-		stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombiniere z.B.
+		stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombinieren z.B.
 		\begin{align}
 			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
 		\end{align}
-		ein Wahrscheinlichkeitsmaß auf $(\R, \mathscr{B}(\R))$.
+		ist ein Wahrscheinlichkeitsmaß auf $(\R, \mathscr{B}(\R))$.
 	\end{itemize}
 \end{*remark}
 
@@ -203,7 +203,7 @@ Abschließend erinnern wir uns an:
 \end{proposition}
 
 \begin{proof}
-	$\nearrow$ \person{Schiling} MINT, Satz 4.5.
+	$\nearrow$ Schhiling MINT, Satz 4.5.
 \end{proof}
 
 Insbesondere definiert z.B.
@@ -217,21 +217,21 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 \begin{definition}[Gleichverteilung]
     \proplbl{1_10}
 	Ist $\Omega$ endlich, so heißt das Wahrscheinlichkeitsmaß mit konstanter Zähldichte $\rho(\omega) = \sfrac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $\Gleich(\Omega)$ notiert (U = Uniform).
-	Ist $\Omega \subset \Rn$ eine Borelmenge mit Lebesgue-Maß $0 < \lambda^n(\Omega) < \infty$ so heißt das Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))$ mit konstanter Dichtefunktion $\rho(x) = \sfrac{1}{\lambda^n(x)}$ die \begriff{(stetige)  Gleichverteilung} auf $\Omega$. 
-	Sie wird ebenso mit $U(\Omega)$ notiert.
+	Ist $\Omega \subset \Rn$ eine Borelmenge mit Lebesgue-Maß $0 < \lambda^n(\Omega) < \infty$, so heißt das Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))$ mit konstanter Dichtefunktion $\rho(x) = \sfrac{1}{\lambda^n(x)}$, die \begriff{(stetige)  Gleichverteilung} auf $\Omega$. 
+	Sie wird ebenso mit $\Gleich(\Omega)$ notiert.
 \end{definition}
 
-\subsection*{Wahrscheinlichkeitsräume}
+\subsection*{WRäume}
 
 \begin{definition}[Wahrscheinlichkeitsraum]
-	Ein Tripel $(\Omega, \sigF, \probp)$ mit $\Omega, \sigF$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$, nennen wir \\ \begriff{Wahrscheinlichkeitsraum}.
+	Ein Tripel $(\Omega, \sigF, \probp)$ mit $\Omega, \sigF$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$, nennen wir \begriff{Wahrscheinlichkeitsraum}.
 \end{definition}
 
 \section{Zufallsvariablen}
 
 Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
 Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
-Damit wir auch jedem Ereignis in $\sigF'$ eine Wahrscheinlichkeit zuordnen können, benötigen wir	
+Damit wir auch jedem Ereignis in $\sigF'$ eine Wheit zuordnen können, benötigen wir	
 \begin{align}
 	A' \in \sigF' \Rightarrow X' A' \in \sigF \notag		
 \end{align}
@@ -255,34 +255,30 @@ d.h. $X$ sollte messbar sein.
 \begin{proposition}
 	Sei $(\Omega, \sigF, \probp)$ ein Wahrscheinlichkeitsraum und $X$ eine Zufallsvariable von $(\Omega, \sigF)$ nach $(\Omega', \sigF')$. Dann definiert
 	\begin{align}
-		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right), A' \in \sigF'\notag
+		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right),\quad A' \in \sigF'\notag
 	\end{align}
 	ein Wahrscheinlichkeitsmaß auf $(\Omega', \sigF')$ auf $(\Omega', \sigF')$, welches wir als \begriff{Wahrscheinlichkeitsverteilung von X unter $\probp$} bezeichnet.
 \end{proposition}
 
 \begin{proof}
 	Aufgrund der Messbarkeit von $X$ ist die Definition sinnvoll. Zudem gelten
-	\begin{align}
-		\probp'(\Omega') = \probp(X^{-1}(\Omega')) = \probp(\Omega) = 1\notag
-	\end{align}
-	und für $A_1', A_2', \dots \in \sigF'$ paarweise disjunkt.
-	\begin{align}
-		\probp'\left( \bigcup_{i \ge 1} A_i'\right) &= \probp\left(X^{-1}\left( \bigcup_{i \ge 1} A_i' \right)\right) \notag \\
-		&= \probp\left( \bigcup_{i \ge 1} X^{-1}(A_i') \right) \notag \\
-		&= \sum_{i \ge 1} \probp(X^{-1}A_i') \notag
-	\end{align}
-	da auch $X^{-1}A_1', X^{-1}A_2', \dots$ paarweise disjunkt
-	\begin{align}
-		&= \sum_{i \ge 1} \probp'(A_i').\notag
-	\end{align}
-	Also ist $\probp'$ ein Wahrscheinlichkeitsmaß. %TODO put in 1 align to have everything aligned?
+	\begin{align*}
+		\probp'(\Omega') = \probp(X^{-1}(\Omega')) = \probp(\Omega) = 1\\
+		\intertext{und für $A_1', A_2', \dots \in \sigF'$ paarweise disjunkt.}
+		\probp'\left( \bigcup_{i \ge 1} A_i'\right) &= \probp\left(X^{-1}\left( \bigcup_{i \ge 1} A_i' \right)\right) \\
+		&= \probp\left( \bigcup_{i \ge 1} X^{-1}(A_i') \right) \\
+		&= \sum_{i \ge 1} \probp(X^{-1}A_i') \\
+		\intertext{da auch $X^{-1}A_1', X^{-1}A_2', \dots$ paarweise disjunkt}\\
+		\probp'\left( \bigcup_{i \ge 1} A_i'\right) &= \sum_{i \ge 1} \probp'(A_i').
+	\end{align*}
+	Also ist $\probp'$ ein Wahrscheinlichkeitsmaß.
 \end{proof}
 
 \begin{*remark}
 	\begin{itemize}
 		\item Aus Gründen der Lesbarkeit schreiben wir in der Folge $\probp(X \in A) = \probp(\set{\omega \colon X(\omega) \in A})$
 		\item Ist $X$ die Identität, so fallen die Begriffe Wahrscheinlichkeitsmaß und Wahrscheinlichkeitsverteilung zusammen.
-		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden Wahrscheinlichkeitsraumes verzichtet und stattdessen eine ``Zufallsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
+		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden Wahrscheinlichkeitsraumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
 		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\Omega) / \borel(\Omega)$.
 		\item Für die Verteilung von $X$ unter $\probp$ schreibe $\probp_{X}$ und $X \sim \probp_{X}$ für die Tatsache, dass $X$ gemäß $\probp_{X}$ verteilt ist.
 	\end{itemize}
@@ -333,7 +329,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \end{center}
 
 \begin{example}
-	Das Würfeln mit einem fairen, sechsseitigen Würfel kann mittels einer reellen Zufallsvariablen
+	Das Würfeln mit einem fairen, sechseitigen Würfel kann mittels einer reellen Zufallsvariablen
 	\begin{align}
 		X: \set{1,2,\dots, 6} \to \R \mit x \mapsto x\notag
 	\end{align}
@@ -365,18 +361,14 @@ Allgemein:
 
 \begin{proof}
 	Ist $F$ Verteilungsfunktion, so folgt mit \propref{1_4}
-	\begin{align}
-		 x \le y \Rightarrow F(x) = \probp((-\infty,x]) \overset{\propref{1_4}.3}{\le} \probp((-\infty,y]) = F(y)\notag
-	\end{align}
-	und
-	\begin{align}
-		\lim_{x \searrow c} F(x) = \lim_{x \searrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}{=} \probp((-\infty, c]) = F(c)\notag
-	\end{align}
-	sowie
-	\begin{align}
-		\lim_{x\to -\infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\notag\\
-		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.\notag
-	\end{align}
+	\begin{align*}
+		 x \le y \Rightarrow F(x) = \probp((-\infty,x]) \overset{\propref{1_4}.3}&{\le} \probp((-\infty,y]) = F(y)\\
+	\intertext{und}
+		\lim_{x \searrow c} F(x) = \lim_{x \searrow c} \probp((-\infty, x]) \overset{\sigma\text{-Stetigkeit}}&{=} \probp((-\infty, c]) = F(c)\\
+	\intertext{sowie}
+		\lim_{x\to -\infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\emptyset) \overset{\propref{1_4}.1}{=} 0\\
+		\lim_{x\to \infty} F(x) &\overset{\propref{1_4}.5}{=} \probp(\R) = 1.
+	\end{align*}
 	%TODO Alternative way to set the proof:
 %		\begin{enumerate}
 %		\item \begin{align}
@@ -396,7 +388,7 @@ Allgemein:
 	\begin{align}
 		X(u) := \inf\set{x \in \R \colon F(x) \ge u}, \quad u \in (0,1)\notag
 	\end{align}
-	Dann ist $X$ eine ``linksseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
+	Dann ist $X$ eine ``linkseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
 	Wegen 3 gilt:
 	\begin{align}
 		-\infty < X(u) < \infty\notag

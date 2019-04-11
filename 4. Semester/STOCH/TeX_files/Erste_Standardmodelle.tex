@@ -70,40 +70,36 @@ und damit
 \end{align}
 Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \S 3 Unabhängigkeit). %TODO ref?!?!?!
 
-Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies entspricht
-\begin{align}
-	 \hat{\Omega} 
-	 = \set{k = (k_a)_{a \in E} \in \N_{0}^{\abs{E}} \colon \sum_{a \in E} k_a = n}
-	 \und \hat{\sigF} = \pows\brackets{\hat{\Omega}}\notag
-\end{align}
-Den Übergang $\Omega \to \hat{\Omega}$ beschreiben wir durch die Zufallsvariablen
-\begin{align}
-	Y_a(\omega): \Omega \to \N_{0} \mit \omega = (\omega_1,\dots, \omega_n)\mapsto \sum_{a \in E} \indi_{\set{a}}(\omega_i)\notag
-\end{align}
-und
-\begin{align}
-	Y = \brackets{Y_a}_{a\in E}: \Omega \to \hat{\Omega} = \set{k = (k_a)_{a\in E}\colon \sum_{a \in E} k_a = n}\notag
-\end{align}
+Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies enspricht
+\begin{align*}
+	\hat{\Omega} 
+	= \set{k = (k_a)_{a \in E} \in \N_{0}^{\abs{E}} \colon \sum_{a \in E} k_a = n}
+	\und \hat{\sigF} = \pows\brackets{\hat{\Omega}}\\
+	\intertext{Den Übergang $\Omega \to \hat{\Omega}$ beschreiben wir durch die Zufallsvariablen}
+	Y_a(\omega): \Omega \to \N_{0} \mit \omega &= (\omega_1,\dots, \omega_n)\mapsto \sum_{a \in E} \indi_{\set{a}}(\omega_i)\\
+	\intertext{und}
+	Y = \brackets{Y_a}_{a\in E}: \Omega \to \hat{\Omega} &= \set{k = (k_a)_{a\in E}\colon \sum_{a \in E} k_a = n}
+\end{align*}
 
 % % % % % % % % % % % % % % % % % % % % 4th lecture % % % % % % % % % % % % % % % % % % % % % % %
 
 Wir erhalten
-\begin{align}
+\begin{align*}
 	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\\
 	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\\
-	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \begin{pmatrix}
-	n \\
-	(k)_{a\in E}
-	\end{pmatrix}
-	\prod_{a \in E} \rho(a)^{k_a}\notag
-\end{align}
-wobei
-\begin{align}
-	\binom{n}{(k_1, \dots, k_l)} = \begin{cases}
-	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} & \sum_{i=1}^{l} k_i = n\\
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \binom{n}{(k)_{a\in E}} 
+%	\begin{pmatrix}
+%	n \\
+%	(k)_{a\in E}
+%	\end{pmatrix}
+	\prod_{a \in E} \rho(a)^{k_a}\\
+	\intertext{wobei}
+	\binom{n}{(k_1, \dots, k_l)} &= 
+	\begin{cases}
+	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} \sum_{i=1}^{l} k_i = n\\
 	0 & \sonst
-	\end{cases}\notag
-\end{align}
+	\end{cases}
+\end{align*}
 der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
 
 \begin{definition}
