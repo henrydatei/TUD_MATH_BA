@@ -253,7 +253,7 @@ d.h. $X$ sollte messbar sein.
 \end{example}
 
 \begin{proposition}
-	Sei $(\Omega, \sigF, \probp)$ ein WRaum und $X$ eine Zufallsvariable von $(\Omega, \sigF)$ nach $(\Omega', \sigF')$. Dann definiert
+	Sei $(\Omega, \sigF, \probp)$ ein Wahrscheinlichkeitsraum und $X$ eine Zufallsvariable von $(\Omega, \sigF)$ nach $(\Omega', \sigF')$. Dann definiert
 	\begin{align}
 		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right), A' \in \sigF'\notag
 	\end{align}
@@ -282,7 +282,7 @@ d.h. $X$ sollte messbar sein.
 	\begin{itemize}
 		\item Aus Gründen der Lesbarkeit schreiben wir in der Folge $\probp(X \in A) = \probp(\set{\omega \colon X(\omega) \in A})$
 		\item Ist $X$ die Identität, so fallen die Begriffe Wahrscheinlichkeitsmaß und Wahrscheinlichkeitsverteilung zusammen.
-		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden WRaumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
+		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden Wahrscheinlichkeitsraumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
 		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\Omega) / \borel(\Omega)$.
 		\item Für die Verteilung von $X$ unter $\probp$ schreibe $\probp_{X}$ und $X \sim \probp_{X}$ für die Tatsache, dass $X$ gemäß $\probp_{X}$ verteilt ist.
 	\end{itemize}
@@ -295,18 +295,18 @@ d.h. $X$ sollte messbar sein.
 
 Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine reelle Zufallsvariable durch die Werte $(-\infty, c], c \in \R$ eindeutig festgelegt.
 
-\begin{definition}[(kommutative) Verteilungsfunktion von $\probp$]
+\begin{definition}[(komulative) Verteilungsfunktion von $\probp$]
 	\proplbl{2_5}
-	Sei $(\R, \borel(\R), \probp)$ WRaum, so heißt
+	Sei $(\R, \borel(\R), \probp)$ Wahrscheinlichkeitsraum, so heißt
 	\begin{align}
 		F: \R \to [0,1] \text{ mit } x \mapsto \probp((-\infty, x]) \notag
 	\end{align}
-	\begriff{(kommulative) Verteilungsfunktion von $\probp$}.\\
-	Ist $X$ eine reelle Zufallsvariable auf beliebigen WRaum $(\Omega, \sigF, \probp)$, so heißt
+	\begriff{(komulative) Verteilungsfunktion von $\probp$}.\\
+	Ist $X$ eine reelle Zufallsvariable auf beliebigen Wahrscheinlichkeitsraum $(\Omega, \sigF, \probp)$, so heißt
 	\begin{align}
 		F: \R \to [0,1] \text{ mit } x \mapsto \probp(X \le x) = \probp(X \in (-\infty, x]) \notag
 	\end{align} %TODO everything good with the X's here?
-	die (kommulative) Verteilungsfunktion von $X$.
+	die (komulative) Verteilungsfunktion von $X$.
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3rd Lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
