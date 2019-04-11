@@ -84,6 +84,159 @@ Der lokale Diskretisierungsfehler gibt also die Abweichung zwischen exakter Lös
 
 \subsection{Konvergenz von Einschrittverfahren}
 
+Zum Gitter $G=\{x_0,...,x_N\}\subset [a,b]$ mit $x_0=a$ und $x_N=b$ seien $y^0,...,y^N\in\R^m$ durch ein Einschrittverfahren erzeugt. Weiter bezeichne $y$: $[a,b]\to\R^m$ die eindeutige Lösung der AWA \cref{3_1_1}. Dann seien
+\begin{align}
+	e(x_k) &= y(x_k)-y^k \notag \\
+	e(G) &= \max_{x\in G}\norm{e(x)} \notag
+\end{align}
+sowie
+\begin{align}
+	h_{max}(G) = \max_{k=0,...,N-1} h_k\notag
+\end{align}
+definiert.
+
+\begin{definition}[konvergent]
+	Die AWA \cref{3_1_1} besitzt die eindeutige Lösung $y$: $[a,b]\to\R^m$. Ein Einschrittverfahren für diese AWA heißt dann \begriff[Einschrittverfahren!]{konvergent}, falls
+	\begin{align}
+		\lim_{l\to\infty} e(G_l)=0\notag
+	\end{align}
+	für alle Gitterfolgen $\{G_t\}$ gilt, für die $\lim_{l\to\infty} h_{max}(G_l)=0$. Gibt es außerdem $p\ge 1$, $C>0$, $\tilde{h}>0$, so dass
+	\begin{align}
+		e(G) \le C\cdot h_{max}(G)^p\notag
+	\end{align}
+	für jedes Gitter mit $h_{max}(G)\le\tilde{h}$, so hat das Einschrittverfahren für die gegebene AWA die \begriff[Einschrittverfahren!]{Konvergenzordnung} $p$.
+\end{definition}
+
+\begin{lemma}[diskretes \person{Grönwall}sches Lemma]
+	\proplbl{3_2_5}
+	Falls die Zahlenfolgen $\{\alpha_k\}$, $\{\beta_k\}$, $\{v_k\}\subset [0,\infty)$ den Bedingungen
+	\begin{align}
+		v_0=0\quad\text{und}\quad v_{k+1}=(1+\alpha_k)v_k+\beta_k\quad\forall k=0,...,N-1\notag
+	\end{align}
+	genügen, dann folgt
+	\begin{align}
+		v_{k+1} \le \sum_{i=0}^{k} \beta_i\cdot \exp\left(\sum_{j=i+1}^{k} \alpha_j\right)\quad\text{für } k=0,...,N-1\notag
+	\end{align}
+	gilt zusätzlich $\alpha_k=\alpha>0$ und $\beta_k=\beta>0$ für jedes $k=0,...,N-1$, dann folgt
+	\begin{align}
+		v_k \le \frac{\beta}{\alpha}(\exp(k\alpha)-1)\quad\text{für } k=0,...,N-1\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Zum Beispiel durch vollständige Induktion (vgl. Übungsaufgabe).
+\end{proof}
+
+In der Literatur findet man für vorstehende und ähnliche Aussagen die Bezeichnung \textit{diskretes \person{Grönwall}sches Lemma}.
+
+\begin{proposition}
+	Die AWA \cref{3_1_1} besitze die eindeutige Lösung $y$: $[a,b]\to\R^m$. Ein Einschrittverfahren mit der Verfahrensfunktion $\Phi$ habe für die Differentialgleichung $y'=f(x,y)$ die Konsistenzordnung $p$. Es gebe ferner $L_\Phi>0$ und $H>0$, so dass die Lipschitz-Bedingung
+	\begin{align}
+		\label{3_1_6}
+		\norm{\Phi(x,y,z,h) - \Phi(x,\tilde{y},\tilde{z},h)} \le L_\Phi(\norm{y-\tilde{y}} + \norm{z-\tilde{z}})
+	\end{align}
+	für alle $(x,y,z,h),(x,\tilde{y},\tilde{z},h)\in [a,b]\times \R^m\times \R^m\times (0,H]$ gilt. Dann besitzt das Einschrittverfahren die Konvergenzordnung $p$.
+\end{proposition}
+\begin{proof}
+	Entsprechend \cref{3_1_3} und \cref{3_1_5} gilt
+	\begin{align}
+		y^{k+1} = y^k + h_k\Phi(x_k,y^k,y^{k+1},h_k) \notag
+	\end{align}
+	und
+	\begin{align}
+		y(x_{k+1}) = y(x_k) + h_k\Phi(x_k,y(x_k),y(x_k+h_k),h_k) + \Delta(x_k,h_k) \notag
+	\end{align}
+	also folgt
+	\begin{align}
+		e(x_{k+1}) &= y(x_{k+1}) - y^{k+1} \notag \\
+		&= y(x_k) - y^k + h_k\big(\Phi((x_k,y(x_k),y(x_k+h_k),h_k) - \Phi(x_k,y^k,y^{k+1},h_k)\big) + \Delta(x_k,h_k) \notag
+	\end{align}
+	und weiter mit \cref{3_1_6} für $0<h_k\le \tilde{h}=\min\{H,\tilde{h},\frac{1}{2L_\Phi}\}$
+	\begin{align}
+		\norm{e(x_{k+1})} \le \norm{e(x_k)} + \norm{\Delta(x_k,h_k)} + h_kL_\Phi(\norm{e(x_k)} + \norm{e(x_{k+1})}) \notag
+	\end{align}
+	Durch Umstellen und Beachtung der Konsistenzordnung ergibt sich
+	\begin{align}
+		\label{3_1_7}
+		\norm{e(x_{k+1})} \le \frac{1+h_kL_\Phi}{1-h_kL_\Phi}\norm{e(x_k)} + \frac{M}{1-h_kL_\Phi}h_k^{p+1}
+	\end{align}
+	Mit $\alpha_k=4h_kL_\Phi$ hat man (wegen $2h_kL\Phi\le 1$)
+	\begin{align}
+		\frac{1+h_kL_\Phi}{1-h_kL_\Phi} = 1 + \frac{2h_kL_\Phi}{1-h_kL_\Phi} \le 1+\alpha_k \notag
+	\end{align}
+	Setzt man weiter $v_k=\norm{e(x_k)}$ und $\beta_k=2Mh_k^{p+1}$, so erhält man aus \cref{3_1_7}
+	\begin{align}
+		v_{k+1} \le (1+\alpha_k)v_k + \beta_k\quad k=0,...,N-1\notag
+	\end{align}
+	Nach \propref{3_2_5} folgt daraus (beachte $v_0=\norm{e(x_0)} = \norm{y(x_0) - y^0} = 0$)
+	\begin{align}
+		v_{k+1} \le \left(\sum_{i=0}^k \beta_i\right)\exp\left(\sum_{i=0}^k \alpha_i\right) \quad\text{für } k=0,...,N-1\notag
+	\end{align}
+	und damit
+	\begin{align}
+		\norm{e(x_{k+1})} = v_{k+1} &\le 2M\left(\sum_{i=0}^k h_i^{p+1}\right)\exp\left(4L_\Phi\sum_{i=0}^k h_i\right) \notag \\
+		&\le 2Mh_{max}(G)^p(x_{k+1}-x_0)\exp(4L_\Phi(x_{k+1} - x_0)) \notag
+	\end{align}
+	für $k=0,...,N-1$ sowie
+	\begin{align}
+		e(G) \le 2M(b-a)\exp(4L_\Phi(b-a))h_{max}(G)^p \notag
+	\end{align}
+	Also besitzt das Einschrittverfahren die Konvergenzordnung $p$.
+\end{proof}
+
 \subsection{Stabilität gegenüber Rundungsfehlern}
+
+Wir betrachten das Einschrittverfahren \cref{3_1_3} für ein gleichabständiges Gitter ($h_k=h$) bei exakter Rechnung, das heißt
+\begin{align}
+	\label{3_1_8}
+	y^{k+1} = y^k + h\Phi(x_k,y^k,y^{k+1},h)\quad\text{für } k=0,...,N-1
+\end{align}
+Weiter beschreibe
+\begin{align}
+	\label{3_1_9}
+	\tilde{y}^0 = y^0\quad\text{und}\quad \tilde{y}^{k+1}=\tilde{y}^k + h\Phi(x_k,\tilde{y}^k,\tilde{y}^{k+1},h)+\epsilon_k \quad\text{für } k=0,...,N-1
+\end{align}
+ein gestörtes Verfahren, das heißt $\tilde{y}^1,...,\tilde{y}^N$ sind die tatsächlich im Computer berechneten Größen.
+
+\begin{proposition}
+	\proplbl{3_2_7}
+	Sei $y^o\in\R^m$ gegeben und $y^1,...,y^N$ sowie $\tilde{y}^1,...,\tilde{y}^N$ entsprechend \cref{3_1_8} und \cref{3_1_9} berechnet, wobei $\norm{\epsilon_k}<\epsilon$ für alle $k=0,...,N-1$ mit einem $\epsilon>0$ gelte. Außerdem sei für gewisse $L_\Phi,H>0$ die Lipschitz-Bedingung \cref{3_1_6} für alle $(x,y,z,h),(x,\tilde{y},\tilde{z},h)\in [a,b]\times \R^m\times \R^m\times (0,H]$ erfüllt. Dann gibt es $\tilde{h}>0$, so dass
+	\begin{align}
+		\norm{y^k-\tilde{y}^k} \le \frac{\epsilon}{2hL_\Phi}(\exp(4L_\Phi(x_k-a)) - 1)\quad\text{für } k=0,...,N\notag
+	\end{align}
+	falls $0>h<\tilde{h}$.
+\end{proposition}
+\begin{proof}
+	Für $z^k=y^k-\tilde{y}^k$ folgt
+	\begin{align}
+		z^{k+1} &= y^{k+1} - \tilde{y}^{k+1} \notag \\
+		&= y^k - \tilde{y}^k + h\big(\Phi(x_k,y^k,y^{k+1},h) - \Phi(x_k,\tilde{y}^k,\tilde{y}^{k+1},h)\big) - \epsilon_k \notag
+	\end{align}
+	und weiter
+	\begin{align}
+		\norm{z^{k+1}} \le \norm{z^k} + hL_\Phi(\norm{z^k} + \norm{z^{k+1}}) + \epsilon \notag
+	\end{align}
+	Mit $v_k=\norm{z^k}$, $\alpha=4hL_\Phi$ und $\beta=2\epsilon$ hat man für $0<h\le\tilde{h}=\min{H,\frac{1}{2L_\Phi}}$ die Differenzenungleichung
+	\begin{align}
+		v_{k+1} \le (1+\alpha)v_k + \beta \notag
+	\end{align}
+	für $k=0,...,N-1$. \propref{3_2_5} liefert
+	\begin{align}
+		\norm{y^k-\tilde{y}^k} = \norm{z^k} &= v_k\notag \\
+		&\le \frac{\epsilon}{2hL_\Phi}(\exp(k4hL_\Phi) - 1) \notag \\
+		&= \frac{\epsilon}{2hL_\Phi}(\exp(4L_\Phi(x_k-a)) - 1) \notag
+	\end{align}
+\end{proof}
+
+Selbst wenn die Abschätzung in \propref{3_2_7} nicht scharf ist, muss man damit rechnen, dass der Rundungsfehler wie $\sfrac{1}{h}$ wächst. Der Gesamtfehler eines Einschrittverfahrens ans einer Stelle $x_k$ setzt sich aus dem Verfahrensfehler $\norm{y(x_k)-y^k}$ und dem Rundungsfehler $\norm{y^k-\tilde{y}^k}$ zusammen. Für ein Verfahren der Konvergenzordnung $p$ ergibt sich also (bei äquidistantem Gitter) für den Gesamtfehler
+\begin{align}
+	\norm{y(x_k)-\tilde{y}^k} &\le \norm{y(x_k)-y^k} + \norm{y^k-\tilde{y}^k} \notag \\
+	&\le Ch^p + \tilde{C}\frac{\epsilon}{h} \notag
+\end{align}
+Minimiert man die rechte Seite der Abschätzung in Abhängigkeit von $h$, so folgt, dass man $h$ nicht kleiner als
+$\sim \sqrt[p+1]{\epsilon}$ wählen sollte. Setzt man speziell $h=\sqrt[p+1]{\epsilon}$, dann folgt
+\begin{align}
+	Ch^p + \tilde{C}\frac{\epsilon}{h} = C\exp\left(\frac{p}{p+1}\right) + \tilde{C}\exp\left(\frac{p}{p+1}\right) \notag
+\end{align}
+Durch Erhöhung der Konvergenzordnung $p$ kann man also versuchen, mit einer größeren Schrittweite einen kleineren Gesamtfehler zu erreichen. Ein weiterer Grund für das Interesse an Verfahren mit höherer Konvergenzordnung liegt in der Möglichkeit, die Gesamtzahl der erforderlichen Funktionswertbestimmungen der Funktion $f$ zu verringern.
 
 \subsection{\person{Runge-Kutta}-Verfahren}
