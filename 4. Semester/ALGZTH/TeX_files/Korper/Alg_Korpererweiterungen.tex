@@ -164,3 +164,45 @@ Sei $L \vert K$ eine Körpererweiterung.
 	\xRightarrow{a_0 \neq 0}\beta^{-1} = -a_0^{-1} ( a_1 + a_2 \beta + \dots + a_n \beta^{n-1}) \in K[\beta] \subseteq K[\alpha] \notag
 	\end{align}
 \end{remark}
+% % % % % % % % % % % % % % % % 3rd lecture % % % % % % % % % % % % % % % % % % %
+\begin{proposition}
+	\proplbl{1_2_14}
+	Seien $K \subseteq L \subseteq M$ Körper. Dann gilt:
+	\begin{align*}
+		M\vert K \text{ algebraisch } \Leftrightarrow M\vert L \text{ algebraisch und } L \vert K \text{ algebraisch }
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	\begin{itemize}
+		\item[($\Rightarrow$)] klar, siehe \propref{1_2_3}.
+		\item[($\Leftarrow$)] Sei $\alpha \in M$. Schreibe $f=\MinPol(\alpha \vert L) = \sum_{i=0}^{n} a_i x^i, \quad L_0 := K(a_0,\dots,a_n)$\\
+		$\Rightarrow f \in L_0[x]$\\
+		$\Rightarrow [L_0(\alpha): L_0] \le \deg(f) \le \infty$\\
+		$\Rightarrow [K(\alpha: K)] \le [K(a_0,\dots,a_n,\alpha):K] = \underbrace{[L_0(\alpha):L_0]}_{< \infty}\underbrace{[L_0 :K]}_{< \text{ nach } \propref{1_2_7}}$\\
+		$\Rightarrow \alpha$ abgebraisch über $K$\\
+		$\overset{\alpha \text{ bel.}}{\Rightarrow} M \vert K$ algebraisch.
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	$\tilde{K} = \set{\alpha \in L\colon \alpha \text{ algebraisch über }K}$ ist ein Körper, und ist $\alpha \in L$ algebraisch über $\tilde{K}$, so ist schon $\alpha \in \tilde{K}$.
+\end{conclusion}
+
+\begin{proof} %TODO find a good way to format the RIGHTARROWS?
+	\item $\alpha, \beta \in \tilde{K}:\\
+	\Rightarrow K(\alpha, \beta)\vert K$ endlich, insbesondere algebraisch\\
+	$\Rightarrow \alpha + \beta, \alpha - \beta, \alpha \cdot \beta, \alpha^{-1} \in K(\alpha,\beta)$ alle algebraisch über $K$, also $K(\alpha, \beta) \subseteq \tilde{K}$.
+	\item $\alpha \in L$ algebraisch über $\tilde{K}$:\\
+	$\Rightarrow \tilde{K}(\alpha)\vert \tilde{K}$ algebraisch\\
+	$\Rightarrow \tilde{K}\vert K$ algebraisch
+	$\overset{\propref{1_2_14}}{\Rightarrow} \tilde{K}(\alpha\vert K)$ algebraisch, insbesondere $\alpha \in \tilde{K}$.
+\end{proof}
+
+\begin{definition}[relative algebraische Abschluss]
+	$\tilde{K} = \set{\alpha \in L\colon \alpha \text{ algebraisch über }K}$ heißt der \begriff{relative algebraische Abschluss} von $K$ in $L$.
+\end{definition}
+
+\begin{example}
+	$\tilde{\Q} = \set{\alpha \in \C \colon }$ ist ein Körper, der der algebraischen Zahlen. Es ist $[\tilde{\Q},\Q] = \infty$, z.B. da $[\Q(\zeta_p):\Q] = p-1$ für jedes $p$ prim. (algebraische Erweiterung die nicht endlich ist.)
+\end{example}
