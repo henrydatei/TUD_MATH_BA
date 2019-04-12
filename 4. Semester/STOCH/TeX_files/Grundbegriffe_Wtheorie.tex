@@ -80,13 +80,13 @@ Aus der Definition folgen direkt:
 \end{proposition}
 
 \begin{proof}
-	In der Vorlesung wurde nur auf Schillings MINT Vorlesung verwiesen. Der folgende Beweis wurde ergänzt.\\
-	Beweise erst folgende Aussage: $A\cap B = \emptyset \Longrightarrow \probp(A \uplus B) = \probp(A) + \probp(B)$.\\
+	In der Vorlesung wurde auf Schilling MINT Satz 3.3 verwiesen. Ausserdem gab es dazu Präsenzübung 1.3. Der folgende Beweis wurde ergänzt.\\
+	Beweise erst Aussage: $A\cap B = \emptyset \Longrightarrow \probp(A \uplus B) = \probp(A) + \probp(B)$.\\ %TODO add reference for the claim.
 	Es kann $\sigma$-Additivität verwendet werden, indem ``fehlende'' Mengen durch $\emptyset$ ergänzt werden:
 	\begin{align}
 		\probp(A \uplus B) = \probp(A \uplus B \uplus \emptyset \uplus \emptyset \dots) = \probp(A) + \probp(B) + \probp(\emptyset) + \dots = \probp(A) + \probp(B),\notag
 	\end{align}
-	wobei Maßeigenschaften verwendet wurden.
+	wobei Maßeigenschaften verwendet werden.
 	\begin{enumerate}
 		\item Definition des Maßes.
 		\item Da $A \subseteq B$ ist auch $B = A \uplus (B \setminus A) = A \uplus (B \setminus (A \cap B))$. Wende wieder Aussage von oben an, damit folgt
@@ -133,7 +133,7 @@ Aus der Definition folgen direkt:
 
 \begin{example}
 	\proplbl{1_1_7}
-	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\mathscr{B}(\real_{+}) = \sigF$. Eine mögliches W-Maß können wir dann durch
+	Wartezeit an der Bushaltestelle mit Ergebnisraum $\Omega = \real_{+}$ und Ereignisraum \person{Borel}sche $\sigma$-Algebra $\borel(\real_{+}) = \sigF$. Eine mögliches W-Maß können wir dann durch
 	\begin{align}
 	\probp(A) = \int_{A} \lambda e^{-\lambda x} \diff x\notag %TODO set a mathoperator for dx!!!
 	\end{align}
@@ -152,14 +152,14 @@ Aus der Definition folgen direkt:
 		\end{align}
 		ein (diskretes) Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
 		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}),\; \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
-		\item $\Omega \subset \Rn, \sigF = \mathscr{B}(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
+		\item $\Omega \subset \Rn, \sigF = \borel(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
 			\item $\int_{\Omega} \rho(x)\diff x = 1$
-			\item $\set{x \in \Omega \colon f(x) \le c} \in \mathscr{B}(\Omega)$ für alle $c > 0$ 
+			\item $\set{x \in \Omega \colon f(x) \le c} \in \borel(\Omega)$ für alle $c > 0$ 
 		\end{enumerate}
 		dann definiert $\rho$ ein Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ durch 
 		\begin{align}
-		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \mathscr{B}(\Omega).\notag
+		\probp(A) = \int_{A} \rho(x) \diff x = \int_{A} \rho \diff \lambda, \quad A \in \borel(\Omega).\notag
 		\end{align}
 		Das Integral interpretieren wir stets als Lebesgue-Integral bzw. Lebesgue-Maß $\lambda$.
 		$\rho$ bezeichnet wir als \begriff{Dichte}, \begriff{Dichtefunktion}/\begriff{Wahrscheinlichkeitsdichte} von $\probp$ und nennen ein solches $\probp$ \begriff{(absolut)stetig (bzgl. denn Lebesgue-Maß)}.
@@ -177,43 +177,34 @@ Aus der Definition folgen direkt:
 	\begin{itemize}
 		\item Die eineindeutige Beziehung zwischen Dichte und Wahrscheinlichkeitsmaß überträgt sich nicht auf den stetigen Fall.
 		\begin{itemize}
-			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{B}(\Omega)),\; \Omega \subset \Rn$ besitzt eine Dichte.
-			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge von Lebesgue-Maß $0$ unterscheiden.
+			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))  \mit \Omega \subset \Rn$ besitzt eine Dichte.
+			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge vom \person{Lebesgue}-Maß $0$ unterscheiden.
 		\end{itemize}
-		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0,\; x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Omega))$ lässt mit den Wahrscheinlichkeitsmaß auf $(\Omega, \mathscr{\Omega})$ identifizieren.
-		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $(\Rn, \mathscr{B}(\Rn))$ intepretieren
-		\begin{align}
-			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\notag
-		\end{align}
-		stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombinieren z.B.
-		\begin{align}
-			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \mathscr{B}(\R)\notag
-		\end{align}
-		ist ein Wahrscheinlichkeitsmaß auf $(\R, \mathscr{B}(\R))$.
+		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0\mit x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Omega))$ lässt mit dem Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega)$ identifizieren.
+		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Rn))$ intepretieren
+		\begin{align*}
+			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\\
+			\intertext{stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombinieren z.B.}
+			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \borel(\R)
+		\end{align*}
+		ist ein Wahrscheinlichkeitsmaß auf $(\R, \borel(\R))$.
 	\end{itemize}
 \end{*remark}
-
 Abschließend erinnern wir uns an:
-
 \begin{proposition}[Eindeutigkeitssatz für Wahrscheinlichkeitsmaße]
 	\proplbl{1_9}
 	Sei $(\Omega, \sigF)$ Ereignisraum und $\probp$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$. 
 	Sei $\sigF = \omega(\mathscr{G})$ für ein $\cap$-stabiles Erzeugendensystem $\mathscr{G} \subset \mathscr{P}(\Omega)$. 
 	Dann ist $\probp$ bereits durch seine Einschränkung $\probp_{\mid \mathscr{G}}$ eindeutig bestimmt.
 \end{proposition}
-
 \begin{proof}
-	$\nearrow$ Schhiling MINT, Satz 4.5.
+	$\nearrow$ Schilling MINT, Satz 4.5.
 \end{proof}
-
 Insbesondere definiert z.B.
-
 \begin{align}
 	\probp([0,a]) = \int_{0}^{a} \lambda e^{-\lambda x}\diff x = 1 - e^{-\lambda a}, a > 0 \notag
 \end{align}
-
 bereits die Exponentialverteilung aus \propref{1_1_7}.
-
 \begin{definition}[Gleichverteilung]
     \proplbl{1_10}
 	Ist $\Omega$ endlich, so heißt das Wahrscheinlichkeitsmaß mit konstanter Zähldichte $\rho(\omega) = \sfrac{1}{\abs{\Omega}}$ die \begriff{(diskrete) Gleichverteilung} auf $\Omega$ und wird mit $\Gleich(\Omega)$ notiert (U = Uniform).

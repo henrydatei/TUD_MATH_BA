@@ -50,25 +50,19 @@ Zur Bestimmung einer geeigneten Wahrscheinlichkeitsmaßes, nummerieren wir die K
 	\overline{\Omega} = \set{1,\dots, N}^n \und \overline{\sigF} = \pows(\overline{\Omega})\notag
 \end{align}
 und wir könnten die Gleichverteilung $\overline{\probp} = \Gleich(\overline{\Omega})$ als Wahrscheinlichkeitsmaß für einem einzelnen Zug verwenden. Für den Übergang zu $\Omega$ konstruieren wir  Zufallsvariablen. Die Farbe im $i$-ten Zug wird beschrieben durch
-\begin{align}
-	X_i: \overline{\Omega} \to E \mit \overline{\omega} = \left( \overline{\omega}_1, \dots, \overline{\omega}_n \right) \mapsto a \text{ falls } \overline{\omega}_i \in F_a\notag
-\end{align}
-Der Zufallsvektor
-\begin{align}
-	X = (X_1, \dots, X_n): \overline{\Omega} \to \Omega\notag
-\end{align}
-beschreibt dann die Abfolge der Farben. Für jedes $\omega \in \Omega$ gilt dann
-\begin{align}
-	\set{X = \omega} = F_{\omega_1} \times \cdots \times F_{\omega_n} = \bigtimes_{i=1}^{n} F_{\omega_i}\notag
-\end{align}
-und damit
-\begin{align}
+\begin{align*}
+	X_i: \overline{\Omega} \to E \mit \overline{\omega} = \left( \overline{\omega}_1, \dots, \overline{\omega}_n \right) \mapsto a \text{ falls } \overline{\omega}_i \in F_a\\
+	\intertext{Der Zufallsvektor}
+	X = (X_1, \dots, X_n): \overline{\Omega} \to \Omega\\
+   \intertext{beschreibt dann die Abfolge der Farben. Für jedes $\omega \in \Omega$ gilt dann}
+	\set{X = \omega} = F_{\omega_1} \times \cdots \times F_{\omega_n} = \bigtimes_{i=1}^{n} F_{\omega_i}\\
+	\intertext{und damit}
 	\probp(\set{\omega}) 
-	&= \overline{\probp}(X^{-1}(\set{\omega})) = \probp(X=\omega)\notag\\
-	&= \frac{\abs{F_{\omega_1}} \cdots \abs{F_{\omega_n}}}{\abs{\overline{\Omega}}}\notag\\
-	&= \prod_{i=1}^{n} \frac{\abs{F_{\omega_i}}}{N} =: \prod_{i=1}^{n} \rho(\omega_i)\notag
-\end{align}
-Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \S 3 Unabhängigkeit). %TODO ref?!?!?!
+	&= \overline{\probp}(X^{-1}(\set{\omega})) = \probp(X=\omega)\\
+	&= \frac{\abs{F_{\omega_1}} \cdots \abs{F_{\omega_n}}}{\abs{\overline{\Omega}}}\\
+	&= \prod_{i=1}^{n} \frac{\abs{F_{\omega_i}}}{N} =: \prod_{i=1}^{n} \rho(\omega_i)
+\end{align*}
+Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \cref{sec_unabhangigkeit}). %TODO ref?!?!?!
 
 Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies enspricht
 \begin{align*}
@@ -85,16 +79,18 @@ Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezoge
 
 Wir erhalten
 \begin{align*}
-	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\\
-	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\\
-	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) = \binom{n}{(k)_{a\in E}} 
+	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\notag\\
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\notag\\
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) 
+	&= \binom{n}{(k)_{a\in E}} 
 %	\begin{pmatrix}
 %	n \\
 %	(k)_{a\in E}
 %	\end{pmatrix}
-	\prod_{a \in E} \rho(a)^{k_a}\\
+	\prod_{a \in E} \rho(a)^{k_a},\\
 	\intertext{wobei}
-	\binom{n}{(k_1, \dots, k_l)} &= 
+	\binom{n}{(k_1, \dots, k_l)} 
+	&= 
 	\begin{cases}
 	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} \sum_{i=1}^{l} k_i = n\\
 	0 & \sonst
