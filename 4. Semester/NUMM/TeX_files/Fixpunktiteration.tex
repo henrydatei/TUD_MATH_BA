@@ -106,14 +106,14 @@ zu wählen. Dieses Verfahren heißt \begriff{Gesamtschrittverfahren} oder \begri
 \begin{proposition}
 	Die Matrix $A$ sei streng diagonaldominant (vgl. Definition 3.1 der Vorlesung ENM). Dann ist die Matrix $B$ aus \cref{eq_1_2_6} regulär und es gilt
 	\begin{align}
-	\norm{M_J}_{\infty} \le \lambda_{SD} := \max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}} < 1. \notag
+	\norm{M_J}_{\infty} \le \lambda_{SD} := \max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}}^n \abs{a_{ij}} < 1. \notag
 	\end{align}
 \end{proposition}
 
 \begin{proof}
 	Die Regularität von $B$ ergibt sich sofort aus der strengen Diagonaldominanz von $A$. Nutzt man die Definition der Zeilensummennorm $\norm{\cdot}_{\infty}$ erhält man sofort
 	\begin{align}
-		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}^{n}} \abs{a_{ij}}  = \lambda_{SD}.\notag
+		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}}^n \abs{a_{ij}}  = \lambda_{SD}.\notag
 	\end{align}
 	Die vorrausgesetzte strenge Diagonaldominanz von $A$ sichert $\lambda_{SD} < 1$.
 \end{proof}
@@ -172,7 +172,7 @@ zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begri
 	für ein $k \in \set{2,\dots,n}$ gilt. Dann folgt wegen \cref{1_2_10} und $\norm{y}_{\infty} = 1$
 	\begin{align}
 		\abs{z_k} = \frac{1}{\abs{a_{kk}}} \abs{-\sum_{i=1}^{k-1} a_{ki}z_i + \sum_{i=k+1}^{n} a_{ki}y_i} 
-		\le \frac{1}{\abs{a{kk}}} \brackets{\sum_{i=1}^{k-1} \abs{a_{ki}} + \sum_{i=k+1}^{n} \abs{a_{ki}}} \le \lambda_{SD}. \notag
+		\le \frac{1}{\abs{a_{kk}}} \brackets{\sum_{i=1}^{k-1} \abs{a_{ki}} + \sum_{i=k+1}^{n} \abs{a_{ki}}} \le \lambda_{SD}. \notag
 	\end{align}
 	Somit hat man induktiv $\abs{z_k} \le \lambda_{SD}$ für $k = 1, \dots, n$ und damit
 	\begin{align}
