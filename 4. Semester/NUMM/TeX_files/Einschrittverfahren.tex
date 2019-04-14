@@ -67,6 +67,7 @@ Der lokale Diskretisierungsfehler gibt also die Abweichung zwischen exakter Lös
 \end{definition}
 
 \begin{proposition}
+	\proplbl{3_2_3}
 	Sei $f$: $[a,b]\times \real^m\to\real^m$ stetig differenzierbar. Dann hat das explizite \person{Euler}-Verfahren die Konsistenzordnung 1.
 \end{proposition}
 \begin{proof}
@@ -240,3 +241,121 @@ $\sim \sqrt[p+1]{\epsilon}$ wählen sollte. Setzt man speziell $h=\sqrt[p+1]{\ep
 Durch Erhöhung der Konvergenzordnung $p$ kann man also versuchen, mit einer größeren Schrittweite einen kleineren Gesamtfehler zu erreichen. Ein weiterer Grund für das Interesse an Verfahren mit höherer Konvergenzordnung liegt in der Möglichkeit, die Gesamtzahl der erforderlichen Funktionswertbestimmungen der Funktion $f$ zu verringern.
 
 \subsection{\person{Runge-Kutta}-Verfahren}
+
+Die Klasse der \person{Runge-Kutta}-Verfahren (RKV) ist eine Möglichkeit, Einschrittverfahren mit höheren Konsistenz- bzw. Konvergenzordnungen zu konstruieren. Betrachten wir folgende Idee, eine Näherung $y^{k+1}$ für $y(x_{k+1})$ aus einer Näherung $y^k$ für $y(x_k)$ zu erzeugen. 
+
+Wegen $y'=f(x,y)$ liefert der Hauptsatz der Differential- und Integralrechnung
+\begin{align}
+	\label{3_1_10}
+	y(x_{k+1}) = y(x_k) + \int_{x_k}^{x_{k+1}} f(x,y(x))\diff x
+\end{align}
+Approximiert man das Integral durch eine gewichtet Summe von Funktionswerten (vgl. \person{Newton-Cotes} Formeln), so ergibt sich die folgende Verfahrensidee
+\begin{align}
+	\label{3_1_11}
+	y^{k+1} = y^k + h_k\sum_{i=1}^s c_if(s_i,y(s_i))
+\end{align}
+wobei $c_1,...,c_s$ die Gewichte und $s_1,...,s_s$ Stützstellen bezeichnen. Zur Darstellung der Stützstellen sei
+\begin{align}
+	s_i = x_k + \alpha_ih_k\quad\text{für } i=1,...,s\notag
+\end{align}
+mit $\alpha_1=0$ und den Parametern $\alpha_2,...,\alpha_s$. Da $y(s_i)$ unbekannt ist, ersetzt man $f(s_i,y(s_i))$ zunächst durch einen Parameter $k^i$, wobei $k^1=f(x_k,y^k)\approx f(x_k,y(x_k))$ gesetzt wird. Um $y(s_i)$ und damit $f(s_i,y(s_i))$ zu approximieren, verwendet man (bei expliziten RKV) den Ansatz
+\begin{align}
+	y(s_i) \approx y^k + h_k\sum_{j=1}^{i-1} \beta_{ij}k^j\notag
+\end{align}
+mit Parametern $\beta_{ij}$. Bei sogenannten impliziten RKV läuft die Summation von $j=1$ bis $j=s$ (und mindestens ein $\beta_{ij}$ mit $j\ge 1$ ist ungleich 0). Für die Parameter $\alpha_i$, $k^i$, $\beta_{ij}$ ergibt sich (im expliziten Fall) somit das folgende Gleichungssystem
+\begin{align}
+	\label{3_1_12}
+	\begin{split}
+		k^1 &= f(x_k,y^k) \\
+		k^2 &= f(x_k+\alpha_2h_k,y^k+h_k\beta_{21}k^1) \\
+		k^3 &= f(x_k+\alpha_3h_k,y_k+h_k(\beta_{31}k^1 + \beta_{32}k^2)) \\
+		&\vdots \\
+		k^s &= f(x_k+\alpha_sh_k,y^k+h_k(\beta_{s1}k^1+\dots+\beta_{s,s-1}k^{s-1}))
+	\end{split}
+\end{align}
+Ersetzt man in \cref{3_1_11} die unbekannten Vektoren $f(s_i,y(s_i))$ durch die Näherungen $k^i$, so hat man das $s$-stufige \begriff{\person{Runge-Kutta}-Verfahren}
+\begin{align}
+	\label{3_1_13}
+	y^{k+1} = y^k + h_k\sum_{i=1}^s c_ik^i
+\end{align}
+mit den Parametern $c_1,...,c_s$. Die Verfahrensfunktion eines expliziten RKV ist damit gegeben durch 
+\begin{align}
+	\Phi(x,y,h) = \sum_{i=1}^s c_if\left(x+\alpha_ih_iy+h\sum_{j=1}^{i-1}\beta_{ij}k^j(x,y,h)\right) \notag
+\end{align}
+wobei $k^i=k^i(x,y,h)$ entsprechend \cref{3_1_12} verwendet wird (die bei expliziten Verfahren nicht vorhandene Abhängigkeit der Funktion $\Phi$ von $z$ wurde weggelassen). Zum Beispiel ist das explizite \person{Euler}-Verfahren $y^{k+1}=y^k+h_kf(x_k,y^k)$ ein einstufiges RKV mit $c_1=1$.
+
+\begin{proposition}
+	Sei $f$: $[a,b]\times \R^m\to\R^m$ stetig differenzierbar. Ein explizites RKV \cref{3_1_13} mit 
+	\begin{align}
+		\label{3_1_14}
+		\sum_{i=1}^s c_i=1
+	\end{align}
+	hat dann (mindestens) die Konsistenzordnung 1.
+\end{proposition}
+\begin{proof}
+	Sei $x\in\R$ fest gegeben. Weiter sei $\eta=y(x)$. Da $f$ stetig differenzierbar ist, gibt es $L_f>0$, so dass
+	\begin{align}
+		\norm{f(x,\eta) - f(x+\delta x,\eta + \delta\eta)} \le L_f(\abs{\delta x} + \norm{\delta\eta}) \notag
+	\end{align}
+	für alle $(\delta x,\delta\eta)\in\R\times\R^m$ mit $\abs{\delta x} + \norm{\delta\eta}\le 1$. Induktiv folgt damit, dass $\tilde{h}>0$ existiert, so dass
+	\begin{align}
+		\norm{k^i(x,\eta,h) - f(x,\eta)} = \mathcal{O}(h) \quad\forall h\in [0,\tilde{h}] \notag
+	\end{align}
+	für alle $i=1,...,s$. Also gilt wegen \cref{3_1_14}
+	\begin{align}
+		\norm{\Phi(x,\eta,h) - f(x,\eta)} = \mathcal{O}(h) \quad\forall h\in [0,\tilde{h}] \notag
+	\end{align}
+	Daraus erhält man (da $f$ in $[a,b]$ stetig differenzierbar und somit $y$ zweimal stetig differenzierbar ist, vgl. Beweis zu \propref{3_2_3})
+	\begin{align}
+		\norm{\frac{\Delta(x,h)}{h}} &= \norm{\frac{y(x+h) - y(x)}{h} - f(x,y(x)) + f(x,y(x)) - \Phi(x,y(x),h)} \notag \\
+		&\le \mathcal{O}(h) \notag
+	\end{align}
+\end{proof}
+
+\begin{proposition}
+	Sei $f$: $[a,b]\times\R^m\to\R^m$ zweimal stetig differenzierbar. Ein explizites RKV \cref{3_1_13} mit \cref{3_1_14},
+	\begin{align}
+		\label{3_1_15}
+		\sum_{j=1}^{i-1}\beta_{ij}=\alpha_i\quad\text{für } i=2,...,s
+	\end{align}
+	und
+	\begin{align}
+		\label{3_1_16}
+		\sum_{i=2}^s c_i\alpha_i = ^\frac{1}{2}
+	\end{align}
+	hat dann (mindestens) die Konvergenzordnung 2.
+\end{proposition}
+\begin{proof}
+	Übungsaufgabe
+\end{proof}
+
+Verwendet man zur Approximation des bestimmten Integrals in \cref{3_1_10} die Trapezregel, das heißt
+\begin{align}
+	\int_{x_k}^{x_{k+1}} f(x,y(x))\diff x \approx \frac{1}{2}\bigg(f(x_k,y(x_k)) + f(x_k+h_k,y(x_k+h_k))\bigg) \notag
+\end{align}
+und ersetzt man $f(x_k,y(x_k))$ und $f(x_k+h_k,y(x_k+h_k))$ im RKV durch $k^1=f(x_k,y^k)$ bzw. $k^2=f(x_k+h_k,y^k+h_kk^1)$, dann ergibt sich ein 2-stufiges RKV mit
+\begin{align}
+	c_1=c_2=\frac{1}{2},\quad \alpha_2=1,\quad \beta_{21}=1\notag
+\end{align}
+das heißt die Bedingungen \cref{3_1_14}, \cref{3_1_15} und \cref{3_1_16} sind erfüllt. Also besitzt dieses explizite RKV die Konsistenzordnung 2. es ist als \begriff{Verfahren von \person{Heun}} bekannt. 
+
+Verwendet man zur Quadratur des Integrals in \cref{3_1_10} die \person{Simpson}-Regel, das erhält man ein 4-stufiges RKV mit folgenden Parametern (im sogenannten \begriff{\person{Butcher}-Schema})
+\begin{align}
+	\begin{array}{c|cccc}
+	0 & & & & \\
+	\alpha_2 & \beta_{21} &&& \\
+	\alpha_3 & \beta_{31} & \beta_{32} && \\
+	\alpha_4 & \beta_{41} & \beta_{42} & \beta_{43} & \\
+	\hline
+	& c_1 & c_2 & c_3 & c_4
+	\end{array} =  
+	\begin{array}{c|cccc}
+	0 & & & & \\
+	\sfrac{1}{2} & \sfrac{1}{2}  &&& \\
+	\sfrac{1}{2}  & 0 & \sfrac{1}{2}  && \\
+	1 & 0 & 0 & 1 & \\
+	\hline
+	& \sfrac{1}{6} & \sfrac{1}{3} & \sfrac{1}{3} & \sfrac{1}{6}
+	\end{array}\notag
+\end{align}
+Dieses Verfahren hat die Konsistenzordnung 4 (sofern $f$ hinreichend glatt).

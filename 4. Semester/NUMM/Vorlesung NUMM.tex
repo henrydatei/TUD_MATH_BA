@@ -21,7 +21,6 @@
 \chapter*{Vorwort}
 \input{./TeX_files/Vorwort}
 
-\input{./TeX_files/Lit}
 \chapter{Das gewöhnliche Iterationsverfahren}
 \input{./TeX_files/Fixpunkte}
 \include{./TeX_files/Der_Fixpunktsatz_von_Banach}
@@ -43,6 +42,10 @@
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
 \appendix
+
+\nocite{*}
+\bibliography{literatur}
+\bibliographystyle{acm}
 
 %\printglossary[type=\acronymtype]
 
