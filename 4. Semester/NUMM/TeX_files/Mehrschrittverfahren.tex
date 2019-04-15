@@ -2,4 +2,60 @@
 
 \subsection{Grundlagen}
 
+Bei Mehrschrittverfahren (MSV) wird eine Näherung $y^{k+l}$ für $y(x_{k+l})$ in bestimmter Weise aus $l$ vorhergehenden Näherungen $y^k,y^{k+1},...,y^{k+l-1}$ bestimmt. Um dies genau zu beschreiben, seien zusätzlich zu $y^0$ (aus AWA) die Startwerte $y^1,...,y^{l-1}\in\R^m$ gegeben. Im Folgenden wollen wir von einem äquidistanten Gitter $G_h=\{x_0,...,x_N\}$ mit Schrittweite $h=\frac{b-a}{N}$ ausgehen. Ein \begriff{lineares Mehrschrittverfahren} mit $l$ Schritten erzeugt dann für $k=0,...,N-l$ die Iterierte $y^{k+l}$ aus $y^k,y^{k+1},...,y^{k+l-1}$ entsprechend
+\begin{align}
+	\label{3_17}
+	\sum_{\nu=0}^{l} \alpha_\nu y^{k+\nu} = h\sum_{\nu=0}^l \beta_\nu f(x_{k+\nu},y^{k+\nu})
+\end{align}
+wobei $\alpha_\nu$, $\beta_\nu$ ($\nu=0,...,l$) reelle Parameter sind mit $\alpha_l\neq 0$ und $\abs{\alpha_0}+\abs{\beta_0}\neq 0$. Falls $\beta_l=0$, dann spricht man von einem \begriff[lineares Mehrschrittverfahren!]{expliziten} (sonst \begriff[lineares Mehrschrittverfahren!]{impliziten}) linearen MSV. Die MSV \cref{3_17} heißen linear, da die rechte Seite von \cref{3_17} linear von den Funktionswerten $f(x_{k+\nu},y^{k+\nu})$ abhängt. Einem linearen MSV ordnet man sein erstes und zweites \begriff[lineares Mehrschrittverfahren!]{charakteristisches Polynom} $\rho:\comp\to\comp$ und $\sigma:\comp\to\comp$ zu durch
+\begin{align}
+	\label{3_18}
+	\rho(z)=\sum_{\nu=0}^l \alpha_\nu z^\nu\quad\text{und}\quad \sigma(z)=\sum_{\nu=0}^l \beta_\nu z^\nu\quad\forall z\in\comp
+\end{align}
+Das lineare MSV nach \person{Adams-Bashford} (1883) geht von
+\begin{align}
+	\label{3_19}
+	y(x_{k+l}) - y(x_{k+l-1}) = \int_{x_{k+l-1}}^{x_{k+l}} f(x,y(x))\diff x
+\end{align}
+aus und approximiert den Integranden $f(x,y(x))$ durch ein Interpolationspolynom, nämlich
+\begin{align}
+	\label{3_20}
+	\sum_{\nu=0}^{l-1} L_\nu(x)f(x_{k+\nu},y(x_{k+\nu}))
+\end{align}
+Dabei bezeichnen $L_\nu:\R\to\R$ für $\nu=0,...,l-1$ die \person{Langrange}-Polynome mit
+\begin{align}
+	L\nu(x) = \prod_{\substack{i=k \\ i\neq k+\nu}}^{k+l-1} \frac{x-x_i}{x_{k+\nu} - x_i} \quad\text{für } x\in\R\notag
+\end{align}
+Definiert man $\beta_\nu$ durch
+\begin{align}
+	\label{3_21}
+	\int_{x_{k+l-1}}^{x_{k+l}} L_\nu(x)\diff x=h\beta_\nu
+\end{align}
+so liefert die Approximation von \cref{3_19} die Näherungsformel
+\begin{align}
+	y^{k+l}-y^{k+l-1} &= \sum_{\nu=0}^{l-1} \left(\int_{x_{k+l-1}}^{x_{k+l}} L_\nu(x)\diff x\right)f(x_{k+\nu},y^{k+\nu}) \notag \\
+	&= h\sum_{\nu=0}^{l-1} \beta_\nu f(x_{k+\nu},y^{k+\nu}) \notag
+\end{align}
+also ein explizites $l$-schrittiges lineares MSV mit $\alpha_l=1$, $\alpha_{l-1}=-1$ und den durch \cref{3_21} definierten $\beta_0,...,\beta_{l-1}$ sowie $\beta_l=0$.
+
+Beim linearen MSV nach \person{Adams-Moulton} (1926) wird die Summation in \cref{3_20} von $\nu=0$ bis $\nu=l$ erstreckt und dann analog vorgegangen. Dies ergibt das implizite lineare MSV
+\begin{align}
+	\label{3_22}
+	y^{k+l} - y^{k+l-1} = h\sum_{\nu=0}^l \beta_\nu f(x_{k+\nu},y^{k+\nu})
+\end{align}
+Es erfolgt die (ggf. näherungsweise) Lösung eines im Allgemeinen nichtlinearen Gleichungssystems für $y^{k+l}$ und kann mit Hilfe des \begriff{Prädiktor-Korrektor-Prinzips} erfolgen. Dabei ermittelt man mit Hilfe eines expliziten linearen MSV (Prädiktor) eine erste Näherung $\zeta^0$ für $y^{k+l}$ und verbessert diese dann mit einem (näherungsweisen) Schritt eines impliziten linearen MSV (Korrektor). Zum Beispiel bestimme man $\zeta^0$ mit \person{Adams-Bashford}, das heißt
+\begin{align}
+	\zeta^0 = y^{k+l} + h\sum_{\nu=0}^{l-1} \beta_\nu f(x_{k+\nu},y^{k+\nu}) \notag
+\end{align}
+Danach wird eine Näherungslösung von \cref{3_22} (\person{Adams-Moulton}) etwa mittels Fixpunktiteration ermittelt
+\begin{align}
+	\zeta^j = y^{k+l-1} + h\beta_l^C f(x_{k+l},\zeta^{j-1}) + h\sum_{\nu=0}^{l-1} \beta_\nu^C f(x_{k+\nu},y^{k+\nu}) \notag
+\end{align}
+die für ein vorgegebenes $j\ge 1$ abgebrochen wird. Die Bezeichnung $\beta_\nu^C$ dient der Unterscheidung von den im Prädiktor verwendeten Parametern $\beta_\nu$. Für $j=1$ ergibt sich ein nichtlineares MSV (\person{Adams-Bashford-Moulton}-Verfahren). Für $j\to\infty$ kann unter bestimmten Voraussetzungen für hinreichend kleine $h>0$ die Konvergenz der Folge $\{\zeta^j\}$ gegen den eindeutigen Fixpunkt $y^{k+l}$ gezeigt werden.
+
+Eine Klasse von impliziten linearen MSV (sogenannte \begriff{Backward Differentiation Formulas} bzw. \begriff{BDF-Verfahren}) erhält man aus der Idee $y'(x_{k+l}) = f(x_{k+l},y(x_{k+l}))$ durch $\sfrac{1}{h}\sum_{\nu=0}^l \alpha_\nu y(x_{k+\nu})$ (verallgemeinerte Sekantensteigung) zu approximieren. Man hat dann ein lineares MSV der Form
+\begin{align}
+	\sum_{\nu=0}^l \alpha_\nu y^{k+\nu} = hf(x_{k+l},y^{k+l}) \notag
+\end{align}
+
 \subsection{Konsistenz- und Konvergenzordnung für lineare MSV}
