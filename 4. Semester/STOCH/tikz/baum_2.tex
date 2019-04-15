@@ -1,19 +1,42 @@
 \documentclass{standalone}
 
 \usepackage{tikz}
-\usepackage{tikz-qtree}
-\usepackage{../../../texmf/tex/latex/mathoperators/mathoperators}
-
-%TODO how to do two or three trees next to eatch other
-% https://tex.stackexchange.com/questions/258850/putting-a-tree-next-to-another-tree
+\usepackage{amssymb}
+\usetikzlibrary{trees}
+\usetikzlibrary{arrows, decorations.pathmorphing}
+\usepackage{xfrac}
 
 \begin{document}
-	\begin{
-	\begin{tikzpicture}
-	\tikzset{every tree node/.style={align=center,anchor=north}}
-	\Tree [.S [.NP Det\\the N\\cat ]
-	[.VP V\\sat
-	[.PP P\\on
-	[.NP Det\\the N\\mat ] ] ] ]
+	\begin{tikzpicture}[level distance=1.5cm,
+	level 1/.style={sibling distance=3cm},
+	level 2/.style={sibling distance=1.5cm},
+	decoration = {snake, pre length=1pt, post length=1pt}]
+	\node at (0,0) {}
+	child {node {$\omega$}
+		child {node {$R$} edge from parent node[left]  {$1$}}
+		child {node {$R^C$} edge from parent node[right]  {$0$}}
+		edge from parent
+		node[left]  {$\sfrac{2}{3}$}
+	}
+	child {node {$\omega^C$}
+		child {node {$R$} edge from parent node[left]  {$\sfrac{1}{4}$}}
+		child {node {$R^C$} edge from parent node[right]  {$\sfrac{3}{4}$}}
+		edge from parent
+		node[right]  {$\sfrac{1}{3}$}
+	};
+	\draw[->,decorate] (3,-1.5) -- (5,-1.5);
+	\node at (8,0) {}
+	child {node {$R$}
+		child {node {$\omega$} edge from parent node[left]  {$\sfrac{8}{9}$}}
+		child {node {$\omega^C$} edge from parent node[right]  {$\sfrac{1}{9}$}}
+		edge from parent
+		node[left]  {$\sfrac{3}{4}$}
+	}
+	child {node {$R^C$}
+		child {node {$\omega$} edge from parent node[left]  {$0$}}
+		child {node {$\omega^C$} edge from parent node[right]  {$1$}}
+		edge from parent
+		node[right]  {$\sfrac{1}{4}$}
+	};
 	\end{tikzpicture}
 \end{document}
