@@ -20,8 +20,7 @@
 
 \chapter*{Vorwort}
 \input{./TeX_files/Vorwort}
-\chapter*{Literatur}
-\input{./TeX_files/Lit}
+
 \input{./TeX_files/Einfuhrung}
 % Grundbegriffe der WTheorie
 \input{./TeX_files/Grundbegriffe_Wtheorie}
@@ -36,6 +35,10 @@
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
 \appendix
+
+\nocite{*}
+\bibliography{literatur}
+\bibliographystyle{acm}
 
 %\printglossary[type=\acronymtype]
 
