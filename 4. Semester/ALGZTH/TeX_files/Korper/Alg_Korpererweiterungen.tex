@@ -1,6 +1,6 @@
 \section{Algebraische Körpererweiterungen}
 
-Sei $L \vert K$ eine Körpererweiterung.
+Sei $L \mid K$ eine Körpererweiterung.
 
 \begin{definition}[algebraisch, transzendent]
 	Sei $\alpha \in L$. Gibt es ein $0 \neq f \in K$ mit $f(\alpha) = 0$, so heißt $\alpha$ \begriff{algebraisch} über $K$, andernfalls \begriff{transzendent} über $K$.
@@ -49,8 +49,8 @@ Sei $L \vert K$ eine Körpererweiterung.
 \begin{definition}[Monimalpolynom, Grad]
 	Sei $\alpha \in L$ algebraisch über $K$, $\Ker(\phi_\alpha) = (f_\alpha)$ mit $f_\alpha \in K$ normiert und irreduzibel.
 	\begin{enumerate}
-		\item $\MinPol(\alpha\vert K)  f_\alpha$, das \begriff{Minimalpolynom} von $\alpha$ über $K$.
-		\item $\deg(\alpha\vert K) :\Leftrightarrow \deg(f_\alpha)$, der \begriff{Grad} von $\alpha$ über $K$.
+		\item $\MinPol(\alpha\mid K) := f_\alpha$, das \begriff{Minimalpolynom} von $\alpha$ über $K$.
+		\item $\deg(\alpha\mid K) :\Leftrightarrow \deg(f_\alpha)$, der \begriff{Grad} von $\alpha$ über $K$.
 	\end{enumerate}
 \end{definition}
 
@@ -61,8 +61,8 @@ Sei $L \vert K$ eine Körpererweiterung.
 		\item $\alpha$ transzendent über $K$ \\
 		$\Rightarrow K[\alpha] \cong K$, $K(\alpha) \cong_K K(X)$, $[K(\alpha) : K] = \infty$.
 		\item $\alpha$ algebraisch über $K$ \\
-		$\Rightarrow K[\alpha] = K(\alpha) \cong \lnkset{K}{\MinPol{\alpha}{K}}$ , $[ K(\alpha) \colon K)]  = \deg(\alpha \vert K) < \infty$ und \\
-		$1, \alpha, \dots , \alpha^{\deg(\alpha \vert K) -1}$ ist $K$-Basis von $K(\alpha)$. 
+		$\Rightarrow K[\alpha] = K(\alpha) \cong \lnkset{K}{\MinPol(\alpha\mid K)}$ , $[ K(\alpha) \colon K)]  = \deg(\alpha \mid K) < \infty$ und \\
+		$1, \alpha, \dots , \alpha^{\deg(\alpha \mid K) -1}$ ist $K$-Basis von $K(\alpha)$. 
 	\end{enumerate}
 \end{proposition}
 
@@ -71,7 +71,7 @@ Sei $L \vert K$ eine Körpererweiterung.
 		\item $\Ker(\phi_\alpha) = (0) \Rightarrow \phi_\alpha$ ist Isomorphismus (da zusätzlich injektiv) \\
 		$\Rightarrow K(\alpha) \cong_K \Quot(K[\alpha]) \cong_K \Quot(K) = K(X)$ \\
 		$\Rightarrow [K(\alpha) \colon K] = [K(x) \colon K] = \infty$
-		\item Sei $f = f_\alpha = \MinPol(\alpha \vert K)$, $n = \deg(\alpha \vert K) = \deg(f)$.
+		\item Sei $f = f_\alpha = \MinPol(\alpha \mid K)$, $n = \deg(\alpha \mid K) = \deg(f)$.
 		\begin{itemize}
 			\item $f$ irreduzibel $\Rightarrow (f) \neq (0)$ prim ${\xRightarrow{\text{GEO II.4.7}}} (f)$ ist maximal \\
 			$\Rightarrow K[\alpha] \cong \lnkset{K}{(f)}$ ist Körper $\Rightarrow K[\alpha] = K(\alpha)$
@@ -96,7 +96,7 @@ Sei $L \vert K$ eine Körpererweiterung.
 	\begin{enumerate}[label=(\alph*)]
 		\item $p \in \Z$ prim $\Rightarrow$ $\sqrt{p} \in \C$ ist algebraisch über $\Q$. \\
 		Da $f(X) = X^2 - p$ irreduzibel in $\Q$ ist (GEO II.7.3), ist $\MinPol(\sqrt{p}:\Q) = X^2 - p$, $[\Q(\sqrt{p}) : \Q] = 2$.
-		\item Sei $\zeta_p = e^{\frac{2\pi i}{p}} \in \C$ ($p \in \N$ prim). Da $\Phi_p =  \frac{X^p-1}{X-1} = X^{p-1} + X^{p-2} + \cdots + X + 1 \in \Q$ irreduzibel in $\Q$ ist (GEO II.7.9), ist $\MinPol(\zeta_p \vert \Q) = \Phi_p$, $[\Q(\zeta_p) : \Q] = p-1$. Daraus folgt schließlich $[\C : \Q \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p \Rightarrow [\C : \Q] = \infty \Rightarrow [R : \Q] = \infty$.
+		\item Sei $\zeta_p = e^{\frac{2\pi i}{p}} \in \C$ ($p \in \N$ prim). Da $\Phi_p =  \frac{X^p-1}{X-1} = X^{p-1} + X^{p-2} + \cdots + X + 1 \in \Q$ irreduzibel in $\Q$ ist (GEO II.7.9), ist $\MinPol(\zeta_p \mid \Q) = \Phi_p$, $[\Q(\zeta_p) : \Q] = p-1$. Daraus folgt schließlich $[\C : \Q \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p \Rightarrow [\C : \Q] = \infty \Rightarrow [R : \Q] = \infty$.
 		\item $e \in \R$ ist transzendent über $\Q$ (\person{Hermite} 1873), 
 		$\pi \in \R$ ist transendent über $\Q$ (\person{Lindemann} 1882). \\
 		Daraus folgt: $[R : \Q] \ge [\Q(\pi): \Q] = \infty$. Jedoch ist unbekannt, ob z.B. $\pi + e$ transzendent ist.
@@ -104,12 +104,12 @@ Sei $L \vert K$ eine Körpererweiterung.
 \end{example}
 
 \begin{definition}
-	$L \vert K$ ist \begriff{algebraisch} $:\Leftrightarrow$ jedes $\alpha \in L$ ist algebraisch über $K$.
+	$L \mid K$ ist \begriff{algebraisch} $:\Leftrightarrow$ jedes $\alpha \in L$ ist algebraisch über $K$.
 \end{definition}
 
 \begin{proposition}
 	\proplbl{1_2_10}
-	$L \vert K$ endlich $\Rightarrow$ $L \vert K$ algebraisch.
+	$L \mid K$ endlich $\Rightarrow$ $L \mid K$ algebraisch.
 \end{proposition}
 
 \begin{proof}
@@ -118,7 +118,7 @@ Sei $L \vert K$ eine Körpererweiterung.
 
 \begin{conclusion}
 	\proplbl{1_2_11}
-	Ist $L = K(\alpha_1, \dots, \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$, so ist $L \vert K$ endlich, insbesondere algebraisch.
+	Ist $L = K(\alpha_1, \dots, \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$, so ist $L \mid K$ endlich, insbesondere algebraisch.
 \end{conclusion}
 
 \begin{proof}
@@ -139,8 +139,8 @@ Sei $L \vert K$ eine Körpererweiterung.
 \begin{conclusion}
 	Es sind äquivalent:
 	\begin{enumerate}
-		\item $L \vert K$ ist endlich.
-		\item $L \vert K$ ist endlich erzeugt und algebraisch.
+		\item $L \mid K$ ist endlich.
+		\item $L \mid K$ ist endlich erzeugt und algebraisch.
 		\item $L = K(\alpha_1, \dots , \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$.
 	\end{enumerate}
 \end{conclusion}
@@ -169,19 +169,19 @@ Sei $L \vert K$ eine Körpererweiterung.
 	\proplbl{1_2_14}
 	Seien $K \subseteq L \subseteq M$ Körper. Dann gilt:
 	\begin{align*}
-		M\vert K \text{ algebraisch } \Leftrightarrow M\vert L \text{ algebraisch und } L \vert K \text{ algebraisch }
+		M\mid K \text{ algebraisch } \Leftrightarrow M\mid L \text{ algebraisch und } L \mid K \text{ algebraisch }
 	\end{align*}
 \end{proposition}
 
 \begin{proof}
 	\begin{itemize}
 		\item[($\Rightarrow$)] klar, siehe \propref{1_2_3}.
-		\item[($\Leftarrow$)] Sei $\alpha \in M$. Schreibe $f=\MinPol(\alpha \vert L) = \sum_{i=0}^{n} a_i x^i, \quad L_0 := K(a_0,\dots,a_n)$\\
+		\item[($\Leftarrow$)] Sei $\alpha \in M$. Schreibe $f=\MinPol(\alpha \mid L) = \sum_{i=0}^{n} a_i x^i, \quad L_0 := K(a_0,\dots,a_n)$\\
 		$\Rightarrow f \in L_0[x]$\\
 		$\Rightarrow [L_0(\alpha): L_0] \le \deg(f) \le \infty$\\
 		$\Rightarrow [K(\alpha: K)] \le [K(a_0,\dots,a_n,\alpha):K] = \underbrace{[L_0(\alpha):L_0]}_{< \infty}\underbrace{[L_0 :K]}_{< \text{ nach } \propref{1_2_7}}$\\
 		$\Rightarrow \alpha$ abgebraisch über $K$\\
-		$\overset{\alpha \text{ bel.}}{\Rightarrow} M \vert K$ algebraisch.
+		$\overset{\alpha \text{ bel.}}{\Rightarrow} M \mid K$ algebraisch.
 	\end{itemize}
 \end{proof}
 
@@ -190,13 +190,15 @@ Sei $L \vert K$ eine Körpererweiterung.
 \end{conclusion}
 
 \begin{proof} %TODO find a good way to format the RIGHTARROWS?
-	\item $\alpha, \beta \in \tilde{K}:\\
-	\Rightarrow K(\alpha, \beta)\vert K$ endlich, insbesondere algebraisch\\
-	$\Rightarrow \alpha + \beta, \alpha - \beta, \alpha \cdot \beta, \alpha^{-1} \in K(\alpha,\beta)$ alle algebraisch über $K$, also $K(\alpha, \beta) \subseteq \tilde{K}$.
-	\item $\alpha \in L$ algebraisch über $\tilde{K}$:\\
-	$\Rightarrow \tilde{K}(\alpha)\vert \tilde{K}$ algebraisch\\
-	$\Rightarrow \tilde{K}\vert K$ algebraisch
-	$\overset{\propref{1_2_14}}{\Rightarrow} \tilde{K}(\alpha\vert K)$ algebraisch, insbesondere $\alpha \in \tilde{K}$.
+	\begin{itemize}
+		\item $\alpha, \beta \in \tilde{K}:\\
+			\Rightarrow K(\alpha, \beta)\mid K$ endlich, insbesondere algebraisch\\
+			$\Rightarrow \alpha + \beta, \alpha - \beta, \alpha \cdot \beta, \alpha^{-1} \in K(\alpha,\beta)$ alle algebraisch über $K$, also $K(\alpha, \beta) \subseteq \tilde{K}$.
+		\item $\alpha \in L$ algebraisch über $\tilde{K}$:\\
+			$\Rightarrow \tilde{K}(\alpha)\mid \tilde{K}$ algebraisch\\
+			$\Rightarrow \tilde{K}\mid K$ algebraisch
+			$\overset{\propref{1_2_14}}{\Rightarrow} \tilde{K}(\alpha\mid K)$ algebraisch, insbesondere $\alpha \in \tilde{K}$.
+	\end{itemize}
 \end{proof}
 
 \begin{definition}[relative algebraische Abschluss]

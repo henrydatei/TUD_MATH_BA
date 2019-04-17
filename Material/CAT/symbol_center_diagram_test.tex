@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{xypic}
+
+% thats a demo for putting a symbol in the center of a square diagram!
+
+\newcommand{\refsymbol}{{?}}
+
+\begin{document}
+Here we have a diagram.
+		\begin{equation}
+			\xymatrix{
+			  A \ar[r] \ar[d]
+			  \ar@{}[dr] | {\refsymbol}
+			  & B \ar[d] \\
+			  C \ar[r] & D
+			}
+		\label{eq:diag}
+	\end{equation}
+We want to refer to {\refsymbol} in the square shown in \eqref{eq:diag}.
+\end{document}

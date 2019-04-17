@@ -1,12 +1,9 @@
-\chapter[Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit]{Bedingte Wkeiten und (Un)-abbhängigkeit}
-\chaptermark{Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
-
 \section{Bedingte Wahrscheinlichkeiten}
 \begin{example}
 	\proplbl{3_1_1}
 	Das Würfeln mit zwei fairen, sechsseitigen Würfeln können wir mit 
 	\begin{align}
-		\O = \set{(i,j,), i,j \in \set{1,\dots,6}}\notag
+		\O = \set{(i,j,): i,j \in \set{1,\dots,6}}\notag
 	\end{align}
 	und $\P = \Gleich(\O)$. Da $\abs{\O} = 36$ gilt also
 	\begin{align}
@@ -99,10 +96,8 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 
 %TODO Baumdiagramm
 \begin{center}
-	\begin{tikzpicture}
 		\input{./tikz/baum_1}
 	%	\caption{ \propref{3_1_4}}
-	\end{tikzpicture} 
 \end{center}
 
 \begin{proposition}[Konstruktion des Wahrscheinlichkeitsmaßes eines Stufenexperiments]
@@ -157,10 +152,10 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 	Ein Student beantwortet eine Multiple-Choice-Frage mit 4 Antwortmöglichkeiten, eine davon ist richtig. Er kennt die richtige Antwort mit Wahrscheinlichkeit $\sfrac{1}{3}$. Wenn er diese kennt, so wählt er diese aus. Andernfalls wählt er zufällig (gleichverteilt) eine Antwort.\\
 	Betrachte
 	\begin{align*}
-		W = \set{\text{richtige Antwort gewusst}}\\
-		R = \set{\text{Richtige Antwort gewählt}}
+		W &= \set{\text{richtige Antwort gewusst}}\\
+		R &= \set{\text{Richtige Antwort gewählt}}
 		\intertext{Dann}
-		\P(W) = \frac{2}{3}, \P(R \mid W) = 1, \P(R \mid W^C) = \frac{1}{4} 
+		\P(W) &= \frac{2}{3}, \P(R \mid W) = 1, \P(R \mid W^C) = \frac{1}{4} 
 	\end{align*}
 	Angenommen, der Student gibt die richtige Antwort. Mit welcher Wahrscheinlichkeit hat er diese gewusst?
 	\begin{align*}
@@ -204,202 +199,9 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 		&= 1\cdot \frac{2}{3} + \frac{1}{4}\frac{1}{3} = \frac{3}{4}
 		\intertext{und mit dem \propref{3_1_9} \eqref{eq:bayes}} %Bayes
 		\P(W \mid R) &= \frac{\P(R \mid W)\P(W)}{\P(R)} = \frac{1\frac{2}{3}}{\frac{3}{4}} = \frac{8}{9} \text{ für die gesuchte Wahrscheinlichkeit.}
-	\end{align*}
+	\end{align*} %TODO compile as pdf and include it. not working.
 	\begin{center}
-		\begin{tikzpicture}
 			\input{./tikz/baum_2}
 %			\caption{ \propref{3_1_3}}
-		\end{tikzpicture} 
 	\end{center}
-\end{example}
-\section{(Un)-abhängigkeit} \label{sec_unabhangigkeit}
-In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente/ Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
-\begin{align*}
-	\P(A\mid B) = \P(B), \quad \P(B\mid A) = \P(B).
-\end{align*}
-\begin{definition}[(stochastisch)unabhängig]
-	\proplbl{3_2_11}
-	$(\O, \F, \P)$ Wahrscheinlichkeitsraum. Zwei Ereignisse $A,B \in \F$ heißt \begriff{(stochastisch) unabhängig bezüglich $\P$}, falls
-	\begin{align*}
-		\P(A\cap B) = \P(A)\P(B)
-	\end{align*}
-	Wir schreiben auch $A B$.
-\end{definition}
-\begin{example}
-	Würfeln mit 2 fairen, sechsseitigen Würfel:
-	\begin{align*}
-		\O &= \set{(i,j) \mid i,j \in\set{1,\dots,n}},\quad \F = \pows(\O), \quad \P = \Gleich(\O)
-	\intertext{Betrachte}
-		A&:= \set{(i,j) \in \O, i \text{ gerade}}\\
-		B&:= \set{(i,j) \in \O, j > 2}
-	\end{align*}
-	In diesem Fall, erwarten wir intuitiv Unabhängigkeit von $A$ und $B$.\\
-	In der Tat % start using \P instead of \P!
-	\begin{align*}
-		\P(A) &= \frac{1}{2}, \quad \P(B) = \frac{1}{3} \mit \P(A\cap B) = \frac{1}{6}
-		\intertext{erfüllt}
-		\P(A\cap B) &= \P(A)\P(B).
-	\end{align*}
-	Betrachte nun
-	\begin{align*}
-		C&:= \set{(i,j) \in \O, i\neq j = 1}\\
-		D&:= \set{(i,j) \in \O, i = 6}
-		\intertext{dann gilt}
-		\P(C) = \frac{1}{6}, \quad \P(D) = \frac{1}{6}
-		\intertext{und wegen $C \cap D = \set{(6,1)}$ folgt}
-		\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C \setminus D)
-	\end{align*}
-	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
-\end{example}
-\begin{definition}[unabhängig bezüglich $\P$]
-	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $I \neq \emptyset$ endliche Indexmenge. Dann heißt die Familie $(A_i)_{i \in I}$ von Ereignissen in $\F$ \begriff{unabhängig bezüglich $\P$}, falls für alle $J \subseteq I, J \neq \emptyset$ gilt:
-	\begin{align*}
-		\P\brackets{\bigcap_{i\in J}A_i} = \prod_{i\in J} \P(A_i)
-	\end{align*}
-	Offensichtlich impliziert die Unabhängigkeit einer Familie die paarweise Unabhängigkeit je zweier Familienmitglieder nach \propref{3_2_11}. Umgekehrt gilt dies nicht!
-\end{definition}
-\begin{example}[Abhängigkeit trotz paarweiser Unabhängigkeit]
-	Betrachte 2-faches Bernoulliexperiment mit Erfolgswahrscheinlichkeit $\sfrac{1}{2}$, d.h.
-	\begin{align*}
-		\O = \set{0,1}^2, \quad \F = \pows(\O), \quad \P = \Gleich(\O)
-		\intertext{sowie}
-		A &= \set{1}\times \set{0,1} \qquad \text{(Münzwurf: erster Wurf Zahl)}\\
-		B &= \set{0,1}\times \set{1} \qquad \text{(Münzwurf: zweiter Wurf Zahl)}\\
-		C &= \set{0,0}\times \set{1,1} \qquad \text{(beide Würfe selbes Ergebnis)}
-	\end{align*}
-	Dann gelten
-	\begin{align*}
-		\P(A) = \frac{1}{2} = \P(A) = \P(B)
-		\intertext{und}
-		\P(A\cap B) = \P(\set{(1,1)}) = \frac{1}{4} = \P(A)\P(B)\\
-		\P(A\cap C) = \P(\set{(1,1)}) = \frac{1}{4} = \P(A)\P(C)\\
-		\P(B\cap C) = \P(\set{(1,1)}) = \frac{1}{4} = \P(B)\P(C)
-	\end{align*}
-	also paarweise Unabhängigkeit.\\
-	Aber
-	\begin{align*}
-		\P(A\cap B \cap C) = \P(\set{(1,1)}) = \frac{1}{4} + \P(A)\P(B)\P(C)
-		\intertext{und $A,B,C$ sind \emph{nicht} stochastisch unabhängig.}
-	\end{align*}
-\end{example}
-\begin{definition}[Unabhängige Messräume]
-	\proplbl{3_2_15}
-	% started using \O for \O and \E for this special generating set E_i
-	$(\O, \F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset$ Indexmenge und $(E_i, \E_i)$ Messräume
-	\begin{enumerate}
-		\item Die Familie $\F_i \subset \F, i \in I$, heißen \emph{unabhängig}, wenn für die $J \subseteq I, I \neq \emptyset, \abs{J} < \infty$ gilt
-		\begin{align*}
-			\P\brackets{\bigcap_{i=1} A_i} = \prod_{i\in J} \P(A_i) \qquad \text{ für beliebige } A_i \in \F_i, i \in J
-		\end{align*}
-		\item Die Zufallsvariable $X_i: (\O, \F) \to (E_i, \E_i), i \in I$, heißen \emph{unabhängig}, wenn die $\sigma$-Algebren
-		\begin{align*}
-			\sigma(X_i) = X^{-1}(\E_i) = \set{\set{X_i \in F}, F \in \E_i}, \quad i \in I
-		\end{align*}
-		unabhängig sind.
-	\end{enumerate}
-\end{definition}
-\begin{lemma}[Zusammenhang der Definitionen]
-	\proplbl{3_2_16}
-	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset, A \in \F, i \in I$.\\
-	Die folgenden Aussagen sind äquivalent:
-	\begin{enumerate}
-		\item Die Ereignisse $A_i, i \in I$ sind unabhängig. 
-		\item Die $\sigma$-Algebren $\sigma(A_i), i \in I$ sind unabhängig.
-		\item Die Zufallsvariablen $\indi_{A_i}, i \in I$ sind unabhängig.
-	\end{enumerate}
-\end{lemma}
-\begin{proof} %TODO add ref?
-	Da die Unabhängigkeit über endliche Teilemengen definiert ist, können wir oBdA $I = \set{1, \dots, n}$ annehmen. 
-	\begin{itemize}
-		\item Da $\sigma(\indi_{A_i}) = \sigma(A_i)$ folgt die Äquivalenz von 2. und 3. direkt aus \propref{3_2_15}.
-		\item Zudem ist 2. $\to $ 1. klar!
-		\item Für 1 $\to$ 2. genügt es zu zeigen, dass
-			\begin{align*}
-				A_1, \dots, A_n \text{ unabhängig } &\Rightarrow B_1, \dots, B_n \text{ unabhängig von } B_i \in \set{\emptyset, A_i, A_i^C, \O}.
-				\intertext{Rekursive folgt dies bereits aus}
-				A_1,\dots, A_n \text{ unabhängig } &\Rightarrow B_1, A_2, \dots, A_n \text{ unabhängig mit } B_1 \in \set{\emptyset, A_1, A_1^C, \O}.
-			\end{align*}
-		Für $B_1 \in \set{\emptyset, A_1, \O}$ ist dies klar.\\
-		Sei also $B_1 = A_1^C$ und $J \subseteq I, J \neq \emptyset$. Falls $1 \not \in J$, ist nichts zu zeigen. Sei $1 \in J$, dann gilt mit
-			\begin{align*}
-				A &= \bigcap_{i\in J, i \neq 1} A_i
-				\intertext{sicherlich}
-				\P\brackets{A_1^C \cap A} &= \P(A \setminus (A_1 \cap A))\\
-				&= \P(A) - \P(A_1 \cap A)\\
-				&= \prod_{i\in J\setminus \set{1}} \P(A_i) - \prod_{i\in J}(A_i)\\
-				&= (1- \P(A_1))\prod_{i\in J\setminus \set{1}} \P(A_i)\\
-				&= \P\brackets{A_1^C})\prod_{i\in J\setminus \set{1}} \P(A_i)
-			\end{align*} 
-	\end{itemize}
-\end{proof}
-Insbesondere zeigt das \propref{3_2_16}, dass wir in einer Familie unabhängiger Ereignisse beliebig viele Ereignisse durch ihr Komplement, $\emptyset$ oder $\O$ ersetzen können, ohne die Unabhängigkeit zu verlieren.
-\begin{proposition}
-	\proplbl{3_2_17}
-	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $\F_i \subseteq \F, i \in I$, seien $\cap$-stabil Familien von Ereignissen. Dann
-	\begin{align*}
-		\F_i, i \in I \text{ unabhängig } \Leftrightarrow \sigma(\F_i), i \in I \text{ unabhängig}. 
-	\end{align*}
-\end{proposition}
-
-\begin{proof}
-	OBdA sei $I = \set{1, \dots, n}$ und das $\O \in \F_i, i \in I$.
-	\begin{itemize}
-		\item $\Leftarrow$: trivial, da $\F_i \subseteq \sigma(\F_i)$ und das Weglassen von Mengen erlaubt ist.
-		\item $\Rightarrow$: zeigen wir rekursive
-			\begin{enumerate}
-				\item Wähle $F_i \in \F_i, i = 2, \dots,n$ und defnieren für $F \in \sigma(\F_i)$ die endlichen Maße
-				\begin{align*}
-					\mu(F) = \P\brackets{\bigcap_{i=1}^n F_i} \und \nu(F) = \prod_{i=1}^n \P(F_i)
-				\end{align*}
-				\item Da die Familien $\F_i$ unabhängig sind, gilt
-				\begin{align*}
-					\mu\mid_{\F_1} = \nu\mid_{\F_1}
-				\end{align*}
-				Nach Eindeutigkeitssatz für Maße (\proplbl{1_1_19}) folgt $\mu\mid_{\sigma(\F_1)} = \nu\mid_{\sigma(\F_1)}$ also
-				\begin{align*}
-					\P(\bigcap_{i=1}^n F_i) = \P(F)\P(F_1)\dots \P(F_n)
-				\end{align*}
-				für alle $F \in \sigma(\F_i)$ und $F_i \in \F_i, i = 1, \dots, n$. Da $\O \in \F_i$ für alle $i$ gilt die erhaltene Produktformel auf für alle Teilemenge $J \subseteq I$.\\
-				Also sind
-				\begin{align*}
-					\sigma(\F_1), \F_2, \dots, \F_n \text{unabhängig}
-				\end{align*}
-				\item Wiederholtes Anwenden von $1$ und $2$ liefert den \propref{3_2_17}.
-			\end{enumerate}
-	\end{itemize}
-\end{proof}
-
-Mittels \propref{3_2_17} folgen:
-
-\begin{conclusion}
-	$(\O,\F,\P)$ Wahrscheinlichkeitsraum und
-	\begin{align*}
-		\F_{i,j} \subseteq \F, \quad 1 \le \dots \le n, 1 \le j \le m(i)
-	\end{align*}
-	unabhängige, $\cap$-stabile Familien.
-	Dann sind auch
-	\begin{align*}
-		\G_i = \sigma(\F_{i,1},\dots, \F_{i,m(i)}), \quad 1 \le i \le n
-	\end{align*}
-	unabhängig.
-\end{conclusion}
-
-\begin{conclusion}
-	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, und
-	\begin{align*}
-		X_{ij}: \O \to E, \quad 1 \le i \le n, 1 \le j \le m(i)
-	\end{align*}
-	unabhängige Zufallsvariablen. Zudem seinen $f_i: E^{m(i)} \to \R$ messbar. Dann sind auch die Zufallsvariablen
-	\begin{align*}
-		f_i(X_{i1}, \dots, X_{im(i)}), \quad 1 \le i \le n
-	\end{align*}
-	unabhängig.
-\end{conclusion}
-
-\begin{example}
-	$X_1, \dots, X_n$ unabhängige reelle Zufallsvariablen. Dann sind auch
-	\begin{align*}
-		Y_1 = X_1, Y_2 = X_2 + \cdots + X_n
-	\end{align*}
-	unabhängig.
 \end{example}
