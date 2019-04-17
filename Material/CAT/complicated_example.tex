@@ -16,6 +16,12 @@
 
 \begin{document}
 	\begin{tikzcd}
-		
+		i \arrow[r,"\alpha"] & j \arrow[out=120,in=60,loop,"\beta_1"]
+		\arrow[out=240,in=300,loop,swap, "\beta_2"]
+	\end{tikzcd}
+	\begin{tikzcd}
+		i \arrow[r,"\alpha"] & j \arrow[loop above,"\beta_1"]
+		\arrow[loop below, "\beta_2"]
+		\arrow[loop right, "\beta_3"]
 	\end{tikzcd}
 \end{document}

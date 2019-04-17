@@ -1,0 +1,34 @@
+\documentclass{standalone}
+
+
+\usepackage{tikz, amsmath}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\begin{document}
+	\begin{tikzcd}
+		[execute at end picture={
+			\draw[{Hooks[width=+0pt 10.8,length=+0pt 3.6,harpoon,line cap=round]}->] 
+			(\tikzcdmatrixname-1-2) to[out=175,in=185,looseness=3] 
+			node[midway,left]{$i$} (\tikzcdmatrixname-3-2);
+			\draw[-{Latex[bend]},thick] ([xshift=-0.35cm,yshift=0.45cm]\tikzcdmatrixname-2-2)
+			arc(0:340:0.2);
+			\draw[-{Latex[bend]},thick] ([xshift=-0.45cm,yshift=-0.45cm]\tikzcdmatrixname-2-2)
+			arc(20:360:0.2);
+			\draw[-{Latex[bend]},thick] ([xshift=0.55cm,yshift=-0.45cm]\tikzcdmatrixname-2-2)
+			arc(20:360:0.2);
+		}]
+		& R \arrow[d, "f"] \arrow[ld, "\phi"', hook'] \arrow[rd, "\phi", hook] &  \\
+		R\left\lbrack\frac{1}{r}\right\rbrack \arrow[r, "\exists!F", two heads, dashed, hook] & {\frac{R[x]}{(rx-1)}} \arrow[r, "\exists!G", two heads, dashed, hook] & R\left\lbrack\frac{1}{r}\right\rbrack \\
+		& {R[x]} \arrow[u, "\pi", two heads] \arrow[ru, "g"'] & 
+	\end{tikzcd}
+\end{document}
