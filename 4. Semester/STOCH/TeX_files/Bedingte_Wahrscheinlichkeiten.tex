@@ -1,59 +1,211 @@
-\chapter{Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
-
 \section{Bedingte Wahrscheinlichkeiten}
-
 \begin{example}
-	Das Würfeln mit $2$ fairen, sechseitigen Würfeln können wir mit 
+	\proplbl{3_1_1}
+	Das Würfeln mit zwei fairen, sechsseitigen Würfeln können wir mit 
 	\begin{align}
-		\Omega = \set{(i,j, \colon, i,j \in \set{1,\dots,6}} \quad \und \quad \probp = \Gleich(\Omega) \notag
-    \end{align}
-    modellieren. Da $\abs{\Omega} = 36$ gilt also
-   	\begin{align}
-		\probp(\set{\omega}) = \frac{1}{36} \quad \forall \omega \in \Omega.\notag
+		\O = \set{(i,j,), i,j \in \set{1,\dots,6}}\notag
+	\end{align}
+	und $\P = \Gleich(\O)$. Da $\abs{\O} = 36$ gilt also
+	\begin{align}
+		\P(\set{\omega}) = \frac{1}{36} \quad \forall \omega \in \O.\notag
 	\end{align}
 	Betrachte das Ereignis
 	\begin{align}
-		A = \set{(i,j) \in \Omega : i + j = 8},\notag
+		A = \set{(i,j) \in \O : i + j = 8},\notag
 	\end{align}
 	dann folgt
 	\begin{align}
-		\probp(A) = \frac{5}{36}.\notag
+		\P(A) = \frac{5}{36}.\notag
 	\end{align}
 	Werden die beiden Würfel nach einander ausgeführt, so kann nach dem ersten Wurf eine Neubewertung der Wahrscheinlichkeit von $A$ erfolgen.\\
 	Ist z.B.:
 	\begin{align}
-		B = \set{(i,j) \in \Omega, i = 4}\notag
+		B = \set{(i,j) \in \O, i = 4}\notag
 	\end{align}
-	eingetreten, so kann die Summe $8$ nur durch eine weitere $4$ realisiert werden, also mit Wahrscheinlichkeit
+	eingetreten, so kann die Summe 8 nur durch eine weitere 4 realisiert werden, also mit Wahrscheinlichkeit
 	\begin{align}
-		\frac{1}{6} = \frac{\abs{A \cap B}}{\abs{B}}\notag 
+		\frac{1}{6} = \frac{\abs{A \cap B}}{\abs{B}}.\notag 
 	\end{align}
-	Diese Eintreten von $B$ führt also dazu, dass das Wahrscheinlichkeitsmaß $\probp$ durch ein neues Wahrscheinlichkeitsmaß $\probp_{B}$ ersetzt werden muss. Hierbei sollte gelten:
-	\begin{itemize}
-		\item[(R)] Renormierung: $\probp_{B} = 1$
-		\item[(P)] Proportionalität: Für alle $A \in \sigF$ mit $A \subseteq B$ gilt
-		\begin{align}
-			\probp_{B}(A) = c_B \probp(A)\notag
-		\end{align}
-		eine Konstante $c_B$.
-	\end{itemize}
+	Das Eintreten von $B$ führt also dazu, dass das Wahrscheinlichkeitsmaß $\P$ durch ein neues Wahrscheinlichkeitsmaß $\P_{B}$ ersetzt werden muss. Hierbei sollte gelten:
+	\begin{align}
+		 &\text{Renormierung: }\P_{B} = 1\label{Renorm}\tag{R}\\
+		 &\text{Proportionalität: Für alle} A \subset \F \mit A \subseteq B \text{ gilt }
+		 \P_{B}(A) = c_B \P(A) \text{ mit einer Konstante } c_B.\label{Prop}\tag{P}
+    \end{align}
 \end{example}
 
 \begin{lemma}
-	Sei $(\Omega, \sigF, \probp)$ WRaum und $B \in \sigF$ mit $\probp(B) > 0$. Dann gibt es genau ein WMaß $\probp_B$ auf $(\Omega, \sigF)$ mit den Eigenschaften (R) und (P). Dieses ist gegeben durch
+	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $B \in \F$ mit $\P(B) > 0$. Dann gibt es genau ein Wahrscheinlichkeitsmaß $\P_B$ auf $(\O, \F)$ mit den Eigenschaften \eqref{Renorm} und \eqref{Prop}. Dieses ist gegeben durch
 	\begin{align}
-		\probp_{B}(A) = \frac{\probp(A\cap B)}{\probp(B)} \quad \forall A \in \sigF.\notag
+		\P_{B}(A) = \frac{\P(A\cap B)}{\P(B)} \quad \forall A \in \F.\notag
 	\end{align}
 \end{lemma}
 
 \begin{proof}
-	Offenbar erfüllt $\probp_{B}$ wie definiert (R) und (P). Umgekehrt erfülle $\probp_{B}$ (R) und (P). Dann folgt für $A \in \sigF$:
+	Offenbar erfüllt $\P_{B}$ wie definiert \eqref{Renorm} und \eqref{Prop}. Umgekehrt erfüllt $\P_{B}$ \eqref{Renorm} und \eqref{Prop}. Dann folgt für $A \in \F$:
 	\begin{align}
-		\probp_{B}(A) = \probp_{B}(A\cap B) + \underbrace{\probp_{B}(A\setminus B)}_{= 0, \text{ wegen } (R)} \overset{(P)}{=} c_B \probp(A \cap B) \notag
+		\P_{B}(A) = \P_{B}(A\cap B) + \underbrace{\P_{B}(A\setminus B)}_{= 0, \text{ wegen } \eqref{Renorm}} \overset{\eqref{Prop}}{=} c_B \P(A \cap B).\notag
 	\end{align}
-    Für $A=B$ folgt zudem aus (R)
-    \begin{align}
-        1 = \probp_{B}(B) = c_B \probp(B) \notag
-    \end{align}
-    also $c_B = \probp(B)^{-1}$.
+	Für $A=B$ folgt zudem aus \eqref{Renorm}
+	\begin{align}
+		1 = \P_{B}(B) = c_B \P(B)\notag
+	\end{align}
+	also $c_B = \P(B)^{-1}$.
 \end{proof}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % 5th lecture % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\begin{definition}
+	\proplbl{3_1_3}
+	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $B \in \F$ mit $\P(B) > 0$. Dann heißt
+	\begin{align*}
+		\P(A\mid B) := \frac{\P(A\cap B)}{\P(B)} \mit A\in \F
+	\end{align*}
+	die \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $B$}.
+	Falls $\P(B) = 0$, setze
+	\begin{align*}
+		\P(A \mid B) = 0 \mit \forall A \in \F
+	\end{align*}
+\end{definition}
+
+\begin{example} %TODO ref
+	In der Situation \propref{3_1_1} gilt % 
+	\begin{align*}
+	A \cap B &= \set{(4,4)}
+	\intertext{und damit}
+	\P(A \mid B) &= \frac{\P(A\cap B)}{\P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
+	\end{align*}
+\end{example}
+Aus \propref{3_1_3} ergibt sich
+\begin{lemma}[Multiplikationsformel]
+	\proplbl{3_1_4}
+	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $A_1, \dots, A_n \in \F$. Dann
+	\begin{align*}
+		\P(A_1 \cap \cdots \cap A_n) = \P(A_1)\P(A_2 \mid A_n) \dots \P(A_n \mid A_1 \cap \cdots \cap A_{n-1})
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	Ist $\P(A_1 \cap \dots \cap A_n) = 0$, so gilt auch $\P(A_n \mid \bigcap_{i=1}^{n-1}) = 0$. Andernfalls sind alle Faktoren der rechten Seite ungleich 0 und
+	\begin{align*}
+		\P(A_1)\P(A_2 \mid A_1) \dots \P(A_n \mid \bigcap_{i=1}^{n-1} A_i) \\
+		= \P(A_1) \cdot \frac{\P(A_1 \cap A_2)}{\P(A_1)} \dots \frac{\P(\bigcap_{i=1}^{n} A_i)}{\P(\bigcap_{i=1}^{n-1}A_i)} = \P(\bigcap_{i=1}^n A_i)	
+	\end{align*}
+\end{proof} %TODO add ref.
+Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Formel einen Hinweis, wie Wahrscheinlichkeitsmaße für \begriff{Stufenexperimente} konstruiert werden können. Ein \emph{Stufenexperiment} aus $n$ nacheinander ausgeführten Teilexperimenten lässt sich als \begriff{Baumdiagramm} darstellen.
+
+%TODO Baumdiagramm
+\begin{center}
+	\begin{tikzpicture}
+		\input{./tikz/baum_1}
+	%	\caption{ \propref{3_1_4}}
+	\end{tikzpicture} 
+\end{center}
+
+\begin{proposition}[Konstruktion des Wahrscheinlichkeitsmaßes eines Stufenexperiments]
+	\proplbl{3_1_6}
+	Gegeben seinen $n$ Ergebnisräume $\O_i = \set{\omega_i (1), \dots, \omega_i (k)}, k \in \N \cup \set{\infty}$ und es sei $\O = \bigtimes_{i = 1}^n \O_i$ der zugehörige Produktraum. Weiter seinen $\F_i$ $\sigma$-Algebren auf $\O_i$ und $\F = \bigotimes_{i=1}^n \F_i$ die Produkt-$\sigma$-Algebra auf $\O$. Setze $\omega = (\omega_1,\dots,\omega_n)$ und
+	\begin{align*}
+		[\omega_1,\dots,\omega_n]:= \set{\omega_1}\times \dots \times \set{\omega_n} \times \O_{m-1} \times \O_{n},\quad m\le n\\
+		\P(\set{\omega_m}[\omega_1,\dots,\omega_{m-1}])
+	\end{align*} %TODO check indices, m-1 instead of m+1?
+	für die Wahrscheinlichkeit in der $m$-ten Stufe des Experiments $\omega_m$ zu beobachten, falls in den vorausgehenden Stufen $\omega_1,\dots,\omega_{m-1}$ beobachten wurden. Dann definiert
+	\begin{align*}
+		\P(\set{\omega}) := \P(\set{\omega_1})\prod_{m=2}^{n}\P\brackets{\set{\omega_m} \mid [\omega_1, \dots, \omega_{m-1}]}
+		%TODO maybe wrong here. check
+	\end{align*}
+	ein Wahrscheinlichkeitsmaß auf $(\O, \F, \P)$.
+\end{proposition}
+
+\begin{example}[\person{Polya}-Urne]
+	Gegeben sei eine Urne mit $s$ Schwarze und $w$ weiße Kugeln. Bei jedem Zug wird die  gezogene Kugel zusammen mit $c\in \N_0\cup \set{-1}$ weiteren Kugeln derselben Farbe zurückgelegt.
+	\begin{itemize} %TODO seen both in chapter 2.2, but big bracket behind.
+		\item $c=0$: Urnenmodell mit Zurücklegen
+		\item $c=-1$: Urnenmodell ohne Zurücklegen
+	\end{itemize}
+	Beide schon in Kapitel 2.2 gesehen.\\
+	Sei $c\in \N$. (Modell für zwei konkurrierende Populationen) Ziehen wir $n$-mal, so erhalten wir ein $n$-Stufenexperiment mit 
+	\begin{align*}
+		\O = \set{0,1}^n \mit \text{ 0 = ``weiß'', 1 = ``schwarz''}\mit	(\O_i = \set{0,1})
+		\intertext{Zudem gelten im ersten Schritt}
+		\P(\set{0}) = \frac{w}{s+w} \und \P(\set{1}) = \frac{s}{w+s}
+		\intertext{sowie}
+		\P(\set{\omega_m} \mid [\omega_1, \dots \omega_{m-1}]) = 
+		\begin{cases} %TODO fix brackets!
+		\frac{w+c(m-1 - \sum_{i=1}^{m-1}\omega_i)}{s+w+c(m-1)} & \omega_m = 0\\
+		\frac{s + c\sum_{i=1}^{m-1}\omega_i}{s+w+c(m-1)} & \omega_m = 1
+		\end{cases}
+	\end{align*}
+	Mit \propref{3_1_6} folgt als Wahrscheinlichkeitsmaß auf $(\O, \pows(\O))$
+	\begin{align*}
+		\P(\set{(\omega_1, \dots, \omega_n)}) &= \P(\set{\omega_1})\prod_{m=2}^n \P(\set{\omega_m}\mid [\omega_1,\dots,\omega_{m-1}])\\
+		&=\frac{\prod_{i=0}^{l-1}(s+c_i)\prod_{i=0}^{n-l-1}}{\prod_{i=0}^n (s+w+c_i)} \mit l=\sum_{i=1}^n \omega_i.
+		\intertext{Definiere wir nun die Zufallsvariable}
+		S_n:\O &\to \N_0 \mit (\omega_1, \dots, \omega_n) \mapsto \sum_{i=1}^n \omega_i
+		\intertext{welche die Anzahl der gezogenen schwarzen Kugeln modelliert, so folgt,}
+		\P(S_n = l) &= \binom{n}{l}\frac{\prod_{i=0}^{l-1}(s+c_i) \prod_{j=0}^{n-l-1}(\omega + c_j)}{\prod_{i=0}^n(s+w+c_i)}
+		\intertext{Mittels $a:= \sfrac{s}{c},b:= \sfrac{w}{c}$ folgt}
+		\P(S_n = l) &= \frac{\prod_{i=0}^{l-1}(-a-i)\prod_{i=0}^{-b-j-1}}{\prod_{i=0}^n (-a-b-i)} = \frac{\binom{-a}{l}\binom{-b}{n-l}}{\binom{-a-b}{n}}\\ &\mit l \in \set{0,\dots,n} 
+	\end{align*}
+	Dies ist die \begriff{\person{Polya}-Urne} auf $\set{0,\dots,n}, n \in \N$ mit Parametern $a,b > 0$.
+\end{example}
+
+\begin{example}
+	Ein Student beantwortet eine Multiple-Choice-Frage mit 4 Antwortmöglichkeiten, eine davon ist richtig. Er kennt die richtige Antwort mit Wahrscheinlichkeit $\sfrac{1}{3}$. Wenn er diese kennt, so wählt er diese aus. Andernfalls wählt er zufällig (gleichverteilt) eine Antwort.\\
+	Betrachte
+	\begin{align*}
+		W = \set{\text{richtige Antwort gewusst}}\\
+		R = \set{\text{Richtige Antwort gewählt}}
+		\intertext{Dann}
+		\P(W) = \frac{2}{3}, \P(R \mid W) = 1, \P(R \mid W^C) = \frac{1}{4} 
+	\end{align*}
+	Angenommen, der Student gibt die richtige Antwort. Mit welcher Wahrscheinlichkeit hat er diese gewusst?
+	\begin{align*}
+		\P(W\mid R) = \text{ ?}
+	\end{align*}
+\end{example}
+
+\begin{proposition}
+	\proplbl{3_1_9}
+	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $\O = \bigcup_{i \in I} B_i$ eine höchstens abzählbare Zerlegung in paarweise disjunkte Ereignisse $B_i \in \F$.
+	\begin{enumerate} %TODO set itemize references. or use enumerate?
+		\item \emph{Satz von der totalen Wahrscheinlichkeit:} Für alle $A \in \F$
+		\begin{align*}
+			\P(A) = \sum_{i\in I} \P(A\mid B_i)\P(B_i) \label{eq:totWkeit}\tag{totale Wahrscheinlichkeit}
+		\end{align*} 
+		\item \emph{Satz von \person{Bayes}:} Für alle $A \in \F$ mit $\P(A) > 0$ und alle $h \in I$
+		\begin{align*}
+			\P(B_h \mid A) = \frac{\P(A \mid B_h)\P(B_h)}{\sum_{i\in I}\P(A\mid B_i)\P(B_i)} \label{eq:bayes}\tag{Bayes}
+		\end{align*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Es gilt:
+		\begin{align*}
+			\sum_{i\in I} \P(A\mid B_i)\P(B_i) \defeq \sum_{i\in I}\frac{\P(A \cap B_i)}{\P(B_i)}\P(B_i) = \sum_{i\in I} \P(A \cap B_i) \overset{\sigma-add.}{=} \P(A)
+		\end{align*}
+		\item 
+		\begin{align*}
+			\P(B_h \mid A) \defeq \frac{\P(A \cap B_h)}{\P(A)} \defeq \frac{\P(A \mid B_h)\P(B_h)}{\P(A)}
+		\end{align*}
+		also mit a) auch b). %TODO add refs
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	In der Situation von \propref{3_1_3} folgt mit dem \propref{3_1_9} \eqref{eq:totWkeit}
+	\begin{align*}
+		\P(R) &= \P(R \mid W)\P(W) + \P(R\mid W^C)\P(W^C)\\
+		&= 1\cdot \frac{2}{3} + \frac{1}{4}\frac{1}{3} = \frac{3}{4}
+		\intertext{und mit dem \propref{3_1_9} \eqref{eq:bayes}} %Bayes
+		\P(W \mid R) &= \frac{\P(R \mid W)\P(W)}{\P(R)} = \frac{1\frac{2}{3}}{\frac{3}{4}} = \frac{8}{9} \text{ für die gesuchte Wahrscheinlichkeit.}
+	\end{align*} %TODO compile as pdf and include it. not working.
+%	\begin{center}
+%		\begin{tikzpicture}
+%			\input{./tikz/baum_2}
+%			\caption{ \propref{3_1_3}}
+%		\end{tikzpicture} 
+%	\end{center}
+\end{example}

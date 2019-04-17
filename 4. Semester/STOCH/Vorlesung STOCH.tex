@@ -5,14 +5,13 @@
 \author{Dozent: Prof. Dr. \person{Anita Behme}}
 
 % local commands
-\undef{\F}
-\newcommand{\F}{\mathscr{F}}
-\undef{\P}
-\newcommand{\P}{\mathbb{P}}
-\undef{\O}
-\newcommand{\O}{\Omega}
-\undef{\G}
-\newcommand{\G}{\mathscr{G}}
+\renewcommand{\F}{\mathscr F}
+%\undef{\P}
+\renewcommand{\P}{\mathbb{P}}
+%\undef{\O}
+\renewcommand{\O}{\Omega}
+%\undef{\G}
+\renewcommand{\G}{\mathscr{G}}
 %\undef{\base}
 \newcommand{\E}{\mathcal{E}}
 
@@ -38,8 +37,10 @@
 \input{./TeX_files/Grundbegriffe_Wtheorie}
 % Erste Standardmodelle der Wahrscheinlichkeitstheorie
 \input{./TeX_files/Erste_Standardmodelle}
-% Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
-\input{./TeX_files/Bedingte_Wheiten}
+\chapter[Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit]{Bedingte Wkeiten und (Un)-abbhängigkeit}
+\chaptermark{Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
+\input{./TeX_files/Bedingte_Wahrscheinlichkeiten}
+\input{./TeX_files/unbedingte_Wahrscheinlichkeiten}
 
 \chapter{Test}
 

@@ -1,5 +1,5 @@
 \chapter[Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit]{Bedingte Wkeiten und (Un)-abbhängigkeit}
-\chaptermark{Bedingte Wheiten und (Un)-abbhängigkeit}
+\chaptermark{Bedingte Wahrscheinlichkeiten und (Un)-abbhängigkeit}
 
 \section{Bedingte Wahrscheinlichkeiten}
 \begin{example}
@@ -64,7 +64,7 @@
 	\begin{align*}
 		\P(A\mid B) := \frac{\P(A\cap B)}{\P(B)} \mit A\in \F
 	\end{align*}
-	die \begriff{bedingte Wheit von $A$ gegeben $B$}.
+	die \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $B$}.
 	Falls $\P(B) = 0$, setze
 	\begin{align*}
 		\P(A \mid B) = 0 \mit \forall A \in \F
@@ -74,9 +74,9 @@
 \begin{example} %TODO ref
 	In der Situation \propref{3_1_1} gilt % 
 	\begin{align*}
-	A \cap B = \set{(4,4)}
+	A \cap B &= \set{(4,4)}
 	\intertext{und damit}
-	\P(A \mid B) = \frac{\P(A\cap B)}{\P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
+	\P(A \mid B) &= \frac{\P(A\cap B)}{\P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
 	\end{align*}
 \end{example}
 Aus \propref{3_1_3} ergibt sich
@@ -98,9 +98,12 @@ Aus \propref{3_1_3} ergibt sich
 Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Formel einen Hinweis, wie Wahrscheinlichkeitsmaße für \begriff{Stufenexperimente} konstruiert werden können. Ein \emph{Stufenexperiment} aus $n$ nacheinander ausgeführten Teilexperimenten lässt sich als \begriff{Baumdiagramm} darstellen.
 
 %TODO Baumdiagramm
-%\begin{tikzpicture}
-%	%TODO
-%\end{tikzpicture}
+\begin{center}
+	\begin{tikzpicture}
+		\input{./tikz/baum_1}
+	%	\caption{ \propref{3_1_4}}
+	\end{tikzpicture} 
+\end{center}
 
 \begin{proposition}[Konstruktion des Wahrscheinlichkeitsmaßes eines Stufenexperiments]
 	\proplbl{3_1_6}
@@ -109,7 +112,7 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 		[\omega_1,\dots,\omega_n]:= \set{\omega_1}\times \dots \times \set{\omega_n} \times \O_{m-1} \times \O_{n},\quad m\le n\\
 		\P(\set{\omega_m}[\omega_1,\dots,\omega_{m-1}])
 	\end{align*} %TODO check indices, m-1 instead of m+1?
-	für die Wheit in der $m$-ten Stufe des Experiments $\omega_m$ zu beobachten, falls in den vorausgehenden Stufen $\omega_1,\dots,\omega_{m-1}$ beobachten wurden. Dann definiert
+	für die Wahrscheinlichkeit in der $m$-ten Stufe des Experiments $\omega_m$ zu beobachten, falls in den vorausgehenden Stufen $\omega_1,\dots,\omega_{m-1}$ beobachten wurden. Dann definiert
 	\begin{align*}
 		\P(\set{\omega}) := \P(\set{\omega_1})\prod_{m=2}^{n}\P\brackets{\set{\omega_m} \mid [\omega_1, \dots, \omega_{m-1}]}
 		%TODO maybe wrong here. check
@@ -151,7 +154,7 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 \end{example}
 
 \begin{example}
-	Ein Student beantwortet eine Multiple-Choice-Frage mit 4 Antwortmöglichkeiten, eine davon ist richtig. Er kennt die richtige Antwort mit Wheit $\sfrac{1}{3}$. Wenn er diese kennt, so wählt er diese aus. Andernfalls wählt er zufällig (gleichverteilt) eine Antwort.\\
+	Ein Student beantwortet eine Multiple-Choice-Frage mit 4 Antwortmöglichkeiten, eine davon ist richtig. Er kennt die richtige Antwort mit Wahrscheinlichkeit $\sfrac{1}{3}$. Wenn er diese kennt, so wählt er diese aus. Andernfalls wählt er zufällig (gleichverteilt) eine Antwort.\\
 	Betrachte
 	\begin{align*}
 		W = \set{\text{richtige Antwort gewusst}}\\
@@ -195,19 +198,20 @@ Stehen die $A_i$ in \propref{3_1_4} in einer (zeitlichen) Abfolge, so liefert Fo
 \end{proof}
 
 \begin{example}
-	In der Situation von \propref{3_1_3} folgt mit dem \propref{3_1_9} \eqref{eq:totWkeit} der totalen Wahrscheinlichkeit
+	In der Situation von \propref{3_1_3} folgt mit dem \propref{3_1_9} \eqref{eq:totWkeit}
 	\begin{align*}
 		\P(R) &= \P(R \mid W)\P(W) + \P(R\mid W^C)\P(W^C)\\
 		&= 1\cdot \frac{2}{3} + \frac{1}{4}\frac{1}{3} = \frac{3}{4}
 		\intertext{und mit dem \propref{3_1_9} \eqref{eq:bayes}} %Bayes
 		\P(W \mid R) &= \frac{\P(R \mid W)\P(W)}{\P(R)} = \frac{1\frac{2}{3}}{\frac{3}{4}} = \frac{8}{9} \text{ für die gesuchte Wahrscheinlichkeit.}
-	\end{align*} %TODO
-%	\begin{tikzpicture}
-%		
-%	\end{tikzpicture} 
+	\end{align*}
+	\begin{center}
+		\begin{tikzpicture}
+			\input{./tikz/baum_2}
+%			\caption{ \propref{3_1_3}}
+		\end{tikzpicture} 
+	\end{center}
 \end{example}
-% trees in Latex?
-% https://tex.stackexchange.com/questions/5447/how-can-i-draw-simple-trees-in-latex/5451
 \section{(Un)-abhängigkeit} \label{sec_unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente/ Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
@@ -215,7 +219,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente/ Er
 \end{align*}
 \begin{definition}[(stochastisch)unabhängig]
 	\proplbl{3_2_11}
-	$(\O, \F, \P)$ WRaum. Zwei Ereignisse $A,B \in \F$ heißt \begriff{(stochastisch) unabhängig bezüglich $\P$}, falls
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum. Zwei Ereignisse $A,B \in \F$ heißt \begriff{(stochastisch) unabhängig bezüglich $\P$}, falls
 	\begin{align*}
 		\P(A\cap B) = \P(A)\P(B)
 	\end{align*}
@@ -224,31 +228,31 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente/ Er
 \begin{example}
 	Würfeln mit 2 fairen, sechsseitigen Würfel:
 	\begin{align*}
-		\O = \set{(i,j) \mid i,j \in\set{1,\dots,n}},\quad \F = \pows(\O), \quad \P = \Gleich(\O)
+		\O &= \set{(i,j) \mid i,j \in\set{1,\dots,n}},\quad \F = \pows(\O), \quad \P = \Gleich(\O)
 	\intertext{Betrachte}
-		A:= \set{(i,j) \in \O, i \text{ gerade}}\\
-		B:= \set{(i,j) \in \O, j > 2}
+		A&:= \set{(i,j) \in \O, i \text{ gerade}}\\
+		B&:= \set{(i,j) \in \O, j > 2}
 	\end{align*}
 	In diesem Fall, erwarten wir intuitiv Unabhängigkeit von $A$ und $B$.\\
 	In der Tat % start using \P instead of \P!
 	\begin{align*}
-		\P(A) = \frac{1}{2}, \quad \P(B) = \frac{1}{3} \mit \P(A\cap B) = \frac{1}{6}
+		\P(A) &= \frac{1}{2}, \quad \P(B) = \frac{1}{3} \mit \P(A\cap B) = \frac{1}{6}
 		\intertext{erfüllt}
-		\P(A\cap B) = \P(A)\P(B).
+		\P(A\cap B) &= \P(A)\P(B).
 	\end{align*}
 	Betrachte nun
 	\begin{align*}
-		C:= \set{(i,j) \in \O, i\neq j = 1}\\
-		D:= \set{(i,j) \in \O, i = 6}
+		C&:= \set{(i,j) \in \O, i\neq j = 1}\\
+		D&:= \set{(i,j) \in \O, i = 6}
 		\intertext{dann gilt}
 		\P(C) = \frac{1}{6}, \quad \P(D) = \frac{1}{6}
 		\intertext{und wegen $C \cap D = \set{(6,1)}$ folgt}
-		\P(C\cap D) = \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C \setminus D)
+		\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C \setminus D)
 	\end{align*}
 	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
 \end{example}
 \begin{definition}[unabhängig bezüglich $\P$]
-	$(\O, \F, \P)$ WRaum und $I \neq \emptyset$ endliche Indexmenge. Dann heißt die Familie $(A_i)_{i \in I}$ von Ereignissen in $\F$ \begriff{unabhängig bezüglich $\P$}, falls für alle $J \subseteq I, J \neq \emptyset$ gilt:
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $I \neq \emptyset$ endliche Indexmenge. Dann heißt die Familie $(A_i)_{i \in I}$ von Ereignissen in $\F$ \begriff{unabhängig bezüglich $\P$}, falls für alle $J \subseteq I, J \neq \emptyset$ gilt:
 	\begin{align*}
 		\P\brackets{\bigcap_{i\in J}A_i} = \prod_{i\in J} \P(A_i)
 	\end{align*}
@@ -259,9 +263,9 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente/ Er
 	\begin{align*}
 		\O = \set{0,1}^2, \quad \F = \pows(\O), \quad \P = \Gleich(\O)
 		\intertext{sowie}
-		A = \set{1}\times \set{0,1} \qquad \text{(Münzwurf: erster Wurf Zahl)}\\
-		B = \set{0,1}\times \set{1} \qquad \text{(Münzwurf: zweiter Wurf Zahl)}\\
-		C = \set{0,0}\times \set{1,1} \qquad \text{(beide Würfe selbes Ergebnis)}
+		A &= \set{1}\times \set{0,1} \qquad \text{(Münzwurf: erster Wurf Zahl)}\\
+		B &= \set{0,1}\times \set{1} \qquad \text{(Münzwurf: zweiter Wurf Zahl)}\\
+		C &= \set{0,0}\times \set{1,1} \qquad \text{(beide Würfe selbes Ergebnis)}
 	\end{align*}
 	Dann gelten
 	\begin{align*}
