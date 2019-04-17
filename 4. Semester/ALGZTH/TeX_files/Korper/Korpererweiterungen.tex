@@ -59,11 +59,11 @@ Sei $K,L,M$ Körper.
 \end{proof}
 
 \begin{definition}[Körpererweiterung]
-	Ist $K$ ein Teilkörper von $L$, so nennt man $L$ eine \begriff{Köpererweiterung} von $K$, auch geschrieben $L\vert K$.
+	Ist $K$ ein Teilkörper von $L$, so nennt man $L$ eine \begriff{Köpererweiterung} von $K$, auch geschrieben $L \mid K$.
 \end{definition}
 
 \begin{definition}[$K$-Homomorphismus]
-	Seien $L_1\vert K$ und $L_2 \vert K$ Körpererweiterungen.
+	Seien $L_1 \mid K$ und $L_2 \mid K$ Körpererweiterungen.
 	\begin{enumerate}
 		\item Ein Ringhomomorphismus $\phi\colon L_1 \to L_2$ ist ein $K$-Homomorphismus, wenn $\phi\vert_K = \id_K$ (i.Z. $\phi: L_1 \to L_2$)
 		\item $\Hom_K(L_1,L_2) = \set{\phi \mid \phi: L_1 \to L_2 \text{ ist $K$-Homomorphismus}}$
@@ -72,11 +72,11 @@ Sei $K,L,M$ Körper.
 \end{definition}
 
 \begin{remark}
-	$L\vert K$ eine Körpererweiterung, so wird $L$ durch Einschränkung der Multiplikation zu einem $K$-Vektorraum.
+	$L\mid K$ eine Körpererweiterung, so wird $L$ durch Einschränkung der Multiplikation zu einem $K$-Vektorraum.
 \end{remark}
 
 \begin{definition}[Körpergrad]
-	$[L:K]:= \dim_k(L) \in \N \cup \{\infty\}$, der \begriff{Körpergrad} der Körpererweiterungen $L\vert K$.
+	$[L:K]:= \dim_k(L) \in \N \cup \{\infty\}$, der \begriff{Körpergrad} der Körpererweiterungen $L\mid K$.
 \end{definition}
 
 \begin{example}
@@ -93,7 +93,7 @@ Sei $K,L,M$ Körper.
 	(``Körpergrad ist multiplikativ'')
 \end{proposition}
 
-\begin{proof} %TODO maybe make unnumbered lemma here for the claim?
+\begin{proof} %TODO maybe make unnumbered lemma here for the claim? add align!
 	Behauptung: Sei $x_1, \dots, x_n \in L$ $K$-linear unabhängig und $y_1, \dots, y_m \in M$ $L$-linear unabhängig\\
 	$\Rightarrow x_i y_j, i \in \set{1,\dots,n}, j \in \set{1, \dots, m}$ $K$-linear unabhängig.\\
 	Beweis: $\sum_{i,j} \lambda_{ij}x_i y_j = 0$ mit $\lambda_{ij} \in K$\\
@@ -111,13 +111,13 @@ Sei $K,L,M$ Körper.
 \end{proof}
 
 \begin{definition}[Körpergrad endlich]
-	$L\vert K$ endlich $:\Leftrightarrow [L:K] < \infty$.
+	$L\mid K$ endlich $:\Leftrightarrow [L:K] < \infty$.
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{definition}[Unterring, Teilkörper]
-	Sei $L\vert K$ eine Körpererweiterung $a_1, a_2, \dots, a_n \in L$.
+	Sei $L\mid K$ eine Körpererweiterung $a_1, a_2, \dots, a_n \in L$.
 	\begin{enumerate}
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``von ``$a_1, \dots, a_n$ über $K$ erzeugte'', ``$a_1, \dots, a_n$'' zu $K$ adjungieren)
@@ -129,7 +129,7 @@ Sei $K,L,M$ Körper.
 \begin{remark}
 	\proplbl{1_1_15}
 	\begin{enumerate}[label=(\alph*)]
-		\item $L\vert K$ endlich $\Rightarrow L\vert K$ endlich erzeugt.
+		\item $L\mid K$ endlich $\Rightarrow L\mid K$ endlich erzeugt.
 		\item $K[a_1, \dots, a_n]$ ist das Bild des Homomorphismus
 		\begin{align}
 		\begin{cases}
