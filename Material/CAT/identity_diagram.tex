@@ -1,0 +1,21 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+	\usetikzlibrary{cd}
+
+\begin{document}$
+	\begin{tikzcd}
+		& \arrow[out=90,in=50,loop, distance=3em, "1_b"] b  \arrow[rd, "{(b,d)}"] &   \\
+		a \arrow[out=200,in=160, distance=3em, "1_a"] \arrow[rr, "{(a,d)}"] \arrow[ru, "{(a,b)}"] \arrow[rd, "{(a,c)}"] &                         & d \arrow[loop right, distance=3em, start anchor={[yshift=1ex]east}, end anchor={[yshift=-1ex]east}]{}{1_d}\\
+		& c \arrow[out=300,in=260,loop, distance=3em, "1_c"] \arrow[ru, "{(c,d)}"] &  
+	\end{tikzcd}
+	\begin{tikzcd}[cells={nodes={}}]
+		%\arrow[loop left, distance=3em, start anchor={[yshift=-1ex]west}, end anchor={[yshift=1ex]west}]{}{1_A}  
+		\arrow{r}\bullet 
+		& \bullet\arrow[loop right, distance=3em, start anchor={[yshift=1ex]east}, end anchor={[yshift=-1ex]east}]{}{1_B} 
+	\end{tikzcd}
+	\begin{tikzcd}[cells={nodes={}}]
+	\arrow[loop left, distance=3em, start anchor={[yshift=-1ex]west}, end anchor={[yshift=1ex]west}]{}{\mathrm{id}_A} \arrow{r} A 
+	& B\times C\arrow[loop right, distance=3em, start anchor={[yshift=1ex]east}, end anchor={[yshift=-1ex]east}]{}{\mathrm{id}_{B\times C}} 
+	\end{tikzcd}$
+\end{document}
