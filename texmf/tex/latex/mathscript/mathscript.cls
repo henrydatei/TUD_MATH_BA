@@ -113,6 +113,7 @@
 \RequirePackage{pgf}
 \RequirePackage{tikz}
 \usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing,backgrounds, positioning,fit,petri,decorations.fractals,trees}
+\RequirePackage{tikz-cd}
 \usetikzlibrary{matrix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,73 @@
+\section{Wurzelkörper und Zerfällungskörper}
+Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
+\begin{example}
+	Sei $K=\Q$. Dann hat $f$ eine Nullstelle (``Wurzel'') $\alpha \in \C$, und $L:= K(\alpha) = K[\alpha]$ ist die kleinste Erweiterung von $\Q$ in $\C$, die diese Nullstelle enthält.
+\end{example}
+\begin{definition}[Wurzelkörper]
+	Ein \begriff{Wurzelkörper} von $f$ ist eine Körpererweiterung $L \mid K$ der Form $L = K(\alpha)$ mit $f(\alpha) = 0$.
+\end{definition}
+\begin{lemma}
+	\proplbl{1_3_3}
+	Sei $L = K(\alpha)$ mit $f(\alpha) = 0$ ein Wurzelkörper von $f$. Dann ist $[L:K] \le n$. Ist $f$ irreduzibel, so ist $[L:K] = n$ und $g \mapsto g(\alpha)$ induziert einen Isomorphismus $\lnkset{K[X]}{(f)} \overset{\cong}{\longrightarrow}_K L$.
+\end{lemma}
+\begin{proof} %TODO fix b) ref
+	Sei zunächst $f$ irreduzibel, $f_{\alpha} = \MinPol(\alpha \mid K)$. Dann ist $f = cf_{\alpha}$, die Behauptung folgt somit aus \propref{1_2_7}b). Für $f \in K[X]$ beliebig, schreibe $f = f_1\cdots f_r$ mit $f_i \in K[X]$ irreduzibel
+	\begin{align*}
+		f(\alpha) = 0 \Rightarrow \text{ OE } f_1(\alpha) = 0 \Rightarrow [L:K] = \deg(f_1) \le \deg(f) = n %TODO is it really 1 in the index?
+	\end{align*}
+\end{proof}
+\begin{lemma}
+	\proplbl{1_3_4}
+	Sei $f$ irreduzibel. Dann ist $L := \lnkset{K[X]}{(f)}$ ein Wurzelkörper von $f$.
+\end{lemma}
+\begin{proof}
+	Betrachte den Epimorphismus $\pi = \pi_f: K[X] \to \lnkset{K[X]}{(f)} = L$, setze $\alpha = \pi(X)$
+	\begin{itemize}
+		\item $K$ Körper $\Rightarrow \pi_{\mid K}$ injektiv\\
+		$\Rightarrow$ können $K$ mit Teilkörper von $L$ identifizieren, sodass $\pi_{\mid K} = \id_K$
+		\item $(f)$ irreduzibel $\Rightarrow$ prim $\xrightarrow{\text{GEO II.4.7}}$ $(f)$ maximal $\Rightarrow L = \lnkset{K[X]}{(f)}$ ist Körper
+		\item $f(\alpha) = f(\pi(X)) \overset{*}{=} \pi(f(X)) = 0 \quad f(X) \in \Ker(\pi)$\\
+		* gilt, da $f = \sum a_i x^i = \pi(f) = \sum \pi(a_i)\pi(x)^i = \sum a_i \pi(x)^i = f(\pi(x))$
+		\item $L=\pi(K[X]) = K[\pi(X)] = k[\alpha] \overset{\alpha \text{ alg.}}{=} K(\alpha)$
+	\end{itemize}
+\end{proof}
+\begin{proposition}
+	Sei $f$ irreduzibel. Ein Wurzelkörper von $f$ existiert und ist eindeutig in folgendem Sinn:\\
+	Sind $L_1 = K(\alpha_1), L_2 = K(\alpha_2)$ mit $f(\alpha_1) = 0 = f(\alpha_2)$, so existiert genau ein $K$-Isomorphismus $\varphi: L_1 \to L_2$ mit $\varphi(\alpha_1) = \alpha_2$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Existenz gibt \propref{1_3_4}
+		\item \propref{1_3_3} liefert Isomorphismus
+		\begin{align*}
+			L_1 \xleftarrow[\varphi_1]{\cong} & \lnkset{K[X]}{(f)} & \xrightarrow[\varphi_2]{\cong} L_2\\
+			\alpha_1 & \mapsfrom 
+			& X + (f) & \mapsto \alpha_2\\
+%			\Rightarrow \varphi_2 \circ \varphi_1 : L_1 \xrightarrow{\cong}_K L_2 \mit $\alpha_1 \mapsto \alpha_2
+		\end{align*}
+		Umgekehrt ist jeder $K$-Isomorphismus $\varphi: L_1 \to_K L_2$ wegen $L_1 = K(\alpha_1)$ schon durch $\varphi(\alpha_1)$ festgelegt.
+	\end{itemize}
+\end{proof}
+\begin{conclusion}
+	$f$ hat einen Wurzelkörper.
+\end{conclusion}
+\begin{proof}
+	Schreibe $f=f_1\cdots f_r, f_1,\dots,f_r \in K[X]$ irreduzibel, nehme einen Wurzelkörper von $f_1$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{1_3_12}
+	Sei $f = \sum_{i=0}^n a_i x^i$ irreduzibel und sei $L = K(\alpha)$ mit $f(\alpha)$ ein Wurzelkörper von $f$. Sei $\tilde{L}\mid \tilde{K}$ eine weitere Körpererweiterung und $\varphi \in \Hom(K,\tilde{K})$. Ist $\sigma \in \Hom(L,\tilde{L})$ eine Fortsetzung von $\varphi$ (d.h. $\sigma_{\mid K} = \varphi$), so ist $\sigma(\alpha)$ eine Nullstelle von $f^{\varphi}=\sum_{i=0}^n \varphi(\alpha_i)x^i \in K[X]$. Ist umgekehrt $\beta \in L' $ eine Nullstelle von $f^{\varphi}$, so gibt es genau eine Fortsetzung $\sigma \in \Hom(L,\tilde{L})$ von $\varphi$ mit $\sigma(\alpha) = \beta$. %TODO fix Argument of \language@active@arg" has an extra }. \end{tikzcd} problem?
+	\begin{align*}
+		\begin{tikzcd}
+			L \arrow[r, "\sigma"]            & \tilde{L}           \\
+			K \arrow[r, "\varphi"] \arrow[u] & \tilde{K} \arrow[u]
+		\end{tikzcd}
+	\end{align*}
+\end{lemma}
+\begin{proof}[was für die Prüfung!]
+	\begin{itemize}
+		\item $f(\alpha) = 0 \Rightarrow 0 = \sigma(0) = \sigma(f(\alpha)) = \sigma\brackets{\sum_{i=0}^n a_i \alpha_i} = \sum_{i=0}^n \varphi(a_i)\sigma(\alpha)^i$
+		\item 
+	\end{itemize}
+\end{proof}
