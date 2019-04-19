@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+
+\usepackage{tikz, amsmath}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\begin{document}
+	\begin{tikzcd}
+			A \arrow[loop, "1_A"] \arrow[r, "\eta"]                                      & B \\
+			C \arrow[loop left, "1_C"] \arrow[u, "\sigma"] \arrow[ru, "\varphi"', bend right] &  
+	\end{tikzcd}
+	\begin{tikzcd}[cells={nodes={}}]
+		\arrow[loop left, distance=3em, start anchor={[yshift=-1ex]west}, end anchor={[yshift=1ex]west}]{}{\mathrm{id}_A} \arrow{r} A 
+		& B\times C\arrow[loop right, distance=3em, start anchor={[yshift=1ex]east}, end anchor={[yshift=-1ex]east}]{}{\mathrm{id}_{B\times C}} 
+	\end{tikzcd}
+\end{document}
