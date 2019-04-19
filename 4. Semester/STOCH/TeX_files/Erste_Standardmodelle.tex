@@ -51,28 +51,32 @@ Zur Bestimmung einer geeigneten Wahrscheinlichkeitsmaßes, nummerieren wir die K
 \end{align}
 und wir könnten die Gleichverteilung $\overline{\probp} = \Gleich(\overline{\Omega})$ als Wahrscheinlichkeitsmaß für einem einzelnen Zug verwenden. Für den Übergang zu $\Omega$ konstruieren wir  Zufallsvariablen. Die Farbe im $i$-ten Zug wird beschrieben durch
 \begin{align*}
-	X_i: \overline{\Omega} \to E \mit \overline{\omega} = \left( \overline{\omega}_1, \dots, \overline{\omega}_n \right) \mapsto a \text{ falls } \overline{\omega}_i \in F_a\\
-	\intertext{Der Zufallsvektor}
+	X_i: \overline{\Omega} \to E \mit \overline{\omega} = \left( \overline{\omega}_1, \dots, \overline{\omega}_n \right) \mapsto a \text{ falls } \overline{\omega}_i \in F_a.
+	\end{align*}
+	Der Zufallsvektor
+	\begin{align*}
 	X = (X_1, \dots, X_n): \overline{\Omega} \to \Omega\\
    \intertext{beschreibt dann die Abfolge der Farben. Für jedes $\omega \in \Omega$ gilt dann}
-	\set{X = \omega} = F_{\omega_1} \times \cdots \times F_{\omega_n} = \bigtimes_{i=1}^{n} F_{\omega_i}\\
-	\intertext{und damit}
+	\set{X = \omega} = F_{\omega_1} \times \cdots \times F_{\omega_n} = \bigtimes_{i=1}^{n} F_{\omega_i}
+\end{align*}
+und damit
+\begin{align*}
 	\probp(\set{\omega}) 
 	&= \overline{\probp}(X^{-1}(\set{\omega})) = \probp(X=\omega)\\
 	&= \frac{\abs{F_{\omega_1}} \cdots \abs{F_{\omega_n}}}{\abs{\overline{\Omega}}}\\
 	&= \prod_{i=1}^{n} \frac{\abs{F_{\omega_i}}}{N} =: \prod_{i=1}^{n} \rho(\omega_i)
 \end{align*}
-Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \cref{sec_unabhangigkeit}). %TODO ref?!?!?!
+Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \cref{sec:unabhangigkeit}). %TODO ref?!?!?!
 
 Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies enspricht
 \begin{align*}
 	\hat{\Omega} 
 	= \set{k = (k_a)_{a \in E} \in \N_{0}^{\abs{E}} \colon \sum_{a \in E} k_a = n}
-	\und \hat{\sigF} = \pows\brackets{\hat{\Omega}}\\
+	\und \hat{\sigF} = \pows\brackets{\hat{\Omega}}
 	\intertext{Den Übergang $\Omega \to \hat{\Omega}$ beschreiben wir durch die Zufallsvariablen}
-	Y_a(\omega): \Omega \to \N_{0} \mit \omega &= (\omega_1,\dots, \omega_n)\mapsto \sum_{a \in E} \indi_{\set{a}}(\omega_i)\\
+	Y_a(\omega): \Omega \to \N_{0} \mit \omega = (\omega_1,\dots, \omega_n)\mapsto \sum_{a \in E} \indi_{\set{a}}(\omega_i)\\
 	\intertext{und}
-	Y = \brackets{Y_a}_{a\in E}: \Omega \to \hat{\Omega} &= \set{k = (k_a)_{a\in E}\colon \sum_{a \in E} k_a = n}
+	Y = \brackets{Y_a}_{a\in E}: \Omega \to \hat{\Omega} = \set{k = (k_a)_{a\in E}\colon \sum_{a \in E} k_a = n}
 \end{align*}
 
 % % % % % % % % % % % % % % % % % % % % 4th lecture % % % % % % % % % % % % % % % % % % % % % % %
@@ -81,18 +85,15 @@ Wir erhalten
 \begin{align*}
 	\probp(Y = k) &= \probp(Y_a = k_a, \enskip a \in E)\notag\\
 	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{i=1}^{n} \rho(\omega_i)\notag\\
-	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a) 
+	&= \sum_{\omega \in \Omega: Y(\omega) = k} \prod_{a \in E} \rho(a)\\ 
 	&= \binom{n}{(k)_{a\in E}} 
-%	\begin{pmatrix}
-%	n \\
-%	(k)_{a\in E}
-%	\end{pmatrix}
-	\prod_{a \in E} \rho(a)^{k_a},\\
-	\intertext{wobei}
-	\binom{n}{(k_1, \dots, k_l)} 
-	&= 
+	\prod_{a \in E} \rho(a)^{k_a},
+	\end{align*}
+	wobei
+	\begin{align*}
+	\binom{n}{(k_1, \dots, k_l)} = 
 	\begin{cases}
-	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} \sum_{i=1}^{l} k_i = n\\
+	\frac{n!}{k_1 ! \, k_2 ! \cdots k_l !} \sum_{i=1}^{l} k_i = n & \\
 	0 & \sonst
 	\end{cases}
 \end{align*}
@@ -149,7 +150,7 @@ Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es w
 \begin{definition}
 	Seinen $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
 	\begin{align}
-		\rho(w) = \frac{\binom{wW}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
+		\rho(w) = \frac{\binom{W}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
 	\end{align}
 	die \begriff{Hypergeometrische Verteilung} mit Parametern $N,W,n$. Wir schreiben $\Hyper(N,W,n)$.
 \end{definition}
