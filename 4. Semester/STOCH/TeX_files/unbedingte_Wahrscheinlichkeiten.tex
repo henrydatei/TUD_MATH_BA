@@ -30,12 +30,12 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\end{align*}
 	Betrachte nun
 	\begin{align*}
-	C&:= \set{(i,j) \in \O \mid i\neq j = 1}\\
+	C&:= \set{(i,j) \in \O \mid i + j = 7}\\
 	D&:= \set{(i,j) \in \O \mid i = 6}
 	\intertext{dann gilt}
 	\P(C) = \frac{1}{6}, \quad \P(D) = \frac{1}{6}
 	\intertext{und wegen $C \cap D = \set{(6,1)}$ folgt}
-	\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C \setminus D)
+	\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C) \cdot \P(D)
 	\end{align*}
 	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
 \end{example}
