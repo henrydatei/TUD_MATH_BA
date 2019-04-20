@@ -26,8 +26,8 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 		\item $K$ Körper $\Rightarrow \pi_{\mid K}$ injektiv\\
 		$\Rightarrow$ können $K$ mit Teilkörper von $L$ identifizieren, sodass $\pi_{\mid K} = \id_K$
 		\item $(f)$ irreduzibel $\Rightarrow$ prim $\xrightarrow{\text{GEO II.4.7}}$ $(f)$ maximal $\Rightarrow L = \lnkset{K[X]}{(f)}$ ist Körper
-		\item $f(\alpha) = f(\pi(X)) \overset{*}{=} \pi(f(X)) = 0 \quad f(X) \in \Ker(\pi)$\\
-		* gilt, da $f = \sum a_i x^i = \pi(f) = \sum \pi(a_i)\pi(x)^i = \sum a_i \pi(x)^i = f(\pi(x))$
+		\item $f(\alpha) = f(\pi(X)) \overset{(\ast)}{=} \pi(f(X)) = 0 \quad f(X) \in \Ker(\pi)$\\
+		($\ast$ gilt, da $f = \sum a_i x^i = \pi(f) = \sum \pi(a_i)\pi(x)^i = \sum a_i \pi(x)^i = f(\pi(x))$)
 		\item $L=\pi(K[X]) = K[\pi(X)] = k[\alpha] \overset{\alpha \text{ alg.}}{=} K(\alpha)$
 	\end{itemize}
 \end{proof}
@@ -57,6 +57,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	Schreibe $f=f_1\cdots f_r, f_1,\dots,f_r \in K[X]$ irreduzibel, nehme einen Wurzelkörper von $f_1$.
 \end{proof}
 \begin{conclusion}
+	\proplbl{1_3_7}
 	Es gibt eine Erweiterung $L\mid K$, über der $f$ in Linearfaktoren zerfällt, also $f=c\prod_{i=0}^{n}(x-\alpha_i)$ mit $c \in K^{\times}, \alpha,\dots,\alpha_n \in L$. 
 \end{conclusion}
 \begin{proof}
@@ -67,6 +68,29 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 		$\Rightarrow$ $f_0 = (x-\alpha_1)\cdot f_1 \mit f_1 \in L_1 [X]$ normiert\\
 		$\xRightarrow{\text{(IH)}}$ existiert $L\mid L_1 , \alpha_1, \dots, \alpha_n \in L \mit f_1 = \prod_{i=2}^n (x - \alpha_i)$\\
 		$\Rightarrow$ $f = c\cdot f_0 = c\cdot (x-\alpha_1) \cdot f_1 = c \prod_{i=1}^n (x- \alpha_i)$
+	\end{itemize}
+\end{proof}
+\begin{definition}[Zerfällungskörper]
+	Ein \begriff{Zerfällungskörper} von $K$ ist eine Erweiterung $L\mid K$ der Form $L = K(\alpha_1,\dots,\alpha_n)$ mit $f=c\mal \prod_{i=1}^n (x-\alpha_i) \mit c \in K^{\times}$.
+\end{definition}
+\begin{proposition}
+	Ein Zerfällungskörper von $f$ existiert.
+\end{proposition}
+\begin{proof}
+	Ist $L\mid K$ wie in \propref{1_3_7}, ist $K(\alpha_1,\dots,\alpha_n)$ ein Zerfällungskörper von $f$.
+\end{proof}
+\begin{lemma}
+	Ist $L \mid K$ ein Zerfällungskörper vpn $f$, so ist $[L:K] \le n$!
+\end{lemma}
+\begin{proof}
+	Sei $L = K(\alpha_1,\dots,\alpha_n), f = c\prod_{i=1}^n (x-\alpha_i)$.\\
+	Induktion nach $n$:\\
+	\begin{itemize}
+		\item $n=1:$ $L=K, [K:K] = 1$
+		\item $n>1:$ $L_1 = K(\alpha_1)$ ist Wurzelkörper von $f \xRightarrow{\propref{1_3_3}} [L_1:K] \le n$ und schreibe $f=c\mal (x-\alpha_1)\mal f_1, f_1 = \prod_{i=2}^n (x-\alpha_i) \in L_1[X]$\\
+		$\Rightarrow L = K(\alpha_1,\dots,\alpha_n) = L_1(\alpha_1,\dots,\alpha_n)$ ist Zerfällungskörper von $f_1$ (über $L_1$)\\
+		$\xRightarrow{\text{IH}} [L:L_1] \le \deg(f_1)! = (n-1)!$\\
+		$\Rightarrow [L:K] = [L:L_1][L_1:K] = (n-1)!n = n!$
 	\end{itemize}
 \end{proof}
 \begin{example}
@@ -91,17 +115,51 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 \begin{*anmerkung}
 	Wenn $f$ irreduzibel $\Rightarrow \lnkset{K[X]}{(f)}$ ist Wurzelkörper.
 \end{*anmerkung}
-
 \begin{lemma}
 	\proplbl{1_3_12}
 	Sei $f = \sum_{i=0}^n a_i x^i$ irreduzibel und sei $L = K(\alpha)$ mit $f(\alpha)$ ein Wurzelkörper von $f$. Sei $\tilde{L}\mid \tilde{K}$ eine weitere Körpererweiterung und $\varphi \in \Hom(K,\tilde{K})$. Ist $\sigma \in \Hom(L,\tilde{L})$ eine Fortsetzung von $\varphi$ (d.h. $\sigma_{\mid K} = \varphi$), so ist $\sigma(\alpha)$ eine Nullstelle von $f^{\varphi}=\sum_{i=0}^n \varphi(\alpha_i)x^i \in K[X]$. Ist umgekehrt $\beta \in L' $ eine Nullstelle von $f^{\varphi}$, so gibt es genau eine Fortsetzung $\sigma \in \Hom(L,\tilde{L})$ von $\varphi$ mit $\sigma(\alpha) = \beta$.
-	%TODO add diagram
+\begin{center} % tikzcd was bitchy, compiled and included the pdf.
+	\includegraphics{./tikz/lemma_1_3_12.pdf}
+\end{center}
 \end{lemma}
 \begin{proof}[was für die Prüfung!]
 	\begin{itemize}
-		\item $f(\alpha) = 0 \Rightarrow 0 = \sigma(0) = \sigma(f(\alpha)) = \sigma\brackets{\sum_{i=0}^n a_i \alpha_i} = \sum_{i=0}^n \varphi(a_i)\sigma(\alpha)^i$
-		\item 
+		\item $f(\alpha) = 0 \Rightarrow 0 = \sigma(0) = \sigma(f(\alpha)) = \sigma\brackets{\sum_{i=0}^n a_i \alpha_i} = \sum_{i=0}^n \varphi(a_i)\sigma(\alpha)^i = f^{\varphi}(\sigma(\alpha))$
+		\item Eindeutigkeit klar, da $L=K(\alpha)$
+		\item Existenz: Betrachte 
+		\begin{align*}
+			\eta: 
+			\begin{cases}
+				K[X] &\to L\\
+				g &\mapsto g(\alpha)
+			\end{cases}\qquad
+			\psi:
+			\begin{cases}
+				K[X] &\to L'\\
+				g &\to g^{\varphi}(\beta) 
+			\end{cases}\qquad \to \text{ sind Homomorphismen nach universeller Eigenschaft}
+		\end{align*}
+		(Bemerke: $\eta$ surjektiv: $\eta_{\mid K} = \id \to K \in \Image(\eta) \mit \eta(x) = \alpha \to \alpha \in \Image(\eta)$)\\
+		$Ker(\eta)=(f)$ ist Isomorphismus und $\bar{\eta}: \lnkset{K[X]}{(f)} \xrightarrow{\cong}L$ und\\
+		$f \in \Ker(\psi) \Rightarrow \Ker(\psi) = (f)$ ist Homomorphismus $\bar{\psi}: \lnkset{K[X]}{(f)} \to L'$\\
+		$\sigma:= \bar{\psi}\circ \bar{\eta}^{-1}: L \to L'$ ist eine Fortsetzung von $\psi$ und
+		\begin{align*}
+			\sigma(\alpha) = \bar{\psi}(x+(f)) = \beta
+		\end{align*}
 	\end{itemize}
+\end{proof}
+\begin{proposition}
+	Der Zerfällungskörper von $f$ ist eindeutig bestimmt bis auf $K$-Isomorphie.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate} %TODO no label!
+		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungskörper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
+		\item Beweis: Induktion nach $n = \deg(f)$\\
+			\begin{itemize} %TODO maybe use enum here without label?
+				\item (IA) $n=1:$ $L = K \xrightarrow[\varphi]{\cong} K' = L'$ \checkmark
+				\item (IS) $n>1:$ $ $ %TODO finish proof here, then is the section done!
+			\end{itemize}
+	\end{enumerate}
 \end{proof}
 \begin{remark}
 	Ist $M\mid K$ eine Erweiterung, die einem Zerfällungskörper $l$ von $f$ enthält, dann ist dieser nicht nur bis auf die Isomorphie sondern als Teilkörper eindeutig bestimmt $L = K(\alpha_1, \dots, \alpha_n)$, wobei $\alpha_1, \dots, \alpha_n$ genau die $n$ Nullstellen von $f$ in $M$ sind.
