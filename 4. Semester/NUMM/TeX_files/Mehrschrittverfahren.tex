@@ -59,3 +59,153 @@ Eine Klasse von impliziten linearen MSV (sogenannte \begriff{Backward Differenti
 \end{align}
 
 \subsection{Konsistenz- und Konvergenzordnung für lineare MSV}
+
+Die Konsistenzordnung eines linearen MSV wird in Analogie zur entsprechenden Definition bei den ESV eingeführt. Verallgemeinerungen für beliebige MSV werden hier nicht betrachtet. Der lokale Diskretisierungsfehler eines MSV ergibt sich zu
+\begin{align}
+	\Delta(x,h) &= y(x+lh) - \frac{1}{\alpha_l}\left(-\sum_{\nu=0}^{l-1} \alpha_\nu y(x+\nu h) + h\sum_{\nu=0}^l \beta_\nu f(x+\nu h,y(x+\nu h))\right) \notag \\
+	\label{3_23}
+	&= \frac{1}{\alpha_l} \left(\sum_{\nu=0}^l \alpha_\nu y(x+\nu h) - h\sum_{\nu=0}^l \beta_\nu f(x+\nu h,y(x+\nu h))\right)
+\end{align}
+Wenn es also $p\ge 1$, $M>0$ und $\tilde{h}>0$ gibt, so dass
+\begin{align}
+	\norm{\frac{\Delta(x,h)}{h}} \le Mh^p\quad\forall (x,h)\in [a,b)\times (0,\tilde{h}]\text{ mit } x+h\le b \notag
+\end{align}
+für jede Lösung $y$: $[a,b]\to\R^m$ der Differentialgleichung $y'=f(x,y)$ gilt, dann sagt man, dass das MSV die \begriff[Mehrschrittverfahren!]{Konsistenzordnung} $p\ge 1$ besitzt. Unter der Voraussetzung, dass $f$ und damit die Lösungen $y$ der Differentialgleichung hinreichend glatt sind, gelten die Entwicklungen
+\begin{align}
+	y(x+\nu h) = \sum_{q=0}^{p} \frac{\nu^q}{q!} y^{(q)}(x) h^q + R_p(x,h) \notag
+\end{align}
+und (mit $\frac{\diff y(x+\nu h)}{\diff h} = y'(x+\nu h)\nu$)
+\begin{align}
+	f(x+\nu h,y(x+\nu h)) = y'(x+\nu h) = \sum_{q=1}^{p} \frac{\nu^{q-1}}{(q-1)!} y^{(q)}(x)h^{q-1} + r_p(x,h) \notag
+\end{align}
+wobei für die Restglieder $\norm{R_p(x,h)} \le M_R h^{p+1}$ und $\norm{r_p(x,h)}\le M_r h^p$ bei festem $x$ mit gewissen Konstanten $M_R,M_r>0$ gilt. Aus \cref{3_23} hat man daher
+\begin{align}
+	\alpha_l\Delta(x,h) = c_0y(x) + \sum_{q=1}^p c_qy(x)^{(q)} h^q + Q(x,h)\quad\mit\quad\norm{Q(x,h)}\le M_Q h^{p+1} \notag
+\end{align}
+wobei $M_Q>0$ sowie
+\begin{align}
+	\label{3_24}
+	c_0 = \sum_{\nu=0}^l \alpha_\nu\quad\text{und}\quad c_q ? \sum_{\nu=0}^l \left(\frac{\nu^q\alpha_\nu}{q!} - \frac{\nu^{q-1}\beta_\nu}{(q-1)!}\right)\quad\text{für } q=1,...,p
+\end{align}
+(mit $0^0=1$). Falls $c_0=\dots = c_p=0$, folgt damit
+\begin{align}
+	\norm{\frac{\Delta(x,h)}{h}}\le \alpha_l M_Q h^p\notag
+\end{align}
+Also gilt
+
+\begin{proposition}
+	\proplbl{satz_3_12}
+	Die Funktion $f$: $[a,b]\times\R^m\to\R^m$ sei $p$ mal stetig differenzierbar. Dann hat das MSV \cref{3_17} (mindestens) die Konsistenzordnung $p$, wenn $c_0=\dots=c_p=0$.
+\end{proposition}
+
+Unter Beachtung von \cref{3_18} und \cref{3_24} gilt $c_0=c_1=0$ (und damit entsprechend Satz \propref{satz_3_12} Konsistenzordnung $p\ge 1$), genau dann wenn
+\begin{align}
+	\rho(1)=0\quad\text{und}\quad \rho'(1)-\sigma(1)=0 \notag
+\end{align}
+Ein $l$-schrittiges explizites lineares MSV \cref{3_17} hat die $2l$ freien Parameter $\alpha_0,...,\alpha_{l-1}$ und $\beta_0,...,\beta_{l-1}$ (o.B.d.A. kann $\alpha_l=1$ gewählt werden, $\beta_l$ kommt nicht vor, da MSV explizit sein sollte). Durch geeignete Wahl dieser Parameter könnte man $c_0=0,...,c_{2l-1}=0$ erreichen und damit die Konsistenzordnung $p=2l-1$. Wie wir aber sehen werden, sind solche Verfahren im Allgemeinen nicht konvergent.
+
+\begin{example}
+	Sei $l=2$ und $m=1$. Dann lautet \cref{3_17}
+	\begin{align}
+		y_{k+2} + \alpha_1y_{k+1} + \alpha_0y_k = h\big(\beta_1 f(x_{k+1},y_{k+1}) + \beta_0 f(x_k,y_k)\big) \notag
+	\end{align}
+	Um $c_0=c_1=c_2=c_3=0$ und damit Konsistenzordnung 3 zu erreichen, muss man also $\alpha_0,\alpha_1,\beta_0,\beta_1$ so wählen, dass (mit $\alpha_2=1$ und $\beta_2=0$)
+	\begin{align}
+		\systeme[\alpha_0,\alpha_1,\beta_0,\beta_1]{\alpha_0 + \alpha_1 + 1 = 0@c_0,\alpha_1 - \beta_0 - \beta_1 + 2 = 0@c_1, \frac{1}{2}\alpha_1 - \beta_1 + 2 = 0@c_2, \frac{1}{6}\alpha_1 - \frac{1}{2}\beta_1 + \frac{4}{3} = 0@c_3} \notag
+	\end{align}
+	gilt. Die Lösung dieses Systems ist gegeben durch $\alpha_0=-5$, $\alpha_1=4$, $\beta_0=2$ und $\beta_1=4$. Also besitzt das MSV
+	\begin{align}
+		\label{3_25}
+		y_{k+2} + 4y_{k+1} - -5y_k = h\big(2f(x_k,y_k) + 4f(x_{k+1},y_{k+1})\big)
+	\end{align}
+	die Konsistenzordnung 3. Für das Testproblem
+	\begin{align}
+		y'=-y\quad\mit\quad y(0)=1 \notag
+	\end{align}
+	lautet die Lösung $y(x)=\exp(-x)$. Das Verfahren \cref{3_25} geht wegen $f(x,y)=-y$ über die homogene lineare Differentialgleichung mit konstanten Koeffizienten
+	\begin{align}
+		\label{3_26}
+		y_{k+2} + (4+4h)y_{k+1} + (-5+2h)y_k=0
+	\end{align}
+	Mit dem Ansatz $y_k=z^k$ für ein $z\in\R\backslash\{0\}$ erhält man aus \cref{3_26} (nach Division durch $z^k$)
+	\begin{align}
+		\label{3_27}
+		z^2 + (4+4h)z + (-5+2h) = \rho(z) - h\sigma(z) = 0
+	\end{align}
+	Die Lösungen dieser quadratischen Gleichungen lauten
+	\begin{align}
+		z_{1/2} = z_{1/2}(h) &= -2(1+h) \pm \sqrt{4(1+h)^2 - 2h+5} \notag \\
+		&= -2(1+h) \pm\sqrt{1 + \frac{2h}{3} + \frac{4h^2}{9}} \notag
+	\end{align}
+	Für $h\to 0$ hat man
+	\begin{align}
+		z_1(h) = 1-h + \mathcal{O}(h^2)\quad\text{und}\quad z_2(h) = -5 + \mathcal{O}(h) \notag
+	\end{align}
+	Die allgemeine Lösung der Differentialgleichung \cref{3_26} ist gegeben durch
+	\begin{align}
+		y_k = c_1z_1 ^k + c_2z_2^k \notag
+	\end{align}
+	Gibt man sich die Startwerte $y_0=y(0)=1$ und $y_1=y(h)=\exp(-h)$ als exakte Funktionswerte vor, bestimmen sich die Konstanten $c_1=c_1(h)$ und $c_2=c_2(h)$ aus $y_0=c_1+c_2$ und $y_1=c_1z_1 + c_2z_2$. Bei genauerer Betrachtung der Abhängigkeit von $z_1,z_2$ von $h$ ergibt sich dafür $c_1(h)=1+\mathcal{O}(h^2)$ und $c_2(h)=-\sfrac{h^4}{216} + \mathcal{O}(h^5)$. Für festes $x>0$ und $x=kh$ folgt für $k\to\infty$ und $h\to 0$
+	\begin{align}
+		\abs{c_2(h) z_2(h)^k} = \abs{\mathcal{O}\left(\left(\frac{x}{k}\right)^4\right)}\cdot\abs{-5+\mathcal{O}(h)}^k\to\infty \notag
+	\end{align}
+	sowie
+	\begin{align}
+		c_1(h) z_1(h) &= (1+\mathcal{O}(h^2))\cdot (1-h+\mathcal{O}(h^2))^k \notag \\
+		&= \left(1-\frac{x}{k}\right)^k + \mathcal{O}(h^2) \notag \\
+		&\to\exp(-x)\notag
+	\end{align}
+	Da die sogenannte parasitäre Lösungskomponente $c_2z_2^k$ die andere sinnvolle Lösungskomponente der Differentialgleichung beliebig übersteigt, kann man für das MSV \cref{3_25} keine Konvergenz erwarten. Um dieses Verhalten bei einem linearen MSV zu verhindern, darf zumindest der Betrag jeder Lösung (Wurzel) der Polynomgleichung $\rho(z)=0$ den Wert 1 nicht übersteigen, vergleiche \cref{3_27} für $h\to 0$.
+\end{example}
+
+\begin{definition}[D-stabil, nullstabil]
+	Das lineare MSV \cref{3_17} heißt \begriff[Mehrschrittverfahren]{D-stabil} (oder \begriff[Mehrschrittverfahren]{nullstabil}), falls es die \begriff{Wurzelbedingung} erfüllt, das heißt wenn der Betrag jeder Nullstelle seines ersten charakteristischen Polynoms $\rho$ durch 1 beschränkt ist und der Betrag jeder mehrfachen Nullstelle von $\rho$ kleiner als 1 ist.
+\end{definition}
+
+Die Bezeichnung D-stabil ist zu Ehren von \person{Dahlquist} (1925-2005) für seine Arbeiten zur Stabilität von linearen MSV gewählt worden.
+
+Zur formalen Definition der Konvergenzordnung eines linearen MSV nehmen wir (wie bei ESV) an, dass die AWA \cref{3_1_1} die eindeutige Lösung $y$: $[a,b]\to\R^m$ besitzt. Weiter nehmen wir an, dass zu jeder Schrittweite $h$ Startvektoren $y_0^h,...,y_h^{l-1}$ gegeben sind, aus denen das MSV die Näherungen $y_h^l,...,y_h^N$ erzeugt. Falls für jede Schrittweite $h=\frac{b-a}{N}$ die Startvektoren die Bedingung
+\begin{align}
+	\label{3_28}
+	\norm{y_h^\nu - y(x_o+\nu h)} \le C_1h^p\quad\forall\nu=0,...,l-1
+\end{align}
+genügen (mit einem von $h$ unabhängigen $C_1>0$), dann heißt ein linearen Mehrschrittverfahren \begriff[Mehrschrittverfahren]{konvergent mit der Ordnung} $p\ge 1$, wenn es $C_2>0$ und $\tilde{h}>0$ gibt, so dass
+\begin{align}
+	\norm{y_h^k - y(x_0+kh)} \le C_2h^p \notag
+\end{align}
+für alle $k=l,...,N$ und alle Schrittweiten $h\in (0,\tilde{h}]$.
+
+Die beiden folgenden Sätze geben wir ohne Beweis an.
+
+\begin{proposition}
+	\proplbl{satz_3_15}
+	Die AWA \cref{3_1_1} besitze die eindeutige Lösung $y$: $[a,b]\to\R^m$. Das lineare MSV \cref{3_17} sei D-stabil und habe die Konsistenzordnung $p$. Es gebe $L_f>0$, so dass die Lipschitz-Bedingung
+	\begin{align}
+		\norm{f(x,y) - f(x,\bar{y})} \le L_f\norm{y-\bar{y}}\notag
+	\end{align}
+	für alle $(x,y),(x,\bar{y})\in [a,b]\times\R^m$ gilt. Weiter gelte die Bedingung \cref{3_28} an die Startvektoren. Dann ist das MSV konvergent mit der Ordnung $p$.
+\end{proposition}
+
+\begin{proposition}[Erste \person{Dahlquist}-Barriere]
+	\proplbl{satz_3_16}
+	Ein $l$-schrittiges lineares MSV \cref{3_17} sei D-stabil. Dann gilt für seine Konsistenzordnung
+	\begin{align}
+		p \le \begin{cases}
+			l+1 & \text{falls } l \text{ ungerade} \\
+			l+2 & \text{falls } l \text{ gerade} \\
+			l & \text{falls } \sfrac{\beta_l}{\alpha_l} \le 0
+		\end{cases} \notag
+	\end{align}
+\end{proposition}
+
+Für den Einfluss von Rundungsfehlern lassen sich für lineare MSV zu Abschnitt 2.4 vergleichbare Überlegungen durchführen.
+
+Zum Beispiel hat man bei den \person{Adams-Bashford}-Verfahren für die Schrittzahl $l=2$ ein explizites lineares MSV, nämlich 
+\begin{align}
+	y^{k+2} - y^{k+1} = h(\beta_0 f(x_k,y^k) + \beta_1 f(x_{k+1},y^{k+1})) \notag
+\end{align}
+Bezogen aus die allgemeine Form \cref{3_17} linearer MSV gilt hier $\alpha_2=1$, $\alpha_1=-1$, $\alpha_0=0$ und $\beta_2=0$. Also ist für dieses spezielle MSV $\sfrac{\beta_2}{\alpha_2}=0$ und nach \propref{satz_3_16} daher bei gewünschter Konvergenz (und damit D-Stabilität) maximal die Konsistenzordnung $p=2$ erreichbar. Um diese zu sichern, müssen $c_0=0$, $c_1=0$ und $c_2=0$ nach \propref{satz_3_12} gelten. Wegen $c_0=\rho(1)=\alpha_0 + \alpha_1 + \alpha_2 = 0-1+1=0$ sind noch $c_1=\rho'(1)-\sigma(1)=2\alpha_2 + \alpha_1 - (\beta_0 + \beta_1 + \beta_2) = 1-\beta_0 - \beta_1 = 0$ und $c_2=\sfrac{\alpha_1}{2} - \beta_1 + \sfrac{4\alpha_2}{2} - 2\beta_2 = -\sfrac{1}{2} - \beta_1 + 2 = 0$ zu erfüllen. Dies liefert $\beta_1 = \sfrac{3}{2}$ und $\beta_0=-\sfrac{1}{2}$. Also hat das Verfahren
+\begin{align}
+	y^{k+2} - y^{k+1} = \frac{h}{2}\bigg(-f(x_k,y^k) + 3f(x_{k+1},y^{k+1})\bigg)\notag
+\end{align}
+nach \propref{satz_3_12} die Konvergenzordnung 2. Das charakteristische Polynom $\rho$ des linearen MSV ist offenbar gegeben durch $\rho(z)=z^2-z$. Seine Nullstellen sind $z_1=0$ und $z_2=1$. Folglich ist das Verfahren auch D-stabil und damit nach \propref{satz_3_15} konvergent mit der Ordnung 2.
