@@ -9,7 +9,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
 Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
-- Lösungen zu den Aufgaben ANAG 1:
+- Lösungen zu den Aufgaben ANAG 1: wollte ich irgendwann mal einscannen, bin aber bis jetzt noch nicht dazu gekommen
 - Lösungen zu den Aufgaben ANAG 2: [https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW](https://drive.google.com/open?id=15OhQHHOEGEf-oO-K6hMFMz3AgnV797eW)
 
 ### Programmieren für Mathematiker (WS2017/18 + SS2018)
