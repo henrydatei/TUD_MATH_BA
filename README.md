@@ -100,3 +100,7 @@ Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorle
 - Vorlesungsfolien: _demnächst_
 - Übungsaufgaben: [https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk](https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk)
 - Musterlösungen: [https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23](https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23)
+
+# related repos
+- andere (unvollständige?) Mitschriften von vor einem Jahr: [https://github.com/volleimer/math_scripts](https://github.com/volleimer/math_scripts)
+- Sammlung von Mitschriften zum Master in Mathematik: [https://github.com/LostInDarkMath/MatheMaster](https://github.com/LostInDarkMath/MatheMaster)
