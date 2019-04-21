@@ -1,0 +1,79 @@
+\section{Der algebraische Abschluss}
+Sei $L\mid K$ eine Körpererweiterung.
+\begin{definition}[algebraisch abgeschlossen]
+	$K$ ist algebraisch abgeschlossen $\Longleftrightarrow$ jedes $f \in K[X] \mit \deg(f) > 0$ hat eine Nullstelle in $K$.
+\end{definition}
+\begin{lemma}
+	\proplbl{1_4_2}
+	Es ist äquivalent:
+	\begin{enumerate}
+		\item $K$ ist algebraisch abgeschlossen. \label{aussage:1_4_2:1}
+		\item Jedes $0 \neq f \in K[X]$ zerfällt über $K$ in Linearfaktoren. \label{aussage:1_4_2:2}
+		\item $K$ hat keine echte algebraische Erweiterung. \label{aussage:1_4_2:3}
+	\end{enumerate}
+\end{lemma}
+\begin{proof} %TODO ref
+	\begin{enumerate}[label=]
+		\item \ref{aussage:1_4_2:1} $\Rightarrow$ \ref{aussage:1_4_2:2}: Induktion nach $\deg(f)$ (siehe LAAG)
+		\item \ref{aussage:1_4_2:2} $\Rightarrow$ \ref{aussage:1_4_2:3}: Sei $L \mid K$ algebraisch, $\alpha \in L$. Schreibe $f = \MinPol(\alpha \mid K)$. Nach \ref{aussage:1_4_2:2} zerfällt $f$ in Linearfaktoren über $K \Rightarrow \alpha \in K$
+		\item \ref{aussage:1_4_2:3} $\Rightarrow$ \ref{aussage:1_4_2:1}: Sei $f \in K[X], \deg(f) > 0$. Nach \propref{1_3_9} existiert ein Zerfällungskörper $L$ von $f$. Da $L\overset{(*)}{=}K$ nach \ref{aussage:1_4_2:3} hat $f$ Nullstellen in $K$. \\
+		($(*)$ $L$ ist Erweiterung $\rightarrow$ die nach \ref{aussage:1_4_2:3} trivial ist)
+	\end{enumerate}
+\end{proof}
+\begin{definition}[\begriff{algebraisch Abgeschlossen}]
+	$L$ ist algebraischer Abschluss von $K :\Longleftrightarrow L$ ist algebraisch abgeschlossen und $L\mid K$ algebraisch.
+\end{definition}
+\begin{lemma}
+	\proplbl{1_4_4}
+	Ist $L$ algebraischer Abschluss, so ist der relative algebraische Abschluss $\tilde{K}$ ein algebraischer Abschluss von $K$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item $\tilde{K}$ ist Körper: \propref{1_2_15}
+		\item $\tilde{K} \mid K$ ist algebraisch: Definition
+		\item $\tilde{K}$ ist algebraisch abgeschlossen: Sei $f \in \tilde{K}[X] \mit \deg(f) > 0$.\\
+		$L$ algebraisch abgeschlossen $\Rightarrow$ existiert $\alpha \in L \mit f(\alpha) = 0$ und $f(\alpha) = 0 \Rightarrow \alpha$ algebraisch über $\tilde{K} \xRightarrow{\propref{1_2_15}} \alpha \in \tilde{K}$.
+	\end{itemize}
+\end{proof}
+\begin{example}
+	\begin{enumerate}
+		\item $\C$ ist algebraisch abgeschlossen (Fundamentalsatz der Algebra, $\nearrow$ II.) %TODO \nearrow II later
+		\item $\C$ ist algebraischer Abschluss von $\R$.
+		\item $\tilde{\Q} := \set{\alpha \in \C \mid \alpha \text{ algebraisch über }\Q}$ ist nach \propref{1_4_4} ein algebraischer Abschluss von $\Q$.
+	\end{enumerate}
+\end{example}
+\begin{lemma}
+	\proplbl{1_4_6}
+	Sei $L\mid K$ algebraisch, $E$ ein algebraisch abgeschlossener Körper und $\varphi \in \Hom(K,E)$. Dann existiert eine Fortsetzung von $\varphi$ auf $L$, d.h. ein $\sigma \in \Hom(L,E) \mit \sigma_{\mid K} = \varphi$.
+\end{lemma}
+\begin{proof}
+	Definiere Halbordnung.
+	\begin{align*}
+		\Halb &:= \set{(M,\sigma) : K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E), \sigma_{\mid K} = \varphi}\\
+		&(M,\sigma) \subseteq (M' , \sigma') :\Leftrightarrow m \subset M' \und \sigma'_{\mid M} = \sigma
+	\end{align*}
+	\begin{itemize}
+		\item $\Halb \neq \emptyset$: $(K,\varphi) \in \Halb$
+		\item Ist $(M,\sigma)_{i \in I}$ eine Kette in $\Halb$, so definieren wir $M:= \bigcup_{i\in I} M_i$ und $\sigma: M \to E$ durch $\sigma(x) = \sigma_i (x)$ falls $x \in M_i$. Dann ist $(M,\sigma) \in \Halb$ eine obere Schranke der Kette $(M_i , \sigma_i)_{i\in I}$. Nach Lemma von \person{Zorn} existiert $(M, \sigma)$ maximal. 
+		Es ist $M = L$: Sei $\alpha \in L, f= \MinPol(\alpha\mid M)$. $f \in E[X]$ hat Nullstelle $\beta \in E$, da $E$ algebraisch abgeschlossen ist.
+		$\xRightarrow{\propref{1_3_12}}$ existiert Fortsetzung $\sigma' \in \Hom(M(\alpha), E)$ von $\sigma$\\
+		$(M,\sigma) \le (M(\alpha, \sigma')) \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha), \alpha \in M.$
+	\end{itemize}
+\end{proof}
+\begin{theorem}[Steinitz, 1910]
+	Jeder Körper $K$ besitzt einen bis auf $K$-Isomorphie eindeutig bestimmten algebraischen Abschluss.
+\end{theorem} %TODO tikzcd!
+\begin{proof}
+	\begin{itemize}
+		\item Eindeutigkeit:\\
+		Seien $L_1 , L_2$ algebraische Abschlüsse von $K$\\
+		$L_1 \mid K$, $L_2$ algebraisch abgeschlossen $\xRightarrow{\propref{1_4_6}}$ existiert $\sigma \in \Hom(L_1 , L_2)$
+		\begin{align*} %TODO find a way to have only the right curly bracket?
+		\begin{Bmatrix}
+		L_1 \text{ algebraisch abgeschlossen }\Rightarrow \sigma(L_1) \cong L_1 \text{ algebraisch abgeschlossen}\\
+		L_2 \mid K \text{ algebraisch } \Rightarrow L_2 \mid \sigma(L_1) \text{  algebraisch }
+		\end{Bmatrix}\xRightarrow{\propref{1_4_2}} L_2 = \sigma(L_1).
+		\end{align*}
+		Somit ist $\sigma: L_1 \to L_2$ ein $K$-Isomorphismus.
+	\end{itemize}
+\end{proof}

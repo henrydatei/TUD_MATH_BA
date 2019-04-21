@@ -40,10 +40,10 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 		\item Existenz gibt \propref{1_3_4}
 		\item \propref{1_3_3} liefert Isomorphismus
 		\begin{align*}
-			\begin{matrix}
+			\begin{Bmatrix} %TODO find a way to only have the right curly bracket!
 				L_1 \xleftarrow[\varphi_1]{\cong} & \lnkset{K[X]}{(f)} & \xrightarrow[\varphi_2]{\cong} L_2\\
 				\alpha_1 \mapsfrom & X + (f) & \mapsto \alpha_2\\
-			\end{matrix}
+			\end{Bmatrix}
 			\Rightarrow \varphi_2 \circ \varphi_1 : L_1 \xrightarrow{\cong}_K L_2 \mit \alpha_1 \mapsto \alpha_2
 		\end{align*}
 		Umgekehrt ist jeder $K$-Isomorphismus $\varphi: L_1 \to_K L_2$ wegen $L_1 = K(\alpha_1)$ schon durch $\varphi(\alpha_1)$ festgelegt.
@@ -74,6 +74,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	Ein \begriff{Zerfällungskörper} von $K$ ist eine Erweiterung $L\mid K$ der Form $L = K(\alpha_1,\dots,\alpha_n)$ mit $f=c\mal \prod_{i=1}^n (x-\alpha_i) \mit c \in K^{\times}$.
 \end{definition}
 \begin{proposition}
+	\proplbl{1_3_9}
 	Ein Zerfällungskörper von $f$ existiert.
 \end{proposition}
 \begin{proof}
@@ -84,7 +85,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 \end{lemma}
 \begin{proof}
 	Sei $L = K(\alpha_1,\dots,\alpha_n), f = c\prod_{i=1}^n (x-\alpha_i)$.\\
-	Induktion nach $n$:\\
+	Induktion nach $n$:
 	\begin{itemize}
 		\item $n=1:$ $L=K, [K:K] = 1$
 		\item $n>1:$ $L_1 = K(\alpha_1)$ ist Wurzelkörper von $f \xRightarrow{\propref{1_3_3}} [L_1:K] \le n$ und schreibe $f=c\mal (x-\alpha_1)\mal f_1, f_1 = \prod_{i=2}^n (x-\alpha_i) \in L_1[X]$\\
@@ -137,7 +138,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 			\begin{cases}
 				K[X] &\to L'\\
 				g &\to g^{\varphi}(\beta) 
-			\end{cases}\qquad \to \text{ sind Homomorphismen nach universeller Eigenschaft}
+			\end{cases}\qquad \to \text{ sind Homomorphismen nach univer. Eigenschaft}
 		\end{align*}
 		(Bemerke: $\eta$ surjektiv: $\eta_{\mid K} = \id \to K \in \Image(\eta) \mit \eta(x) = \alpha \to \alpha \in \Image(\eta)$)\\
 		$Ker(\eta)=(f)$ ist Isomorphismus und $\bar{\eta}: \lnkset{K[X]}{(f)} \xrightarrow{\cong}L$ und\\
@@ -149,16 +150,26 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	\end{itemize}
 \end{proof}
 \begin{proposition}
+	\proplbl{1_3_13}
 	Der Zerfällungskörper von $f$ ist eindeutig bestimmt bis auf $K$-Isomorphie.
 \end{proposition}
 \begin{proof}
-	\begin{enumerate} %TODO no label!
-		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungskörper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
-		\item Beweis: Induktion nach $n = \deg(f)$\\
-			\begin{itemize} %TODO maybe use enum here without label?
+	\begin{enumerate}[label=]
+		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungs- körper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
+		\item Beweis: Induktion nach $n = \deg(f)$
+			\begin{enumerate}[label=] %TODO maybe use enum here without label?
 				\item (IA) $n=1:$ $L = K \xrightarrow[\varphi]{\cong} K' = L'$ \checkmark
-				\item (IS) $n>1:$ $ $ %TODO finish proof here, then is the section done!
-			\end{itemize}
+				\item (IS) $n>1:$ Schreibe $f = cg_1\cdots g_r$ mit $g_i \in K[x]$ normiert und irreduzibel, $c \in K^{\times}$\\
+				$\Rightarrow f^{\varphi} = c^{\varphi}g_1^{\varphi}\cdots g_r^{\varphi}$ mit $c^{\varphi}\in (K')^{\varphi}$ und $g_i^{\varphi}\in K' [X]$ normiert und irreduzibel (weil $\varphi$ Isomorphismus ist). Sei $\alpha_1 \in L$ mit $g_1 (\alpha_1) = 0, \alpha'_1 \in L'$ mit $g_1^{\varphi}(\alpha'_1) = 0$\\
+				$\xRightarrow{\propref{1_3_12}} \varphi$ setzt man zu einem Isomorphismus
+				\begin{align*}
+					\sigma: K_1 := K(\alpha_1) \to K' (\alpha'_1) \mit \sigma(\alpha_1) = \alpha'_1
+				\end{align*} 
+				fort. Schreibe $f=(x - \alpha_1)\cdot f_1^{\sigma}$ mit $f_1 \in K_1 [X]$ \\
+				$\Rightarrow f^{\varphi} = (x - \underbrace{\sigma(\alpha_1)} _{\alpha'_1})\cdot f_1^{\sigma}$ mit $f_1^{\sigma}\in K'_1 [X]$. $L$ ist Zerfällungskörper von $f_1,L'$ ist Zerfällungskörper von $f_1^{\sigma}$\\
+				$\Rightarrow \sigma$ setzt sich fort zu einem Isomorphismus $L \to L'$
+			\end{enumerate}
+		Die Behauptung im Fall $\varphi = \id_K$ ist genau die Aussage von \propref{1_3_13}.
 	\end{enumerate}
 \end{proof}
 \begin{remark}
