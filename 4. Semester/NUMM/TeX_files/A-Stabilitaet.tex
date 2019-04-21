@@ -1,1 +1,76 @@
 \section{A-Stabilität}
+
+Wir betrachten die Test-AWA
+\begin{align}
+	\label{3_29}
+	y'=\lambda y\quad\mit\quad y(0)=1
+\end{align}
+wobei $\lambda\in\comp$ ein Parameter ist. Die eindeutige Lösung dieser Aufgabe ist gegeben durch $y(x)=\exp(\lambda x)$ und es gilt insbesondere
+\begin{align}
+	\Re(\lambda)&< 0 \quad\Rightarrow\quad \abs{y(x)}\to 0 \quad\text{für } x\to\infty \notag \\
+	\Re(\lambda)&=0 \quad\Rightarrow\quad\abs{y(x)}=1 \quad\text{für alle } x\in[0,\infty) \notag
+\end{align}
+
+\begin{definition}[A-Stabilität]
+	Ein Verfahren erzeuge zu einem beliebigen Paar $(h,\lambda)\in(0,\infty)\times\comp$ eine Folge $\{y_k\}$. Dann heißt das Verfahren \begriff{A-stabil}, wenn
+	\begin{align}
+		\abs{y_{k+1}} \le \abs{y_k}\quad\forall k\in\natur\notag
+	\end{align}
+	für jedes $(h,\lambda)\in (0,\infty)\times\comp$ mit $\Re(\lambda)\le 0$.
+\end{definition}
+
+Bei ESV gilt $y_{k+1}=y_k + h\Phi(x_k,y_k,y_{k+1},h)$. Wir nehmen an, dass für $f(x,y)=\lambda y$ eine Darstellung des ESV in der Form
+\begin{align}
+	y_{k+1} = g(h\lambda)y_k \notag
+\end{align}
+mit einer Funktion $g$: $\comp\to\comp$ existiert. Die Funktion $g$ heißt dann auch \begriff{Stabilitätsfunktion}. Falls der \begriff{Stabilitätsbereich} (Bereich der absoluten Stabilität)
+\begin{align}
+	\mathcal{S} = \{z\in\comp\mid \abs{g(z)}\le 1\}\notag
+\end{align}
+die Halbebene $\comp_-=\{z\in\comp\mid \Re(z)\le 0\}$ enthält, dann ist das ESV A-stabil (und umgekehrt), denn es gilt $\abs{y_{k+1}} = \abs{g(h\lambda)}\abs{y_k}\le \abs{y_k}$ für $k\in\natur$ und beliebige $(h,\lambda)\in (0,\infty)\times\comp$ mit $h\lambda\in\comp_-$. Für die \begriff{Trapenzregel} (ein implizites ESV)
+\begin{align}
+	y_{k+1} = y_k + \frac{h}{2}\bigg(f(x_k,y_k) + f(x_{k+1},y_{k+1})\bigg) \notag
+\end{align}
+erhält aus der Test-AWA \cref{3_29} $y_{k+1} = y_k + \frac{h}{2}(\lambda y_k + \lambda y_{k+1})$ und somit
+\begin{align}
+	\left(1-\frac{h}{2}\lambda\right)y_{k+1} = y_k\left(1+\frac{h}{2}\lambda\right)\notag
+\end{align}
+das heißt die Stabilitätsfunktion der Trapezregel ist gegeben durch
+\begin{align}
+	g(z) = \frac{1+\frac{z}{2}}{1-\frac{z}{2}} = \frac{2+z}{2-z}\notag
+\end{align}
+Falls $\Re(z)\le 0$, so folgt
+\begin{align}
+	\abs{g(z)}^2 = \frac{(2+\Re(z))^2 + (\Im(z))^2}{(2-\Re(z))^2 + (\Im(z))^2} \le 1\notag
+\end{align}
+also die A-Stabilität der Trapezregel.
+
+Für das \begriff[\person{Euler}-Verfahren!]{explizite \person{Euler}-Verfahren} ergibt sich (wegen \cref{3_29})
+\begin{align}
+	y_{k+1} = y_k + h\lambda y_k = (1+h\lambda)y_k\quad\text{und}\quad g(z) = 1+z\notag
+\end{align}
+Damit gilt
+\begin{align}
+	\abs{g(z)}^2 = \abs{1+z}^2 = (1+\Re(z))^2 + (\Im(z))^2 \le 1 \notag
+\end{align}
+genau dann, wenn $z=h\lambda$ im Einheitskreis um $(-1,0)\in\comp$ liegt. Da der Stabilitätsbereich beim expliziten \person{Euler}-Verfahren nicht alle $z\in\comp$ mit $\Re(z)\le 0$ enthält, ist dieses Verfahren nicht A-stabil. Das explizite \person{Euler}-Verfahren hat Konsistenzordnung 1 (vgl. \propref{3_2_3}) und ist mit dieser Ordnung auch konvergent (vgl. \propref{satz_3_8}). Die fehlende A-Stabilität hat zur Folge, dass zur erfolgreichen numerischen Lösung der Test-AWA \cref{3_29} für $\lambda <0$ zumindest $-2\le h\lambda$ gelten muss. Dies erfordert $h\sim \frac{1}{\abs{\lambda}}$, also gegebenenfalls sehr kleine Schrittweiten. Dies ist neben einem hohen Aufwand auch die Gefahr des Überwiegens von Rundungsfehlern verbunden, vgl. Abschnitt 2.4. Verfahren, die A-stabil sind, bzw. einen hinreichend großen Bereich absoluter Stabilität besitzen, haben außerdem Vorteile bei sogenannten steifen AWA, vgl. Abschnitt 5.
+
+Bei RKV kann man den Stabilitätsbereich untersuchen, indem man sich die Stabilitätsfunktion beschafft. Zum Beispiel betrachten wir das 2-stufige explizite RKV
+\begin{align}
+	y_{k+1} &= y_k + hc_1k_1 + hc_2k_2 \notag \\
+	&= y_k + hc_1f(x_k,y_k) + hc_2f(x_k+\alpha_2h,y_k + h\beta_{21}f(x_k,y_k))\notag
+\end{align}
+Mit der Test-AWA \cref{3_29} folgt
+\begin{align}
+	y_{k+1} &= y_k + h\lambda c_1y_k + h\lambda c_2(y_k + h\lambda\beta_{21} y_k) \notag \\
+	&= y_k(1+h\lambda c_1 + h\lambda c_2 + (h\lambda)^2 c_2\beta_{21}) \notag
+\end{align}
+Beim Verfahren von \person{Heun} (vgl. Abschnitt 2.5) mit $c_1=c_2=\sfrac{1}{2}$ und $\beta_{21}=1$ ergibt sich
+\begin{align}
+	y_{k+1} = y_k\left(1+h\lambda + \frac{1}{2}(h\lambda)^2\right)\quad\text{und also}\quad g(z) = 1+z+\frac{1}{2}z^2 \notag
+\end{align}
+Man sieht schnell, dass dieses Verfahren nicht A-stabil ist (man wähle $z=(a,0)$ mit $a<-2$).
+
+\begin{remark}
+	Es gibt kein explizites lineares MSV und kein explizites RKV, dass A-stabil ist und die A-stabilen impliziten MSV haben höchstens Konsistenzordnung 2 (zweite \person{Dahlquist}-Barriere).
+\end{remark}

@@ -53,7 +53,7 @@ Danach wird eine Näherungslösung von \cref{3_22} (\person{Adams-Moulton}) etwa
 \end{align}
 die für ein vorgegebenes $j\ge 1$ abgebrochen wird. Die Bezeichnung $\beta_\nu^C$ dient der Unterscheidung von den im Prädiktor verwendeten Parametern $\beta_\nu$. Für $j=1$ ergibt sich ein nichtlineares MSV (\person{Adams-Bashford-Moulton}-Verfahren). Für $j\to\infty$ kann unter bestimmten Voraussetzungen für hinreichend kleine $h>0$ die Konvergenz der Folge $\{\zeta^j\}$ gegen den eindeutigen Fixpunkt $y^{k+l}$ gezeigt werden.
 
-Eine Klasse von impliziten linearen MSV (sogenannte \begriff{Backward Differentiation Formulas} bzw. \begriff{BDF-Verfahren}) erhält man aus der Idee $y'(x_{k+l}) = f(x_{k+l},y(x_{k+l}))$ durch $\sfrac{1}{h}\sum_{\nu=0}^l \alpha_\nu y(x_{k+\nu})$ (verallgemeinerte Sekantensteigung) zu approximieren. Man hat dann ein lineares MSV der Form
+Eine Klasse von impliziten linearen MSV (sogenannte \begriff{Backward Differentiation Formulas} bzw. \begriff{BDF-Verfahren}) erhält man aus der Idee $y'(x_{k+l}) = f(x_{k+l},y(x_{k+l}))$ durch $\frac{1}{h}\sum_{\nu=0}^l \alpha_\nu y(x_{k+\nu})$ (verallgemeinerte Sekantensteigung) zu approximieren. Man hat dann ein lineares MSV der Form
 \begin{align}
 	\sum_{\nu=0}^l \alpha_\nu y^{k+\nu} = hf(x_{k+l},y^{k+l}) \notag
 \end{align}
@@ -145,7 +145,7 @@ Ein $l$-schrittiges explizites lineares MSV \cref{3_17} hat die $2l$ freien Para
 	\begin{align}
 		y_k = c_1z_1 ^k + c_2z_2^k \notag
 	\end{align}
-	Gibt man sich die Startwerte $y_0=y(0)=1$ und $y_1=y(h)=\exp(-h)$ als exakte Funktionswerte vor, bestimmen sich die Konstanten $c_1=c_1(h)$ und $c_2=c_2(h)$ aus $y_0=c_1+c_2$ und $y_1=c_1z_1 + c_2z_2$. Bei genauerer Betrachtung der Abhängigkeit von $z_1,z_2$ von $h$ ergibt sich dafür $c_1(h)=1+\mathcal{O}(h^2)$ und $c_2(h)=-\sfrac{h^4}{216} + \mathcal{O}(h^5)$. Für festes $x>0$ und $x=kh$ folgt für $k\to\infty$ und $h\to 0$
+	Gibt man sich die Startwerte $y_0=y(0)=1$ und $y_1=y(h)=\exp(-h)$ als exakte Funktionswerte vor, bestimmen sich die Konstanten $c_1=c_1(h)$ und $c_2=c_2(h)$ aus $y_0=c_1+c_2$ und $y_1=c_1z_1 + c_2z_2$. Bei genauerer Betrachtung der Abhängigkeit von $z_1,z_2$ von $h$ ergibt sich dafür $c_1(h)=1+\mathcal{O}(h^2)$ und $c_2(h)=-\frac{h^4}{216} + \mathcal{O}(h^5)$. Für festes $x>0$ und $x=kh$ folgt für $k\to\infty$ und $h\to 0$
 	\begin{align}
 		\abs{c_2(h) z_2(h)^k} = \abs{\mathcal{O}\left(\left(\frac{x}{k}\right)^4\right)}\cdot\abs{-5+\mathcal{O}(h)}^k\to\infty \notag
 	\end{align}
@@ -193,7 +193,7 @@ Die beiden folgenden Sätze geben wir ohne Beweis an.
 		p \le \begin{cases}
 			l+1 & \text{falls } l \text{ ungerade} \\
 			l+2 & \text{falls } l \text{ gerade} \\
-			l & \text{falls } \sfrac{\beta_l}{\alpha_l} \le 0
+			l & \text{falls } \frac{\beta_l}{\alpha_l} \le 0
 		\end{cases} \notag
 	\end{align}
 \end{proposition}
@@ -204,7 +204,7 @@ Zum Beispiel hat man bei den \person{Adams-Bashford}-Verfahren für die Schrittz
 \begin{align}
 	y^{k+2} - y^{k+1} = h(\beta_0 f(x_k,y^k) + \beta_1 f(x_{k+1},y^{k+1})) \notag
 \end{align}
-Bezogen aus die allgemeine Form \cref{3_17} linearer MSV gilt hier $\alpha_2=1$, $\alpha_1=-1$, $\alpha_0=0$ und $\beta_2=0$. Also ist für dieses spezielle MSV $\sfrac{\beta_2}{\alpha_2}=0$ und nach \propref{satz_3_16} daher bei gewünschter Konvergenz (und damit D-Stabilität) maximal die Konsistenzordnung $p=2$ erreichbar. Um diese zu sichern, müssen $c_0=0$, $c_1=0$ und $c_2=0$ nach \propref{satz_3_12} gelten. Wegen $c_0=\rho(1)=\alpha_0 + \alpha_1 + \alpha_2 = 0-1+1=0$ sind noch $c_1=\rho'(1)-\sigma(1)=2\alpha_2 + \alpha_1 - (\beta_0 + \beta_1 + \beta_2) = 1-\beta_0 - \beta_1 = 0$ und $c_2=\sfrac{\alpha_1}{2} - \beta_1 + \sfrac{4\alpha_2}{2} - 2\beta_2 = -\sfrac{1}{2} - \beta_1 + 2 = 0$ zu erfüllen. Dies liefert $\beta_1 = \sfrac{3}{2}$ und $\beta_0=-\sfrac{1}{2}$. Also hat das Verfahren
+Bezogen aus die allgemeine Form \cref{3_17} linearer MSV gilt hier $\alpha_2=1$, $\alpha_1=-1$, $\alpha_0=0$ und $\beta_2=0$. Also ist für dieses spezielle MSV $\frac{\beta_2}{\alpha_2}=0$ und nach \propref{satz_3_16} daher bei gewünschter Konvergenz (und damit D-Stabilität) maximal die Konsistenzordnung $p=2$ erreichbar. Um diese zu sichern, müssen $c_0=0$, $c_1=0$ und $c_2=0$ nach \propref{satz_3_12} gelten. Wegen $c_0=\rho(1)=\alpha_0 + \alpha_1 + \alpha_2 = 0-1+1=0$ sind noch $c_1=\rho'(1)-\sigma(1)=2\alpha_2 + \alpha_1 - (\beta_0 + \beta_1 + \beta_2) = 1-\beta_0 - \beta_1 = 0$ und $c_2=\frac{\alpha_1}{2} - \beta_1 + \frac{4\alpha_2}{2} - 2\beta_2 = -\sfrac{1}{2} - \beta_1 + 2 = 0$ zu erfüllen. Dies liefert $\beta_1 = \sfrac{3}{2}$ und $\beta_0=-\sfrac{1}{2}$. Also hat das Verfahren
 \begin{align}
 	y^{k+2} - y^{k+1} = \frac{h}{2}\bigg(-f(x_k,y^k) + 3f(x_{k+1},y^{k+1})\bigg)\notag
 \end{align}
