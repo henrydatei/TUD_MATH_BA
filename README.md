@@ -82,9 +82,11 @@ Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketz
 Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Applied Statistics**, **Introduction into Artificial Intelligience**, **Partial Differential Equations** und **Web Technologies**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
 
 ### Applied Statistics
+- Vorlesungsfolien: [https://drive.google.com/open?id=1oc3C01NKrx6OJJzYci3ICDGyXHlgLW9Y](https://drive.google.com/open?id=1oc3C01NKrx6OJJzYci3ICDGyXHlgLW9Y)
 - Hausaufgaben: [https://drive.google.com/open?id=1l1ami4W3lqi0IHPXDT6r5E8EnUlTJTq7](https://drive.google.com/open?id=1l1ami4W3lqi0IHPXDT6r5E8EnUlTJTq7)
 - Daten für Hausaufgabe 1: [https://drive.google.com/open?id=12Grs0UWB_qDo2u6etcGqg2B6V518jahW](https://drive.google.com/open?id=12Grs0UWB_qDo2u6etcGqg2B6V518jahW)
 - Daten für Hausaufgabe 2: [https://drive.google.com/open?id=1Tg3AgpBagAUSa3aB0qdTK0TzdbwL92M4](https://drive.google.com/open?id=1Tg3AgpBagAUSa3aB0qdTK0TzdbwL92M4)
+- Übungsaufgaben + manchmal Lösungen: [https://drive.google.com/open?id=13ZXF5hfvXEamwvbfD_KRexp33QGuKiYV](https://drive.google.com/open?id=13ZXF5hfvXEamwvbfD_KRexp33QGuKiYV)
 
 ### Introduction into Artificial Intelligience
 - Vorlesungsfolien: [https://drive.google.com/open?id=1rH2H4j8yl0CA3pTH1r8-L-jVrDl-geGS](https://drive.google.com/open?id=1rH2H4j8yl0CA3pTH1r8-L-jVrDl-geGS)
