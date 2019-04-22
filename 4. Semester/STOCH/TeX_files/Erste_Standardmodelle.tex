@@ -45,11 +45,11 @@ Ziehe: $n$ Stichproben/Kugeln, wobei nach jedem Zug die Kugel wieder zurückgele
 \begin{align}
 	\Omega = E^n \und \sigF = \pows(\Omega) \notag
 \end{align}
-Zur Bestimmung einer geeigneten Wahrscheinlichkeitsmaßes, nummerieren wir die Kugeln mit $1,\dots, N$, so dass alle Kugeln der Farbe $a \in E$ eine Nummer aus $F_{a} \subset \set{1,\dots, N}$ tragen. Würden wir die Nummern notieren, so wäre
-\begin{align}
-	\overline{\Omega} = \set{1,\dots, N}^n \und \overline{\sigF} = \pows(\overline{\Omega})\notag
-\end{align}
-und wir könnten die Gleichverteilung $\overline{\probp} = \Gleich(\overline{\Omega})$ als Wahrscheinlichkeitsmaß für einem einzelnen Zug verwenden. Für den Übergang zu $\Omega$ konstruieren wir  Zufallsvariablen. Die Farbe im $i$-ten Zug wird beschrieben durch
+Zur Bestimmung eines geeigneten Wahrscheinlichkeitsmaßes, nummerieren wir die Kugeln mit $1,\dots, N$, so dass alle Kugeln der Farbe $a \in E$ eine Nummer aus $F_{a} \subset \set{1,\dots, N}$ tragen. Würden wir die Nummern notieren, so wäre
+\begin{align*}
+	\overline{\Omega} = \set{1,\dots, N}^n \und \overline{\sigF} = \pows(\overline{\Omega})
+\end{align*}
+und wir könnten die Gleichverteilung $\overline{\probp} = \Gleich(\overline{\Omega})$ als Wahrscheinlichkeitsmaß für einem einzelnen Zug verwenden. Für den Übergang zu $\Omega$ konstruieren wir Zufallsvariablen. Die Farbe im $i$-ten Zug wird beschrieben durch
 \begin{align*}
 	X_i: \overline{\Omega} \to E \mit \overline{\omega} = \left( \overline{\omega}_1, \dots, \overline{\omega}_n \right) \mapsto a \text{ falls } \overline{\omega}_i \in F_a.
 	\end{align*}
@@ -66,9 +66,8 @@ und damit
 	&= \frac{\abs{F_{\omega_1}} \cdots \abs{F_{\omega_n}}}{\abs{\overline{\Omega}}}\\
 	&= \prod_{i=1}^{n} \frac{\abs{F_{\omega_i}}}{N} =: \prod_{i=1}^{n} \rho(\omega_i)
 \end{align*}
-Zähldichten, die sich als Produkt von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$  \cref{sec:unabhangigkeit}). %TODO ref?!?!?!
-
-Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies enspricht
+Zähldichten, die sich als Produkte von Zähldichten schreiben lassen, werden auch als \begriff{Produktdichten} bezeichnet ($\nearrow$ \cref{sec:unabhangigkeit}). %TODO ref?!?!?!
+Sehr oft interessiert bei einem Urnenexperiment nicht die Reihenfolge der gezogenen Farben, sondern nur die Anzahl der Kugeln in Farbe $a \in E$ nach $n$ Zügen. Dies entspricht
 \begin{align*}
 	\hat{\Omega} 
 	= \set{k = (k_a)_{a \in E} \in \N_{0}^{\abs{E}} \colon \sum_{a \in E} k_a = n}
@@ -98,7 +97,6 @@ Wir erhalten
 	\end{cases}
 \end{align*}
 der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
-
 \begin{definition}
 	Sei $l > 2, p = (p_1, \dots, p_l)$ eine Zähldichte und $n \in \N$, dann heißt die Verteilung auf \\
 	$\set{k = (k_i)_{i=1,\dots,l} \in \N_{0}^{l} : \sum_{i=1}^{l} k_i = n}$ mit Zähldichte
@@ -107,7 +105,6 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	\end{align}
 	\begriff{Multinomialverteilung mit Parametern $n$ und $p$}. Wir schreiben auch $\Multi(n,p)$.
 \end{definition}
-
 \begin{example}
 	Eine Urne enthalte nur schwarze ``$1$'' und weiße ``$0$'' Kugeln, d.h. $E=\set{0,1}$, und es sei $\rho(1) = p$ gerade die Proportion der schwarzen Kugeln (= Wahrscheinlichkeit bei einem Zug schwarz zu ziehen), dann ist Wahrscheinlichkeit in $n$ Zügen $k$-mal schwarz zu ziehen:
 	\begin{align}
@@ -127,36 +124,31 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	\end{align}
 	auch \begriff{Bernoulliverteilung mit Parameter $p$} und schreiben $\Ber(p)$.
 \end{definition}
-\underline{Urnenmodell ohne Zurücklegen}: \begriff{Hypergeometrische Verteilung}\\
+\underline{Urnenmodell ohne Zurücklegen:} \begriff{Hypergeometrische Verteilung}\\
 Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$,
 \begin{align}
 	\abs{E} \ge 2.\notag
 \end{align}
-Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln werde \emph{nicht} in die Urne zurückgelegt.
-
+Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln \emph{nicht} in die Urne zurückgelegt werden.
 \subsection{Urnenmodell ohne Zurücklegen: Hypergeometrische Verteilung}
-Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln werde \emph{nicht} in die Urne zurückgelegt.
+Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es werden $n \le N$ Stichproben entnommen, wobei die gezogenen Kugeln \emph{nicht} in die Urne zurückgelegt werden.
 \begin{example}
 	Eine Urne enthalte $S$ schwarze ``$1$'' und $W$ weiße Kugeln ``$0$'' Kugeln, $(E = \set{0,1}, S + W =N)$. Dann ist die Wahrscheinlichkeit in $n$ Zügen ohne Zurücklegen gerade $s$ schwarze und $w$ weiße Kugeln zu ziehen
 	\begin{align}
 		\rho(w) = \frac{\binom{W}{w}\binom{S}{s}}{\binom{N}{n}}, \quad 0 \le s \le S, 0 \le w \le W, s+w = n, S+W = N.\notag
 	\end{align}
 \end{example}
-
 \begin{proof}
-	Hausaufgabe! %TODO add number later
+	Hausaufgabe 2.3!
 \end{proof}
-
 \begin{definition}
-	Seinen $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
+	Seien $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
 	\begin{align}
 		\rho(w) = \frac{\binom{W}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
 	\end{align}
 	die \begriff{Hypergeometrische Verteilung} mit Parametern $N,W,n$. Wir schreiben $\Hyper(N,W,n)$.
 \end{definition}
-
 \section{Poisson-Approximation und \person{Poisson}-Verteilung}
-
 $\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ mühsam auszuwerten. Für seltene Ereignisse ($n$ groß, $p$ klein) verwende daher:
 \begin{proposition}[Poisson-Approximation]
 	Sei $\lambda > 0$ und $(p_n)_{n\in\N}$ eine Folge in $[0,1]$ mit
@@ -187,7 +179,6 @@ Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn
 \begin{align}
 	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1\notag
 \end{align}
-
 \begin{definition}
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definierte Wahrscheinlichkeitsmaß mit
 	\begin{align}
