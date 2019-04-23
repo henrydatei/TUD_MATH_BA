@@ -1,1 +1,68 @@
 \section{Einblick: Steife Probleme}
+
+Für $A\in\R^{m\times m}$ werde die AWA
+\begin{align}
+	\label{3_30}
+	y' = Ay\quad\mit\quad y(a)=y^0
+\end{align}
+für $x\in [a,b]$ betrachtet. Wir setzen in diesem Abschnitt voraus, dass $A$ eine diagonalisierbare Matrix ist, das heißt es gibt eine reguläre Matrix $S\in\comp^{m\times m}$ und eine Diagonalmatrix $D\in\comp^{m\times m}$ mit $A=SDS^{-1}$. Dann ist die allgemeine Lösung $y$: $[a,b]\to\R^m$ von $y'=Ay$ gegeben durch
+\begin{align}
+	y(x) = \sum_{i=1}^m c_i\exp(\lambda_i (x-a))v^i \notag
+\end{align}
+wobei $\lambda_1,...,\lambda_m\in\comp$ die Eigenwerte von $A$ und $v^1,...,v^m\in\comp^m$ ein zugehöriges System linear unabhängiger Eigenvektoren bezeichnet ($A$ diagonalisierbar!). Die Koeffizienten $c_1,...,c_m$ ergeben sich damit eindeutig aus der Anfangsbedingung $y(a)=c_1v^1+\dots+c_mv^m=y^0$.
+
+Falls $\Re(\lambda_i)<0$ für $i=1,...,m$ wird die Zahl
+\begin{align}
+	\frac{\max_{1\le i\le m}\abs{\Re(\lambda_i)}}{\min_{1\le i\le m}\abs{\Re(\lambda_i)}}\notag
+\end{align}
+als \begriff{Steifigkeitsquotient} von $A$ bezeichnet. Ist dieser Quotient groß, dann dient dies als Indikator für ein Phänomen, das bei der Anwendung bestimmter numerischer Verfahren aus \cref{3_30} auftreten kann und als \begriff{Steifheit} (stiffness) der AWA \cref{3_30} bezeichnet wird. Ein solches Phänomen wird im folgenden Beispiel beschrieben und führt bei bestimmten Lösungsverfahren (hier explizites \person{Euler}-Verfahren) zum Erfordernis sehr kleiner Schrittweiten.
+
+\begin{example}
+	Für $a=0$ und
+	\begin{align}
+		A = \begin{pmatrix}
+			-80.6 & 119.4 \\ 79.6 & -120.4
+		\end{pmatrix} \notag
+	\end{align}
+	ergibt sich als allgemeine Lösung von $y'=Ay$
+	\begin{align}
+		y(x) = c_1\exp(-x)v^1 + c_2\exp(-200x)v^2 \quad\mit\quad v^1 = \begin{pmatrix}
+			3 \\ 2
+		\end{pmatrix} \text{ und } v^2 = \begin{pmatrix}
+			-1 \\ 1
+		\end{pmatrix} \notag
+	\end{align}
+	Für $y^0=(2,3)^T$ hat man als exakte Lösung von \cref{3_30} $y(x) = c_1\exp(-x)v^1 + c_2\exp(-200x)v^2$. Das explizite \person{Euler}-Verfahren liefert
+	\begin{align}
+		y^{k+1} = y^k + hAy^k = (\mathbbm{1} + hA)y^k \notag
+	\end{align}
+	Da $A$ diagonalisierbar ist, gilt $A=SDS^{-1}$ mit $S=(v^1,v^2)$ und $D=\diag(-1,-200)$ und
+	\begin{align}
+		S^{-1} = \frac{1}{5}\begin{pmatrix}
+			1 & 1 \\ -2 & 3
+		\end{pmatrix}\notag
+	\end{align}
+	Damit folgt
+	\begin{align}
+		S^{-1}y^{k+1} &= S^{-1}y^k + hS^{-1}ASS^{-1}y^k \notag \\
+		&= S^{-1}y^k + hDS^{-1}y^k \notag \\
+		&= (\mathbbm{1} + hD)S^{-1}y^k \notag
+	\end{align}
+	Setzt man $z^k = S^{-1}y^k$ ergibt sich weiter
+	\begin{align}
+		z^{k+1} = (\mathbbm{1} + hD)u^k \notag
+	\end{align}
+	für $k=0,...$. Wegen $z^0=S^{-1}y^0 = S^{-1}(v^1+v^2) = (1,0)^T + (0,1)^T = (1,1)^T$ erhält man
+	\begin{align}
+		z^k = (\mathbbm{1} + hD)^k\begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix} \notag
+	\end{align}
+	Für $k\to\infty$ folgt $x_k\to\infty$ und $y(x_k)\to 0$. Um die Konvergenz der Folge $\{z^k\}$ und damit der Folge $\{y^k\}$ gegen 0 zu sichern, müssen
+	\begin{align}
+		\abs{1+\lambda_1 h} = \abs{1-h} < 1\quad\text{und}\quad \abs{1+\lambda_2 h} = \abs{1-200h} < 1 \notag
+	\end{align}
+	erfüllt sein. Dies impliziert $h < \sfrac{1}{100}$. Der für die exakte Lösung eigentlich unwesentliche (das heißt sehr schnell abklingende) Anteil $\exp(-200x)v^2$ verursacht beim expliziten \person{Euler}-Verfahren sehr kleine Schrittweiten.
+\end{example}
+
+Ähnliche Phänomene können bei der Anwendung anderer Verfahren, die nicht A-stabil sind, bzw. deren Bereich der absoluten Stabilität ungeeignet ist, auftreten. Auch bei allgemeineren AWA als \cref{3_30} treten Phänomene der Steifheit auf und erfordern angepasste Verfahren.

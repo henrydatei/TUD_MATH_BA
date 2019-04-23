@@ -30,12 +30,12 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\end{align*}
 	Betrachte nun
 	\begin{align*}
-	C&:= \set{(i,j) \in \O \mid i\neq j = 1}\\
+	C&:= \set{(i,j) \in \O \mid i + j = 7}\\
 	D&:= \set{(i,j) \in \O \mid i = 6}
 	\intertext{dann gilt}
 	\P(C) = \frac{1}{6}, \quad \P(D) = \frac{1}{6}
 	\intertext{und wegen $C \cap D = \set{(6,1)}$ folgt}
-	\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C \setminus D)
+	\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C) \cdot \P(D)
 	\end{align*}
 	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
 \end{example}
@@ -78,7 +78,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	% started using \O for \Omega and \E for this special generating set E_i
 	Seien $(\O, \F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset$ Indexmenge und $(E_i, \E_i)$ Messräume
 	\begin{enumerate}
-		\item Die Familie $\F_i \subset \F, i \in I$, heißen \begriff{unabhängig}, wenn für die $J \subseteq I, I \neq \emptyset, \abs{J} < \infty$ gilt
+		\item Die Familie $\F_i \subset \F, i \in I$, heißen \begriff{unabhängig}, wenn für die $J \subseteq I, J \neq \emptyset, \abs{J} < \infty$ gilt
 		\begin{align*}
 			\P\brackets{\bigcap_{i \in J} A_i} = \prod_{i\in J} \P(A_i) \qquad \text{ für beliebige } A_i \in \F_i, i \in J
 		\end{align*}
