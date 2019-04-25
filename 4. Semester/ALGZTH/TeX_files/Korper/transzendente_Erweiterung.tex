@@ -1,0 +1,44 @@
+\section{Die transzendente Erweiterung}
+Sei $L\mid K$ eine Körpererweiterung.
+\begin{definition}[algebraisch abhängig]
+	\begin{enumerate}
+		\item $a_1, \dots, a_n \in L$ \begriff{algebraisch abhängig} über $K$ $: \equi $ existiert \\$0 \neq f \in K(X_1,\dots, X_n) \colon f(a_1, \dots, a_n) = 0$
+		\item $(a_i)_{i\in I}$ ist \begriff{algebraisch abhängig} über $K$ $:\equi$ existiert $J \subseteq I$ endlich: $(a_i)_{i\in I}$ algebraisch abhängig über $K$
+	\end{enumerate}
+\end{definition}
+\begin{remark}
+	\begin{enumerate}
+		\item $(a)$ ist algebraisch abhängig über $K \equi a$ ist algebraisch über $K$
+		\item $L = K(X_1,\dots, X_n) = \Quot(K([X_1,\dots, X_n])) \implies X_1,\dots, X_n$ sind algebraisch unabhängig über $K$
+		\item Sind $\pi, e$ unabhängig über $\Q$?\\
+		Falls ``Ja'', wäre z.B. $\pi+e$ transzendent über $\Q$
+	\end{enumerate}
+\end{remark}
+\begin{definition}[reintranszendent]
+	$L \mid K$ \begriff{reintranszendent} $:\equiv L = K(\Halb) \mit \Halb = (a_i)_{i\in I}$ algebraisch unabhängig über $K$.
+\end{definition}
+\begin{lemma}
+	\proplbl{1_5_4}
+	$\Halb = (a_i)_{i \in I}$ algebraisch unabhängig über $K \implies K(\Halb) \cong_K K(X_i \colon i \in I) = \Quot(K[X_i \colon i \in I])$. 
+\end{lemma}
+\begin{proof}
+	Betrachte $K$-Isomorphismus
+	\begin{align*}
+		\varphi = \begin{cases}
+			K[X_i \colon I \in I] &\to K[a_i : i \in I]\\
+			f & \mapsto f(\Halb)
+		\end{cases} 
+	\end{align*}
+	($a_i$ für $x_i$ einsetzen.) Da $\Halb$ algebraisch unabhängig über $K$, ist $\Ker(\varphi) = (0)$\\
+	$\implies K(\Halb) = \Quot(K[\Halb]) \cong_K \Quot(K[X_i : i \in I])$.
+\end{proof}
+\begin{proposition}
+	$L\mid K$ reintranszendent $\implies \tilde{K} = K$.
+\end{proposition}
+\begin{proof}
+	Nach \propref{1_5_4} o.E. $L = K(X_i :\colon i \in I)$. Weiter o. E. $I = \set{1, \dots,n}$ endlich. Sei $\alpha \in L$ algebraisch über $K$. Definiere $f = \MinPol(\alpha \mid K)$.\\
+	$f$ irreduzibel in $K[X] \xRightarrow{\text{Gauß}} f$ irreduzibel in $K[X_1, \dots, X_n][X]$\\
+	$\xRightarrow{\text{Gauß}} f$ irreduzibel $K(X_1, \dots, X_n)[X]$\\
+	$\implies \deg(f) = 1$\\
+	$\alpha \in K$.
+\end{proof}

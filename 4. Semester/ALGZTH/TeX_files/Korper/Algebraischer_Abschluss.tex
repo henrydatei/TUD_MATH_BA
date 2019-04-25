@@ -75,5 +75,78 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\end{Bmatrix}\xRightarrow{\propref{1_4_2}} L_2 = \sigma(L_1).
 		\end{align*}
 		Somit ist $\sigma: L_1 \to L_2$ ein $K$-Isomorphismus.
+		\item Existenz: Seien
+		\begin{enumerate}[label=]
+			\item $\mathscr{F} = \set{f \in K[X] \colon \deg(f) > 0}$
+			\item $\Halb = (X_f)_{f \in \mathscr{F}}$ Familie von Variablen
+			\item $R := K[\Halb]$ Polynomring in den Variablen $X_f$ ($f \in mathscr{F}$)
+			\item $I := (f(X_f) \colon f \in \mathscr{F}) \properideal R$
+		\end{enumerate}
+			\begin{enumerate}[label=] 
+				\item Behauptung 1: Es gilt $I \properideal R$.
+					\begin{proof}[Behauptung 1]
+						Angenommen $I = R$. Dann existieren $f_1, \dots, f_n \in \mathscr{F}$ und $g_1, \dots, g_n \in R$ mit $\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1$. Sei $L$ ein Zerfällungskörper von $f_1, \dots, f_n$. Dann existieren $\alpha_1, \dots, \alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
+						\begin{align*}
+							&\varphi_{\mid K} = \id_K \quad \varphi(X_{f_i}) = \alpha_i \quad \varphi(X_f) = 0 \text{ für } f \in \lnkset{\mathscr{F}}{\set{f_1,\dots, f_n}}\\
+							&\implies 1 = \varphi(1) = \sum_{i=1}^n \varphi(g_i) \cdot \varphi(f_i (X_f))\\
+							&= \sum_{i=1}^n \varphi(g_i) \cdot f_i (\underbrace{\varphi(X_f)}_{= \alpha_i}) = \sum_{i=1}^n \varphi(g_i) \cdot \underbrace{f_i (\alpha_i)}_{=0} = 0
+						\end{align*}
+					\end{proof}
+				\end{enumerate}
+		Jedes echte Ideal ist in einem maximalen Ideal von $R$ enthalten (GEO II 2.13) $\implies$ existiert maximales Ideal $m \unlhd R \mit I \subseteq m$. $L_1 := \lnkset{R}{m}$ ist Körpererweiterung von $K$, und jedes $f \in \mathscr{F}$ hat eine Nullstelle in $L_1$, nämlich $f(X_f + m) = f(X_f) + m = 0 + m$. Iteriere dies und erhalte eine Kette von Körpern
+		\begin{align*}
+			K := L_0 \subseteq L_1 \subseteq L_2 \subseteq \cdots,
+		\end{align*}
+		wobei jedes $f \in L_i [X], \deg(f) >0$ eine Nullstelle in $L_{i+1}$ hat. Setze nun $L = \bigcup_{i=1}^{\infty}$.
+			\begin{enumerate}[label=]
+				\item Behauptung 2: $L$ ist algebraisch abgeschlossen.
+				\begin{proof}[Behauptung 2]
+					Sei $f \in L[X], \deg(f) > 0 \implies f \in L_i [X]$ für ein $i \implies f$ hat eine Nullstelle in $L_{i+1} \subseteq L$
+				\end{proof}
+			\end{enumerate}
+		Nach \propref{1_4_4} ist somit $\tilde{K} = \set{\alpha \in L \colon \alpha \text{ algebraisch über }K}$ ein abgeschlossener Abschluss von $K$.
+%		\end{enumerate}
 	\end{itemize}
 \end{proof}
+\begin{definition}[algebraischer Abschluss]
+	Mit $\bar{K}$ bezeichnen wir den (bis auf $K$-Ismorphie eindeutig bestimmten) \begriff{algebraischen Abschluss} von $K$.
+\end{definition}
+\begin{definition}[Automorphismengruppe]
+	$\Aut(L\mid K) := \set{ \sigma \in \Hom_K (L,L)\colon \sigma \text{ Isomorphismus} }$, die Automorphismengruppe von $L\mid K$.
+\end{definition}
+\begin{remark}
+	$\Aut(L \mid K)$ ist Gruppe unter $\sigma \cdot \sigma' = \sigma' \circ \sigma$ und wirkt auf $L$ durch $x^{\sigma} := \sigma(x)$.
+\end{remark}
+\begin{proposition}
+	\proplbl{1_4_11}
+	Sei $K \subseteq L \subseteq \bar{K}$ ein Zwischenkörper. Jedes $\varphi \in Hom_K (L, \bar{K})$ lässt sich zu einem $\sigma \in \Aut(\bar{K}\mid K)$ fortsetzen.
+\end{proposition}
+\begin{proof}
+	Sei $\bar{K} \mid K$ algebraisch abgeschlossen und $\bar{K}$ algebraisch abgeschlossen\\
+	$\xRightarrow{\propref{1_4_6}}$ existiert Fortsetzung $\sigma \in \Hom_K (\bar{K}, \bar{K})$ von $\varpi$\\
+	$\bar{K}$ algebraisch abgeschlossen $\implies \sigma(\bar{K})$ algebraisch abgeschlossen\\
+	$\bar{K} \mid K$ algebraisch ist $\implies \bar{K} \mid \sigma(\bar{K})$ algebraisch ($\bar{K} = \sigma(\bar{K})$) somsit ist $\sigma \in \Aut(\bar{K}, K)$.
+\end{proof}
+\begin{definition}[konjugiert]
+	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\Longleftrightarrow$ existiert $\sigma \in \Aut(\bar{K}, K)\mit \sigma(\alpha) = \beta$.
+\end{definition}
+\begin{remark}
+	$K$-Konjugiertheit ist eine Äquivalenzrelation auf $\bar{K}$.
+\end{remark}
+\begin{conclusion}
+	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\equi$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$.
+\end{conclusion}
+\begin{proof}
+	\begin{itemize}
+		\item $\Rightarrow:$ $\sigma(\alpha) = \beta \mit \sigma \in \Aut(\bar{K}\mid K), f \in K[X]$, $f(\alpha) = 0 \implies 0 = \sigma(0) = \sigma(f(\alpha)) = f(\sigma(\alpha)) = f(\beta)$
+		\item $\Leftarrow:$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$\\
+		$\xRightarrow{\propref{1_3_5}}$ existiert $K$-Isomorphismus $\varphi: K(\alpha) \to K(\beta) \mit \varphi(\alpha) = \beta$\\
+		$\xRightarrow{\propref{1_4_11}}$ existiert Fortsetzung $\sigma \in \Aut(\bar{K}, K)$ von $\varphi$. 
+	\end{itemize}
+\end{proof}
+\begin{example}
+	\begin{itemize}
+		\item $\ii, -\ii \in\tilde{\Q}$ sind $\Q$-konjugiert: komplex Konjugation (eingeschränkt auf $\tilde{\Q}$)
+		\item $\sqrt{2}, -\sqrt{2} \in \tilde{\Q}$ sind $\Q$-konjugiert: $\MinPol(\sqrt{2}\mid \Q) = x^2 -2 = \MinPol(-\sqrt{2}\mid \Q)$
+	\end{itemize}
+\end{example}
