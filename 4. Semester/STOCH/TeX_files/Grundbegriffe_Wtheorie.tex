@@ -212,7 +212,7 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 	Sie wird ebenso mit $\Gleich(\Omega)$ notiert.
 \end{definition}
 
-\subsection*{WRäume}
+\subsection*{Wahrscheinlichkeitsräume}
 
 \begin{definition}[Wahrscheinlichkeitsraum]
 	Ein Tripel $(\Omega, \sigF, \probp)$ mit $\Omega, \sigF$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$, nennen wir \begriff{Wahrscheinlichkeitsraum}.
@@ -222,7 +222,7 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 
 Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
 Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
-Damit wir auch jedem Ereignis in $\sigF'$ eine Wheit zuordnen können, benötigen wir	
+Damit wir auch jedem Ereignis in $\sigF'$ eine Wahrscheinlichkeit zuordnen können, benötigen wir	
 \begin{align}
 	A' \in \sigF' \Rightarrow X' A' \in \sigF \notag		
 \end{align}
@@ -269,7 +269,7 @@ d.h. $X$ sollte messbar sein.
 	\begin{itemize}
 		\item Aus Gründen der Lesbarkeit schreiben wir in der Folge $\probp(X \in A) = \probp(\set{\omega \colon X(\omega) \in A})$
 		\item Ist $X$ die Identität, so fallen die Begriffe Wahrscheinlichkeitsmaß und Wahrscheinlichkeitsverteilung zusammen.
-		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden Wahrscheinlichkeitsraumes verzichtet und stattdessen eine ``Zufalsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
+		\item In der (weiterführenden) Literatur zu Wahrscheinlichkeitstheorie wird oft auf die Angabe eines zugrundeliegenden Wahrscheinlichkeitsraumes verzichtet und stattdessen eine ``Zufallsvariable mit Verteilung $\probp$ auf $\Omega$'' eingeführt.
 		Gemeint ist (fast) immer $X$ als Identität auf $(\Omega, \sigF, \probp)$ mit $\sigF = \pows(\Omega) / \borel(\Omega)$.
 		\item Für die Verteilung von $X$ unter $\probp$ schreibe $\probp_{X}$ und $X \sim \probp_{X}$ für die Tatsache, dass $X$ gemäß $\probp_{X}$ verteilt ist.
 	\end{itemize}
@@ -320,7 +320,7 @@ Da die halboffenen Intervalle $\borel(\R)$ erzeugen, ist die Verteilung eine ree
 \end{center}
 
 \begin{example}
-	Das Würfeln mit einem fairen, sechseitigen Würfel kann mittels einer reellen Zufallsvariablen
+	Das Würfeln mit einem fairen, sechsseitigen Würfel kann mittels einer reellen Zufallsvariablen
 	\begin{align}
 		X: \set{1,2,\dots, 6} \to \R \mit x \mapsto x\notag
 	\end{align}
@@ -379,7 +379,7 @@ Allgemein:
 	\begin{align}
 		X(u) := \inf\set{x \in \R \colon F(x) \ge u}, \quad u \in (0,1)\notag
 	\end{align}
-	Dann ist $X$ eine ``linkseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
+	Dann ist $X$ eine ``linksseitige Inverse'' von $F$ (auch \begriff{Quantilfunktion} / \begriff{verallgemeinerte Inverse}).
 	Wegen 3 gilt:
 	\begin{align}
 		-\infty < X(u) < \infty\notag
