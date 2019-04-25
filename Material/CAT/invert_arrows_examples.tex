@@ -1,0 +1,30 @@
+\documentclass{standalone}
+
+
+\usepackage{tikz, amsmath}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\begin{document}
+	\begin{tikzcd}
+		A \ar[rd,bend right] \ar[rr,bend left] & & B\ar[ld, bend left]\ar[ll, bend left]\\
+		& C
+	\end{tikzcd}
+	\begin{tikzcd}
+		A \ar[from=rd,bend right] \ar[from=rr,bend left] & & B\ar[from=ld, bend left]\ar[from=ll, bend left]\\
+		& C
+	\end{tikzcd}
+	\begin{tikzcd}
+		A \ar[from=rd,bend left] \ar[from=rr,bend right] & & B\ar[from=ld, bend right]\ar[from=ll, bend right] \\
+		& C
+	\end{tikzcd}
+\end{document}
