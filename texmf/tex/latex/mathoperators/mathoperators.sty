@@ -98,7 +98,9 @@
 % % % % % % % Shorter commands % % % % % % % % % % % % % % % %
 \newcommand{\mal}{\cdot}                   
 %\newcommand{\implies}{\Longrightarrow}        
-\newcommand{\equi}{\Leftrightarrow}         
+\newcommand{\equi}{\Leftrightarrow}
+\undef{\over}											% overrides the old Tex command \over, which are basics fractions!
+\newcommand{\over}[2]{\overset{#1}{#2}} 				% shorter \overset!    
 
 %%%%%%%%%%% Old commands, need to check, which ones are in use, if not delete!
 
