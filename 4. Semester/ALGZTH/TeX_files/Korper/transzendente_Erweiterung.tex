@@ -6,6 +6,13 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\item $(a_i)_{i\in I}$ ist \begriff{algebraisch abhängig} über $K$ $:\equi$ existiert $J \subseteq I$ endlich: $(a_i)_{i\in I}$ algebraisch abhängig über $K$
 	\end{enumerate}
 \end{definition}
+\begin{*example}
+	Betrachte die reellen Zahlen $\sqrt{\pi} \und 2\pi +1$, beide sind transzendent über $\Q$. Die Singletons $\set{\sqrt{\pi}}\und \set{2\pi +1}$ sind algebraisch unabhängig über $\Q$. Aber die Vereinigung $\set{\sqrt{\pi}, 2\pi +1}$ ist nicht algebraisch unabhängig in $\Q$, da
+	\begin{align*}
+		P(x,y) = 2x^2 - y + 1 = 0
+	\end{align*}
+	ist, wenn $x = \sqrt{\pi} \und y = 2\pi +1$ gesetzt sind.
+\end{*example}
 \begin{remark}
 	\begin{enumerate}
 		\item $(a)$ ist algebraisch abhängig über $K \equi a$ ist algebraisch über $K$
@@ -14,8 +21,8 @@ Sei $L\mid K$ eine Körpererweiterung.
 		Falls ``Ja'', wäre z.B. $\pi+e$ transzendent über $\Q$
 	\end{enumerate}
 \end{remark}
-\begin{definition}[reintranszendent]
-	$L \mid K$ \begriff{reintranszendent} $:\equi L = K(\Halb) \mit \Halb = (a_i)_{i\in I}$ algebraisch unabhängig über $K$.
+\begin{definition}[rein transzendent]
+	$L \mid K$ \begriff{rein transzendent} $:\equi L = K(\Halb) \mit \Halb = (a_i)_{i\in I}$ algebraisch unabhängig über $K$.
 \end{definition}
 \begin{lemma}
 	\proplbl{1_5_4}
@@ -33,7 +40,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	$\implies K(\Halb) = \Quot(K[\Halb]) \cong_K \Quot(K[X_i : i \in I])$.
 \end{proof}
 \begin{proposition}
-	$L\mid K$ reintranszendent $\implies \tilde{K} = K$.
+	$L\mid K$ rein transzendent $\implies \tilde{K} = K$.
 \end{proposition}
 \begin{proof}
 	Nach \propref{1_5_4} o.E. $L = K(X_i : i \in I)$. Weiter o. E. $I = \set{1, \dots,n}$ endlich. Sei $\alpha \in L$ algebraisch über $K$. Definiere $f = \MinPol(\alpha \mid K)$.\\
