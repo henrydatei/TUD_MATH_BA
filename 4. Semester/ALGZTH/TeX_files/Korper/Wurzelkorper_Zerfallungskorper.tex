@@ -96,7 +96,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	\end{itemize}
 \end{proof}
 \begin{example}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item Ist $n=2$, so ist jeder Wurzelkörper $L$ von $f$, schon ein Zerfällungskörper: $[L:K]\le 2$.
 		\item Ist $n =3$, $f$ irreduzibel. Schreibe $L_1 = K(\alpha), f = c(x-\alpha_1)f_1 \mit f_1 \in L_1[X]$
 			\begin{itemize}
@@ -170,7 +170,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}[label=]
-		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungs- körper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
+		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungskörper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
 		\item Beweis: Induktion nach $n = \deg(f)$
 			\begin{enumerate}[label=] %TODO maybe use enum here without label?
 				\item (IA) $n=1:$ $L = K \xrightarrow[\varphi]{\cong} K' = L'$ \checkmark

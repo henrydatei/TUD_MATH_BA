@@ -1,7 +1,7 @@
 \section{Die transzendente Erweiterung}
 Sei $L\mid K$ eine Körpererweiterung.
 \begin{definition}[algebraisch abhängig]
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $a_1, \dots, a_n \in L$ \begriff{algebraisch abhängig} über $K$ $: \equi $ existiert \\$0 \neq f \in K(X_1,\dots, X_n) \colon f(a_1, \dots, a_n) = 0$
 		\item $(a_i)_{i\in I}$ ist \begriff{algebraisch abhängig} über $K$ $:\equi$ existiert $J \subseteq I$ endlich: $(a_i)_{i\in I}$ algebraisch abhängig über $K$
 	\end{enumerate}
@@ -14,7 +14,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	ist, wenn $x = \sqrt{\pi} \und y = 2\pi +1$ gesetzt sind.
 \end{*example}
 \begin{remark}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $(a)$ ist algebraisch abhängig über $K \equi a$ ist algebraisch über $K$
 		\item $L = K(X_1,\dots, X_n) = \Quot(K([X_1,\dots, X_n])) \implies X_1,\dots, X_n$ sind algebraisch unabhängig über $K$
 		\item Sind $\pi, e$ unabhängig über $\Q$?\\
@@ -44,8 +44,8 @@ Sei $L\mid K$ eine Körpererweiterung.
 \end{proposition}
 \begin{proof}
 	Nach \propref{1_5_4} o.E. $L = K(X_i : i \in I)$. Weiter o. E. $I = \set{1, \dots,n}$ endlich. Sei $\alpha \in L$ algebraisch über $K$. Definiere $f = \MinPol(\alpha \mid K)$.\\
-	$f$ irreduzibel in $K[X] \xRightarrow{\text{Gauß}} f$ irreduzibel in $K[X_1, \dots, X_n][X]$\\
-	$\xRightarrow{\text{Gauß}} f$ irreduzibel $K(X_1, \dots, X_n)[X]$\\
+	$f$ irreduzibel in $K[X] \xRightarrow{\text{\person{Gauss}}} f$ irreduzibel in $K[X_1, \dots, X_n][X]$\\
+	$\xRightarrow{\text{\person{Gauss}}} f$ irreduzibel $K(X_1, \dots, X_n)[X]$\\
 	$\implies \deg(f) = 1$\\
 	$\implies \alpha \in K$.
 \end{proof}

@@ -46,9 +46,9 @@ Sei $L \mid K$ eine Körpererweiterung.
 	$K$ Hauptidealring $\Rightarrow \Ker(\phi_\alpha) = (f_\alpha)$, $f_\alpha \in K$, o.E. sei $f_{\alpha}$ normiert. Aus $K[\alpha] \subseteq L$ nullteilerfrei folgt, dass $\Ker(\phi_\alpha)$ prim ist. Somit ist $f_\alpha$ prim und im Hauptidealring also auch irreduzibel.
 \end{proof}
 
-\begin{definition}[Monimalpolynom, Grad]
+\begin{definition}[Minimalpolynom, Grad]
 	Sei $\alpha \in L$ algebraisch über $K$, $\Ker(\phi_\alpha) = (f_\alpha)$ mit $f_\alpha \in K$ normiert und irreduzibel.
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $\MinPol(\alpha\mid K) := f_\alpha$, das \begriff{Minimalpolynom} von $\alpha$ über $K$.
 		\item $\deg(\alpha\mid K) :\Leftrightarrow \deg(f_\alpha)$, der \begriff{Grad} von $\alpha$ über $K$.
 	\end{enumerate}
@@ -57,7 +57,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 \begin{proposition}
 	\proplbl{1_2_7}
 	Sei $\alpha \in L$.
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $\alpha$ transzendent über $K$ \\
 		$\Rightarrow K[\alpha] \cong K$, $K(\alpha) \cong_K K(X)$, $[K(\alpha) : K] = \infty$.
 		\item $\alpha$ algebraisch über $K$ \\
@@ -73,11 +73,11 @@ Sei $L \mid K$ eine Körpererweiterung.
 		$\Rightarrow [K(\alpha) \colon K] = [K(x) \colon K] = \infty$
 		\item Sei $f = f_\alpha = \MinPol(\alpha \mid K)$, $n = \deg(\alpha \mid K) = \deg(f)$.
 		\begin{itemize}
-			\item $f$ irreduzibel $\Rightarrow (f) \neq (0)$ prim ${\xRightarrow{\text{GEO II.4.7}}} (f)$ ist maximal \\
+			\item $f$ irreduzibel $\Rightarrow (f) \neq (0)$ prim ${\xRightarrow{\text{GEO II.4.7}}}$ $(f)$ ist maximal \\
 			$\Rightarrow K[\alpha] \cong \lnkset{K}{(f)}$ ist Körper $\Rightarrow K[\alpha] = K(\alpha)$
 			\item $1, \alpha, \dots , \alpha^{n-1}$ sind $K$-linear unabhängig: 
 			\begin{align}
-			\sum_{i=0}^{n-1} \lambda_i \alpha^i = 0 \Rightarrow \sum_{i=0}^{n-1} \lambda_i X^i \in (f) \quad \overset{\deg f = n}{\Longrightarrow} \quad \lambda_i = 0 \enskip \forall i \notag
+			\sum_{i=0}^{n-1} \lambda_i \alpha^i = 0 \Rightarrow \sum_{i=0}^{n-1} \lambda_i X^i \in (f) \quad \xRightarrow{\deg f = n} \quad \lambda_i = 0 \enskip \forall i \notag
 			\end{align}
 			$1, \alpha, \dots , \alpha^{n-1}$ ist Erzeugendensystem: Für $g \in K$ ist 
 			\begin{align}
@@ -98,7 +98,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 		Da $f(X) = X^2 - p$ irreduzibel in $\Q$ ist (GEO II.7.3), ist $\MinPol(\sqrt{p}:\Q) = X^2 - p$, $[\Q(\sqrt{p}) : \Q] = 2$.
 		\item Sei $\zeta_p = e^{\frac{2\pi i}{p}} \in \C$ ($p \in \N$ prim). Da $\Phi_p =  \frac{X^p-1}{X-1} = X^{p-1} + X^{p-2} + \cdots + X + 1 \in \Q$ irreduzibel in $\Q$ ist (GEO II.7.9), ist $\MinPol(\zeta_p \mid \Q) = \Phi_p$, $[\Q(\zeta_p) : \Q] = p-1$. Daraus folgt schließlich $[\C : \Q \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p \Rightarrow [\C : \Q] = \infty \Rightarrow [R : \Q] = \infty$.
 		\item $e \in \R$ ist transzendent über $\Q$ (\person{Hermite} 1873), 
-		$\pi \in \R$ ist transendent über $\Q$ (\person{Lindemann} 1882). \\
+		$\pi \in \R$ ist transzendent über $\Q$ (\person{Lindemann} 1882). \\
 		Daraus folgt: $[R : \Q] \ge [\Q(\pi): \Q] = \infty$. Jedoch ist unbekannt, ob z.B. $\pi + e$ transzendent ist.
 	\end{enumerate}
 \end{example}
@@ -138,7 +138,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 
 \begin{conclusion}
 	Es sind äquivalent:
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $L \mid K$ ist endlich.
 		\item $L \mid K$ ist endlich erzeugt und algebraisch.
 		\item $L = K(\alpha_1, \dots , \alpha_n)$ mit $\alpha_1, \dots, \alpha_n$ algebraisch über $K$.
@@ -180,7 +180,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 		$\Rightarrow f \in L_0[x]$\\
 		$\Rightarrow [L_0(\alpha): L_0] \le \deg(f) \le \infty$\\
 		$\Rightarrow [K(\alpha: K)] \le [K(a_0,\dots,a_n,\alpha):K] = \underbrace{[L_0(\alpha):L_0]}_{< \infty}\underbrace{[L_0 :K]}_{< \text{ nach } \propref{1_2_7}}$\\
-		$\Rightarrow \alpha$ abgebraisch über $K$\\
+		$\Rightarrow \alpha$ algebraisch über $K$\\
 		$\overset{\alpha \text{ bel.}}{\Rightarrow} M \mid K$ algebraisch.
 	\end{itemize}
 \end{proof}

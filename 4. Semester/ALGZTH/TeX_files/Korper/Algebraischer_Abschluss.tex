@@ -6,14 +6,14 @@ Sei $L\mid K$ eine Körpererweiterung.
 \begin{lemma}
 	\proplbl{1_4_2}
 	Es ist äquivalent:
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $K$ ist algebraisch abgeschlossen. \label{aussage:1_4_2:1}
 		\item Jedes $0 \neq f \in K[X]$ zerfällt über $K$ in Linearfaktoren. \label{aussage:1_4_2:2}
 		\item $K$ hat keine echte algebraische Erweiterung. \label{aussage:1_4_2:3}
 	\end{enumerate}
 \end{lemma}
 \begin{proof} %TODO ref
-	\begin{enumerate}[label=]
+	\begin{enumerate}[label=(\alph*)]
 		\item \ref{aussage:1_4_2:1} $\Rightarrow$ \ref{aussage:1_4_2:2}: Induktion nach $\deg(f)$ (siehe LAAG)
 		\item \ref{aussage:1_4_2:2} $\Rightarrow$ \ref{aussage:1_4_2:3}: Sei $L \mid K$ algebraisch, $\alpha \in L$. Schreibe $f = \MinPol(\alpha \mid K)$. Nach \ref{aussage:1_4_2:2} zerfällt $f$ in Linearfaktoren über $K \Rightarrow \alpha \in K$
 		\item \ref{aussage:1_4_2:3} $\Rightarrow$ \ref{aussage:1_4_2:1}: Sei $f \in K[X], \deg(f) > 0$. Nach \propref{1_3_9} existiert ein Zerfällungskörper $L$ von $f$. Da $L\overset{(*)}{=}K$ nach \ref{aussage:1_4_2:3} hat $f$ Nullstellen in $K$. \\
@@ -36,7 +36,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	\end{itemize}
 \end{proof}
 \begin{example}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $\C$ ist algebraisch abgeschlossen (Fundamentalsatz der Algebra, $\nearrow$ II.) %TODO \nearrow II later
 		\item $\C$ ist algebraischer Abschluss von $\R$.
 		\item $\tilde{\Q} := \set{\alpha \in \C \mid \alpha \text{ algebraisch über }\Q}$ ist nach \propref{1_4_4} ein algebraischer Abschluss von $\Q$.
@@ -60,7 +60,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 		$(M,\sigma) \le (M(\alpha, \sigma')) \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha), \alpha \in M.$
 	\end{itemize}
 \end{proof}
-\begin{theorem}[Steinitz, 1910]
+\begin{theorem}[\person{Steinitz}, 1910]
 	Jeder Körper $K$ besitzt einen bis auf $K$-Isomorphie eindeutig bestimmten algebraischen Abschluss.
 \end{theorem} %TODO tikzcd!
 \begin{proof}\
@@ -76,13 +76,13 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\end{align*}
 		Somit ist $\sigma: L_1 \to L_2$ ein $K$-Isomorphismus.
 		\item Existenz: Seien
-		\begin{enumerate}[label=]
+		\begin{enumerate}[label=(\alph*)]
 			\item $\mathscr{F} = \set{f \in K[X] \colon \deg(f) > 0}$
 			\item $\Halb = (X_f)_{f \in \mathscr{F}}$ Familie von Variablen
 			\item $R := K[\Halb]$ Polynomring in den Variablen $X_f$ ($f \in mathscr{F}$)
 			\item $I := (f(X_f) \colon f \in \mathscr{F}) \properideal R$
 		\end{enumerate}
-			\begin{enumerate}[label=] 
+			\begin{enumerate}[label=(\alph*)]
 				\item Behauptung 1: Es gilt $I \properideal R$.
 					\begin{proof}[Behauptung 1]
 						Angenommen $I = R$. Dann existieren $f_1, \dots, f_n \in \mathscr{F}$ und $g_1, \dots, g_n \in R$ mit $\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1$. Sei $L$ ein Zerfällungskörper von $f_1, \dots, f_n$. Dann existieren $\alpha_1, \dots, \alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
@@ -98,7 +98,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 			K := L_0 \subseteq L_1 \subseteq L_2 \subseteq \cdots,
 		\end{align*}
 		wobei jedes $f \in L_i [X], \deg(f) >0$ eine Nullstelle in $L_{i+1}$ hat. Setze nun $L = \bigcup_{i=1}^{\infty}$.
-			\begin{enumerate}[label=]
+			\begin{enumerate}[label=(\alph*)]
 				\item Behauptung 2: $L$ ist algebraisch abgeschlossen.
 				\begin{proof}[Behauptung 2]
 					Sei $f \in L[X], \deg(f) > 0 \implies f \in L_i [X]$ für ein $i \implies f$ hat eine Nullstelle in $L_{i+1} \subseteq L$
@@ -109,7 +109,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	\end{itemize}
 \end{proof}
 \begin{definition}[algebraischer Abschluss]
-	Mit $\bar{K}$ bezeichnen wir den (bis auf $K$-Ismorphie eindeutig bestimmten) \begriff{algebraischen Abschluss} von $K$.
+	Mit $\bar{K}$ bezeichnen wir den (bis auf $K$-Isomorphie eindeutig bestimmten) \begriff{algebraischen Abschluss} von $K$.
 \end{definition}
 \begin{definition}[Automorphismengruppe]
 	$\Aut(L\mid K) := \set{ \sigma \in \Hom_K (L,L)\colon \sigma \text{ Isomorphismus} }$, die Automorphismengruppe von $L\mid K$.

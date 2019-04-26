@@ -10,14 +10,14 @@ Sei $K,L,M$ Körper.
 \begin{remark}
 	\proplbl{1_1_2}
 	\begin{enumerate}[label=(\alph*)]
-		\item Ein \emph{Körper} ist ein Ring $R$, in dem eine der folgenden äquivalenten bedingungen gilt:
+		\item Ein \emph{Körper} ist ein Ring $R$, in dem eine der folgenden äquivalenten Bedingungen gilt:
 		\begin{enumerate}[label=\arabic*)]
 			\item $0 \neq 1$ und jedes $0 \neq x \in R$ ist invertierbar
 			\item $R^{\times} = R \setminus \set{0}$
 			\item $R$ hat genau zwei Hauptideale (nämlich $(0)$ und $(1)$)
 			\item $(0)$ ist ein maximales Ideal von $R$
 			\item $(0)$ ist das einzige echte Ideal von $R$
-			\item $(0)$ ist das einzigste Primideal von $R$
+			\item $(0)$ ist das einzige Primideal von $R$
 		\end{enumerate}
 		\item Insbesondere sind Körper \emph{nullteilerfrei}, weshalb $\Ker(\Z \to K)$ prim ist.
 		\item Aus (5) folgt: Jeder Ringhomomorphismus $K \to L$ ist injektiv %TODO add ref to (5) and check the ringhomo!
@@ -31,7 +31,7 @@ Sei $K,L,M$ Körper.
 
 \begin{example}
 	\proplbl{1_1_4}
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $\chara(\Q) = 0$ und $\chara(\Fp) = (p)$ ($p =$ Primzahl), wobei $\Fp = \lnkset{\Z}{p\Z}$
 		\item Ist $K_0 \subseteq K$ Teilkörper, so ist $\chara(K_0) = \chara(K)$.
 	\end{enumerate}
@@ -64,7 +64,7 @@ Sei $K,L,M$ Körper.
 
 \begin{definition}[$K$-Homomorphismus]
 	Seien $L_1 \mid K$ und $L_2 \mid K$ Körpererweiterungen.
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item Ein Ringhomomorphismus $\phi\colon L_1 \to L_2$ ist ein $K$-Homomorphismus, wenn $\phi\vert_K = \id_K$ (i.Z. $\phi: L_1 \to L_2$)
 		\item $\Hom_K(L_1,L_2) = \set{\phi \mid \phi: L_1 \to L_2 \text{ ist $K$-Homomorphismus}}$
 		\item $L_1$ und $L_2$ sind $K$-isomorph (i.Z. $L_1 \cong L_2$), wenn es einen Isomorphismus: $\phi \in \Hom_K(L_1, L_2)$ gibt.
@@ -94,9 +94,9 @@ Sei $K,L,M$ Körper.
 \end{proposition}
 
 \begin{proof} %TODO maybe make unnumbered lemma here for the claim? add align!
-	Behauptung: Sei $x_1, \dots, x_n \in L$ $K$-linear unabhängig und $y_1, \dots, y_m \in M$ $L$-linear unabhängig\\
+	\emph{Behauptung:} Sei $x_1, \dots, x_n \in L$ $K$-linear unabhängig und $y_1, \dots, y_m \in M$ $L$-linear unabhängig\\
 	$\Rightarrow x_i y_j, i \in \set{1,\dots,n}, j \in \set{1, \dots, m}$ $K$-linear unabhängig.\\
-	Beweis: $\sum_{i,j} \lambda_{ij}x_i y_j = 0$ mit $\lambda_{ij} \in K$\\
+	\emph{Beweis:} $\sum_{i,j} \lambda_{ij}x_i y_j = 0$ mit $\lambda_{ij} \in K$\\
 	$\Rightarrow \sum_{j}\underbrace{\left( \sum_{i} \lambda_{ij}x_i \right)}_{\in L}y_j = 0 
 	\xRightarrow{y_j L\text{-l.u.}} \sum_{i} \lambda_{ij} x_i = 0\quad\forall j
 	\xRightarrow{y_j K\text{-l.u.}} \lambda_{ij} = 0\quad\forall i, \forall j$
@@ -118,7 +118,7 @@ Sei $K,L,M$ Körper.
 
 \begin{definition}[Unterring, Teilkörper]
 	Sei $L\mid K$ eine Körpererweiterung $a_1, a_2, \dots, a_n \in L$.
-	\begin{enumerate}
+	\begin{enumerate}[label=(\alph*)]
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
 		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``von ``$a_1, \dots, a_n$ über $K$ erzeugte'', ``$a_1, \dots, a_n$'' zu $K$ adjungieren)
 		\item $L | K$ ist \begriff{endlich erzeugt} $:\Leftrightarrow a_1, \dots , a_n \in L : L=K(a_1, \dots, a_n)$
