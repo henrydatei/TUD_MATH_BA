@@ -1,0 +1,47 @@
+\section{Stetige Gleichverteilung}
+\begin{*erinnerung}
+	$\O \subset \Rn$ Borel-messbar mit \person{Lebesgue}volumen $0 < \lambda(\O) < \infty$. Wahrscheinlichkeitsmaß ist $(\O, \borel(\O))$ mit Dichte
+	\begin{align*}
+	q\rho(x) = \frac{1}{\lambda(\O)}
+	\end{align*}
+	heißt stetige Gleichverteilung auf $\O$: $\Gleich(\O)$.\\
+	Für alle $A \in \borel(\O)$ gilt:
+	\begin{align*}
+		\P(A) = \int_{A} \rho(x) \d x = \frac{\lambda(A)}{\lambda(\O)}.
+	\end{align*}
+	Meist verwenden wir $\Gleich([a,b]), a < b$ (Gleichverteilung auf Intervall) mit $\rho(x) = \sfrac{1}{(b-a)}, a \le x \le b$ und Verteilungsfunktion
+	\begin{align*}
+		F(x) = 
+		\begin{cases}
+			0 & x < a\\
+			\int_{a}^{x} \frac{x-a}{b-a} & a \le x \le b\\
+			1 & x >b
+		\end{cases}
+	\end{align*}
+\end{*erinnerung}
+\section{Wartezeitverteilungen}
+\begriff{Negative Binomialverteilung}:\
+Wir wiederholen ein Bernoulliexperiment mit Erfolgswahrscheinlichkeit $p \in [0,1]$ unendlich oft. Gesucht ist die Anzahl der Misserfolge bis zum $r$-ten Erfolg, $r \in \N$. Ein passender Ergebnisraum ist $\O = \N_0$. Für Modellierung ist es jedoch leichter in jedem Versuch Erfolgt (``1'') oder Misserfolg (``0'') festzuhalten und $i$ mit dem unendlichen Produktmaß des Bernoullimaßes auf $\set{0,1}^{\N}$ zu arbeiten.\\
+Als Zufallsvariable
+\begin{align*}
+	X_r : \set{0,1}^{\N} \to \O
+\end{align*}
+welche die Anzahl der Misserfolge bis zum $r$-ten Erfolg darstellt, setze
+\begin{align*}
+	X_r (\omega) &= \min \set{\sum_{i=1}^k \omega_i = r} = r
+	\intertext{Dann}
+	\P(X_r = k) &= \sum_{\substack{\omega \in \set{0,1}^{\N}\\ X_r(\omega) = k}} \prod_{i=1}^{\infty} \rho(\omega_i)
+	\intertext{mit $\rho(0) = 1-p, \rho(1) = 1$ (Zähldichte der Bernoulliverteilung), also}
+	\P(X_r = k) &= \binom{r+k-1}{k} (1-p)^k p^r \quad r \in \N_0.
+\end{align*}
+\begin{definition}[negative Binomialverteilung, geometrische Verteilung]
+	Sei $p \in[0,1]$ und $r \in \N$, dann heißt die Verteilung auf $\N_0$ mit Zähldichte
+	\begin{align*}
+		\rho(k) = \binom{r+k-1}{k} p^r (1-p)^k
+	\end{align*}
+	\begriff{negative Binomialverteilung} mit Parametern $(r,p)$. Schreibe $\negBin(r,p)$. Im Fall $r = 1$ nennen wir die Verteilung mit Zähldichte
+	\begin{align*}
+		\rho(k) = p(1-p)^k \quad k \in \N_0
+	\end{align*}
+	\begriff{geometrische Verteilung} mit Parametern $p$. Schreibe $\Geom(p)$.
+\end{definition}
