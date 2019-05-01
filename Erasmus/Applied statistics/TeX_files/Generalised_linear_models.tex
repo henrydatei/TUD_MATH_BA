@@ -1,0 +1,44 @@
+So far, we have looked at statistical models of the form $Y\sim Normal(X\beta,\sigma\mathbbm{1})$. This is a flexible framework, allowing us to model linear and non-linear relationships between a response and predictors. We covered model formulation, model fitting, model checking, model selection, hypothesis test on model fits, predictions from models and the design of experiments to effectively collect data for statistical analysis. Today we will look at an even more general class of statistical models than linear models.
+
+\subsection{Where linear models are not enough}
+
+\begin{example}
+	Consider yes/no outcomes or count data:
+	
+	The normal distribution for the errors $\epsilon$ is not appropriate here.
+\end{example}
+
+There is a more general class of models than linear models, called \begriff{Generalised Linear Models} (GLMs). They can be written as
+\begin{align}
+	\mathbb{E}(Y_i) &\equiv \mu_i =\gamma(X_i\beta) \notag \\
+	Y_i &\overset{\text{independent}}{\sim} \text{ Exponential family distribution} \notag
+\end{align}
+where $\gamma$ is any smooth monotonic function. The Exponential family of distributions includes distributions such as Poisson, Gaussian, binomial and gamma.
+
+GLMs are written in terms of the \begriff{link function}, $g$, which is the inverse of $\gamma$:
+\begin{align}
+	g(\mu_i) &= X_i\beta \notag \\
+	Y_i &\overset{\text{independent}}{\sim} \text{ Exponential family distribution} \notag
+\end{align}
+
+\begin{example}
+	\begin{align}
+		Y_i &\sim \text{Binomial} \notag \\
+		g(\mu) &= \ln\left(\frac{\mu}{1-\mu}\right)\notag
+	\end{align}
+	logit link function.
+\end{example}
+
+\begin{example}
+	Linear models are a special case of GLMs.
+\end{example}
+
+\subsection{Model fitting in GLMs}
+
+\subsection{GLM assumptions and checking}
+
+\subsection{Hypothesis tests on GLM fits}
+
+\subsection{Model selection on GLMs}
+
+\subsection{Interpreting GLM parameters}
