@@ -50,7 +50,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	Definiere Halbordnung.
 	\begin{align*}
 		\Halb &:= \set{(M,\sigma) : K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E), \sigma_{\mid K} = \varphi}\\
-		&(M,\sigma) \subseteq (M' , \sigma') :\Leftrightarrow m \subset M' \und \sigma'_{\mid M} = \sigma
+		&(M,\sigma) \subseteq (M' , \sigma') :\iff m \subset M' \und \sigma'_{\mid M} = \sigma
 	\end{align*}
 	\begin{itemize}
 		\item $\Halb \neq \emptyset$: $(K,\varphi) \in \Halb$
@@ -76,13 +76,13 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\end{align*}
 		Somit ist $\sigma: L_1 \to L_2$ ein $K$-Isomorphismus.
 		\item Existenz: Seien
-		\begin{enumerate}[label=(\alph*)]
+		\begin{itemize}
 			\item $\mathscr{F} = \set{f \in K[X] \colon \deg(f) > 0}$
 			\item $\Halb = (X_f)_{f \in \mathscr{F}}$ Familie von Variablen
-			\item $R := K[\Halb]$ Polynomring in den Variablen $X_f$ ($f \in mathscr{F}$)
+			\item $R := K[\Halb]$ Polynomring in den Variablen $X_f$ ($f \in \mathscr{F}$)
 			\item $I := (f(X_f) \colon f \in \mathscr{F}) \properideal R$
-		\end{enumerate}
-			\begin{enumerate}[label=(\alph*)]
+		\end{itemize}
+			\begin{enumerate}[label=]
 				\item Behauptung 1: Es gilt $I \properideal R$.
 					\begin{proof}[Behauptung 1]
 						Angenommen $I = R$. Dann existieren $f_1, \dots, f_n \in \mathscr{F}$ und $g_1, \dots, g_n \in R$ mit $\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1$. Sei $L$ ein Zerfällungskörper von $f_1, \dots, f_n$. Dann existieren $\alpha_1, \dots, \alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
@@ -98,7 +98,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 			K := L_0 \subseteq L_1 \subseteq L_2 \subseteq \cdots,
 		\end{align*}
 		wobei jedes $f \in L_i [X], \deg(f) >0$ eine Nullstelle in $L_{i+1}$ hat. Setze nun $L = \bigcup_{i=1}^{\infty}$.
-			\begin{enumerate}[label=(\alph*)]
+			\begin{enumerate}[label=]
 				\item Behauptung 2: $L$ ist algebraisch abgeschlossen.
 				\begin{proof}[Behauptung 2]
 					Sei $f \in L[X], \deg(f) > 0 \implies f \in L_i [X]$ für ein $i \implies f$ hat eine Nullstelle in $L_{i+1} \subseteq L$
@@ -134,7 +134,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	$K$-Konjugiertheit ist eine Äquivalenzrelation auf $\bar{K}$.
 \end{remark}
 \begin{conclusion}
-	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\equi$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$.
+	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\iff$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$.
 \end{conclusion}
 \begin{proof}\
 	\begin{itemize}
