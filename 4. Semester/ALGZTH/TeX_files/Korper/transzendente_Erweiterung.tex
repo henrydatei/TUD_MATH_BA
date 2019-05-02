@@ -49,3 +49,67 @@ Sei $L\mid K$ eine Körpererweiterung.
 	$\implies \deg(f) = 1$\\
 	$\implies \alpha \in K$.
 \end{proof}
+\begin{remark}
+	Die Umkehrung gilt nicht, da z.B. $L = \C$. Sei $K = \tilde{\Q}$, dann $\tilde{K} = K$, aber $L\mid K$ nicht rein transzendent. Ist $L = K[\Halb]$, $\Halb = (a_i)_{i\in I}$ algebraisch unabhängig, so wäre $a_i \in L$ aber $\sqrt{a_i} \in \bar{L}\setminus L$.
+\end{remark}
+\begin{definition}[Transzendentbasis]
+	$\Halb = (a_i)_{i\in I}$ ist eine \begriff{Transzendentbasis} von $L \mid K : \iff \Halb$ ist algebraisch unabhängig über $K$ und $L\mid K(\Halb)$ algebraisch.
+\end{definition}
+\begin{lemma}
+	\proplbl{1_5_8}
+	$\Halb = (a_i)_{i \in I} \subseteq L$ ist genau dann eine Transzendentbasis von $L \mid K$, wenn $\Halb$ maximal algebraisch unabhängig über $K$ ist.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item ``$\Longleftarrow$'': $a \in L \mid K(\Halb) \xRightarrow{\text{maximal}} \Halb \cup \set{a}$ algebraisch abhängig, d.h. existieren $i_1, \dots, i_n \in I, 0 \neq f \in K[x_1, \dots, x_n, x]$ mit $f(a_{i_1}, \dots, a_{i_n}, a) = 0$\\ 
+		$a_{i_1}, \dots, a_{i_n}$ unabhängig über $K$\\
+		$\implies \underbrace{f(a_{i_1}, \dots, a_{i_n}, x)}_{\in K(a_{i_1}, \dots, a_{i_n})[X]\subseteq K(\Halb)[X]}\neq 0$\\
+		$\implies a$ ist algebraisch über $K(\Halb)$
+		\item ``$\implies$'': $a \in L\setminus K(\Halb) \xRightarrow{L \setminus K(\Halb) \text{ alg.}}$ existiert $0 \neq f \in K(\Halb)[X] \mit f(a) = 0$\\
+		O.E. (Problem: Nenner kann Koeffizienten in $K(\Halb)$ haben $\to$ Multiplikation mit Nenner, weil $f(a) =0$) $f \in K[\Halb][X]$, d.h. es existiert $g \in K[X_1, \dots, X_n][X]$ und $i_1,\dots, i_n \in I \mit f(X) = g(a_{i_1},\dots, a_{i_n}, x)$ und $\Halb \cup \set{a}$ ist algebraisch abhängig.
+	\end{itemize}
+\end{proof}
+\begin{proposition}
+	Es gibt eine Transzendenzbasis von $L\mid K$.
+\end{proposition}
+\begin{proof}
+	Nach Lemma von \person{Zorn} gibt es eine Familie $\Halb$ in $L$, die maximal algebraisch unabhängig über $K$ ist.
+\end{proof}
+\begin{conclusion}
+	Jede Erweiterung $L\mid K$ lässt sich zerlegen als
+\begin{center} % tikzcd was bitchy, compiled and included the pdf.
+	\includegraphics{./tikz/lemma_1_5_10.pdf}
+\end{center}
+\end{conclusion}
+\begin{lemma}
+	Ist $\caly = (b_j)_{j \in J}$ mit $L\mid K(\caly)$ algebraisch und $\Halb = (a_i)_{i\in I}$ algebraisch unabhängig über $K$, so existiert $J_0 \subseteq J$ mit $\Halb \cup (b_j)_{j \in J_0}$ eine Transzendenzbasis von $L \mid K$.
+\end{lemma}
+\begin{proof}
+	Nach dem Lemma von \person{Zorn} existiert $J_0 \subseteq J$ maximal mit $\Halb' = \Halb \cup (b_j)_{j \in J_0}$ algebraisch unabhängig über $K$. Für jedes $j \in J$ ist $\Halb' \cup \set{b_j}$ algebraisch abhängig über $K$, somit $b_j$ algebraisch über $K(\Halb') \implies K(\Halb \cup \caly) \mid K(\Halb')$ algebraisch\\
+	$L \mid K(\caly)$ algebraisch $\implies L\mid K(\Halb \cup \caly)$ algebraisch $\xRightarrow{\text{alg. transitiv}} L \mid K(\Halb')$ algebraisch. Somit ist $\Halb'$ eine Transzendenzbasis.
+\end{proof}
+\begin{theorem}[Steinitz, 1910]
+	Je zwei Transzendenzbasen von $L \mid K$ besitzen die gleiche Mächtigkeit.
+\end{theorem}
+\begin{proof}
+	Seien $\Halb = (a_i)_{i\in I}, \caly = (b_j)_{j \in J}$ Transzendenzbasis von $L \mid K$.\\ 
+	Beweisen hier nur für $J$ endlich:\\
+	Wegen Symmetrie genügt es zu zeigen, dass $\abs{I} \le \abs{J}$.\\
+	Induktion nach $n = \abs{J}$:
+	\begin{itemize}
+		\item (IA) $n =0:$ $L \mid K$ algebraisch $\implies \abs{I} = 0$
+		\item (IS) $n > 0:$ $L \mid K$ nicht algebraisch $\implies \abs{I} > 0$ %TODO
+	\end{itemize}
+\end{proof}
+\begin{definition}[Transzendenzgrad]
+	Der \begriff{Transzendenzgrad} von $L \mid K$ ist die Mächtigkeit $\transdeg(L\mid K)$ einer Tarnszendenzbasis von $L \mid K$.
+\end{definition}
+\begin{conclusion}
+	Sind $L \subseteq L \subseteq M$ Körper, so ist
+	\[
+		\transdeg(M\mid K) = \transdeg(M \mid L) + \transdeg(L \mid K).
+	\]
+\end{conclusion}
+\begin{proof}
+	... %TODO
+\end{proof}

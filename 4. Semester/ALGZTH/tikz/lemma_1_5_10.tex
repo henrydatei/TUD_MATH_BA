@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\newcommand{\Halb}{\mathfrak{X}}            % Halbordnung
+
+\usepackage{tikz, amsmath, amsfonts}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\begin{document}
+	\begin{tikzcd}
+	L \arrow[d, "{\text{algebraisch}}"]\\
+	K(\Halb) \arrow[d, "{\text{rein transzendent}}"]\\
+	K
+\end{tikzcd}
+\end{document}
