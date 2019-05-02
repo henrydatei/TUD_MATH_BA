@@ -99,7 +99,7 @@ Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorle
 - Vorlesungsfolien: [https://drive.google.com/open?id=19gmL2quriN9X-I4efOwhub8H21de-xhf](https://drive.google.com/open?id=19gmL2quriN9X-I4efOwhub8H21de-xhf)
 
 ### Partial Differential Equations
-- Vorlesungsfolien: _demnächst_
+- Vorlesungsfolien: [https://drive.google.com/open?id=1jLzAEufu2u-IVqHyzjWEwC9Qzr5mSGW7](https://drive.google.com/open?id=1jLzAEufu2u-IVqHyzjWEwC9Qzr5mSGW7)
 - Übungsaufgaben: [https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk](https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk)
 - Musterlösungen: [https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23](https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23)
 
