@@ -33,9 +33,84 @@ GLMs are written in terms of the \begriff{link function}, $g$, which is the inve
 	Linear models are a special case of GLMs.
 \end{example}
 
+The link functions in the following table are only examples. Other link functions can be used with distributions.
+\begin{center}
+	\begin{tabular}{c|c|c|c|c}
+		\textbf{distribution} & \textbf{support} & \text{use} & \textbf{link name} & \textbf{link function} \\
+		\hline
+		normal & $(-\infty,\infty)$ & linear response & identity & $\mu$ \\
+		exponential & $(0,\infty)$ & exponential response & inverse & $\mu^{-1}$ \\
+		gamma & $(0,\infty)$ & gamma response & log & $\ln(\mu)$ \\
+		Poisson & $\natur_0$ & count data & log & $\ln(\mu)$ \\
+		binomial & & proportions of yes/no occurrences & logit & $\ln\left(\frac{\mu}{1-\mu}\right)$
+	\end{tabular}
+\end{center}
+
+\begin{example}
+	AIDS cases per year in Belgium at the start of the epidemic
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+			xmin=0, xmax=13, xlabel=year since 1980,
+			ymin=0, ymax=250, ylabel=new AIDS cases,
+			axis x line=bottom,
+			axis y line=left,
+			]
+			\addplot[blue, only marks, mark=x] coordinates {
+				(1,10)
+				(2,15)
+				(3,30)
+				(4,55)
+				(5,65)
+				(6,70)
+				(7,130)
+				(8,150)
+				(9,170)
+				(10,210)
+				(11,250)
+				(12,245)
+				(13,240)
+			};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	Early in an epidemic, an exponential increase in cases can occur
+	\begin{align}
+		\mathbb{E}(Y_i) &\equiv \mu_i = \delta\exp(\alpha t_i) \notag \\
+		Y_i &\sim Poisson(\mu_i) \notag
+	\end{align}
+	Taking the logarithm of both sides and letting $\beta_0\equiv\log(\delta)$ and $\beta_1\equiv\alpha$
+	\begin{align}
+		\log(\mu_i) &= \beta_0 + \beta_1 t_i \notag \\
+		Y_i &\sim Poisson(\mu_i) \notag
+	\end{align}
+	which is a GLM with a log link.
+\end{example}
+
 \subsection{Model fitting in GLMs}
 
+To fit GLMs to data, we use the principle of Maximum Likelihood Estimation (MLE). Given parameters $\beta$, we can write down $f(Y\mid \beta)$, the probability or probability density function of the response $Y$. For observed data, $Y_i^{\text{obs}}$, the likelihood function is
+\begin{align}
+	L(\beta) = \prod_i f(Y_i^{\text{obs}}\mid \beta)\notag
+\end{align}
+For GLMs, there is no closed form solution for the values of $\beta$ that maximise this function. Instead, MLE is performed numerically, using a technique called \begriff{iteratively re-weighted least squares} (IRLS). In principle, other optimisation algorithms could also be used for MLE.
+
 \subsection{GLM assumptions and checking}
+
+Important GLM assumptions:
+\begin{itemize}
+	\item Independence
+	\item Distributional assumptions
+	\item Weak exogeneity
+	\item Linear relationship between transformed response and predictors (link function)
+\end{itemize}
+Residual plots are still useful to check if model assumptions hold.
+
+As we use different distributions, we cannot simply use raw residuals, as for linear models. Two common types of residuals that attempt to mimic behaviour of residuals for LMs:
+\begin{itemize}
+	\item \person{Pearson} Residuals
+	\item Deviance Residuals
+\end{itemize}
 
 \subsection{Hypothesis tests on GLM fits}
 
