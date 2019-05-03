@@ -79,27 +79,27 @@ Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketz
 - Aufgaben: [https://www.magentacloud.de/lnk/wxvyMA1u](https://www.magentacloud.de/lnk/wxvyMA1u) Passwort: 123456
 
 # Erasmus-Semester in der University of Bristol, UK
-Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Applied Statistics**, **Introduction into Artificial Intelligience**, **Partial Differential Equations** und **Web Technologies**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
+Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Angewandte Statistik**, **Einführung in die Künstliche Intelligenz**, **Partielle Differentialgleichungen** und **Webtechnologien**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
 
-### Applied Statistics
+### Angewandte Statistik
 - Vorlesungsfolien: [https://drive.google.com/open?id=1oc3C01NKrx6OJJzYci3ICDGyXHlgLW9Y](https://drive.google.com/open?id=1oc3C01NKrx6OJJzYci3ICDGyXHlgLW9Y)
 - Hausaufgaben: [https://drive.google.com/open?id=1l1ami4W3lqi0IHPXDT6r5E8EnUlTJTq7](https://drive.google.com/open?id=1l1ami4W3lqi0IHPXDT6r5E8EnUlTJTq7)
 - Daten für Hausaufgabe 1: [https://drive.google.com/open?id=12Grs0UWB_qDo2u6etcGqg2B6V518jahW](https://drive.google.com/open?id=12Grs0UWB_qDo2u6etcGqg2B6V518jahW)
 - Daten für Hausaufgabe 2: [https://drive.google.com/open?id=1Tg3AgpBagAUSa3aB0qdTK0TzdbwL92M4](https://drive.google.com/open?id=1Tg3AgpBagAUSa3aB0qdTK0TzdbwL92M4)
 - Übungsaufgaben + manchmal Lösungen: [https://drive.google.com/open?id=13ZXF5hfvXEamwvbfD_KRexp33QGuKiYV](https://drive.google.com/open?id=13ZXF5hfvXEamwvbfD_KRexp33QGuKiYV)
 
-### Introduction into Artificial Intelligience
+### Einführung in die Künstliche Intelligenz
 - Vorlesungsfolien: [https://drive.google.com/open?id=1rH2H4j8yl0CA3pTH1r8-L-jVrDl-geGS](https://drive.google.com/open?id=1rH2H4j8yl0CA3pTH1r8-L-jVrDl-geGS)
 - Hausaufgaben + Musterlösungen: [https://drive.google.com/open?id=1RqbTvCVbMCztAb_2NYWypfucE3ksqEwt](https://drive.google.com/open?id=1RqbTvCVbMCztAb_2NYWypfucE3ksqEwt)
 - Daten für Hausaufgabe 0 und 1: [https://drive.google.com/open?id=1QayW__jBGbTln91bUAj1ybEfAPXo4_8x](https://drive.google.com/open?id=1QayW__jBGbTln91bUAj1ybEfAPXo4_8x)
 - Skript für Hausaufgabe 1: [https://drive.google.com/open?id=18ApTQwaR8mNQPWBsj7DU45IXgFmql3m_](https://drive.google.com/open?id=18ApTQwaR8mNQPWBsj7DU45IXgFmql3m_)
 - Universal Cost Search - Skript für Hausaufgabe 2: [https://drive.google.com/open?id=1XKoxLMMER1N0fEEoNirHkpnnpL-cV6v8](https://drive.google.com/open?id=1XKoxLMMER1N0fEEoNirHkpnnpL-cV6v8)
 
-### Web Technologies
+### Webtechnologien
 - Vorlesungsfolien: [https://drive.google.com/open?id=19gmL2quriN9X-I4efOwhub8H21de-xhf](https://drive.google.com/open?id=19gmL2quriN9X-I4efOwhub8H21de-xhf)
 
-### Partial Differential Equations
-- Vorlesungsfolien: _demnächst_
+### Partielle Differentialgleichungen
+- Vorlesungsfolien: [https://drive.google.com/open?id=1jLzAEufu2u-IVqHyzjWEwC9Qzr5mSGW7](https://drive.google.com/open?id=1jLzAEufu2u-IVqHyzjWEwC9Qzr5mSGW7)
 - Übungsaufgaben: [https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk](https://drive.google.com/open?id=1noa9PZtWlPb6eeeDeqcjx7CvrdDlgqIk)
 - Musterlösungen: [https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23](https://drive.google.com/open?id=1e4_e2d3ZsSJzRBVJZv2sN1zmfoaOAH23)
 
