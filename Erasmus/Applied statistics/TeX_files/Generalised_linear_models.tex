@@ -5,6 +5,92 @@ So far, we have looked at statistical models of the form $Y\sim Normal(X\beta,\s
 \begin{example}
 	Consider yes/no outcomes or count data:
 	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\begin{axis}[
+			xmin=2000, xmax=4500, xlabel=weight (kg),
+			ymin=0, ymax=1, ylabel=proportion of cars that fail,
+			title=\textbf{cars failing mileage tests},
+			axis x line=bottom,
+			axis y line=left,
+			]
+			\addplot[blue, only marks, mark=x] coordinates {
+				(2100.00,0.02)
+				(2300.00,0.05)
+				(2500.00,0.00)
+				(2700.00,0.09)
+				(2900.00,0.26)
+				(3100.00,0.38)
+				(3300.00,0.61)
+				(3500.00,0.74)
+				(3700.00,0.90)
+				(3900.00,0.94)
+				(4100.00,1.00)
+				(4300.00,1.00)
+			};
+			\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		xmin=0, xmax=50000, xlabel=months in service,
+		ymin=0, ymax=60, ylabel=number of damage incidents,
+		title=\textbf{damage in different ship types},
+		axis x line=bottom,
+		axis y line=left,
+		]
+		\addplot[blue, only marks, mark=x] coordinates {
+			(127.00,0.00)
+			(63.00,0.00)
+			(1095.00,3.00)
+			(1095.00,4.00)
+			(1512.00,6.00)
+			(3353.00,18.00)
+			(2244.00,11.00)
+		};
+		\addlegendentry {A};
+		\addplot[red, only marks, mark=x] coordinates {
+			(44882.00,39.00)
+			(17176.00,29.00)
+			(28609.00,58.00)
+			(20370.00,53.00)
+			(7064.00,12.00)
+			(13099.00,44.00)
+			(7117.00,18.00)
+		};
+		\addlegendentry {B};
+		\addplot[green, only marks, mark=x] coordinates {
+			(1179.00,1.00)
+			(552.00,1.00)
+			(781.00,0.00)
+			(676.00,1.00)
+			(783.00,6.00)
+			(1948.00,2.00)
+			(274.00,1.00)
+		};
+		\addlegendentry {C};
+		\addplot[yellow, only marks, mark=x] coordinates {
+			(251.00,0.00)
+			(105.00,0.00)
+			(288.00,0.00)
+			(192.00,0.00)
+			(349.00,2.00)
+			(1208.00,11.00)
+			(2051.00,4.00)
+		};
+		\addlegendentry {D};
+		\addplot[cyan, only marks, mark=x] coordinates {
+			(45.00,0.00)
+			(789.00,7.00)
+			(437.00,7.00)
+			(1157.00,5.00)
+			(2161.00,12.00)
+			(542.00,1.00)
+		};
+		\addlegendentry {E};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	
 	The normal distribution for the errors $\epsilon$ is not appropriate here.
 \end{example}
 
@@ -98,6 +184,33 @@ For GLMs, there is no closed form solution for the values of $\beta$ that maximi
 \begin{example}[logistic regression]
 	The proportion of cars of various weights that fail a mileage test.
 	
+	\begin{center}
+		\begin{tikzpicture}
+		\begin{axis}[
+		xmin=2000, xmax=4500, xlabel=weight (kg),
+		ymin=0, ymax=1, ylabel=proportion of cars that fail,
+		title=\textbf{cars failing mileage tests},
+		axis x line=bottom,
+		axis y line=left,
+		]
+		\addplot[blue, only marks, mark=x] coordinates {
+			(2100.00,0.02)
+			(2300.00,0.05)
+			(2500.00,0.00)
+			(2700.00,0.09)
+			(2900.00,0.26)
+			(3100.00,0.38)
+			(3300.00,0.61)
+			(3500.00,0.74)
+			(3700.00,0.90)
+			(3900.00,0.94)
+			(4100.00,1.00)
+			(4300.00,1.00)
+		};
+		\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	
 	Data are bounded, so LM is not appropriate and we fit a GLM with
 	\begin{align}
 		Y_i &\sim Binomial(\mu_i) \notag \\
@@ -123,6 +236,15 @@ As we use different distributions, we cannot simply use raw residuals, as for li
 	\item Deviance Residuals
 \end{itemize}
 
+Residual plots using deviance residuals.
+
+\input{./TeX_files/materials/perfect_residuals_1_GLM}
+\input{./TeX_files/materials/perfect_residuals_2_GLM}
+
+Measures like Leverage and \person{Cook}'s distance can be used to look for outliers in the data.
+
+\textbf{Warning:} MATLAB uses raw residuals as default.
+
 \subsection{Hypothesis tests on GLM fits}
 
 As for LMs, hypothesis tests for individual parameters have been developed. They test the hypothesis that $Y$ does not change as an explanatory changes. In other words, we test hypotheses like: \\
@@ -147,5 +269,34 @@ From our model formulation and fit, we find that
 \begin{align}
 	\mu_i = \frac{1}{1+\exp(-(-13.38+0.0042\cdot weight_i))} \notag
 \end{align}
+
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=2000, xmax=4500, xlabel=weight (kg),
+	ymin=0, ymax=1, ylabel=proportion of cars that fail,
+	title=\textbf{cars failing mileage tests},
+	axis x line=bottom,
+	axis y line=left,
+	domain=2000:4500,
+	]
+	\addplot[blue, only marks, mark=x] coordinates {
+		(2100.00,0.02)
+		(2300.00,0.05)
+		(2500.00,0.00)
+		(2700.00,0.09)
+		(2900.00,0.26)
+		(3100.00,0.38)
+		(3300.00,0.61)
+		(3500.00,0.74)
+		(3700.00,0.90)
+		(3900.00,0.94)
+		(4100.00,1.00)
+		(4300.00,1.00)
+	};
+	\addplot[cyan] {1/(1+exp(-(-13.38 + 0.0042*x)))};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 
 Unlike for linear models, we cannot read off effect sizes directly from parameter estimates in GLMs. \textcolor{red}{Need to consider the link function.}
