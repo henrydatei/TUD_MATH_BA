@@ -1,4 +1,4 @@
-\section{(Un)abhängigkeit} \label{sec_unabhangigkeit}
+\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
@@ -8,7 +8,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\proplbl{3_2_11}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum. Zwei Ereignisse $A,B \in \F$ heißt \begriff{(stochastisch) unabhängig bezüglich $\P$}, falls
 	\begin{align*}
-		\P(A\cap B) = \P(A)\P(B)
+		\P(A\cap B) = \P(A)\P(B).
 	\end{align*}
 	Wir schreiben auch $A \upmodels B$.
 \end{definition}
@@ -17,13 +17,13 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\begin{align*}
 	\O &= \set{(i,j) \mid i,j \in\set{1,\dots,n}},\quad \F = \pows(\O), \quad \P = \Gleich(\O)
 	\intertext{Betrachte}
-	A&:= \set{(i,j) \in \O, i \text{ gerade}}\\
-	B&:= \set{(i,j) \in \O, j \le 2}
+	A:= \set{(i,j) \in \O, i \text{ gerade}}\\
+	B:= \set{(i,j) \in \O, j \le 2}.
 	\end{align*}
 	In diesem Fall, erwarten wir intuitiv Unabhängigkeit von $A$ und $B$.\\
 	In der Tat ist % start using \P instead of \P!
 	\begin{align*}
-	\P(A) &= \frac{1}{2}, \quad \P(B) = \frac{1}{3} \und \P(A\cap B) = \frac{1}{6}
+	\P(A) = \frac{1}{2}, \quad \P(B) = \frac{1}{3} \und \P(A\cap B) = \frac{1}{6}
 	\intertext{was}
 	\P(A \cap B) = \P(A) \P(B)
 	\intertext{erfüllt}
@@ -35,7 +35,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\intertext{dann gilt}
 	\P(C) = \frac{1}{6}, \quad \P(D) = \frac{1}{6}
 	\intertext{und wegen $C \cap D = \set{(6,1)}$ folgt}
-	\P(C\cap D) &= \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C) \cdot \P(D)
+	\P(C\cap D) = \frac{1}{36} = \frac{1}{6} \frac{1}{6} = \P(C) \cdot \P(D)
 	\end{align*}
 	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
 \end{example}
@@ -129,7 +129,7 @@ Insbesondere zeigt \propref{3_2_16}, dass wir in einer Familie unabhängiger Ere
 	\proplbl{3_2_17}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $\F_i \subseteq \F, i \in I$, seien $\cap$-stabile Familien von Ereignissen. Dann gilt
 	\begin{align*}
-	\F_i, i \in I \text{ unabhängig } \Leftrightarrow \sigma(\F_i), i \in I \text{ unabhängig}. 
+	\F_i, i \in I \text{ unabhängig } \iff \sigma(\F_i), i \in I \text{ unabhängig}. 
 	\end{align*}
 \end{proposition}
 \begin{proof}
@@ -228,14 +228,14 @@ Mit \propref{3_2_17} folgen:
 		\begin{align*} % für Rechtecke
 			\P_{X_1, \dots, X_n}(A_1 \times \dots \times A_n) &= \P(X_1 \in A_1, \dots, X_n \in A_n)\\
 			&= \P\brackets{\bigcap_{i=1}^n \set{X_i \in A_i}}\\
-			&\overset{\text{unabh}}{=} \prod_{i=1}^n \P(X_i \in A_i)\\
+			\overset{\text{unabh}}&{=} \prod_{i=1}^n \P(X_i \in A_i)\\
 			&= \prod_{i=1}^n \P_{X_i}(A_i) = \brackets{\bigotimes_{i=1}^n \P_{X_i}} (A_1 \times \dots \times A_n) 
 		\end{align*} 
-		\item[2 $\Rightarrow$ 3:] Aus der obigen Rechnung sehen wir, dass 2 bereits 3 impliziert für alle Rechtecke: $\bigtimes_{i = 1}^n A_i$. Da die Familie der Rechtecke $\cap$-stabil ist und $\E^{\otimes n}$ erzeugt, folgt die Aussage aus dem Eindeutigkeitssatz für Maße \propref{1_1_19}.
+		\item[2 $\Rightarrow$ 3:] Aus der obigen Rechnung sehen wir, dass 2 bereits 3 impliziert für alle Rechtecke: $\bigtimes_{i = 1}^n A_i$. Da die Familie der Rechtecke $\cap$-stabil ist und $\E^{\otimes n}$ erzeugt, folgt die Aussage aus dem Eindeutigkeitssatz für Maße \propref{1_1_9}.
 		\item[3 $\Rightarrow$ 1:] Sei $J \subseteq \set{1,\dots,n}$ und setze
 		\begin{align*}
 			A_i &:= \begin{cases}
-			\text{ beliebig }  &\in \E, i \in J\\
+			\text{ beliebig }  &\text{ in }\E, i \in J\\
 			E & i \notin J.
 			\end{cases}
 			\intertext{Dann}
@@ -294,7 +294,7 @@ Zu \ref{konstruktionunabh:ZV:qu_2}:
 \end{proof}
 Sind auf den Wahrscheinlichkeitsräumen $(\O_i , \F_i , \P_i), i \in I$, nun Zufallsvariablen $X_i: \O_i \to E$ gegeben, so definieren wir wie im Satz von Kolmogorov (\propref{prop:Kolmo})
 \begin{align*}
-	(\O, \F, \P) := (\O_I, \F_I, \P_I = \bigotimes_{i \in I}) \mit \omega = (\omega_i)_{i \in I}
+	(\O, \F, \P) := \brackets{\O_I, \F_I, \P_I = \bigotimes_{i \in I}} \mit \omega = (\omega_i)_{i \in I}
 	\intertext{und wie im endlichen Fall}
 	X'_i : \O \to E \mit X'_i (\omega) = X_i (\omega_i).
 \end{align*}
@@ -302,13 +302,13 @@ Da die Unabhängigkeit der Zufallsvariablen über endliche Teilfamilien definier
 \subsection*{Faltungen}
 Seien $X, Y$ zwei reelle und unabhängige Zufallsvariablen mit 
 \begin{align*}
-	X \sim \P_X \und Y \sim \P_Y
+	X \sim \P_X \und Y \sim \P_Y.
 \end{align*}
 Dann hat $(X,Y)$ die Verteilung $\P_X \otimes \P_Y$ auf $\R^2$. Andernfalls ist auch $X+Y$ eine reelle Zufallsvariable, dann
 \begin{align*}
 	X + Y = A(X,Y) \mit A: \R^2 \to \R: (x,y) \mapsto x + y.
 \end{align*}
-$A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \P_Y)\circ A^{-1}$
+$A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \P_Y)\circ A^{-1}$.
 \begin{definition}[Faltung]
 	Seien $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\Rn, \borel(\Rn))$. Das durch
 	\begin{align*}
@@ -319,7 +319,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 \begin{proposition}
 	Seien $X,Y: \O \to \Rn$ unabhängige Zufallsvariablen mit Verteilungen $\P_X, \P_Y$. Dann ist
 	\begin{align*}
-		\P_{X+Y} = \P_X + \P_Y
+		\P_{X+Y} = \P_X + \P_Y,
 	\end{align*}
 	die Verteilung von $X +  Y$.
 \end{proposition}
@@ -350,9 +350,9 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 		\item Stetiger Fall: Sei $c \in \R$ 
 		\begin{align*}
 		\P_1 + \P_2 ((-\infty, c]) &= (\P_1 \otimes \P_2)(A \le c)\\
-		&= \iint_{\R^2} \indi_{(\infty,c]} (x+y) \rho_1 (x) \rho_2 (y) \d x \d y\\
-		\overset{y = z -x}&{=} \iint_{\R^2} \indi_{(\infty,c]} (z) \rho_1 (x) \rho_2 (z-x) \d x \d z\\
-		&= \int_{-\infty}^c \underbrace{\int_{\R} \rho_1 (x) \rho_2 (z-x) \d x}_{\rho_1 \star \rho_2 (z)} \d z
+		&= \int_{\R}\int_{\R} \indi_{(\infty,c]} (x+y) \rho_1 (x) \rho_2 (y) \d x \d y\\
+		\overset{y = z -x}&{=} \int_{\R}\int_{\R} \indi_{(\infty,c]} (z) \rho_1 (x) \rho_2 (z-x) \d x \d z\\
+		&= \int_{-\infty}^c \underbrace{\int_{\R} \rho_1 (x) \rho_2 (z-x) \d x}_{\rho_1 \star \rho_2 (z)} \d z.
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -362,7 +362,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 		\P(X+Y+k) &= \sum_{l \in \Z} \P(X=l) \P(Y = k-l)\\
 		&= \sum_{l \in \Z} \frac{\lambda^l}{l!} e^{-\lambda} \frac{\mu^{k-l}}{(k-l)!} e^{-\mu}\\
 		&= e^{-(\lambda + \mu)} \frac{1}{k!}\sum_{l=0}^k \binom{k}{l} \lambda^l \mu^{k-l}\\
-		&= e^{-(\lambda + \mu)} \frac{1}{k!} (\lambda + \mu)^k \quad \forall k \in \N_0
+		&= e^{-(\lambda + \mu)} \frac{1}{k!} (\lambda + \mu)^k \quad \forall k \in \N_0,
 		\intertext{so dass}
 		X + Y &\sim \Pois(\lambda + \mu).
 	\end{align*}
@@ -379,7 +379,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 		&= \int_{0 \vee (x-1)}^{1 \wedge x} = \begin{cases}
 		x &\quad 0 \le x \le 1\\
 		2 -x &\quad 1 \le x \le 2\\
-		0 &\quad \sonst
+		0 &\quad \sonst.
 		\end{cases}
 	\end{align*} %TODO add pics
 %	\begin{tikzpicture}
