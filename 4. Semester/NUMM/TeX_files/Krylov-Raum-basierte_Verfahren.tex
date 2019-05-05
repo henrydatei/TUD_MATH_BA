@@ -2,6 +2,74 @@
 
 \subsection{\person{Krylov}-Räume}
 
+Für $A\in\Rnn$, $r\in\Rn$ und $k\in\natur$ ist der $k$-te \begriff{Krylov-Raum} gegeben durch $\mathcal{K}_0=\{0\}$ und
+\begin{align}
+	\mathcal{K}_k(r,A) = \Span\{r,Ar,A^2r,...,A^{k-1}r\}\quad\text{ für } k>0\notag
+\end{align}
+Offenbar ist $\dim(\mathcal{K}_k(r,A))\le\min\{k,n\}$ für alle $k\in\natur$.
+
+\begin{lemma}
+	\proplbl{lemma_2_6}
+	Es seien $A\in\Rnn$, $r\in\Rn\backslash\{0\}$ und $k\in\natur$ gegeben. Dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\dim(\mathcal{K}_{k+1}(r,A))< k+1$
+		\item $\mathcal{K}_k(r,A) = \mathcal{K}_{k+1}(r,A)$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item (a) $\Rightarrow$ (b): Nach Voraussetzung gibt es $l\in\{1,...,k\}$ und $\alpha_0,...,\alpha_l\in\R$, so dass
+		\begin{align}
+			A^lr = \sum_{i=0}^{l-1} \alpha_iA^ir \notag
+		\end{align}
+		Multiplikation mit $A^{k-l}$ liefert
+		\begin{align}
+			A^kr = \sum_{i=0}^{l-1} \alpha_iA^{k-l+i}r\in\mathcal{K}_k(r,A)\notag
+		\end{align}
+		Also folgt $\mathcal{K}_k(r,A) = \mathcal{K}_{k+1}(r,A)$.
+		\item (b) $\Rightarrow$ (a): Offensichtlich
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{satz_2_7}
+	Es seien $A\in\Rnn$ regulär, $x^0\in\Rn$ mit $r^0=b-Ax^0\neq 0$ gegeben. Dann sind folgende Aussagen für $k\in\natur$ äquivalent:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\mathcal{K}_k(r^0,A) = \mathcal{K}_{k+1}(r^0,A)$
+		\item $x^\ast = A^{-1}b\in x^0 + \mathcal{K}_k(r^0,A)$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item (a) $\Rightarrow$ (b): Wegen \propref{lemma_2_6} gibt es $l\in\{0,...,k\}$ und $\mu_l,...,\mu_k\in\R$, so dass $\mu_l\neq 0$ und
+		\begin{align}
+			0 &= \sum_{i=l}^{k} \mu_iA^ir^0 \notag \\
+			&= \mu_lA^lr^0 + \sum_{i=l+1}^{k} \mu_iA^ir^0 \notag
+		\end{align}
+		wobei der Summationsterm auf der rechten Seite entfällt, wenn $l=k$. Wegen der Regularität von $A$ kann man die Gleichung mit $A^{-(l+1)}$ multiplizieren. Für $l=k$ liefert dies $0=A^{-1}r^0 = A^{-1}b-x^0\in\mathcal{K}_k(r^0,A)$. Für $l<k$ folgt
+		\begin{align}
+			A^{-1}b - x^0 &= A^{-1}r \notag \\
+			&= -\frac{1}{\mu_l} \sum_{i=l+1}^k \mu_iA^{i-l-1}r ^0 \notag \\
+			&= -\frac{1}{\mu_l}\sum_{i=0}^{k-l-1} \mu_{i+l+1}A^ir^0\in\mathcal{K}_k(r^0,A) \notag
+		\end{align}
+		Somit gilt Aussage (b).
+		\item (b) $\Rightarrow$ (a): Nach Voraussetzung gilt $x^\ast\in x_0 + \mathcal{K}_k(r^0,A)$. Durch Multiplikation mit $A$ folgt
+		\begin{align}
+			b&\in Ax^0 + A\mathcal{K}_k(r^0,A)\notag \\
+			&= Ax^0 + \Span\{Ar^0,A^2r^0,A^3r^0,...,A^kr^0\}\notag
+		\end{align}
+		Also ist $r^0=b-Ax^0$ eine Linearkombination der Vektoren $Ar^0,A^2r^0,A^3r^0,...,A^kr^0$ und es gilt
+		\begin{align}
+			\dim(\mathcal{K}_{k+1}(r^0,A)) < k+1\notag
+		\end{align}
+		 \propref{lemma_2_6} liefert damit die Gültigkeit von Aussage (a).
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	Offenbar gibt es $k^\ast\in\{1,...,n\}$, so dass Aussage (a) von \propref{satz_2_7} für $k^\ast$ zutrifft, aber für kein $k<k^\ast$ erfüllt ist. \propref{satz_2_7} zeigt daher, dass die exakte Lösung $x^\ast$ von $Ax=b$ in $x^0 + \mathcal{K}_{k^\ast}(r^0,A)$ liegt. Man kann also nun versuchen, eine Folge $\{x^k\}$ mit $x^k\in x^0 + \mathcal{K}_k(r^0,A)$ zu bestimmen, so dass $x^k$ das Gleichungssystem $Ax=b$ (geeignet) näherungsweise löst. Dazu werden in nächsten Abschnitt zwei grundlegende Ansätze angegeben (Minimum-Residuum und Galerkin).
+\end{remark}
+
 \subsection{Basisalgorithmen zur Lösung von $Ax=b$}
 
 \subsection{Das CG-Verfahren}
