@@ -1,15 +1,15 @@
 \section{Körpererweiterungen}
 
-Sei $K,L,M$ Körper.
+Seien $K,L,M$ Körper.
 
 \begin{remark}
 	In diesem Kapitel bedeutet ``Ring'' \emph{immer} kommutativer Ring mit Einselement, und ein Ringhomomorphismus bildet stets das Einselement auf das Einselement ab.
-	Insbesondere gibt es für jeden Ring einen eindeutig bestimmten Ringhomomorphismus $: \Z \to R$.
+	Insbesondere gibt es für jeden Ring einen eindeutig bestimmten Ringhomomorphismus $\colon \Z \to R$.
 \end{remark}
 
 \begin{remark}
 	\proplbl{1_1_2}
-	\begin{enumerate}[label=(\alph*)]
+	\begin{remarkenum}[]
 		\item Ein \emph{Körper} ist ein Ring $R$, in dem eine der folgenden äquivalenten Bedingungen gilt:
 		\begin{enumerate}[label=\arabic*)]
 			\item $0 \neq 1$ und jedes $0 \neq x \in R$ ist invertierbar
@@ -21,8 +21,8 @@ Sei $K,L,M$ Körper.
 		\end{enumerate}
 		\item Insbesondere sind Körper \emph{nullteilerfrei}, weshalb $\Ker(\Z \to K)$ prim ist.
 		\item Aus (5) folgt: Jeder Ringhomomorphismus $K \to L$ ist injektiv %TODO add ref to (5) and check the ringhomo!
-		\item Der Durchschnitt einer Familie von Teilkörpern von $K$ ist wieder ein Teilkörper von $K$.
-	\end{enumerate}
+		\item \proplbl{koerpererweiterungen:rem:1.2.d} Der Durchschnitt einer Familie von Teilkörpern von $K$ ist wieder ein Teilkörper von $K$.
+	\end{remarkenum}
 \end{remark}
 
 \begin{definition}[Charakteristik]
@@ -38,24 +38,27 @@ Sei $K,L,M$ Körper.
 \end{example}
 
 \begin{definition}[Primkörper]
-	Der \begriff{Primkörper} von $K$ ist der kleinste Teilkörper von $K$. (existiert nach \propref{1_1_2}(d)) %TODO add ref!
+	Der \begriff{Primkörper} von $K$ ist der kleinste Teilkörper von $K$. (existiert nach \propref{koerpererweiterungen:rem:1.2.d}).
 \end{definition}
 
 \begin{proposition}
 	Sei $\field$ der Primkörper von $K$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $\chara(K)  = 0 \Leftrightarrow \field \cong \Q$
-		\item $\chara(K)  = p > 0 \Leftrightarrow \field \cong \Fp$
+		\item $\chara(K)  = 0$ $\Leftrightarrow$ $\field \cong \Q$
+		\item $\chara(K)  = p > 0$ $\Leftrightarrow$ $\field \cong \Fp$
 	\end{enumerate}
 \end{proposition}
 
-\begin{proof}
-	``$\Leftarrow$'': \propref{1_1_4}\\ % (beide?)
-	``$\Rightarrow$'': $\Image(\Z \to K) \subseteq \field$ und $\Image(\Z \to K) \cong \lnkset{\Z}{\Ker(\Z \to K)}$
-	\begin{enumerate}[label=(\alph*)]
-		\item $\Image(\Z \to K) \cong \lnkset{Z}{(0)} \cong \Z \Rightarrow \field = \Quot(\Image(\Z \to K)) \cong \Quot(\Z) \cong \Q$
-		\item $\Image(\Z \to K) \cong \lnkset{Z}{(p)} \cong \Fp$ ist Teilkörper von K $\Rightarrow \field = \Image(\Z \to K) \cong \Fp$
-	\end{enumerate}
+\begin{proof}\hspace{0pt}
+	\vspace*{\dimexpr-\baselineskip+2\lineskip\relax}
+	\begin{itemize}
+	\item[($\Leftarrow$)] \propref{1_1_4} % (beide?)
+	\item[($\Rightarrow$)] Es ist $\Image(\Z \to K) \subseteq \field$ und $\Image(\Z \to K) \cong \lnkset{\Z}{\Ker(\Z \to K)}$, sowie
+		\begin{enumerate}[label=(\alph*)]
+			\item $\Image(\Z \to K) \cong \lnkset{Z}{(0)} \cong \Z$ $\Rightarrow$ $\field = \Quot(\Image(\Z \to K)) \cong \Quot(\Z) \cong \Q$
+			\item $\Image(\Z \to K) \cong \lnkset{Z}{(p)} \cong \Fp$ ist Teilkörper von K $\Rightarrow$ $\field = \Image(\Z \to K) \cong \Fp$
+		\end{enumerate}
+	\end{itemize}
 \end{proof}
 
 \begin{definition}[Körpererweiterung]
@@ -65,18 +68,18 @@ Sei $K,L,M$ Körper.
 \begin{definition}[$K$-Homomorphismus]
 	Seien $L_1 \mid K$ und $L_2 \mid K$ Körpererweiterungen.
 	\begin{enumerate}[label=(\alph*)]
-		\item Ein Ringhomomorphismus $\phi\colon L_1 \to L_2$ ist ein $K$-Homomorphismus, wenn $\phi\vert_K = \id_K$ (i.Z. $\phi: L_1 \to L_2$)
+		\item Ein Ringhomomorphismus $\phi\colon L_1 \to L_2$ ist ein $K$-Homomorphismus, wenn $\phi\vert_K = \id_K$ (i.Z. $\phi\colon L_1 \to_K L_2$)
 		\item $\Hom_K(L_1,L_2) = \set{\phi \mid \phi: L_1 \to L_2 \text{ ist $K$-Homomorphismus}}$
-		\item $L_1$ und $L_2$ sind $K$-isomorph (i.Z. $L_1 \cong L_2$), wenn es einen Isomorphismus: $\phi \in \Hom_K(L_1, L_2)$ gibt.
+		\item $L_1$ und $L_2$ sind $K$-isomorph (i.Z. $L_1 \cong_K L_2$), wenn es einen Isomorphismus $\phi \in \Hom_K(L_1, L_2)$ gibt.
 	\end{enumerate}
 \end{definition}
 
 \begin{remark}
-	$L\mid K$ eine Körpererweiterung, so wird $L$ durch Einschränkung der Multiplikation zu einem $K$-Vektorraum.
+	Ist $L\mid K$ eine Körpererweiterung, so wird $L$ durch Einschränkung der Multiplikation zu einem $K$-Vektorraum.
 \end{remark}
 
 \begin{definition}[Körpergrad]
-	$[L:K]:= \dim_k(L) \in \N \cup \{\infty\}$, der \begriff{Körpergrad} der Körpererweiterungen $L\mid K$.
+	Es ist $[L:K]:= \dim_K(L) \in \N \cup \{\infty\}$ der \begriff{Körpergrad} der Körpererweiterungen $L\mid K$.
 \end{definition}
 
 \begin{example}
@@ -89,26 +92,47 @@ Sei $K,L,M$ Körper.
 \end{example}
 
 \begin{proposition}
-	Für $K \subseteq L \subseteq M$ Körper ist $[M:K] = [M:L]\cdot [L:K]$ \\
-	(``Körpergrad ist multiplikativ'')
+	Für $K \subseteq L \subseteq M$ Körper ist $[M:K] = [M:L]\cdot [L:K]$ \hspace*{1.5em} (``Körpergrad ist multiplikativ'')
 \end{proposition}
 
-\begin{proof} %TODO maybe make unnumbered lemma here for the claim? add align!
-	\emph{Behauptung:} Sei $x_1, \dots, x_n \in L$ $K$-linear unabhängig und $y_1, \dots, y_m \in M$ $L$-linear unabhängig\\
-	$\Rightarrow x_i y_j, i \in \set{1,\dots,n}, j \in \set{1, \dots, m}$ $K$-linear unabhängig.\\
-	\emph{Beweis:} $\sum_{i,j} \lambda_{ij}x_i y_j = 0$ mit $\lambda_{ij} \in K$\\
-	$\Rightarrow \sum_{j}\underbrace{\left( \sum_{i} \lambda_{ij}x_i \right)}_{\in L}y_j = 0 
-	\xRightarrow{y_j L\text{-l.u.}} \sum_{i} \lambda_{ij} x_i = 0\quad\forall j
-	\xRightarrow{y_j K\text{-l.u.}} \lambda_{ij} = 0\quad\forall i, \forall j$
+\bgroup
+\begin{proof}%TODO maybe make unnumbered lemma here for the claim? add align!
+	Für den Beweis betrachte folgende Aussage:
+	\begin{adjustwidth}{1em}{0pt}
+	\begin{underlinedenvironment}[Behauptung]
+			Sei $x_1$, $\dots$, $x_n \in L$ $K$-linear unabhängig und $y_1$, $\dots$, $y_m \in M$ $L$-linear unabhängig\\[2\lineskip]
+	$\Rightarrow \big\lbrace x_i y_j \mid  i \in \set{1,\dots,n}, j \in \set{1, \dots, m}\big\rbrace$ $K$-linear unabhängig.
+		\end{underlinedenvironment}
+	
+	\begin{underlinedenvironment}[Beweis]
+			 Sei $\sum_{i,j} \lambda_{ij}x_i y_j = 0$ mit $\lambda_{ij} \in K$
+			 \vspace*{2\lineskip}
+			 \zeroAmsmathAlignVSpaces
+			 \begin{flalign*}
+			\Rightarrow\; & \sum_{j}\underbrace{\bigg[\! \sum_{i} \lambda_{ij}x_i \bigg]}_{\in L}y_j = 0 
+			\quad\; \xRightarrow{y_j L\text{-l.u.}}\; \sum_{i} \lambda_{ij} x_i = 0\quad\forall j
+			\quad\; \xRightarrow{x_i K\text{-l.u.}}\; \lambda_{ij} = 0\quad\forall i, \forall j&
+			\end{flalign*}
+			\hfill\proofSymbol
+	\end{underlinedenvironment}
+	\end{adjustwidth}
+	Dann:
+	\vspace*{\dimexpr-\baselineskip+2\lineskip}
 	\begin{itemize}
-		\item $[L:K] = \infty$ oder $[M:L] = \infty \Rightarrow [M:K] = \infty$
-		\item $[L:K] = n, [M:L] = m < \infty$\\
-		$(x_1, \dots, x_n)$ Basis des $K$-Vektorraum $L$ und $(y_1, \dots, y_m)$ Basis des $L$-Vektorraums M\\
-		$\Rightarrow \set{x_i y_j \colon i = 1, \dots, n; j = 1, \dots, m}$ $K$-linear unabhängig und \\
-		$\sum_{i,j} Kx_i y_j = \sum_{j}\left( \sum_{i} \lambda_{ij}x_i \right)y_j = M$, also ist \\
-		$\set{x_i y_j \colon i = 1, \dots ,n; j = 1, \dots, m}$ Basis von $M$ 
+		\item $[L:K] = \infty$ oder $[M:L] = \infty$ $\Rightarrow$ $[M:K] = \infty$
+		\item $[L:K] = n$, $[M:L] = m < \infty$:\\[2\lineskip]
+		Sei $(x_1, \dots, x_n)$ Basis des $K$-Vektorraum $L$ und $(y_1, \dots, y_m)$ Basis des $L$-Vektorraums M\\
+		\hspace*{0.5em}$\Rightarrow\;$\begin{minipage}[t]{\dimexpr\linewidth-\labelindent+0.5em}
+		 $\set{x_i y_j \mid i = 1,\, \dots,\, n;\; j = 1,\, \dots,\, m}$ $K$-linear unabhängig und
+		\begin{flalign*}
+			\quad&\sum_{i,j} Kx_i y_j = \sum_{j}\underbrace{\!\bigg[\! \sum_{i} \lambda_{ij}x_i \bigg]\!}_{=L} y_j = M,&
+		\end{flalign*}
+		also ist $\set{x_i y_j \mid i = 1,\, \dots ,\,n;\; j = 1,\, \dots,\, m}$ Basis von $M$.\hfill\csname\InTheoType Symbol\endcsname
+		\end{minipage}
 	\end{itemize}
+	\setendmarkfalse
 \end{proof}
+\egroup
 
 \begin{definition}[Körpergrad endlich]
 	$L\mid K$ endlich $:\Leftrightarrow [L:K] < \infty$.
@@ -117,12 +141,12 @@ Sei $K,L,M$ Körper.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 2nd lecture %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{definition}[Unterring, Teilkörper]
-	Sei $L\mid K$ eine Körpererweiterung $a_1, a_2, \dots, a_n \in L$.
+	Sei $L\mid K$ eine Körpererweiterung $a_1$, $a_2$, $\dots$, $a_n \in L$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
-		\item $K[a_1, \dots, a_n]$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1, \dots, a_n}$ enthält (``von ``$a_1, \dots, a_n$ über $K$ erzeugte'', ``$a_1, \dots, a_n$'' zu $K$ adjungieren)
-		\item $L | K$ ist \begriff{endlich erzeugt} $:\Leftrightarrow a_1, \dots , a_n \in L : L=K(a_1, \dots, a_n)$
-		\item $L | K$ ist \begriff{einfach} $:\Leftrightarrow$ existiert $a \in L: L=K(a)$  
+		\item $K[a_1,\dots,a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
+		\item $K(a_1,\dots,a_n)$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält (``von ``$a_1$, $\dots$, $a_n$ über $K$ erzeugte'', ``$a_1$, $\dots$, $a_n$'' zu $K$ adjungieren)
+		\item $L | K$ ist \begriff{endlich erzeugt} $:\Leftrightarrow$ $a_1$, $\dots$, $a_n \in L$: $L=K(a_1, \dots, a_n)$
+		\item $L | K$ ist \begriff{einfach} $:\Leftrightarrow$ existiert $a \in L$: $L=K(a)$  
 	\end{enumerate}
 \end{definition}
 
@@ -137,6 +161,6 @@ Sei $K,L,M$ Körper.
 		f &\mapsto f(a_1, \dots, a_n)
 		\end{cases}\notag
 		\end{align}
-		und $K(a_1, \dots , a_n) = \set{\alpha \beta \colon \alpha, \beta \in K[a_1, \dots, a_n], \beta \neq 0} \cong \Quot(K[a_1, \dots, a_n])$
+		und $K(a_1, \dots , a_n) = \big\{\alpha \beta \mid \alpha, \beta \in K[a_1, \dots, a_n], \beta \neq 0\big\} \cong \Quot\big(K[a_1, \dots, a_n]\big)$
 	\end{enumerate}
 \end{remark}
