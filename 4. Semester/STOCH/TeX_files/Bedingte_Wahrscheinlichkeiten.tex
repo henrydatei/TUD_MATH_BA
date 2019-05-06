@@ -71,9 +71,9 @@
 \begin{example} %TODO ref
 	In der Situation \propref{3_1_1} gilt % 
 	\begin{align*}
-		A \cap B &= \set{(4,4)}
+		A \cap B = \set{(4,4)}
 		\intertext{und damit}
-		\P(A \mid B) &= \frac{\P(A\cap B)}{\P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
+		\P(A \mid B) = \frac{\P(A\cap B)}{\P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
 	\end{align*}
 \end{example}
 
@@ -89,9 +89,9 @@ Aus \propref{3_1_3} ergibt sich
 \begin{proof}
 	Ist $\P(A_1 \cap \dots \cap A_n) = 0$, so gilt auch $\P(A_n \mid \bigcap_{i=1}^{n-1} A_i) = 0$. Andernfalls sind alle Faktoren der rechten Seite ungleich Null und
 	\begin{align*}
-		&\P(A_1) \P(A_2 \mid A_1) \dots \P(A_n \mid \bigcap_{i=1}^{n-1} A_i) \\
-		= &\P(A_1) \cdot \frac{\P(A_1 \cap A_2)}{\P(A_1)} \dots \frac{\P(\bigcap_{i=1}^{n} A_i)}{\P(\bigcap_{i=1}^{n-1}A_i)} \\
-		= &\P(\bigcap_{i=1}^n A_i)	
+		\P(A_1) \P(A_2 \mid A_1) \dots \P(A_n \mid \bigcap_{i=1}^{n-1} A_i) \\
+		&= \P(A_1) \cdot \frac{\P(A_1 \cap A_2)}{\P(A_1)} \dots \frac{\P(\bigcap_{i=1}^{n} A_i)}{\P(\bigcap_{i=1}^{n-1}A_i)} \\
+		&= \P(\bigcap_{i=1}^n A_i)	
 	\end{align*}
 \end{proof} %TODO add ref.
 

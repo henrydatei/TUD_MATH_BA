@@ -1,2 +1,130 @@
-\section{Die separable Erweiterung}
-%Sei $L\mid K$ eine Körpererweiterung.
+\section{Separable Polynome}
+Sei $K$ ein Körper, $f \in K[X], n = \deg(f)$.
+\begin{definition}[title]
+	Sei $a \in K$.
+	\begin{enumerate}
+		\item $\mu(f,u) := v_{x-a}(f) := \sup \set{k \in \N_0 : (x-a)^k \mid f} \in \N_0 \cup \set{\infty}$ die \begriff{Vielfachheit} der Nullstelle von $f :\iff \mu(f,a) = 1$
+		\item 
+	\end{enumerate}
+\end{definition}
+\begin{remark}
+	
+\end{remark}
+\begin{definition}[title]
+	Die \begriff{formale Ableitung} von $f = \sum_{i=1}^n i a_i X^{i-1}$ ist $f' := \frac{\d}{\d x} f(x) := \sum_{i=1} i a_i X^{i-1} \in K[X]$
+\end{definition}
+\begin{lemma}
+	Für $f,g \in K[X], a,b \in K$ gelten\begin{enumerate}
+		\item $(af + bg)' = a f' + b g'$ (Linearität)
+		\item $(fg)' = f'g + fg'$ (Produktregel)
+		\item $(f(g(x)))' = f'(g(x))\cdot g'(x)$ (Kettenregel)
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Übung.
+\end{proof}
+\begin{lemma}
+	Sei $f \neq 0$. Für $a \in K$ gilt
+	\[
+	\mu(f' , a) \ge \mu(f,a) = 1
+	\]
+	mit Gleichheit genau dann, wenn
+	\[
+	\chara(K) \not\mid \mu(f,a)
+	\]
+\end{lemma}
+\begin{proof}
+	Schreibe $f = (X-a)^k \cdot g, k = \mu(f,a)$
+	\begin{itemize}
+		\item $k=0$: $\mu(f', a) \ge 0 > -1$ und $\chara(K) \mid 0$
+		\item $k>0$: $f' = k(X-a)^{k-1}g + (X-a)^k \cdot g'$\\
+		$\implies \mu(f',a) \ge k$\\
+		\begin{align*}
+			\mu(f',a) \ge k &\iff (X-a)^k \mid k(X-a)^{k-1}g\\
+			&\iff X-a \mid k
+		\end{align*}
+	\end{itemize}
+\end{proof}
+%TODO
+\begin{conclusion}
+	Sei $f$ irreduzibel
+	\begin{enumerate}
+		\item Ist $\chara(K) = 0$, so ist $f$ separabel
+		\item Ist $\chara(K) = p>0$, so sind äquivalent
+		\begin{enumerate}
+			\item $f$ ist inseparabel
+			\item $f' = 0$
+			\item $f(X) = g(X^p)$ für ein $g \in K[X]$
+		\end{enumerate}
+	\end{enumerate}
+\end{conclusion}
+\begin{proof}
+	$f$ irreduzibel $\implies \underbrace{\ggT(f,f') \sim 1}_{\iff f \text{ sep}} \oder \underbrace{\ggT(f,f') \sim f}_{\iff f \text{ sep.}}$. (Nutze 6.6 für die $\iff$) Da $\deg(f') = \deg(f)$ ist
+	\[
+		f \mid f' \iff f' = 0 \iff f(x) = g(x^p). \text{ für ein }g
+	\]
+	Im Fall $\chara(K) = 0$ tritt dieser Fall nicht ein.
+\end{proof}
+\begin{definition}[vollkommen]
+	$K$ ist \begriff{vollkommen} $\iff$ jedes irreduzibel $f \in K[X]$ ist separabel.
+\end{definition}
+\begin{example}
+	\begin{enumerate}
+		\item $\chara(K) = 0 \implies K$ ist vollkommen
+		\item $K = \bar{K} \implies K$ ist vollkommen
+		\item $K = \F_p (t)$ ist nicht vollkommen:
+		\begin{align*}
+			f = X^p - t \in K[X] \text{ ist irreduzibel}\\
+			f' = X^{p-1} = 0 \implies f \text{ nicht seperabel.}
+		\end{align*}
+		Tatsächlich hat $f$ nur eine Nullstelle in $\bar{K}$:
+		\begin{align*}
+			f = X^p - t \overset{V1}{=} (X - t^{\frac{1}{t}})^p
+		\end{align*}
+	\end{enumerate}
+\end{example}
+\begin{definition}[title]
+	Sei $\chara(K) = p > 0$.
+	\begin{enumerate}
+		\item \begin{align*}
+		\varphi_p : \begin{cases}
+		K &\to K\\
+		x &\mapsto x^p 
+		\end{cases}
+		\end{align*}
+		\person{Frobenius}-Endomorphismus von $K$
+		\item $K^p = \Image(\varphi_p) = \set{a^p : a \in K}$
+	\end{enumerate}
+\end{definition}
+\begin{proposition}
+	Sei $\chara(K) = p > 0$. Dann ist $\varphi_p \in \End(K): =\Hom(K,K)$
+\end{proposition}
+\begin{proof}
+	Für $a, b \in K$ ist
+	\begin{itemize}
+		\item $\varphi_p = (ab)^p = a^p \cdot b^p = \varphi_p (a) \cdot \varphi_p(b)$
+		\item $\varphi_p(a+b) = (a+b)^p = \sum_{i=0}^p\binom{p}{i} a^i b^{p-i} = b^p + a^p = \varphi_p(a) + \varphi_p(b)$, da $p \mid \binom{p}{i}$ für $i = 1, \dots, p-1$ (V1).
+		\item $\varphi_p(1) = 1^p = 1$
+	\end{itemize}
+\end{proof}
+\begin{remark}
+	\begin{enumerate}
+		\item Da $\varphi_p \in \End(K) $ ist $K^p$ ein Teilkörper von $K$ und $\varphi_p$ ist injektiv.
+		\item Insbesondere gibt es zu jedem $a \in K$ ein eindeutig bestimmtes $a^{\frac{1}{p}} \in \bar{K}$ mit
+		\[
+			\varphi_p(a^{\frac{1}{p}}) = (a^{\frac{1}{p}})^p = a
+		\]
+		\item Für $a \in \F \cong \F_p$ ist $\varphi_p(a) = a$. (z.B. $\varphi_p(1) = 1$ oder kleiner Satz von \person{Fermat})
+	\end{enumerate}
+\end{remark}
+\begin{lemma}
+	Sei $\chara(K) = p > 0, a \in K \setminus K^p$. Dann ist $f = X^p -a$ irreduzibel und inseparabel
+\end{lemma}
+\begin{proof}
+	Sei $\alpha \in \bar{K}$ mit $f(\alpha) = 0, g= \MinPol(\alpha \mid K)$\\
+	$\implies g \mid f = X^p -a = (X-\alpha)^p$\\
+	$\implies g \equiv (X - \alpha)^k \mit k \le p$. $a \notin K^p \implies \alpha \notin K \implies k >1$\\
+	$\implies g$ ist inseperabel\\
+	$\xRightarrow{g \text{ irred.}} g(x) = h(x^p)$ für ein $h$\\
+	$\implies k = p \implies f = g$ irreduzibel 
+\end{proof}

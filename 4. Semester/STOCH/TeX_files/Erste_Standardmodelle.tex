@@ -102,7 +102,7 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	\begin{align}
 		m((k_1,\dots,k_l)) = \binom{n}{k_1, \dots, k_l}\prod_{i=1}^{l} p_i^{k_i}\notag
 	\end{align}
-	\begriff{Multinomialverteilung mit Parametern $n$ und $p$}. Wir schreiben auch $\Multi(n,p)$.
+	\begriff{Multinomialverteilung} mit Parametern $n$ und $p$. Wir schreiben auch $\Multi(n,p)$.
 \end{definition}
 \begin{example}
 	Eine Urne enthalte nur schwarze ``$1$'' und weiße ``$0$'' Kugeln, d.h. $E=\set{0,1}$, und es sei $\rho(1) = p$ gerade die Proportion der schwarzen Kugeln (= Wahrscheinlichkeit bei einem Zug schwarz zu ziehen), dann ist Wahrscheinlichkeit in $n$ Zügen $k$-mal schwarz zu ziehen:
@@ -117,11 +117,11 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	\begin{align}
 		\rho(k) = \binom{n}{k}p^k (1-p)^{n-k} \mit k \in \set{0,1,\dots,n}.\notag
 	\end{align}
-	\begriff{Binomialverteilung auf $\set{0, \dots,n}$ mit Parameter $p$} (auch \begriff{Erfolgswahrscheinlichkeit}). Wir schreiben auch $\Bin(n,p)$. Im Fall $n = 1$ nennen wir die Verteilung mit Zähldichte
+	\begriff{Binomialverteilung} auf $\set{0, \dots,n}$ mit Parameter $p$ (auch \begriff{Erfolgswahrscheinlichkeit}). Wir schreiben auch $\Bin(n,p)$. Im Fall $n = 1$ nennen wir die Verteilung mit Zähldichte
 	\begin{align}
 		\rho(0) = 1-p \und \rho(1) = p\notag
 	\end{align}
-	auch \begriff{Bernoulliverteilung mit Parameter $p$} und schreiben $\Ber(p)$.
+	auch \begriff{Bernoulliverteilung} mit Parameter $p$ und schreiben $\Ber(p)$.
 \end{definition}
 \underline{Urnenmodell ohne Zurücklegen:} \begriff{Hypergeometrische Verteilung}\\
 Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$,
@@ -176,13 +176,13 @@ $\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ m�
 \end{proof}
 Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn 
 \begin{align}
-	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1\notag
+	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1.\notag
 \end{align}
 \begin{definition}
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definierte Wahrscheinlichkeitsmaß mit
 	\begin{align}
 		\probp(\set{k}) = \frac{\lambda^k}{k!}e^{-\lambda} \quad k \in \N_{0},\notag
 	\end{align}
-	\begriff{Poissonverteilung mit Parameter $\lambda$}. Schreibe $\Pois(\lambda)$.
+	\begriff{Poissonverteilung} mit Parameter $\lambda$. Schreibe $\Pois(\lambda)$.
 \end{definition}
 Die Poissonverteilung ist ein natürliches Modell für die Anzahl von zufälligen, seltenen Ereignissen (z.B. Tore im Fußballspiel, Schadensfälle einer Versicherung, ...).
