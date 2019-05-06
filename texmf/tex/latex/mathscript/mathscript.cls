@@ -67,6 +67,7 @@
 \RequirePackage{titlesec} 	%customize titles
 \RequirePackage{tocloft}	%customize toc
 \RequirePackage[font=small,labelfont=bf]{caption}     % not-floating figures with caption
+\RequirePackage{changepage}
 
 %tabulars
 \RequirePackage{tabularx} 	%tabularx-environment (explicitly set width of columns)

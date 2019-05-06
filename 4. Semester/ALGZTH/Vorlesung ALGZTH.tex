@@ -6,6 +6,12 @@
 \newcommand{\caly}{\mathcal{Y}}				% caligraphic Y
 \DeclareMathOperator{\transdeg}{tr.deg}
 
+\newlist{remarkenum}{enumerate}{1}
+\setlist[remarkenum]{label=(\alph*),ref=\theremark~(\alph*)}
+\crefalias{remarkenumi}{remark}
+\newlist{propenum}{enumerate}{1}
+\setlist[propenum]{label=(\alph*),ref=\theproposition~(\alph*)}
+\crefalias{propenumi}{proposition}
 
 \title{\textbf{Algebra und Zahlentheorie SS 2019}}
 \author{Dozent: Prof. Dr. \person{Arno Fehm}}
