@@ -12,27 +12,28 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\item $K$ hat keine echte algebraische Erweiterung. \label{aussage:1_4_2:3}
 	\end{enumerate}
 \end{lemma}
-\begin{proof} %TODO ref
-	\begin{enumerate}[label=(\alph*)]
-		\item \ref{aussage:1_4_2:1} $\Rightarrow$ \ref{aussage:1_4_2:2}: Induktion nach $\deg(f)$ (siehe LAAG)
-		\item \ref{aussage:1_4_2:2} $\Rightarrow$ \ref{aussage:1_4_2:3}: Sei $L \mid K$ algebraisch, $\alpha \in L$. Schreibe $f = \MinPol(\alpha \mid K)$. Nach \ref{aussage:1_4_2:2} zerfällt $f$ in Linearfaktoren über $K \Rightarrow \alpha \in K$
-		\item \ref{aussage:1_4_2:3} $\Rightarrow$ \ref{aussage:1_4_2:1}: Sei $f \in K[X], \deg(f) > 0$. Nach \propref{1_3_9} existiert ein Zerfällungskörper $L$ von $f$. Da $L\overset{(*)}{=}K$ nach \ref{aussage:1_4_2:3} hat $f$ Nullstellen in $K$. \\
+\begin{proof}\leavevmode %TODO ref
+	\vspace*{\dimexpr-\baselineskip+2\lineskip}
+	\begin{itemize}[leftmargin=6em]
+		\item[\ref{aussage:1_4_2:1} $\Rightarrow$ \ref{aussage:1_4_2:2}:] Induktion nach $\deg(f)$ (siehe LAAG)
+		\item[\ref{aussage:1_4_2:2} $\Rightarrow$ \ref{aussage:1_4_2:3}:] Sei $L \mid K$ algebraisch, $\alpha \in L$. Schreibe $f = \MinPol(\alpha \mid K)$. Nach \ref{aussage:1_4_2:2} zerfällt $f$ in Linearfaktoren über $K \Rightarrow \alpha \in K$
+		\item[\ref{aussage:1_4_2:3} $\Rightarrow$ \ref{aussage:1_4_2:1}:] Sei $f \in K[X]$, $\deg(f) > 0$. Nach \propref{1_3_9} existiert ein Zerfällungskörper $L$ von $f$. Da $L\overset{(*)}{=}K$ nach \ref{aussage:1_4_2:3} hat $f$ Nullstellen in $K$. \\
 		($(*)$ $L$ ist Erweiterung $\rightarrow$ die nach \ref{aussage:1_4_2:3} trivial ist)
-	\end{enumerate}
+	\end{itemize}
 \end{proof}
-\begin{definition}[\begriff{algebraischer Abschluss}]
-	$L$ ist algebraischer Abschluss von $K :\Longleftrightarrow L$ ist algebraisch abgeschlossen und $L\mid K$ algebraisch.
+\begin{definition}[algebraischer Abschluss]
+	$L$ ist \begriff{algebraischer Abschluss} von $K :\Longleftrightarrow L$ ist algebraisch abgeschlossen und $L\mid K$ algebraisch.
 \end{definition}
 \begin{lemma}
 	\proplbl{1_4_4}
 	Ist $L$ algebraischer Abschluss, so ist der relative algebraische Abschluss $\tilde{K}$ ein algebraischer Abschluss von $K$.
 \end{lemma}
-\begin{proof}
+\begin{proof}\leavevmode\vspace*{\dimexpr-\baselineskip+4\lineskip}
 	\begin{itemize}
 		\item $\tilde{K}$ ist Körper: \propref{1_2_15}
 		\item $\tilde{K} \mid K$ ist algebraisch: Definition
 		\item $\tilde{K}$ ist algebraisch abgeschlossen: Sei $f \in \tilde{K}[X] \mit \deg(f) > 0$.\\
-		$L$ algebraisch abgeschlossen $\Rightarrow$ existiert $\alpha \in L \mit f(\alpha) = 0$ und $f(\alpha) = 0 \Rightarrow \alpha$ algebraisch über $\tilde{K} \xRightarrow{\propref{1_2_15}} \alpha \in \tilde{K}$.
+		$L$ algebraisch abgeschlossen $\Rightarrow$ existiert $\alpha \in L \mit f(\alpha) = 0$ $\Rightarrow \alpha$ algebraisch über $\tilde{K} \xRightarrow{\propref{1_2_15}} \alpha \in \tilde{K}$.
 	\end{itemize}
 \end{proof}
 \begin{example}
@@ -47,88 +48,124 @@ Sei $L\mid K$ eine Körpererweiterung.
 	Sei $L\mid K$ algebraisch, $E$ ein algebraisch abgeschlossener Körper und $\varphi \in \Hom(K,E)$. Dann existiert eine Fortsetzung von $\varphi$ auf $L$, d.h. ein $\sigma \in \Hom(L,E) \mit \sigma_{\mid K} = \varphi$.
 \end{lemma}
 \begin{proof}
-	Definiere Halbordnung.
-	\begin{align*}
-		\Halb &:= \set{(M,\sigma) : K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E), \sigma_{\mid K} = \varphi}\\
-		&(M,\sigma) \subseteq (M' , \sigma') :\iff m \subset M' \und \sigma'_{\mid M} = \sigma
-	\end{align*}
+	Definiere die Halbordnung
+	\begin{flalign*}
+		\qquad &\Halb := \big\lbrace(M,\sigma) \;\big|\; K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E),\, \sigma_{\mid K} = \varphi\big\rbrace &\\
+		\intertext{mit der Ordnung}
+		&(M,\sigma) \subseteq (M' , \sigma') :\mskip-4mu\iff M \subset M' \und \sigma'_{\mid M} = \sigma&
+	\end{flalign*}
 	\begin{itemize}
 		\item $\Halb \neq \emptyset$: $(K,\varphi) \in \Halb$
-		\item Ist $(M,\sigma)_{i \in I}$ eine Kette in $\Halb$, so definieren wir $M:= \bigcup_{i\in I} M_i$ und $\sigma: M \to E$ durch $\sigma(x) = \sigma_i (x)$ falls $x \in M_i$. Dann ist $(M,\sigma) \in \Halb$ eine obere Schranke der Kette $(M_i , \sigma_i)_{i\in I}$. Nach Lemma von \person{Zorn} existiert $(M, \sigma)$ maximal. 
-		Es ist $M = L$: Sei $\alpha \in L, f= \MinPol(\alpha\mid M)$. $f \in E[X]$ hat Nullstelle $\beta \in E$, da $E$ algebraisch abgeschlossen ist.
+		\item Ist $(M,\sigma)_{i \in I}$ eine Kette in $\Halb$, so definieren wir $M:= \bigcup_{i\in I} M_i$ und $\sigma\colon M \to E$ durch $\sigma(x) = \sigma_i (x)$ falls $x \in M_i$.
+		
+		Dann ist $(M,\sigma) \in \Halb$ eine obere Schranke der Kette $(M_i , \sigma_i)_{i\in I}$. Nach Lemma von \person{Zorn} existiert $(M, \sigma)$ maximal. 
+		Es ist $M = L$: Sei $\alpha \in L$, $f= \MinPol(\alpha\mid M)$. $f \in E[X]$ hat Nullstelle $\beta \in E$, da $E$ algebraisch abgeschlossen ist
 		$\xRightarrow{\propref{1_3_12}}$ existiert Fortsetzung $\sigma' \in \Hom(M(\alpha), E)$ von $\sigma$\\
-		$(M,\sigma) \le (M(\alpha, \sigma')) \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha), \alpha \in M.$
+		$(M,\sigma) \le (M(\alpha), \sigma') \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha)$, $\alpha \in M.$
 	\end{itemize}
 \end{proof}
 \begin{theorem}[\person{Steinitz}, 1910]
 	Jeder Körper $K$ besitzt einen bis auf $K$-Isomorphie eindeutig bestimmten algebraischen Abschluss.
 \end{theorem} %TODO tikzcd!
-\begin{proof}\
+\begin{proof}\leavevmode\vspace*{\dimexpr-\baselineskip+2\lineskip}
 	\begin{itemize}
 		\item Eindeutigkeit:\\
-		Seien $L_1 , L_2$ algebraische Abschlüsse von $K$\\
+		Seien $L_1$, $L_2$ algebraische Abschlüsse von $K$\\
 		$L_1 \mid K$, $L_2$ algebraisch abgeschlossen $\xRightarrow{\propref{1_4_6}}$ existiert $\sigma \in \Hom(L_1 , L_2)$
-		\begin{align*} %TODO find a way to have only the right curly bracket?
-		\begin{Bmatrix}
-		L_1 \text{ algebraisch abgeschlossen }\Rightarrow \sigma(L_1) \cong L_1 \text{ algebraisch abgeschlossen}\\
-		L_2 \mid K \text{ algebraisch } \Rightarrow L_2 \mid \sigma(L_1) \text{  algebraisch }
-		\end{Bmatrix}\xRightarrow{\propref{1_4_2}} L_2 = \sigma(L_1).
-		\end{align*}
-		Somit ist $\sigma: L_1 \to L_2$ ein $K$-Isomorphismus.
+		\begingroup
+		\zeroAmsmathAlignVSpaces
+		\begin{flalign*} %TODO find a way to have only the right curly bracket?
+		\hspace*{-0.2em}&\left.\begin{array}{@{}l}
+		L_1 \text{ algebraisch abgeschlossen }\Rightarrow \sigma(L_1) \cong L_1 \text{ algebraisch abgeschlossen}\\[-3pt]
+		\vspace*{5pt}L_2 \mid K \text{ algebraisch } \Rightarrow L_2 \mid \sigma(L_1) \text{  algebraisch }
+		\end{array}\right\rbrace\xRightarrow{\propref{1_4_2}} L_2 = \sigma(L_1).&
+		\end{flalign*}
+		\endgroup
+		\vspace{4\lineskip}
+		\hspace*{-3pt}Somit ist $\sigma\colon L_1 \to L_2$ ein $K$-Isomorphismus.
 		\item Existenz: Seien
 		\begin{itemize}
-			\item $\mathscr{F} = \set{f \in K[X] \colon \deg(f) > 0}$
+			\item $\mathscr{F} = \set{f \in K[X] \mid \deg(f) > 0}$
 			\item $\Halb = (X_f)_{f \in \mathscr{F}}$ Familie von Variablen
 			\item $R := K[\Halb]$ Polynomring in den Variablen $X_f$ ($f \in \mathscr{F}$)
 			\item $I := (f(X_f) \colon f \in \mathscr{F}) \properideal R$
 		\end{itemize}
-			\begin{enumerate}[label=]
-				\item Behauptung 1: Es gilt $I \properideal R$.
-					\begin{proof}[Behauptung 1]
-						Angenommen $I = R$. Dann existieren $f_1, \dots, f_n \in \mathscr{F}$ und $g_1, \dots, g_n \in R$ mit $\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1$. Sei $L$ ein Zerfällungskörper von $f_1, \dots, f_n$. Dann existieren $\alpha_1, \dots, \alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
-						\begin{align*}
-							&\varphi_{\mid K} = \id_K \quad \varphi(X_{f_i}) = \alpha_i \quad \varphi(X_f) = 0 \text{ für } f \in \lnkset{\mathscr{F}}{\set{f_1,\dots, f_n}}\\
-							&\implies 1 = \varphi(1) = \sum_{i=1}^n \varphi(g_i) \cdot \varphi(f_i (X_f))\\
-							&= \sum_{i=1}^n \varphi(g_i) \cdot f_i (\underbrace{\varphi(X_f)}_{= \alpha_i}) = \sum_{i=1}^n \varphi(g_i) \cdot \underbrace{f_i (\alpha_i)}_{=0} = 0
-						\end{align*}
-					\end{proof}
-				\end{enumerate}
-		Jedes echte Ideal ist in einem maximalen Ideal von $R$ enthalten (GEO II 2.13) $\implies$ existiert maximales Ideal $m \unlhd R \mit I \subseteq m$. $L_1 := \lnkset{R}{m}$ ist Körpererweiterung von $K$, und jedes $f \in \mathscr{F}$ hat eine Nullstelle in $L_1$, nämlich $f(X_f + m) = f(X_f) + m = 0 + m$. Iteriere dies und erhalte eine Kette von Körpern
-		\begin{align*}
+		\begin{underlinedenvironment}[Behauptung 1]
+			Es gilt $I \properideal R$.
+		\end{underlinedenvironment}
+		\vspace*{\dimexpr-\baselineskip-3pt}
+		\begin{proof}
+			Angenommen $I = R$. Dann existieren $f_1$, $\dots$, $f_n \in \mathscr{F}$ und $g_1$, $\dots$, $g_n \in R$ mit
+			\begin{flalign*}
+				\qquad &\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1.&
+			\end{flalign*}
+			Sei $L$ ein Zerfällungskörper von $f_1$, $\dots$, $f_n$. Dann existieren $\alpha_1$, $\dots$, $\alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
+			\begin{flalign*}
+				\qquad &\varphi_{\mid K} = \id_K, \quad \varphi(X_{f_i}) = \alpha_i, \quad \varphi(X_f) = 0 \text{ für } f \in \lnkset{\mathscr{F}}{\set{f_1,\dots, f_n}}&
+			\end{flalign*}
+			Dann folgt
+			\begingroup
+			\zeroAmsmathAlignVSpaces*
+			\begin{flalign*}
+				\qquad &1 = \varphi(1) = \sum_{i=1}^n \varphi(g_i) \cdot \varphi(f_i (X_f))
+				= \sum_{i=1}^n \varphi(g_i) \cdot f_i (\underbrace{\varphi(X_f)}_{= \alpha_i}) = \sum_{i=1}^n \varphi(g_i) \cdot \underbrace{f_i (\alpha_i)}_{=0} = 0 &
+			\end{flalign*}
+			\endgroup
+		\end{proof}
+		Jedes echte Ideal ist in einem maximalen Ideal von $R$ enthalten (GEO II 2.13) \\[-5\lineskip]
+		\begin{tabularx}{\linewidth}{@{\hspace{0.5em}}>{$}r<{$}@{\;\;}X}
+		\implies & \begin{minipage}[t]{\linewidth}existiert maximales Ideal $m \unlhd R \mit I \subseteq m$. $L_1 := \lnkset{R}{m}$ ist Körpererweiterung von $K$, und jedes $f \in \mathscr{F}$ hat eine Nullstelle in $L_1$, nämlich $f(X_f + m) = f(X_f) + m = 0 + m$. Iteriere dies und
+		\vspace*{0pt}	
+		\[
 			K := L_0 \subseteq L_1 \subseteq L_2 \subseteq \cdots,
-		\end{align*}
-		wobei jedes $f \in L_i [X], \deg(f) >0$ eine Nullstelle in $L_{i+1}$ hat. Setze nun $L = \bigcup_{i=1}^{\infty}$.
-			\begin{enumerate}[label=]
-				\item Behauptung 2: $L$ ist algebraisch abgeschlossen.
-				\begin{proof}[Behauptung 2]
-					Sei $f \in L[X], \deg(f) > 0 \implies f \in L_i [X]$ für ein $i \implies f$ hat eine Nullstelle in $L_{i+1} \subseteq L$
-				\end{proof}
-			\end{enumerate}
-		Nach \propref{1_4_4} ist somit $\tilde{K} = \set{\alpha \in L \colon \alpha \text{ algebraisch über }K}$ ein abgeschlossener Abschluss von $K$.
-%		\end{enumerate}
+			\vspace*{0pt}
+		\]
+		\leavevmode
+		wobei jedes $f \in L_i [X]$, $\deg(f) >0$ eine Nullstelle in $L_{i+1}$ hat. Setze nun $L = \bigcup_{i=1}^{\infty} L_i$.
+		\end{minipage}
+		\end{tabularx}
+		\begin{underlinedenvironment}[Behauptung 2]
+			$L$ ist algebraisch abgeschlossen.
+		\end{underlinedenvironment}
+		\vspace*{\dimexpr-\baselineskip-3pt}
+		\begin{proof}
+			Sei $f \in L[X]$, $\deg(f) > 0$ $\implies$ $f \in L_i [X]$ für ein $i$ $\implies$ $f$ hat eine Nullstelle in $L_{i+1} \subseteq L$
+		\end{proof}
+		Nach \propref{1_4_4} ist somit
+		\begin{flalign*} \qquad &\tilde{K} = \big\lbrace\alpha \in L \,\big|\, \alpha \text{ algebraisch über }K\big\rbrace&
+		\end{flalign*}
+		ein algebraischer Abschluss von $K$.
 	\end{itemize}
 \end{proof}
 \begin{definition}[algebraischer Abschluss]
 	Mit $\bar{K}$ bezeichnen wir den (bis auf $K$-Isomorphie eindeutig bestimmten) \begriff{algebraischen Abschluss} von $K$.
 \end{definition}
 \begin{definition}[Automorphismengruppe]
-	$\Aut(L\mid K) := \set{ \sigma \in \Hom_K (L,L)\colon \sigma \text{ Isomorphismus} }$, die Automorphismengruppe von $L\mid K$.
+	$\Aut(L\mid K) := \{ \sigma \in \mathrm{Hom}_K (L,L)\mid \sigma \text{ Isomorphismus}\}$, die \begriff{Automorphismengruppe} von $L\mid K$.
 \end{definition}
 \begin{remark}
 	$\Aut(L \mid K)$ ist Gruppe unter $\sigma \cdot \sigma' = \sigma' \circ \sigma$ und wirkt auf $L$ durch $x^{\sigma} := \sigma(x)$.
 \end{remark}
 \begin{proposition}
 	\proplbl{1_4_11}
-	Sei $K \subseteq L \subseteq \bar{K}$ ein Zwischenkörper. Jedes $\varphi \in Hom_K (L, \bar{K})$ lässt sich zu einem $\sigma \in \Aut(\bar{K}\mid K)$ fortsetzen.
+	Sei $K \subseteq L \subseteq \bar{K}$ ein Zwischenkörper. Jedes $\varphi \in \Hom_K (L, \bar{K})$ lässt sich zu einem $\sigma \in \Aut(\bar{K}\mid K)$ fortsetzen.
 \end{proposition}
 \begin{proof}
 	Sei $\bar{K} \mid K$ algebraisch abgeschlossen und $\bar{K}$ algebraisch abgeschlossen\\
-	$\xRightarrow{\propref{1_4_6}}$ existiert Fortsetzung $\sigma \in \Hom_K (\bar{K}, \bar{K})$ von $\varpi$\\
-	$\bar{K}$ algebraisch abgeschlossen $\implies \sigma(\bar{K})$ algebraisch abgeschlossen\\
-	$\bar{K} \mid K$ algebraisch ist $\implies \bar{K} \mid \sigma(\bar{K})$ algebraisch ($\bar{K} = \sigma(\bar{K})$) somsit ist $\sigma \in \Aut(\bar{K}, K)$.
+	\hspace*{0.5em}$\xRightarrow{\propref{1_4_6}}$ existiert Fortsetzung $\sigma \in \Hom_K (\bar{K}, \bar{K})$ von $\varphi$
+	\bgroup
+	\zeroAmsmathAlignVSpaces
+	\begin{flalign*}
+	\hspace*{-.3em}&\left.\begin{array}{@{}l@{\;}c@{\;}l}
+	\bar{K} \;\text{algebraisch abgeschlossen} &\implies & \sigma(\bar{K})\; \text{algebraisch abgeschlossen} \\[-2pt]
+	\bar{K} \mid K\; \text{algebraisch ist} & \implies& \bar{K} \mid \sigma(\bar{K})\;\text{algebraisch}
+	\end{array}\right\rbrace \; \bar{K} = \sigma(\bar{K}) &
+	\end{flalign*}
+	\egroup
+	 somit ist $\sigma \in \Aut(\bar{K}, K)$.
 \end{proof}
 \begin{definition}[konjugiert]
-	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\Longleftrightarrow$ existiert $\sigma \in \Aut(\bar{K}, K)\mit \sigma(\alpha) = \beta$.
+	$\alpha, \beta \in \bar{K}$ sind $K$-\begriff{konjugiert} $\Longleftrightarrow$ existiert $\sigma \in \Aut(\bar{K}, K)\mit \sigma(\alpha) = \beta$.
 \end{definition}
 \begin{remark}
 	$K$-Konjugiertheit ist eine Äquivalenzrelation auf $\bar{K}$.
@@ -136,17 +173,19 @@ Sei $L\mid K$ eine Körpererweiterung.
 \begin{conclusion}
 	$\alpha, \beta \in \bar{K}$ sind $K$-konjugiert $\iff$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$.
 \end{conclusion}
-\begin{proof}\
+\begin{proof}\leavevmode\vspace{\dimexpr-\baselineskip+2\lineskip}
 	\begin{itemize}
-		\item $\Rightarrow:$ $\sigma(\alpha) = \beta \mit \sigma \in \Aut(\bar{K}\mid K), f \in K[X]$, $f(\alpha) = 0 \implies 0 = \sigma(0) = \sigma(f(\alpha)) = f(\sigma(\alpha)) = f(\beta)$
-		\item $\Leftarrow:$ $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$\\
-		$\xRightarrow{\propref{1_3_5}}$ existiert $K$-Isomorphismus $\varphi: K(\alpha) \to K(\beta) \mit \varphi(\alpha) = \beta$\\
-		$\xRightarrow{\propref{1_4_11}}$ existiert Fortsetzung $\sigma \in \Aut(\bar{K}, K)$ von $\varphi$. 
+		\item[($\Rightarrow$)] $\sigma(\alpha) = \beta \mit \sigma \in \Aut(\bar{K}\mid K)$, $f \in K[X]$, $f(\alpha) = 0 \implies 0 = \sigma(0) = \sigma(f(\alpha)) = f(\sigma(\alpha)) = f(\beta)$
+		\item[($\Leftarrow$)] $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$
+		\begin{itemize}[topsep=0pt]
+		\item[$\xRightarrow{\propref{1_3_5}}$] existiert $K$-Isomorphismus $\varphi\colon K(\alpha) \to K(\beta)$ mit $\varphi(\alpha) = \beta$
+		\item[$\xRightarrow{\propref{1_4_11}}$] existiert Fortsetzung $\sigma \in \Aut(\bar{K}, K)$ von $\varphi$. 
+		\end{itemize}
 	\end{itemize}
 \end{proof}
 \begin{example}
 	\begin{itemize}
 		\item $\ii, -\ii \in\tilde{\Q}$ sind $\Q$-konjugiert: komplex Konjugation (eingeschränkt auf $\tilde{\Q}$)
-		\item $\sqrt{2}, -\sqrt{2} \in \tilde{\Q}$ sind $\Q$-konjugiert: $\MinPol(\sqrt{2}\mid \Q) = x^2 -2 = \MinPol(-\sqrt{2}\mid \Q)$
+		\item $\sqrt{2}$, $-\sqrt{2} \in \tilde{\Q}$ sind $\Q$-konjugiert: $\MinPol(\sqrt{2}\mid \Q) = x^2 -2 = \MinPol(-\sqrt{2}\mid \Q)$
 	\end{itemize}
 \end{example}

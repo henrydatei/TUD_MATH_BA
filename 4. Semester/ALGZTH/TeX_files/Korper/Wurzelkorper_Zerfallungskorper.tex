@@ -27,7 +27,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 		$\Rightarrow$ können $K$ mit Teilkörper von $L$ identifizieren, sodass $\pi_{\mid K} = \id_K$
 		\item $(f)$ irreduzibel $\Rightarrow$ prim $\xRightarrow{\text{GEO II.4.7}}$ $(f)$ maximal $\Rightarrow L = \lnkset{K[X]}{(f)}$ ist Körper
 		\item $f(\alpha) = f(\pi(X)) \overset{(\ast)}{=} \pi(f(X)) = 0$ $\Rightarrow$ $f(X) \in \Ker(\pi)$\\
-		($\ast$ gilt, da $f = \sum a_i x^i = \pi(f) = \sum \pi(a_i)\pi(x)^i = \sum a_i \pi(x)^i = f(\pi(x))$)
+		($\ast$ gilt, da $f = \sum a_i x^i$ $\Rightarrow$ $\pi(f) = \sum \pi(a_i)\pi(x)^i = \sum a_i \pi(x)^i = f(\pi(x))$)
 		\item $L=\pi(K[X]) = K[\pi(X)] = K[\alpha] \overset{\alpha \text{ alg.}}{=} K(\alpha)$
 	\end{itemize}
 \end{proof}
@@ -40,13 +40,13 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	\begin{itemize}
 		\item Existenz gibt \propref{1_3_4}
 		\item \propref{1_3_3} liefert Isomorphismus
-		\begin{align*}
-			\left.\begin{matrix} %TODO find a way to only have the right curly bracket!
+		\begin{flalign*}
+			\qquad & \left.\begin{matrix} %TODO find a way to only have the right curly bracket!
 				L_1 \xleftarrow[\varphi_1]{\cong} & \lnkset{K[X]}{(f)} & \xrightarrow[\varphi_2]{\cong} L_2\\
 				\alpha_1 \mapsfrom & X + (f) & \mapsto \alpha_2\\
 			\end{matrix}\right\rbrace
-			\quad\Rightarrow \quad\varphi_2 \circ \varphi_1\colon L_1 \xrightarrow{\cong}_K L_2 \mit \alpha_1 \mapsto \alpha_2
-		\end{align*}
+			\quad\Rightarrow \quad\varphi_2 \circ \varphi_1\colon L_1 \xrightarrow{\cong}_K L_2 \mit \alpha_1 \mapsto \alpha_2 &
+		\end{flalign*}
 		Umgekehrt ist jeder $K$-Isomorphismus $\varphi\colon L_1 \to_K L_2$ wegen $L_1 = K(\alpha_1)$ schon durch $\varphi(\alpha_1)$ festgelegt.
 	\end{itemize}
 \end{proof}
@@ -85,7 +85,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	Ist $L\mid K$ wie in \propref{1_3_7}, ist $K(\alpha_1,\dots,\alpha_n)$ ein Zerfällungskörper von $f$.
 \end{proof}
 \begin{lemma}
-	Ist $L \mid K$ ein Zerfällungskörper vpn $f$, so ist $[L:K] \le n$!
+	Ist $L \mid K$ ein Zerfällungskörper von $f$, so ist $[L:K] \le n$!
 \end{lemma}
 \begin{proof}\NoEndMark
 	Sei $L = K(\alpha_1,\dots,\alpha_n)$, $f = c\prod_{i=1}^n (x-\alpha_i)$.\\
@@ -114,11 +114,11 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	\end{enumerate}
 \end{example}
 \begin{*example}
-	Sei $f = x^3 -2 \in \Q[X]$, dann sind die Nullstellen von $f$: $\sqrt[2]{2} \in \R$, $\zeta_3\sqrt[2]{2}$, $\zeta_3^2 \sqrt[2]{2}$
+	Sei $f = x^3 -2 \in \Q[X]$, dann sind die Nullstellen von $f$: $\sqrt[3]{2} \in \R$, $\zeta_3\sqrt[2]{2}$, $\zeta_3^2 \sqrt[2]{2}$
 	\begin{itemize}
 		\item $\Q(\sqrt[2]{2})$ ist Wurzelkörper von $f$. $\Q(\sqrt[3]{2}) \subseteq \R$, $\zeta_3\sqrt[3]{2}$, $\zeta_3^2 \sqrt[3]{2} \notin \R$, aber kein Zerfällungskörper. Der Zerfällungskörper von $f$ ist
 		\begin{align*}
-			\Q(\sqrt[3]{2},\zeta_3\sqrt[3]{2}, \zeta_3^2 \sqrt[3]{2}) = \Q(\sqrt[3]{2}, \zeta_3^2 \sqrt[3]{2})
+			\Q(\sqrt[3]{2},\zeta_3\sqrt[3]{2}, \zeta_3^2 \sqrt[3]{2}) = \Q(\sqrt[3]{2}, \zeta_3 \sqrt[3]{2})
 		\end{align*}
 	\end{itemize}
 \end{*example}
@@ -141,7 +141,7 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 \end{*anmerkung}
 \begin{lemma}
 	\proplbl{1_3_12}
-	Sei $f = \sum_{i=0}^n a_i x^i$ irreduzibel und sei $L = K(\alpha)$ mit $f(\alpha)=0$ ein Wurzelkörper von $f$. Sei $\tilde{L}\mid \tilde{K}$ eine weitere Körpererweiterung und $\varphi \in \Hom(K,\tilde{K})$. Ist $\sigma \in \Hom(L,\tilde{L})$ eine Fortsetzung von $\varphi$ (d.h. $\sigma_{\mid K} = \varphi$), so ist $\sigma(\alpha)$ eine Nullstelle von $f^{\varphi}=\sum_{i=0}^n \varphi(\alpha_i)x^i \in K[X]$.
+	Sei $f = \sum_{i=0}^n a_i X^i$ irreduzibel und sei $L = K(\alpha)$ mit $f(\alpha)=0$ ein Wurzelkörper von $f$. Sei $L'\mid K'$ eine weitere Körpererweiterung und $\varphi \in \Hom(K,K')$. Ist $\sigma \in \Hom(L,L')$ eine Fortsetzung von $\varphi$ (d.h. $\sigma_{\mid K} = \varphi$), so ist $\sigma(\alpha)$ eine Nullstelle von $f^{\varphi}=\sum_{i=0}^n \varphi(\alpha_i)X^i \in K[X]$.
 	
 	Ist umgekehrt $\beta \in L' $ eine Nullstelle von $f^{\varphi}$, so gibt es genau eine Fortsetzung $\sigma \in \Hom(L,\tilde{L})$ von $\varphi$ mit $\sigma(\alpha) = \beta$.
 \begin{center} % tikzcd was bitchy, compiled and included the pdf.
@@ -150,28 +150,28 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 \end{lemma}
 \begin{proof}[was für die Prüfung!]\leavevmode\vspace*{\dimexpr-\baselineskip+2\lineskip}
 	\begin{itemize}
-		\item $f(\alpha) = 0 \Rightarrow 0 = \sigma(0) = \sigma(f(\alpha)) = \sigma\brackets{\sum_{i=0}^n a_i \alpha^i} = \sum_{i=0}^n \varphi(a_i)\sigma(\alpha)^i = f^{\varphi}(\sigma(\alpha))$
+		\item $f(\alpha) = 0$ $\Rightarrow$ $0 = \sigma(0) = \sigma\big(f(\alpha)\big) = \sigma\big(\sum_{i=0}^n a_i \alpha^i\big) = \sum_{i=0}^n \varphi(a_i)\sigma(\alpha)^i = f^{\varphi}\big(\sigma(\alpha)\big)$
 		\item Eindeutigkeit klar, da $L=K(\alpha)$
 		\item Existenz: Betrachte 
 		\begin{align*}
 			\eta\colon&
-			\begin{cases}
-				K[X] &\to L\\
-				g &\mapsto g(\alpha)
-			\end{cases}&
+			\left\lbrace\begin{array}{@{}l@{\;}c@{\;}l}
+				K[X] &\to& L\\
+				g &\mapsto& g(\alpha)
+			\end{array}\right.&
 			\psi\colon&
-			\begin{cases}
-				K[X] &\to L'\\
-				g &\to g^{\varphi}(\beta) 
-			\end{cases}
+			\left\lbrace\begin{array}{@{}l@{\;}c@{\;}l}
+				K[X] &\to& L'\\
+				g &\mapsto& g^{\varphi}(\beta) 
+			\end{array}\right.
 		\end{align*}
 		Beide sind Homomorphismen nach der universellen Eigenschaft.
-		(Bemerke: $\eta$ surjektiv: $\eta_{\mid K} = \id \to K \subset \Image(\eta)$ mit $\eta(x) = \alpha \to \alpha \in \Image(\eta)$)\\
-		$\Ker(\eta)=(f)$ ist Isomorphismus und $\bar{\eta}\colon \lnkset{K[X]}{(f)} \xrightarrow{\cong}L$ und\\
-		$f \in \Ker(\psi) \Rightarrow \Ker(\psi) = (f)$ ist Homomorphismus $\bar{\psi}: \lnkset{K[X]}{(f)} \to L'$\\
-		$\sigma:= \bar{\psi}\circ \bar{\eta}^{-1}: L \to L'$ ist eine Fortsetzung von $\psi$ und
+		(Bemerke: $\eta$ surjektiv: $\eta_{\mid K} = \id \to K \subset \Image(\eta)$ mit $\eta(X) = \alpha \to \alpha \in \Image(\eta)$)\\
+		Aus $\Ker(\eta)=(f)$ folgt der Isomorphismus $\bar{\eta}\colon \lnkset{K[X]}{(f)} \xrightarrow{\cong}L$ und\\
+		$f \in \Ker(\psi) \Rightarrow \Ker(\psi) = (f)$ liefert Homomorphismus $\bar{\psi}\colon \lnkset{K[X]}{(f)} \to L'$\\
+		$\sigma:= \bar{\psi}\circ \bar{\eta}^{-1}\colon L \to L'$ ist eine Fortsetzung von $\phi$ und
 		\begin{align*}
-			\sigma(\alpha) = \bar{\psi}(x+(f)) = \beta
+			\sigma(\alpha) = \bar{\psi}(X+(f)) = \beta
 		\end{align*}
 	\end{itemize}
 \end{proof}
@@ -179,25 +179,37 @@ Sei $K$ ein Körper, $f \in K[X]$ mit $n = \deg(f) > 0$.
 	\proplbl{1_3_13}
 	Der Zerfällungskörper von $f$ ist eindeutig bestimmt bis auf $K$-Isomorphie.
 \end{proposition}
-\begin{proof}
-	\begin{enumerate}[label=]
-		\item Behauptung: Ist $\varphi:K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper, $L'$ ein Zerfällungs-körper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
-		\item Beweis: Induktion nach $n = \deg(f)$
-			\begin{enumerate}[label=] %TODO maybe use enum here without label?
-				\item (IA) $n=1:$ $L = K \xrightarrow[\varphi]{\cong} K' = L'$ \checkmark
-				\item (IS) $n>1:$ Schreibe $f = cg_1\cdots g_r$ mit $g_i \in K[x]$ normiert und irreduzibel, $c \in K^{\times}$\\
-				$\Rightarrow f^{\varphi} = c^{\varphi}g_1^{\varphi}\cdots g_r^{\varphi}$ mit $c^{\varphi}\in (K')^{\varphi}$ und $g_i^{\varphi}\in K' [X]$ normiert und irreduzibel (weil $\varphi$ Isomorphismus ist). Sei $\alpha_1 \in L$ mit $g_1 (\alpha_1) = 0, \alpha'_1 \in L'$ mit $g_1^{\varphi}(\alpha'_1) = 0$\\
-				$\xRightarrow{\propref{1_3_12}} \varphi$ setzt man zu einem Isomorphismus
-				\begin{align*}
-					\sigma: K_1 := K(\alpha_1) \to K' (\alpha'_1) \mit \sigma(\alpha_1) = \alpha'_1
-				\end{align*} 
-				fort. Schreibe $f=(x - \alpha_1)\cdot f_1^{\sigma}$ mit $f_1 \in K_1 [X]$ \\
-				$\Rightarrow f^{\varphi} = (x - \underbrace{\sigma(\alpha_1)} _{\alpha'_1})\cdot f_1^{\sigma}$ mit $f_1^{\sigma}\in K'_1 [X]$. $L$ ist Zerfällungskörper von $f_1,L'$ ist Zerfällungskörper von $f_1^{\sigma}$\\
-				$\Rightarrow \sigma$ setzt sich fort zu einem Isomorphismus $L \to L'$
-			\end{enumerate}
+\begin{proof} Für den Beweis betrachte erst folgende Aussage.
+	\begin{adjustwidth}{1em}{-6pt}
+	\begin{underlinedenvironment}[Behauptung]
+		Ist $\varphi\colon K \to K'$ ein Isomorphismus, $L$ ein Zerfällungskörper und $L'$ ein Zerfällungskörper von $f^{\varphi}$, so setzt sich $\varphi$ zu einem Isomorphismus $L \to L'$ fort.
+	\end{underlinedenvironment}
+	\vspace*{-\baselineskip}
+	\begin{proof}\NoEndMark
+			Induktion nach $n = \deg(f)$:
+			\vspace*{-4\lineskip}
+			\begin{itemize}[leftmargin=4.5em,itemsep=-2\lineskip] %TODO maybe use enum here without label?
+				\item[$n=1$:] $L = K \xrightarrow[\varphi]{\cong} K' = L'$ \checkmark
+				\item[$n>1$:] Schreibe $f = cg_1\cdots g_r$ mit $g_i \in K[X]$ normiert und irreduzibel, $c \in K^{\times}$\\[-0.8mm]
+				\begin{tabularx}{\linewidth}{@{\hspace{0.5em}}r@{$\;\;$}X}
+					$\Rightarrow$ & $f^{\varphi} = c^{\varphi}g_1^{\varphi}\cdots g_r^{\varphi}$ mit $c^{\varphi}\in (K')^{\varphi}$ und $g_i^{\varphi}\in K' [X]$ normiert und irreduzibel (weil $\varphi$ Isomorphismus ist). Sei $\alpha_1 \in L$ mit $g_1 (\alpha_1) = 0$, $\alpha'_1 \in L'$ mit $g_1^{\varphi}(\alpha'_1) = 0$\\
+					$\xRightarrow{\propref{1_3_12}}$ & \begin{minipage}[t]{\linewidth}
+						$\varphi$ setzt man zu einem Isomorphismus
+					\[
+						\sigma\colon K_1 := K(\alpha_1) \to K' (\alpha'_1) \quad \mit \sigma(\alpha_1) = \alpha'_1
+					\]
+					fort.
+					\end{minipage} \\[16mm]
+					\multicolumn{2}{l}{Schreibe $f=(x - \alpha_1)\cdot f_1$ mit $f_1 \in K_1 [X]$} \\[-2mm]
+					$\Rightarrow$ & $f^{\varphi} = \big(x - \underbrace{\sigma(\alpha_1)}_{\alpha'_1}\big)\cdot f_1^{\sigma}$ mit $f_1^{\sigma}\in K'_1 [X]$.\\[-2mm]
+					&$L$ ist Zerfällungskörper von $f_1$, $L'$ ist Zerfällungskörper von $f_1^{\sigma}$\\
+					$\Rightarrow$ &  $\sigma$ setzt sich fort zu einem Isomorphismus $L \to L'$\hfill\csname\InTheoType Symbol\endcsname
+				\end{tabularx}
+			\end{itemize}
+		\end{proof}
+		\end{adjustwidth}
 		Die Behauptung im Fall $\varphi = \id_K$ ist genau die Aussage von \propref{1_3_13}.
-	\end{enumerate}
 \end{proof}
 \begin{remark}
-	Ist $M\mid K$ eine Erweiterung, die einem Zerfällungskörper $l$ von $f$ enthält, dann ist dieser nicht nur bis auf die Isomorphie sondern als Teilkörper eindeutig bestimmt $L = K(\alpha_1, \dots, \alpha_n)$, wobei $\alpha_1, \dots, \alpha_n$ genau die $n$ Nullstellen von $f$ in $M$ sind.
+	Ist $M\mid K$ eine Erweiterung, die einem Zerfällungskörper $L$ von $f$ enthält, dann ist dieser nicht nur bis auf die Isomorphie sondern als Teilkörper eindeutig bestimmt: $L = K(\alpha_1, \dots, \alpha_n)$, wobei $\alpha_1, \dots, \alpha_n$ genau die $n$ Nullstellen von $f$ in $M$ sind.
 \end{remark}
