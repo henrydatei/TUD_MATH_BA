@@ -417,13 +417,13 @@ innerleftmargin=10pt,%
 	skipbelow=0pt,%
 ]{interpretation}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Interpretation}
 
-%\theoremstyle{underlinedPlain}
-%\newmdtheoremenv[%
-%	hidealllines=true,%
-%	innerleftmargin=1em,%
-%	innerrightmargin=0,%
-%	skipbelow=0pt,%
-%]{hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
+\theoremstyle{underlinedPlain}
+\newmdtheoremenv[%
+	hidealllines=true,%
+	innerleftmargin=1em,%
+	innerrightmargin=0,%
+	skipbelow=0pt,%
+]{*hint}{\hspace*{\dimexpr - \mdflength{innerleftmargin}\relax}Hinweis}
 
 \theoremstyle{plainEnvironment}
 \newmdtheoremenv[%
