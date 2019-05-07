@@ -1,0 +1,289 @@
+\begin{landscape}
+		\begin{center}
+			\begin{tabular}{c|c|c|c|c}
+				& \textbf{normal distribution}  & \textbf{Students t distribution}& \textbf{exponential distribution} & \textbf{Poisson distribution}\\
+				\hline
+				\textbf{plot} &
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+					\begin{axis}[
+					xmin=-3, xmax=3,
+					ymin=0, ymax=0.5,
+					samples=400,
+					axis y line=middle,
+					axis x line=middle,
+					]
+					\addplot+[mark=none, blue] {1/(sqrt(2*pi))*exp(-0.5*x^2)};
+					\end{axis}
+				\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+				\begin{axis}[
+				xmin=-3, xmax=3,
+				ymin=0, ymax=0.5,
+				samples=400,
+				axis y line=middle,
+				axis x line=middle,
+				]
+				\addplot+[mark=none, blue] {(1)/(pi*(x^2+1))};
+				\end{axis}
+				\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+				\begin{axis}[
+				xmin=0, xmax=5,
+				ymin=0, ymax=1,
+				samples=400,
+				axis y line=middle,
+				axis x line=middle,
+				restrict y to domain=0:1,
+				]
+				\addplot+[mark=none, blue] {exp(-x)};
+				\end{axis}
+				\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+				\begin{axis}[
+				axis x line=middle,
+				axis y line=middle,
+				xtick={0,2,...,14},
+				ytick={0.1,0.2,...,0.4},
+				domain = 0:14,
+				samples = 14,
+				ymax=0.5,
+				xmax=14,
+				x post scale=1.4,
+				width = 6cm,
+				height = 7.3cm,
+				]
+				\addplot+[ycomb,blue] {poiss(1))};
+				\addlegendentry{$\lambda = 1$}
+				\addplot+[ycomb,red] {poiss(5))};
+				\addlegendentry{$\lambda = 5$}
+				\end{axis}
+				\end{tikzpicture}}
+				 \\
+				\hline
+				\multirow{2}{2cm}{\textbf{parameters}}
+				& mean $\mu$ & degrees of freedom $\nu$& rate $\lambda>0$& rate $\lambda>0$ \\
+				& variance $\sigma^2$ &&& \\
+				\hline
+				\textbf{PDF} &
+				\parbox{3cm}{$$\begin{aligned}
+					f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\notag
+				\end{aligned}$$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					f(x) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac{\nu}{2}\right)}\left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					f(x)=\lambda\exp(-\lambda x)\notag
+				\end{aligned}$}
+				& 
+				\parbox{3cm}{$\begin{aligned}
+					f(n) = \frac{\lambda^n\exp(-\lambda)}{n!} \notag
+				\end{aligned}$}
+				\\
+				\hline
+				\textbf{CDF} &
+				\parbox{3cm}{$\begin{aligned}
+					F(x)&=\frac{1}{2}\left[1+\text{erf}\left(\frac{x-\mu}{\sigma\sqrt{2}}\right)\right] \\\notag
+					\text{erf}(x) &= \frac{2}{\sqrt{\pi}}\int_0^x \exp(-t^2)\,\mathrm{d}t \notag
+					\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					F(x) = \frac{1}{2}+x\Gamma\left(\frac{\nu+1}{2}\right)\cdot \notag\\
+					\frac{_2F_1\left(\frac{1}{2},\frac{\nu+1}{2},\frac{3}{2},\frac{-x^2}{\nu}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac{\nu}{2}\right)} \notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					F(x) = 1-\exp(-\lambda x)\notag
+				\end{aligned}$}
+				& 
+				\parbox{3cm}{$\begin{aligned}
+					F(n) = \exp(-\lambda)\sum_{i=0}^{\lfloor n\rfloor}\frac{\lambda^i}{i!}\notag
+				\end{aligned}$}
+				\\
+				\hline
+				\textbf{mean} &
+				$\mu$
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\begin{cases}
+						0 & \nu>1 \\ \text{undefinded} & \text{otherwise}
+					\end{cases}\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\frac{1}{\lambda}\notag
+				\end{aligned}$}
+				& 
+				$\lambda$
+				\\
+				\hline
+				\textbf{variance} &
+				$\sigma^2$
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\begin{cases}
+						\frac{\nu}{\nu-2} & \nu>2 \\ \infty & 1<\nu\le 2 \\ \text{undefinded} & \text{otherwise}
+					\end{cases} \notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\frac{1}{\lambda^2}\notag
+				\end{aligned}$}
+				& 
+				$\lambda$
+				\\
+			\end{tabular}
+		\end{center}
+	\end{landscape}
+	\pagebreak
+	\begin{landscape}
+		\begin{center}
+			\begin{tabular}{c|c|c|c|c}
+				& \textbf{Gamma distribution}  & \textbf{uniform distribution}& \textbf{Rayleigh distribution} & \textbf{Weibull distribution}\\
+				\hline
+				\textbf{plot} &
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+					\begin{axis}[
+					xmin=0, xmax=8,
+					ymin=0, ymax=0.5,
+					samples=400,
+					axis y line=middle,
+					axis x line=middle,
+					height = 7.3cm,
+					restrict y to domain=0:1,
+					domain=0:8,
+					]
+					\addplot+[mark=none, blue] {1/2*exp(-x)*x^2};
+					\end{axis}
+					\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+					\begin{axis}[
+					xmin=0, xmax=5,
+					ymin=0, ymax=1,
+					samples=400,
+					axis y line=middle,
+					axis x line=middle,
+					]
+					\addplot+[mark=none, blue, domain=1:2] {1/3};
+					\addplot+[mark=none, blue, domain=0:1] {0};
+					\addplot+[mark=none, blue, domain=2:5] {0};
+					\draw[blue, dotted] (axis cs: 1,0) -- (axis cs: 1,1/3);
+					\draw[blue, dotted] (axis cs: 2,0) -- (axis cs: 2,1/3);
+					\end{axis}
+					\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+					\begin{axis}[
+					xmin=0, xmax=5,
+					ymin=0, ymax=1,
+					samples=400,
+					axis y line=middle,
+					axis x line=middle,
+					restrict y to domain=0:1,
+					]
+					\addplot+[mark=none, blue] {x*exp(-x^2/2)};
+					\end{axis}
+					\end{tikzpicture}}
+				&
+				\adjustbox{valign=m}{\begin{tikzpicture}[scale=0.6, baseline]
+					\begin{axis}[
+					xmin=0, xmax=5,
+					ymin=0, ymax=1,
+					samples=400,
+					axis y line=middle,
+					axis x line=middle,
+					restrict y to domain=0:1,
+					]
+					\addplot+[mark=none,blue] {exp(-x)};
+					\end{axis}
+					\end{tikzpicture}}
+				\\
+				\hline
+				\multirow{2}{2cm}{\textbf{parameters}}
+				& shape $\alpha>0$ & $-\infty < a < b <\infty$ & scale $\sigma>0$& scale $\lambda\ge0$ \\
+				& rate $\beta>0$ &&& shape $k\ge 0$ \\
+				\hline
+				\textbf{PDF} &
+				\parbox{3cm}{$\begin{aligned}
+					f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\exp(-\beta x)\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					f(x)=\begin{cases}
+						\frac{1}{b-a} & x\in [a,b] \\ 0 & \text{otherwise}
+					\end{cases}\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					f(x) = \frac{x}{\sigma^2}\exp\left(\frac{-x^2}{2\sigma^2}\right)\notag
+				\end{aligned}$}
+				& 
+				\parbox{3cm}{$\begin{aligned}
+					f(x) = \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}\exp\left(-\left[\frac{x}{\lambda}\right]^k\right) \notag
+				\end{aligned}$}
+				\\
+				\hline
+				\textbf{CDF} &
+				\parbox{3cm}{$\begin{aligned}
+					F(x) &= \frac{1}{\Gamma(\alpha)}\gamma(\alpha,\beta x) \notag \\
+					\gamma(s,x)&= \int_0^x t^{s-1}\exp(-t)\,\mathrm{d}t \notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					F(x)=\begin{cases}
+					0 & x<a \\ \frac{x-a}{b-a} & x\in [a,b) \\ 1 & x>b
+					\end{cases}\notag
+					\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					f(x) = 1-\exp\left(\frac{-x^2}{2\sigma^2}\right)\notag
+					\end{aligned}$}
+				& 
+				\parbox{3cm}{$\begin{aligned}
+					F(x) = 1-\exp\left(-\left[\frac{x}{\lambda}\right]^k\right) \notag
+					\end{aligned}$}
+				\\
+				\hline
+				\textbf{mean} &
+				\parbox{3cm}{$\begin{aligned}
+					\frac{\alpha}{\beta}\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\frac{1}{2}(a+b)\notag
+					\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\sigma\sqrt{\frac{\pi}{2}}\notag
+				\end{aligned}$}
+				& 
+				\parbox{3cm}{$\begin{aligned}
+					\lambda\Gamma\left(1+\frac{1}{k}\right)\notag
+				\end{aligned}$}
+				\\
+				\hline
+				\textbf{variance} &
+				\parbox{3cm}{$\begin{aligned}
+					\frac{\alpha}{\beta^2}\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\frac{1}{12}(b-a)^2\notag
+					\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+						\frac{4-\pi}{2}\sigma^2\notag
+				\end{aligned}$}
+				&
+				\parbox{3cm}{$\begin{aligned}
+					\lambda^2\left[\Gamma\left(1+\frac{2}{k}\right)-\left(\Gamma\left(1+\frac{1}{k}\right)\right)^2\right]\notag
+				\end{aligned}$}
+				 \\
+			\end{tabular}
+		\end{center}
+	\end{landscape}
