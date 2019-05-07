@@ -1,20 +1,33 @@
 \section{Separable Polynome}
-Sei $K$ ein Körper, $f \in K[X], n = \deg(f)$.
-\begin{definition}[title]
+Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
+\begin{definition}
 	Sei $a \in K$.
-	\begin{enumerate}
-		\item $\mu(f,u) := v_{x-a}(f) := \sup \set{k \in \N_0 : (x-a)^k \mid f} \in \N_0 \cup \set{\infty}$ die \begriff{Vielfachheit} der Nullstelle von $f :\iff \mu(f,a) = 1$
-		\item 
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $\mu(f,a) := v_{x-a}(f) := \sup \set{k \in \N_0 : (x-a)^k \mid f} \in \N_0 \cup \set{\infty}$ die \begriff{Vielfachheit} der Nullstelle $a$ von $f$
+		\item Nullstelle $a$ von $f$ ist \begriff{einfach} :$\Leftrightarrow$ $\mu(f,a) = 1$
+		\item $f$ ist \begriff{separabel} :$\Leftrightarrow$ jede Nullstelle $a\in\bar K$ von $f\in\bar K[X]$ ist einfach.
 	\end{enumerate}
 \end{definition}
 \begin{remark}
-	
+	\begin{enumerate}[label={(\alph*)}]
+		\item Ist $L\mid K$ eine Körpererweiterung und $g\in K[X]$, so gilt \begin{flalign*}
+			\qquad & f\mid g\;\text{in}\; K[X]\quad\Leftrightarrow\quad f\mid g\;\text{in}\; L[X]
+		\end{flalign*}
+		Insbesondere ist die Nullstelle $\mu_K(f,a) = \mu_L(f,a)$. Wir können deshalb von der Vielfachheit der Nullstelle von $f$ sprechen.
+		\item \label{1_6_2_b} $\displaystyle\#\{a\in K\mid f(a) = 0\} \le \sum_{a\in K} \mu(f,a) \le \sum_{a\in \bar K} \mu(f,a) = \deg(f)$, falls ($f\neq 0$)
+		\item Aus \ref{1_6_2_b} folgt insbesondere:\\
+		\begin{tabularx}{\linewidth}{XcX}
+			\hfill$f$ ist separabel & $\Leftrightarrow$ & $f$ hat genau $\deg(f)$ paarweise verschiedene Nullstellen in $\bar K$
+		\end{tabularx}
+	\end{enumerate}
 \end{remark}
-\begin{definition}[title]
-	Die \begriff{formale Ableitung} von $f = \sum_{i=1}^n i a_i X^{i-1}$ ist $f' := \frac{\d}{\d x} f(x) := \sum_{i=1} i a_i X^{i-1} \in K[X]$
+\begin{definition}
+	Die \begriff{formale Ableitung} von $f = \sum_{i=1}^n a_i X^{i-1}$ ist \begin{flalign*}
+		\qquad &f' := \frac{\d}{\d x} f(x) := \sum_{i=1} i a_i X^{i-1} &
+	\end{flalign*}
 \end{definition}
 \begin{lemma}
-	Für $f,g \in K[X], a,b \in K$ gelten\begin{enumerate}
+	Für $f,g \in K[X], a,b \in K$ gelten\begin{enumerate}[label={(\alph*)}]
 		\item $(af + bg)' = a f' + b g'$ (Linearität)
 		\item $(fg)' = f'g + fg'$ (Produktregel)
 		\item $(f(g(x)))' = f'(g(x))\cdot g'(x)$ (Kettenregel)
@@ -24,34 +37,71 @@ Sei $K$ ein Körper, $f \in K[X], n = \deg(f)$.
 	Übung.
 \end{proof}
 \begin{lemma}
+	\proplbl{1_6_5}
 	Sei $f \neq 0$. Für $a \in K$ gilt
-	\[
-	\mu(f' , a) \ge \mu(f,a) = 1
-	\]
-	mit Gleichheit genau dann, wenn
-	\[
-	\chara(K) \not\mid \mu(f,a)
-	\]
+	\begin{flalign*}
+		\qquad&\mu(f' , a) \ge \mu(f,a) - 1&
+	\end{flalign*}
+	mit Gleichheit genau dann, wenn $\chara(K) \nmid \mu(f,a)$.
 \end{lemma}
 \begin{proof}
-	Schreibe $f = (X-a)^k \cdot g, k = \mu(f,a)$
-	\begin{itemize}
-		\item $k=0$: $\mu(f', a) \ge 0 > -1$ und $\chara(K) \mid 0$
-		\item $k>0$: $f' = k(X-a)^{k-1}g + (X-a)^k \cdot g'$\\
-		$\implies \mu(f',a) \ge k$\\
-		\begin{align*}
-			\mu(f',a) \ge k &\iff (X-a)^k \mid k(X-a)^{k-1}g\\
-			&\iff X-a \mid k
-		\end{align*}
+	Schreibe $f = (X-a)^k \cdot g$, $k = \mu(f,a)$
+	\begin{itemize}[topsep=-.5em,left=3.5em]
+		\item[$k=0$:] $\mu(f', a) \ge 0 > -1$ und $\chara(K) \mid 0$
+		\item[$k>0$:] $f' = k(X-a)^{k-1}g + (X-a)^k \cdot g'$ $\implies \mu(f',a) \ge k$, sowie 
+		
+		\vspace*{-2pt}
+		\begin{tabular}{@{}>{$}r<{$}>{$}c<{$}>{$}l<{$}}
+			\mu(f', a) \ge k & \Leftrightarrow & (X-a)^k \mid k(X-a)^{k-1}\cdot g \\
+							 & \Leftrightarrow & X-a \mid k\cdot g \\
+							 & \Leftrightarrow & X-a\mid k \\
+							 & \Leftrightarrow & k=0\;\text{in}\; K\\
+							 & \Leftrightarrow & \chara(K) \mid k
+		\end{tabular}
 	\end{itemize}
 \end{proof}
+
+\begin{proposition}
+	Sei $f\neq 0$. Dann gilt:
+	
+	\begin{tabular}{@{$\qquad$}rcl}
+		$f$ separabel & $\Leftrightarrow$ & $\ggT(f,f') = 1$
+	\end{tabular}
+\end{proposition}
+
+\begin{proof}\leavevmode\vspace*{\dimexpr-\baselineskip+2\lineskip}
+	\begin{itemize}
+		\item[($\Rightarrow$)] $f$ separabel \\[-0.2em]
+			\begin{tabular}[t]{@{}>{$}r<{$}@{$\;$}l}
+			\Rightarrow & $f = c\cdot\prod_{i=1}^{n}(X-a_i)$ mit $c\in K$, $a_1$, $\dots$, $a_n\in \bar K$ paarweise verschieden und $\mu(f,a_i) = 1$ \\
+			\xRightarrow[\chara(K)\nmid 1]{\propref{1_6_5}} & $\mu(f',a_i) = 0$ $\forall i$\\
+			\Rightarrow & $\displaystyle\ggT(f,f') = \prod_{a\in\bar K} (X-a)^{\min\{ \mu(f,a), \mu(f',a) \}} = 1$
+		\end{tabular}
+		\item[($\Leftarrow$)] $f$ nicht separabel $\Rightarrow$ $\exists a\in\bar K$ mit $\mu(f,a)\ge 2$ $\xRightarrow{\propref{1_6_5}}$ $\mu(f',a)\ge 1$.
+		
+		Mit $g = \MinPol(a\mid K)$ gilt: $g\mid f$ $\Rightarrow$ $\ggT(f,f') \neq 1$
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	$f' = 0$ $\Leftrightarrow$ $\exists g\in K[X]$ mit $F(X) = g(X^p)$ und $p=\chara(K)$.
+\end{lemma}
+\begin{proof}
+	Ist $f = \sum_{i=1}^{n} a_iX^i$ $\Rightarrow$ $f' = \sum_{i=1}^{n}i a_{i-1}X^{i-1}$ und \\[-0.3em]
+	\begin{tabular}{@{}r>{$}c<{$}l}
+		$f' = 0$	& \Leftrightarrow & $i a_i = 0$ in $K$ $\forall i$\\
+					& \Leftrightarrow & $\forall i$: $i = 0$ in $K$ oder $a_i = 0$ \\
+					& \Leftrightarrow & $f = a_0 + a_p X^p + \dots + a_{pm} X^{pm} = g(X^p)$ mit $g = a_0 + a_p X + \dots + a_{pm} X^m$
+	\end{tabular}
+\end{proof}
+
 %TODO
 \begin{conclusion}
 	Sei $f$ irreduzibel
-	\begin{enumerate}
+	\begin{enumerate}[label={(\alph*)}]
 		\item Ist $\chara(K) = 0$, so ist $f$ separabel
 		\item Ist $\chara(K) = p>0$, so sind äquivalent
-		\begin{enumerate}
+		\begin{enumerate}[label={(\arabic*)}]
 			\item $f$ ist inseparabel
 			\item $f' = 0$
 			\item $f(X) = g(X^p)$ für ein $g \in K[X]$
