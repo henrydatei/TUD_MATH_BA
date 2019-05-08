@@ -144,7 +144,7 @@
   keywordstyle=\color{lila},
   commentstyle=\color{lightgray},
   morecomment=[l]{!\ },% Comment only with space after !
-  morekeywords={compute, solve, choose, break, switch},
+  morekeywords={compute, solve, choose, break, switch, determine},
   stringstyle=\color{mygreen}\ttfamily,
   backgroundcolor=\color{white},
   showstringspaces=false,
@@ -153,7 +153,7 @@
   numberstyle=\color{mygray}\ttfamily,
   identifierstyle=\color{blue},
   xleftmargin=.2\textwidth, 
-  xrightmargin=.2\textwidth,
+  xrightmargin=.1\textwidth,
   escapechar=\%
 }
 

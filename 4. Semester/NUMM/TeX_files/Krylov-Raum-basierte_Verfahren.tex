@@ -72,10 +72,92 @@ Offenbar ist $\dim(\mathcal{K}_k(r,A))\le\min\{k,n\}$ für alle $k\in\natur$.
 
 \subsection{Basisalgorithmen zur Lösung von $Ax=b$}
 
+\begin{algorithm}[Minimum-Residuum Basisalgorithmus]
+	Input: $x^0\in\R$, $A,B\in\Rnn$ regulär, $b\in\Rn$
+\begin{lstlisting}
+while %$r^k\neq 0$% do
+ k = k + 1;
+ compute %$x^k\in\Rn\text{ als Lösung von}$%
+ %$\quad f_B(x) = \frac{1}{2}\Vert b-Ax\Vert^2_B\to\min\quad\text{bei } x\in x^0+\mathcal{K}_k(r^0,A)$%
+ %$r^k$% = b - A%$x^k$%
+enddo
+\end{lstlisting}
+	Output: $x^\ast=x^k$, $k^\ast=k$
+\end{algorithm}
+
+\begin{algorithm}[Galerkin Basisalgorithmus]
+	Input: $x^0\in\R$, $A,B\in\Rnn$ regulär, $b\in\Rn$
+	\begin{lstlisting}
+%$r^0$% = b - A%$x^0$%;
+k = 0;
+while %$r^k\neq 0$% do
+ k = k + 1;
+ determine %Untervektorraum $\mathcal{L}_k$ von $\Rn$ mit $\dim(\mathcal{L}_k)=k$%;
+ compute %$x^k\in x^0+\mathcal{K}_k(r^0,A)$ mit $b-Ax^k\perp\mathcal{L}_k$%;
+ %$r^k$% = b - A%$x^k$%;
+enddo
+	\end{lstlisting}
+	Output: $x^\ast=x^k$, $k^\ast=k$
+\end{algorithm}
+
 \subsection{Das CG-Verfahren}
+
+\begin{algorithm}[CG-Verfahren]
+	Input: $x^0\in\Rn$, $A\in\Rnn$ symmetrisch und positiv definit, $b\in\Rn$
+	\begin{lstlisting}
+%$d^0$% = %$r^0$% = b - A%$x^0$%;
+k = 0;
+while %$r^k\neq 0$% do
+ %$t_k$% = %$\frac{\Vert r^k\Vert_2^2}{(d^k)^T Ad^k}$%;
+ %$x^{k+1}$% = %$x^k$% + %$t_kd^k$%;
+ %$r^{k+1}$% = b - A%$x^{k+1}$% = %$r^k$% - %$t_kAd^k$%;
+ %$\beta_k$% = %$\frac{\Vert r^{k+1}\Vert_2^2}{\Vert r^k\Vert_2^2}$%;
+ %$d^{k+1}$% = %$r^{k+1}$% - %$\beta_kd^k$%;
+ k = k + 1;
+enddo
+	\end{lstlisting}
+	Output: $x^\ast=x^k$
+\end{algorithm}
 
 \subsection{Fehlerverhalten des CG-Verfahrens}
 
 \subsection{Vorkonditionierung}
+
+\begin{algorithm}[CG-Verfahren für $\tilde{A}\tilde{x}=\tilde{b}$]
+	Input: $\tilde{x}^0\in\Rn$, $\tilde{A}\in\Rnn$ symmetrisch und positiv definit, $\tilde{b}\in\Rn$
+	\begin{lstlisting}
+	%$\tilde{d}^0$% = %$\tilde{r}^0$% = %$\tilde{b} - \tilde{A}\tilde{x}^0$%;
+	k = 0;
+	while %$\tilde{r}^k\neq 0$% do
+	%$\tilde{t}_k$% = %$\frac{\Vert \tilde{r}^k\Vert_2^2}{(\tilde{d}^k)^T \tilde{A}\tilde{d}^k}$%;
+	%$\tilde{x}^{k+1}$% = %$\tilde{x}^k$% + %$\tilde{t}_k\tilde{d}^k$%;
+	%$\tilde{r}^{k+1}$% = %$\tilde{b} - \tilde{A}\tilde{x}^{k+1}$% = %$\tilde{r}^k$% - %$\tilde{t}_k\tilde{A}\tilde{d}^k$%;
+	%$\tilde{\beta}_k$% = %$\frac{\Vert \tilde{r}^{k+1}\Vert_2^2}{\Vert \tilde{r}^k\Vert_2^2}$%;
+	%$\tilde{d}^{k+1}$% = %$\tilde{r}^{k+1}$% - %$\tilde{\beta}_k\tilde{d}^k$%;
+	k = k + 1;
+	enddo
+	\end{lstlisting}
+	Output: $x^\ast=x^k$
+\end{algorithm}
+
+\begin{algorithm}[Vorkonditioniertes CG-Verfahren]
+	Input: $x^0\in\Rn$, $A\in\Rnn$ symmetrisch und positiv definit, $b\in\Rn$
+	\begin{lstlisting}
+%$r^0$% = b - A%$x^0$%;
+compute %$z^0$ als Lösung von $Pz = r^0$% 
+%$d^0$% = %$z^0$%
+k = 0;
+while %$r^k\neq 0$% do
+ %$t_k$% = %$\frac{(r^k)^T}{(d^k)^T Ad^k}$%;
+ %$x^{k+1}$% = %$x^k$% + %$t_kd^k$%;
+ %$r^{k+1}$% = %$r^k$% - %$t_kAd^k$%;
+ compute %$z^{k+1}$ als Lösung von $Pz = r^{k+1}$%
+ %$\beta_k$% = %$\frac{(r^{k+1})^T z^{k+1}}{(r^k)^T z^k}$%;
+ %$d^{k+1}$% = %$z^{k+1}$% + %$\beta_kd^k$%;
+ k = k + 1;
+enddo
+	\end{lstlisting}
+	Output: $x^\ast=x^k$
+\end{algorithm}
 
 \subsection{Ausblick und Anmerkungen}
