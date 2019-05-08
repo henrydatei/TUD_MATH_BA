@@ -1,5 +1,5 @@
 \begin{enumerate}
-	\item \ul{Frage:} \\
+	\item \emph{Frage:} \\
 	\propref{4_2_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
 	Wie stark ist die Streuung um den Durchschnitt? $\rightsquigarrow$ Varianz
 \end{enumerate}
@@ -50,7 +50,7 @@
 		f: \Rn \to \R \text{ Borel-messbar}.
 	\end{align*}
 	\begin{enumerate}
-		\item \ul{diskrete Fall:} Ist $\P_X$ ein Wahrscheinlichkeitsmaß auf $(\Z, \P(\Z))$ und der Zähldichte $\rho$, so
+		\item \emph{diskrete Fall:} Ist $\P_X$ ein Wahrscheinlichkeitsmaß auf $(\Z, \P(\Z))$ und der Zähldichte $\rho$, so
 		\begin{align*}
 			\E[f(X)] = \sum_{x \in \Z} f(x)\rho(x).
 		\end{align*}
@@ -163,10 +163,9 @@ Für den Beweis von \propref{5_1_8} benötigen wir
 	\end{align*}
 	Für $f(X),g(Y) \in \Ln{1}(\P)$ zeigt obige Rechnung
 	\begin{align*}
-		\E[f(X)g(Y)] = \E[\abs{f(X)}]\E[\abs{g(Y)] < \infty
-		\intertext{also $f(X)g(Y) \in \Ln{1}(\P)$}
+		\E[f(X)g(Y)] = \E[\abs{f(X)}]\E[\abs{g(Y)}] < \infty
 	\end{align*}
-	Die Aussage folgt über die obige Rechung. Für allgemeines $n$ folgt \propref{5_1_8} durch Iteration mit \propref{3_2_19}.
+	also $f(X)g(Y) \in \Ln{1}(\P)$. Die Aussage folgt über die obige Rechnung. Für allgemeines $n$ folgt \propref{5_1_8} durch Iteration mit \propref{3_2_19}.
 \end{proof}
 %TODO add pic
 %\begin{tikzpicture}
