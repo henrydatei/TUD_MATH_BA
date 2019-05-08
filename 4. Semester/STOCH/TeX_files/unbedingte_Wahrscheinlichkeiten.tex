@@ -1,4 +1,4 @@
-﻿\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
+\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
@@ -76,15 +76,15 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \begin{definition}[Unabhängige $\sigma$-Algebren]
 	\proplbl{3_2_15}
 	% started using \O for \Omega and \E for this special generating set E_i
-	Seien $(\O, \F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset$ Indexmenge und $(E_i, \E_i)$ Messräume
+	Seien $(\O, \F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset$ Indexmenge und $(E_i, \Gen_i)$ Messräume
 	\begin{enumerate}
 		\item Die Familie $\F_i \subset \F, i \in I$, heißen \begriff{unabhängig}, wenn für die $J \subseteq I, J \neq \emptyset, \abs{J} < \infty$ gilt
 		\begin{align*}
 			\P\brackets{\bigcap_{i \in J} A_i} = \prod_{i\in J} \P(A_i) \qquad \text{ für beliebige } A_i \in \F_i, i \in J
 		\end{align*}
-		\item Die Zufallsvariable $X_i: (\O, \F) \to (E_i, \E_i), i \in I$, heißen \begriff{unabhängig}, wenn die $\sigma$-Algebren
+		\item Die Zufallsvariable $X_i: (\O, \F) \to (E_i, \Gen_i), i \in I$, heißen \begriff{unabhängig}, wenn die $\sigma$-Algebren
 		\begin{align*}
-		\sigma(X_i) = X^{-1}(\E_i) = \set{\set{X_i \in F} \colon F \in \E_i}, \quad i \in I
+		\sigma(X_i) = X^{-1}(\Gen_i) = \set{\set{X_i \in F} \colon F \in \Gen_i}, \quad i \in I
 		\end{align*}
 		unabhängig sind.
 	\end{enumerate}

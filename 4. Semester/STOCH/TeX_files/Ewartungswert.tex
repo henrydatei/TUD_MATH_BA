@@ -1,19 +1,19 @@
 \begin{enumerate}
-	\item \ul{Frage:} Beispiel \propref{4_5} Durchschnittliche Wartezeit? $\to$ Erwartungswert\\
+	\item \ul{Frage:} Beispiel \propref{4_2_5} Durchschnittliche Wartezeit? $\to$ Erwartungswert\\
 	Wie stark ist die Streuung um den Durchschnitt? $\to$ Varianz
 \end{enumerate}
 \section{Der Erwartungswert}
 \begin{definition}[title]
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariable. Dann ist
 	\begin{align*}
-		\ew[X] = \int_{\O} X(\omega) \P(\d \omega) = \int_{\R} x \P(X  \in \d x)
+		\E[X] = \int_{\O} X(\omega) \P(\d \omega) = \int_{\R} x \P(X  \in \d x)
 	\end{align*}
 	der \begriff{Erwartungswert von $X$}.
 \end{definition}
 \begin{*hint}
 	Der Erwartungswert von $X$ existiert, genau dann wenn
 	\begin{align*}
-		\int_{\O} \abs{X(\omega)}\P(\d \omega) < \infty \bzw \ew[\abs{X}] < \infty
+		\int_{\O} \abs{X(\omega)}\P(\d \omega) < \infty \bzw \E[\abs{X}] < \infty
 	\end{align*}
 	d.h. genau dann wenn $X \in \Ln{1} (\P)$.\\
 	Für nichtnegative Zufallsvariablen ist der Erwartungswert immer definiert, wenn wir $+\infty$ als zulässigen Wert annehmen, was wir in der Folge auch tun.
@@ -25,7 +25,7 @@
 	\]
 	Dann gilt: $X \in \Ln{1}(\P)$ und
 	\begin{align*}
-		\ew[X] = \int_{\O} \indi_{A} (\omega) \P(\d \omega) = \int_{A} \P(\d \omega) = \P(A).
+		\E[X] = \int_{\O} \indi_{A} (\omega) \P(\d \omega) = \int_{A} \P(\d \omega) = \P(A).
 	\end{align*}
 \end{example}
 \begin{proposition}
@@ -33,7 +33,7 @@
 	\begin{align*}
 		f: \Rn \to \R \text{ Borel-messbar}.\\
 		\intertext{Dann}
-		\ew[f(X)] = \int f(X)\d \P = \int_{\O} \ew(X(\omega)) \d \P(\omega) = \int_{\Rn} f(X) \P(X \in \d x). 
+		\E[f(X)] = \int f(X)\d \P = \int_{\O} \E(X(\omega)) \d \P(\omega) = \int_{\Rn} f(X) \P(X \in \d x). 
 	\end{align*}
 \end{proposition}
 \begin{proof}
@@ -47,11 +47,11 @@
 	\begin{enumerate}
 		\item \ul{diskrete Fall:} Ist $\P_X$ ein Wahrscheinlichkeitsmaß auf $(\Z, \P(\Z))$ und der Zähldichte $\rho$, so
 		\begin{align*}
-			\ew[f(X)] = \sum_{x \in \Z} f(x)\rho(x).
+			\E[f(X)] = \sum_{x \in \Z} f(x)\rho(x).
 		\end{align*}
 		\item \ul{stetiger Fall:} Besitzt $\P_X$ eine Dichte $\rho$ (bzgl Lebesguemaß), so
 		\begin{align*}
-			\ew[f(X)] = \int_{\R} f(x)\rho(x) \d x
+			\E[f(X)] = \int_{\R} f(x)\rho(x) \d x
 		\end{align*}
 	\end{enumerate}
 \end{proposition}
@@ -61,7 +61,7 @@
 \begin{example}
 	Sei $X \sim \Bin(n,p)$. dann gilt
 	\begin{align*}
-		\ew[f(X)] &= \sum_{k=1}^n k(\binom{n}{k})p^k (1-p)^{n-k}\\
+		\E[f(X)] &= \sum_{k=1}^n k(\binom{n}{k})p^k (1-p)^{n-k}\\
 		&= \sum_{k=1}^n \frac{n!}{(n-k)!(k-1)!}p^k (1-p)^{n-k}\\
 		&= np \sum_{k=1}^n \underbrace{\binom{n-1}{k-1}p^{k-1}(1-p)^{n-1-(k-1)}}_{\text{Zähldichte }\Bin(n-1,p) in k-1}\\
 		&= np

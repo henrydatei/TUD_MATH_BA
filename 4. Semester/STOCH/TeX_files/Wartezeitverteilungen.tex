@@ -40,30 +40,30 @@ welche die Anzahl der Misserfolge bis zum $r$-ten Erfolg darstellt, setze
 	\begin{itemize}
 		\item Poissonverteilung ist Modell für Anzahl seltener Ereignisse
 		\item Nach Beispiel 3.26:
-		\begin{align}
-			\Pois(\lambda t) \star \Pois(\lambda s) = \Pois(\lambda(t+s)) \notag
-		\end{align}
+		\begin{align*}
+			\Pois(\lambda t) \star \Pois(\lambda s) = \Pois(\lambda(t+s)) 
+		\end{align*}
 		Die Linearität des Parameters entspricht also einer Stationaritätsvorrausetzung:\\
 		Modelliert
 		\begin{align*}
 			X\sim\Pois(\lambda t) \text{ die Ereignisse in } (0,t],\\
 			Y\sim\Pois(\lambda s) \text{ die Ereignisse in } (t,t+s]
 			\intertext{so modelliert}
-			X+Y \sim \Pois(\lambda (t+s)) \text{ die Ereignisse in } (0,t+s]
+			X+Y \sim \Pois(\lambda (t+s)) \text{ die Ereignisse in } (0,t+s].
 		\end{align*}
 	\end{itemize}
 \end{enumerate}
 Unter diesen Annahmen folgt für die Wahrscheinlichkeit in $(0,t]$ mindestens $r$ Ereignisse zu beobachten
-\begin{align}
-	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{\exp(-\lambda t) \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t} \notag \\
-	\frac{\d}{\d t} &\brackets{1- \sum_{k=0}^{r-1} \exp(-\lambda t) \frac{(\lambda t)^k}{k!}} \notag \\
-	&= - (-\lambda) e^{-\lambda t} \sum_{k=0}^{r-1} \frac{(\lambda t)^k}{k!} - e^{-\lambda t} \sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{(k-1)!} \notag \\
-	&= e^{-\lambda t} \left(\sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{k!} - \sum_{l=0}^{r-1} \frac{\lambda^k t^{l-1}}{(l-1)!}\right) \notag
-\end{align}
+\begin{align*}
+	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{\exp(-\lambda t) \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t}  \\
+	\frac{\d}{\d t} &\brackets{1- \sum_{k=0}^{r-1} \exp(-\lambda t) \frac{(\lambda t)^k}{k!}}  \\
+	&= - (-\lambda) e^{-\lambda t} \sum_{k=0}^{r-1} \frac{(\lambda t)^k}{k!} - e^{-\lambda t} \sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{(k-1)!}  \\
+	&= e^{-\lambda t} \left(\sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{k!} - \sum_{l=0}^{r-1} \frac{\lambda^k t^{l-1}}{(l-1)!}\right) 
+\end{align*}
 gilt
-\begin{align}
-	\P((0,t)) = \int_{0}^t e^{-\lambda t} \frac{\lambda^r x^{r-1}}{(r-1)!} \d x \notag
-\end{align}
+\begin{align*}
+	\P((0,t)) = \int_{0}^t e^{-\lambda t} \frac{\lambda^r x^{r-1}}{(r-1)!} \d x.
+\end{align*}
 
 Wir definieren allgemeiner:
 \begin{definition}
@@ -85,13 +85,13 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 \begin{proof}
 	Hier nur für $r,s \in \N$, allgemein später mit \begriff{momenterzeugenden Funktionen}.\\
 	Seien $\rho(x), \rho(y)$ Dichten von $X,Y$. Nach \propref{3_25} folgt
-\begin{align}
-	\rho_{(X+Y)} &= \rho_X \star \rho_Y (x) = \int_{\R} \rho_X(y)\rho_Y(x-y) \d y \notag \\
-	&= \int_{\R} \frac{\lambda^r}{\Gamma(r)} y^{r-1} e^{-\lambda y} \frac{\lambda^s}{\Gamma(s)} (x-y)^{s-1} e^{-\lambda (x-y)} \d y \notag \\
-	&= \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \int_0^x y^{r-1} (x-y)^{s-1} \d y \notag \\
-	&\over{\text{part Int}}{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\brackets{\frac{1}{r} y^r (x-y)^{s-1}_{y=0}}}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y } \notag \\
-	&\over{\text{Ind}}{=} \frac{\lambda{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x} \notag
-\end{align}
+\begin{align*}
+	\rho_{(X+Y)} &= \rho_X \star \rho_Y (x) = \int_{\R} \rho_X(y)\rho_Y(x-y) \d y  \\
+	&= \int_{\R} \frac{\lambda^r}{\Gamma(r)} y^{r-1} e^{-\lambda y} \frac{\lambda^s}{\Gamma(s)} (x-y)^{s-1} e^{-\lambda (x-y)} \d y  \\
+	&= \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \int_0^x y^{r-1} (x-y)^{s-1} \d y  \\
+	&\over{\text{part Int}}{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\brackets{\frac{1}{r} y^r (x-y)^{s-1}_{y=0}}}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y }  \\
+	&\over{\text{Ind}}{=} \frac{\lambda{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x} 
+\end{align*}
 \end{proof}
 Exponentialverteilung sind zudem \begriff{gedächnislos}
 \begin{lemma}
@@ -101,7 +101,8 @@ Exponentialverteilung sind zudem \begriff{gedächnislos}
 	\end{align*}
 \end{lemma}
 \begin{example}
-	Eine Studentin wartet morgens eine $\EXP(\frac{1}{s})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
+	\proplbl{4_2_5}
+	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{s})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
 	\begin{align*}
 		\P(X \ge 5) = e^{-\frac{1}{s}} = e^{-1} \approx 0,37.
 	\end{align*}
