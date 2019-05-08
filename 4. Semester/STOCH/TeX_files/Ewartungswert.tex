@@ -1,9 +1,11 @@
 \begin{enumerate}
-	\item \ul{Frage:} Beispiel \propref{4_2_5} Durchschnittliche Wartezeit? $\to$ Erwartungswert\\
-	Wie stark ist die Streuung um den Durchschnitt? $\to$ Varianz
+	\item \ul{Frage:} \\
+	sBeispiel \propref{4_2_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
+	Wie stark ist die Streuung um den Durchschnitt? $\rightsquigarrow$ Varianz
 \end{enumerate}
 \section{Der Erwartungswert}
-\begin{definition}[title]
+\begin{definition}[Erwartungswert]
+	\proplbl{5_1_1}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariable. Dann ist
 	\begin{align*}
 		\E[X] = \int_{\O} X(\omega) \P(\d \omega) = \int_{\R} x \P(X  \in \d x)
@@ -19,6 +21,7 @@
 	Für nichtnegative Zufallsvariablen ist der Erwartungswert immer definiert, wenn wir $+\infty$ als zulässigen Wert annehmen, was wir in der Folge auch tun.
 \end{*hint}
 \begin{example}
+	\proplbl{5_1_2}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $A \in \F$ und sei $Y: (\O, \F) \to (\R, \borel(\R))$ die Indikatorvariable
 	\[
 		X(\omega) = \indi_{A} (\omega)
@@ -29,6 +32,7 @@
 	\end{align*}
 \end{example}
 \begin{proposition}
+	\proplbl{5_1_3}
 	Sei $X: (\O, \F) \to (\Rn, \borel(\Rn)$ Zufallsvariable und
 	\begin{align*}
 		f: \Rn \to \R \text{ Borel-messbar}.\\
@@ -40,6 +44,7 @@
 	Sei $f(X)$ eine reelle Zufallsvariable. Die Formel folgt direkt auf dem Transformationssatz für Bildmaße ($\nearrow$ Schilling MINT 18.1).
 \end{proof}
 \begin{proposition}[Erwartungswerte bei Existenz einer (Zähl-)dichte]
+	\proplbl{5_1_4}
 	Sei $X: (\O, \F) \to (\Rn, \borel(\Rn))$ Zufallsvariable und
 	\begin{align*}
 		f: \Rn \to \R \text{ Borel-messbar}.
@@ -56,14 +61,15 @@
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	Klar aus Def. 5.1 und Prop. 5.3. %TODO ref
+	Klar aus \propref{5_1_1} und \propref{5_1_3}. %TODO ref
 \end{proof}
 \begin{example}
+	\proplbl{5_1_5}
 	Sei $X \sim \Bin(n,p)$. dann gilt
 	\begin{align*}
 		\E[f(X)] &= \sum_{k=1}^n k(\binom{n}{k})p^k (1-p)^{n-k}\\
 		&= \sum_{k=1}^n \frac{n!}{(n-k)!(k-1)!}p^k (1-p)^{n-k}\\
-		&= np \sum_{k=1}^n \underbrace{\binom{n-1}{k-1}p^{k-1}(1-p)^{n-1-(k-1)}}_{\text{Zähldichte }\Bin(n-1,p) in k-1}\\
-		&= np
+		&= np \sum_{k=1}^n \underbrace{\binom{n-1}{k-1}p^{k-1}(1-p)^{n-1-(k-1)}}_{\text{Zähldichte }\Bin(n-1,p) \text{ in } k-1}\\
+		&= np.
 	\end{align*}
 \end{example}

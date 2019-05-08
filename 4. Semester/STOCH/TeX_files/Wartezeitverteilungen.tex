@@ -55,8 +55,8 @@ welche die Anzahl der Misserfolge bis zum $r$-ten Erfolg darstellt, setze
 \end{enumerate}
 Unter diesen Annahmen folgt für die Wahrscheinlichkeit in $(0,t]$ mindestens $r$ Ereignisse zu beobachten
 \begin{align*}
-	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{\exp(-\lambda t) \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t}  \\
-	\frac{\d}{\d t} &\brackets{1- \sum_{k=0}^{r-1} \exp(-\lambda t) \frac{(\lambda t)^k}{k!}}  \\
+	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{e^{-\lambda t} \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t}  \\
+	\frac{\d}{\d t} &\brackets{1- \sum_{k=0}^{r-1} e^{-\lambda t} \frac{(\lambda t)^k}{k!}}  \\
 	&= - (-\lambda) e^{-\lambda t} \sum_{k=0}^{r-1} \frac{(\lambda t)^k}{k!} - e^{-\lambda t} \sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{(k-1)!}  \\
 	&= e^{-\lambda t} \left(\sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{k!} - \sum_{l=0}^{r-1} \frac{\lambda^k t^{l-1}}{(l-1)!}\right) 
 \end{align*}
@@ -66,15 +66,16 @@ gilt
 \end{align*}
 
 Wir definieren allgemeiner:
-\begin{definition}
+\begin{definition}[Gammaverteilung, Gammafunktion]
 	Seinen $\lambda > 0, r>0$, dann heißt die Verteilung auf $(\R_+, \borel(\R_+))$ mit Dichte
 	\begin{align*}
 		f(x) = \frac{\lambda^r}{\Gamma(r)} x^{r-1} e^{-\lambda x},
 		\intertext{wobei}
 		\Gamma(r) = \int_{0}^{\infty} y^{r-1}e^{-y} \d y, r>0
 	\end{align*}
-	\begriff{Gammefunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$. Insbesondere ist $\Geom(\lambda,1)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).
+	\begriff{Gammefunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$.
 \end{definition}
+Insbesondere ist $\Geom(\lambda,1)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).\\ %TODO add ref?
 Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspricht der Wartezeit auf $r$ Ereignisse + $s$ (weitere) Ereignisse:
 \begin{lemma} % lemma 4.4
 	Seien $X \sim \Gam(\lambda,r), Y \sim \Gam(\lambda,s)$ unabhängig, dann impliziert das
@@ -83,41 +84,41 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 	\end{align*}
 \end{lemma}
 \begin{proof}
-	Hier nur für $r,s \in \N$, allgemein später mit \begriff{momenterzeugenden Funktionen}.\\
-	Seien $\rho(x), \rho(y)$ Dichten von $X,Y$. Nach \propref{3_25} folgt
+	Hier nur für $r,s \in \N$, allgemein später mit \begriff{momenterzeugende Funktionen}.\\
+	Seien $\rho(x), \rho(y)$ Dichten von $X,Y$. Nach \propref{3_2_25} folgt
 \begin{align*}
 	\rho_{(X+Y)} &= \rho_X \star \rho_Y (x) = \int_{\R} \rho_X(y)\rho_Y(x-y) \d y  \\
 	&= \int_{\R} \frac{\lambda^r}{\Gamma(r)} y^{r-1} e^{-\lambda y} \frac{\lambda^s}{\Gamma(s)} (x-y)^{s-1} e^{-\lambda (x-y)} \d y  \\
 	&= \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \int_0^x y^{r-1} (x-y)^{s-1} \d y  \\
-	&\over{\text{part Int}}{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\brackets{\frac{1}{r} y^r (x-y)^{s-1}_{y=0}}}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y }  \\
-	&\over{\text{Ind}}{=} \frac{\lambda{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x} 
+	\over{\text{part Int}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\left[\frac{1}{r} y^r (x-y)^{s-1}\right]_{y=0}^x}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y }  \\
+	\over{\text{Ind}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x}. 
 \end{align*}
 \end{proof}
-Exponentialverteilung sind zudem \begriff{gedächnislos}
+Exponentialverteilung sind zudem \begriff{gedächnislos}:
 \begin{lemma}
 	Sei $X \sim \EXP(\lambda)$, dann gilt
 	\begin{align*}
-		\P(X>t) = \P(X > t+s \mid X > s) \quad t,s \ge 0 \tag{$\ast$}\label{lem:eq:gedachtnislos}
+		\P(X>t) = \P(X > t+s \mid X > s) \quad t,s \ge 0. \tag{$\ast$}\label{lem:eq:gedachtnislos}
 	\end{align*}
 \end{lemma}
-\begin{example}
-	\proplbl{4_2_5}
-	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{s})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
-	\begin{align*}
-		\P(X \ge 5) = e^{-\frac{1}{s}} = e^{-1} \approx 0,37.
-	\end{align*}
-	An einen kalten, stürmischen Frühlingstag hat die Studentin bereits 10 Minuten gewartet. Die Wahrscheinlichkeit mindestens 5 weitere Minuten zu warten ist
-	\begin{align*}
-		\P8X\ge 15 \mid X > 10) = \P(X\ge 5) = e^{-1} \approx 0,37.
-	\end{align*}
-\end{example}
-\begin{proof}[Lemma 4.4]
+\begin{proof}
 	\begin{align*}
 		\P(X > t+s \mid X \ge s) &= \frac{\P(X> t+s, X \ge s)}{\P(X > s)}\\
 		&= \frac{\P(X > t+s)}{\P(X > s)}\\
 		&= \frac{e^{-\lambda(t+s)}}{e^{-\lambda t}} = e^{-\lambda t} = \P(X> t).
 	\end{align*}
 \end{proof}
+\begin{example}
+	\proplbl{4_2_5}
+	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{s})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
+	\begin{align*}
+	\P(X \ge 5) = e^{-\frac{1}{s}} = e^{-1} \approx 0,37.
+	\end{align*}
+	An einen kalten, stürmischen Frühlingstag hat die Studentin bereits 10 Minuten gewartet. Die Wahrscheinlichkeit mindestens 5 weitere Minuten zu warten ist
+	\begin{align*}
+	\P(X\ge 15 \mid X > 10) = \P(X\ge 5) = e^{-1} \approx 0,37.
+	\end{align*}
+\end{example}
 \begin{*hint}
 	Man kann sogar zeigen, dass die Exponentialverteilung die einzige absolutstetige Verteilung mit \eqref{lem:eq:gedachtnislos} ist.
 \end{*hint}

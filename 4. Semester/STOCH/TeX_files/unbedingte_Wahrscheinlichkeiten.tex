@@ -310,6 +310,7 @@ Dann hat $(X,Y)$ die Verteilung $\P_X \otimes \P_Y$ auf $\R^2$. Andernfalls ist 
 \end{align*}
 $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \P_Y)\circ A^{-1}$.
 \begin{definition}[Faltung]
+	\proplbl{3_2_24}
 	Seien $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\Rn, \borel(\Rn))$. Das durch
 	\begin{align*}
 		\P_1 \star \P_2(F) = \iint \indi_F (x+y) \P_1 (\d x)\P_2 (\d y)
@@ -317,6 +318,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 	definierte Wahrscheinlichkeitsmaß $\P_1 \ast \P_2 = (\P_1 \otimes \P_2) \circ A^{-1}$ auf $(\Rn, \borel(\Rn))$ heißt \begriff{Faltung} von $\P_1$ und $\P_2$.
 \end{definition}
 \begin{proposition}
+	\proplbl{3_2_25}
 	Seien $X,Y: \O \to \Rn$ unabhängige Zufallsvariablen mit Verteilungen $\P_X, \P_Y$. Dann ist
 	\begin{align*}
 		\P_{X+Y} = \P_X + \P_Y,
@@ -328,6 +330,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 \end{proof}
 Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 \begin{proposition}
+	\proplbl{3_2_26}
 	Seien $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\R, \borel(\Rn))$
 	\begin{enumerate}
 		\item Diskreter Fall: Sind $\P_1 , \P_2$ de facto Wahrscheinlichkeitsmaße auf $(\Z, \pows(\Z))$ mit Zähldichte $\rho_1 , \rho_2$. Dann ist die Faltung $\P_1 \star \P_2$ Wahrscheinlichkeitsmaß auf $(\Z, \borel(\Z))$ mit Zähldichte
@@ -357,6 +360,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	\end{enumerate}
 \end{proof}
 \begin{example}
+	\proplbl{3_2_27}
 	Seien $X \sim \Pois(\lambda), Y \sim \Pois(\mu)$ zwei unabhängigen reellen Zufallsvariablen (mit Werten in $\N_0$). Dann ist $X+Y$ eine Zufallsvariable mit Werten in $\N_0$ und Zähldichte
 	\begin{align*}
 		\P(X+Y+k) &= \sum_{l \in \Z} \P(X=l) \P(Y = k-l)\\
@@ -368,10 +372,11 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	\end{align*}
 	D.h. der Typ der Verteilung ist bei der Faltung erhalten geblieben.
 \end{example}
-\begin{remark}
+\begin{*hint}
 	Das ist aber nicht immer der Fall!
-\end{remark}
+\end{*hint}
 \begin{example}
+	\proplbl{3_2_28}
 	Seien $X,Y \sim \Gleich([0,1])$ zwei unabhängige Zufallsvariablen mit Dichten $\rho(x) = \indi_{[0,1]}(x)$. Dann ist $X+Y$ eine Zufallsvariable mit Werten in $[0,2]$ und Dichte
 	\begin{align*}
 		\rho \star \rho(x) &= \int_{\R} \rho(y) \rho(x-y) \d x \d y\\
