@@ -1,0 +1,72 @@
+\section{Varianz und höhere Momente}
+\begin{definition}[$k$-te Momente]
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: (\O,\F) \to (\R, \borel(\R))$ reelle Zufallsvariable. Dann ist für $k \in \N$
+	\begin{align*}
+		\E[X^k] = \int_{\O} X^k(\omega)\P(\omega) = \int_{\R}x^k \P(X \in \d x)
+	\end{align*}
+	das \begriff{$k$-te Moment} von $X$ (sofern definiert).
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Erwartungswert $\cong$ erstes Moment
+		\item Das $k$-te Moment existiert genau dann wenn
+		\begin{align*}
+			\int_{\O} \abs{X(\omega)^k}\P(\d \omega) < \infty \bzw X \in \Ln{k}(\P)
+		\end{align*}
+		\item Mint: $\Ln{r}(\P) \subseteq \Ln{s}(\P)$ für $s \le r$
+	\end{itemize}
+\end{*remark}
+Von Interesse ist insbesondere das zweite Moment
+\begin{definition}[Varianz, Standardabweichung]
+	\proplbl{5_2_11}
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y \in \Ln{2}(\P)$ reelle Zufallsvariablen.
+	\begin{enumerate}
+		\item Die \begriff{Varianz} von $X$ ist
+		\begin{align*}
+			\Var (X) = \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2
+		\end{align*}
+		\item Die \begriff{Standardabweichung}/\begriff{Streuung} von $X$ ist $\sqrt{\Var X}$.
+		\item Die \begriff{Kavarianz} von $X$ und $Y$ ist
+		\begin{align*}
+			\Cov(X,Y) &= \E[(X-\E[X])(Y-\E[Y])]\\
+			&= \E[XY] - \E[X]\E[Y]
+		\end{align*}
+		\begin{*hint}
+			Wenn die Varianz 0 ist, heißt es nicht dass die Zufallsvariablen unabhängig waren
+		\end{*hint}
+		\item Sind $\Var X, \Var Y\ge 0$, dann ist die \begriff{Korrelation} von $X \und Y$
+		\[
+			\Corr(X,Y) = \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}.
+		\] 
+		\item Gilt $\Corr(X,Y) =0$, so heißen $X,Y$ \begriff{unkorreliert}.
+	\end{enumerate}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Die Endlichkeit der Ausdrücke in \propref{5_2_11} folgt aus der \person{Cauchy}-\person{Schwarz}-Ungleichung
+		\[
+		\E[\abs{XY}] \le (\E\abs{X}^2)^{\frac{1}{2}}\cdot (\E\abs{Y}^2)^{\frac{1}{2}}
+		\]
+		\item Für die (Ko)varianz gilt
+		\begin{align*}
+			\E[(X -\E[X])(Y-\E[Y])] &= \E[XY - X\E[Y] - Y\E[X] + \E[X]\E[Y]]\\
+			&= \E[XY] - \E[X]\E[Y] - \E[X]\E[Y] + \E[X]\E[Y]\\
+			&= \E[XY] - \E[X]\E[Y].
+		\end{align*}
+	\end{itemize}
+\end{*remark}
+\begin{example}
+	Sei $X\sim\Bin(n,p)$, dann gilt
+	\begin{align*}
+		\Var(X) = \E X^2 - \underbrace{(\E X)^2}_{=\sim p}\\
+		\intert{mit}
+		\E X^2 &= \sum_{k=0}^n k^2 \binom{n}{k}p^k (1-p)^{n-k}\\
+		&= np \sum_{i=1}^n k \frac{(n-1)!}{(n-1-(k-1))!(k-1)!} p^{k-1}(1-p)^{n-1-(k-1)}\\
+		&= np\sum_{l=0}^{n-1}(l+1)\binom{n-1}{l}p^l (1-p)^{n-1-l}\\
+		&= np(1 + \sum_{l=0}^{n-1}l \binom{n-1}{l}p^l (1-p)^{n-1-l})\\
+		&= np(1+(n-1)p)\cdot 1)\\
+		&= np + n(n-1)p^2\\
+		&\implies \Var X = np + n^2p^2 - np^2 - n^2p^2\\
+		&= np(1-p) 
+	\end{align*}
+\end{example}
