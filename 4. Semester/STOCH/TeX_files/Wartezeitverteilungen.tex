@@ -67,13 +67,13 @@ gilt
 
 Wir definieren allgemeiner:
 \begin{definition}[Gammaverteilung, Gammafunktion]
-	Seinen $\lambda > 0, r>0$, dann heißt die Verteilung auf $(\R_+, \borel(\R_+))$ mit Dichte
+	Seien $\lambda > 0, r>0$, dann heißt die Verteilung auf $(\R_+, \borel(\R_+))$ mit Dichte
 	\begin{align*}
 		f(x) = \frac{\lambda^r}{\Gamma(r)} x^{r-1} e^{-\lambda x},
 		\intertext{wobei}
 		\Gamma(r) = \int_{0}^{\infty} y^{r-1}e^{-y} \d y, r>0
 	\end{align*}
-	\begriff{Gammefunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$.
+	\begriff{Gammafunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$.
 \end{definition}
 Insbesondere ist $\Gam(\lambda,r)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).\\ %TODO add ref?
 Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspricht der Wartezeit auf $r$ Ereignisse + $s$ (weitere) Ereignisse:
@@ -94,7 +94,7 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 	\over{\text{Ind}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x}. 
 \end{align*}
 \end{proof}
-Exponentialverteilung sind zudem \begriff{gedächnislos}:
+Exponentialverteilungen sind zudem \begriff{gedächtnislos}:
 \begin{lemma}
 	Sei $X \sim \EXP(\lambda)$, dann gilt
 	\begin{align*}
@@ -110,9 +110,9 @@ Exponentialverteilung sind zudem \begriff{gedächnislos}:
 \end{proof}
 \begin{example}
 	\proplbl{4_2_5}
-	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{s})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
+	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{5})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
 	\begin{align*}
-	\P(X \ge 5) = e^{-\frac{1}{s}} = e^{-1} \approx 0,37.
+	\P(X \ge 5) = e^{-\frac{1}{5}\cdot 5} = e^{-1} \approx 0,37.
 	\end{align*}
 	An einen kalten, stürmischen Frühlingstag hat die Studentin bereits 10 Minuten gewartet. Die Wahrscheinlichkeit mindestens 5 weitere Minuten zu warten ist
 	\begin{align*}
