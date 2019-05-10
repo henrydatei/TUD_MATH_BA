@@ -46,6 +46,7 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 ### Stochastik (SS 2019)
 
 ### Numerische Mathematik (SS 2019)
+- Octave Skript für die T4 Aufgabe im Opal: [https://drive.google.com/open?id=1Avbt0bViOgGjIaW4EumZWqPoMqpBjB--](https://drive.google.com/open?id=1Avbt0bViOgGjIaW4EumZWqPoMqpBjB--) (benötigt sympy!)
 
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
