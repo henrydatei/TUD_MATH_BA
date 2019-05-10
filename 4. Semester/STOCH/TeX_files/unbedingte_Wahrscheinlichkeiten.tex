@@ -40,7 +40,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	$C$ und $D$ sind also \emph{stochastisch} unabhängig, obwohl eine kausale Abhängigkeit vorliegt!
 \end{example}
 
-\begin{definition}[unabhängig bezüglich $\P$]
+\begin{definition}[Unabhängigkeit bezüglich $\P$]
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $I \neq \emptyset$ endliche Indexmenge. Dann heißt die Familie $(A_i)_{i \in I}$ von Ereignissen in $\F$ \begriff{unabhängig bezüglich $\P$}, falls für alle $J \subseteq I, J \neq \emptyset$ gilt:
 	\begin{align*}
 		\P\brackets{\bigcap_{i\in J}A_i} = \prod_{i\in J} \P(A_i)
@@ -215,7 +215,7 @@ Mit \propref{3_2_17} folgen:
 	\begin{enumerate}
 		\item $X_1, \dots, X_n$ sind unabhängig \label{prop:unabhZV1}
 		\item $\P(X_1 \in A_1, \dots, X_n \in A_n) = \prod_{i=1}^n \P(X_i \in A_i)\quad \forall A_1, \dots, A_n \in \E$. \label{prop:unabhZV2}
-		\item Die gemeinsame Verteilung der $X_i$ entspricht den Produktmaß der einzelnen Verteilungen \label{prop:unabhZV3}
+		\item Die gemeinsame Verteilung der $X_i$ entspricht dem Produktmaß der einzelnen Verteilungen \label{prop:unabhZV3}
 		\begin{align*}
 			\P_{X_1, \dots, X_n} = \bigotimes_{i=1}^n \P_{X_i}
 		\end{align*}
@@ -251,7 +251,7 @@ Mit \propref{3_2_17} folgen:
 \subsection*{Konstruktion unabhängiger Zufallsvariablen}
 Kapitel \ref{chapter1}: Zu beliebiger Wahrscheinlichkeitsverteilung $\P_X$ existiert Wahrscheinlichkeitsraum mit Zufallsvariable $X$ auf diesem Wahrscheinlichkeitsraum, so dass $X \sim \P_X$.
 \begin{enumerate}
-	\item Seien $\P{X_1}, \dots, \P_{X_n}$ Wahrscheinlichkeitsverteilungen auf $(E, \E)$. Gibt es einen Wahrscheinlichkeitsraum $(\O, \F, \P)$ und Zufallsvariablen $X_1, X_2$ unabhängig, so dass $X_1 \sim \P_{X_1}$? \label{konstruktionunabh:ZV:qu_1}
+	\item Seien $\P_{X_1}, \dots, \P_{X_n}$ Wahrscheinlichkeitsverteilungen auf $(E, \E)$. Gibt es einen Wahrscheinlichkeitsraum $(\O, \F, \P)$ und Zufallsvariablen $X_1, X_2$ unabhängig, so dass $X_1 \sim \P_{X_1}$? \label{konstruktionunabh:ZV:qu_1}
 	\item Wie kann ich beliebig (unendlich) viele unabhängige Zufallsvariablen konstruieren? \label{konstruktionunabh:ZV:qu_2}
 \end{enumerate}
 Wir beginnen mit \ref{konstruktionunabh:ZV:qu_1}:\\
@@ -321,7 +321,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 	\proplbl{3_2_25}
 	Seien $X,Y: \O \to \Rn$ unabhängige Zufallsvariablen mit Verteilungen $\P_X, \P_Y$. Dann ist
 	\begin{align*}
-		\P_{X+Y} = \P_X + \P_Y,
+		\P_{X+Y} = \P_X \star \P_Y,
 	\end{align*}
 	die Verteilung von $X +  Y$.
 \end{proposition}
