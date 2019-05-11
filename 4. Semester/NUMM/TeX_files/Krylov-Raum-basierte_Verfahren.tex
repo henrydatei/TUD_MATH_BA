@@ -73,6 +73,7 @@ Offenbar ist $\dim(\mathcal{K}_k(r,A))\le\min\{k,n\}$ für alle $k\in\natur$.
 \subsection{Basisalgorithmen zur Lösung von $Ax=b$}
 
 \begin{algorithm}[Minimum-Residuum Basisalgorithmus]
+	\proplbl{algorithmus_2_9}
 	Input: $x^0\in\R$, $A,B\in\Rnn$ regulär, $b\in\Rn$
 \begin{lstlisting}
 while %$r^k\neq 0$% do
@@ -86,6 +87,7 @@ enddo
 \end{algorithm}
 
 \begin{algorithm}[Galerkin Basisalgorithmus]
+	\proplbl{algorithmus_2_11}
 	Input: $x^0\in\R$, $A,B\in\Rnn$ regulär, $b\in\Rn$
 	\begin{lstlisting}
 %$r^0$% = b - A%$x^0$%;
@@ -102,7 +104,32 @@ enddo
 
 \subsection{Das CG-Verfahren}
 
+\begin{lemma}
+	\proplbl{lemma_2_14}
+	Sei $A\in\Rnn$ symmetrisch und positiv definit. Weiter seien $x^0\in\Rn$ und $A$-konjugierte Vektoren $d^0,...,d^{n-1}\in\Rn\backslash\{0\}$ gegeben. Dann besitzt die Optimierungsaufgabe
+	\begin{align}
+		\label{2_15}
+		\frac{1}{2}x^TAx-b^Tx\to\min\quad\text{bei } x\in x^0+\mathcal{D}_k
+	\end{align}
+	eine eindeutig bestimmte Lösung $x^k$ für $k=1,...,n$. Dabei gilt für $k=0,...,n-1$
+	\begin{align}
+		\label{2_16}
+		x^{k+1} = x^k + t_kd^k\quad\mit\quad t_k = \frac{(r^k)^Td^k}{(d^k)^TAd^k}\quad\text{und}\quad r^k=b-Ax^k
+	\end{align}
+	und
+	\begin{align}
+		\label{2_17}
+		(r^{k+1})^Td^j = 0\quad\text{für } j=0,...,k
+	\end{align}
+\end{lemma}
+
+\begin{align}
+	\label{2_23}
+	\mathcal{R}_k = \mathcal{K}_k(r^0,A)=\mathcal{D}_k
+\end{align}
+
 \begin{algorithm}[CG-Verfahren]
+	\proplbl{algorithmus_2_15}
 	Input: $x^0\in\Rn$, $A\in\Rnn$ symmetrisch und positiv definit, $b\in\Rn$
 	\begin{lstlisting}
 %$d^0$% = %$r^0$% = b - A%$x^0$%;
@@ -124,6 +151,7 @@ enddo
 \subsection{Vorkonditionierung}
 
 \begin{algorithm}[CG-Verfahren für $\tilde{A}\tilde{x}=\tilde{b}$]
+	\proplbl{algorithmus_2_20}
 	Input: $\tilde{x}^0\in\Rn$, $\tilde{A}\in\Rnn$ symmetrisch und positiv definit, $\tilde{b}\in\Rn$
 	\begin{lstlisting}
 	%$\tilde{d}^0$% = %$\tilde{r}^0$% = %$\tilde{b} - \tilde{A}\tilde{x}^0$%;
@@ -141,6 +169,7 @@ enddo
 \end{algorithm}
 
 \begin{algorithm}[Vorkonditioniertes CG-Verfahren]
+	\proplbl{algorithmus_2_21}
 	Input: $x^0\in\Rn$, $A\in\Rnn$ symmetrisch und positiv definit, $b\in\Rn$
 	\begin{lstlisting}
 %$r^0$% = b - A%$x^0$%;
@@ -161,3 +190,33 @@ enddo
 \end{algorithm}
 
 \subsection{Ausblick und Anmerkungen}
+
+Es gibt zahlreiche weitere sogenannte \person{Krylov}-Raum basierte Verfahren. Auf einige dieser Methoden wird hier kurz hingewiesen.
+\begin{itemize}
+	\item \textbf{CGNR-Verfahren für reguläre Matrizen:} Da $A$ regulär ist, muss das System $Ax=b$ äquivalent zu $A^TAx=A^Tb$ sein. Offenbar ist $A^TA$ eine symmetrische und positiv definite Matrix. Damit kann das CG-Verfahren prinzipiell auf $A^TAx=A^Tb$ angewendet werden. Dieses Vorgehen wird als CGNR-Verfahren bezeichnet, dabei gilt jedoch $\cond_2(A^TA)=\cond_2(A)^2$.
+	\item \textbf{GMRES-Verfahren für reguläre Matrizen:} Das GMRES-Verfahren von \person{Saad} und \person{Schultz} kann dann als Spezialfall des Minimum-Residuum Basisalgorithmus (\propref{algorithmus_2_9}) aufgefasst werden, wenn dort $B=\mathbbm{1}$ gesetzt wird. Die dabei notwendige Erzeugung und Abspeicherung einer Orthonormalbasis der \person{Krylov}-Räume $\mathcal{K}_k(r^0,A)$ ist zu aufwendig, so dass man zu einem GMRES$(m)$-Verfahren übergeht, dass nach $m$ Schritten und einem Restart mit der letzten erhaltenen Iterierten als Startvektor durchführt und dieses Verfahren ggf. mehrfach wiederholt.
+	\item \textbf{MINRES-Verfahren für symmetrische reguläre Matrizen:} Theoretisch ist dieses Verfahren von \person{Paige} und \person{Saunders} identisch mit dem GMRES-Verfahren, jedoch gestattet die zusätzliche Symmetrie von $A$ wesentliche Vereinfachungen bei der Lösung der Teilprobleme.
+	\item \textbf{BiCG-Verfahren für reguläre Matrizen:} Dieses Verfahren von \person{Lanczos} kann als Realisierung des \person{Galerkin} Basisalgorithmus (\propref{algorithmus_2_11}) angesehen werden, wobei die pro Schritt zu lösenden Teilprobleme dann durch
+	\begin{lstlisting}
+compute %$x^k\in x^0+\mathcal{K}_k(r^0,A)$ mit $b-Ax^k\perp\mathcal{K}_k(\bar{r}^0,A^T)$%
+	\end{lstlisting}
+	gegeben sind mit einem $\bar{r}^0$ derart, dass $(\bar{r}^0)^Tr^0\neq 0$.
+	\item \textbf{CG-Verfahren als \person{Galerkin}-Verfahren:} Beim CG-Verfahren (\propref{algorithmus_2_9} mit $B=A^{-\sfrac{1}{2}}$ bzw. \propref{algorithmus_2_21}) ergibt sich aus \propref{lemma_2_14}
+	\begin{align}
+		(r^k)^Td^j=0\quad\text{für } j=0,...,k-1\notag
+	\end{align}
+	Außerdem hatten wir induktiv gezeigt (vgl. \cref{2_23}), dass $\mathcal{R}_k=\mathcal{K}_k(r^0,A)=\mathcal{D}_k$ gilt sofern $r^{k-1}\neq 0$. Also folgt
+	\begin{align}
+		b-Ax^k = r^k\perp \mathcal{K}_k(r^0,A)\notag
+	\end{align}
+	und weiter (vgl. die Teilprobleme in \propref{algorithmus_2_9})
+	\begin{align}
+		x^k\in x^0+\mathcal{K}_k(r^0,A)\quad\mit\quad b-Ax^k\perp \mathcal{K}_k(r^0,A)\notag
+	\end{align}
+	Damit kann man das CG-Verfahren auch als ein \person{Galerkin}-Verfahren betrachten.
+	\item \textbf{Abbruchkriterien bei iterativen Lösern:} Anstelle der theoretischen Abbruchbedingung $b-Ax^k=0$ muss ein praktikableres Kriterium verwendet werden. Dazu bietet sich die Bedingung
+	\begin{align}
+		\frac{\norm{b-Ax^k}}{\norm{b-Ax^0}} \le \epsilon\notag
+	\end{align}
+	an das relative Residuum an, wobei $\epsilon>0$ vorzugeben ist. Zur Vermeidung einer unendlichen Anzahl von Iterationsschritten sind noch weitere Bedingungen (etwa an die maximale Iterationszahl oder die Differenz $x^k-x^{k-1}$) erforderlich.
+\end{itemize}
