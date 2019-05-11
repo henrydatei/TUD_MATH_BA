@@ -220,11 +220,11 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 
 \section{Zufallsvariablen}
 
-Zufallsvariablen dienen dazu von einen gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
+Zufallsvariablen dienen dazu von einem gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
 Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
 Damit wir auch jedem Ereignis in $\sigF'$ eine Wahrscheinlichkeit zuordnen können, benötigen wir	
 \begin{align}
-	A' \in \sigF' \Rightarrow X' A' \in \sigF \notag		
+	A' \in \sigF' \Rightarrow X^{-1} A' \in \sigF \notag		
 \end{align}
 d.h. $X$ sollte messbar sein.
 
@@ -248,7 +248,7 @@ d.h. $X$ sollte messbar sein.
 	\begin{align}
 		\probp'(A') := \probp\left(X^{-1}(A')\right) = \probp\left(\set{X \in A'}\right),\quad A' \in \sigF'\notag
 	\end{align}
-	ein Wahrscheinlichkeitsmaß auf $(\Omega', \sigF')$ auf $(\Omega', \sigF')$, welches wir als \begriff{Wahrscheinlichkeitsverteilung von X unter $\probp$} bezeichnet.
+	ein Wahrscheinlichkeitsmaß auf $(\Omega', \sigF')$, welches wir als \begriff{Wahrscheinlichkeitsverteilung von X unter $\probp$} bezeichnen.
 \end{proposition}
 
 \begin{proof}
@@ -275,7 +275,7 @@ d.h. $X$ sollte messbar sein.
 	\end{itemize}
 \end{*remark}
 
-\begin{definition}[identisch verteilt, reellen Zufallsvariablen]
+\begin{definition}[identisch verteilte, reelle Zufallsvariablen]
 	Zwei Zufallsvariablen sind \begriff{identisch verteilt}, wenn sie dieselbe Verteilung haben.
 	Von besonderen Interesse sind für uns die Zufallsvariablen, die nach $(\R, \borel(\R))$ abbilden, sogenannte \begriff{reelle Zufallsvariablen}.
 \end{definition}
