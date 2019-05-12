@@ -122,9 +122,78 @@ enddo
 	Output: $x^\ast=x^k$, $k^\ast=k$
 \end{algorithm}
 
-Unter der Voraussetzung der Durchführbarkeit bricht \propref{algorithmus_2_11} nach höchstens $n$ Schritten mit der Lösung $x^\ast$ von $Ax=b$ ab, da $\mathcal{L}_n=\Rn$ und $b-Ax^n\perp\mathcal{L}$ somit $b-Ax^n=0$ impliziert.
+Unter der Voraussetzung der Durchführbarkeit bricht \propref{algorithmus_2_11} nach höchstens $n$ Schritten mit der Lösung $x^\ast$ von $Ax=b$ ab, da $\mathcal{L}_n=\Rn$ und $b-Ax^n\perp\mathcal{L}_n$ somit $b-Ax^n=0$ impliziert.
 
 \subsection{Das CG-Verfahren}
+
+Es seien $A\in\Rnn$ und $b\in\Rn$ gegeben. Die Funktion $f:\Rn\to\R$ sei gegeben durch
+\begin{align}
+	f(x) = \frac{1}{2}x^TAx-b^Tx\quad\text{für } x\in\Rn\notag
+\end{align}
+Falls die Matrix $A\in\Rnn$ symmetrisch und positiv definit ist (und das wird beim CG-Verfahren immer vorausgesetzt werden), gibt es eine orthogonale Matrix $Q\in\Rnn$ und eine Diagonalmatrix $\Lambda=\diag(\lambda_1,...,\lambda_n)$ mit den $n$ positiven Eigenwerten $\lambda_1,...,\lambda_n$ von $A$, so dass
+\begin{align}
+	A = Q\Lambda Q^T\notag
+\end{align}
+Mit $\Lambda^{\sfrac{1}{2}}=\diag(\sqrt{\lambda_1},...,\sqrt{\lambda_n})$ und $A^{\sfrac{1}{2}}=Q\Lambda^{\sfrac{1}{2}}Q^T$ gilt $A^{\sfrac{1}{2}}A^{\sfrac{1}{2}}=A$. Die Matrix $A^{\sfrac{1}{2}}$ wird als Wurzel von $A$ bezeichnet und ist symmetrisch und positiv definit. Es gibt keine weitere symmetrisch positiv definite Matrix, die Wurzel von $A$ ist.
+
+\begin{lemma}
+	\proplbl{lemma_2_12}
+	Seien $A\in\Rnn$ symmetrisch und positiv definit, $b\in\Rn$, $G\subseteq\Rn$ eine abgeschlossene nichtleere Menge und $x^\ast=A^{-1}b$. Dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}[label=(\alph*)]
+		\item $y$ minimiert $f$ auf $G$
+		\item $y$ minimiert $x\mapsto\norm{x-x^\ast}_{A^{\sfrac{1}{2}}}$ auf $G$
+		\item $y$ minimiert $x\mapsto\norm{b-Ax}_{A^{-\sfrac{1}{2}}}$ auf $G$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item (a) $\Rightarrow$ (b): Für jedes $x\in\Rn$ gilt
+		\begin{align}
+			\norm{x-x^\ast}^2_{A^{\sfrac{1}{2}}} &= \norm{A^{\sfrac{1}{2}}(x-x^\ast)}^2 \notag \\
+			&= (x-x^\ast)^TA(x-x^\ast)\notag \\
+			&= x^TAx-2x^TAx^\ast+(x^\ast)^TAx^\ast \notag \\
+			&= x^TAx-2x^Tb+b^Tx^\ast\notag \\
+			&= 2f(x) + b^Tx^\ast \notag
+		\end{align}
+		Da $b^Tx^\ast$ nicht von $x$ abhängt, ist eine Minimalstelle $y$ von $f(x)$ auf $G$ auch eine Minimalstelle von $x\mapsto\norm{x-x^\ast}_{A^{\sfrac{1}{2}}}$ auf $G$ und umgekehrt.
+		\item (b) $\Rightarrow$ (c): Für jedes $x\in\Rnn$ gilt
+		\begin{align}
+			\norm{x-x^\ast}^2_{A^{\sfrac{1}{2}}} &= (x-x^\ast)^TA(x-x^\ast) \notag \\
+			&= (x-x^\ast)^TAA^{-1}A(x-x^\ast) \notag \\
+			&= (A(x-x^\ast))^TA^{-1}A(x-x^\ast) \notag \\
+			&= (Ax-b)^TA^{-1}(Ax-b) \notag \\
+			&= \norm{A^{-\sfrac{1}{2}}(b-Ax)}^2 \notag \\
+			&= \norm{b-Ax}_{A^{-\sfrac{1}{2}}}^2 \notag
+		\end{align}
+		Damit folgt die Behauptung unmittelbar.
+	\end{itemize}
+\end{proof}
+
+Das CG-Verfahren ergibt sich nn formal aus \propref{algorithmus_2_9} (Minimum-Residuum Basisalgorithmus), indem dort $B=A^{-\sfrac{1}{2}}$ gesetzt wird. \propref{lemma_2_12} zeigt uns dann, dass das Teilproblem, also
+\begin{align}
+	\label{2_13}
+	\frac{1}{2}\norm{b-Ax}^2_{A^{-\sfrac{1}{2}}}\to\min\quad\text{bei } x\in x^0+\mathcal{K}_k(r^0,A)
+\end{align}
+zur Aufgabe
+\begin{align}
+	\label{2_14}
+	\frac{1}{2}x^TAx-b^Tx\to\min\quad\text{bei } x\in x^0+\mathcal{K}_k(r^0,A)
+\end{align}
+äquivalent ist. Es stellt sich nun die Frage, wie diese Teilprobleme effizient zu lösen sind. Dazu gibt nachfolgendes Lemma einen Hinweis. Zu seiner Formulierung benötigen wir noch
+
+\begin{definition}[$A$-konjugiert, $A$-orthogonal]
+	Seien $A\in\Rnn$ symmetrisch und positiv definit und $k\in\natur$ mit $k\le n$. Dann nennt man Vektoren $d^0,...,d^{k-1}\in\Rn\backslash\{0\}$ mit der Eigenschaft
+	\begin{align}
+		(d^i)^TAd^j=0\quad\forall\text{ Paare } (i,j) \text{ mit } i,j\in\{0,...,k-1\} \text{ und } i\neq j\notag
+	\end{align}
+	\begriff{$A$-konjugiert} oder \begriff{$A$-orthogonal}.
+\end{definition}
+
+Die lineare Hülle von Vektoren $d^0,...,d^{k-1}\in\R^k$ soll durch 
+\begin{align}
+	\mathcal{D}_k=\Span\{d^0,...,d^{k-1}\}\notag
+\end{align}
+bezeichnet werden, wobei durch den Kontext klar ist, welche Vektoren $d^0,...,d^{k-1}$ gemeint sind.
 
 \begin{lemma}
 	\proplbl{lemma_2_14}
@@ -149,6 +218,75 @@ Unter der Voraussetzung der Durchführbarkeit bricht \propref{algorithmus_2_11} 
 	\label{2_23}
 	\mathcal{R}_k = \mathcal{K}_k(r^0,A)=\mathcal{D}_k
 \end{align}
+\begin{proof}
+	Zunächst sei die Funktion $\phi:\R^k\to\R$ für ein $k\in\{1,...,n\}$ wie folgt definiert:
+	\begin{align}
+		\phi(\alpha) = f\left(x ^0+\sum_{i=0}^{k-1}\alpha_id^i\right)\quad\forall\alpha\in\R^k\notag
+	\end{align}
+	Offenbar ist dann jede Lösung $\alpha^\ast$ der freien Optimierungsaufgabe 
+	\begin{align}
+		\label{2_18}
+		\phi(\alpha)\to\min
+	\end{align}
+	vermöge
+	\begin{align}
+		\label{2_19}
+		x^k = x^0+\sum_{i=0}^{k-1}\alpha^\ast_id^i
+	\end{align}
+	eine Lösung von \cref{2_15} und entsprechend umgekehrt. Wir untersuchen daher nun \cref{2_18}. Für $\phi(\alpha)$ erhält man
+	\begin{align}
+		\phi(\alpha) = \frac{1}{2}\left(x^0+\sum_{i=0}^{k-1}\alpha_id^i\right)^TA\left(x^0+\sum_{i=0}^{k-1}\alpha_id^i\right) - b^T\left(x^0+\sum_{i=0}^{k-1}\alpha_id^i\right)\notag
+	\end{align}
+	Da $d^0,...,d^{k-1}$ $A$-konjugiert sind, folgt
+	\begin{align}
+		\phi(\alpha) &= \frac{1}{2}\sum_{i=0}^{k-1}\alpha_i^2(d^i)^TAd^i + (Ax^0-b)^T\left(x^0 + \sum_{i=0}^{k-1}\alpha_i d^i\right) - \frac{1}{2}(x^0)^TAx^0 \notag \\
+		&= \frac{1}{2}\sum_{i=0}^{k-1}\alpha_i^2(d^i)^TAd^i - \sum_{i=0}^{k-1}\alpha_i(r^0)^Td^i + f(x^0)\notag
+	\end{align}
+	Jede Lösung $\alpha^\ast$ von \cref{2_18} muss der notwendigen Optimalitätsbedingung $\nabla\phi(\alpha)=0$ genügen. Wegen der Konvexität von $\phi$ (beachte $\nabla^2\phi = A$ ist positiv definit) ist diese Bedingung auch hinreichend. Aus $\nabla\phi(\alpha^\ast)=0$ folgt
+	\begin{align}
+		0=\frac{\partial \phi}{\partial\alpha_i}(\alpha^\ast) =\alpha^\ast_i(d^i)^TAd^i-(r^0)^Td^i\quad\text{für } i=0,...,k-1\notag 
+	\end{align}
+	und damit (beachte positive Definitheit von $A$) nach Umstellen
+	\begin{align}
+		\label{2_20}
+		\alpha_i^\ast = \frac{(r^0)^Td^i}{(d^i)^TAd^i}\quad\text{für } i=0,...,k-1
+	\end{align}
+	Also besitzt \cref{2_18} genau eine Lösung $\alpha^\ast$. Entsprechend \cref{2_15} eine eindeutige Lösung, die sich aus \cref{2_19} ergibt. Man sieht nun sofort, dass der Wert $\alpha_i^\ast$ nicht vom gewählten $k$ abhängig. Mit \cref{2_19} folgt daraus
+	\begin{align}
+		\label{2_21}
+		x^{k+1} -x^k = \alpha_k^\ast d^k\quad\text{für } k=0,...,n-1
+	\end{align}
+	Damit erhält man für $i\in\{1,...,k-1\}$
+	\begin{align}
+		(r^0)^T d^i &= \left(r^i + \sum_{j=1}^{i} (r^{j-1}-r^j)\right)^Td^i \notag \\
+		&= \left(r^i + \sum_{j=1}^i (-Ax^{j-1} + Ax^j)\right)^T d^i \notag \\
+		&= (r^i)^Td^i + \sum_{j=1}^i (x^j-x^{j-1})^T Ad^i \notag \\
+		&= (r^i)^Td^i + \sum_{j=1}^i \alpha^\ast_{j-1}(d^{j-1})^TAd^i \notag
+	\end{align}
+	und weiter unter Ausnutzung der $A$-Konjugiertheit der Vektoren $d^0,...,d^{n-1}$
+	\begin{align}
+		(r^0)^Td^i = (r^i)^Td^i\notag
+	\end{align}
+	Setzt man dies in die Darstellung von $\alpha_i^\ast$ ein ,so folgt wegen \cref{2_21} und \cref{2_20} Teilbehauptung \cref{2_16}.
+	
+	Die letzte Teilbehauptung \cref{2_17} ergibt sich für $j=k$ aus
+	\begin{align}
+		\label{2_22}
+		\begin{split}
+		(r^{k+1})^Td^k &= (b-Ax^{k+1})^Td^k \\
+		&= (b-Ax^k-t_kAd^k)^Td^k \\
+		&= (r^k)^Td^k-t_k(d^k)^TAd^k \\
+		&= 0
+		\end{split}
+	\end{align}
+	wobei die letzte Gleichung mit Hilfe der Darstellung von $t_k$ in \cref{2_16} klar wird. Für $j\in\{0,...,k-1\}$ zeigt man \cref{2_17} schließlich unter Benutzung von \cref{2_22} und der $A$-Konjugiertheit der $d^0,...,d^{n-1}$
+	\begin{align}
+		(r^{k+1})^Td^j &= (r^{j+1})^Td^j + \sum_{i=j+1}^k (r^{i+1}-r^i)^Td^j \notag \\
+		&= \sum_{i=j+1}^k (b-Ax^{i+1}-b+Ax^i)^Td^j \notag \\
+		&= \sum_{i=j+1}^k (-t_iAd^i)^Td^j \notag \\
+		&= 0 \notag
+	\end{align}
+\end{proof}
 
 \begin{algorithm}[CG-Verfahren]
 	\proplbl{algorithmus_2_15}
