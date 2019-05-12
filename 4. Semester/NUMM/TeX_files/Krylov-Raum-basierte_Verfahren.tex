@@ -67,10 +67,21 @@ Offenbar ist $\dim(\mathcal{K}_k(r,A))\le\min\{k,n\}$ für alle $k\in\natur$.
 \end{proof}
 
 \begin{remark}
+	\proplbl{bemerkung_2_8}
 	Offenbar gibt es $k^\ast\in\{1,...,n\}$, so dass Aussage (a) von \propref{satz_2_7} für $k^\ast$ zutrifft, aber für kein $k<k^\ast$ erfüllt ist. \propref{satz_2_7} zeigt daher, dass die exakte Lösung $x^\ast$ von $Ax=b$ in $x^0 + \mathcal{K}_{k^\ast}(r^0,A)$ liegt. Man kann also nun versuchen, eine Folge $\{x^k\}$ mit $x^k\in x^0 + \mathcal{K}_k(r^0,A)$ zu bestimmen, so dass $x^k$ das Gleichungssystem $Ax=b$ (geeignet) näherungsweise löst. Dazu werden in nächsten Abschnitt zwei grundlegende Ansätze angegeben (Minimum-Residuum und Galerkin).
 \end{remark}
 
 \subsection{Basisalgorithmen zur Lösung von $Ax=b$}
+
+Für eine reguläre Matrix $B\in\Rnn$ ist durch
+\begin{align}
+	\norm{x}_B = \norm{Bx}_2\quad\text{für } x|in\Rn\notag
+\end{align}
+eine Vektornorm im $\Rn$ definiert. Unabhängig von der konkreten Wahl der regulären Matrix $B$ sind das lineare Gleichungssystem $Ax=b$ und die Minimierungs aufgabe
+\begin{align}
+	\frac{1}{2}\norm{b-Ax}_B^2\to\min\notag
+\end{align}
+offenbar äquivalent.
 
 \begin{algorithm}[Minimum-Residuum Basisalgorithmus]
 	\proplbl{algorithmus_2_9}
@@ -85,6 +96,15 @@ enddo
 \end{lstlisting}
 	Output: $x^\ast=x^k$, $k^\ast=k$
 \end{algorithm}
+
+\begin{proposition}
+	\propref{algorithmus_2_9} ist wohldefiniert und bricht (bei exakter Arithmetik) nach höchstens $n$ (das heißt $k^\ast\le n$) it der exakten Lösung $x^\ast$ des Gleichungssystems $Ax=b$ ab.
+\end{proposition}
+\begin{proof}
+	Die Funktion $f_B:\Rn\to\R$ (Zielfunktion der Optimierungsaufgabe) ist gleichmäßig konvex, da $A$ regulär ist. Die Menge $x^0+\mathcal{K}_k(r^0,A)$ (zulässiger Bereich  der Optimierungsaufgabe) ist außerdem nichtleer, abgeschlossen und konvex.  Nach einem bekannten Resultat der kontinuierlichen Optimierung besitzt die Optimierungsaufgabe eine eindeutige Lösung $x^k$. Somit ist \propref{algorithmus_2_9} wohldefiniert. Wegen $\mathcal{K}_k(r^0,A)=\mathcal{K}_{k+1}(r^0,A)$ spätestens für $k=n$ muss \propref{algorithmus_2_9} auf Grund von \propref{satz_2_7} nach höchstens $n$ Schritten mit der exakten Lösung $x^\ast$ abbrechen, vgl. auch \propref{bemerkung_2_8}
+\end{proof}
+
+\propref{algorithmus_2_9} ist somit ein direktes Verfahren. Jedoch besteht die praktische Bedeutung von Realisierungen dieses Verfahrens darin, dass man unter bestimmten Bedingungen bereits für $k\ll k^\ast$ eine brauchbare Näherung $x^k$ für $x^\ast$ erhalten kann. Dabei ist es von entscheidender Bedeutung, dass jeder Schritt des Algorithmus möglichst wenig Aufwand erfordert (etwa $\mathcal{O}(n)$ für gewisse schwach besetzte Matrizen). Analoges trifft auch für folgende Klasse von Algorithmen zu.
 
 \begin{algorithm}[Galerkin Basisalgorithmus]
 	\proplbl{algorithmus_2_11}
@@ -101,6 +121,8 @@ enddo
 	\end{lstlisting}
 	Output: $x^\ast=x^k$, $k^\ast=k$
 \end{algorithm}
+
+Unter der Voraussetzung der Durchführbarkeit bricht \propref{algorithmus_2_11} nach höchstens $n$ Schritten mit der Lösung $x^\ast$ von $Ax=b$ ab, da $\mathcal{L}_n=\Rn$ und $b-Ax^n\perp\mathcal{L}$ somit $b-Ax^n=0$ impliziert.
 
 \subsection{Das CG-Verfahren}
 
