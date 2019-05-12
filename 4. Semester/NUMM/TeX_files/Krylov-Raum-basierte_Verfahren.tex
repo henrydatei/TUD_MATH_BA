@@ -213,11 +213,6 @@ bezeichnet werden, wobei durch den Kontext klar ist, welche Vektoren $d^0,...,d^
 		(r^{k+1})^Td^j = 0\quad\text{für } j=0,...,k
 	\end{align}
 \end{lemma}
-
-\begin{align}
-	\label{2_23}
-	\mathcal{R}_k = \mathcal{K}_k(r^0,A)=\mathcal{D}_k
-\end{align}
 \begin{proof}
 	Zunächst sei die Funktion $\phi:\R^k\to\R$ für ein $k\in\{1,...,n\}$ wie folgt definiert:
 	\begin{align}
@@ -287,6 +282,42 @@ bezeichnet werden, wobei durch den Kontext klar ist, welche Vektoren $d^0,...,d^
 		&= 0 \notag
 	\end{align}
 \end{proof}
+
+Um nun die Teilprobleme \cref{2_14} mit Hilfe von \propref{lemma_2_14} lösen zu können, bietet es an, die Vektoren $d^0,d^1,...$ möglichst so zu erzeugen, dass sie einerseits $A$-konjugiert sind und andererseits $\mathcal{K}_k(r^0,A)=\mathcal{D}_k$ für $k=1,2,...$ gilt. Zuerst setzt man dazu
+\begin{align}
+	d^0=r^0\notag
+\end{align}
+so dass $\mathcal{K}_1(r^0,A)=\Span\{r^0\}=\mathcal{D}_1$ folgt. Zur Abkürzung sei noch
+\begin{align}
+	\mathcal{R}_k=\Span\{r^0,...,r^{k-1}\}\notag
+\end{align}
+definiert. Wir nehmen nun an, dass für ein $k\in\{1,...,n-1\}$ bereits
+\begin{align}
+	\label{2_23}
+	\mathcal{R}_k = \mathcal{K}_k(r^0,A)=\mathcal{D}_k
+\end{align}
+mit
+\begin{align}
+	\label{2_24}
+	A\text{-konjugierten Vektoren } d^0,...,d^{k-1}\in\Rn\backslash\{0\}
+\end{align}
+erfüllt ist. Falls $r^k\neq 0$ soll nun gezeigt werden, dass \cref{2_23} und \cref{2_24} mit einem geeignet zu bestimmenden $d^k$ auch für $k+1$ anstelle von $k$ gelten.
+
+Offenbar zeiht \cref{2_16} in \propref{lemma_2_14}
+\begin{align}
+	r^k &= b-Ax^k \notag \\
+	&= b-A(x^{k-1}+t_{k-1}d^{k-1}) \notag \\
+	&= r^{-1} - t_{k-1}Ad^{k-1} \notag
+\end{align}
+nach sich. Da
+\begin{align}
+	r^{k-1}&\in\mathcal{K}_k(r^0,A)\subseteq\mathcal{K}_{k+1}(r^0,A)\text{ und } \notag \\
+	Ad^{k-1}&\in A\mathcal{K}_k(r^0,A)\subseteq\mathcal{K}_{k+1}(r^0,A) \notag
+\end{align}
+folgt
+\begin{align}
+	r^k\in\mathcal{K}_{k+1}(r^0,A)\notag
+\end{align}
 
 \begin{algorithm}[CG-Verfahren]
 	\proplbl{algorithmus_2_15}
