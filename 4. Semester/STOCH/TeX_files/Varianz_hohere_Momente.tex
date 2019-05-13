@@ -70,3 +70,58 @@ Von Interesse ist insbesondere das zweite Moment.
 		&= np(1-p). 
 	\end{align*}
 \end{example}
+\begin{proposition}[Eigenschaften der (Ko-)varianz]
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y, X_1, \dots, X_n \in \Ln{2}(\P), a,b \in \R$.
+	\begin{enumerate}
+		\item $\Var(aX + b) = a^2\Var(X)$
+		\item  Sei
+		\begin{align*}
+			(\Cov(X,Y))^2 &\le \Var X \Var Y
+			\intertext{und insbesondere}
+			\abs{\Corr(X,Y)} &\le 1
+		\end{align*}
+		\item $\Var\brackets{\sum_{i=1}^n X_i} = \sum_{i=1}^n \Var(X_i) + \sum_{i=1}^n \Var(X_i,X_j)$ Sind die $X_1, \dots, X_n$ paarweise unkorreliert, so gilt die \begriff{Formel von \person{Bienaymé}}: %TODO how is he called?
+		\[
+			\Var\brackets{\sum_{i=1}^n X_i} = \sum_{i=1}^n \Var(X_i)
+		\]
+		\item $X \upmodels Y \implies \Corr(X,Y) = 0$
+		\item \begriff{\person{Tschebyscheff}-Ungleichung}: Für $\epsilon > 0$
+		\[
+			\P(\abs{X - \E X} > \epsilon) \le \frac{\Var X}{\epsilon^2}
+		\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof} %TODO add references!
+	\begin{enumerate}
+		\item Da $\E[aX + b] = a\E X + b$, folgt 
+		\begin{align*}
+			\Var(aX+b) &= \E[(a\E X +b - (a\E X + b))^2]\\
+			&= \E[a^2(X-\E X)^2] = a^2 \Var X.
+		\end{align*}
+		\item Wegen 1. können wir oBdA annehmen, dass $\E X = 0 = \E Y$. Dann wird 2. zu
+		\begin{align*}
+			\E[XY]^2 \le \E X^2 \cdot \E Y^2
+		\end{align*}
+		und dies ist die \person{Cauchy}-\person{Schwarz} Ungleichung.
+		\item Wähle wieder oBdA $\E X_i = 0$. Dann 
+		\begin{align*}
+			\Var \brackets{\sum_{i=1}^n X_i} &= \E \sqbrackets{(\sum_{i=1}^n X_i)^2}\\
+			&= \E \sqbrackets{\sum_{i,j = 1}^n X_i X_j} \\
+			&= \sum_{i,j = 1}^n \E [X_i X_j]\\
+			&= \sum_{i,j = 1}^n \Cov(X_i, X_j) \\
+			&= \sum_{i=1}^n \Var(X_i) + \sum_{\substack{i,j = 1\\ i \neq j}}^n \Cov(X_i, X_j)
+		\end{align*} 
+		\item Sei
+		\begin{align*}
+			X \upmodels Y &\implies \E[XY]\E X \E Y\\
+			&\implies \Cov(X,Y) = \E[XY] - \E X \E Y = 0\\
+			&= \Corr(X,Y) = 0
+		\end{align*}
+		\item Wende die \person{Markov}-Ungleichung auf $X' = (X-\E X)^2$ an, dann folgt
+		\begin{align*}
+			\P(\abs{X - \E X} > \epsilon) &\le \P((X - \E X)^2 > \epsilon^2)\\
+			\over{\person{Markov}}&{\le} \frac{1}{\epsilon^2} \E [(X - \E X)^2]\\
+			&= \frac{\Var X}{\epsilon^2}.
+		\end{align*}
+	\end{enumerate}
+\end{proof}

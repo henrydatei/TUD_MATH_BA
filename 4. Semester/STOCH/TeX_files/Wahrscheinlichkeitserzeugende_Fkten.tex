@@ -1,0 +1,96 @@
+\section{Wahrscheinlichkeitserzeugende Funktionen} %TODO add short title for sure
+\begin{definition}
+	\begin{enumerate}
+		\item Ist $\P$ Wahrscheinlichkeitsmaß auf $(\N_0), \pows(\N_0))$ mit Zähldichte $\rho$, so heißt
+		\[
+			\psi_{\P} := \sum_{k\in \N_0} s^k \rho(k) \quad 0 \le s \le 1,
+		\]
+		\begriff{Wahrscheinlichkeitserzuegende Funktion} von $\P$. (probability generating function - pgf)
+		\item Ist $X$ $\N_0$-wertige Zufallsvariable auf $(\O, \F, \P)$, so heißt
+		\[
+			\psi_X = \sum_{k\in \N_0} s^k \P(X=k) \quad 0 \le s \le 1,
+		\] 
+		\begriff{Wahrscheinlichkeitserzeugende Funktion} (pgf) von $X$.
+	\end{enumerate}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Da $\sum_{k\in \N_0} \rho(k) = 1$ ist die pgf auf $0 \le s \le 1$ wohldefiniert. Zudem ist $\psi$ auf $[0,1)$ unendlich oft differenzierbar.
+		\item Da $\rho(k) \ge 0 \forall k$ ist die pgf stets konvex. %TODO picture
+%		\begin{tikzpicture}
+%			
+%		\end{tikzpicture}
+		\item Durch \person{Taylor}entwicklung von $\psi$ um 0 gilt:
+		\begin{align*}
+			\psi_{\P}(s) = \sum_{k\in \N_0} \frac{s^k \psi_{\P}^{(k)}(0)}{k!}.
+			\intertext{so dass für alle $k \in \N_0$ folgt}
+			\rho(k) = \frac{\psi_{\P}^{(k)}(0)}{k!}
+		\end{align*}
+		Die Verteilung $\P$ (bzw. $\P\circ X^{-1}$) ist durch $\psi_{\P}$ (bzw. $\psi_X$) eindeutig bestimmt. Also ``erzeugt $\psi$ die Zähldichte''.
+	\end{itemize}
+\end{*remark}
+\begin{example}
+	\proplbl{5_15}
+	Ist $X\sim \Bin(n,p)$, so folgt
+	\begin{align*}
+		\psi_X (s) &= \sum_{k=0}^n s^k \binom{n}{k}p^k (1-p)^{n-k}\\
+		&= \sum_{k=0}^n \binom{n}{k}(ps)^k (1-p)^{n-k}\\
+		&= (ps - (1-p))^n = (1+p(s-1))^n .
+	\end{align*}
+\end{example}
+\begin{proposition}[Momentenberechnung mit der pgf]
+	Sie $X$ eine $\N_0$-wertige Zufallsvariable, dann gilt
+	\begin{align*}
+		\E [X^n] < \infty \quad n ge 1, \text{ genau dann, wenn } \psi_X^{(n)} = \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty.
+		\intertext{Insbesondere gilt dann}
+		\psi_X^{(n)} (1) = \E [X(X-1) \dots (X-n +1)]
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Sei $\rho(k) = \P (X=k)$. Durch $n$-faches gliedweises Differenzieren der Potenzreihe $\psi_X$ folgt
+	\begin{align*}
+		\psi_X^{(n)} (s) = \sum_{k\in \N_0} k(k-1)\cdots (k-n+1) \rho(k)s^{k-n} \quad 0\le s< 1.
+	\end{align*}
+	Dann existieren in $[0, \infty]$
+	\begin{align*}
+		\lim_{s \uparrow 1} \psi_X &= \lim_{s \uparrow 1} \sum_{k=0}^{\infty} k(k-1) \cdots (k-n+1) \rho(k)s^{k-n}\\
+		&= \sum_{k=n}^{infty} \rho(k)k(k-1) \cdots (k-n+1)\\
+		&= \E[X(X-1) \cdots (X-n+1)]
+		\intertext{sowie induktiv}
+		\psi^{(n)} (1) &= \lim_{s \uparrow 1} \frac{\psi^{(n-1)} - \psi^{n-1}(s)}{1-s}\\
+		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-(n-1)+1) \frac{1-s^{k-(n+1)}}{1-s}\\
+		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1)\cdots (k-n+2) \sum_{l=0}^{k-(n-1)} s^l\\
+		\over{\text{Monotonie}}&{=} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-n+2)(k-n+1)\\  
+		&= \E[X(X-1)\cdots (X-n+1)]
+	\end{align*}
+	Insbesondere gilt $\E X^n < \infty$ genau dann, wenn $\psi_X^{(n)}(1) < \infty \bzw \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty$
+\end{proof}
+\begin{example}
+	Sei $X \sim \Bin(n,p)$, dann gilt \cref{5_15}
+	\begin{align*}
+		\psi_X (s) &= (1+p(s-1))^n.
+		\intertext{Damit}
+		\psi'_X (s)&= n(1+p(s-1))^{n-1} p\\
+		\psi'_X (s) &= n(n-1)(1+p(s-1))^{n-2}\cdot p^2
+		\intertext{so dass}
+		\E[X] &= \psi'_X (1) = np
+		\intertext{und}
+		\Var X &= \E[X^2] - (\E X)^2 = \E [X(X-1)] + \E X = (\E X)^2\\
+		&= \psi''_X (1) + \psi'_X (1) - (\psi'_X (1))^2\\
+		&= n(n-1)p^2 + np - (np)^2 = np - np^2 = np(1-p).
+	\end{align*}
+\end{example}
+\begin{proposition}
+	Seien $X,Y$ unabhängige Zufallsvariablen, $\N_0$-wertig auf $(\O,\F,\P)$ Wahrscheinlichkeitsraum. Dann gilt
+	\begin{align*}
+		\psi_{X+Y} &= \E[s^{X+Y}] = \E[s^X s^Y]\\
+		&= \E[s^X] \E[s^Y]\\
+		&= \psi_X (s) \psi_Y (s).
+	\end{align*}
+\end{proposition}
+\begin{proposition}
+	Sind $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\N_0, \pows(\N_0))$, so gilt
+	\begin{align*}
+		\psi_{\P_1\star \P_2} = \psi_{\P_1}(s) \psi_{\P_2}(s) \quad 0 \le s \le 1.
+	\end{align*}
+\end{proposition}

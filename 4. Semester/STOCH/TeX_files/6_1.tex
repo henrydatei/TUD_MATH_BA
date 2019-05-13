@@ -1,0 +1,23 @@
+In \cref{chap3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
+\begin{align*}
+	\P(A \mid B) = \begin{cases}
+	\frac{\P(A \cap B)}{\P(B)} &\quad \P(B) > 0\\
+	0/ \text{ beliebig} &\quad \P(B) = 0
+	\end{cases}
+\end{align*}
+In Fall $\P(B) > 0$ ist $\P(\ast\mid B)$ ein Wahrscheinlichkeitsmaß und wir können das Integral 
+\[
+	\E[X \mid B] := \int X(\omega) \P(\d \omega \mid B)
+\]
+definieren. Wir bezeichnen die als \begriff{bedingten Erwartungswert} von $X$. Für $X= \indi_{A}$ folgt (für $\P(B) > 0$)
+\[
+	\int X(\omega) \P(\d \omega \mid B) = \P (A \mid B) = \frac{\P(A \cap B)}{\P(B)} = \frac{\E[\indi_{A\cap B}]}{\P(B)} = \frac{\E[X \indi_{B}]}{\P(B)}
+\]
+und mittels maßtheoretischer Induktion folgt
+\begin{align*}
+	\E[X \mid B] = \frac{\E[X \indi_B]}{\P(B)}
+\end{align*}
+allgemein ($X \in \Ln{1}, \P(B) > 0$)
+\begin{enumerate}[label=]
+	\item \ul{Frage:} (Wie) können wir bedingte Erwartungswerte definieren, wenn $\P(B) = 0$?
+\end{enumerate}
