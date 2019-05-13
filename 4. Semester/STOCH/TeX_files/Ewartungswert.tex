@@ -1,6 +1,6 @@
 \begin{enumerate}
 	\item \emph{Frage:} \\
-	\propref{4_2_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
+	\cref{4_2_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
 	Wie stark ist die Streuung um den Durchschnitt? $\rightsquigarrow$ Varianz
 \end{enumerate}
 \section{Der Erwartungswert}
@@ -73,19 +73,13 @@
 		&= np.
 	\end{align*}
 \end{example}
-Da der Erwartungswert ein Integral ist übertragen sich viele Eigenschaften. 
+Da der Erwartungswert ein Integral ist, übertragen sich viele Eigenschaften. 
 \begin{proposition}[Eigenschaften des Erwartungswertes]
 	Seien $X,Y,X_n: (\O,\F) \to (\R, \borel(\R)), n \in \N$ Zufallsvariablen in $\Ln{1}(\P)\und a,b \in \R$ konstant.
 	\begin{enumerate}
-		\item \ul{Linearität:}
-		\begin{align*}
-		\E[aX +bY] = a\E X + b\E Y
-		\end{align*}
-		\item \ul{Monotonie:} $X \le Y$, d.h. $X(\omega) \le Y(\omega), \forall \omega \in \Omega$ 
-		\begin{align*}
-		\implies \E[X] \le \E[Y]
-		\intertext{Insbesondere: $X \ge 0 \implies \E X \ge 0$}
-		\end{align*}
+		\item \ul{Linearität:} $\E[aX +bY] = a\E X + b\E Y$
+		\item \ul{Monotonie:} $X \le Y$, d.h. $X(\omega) \le Y(\omega), \forall \omega \in \Omega$\\ 
+		$\implies \E[X] \le \E[Y]$ und insbesondere gilt $X \ge 0 \implies \E X \ge 0$.
 		\item \ul{Lemma von \person{Fatou}:}
 		\begin{align*}
 		\E[\liminf_{n \to \infty}X_n] \le \liminf_{n \to \infty} \E[X_n]
@@ -97,21 +91,19 @@ Da der Erwartungswert ein Integral ist übertragen sich viele Eigenschaften.
 		\item \ul{Dominierte Konvergenz/ Satz von \person{Lebesgue}:} Sei $\lim_{n \to \infty} X_n(\omega) = X(\omega)$ und
 		\begin{align*}
 		\P(\set{\omega: \abs{X_n(\omega)} \le Y(\omega)}) = 1 \qquad (\abs{X} \le Y \P \text{ fast sicher})
-		\intertext{für $Y \in \Ln{1}(\P) \implies X \in \Ln{1}(\P) \und \lim_{n \to \infty} \E[X] = \E[X]$}
 		\end{align*}
-		\item \ul{\person{Markov}-Ungleichung:} $\epsilon > 0$
+		für $Y \in \Ln{1}(\P) \implies X \in \Ln{1}(\P) \und \lim_{n \to \infty} \E[X] = \E[X]$
+		\item \ul{\person{Markov}-Ungleichung:} Sei $\epsilon > 0$, dann gilt
 		\begin{align*}
 		\P(\abs{X} \ge \epsilon) \le \frac{1}{\epsilon} \E[\abs{X}]
 		\end{align*}
-		\item \ul{\person{Hölder}-Ungleichung:} $1 \le p,q = \infty, \frac{1}{p}+ \frac{1}{q} = 1$
+		\item \ul{\person{Hölder}-Ungleichung:} Sei $1 \le p,q = \infty, \frac{1}{p}+ \frac{1}{q} = 1$
 		\begin{align*}
 		\E[\abs{XY}] \le \brackets{\E[\abs{X}^p]}^{\frac{1}{p}} \brackets{\E[\abs{Y}^q]}^{\frac{1}{q}}
-		\intertext{($p =q =2$ \person{Cauchy}-\person{Schwarz}-Ungleichung)}
 		\end{align*}
-		\item \ul{\person{Jensen}'sche Ungleichung:} $X \ge 0 \und \varphi: [0,\infty) \to [0,\infty)$ konvex, messbar
-		\[
-		\varphi(\E[X]) \le \E[\varphi(X)]
-		\]
+		$p =q =2$ \person{Cauchy}-\person{Schwarz}-Ungleichung)
+		\item \ul{\person{Jensen}'sche Ungleichung:} Sei $X \ge 0 \und \varphi: [0,\infty) \to [0,\infty)$ konvex, messbar \\
+		$\varphi(\E[X]) \le \E[\varphi(X)]$.
 	\end{enumerate}
 \end{proposition}
 \begin{example}
@@ -130,17 +122,17 @@ Da der Erwartungswert ein Integral ist übertragen sich viele Eigenschaften.
 	\proplbl{5_1_8}
 	Seien $(\O,\F,\P)$ Wahrscheinlichkeitsraum un $X_1,\dots,X_n: \O \to \R^d$ unabhängige Zufallsvariablen und $f_1,\dots, f_n: \Rd \to \R$ messbar. Wenn $f_i(X_i)\ge 0, i = 1, \dots,n$ sei mit $f_i(X_i) \in \Ln{1}(\P), i=1,\dots,n$, dann gilt
 	\[
-		\E[\prod_{i=1}^n f_i(X_i)] = \prod_{i=1}^n \E[f_i(X_i)]
+		\E\sqbrackets{\prod_{i=1}^n f_i(X_i)} = \prod_{i=1}^n \E[f_i(X_i)]
 	\]
 \end{proposition}
-Für den Beweis von \propref{5_1_8} benötigen wir
+Für den Beweis von \propref{5_1_8} benötigen wir:
 \begin{lemma}
 	\proplbl{5_1_9}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y: \O \to \Rd$ unabhängige Zufallsvariablen und $h: \R^{2d} \to \R$ messbar. Falls $h \ge 0\oder h(X,Y) \in \Ln{1}(\P)$, dann
 	\begin{align*}
 		\E[h(X,Y)] &= \int_{\Rd}\int_{\Rd} h(x,y) \P(X \in \d x)\P(Y \in \d y)\\
-		&= \E[\int_{\Rd} h(X,y) \P(Y \in \d y)]\\
-		&= \E[\int_{\Rd} h(x,Y)\P(X \in \d x)]
+		&= \E\sqbrackets{\int_{\Rd} h(X,y) \P(Y \in \d y)}\\
+		&= \E\sqbrackets{\int_{\Rd} h(x,Y)\P(X \in \d x)}
 	\end{align*}
 \end{lemma}
 \begin{proof}
@@ -149,9 +141,9 @@ Für den Beweis von \propref{5_1_8} benötigen wir
 		\E[h(X,Y)] &= \int_{\O} h(X(\omega),Y(\omega))\d \P(\omega)\\
 		\over{\propref{5_1_3}}&{=} \int_{\Rd} h(x,y)\P(X\in \d x, Y \in \d y)\\
 		\over{X \upmodels Y, \propref{3_2_21}}&{=} \int_{\R^{2d}} h(x,y) \P_X \otimes \P_Y(\d x, \d y)\\
-%		\over{\text{\person{Fubini}}}&{=} \int_{\Rd} \int_{\Rd} h(x,y)\P_X(\d x)\P_Y(\d y)\\
-%		\over{\propref{5_1_3}}&{=} \int_{\O} \int_{\Rd} h(x,Y(\omega))\P_X (\d x)\P(\omega)\\
-%		&= \E[\int_{\Rd} h(x,Y)\P_X(\d x)].
+		\over{\text{\person{Fubini}}}&{=} \int_{\Rd} \int_{\Rd} h(x,y)\P_X(\d x)\P_Y(\d y)\\
+		\over{\propref{5_1_3}}&{=} \int_{\O} \int_{\Rd} h(x,Y(\omega))\P_X (\d x)\P(\omega)\\
+		&= \E[\int_{\Rd} h(x,Y)\P_X(\d x)].
 	\end{align*}
 \end{proof}
 \begin{proof}[\propref{5_1_8}]
@@ -165,7 +157,7 @@ Für den Beweis von \propref{5_1_8} benötigen wir
 	\begin{align*}
 		\E[f(X)g(Y)] = \E[\abs{f(X)}]\E[\abs{g(Y)}] < \infty
 	\end{align*}
-	also $f(X)g(Y) \in \Ln{1}(\P)$. Die Aussage folgt über die obige Rechnung. Für allgemeines $n$ folgt \propref{5_1_8} durch Iteration mit \propref{3_2_19}.
+	also $f(X)g(Y) \in \Ln{1}(\P)$. Die Aussage folgt über die obige Rechnung. Für allgemeines $n$ folgt \propref{5_1_8} durch Iteration mit \cref{3_2_19}.
 \end{proof}
 %TODO add pic
 %\begin{tikzpicture}
