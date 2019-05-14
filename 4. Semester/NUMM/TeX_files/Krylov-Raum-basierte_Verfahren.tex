@@ -98,6 +98,7 @@ enddo
 \end{algorithm}
 
 \begin{proposition}
+	\proplbl{satz_2_10}
 	\propref{algorithmus_2_9} ist wohldefiniert und bricht (bei exakter Arithmetik) nach höchstens $n$ (das heißt $k^\ast\le n$) it der exakten Lösung $x^\ast$ des Gleichungssystems $Ax=b$ ab.
 \end{proposition}
 \begin{proof}
@@ -318,6 +319,64 @@ folgt
 \begin{align}
 	r^k\in\mathcal{K}_{k+1}(r^0,A)\notag
 \end{align}
+Wegen $r^k\in\mathcal{R}_{k+1}\backslash\{0\}$ hat man weiter
+\begin{align}
+	\mathcal{K}_{k+1}(r^0,A) = \mathcal{R}_{k+1}\notag
+\end{align}
+Um auch $\mathcal{K}_{k+1}(r^0,A)=\mathcal{D}_{k+1}$ zu erreichen, muss man also
+\begin{align}
+	\mathcal{D}_{k+1} = \Span\{\mathcal{D}_k,r^k\}\notag
+\end{align}
+setzen. Zur Bestimmung eines Vektors $d^k\neq 0$ derart, dass $\mathcal{D}_{k+1} = \Span\{\mathcal{D}_k,d^k\}$ und $d^0,...,d^k$ $A$-konjugiert sind, kann (analog zum Orthogonalisierungsverfahren nach \person{Gram-Schmidt}) der Ansatz
+\begin{align}
+	\label{2_25}
+	d^k=r^k+\sum_{i=0}^{k-1}\beta_id^i
+\end{align}
+verwendet werden. Wegen \cref{2_17} in \propref{lemma_2_14} und der Voraussetzung $r^k\neq 0$ hat man zunächst $d^k\neq 0$. Die gewünschte $A$-Konjugiertheit liefert nun die Bedingungen
+\begin{align}
+	0&=(d^k)^TAd^j \notag \\
+	&= (r^k)^TAd^j+\sum_{i=0}^{k-1}\beta_i(d^i)^TAd^j\quad\text{für } j=0,...,k-1\notag
+\end{align}
+Auf Grund der entsprechend \cref{2_23} vorausgesetzten $A$-Konjugiertheit von $d^0,...,d^{k-1}$ ist dies äquivalent zu
+\begin{align}
+	0=(r^k)^TAd^j+\beta_j(d^j)^TAd^j\quad\text{für } j=0,...,k-1\notag
+\end{align}
+Wegen der positiven Definitheit von $A$ hat man
+\begin{align}
+	\label{2_26}
+	\beta_j = -\frac{(r^k)^TAd^j}{(d^j)^TAd^j}\quad\text{für } j=0,...,k-1
+\end{align}
+Für $j\in\{0,...,k-1\}$ ergibt sich für den Zähler des Bruches in \cref{2_26}
+\begin{align}
+	(r^k)^TAd^j &= \frac{1}{t_j}(r^k)^TA(x^{j+1}-x^j) \notag \\
+	&= \frac{1}{t_j}(r^k)^T(r^j-r^{j+1}) \notag
+\end{align}
+Da $r^j\in\mathcal{R}_k=\mathcal{D}_k=\Span\{d^0,...,d^{k-1}\}$ nach \cref{2_23} für $j\in\{0,...,k-1\}$ gilt, liefert \cref{2_17} in \propref{lemma_2_14}, dass
+\begin{align}
+	(r^k)Ad^j = \begin{cases}
+		0 & \text{für } j=0,...,k-2 \\ \frac{-1}{t_{k-1}}(r^k)^Tr^k & \text{für } j=k-1 
+	\end{cases}\notag
+\end{align}
+Somit und wegen \cref{2_16} folgt aus \cref{2_26}
+\begin{align}
+	\label{2_27}
+	\beta_0=\dots=\beta_{k-2}=0\quad\text{und}\quad\beta_{k-1}=\frac{\norm{r^k}_2^2}{\norm{r^{k-1}}^2_2}
+\end{align}
+sowie mit \cref{2_25}
+\begin{align}
+	\label{2_28}
+	d^k=r^k+\beta_{k-1}d^{k-1}
+\end{align}
+Da \cref{2_23} und \cref{2_24} trivialerweise auch für $k=0$ richtig waren, ist gezeigt, dass \cref{2_23} und \cref{2_24} mit \cref{2_27} und \cref{2_28} für $k=1,2,...$ gelten, sofern $r^{k-1}\neq 0$.
+
+Multipliziert man $d^k$ in \cref{2_28} von links mit $(r^k)^T$ und berücksichtigt man \cref{2_17}, so ergibt sich noch folgenden Vereinfachung für $t_k$ aus \cref{2_16}:
+\begin{align}
+	\label{2_29}
+	t_k &= \frac{(r^k)^Td^k}{(d^k)^TAd^k} \notag \\
+	&= \frac{\norm{r^k}_2^2+\beta_{k-1}(r^k)^Td^{k-1}}{(d^k)^TAd^k} \notag \\
+	&= \frac{\norm{r^k}_2^2}{(d^k)^TAd^k} \notag
+\end{align}
+Mit \cref{2_27}, \cref{2_28}, \cref{2_29} und unter Beachtung der Äquivalenz der Teilprobleme \cref{2_13} und \cref{2_14} ergibt sich mit $B=A^{-\sfrac{1}{2}}$ folgende Realisierung des Algorithmus \propref{algorithmus_2_9}
 
 \begin{algorithm}[CG-Verfahren]
 	\proplbl{algorithmus_2_15}
@@ -336,6 +395,7 @@ enddo
 	\end{lstlisting}
 	Output: $x^\ast=x^k$
 \end{algorithm}
+Der Rechenaufwand pro Schritt des CG-Verfahrens ist durch den Aufwand zur Berechnung des Matrix-mal-Vektor-Produkts $Ad^k$ (sowie einige weitere Operationen wie Skalarprodukte) gegeben. Falls die Matrix $A$ geeignet schwach besetzt ist, kommt man daher mit $\mathcal{O}(n)$ Operationen pro Schritt des CG-Verfahrens aus. Von besonderer Bedeutung zur Erreichung dieses geringen Aufwandes ist die sehr einfache Bestimmung der $A$-konjugierten Basisvektoren $d^0,d^1,...$ der \person{Krylov}-Räume $\mathcal{K}_1(r^0,A),\mathcal{K}_2(r^0,A),...$. Obwohl wegen \propref{satz_2_10} bekannt ist, dass das CG-Verfahren (bei exakter Arithmetik) nach höchstens $n$ Schritten mit einer Lösung von $Ax=b$ abbricht, gilt das Interesse hier der Frage, wie sich der Fehler der Näherung $x^k$ gegenüber einer Lösung $x^\ast$ abschätzen lässt. Dies ist besonders für $k\ll n$ von praktischem Interesse.
 
 \subsection{Fehlerverhalten des CG-Verfahrens}
 
