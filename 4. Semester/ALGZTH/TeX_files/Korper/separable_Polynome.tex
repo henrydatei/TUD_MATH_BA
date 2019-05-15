@@ -98,6 +98,7 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 
 %TODO
 \begin{conclusion}
+	\proplbl{1:6:8}
 	Sei $f$ irreduzibel
 	\begin{enumerate}[label={(\alph*)}]
 		\item Ist $\chara(K) = 0$, so ist $f$ separabel
@@ -122,8 +123,8 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 	$K$ ist \begriff{vollkommen} $\iff$ jedes irreduzibel $f \in K[X]$ ist separabel.
 \end{definition}
 \begin{example}
-	\begin{enumerate}[label={(\alph*)}]
-		\item $\chara(K) = 0 \implies K$ ist vollkommen
+	\begin{expenum}
+		\item \label{1:6:12:a} $\chara(K) = 0 \implies K$ ist vollkommen
 		\item $K = \bar{K} \implies K$ ist vollkommen
 		\item $K = \F_p (t)$ ist nicht vollkommen:
 		\begin{flalign*}
@@ -131,7 +132,7 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 			f' &= pX^{p-1} = 0 \implies f \text{ nicht seperabel.} &
 		\end{flalign*}
 		Tatsächlich hat $f$ nur eine Nullstelle in $\bar{K}$: $f = X^p - t \overset{\text{V1}}{=} (X - t^{\frac{1}{p}})^p.$
-	\end{enumerate}
+	\end{expenum}
 \end{example}
 \begin{definition}
 	Sei $\chara(K) = p > 0$.
@@ -158,16 +159,17 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 	\end{itemize}
 \end{proof}
 \begin{remark}
-	\begin{enumerate}[label={(\alph*)}]
-		\item Da $\Phi_p \in \End(K) $ ist $K^p$ ein Teilkörper von $K$ und $\Phi_p$ ist injektiv.
+	\begin{remarkenum}
+		\item \label{1:6:13:a} Da $\Phi_p \in \End(K) $ ist $K^p$ ein Teilkörper von $K$ und $\Phi_p$ ist injektiv.
 		\item Insbesondere gibt es zu jedem $a \in K$ ein eindeutig bestimmtes $a^{\frac{1}{p}} \in \bar{K}$ mit
 		\begin{flalign*}
 			\qquad & \Phi_p\Big(a^{\frac{1}{p}}\Big) = \Big(a^{\frac{1}{p}}\Big)^p = a &
 		\end{flalign*}
 		\item Für $a \in \F \cong \F_p$ ist $\Phi_p(a) = a$. (z.B. $\Phi_p(1) = 1$ oder kleiner Satz von \person{Fermat})
-	\end{enumerate}
+	\end{remarkenum}
 \end{remark}
 \begin{lemma}
+	\proplbl{1:6:14}
 	Sei $\chara(K) = p > 0$, $a \in K \setminus K^p$. Dann ist $f = X^p -a$ irreduzibel und inseparabel
 \end{lemma}
 \begin{proof}
@@ -185,3 +187,30 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 	\item[$\implies$] $k = p$ $\implies f = g$ irreduzibel 
 	\end{itemize}
 \end{proof}
+
+\begin{proposition}
+	\proplbl{1:6:15}
+	Genau dann ist $K$ vollkommen, wenn \begin{enumerate}[label={(\roman*)}]
+		\item $\chara(K) = 0$ oder
+		\item $\chara(K) = ß > 0$ und $K^P = K$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{itemize}[topsep=-6pt]
+\item $\chara(K) = 0$: klar (\cref{1:6:12:a})
+\item $\chara(K) = p > 0$: \begin{itemize}
+	\item[($\Rightarrow$)] Es existiert ein $a\in K\setminus K^p$, so ist $K$ nicht vollkommen nach \cref{1:6:14}.
+	\item[($\Leftarrow$)] Sei $f(X)\in K[X]$ irreduzibel und inseparabel. Nach \cref{1:6:8} existiert ein $g(X)\in K[X]$ mit \begin{flalign*}
+		\qquad & f(X) = g(X^p) &
+	\end{flalign*}
+	Setze $g(X) = \sum_{i=0}^n a_i X^i\in K[X]$. Dann ist \begin{flalign*}
+		\qquad & f(X) = g(X^p) = \sum_{i=0}^n a_i \big(X^i)^p \overset{=}{\text{V1}} \Bigg(\sum_{i=0}^n \underbrace{a_i^{1\!\slash\!n}}_{\mathclap{\text{$\in K$ da $K^p=K$}}} X^i\Bigg)^p, &
+	\end{flalign*}
+	folglich ein Widerspruch.
+	\end{itemize}
+\end{itemize}
+\end{proof}
+\begin{example}
+	$K$ endlich $\Rightarrow$ $K$ vollkommen (\cref{1:6:13:a}, \cref{1:6:15})
+\end{example}
