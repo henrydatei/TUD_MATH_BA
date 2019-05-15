@@ -43,20 +43,20 @@ Durch \cref{eq_1_1_1} erklärte Verfahren heißt \begriff{gewöhnliches Interati
 \end{proof}
 
 \begin{example}
-	Die Nullstellenaufgabe $\cos x - 2x = 0$ sei zu lösen. Eine mögliche Formulierung als Fixpunktaufgabe ist
+	Die Nullstellenaufgabe $\cos(x) - 2x = 0$ sei zu lösen. Eine mögliche Formulierung als Fixpunktaufgabe ist
 	\begin{align}
-	\Phi(x) = x \text{   mit  } \Phi(x) := -x + \cos x \notag
+	\Phi(x) = x \text{   mit  } \Phi(x) := -x + \cos(x) \notag
 	\end{align}
 	Offenbar ist $\Phi: \R \to \R$ selbstabbildend. Weiter ergibt sich
 	\begin{align}
-	\Phi'(x) = -1 - \sin x \notag
+	\Phi'(x) = -1 - \sin(x) \notag
 	\end{align}
 	Für $x \in D := (0,1)$ gilt daher $\vert \Phi' (x)\vert > 1$. Mit \propref{1_1_2} folgt $\vert \Phi(x) - \Phi(y)\vert \ge \abs{x-y}$ für mindestens ein Paar $(x,y) \in D \times D$. Somit ist $\Phi$ in $D$ nicht kontrahierend.
-	Definiert man $\Phi$ aber durch $\Phi(x) := \sfrac{1}{2}\cos x$, so ist die Fixpunktaufgabe $\sfrac{1}{2}\cos x = x$ wiederum zur Nullstellenaufgabe äquivalent und es folgt
+	Definiert man $\Phi$ aber durch $\Phi(x) := \sfrac{1}{2}\cos(x)$, so ist die Fixpunktaufgabe $\sfrac{1}{2}\cos(x) = x$ wiederum zur Nullstellenaufgabe äquivalent und es folgt
 	\begin{align}
-	\Phi'(x) = \frac{1}{2}\sin x. \notag
+	\Phi'(x) = \frac{1}{2}\sin(x). \notag
 	\end{align} 
-	Damit hat man $\vert \Phi'(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos x$ und $x^0 := 1$ ergibt:
+	Damit hat man $\vert \Phi'(x)\vert \le \sfrac{1}{2}$ für alle $x \in \R$. Also ist die zuletzt definierte Abbildung $\Phi$ kontrahierend auf $\R$ (und dort natürlich selbstabbildend), so dass die Voraussetzungen des Banachschen Fixpunktsatzes erfüllt sind. Die Fixpunktiteration mit $\Phi(x) = \sfrac{1}{2}\cos(x)$ und $x^0 := 1$ ergibt:
 	\begin{align}
 		x^1 &= 0.270\dots \notag \\
 		x^2 &= 0.481\dots \notag \\

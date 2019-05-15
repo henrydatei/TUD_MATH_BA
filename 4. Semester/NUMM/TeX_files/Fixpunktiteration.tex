@@ -12,9 +12,9 @@ Grundidee dieser Verfahren ist die geeignete Umformulierung des System $Ax = b$ 
 \end{align}
 wobei $B \in \R^{n \times n}$ eine noch zu wählende reguläre Matrix ist. Bei Wahl eines Startpunktes $x^0 \in \Rn$ ergibt sich das gewöhnliche Iterationsverfahren damit zu
 \begin{align}
-	x^{k+1} := x^{k} - B^{-1}(A x^k -b) = (I - B^{-1}A)x^{k} + B^{-1}b, \qquad k = 0,1,2,\dots \label{eq_2_2_2} %TODO add underbraces for M = I - B^{-1}A and c = B^{-1}b
+	x^{k+1} := x^{k} - B^{-1}(A x^k -b) = (\mathbbm{1} - B^{-1}A)x^{k} + B^{-1}b, \qquad k = 0,1,2,\dots \label{eq_2_2_2} %TODO add underbraces for M = I - B^{-1}A and c = B^{-1}b
 \end{align}
-Mit den Bezeichnung $M := I - B^{-1}A$ und $c:= B^{-1}b$ untersuchen wir deshalb die Iterationsvorschrift
+Mit den Bezeichnung $M := \mathbbm{1} - B^{-1}A$ und $c:= B^{-1}b$ untersuchen wir deshalb die Iterationsvorschrift
 \begin{align}
 	x^{k+1} := Mx^k + c. \label{eq_2_2_3}
 \end{align}
@@ -24,12 +24,12 @@ Die zugehörige Fixpunktabbildung $\Phi: \Rn \to \Rn$ ist damit offenbar gegeben
 \end{align}
 \begin{proposition}
 	\proplbl{2_2_1}
-	Es sei $B \in \Rnn$ regulär und mit $M:= I - B^{-1}A$ gelte
+	Es sei $B \in \Rnn$ regulär und mit $M:= \mathbbm{1} - B^{-1}A$ gelte
 	\begin{align}
 		\lambda := \norm{M}_{\ast} < 1 \label{eq_2_1_4}
 	\end{align}
 	wobei $\norm{\cdot}_{\ast}$ die einer Vektornorm $\norm{\cdot}$ zugeordnete Matrixnorm bezeichnet. Dann gilt:
-	\begin{enumerate} %TODO add alph
+	\begin{enumerate}[label=(\alph*)]
 		\item Die für eine beliebiges $x^0 \in \Rn$ durch \cref{eq_2_2_3} erzeugte Folge $\set{x^k}$ konvergiert gegen die eindeutige Lösung $x*$ des linearen Gleichungssystems \cref{eq_2_2_1}.
 		\item Die Abschätzungen \cref{eq_1_2_2} - \cref{eq_1_2_4} sind für alle $k \in \N$ erfüllt.
 	\end{enumerate}
@@ -43,7 +43,7 @@ Die zugehörige Fixpunktabbildung $\Phi: \Rn \to \Rn$ ist damit offenbar gegeben
 
 \begin{remark}
 	\proplbl{2_2_2}
-	In \propref{2_2_1}a) kann die Folgerung \cref{eq_2_1_4} durch die Bedingung
+	In \propref{2_2_1} (a) kann die Folgerung \cref{eq_2_1_4} durch die Bedingung
 	\begin{align}
 	\rho(M) < 1\label{eq_2_1_5}
 	\end{align}
@@ -115,28 +115,22 @@ zu wählen. Dieses Verfahren heißt \begriff{Gesamtschrittverfahren} oder \begri
 	\begin{align}
 		\norm{M_J}_{\infty} = \norm{D^{-1}(L+R)}_{\infty} =\max_{i = 1,\dots,n} \frac{1}{\abs{a_{ii}}} \sum_{\substack{j =1 \\ j\neq i}}^n \abs{a_{ij}}  = \lambda_{SD}.\notag
 	\end{align}
-	Die vorrausgesetzte strenge Diagonaldominanz von $A$ sichert $\lambda_{SD} < 1$.
+	Die vorausgesetzte strenge Diagonaldominanz von $A$ sichert $\lambda_{SD} < 1$.
 \end{proof}
 
 \subsection{Das \person{Gauss-Seidel}-Verfahren}
 Wir setzen hier voraus, dass $L + D$ regulär ist und wählen
-
 \begin{align}
 	B := L + D \label{1_2_8}
 \end{align}
-
 Damit ergibt sich die Iterationsvorschrift
-
 \begin{align}
 	x^{k+1} = x^k - (L+D)^{-1}(Ax^k - b) = - (L+D)^{-1}R x^k + (L+D)^{-1}b. \label{1_2_9}.
 \end{align}
-
 In \cref{eq_2_2_3} ist entsprechend
-
 \begin{align}
 	M:= M{GS} := - (L+D)^{-1}R \text{ und } c:= c_{GS} := (L+D)^{-1}b \notag
 \end{align}
-
 zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begriff{Gauß-Seidel-Verfahren}. Der Aufwand pro Schritt beträgt im ungünstigsten Fall $\Landau(n^2)$. Verbesserungen sind möglich, wenn eine Sparse-Struktur in $A$ ausgenutzt werden kann.
 
 \begin{proposition}
@@ -184,29 +178,24 @@ zu wählen. Dieses Verfahren heißt \begriff{Einzelschrittverfahren} oder \begri
 \subsection{SOR-Verfahren}
 
 Um dieses verfahren zu beschreiben, nehmen wir an, dass für ein $\omega \neq 0$ die Matrix
-
 \begin{align}
 	B:=L + \frac{1}{\omega}D \label{eq_2_2_11}
 \end{align}
 regulär ist. Damit ergibt sich die Iterationsvorschrift
-
 \begin{align}
 	x^{k+1} := x^k - \brackets{L+\frac{1}{\omega}D}^{-1}(Ax^k - b) = M(\omega)x^k + c(\omega)\notag
 \end{align}
-
 \begin{align}
-	M(\omega) := I -  \brackets{L + \frac{1}{\omega} D^{-1} A} 
+	M(\omega) := \mathbbm{1} -  \brackets{L + \frac{1}{\omega} D^{-1} A} 
 	= \brackets{L + \frac{1}{\omega} D}^{-1}
 %	\brackts{\frac{1-\omega}{\omega} D - R} \notag
 \end{align}
-
 und
-
 \begin{align}
 	c(\omega) :=  \brackets{L+\frac{1}{\omega}D}^{-1}b.
 \end{align}
 
-Für $\omega = 1$ erhält man offenbar als Spezialfall das Gauß-Seidel-Verfahren, so dass der folgende Satz auch dafür Anwendung finden kann. Man beachte dazu \propref{2_2_2}.
+Für $\omega = 1$ erhält man offenbar als Spezialfall das \person{Gauß-Seidel}-Verfahren, so dass der folgende Satz auch dafür Anwendung finden kann. Man beachte dazu \propref{2_2_2}.
 
 \begin{proposition}
 	Die Matrix $A$ sei symmetrisch und positiv definit. Dann ist die Matrix $B$ aus \cref{eq_2_2_11} regulär (für jedes $\omega \neq 0$). Falls $\omega \in (0,2)$, dann gilt
@@ -225,7 +214,7 @@ Für $\omega = 1$ erhält man offenbar als Spezialfall das Gauß-Seidel-Verfahre
 	sowie (unter Berücksichtigung der Definition von $M$ und von $A = A^T$ und $R = L^T$)
 	\begin{align}
 	A - M(\omega)^T AM(\omega) 
-	&= A - (I - B^{-1}A)^T A(I-B^{-1}A)\notag\\
+	&= A - (\mathbbm{1} - B^{-1}A)^T A(\mathbbm{1}-B^{-1}A)\notag\\
 	&= AB^T A + AB^{-1}A - AB^{T-1}AB^{-1}A\notag\\
 	&= (B^{-1}A)^T (B + B^T - A)(B^{-1}A)\notag\\
 	&= (B^{-1}A)^T \brackets{L + \frac{1}{\omega}D + L^T + \frac{1}{\omega}D - L - D - L^T})(B^{-1}A)\notag\\
@@ -247,14 +236,3 @@ Für $\omega = 1$ erhält man offenbar als Spezialfall das Gauß-Seidel-Verfahre
 \end{proof}
 
 Es ist nun naheliegend, dass man $\omega \in(0,2)$ so wählen möchte, dass $\rho(\omega)$ möglichst klein ist. Dies ist in bestimmten Fällen näherungsweise möglich, ansonsten beschränkt man sich auf geeignete Heuristiken zur Wahl von $\omega$. Auf der Fixpunktiteration \cref{eq_2_2_3} beruhende Verfahren werden häufig auch \begriff{Splitting-Methoden} genannt. Es gibt noch weitere solche Verfahren, auf die hier nicht eingegangen wird.
-\subsection{Koordinatenweise Darstellung der Splitting Methode}
-\begin{align*}
-	0 = Ax \cdot b = \begin{pmatrix}
-	a_{11}x_1 &+ a_{12}x_2 &+ \cdots &+ a_{1n} x_n &- b_1\\
-	\vdots & & \vdots & \vdots\\
-	a_{n1}x_1 &+ a_{n2}x_2 &+ \cdots &+ a_{nn}x_n &-b_n
-	\end{pmatrix}
-\end{align*}
-\begin{enumerate}
-	\item 
-\end{enumerate}
