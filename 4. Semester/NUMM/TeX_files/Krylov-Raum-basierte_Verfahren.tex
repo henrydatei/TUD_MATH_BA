@@ -451,6 +451,7 @@ gegeben ist, wobei $\lambda_{max}$ bzw. $\lambda_{min}$ den größten bzw. klein
 \end{align}
 
 \begin{proposition}
+	\proplbl{satz_2_18}
 	Es seien $A\in\Rnn$ symmetrisch und positiv definit und $b\in\Rn$. Weiter seien $x^\ast=A^{-1}b$, $\kappa=\cond_2(A)$ und $\{x^k\}$ eine durch \propref{algorithmus_2_15} (CG-Verfahren) erzeugte Folge. Dann gilt
 	\begin{align}
 		\norm{x^k-x^\ast}_{A^{\sfrac{1}{2}}} \le 2\left(\frac{\sqrt{\kappa} - 1}{\sqrt{\kappa} + 1}\right)^k\norm{x^0 - x^\ast}_{A^{\sfrac{1}{2}}}\notag
@@ -565,6 +566,16 @@ gegeben ist, wobei $\lambda_{max}$ bzw. $\lambda_{min}$ den größten bzw. klein
 
 \subsection{Vorkonditionierung}
 
+\propref{satz_2_18} zeigt, dass das CG-Verfahren den Fehler $\norm{x^k-x^\ast}_{A^{\sfrac{1}{2}}}$ insbesondere dann schnell reduziert, wenn die Kondition der symmetrischen und positiv definiten Matrix $A$ klein ist, das heißt, wenn der größte und der kleinste Eigenwert von $A$ eng beieinander liegen. Falls dem nicht so ist, dass wäre es sinnvoll, das CG-Verfahren nicht auf $Ax=b$ sondern auf ein (in einem bestimmten Sinn) äquivalentes Gleichungssystem anzuwenden, dessen Systemmatrix ebenfalls symmetrisch und positiv definit ist, aber eine kleinere Kondition als $A$ besitzt. Um ein solches Gleichungssystem zu erhalten, sei zunächst $C\in\Rnn$ eine beliebige reguläre Matrix. Dann gilt
+\begin{align}
+	Ax=b\quad\Leftrightarrow\quad (C^{-1}A(C^T)^{-1})C^Tx=C^{-1}b\notag
+\end{align}
+Mit der symmetrischen und positiv definiten Matrix $\tilde{A}=C^{-1}A(C^T)^{-1}$ und $\tilde{b}=C^{-1}b$ ergibt sich das Gleichungssystem 
+\begin{align}
+	\tilde{A}\tilde{x}=\tilde{b}\notag
+\end{align}
+wobei man aus dessen Lösung $\tilde{x}^\ast=\tilde{A}^{-1}\tilde{b}$ die Lösung $x^\ast=A^{-1}b$ vermittels $x^\ast=(C^T)^{-1}\tilde{x}^\ast$ erhalten kann.
+
 \begin{algorithm}[CG-Verfahren für $\tilde{A}\tilde{x}=\tilde{b}$]
 	\proplbl{algorithmus_2_20}
 	Input: $\tilde{x}^0\in\Rn$, $\tilde{A}\in\Rnn$ symmetrisch und positiv definit, $\tilde{b}\in\Rn$
@@ -582,6 +593,69 @@ gegeben ist, wobei $\lambda_{max}$ bzw. $\lambda_{min}$ den größten bzw. klein
 	\end{lstlisting}
 	Output: $x^\ast=x^k$
 \end{algorithm}
+
+Setzt man für $k=1,2,...$
+\begin{align}
+	\label{2_37}
+	x^k=(C^T)^{-1}\tilde{x}^k\quad r^k=C\tilde{r}^k\quad d^k=(C^T)^{-1}\tilde{d}^k
+\end{align}
+so folgt
+\begin{align}
+	\tilde{t}_k &= \frac{\norm{\tilde{r}^k}_2^2}{(\tilde{d}^k)^T\tilde{A}\tilde{d}^k} \notag \\
+	&= \frac{(r^k)^T(C^T)^{-1}C^{-1}r^k}{(C^Td^k)^T(C^{-1}A(C^T)^{-1})C^Td^k} \notag \\
+	&= \frac{(r^k)^T(C^T)^{-1}C^{-1}r^k}{(d^k)^TAd^k} \notag
+\end{align}
+sowie
+\begin{align}
+	\tilde{x}^{k+1} = \tilde{x}^k + \tilde{t}_k\tilde{d}^k = C^Tx^k+\tilde{t}_kC^Td^k\notag
+\end{align}
+Wegen \cref{2_37} ergibt sich außerdem
+\begin{align}
+	\label{2_38}
+	x^{k+1} = x^k+\tilde{t}_kd^k
+\end{align}
+Für $\tilde{r}^{k+1}$ erhält man mit \cref{2_37}
+\begin{align}
+	\tilde{r}^{k+1} &= \tilde{r}^k - \tilde{t}_k\tilde{A}\tilde{d}^k \notag \\
+	&= C^{-1}r^k-\tilde{t}_kC^{-1}A(C^T)^{-1}C^Td^k \notag \\
+	&= C^{-1}(r^k-\tilde{t}_kAd^k) \notag
+\end{align}
+Wegen \cref{2_37} gilt außerdem
+\begin{align}
+	\label{2_39}
+	r^{k+1} = C\tilde{r}^{k+1} = r^k-\tilde{t}_kAd^k
+\end{align}
+Mit \cref{2_37} erhält man
+\begin{align}
+	\tilde{\beta}_k = \frac{\norm{\tilde{r}^{k+1}}_2^2}{\norm{\tilde{r}^k}_2^2} = \frac{(r^{k+1})^T(C^T)^{-1}C^{-1}r^{k+1}} {(r^k)^T(C^T)^{-1}C^{-1}r^k} \notag
+\end{align}
+sowie
+\begin{align}
+	\tilde{d}^{k+1} &= \tilde{r}^{k+1}+\tilde{\beta}_k\tilde{d}^k \notag \\
+	&= C^{-1}r^{k+1} + \tilde{\beta}_kC^Td^k \notag \\
+	&= C^T((C^T)^{-1}C^{-1}r^{k+1}+\tilde{\beta}_kd^k) \notag
+\end{align}
+Wegen \cref{2_37} liefert das Letztere
+\begin{align}
+	\label{2_40}
+	d^{k+1} = (C^T)^{-1}C^{-1}r^{k+1}+\tilde{\beta}_kd^k
+\end{align}
+Zur weiteren Vereinfachung der Darstellung in \propref{algorithmus_2_20} ersetzen wir wegen \cref{2_38}, \cref{2_39} und \cref{2_40} nun die Tilde-Größen $\tilde{x}^k$, $\tilde{r}^k$ und $\tilde{d}^k$ durch die in \cref{2_37} definierten Größen ohne Tilde. Des weiteren wird die symmetrische positiv definite Matrix
+\begin{align}
+	P=CC^T\notag
+\end{align} 
+benutzt, um $C$ aus allen Rechnungen zu eliminieren. Insbesondere wird dazu ein Vektor $z^k$ als Lösung des linearen Gleichungssystems
+\begin{align}
+	CC^Tz=r^k\quad\text{bzw. äquivalent von}\quad Pz=r^k\notag
+\end{align}
+definiert. Man beachte weiter, dass nach \cref{2_37} und \propref{algorithmus_2_20}
+\begin{align}
+	d^0&=(C^T)^{-1}\tilde{d}^0 \notag \\
+	&= (C^T)^{-1}\tilde{r}^0 \notag \\
+	&= (C^T)^{-1}C^{-1}r^0 \notag \\
+	&= P^{-1}r^0 \notag
+\end{align}
+Schließlich ersetzen wir noch die Bezeichnungen $\tilde{t}_k$ bzw. $\tilde{\beta}_k$ durch $t_k$ bzw. $\beta_k$. Damit hat man folgenden Algorithmus:
 
 \begin{algorithm}[Vorkonditioniertes CG-Verfahren]
 	\proplbl{algorithmus_2_21}
@@ -603,6 +677,18 @@ enddo
 	\end{lstlisting}
 	Output: $x^\ast=x^k$
 \end{algorithm}
+
+Die Matrix $P=CC^T$ wird als \begriff{Vorkonditionierer} bezeichnet und sollte so gewählt werden, dass einerseits $\cond_2(C^{-1}A(C^T)^{-1})$ möglichst klein und andererseits der Aufwand zur Lösung des linearen Gleichungssystems mit der Systemmatrix $P$ nicht wesentlich größer ist als der Aufwand in einem Schritt des CG-Verfahrens ohne Vorkonditionierung. Um das erste Ziel zu erreichen, wäre zwar $C=A^{\sfrac{1}{2}}$ optimal, da $\cond_2(C^{-1}A(C^T)^{-1})=\cond_2(\mathbbm{1})=1$. Jedoch haben die pro Schritt von \propref{algorithmus_2_21} zu lösenden Gleichungssysteme dann die Systemmatrix $P=CC^T=A$ des Ausgangssystems $Ax=b$.
+
+In der Literatur findet man sowohl einige generelle Ideen, um zur Matrix $A$ einen Vorkonditionierer $P$ zu erhalten als auch spezielle Techniken, die Strukturen bzw. Eigenschaften von $A$ zu berücksichtigen.
+
+Es ist nicht erforderlich, die Matrix $P$ explizit anzugeben, vielmehr genügt es, wenn man die Lösungen der linearen Systeme $Pz=r^k$ (mit wenig Aufwand) bestimmen kann.
+
+Eine Möglichkeit der Vorkonditionierung besteht in der Nutzung einer sogenannten unvollständigen Cholesky-Faktorisierung. Dabei wird eine untere Dreiecksmatrix $\hat{L}\in\Rnn$ bestimmt, so dass
+\begin{align}
+	\hat{L}\hat{L}^T\approx A\notag
+\end{align}
+und $\hat{L}$ nur verhältnismäßig wenige Nichtnull-Elemente aufweist. Üblicherweise entsteht bei der klassischen Cholesky-Faktorisierung $A=LL^T$ ein sogenannter \textit{Fill-in}, das heißt $L$ hat deutlich mehr Nichtnull-Elemente als das untere Dreieck von $A$. Diesen Fill-in versucht man mit einer unvollständigen Cholesky-Faktorisierung zu verringern, vgl. auch entsprechende MATLAB-Routine.
 
 \subsection{Ausblick und Anmerkungen}
 
