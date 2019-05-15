@@ -98,6 +98,7 @@ enddo
 \end{algorithm}
 
 \begin{proposition}
+	\proplbl{satz_2_10}
 	\propref{algorithmus_2_9} ist wohldefiniert und bricht (bei exakter Arithmetik) nach höchstens $n$ (das heißt $k^\ast\le n$) it der exakten Lösung $x^\ast$ des Gleichungssystems $Ax=b$ ab.
 \end{proposition}
 \begin{proof}
@@ -318,6 +319,64 @@ folgt
 \begin{align}
 	r^k\in\mathcal{K}_{k+1}(r^0,A)\notag
 \end{align}
+Wegen $r^k\in\mathcal{R}_{k+1}\backslash\{0\}$ hat man weiter
+\begin{align}
+	\mathcal{K}_{k+1}(r^0,A) = \mathcal{R}_{k+1}\notag
+\end{align}
+Um auch $\mathcal{K}_{k+1}(r^0,A)=\mathcal{D}_{k+1}$ zu erreichen, muss man also
+\begin{align}
+	\mathcal{D}_{k+1} = \Span\{\mathcal{D}_k,r^k\}\notag
+\end{align}
+setzen. Zur Bestimmung eines Vektors $d^k\neq 0$ derart, dass $\mathcal{D}_{k+1} = \Span\{\mathcal{D}_k,d^k\}$ und $d^0,...,d^k$ $A$-konjugiert sind, kann (analog zum Orthogonalisierungsverfahren nach \person{Gram-Schmidt}) der Ansatz
+\begin{align}
+	\label{2_25}
+	d^k=r^k+\sum_{i=0}^{k-1}\beta_id^i
+\end{align}
+verwendet werden. Wegen \cref{2_17} in \propref{lemma_2_14} und der Voraussetzung $r^k\neq 0$ hat man zunächst $d^k\neq 0$. Die gewünschte $A$-Konjugiertheit liefert nun die Bedingungen
+\begin{align}
+	0&=(d^k)^TAd^j \notag \\
+	&= (r^k)^TAd^j+\sum_{i=0}^{k-1}\beta_i(d^i)^TAd^j\quad\text{für } j=0,...,k-1\notag
+\end{align}
+Auf Grund der entsprechend \cref{2_23} vorausgesetzten $A$-Konjugiertheit von $d^0,...,d^{k-1}$ ist dies äquivalent zu
+\begin{align}
+	0=(r^k)^TAd^j+\beta_j(d^j)^TAd^j\quad\text{für } j=0,...,k-1\notag
+\end{align}
+Wegen der positiven Definitheit von $A$ hat man
+\begin{align}
+	\label{2_26}
+	\beta_j = -\frac{(r^k)^TAd^j}{(d^j)^TAd^j}\quad\text{für } j=0,...,k-1
+\end{align}
+Für $j\in\{0,...,k-1\}$ ergibt sich für den Zähler des Bruches in \cref{2_26}
+\begin{align}
+	(r^k)^TAd^j &= \frac{1}{t_j}(r^k)^TA(x^{j+1}-x^j) \notag \\
+	&= \frac{1}{t_j}(r^k)^T(r^j-r^{j+1}) \notag
+\end{align}
+Da $r^j\in\mathcal{R}_k=\mathcal{D}_k=\Span\{d^0,...,d^{k-1}\}$ nach \cref{2_23} für $j\in\{0,...,k-1\}$ gilt, liefert \cref{2_17} in \propref{lemma_2_14}, dass
+\begin{align}
+	(r^k)Ad^j = \begin{cases}
+		0 & \text{für } j=0,...,k-2 \\ \frac{-1}{t_{k-1}}(r^k)^Tr^k & \text{für } j=k-1 
+	\end{cases}\notag
+\end{align}
+Somit und wegen \cref{2_16} folgt aus \cref{2_26}
+\begin{align}
+	\label{2_27}
+	\beta_0=\dots=\beta_{k-2}=0\quad\text{und}\quad\beta_{k-1}=\frac{\norm{r^k}_2^2}{\norm{r^{k-1}}^2_2}
+\end{align}
+sowie mit \cref{2_25}
+\begin{align}
+	\label{2_28}
+	d^k=r^k+\beta_{k-1}d^{k-1}
+\end{align}
+Da \cref{2_23} und \cref{2_24} trivialerweise auch für $k=0$ richtig waren, ist gezeigt, dass \cref{2_23} und \cref{2_24} mit \cref{2_27} und \cref{2_28} für $k=1,2,...$ gelten, sofern $r^{k-1}\neq 0$.
+
+Multipliziert man $d^k$ in \cref{2_28} von links mit $(r^k)^T$ und berücksichtigt man \cref{2_17}, so ergibt sich noch folgenden Vereinfachung für $t_k$ aus \cref{2_16}:
+\begin{align}
+	\label{2_29}
+	t_k &= \frac{(r^k)^Td^k}{(d^k)^TAd^k} \notag \\
+	&= \frac{\norm{r^k}_2^2+\beta_{k-1}(r^k)^Td^{k-1}}{(d^k)^TAd^k} \notag \\
+	&= \frac{\norm{r^k}_2^2}{(d^k)^TAd^k} \notag
+\end{align}
+Mit \cref{2_27}, \cref{2_28}, \cref{2_29} und unter Beachtung der Äquivalenz der Teilprobleme \cref{2_13} und \cref{2_14} ergibt sich mit $B=A^{-\sfrac{1}{2}}$ folgende Realisierung des Algorithmus \propref{algorithmus_2_9}
 
 \begin{algorithm}[CG-Verfahren]
 	\proplbl{algorithmus_2_15}
@@ -336,8 +395,173 @@ enddo
 	\end{lstlisting}
 	Output: $x^\ast=x^k$
 \end{algorithm}
+Der Rechenaufwand pro Schritt des CG-Verfahrens ist durch den Aufwand zur Berechnung des Matrix-mal-Vektor-Produkts $Ad^k$ (sowie einige weitere Operationen wie Skalarprodukte) gegeben. Falls die Matrix $A$ geeignet schwach besetzt ist, kommt man daher mit $\mathcal{O}(n)$ Operationen pro Schritt des CG-Verfahrens aus. Von besonderer Bedeutung zur Erreichung dieses geringen Aufwandes ist die sehr einfache Bestimmung der $A$-konjugierten Basisvektoren $d^0,d^1,...$ der \person{Krylov}-Räume $\mathcal{K}_1(r^0,A),\mathcal{K}_2(r^0,A),...$. Obwohl wegen \propref{satz_2_10} bekannt ist, dass das CG-Verfahren (bei exakter Arithmetik) nach höchstens $n$ Schritten mit einer Lösung von $Ax=b$ abbricht, gilt das Interesse hier der Frage, wie sich der Fehler der Näherung $x^k$ gegenüber einer Lösung $x^\ast$ abschätzen lässt. Dies ist besonders für $k\ll n$ von praktischem Interesse.
 
 \subsection{Fehlerverhalten des CG-Verfahrens}
+
+\begin{definition}[$n$-tes \person{Tschebyschow}-Polynom]
+	\proplbl{definition_2_16}
+	Für $n\in\natur$ wird die durch
+	\begin{align}
+		T_n(x) = \begin{cases}
+			\frac{1}{2}\left[\left(x+i\sqrt{1-x^2}\right)^n+\left(x-i\sqrt{1-x^2}\right)^n\right]&\text{falls } \abs{x}\le 1 \\
+			\frac{1}{2}\left[\left(x+i\sqrt{x^2-1}\right)^n+\left(x-i\sqrt{x^2-1}\right)^n\right]&\text{falls } \abs{x}> 1 \\
+		\end{cases}\notag
+	\end{align}
+	definierte Funktion $T_n:\R\to\R$ als $n$-tes \begriff{\person{Tschebyschow}-Polynom} bezeichnet.
+\end{definition}
+
+Für die Sinnhaftigkeit der Definition und weitere Darstellungen der \person{Tschebyschow}-Polynome sei auf eine entsprechende Übungsaufgabe verwiesen, insbesondere sei noch bemerkt, dass
+\begin{align}
+	\label{2_30}
+	T_n(x)=\cos(n\cdot \arccos(x))\quad\forall x\in[-1,1]
+\end{align}
+für jedes $n\in\natur$ erfüllt ist.
+
+\begin{lemma}
+	\proplbl{lemma_2_17}
+	Für jedes $n\in\natur$ gilt
+	\begin{align}
+		T_n\left(\frac{\kappa +1}{\kappa -1}\right) \ge \frac{1}{2}\left(\frac{\sqrt{\kappa}+1}{\sqrt{\kappa}-1}\right)^n\quad\forall\kappa >1\notag
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Sei $x=\frac{\kappa +1}{\kappa -1}$. Dann gilt $x>1$ wegen $\kappa >1$. Mit \propref{definition_2_16} folgt
+	\begin{align}
+		2T_n(x)\ge \left(x+\sqrt{x^2-1}\right)^n\notag
+	\end{align}
+	Die Behauptung ergibt sich nun, da
+	\begin{align}
+		x+\sqrt{x^2-1} &= \frac{\kappa +1+\sqrt{(\kappa +1)^2-(\kappa -1)^2}}{\kappa-1} \notag \\
+		&= \frac{\kappa+2\sqrt{\kappa}+1}{\kappa-1} \notag \\
+		&= \frac{(\sqrt{\kappa}+1)^2}{(\sqrt{\kappa}-1)(\sqrt{\kappa}+1)} \notag \\
+		&= \frac{\sqrt{\kappa}+1}{\sqrt{\kappa}-1} \notag
+	\end{align}
+\end{proof}
+
+Es sei daran erinnert, dass die Konditionszahl einer regulären Matrix $A$ in der Spektralnorm durch 
+\begin{align}
+	\cond_2(A) &= \norm{A}_2\norm{A^{-1}}_2 \notag \\
+	&= \sqrt{\lambda_{max}(A^TA)}\sqrt{\lambda_{max}((A^T)^{-1}A^{-1})} \notag \\
+	&= \sqrt{\frac{\lambda_{max}(A^TA)}{\lambda_{min})(A^TA)}} \notag 
+\end{align}
+gegeben ist, wobei $\lambda_{max}$ bzw. $\lambda_{min}$ den größten bzw. kleinsten Eigenwert der jeweiligen Matrix bezeichnen. Falls $A$ sogar symmetrisch und positiv definit ist, folgt
+\begin{align}
+	\cond_2(A) = \frac{\lambda_{max}(A)}{\lambda_{min}(A)}\notag
+\end{align}
+
+\begin{proposition}
+	Es seien $A\in\Rnn$ symmetrisch und positiv definit und $b\in\Rn$. Weiter seien $x^\ast=A^{-1}b$, $\kappa=\cond_2(A)$ und $\{x^k\}$ eine durch \propref{algorithmus_2_15} (CG-Verfahren) erzeugte Folge. Dann gilt
+	\begin{align}
+		\norm{x^k-x^\ast}_{A^{\sfrac{1}{2}}} \le 2\left(\frac{\sqrt{\kappa} - 1}{\sqrt{\kappa} + 1}\right)^k\norm{x^0 - x^\ast}_{A^{\sfrac{1}{2}}}\notag
+	\end{align}
+	für $k=1,2,...$.
+\end{proposition}
+\begin{proof}
+	Es bezeichne $e^k=x^k-x^\ast$. Wegen $r^0=b-Ax^0=Ax^\ast-Ax^0=-Ae^0$ folgt
+	\begin{align}
+		A^jr^0 = -A^{j+1}e^0\notag
+	\end{align}
+	für alle $j\in\natur$ und damit
+	\begin{align}
+		\label{2_31}
+		\begin{split}
+			\mathcal{K}_k(r^0,A) &= \Span\{r^0,...,A^{k-1}r^0\} \\
+			&= \Span\{Ae^0,...,A^ke^0\}
+		\end{split}
+	\end{align}
+	Berücksichtigt man, dass $x^k$ Lösung von \cref{2_14} ist, so liefert die Äquivalenz (a) $\Leftrightarrow$ (b) in \propref{lemma_2_12}
+	\begin{align}
+		\norm{e^k}_{A^{\sfrac{1}{2}}} &= \norm{x^k-x^\ast}_{A^{\sfrac{1}{2}}} \notag \\
+		&= \min_{x\in x^0+\mathcal{K}_k(r^0,A)}\norm{x-x^\ast}_{A^{\sfrac{1}{2}}} \notag 
+	\end{align}
+	Mit \cref{2_31} erhält man daraus weiter
+	\begin{align}
+		\label{2_32}
+		\begin{split}
+		\norm{e^k}_{A^{\sfrac{1}{2}}} &= \min_{z\in\mathcal{K}_k(r^0,A)}\norm{x^0-z-x^\ast}_{A^{\sfrac{1}{2}}} \\
+		&= \min_{\alpha_1,...,\alpha_k}\norm{e^0+\sum_{i=1}^k \alpha_iA^ie^0}_{A^{\sfrac{1}{2}}} \\
+		&= \min_{p\in\Pi^0_k} \norm{p(A)e^0}_{A^{\sfrac{1}{2}}}
+		\end{split}
+	\end{align}
+	wobei $\Pi_k^0$ die Menge aller Polynome $p$ mit dem Höchstgrad $k$ und $p(0)=1$ bezeichnet. Da $A$ symmetrisch ist, gibt es eine Orthogonalbasis des $\Rn$ aus Eigenvektoren $v^1,...,v^n$ von $A$. Also existieren $\gamma_1,...,\gamma_n\in\R$, so dass
+	\begin{align}
+		\label{2_33}
+		e^0 = \sum_{i=1}^n \gamma_iv^i
+	\end{align}
+	Bezeichnet man mit $\lambda_i$ den zu $v^i$ gehörenden Eigenwert, so ergibt sich
+	\begin{align}
+		\norm{e^0}^2_{A^{\sfrac{1}{2}}} &= (e^0)^TAe^0 \notag \\
+		&= \left(\sum_{i=1}^n \gamma_iv^i\right)^T\left(\sum_{i=1}^n\gamma_iAv^i\right) \notag \\
+		&= \left(\sum_{i=1}^n \gamma_iv^i\right)^T\left(\sum_{i=1}^n\gamma_i\lambda_iv^i\right) \notag
+	\end{align}
+	und schließlich (mit der Orthogonalität der Eigenvektoren)
+	\begin{align}
+		\label{2_34}
+		\norm{e^0}^2_{A^{\sfrac{1}{2}}} = \sum_{i=1}^n\gamma_i^2\lambda_i
+	\end{align}
+	Man überlegt sich nun, dass für jedes $p\in\Pi_k^0$
+	\begin{align}
+		\label{2_35}
+		\begin{split}
+			p(A)v^i &= \mathbbm{1}v^i + \sum_{j=1}^k\alpha_jA^jv^i  \\
+			&= v^i + \sum_{j=1}^k\alpha_j(\lambda_i)^jv^i  \\
+			&= \left(1+\sum_{j=1}^k\alpha_j(\lambda_i)^j\right)v^i  \\
+			&= p(\lambda_i)v^i 
+		\end{split}
+	\end{align}
+	das heißt die Eigenwerte von $p(A)$ sind durch $p(\lambda_1),...,p(\lambda_n)$ gegeben. Mit \cref{2_33} folgt
+	\begin{align}
+		\norm{p(A)e^0}^2_{A^{\sfrac{1}{2}}} &= \left(p(A)e^0\right)^TAp(A)e^0 \notag \\
+		&= \left(\sum_{i=1}^n \gamma_ip(A)v^i\right)^T\left(\sum_{i=1}^n\gamma_iAp(A)v^i\right)\notag
+	\end{align}
+	und weiter mit \cref{2_35}
+	\begin{align}
+		\norm{p(A)e^0}^2_{A^{\sfrac{1}{2}}} &= \left(\sum_{i=1}^n\gamma_ip(\lambda_i)v^i\right)^T \left(\sum_{i=1}^n\gamma_i\lambda_ip(\lambda_i)v^i\right) \notag \\
+		&= \sum_{i=1}^n \gamma_i^2p(\lambda_i)^2\lambda_i \notag
+	\end{align}
+	Aus \cref{2_32} ergibt sich damit
+	\begin{align}
+		\norm{e^k}_{A^{\sfrac{1}{2}}} &= \min_{p\in\Pi^0_k}\norm{p(A)e^0}_{A^{\sfrac{1}{2}}} \notag \\
+		&= \min_{p\in\Pi^0_k}\left(\sum_{i=1}^n\gamma_i^2p(\lambda_i)^2\lambda_i\right)^{\sfrac{1}{2}} \notag
+	\end{align}
+	Wegen \cref{2_34} und mit $\lambda_{min}=\lambda_{min}(A)$ sowie $\lambda_{max}=\lambda_{max}(A)$ hat man
+	\begin{align}
+		\label{2_36}
+		\begin{split}
+			\norm{e^k}_{A^{\sfrac{1}{2}}} &\le \min_{p\in\Pi^0_k}\max_{\lambda\in[\lambda_{min},\lambda_{max}]}\abs{p(\lambda)}\left(\sum_{i=1}^n\gamma_i^2\lambda_i\right)^{\sfrac{1}{2}}  \\
+			&=\norm{e^0}_{A^{\sfrac{1}{2}}}\left(\min_{p\in\Pi^0_k}\max_{\lambda\in[\lambda_{min},\lambda_{max}]}\abs{p(\lambda)}\right) 
+		\end{split}
+	\end{align}
+	Um den Term $(\dots)$ auf der rechten Seite von \cref{2_36} weiter abzuschätzen, sei zunächst bemerkt, dass im Fall $\lambda_{min}=\lambda_{max}$ dieser Term gleich 0 ist (man wähle $p(\lambda)=(\lambda_{max} - \lambda)\lambda_{max}^{-1}$). Also können wir $\lambda_{max}>\lambda_{min}$ annehmen und wählen dann $q\in\Pi_k^0$ speziell durch
+	\begin{align}
+		q(\lambda) = \frac{T_k(l(\lambda))}{T_k(l(0))}\quad\text{mit}\quad l(\lambda) = \frac{2\lambda-(\lambda_{max}+\lambda_{min})}{\lambda_{min}-\lambda_{max}}\notag
+	\end{align}
+	wobei $T_k$ das $k$-te \person{Tschebyschow}-Polynom ist. Die Funktion $l:\R\to\R$ ist offenbar monoton fallend mit $l(\lambda_{min})=1$ und $l(\lambda_{max})=-1$. Wegen \cref{2_30} gilt daher
+	\begin{align}
+		\max_{\lambda\in[\lambda_{min},\lambda_{max}]}\abs{T_k(l(\lambda))}\le 1\notag
+	\end{align}
+	Mit \propref{lemma_2_17} folgt noch
+	\begin{align}
+		T_k(l(0)) &= T_k\left(\frac{\lambda_{max}+\lambda_{min}}{\lambda_{max}-\lambda_{min}}\right) \notag \\
+		&= T_k\left(\frac{\frac{\lambda_{max}}{\lambda_{min}}+1}{\frac{\lambda_{max}}{\lambda_{min}}-1}\right) \notag \\
+		&= T_k\left(\frac{\kappa+1}{\kappa-1}\right) \notag \\
+		&\ge \frac{1}{2}\left(\frac{\sqrt{\kappa}-1}{\sqrt{\kappa}+1}\right)^k\notag
+	\end{align}
+	Somit hat man
+	\begin{align}
+		\min_{p\in\Pi^0_k}\left(\max_{\lambda\in[\lambda_{min},\lambda_{max}]}\abs{p(\lambda)}\right) &\le \max_{\lambda\in[\lambda_{min},\lambda_{max}]}\abs{q(\lambda)} \notag \\
+		&\le 2\left(\frac{\sqrt{\kappa}-1}{\sqrt{\kappa}+1}\right)^k\notag
+	\end{align}
+	und wegen \cref{2_36} die Behauptung.
+\end{proof}
+
+\begin{proposition}
+	Es seien $A\in\Rnn$ symmetrisch und positiv definit und $b\in\Rn$. Wenn $A$ genau $m$ paarweise verschiedene Eigenwerte besitzt, so bricht \propref{algorithmus_2_15} (bei exakter Rechnung) nach höchstens $m$ Schritten mit der Lösung $x^\ast$ des Gleichungssystems $Ax=b$ ab.
+\end{proposition}
+\begin{proof}
+	Übungsaufgabe
+\end{proof}
 
 \subsection{Vorkonditionierung}
 
