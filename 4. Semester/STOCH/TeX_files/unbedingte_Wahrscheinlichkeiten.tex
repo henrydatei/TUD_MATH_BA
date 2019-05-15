@@ -363,7 +363,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	\proplbl{3_2_27}
 	Seien $X \sim \Pois(\lambda), Y \sim \Pois(\mu)$ zwei unabhängigen reellen Zufallsvariablen (mit Werten in $\N_0$). Dann ist $X+Y$ eine Zufallsvariable mit Werten in $\N_0$ und Zähldichte
 	\begin{align*}
-		\P(X+Y+k) &= \sum_{l \in \Z} \P(X=l) \P(Y = k-l)\\
+		\P(X+Y=k) &= \sum_{l \in \Z} \P(X=l) \P(Y = k-l)\\
 		&= \sum_{l \in \Z} \frac{\lambda^l}{l!} e^{-\lambda} \frac{\mu^{k-l}}{(k-l)!} e^{-\mu}\\
 		&= e^{-(\lambda + \mu)} \frac{1}{k!}\sum_{l=0}^k \binom{k}{l} \lambda^l \mu^{k-l}\\
 		&= e^{-(\lambda + \mu)} \frac{1}{k!} (\lambda + \mu)^k \quad \forall k \in \N_0,

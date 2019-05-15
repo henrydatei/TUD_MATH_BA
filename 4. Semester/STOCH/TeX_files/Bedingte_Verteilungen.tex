@@ -1,0 +1,180 @@
+In \cref{chap3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
+\begin{align*}
+	\P(A \mid B) = \begin{cases}
+	\frac{\P(A \cap B)}{\P(B)} &\quad \P(B) > 0\\
+	0/ \text{ beliebig} &\quad \P(B) = 0
+	\end{cases}
+\end{align*}
+In Fall $\P(B) > 0$ ist $\P(\ast\mid B)$ ein Wahrscheinlichkeitsmaß und wir können das Integral 
+\[
+	\E[X \mid B] := \int X(\omega) \P(\d \omega \mid B)
+\]
+definieren. Wir bezeichnen die als \begriff{bedingten Erwartungswert} von $X$. Für $X= \indi_{A}$ folgt (für $\P(B) > 0$)
+\[
+	\int X(\omega) \P(\d \omega \mid B) = \P (A \mid B) = \frac{\P(A \cap B)}{\P(B)} = \frac{\E[\indi_{A\cap B}]}{\P(B)} = \frac{\E[X \indi_{B}]}{\P(B)}
+\]
+und mittels maßtheoretischer Induktion folgt
+\begin{align*}
+	\E[X \mid B] = \frac{\E[X \indi_B]}{\P(B)}
+\end{align*}
+allgemein ($X \in \Ln{1}, \P(B) > 0$)
+\begin{enumerate}[label=]
+	\item \ul{Frage:} (Wie) können wir bedingte Erwartungswerte definieren, wenn $\P(B) = 0$?
+\end{enumerate}
+\section{Bedingte Verteilungen}
+Seien $X,Y$ Zufallsvariablen gegeben durch
+\begin{align*}
+	X: (\O,\F) \to (\O_X, \F_X)\\
+	Y: (\O,\F) \to (\O_Y, \F_Y)
+\end{align*}
+\begin{itemize}
+	\item Falls $\O_Y$ höchstens abzählbar ist, gilt ($\nearrow$ \propref{sec:3})
+	\[
+		\P(X \in A \mid Y = y) = \begin{cases}
+		\frac{\P(X\in A, Y = y)}{\P(Y = y)} &\quad \P(Y=y) > 0\\
+		0/ \sonst & \quad \P(Y=y) = 0
+		\end{cases}
+	\]
+	Insbesondere folgt mit dem Satz der totalen Wahrscheinlichkeit
+	\begin{align*}
+		\P(X\in A, Y\in B) &= \sum_{y\in B} \P(X \in A \mid Y = y)\P(Y=y) \quad \forall B \in \F_Y\\
+		&= \int_B \P(X \in A \mid Y=y) \P_Y(\d y) \label{eq:6:1_1} \tag{$\star$}
+	\end{align*}
+	\item \ul{Idee:} Verwende \eqref{eq:6:1_1} um bedingte Verteilung zu definiere!\\
+	Sei also $\mu_A : \O_Y \to \R$ gegeben so dass
+	\begin{align*}
+		\P(X \in A, Y \in B) = \int_B \mu_A(y)\P_Y (\d y) \quad \forall B \in \F_Y \label{eq:6:1_2} \tag{$\star\star$}
+	\end{align*}
+	Da $\O_Y$ abzählbar, gilt $\set{y} \in \F_Y \quad \forall y \in \O_Y$. Also folgt aus \eqref{eq:6:1_2}, dass
+	\begin{align*}
+		\P(X \in A, Y=y) &= \int_{\set{y}} \mu_A (y) \P_Y(\d y)\\
+		&= \mu_A (y) \P_Y(Y=y)
+	\end{align*}
+	Falls $\P(Y=y)\neq 0$ folgt sofort
+	\begin{align*}
+		\mu_A(y) = \frac{\P(X \in A, Y=y)}{\P(Y=y)} = \P(X\in A \mid Y = y)
+	\end{align*}
+	Andererseits gilt
+	\begin{align*}
+			\P_Y (\set{y \in \O_Y: \P(Y=y)= 0}) = \sum_{\substack{y\in \O_Y\\ \P(Y=y) = 0}} \P_Y(\set{y}) = 0\\
+			\intertext{so dass}
+			\mu_A(y) = \P(X \in A\mid Y = y) \quad \P_Y \text{ f.s} \text{ (d.h. bis auf $\P_Y$-Nullmengen)}
+			\intertext{bzw.}
+			\P_Y(\set{y \colon \mu_A(y) \neq \P(X \in A \mid Y=y)}) = 0
+	\end{align*}
+	\item Falls $\O_Y$ überabzählbar ist und $y \in \O_Y$ mit $\P(Y=y) = 0$ (z.B. $Y$ hat Dichte). Wir werden sehen, dann existiert $\mu_A: (\O_Y, \F_Y) \to (\R_+, \borel(\R_+))$ messbar, so dass \eqref{eq:6:1_2} gilt. Insbesondere ist $\mu_A$ dann bis auf $\P_Y$-Nullmengen eindeutig bestimmt und wir können definieren:
+	\[
+		\P(X\in A\mid Y=y) = \mu_A(y)
+	\]
+\end{itemize}
+Wir benötigen:
+\begin{proposition}[\person{Radon}-\person{Nikodym} für endliche Maße]
+	\proplbl{6_1_1:Radon}
+	Seien $\mu, \nu$ zwei endliche Maße auf $(\O,\F)$. Dann ist $\nu$ absolutstetig bzgl. $\mu$ $(\nu \ll \mu)$ genau dann wenn $\nu$ eine messbare Dichte $f$ bzüglich $\mu$ besitzt, d.h. wenn
+	\[
+		\nu(A) = \int_A f(\omega)\d \mu(\omega)  \quad \forall A \in \F.
+	\]
+	Insbesondere ist $f$ $\mu$-f.ü. eindeutig bestimmt.
+\end{proposition}
+\begin{proof}
+	$\nearrow$ MINT Schilling Satz 19.2.
+\end{proof}
+\begin{conclusion}
+	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und
+	\begin{align*}
+		X: (\O,\F) \to (\O_X, \F_X)\\
+		Y: (\O, \F) \to (\O_Y, \F_Y)
+	\end{align*}
+	Zufallsvariablen. Sei $A \in \F_X$ beliebig. Dann existiert $\mu_A: (\O_Y, \F_Y) \to ([0,1], \borel([0,1]))$ messbar, so dass
+	\[
+		\P(X\in A, Y \in B) = \int_B \mu_A(y)\P_Y(\d y) \quad \forall B \in \F_Y.
+	\]
+	Wir nennen $\P(X \in A\mid Y = y)$ \begriff{bedingte Wahrscheinlichkeit}.
+\end{conclusion}
+\begin{proof}
+	Offensichtlich impliziert $\P(y \in B) = 0$ auch $\P(X\in A, Y \in B) = 0$ so dass
+	\begin{align*}
+		\P(X \in A, Y \in \cdot) \ll \P(Y \in \cdot) = \P_Y(\cdot)
+	\end{align*}
+	Nach \propref{6_1_1:Radon} existiert eine messbare Funktion $f: (\O_Y, \F_Y) \to (\R_+, \borel(\R_+))$ mit
+	\begin{align*}
+		\P(X \in A, Y \in B) = \int_B f(y)\P_Y(\d y) \quad \forall B \in \F_Y.
+	\end{align*}
+	Sei $D =\set{y : f(y) > 1}$, dann gilt zudem $\P_Y(D) = 0$, denn
+	\begin{align*}
+		\P(Y \in D) \ge \P(X \in A, Y \in D) = \int_D f(y)\P_Y(\d y)
+		\intertext{impliziert}
+		0 \ge \P(X \in A, Y \in D) - \P(Y \in D) = \int_D (\underbrace{f(y) - 1}_{> 0 \text{ in }D})\P_Y (\d y) \ge 0
+	\end{align*}
+	also gilt $\P(D) = 0$. Setze also
+	\begin{align*}
+		\mu_A (y) := \begin{cases}
+			f(y) &\quad y \in D^C\\
+			0 &\quad y \in D,
+		\end{cases}
+	\end{align*}
+	dann erfüllt $\mu_A$ allen Eigenschaften.
+\end{proof}
+Für fixiertes $A \in \F_X$ ist die nun definierte bedingte Wahrscheinlichkeit eindeutig bis auf $\P_Y$-Nullmengen. Für fixiertes $y$ (und $A$ variierend) ist $\P(X \in A \mid Y = y)$ aber nicht immer ein Wahrscheinlichkeitsmaß!
+\begin{example}
+	\proplbl{6_1_3}
+	Betrachte den Wahrscheinlihckeitsraum $([0,1],\borel([0,1]), \U([0,1])$ und die Zufallsvariablen $X,Y$ mit $X(\omega) = Y(\omega) = \omega \quad \forall \omega \in [0,1]$. Dann
+	\begin{align*}
+		\P(X \in A, Y \in B) = \P(Y \in A \cap B) = \int_B\indi_{A}(\omega)\P_Y(\d \omega) \quad \forall B \in \F
+	\end{align*}
+	so dass $\indi_{A}(\omega)$ eine Version von $\P(X \in A \mid Y = y)$. Insbesondere ist $\indi_{A} (y)$ für jedes $y \in [0,1]$ ein Wahrscheinlichkeitsmaß. Setzen wir
+	\begin{align*}
+		f(A) = \begin{cases}
+		\sup A &\quad A \neq \emptyset\\
+		0 &\quad A = \emptyset
+		\end{cases}
+		\intertext{so ist auch}
+		\P'(X \in A \mid Y = y) = \indi_{A} (y)+ \indi_{\set{f(y)}}(y)
+	\end{align*} 
+	eine Version der bedingten Wahrscheinlichkeit, denn
+	\begin{align*}
+		\int_B (\indi_{A} (\omega) + \indi_{\set{f(y)}} (\omega)) &= \P(Y \in A \cap B) + \underbrace{\cancel{\P(Y \in B \cap f(A))}}_{=0}\\
+		&= P(X \in A, Y \in B)
+	\end{align*}
+	Allerdings ist $\P'(X \in \cdot \mid Y = y)$ kein Wahrscheinlichkeitsmaß, denn für beliebiges $y \in [0,1]$ gilt
+	\begin{align*}
+		\P'(X\in [0,y]\mid Y = y) = \indi_{[0,y]} + \indi_{f([0,y])} = 2
+	\end{align*}
+\end{example}
+Wie können solche Maße wie im \propref{6_1_3} ausgeschlossen werden? Dadurch ist folgende Definition motiviert.
+\begin{definition}[reguläre bedingte Verteilung]
+	Eine bedingte Verteilung $\P(X \in \cdot\mid Y = \cdot)$ heißt \begriff{regulär}, wenn $\P(X \in \cdot \mid Y =y)$ für alle $y \in \O_Y$ ein Wahrscheinlichkeitsmaß ist.
+\end{definition}
+Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränken uns daher auf den reellen Fall.
+\begin{proposition}
+	\proplbl{6_1_5}
+	Sei $(\O, \F, \P)$ Wahrscheinlihckeitsraum, $X: (\O, \F) \to (\Rd, \borel(\Rd))$, 
+	$Y: (\O, \F) \to (\O_Y, \F_Y)$ Zufallsvariablen. Dann existiert eine reguläre bedingte Verteilung
+	\[
+		\P(X \in \cdot \mid Y = \cdot).
+	\]
+\end{proposition}
+\begin{proof}
+	Nur Beweisskizze (ausführlich wird ergänzt!)\\Sei $\tilde{\P}(X \in A \mid Y = \cdot)$ eine beliebige Version der bedingten Verteilung.
+	\begin{itemize}
+		\item \ul{Idee:} ``Korregiere'' $\tilde{\P}$ auf geeignten $\P_Y$-Nullmengen um geeigneter reguläre Version zu erhalten.
+		\begin{enumerate}
+			\item Es gibt eine $\P_Y$-Nullmenge $N_1$, so dass
+			\begin{align*}
+				\tilde{\P}(X \in \Rd \mid Y = y) = 1 \quad \forall y \notin \N_1
+			\end{align*}
+			\item Definiere $\G^d := \set{\bigcup_{i = 1}^k [a_, b_i] \mid a_i, b_i \in \G^d, k \in \N}$. Dann gibt es eine $\P_Y$-Nullmenge $N_2$, so dass $\tilde{\P}(X \in \cdot \mid Y = y)$ nichtnegativ und additiv auf $\G^d$ für $Y \notin \N_2$.
+			\item Es gibt eine $\P_Y$-Nullmenge $N_3$, so dass $\tilde{\P}(X \in \cdot \mid Y = y)$ für alle $y \notin N_2 \cup N_3$ $\sigma$-additiv auf $\G^d$ ist.
+			\item Sei $N = N_1 \cup N_2 \cup N_3$ $\P_Y$-Nullmengen. Für $y \in N^C$ existiert eine Erweiterung von $\tilde{\P}(X \in \cdot \mid Y = y)$ zu einem Wahrscheinlichkeitsmaß $\hat{\P}(X \in \cdot \mid Y = y)$ auf $\borel(\Rd)$. Definiere
+			\begin{align*}
+				\P(X \in \cdot \mid Y = y) = \begin{cases}
+				\hat{\P}(X \in \cdot \mid Y = y) & \quad y \notin N\\
+				\P_0 \text{ beliebiges Wahrscheinlihckeitsmaß } & \quad y \in N
+				\end{cases}
+			\end{align*} 
+			dann ist $\P(Y \in \cdot \mid Y = y)$ ein Wahrscheinlichkeitsmaß.
+			\item $\P(X \in \cdot \mid Y = y)$ ist eine Version der bedingten Verteilung.
+		\end{enumerate}
+	
+	\end{itemize}
+\end{proof}
