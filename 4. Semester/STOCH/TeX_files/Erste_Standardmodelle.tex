@@ -96,7 +96,7 @@ Wir erhalten
 	\end{cases}
 \end{align*}
 der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
-\begin{definition}
+\begin{definition}[Multinomialverteilung]
 	Sei $l > 2, p = (p_1, \dots, p_l)$ eine Zähldichte und $n \in \N$, dann heißt die Verteilung auf \\
 	$\set{k = (k_i)_{i=1,\dots,l} \in \N_{0}^{l} : \sum_{i=1}^{l} k_i = n}$ mit Zähldichte
 	\begin{align}
@@ -112,7 +112,7 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	Ein solches (wiederholtes) Experiment mit nur zwei möglichen Ereignissen und fester Wahrscheinlichkeit $p \in [0,1]$ für eines der Ergebnisse nennen wir auch \begriff{(wiederholtes) Bernoulliexperiment}.
 \end{example}
 
-\begin{definition}
+\begin{definition} [Binomialverteilung, Bernoulliverteilung]
 	Sei $p \in [0,1]$ und $n \in \N$, dann heißt die Verteilung mit Zähldichte
 	\begin{align}
 		\rho(k) = \binom{n}{k}p^k (1-p)^{n-k} \mit k \in \set{0,1,\dots,n}.\notag
@@ -140,7 +140,7 @@ Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es w
 \begin{proof}
 	Hausaufgabe 2.3!
 \end{proof}
-\begin{definition}
+\begin{definition}[Hypergeometrische Verteilung]
 	Seien $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
 	\begin{align}
 		\rho(w) = \frac{\binom{W}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
@@ -178,7 +178,7 @@ Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn
 \begin{align}
 	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1.\notag
 \end{align}
-\begin{definition}
+\begin{definition}[Poissonverteilung]
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definierte Wahrscheinlichkeitsmaß mit
 	\begin{align}
 		\probp(\set{k}) = \frac{\lambda^k}{k!}e^{-\lambda} \quad k \in \N_{0},\notag

@@ -1,4 +1,4 @@
-In \cref{chap3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
+In \cref{3_1_3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
 \begin{align*}
 	\P(A \mid B) = \begin{cases}
 	\frac{\P(A \cap B)}{\P(B)} &\quad \P(B) > 0\\
@@ -40,7 +40,7 @@ Seien $X,Y$ Zufallsvariablen gegeben durch
 		\P(X\in A, Y\in B) &= \sum_{y\in B} \P(X \in A \mid Y = y)\P(Y=y) \quad \forall B \in \F_Y\\
 		&= \int_B \P(X \in A \mid Y=y) \P_Y(\d y) \label{eq:6:1_1} \tag{$\star$}
 	\end{align*}
-	\item \ul{Idee:} Verwende \eqref{eq:6:1_1} um bedingte Verteilung zu definiere!\\
+	\item \ul{Idee:} Verwende \eqref{eq:6:1_1} um bedingte Verteilung zu definieren!\\
 	Sei also $\mu_A : \O_Y \to \R$ gegeben so dass
 	\begin{align*}
 		\P(X \in A, Y \in B) = \int_B \mu_A(y)\P_Y (\d y) \quad \forall B \in \F_Y \label{eq:6:1_2} \tag{$\star\star$}
@@ -118,7 +118,7 @@ Wir benötigen:
 Für fixiertes $A \in \F_X$ ist die nun definierte bedingte Wahrscheinlichkeit eindeutig bis auf $\P_Y$-Nullmengen. Für fixiertes $y$ (und $A$ variierend) ist $\P(X \in A \mid Y = y)$ aber nicht immer ein Wahrscheinlichkeitsmaß!
 \begin{example}
 	\proplbl{6_1_3}
-	Betrachte den Wahrscheinlihckeitsraum $([0,1],\borel([0,1]), \U([0,1])$ und die Zufallsvariablen $X,Y$ mit $X(\omega) = Y(\omega) = \omega \quad \forall \omega \in [0,1]$. Dann
+	Betrachte den Wahrscheinlihckeitsraum $([0,1],\borel([0,1]), \Gleich([0,1])$ und die Zufallsvariablen $X,Y$ mit $X(\omega) = Y(\omega) = \omega \quad \forall \omega \in [0,1]$. Dann
 	\begin{align*}
 		\P(X \in A, Y \in B) = \P(Y \in A \cap B) = \int_B\indi_{A}(\omega)\P_Y(\d \omega) \quad \forall B \in \F
 	\end{align*}
@@ -148,7 +148,7 @@ Wie können solche Maße wie im \propref{6_1_3} ausgeschlossen werden? Dadurch i
 Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränken uns daher auf den reellen Fall.
 \begin{proposition}
 	\proplbl{6_1_5}
-	Sei $(\O, \F, \P)$ Wahrscheinlihckeitsraum, $X: (\O, \F) \to (\Rd, \borel(\Rd))$, 
+	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\Rd, \borel(\Rd))$, 
 	$Y: (\O, \F) \to (\O_Y, \F_Y)$ Zufallsvariablen. Dann existiert eine reguläre bedingte Verteilung
 	\[
 		\P(X \in \cdot \mid Y = \cdot).
@@ -157,7 +157,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 \begin{proof}
 	Nur Beweisskizze (ausführlich wird ergänzt!)\\Sei $\tilde{\P}(X \in A \mid Y = \cdot)$ eine beliebige Version der bedingten Verteilung.
 	\begin{itemize}
-		\item \ul{Idee:} ``Korregiere'' $\tilde{\P}$ auf geeignten $\P_Y$-Nullmengen um geeigneter reguläre Version zu erhalten.
+		\item \ul{Idee:} ``Korrigiere'' $\tilde{\P}$ auf geeignten $\P_Y$-Nullmengen um geeigneter reguläre Version zu erhalten.
 		\begin{enumerate}
 			\item Es gibt eine $\P_Y$-Nullmenge $N_1$, so dass
 			\begin{align*}
@@ -169,7 +169,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 			\begin{align*}
 				\P(X \in \cdot \mid Y = y) = \begin{cases}
 				\hat{\P}(X \in \cdot \mid Y = y) & \quad y \notin N\\
-				\P_0 \text{ beliebiges Wahrscheinlihckeitsmaß } & \quad y \in N
+				\P_0 \text{ beliebiges Wahrscheinlichkeitsmaß } & \quad y \in N
 				\end{cases}
 			\end{align*} 
 			dann ist $\P(Y \in \cdot \mid Y = y)$ ein Wahrscheinlichkeitsmaß.
