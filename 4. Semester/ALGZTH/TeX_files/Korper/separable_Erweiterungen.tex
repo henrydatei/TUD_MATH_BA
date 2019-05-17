@@ -1,0 +1,165 @@
+\section{Separable Erweiterungen_}
+Sei $K$ ein Körper und $L\mid K$ algebraische Körpererweiterung.
+
+\begin{remark}
+\proplbl{1_7_1}
+Für $L = K(\alpha)$ mit $f = \MinPol(\alpha\mid K$ ist \begin{flalign*}
+	\qquad & [L:K] = \deg(f) \ge \big\vert\big\lbrace\beta\in\bar K\;\big|\;f(\beta) = 0\big\rbrace\big\vert \overset{\propref{1_3_12}}{=} \vert \Hom_{\mathbb K} (L,\bar K)\vert
+	\end{flalign*}
+	
+	mit Gleichheit genau dann wenn $f$ separabel.
+\end{remark}
+
+\begin{definition}
+\proplbl{1_7_2}
+Sei $\alpha\in L$. \begin{enumerate}
+	\item $\alpha$ ist \begriff{separabel} über $K$ :$\Leftrightarrow$ $\MinPol(\alpha\mid K)$ ist separabel.
+	\item $L\mid K$ ist \begriff{separabel} :$\Leftrightarrow$ jedes $\alpha\in L$ ist separabel über $K$.
+	\item Der \begriff{Separabilitätsgrad} von $L\mid K$ ist \begin{align*}
+		[L:K]_{\mathrm S} = \vert\Hom_{\mathbb K} (L,\bar K)\vert
+	\end{align*}
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	\proplbl{1_7_3}
+	Sei $E$ algebraisch abgeschlossen, $\phi\in\Hom(K,E)$. Dann ist \begin{flalign*}
+		\qquad & \big\vert\big\lbrace\psi\in\Hom(L,E)\;\big|\;\psi_{\mathbb K}=\phi\right\rbrace\right\vert = [L:K]_{\mathrm S}
+	\end{flalign*}
+\end{lemma}
+\begin{proof}
+	Nach \propref{1_4_6} existiert ein $g\in\Hom(\bar K, E)$ mit $g_{|K} = \phi$. Ohne Einschränkung ist $E=\widetilde{\phi(K)} = g(\bar K)$, d.h. $g$ ist Isomorphismus. Dann ist die Abbildung \begin{flalign*}
+	\qquad & \left\lbrace\begin{array}{c@{\;}c@{\;}l}
+		\Hom_{\mathbb K}(L,\bar K) & \Rightarrow & \big\lbace \psi\in\Hom(L,E)\;\big|\;\psi_{|K} = \phi\right\rbrace \\
+		\sigma & \mapsto & g\circ \sigma
+	\end{array}.\right. &
+	\end{flalign*}
+	Diese ist bijektiv mit Umkehrabbildung $\psi\mapsto g^{-1}\circ\psi$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{1_7_4}
+	Sind $K\subset L\subset M$ Körer mit $M\mid K$ algebraisch, so ist \begin{flalign*}
+		\qquad & [M:K]_{\mathrm S} = [M:L]_{\mathrm S}[L:K]_{\mathrm S} &
+	\end{flalign*}
+	Insbesonder ist $[L:K]_{\mathrm S} \le [M:K]_{\mathrm S]$.
+\end{proposition}
+
+\begin{proof}
+	Betrachte die Abbildung \begin{flalign*}
+		\qquad & f\colon\;\left\lbrace\begin{array}{l@{\;}c@{\;}l}
+			\Hom(M,\barK) & \rightarrow & \Hom_{\mathbb K}(L,\bar K) \\
+			\sigma & \mapsto & \sigma_{|L}
+		\end{array}.\right. &
+	\end{flalign*}
+	Für $\tau\in\Hom_{\mathbb K}(L,\bar K)$ ist \begin{flalign*}
+		\qquad & f^{-1}(\lbrace\tau\rbrace) = \big\vert\big\lbrace \sigma\in\Hom_{\mathbb K}(M,\bar K)\;\big|\;\sigma_{|L}=\tau\big\rbrace\big\vert = [M:L]_{\mathrm S}
+	\end{flalign*}
+	Daher gilt $[M:K]_{\mathrm S} = [M:L]_{\mathrm S}[L:K]_{\mathrm S}$.
+\end{proof}
+
+\begin{lemma}
+	\proplbl{1_7_5}
+	Sei $L\mid K$ endlch und $p=\chara(K) > 0$. Dann ist \begin{align*}
+		[L:K] = p^l [L:K]_{\mathrm S}
+	\end{align*}
+	für ein $L\in\mathbb N$. Insbesondere ist $[L:K]_{\mathrm S} \le [L:K]$.
+\end{lemma}
+\begin{proof}
+	Schreibe $L=K(\alpha_1,\dots,\alpha_n)$, ohne Einschränkung ist $n=1$ (nach \cref{1_7_4,1_1_12}). Sei $f=\MinPol(\alpha_1\mid K)$ und $l\in\mathbb N$ die größte Zähl mit \begin{flalign*}
+	\qquad & f(X) = g(X^{lp}),\quad g(X)\in K[X].
+	\end{flalign*}
+	Dann ist $g(X)$ irreduzibel und separabel nach \propref{1_6_8}. Daher gilt \begin{flalign*}
+	\qquad & [L:K]_{\mathrm S} \overset{\propref{1_7_1},\propref{1_7_2}}{=} \big\vert \big\lbrace x\in\bar K\;\big|\; f(x) = 0\big\rbrace\big\vert = \big\vert\big\lbrace x\in\bar K\;\big|\; g(x) = 0\big\rbrace\big\vert = \deg(g) = \frac{\deg(f)}{p^l} = \frac{[L:K]}{p^l},&
+	\end{flalign*}
+	sodass $[L:K] = p^l [L:K]_{\mathrm S}$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{1_7_6}
+	Für $L\mid K$ endlich sind äquivalent \begin{enumerate}[label={(\arabic*)}]
+		\item $L\mid K$ ist separabel.
+		\item $L = K(\alpha_1,\dots,\alpha_n)$ mit $\alpha_1$, $\dots$, $\alpha_n$ separabel über $K$
+		\item $[L:K]_{\mathrm S} = [L:K]$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\leavevmode\begin{itemize}[topsep=-6pt,widest={$(1)$ $\Rightarrow$ $(2)$},leftmargin=*]
+	\item[$(1)$ $\Rightarrow$ $(2)$] klar nach \propref{1_7_2}
+	\item[$(2)$ $\Rightarrow$ $(3)$] Da $\alpha_i$ separabel über $K$ ist $\alpha_i$ separabel über $K(\alpha_1,\dots,\alpha_{n-1})$. Daher ist \begin{flalign*}
+		\qquad & [K(\alpha_1,\dots,\alpha_i):K(\alpha_1,\dots,\alpha_{i-1})]_{\mathrm S} \overset{\propref{1_7_1}}{=} [K(\alpha_1,\dots,\alpha_i):K(\alpha_1,\dots,\alpha_{i-1})] &
+	\end{flalign*}
+	Nach \cref{1_1_12,1_7_4} gilt dann \begin{flalign*}
+		\qquad & [L:K]_{\mathrm S} = [L:K] &
+	\end{flalign*}
+	\item[$(3)$ $\Rightarrow$ $(1)$] Für $\alpha\in L$ ist mit $l\in\mathbb N$ \begin{flalign*}
+		\qquad & [L:K] \overset{\propref{1_1_12}}{=} [L:K(\alpha)][K(\alpha):K] \overset{\propref{1_7_5}}{\ge} [L:K(\alpha)]_{\mathrm S} \cdot p^l [K(\alpha):K]_{\mathrm S} \overset{\propref{1_7_4}}{=} [L:K]_{\mathrm S} p^l \overset{(3)}= [L:K]p^l, &
+	\end{flalign*}
+	daher $l=0$, d.h. $[K(\alpha):K] = [K(\alpha):K]_{\mathrm S}$. Nach \propref{1_7_1} ist $\alpha$ separabel über $K$, d.h. $(1)$ gilt.
+\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{1_7_7}
+	Der relative, separable Abschluss \begin{flalign*}
+		\qquad & L_{\mathrm S} = \big\lbrace \alpha\in L\;\big|\; \alpha\;\text{separabel über}\; K\big\rbrace &
+	\end{flalign*}
+	von $K$ in $L$ ist Teilkörper in $L$.
+\end{conclusion}
+
+\begin{proof}
+	Folgt aus \cref{1_7_6} (vergleiche \propref{1_2_15}).
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{1_7_8}
+	Seien $K\subset L\subset M$ mit $M\mid K$ algebraisch. Dann gilt: \begin{tabularx}{\linewidth}{X@{\quad}c@{\quad}X}
+		\hfill $M\mid K$ separabel & $\Leftrightarrow$ & $M\mid L$ separabel und $L\mid K$ separabel
+	\end{tabularx}
+\end{conclusion}
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item[($\Rightarrow$)] klar
+		\item[($\Leftarrow$)] Sei $\alpha\in M$, setzte $f=\MinPol(\alpha\mid L) = \sum_{i=0}^n a_i X^i$ und $L_0 = K(a_0,\dots,a_n)$. Da $M\mid L$ separabel ist $f$ separabel. Daher ist $\alpha$ separabel über $L_0$, d.h $L_0(\alpha)\mid L_0$ ist separabel (siehe \cref{1_7_6}). Da $L\mid K$ separabel ist, ist auch $L_0\mid K$ separabel und es gilt \begin{flalign*}
+		\qquad & [L_0(\alpha)\mid K]_{\mathrm S} \overset{\propref{1_7_4}}= [L_0(\alpha):L_0]_{\mathrm S} [L_0:K]_{\mathrm S} \overset{\propref{1_7_5}}= [L_0(\alpha)\mid L_0] [L_0: K] \overset{\propref{1_1_2}}= [L_0(\alpha)\mid K]&
+	\end{flaling*}
+	Deswegen ist $L_0(\alpha)\mid K$ separabel (siehe \cref{1_7_6}). Insbesondere ist $\alpha$ separabel über $K$.
+\end{proof}
+
+\begin{conclusion}
+\proplbl{1_7_9}
+Sei $K\subset L_1$, $L_2\subset M$ Körper mit $M\mid K$ algebraisch. Sind $L_1\mid K$ und $L_2\mid K$ separabel,so auch die Komposition $L1\cdot _2 := K(L_1,L_2)$.
+\end{conclusion}
+\begin{proof}
+Es sei $\alpha\in L_1L_2$. Dann gibt es $\x_1$, $\dots$, $x_n\in L_1$ und $y_1$, $\dots$, $y_m\in L_2$ mit $\alpha\in K(x_1,\dots,x_n,y_1,\dots,y_n) =: L_0$. Da $x_i$, $y_i$ separabel über $K$, so ist $L_0\mid K$ separabel. Nach \propref{1_7_6}. Insbesondere ist $\alpha$ separabel über $K$.
+\end{proof}
+
+\begin{defintion}
+Die Erweiterung $L\mid K$ ist \begriff{rein separabel} :$\Leftrightarrow$ jedes $\alpha\in L\setminus K$ ist inseparabel über $K$.
+\end{definition}
+
+\begin{proof}
+Ist $p=\chara(K) > 0$, so sind äquivalent\begin{enumerate}[label={(\arabic*)},widest={$(1)$ $\Rightarrow$ $(2)$,leftmargin=*]
+	\item[$(1)$ $\Rightarrow$ $(2)$] Sei $\alpha\in L$, $f=\MinPol(\alpha\mid K) = g(X^{p^l})$ mit $l$ maximal und $g\in K[X]$ (wie in \propref{1_7_5}). Dann ist $\alpha^{pl}$ separabel über $K$. Da $L\mid K$ rein inseparabel ist, folgt $\alpha^{p^l}\in K$.
+	\item[$(2)$ $\Rightarrow$ $(3)$] Sei $\phi\in\Hom_{\mathbb K}(L,\bar K)$ Für $\sigma\in L$ ist \begin{flalign*}
+		\qquad & \sgima(\alpha) = \siga(\underbrace{\alpha^{p^l}}_{\in K})^{1\!\slash\! p\,l} = (\alpha^{p^l})^{1\!\slash\! p\,l} = \alpha, &
+	\end{flalign*}
+	also $\sigma_{|L} = \id_L$ und daher $[L:K]_{\mathrm S} = 1$.
+	\item[$(3)$ $\Rightarrow$ $(1)$] Es sei $\alpha\in L\setminus K$. Es ist \begin{flalign*}
+		\qquad & [K(\alpha):K] > 1 \overset{(3)}= [L:K]_{\mathrm S}\overset{\propref{1_7_4}}\ge [K(\alpha):K]_{\mathrm S}, &
+	\end{flalign*}
+	also ist $\alpha$ inseparabel über $\alpha$ nach \cref{1_7_6}.
+\end{enumerate}
+\end{proof}
+
+\begin{example}
+	\proplbl{1_7_12}
+	Die Erweiterung $\mathbb F_p(t)\mid \mathbb F_p(t)^p = \mathbb F_p(t)$ ist rein inseparabel vom Grad $p$.
+\end{example}
+
+\begin{remark}
+	\proplbl{1_7_13}
+	Jede algebraische Erweiterung $L\mid K$ hat also eine Unterteilung in eine separablen und inseparablen Teil. Es gilt \begin{flalign*}
+		\qquad & [L:K]_{\mathrm S} \overset{\propref{1_7_4}}= [L:L_{\mathrm S}]_{\mathrm S} [ L_{\mathrm S} : K] \underset{\overset{\propref{1_7_11}}=}{\propref{1:7:6}} 1\cdot [L_{\mathrm S}:K] = [L_{\mathrm S}:K] &
+	\end{flalign*}
+\end{remark}
