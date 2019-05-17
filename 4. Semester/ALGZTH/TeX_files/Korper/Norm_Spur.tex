@@ -1,0 +1,69 @@
+\section{Norm und Spur}
+Sei $L\mid K$ endliche Körpererweiterung und $\alpha \in L$.
+\begin{remark}
+	$L$ ist ein $K$-Vektorraum $\implies$ $\End_K (L)$ ist ein $K$-Vektorraum und ein (nichtkommutativer) Ring unter Komposition.
+\end{remark}
+\begin{definition}[Spur, Norm]
+	\begin{enumerate}
+		\item \begin{align*}
+		\mu_{\alpha} : \begin{cases}
+		L & \quad L\\
+		x &\mapsto \alpha x
+		\end{cases} \in \End_K (L)
+		\end{align*}
+		\item $N_{L \mid K} := \det(\mu_{\alpha}$, die $(L \mid K)$- Norm von $\alpha$
+	\end{enumerate}
+\end{definition}
+%to add 16 May 2019 %TODO
+\begin{conclusion}
+	Sei $K \subseteq L \subseteq M$, dann
+	\begin{itemize}
+		\item $N_{L \mid K}(\alpha) = N_{L\mid K}(N_{L\mid K}(\alpha))$
+		\item $\Tr_{L \mid K}(\alpha) = \Tr_{L \mid K}(\Tr_{L \mid K}(\alpha))$
+	\end{itemize}
+\end{conclusion}
+\begin{proof}
+	Sei $[L:K] = q_1 \cdot r_1, [M:L] = q_2 \cdot r_2$. $\Hom(L, \bar{K}) = \set{\tau_1, \dots, \tau_{r_1}}, \Hom(M, \bar{L}) = \set{\sigma_1, \dots, \sigma_{r_2}}$. Fixiere Einbettung $L \subseteq \bar{K}$ und setze $\tau_i$ fort zu $\tilde{\tau}_i \in \Aut(\bar{K}, K)$ \propref{1_4_11} %TODO
+	Dann ist
+	\[
+		\Hom_K(M, \bar{K}) = \set{\tilde{\tau}_i \circ \sigma_j, i =1, \dots, r_1, j = 1, \dots, r_2}
+	\]
+	denn $\neq \Hom(M, \bar{K}) = [M, K] = r_1 \cdot r_2$ und
+	\begin{align*} %TODO check for { } misssing
+		\tilde{\tau}_{i'} \circ \sigma_{j'} \implies \sigma_j = (\tilde{\tau}_i^{-1} \circ \tilde{\tau}_{i'})\circ \sigma_{j'}\\
+		\implies \tilde{\tau}_i^{-1} \circ \tilde{\tau}_{i\mid L} = \id_L = \tau_i = \tau_{i'} \implies i = i'\\
+		\implies \sigma_j = \sigma_{j'} \implies j = j'.\\
+		\implies N_{L\mid K}(N_{M\mid K}(\alpha)) = N_{L\mid K}\brackets{\prod_{i=j}^{r_2} \sigma_j (\alpha)}^{q_2}\ \overset{\cref*{1_2_7}}{=}\\
+		= \brackets{ \prod_{i=1}^{r_1} \tau_i \brackets{\prod_{j=1}^{r_2} \sigma_j (\alpha) }}{q_1 q_2} = \brackets{\prod_{i,j} (\tilde{\tau}_i \circ \sigma_j (\alpha))}^{q_1 q_2} \overset{\cref{1_8_7}}{=} N_{M \mid K}(\alpha).
+	\end{align*}
+	Analog für die Spur.
+\end{proof}
+\begin{theorem}[Unabhängigkeit der Charaktere, \person{Artin}]
+	\proplbl{1_8_9}
+	Sei $G$ eine Gruppe. Sind $\chi_1, \dots, \chi_n \in \Hom(G, K^{\times})$ paarweise verschieden, so sind sie linear unabhängig im $K$-Vektorraum $\Abb(G,K)$.
+\end{theorem}
+\begin{proof} %TODO reformat!
+	Seien $\chi_1, \dots, \chi_n$ linear abhängig, oE $n \ge 2$ minimal, d.h. $\sum_{i=1}^n a_i \chi_i = 0 \mit a_1, \dots, a_n \in K^{\times}$. Sind $\chi_1 \neq \chi_n \implies \exists g \in G \mit \chi_1(g) \neq \chi_n(g)$. $\sum a_i \chi_i = \implies \forall h \in G$ ist $\sum_{i=1}^n a_i \chi_i (h) = 0$.
+	\begin{align*}
+		\implies \begin{cases}
+			\sum_{i=1}^n a_i \cdot \underbrace{\chi_i (hg)}_{\chi_i(h)\cdot \chi_i(g)} &= 0\\
+			\sum_{i=1}^n a_i \cdot \chi_i(h)\cdot \chi_i(g) = 0
+		\end{cases}
+		\implies 0 &= \sum_{i=1}^n a_i \cdot \chi_i(h)(\chi_i(g) - \chi_n(g))\\
+		&= \sum_{i=1}^{n-1} a_i (\chi_i(g) - \chi_n(g))\cdot \chi_i(h)\\
+		\implies \sum_{i=1}^{n-1} a_i \cdot (\chi_i(g) - \chi_n(g))\cdot \chi_i = 0\\
+		a_n (\chi_1(g) - \chi_n(g)) \neq 0
+	\end{align*}
+	das ist ein Widerspruch zur Minimalität von $n$.
+\end{proof}
+\begin{conclusion}
+	\proplbl{1_8_10}
+	Genau dann ist $\Tr_{L \mid K} \neq 0$, wenn $L \mid K$ separabel.
+\end{conclusion}
+\begin{proof}
+	\begin{itemize}
+		\item ``$\implies$'': \propref{1_8_6}
+		\item ``$\Longleftarrow$'': Sei $\Hom_K(L, \bar{K}) = \set{\sigma_1, \dots, \sigma_n}$. $\sigma_{i \mid L^{times}} \in \Hom_K(L^{times}, K^{times})$\\
+		$\xRightarrow{\cref{1_8_7}} \sigma_1,\dots, \sigma_n$ sind $\bar{K}$-linear unabhängig. Insbesondere ist $\Tr_{L \mid K} = \sum_{i=1}^n \sigma_i \neq 0$.
+	\end{itemize}
+\end{proof}

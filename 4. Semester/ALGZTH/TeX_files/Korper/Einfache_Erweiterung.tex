@@ -1,0 +1,60 @@
+\section{Einfache Erweiterung}
+Sei $K$ unendlich, $L \mid K$ endliche Erweiterung.
+\begin{remark}
+	$L \mid K$ einfach $\Longleftrightarrow L = K(\alpha)$ für ein $\alpha \in L$. Ein solches $\alpha$ heißt ein \begriff{primitives Element} von $L \mid K$.
+\end{remark}
+\begin{proposition}
+	\proplbl{1_9_2}
+	Die Erweiterung ist einfach $\Longleftrightarrow$ \\
+	Die Menge der Zwischenkörper
+	\[
+		\Zwischen = \set{M \colon K \subseteq M \subseteq L, M \text{ Körper}}
+	\]
+	ist endlich.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item ``$\implies$'': Sei $L = K(\alpha), f= \MinPol(\alpha \mid K)$. Für $M \in \Zwischen$ setze
+		\begin{align*}
+			g&:= \MinPol(\alpha \mid M) = \sum_{i=0}^n a_i X^i,\\
+			M_0 &:= K(a_0, \dots, a_n).
+		\end{align*} 
+		Dann gilt $g \mid f$ in $L[X]$, es gibt also nur endlich viele solche $g$. Da $K \subseteq M_0 \subseteq M \subseteq L$ und $[L:M_0] = [M_(\alpha):M_0]= \deg(g) = [M(\alpha):M] = [L:M]$\\
+		ist $M = M_0$ durch g bestimmt.
+		\item ``$\Longleftarrow$'': Sei $L = K(\alpha_1, \dots, \alpha_r)$. Es genügt, die Behauptung für $r = 2$ zu zeigen. Sei also $L = K(\alpha, \beta)$, oE $\beta \neq 0$. Da $\abs{K} = \infty$ ist $\abs{\set{\alpha + c\beta \colon c \in K}} = \infty$. Ist $\abs{\Zwischen} < \infty$, so existiert somit $c, c' \in K$ mit $c \neq c' \und K(\alpha + c \beta) = K(\alpha + c' \beta) = M \in \Zwischen$\\
+		$\implies M \ni (\alpha + c \beta) = (\alpha + c' \beta) = (\underbrace{c-c'}_{\in K^{\times}})\beta$\\
+		$\implies \beta \in M \implies \alpha \in M$\\
+		$L = K(\alpha, \beta) \subseteq M \subseteq L$\\
+		$L = M = K(\alpha + c\beta)$.
+	\end{itemize}
+\end{proof}
+\begin{remark}
+	\begin{enumerate}
+		\item Insbesondere gilt:
+		$K \subseteq M \subseteq L, L \mid K$ endlich und einfach\\
+		$\implies M \mid K$ endlich und einfach
+		\item Dies gilt auch für transzendente einfache Erweiterungen. $K \subseteq M \subseteq L = K(X) \implies M = K(f)$ für ein $f \in K(X)$. ($\nearrow$ Satz von \person{Lüroth})
+	\end{enumerate}
+\end{remark}
+\begin{theorem}[Satz vom primitiven Element, \person{Abel}]
+	\proplbl{1_9_4:primitiv}
+	Sei $L = K(\alpha_1, \dots, \alpha_r)$ eine endliche Erweiterung von $K$. Ist höchstens eines der $\alpha_i$ inseparabel über $K$, so ist die $L \mid K$ einfach.
+\end{theorem}
+\begin{proof}
+	Es genügt, den Fall $r = 2$ zu betrachten. %TODO next week! ;)
+\end{proof}
+\begin{conclusion}
+	Jede endliche separable Erweiterung von $K$ ist einfach und besitzt nur endliche viele Zwischenkörper. Dies gilt insbesondere für jede endliche Erweiterung in Charakteristik 0.
+\end{conclusion}
+\begin{proof}
+	Folgt aus \propref{1_9_2}, \propref{1_9_4} und \propref{1_6_15}.
+\end{proof}
+\begin{example}
+	$\Q(\sqrt{2}, \sqrt{3})\mid \Q$ besitzt ein primitives Element, z.B. $\sqrt{2} + \sqrt{3}$ ($\nearrow$ Übung 21). Tatsächlich ist $\Q(\sqrt{2}, \sqrt{3}) = \Q(\sqrt{2}+c\sqrt{3})$ für jedes $c \in \Q^{times}$.
+\end{example}
+\begin{example}
+	Sei $L = \F_p(t,s) = \Quot(\F_p[t,s]), K = L^p$. Dann ist $[L:K] = p^2$ ($\nearrow$ Ü??) aber $L\mid K$ ist \emph{nicht} einfach und besitzt unendliche viele Zwischenkörper. (Nach \propref{1_9_2}) ($\nearrow$ Übung)
+\end{example}
+\begin{remark}
+	Das \propref{1_9_4:primitiv} gilt für $K$ endlich, siehe II.3. %TODO ref later!
+\end{remark}
