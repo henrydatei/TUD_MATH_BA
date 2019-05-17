@@ -1,19 +1,66 @@
 \section{Norm und Spur}
 Sei $L\mid K$ endliche Körpererweiterung und $\alpha \in L$.
 \begin{remark}
-	$L$ ist ein $K$-Vektorraum $\implies$ $\End_K (L)$ ist ein $K$-Vektorraum und ein (nichtkommutativer) Ring unter Komposition.
+	$L$ ist ein $K$-Vektorraum $\implies$ $\End_K (L)$ ist ein $K$-Vektorraum und ein (nicht kommutativer) Ring unter Komposition.
 \end{remark}
 \begin{definition}[Spur, Norm]
-	\begin{enumerate}
+	\begin{enumerate} %TODO fix 1) looks ugly
 		\item \begin{align*}
 		\mu_{\alpha} : \begin{cases}
-		L & \quad L\\
+		L & \to L\\
 		x &\mapsto \alpha x
 		\end{cases} \in \End_K (L)
 		\end{align*}
-		\item $N_{L \mid K} := \det(\mu_{\alpha}$, die $(L \mid K)$- Norm von $\alpha$
+		\item \begin{enumerate}[label=]
+			\item $N_{L \mid K}(\alpha) := \det(\mu_{\alpha}$, die $(L \mid K)$- Norm von $\alpha$
+			\item $\Tr_{L \mid K}(\alpha) := \Tr(\mu_{\alpha})$, die $(L\mid K)$-Spur von $\alpha$
+		\end{enumerate}
+		\item \begin{enumerate}[label=]
+			\item $\chi_{\alpha} :=$ charakteristisches Polynom von $\mu_{\alpha}$
+			\item $f_{\alpha} :=$ Minimalpolynom von $\mu_{\alpha}$
+		\end{enumerate}
 	\end{enumerate}
 \end{definition}
+\begin{lemma}
+	\begin{enumerate}
+		\item $f_{\alpha} = \MinPol(\alpha \mid K)$
+		\item $\chi_{\alpha} = f_^{\alpha}^m$ für $m = [L:K(\alpha)]$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item Sei
+		\begin{align*}
+			\mu: \begin{cases}
+			L & \to \End_K(L)\\
+			\beta & \mapsto \mu_{\beta} 
+			\end{cases} \tag{$\star$} \label{bew:1_8_3}
+		\end{align*}
+		ist $K$-linearer Rainghomomorphismus: \checkmark\\
+		Sei $g:= \MinPol(\alpha \mid K)$. Dann
+		\begin{align*}
+			\begin{pmatrix}
+			g(\mu_{\alpha}) \overset{\eqref{bew:1_8_3}}{=} \mu_{g(\alpha)} = 0 \in \End_K(L) \implies f_{alpha}\mid g\\
+			\mu_{f_{\alpha}(\alpha)} \overset{\eqref{bew:1_8_3}}{=} f_{\alpha}(\mu_{\alpha}) = 0 \in \End_K(L) \xRightarrow{\mu \text{ inj.}} f_{\alpha}(\alpha) = 0 \implies g \mid f_{\alpha}
+			\end{pmatrix} \implies f_{\alpha} = g
+		\end{align*}
+		\item Ccharakteristisches Polynom und Minimalpolynom haben die gleichen irreduziblen Faktoren: $\nearrow$ LAAG VIII.7.6 oder direkt:
+		\begin{enumerate}[option]
+			\item $V$ $n$-dimensionaler $K$-VR, $\varphi \in \End_K(V)$, $\mathscr{B}$ Basis von $V \rightsquigarrow A = M_{\mathscr{B}}(f)$. $\chi_{\varphi} = \chi_A \in K[X]$ zerfällt in Linearfaktoren in $\bar{K}[X]$\\
+			$\implies$ lese $\chi_{\varphi} = \chi_A \und P_{\varphi} = P_A$ aus der Jordan-Normalform von $A$ ab.
+		\end{enumerate}
+		$f_{\alpha} = \MinPol(\alpha\mid K)$ irreduzibel $\implies \chi_{\alpha} = f_{\alpha}^m$ für ein $m$\\
+		\begin{align*}
+			\begin{pmatrix}
+			\deg(f_{\alpha}) &= \deg(\MinPol(\alpha\mid K)) = \deg(\alpha \mid K) = [K(\alpha : K)]\\
+			\deg(\chi_{\alpha}) = [L:K]
+			\end{pmatrix}\implies m = \frac{\deg(\chi_{\alpha})}{\deg(f_{\alpha})} = \frac{[L:K]}{[K(\alpha):K]} = [L:K(\alpha)]
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{example}
+	Sei $\C = \R + \R\ii, \alpha = x+y\ii \in \C$.
+\end{example}
 %to add 16 May 2019 %TODO
 \begin{conclusion}
 	Sei $K \subseteq L \subseteq M$, dann
@@ -23,7 +70,7 @@ Sei $L\mid K$ endliche Körpererweiterung und $\alpha \in L$.
 	\end{itemize}
 \end{conclusion}
 \begin{proof}
-	Sei $[L:K] = q_1 \cdot r_1, [M:L] = q_2 \cdot r_2$. $\Hom(L, \bar{K}) = \set{\tau_1, \dots, \tau_{r_1}}, \Hom(M, \bar{L}) = \set{\sigma_1, \dots, \sigma_{r_2}}$. Fixiere Einbettung $L \subseteq \bar{K}$ und setze $\tau_i$ fort zu $\tilde{\tau}_i \in \Aut(\bar{K}, K)$ \propref{1_4_11} %TODO
+	Sei $[L:K] = q_1 \cdot r_1, [M:L] = q_2 \cdot r_2$. $\Hom(L, \bar{K}) = \set{\tau_1, \dots, \tau_{r_1}}, \Hom(M, \bar{L}) = \set{\sigma_1, \dots, \sigma_{r_2}}$. Fixiere Einbettung $L \subseteq \bar{K}$ und setze $\tau_i$ fort zu $\tilde{\tau}_i \in \Aut(\bar{K}, K)$( \propref{1_4_11}) %TODO
 	Dann ist
 	\[
 		\Hom_K(M, \bar{K}) = \set{\tilde{\tau}_i \circ \sigma_j, i =1, \dots, r_1, j = 1, \dots, r_2}
@@ -60,10 +107,10 @@ Sei $L\mid K$ endliche Körpererweiterung und $\alpha \in L$.
 	\proplbl{1_8_10}
 	Genau dann ist $\Tr_{L \mid K} \neq 0$, wenn $L \mid K$ separabel.
 \end{conclusion}
-\begin{proof}
+\begin{proof}\
 	\begin{itemize}
 		\item ``$\implies$'': \propref{1_8_6}
-		\item ``$\Longleftarrow$'': Sei $\Hom_K(L, \bar{K}) = \set{\sigma_1, \dots, \sigma_n}$. $\sigma_{i \mid L^{times}} \in \Hom_K(L^{times}, K^{times})$\\
+		\item ``$\Longleftarrow$'': Sei $\Hom_K(L, \bar{K}) = \set{\sigma_1, \dots, \sigma_n}$. $\sigma_{i \mid L^{\times}} \in \Hom_K(L^{\times}, K^{\times})$\\
 		$\xRightarrow{\cref{1_8_7}} \sigma_1,\dots, \sigma_n$ sind $\bar{K}$-linear unabhängig. Insbesondere ist $\Tr_{L \mid K} = \sum_{i=1}^n \sigma_i \neq 0$.
 	\end{itemize}
 \end{proof}
