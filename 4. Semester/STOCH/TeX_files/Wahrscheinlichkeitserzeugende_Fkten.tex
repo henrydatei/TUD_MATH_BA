@@ -1,11 +1,11 @@
 \section{Wahrscheinlichkeitserzeugende Funktionen} %TODO add short title for sure
-\begin{definition}
+\begin{definition}[Wahrscheinlichkeitserzeugende Funktion]
 	\begin{enumerate}
-		\item Ist $\P$ Wahrscheinlichkeitsmaß auf $(\N_0), \pows(\N_0))$ mit Zähldichte $\rho$, so heißt
+		\item Ist $\P$ Wahrscheinlichkeitsmaß auf $(\N_0, \pows(\N_0))$ mit Zähldichte $\rho$, so heißt
 		\[
 			\psi_{\P} := \sum_{k\in \N_0} s^k \rho(k) \quad 0 \le s \le 1,
 		\]
-		\begriff{Wahrscheinlichkeitserzuegende Funktion} von $\P$. (probability generating function - pgf)
+		\begriff{Wahrscheinlichkeitserzeugende Funktion} von $\P$. (probability generating function - pgf)
 		\item Ist $X$ $\N_0$-wertige Zufallsvariable auf $(\O, \F, \P)$, so heißt
 		\[
 			\psi_X = \sum_{k\in \N_0} s^k \P(X=k) \quad 0 \le s \le 1,
@@ -39,7 +39,7 @@
 	\end{align*}
 \end{example}
 \begin{proposition}[Momentenberechnung mit der pgf]
-	Sie $X$ eine $\N_0$-wertige Zufallsvariable, dann gilt
+	Sei $X$ eine $\N_0$-wertige Zufallsvariable, dann gilt
 	\begin{align*}
 		\E [X^n] < \infty \quad n ge 1, \text{ genau dann, wenn } \psi_X^{(n)} = \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty.
 		\intertext{Insbesondere gilt dann}
@@ -51,7 +51,7 @@
 	\begin{align*}
 		\psi_X^{(n)} (s) = \sum_{k\in \N_0} k(k-1)\cdots (k-n+1) \rho(k)s^{k-n} \quad 0\le s< 1.
 	\end{align*}
-	Dann existieren in $[0, \infty]$
+	Dann existieren in $[0, \infty)$
 	\begin{align*}
 		\lim_{s \uparrow 1} \psi_X &= \lim_{s \uparrow 1} \sum_{k=0}^{\infty} k(k-1) \cdots (k-n+1) \rho(k)s^{k-n}\\
 		&= \sum_{k=n}^{infty} \rho(k)k(k-1) \cdots (k-n+1)\\
