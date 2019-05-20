@@ -200,17 +200,21 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 \end{proposition}
 \begin{proof}
 	Randdichten:
-	\begin{align*}
+	\begin{align*} 
 		\P(X \in A) &= \P(X \in A, Y \in \R) = \int_{\R}\int_A \rho_{X,Y}(x,y) \d x \d y \\%Reihenfolge egal, nach FUBINI und Tonelli
 		&= \int_A \underbrace{\int_{\R} \rho(x,y)\d y}_{\rho_X(x)}\d x
 	\end{align*}
 	Zudem gilt für $A, B \in \borel(\R)$
 	\begin{align*}
 		\P(X \in A, Y\in B) &= \int_{\R} \int_A \rho_{X,Y} (x,y) \d x \d y\\
-		&= \int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y + \\&+\int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y\\
-		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \rho_Y(y) \d y + \\&+\underbrace{\int_{B \cap \rho_Y(y) >0} \underbrace{\int_A \rho_{X,Y} (x,y) \d x}_{=\int_{\R} \rho_{X,Y}(x,y) \d x = \rho_Y(y)} \d y}_{=0}\\
-		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \P_Y(\d y)
-		\intertext{so dass}
+		&= \int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y + \\
+		&+\int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y\\
+		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \rho_Y(y) \d y + \\
+		&+\underbrace{\int_{B \cap \rho_Y(y) >0} \underbrace{\int_A \rho_{X,Y} (x,y) \d x}_{=\int_{\R} \rho_{X,Y}(x,y) \d x = \rho_Y(y)} \d y}_{=0}\\
+		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \P_Y(\d y),
+		\end{align*}
+		so dass
+		\begin{align*}
 		\P(X \in A \mid Y = y) = \begin{cases}
 		\int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \d x & \quad \rho_Y(y) >0\\
 		0 &\quad \sonst
@@ -222,15 +226,12 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{align*}
 \end{proof}
 \begin{example}
-	Betrachte
-	\[
-		f(x,y) = cx e^{-x(y+1)} \quad x,y > 0 \quad c \in \R \text{ bestimmt.}
-	\]
+	Betrachte $f(x,y) = cx e^{-x(y+1)} \quad x,y > 0 \quad c \in \R$ bestimmt.
 	Damit $f$ die Dichte zweier Zufallsvariablen $X,Y$ ist, muss
 	\[
 		\int_{\R_+} \int_{\R_+} f(x,y) \d x \d y \over{!}{=} 1
 	\]
-	gelten. Dazu
+	gelten. Dazu sei
 	\begin{align*}
 		\int_0^{\infty} \int_0^{\infty} cx e^{-x(y+1)} \d y \d x &= c \int_0^{\infty} x e^{-xy} \int_0^{\infty} e^{-xy} \d y \d x\\
 		&= c \int_0^{\infty} x e^{-x} \sqbrackets{- \frac{1}{x}e^{-xy}}_{y=0}^{\infty} \\
@@ -238,7 +239,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{align*}
 	Wähle $x = 1$. Als Randdichten von $X \und Y$ folgen
 	\begin{align*}
-		f_X(x) = \int_0^{\infty} f(x,y) \d y &= \int_0^{\infty} x e^{-x(y+1)} \d y\\
+		f_X(x) &= \int_0^{\infty} f(x,y) \d y = \int_0^{\infty} x e^{-x(y+1)} \d y\\
 		&\over{\text{s.o.}}{=} x^{-x} \quad x >0 
 	\end{align*}
 	(d.h. $X \sim \EXP(1)$) und 

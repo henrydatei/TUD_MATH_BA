@@ -12,36 +12,39 @@
 		\[
 			\mu(B) = \E[X \indi_{y\in B}]
 		\]
-		dann ist $\mu \ll\P_Y$. Aus dem Satz von \person{Randon}-\person{Nikodym} (\propref{6_1_1:Radon}) folgt die Existenz einer $\P_Y$-f.s. bestimmten Dichte $g$.
+		dann ist $\mu \ll\P_Y$. Aus dem Satz von \person{Radon}-\person{Nikodym} (\propref{6_1_1:Radon}) folgt die Existenz einer $\P_Y$-f.s. bestimmten Dichte $g$.
 		\item Sei $X \in \Ln{1}(\P)$. Es gilt $\E[X^-] < \infty \oder \E[X^+] < \infty$. Sei oBdA $\E[X^-] < \infty$, dann folgt auch $\E[X^-\mid Y=y] < \infty\;\P_Y$ f.s.. Setze
 		\begin{align*}
 			\E[X \mid Y = y] := \begin{cases}
 			\E[X^+ \mid Y = y] - \E[X^-\mid Y=y] &\quad \E[X^- \mid Y =y] < \infty\\
-			0 & \sonst.
+			0 &\quad \sonst.
 			\end{cases}
-			\intertext{Dann folgt}
+		\end{align*}
+		Dann folgt
+		\begin{align*}
 			\E[X\indi_{y\in B}] &=\E[X^+ \indi_{y\in B}] - \E[X^-\indi_{y\in B}]\\
 			&= \int_B \E[X^+ \mid Y=y]\P_Y(\d y) - \int_B \E[X^- \mid Y=y] \P_Y(\d y)\\
-			&= \int_B \E[X \mid Y=y]\P_Y(\d y) \quad \forall B \in \F_Y. 
-		\end{align*}
-		Sind $g_1,g_2$ zwei Versionen der bedingten Erwartung, dann gilt wegen $\E[X^-]<\infty$ auch $\int_{\O_Y} g_1^- (y)\P_Y(\d y) < \infty \quad i=1,2$
+			&= \int_B \E[X \mid Y=y]\P_Y(\d y) \quad \forall B \in \F_Y.
+		\end{align*} 
+		Sind $g_1,g_2$ zwei Versionen der bedingten Erwartung, dann gilt wegen $\E[X^-]<\infty$ auch $\int_{\O_Y} g_1^- (y)\P_Y(\d y) < \infty$ für $i=1,2$ und dann folgt
 		\begin{align*}
-		\implies \int_B g^+_1(y)\P_Y(\d y) = \int_B g_1^-(y)\P_Y(\d y)\\
+		\int_B g^+_1(y)\P_Y(\d y) &= \int_B g_1^-(y)\P_Y(\d y)\\
 		&= \int_B g_1(y) \P_Y(\d y)\\
 		&= \int_B g_2 (y)\P_Y (\d y)\\
 		&= \int_B g_2^+ (y) \P_Y(\d y) - \int_B g_2^-(y) \P_Y(\d y)\\
 		&\implies \int_B (g_1^+(y) + g_2^+(y)) \P_Y(\d y) \\
 		&= \int_B (g_2^+ (y) + g_1^- (y))\P_Y(\d y) \quad \forall B \in \F_Y
 		\intertext{also}
-		&g_1^+ + g_2^+ = g_2^+ + g_1^- \P_Y \text{-f.s.}\\
-		&\implies g_1^+ - g_1^- = g_1 = g_2 = g_2^+ - g_2^- \P_Y \text{-f.s.}
+		g_1^+ + g_2^+ = g_2^+ + g_1^- \P_Y \text{-f.s.}
+		\intertext{impliziert}
+		g_1^+ - g_1^- = g_1 = g_2 = g_2^+ - g_2^- \P_Y \text{-fast-sicher.}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
 \begin{*remark}
 	Bedingte Erwartung und bedingte Verteilung hängen zusammen:
 	\begin{itemize}
-		\item Sind $X,Y$ so dass $\E X$ existiert und eine reguläre bedingte Verteilung $\P_{X \mid Y = y}(B) = \P(X \in B \mid Y =y)$ existiert, dann folgt
+		\item Sind $X,Y$ so dass $\E X$ existiert und eine reguläre bedingte Verteilung\\ $\P_{X \mid Y = y}(B) = \P(X \in B \mid Y =y)$ existiert, dann folgt
 		\[
 			\E[X \mid Y=y] = \int_{\R} x \P_{X \mid Y = y} (\d x).
 		\]
