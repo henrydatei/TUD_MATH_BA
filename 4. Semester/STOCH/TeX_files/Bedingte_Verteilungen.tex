@@ -247,7 +247,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 		f_Y(y) &= \int_0^{\infty} f(x,y) \d x = \int_0^{\infty} x e^{-x(y+1)}\d x\\
 		\over{\text{P.I.}}&{=} \sqbrackets{x \frac{-1}{y+1} e^{-x(y+1)}}_{x=0}^{\infty} + \frac{1}{y+1} \int_0^{\infty} e^{-x(y+1)}\d x\\
 		&= 0 + \frac{1}{y+1} \sqbrackets{\frac{-1}{y+1}e^{-x(y+1)}}_{x=0}^{\infty}\\
-		&= \frac{1}{(y+1)^2} \quad x > 0
+		&= \frac{1}{(y+1)^2} \quad y > 0
 	\end{align*}
 	(Dies ist die Dichte einer \person{Pareter}-Verteilung.) Insbesondere sind $X \und Y$ nicht unabhängig, da sonst $f(x,y) = f_X(x)f_Y(y)$ gelten müsste. Die bedingte Dichte von $X$ gegeben $Y = y_0, y_0 >0$ berechnet sich als
 	\begin{align*}
