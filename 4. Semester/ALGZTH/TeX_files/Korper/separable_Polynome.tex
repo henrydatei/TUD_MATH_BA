@@ -98,7 +98,7 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 
 %TODO
 \begin{conclusion}
-	\proplbl{1:6:8}
+	\proplbl{1_6_8}
 	Sei $f$ irreduzibel
 	\begin{enumerate}[label={(\alph*)}]
 		\item Ist $\chara(K) = 0$, so ist $f$ separabel
@@ -124,7 +124,7 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 \end{definition}
 \begin{example}
 	\begin{expenum}
-		\item \label{1:6:12:a} $\chara(K) = 0 \implies K$ ist vollkommen
+		\item \label{1_6_12_a} $\chara(K) = 0 \implies K$ ist vollkommen
 		\item $K = \bar{K} \implies K$ ist vollkommen
 		\item $K = \F_p (t)$ ist nicht vollkommen:
 		\begin{flalign*}
@@ -160,16 +160,16 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 \end{proof}
 \begin{remark}
 	\begin{remarkenum}
-		\item \label{1:6:13:a} Da $\Phi_p \in \End(K) $ ist $K^p$ ein Teilkörper von $K$ und $\Phi_p$ ist injektiv.
+		\item \label{1_6_13_a} Da $\Phi_p \in \End(K) $ ist $K^p$ ein Teilkörper von $K$ und $\Phi_p$ ist injektiv.
 		\item Insbesondere gibt es zu jedem $a \in K$ ein eindeutig bestimmtes $a^{\frac{1}{p}} \in \bar{K}$ mit
 		\begin{flalign*}
-			\qquad & \Phi_p\Big(a^{\frac{1}{p}}\Big) = \Big(a^{\frac{1}{p}}\Big)^p = a &
+			\qquad & \Phi_p(a^{\frac{1}{p}}) = (a^{\frac{1}{p}})^p = a &
 		\end{flalign*}
 		\item Für $a \in \F \cong \F_p$ ist $\Phi_p(a) = a$. (z.B. $\Phi_p(1) = 1$ oder kleiner Satz von \person{Fermat})
 	\end{remarkenum}
 \end{remark}
 \begin{lemma}
-	\proplbl{1:6:14}
+	\proplbl{1_6_14}
 	Sei $\chara(K) = p > 0$, $a \in K \setminus K^p$. Dann ist $f = X^p -a$ irreduzibel und inseparabel
 \end{lemma}
 \begin{proof}
@@ -189,7 +189,7 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 \end{proof}
 
 \begin{proposition}
-	\proplbl{1:6:15}
+	\proplbl{1_6_15}
 	Genau dann ist $K$ vollkommen, wenn \begin{enumerate}[label={(\roman*)}]
 		\item $\chara(K) = 0$ oder
 		\item $\chara(K) = ß > 0$ und $K^P = K$
@@ -198,10 +198,10 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 \begin{proof}
 \leavevmode
 \begin{itemize}[topsep=-6pt]
-\item $\chara(K) = 0$: klar (\cref{1:6:12:a})
+\item $\chara(K) = 0$: klar (\cref{1_6_12_a})
 \item $\chara(K) = p > 0$: \begin{itemize}
-	\item[($\Rightarrow$)] Es existiert ein $a\in K\setminus K^p$, so ist $K$ nicht vollkommen nach \cref{1:6:14}.
-	\item[($\Leftarrow$)] Sei $f(X)\in K[X]$ irreduzibel und inseparabel. Nach \cref{1:6:8} existiert ein $g(X)\in K[X]$ mit \begin{flalign*}
+	\item[($\Rightarrow$)] Es existiert ein $a\in K\setminus K^p$, so ist $K$ nicht vollkommen nach \cref{1_6_14}.
+	\item[($\Leftarrow$)] Sei $f(X)\in K[X]$ irreduzibel und inseparabel. Nach \cref{1_6_8} existiert ein $g(X)\in K[X]$ mit \begin{flalign*}
 		\qquad & f(X) = g(X^p) &
 	\end{flalign*}
 	Setze $g(X) = \sum_{i=0}^n a_i X^i\in K[X]$. Dann ist \begin{flalign*}
@@ -212,5 +212,5 @@ Sei $K$ ein Körper, $f \in K[X]$, $n = \deg(f)$.
 \end{itemize}
 \end{proof}
 \begin{example}
-	$K$ endlich $\Rightarrow$ $K$ vollkommen (\cref{1:6:13:a}, \cref{1:6:15})
+	$K$ endlich $\Rightarrow$ $K$ vollkommen (\propref{1_6_13_a}, \propref{1_6_15}).
 \end{example}
