@@ -1,0 +1,139 @@
+\section{Normale Körpererweiterungen}
+Sei $K$ Körper, $\bar K$ ein fixierter algebraischer Abschluss von $K$ und $L$ ein Zwischenkörper $K\subseteq L\subseteq \bar K$.
+
+\begin{definition}
+	$L\mid K$ ist \begriff{Normal} :$\Leftrightarrow$ Ist $\alpha\in L$ und $\beta\in\bar K$ $K$-konjugiert, so ist $\beta\in L$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{2_1_2}
+	Ist $L\mid K$ endlich, so sind äquivalent \begin{enumerate}[label={(\arabic*)}]
+		\item $L\mid K$ ist normal
+		\item Jedes irreduzible $f\in K[X]$, das eine Nullstelle in $L$ hat, zerfällt über $L$ in Linearfaktoren
+		\item $L$ ist der Zerfällungskörper von $f\in K[X]$
+		\item Für jedes $\sigma\in\Aut(\bar K\mid K)$ ist $\sigma(L) = L$
+		\item Jedes $\sigma\in\Aut(\bar K\mid K)$ ist $\sigma(L)\subseteq L$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}\leavevmode
+	\begin{itemize}[widest={(1) $\Rightarrow$ (2)},leftmargin=*,topsep=-6pt]
+		\item[(1) $\Rightarrow$ (2)] klar nach \propref{1_4_14}
+		\item[(2) $\Rightarrow$ (3)] Sei $L = K(\alpha_1,\dots,\alpha_n)$. Mit \begin{equation*}
+			f = \prod_{i=1}^n \MinPol(\alpha_i\mid K)
+		\end{equation*}
+		ist $L$ der Zerfällungskörper von $f$.
+		\item[(3) $\Rightarrow$ (4)] Ist $f$ der Zerfällungskörper von\begin{equation*}
+			f = \prop_{i=1}^n (X - X_i),
+		\end{equation*}
+		und $\sigma\in\Aut(\bar K\mid K)$, so permutiert $\sigma$ die Nullstellen $\lbrace \alpha_1,\dots,\alpha_n\rbrace$ von $f$, folglich \begin{equation*}
+			\sigma(L) = \sigma\big( K(\alpha_1,\dots,\alpha_n)\big) = K\big(\sigma(\alpha_1),\dots,\sigma(\alpha_n)\big) = K(\alpha_1,\dots,\alpha_n) = L.
+		\end{equation*}
+		\item[(4) $\Rightarrow$ (5)] trivial
+		\item[(5) $\Rightarrow$ (1)] trivial
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}[label={\alph*)}]
+		\item $K\mid K$ ist normal
+		\item $\bar K\mid K$ ist normal
+		\item $\bar K_{\mathrm S} \mid K$ ist normal (\propref{1_7_7})
+		\item $[L:K] = 2$ $\Rightarrow$ $L\mid K$ ist normal
+		
+		($\deg(f) = 2$, $f$ hat Nullstelle $\Rightarrow$ $f$ zerfällt in Linearfaktoren)
+		\item $L = \mathbb Q(\sqrt[3]2)$, $[L:\mathbb Q] = 3$ $L\mid Q$ ist nicht normal, die zu $\sqrt[3]2$ $\mathbb Q$-konjugierte Elemente $\zeta_3 \sqrt[3]2$ und $\zeta_3^2 \sqrt[3]2$ liegen \emph{nicht} in $L$ (\propref{1_3_11_b})
+		\item $Sei \alpha = \sqrt[4]2\in\mathbb R_{\ge 0}$  und $f = \MinPol(\alpha\mid\mathbb Q) = X^4 - 2$. Dann sind die $\mathbb Q$-konjugierten $\pm \sqrt[4]2$ und $i\sqrt[4]2$. Da $i\sqrt[4]2\notin\mathbb R$ ist $\mathbb Q(\alpha)\mid \mathbb Q$ nicht normal und \begin{equation*}
+			\underbrace{\mathbb Q(\sqrt[4]2) \;\, \underset{\text{normal}}{\overset{2}{\rule[0.1\baselineskip]{3em}{0.1pt}}} \;\, \mathbb  Q(\sqrt 2) \;\, \underset{\text{normal}}{\overset{2}{\rule[0.1\baselineskip]{3em}{0.1pt}}} \;\, \mathbb Q,}_{\text{nicht normal}}
+		\end{equation*}
+		also ist Normalität nicht transitiv.
+	\end{enumerate}
+\end{example}
+
+\begin{conclusion}
+	\proplbl{2_1_4}
+	Sei $L\mid K$ endlich und seien $K\subseteq L_1$, $L_2\subseteq L$ Zwischenkörper. Dann \begin{enumerate}[label={(\alph*)}]
+		\item Sind $L_1\mid K$ und $L_2\mid K$ normal, so auch $L_1\cap L_2\mid K$ und $L_1L_2 \mid K$
+		\item Ist $L\mid K$ normal, so auch $L\mid L_1$
+	\end{enumerate}
+\end{conclusion}
+
+\begin{proof}\leavevmode
+\begin{enumerate}[label={\alph*)},topsep=-6pt]
+	\item \begin{itemize}[left=0pt]
+		\item $L1\cap L_2$: klar aus Definition
+		\item $L_1L_2$: Sei $\sigma\in\Aut(\bar K\mid K)$ $\Rightarrow$ $\sigma(L_1L_2)  = \sigma(L_1)\sigma(L_2) = L_1 L_2$
+	\end{itemize}
+	\item klar, da $\Aut(\bar L_1\mid L_1)\subseteq \Aut(\bar K\mid K)$
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_1_5}
+	Sei $L\mid K$ endlich. Es ist \begin{equation*}
+		\# \Aut(L\mid K) \le [L:K]_{\mathrm S}
+	\end{equation*}
+	mit Gleichheit, wenn die Erweiterung normal ist.
+\end{proposition}
+
+\begin{proof}
+	Es ist \begin{equation*}
+		\Aut(L\mid K) = \Hom_K(L, L) = \big\lbrace \sigma\in\Hom_K(L,\bar K)\;\big|\; \sigma(L)\subseteq L\big\rbrace \subseteq \Hom_K(L,\bar K),
+	\end{equation*}
+	sodass $\# \Aut(L\mid K) \le \# \Hom_K(L,\bar K) = [L:K]_{\mathrm S}$.
+	
+	Es gilt: $\Aut(L\mid K) = \Hom_K(L\mid \bar K)$ \begin{itemize}[topsep=0pt,label={$\Leftrightarrow$},widest={<I.4.11>},leftmargin=*]
+		\item $\forall \sigma\in \Hom_K(L\mid \bar K)$: $\sigma(L)\subseteq L$
+		\item[$\xLeftrightarrow{\propref{1_4_11}}$] $\forall \sigma\in\Aut(\bar K\mid K)$: $\sigma(L)\subseteq L$
+		\item[$\xLeftrightarrow{\propref{2_1_2}}$] $L\mid K$ normal.
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	\proplbl{2_1_6}
+	Es ist also \begin{equation*}
+		\Aut(L\mid K) \overset{\circled{\tiny  1}}{\le} [L:K]_{\mathrm S} \overset{\circled{\tiny2}}{\le} [L:K],
+	\end{equation*}
+	wobei gilt: \begin{enumerate}[label=\protect\circled{\arabic*}]
+		\item ist Gleichheit :$\xLeftrightarrow{\propref{2_1_5}}$ $L\mid K$ normal
+		\item ist Gleichheit :$\xLeftrightarrow{\propref{1_7_6}}$ $L\mid K$ separabel
+	\end{enumerate}
+\end{remark}
+
+\begin{definition}
+	$L\mid K$ ist \begriff{galoissch} (oder Galoiserweiterung) $\Leftrightarrow$ $L\mid K$ ist normal und separabel
+\end{definition}
+
+\begin{proposition}
+	\proplbl{2_1_8}
+	Ist $L\mid K$ endlich, so sind äquivalent \begin{enumerate}[label={(\arabic*)}]
+		\item $L\mid K$ ist galoissch
+		\item Jedes $\alpha\in L$ hat $\deg(\alpha\mid L)$ viele $K$-konjugierte in $L$
+		\item $L$ ist Zerfällungskörper eines irreduziblen, separablen Polynoms $f\in K[X]$
+		\item $L$ ist Zerfällungskörper eines separablen Polynoms $f\in K[X]$
+		\item $\#\Aut(L\mid K) = [L:K]$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\leavevmode
+	\begin{itemize}[topsep=-6pt,widest={(1) $\Leftrightarrow$ (3)},leftmargin=*]
+		\item[(1) $\Leftrightarrow$ (5)] \propref{2_1_6}
+		\item[(1) $\Leftrightarrow$ (2)] $L\mid K$ separabel $\Leftrightarrow$ jdes $\alpha\in L$ hat $\deg(\alpha\mid K)$ viele $K$-konjugierte in $\bar K$. \\
+		$L\mid K$ normal $\Leftrightarrow$ alle $K$-konjugierte von $\alpha\in L$ liegen in $L$.
+		\item[(1) $\Rightarrow$ (3)] $L\mid K$ separabel $\xRightarrow{\propref{1_9_4}}$ $L = K(\alpha)$ einfach.\\
+		$L\mid K$ normal $\Rightarrow$ $L$ ist Zerfällungskörper von $\MinPol(\alpha\mid K)$
+		\item[(3) $\Rightarrow$ (4)] trivial
+		\item[(4) $\Rightarrow$ (1)] \propref{2_1_2} und \propref{1_7_6}
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_1_9}
+	Sei $L\mid K$ endlich und seien $K\subseteq L_1$, $L_2\subseteq L$ Zwischenkörper. \begin{enumerate}[label={(\alph*)}]
+		\item Sind $L_1\mid K$ und $L_2\mid K$ galoissch, so auch $L_1\cap L_2\mid K$ und $L_1L_2 \mid K$
+		\item Ist $L\mid K$ galoissch, so auch $L\mid L_1$
+	\end{enumerate}
+\end{conclusion}
+
+\begin{proof}
+	\propref{2_1_4}, \propref{1_7_8} und \propref{1_7_9}.
+\end{proof}

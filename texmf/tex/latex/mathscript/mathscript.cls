@@ -636,7 +636,7 @@ innerleftmargin=10pt,%
 	\end{tcolorbox}}
 }
 
-https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+%https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 

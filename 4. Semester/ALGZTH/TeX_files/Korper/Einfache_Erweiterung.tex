@@ -5,43 +5,75 @@ Sei $K$ unendlich, $L \mid K$ endliche Erweiterung.
 \end{remark}
 \begin{proposition}
 	\proplbl{1_9_2}
-	Die Erweiterung ist einfach $\Longleftrightarrow$ \\
-	Die Menge der Zwischenkörper
-	\[
-		\Zwischen = \set{M \colon K \subseteq M \subseteq L, M \text{ Körper}}
-	\]
-	ist endlich.
+	\begin{tabularx}{\linewidth}{l@{\quad}c@{\quad}X}
+		$L\mid K$ einfach & $\Leftrightarrow$ & Die Menge der Zwischenkörper von $\mathcal M = \lbrace M \mid K \subseteq M \subseteq L\rbrace$ ist endlich.
+	\end{tabularx}
+	\vspace*{-\baselineskip}
 \end{proposition}
-\begin{proof}
-	\begin{itemize}\
-		\item ``$\implies$'': Sei $L = K(\alpha), f= \MinPol(\alpha \mid K)$. Für $M \in \Zwischen$ setze
-		\begin{align*}
-			g&:= \MinPol(\alpha \mid M) = \sum_{i=0}^n a_i X^i,\\
-			M_0 &:= K(a_0, \dots, a_n).
-		\end{align*} 
-		Dann gilt $g \mid f$ in $L[X]$, es gibt also nur endlich viele solche $g$. Da $K \subseteq M_0 \subseteq M \subseteq L$ und $[L:M_0] = [M_(\alpha):M_0]= \deg(g) = [M(\alpha):M] = [L:M]$\\
-		ist $M = M_0$ durch g bestimmt.
-		\item ``$\Longleftarrow$'': Sei $L = K(\alpha_1, \dots, \alpha_r)$. Es genügt, die Behauptung für $r = 2$ zu zeigen. Sei also $L = K(\alpha, \beta)$, oE $\beta \neq 0$. Da $\abs{K} = \infty$ ist $\abs{\set{\alpha + c\beta \colon c \in K}} = \infty$. Ist $\abs{\Zwischen} < \infty$, so existiert somit $c, c' \in K$ mit $c \neq c' \und K(\alpha + c \beta) = K(\alpha + c' \beta) = M \in \Zwischen$\\
-		$\implies M \ni (\alpha + c \beta) = (\alpha + c' \beta) = (\underbrace{c-c'}_{\in K^{\times}})\beta$\\
-		$\implies \beta \in M \implies \alpha \in M$\\
-		$L = K(\alpha, \beta) \subseteq M \subseteq L$\\
-		$L = M = K(\alpha + c\beta)$.
+\begin{proof}\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item[($\Rightarrow$)] Sei $L = K(\alpha)$, $f= \MinPol(\alpha \mid K)$. Für $M \in \mathcal M$ setze
+		\begin{flalign*}
+			\quad & \begin{aligned}[t]
+				g &:= \MinPol(\alpha\mid M) = \sum_{i=0}^n a_i X^i,\\
+				M_0 &:= K(a_0,\dots,a_n).
+			\end{aligned}&
+		\end{flalign*} 
+		Dann gilt $g \mid f$ in $L[X]$, es gibt also nur endlich viele solche $g$. Da $K \subseteq M_0 \subseteq M \subseteq L$ und
+		\begin{flalign*}
+			\quad & [L:M_0] = [M_(\alpha):M_0]= \deg(g) = [M(\alpha):M] = [L:M] &
+		\end{flalign*}
+		ist $M = M_0$ durch $g$ bestimmt.
+		\item[($\Leftarrow$)] Sei $L = K(\alpha_1, \dots, \alpha_r)$. Es genügt, die Behauptung für $r = 2$ zu zeigen. Sei also $L = K(\alpha, \beta)$, oE $\beta \neq 0$. Da $\abs{K} = \infty$ ist $\abs{\set{\alpha + c\beta \mid c \in K}} = \infty$. Ist $\abs{\mathcal M} < \infty$, so existiert somit $c$, $c' \in K$ mit $c \neq c'$ und $K(\alpha + c \beta) = K(\alpha + c' \beta) =: M \in \mathcal M$
+		\begin{itemize}[topsep=-6pt]
+		\item [$\implies$] $M \ni (\alpha + c \beta) \cdot (\alpha + c' \beta) = (\underbrace{c-c'}_{\in K^{\times}})\beta$
+		\item [$\implies$] $\beta \in M \implies \alpha \in M$
+		\item [$\implies$] $L = K(\alpha, \beta) \subseteq M \subseteq L$
+		\item [$\implies$] $L = M = K(\alpha + c\beta)$.
+		\end{itemize}
 	\end{itemize}
 \end{proof}
 \begin{remark}
-	\begin{enumerate}
+	\begin{enumerate}[label={(\alph*)}]
 		\item Insbesondere gilt:
-		$K \subseteq M \subseteq L, L \mid K$ endlich und einfach\\
+		$K \subseteq M \subseteq L$, $L \mid K$ endlich und einfach\\
 		$\implies M \mid K$ endlich und einfach
 		\item Dies gilt auch für transzendente einfache Erweiterungen. $K \subseteq M \subseteq L = K(X) \implies M = K(f)$ für ein $f \in K(X)$. ($\nearrow$ Satz von \person{Lüroth})
 	\end{enumerate}
 \end{remark}
 \begin{theorem}[Satz vom primitiven Element, \person{Abel}]
-	\proplbl{1_9_4:primitiv}
+	\proplbl{1_9_4}
 	Sei $L = K(\alpha_1, \dots, \alpha_r)$ eine endliche Erweiterung von $K$. Ist höchstens eines der $\alpha_i$ inseparabel über $K$, so ist die $L \mid K$ einfach.
 \end{theorem}
 \begin{proof}
-	Es genügt, den Fall $r = 2$ zu betrachten. %TODO next week! ;)
+	Es genügt, den Fall $r = 2$ zu betrachten (\propref{1_7_6}). Sei also $L = K(\alpha,\beta)$ und $\beta$ sei separabel über $K$. Seien \begin{equation*}
+		\alpha = \alpha_1,\dots,\alpha_n,\;\beta = \beta_1,\dots,\beta_l
+	\end{equation*}
+	die zu $\alpha$ bzw. $\beta$ $K$-Konjugierten. Da $\vert K \vert = \infty$ existiert ein $c\in K$ mit \begin{equation*}
+		c \neq \frac{\alpha_i - \alpha}{\beta-\beta_j},\quad i=1,\dots,n,\;j=2,\dots,l
+	\end{equation*}
+	Sei $\gamma := \alpha + c\beta$ und $f = \MinPol(\alpha\mid K)$ sowie $g := \MinPol(\beta\mid K)$.
+	\begin{underlinedenvironment}[Behauptung]
+		$g(X)$ und $f(\gamma- cX)$ haben genau eine gemeinsame Nullstelle $\beta$.
+	\end{underlinedenvironment}
+	\vspace*{\dimexpr-\baselineskip-2\lineskip}
+	\begin{proof}\leavevmode
+		\begin{itemize}[topsep=\dimexpr-6pt-\baselineskip-4\lineskip\relax]
+			\item $g(\beta) = 0$, $f(\gamma - c\beta9 = f(\alpha) = 0)$
+			\item $f(\gamma - c\beta_j) = 0$ \begin{itemize}[topsep=-6pt,label={$\Rightarrow$}]
+				\item $\exists\,i\colon$ $\alpha + c(\beta - \beta_j) = \alpha_i$
+				\item $\displaystyle c = \frac{\alpha_i - \alpha}{\beta - \beta_j}$
+				\item Entweder ein Widerspruch oder $j=1$
+			\end{itemize}
+		\end{itemize}
+	\end{proof}
+	Sei $h := \MinPol(\beta\mid K(\gamma))$. Dann gilt $h\mid g$, $h\mid f(\gamma -cX)$ \begin{itemize}[topsep=-6pt,label={$\Rightarrow$},widest={$\xRightarrow{\text{$\beta$ sep.}}$},leftmargin=*]
+		\item[$\xRightarrow{\text{Beh.}}$] $h$ hat nur eine Nullstelle in $\bar K$
+		\item[$\xRightarrow{\text{$\beta$ sep.}}$] $g$ separabel
+		\item $\deg(h) = 1$
+		\item $\beta\in K(\gamma)$ $\Rightarrow$ $\alpha\in K(\gamma)$
+		\item $L = K(\alpha,\beta) = K(\gamma)$
+	\end{itemize}
 \end{proof}
 \begin{conclusion}
 	Jede endliche separable Erweiterung von $K$ ist einfach und besitzt nur endliche viele Zwischenkörper. Dies gilt insbesondere für jede endliche Erweiterung in Charakteristik 0.
@@ -50,11 +82,21 @@ Sei $K$ unendlich, $L \mid K$ endliche Erweiterung.
 	Folgt aus \propref{1_9_2}, \propref{1_9_4} und \propref{1_6_15}.
 \end{proof}
 \begin{example}
-	$\Q(\sqrt{2}, \sqrt{3})\mid \Q$ besitzt ein primitives Element, z.B. $\sqrt{2} + \sqrt{3}$ ($\nearrow$ Übung 21). Tatsächlich ist $\Q(\sqrt{2}, \sqrt{3}) = \Q(\sqrt{2}+c\sqrt{3})$ für jedes $c \in \Q^{times}$.
+	$\Q(\sqrt{2}, \sqrt{3})\mid \Q$ besitzt ein primitives Element, z.B. $\sqrt{2} + \sqrt{3}$ ($\nearrow$ Übung 21). Tatsächlich ist $\Q(\sqrt{2}, \sqrt{3}) = \Q(\sqrt{2}+c\sqrt{3})$ für jedes $c \in \Q^{\times}$.
+	
+	\begin{tabular}{@{}l@{ }l@{: }l}
+		$K$-Konjugierte zu & $\sqrt 2$ & $\pm\sqrt 2$\\[-0.7em]
+						   & $\sqrt{3}$ & $\pm \sqrt3$
+	\end{tabular}
+
+	Folglich ist \begin{equation*}
+		\Bigg\lbrace \frac{\alpha_i - \alpha}{\beta-\beta_j} \;\Bigg|\; i = 1,2,\;j = 2\Bigg\rbrace = \bigg\lbrace 0, \frac{-2\sqrt{3}}{2\sqrt{3}}\bigg\rbrace
+	\end{equation*}
+	die Menge der nicht-zugelassenen Proportionalitätsfaktoren und $\alpha + c\beta$ ist primitives Element für alle $c\in \mathbb Q\setminus \lbrace 0, -\sqrt{2}\mskip-1mu\big\slash\mskip-1mu\sqrt3\rbrace = \mathbb Q^\times$
 \end{example}
 \begin{example}
-	Sei $L = \F_p(t,s) = \Quot(\F_p[t,s]), K = L^p$. Dann ist $[L:K] = p^2$ ($\nearrow$ Ü??) aber $L\mid K$ ist \emph{nicht} einfach und besitzt unendliche viele Zwischenkörper. (Nach \propref{1_9_2}) ($\nearrow$ Übung)
+	Sei $L = \F_p(t,s) = \Quot(\F_p[t,s])$, $K = L^p$. Dann ist $[L:K] = p^2$ ($\nearrow$ P41) aber $L\mid K$ ist \emph{nicht} einfach und besitzt unendliche viele Zwischenkörper. (Nach \propref{1_9_2}) ($\nearrow$ Übung)
 \end{example}
 \begin{remark}
-	Das \propref{1_9_4:primitiv} gilt für $K$ endlich, siehe II.3. %TODO ref later!
+	Das \propref{1_9_4} gilt auch für $K$ endlich, siehe II.3. %TODO ref later!
 \end{remark}
