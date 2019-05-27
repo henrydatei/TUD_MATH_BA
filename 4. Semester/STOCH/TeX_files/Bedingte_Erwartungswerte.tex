@@ -1,6 +1,6 @@
 \section{Bedingte Erwartungswerte}
 \begin{proposition}
-	\propref{6_2_8}
+	\proplbl{6_2_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
 	\begin{align*}
 		\E[X\indi_{y\in B}]=\int_{y \in B} X \d \P = \int_B g(y) \P_Y(\d y) \quad \forall B \in \F_Y
@@ -60,7 +60,7 @@
 		Für allgemeines $X$ folgt die Aussage mittels maßtheoretischer Induktion.
 	\end{itemize}
 \end{*remark}
-Durch Einsetzen von $X=\indi_{A}$ in Gleichung in \propref{6_1_8} folgt
+Durch Einsetzen von $X=\indi_{A}$ in Gleichung in \eqref{6_1_8} folgt
 \begin{align*}
 	\int_B \E[\indi_{A}\mid Y=y]\P_Y(\d y) &= \int_{Y \in B} \indi_{A} \d \P\\
 	&= \E[\indi_{A} \indi_{y\in B}]\\
@@ -120,8 +120,9 @@ betrachten.
 	\end{align*}
 	ist die \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $Y$}.
 \end{definition}
-\subsection*{Bedingen auf beliebige $\sigma$-Algebren}
-\begin{definition}[]
+\subsection*{Bedingen auf beliebige $\sigma$-Algebren} % bedingen war so in der VL und ist scheinbar kein Schreibfehler!
+\begin{definition}
+	\proplbl{6_2_11}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[X]$ existiert und $\G \subset \F$ $\sigma$-Algebra. Die \begriff{bedingte Erwartung von $X$ gegeben $\G$} ist die $\G$-messbare Zufallsvariable $X_{\G}$ mit
 	\begin{align*}
 		\int_G X(\omega)\P(\d \omega) = \int_G X_{\G}(\omega)\P(\d \omega) \quad \forall G \in \G \label{eq:6_2_11}\tag{$\star$}
@@ -130,8 +131,8 @@ betrachten.
 \end{definition}
 \begin{*remark}
 	\begin{itemize}
-		\item Existenz und Eindeutigkeit (bis auf $\G$-Nullmengen) der Bedingten Erwartung folgen wieder aus \person{Radon}-\person{Nikodym} (\propref{6_1_1:Radon}).
-		\item Die Gleichung\eqref{eq:6_2_11} können wir umschreiben:
+		\item Existenz und Eindeutigkeit (bis auf $\G$-Nullmengen) der bedingten Erwartung folgen wieder aus \person{Radon}-\person{Nikodym} (\propref{6_1_1:Radon}).
+		\item Die Gleichung \eqref{eq:6_2_11} können wir umschreiben:
 		\begin{align*}
 			\E[\E[X \mid \G]\indi_G] = \E[X \indi_G] \quad \forall G \in \G
 		\end{align*}
@@ -161,9 +162,9 @@ Die bedingte Erwartung übernimmt Eigenschaften der Erwartung:
 		\]
 	\end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}\
 	\begin{enumerate}
-		\item Folgt aus \propref{eq:6_2_11}.
+		\item Folgt aus \cref{6_2_11}.
 		\item Betrachte
 			\begin{align*}
 				\int_G X(\omega) \P(\d \omega) = \int_G x \P(\d \omega)
@@ -189,19 +190,19 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 			X_n \ge 0 \quad X_n \in \Ln{1}(\P) \quad X_n \uparrow X \und \sup_{n \in \N} \E[X_n] < \infty \quad \P\text{-f.s.} 
 		\end{align*}
 		Dann gilt: $\E[X \mid \G] = \sup_{n \in \N} \E[X_n \mid \G] = \lim_{n \to \infty} \E[X_n \mid \G] \quad \P\text{-f.s.}$
-		\item \person{Fatou} bedingt $X_n \ge 0, X_n \in \Ln{1}(\P)$ und $\liminf_{n \to \infty} \E[X_n] < \infty$\\
+		\item \person{Fatou} bedingt: $X_n \ge 0, X_n \in \Ln{1}(\P)$ und $\liminf_{n \to \infty} \E[X_n] < \infty$\\
 		Dann gilt
 		\begin{align*}
 			\E\sqbrackets{\liminf_{n \to \infty} X_n \mid \G} \le \liminf_{n \to \infty} \E[X_n \mid \G] \quad \P\text{-f.s.}
 		\end{align*}
-		\item Dominierte-KOnvergenz bedingt: $\lim_{n \to \infty} X_n = X \quad \P\text{-f.s.}$ und 
+		\item Dominierte-Konvergenz bedingt: $\lim_{n \to \infty} X_n = X \quad \P\text{-f.s.}$ und 
 		$\abs{X_n} \le Y \quad \P\text{-f.s.} \mit Y \in \Ln{1}(\P)$, dann gilt $X \in \Ln{1}(\P)$ und
 		\begin{align*}
 			\lim_{n \to \infty} \E[X_n \mid \G] = \E[X \mid \G] \quad \P\text{-f.s.}
 		\end{align*}
 	\end{enumerate}
 \end{proposition}
-\begin{proof}
+\begin{proof}\
 	\begin{enumerate}
 		\item Aus \person{Beppo}-\person{Levi} (klassisch) folgt:
 		\begin{align*}
@@ -214,5 +215,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 			\overset{\text{Def.}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
 			&= \int_G \sup_{n \in \N} X_n \d \P
 		\end{align*}
+		\item ÜA
+		\item ÜA
 	\end{enumerate}
 \end{proof}
