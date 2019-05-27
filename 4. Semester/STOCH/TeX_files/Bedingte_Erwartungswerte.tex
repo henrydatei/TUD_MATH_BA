@@ -171,8 +171,10 @@ Die bedingte Erwartung übernimmt Eigenschaften der Erwartung:
 		$\implies c$ ist Version der bedingten Erwartung.
 		\item Betrachte
 			\begin{align*}
-				\int_G (aX + bY) \d \P &= a \int_G X\d \P + b\int_G Y \P \text{ nutze Linearität des Integrals}\\
-				\overset{\propref{eq:6_2_11}}&{=} a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
+				\int_G (aX + bY) \d \P 
+				&= a \int_G X\d \P + b\int_G Y \P \text{ nutze Linearität des Integrals}\\
+				\overset{\eqref{eq:6_2_11}}&{=} 
+a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 				&= \int_G (a\E[X \mid \G] + b\E[Y \mid \G])\d \P
 			\end{align*}
 			$\implies a \E[X \mid \G] + b\E[Y \mid \G]$ ist Version von $\E[aX + bY \mid \G]$
