@@ -179,7 +179,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 				&= \int_G (a\E[X \mid \G] + b\E[Y \mid \G])\d \P
 			\end{align*}
 			$\implies a \E[X \mid \G] + b\E[Y \mid \G]$ ist Version von $\E[aX + bY \mid \G]$
-		\item $X \le Y \implies Y - X \ge 0$ und mit 1) und 3) $\implies$ Behauptung. % TODO refs
+		\item $X \le Y \implies Y - X \ge 0$ und mit 1. und 3. $\implies$ Behauptung. % TODO refs
 	\end{enumerate}
 \end{proof}
 \begin{proposition}[Konvergenzsätze der bedingten Erwartung]
@@ -215,7 +215,160 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 			\overset{\text{Def.}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
 			&= \int_G \sup_{n \in \N} X_n \d \P
 		\end{align*}
-		\item ÜA
-		\item ÜA
+		\item $\nearrow$ HA 8.2a
+		\item $\nearrow$ HA 8.2b
 	\end{enumerate}
 \end{proof}
+\begin{proposition}[Rechenregeln bedingter Erwartungswert 2]
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra und $X,Y: (\O,\F) \to (\R,\borel(\R))$ Zufallsvariablen, so dass $\E[X]$ existiert. Es gelten:
+	\begin{enumerate}
+		\item Triviale $\sigma$-Algebra:
+		\begin{align*}
+			\E[X\mid \set{\emptyset, \O}] = \E[X]
+		\end{align*}
+		\item einfache Turmeigenschaft:
+		\begin{align*}
+			\E[\E[X\mid \G]] = \E[X]
+		\end{align*}
+		\item allgemeine Turmeigenschaft: Sei $\mathscr{H} \subseteq \G \subseteq \F$ $\sigma$-Algebra, dann
+		\begin{align*}
+			\E[\E[X\mid \G]\mathscr{H}] = \E[X\mid \mathscr{H}]\quad \P{\text{-f.s.}}
+		\end{align*}
+		\item Messbares Herausziehen: Ist $Y$ $\G$-messbar und gilt $\E[XY] < \infty$, dann
+		\[
+			\E[XY \mid \G] = Y\E[X\mid \G]
+		\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Offenbar ist $\set{\emptyset, \O}$ $\sigma$-Algebra. Es gilt:
+		\begin{align*}
+			\int_G X \d \P = \begin{cases}
+				0 &\quad G = \emptyset\\
+				\E[X] &\quad G = \O
+			\end{cases}
+			\intertext{und}
+			\int_G \E[X] \d \P = \begin{cases}
+			0 &\quad G = \emptyset\\
+			E[X] &\quad G = \O
+			\end{cases}
+		\end{align*}
+		Also ist $\E[X]$ eine Version von $\E[X \mid \set{\emptyset, \O}]$.
+		\item Sei
+		\begin{align*}
+			\E[\E[X\mid \G]]\overset{\text{Def. EW}}&{=} \int_{\O} \E[X \mid \G]\d \P\\
+			\overset{\propref{6_2_11}, \O\in \G}&{=} \int_{\O} X \d \P = \E[X]
+		\end{align*}
+		\item Für $H \in \mathscr{H}$ gilt
+		\begin{align*}
+			\int_H \E[X\mid \G]\d \P  \overset{\propref{6_2_11}, H\in \G}&{=} \int_H X \d \P\\
+			 \overset{\propref{6_2_11}}&{=} \int_H \E[X \mid \mathscr{H}] \d \P
+		\end{align*}
+		also ist $\E[X\mid \mathscr{H}]$ eine Version von $\E[\E[X\mid \G]\mid \mathscr{H}]$.
+		\item Sei zunächst $Y=\indi_B$ mit $B \in \G$. Dann folgt für $G \in \G$
+		\begin{align*}
+			\int_G Y \E[X \mid \G]\d \P &= \int_{G \cap B} \E[X \mid \G]\d \P\\
+			\overset{\propref{6_2_11}, G \cap B \in \G}&{=} \int_{G \cap B} X \d \P\\
+			&=\int_G XY \d \P\\
+			\overset{\propref{6_2_11}}&{=} \int_G \E[XY\mid \G] \d\P
+		\end{align*}
+		und $Y\E[X\mid \G]$ ist Version von $\E[XY\mid \G]$. Die allgemeine Aussage folgt mit maßtheoretischer Induktion.
+	\end{enumerate}
+\end{proof}
+\begin{example}
+	\proplbl{6_2_15}
+	Ein KFZ-Versicherungsunternehmen modelliert die Schäden, die aus einem Portfolio von Verträgen stammen. als Zufallsvariablen $X_1,X_2,X_3,\dots$ unabhängig und identisch verteilt. (u.i.v) Zudem sei $N$ eine Zufallsvariable mit Werten in $\N_0$, welche die Anzahl der Schäden in einem Jahr modelliert. $N \und \set{X_1, X_2, \dots}$ seien unabhängig. Der Gesamtschaden im Jahr des Portfolios ist dann
+	\[
+		S = \sum_{i=1}^N X_i
+	\]
+	Der erwartete Gesamtschaden ist
+	\begin{align*} %TODO fix alignment for comments
+		\E[S] &= \E\sqbrackets[\sum_{i=1}^N X_i]\\
+		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmeigenschaft)}\\
+		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^N \mid N = n]\P(N=n) \quad\text{ (Def. EW.)}\\
+		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^n X_i]\P(N=n) \quad X_i \perp N\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_i]\P(N=n) \quad \text{ Linearität}\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_1]\P(N=n) \quad \text{($X_i$ identisch verteilt)}\\
+		&= \E[X_1] \sum_{n=0}^{\infty} n \P(N=n)\\
+		&= \E[X_1]\cdot \E[N] \quad \text{ \person{Wald}-Gleichung}
+	\end{align*}
+\end{example}
+\subsection*{Bedingte Varianz}
+\begin{definition}
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra. $X: (\O, \F) \to (\R, \borel(\R))$ mit $X \in \Ln{2}(\P)$. Dann ist
+	\begin{align*}
+		\Var(X \mid \G) = \E\sqbrackets{(X - \E[X \mid \G])^2 \mid \G}
+	\end{align*}
+	die \begriff{bedingte Varianz von $X$ gegeben $\G$}.
+\end{definition}
+\begin{lemma}[Eigenschaft der bedingten Varianz]
+	\proplbl{6_2_17}
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra, $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariable in $\Ln{2}(\P)$. Es gelten:
+	\begin{enumerate}
+		\item \ul{Positivität:} $\Var(X \mid \G) \ge 0$ $\P$-f.s.
+		\item Für $a,b \in \R$:
+		\[
+			\Var(aX + b \mid \G) = a^2\Var(X \mid \G)
+		\]
+		\item \ul{Verschiebungssatz:}
+		\[
+			\Var(X \mid \G) = \E[X^2 \mid \G] = (\E[X \mid \G])^2
+		\]
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item Definition und Positivitätseigenschaft der bedingten Erwartung.
+		\item Linearität der bedingten Erwartung und Rechenregeln wie im klassischen Fall.
+		\item Betrachte
+		\begin{align*}
+			\E[(X - \E[X\mid \G])^2 \mid \G] &=\\
+			&= \E[X^2 \mid \G]-2\E[X\underbrace{\E[X \mid \G]}_{\G \text{mb}}\mid \G] - \E[(\E[X \mid \G])^2 \mid \G]\\
+			\overset{\text{mb herausziehen}}&{=} \E[X^2 \mid \G] - 2\E[X \mid \G]\E[X \mid \G] + (\E[X \mid \G])^2 \underbrace{\E[1 \mid \G]}_{1, Konservation}\\
+			&= \E[X^2 \mid \G] -(\E[X \mid \G])^2.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{lemma}[Varianzzerlegung]
+	$(\O, \F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F, X: (\O,\F) \to (\R, \borel(\R))$ Zufallsvariable in $\Ln{2}(\P)$. Dann:
+	\begin{align*}
+		\Var(X) = \E[\Var(X\mid \G)] + \Var(\E[X\mid \G])
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Sei
+	\begin{align*}
+		\Var(\E[X \mid \G]) &= \E[(\E[X \mid \G])^2] - \E[\E[X \mid \G]]^2\\
+		\overset{\text{Turmegs.}}&{=} \E[(\E[X \mid \G])^2] - (\E[X])^2\\
+	\end{align*}
+	\begin{align*}
+		\E[\Var(X \mid \G)] \overset{\propref{6_2_17}}&{=} \E[\E[X^2 \mid \G] - \E[X \mid \G]^2]\\
+			&= \E[\E[X^2 \mid \G]] - \E[\E[X\mid \G]^2]\\
+			\overset{\text{Turm}}&{=} \E[X^2]-\E[\E[X \mid \G]^2]
+	\end{align*}
+	Durch Addition folgt die Behauptung.
+\end{proof}
+\begin{example}
+	Betrachte $S = \sum_{i=1}^N X_i$ aus \propref{6_2_15} mit $N, X_i \in \Ln{2}(\P)$. Aus der Varianzzerlegung folgt
+	\begin{align*}
+		\Var(S) &= \E[\Var(S \mid N)] + \Var(\E[S \mid N])\\
+		\intertext{wobei}
+		\E[\Var(S \mid N)] &= \sum_{n=0}^{\infty} \Var(S \mid N=n)\P(N=n)\\
+		&= \sum_{n=0}^{\infty} \Var(\sum_{i=1}^{\infty} X_i) \P(N=n)\\
+		\overset{\text{\person{Bienaymé}} X_i \text{ unabh.}}&{=} \sum_{n=0}^{\infty}\sum_{i=1}^{\infty}\Var(X_i)\P(N=n)\\
+		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
+		&= \Var(X_i)\E[N]
+		\intertext{und}
+		\Ver(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] - \E[X_1]\E[E[N]], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
+		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
+		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
+		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N]^2\P(N=n))
+		&= \E[X_1]^2 \cdot ()\underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N]^2} - 2 \E[N]\cdot \underbrace{sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
+ 		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
+		&= \E[X_1]^2 \cdot (\E[N^2] - \E[N]^2)\\
+		&= \E[X_^1]^2\Var(N).
+		\intertext{Also folgt}
+		\Var(S) &= \Var(X_1)\E[N] + (\E[X_1])^2\Var(N).	
+	\end{align*}
+\end{example}
