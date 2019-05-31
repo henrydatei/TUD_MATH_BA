@@ -360,14 +360,14 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
 		&= \Var(X_i)\E[N]
 		\intertext{und}
-		\Ver(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] - \E[X_1]\E[E[N]], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
+		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] - \E[X_1]\E[E[N]], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
 		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
-		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N]^2\P(N=n))
-		&= \E[X_1]^2 \cdot ()\underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N]^2} - 2 \E[N]\cdot \underbrace{sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
- 		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
+		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N])^2\P(N=n) \\
+		&= \E[X_1]^2 \cdot \underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N^2]} - 2 \E[N]\cdot \underbrace{\sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
+		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
 		&= \E[X_1]^2 \cdot (\E[N^2] - \E[N]^2)\\
-		&= \E[X_^1]^2\Var(N).
+		&= \E[X_1]^2\Var(N).
 		\intertext{Also folgt}
 		\Var(S) &= \Var(X_1)\E[N] + (\E[X_1])^2\Var(N).	
 	\end{align*}
