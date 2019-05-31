@@ -1,0 +1,30 @@
+\documentclass{standalone}
+
+\usepackage{../../../texmf/tex/latex/mathoperators/mathoperators}
+\usepackage{tikz, amsmath, amssymb}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+%\newcommand{\Q}{\mathbb{Q}}
+
+\begin{document}
+	\begin{tikzcd}
+		& {\Q(\sqrt{2},\sqrt{3})} \arrow[dash, ld] \arrow[dash, d] \arrow[dash, rd] &                         \\
+		\Q(\sqrt{2}) \arrow[dash, rd] & \Q(\sqrt{3}) \arrow[dash, d]                                  & \Q(\sqrt{6}) \arrow[dash, ld] \\
+		& \Q                                                      &                        
+	\end{tikzcd}
+	\begin{tikzcd}
+		& \set{\id} \arrow[ld] \arrow[d] \arrow[rd]   &                                 \\
+		{\set{\id,\sigma_1}} \arrow[rd] & {\set{\id, \sigma_3}} \arrow[d]             & {\set{\sigma_4,\id}} \arrow[ld] \\
+		& {\set{\sigma_1,\sigma_2,\sigma_3,\sigma_4}} &                                
+	\end{tikzcd}
+\end{document}

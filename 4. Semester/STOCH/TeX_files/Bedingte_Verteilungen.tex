@@ -226,6 +226,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{align*}
 \end{proof}
 \begin{example}
+	\proplbl{6_1_7}
 	Betrachte $f(x,y) = cx e^{-x(y+1)} \quad x,y > 0 \quad c \in \R$ bestimmt.
 	Damit $f$ die Dichte zweier Zufallsvariablen $X,Y$ ist, muss
 	\[
@@ -233,7 +234,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\]
 	gelten. Dazu sei
 	\begin{align*}
-		\int_0^{\infty} \int_0^{\infty} cx e^{-x(y+1)} \d y \d x &= c \int_0^{\infty} x e^{-xy} \int_0^{\infty} e^{-xy} \d y \d x\\
+		\int_0^{\infty} \int_0^{\infty} cx e^{-x(y+1)} \d y \d x &= c \int_0^{\infty} x e^{-x} \int_0^{\infty} e^{-xy} \d y \d x\\
 		&= c \int_0^{\infty} x e^{-x} \sqbrackets{- \frac{1}{x}e^{-xy}}_{y=0}^{\infty} \\
 		&= c \underbrace{\int_0^{\infty}e^x \d x}_{=1} = c \over{!}{=} 1 
 	\end{align*}
@@ -247,9 +248,9 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 		f_Y(y) &= \int_0^{\infty} f(x,y) \d x = \int_0^{\infty} x e^{-x(y+1)}\d x\\
 		\over{\text{P.I.}}&{=} \sqbrackets{x \frac{-1}{y+1} e^{-x(y+1)}}_{x=0}^{\infty} + \frac{1}{y+1} \int_0^{\infty} e^{-x(y+1)}\d x\\
 		&= 0 + \frac{1}{y+1} \sqbrackets{\frac{-1}{y+1}e^{-x(y+1)}}_{x=0}^{\infty}\\
-		&= \frac{1}{(y+1)^2} \quad x > 0
+		&= \frac{1}{(y+1)^2} \quad y > 0
 	\end{align*}
-	(Dies ist die Dichte einer \person{Pareter}-Verteilung.) Insbesondere sind $X \und Y$ nicht unabhängig, da sonst $f(x,y) = f_X(x)f_Y(y)$ gelten müsste. Die bedingte Dichte von $X$ gegeben $Y = y_0, y_0 >0$ berechnet sich als
+	(Dies ist die Dichte einer \person{Pareto}-Verteilung.) Insbesondere sind $X \und Y$ nicht unabhängig, da sonst $f(x,y) = f_X(x)f_Y(y)$ gelten müsste. Die bedingte Dichte von $X$ gegeben $Y = y_0, y_0 >0$ berechnet sich als
 	\begin{align*}
 	f_{X\mid Y=y_0} (x) = \frac{f(x,y_0)}{f_Y(y_0)} = x(y_0 + 1)^2 e^{-x(y_0+1)}
 	\end{align*}

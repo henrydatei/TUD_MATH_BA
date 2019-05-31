@@ -83,7 +83,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Math related packages
 %basic ams-math and enhancments
-\RequirePackage{amsmath,amssymb,amsfonts,mathtools}
+\RequirePackage[fleqn]{amsmath}
+\RequirePackage{amssymb,amsfonts,mathtools}
 \RequirePackage{blkarray}
 
 %add some font-related stuff
@@ -489,15 +490,19 @@ innerleftmargin=10pt,%
 \newcommand{\leqnos}{\tagsleft@true\let\veqno\@@leqno}	%set equation numbering left / right
 \newcommand{\reqnos}{\tagsleft@false\let\veqno\@@eqno}
 
+\zref@newprop{sectionnumber}[\@z]{}
+\zref@newprop{theoremnumber}[\@z]{}
+\zref@newprop{chapternumber}[\@z]{}
+
 %declare a new label; store current chapter number
 \newcommand*{\proplbl}[1]{%
 	\@bsphack
 	\begingroup
 	\label{#1}%
-	\zref@setcurrent{default}{\arabic{chapter}}%
-	\zref@wrapper@immediate{%
-		\zref@labelbyprops{#1@chapter}{default}%
-	}
+	\zref@setcurrent{sectionnumber}{\arabic{section}}
+	\zref@setcurrent{chapternumber}{\arabic{chapter}}
+	\zref@setcurrent{theoremnumber}{\arabic{theorem}}
+	\zref@labelbyprops{#1}{chapternumber,sectionnumber,theoremnumber}
 	\endgroup
 	\@esphack
 }
@@ -506,11 +511,12 @@ innerleftmargin=10pt,%
 %If the label is not defined (yet), question marks are output at the calling position. If the label is defined, the chapter number is prepended to the link output by \cref if the current chapter number and the one set when calling \proplbl differ.
 %the macro handels both text and math mode. mbox is needed due to a feature concerning ulem / cleveref
 \newcommand*{\propref}[1]{%
-	\ifcsdef{r@#1}%in first compilation the label may not be defined yet
+	\zref@ifrefundefined{#1}%in first compilation the label may not be defined yet
+	{\begingroup\ifmmode\else\bfseries\fi ???\endgroup}%similar to \ref\cref: question marks in case of undefined labels
 	{%
-		\zref@refused{#1@chapter}%
+		\zref@refused{#1}%
 		\cref@gettype{#1}{\propositionref@current@type}%get the environment's name
-		\ifnumcomp{\c@chapter}{=}{\zref@extractdefault{#1@chapter}{default}{\z@}}%
+		\ifnumcomp{\c@chapter}{=}{\zref@extract{#1}{chapternumber}}%
 		{%same chapter
 			\ifmmode 
 				\ref{#1}%
@@ -523,10 +529,10 @@ innerleftmargin=10pt,%
 			%\crefformat{truetheorem}{\cref@truetheorem@name~##2\rom{\zref@extractdefault{#1}{#1chapter}{1}}.##1##3}
 			%this changes the format used by \cref to <environtment name> <chapter-number>.<section-number>.<theorem number>
 			\crefformat{\propositionref@current@type}{%
-				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extractdefault{#1@chapter}{default}{\@ne}}.##1##3%
+				\csname cref@\propositionref@current@type @name\endcsname ~##2\rom{\zref@extract{#1}{chapternumber}}.##1##3%
 			}%
-			\ifmmode 
-				\ref{#1}%
+			\ifmmode
+				\hyperref[#1]{\text{\rom{\zref@extract{#1}{chapternumber}}.\zref@extract{#1}{sectionnumber}.\zref@extract{#1}{theoremnumber}}}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi
@@ -535,7 +541,6 @@ innerleftmargin=10pt,%
 			}%
 		}%
 	}%
-	{\begingroup\ifmmode\else\bfseries\fi ???\endgroup}%similar to \ref\cref: question marks in case of undefined labels
 }
 
 %declare new term to the index, output if no star is given to call position
@@ -630,6 +635,10 @@ innerleftmargin=10pt,%
 			\@kringel@inner{#3}
 	\end{tcolorbox}}
 }
+
+%https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 %update ntheorem macro to provide space between theorem numbers and any optional comment, adds in upper roman letters the chapter number. removes any numbering for theorem environments with just one counter
 \renewcommand{\thm@@thmline@name}[5]{%-       		

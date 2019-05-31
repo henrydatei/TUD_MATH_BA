@@ -1,5 +1,6 @@
 \section{Bedingte Erwartungswerte}
 \begin{proposition}
+	\proplbl{6_2_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
 	\begin{align*}
 		\E[X\indi_{y\in B}]=\int_{y \in B} X \d \P = \int_B g(y) \P_Y(\d y) \quad \forall B \in \F_Y
@@ -59,3 +60,315 @@
 		Für allgemeines $X$ folgt die Aussage mittels maßtheoretischer Induktion.
 	\end{itemize}
 \end{*remark}
+Durch Einsetzen von $X=\indi_{A}$ in Gleichung in \eqref{6_1_8} folgt
+\begin{align*}
+	\int_B \E[\indi_{A}\mid Y=y]\P_Y(\d y) &= \int_{Y \in B} \indi_{A} \d \P\\
+	&= \E[\indi_{A} \indi_{y\in B}]\\
+	&= \P(A \cap \set{Y\in B})
+\end{align*}
+und durch Vergleich mit Definition der bedingten Verteilung (\propref{6_1_4})
+\begin{align*}
+	\E[\indi_{A} \mid Y=y] = \P(A \mid Y=y) \quad \P\text{-f.s.}.
+\end{align*}
+\begin{example}
+	Betrachte \propref{6_1_7}, d.h. gegeben seien zwei Zufallsvariablen $X,Y$ mit Dichte
+	\begin{align*}
+		f(x,y) = x e^{-x(y+1)} \quad x,y > 0
+	\end{align*}
+	Die Erwartungswerte von $X \und Y$ folgen aus den Randdichten:
+	\begin{align*}
+		\E[X] = 1\quad \text{ da } X \sim \EXP(1)
+		\intertext{und}
+		\E[Y] &= \int_0^{\infty} y f_y (y) \d y = \int_0^{\infty} y \frac{1}{(y+1)^2}\\
+		&= \int_0^{\infty} (z-1) \frac{1}{z^2}\d z\\
+		&= \int_1^{\infty}\frac{1}{z} \d z - \int_1^{\infty} \frac{1}{z^2}\d z = \infty
+	\end{align*}
+	Der bedingte Erwartungswert von $X$ gegeben $Y = y_0 > 0$ ist
+	\begin{align*}
+		\E[X \mid Y=y_0] &= \int_0^{\infty} x f_{X\mid Y=y_0}(x) \d x\\
+		&= \int_0^{\infty} x^2 (y_0 +1)^2 e^{-x(y_0+1)} \d x\\ 
+		&= \frac{2}{y_0 + 1}
+	\end{align*}
+	da $X \mid Y = y_0 \sim \Gam(y_0 +1,2)$.
+\end{example}
+\subsection*{Der bedingte Erwartungswert als Zufallsvariable}
+\begin{enumerate}[label=]
+	\item Bisher: Bedingung der Form: $Y=y$
+	$\implies$ Sowohl bedingte Verteilung
+	\begin{align*}
+		\mu_A: (\O_Y,\F_Y) \to ([0,1],\borel([0,1]))
+		\intertext{als auch bedingte Erwartung}
+		g: (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))
+	\end{align*}
+	sind \emph{messbar}.
+\end{enumerate}
+Wir können also auch die Zufallsvariablen
+\begin{align*}
+	\mu_A (Y) &=: \P(X \in A \mid Y)\\
+	g(Y) &=: \E[X \mid Y] 
+\end{align*}
+betrachten.
+\begin{definition}[bedingte Erwartung und Wahrscheinlichkeit]
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\R, \borel(\R))$ und $Y: (\O, \F) \to (\O_Y, \F_Y)$ Zufallsvariablen, so dass $\E[X]$ existiert. Die \begriff{bedingte Erwartung von $X$ gegeben $Y$} ist die Zufallsvariable $g(Y)$ mit
+	\begin{align*}
+		\int_{\set{y \in B}} X(\omega)\P(\d \omega) &= \int_{\set{Y \in B}} g(Y)(\omega) \P(\d \omega)\\
+		&= \int_B g(y)\P_Y(\d y) \quad \forall B \in \F_Y.
+	\end{align*}
+	Schreibe $g(Y) =: \E[Y \mid Y] =: \E[X \mid \sigma(Y)]$.
+	\begin{align*}
+		\P(A \mid \sigma(Y)) := \P(A \mid Y) = \E[\indi_{A} \mid Y]
+	\end{align*}
+	ist die \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $Y$}.
+\end{definition}
+\subsection*{Bedingen auf beliebige $\sigma$-Algebren} % bedingen war so in der VL und ist scheinbar kein Schreibfehler!
+\begin{definition}
+	\proplbl{6_2_11}
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[X]$ existiert und $\G \subset \F$ $\sigma$-Algebra. Die \begriff{bedingte Erwartung von $X$ gegeben $\G$} ist die $\G$-messbare Zufallsvariable $X_{\G}$ mit
+	\begin{align*}
+		\int_G X(\omega)\P(\d \omega) = \int_G X_{\G}(\omega)\P(\d \omega) \quad \forall G \in \G \label{eq:6_2_11}\tag{$\star$}
+	\end{align*}
+	Schreibe: $X_{\G} = \E[X \mid \G]$. $\P(A \mid \G) := \E[\indi_A \mid \G]$ heißt \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $\G$}.
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Existenz und Eindeutigkeit (bis auf $\G$-Nullmengen) der bedingten Erwartung folgen wieder aus \person{Radon}-\person{Nikodym} (\propref{6_1_1:Radon}).
+		\item Die Gleichung \eqref{eq:6_2_11} können wir umschreiben:
+		\begin{align*}
+			\E[\E[X \mid \G]\indi_G] = \E[X \indi_G] \quad \forall G \in \G
+		\end{align*}
+		\item $\E[X \mid \G]$ ist nur bis auf $\G$-Nullmengen bestimmt.  Spreche daher von ``Versionen'' der bedingten Erwartung.
+	\end{itemize}
+\end{*remark}
+Die bedingte Erwartung übernimmt Eigenschaften der Erwartung:
+\begin{lemma}[Rechenregeln bedingter Erwartungswert 1]
+	\proplbl{6_2_12}
+	$(\O,\F, \P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra, $X,Y: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[Y],\E[Y]$ existieren.
+	\begin{enumerate}
+		\item Positivität:
+		\[
+			X \ge 0 \quad \P\text{-f.s. } \implies \E[X\mid \G] \ge 0\quad \P\text{-f.s.}
+		\]
+		\item Konservativität:
+		\[
+			X \equiv c \in \R \implies \E[X \mid \G] = c \quad \P\text{-f.s.}
+		\]
+		\item Linearität: Für $a,b \in \R$ und $X,Y \in \Ln{1}(\P)$
+		\[
+			\E[aX + bY \mid \G] = a\E[X \mid \G] + b \E[Y \mid \G] \quad \P\text{-f.s.}
+		\]
+		\item Monotonie:
+		\[
+			X \subseteq Y \implies \E[X \mid \G] \ge \E[Y \mid \G] \quad \P\text{-f.s.}
+		\]
+	\end{enumerate}
+\end{lemma}
+\begin{proof}\
+	\begin{enumerate}
+		\item Folgt aus \cref{6_2_11}.
+		\item Betrachte
+			\begin{align*}
+				\int_G X(\omega) \P(\d \omega) = \int_G x \P(\d \omega)
+			\end{align*}
+		$\implies c$ ist Version der bedingten Erwartung.
+		\item Betrachte
+			\begin{align*}
+				\int_G (aX + bY) \d \P 
+				&= a \int_G X\d \P + b\int_G Y \P \text{ nutze Linearität des Integrals}\\
+				\overset{\eqref{eq:6_2_11}}&{=} 
+a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
+				&= \int_G (a\E[X \mid \G] + b\E[Y \mid \G])\d \P
+			\end{align*}
+			$\implies a \E[X \mid \G] + b\E[Y \mid \G]$ ist Version von $\E[aX + bY \mid \G]$
+		\item $X \le Y \implies Y - X \ge 0$ und mit 1. und 3. $\implies$ Behauptung. % TODO refs
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[Konvergenzsätze der bedingten Erwartung]
+	$(\O,\F, \P)$ Wahrscheinlichkeitsraum $\G \subseteq \F$ $\sigma$-Algebra, $X,X_1,X_2, \dots : (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen
+	\begin{enumerate}
+		\item \person{Beppo}-\person{Levi} bedingt:
+		\begin{align*}
+			X_n \ge 0 \quad X_n \in \Ln{1}(\P) \quad X_n \uparrow X \und \sup_{n \in \N} \E[X_n] < \infty \quad \P\text{-f.s.} 
+		\end{align*}
+		Dann gilt: $\E[X \mid \G] = \sup_{n \in \N} \E[X_n \mid \G] = \lim_{n \to \infty} \E[X_n \mid \G] \quad \P\text{-f.s.}$
+		\item \person{Fatou} bedingt: $X_n \ge 0, X_n \in \Ln{1}(\P)$ und $\liminf_{n \to \infty} \E[X_n] < \infty$\\
+		Dann gilt
+		\begin{align*}
+			\E\sqbrackets{\liminf_{n \to \infty} X_n \mid \G} \le \liminf_{n \to \infty} \E[X_n \mid \G] \quad \P\text{-f.s.}
+		\end{align*}
+		\item Dominierte-Konvergenz bedingt: $\lim_{n \to \infty} X_n = X \quad \P\text{-f.s.}$ und 
+		$\abs{X_n} \le Y \quad \P\text{-f.s.} \mit Y \in \Ln{1}(\P)$, dann gilt $X \in \Ln{1}(\P)$ und
+		\begin{align*}
+			\lim_{n \to \infty} \E[X_n \mid \G] = \E[X \mid \G] \quad \P\text{-f.s.}
+		\end{align*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\
+	\begin{enumerate}
+		\item Aus \person{Beppo}-\person{Levi} (klassisch) folgt:
+		\begin{align*}
+			\E[X] = \sup_{n \in \N} \E[X_n] < \infty
+		\end{align*}
+		also $X \in \Ln{1}(\P)$ und damit existiert $\E[X \mid \G]$.
+		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_2_12}) Also
+		\begin{align*}
+			\int_G \sup_{n \in \N} \E[X_n \mid \G] \d \P &= \sup_{n \in \N} \int_G \E[X_n \mid \G]\d \P\\
+			\overset{\text{Def.}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
+			&= \int_G \sup_{n \in \N} X_n \d \P
+		\end{align*}
+		\item $\nearrow$ HA 8.2a
+		\item $\nearrow$ HA 8.2b
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[Rechenregeln bedingter Erwartungswert 2]
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra und $X,Y: (\O,\F) \to (\R,\borel(\R))$ Zufallsvariablen, so dass $\E[X]$ existiert. Es gelten:
+	\begin{enumerate}
+		\item Triviale $\sigma$-Algebra:
+		\begin{align*}
+			\E[X\mid \set{\emptyset, \O}] = \E[X]
+		\end{align*}
+		\item einfache Turmeigenschaft:
+		\begin{align*}
+			\E[\E[X\mid \G]] = \E[X]
+		\end{align*}
+		\item allgemeine Turmeigenschaft: Sei $\mathscr{H} \subseteq \G \subseteq \F$ $\sigma$-Algebra, dann
+		\begin{align*}
+			\E[\E[X\mid \G]\mathscr{H}] = \E[X\mid \mathscr{H}]\quad \P{\text{-f.s.}}
+		\end{align*}
+		\item Messbares Herausziehen: Ist $Y$ $\G$-messbar und gilt $\E[XY] < \infty$, dann
+		\[
+			\E[XY \mid \G] = Y\E[X\mid \G]
+		\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Offenbar ist $\set{\emptyset, \O}$ $\sigma$-Algebra. Es gilt:
+		\begin{align*}
+			\int_G X \d \P = \begin{cases}
+				0 &\quad G = \emptyset\\
+				\E[X] &\quad G = \O
+			\end{cases}
+			\intertext{und}
+			\int_G \E[X] \d \P = \begin{cases}
+			0 &\quad G = \emptyset\\
+			E[X] &\quad G = \O
+			\end{cases}
+		\end{align*}
+		Also ist $\E[X]$ eine Version von $\E[X \mid \set{\emptyset, \O}]$.
+		\item Sei
+		\begin{align*}
+			\E[\E[X\mid \G]]\overset{\text{Def. EW}}&{=} \int_{\O} \E[X \mid \G]\d \P\\
+			\overset{\propref{6_2_11}, \O\in \G}&{=} \int_{\O} X \d \P = \E[X]
+		\end{align*}
+		\item Für $H \in \mathscr{H}$ gilt
+		\begin{align*}
+			\int_H \E[X\mid \G]\d \P  \overset{\propref{6_2_11}, H\in \G}&{=} \int_H X \d \P\\
+			 \overset{\propref{6_2_11}}&{=} \int_H \E[X \mid \mathscr{H}] \d \P
+		\end{align*}
+		also ist $\E[X\mid \mathscr{H}]$ eine Version von $\E[\E[X\mid \G]\mid \mathscr{H}]$.
+		\item Sei zunächst $Y=\indi_B$ mit $B \in \G$. Dann folgt für $G \in \G$
+		\begin{align*}
+			\int_G Y \E[X \mid \G]\d \P &= \int_{G \cap B} \E[X \mid \G]\d \P\\
+			\overset{\propref{6_2_11}, G \cap B \in \G}&{=} \int_{G \cap B} X \d \P\\
+			&=\int_G XY \d \P\\
+			\overset{\propref{6_2_11}}&{=} \int_G \E[XY\mid \G] \d\P
+		\end{align*}
+		und $Y\E[X\mid \G]$ ist Version von $\E[XY\mid \G]$. Die allgemeine Aussage folgt mit maßtheoretischer Induktion.
+	\end{enumerate}
+\end{proof}
+\begin{example}
+	\proplbl{6_2_15}
+	Ein KFZ-Versicherungsunternehmen modelliert die Schäden, die aus einem Portfolio von Verträgen stammen. als Zufallsvariablen $X_1,X_2,X_3,\dots$ unabhängig und identisch verteilt. (u.i.v) Zudem sei $N$ eine Zufallsvariable mit Werten in $\N_0$, welche die Anzahl der Schäden in einem Jahr modelliert. $N \und \set{X_1, X_2, \dots}$ seien unabhängig. Der Gesamtschaden im Jahr des Portfolios ist dann
+	\[
+		S = \sum_{i=1}^N X_i
+	\]
+	Der erwartete Gesamtschaden ist
+	\begin{align*} %TODO fix alignment for comments
+		\E[S] &= \E\sqbrackets[\sum_{i=1}^N X_i]\\
+		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmeigenschaft)}\\
+		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^N \mid N = n]\P(N=n) \quad\text{ (Def. EW.)}\\
+		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^n X_i]\P(N=n) \quad X_i \perp N\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_i]\P(N=n) \quad \text{ Linearität}\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_1]\P(N=n) \quad \text{($X_i$ identisch verteilt)}\\
+		&= \E[X_1] \sum_{n=0}^{\infty} n \P(N=n)\\
+		&= \E[X_1]\cdot \E[N] \quad \text{ \person{Wald}-Gleichung}
+	\end{align*}
+\end{example}
+\subsection*{Bedingte Varianz}
+\begin{definition}
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra. $X: (\O, \F) \to (\R, \borel(\R))$ mit $X \in \Ln{2}(\P)$. Dann ist
+	\begin{align*}
+		\Var(X \mid \G) = \E\sqbrackets{(X - \E[X \mid \G])^2 \mid \G}
+	\end{align*}
+	die \begriff{bedingte Varianz von $X$ gegeben $\G$}.
+\end{definition}
+\begin{lemma}[Eigenschaft der bedingten Varianz]
+	\proplbl{6_2_17}
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra, $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariable in $\Ln{2}(\P)$. Es gelten:
+	\begin{enumerate}
+		\item \ul{Positivität:} $\Var(X \mid \G) \ge 0$ $\P$-f.s.
+		\item Für $a,b \in \R$:
+		\[
+			\Var(aX + b \mid \G) = a^2\Var(X \mid \G)
+		\]
+		\item \ul{Verschiebungssatz:}
+		\[
+			\Var(X \mid \G) = \E[X^2 \mid \G] = (\E[X \mid \G])^2
+		\]
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item Definition und Positivitätseigenschaft der bedingten Erwartung.
+		\item Linearität der bedingten Erwartung und Rechenregeln wie im klassischen Fall.
+		\item Betrachte
+		\begin{align*}
+			\E[(X - \E[X\mid \G])^2 \mid \G] &=\\
+			&= \E[X^2 \mid \G]-2\E[X\underbrace{\E[X \mid \G]}_{\G \text{mb}}\mid \G] - \E[(\E[X \mid \G])^2 \mid \G]\\
+			\overset{\text{mb herausziehen}}&{=} \E[X^2 \mid \G] - 2\E[X \mid \G]\E[X \mid \G] + (\E[X \mid \G])^2 \underbrace{\E[1 \mid \G]}_{1, Konservation}\\
+			&= \E[X^2 \mid \G] -(\E[X \mid \G])^2.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{lemma}[Varianzzerlegung]
+	$(\O, \F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F, X: (\O,\F) \to (\R, \borel(\R))$ Zufallsvariable in $\Ln{2}(\P)$. Dann:
+	\begin{align*}
+		\Var(X) = \E[\Var(X\mid \G)] + \Var(\E[X\mid \G])
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Sei
+	\begin{align*}
+		\Var(\E[X \mid \G]) &= \E[(\E[X \mid \G])^2] - \E[\E[X \mid \G]]^2\\
+		\overset{\text{Turmegs.}}&{=} \E[(\E[X \mid \G])^2] - (\E[X])^2\\
+	\end{align*}
+	\begin{align*}
+		\E[\Var(X \mid \G)] \overset{\propref{6_2_17}}&{=} \E[\E[X^2 \mid \G] - \E[X \mid \G]^2]\\
+			&= \E[\E[X^2 \mid \G]] - \E[\E[X\mid \G]^2]\\
+			\overset{\text{Turm}}&{=} \E[X^2]-\E[\E[X \mid \G]^2]
+	\end{align*}
+	Durch Addition folgt die Behauptung.
+\end{proof}
+\begin{example}
+	Betrachte $S = \sum_{i=1}^N X_i$ aus \propref{6_2_15} mit $N, X_i \in \Ln{2}(\P)$. Aus der Varianzzerlegung folgt
+	\begin{align*}
+		\Var(S) &= \E[\Var(S \mid N)] + \Var(\E[S \mid N])\\
+		\intertext{wobei}
+		\E[\Var(S \mid N)] &= \sum_{n=0}^{\infty} \Var(S \mid N=n)\P(N=n)\\
+		&= \sum_{n=0}^{\infty} \Var(\sum_{i=1}^{\infty} X_i) \P(N=n)\\
+		\overset{\text{\person{Bienaymé}} X_i \text{ unabh.}}&{=} \sum_{n=0}^{\infty}\sum_{i=1}^{\infty}\Var(X_i)\P(N=n)\\
+		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
+		&= \Var(X_i)\E[N]
+		\intertext{und}
+		\Ver(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] - \E[X_1]\E[E[N]], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
+		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
+		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
+		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N]^2\P(N=n))
+		&= \E[X_1]^2 \cdot ()\underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N]^2} - 2 \E[N]\cdot \underbrace{sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
+ 		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
+		&= \E[X_1]^2 \cdot (\E[N^2] - \E[N]^2)\\
+		&= \E[X_^1]^2\Var(N).
+		\intertext{Also folgt}
+		\Var(S) &= \Var(X_1)\E[N] + (\E[X_1])^2\Var(N).	
+	\end{align*}
+\end{example}
