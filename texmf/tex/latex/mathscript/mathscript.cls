@@ -494,14 +494,17 @@ innerleftmargin=10pt,%
 \zref@newprop{theoremnumber}[\@z]{}
 \zref@newprop{chapternumber}[\@z]{}
 
+%renew zref properties only once, when the counter gets updated
+\pretocmd{\section}{\zref@setcurrent{sectionnumber}{\arabic{section}}}{}{}
+\pretocmd{\chapter}{\zref@setcurrent{chapternumber}{\arabic{chapter}}}{}{}
+
 %declare a new label; store current chapter number
 \newcommand*{\proplbl}[1]{%
 	\@bsphack
 	\begingroup
 	\label{#1}%
-	\zref@setcurrent{sectionnumber}{\arabic{section}}
-	\zref@setcurrent{chapternumber}{\arabic{chapter}}
 	\zref@setcurrent{theoremnumber}{\arabic{theorem}}
+	%chapternumber, sectionnumber are updated at each \section / \chapter-command
 	\zref@labelbyprops{#1}{chapternumber,sectionnumber,theoremnumber}
 	\endgroup
 	\@esphack
