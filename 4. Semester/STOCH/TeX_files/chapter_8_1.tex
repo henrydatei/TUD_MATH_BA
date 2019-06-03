@@ -1,0 +1,96 @@
+\begin{enumerate}[label=]
+	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3) %TODO ref!
+\end{enumerate}
+\begin{definition}
+	\proplbl{8_1}
+	\begin{enumerate}
+		\item $(\O,\F,\P)$ Wahrscheinlichkeitsraum $X: \O \to \R$ Zufallsvariable. Dann heißt
+		\begin{align*}
+			m_X(u) := \E[e^{uX}] \quad v\in \R\text{, so dass } m_X(u) < \infty
+		\end{align*}
+		\begriff{momenterzeugende Funktion} von $X$ (mgf = moment generating function)
+		\item ISt $\P$ Verteilung auf $\R$, so heißt
+		\begin{align*}
+			m_{\P}(u) = \int_{\R}e^{uX} \P(\d x) \quad u \in \R,\text{, so dass } m_{\P}(u) < \infty
+		\end{align*}
+		\begriff{momenterzeugende Funktion} von $\P$.
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	\propref{8_2}
+	Sei $X \sim \Gam(\lambda,r)$.
+	\begin{align*}
+		m_X(u) &= \E[e^{uX}]\\
+		&= \int_{0}^{\infty} e^{ux}\lambda e^{-\lambda x}\frac{(\lambda x)^{r-1}}{\Gamma(r)}\d x\\
+		&= \frac{\lambda^r}{\Gamma(r)} \int_{0}^{\infty}e^{-(\lambda-u)x}x^{r-1}\d x \quad y= (\lambda-u)x\\
+		&= \frac{\lambda^r}{\Gamma(r)}\infty_0^{\infty} e^{-y}\frac{y^{r-1}}{(\lambda-u)^{r-1}}\frac{\d y}{(\lambda-u)}\\
+		&= \brackets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda
+	\end{align*}
+\end{example}
+\begin{lemma}
+	\proplbl{8_3}
+	Ist $X$ $\N_0$-wertig, so gilt für alle $u \in \R$ mit $m_X(u) < \infty$
+	\begin{align*}
+		m_X(u) = \E[e^{uX}] = \psi_X(e^u)
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Klar, da folgt aus \propref{8_1}.
+\end{proof}
+\begin{proposition}
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y: \O \to \R$ Zufallsvariablen mit mgfs $m_X,m_Y$. Es gelten:
+	\begin{enumerate}
+		\item $m_X(0) = 1$
+		\item $a,b \in \R$
+		\begin{align*}
+			m_{aX+b}(u) = e^{bu}m_X(au) \quad \text{ für } u \text{ so dass} m_X(au) < \infty
+		\end{align*}
+		\item $X \perp Y \implies m_{X+Y}(u) = m_X(u)m_Y(u)$ $\forall u$, so dass $m_X(u), m_Y(u) < \infty$ 
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Klar!
+		\item \begin{align*}
+			m_{aX+b}(u) = \E[e^{aXu + bu}] = e^{bu} \E[e^{auX}] = e^{bu}m_X(au)
+		\end{align*}
+		\item \begin{align*}
+			m_{X+Y}(u) &= \E[e^{Xu + Yu}] \overset{X\perpY}{=} \E[e^{uX}]\E[e^{uY}]\\
+			&= m_X(u)m_Y{u}
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+Der Name ``momenterzeugend'' erklärt sich mit der folgenden Proposition:
+\begin{proposition}
+	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \R$ Zufallsvariable mit momenterzeugender Funktion $m_X$, so dass ein $\epsilon > 0$ existiert mit $m_X(u)<\infty$ auf $[0,\epsilon)$. Dann gilt
+	\begin{align*}
+		\E[X^n] = \frac{\d^n}{\d u^n} m_X(0) \quad \forall n \in \N
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Für alle $u \in \R$ mit $m_X(u) < \infty$ folgt
+	\begin{align*}
+		m_X(u) &= \E[e^{uX}] = \E\sqbrackets{\sum_{k=0}^{\infty}\frac{(uX)^k}{k!}}\\
+		\overset{\person{Lebesgue}}&{=} \sum_{k=0}^{\infty} \frac{\E[X^k]u^k}{k!}
+		\intertext{n-fachen Differenzieren folgt}
+		\frac{\d^n}{\d u^n}m_X(0) &= \sum_{k=0}^{\infty}\frac{\E[X^k]}{k!}k(k-1)\cdots(k-n+1)u^{k-n}\\
+		\intertext{so dass}
+		\frac{\d^n}{\d u^n} m_X(0)&= \frac{\E[X^n]}{n!}n(n-1)\cdots(n-n+1) = \E[X^n].
+	\end{align*}
+\end{proof}
+Die mgf charakterisiert eine Verteilung eindeutig:
+\begin{proposition}
+	Seien $(\O,\F,\R),(\O',\F',\P')$ Wahrscheinlichkeitsräume, $X: \O \to \R, Y: \O' \to \R$ Zufallsvariablen mit mgfs $m_X,m_Y$. Wenn $m_X(u), m_Y(u)$ in einer Umgebung um Null definiert sind und im Definitionsbereich gilt $m_X(0) = m_Y(0)$, so haben $X \und Y$ die selben Verteilungen ($X \distri Y$, d = distribution) 
+\end{proposition}
+\begin{proof}
+	Sind $X,Y$ $\N_0$-wertig, so folgt dies aus \propref{8_3} und dementsprechenden Resultat für pgfs. Der allgemeine Fall folgt aus dem Resultat zu charakteristischen Funktionen (\propref{8_12}). %TODO add ref, when we are there ...
+\end{proof}
+\begin{example}[(vgl. \propref{4_1_3})]
+	Seien $X \sim \Gam(\lambda,r),Y\sim \Gam(\lambda,s)$ unabhängig, dann gilt nach \propref{8_2}
+	\begin{align*}
+		m_X(u) = \bracksets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda \und m_Y(u) = \bracksets{\frac{\lambda}{\lambda-u}}^s \quad u <\lambda
+		\intertext{und nach \propref{8_4}}
+		m_{X+Y}(u) = m_X(u)m_Y(u) = \bracksets{\frac{\lambda}{\lambda-u}}^r\bracksets{\frac{\lambda}{\lambda-u}}^s = \bracksets{\frac{\lambda}{\lambda-u}}^{r+s}
+	\end{align*}
+	Dies ist die mgf einer $\Gam(\lambda,r+s)$ Verteilung. Nach \propref{8_6} folgt $X+Y \sim \Gam(\lambda, r+s)$.
+\end{example}
