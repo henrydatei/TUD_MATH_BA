@@ -1,28 +1,29 @@
 \begin{definition}
-	Sei $\mu \in \R, \sigma^2 > 0$. Das Wahrscheinlichkeitsmaß $N(\mu, \sigma^2)$ auf $(\R, \borel(\R))$ mit Dichtefunktion
+	Sei $\mu \in \R, \sigma^2 > 0$. Das Wahrscheinlichkeitsmaß $\normal(\mu, \sigma^2)$ auf $(\R, \borel(\R))$ mit Dichtefunktion
 	\begin{align*}
 		g_{\mu,\sigma^2}(x) := \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad x \in \R
 	\end{align*}
 	heißt \begriff{Normalverteilung mit Parametern $\mu \und \sigma^2$}.
-	Im Fall $\mu = 0,\sigma^2 = 1$, so heißt $N(0,1)$ \\ \begriff{Standardnormalverteilung}.
+	Im Fall $\mu = 0,\sigma^2 = 1$, so heißt $\normal(0,1)$ \\ \begriff{Standardnormalverteilung}.
 	%TODO pic, check eric!
 \end{definition}
 \begin{*remark}
-	\item $g_{\mu, \sigma^2}$ ist Wahrscheinlichkeitsdichte, da $\int_{\R} e^{-\frac{x^2}{2}}\d x = \sqrt{2\pi}$.
-	\item $\mu \und \sigma^2$ sind gerade \emph{Erwartungswert} und \emph{Varianz} der Normalverteilung $N(\mu, \sigma^2)$. Sei $X \sim N(\mu, \sigma^2)$
-	\begin{align*}
-%		\E[X] &= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} x e^{-\frac{(x-\mu)^2}{2\sigma^2}}\quad y = \frac{x-\mu}{\sqrt{\sigma^2}}\\
-%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (\sqrt{\sigma^2}y + \mu)e^{-\frac{y^2}{2}} \d y\\
-%		&= \sqrt{\frac{\sigma^2}{2\pi}} \underbrace{\int_{\R} y e^{-\frac{y^2}{2}}\dy}_{=0, \text{ Symmetrie}} + \frac{1}{\sqrt{2\pi}}\mu \underbrace{\int_{\R} e^{-\frac{y^2}{2}}\d y}_{\sqrt{2\pi}} = \mu
-	\end{align*}
-	\begin{align*}
-		\Var(X) &= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} (x-\mu)^2 e^{-\frac{(x-\mu)^2}{2\sigma^2}} \d x \quad y= \frac{x-\mu}{\sqrt{\sigma^2}}\\ 
+	\begin{enumerate}
+		\item $g_{\mu, \sigma^2}$ ist Wahrscheinlichkeitsdichte, da $\int_{\R} e^{-\frac{x^2}{2}}\d x = \sqrt{2\pi}$.
+		\item $\mu \und \sigma^2$ sind gerade \emph{Erwartungswert} und \emph{Varianz} der Normalverteilung $\normal(\mu, \sigma^2)$. Sei $X \sim \normal(\mu, \sigma^2)$
+		\begin{align*}
+		\E[X] &= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} x e^{-\frac{(x-\mu)^2}{2\sigma^2}} \d x\quad y = \frac{x-\mu}{\sqrt{\sigma^2}}\\
+		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (\sqrt{\sigma^2}y + \mu)e^{-\frac{y^2}{2}} \d y\\
+		&= \sqrt{\frac{\sigma^2}{2\pi}} \underbrace{\int_{\R} y e^{-\frac{y^2}{2}}\d y}_{=0, \text{ Symmetrie}} + \frac{1}{\sqrt{2\pi}}\mu \underbrace{\int_{\R} e^{-\frac{y^2}{2}}\d y}_{\sqrt{2\pi}} = \mu\\
+		\Var(X) 
+		&= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} (x-\mu)^2 e^{-\frac{(x-\mu)^2}{2\sigma^2}} \d x \quad y= \frac{x-\mu}{\sqrt{\sigma^2}}\\ 
 		&= \frac{\sigma^2}{\sqrt{2\pi}} \int_{\R} y^2 e^{-\frac{y^2}{2}} \d y\\
 		&= \frac{\sigma^2}{\sqrt{2\pi}} \int_{\R} (-y)(-y e^{-\frac{y^2}{2}})\d y\\
-		\overset{\text{P.I.}}&{=} \frac{\sigma^2}{\sqrt{\sqrt{2\pi}}} \brackets{\underbrace{\sqbrackets{-y e^{-\frac{y^2}{2}}_{-\infty}^{\infty}}}_{=0} + 
-		\underbrace{\int_{\R}e^{-\frac{y^2}{2}} \d y}_{= \sqrt{2\pi}}\\
+		\overset{\text{P.I.}}&{=} \frac{\sigma^2}{\sqrt{2\pi}} \brackets{\underbrace{\sqbrackets{-y e^{-\frac{y^2}{2}}}_{-\infty}^{\infty}}_{=0} + 
+		\underbrace{\int_{\R}e^{-\frac{y^2}{2}} \d y}_{= \sqrt{2\pi}}}\\
 		&= \sigma^2
-	\end{align*}
+		\end{align*}
+	\end{enumerate}
 \end{*remark}
 Die Popularität der Normalverteilung erklärt sich insbesondere aus dem zentralen Grenzwertsatz. Hier eine einfache Form davon
 \begin{proposition}[de \person{Moivre}-\person{Laplace}, lokaler Grenzwertsatz]
@@ -31,7 +32,7 @@ Die Popularität der Normalverteilung erklärt sich insbesondere aus dem zentral
 		x_n(k) = \frac{k-np}{\sqrt{np(1-p)}}
 	\]
 	\begin{align*}
-		\lim_{n\to \infty} \max_{k.\abs{x_n(k)} < c} \abs{\frac{\sqrt{np(1-p)}B_{n,p}(k)}{g(x_n(k))} -1} = 0
+		\lim_{n\to \infty} \max_{k:\abs{x_n(k)} < c} \abs{\frac{\sqrt{np(1-p)}\cdot B_{n,p}(k)}{g(x_n(k))} -1} = 0
 	\end{align*}
 \end{proposition}
 \begin{proof}

@@ -381,7 +381,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	\begin{align*}
 		\rho \star \rho(x) &= \int_{\R} \rho(y) \rho(x-y) \d x \d y\\
 		&= \int_{\R} \indi_{[0,1]}(y) \indi_{[0,1]}(x-y) \d y\\
-		&= \int_{0 \vee (x-1)}^{1 \wedge x} = \begin{cases}
+		&= \int_{0 \vee (x-1)}^{1 \wedge x} \d y= \begin{cases}
 		x &\quad 0 \le x \le 1\\
 		2 -x &\quad 1 \le x \le 2\\
 		0 &\quad \sonst.

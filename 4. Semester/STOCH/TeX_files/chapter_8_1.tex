@@ -1,5 +1,5 @@
 \begin{enumerate}[label=]
-	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3) %TODO ref!
+	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3). %TODO ref!
 \end{enumerate}
 \begin{definition}
 	\proplbl{8_1}
@@ -17,7 +17,7 @@
 	\end{enumerate}
 \end{definition}
 \begin{example}
-	\propref{8_2}
+	\proplbl{8_2}
 	Sei $X \sim \Gam(\lambda,r)$.
 	\begin{align*}
 		m_X(u) &= \E[e^{uX}]\\
@@ -38,6 +38,7 @@
 	Klar, da folgt aus \propref{8_1}.
 \end{proof}
 \begin{proposition}
+	\proplbl{8_4}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y: \O \to \R$ Zufallsvariablen mit mgfs $m_X,m_Y$. Es gelten:
 	\begin{enumerate}
 		\item $m_X(0) = 1$
@@ -51,16 +52,14 @@
 \begin{proof}
 	\begin{enumerate}
 		\item Klar!
+		\item Sei $m_{aX+b}(u) = \E[e^{aXu + bu}] = e^{bu} \E[e^{auX}] = e^{bu}m_X(au)$.
 		\item \begin{align*}
-			m_{aX+b}(u) = \E[e^{aXu + bu}] = e^{bu} \E[e^{auX}] = e^{bu}m_X(au)
-		\end{align*}
-		\item \begin{align*}
-			m_{X+Y}(u) &= \E[e^{Xu + Yu}] \overset{X\perpY}{=} \E[e^{uX}]\E[e^{uY}]\\
-			&= m_X(u)m_Y{u}
+			m_{X+Y}(u) &= \E[e^{Xu + Yu}] \overset{X\perp Y}{=} \E[e^{uX}]\E[e^{uY}]\\
+			&= m_X(u)m_Y(u)
 		\end{align*}
 	\end{enumerate}
 \end{proof}
-Der Name ``momenterzeugend'' erklärt sich mit der folgenden Proposition:
+Der Bezeichnung ``momenterzeugend'' erklärt sich mit der folgenden Proposition:
 \begin{proposition}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \R$ Zufallsvariable mit momenterzeugender Funktion $m_X$, so dass ein $\epsilon > 0$ existiert mit $m_X(u)<\infty$ auf $[0,\epsilon)$. Dann gilt
 	\begin{align*}
@@ -88,9 +87,9 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 \begin{example}[(vgl. \propref{4_1_3})]
 	Seien $X \sim \Gam(\lambda,r),Y\sim \Gam(\lambda,s)$ unabhängig, dann gilt nach \propref{8_2}
 	\begin{align*}
-		m_X(u) = \bracksets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda \und m_Y(u) = \bracksets{\frac{\lambda}{\lambda-u}}^s \quad u <\lambda
+		m_X(u) = \brackets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda \und m_Y(u) = \brackets{\frac{\lambda}{\lambda-u}}^s \quad u <\lambda
 		\intertext{und nach \propref{8_4}}
-		m_{X+Y}(u) = m_X(u)m_Y(u) = \bracksets{\frac{\lambda}{\lambda-u}}^r\bracksets{\frac{\lambda}{\lambda-u}}^s = \bracksets{\frac{\lambda}{\lambda-u}}^{r+s}
+		m_{X+Y}(u) = m_X(u)m_Y(u) = \brackets{\frac{\lambda}{\lambda-u}}^r\brackets{\frac{\lambda}{\lambda-u}}^s = \brackets{\frac{\lambda}{\lambda-u}}^{r+s}
 	\end{align*}
 	Dies ist die mgf einer $\Gam(\lambda,r+s)$ Verteilung. Nach \propref{8_6} folgt $X+Y \sim \Gam(\lambda, r+s)$.
 \end{example}
