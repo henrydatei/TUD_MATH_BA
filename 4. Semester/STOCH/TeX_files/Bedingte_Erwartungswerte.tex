@@ -114,7 +114,7 @@ betrachten.
 		\int_{\set{y \in B}} X(\omega)\P(\d \omega) &= \int_{\set{Y \in B}} g(Y)(\omega) \P(\d \omega)\\
 		&= \int_B g(y)\P_Y(\d y) \quad \forall B \in \F_Y.
 	\end{align*}
-	Schreibe $g(Y) =: \E[Y \mid Y] =: \E[X \mid \sigma(Y)]$.
+	Schreibe $g(Y) =: \E[X \mid Y] =: \E[X \mid \sigma(Y)]$.
 	\begin{align*}
 		\P(A \mid \sigma(Y)) := \P(A \mid Y) = \E[\indi_{A} \mid Y]
 	\end{align*}
@@ -158,7 +158,7 @@ Die bedingte Erwartung übernimmt Eigenschaften der Erwartung:
 		\]
 		\item Monotonie:
 		\[
-			X \subseteq Y \implies \E[X \mid \G] \ge \E[Y \mid \G] \quad \P\text{-f.s.}
+			X \le Y \implies \E[X \mid \G] \le \E[Y \mid \G] \quad \P\text{-f.s.}
 		\]
 	\end{enumerate}
 \end{lemma}
@@ -209,7 +209,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 			\E[X] = \sup_{n \in \N} \E[X_n] < \infty
 		\end{align*}
 		also $X \in \Ln{1}(\P)$ und damit existiert $\E[X \mid \G]$.
-		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_2_12}) Also
+		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_2_12}). Also
 		\begin{align*}
 			\int_G \sup_{n \in \N} \E[X_n \mid \G] \d \P &= \sup_{n \in \N} \int_G \E[X_n \mid \G]\d \P\\
 			\overset{\text{Def.}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
