@@ -181,7 +181,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{itemize}
 \end{proof}
 \begin{proposition}
-	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y\colon (\O,\F) \to (\R, \borel(\R))$ Zufallsvariablen mit gemeinsammer Dichte $\rho_{X,Y}(x,y)$. Dann besitzen  $X \und Y$ die \begriff{Randdichten} (``Marginaldichten'')
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y\colon (\O,\F) \to (\R, \borel(\R))$ Zufallsvariablen mit gemeinsamer Dichte $\rho_{X,Y}(x,y)$. Dann besitzen  $X \und Y$ die \begriff{Randdichten} (``Marginaldichten'')
 	\[
 		\rho_X (x) = \int_{\R} \rho_{X,Y}(x,y) \d y \quad \rho_Y (y) = \int_{\R} \rho_{X,Y}(x,y) \d x
 	\]
@@ -236,7 +236,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\begin{align*}
 		\int_0^{\infty} \int_0^{\infty} cx e^{-x(y+1)} \d y \d x &= c \int_0^{\infty} x e^{-x} \int_0^{\infty} e^{-xy} \d y \d x\\
 		&= c \int_0^{\infty} x e^{-x} \sqbrackets{- \frac{1}{x}e^{-xy}}_{y=0}^{\infty} \\
-		&= c \underbrace{\int_0^{\infty}e^x \d x}_{=1} = c \over{!}{=} 1 
+		&= c \underbrace{\int_0^{\infty}e^{-x} \d x}_{=1} = c \over{!}{=} 1 
 	\end{align*}
 	Wähle $x = 1$. Als Randdichten von $X \und Y$ folgen
 	\begin{align*}
@@ -246,7 +246,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	(d.h. $X \sim \EXP(1)$) und 
 	\begin{align*}
 		f_Y(y) &= \int_0^{\infty} f(x,y) \d x = \int_0^{\infty} x e^{-x(y+1)}\d x\\
-		\over{\text{P.I.}}&{=} \sqbrackets{x \frac{-1}{y+1} e^{-x(y+1)}}_{x=0}^{\infty} + \frac{1}{y+1} \int_0^{\infty} e^{-x(y+1)}\d x\\
+		\over{\text{P.I.}}&{=} \sqbrackets{-x \frac{1}{y+1} e^{-x(y+1)}}_{x=0}^{\infty} + \frac{1}{y+1} \int_0^{\infty} e^{-x(y+1)}\d x\\
 		&= 0 + \frac{1}{y+1} \sqbrackets{\frac{-1}{y+1}e^{-x(y+1)}}_{x=0}^{\infty}\\
 		&= \frac{1}{(y+1)^2} \quad y > 0
 	\end{align*}

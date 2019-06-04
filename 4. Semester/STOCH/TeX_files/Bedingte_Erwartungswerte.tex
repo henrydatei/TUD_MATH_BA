@@ -1,4 +1,4 @@
-\section{Bedingte Erwartungswerte}
+﻿\section{Bedingte Erwartungswerte}
 \begin{proposition}
 	\proplbl{6_2_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
@@ -18,7 +18,7 @@
 		\begin{align*}
 			\E[X \mid Y = y] := \begin{cases}
 			\E[X^+ \mid Y = y] - \E[X^-\mid Y=y] &\quad \E[X^- \mid Y =y] < \infty\\
-			0 &\quad \sonst.
+			0 &\quad \text{ sonst}.
 			\end{cases}
 		\end{align*}
 		Dann folgt
@@ -36,9 +36,9 @@
 		&\implies \int_B (g_1^+(y) + g_2^+(y)) \P_Y(\d y) \\
 		&= \int_B (g_2^+ (y) + g_1^- (y))\P_Y(\d y) \quad \forall B \in \F_Y
 		\intertext{also}
-		g_1^+ + g_2^+ = g_2^+ + g_1^- \P_Y \text{-f.s.}
+		g_1^+ + g_2^+ &= g_2^+ + g_1^- \P_Y \text{-f.s.}
 		\intertext{impliziert}
-		g_1^+ - g_1^- = g_1 = g_2 = g_2^+ - g_2^- \P_Y \text{-fast-sicher.}
+		g_1^+ - g_1^- = g_1 &= g_2 = g_2^+ - g_2^- \;\P_Y \text{-fast-sicher.}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -77,7 +77,7 @@ und durch Vergleich mit Definition der bedingten Verteilung (\propref{6_1_4})
 	\end{align*}
 	Die Erwartungswerte von $X \und Y$ folgen aus den Randdichten:
 	\begin{align*}
-		\E[X] = 1\quad \text{ da } X \sim \EXP(1)
+		\E[X] &= 1\quad \text{ da } X \sim \EXP(1)
 		\intertext{und}
 		\E[Y] &= \int_0^{\infty} y f_y (y) \d y = \int_0^{\infty} y \frac{1}{(y+1)^2}\\
 		&= \int_0^{\infty} (z-1) \frac{1}{z^2}\d z\\
