@@ -33,10 +33,8 @@
 \end{example}
 \begin{proposition}
 	\proplbl{5_1_3}
-	Sei $X: (\O, \F) \to (\Rn, \borel(\Rn)$ Zufallsvariable und
+	Sei $X: (\O, \F) \to (\Rn, \borel(\Rn)$ Zufallsvariable und $f: \Rn \to \R$ Borel-messbar. Dann
 	\begin{align*}
-		f: \Rn \to \R \text{ Borel-messbar}.\\
-		\intertext{Dann}
 		\E[f(X)] = \int f(X)\d \P = \int_{\O} \E(X(\omega)) \d \P(\omega) = \int_{\Rn} f(X) \P(X \in \d x). 
 	\end{align*}
 \end{proposition}
@@ -78,15 +76,17 @@ Da der Erwartungswert ein Integral ist, übertragen sich viele Eigenschaften.
 	Seien $X,Y,X_n: (\O,\F) \to (\R, \borel(\R)), n \in \N$ Zufallsvariablen in $\Ln{1}(\P)\und a,b \in \R$ konstant.
 	\begin{enumerate}
 		\item \ul{Linearität:} $\E[aX +bY] = a\E X + b\E Y$
-		\item \ul{Monotonie:} $X \le Y$, d.h. $X(\omega) \le Y(\omega), \forall \omega \in \Omega$\\ 
-		$\implies \E[X] \le \E[Y]$ und insbesondere gilt $X \ge 0 \implies \E X \ge 0$.
+		\item \ul{Monotonie:} $X \le Y$, d.h. $X(\omega) \le Y(\omega), \forall \omega \in \Omega$. Dann gilt 
+		\[
+			\E[X] \le \E[Y] \text{ und insbesondere gilt } X \ge 0 \implies \E X \ge 0.
+		\]
 		\item \ul{Lemma von \person{Fatou}:}
 		\begin{align*}
-		\E[\liminf_{n \to \infty}X_n] \le \liminf_{n \to \infty} \E[X_n]
+			\E[\liminf_{n \to \infty}X_n] \le \liminf_{n \to \infty} \E[X_n]
 		\end{align*}
 		\item \ul{Satz von \person{Beppo}-\person{Levi}:} Wenn $X_n \ge 0 \und X_n \uparrow X$ so gilt:
 		\begin{align*}
-		\E[X] = \sup_{n \in \N} \E[X_n] = \lim_{n \to \infty} \E[X_n]
+			\E[X] = \sup_{n \in \N} \E[X_n] = \lim_{n \to \infty} \E[X_n]
 		\end{align*}
 		\item \ul{Dominierte Konvergenz/ Satz von \person{Lebesgue}:} Sei $\lim_{n \to \infty} X_n(\omega) = X(\omega)$ und
 		\begin{align*}
@@ -101,17 +101,19 @@ Da der Erwartungswert ein Integral ist, übertragen sich viele Eigenschaften.
 		\begin{align*}
 		\E[\abs{XY}] \le \brackets{\E[\abs{X}^p]}^{\frac{1}{p}} \brackets{\E[\abs{Y}^q]}^{\frac{1}{q}}
 		\end{align*}
-		$p =q =2$ \person{Cauchy}-\person{Schwarz}-Ungleichung)
+		($p =q =2$ \person{Cauchy}-\person{Schwarz}-Ungleichung)
 		\item \ul{\person{Jensen}'sche Ungleichung:} Sei $X \ge 0 \und \varphi: [0,\infty) \to [0,\infty)$ konvex, messbar \\
 		$\varphi(\E[X]) \le \E[\varphi(X)]$.
 	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	$\nearrow$ Schilling MINT.
+\end{proof}
 \begin{example}
 	\proplbl{5_1_7}
-	Da für $X_1,\dots, X_n \sim \Ber(p)$ unabhängig gilt, dass
+	Da für $X_1,\dots, X_n \sim \Ber(p)$ unabhängig gilt, dass $\underbrace{X_1 + \cdots + X_n}_{=X} \sim \Bin(n,p)$ folgt
 	\begin{align*}
-		\underbrace{X_1 + \cdots + X_n}_{=X} \sim \Bin(n,p), \text{ folgt}
-		\E[X] = \E[X_1 + \cdots + X_n]\\
+	  \E[X] &= \E[X_1 + \cdots + X_n]
 		&= \E[X_1] + \cdots + \E[X_n]\\
 		&= n \E[X_1]\\
 		&= n (1 \cdot \underbrace{\P(X_1 = 1)}_{=p} + 0 \cdot \P(X_1 = 0))\\

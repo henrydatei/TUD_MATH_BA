@@ -1,4 +1,4 @@
-\section{Wartezeitverteilungen}
+﻿\section{Wartezeitverteilungen}
 
 \emph{Negative Binomialverteilung}:\\
 Wir wiederholen ein Bernoulliexperiment mit Erfolgswahrscheinlichkeit $p \in [0,1]$ unendlich oft. Gesucht ist die Anzahl der Misserfolge bis zum $r$-ten Erfolg, $r \in \N$. Ein passender Ergebnisraum ist $\O = \N_0$. Für Modellierung ist es jedoch leichter in jedem Versuch erfolgt (``1'') oder Misserfolg (``0'') festzuhalten und $i$ mit dem unendlichen Produktmaß des Bernoullimaßes auf $\set{0,1}^{\N}$ zu arbeiten.\\
@@ -75,7 +75,7 @@ Wir definieren allgemeiner:
 	\end{align*}
 	\begriff{Gammafunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$.
 \end{definition}
-Insbesondere ist $\Gam(\lambda,r)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).\\ %TODO add ref?
+Insbesondere ist $\Gam(\lambda,1)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).\\ %TODO add ref?
 Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspricht der Wartezeit auf $r$ Ereignisse + $s$ (weitere) Ereignisse:
 \begin{lemma} % lemma 4.4
 	\proplbl{4_1_3}
@@ -91,7 +91,7 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 	\rho_{(X+Y)} &= \rho_X \star \rho_Y (x) = \int_{\R} \rho_X(y)\rho_Y(x-y) \d y  \\
 	&= \int_{\R} \frac{\lambda^r}{\Gamma(r)} y^{r-1} e^{-\lambda y} \frac{\lambda^s}{\Gamma(s)} (x-y)^{s-1} e^{-\lambda (x-y)} \d y  \\
 	&= \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \int_0^x y^{r-1} (x-y)^{s-1} \d y  \\
-	\over{\text{part Int}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\left[\frac{1}{r} y^r (x-y)^{s-1}\right]_{y=0}^x}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y }  \\
+	\over{\text{P.I.}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(s)} e^{-\lambda x} \brackets{\underbrace{\left[\frac{1}{r} y^r (x-y)^{s-1}\right]_{y=0}^x}_{=0} + \frac{s-1}{r} \int_0^x y^r (x-y)^{s-2} \diff y }  \\
 	\over{\text{Ind}}&{=} \frac{\lambda^{r+s}}{\Gamma(r)\Gamma(r)} e^{-\lambda x} \frac{\Gamma(r)\Gamma(s)}{\Gamma(r+s)} = \frac{\lambda^{r+s}}{\Gamma(r+s)} e^{-\lambda x}. 
 \end{align*}
 \end{proof}

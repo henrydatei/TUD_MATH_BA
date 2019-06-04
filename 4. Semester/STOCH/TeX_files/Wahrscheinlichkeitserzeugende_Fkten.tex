@@ -1,4 +1,4 @@
-\section{Wahrscheinlichkeitserzeugende Funktionen} %TODO add short title for sure
+﻿\section{Wahrscheinlichkeitserzeugende Funktionen} %TODO add short title for sure
 \begin{definition}[Wahrscheinlichkeitserzeugende Funktion]
 	\begin{enumerate}
 		\item Ist $\P$ Wahrscheinlichkeitsmaß auf $(\N_0, \pows(\N_0))$ mit Zähldichte $\rho$, so heißt
@@ -42,8 +42,10 @@
 	Sei $X$ eine $\N_0$-wertige Zufallsvariable, dann gilt
 	\begin{align*}
 		\E [X^n] < \infty \quad n \ge 1, \text{ genau dann, wenn } \psi_X^{(n)} = \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty.
-		\intertext{Insbesondere gilt dann}
-		\psi_X^{(n)} (1) = \E [X(X-1) \dots (X-n +1)]
+	\end{align*}
+	Insbesondere gilt dann
+	\begin{align*}
+		\psi_X^{(n)} (1) = \E [X(X-1) \dots (X-n +1)].
 	\end{align*}
 \end{proposition}
 \begin{proof}
@@ -57,9 +59,9 @@
 		&= \sum_{k=n}^{infty} \rho(k)k(k-1) \cdots (k-n+1)\\
 		&= \E[X(X-1) \cdots (X-n+1)]
 		\intertext{sowie induktiv}
-		\psi^{(n)} (1) &= \lim_{s \uparrow 1} \frac{\psi^{(n-1)} - \psi^{n-1}(s)}{1-s}\\
-		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-(n-1)+1) \frac{1-s^{k-(n+1)}}{1-s}\\
-		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1)\cdots (k-n+2) \sum_{l=0}^{k-(n-1)} s^l\\
+		\psi^{(n)} (1) &= \lim_{s \uparrow 1} \frac{\psi^{(n-1)} - \psi^{(n-1}(s)}{1-s}\\
+		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-(n-1)+1) \frac{1-s^{k-(n-1)}}{1-s}\\
+		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1)\cdots (k-n+2) \sum_{l=0}^{k-(n-1)} s^l \quad \text{ Geo. Reihe}\\
 		\over{\text{Monotonie}}&{=} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-n+2)(k-n+1)\\  
 		&= \E[X(X-1)\cdots (X-n+1)]
 	\end{align*}
@@ -71,7 +73,7 @@
 		\psi_X (s) &= (1+p(s-1))^n.
 		\intertext{Damit}
 		\psi'_X (s)&= n(1+p(s-1))^{n-1} p\\
-		\psi'_X (s) &= n(n-1)(1+p(s-1))^{n-2}\cdot p^2
+		\psi''_X (s) &= n(n-1)(1+p(s-1))^{n-2}\cdot p^2
 		\intertext{so dass}
 		\E[X] &= \psi'_X (1) = np
 		\intertext{und}

@@ -1,11 +1,11 @@
-In \cref{3_1_3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
+﻿In \cref{3_1_3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
 \begin{align*}
 	\P(A \mid B) = \begin{cases}
 	\frac{\P(A \cap B)}{\P(B)} &\quad \P(B) > 0\\
 	0/ \text{ beliebig} &\quad \P(B) = 0
 	\end{cases}
 \end{align*}
-In Fall $\P(B) > 0$ ist $\P(\ast\mid B)$ ein Wahrscheinlichkeitsmaß und wir können das Integral 
+In Fall $\P(B) > 0$ ist $\P(\cdot\mid B)$ ein Wahrscheinlichkeitsmaß und wir können das Integral 
 \[
 	\E[X \mid B] := \int X(\omega) \P(\d \omega \mid B)
 \]
@@ -241,7 +241,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	Wähle $x = 1$. Als Randdichten von $X \und Y$ folgen
 	\begin{align*}
 		f_X(x) &= \int_0^{\infty} f(x,y) \d y = \int_0^{\infty} x e^{-x(y+1)} \d y\\
-		&\over{\text{s.o.}}{=} x^{-x} \quad x >0 
+		&\over{\text{s.o.}}{=} e^{-x} \quad x >0 
 	\end{align*}
 	(d.h. $X \sim \EXP(1)$) und 
 	\begin{align*}
