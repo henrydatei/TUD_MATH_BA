@@ -160,18 +160,17 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 \end{proposition}
 \begin{proof}
 	Betrachte die Standardnormalverteilung:
-	(ganze block hat klammerfehler :()
-%	\begin{align*} %TODO fix
-%		\varphi(u) &:= \varphi_{\normal(0,1)}(u) = \int_{\R} e^{\ii u x} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}\d x
-%		\intertext{Mit dem Differenzierbarkeitslemma für Parameterintergrale ($\nearrow$ Schilling MINT, Satz 12.2)}
-%		\varphi'(u) &= \int_{\R} \brackets{\frac{\d}{\d u}e^{\ii ux}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \d x\\
-%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii x e^{\ii ux} e^{-\frac{x^2}{2}}\d x\\
-%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (-\ii)e^{\ii u x} \brackets{\frac{\d}{\d x} e^{-\frac{x^2}{2}}}\d x\\
-%		\over{\text{P.I.}}&{=} \underbrace{\frac{-\ii}{\sqrt{2\pi}} \sqbrackets{e^{\ii u x}e^{-\frac{x^2}{2}}}_{x=-\infty}^{\infty}}_{=0} + \frac{1}{\sqrt{2\pi}} \int_{\O} \ii \brackets{\frac{\d}{\d x} e^{\ii ux}\d x\\
-%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \ii u e^{\ii u} e^{-\frac{x^2}{2}}\d x\\
-%		&= -u \frac{1}{\sqrt{2\pi}} \int_{\R} e^{u x}e^{-\frac{x^2}{2}}\d x\\
-%		&= - u \varphi(u)	
-%	\end{align*}
+	\begin{align*}
+		\varphi(u) &:= \varphi_{\normal(0,1)}(u) = \int_{\R} e^{\ii u x} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}\d x
+		\intertext{Mit dem Differenzierbarkeitslemma für Parameterintergrale ($\nearrow$ Schilling MINT, Satz 12.2)}
+		\varphi'(u) &= \int_{\R} \brackets{\frac{\d}{\d u}e^{\ii ux}}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \d x\\
+		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii x e^{\ii ux} e^{-\frac{x^2}{2}}\d x\\
+		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (-\ii)e^{\ii u x} \brackets{\frac{\d}{\d x} e^{-\frac{x^2}{2}}}\d x\\
+		\over{\text{P.I.}}&{=} \underbrace{\frac{-\ii}{\sqrt{2\pi}} \sqbrackets{e^{\ii u x}e^{-\frac{x^2}{2}}}_{x=-\infty}^{\infty}}_{=0} + \frac{1}{\sqrt{2\pi}} \int_{\O} \ii \brackets{\frac{\d}{\d x} e^{\ii ux}}\d x\\
+		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \ii u e^{\ii u} e^{-\frac{x^2}{2}}\d x\\
+		&= -u \frac{1}{\sqrt{2\pi}} \int_{\R} e^{u x}e^{-\frac{x^2}{2}}\d x\\
+		&= - u \varphi(u)	
+	\end{align*}
 	Die DGL $\varphi'(u) = -u\varphi(u)$ besitzt die Lösung
 	\begin{align*}
 		\varphi(u) = \varphi(0)e^{-\frac{x^2}{2}}
@@ -214,14 +213,14 @@ Für den Beweis benötigen wir:
 \begin{proof}[\propref{8_12}]
 	\begin{enumerate}
 		\item $\implies$: klar.
-		\item $\Longleftarrow$: Sei $\varphi_X(u) = \varphi_Y(u) \quad u \in \Rd$. Wir konstruieren $d$ unabhängig, identische verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$. ($\nearrow$ \propref{3_2_19}). Zudem
+		\item $\Longleftarrow$: Sei $\varphi_X(u) = \varphi_Y(u) \quad u \in \Rd$. Wir konstruieren $d$ unabhängig, identische verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$. ($\nearrow$ \cref{3_2_19}). Zudem
 		\begin{align*}
 			\P(\sqrt{\sigma^2}N \in \d y) &= \prod_{i=1}^d \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{y_i^2}{2\sigma^2}} \d y_i\\
 			&= (2\pi \sigma^2)^{-\frac{d}{2}} e^{-\frac{\abs{y}^2}{2\sigma^2}}\d y \mit \abs{y} = \sqrt{\sum y_i^2}
 		\end{align*}
 		Es gilt für alle $f \in C_c(\Rd)$
 		\begin{align*}
-			\E[f(X + \sqrt{\sigma^2}N)] \over{X \upmodels N}&{=} \int_{\Rd} \E[f(X +y)](2\pi\sigma^2){-\frac{d}{2}} e^{- \frac{\abs{y}^2}{2\sigma^2}} \d y\\
+			\E[f(X + \sqrt{\sigma^2}N)] \overset{X \upmodels N}&{=} \int_{\Rd} \E[f(X +y)](2\pi\sigma^2){-\frac{d}{2}} e^{- \frac{\abs{y}^2}{2\sigma^2}} \d y\\
 			&= (2 \pi \sigma^2)^{-\frac{1}{2}} \int_{\Rd} f(z) \E[e^{-\frac{\abs{X-z}^2}{2\sigma^2}}]\d z
 		\end{align*}
 		Wobei für $x \in \Rd$
@@ -230,7 +229,7 @@ Für den Beweis benötigen wir:
 			&= \prod_{i=1}^d \int_{\R} e^{\ii (x_i - z_i)y_i}\frac{\sigma}{2\pi} e^{-\frac{\sigma^2y_i^2}{2}} \d y_i\\
 			&= \frac{\sigma^d}{(2\pi)^{\frac{d}{2}}} \int_{\Rd} e^{\ii \scaProd{x-z}{y}}e^{-\frac{\sigma^2 \abs{y}^2}{2}} \d y\\
 			\intertext{so dass}
-			\E[f(X+\sqrt{\sigma^2}N)] = (2\pi)^{-d} \int_{\Rd} f(z) \E[\int_{\R} e^{\ii \scaProd{X-z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}}\d y]\d z\\
+			\E[f(X+\sqrt{\sigma^2}N)] &= (2\pi)^{-d} \int_{\Rd} f(z) \E[\int_{\R} e^{\ii \scaProd{X-z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}}\d y]\d z\\
 			&= (2\pi)^{-d} \int_{\Rd} f(z) \int_{\Rd} \underbrace{\E[e^{\ii \scaProd{x}{Y}}]}_{\varphi_X(y)} e^{-\ii \scaProd{z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}} \d y \d z \quad \text{ dom. Konv.}
 		\end{align*}
 		Dieselbe Rechnung auf $(\O', \F',\P')$ mit einem weiteren Vektor $N'$ u.i.v $\normal(0,1)$ Zufallsvariablen zeigt dann wegen $\varphi_X(u) = \varphi_Y(u)$.
@@ -238,6 +237,9 @@ Für den Beweis benötigen wir:
 			\E[f(X + \sqrt{\sigma^2}N)] = \E'[f(Y + \sqrt{\sigma^2}N')]
 		\end{align*}
 		Mit dominierter Konvergenz folgt für $\sigma^2 \to 0$
-		%TODO add last line here
+		\begin{align*}
+			\E[f(X)] = \E[f(Y)] \quad \forall f \in C_c (\Rd)
+		\end{align*}
+		Mit \propref{8_13} folgt die Behauptung.
 	\end{enumerate}
 \end{proof}
