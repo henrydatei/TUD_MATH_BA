@@ -1,4 +1,4 @@
-﻿\begin{enumerate}[label=]
+\begin{enumerate}[label=]
 	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3). %TODO ref!
 \end{enumerate}
 \begin{definition}
@@ -61,6 +61,7 @@
 \end{proof}
 Der Bezeichnung ``momenterzeugend'' erklärt sich mit der folgenden Proposition:
 \begin{proposition}
+	\proplbl{8_5}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \R$ Zufallsvariable mit momenterzeugender Funktion $m_X$, so dass ein $\epsilon > 0$ existiert mit $m_X(u)<\infty$ auf $[0,\epsilon)$. Dann gilt
 	\begin{align*}
 		\E[X^n] = \frac{\d^n}{\d u^n} m_X(0) \quad \forall n \in \N
@@ -79,12 +80,14 @@ Der Bezeichnung ``momenterzeugend'' erklärt sich mit der folgenden Proposition:
 \end{proof}
 Die mgf charakterisiert eine Verteilung eindeutig:
 \begin{proposition}
+	\proplbl{8_6}
 	Seien $(\O,\F,\R),(\O',\F',\P')$ Wahrscheinlichkeitsräume, $X: \O \to \R, Y: \O' \to \R$ Zufallsvariablen mit mgfs $m_X,m_Y$. Wenn $m_X(u), m_Y(u)$ in einer Umgebung um Null definiert sind und im Definitionsbereich gilt $m_X(0) = m_Y(0)$, so haben $X \und Y$ die selben Verteilungen ($X \distri Y$, d = distribution) 
 \end{proposition}
 \begin{proof}
 	Sind $X,Y$ $\N_0$-wertig, so folgt dies aus \propref{8_3} und dementsprechenden Resultat für pgfs. Der allgemeine Fall folgt aus dem Resultat zu charakteristischen Funktionen (\propref{8_12}). %TODO add ref, when we are there ...
 \end{proof}
-\begin{example}[(vgl. \propref{4_1_3})]
+\begin{example}[(vgl. \cref{4_1_3})]
+	\proplbl{8_7}
 	Seien $X \sim \Gam(\lambda,r),Y\sim \Gam(\lambda,s)$ unabhängig, dann gilt nach \propref{8_2}
 	\begin{align*}
 		m_X(u) = \brackets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda \und m_Y(u) = \brackets{\frac{\lambda}{\lambda-u}}^s \quad u <\lambda
@@ -93,3 +96,148 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 	\end{align*}
 	Dies ist die mgf einer $\Gam(\lambda,r+s)$ Verteilung. Nach \propref{8_6} folgt $X+Y \sim \Gam(\lambda, r+s)$.
 \end{example}
+\begin{*anmerkung}
+	\begin{itemize}
+		\item pgf: $\psi_X(u) = \E[u^X]$
+		\item mgf: $m_X(u) = \E[e^{uX}]$
+	\end{itemize}
+\end{*anmerkung}
+\begin{definition}
+	\proplbl{8_8}
+	\begin{enumerate}
+		\item Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \Rd$ Zufallsvariable. Dann ist
+		\begin{align*}
+			\varphi_X(u) := \E[e^{\ii\scaProd{u}{X}}]\quad u \in \Rd
+		\end{align*}
+		\begriff{charakteristische Funktion von $X$}.
+		\item Ist $\P$ Verteilung in $\Rd$, dann ist
+		\begin{align*}
+			\varphi_{\P}(u) = \int_{\Rd} e^{\ii\scaProd{u}{X}}\P(\d x) \quad u \in \Rd
+		\end{align*}
+		\begriff{charakteristische Funktion von $\P$}.
+	\end{enumerate}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Da $\abs{e^{\ii\scaProd{u}{X}}} =1$, ist die charakteristische Funktion für \emph{alle} $u \in \Rd$ definiert.
+		\item Die charakteristische Funktion ist die inverse \person{Fourier}transformation des Maßes $\P$ bzw. $\P_X$. Die mgf ist hingegen mit der \person{Laplace}transformation verwandt.
+		\item Existiert die mgf in einer Umgebung der Null, dann ist sie dort holomorph (komplex diffbar) und kann daher in die komplexe Ebene fortgesetzt werden (siehe $\nearrow$ Funktionentheorie). Dies führt auf die charakteristische Funktion.
+		\item Ist $X$ eine $\N_0$-wertige Funktion, so gilt
+		\begin{align*}
+			\varphi_X(u) = \psi_X(e^{\ii u})
+		\end{align*}
+	\end{itemize}
+\end{*remark}
+\begin{example}
+	\proplbl{8_9}
+	Sei $X \sim \Gam(\lambda,r)$. Dann folgt mittels Rechnung wie in \propref{8_2} und dem Integralsatz von \person{Cauchy}:
+	\begin{align*}
+		\varphi_X(u) = \brackets{\frac{\lambda}{\lambda-\ii u}}^r \quad u \in \R
+	\end{align*}
+\end{example}
+\begin{proposition}[Rechenregeln]
+	\proplbl{8_10}
+	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y: \O \to \Rd$ mit charakteristischer Funktion $\varphi_X,\varphi_Y$. Dann
+	\begin{enumerate}
+		\item $\varphi_X(0) = 1$
+		\item Seien $A \in \Rnn, b \in \Rn$. Dann gilt
+			\begin{align*}
+				\varphi_{AX + b}(u) = e^{\ii \scaProd{u}{b}} \varphi_X(A^T u)
+			\end{align*} 
+		\item Wenn $X \upmodels Y$ dann folgt $\varphi_{X+Y}(u) = \varphi_X(u)\varphi_Y(u) \quad u \in \Rd$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Analog zu \propref{8_4}.
+\end{proof}
+\begin{proposition}
+	\proplbl{8_11} Sei $X \sim \normal(\mu,\sigma^2)$, dann
+	\begin{align*}
+		\varphi_X(u) = e^{\ii \mu u - \frac{\sigma^2 u^2}{2}} \quad u \in \R
+		\intertext{und insbesondere}
+		\varphi_{\normal(0,1)}(u) = e^{-\frac{u^2}{2}} \quad u \in \R
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Betrachte die Standardnormalverteilung:
+	(ganze block hat klammerfehler :()
+%	\begin{align*} %TODO fix
+%		\varphi(u) &:= \varphi_{\normal(0,1)}(u) = \int_{\R} e^{\ii u x} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}\d x
+%		\intertext{Mit dem Differenzierbarkeitslemma für Parameterintergrale ($\nearrow$ Schilling MINT, Satz 12.2)}
+%		\varphi'(u) &= \int_{\R} \brackets{\frac{\d}{\d u}e^{\ii ux}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \d x\\
+%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii x e^{\ii ux} e^{-\frac{x^2}{2}}\d x\\
+%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (-\ii)e^{\ii u x} \brackets{\frac{\d}{\d x} e^{-\frac{x^2}{2}}}\d x\\
+%		\over{\text{P.I.}}&{=} \underbrace{\frac{-\ii}{\sqrt{2\pi}} \sqbrackets{e^{\ii u x}e^{-\frac{x^2}{2}}}_{x=-\infty}^{\infty}}_{=0} + \frac{1}{\sqrt{2\pi}} \int_{\O} \ii \brackets{\frac{\d}{\d x} e^{\ii ux}\d x\\
+%		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \ii u e^{\ii u} e^{-\frac{x^2}{2}}\d x\\
+%		&= -u \frac{1}{\sqrt{2\pi}} \int_{\R} e^{u x}e^{-\frac{x^2}{2}}\d x\\
+%		&= - u \varphi(u)	
+%	\end{align*}
+	Die DGL $\varphi'(u) = -u\varphi(u)$ besitzt die Lösung
+	\begin{align*}
+		\varphi(u) = \varphi(0)e^{-\frac{x^2}{2}}
+	\end{align*}
+	mit $\varphi(0) =1$ nach \propref{8_10}, also folgt $\varphi(u) = e^{-\frac{u^2}{2}}$. Für $X \sim \normal(\mu, \sigma^2)$ gilt $Z:= \frac{X-\mu}{\sqrt{\sigma^2}} \sim \normal(0,1)$ ($\nearrow$ HA 9.1) und nach \propref{8_10} folgt
+	\begin{align*}
+		\varphi_X(u) = \varphi_{\sigma Z + \mu} (u) = e^{\ii \mu u}\varphi_Z (\sigma u) = e^{\ii \mu  u}e^{-\frac{\sigma^2 u^2}{2}}.
+	\end{align*}
+\end{proof}
+Die Charakteristische Funktion charakterisiert eine Verteilung eindeutig:
+\begin{proposition}
+	\proplbl{8_12} Seien $(\O,\F,\P), (\O',\F',\P')$ Wahrscheinlichkeitsräume und $X: \O \to \Rd, Y: \O' \to \Rd$ Zufallsvariablen mit charakteristischen Funktionen $\varphi_X, \varphi_Y$. Dann:
+	\begin{align*}
+		X \distri Y \Longleftrightarrow \varphi_X(u) = \varphi_Y(u) \quad \forall u \in \Rd
+	\end{align*}
+\end{proposition}
+Für den Beweis benötigen wir:
+\begin{lemma}
+	\proplbl{8_13} Seien $(\O,\F,\P),(\O', \F',\P')$ Wahrscheinlichkeitsräume, $X: \O \to \Rd$, $Y: \O' \to \Rd$ Zufallsvariablen. Dann gilt $X \distri Y$ genau dann, wenn
+	\begin{align*}
+		\E[f(X)] = \E'[f(Y)] \quad \forall f \in C_c (\Rd)
+	\end{align*} 
+	(Wobei $\E'[f(Y)]$ Erwartungswert bzgl $\P'$ und $C_c$ die Menge der stetigen Funktionen mit kompakten Träger sind)
+\end{lemma}
+\begin{proof}[\propref{8_13}]
+	\begin{enumerate}
+		\item $\implies$: klar.
+		\item $\Longleftarrow$: Es genügt zu zeigen
+		\begin{align*}
+			\E[\indi_K(X)] = \P(X \in K) = \P'(Y \in K) = \E'[\indi_K(Y)] \label{bew:8_10}\tag{$\ast$}
+		\end{align*}
+		für alle $K \subset \Rd$ kompakt, denn die kompakten Mengen sind ein $\cap$-stabiler Erzeuger von $\borel(\Rd)$ und es gibt eine aufsteigende Folge $K_n \uparrow \Rd$. Die Indikatoren $\indi_K$ können wir durch $C_c$-Funktionen approximieren. Sei
+		\begin{align*}
+			\dist(x,A) &:= \inf_{y \in A}\abs{x-y} \quad A \subset \Rd\\
+			f_n(x) &:= \frac{x, U_n^c}{\dist(x,U_n^c)+ \dist(x,K)} \quad U_n = \set{y \in \Rd\colon \dist(y,k) < \frac{1}{n}}
+		\end{align*}
+		Dann ist $f_n \in C_c$ mit $f_n \downarrow \indi_K$. Mit monotoner Konvergenz folgt \eqref{bew:8_10} aus der Vorraussetzung.
+	\end{enumerate}
+\end{proof}
+\begin{proof}[\propref{8_12}]
+	\begin{enumerate}
+		\item $\implies$: klar.
+		\item $\Longleftarrow$: Sei $\varphi_X(u) = \varphi_Y(u) \quad u \in \Rd$. Wir konstruieren $d$ unabhängig, identische verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$. ($\nearrow$ \propref{3_2_19}). Zudem
+		\begin{align*}
+			\P(\sqrt{\sigma^2}N \in \d y) &= \prod_{i=1}^d \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{y_i^2}{2\sigma^2}} \d y_i\\
+			&= (2\pi \sigma^2)^{-\frac{d}{2}} e^{-\frac{\abs{y}^2}{2\sigma^2}}\d y \mit \abs{y} = \sqrt{\sum y_i^2}
+		\end{align*}
+		Es gilt für alle $f \in C_c(\Rd)$
+		\begin{align*}
+			\E[f(X + \sqrt{\sigma^2}N)] \over{X \upmodels N}&{=} \int_{\Rd} \E[f(X +y)](2\pi\sigma^2){-\frac{d}{2}} e^{- \frac{\abs{y}^2}{2\sigma^2}} \d y\\
+			&= (2 \pi \sigma^2)^{-\frac{1}{2}} \int_{\Rd} f(z) \E[e^{-\frac{\abs{X-z}^2}{2\sigma^2}}]\d z
+		\end{align*}
+		Wobei für $x \in \Rd$
+		\begin{align*}
+			e^{-\frac{\abs{x-z}^2}{2\sigma^2}}&= \prod_{i=1}^d \underbrace{e^{-\frac{\abs{x-i - z_i}^2}{\sigma^2}}}_{\varphi_{\normal(0,\sigma^2)}(x_i-z_i)}\\
+			&= \prod_{i=1}^d \int_{\R} e^{\ii (x_i - z_i)y_i}\frac{\sigma}{2\pi} e^{-\frac{\sigma^2y_i^2}{2}} \d y_i\\
+			&= \frac{\sigma^d}{(2\pi)^{\frac{d}{2}}} \int_{\Rd} e^{\ii \scaProd{x-z}{y}}e^{-\frac{\sigma^2 \abs{y}^2}{2}} \d y\\
+			\intertext{so dass}
+			\E[f(X+\sqrt{\sigma^2}N)] = (2\pi)^{-d} \int_{\Rd} f(z) \E[\int_{\R} e^{\ii \scaProd{X-z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}}\d y]\d z\\
+			&= (2\pi)^{-d} \int_{\Rd} f(z) \int_{\Rd} \underbrace{\E[e^{\ii \scaProd{x}{Y}}]}_{\varphi_X(y)} e^{-\ii \scaProd{z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}} \d y \d z \quad \text{ dom. Konv.}
+		\end{align*}
+		Dieselbe Rechnung auf $(\O', \F',\P')$ mit einem weiteren Vektor $N'$ u.i.v $\normal(0,1)$ Zufallsvariablen zeigt dann wegen $\varphi_X(u) = \varphi_Y(u)$.
+		\begin{align*}
+			\E[f(X + \sqrt{\sigma^2}N)] = \E'[f(Y + \sqrt{\sigma^2}N')]
+		\end{align*}
+		Mit dominierter Konvergenz folgt für $\sigma^2 \to 0$
+		%TODO add last line here
+	\end{enumerate}
+\end{proof}
