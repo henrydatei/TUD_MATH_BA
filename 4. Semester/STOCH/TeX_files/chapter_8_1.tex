@@ -6,12 +6,12 @@
 	\begin{enumerate}
 		\item $(\O,\F,\P)$ Wahrscheinlichkeitsraum $X: \O \to \R$ Zufallsvariable. Dann heißt
 		\begin{align*}
-			m_X(u) := \E[e^{uX}] \quad v\in \R\text{, so dass } m_X(u) < \infty
+			m_X(u) := \E[e^{uX}] \quad u\in \R\text{, so dass } m_X(u) < \infty
 		\end{align*}
 		\begriff{momenterzeugende Funktion} von $X$ (mgf = moment generating function)
 		\item Ist $\P$ Verteilung auf $\R$, so heißt
 		\begin{align*}
-			m_{\P}(u) = \int_{\R}e^{uX} \P(\d x) \quad u \in \R,\text{, so dass } m_{\P}(u) < \infty
+			m_{\P}(u) = \int_{\R}e^{uX} \P(\d x) \quad u \in \R\text{, so dass } m_{\P}(u) < \infty
 		\end{align*}
 		\begriff{momenterzeugende Funktion} von $\P$.
 	\end{enumerate}
@@ -23,7 +23,7 @@
 		m_X(u) &= \E[e^{uX}]\\
 		&= \int_{0}^{\infty} e^{ux}\lambda e^{-\lambda x}\frac{(\lambda x)^{r-1}}{\Gamma(r)}\d x\\
 		&= \frac{\lambda^r}{\Gamma(r)} \int_{0}^{\infty}e^{-(\lambda-u)x}x^{r-1}\d x \quad y= (\lambda-u)x\\
-		&= \frac{\lambda^r}{\Gamma(r)}\infty_0^{\infty} e^{-y}\frac{y^{r-1}}{(\lambda-u)^{r-1}}\frac{\d y}{(\lambda-u)}\\
+		&= \frac{\lambda^r}{\Gamma(r)}\int_0^{\infty} e^{-y}\frac{y^{r-1}}{(\lambda-u)^{r-1}}\frac{\d y}{(\lambda-u)}\\
 		&= \brackets{\frac{\lambda}{\lambda-u}}^r \quad u < \lambda
 	\end{align*}
 \end{example}

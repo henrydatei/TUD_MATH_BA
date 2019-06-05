@@ -1,4 +1,4 @@
-\begin{definition}
+﻿\begin{definition}
 	Sei $\mu \in \R, \sigma^2 > 0$. Das Wahrscheinlichkeitsmaß $\normal(\mu, \sigma^2)$ auf $(\R, \borel(\R))$ mit Dichtefunktion
 	\begin{align*}
 		g_{\mu,\sigma^2}(x) := \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad x \in \R
@@ -14,7 +14,7 @@
 		\begin{align*}
 		\E[X] &= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} x e^{-\frac{(x-\mu)^2}{2\sigma^2}} \d x\quad y = \frac{x-\mu}{\sqrt{\sigma^2}}\\
 		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (\sqrt{\sigma^2}y + \mu)e^{-\frac{y^2}{2}} \d y\\
-		&= \sqrt{\frac{\sigma^2}{2\pi}} \underbrace{\int_{\R} y e^{-\frac{y^2}{2}}\d y}_{=0, \text{ Symmetrie}} + \frac{1}{\sqrt{2\pi}}\mu \underbrace{\int_{\R} e^{-\frac{y^2}{2}}\d y}_{\sqrt{2\pi}} = \mu\\
+		&= \sqrt{\frac{\sigma^2}{2\pi}} \underbrace{\int_{\R} y e^{-\frac{y^2}{2}}\d y}_{=0, \text{ Symmetrie}} + \frac{1}{\sqrt{2\pi}}\underbrace{\int_{\R} \mu e^{-\frac{y^2}{2}}\d y}_{\mu\sqrt{2\pi}} = \mu\\
 		\Var(X) 
 		&= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{\R} (x-\mu)^2 e^{-\frac{(x-\mu)^2}{2\sigma^2}} \d x \quad y= \frac{x-\mu}{\sqrt{\sigma^2}}\\ 
 		&= \frac{\sigma^2}{\sqrt{2\pi}} \int_{\R} y^2 e^{-\frac{y^2}{2}} \d y\\

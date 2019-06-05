@@ -284,14 +284,14 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 	\]
 	Der erwartete Gesamtschaden ist
 	\begin{align*} %TODO fix alignment for comments
-		\E[S] &= \E\sqbrackets[\sum_{i=1}^N X_i]\\
-		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmeigenschaft)}\\
+		\E[S] &= \E[\sum_{i=1}^N X_i]\\
+		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmegs.)}\\
 		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^N \mid N = n]\P(N=n) \quad\text{ (Def. EW.)}\\
-		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^n X_i]\P(N=n) \quad X_i \perp N\\
-		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_i]\P(N=n) \quad \text{ Linearität}\\
-		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_1]\P(N=n) \quad \text{($X_i$ identisch verteilt)}\\
+		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^n X_i]\P(N=n) \quad \text{(}X_i \upmodels N\text{)}\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_i]\P(N=n) \quad \text{ (Linearität}\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_1]\P(N=n) \quad \text{($X_)i$ identisch verteilt)}\\
 		&= \E[X_1] \sum_{n=0}^{\infty} n \P(N=n)\\
-		&= \E[X_1]\cdot \E[N] \quad \text{ \person{Wald}-Gleichung}
+		&= \E[X_1]\cdot \E[N] \quad \text{ (\person{Wald}-Gleichung)}
 	\end{align*}
 \end{example}
 \subsection*{Bedingte Varianz}
@@ -325,7 +325,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\begin{align*}
 			\E[(X - \E[X\mid \G])^2 \mid \G] &=\\
 			&= \E[X^2 \mid \G]-2\E[X\underbrace{\E[X \mid \G]}_{\G \text{mb}}\mid \G] - \E[(\E[X \mid \G])^2 \mid \G]\\
-			\overset{\text{mb herausziehen}}&{=} \E[X^2 \mid \G] - 2\E[X \mid \G]\E[X \mid \G] + (\E[X \mid \G])^2 \underbrace{\E[1 \mid \G]}_{1, Konservation}\\
+			\overset{\text{mb herausziehen}}&{=} \E[X^2 \mid \G] - 2\E[X \mid \G]\E[X \mid \G] + (\E[X \mid \G])^2 \underbrace{\E[1 \mid \G]}_{1, \text{ Konservation}}\\
 			&= \E[X^2 \mid \G] -(\E[X \mid \G])^2.
 		\end{align*}
 	\end{enumerate}
@@ -356,19 +356,17 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\intertext{wobei}
 		\E[\Var(S \mid N)] &= \sum_{n=0}^{\infty} \Var(S \mid N=n)\P(N=n)\\
 		&= \sum_{n=0}^{\infty} \Var(\sum_{i=1}^{\infty} X_i) \P(N=n)\\
-		\overset{\text{\person{Bienaymé}} X_i \text{ unabh.}}&{=} \sum_{n=0}^{\infty}\sum_{i=1}^{\infty}\Var(X_i)\P(N=n)\\
+		&= \sum_{n=0}^{\infty}\sum_{i=1}^{\infty}\Var(X_i)\P(N=n) \quad \text{\person{Bienaymé} } X_i \text{ unabh.}\\
 		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
 		&= \Var(X_i)\E[N]
 		\intertext{und}
-		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] - \E[X_1]\E[E[N]], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
+		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] = \E[X_1]\E[N], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
 		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N])^2\P(N=n) \\
 		&= \E[X_1]^2 \cdot \underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N^2]} - 2 \E[N]\cdot \underbrace{\sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
 		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
-		&= \E[X_1]^2 \cdot (\E[N^2] - \E[N]^2)\\
-		&= \E[X_1]^2\Var(N).
-		\intertext{Also folgt}
-		\Var(S) &= \Var(X_1)\E[N] + (\E[X_1])^2\Var(N).	
+		&= \E[X_1]^2 (\E[N^2] - \E[N]^2) = \E[X_1]^2\Var(N)\\
+		&\implies \Var(S) = \Var(X_1)\E[N] + (\E[X_1])^2\Var(N)	
 	\end{align*}
 \end{example}
