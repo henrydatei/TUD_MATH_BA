@@ -1,4 +1,4 @@
-﻿\section{Bedingte Erwartungswerte}
+\section{Bedingte Erwartungswerte}
 \begin{proposition}
 	\proplbl{6_2_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
@@ -142,7 +142,7 @@ betrachten.
 Die bedingte Erwartung übernimmt Eigenschaften der Erwartung:
 \begin{lemma}[Rechenregeln bedingter Erwartungswert 1]
 	\proplbl{6_2_12}
-	$(\O,\F, \P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra, $X,Y: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[Y],\E[Y]$ existieren.
+	$(\O,\F, \P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra, $X,Y: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[X],\E[Y]$ existieren.
 	\begin{enumerate}
 		\item Positivität:
 		\[
@@ -212,7 +212,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_2_12}). Also
 		\begin{align*}
 			\int_G \sup_{n \in \N} \E[X_n \mid \G] \d \P &= \sup_{n \in \N} \int_G \E[X_n \mid \G]\d \P\\
-			\overset{\text{Def.}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
+			\overset{\text{\propref{6_2_11}}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
 			&= \int_G \sup_{n \in \N} X_n \d \P
 		\end{align*}
 		\item $\nearrow$ HA 8.2a
@@ -232,7 +232,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\end{align*}
 		\item allgemeine Turmeigenschaft: Sei $\mathscr{H} \subseteq \G \subseteq \F$ $\sigma$-Algebra, dann
 		\begin{align*}
-			\E[\E[X\mid \G]\mathscr{H}] = \E[X\mid \mathscr{H}]\quad \P{\text{-f.s.}}
+			\E[\E[X\mid \G]\mid \mathscr{H}] = \E[X\mid \mathscr{H}]\quad \P{\text{-f.s.}}
 		\end{align*}
 		\item Messbares Herausziehen: Ist $Y$ $\G$-messbar und gilt $\E[XY] < \infty$, dann
 		\[
@@ -278,14 +278,14 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 \end{proof}
 \begin{example}
 	\proplbl{6_2_15}
-	Ein KFZ-Versicherungsunternehmen modelliert die Schäden, die aus einem Portfolio von Verträgen stammen. als Zufallsvariablen $X_1,X_2,X_3,\dots$ unabhängig und identisch verteilt. (u.i.v) Zudem sei $N$ eine Zufallsvariable mit Werten in $\N_0$, welche die Anzahl der Schäden in einem Jahr modelliert. $N \und \set{X_1, X_2, \dots}$ seien unabhängig. Der Gesamtschaden im Jahr des Portfolios ist dann
+	Ein KFZ-Versicherungsunternehmen modelliert die Schäden, die aus einem Portfolio von Verträgen stammen. Alle Zufallsvariablen $X_1,X_2,X_3,\dots$ sind unabhängig und identisch verteilt. (u.i.v) Zudem sei $N$ eine Zufallsvariable mit Werten in $\N_0$, welche die Anzahl der Schäden in einem Jahr modelliert. $N \und \set{X_1, X_2, \dots}$ seien unabhängig. Der Gesamtschaden im Jahr des Portfolios ist dann
 	\[
 		S = \sum_{i=1}^N X_i
 	\]
 	Der erwartete Gesamtschaden ist
 	\begin{align*} %TODO fix alignment for comments
 		\E[S] &= \E[\sum_{i=1}^N X_i]\\
-		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmegs.)}\\
+		&=\E[\E[\sum_{i=1}^N X_i \mid N]] \quad \text{ (Turmeigs.)}\\
 		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^N \mid N = n]\P(N=n) \quad\text{ (Def. EW.)}\\
 		&= \sum_{n=0}^{\infty} \E[\sum_{i=1}^n X_i]\P(N=n) \quad \text{(}X_i \upmodels N\text{)}\\
 		&= \sum_{n=0}^{\infty}\sum_{i=1}^n \E[X_i]\P(N=n) \quad \text{ (Linearität}\\
@@ -295,7 +295,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 	\end{align*}
 \end{example}
 \subsection*{Bedingte Varianz}
-\begin{definition}
+\begin{definition}[Bedingte Varianz]
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $\G \subseteq \F$ $\sigma$-Algebra. $X: (\O, \F) \to (\R, \borel(\R))$ mit $X \in \Ln{2}(\P)$. Dann ist
 	\begin{align*}
 		\Var(X \mid \G) = \E\sqbrackets{(X - \E[X \mid \G])^2 \mid \G}
