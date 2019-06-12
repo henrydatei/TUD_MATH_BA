@@ -95,6 +95,9 @@
 \rang#*\math
 \ord#*\math
 \MinPol#*\math
+\Gal#*\math
+\res#*\math
+\zwk#*\math
 \norm{content}#\math
 \set{content}#\math
 \abs{content}#\math

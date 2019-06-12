@@ -7,13 +7,13 @@ Sei $K$ Körper, $\bar K$ ein fixierter algebraischer Abschluss von $K$ und $L$ 
 
 \begin{proposition}
 	\proplbl{2_1_2}
-	Ist $L\mid K$ endlich, so sind äquivalent \begin{enumerate}[label={(\arabic*)}]
+	Ist $L\mid K$ endlich, so sind äquivalent \begin{propenum}
 		\item $L\mid K$ ist normal
 		\item Jedes irreduzible $f\in K[X]$, das eine Nullstelle in $L$ hat, zerfällt über $L$ in Linearfaktoren
 		\item $L$ ist der Zerfällungskörper von $f\in K[X]$
-		\item Für jedes $\sigma\in\Aut(\bar K\mid K)$ ist $\sigma(L) = L$
+		\item \proplbl{2_1_2_4} Für jedes $\sigma\in\Aut(\bar K\mid K)$ ist $\sigma(L) = L$
 		\item Jedes $\sigma\in\Aut(\bar K\mid K)$ ist $\sigma(L)\subseteq L$
-	\end{enumerate}
+	\end{propenum}
 \end{proposition}
 
 \begin{proof}\leavevmode
@@ -136,4 +136,115 @@ Sei $K$ Körper, $\bar K$ ein fixierter algebraischer Abschluss von $K$ und $L$ 
 
 \begin{proof}
 	\propref{2_1_4}, \propref{1_7_8} und \propref{1_7_9}.
+\end{proof}
+
+\begin{definition}
+	\proplbl{2_1_10}
+	Ist $L\mid K$ galoissch, so heißt \begin{align*}
+		\Aut(L\mid K) = \Gal(L\mid K)
+	\end{align*}
+	die \begriff{Galoisgruppe} von $L\mid K$.
+\end{definition}
+
+\begin{remark}
+	\proplbl{2_1_11}
+	Ist $L\mid K$ endlich und galoissch, so gilt nach \propref{2_1_8} \begin{align*}
+		\#\Gal(L\mid K) = [L:K].
+	\end{align*}
+\end{remark}
+
+\begin{definition}
+	\proplbl{2_1_12}
+	Sei $G\le \Aut(L\mid K)$ Untergruppe. Dann ist\begin{align*}
+		L^{\mathrm G} := \big\lbrace \alpha\in L\;\big|\; \forall \sigma\in G\colon\, \alpha^\sigma = \alpha\big\rbrace
+	\end{align*}
+	der \begriff{Fixkörper} von $G$.
+\end{definition}
+
+\begin{remark}
+	\proplbl{2_1_13}
+	$L^{\mathrm G}$ ist ein Teilkörper von $L$.
+\end{remark}
+
+\begin{proposition}[Artin]
+	\proplbl{2_1_14}
+	Sei $G\le \Aut(L)$ endlich, so ist $L\mid L^{\mathrm G}$ galoissch und $\Gal(L\mid L^{\mathrm G}) = G$.
+\end{proposition}
+
+\begin{proof}
+	Sei $\alpha\in K = L^{\mathrm G}$. Dann ist \begin{align*}
+		G_\alpha = \big\lbrace \sigma\in G\;\big|\; \alpha^\sigma = \alpha\big\rbrace \le G
+	\end{align*}
+	und die $G_\alpha$ partitionieren $G$:\begin{align*}
+		G = \bigcup_{i=1}^m G_\alpha \sigma_i,
+	\end{align*}
+	wobei $m = [G:G_\alpha]$ und $\sigma_i$ ein Repräsentantensystem ist.
+	
+	Betrachte \begin{align*}
+		f(X) = \prod_{i=1}^m ( X - \alpha^{\sigma_i}) \in L[X].
+	\end{align*}
+	Dannn gilt \begin{itemize}
+		\item $f$ ist unabhängig von der Wahl der $\sigma_i$,
+		\item $f(\alpha) = 0$,
+		\item $f$ ist separabel, da $\alpha^{\sigma_i} = \alpha^{\sigma_j}$ $\Rightarrow$ $G_\alpha\sigma_i = G_\alpha \sigma_j$ $\Rightarrow$ $i=j$,
+		\item $f\in K[X]$, da\begin{align*}
+			\forall \tau\in G\colon\; G = G_\tau = \bigcup_{i=1}^m G_\alpha \sigma_i^\tau
+		\end{align*}
+		und \begin{align*}
+			f^\tau(X) = \prod_{i=1}^m (X - \alpha^{\sigma_i\tau}) = f(X).
+		\end{align*}
+	\end{itemize}
+	$L\mid L^{\mathrm G}$ ist also nach \propref{1_7_2} separabel.
+	
+	Für jedes $\alpha\in L$ gilt, dass $\deg(\alpha\mid K)\le \# G$ und \begin{align*}
+		[L:K] \overset{\propref{1_9_4}}{\le} \# G \le \# \Aut(L\mid K) \overset{\propref{2_1_6}}{\le} [L:K].
+	\end{align*}
+	Daher: $G = \Aut(L\mid K)$ und aus\begin{align*}
+		\#\Aut(L\mid K) = [L:K]
+	\end{align*}
+	folgt, dass die Erweiterung $L\mid K$ galoissch ist.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_1_15}
+	Sei $L\mid K$ endlich. Es gilt \begin{align*}
+		L\mid K\;\text{galoisch}\quad\Leftrightarrow\quad L^{\Aut(L\mid K)} = K
+	\end{align*}
+\end{conclusion}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt,widest={($\Rightarrow$)},leftmargin=*]
+		\item[($\Rightarrow$)] $L\mid K$ galoissch \begin{itemize}[topsep=0pt,label={$\Rightarrow$}]
+			\item[$\xRightarrow{\propref{2_1_8}}$] $\Aut(L\mid K) = [L:K]$
+		\end{itemize}
+		$K\subset L^{\Aut(L\mid K)} \subset L$ \begin{itemize}[topsep=0pt,label={$\Rightarrow$}]
+			\item $[L:L^{\Aut(L\mid K)}] \overset{\propref{2_1_14}}{=} \# \Aut(L\mid K)$
+			\item $K = L^{\Aut(L\mid K)}$
+		\end{itemize}
+	
+		\item[($\Leftarrow$)] $L\mid K$ endlich \begin{itemize}[topsep=0pt]
+			\item[$\xRightarrow{\propref{2_1_5}}$] $\Aut(L\mid K)$ endlich
+			\item[$\xRightarrow{\propref{2_1_14}}$] $L\mid L^{\Aut(L\mid K)} = K$ ist galoissch
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_1_16}
+	Sind $K\subset L\subset M\subset \bar K$ Körper mit $L\mid K$ und $M\mid K$ normal, dann ist \begin{align*}
+		\res_{M\mid L}\colon\;\left\lbrace\begin{array}{@{}c@{\;}c@{\;}c}
+			\Aut(M\mid K) & \rightarrow & \Aut (L\mid K) \\
+			\sigma & \mapsto & \sigma|_{L}
+		\end{array}\right.
+	\end{align*}
+	ein Epimorphismus.
+\end{lemma}
+
+\begin{proof}
+	Nach \propref{1_4_11} sind $\res_{\bar K\mid M}$ und $\res_{\bar K\mid L}$ surjektiv. Dann \begin{itemize}%[topsep=-\baselineskip]
+		\item $\sigma|_{L}\in\Aut(L\mid K)$: Schreibe $\sigma = \res_{\bar K\mid M}(\tilde\sigma)$. Es gilt wegen \propref{2_1_2_4}: $\sigma(L) = \tilde\sigma(L) = L$.
+		\item $\res_{M\mid L}$ ist Homomorphismus: klar
+		\item $\res_{M\mid L}$ ist surjektiv: $\res_{\bar K\mid L} = \res_{M\mid L}\circ \res_{\bar K\mid M}$. Als zweiter Teil einer surjektiven Verkettung ist dieser selbst surjektiv.
+	\end{itemize}
 \end{proof}

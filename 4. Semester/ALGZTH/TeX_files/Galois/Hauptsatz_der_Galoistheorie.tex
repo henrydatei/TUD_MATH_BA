@@ -1,0 +1,86 @@
+\section{Der Hauptsatz der Galoistheorie}
+
+$L\mid K$ ist endliche Galoiserweiterung mit $G = \Gal(L\mid K)$.
+
+\begin{definition}
+	Es sind \begin{itemize}
+		\item $\zwk(L\mid K) = \lbrace F\mid K\subset F\subset L,\;F\,\text{Zwischenkörper}\rbrace$ die Menge der Zwischenkörper und
+		\item $\ugr(G) = \lbrace H\mid H\le G\rbrace$ die Menge der Untergruppen.
+	\end{itemize}
+\end{definition}
+
+\begin{theorem}[Galoiskorrespondenz]
+	Es sind \begin{align*}
+		&\left\lbrace\begin{array}{@{}c@{\;}c@{\;}c}
+			\zwk(L\mid K) & \rightarrow & \ugr(G) \\
+			F & \mapsto & F^\circ := \Gal(L\mid F)
+		\end{array}\right.&
+		&\left\lbrace \begin{array}{@{}c@{\;}c@{\;}c}
+			\ugr(G) & \rightarrow & \zwk(L\mid K) \\
+			H & \mapsto & H^\circ := L^H
+		\end{array}\right.
+	\end{align*}
+	zueinander inverse Bijektionen. Weiterhin gilt für $F$, $F_1$, $F_2\in\zwk(L\mid K)$ mit $H = F^\circ$, $H_1 = F_1^\circ$ und $H_2 = F_2^\circ$ \begin{enumerate}[label={\roman*)}]
+		\item \label{2_2_2_1} die Bijketion ist antiton \begin{align*}
+			F_1\subset F_2 \quad\Leftrightarrow\quad H_1\supset H_2
+		\end{align*}
+		\item die Bijektion ist indextreu, d.h.\begin{align*}
+			[F_2:F_1] = (H_1:H_2),\quad\text{wenn}\;F_1\subset F_2
+		\end{align*}
+		\item die Bijektion vertauscht Erzeugnis und Durchschnitt \begin{align*}
+			(F_1\cap F_2)^\circ = \langle H_1,H_2\rangle\quad\text{und}\quad(F_1F_2)^\circ = H_1\cap H_2
+		\end{align*}
+		\item \label{2_2_2_4} die Bijektion ist mit Konjugation verträglich: $\forall \sigma\in G$ \begin{align*}
+			\left( F^\sigma\right)^\circ = \left( F^\circ\right)^\sigma
+		\end{align*}
+		\item die Bijektion erhält Normalität: \begin{align*}
+			F\mid K\;\text{normal}\quad\Leftrightarrow\quad H\unlhd G
+		\end{align*}
+		In disem Fall gilt: \begin{align*}
+			\Gal(F\mid K) \cong \lnkset{G}{H} = \lnkset{\Gal(L\mid K)}{\Gal(L\mid F)}
+		\end{align*}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item $F\in\zwk(L\mid K)$ $\xRightarrow{\propref{2_1_9}}$ $F$ galoissch $\xRightarrow{\propref{2_1_15}}$ $(F^\circ)^\circ = L^{F^\circ} = F$
+		\item $H\in\ugr(G)$ $\xRightarrow{\propref{2_1_14}}$ $L\mid H^\circ$ galoissch mit $(H^\circ)^\circ = \Gal(L\mid H^\circ) = H$
+	\end{itemize}
+	\begin{enumerate}[label={\roman*)}]
+		\item \begin{itemize}[]
+			\item[$(\Leftarrow)$] klar, da $F_1 = H_1^\circ$, $F_2 = H_2^\circ$
+			\item[($\Rightarrow$)] klarer
+		\end{itemize}
+		\item $L\mid F_i$ ist galoissch, daher folgt aus \propref{2_1_11} $[L:F_i] = \# H_i$ für $i=1$,$2$ und \begin{align*}
+			[F_2:F_1] = \frac{[L:F_1]}{[L:F_2]} = \frac{\#H_1}{\#H_2} = (H_1 : H_2)
+		\end{align*}
+		\item \begin{itemize}[left=0pt]
+			\item $F_1\cap F_2 \subset F_1 F_2$ $\Rightarrow$ $(F_1\cap F_2)^\circ \overset{\text{\hyperref[2_2_2_1]{i)}}}{\supset} \langle H_1,H_2\rangle$,
+			
+			$H_1$, $H_2\subset \langle H_1,H_2\rangle$ $\Rightarrow$ $F_1\cap F_2 \supset (\langle H_1,H_2\rangle)^\circ$ $\Rightarrow$ $(F_1\cap F_2)^\circ \subset \big( (\langle H_1,H_2\rangle)^\circ\big)^\circ = \langle H_1,H_2\rangle$
+			\item $F_1$, $F_2\subset F_1F_2$ $\Rightarrow$ $H_1\cap H_2 \supset (F_1F_2)^\circ$
+			
+			$H_1\cap H_2\subset H_1$, $H_2$ $\Rightarrow$ $(H_1\cap H_2)^\circ \supset F_1F_2$ $\Rightarrow$ $(F_1F_2)^\circ \supset \big((H_1\cap H_2)^\circ\big)^\circ = H_1\cap H_2$
+		\end{itemize}
+		\item $(F^\sigma)^\circ = \lbrace \tau\in G\mid \tau|_{F^\sigma} = \id \rbrace = \lbrace \tau\in G\mid \tau(x) = x\;\forall x\in F^\sigma\rbrace = \lbrace \tau\in G\mid \tau(x^\sigma) = x^\sigma\;\forall x\in F\rbrace = \lbrace \tau\in G\mid \tau^{\sigma^{-1}}\in F^\circ\rbrace = (F^\circ)^\sigma$
+			
+		\item $F\mid K$ normal \begin{itemize}[topsep=\dimexpr-\baselineskip+2\lineskip\relax,widest={$\xLeftrightarrow{\propref{2_1_16}}$},leftmargin=*]
+			\item[$\xLeftrightarrow{\propref{2_1_2}}$] $F^\sigma = F$ $\forall \sigma\in\Aut(\bar K\mid K)$
+			\item[$\xLeftrightarrow{\propref{2_1_16}}$] $F^\sigma = F$ $\forall \sigma \in G$
+			\item[$\xLeftrightarrow{\text{\hyperref[2_2_2_4]{iv)}}}$] $H^\sigma = H$ $\forall \sigma\in G$
+			\item[$\Leftrightarrow$] $H\unlhd G$
+			
+			Sei $F\mid K$ normal. Nach \propref{2_1_16} gilt \begin{align*}
+				\res\colon\;\left\lbrace\begin{array}{@{}c@{\;}c@{\;}c}
+					\Gal(L\mid K) & \rightarrow & \Gal(F\mid K) \\
+					\sigma & \mapsto & \sigma|_F
+				\end{array}\right.
+			\end{align*}
+			ist ein Epimorphismus. \begin{itemize}[topsep=0pt]
+				\item[$\Rightarrow$] $\Gal(F\mid K)\cong \Im(\res) \cong \lnkset{\Gal(L\mid K)}{\ker(\res)} \cong \lnkset{\Gal(L\mid K)}{\Gal(L\mid F)} = \lnkset{G}{H}$
+			\end{itemize}
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
