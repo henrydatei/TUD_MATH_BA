@@ -210,27 +210,27 @@ Für den Beweis benötigen wir:
 		Dann ist $f_n \in C_c$ mit $f_n \downarrow \indi_K$. Mit monotoner Konvergenz folgt \eqref{bew:8_10} aus der Vorraussetzung.
 	\end{enumerate}
 \end{proof}
-\begin{proof}[\propref{8_12}]
-	\begin{enumerate}
-		\item $\implies$: klar.
-		\item $\Longleftarrow$: Sei $\varphi_X(u) = \varphi_Y(u) \quad u \in \Rd$. Wir konstruieren $d$ unabhängig, identische verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$. ($\nearrow$ \cref{3_2_19}). Zudem
+\begin{proof}[\propref{8_12}]\leavevmode
+	\begin{itemize}[topsep=-6pt,labelindent=0pt]
+		\item[($\Rightarrow$)] klar
+		\item[($\Leftarrow$)] Sei $\varphi_X(u) = \varphi_Y(u)$, $u \in \Rd$. Wir konstruieren $d$ unabhängige, identisch verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$ ($\nearrow$~\cref{3_2_19}). Zudem gilt
 		\begin{align*}
 			\P(\sqrt{\sigma^2}N \in \d y) &= \prod_{i=1}^d \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{y_i^2}{2\sigma^2}} \d y_i\\
-			&= (2\pi \sigma^2)^{-\frac{d}{2}} e^{-\frac{\abs{y}^2}{2\sigma^2}}\d y \mit \abs{y} = \sqrt{\sum y_i^2}
+			&= (2\pi \sigma^2)^{-\frac{d}{2}} e^{-\frac{\abs{y}^2}{2\sigma^2}}\d y \quad\mit \abs{y} = \sqrt{\sum y_i^2}.
 		\end{align*}
-		Es gilt für alle $f \in C_c(\Rd)$
+		Es gilt für alle $f \in C_c(\Rd)$:
 		\begin{align*}
-			\E[f(X + \sqrt{\sigma^2}N)] \overset{X \upmodels N}&{=} \int_{\Rd} \E[f(X +y)](2\pi\sigma^2){-\frac{d}{2}} e^{- \frac{\abs{y}^2}{2\sigma^2}} \d y\\
-			&= (2 \pi \sigma^2)^{-\frac{1}{2}} \int_{\Rd} f(z) \E[e^{-\frac{\abs{X-z}^2}{2\sigma^2}}]\d z
+			\E[f(X + \sqrt{\sigma^2}N)] \overset{X \upmodels N}&{=} \int_{\Rd} \E[f(X +y)](2\pi\sigma^2)^{-\frac{d}{2}} e^{- \frac{\abs{y}^2}{2\sigma^2}} \d y\\
+			&= (2 \pi \sigma^2)^{-\frac{d}{2}} \int_{\Rd} f(z) \E[e^{-\frac{\abs{X-z}^2}{2\sigma^2}}]\d z,
 		\end{align*}
-		Wobei für $x \in \Rd$
+		wobei für $X \in \Rd$
 		\begin{align*}
-			e^{-\frac{\abs{x-z}^2}{2\sigma^2}}&= \prod_{i=1}^d \underbrace{e^{-\frac{\abs{x-i - z_i}^2}{\sigma^2}}}_{\varphi_{\normal(0,\sigma^2)}(x_i-z_i)}\\
-			&= \prod_{i=1}^d \int_{\R} e^{\ii (x_i - z_i)y_i}\frac{\sigma}{2\pi} e^{-\frac{\sigma^2y_i^2}{2}} \d y_i\\
-			&= \frac{\sigma^d}{(2\pi)^{\frac{d}{2}}} \int_{\Rd} e^{\ii \scaProd{x-z}{y}}e^{-\frac{\sigma^2 \abs{y}^2}{2}} \d y\\
+			e^{-\frac{\abs{X-z}^2}{2\sigma^2}}&= \prod_{i=1}^d \underbrace{e^{-\frac{\abs{X_i - z_i}^2}{\sigma^2}}}_{\varphi_{\normal(0,\sigma^2)}(X_i-z_i)}\\
+			&= \prod_{i=1}^d \int_{\R} e^{\ii (X_i - z_i)y_i}\frac{\sigma}{\sqrt{2\pi}} e^{-\frac{\sigma^2y_i^2}{2}} \d y_i\\
+			&= \frac{\sigma^d}{(2\pi)^{\frac{d}{2}}} \int_{\Rd} e^{\ii \scaProd{X-z}{y}}e^{-\frac{\sigma^2 \abs{y}^2}{2}} \d y,\\
 			\intertext{so dass}
 			\E[f(X+\sqrt{\sigma^2}N)] &= (2\pi)^{-d} \int_{\Rd} f(z) \E[\int_{\R} e^{\ii \scaProd{X-z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}}\d y]\d z\\
-			&= (2\pi)^{-d} \int_{\Rd} f(z) \int_{\Rd} \underbrace{\E[e^{\ii \scaProd{x}{Y}}]}_{\varphi_X(y)} e^{-\ii \scaProd{z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}} \d y \d z \quad \text{ dom. Konv.}
+			&= (2\pi)^{-d} \int_{\Rd} f(z) \int_{\Rd} \underbrace{\E[e^{\ii \scaProd{X}{Y}}]}_{\varphi_X(y)} e^{-\ii \scaProd{z}{y}}e^{-\frac{\sigma^2\abs{y}^2}{2}} \d y \d z \quad \text{ dom. Konv.}
 		\end{align*}
 		Dieselbe Rechnung auf $(\O', \F',\P')$ mit einem weiteren Vektor $N'$ u.i.v $\normal(0,1)$ Zufallsvariablen zeigt dann wegen $\varphi_X(u) = \varphi_Y(u)$.
 		\begin{align*}
@@ -241,5 +241,5 @@ Für den Beweis benötigen wir:
 			\E[f(X)] = \E[f(Y)] \quad \forall f \in C_c (\Rd)
 		\end{align*}
 		Mit \propref{8_13} folgt die Behauptung.
-	\end{enumerate}
+	\end{itemize}
 \end{proof}
