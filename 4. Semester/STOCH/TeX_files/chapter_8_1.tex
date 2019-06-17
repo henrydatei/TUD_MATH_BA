@@ -243,3 +243,27 @@ Für den Beweis benötigen wir:
 		Mit \propref{8_13} folgt die Behauptung.
 	\end{enumerate}
 \end{proof}
+Folgende Proposition is analog zu \propref{8_5}.
+%TODO somewhere {} missing :(
+\begin{proposition}
+	$(\;\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \Rd$ Zufallsvariable mit charakteristischer Funktion $\varphi_X$. Wenn $\E[\norm{X}^n] < \infty$ für ein $n \in \N$, dann existiert
+	\begin{align*}
+		\partial^{\alpha} = \frac{\partial^{\abs{\alpha}}}{\partial^{\alpha_1}u_1 \cdots \partial^{\alpha_d}} \varphi_X(u) \\
+		\forall \alpha \in \N^d_0 \mit \abs{\alpha} = \sum_{i=1}^d \alpha_i \le n
+		\intertext{Zudem ist $\partial^{\alpha}_u \varphi_X$ stetig und es gilt}
+		\E[X^{\alpha}] = i^{\abs{-\alpha}}\partial^{\alpha}_u \varphi_X(0)
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Da $\norm{x^{\alpha}} \le \norm{x}^{\abs{\alpha}}$ für $x \in \Rd, \alpha \in \N^d_0$ folgt aus der Annahme $\E[\norm{X^{\alpha}}] < \infty$. Damit 
+	\begin{align*}
+		\partial^{\alpha}_u \varphi_X(u) &= \int_{\Rd}e^{\ii \scaProd{u}{x}} \P(X \in \d x)\\
+		\over{(\star)}&{=} \partial^{\alpha}_u \int_{\Rd} \partial^{\alpha}_u e^{\ii \scaProd{u}{x}} \P(X \in \d x)\\
+		&= \int_{\Rd} (\ii x)^{\alpha} e^{\ii \scaProd{u}{x}} \P(X \in \d x)\\
+		&= \ii^{\abs{\alpha}}\int_{\Rd} e^{\ii \scaProd{u}{x}} \P(X \in \d x)\\
+	\end{align*}
+	so dass die Ableitung existiert und für $u = 0$ die Momentenformel folgt. In $(\star)$ haben wir $\abs{\alpha}$-mal das Differenzierbarkeitslemma ($\nearrow$ MINT Satz 12.1) verwendet, wobei $\partial^{\alpha}_u e^{\ii \scaProd{u}{x}}$ intbar ist, da
+	\begin{align*}
+		\norm{\partial^{\alpha}_u e^{\ii \scaProd{u}{x}}} = \norm{(\ii x)^{\alpha} e^{\ii \scaProd{u}{x}}} = \norm{(\ii x)^{\alpha}} = \norm{x^{\alpha}}.
+	\end{align*}
+\end{proof}

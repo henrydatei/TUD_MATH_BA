@@ -1,0 +1,148 @@
+\begin{enumerate}[label=]
+	\item \ul{Ziel:} Für $X_1, X_2, \dots$ Zufallsvariablen (u.i.v) betrachten das Langzeitmittel $Y:= \frac{1}{n} \sum_{i=1}^n X_i$ für $n \to \infty$.
+	\item  \ul{Wissen bereits:} Für $X_i \sim \Ber(p), p \in (0,1)$ unabhängig
+	\begin{itemize}
+		\item Für $np \to \lambda, n \to \infty$:
+		\begin{align*}
+			\P(n Y_n = k) \xrightarrow{n \to \infty} e^{-\lambda}\frac{\lambda^k}{k!} = \Pois(\set{k}) 
+G		\end{align*}
+		(\person{Poisson}-Approx. \propref{2_6}).
+		\item Für $c > 0$ gilt mit $x(k) := \frac{k-np}{\sqrt{np(1-p)}}$
+		\begin{align*}
+			\lim_{n\to \infty} \max_{k: \abs{x_n(k)} \le c} \abs{\frac{\sqrt{np(1-p)}\P(nY_n = k)}{g(x_n(k))} -1} = 0
+		\end{align*}
+		(\person{De Moivre}-\person{Laplace} \propref{7_2}).
+	\end{itemize}
+\end{enumerate}
+\section{Schwaches Gesetz der großen Zahlen}
+(WLLN- Weak law of large numbers)\\
+Sei $X_1, X_2, \dots$ u.i.v. $\Ber(\frac{1}{2})$ Zufallsvariablen (z.B. Münzwurf). Wer erwarten, etwa bei der Hälfte der Zufallsvariablen eine Null/Eins (Kopf/Zahl) zu sehen, also
+\begin{align*}
+	Y_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{n \to \infty} \frac{1}{2} = \E[X_n] \quad \text{im geeigneten Sinne.}
+\end{align*}
+Tatsächlich folgt mit der \person{Stirling}-Formel (\propref{7.3)}
+\begin{align*} %TODO add cancel package?
+	\P(Y_{2n} = \frac{1}{2}) &= \P(\Bin(2n,p) = \frac{2n}{2})\\
+	&= \binom{2n}{n} 2^{-2n}\\
+	\over{n \to \infty}&{\sim} \frac{\sqrt{2\pi 2n}(2n)^{2n}e^{-2n}}{(\sqrt{2 \pi n}n^n e^{-n})^2} 2^{-2n}\\
+	&= \frac{1}{\sqrt{\pi n}}\\
+	&\xrightarrow{n \to \infty} 0
+\end{align*}
+Wir benötigen also einen geeigneten Grenzwertbegriff!
+\begin{definition}
+	Seien $Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen auf einem Wahrscheinlihckeitsraum $(\O,\F, \P)$. Falls für alle $\epsilon > 0$ gilt
+	\begin{align*}
+		\lim_{n\to \infty} \P(\abs{Y_n - Y} \le \epsilon) = 1
+	\end{align*}
+	so konvergiert $(Y_n)_{n \in \N}$ \begriff{stochastisch} oder \begriff{in Wahrscheinlichkeit} gegen $Y$.\\
+	%TODO flip stuff in xrightarrow
+	Schreibweise: $Y_n \xrightarrow[\P]{n \to \infty} Y$ oder $\P-\lim_{n\to \infty} Y_n = Y$.
+\end{definition}
+\begin{*remark}
+	Für Zufallsvariablen in $\Rd$ gilt eine entsprechende Definition mit euklidischer Norm anstelle des Betrags.
+\end{*remark}
+\begin{lemma}
+	Seien $Y,Z,Y_1, Y_2, \dots$ Zufallsvariablen auf einem Wahrscheinlichkeitsraum $(\O,\F,\P)$. Gelten
+	\begin{align*}
+		Y_n \xrightarrow[\P]{n \to \infty} Y \und Y_n \xrightarrow[\P]{n \to \infty} Z
+		\intertext{so folgt}
+		Y-Z \quad \P-\text{f.s.}
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	$\Delta$-Ungleichung: $\abs{Y-Z} \le \abs{Y-Y_n} + \abs{Y_n-Z}$. Damit
+	\begin{align*} %TODO { missing
+		\set{\abs{Y-Z} > 2 \epsilon} \le \set{\abs{Y-Y_n} > \epsilon} \cup \set{\abs{Y_n-Z} > \epsilon}
+		\intertext{so dass}
+		\P(\abs{Y-Z} > 2\epsilon) \le \P(\abs{Y-Y_n} > \epsilon) + \P(\abs{Y_n-Z} > \epsilon) \xrightarrow{n \to \infty} 0
+		\end{align*}
+		Also
+		\begin{align*}
+		\P(Y \neq Z) = \P(\abs{Y-Z} > 0) &= \P(\bigcup_{k=1}^{\infty} \set{\abs{Y-Z} > k^{-1}})\\
+		&= \sum_{k=1}^{\infty} \P(\abs{Y-Z} > k^{-1}) = 0 \implies Y=Z \quad \P-\text{f.s.}
+	\end{align*}
+\end{proof}
+\begin{lemma}
+	Seien $Y_1,Y_2, \dots, Z_1, Z_2, \dots$ reelle Zufallsvariablen auf $(\O, \F,\P)$ und $(a_n)_{n\in \N}$ reellwertige Folge. Es gelten:
+	\begin{enumerate}
+		\item $Y_n \xrightarrow[\P]{n \to \infty} 0$ und $Z_n \xrightarrow[\P]{n \to \infty} 0$, dann $Y_n + Z_n \xrightarrow[\P]{n \to \infty} 0$.
+		\item $Y_n \xrightarrow[n \to \infty]{\P} 0$ und $(a_n)_{n\in \N}$ beschränkt, dann
+		\begin{align*}
+			a_n Y_n \xrightarrow[n \to \infty]{\P} 0.
+		\end{align*}
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Für $\epsilon > 0$ beliebig gilt
+	\begin{align*}
+		\P(\abs{Y_n-Z_n} > \epsilon) \le \P(\abs{Y_n} < \frac{\epsilon}{2}) + \P(\abs{Z_n} > \frac{\epsilon}{2}) \xrightarrow[n \to \infty]{\P} 0.
+	\end{align*}
+	und andererseits, wenn $\abs{a_n} \le A$
+	\begin{align*}
+		\P(\abs{a_n Y_n}> \epsilon) \le \P(\abs{Y_n} > \frac{\epsilon}{A}) \xrightarrow[n ßto \infty]{\P} 0.
+	\end{align*}
+\end{proof}
+\begin{proposition}[WLLN, $\Ln{2}$-Version]
+	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X_1, X_2, \dots$ paarweise unkorrelierte, reelle Zufallsvariablen auf $\O$ in $\Ln{2}(\P)$, so dass
+	\begin{align*}
+		v := \sup_{i \in \N} \Var(X_i) < \infty
+	\end{align*}
+	Dann gilt für alle $\epsilon > 0$.
+	\begin{align*}
+		\P(\abs{1/n \sum_{i=1}^n (X_i - \E[X_i])} \ge \epsilon) \le \frac{v}{n\epsilon^2}
+		\intertext{also insbesondere}
+		1/n \sum_{i=1}^n (X_i - \E[X_i]) \xrightarrow[n \to \infty]{\P} 0
+	\end{align*}
+	Falls $\E[X_i] = \E[X_1] \quad \forall i$, so gilt
+	\begin{align*}
+		1/n \sum_{i=1}^n X_i \xrightarrow[n \to \infty]{\P} \E[X_1]
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Sei $Y_n := 1/n \sum_{i=1}^n (X_i - \E[X_i])$, dann ist $Y_n \in \Ln{2}(\P)$ mit $\E[Y_n] = 0$ und
+	\begin{align*}
+		\Var(Y_n) = \frac{1}{n} \sum_{i=1}^n \Var(X_i) \le \frac{V}{n} \quad \text{\person{Bienamé}} 
+	\end{align*}
+	und  die Aussage folgt aus der Ungleichung von \person{Tschebyscheff} (\propref{5_13}).
+\end{proof}
+\begin{proposition}[WLLN, $\Ln{1}$-Version]
+	$(\; \F, \P)$ Wahrscheinlichkeitsraum, $X_1, X_2, \dots$ paarweise unabhängige, identisch verteilte reelle Zufallsvariablen auf $\O$ in $\Ln{1}(\P)$. Dann gilt
+	\begin{align*}
+		\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow[n \to \infty]{\P} \E[X_1].
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Wir verwenden ein Abschneideargument:\\
+	Definiere
+	\begin{align*} %TODO find a way for good {} size, also later ... if not manual maybe?!
+		X_i^2 := X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}
+		\intertext{und}
+		X_i^{\sharp} := X_i - X_i^{b} = X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}
+		\intertext{sowie}
+		Y_n^{\flat} := \frac{1}{n} \sum_{i=1}^n (X_i^{\flat} - \E[X_i^{\flat}])\\
+		Y_n^{\sharp} := \frac{1}{n} \sum_{i=1}^n \sum_{i=1}^n (X_i^{\sharp} - \E[X_i^{\sharp}]) 
+	\end{align*}
+	Wir zeigen $Y_n^{flat} \xrightarrow[n \to \infty]{\P} 0$ und $Y_n^{\sharp} \xrightarrow[n \to \infty]{\P} 0$.
+	Mit \propref{9_3} folgt dann die Behauptung. Zu $Y_n^{\flat}$: Nach \propref{3_19} sind auch $X_i^{\flat}$ paarweise unabhängig. Es folgt
+	\begin{align*}
+		\Var(Y_n^{flat}) &= \frac{1}{n^2} \sum_{i=1}^n \Var(X_i^{\flat}) \quad \text{(\person{Bienayé})}\\
+		&\le \frac{1}{n^2} \sum_{i=1}^n \E[\underbrace{(X_i^{\flat})^2}_{\le i^{\frac{1}{2}}}]\\
+		&\le \frac{1}{n^2}n n^{\frac{1}{2}} = n^{-\frac{1}{2}}
+	\end{align*}
+	Mit \person{Tschebyscheff} folgt $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$.
+	Zu $Y_n^{\sharp}$: Es gilt
+	\begin{align*}
+		\E[X_i^{\sharp}] &= \E[X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}] \over{\text{i.v.}}{=} \E[X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}]\\
+		&= \E[X_1] - \E[X_1 \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}]\\
+		& \xrightarrow[n \to \infty]{} 0.
+	\end{align*}
+	wegen monotoner Konvergenz. Also
+	\begin{align*}
+		\E[\abs{Y_n^{\sharp}}] \le \frac{2}{n} \sum_{i=1}^n \E[X_i^{\sharp}] \xrightarrow[n \to \infty]{} 0.
+	\end{align*}
+	Mit \person{Markov}-Ungleichung (\propref{5_6}) folgt für alle $\epsilon > 0$
+	\begin{align*}
+		\P(\abs{Y_n^{\sharp}} \ge \epsilon) \le \frac{\E[\abs{Y_n^{\sharp}}]}{\epsilon} \xrightarrow[n \to \infty]{} 0
+	\end{align*}
+	also $Y_n^{\sharp} \xrightarrow[n \to \infty]{\P} 0$. 
+\end{proof}
