@@ -10,6 +10,7 @@ $L\mid K$ ist endliche Galoiserweiterung mit $G = \Gal(L\mid K)$.
 \end{definition}
 
 \begin{theorem}[Galoiskorrespondenz]
+	\proplbl{2_2_2}
 	Es sind \begin{align*}
 		&\left\lbrace\begin{array}{@{}c@{\;}c@{\;}c}
 			\zwk(L\mid K) & \rightarrow & \ugr(G) \\
@@ -24,10 +25,10 @@ $L\mid K$ ist endliche Galoiserweiterung mit $G = \Gal(L\mid K)$.
 		\item \label{2_2_2_1} die Bijketion ist antiton \begin{align*}
 			F_1\subset F_2 \quad\Leftrightarrow\quad H_1\supset H_2
 		\end{align*}
-		\item die Bijektion ist indextreu, d.h.\begin{align*}
+		\item \label{2_2_2_2} die Bijektion ist indextreu, d.h.\begin{align*}
 			[F_2:F_1] = (H_1:H_2),\quad\text{wenn}\;F_1\subset F_2
 		\end{align*}
-		\item die Bijektion vertauscht Erzeugnis und Durchschnitt \begin{align*}
+		\item \label{2_2_2_3} die Bijektion vertauscht Erzeugnis und Durchschnitt \begin{align*}
 			(F_1\cap F_2)^\circ = \langle H_1,H_2\rangle\quad\text{und}\quad(F_1F_2)^\circ = H_1\cap H_2
 		\end{align*}
 		\item \label{2_2_2_4} die Bijektion ist mit Konjugation verträglich: $\forall \sigma\in G$ \begin{align*}
@@ -84,3 +85,104 @@ $L\mid K$ ist endliche Galoiserweiterung mit $G = \Gal(L\mid K)$.
 		\end{itemize}
 	\end{enumerate}
 \end{proof}
+
+\begin{example}
+	Betrachte $\mathbb Q(\sqrt2,\sqrt3)\mid\mathbb Q$:
+	\begin{center}
+		\includegraphics[width=1\linewidth]{tikz/splitting_a}
+	\end{center}
+	mit den Automorphismen \begin{align*}
+		\sigma_1&\colon\;
+			\begin{array}[t]{rcr}
+			\sqrt 2 &\rightarrow& \sqrt 2\\
+			\sqrt 3 &\rightarrow& \sqrt 3
+			\end{array},&
+		\sigma_2&\colon\;\begin{array}[t]{rcr}
+			\sqrt 2&\rightarrow& \sqrt 2\\
+			\sqrt 3&\rightarrow& -\sqrt 3
+			\end{array},&
+		\sigma_3&\colon\;\begin{array}[t]{rcr}
+				\sqrt 2 &\rightarrow & -\sqrt 2\\
+				\sqrt 3 &\rightarrow & \sqrt 3
+			\end{array},&
+		\sigma_4&\colon\;\begin{array}[t]{rcr}
+			\sqrt 2 & \rightarrow & -\sqrt 2\\
+			\sqrt 3 &\rightarrow & -\sqrt 3
+		\end{array}.
+	\end{align*}
+\end{example}
+
+\begin{remark}
+	\proplbl{2_2_3}
+	\begin{enumerate}[label={(\alph*)},topsep=0pt]
+		\item Die Bijektivität in \propref{2_2_2} lässt sich mit \ref{2_2_2_1} und \ref{2_2_2_3} auch so ausdrücken: Das Bilden von Fixkörpern ist ein Verbandisomorphismus zwischen $\ugr(G)$ und $\zwk(L\mid K)$.
+		\item Die Bijektivität gilt nicht für unendliche Galoiserweiterungen (siehe Übung)
+		\item Mit \propref{2_2_2} erhalten wir einen neuen Beweis der Aussage \begin{align*}
+			L\mid K\;\text{endlich galoissch}\quad\Leftrightarrow\quad \zwk(L\mid K)\;\text{endlich},
+		\end{align*}
+		was schon aus \propref{1_9_2} folgt.
+	\end{enumerate}
+\end{remark}
+
+\begin{proposition}
+	\proplbl{2_2_4}
+	Sei $f\in K[X]$ separabel mit Nullstellen $\alpha_1$, $\dots$, $\alpha_n\in\bar K$ und sei $L=K(\alpha_1,\dots,\alpha_n)$ der \linebreak Zer\-fäl\-lungs\-kör\-per von $f$. Dann wirkt $G=\Gal(L\mid K)$  treu auf $X:= \lbrace\alpha_1,\dots,\alpha_n\rbrace$; der Homomorphismus \begin{align*}
+		G\rightarrow \mathrm{Sym}(X) \cong S_n
+	\end{align*}
+	ist also eine Einbettung. Die Wirkung von $G$ auf $X$ ist genau dann transitiv, wenn $f$ irreduzibel ist.
+\end{proposition}
+
+\begin{proof}
+	Sei $\sigma\in G$. \begin{itemize}[topsep=-6pt]
+		\item treu: $\alpha_i^\sigma = \alpha_i$ $\forall i$ $\Rightarrow$ $\sigma=\id$, denn $L=K(\alpha_1,\dots,\alpha_n)$ und $\sigma|_K = \id_K$.
+		\item Einbettung: GEO I.6.8
+		\item \begin{tabular}[t]{@{}r@{$\quad\Leftrightarrow\quad$}l}
+			transitiv & $\forall i$, $j$: $\exists \sigma\in G$: $\sigma(\alpha_i) = \alpha_j$ \\
+			& $\forall i$, $j$: $\exists \sigma\in \Aut(\bar K\mid K)$: $\sigma(\alpha_i)= \alpha_j$ \\
+			& $\alpha_1$, $\dots$, $\alpha_n$ sind paarweise $k$-konjugiert \\
+			& $f = c\cdot \MinPol(\alpha_1\mid K)$, $c\in K^\times$ \\
+			& $f$ irreduzibel
+		\end{tabular}
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	In der Situation von \propref{2_2_4} heißt \begin{align*}
+		\Gal(f\mid K) &:= \Image (G\to\Sym(\alpha_1,\dots,\alpha_n))
+	\end{align*}
+	die Galoisgruppe von $f$. Man nennt $f$ galoissch, wenn $f$ irreduzibel ist und ein Wurzelkörper von $f$ schon ein Zerfällungskörper von $f$ ist.
+\end{definition}
+
+\begin{remark}
+	\proplbl{2_2_6}
+	\begin{enumerate}[topsep=0pt,label={(\alph*)}]
+		\item Ist $L$ ein Zerfällungskörper von $f=\prod_{i=1}^n (X-\alpha_i)\in K[X]$, so gilt also \begin{align*}
+			\Gal(L\mid K) \cong \Gal(f\mid K) \le \Sym(\lbrace \alpha_1,\dots,\alpha_n\rbrace) \cong S_n.
+		\end{align*}
+		\item Genau dann ist $f$ galoissch, wenn $G:= \Gal(f\mid K) \le S_n$ transitiv und $\# G = n$.
+	\end{enumerate}
+\end{remark}
+
+\begin{example}
+	Sei $f=X^3-2\in\mathbb Q[X]$. Die Nullstellen von $f$ sind \begin{align*}
+		\alpha_1 &= \sqrt[3]{2},\\
+		\alpha_2 &= \sqrt[3]{2}\zeta_3,\\
+		\alpha_3 &= \sqrt[3]{2}\zeta_3^2.
+	\end{align*}
+	Der Zerfällungskörper ist $L:= \mathbb Q(\alpha_1,\alpha_2,\alpha_3) = \mathbb Q(\alpha_1,\alpha_2) = \mathbb Q(\sqrt[3]{2},\zeta_3)$. Weiterhin ist \begin{align*}
+		G = \Gal(f\mid \mathbb Q) \le S_3;\quad\# G = [L:K] = 6\quad\Rightarrow\quad \Gal(L\mid K)\cong \Gal(f\mid K) = S_3 = \langle (1\,2\,3),(2\,3)\rangle
+	\end{align*}
+	Sei $\sigma\in G$ $\leftrightsquigarrow$ $(1\,2\,3),\;\text{also}\; (\sqrt[3]2)^\sigma = \zeta_3\sqrt[3]2,\; (\zeta_3\sqrt[3]2)^\sigma = \zeta_3^2\sqrt[3]2,\;(\zeta_3^2\sqrt[3]2)^\sigma = \sqrt[3]2$, $\zeta_3^\sigma = (\frac{\alpha_2}{\alpha_1})^\sigma = \zeta_3$.
+	
+	$G \ni \tau$ $\leftrightsquigarrow$ $(2\,3)$, also $(\sqrt[3]2)^\tau = \sqrt[3]2$, $(\zeta_3\sqrt[3]2)^\tau = \zeta_3^2\sqrt[3]2$, $(\zeta_3^2\sqrt[3]2)^\tau = \zeta_3 \sqrt[3]2$, $\zeta_3^\tau = (\frac{\alpha_2}{\alpha_1})^\tau = \zeta_3^2 = \zeta_3^{-1} = \bar{\zeta_3}$.
+	
+	\begin{tikzcd}[column sep=1em]
+		& S_3 \arrow[ld, "3"'] \arrow[d, "3"'] \arrow[rd, "3"'] \arrow[rrd, "2"] &                                                                          &                                           &                                                  & G \arrow[ld, "3"'] \arrow[d, "3"'] \arrow[rd, "3"'] \arrow[rrd, "2"]                              &                                                  &                                       \\
+		{\langle (1,2)\rangle} \arrow[rd, "2"']                                    & {\langle(2,3)\rangle} \arrow[d, "2"']                                  & {\langle(1,3)\rangle)} \arrow[ld, "2"']                                  & A_4 \arrow[lld, "3"]                      & \langle\tau\sigma^2\rangle \arrow[rd, "2"']      & \langle\tau\rangle \arrow[d, "2"']                                                                & \langle\tau\sigma\rangle \arrow[ld, "2"']        & \langle\sigma\rangle \arrow[lld, "3"] \\
+		& 1                                                                      &                                                                          &  \arrow[dd, "\text{\propref{2_2_2}, \ref{2_2_2_1}, \ref{2_2_2_2}, \ref{2_2_2_4}}"]            &                                                  & \lbrace\id\rbrace                                                                                 &                                                  &                                       \\
+		&                                                                        &                                                                          &                                           &                                                  &                                                                                                   &                                                  &                                       \\
+		& L \arrow[ld, "2"'] \arrow[d, "2"'] \arrow[rd, "2"'] \arrow[rrd, "3"]   &                                                                          & \                                         &                                                  & {\mathbb Q(\sqrt[3]2,\zeta_3)} \arrow[ld, "2"'] \arrow[d, "2"'] \arrow[rd, "2"'] \arrow[rrd, "3"] &                                                  &                                       \\
+		\Big(L^{\langle\tau\rangle}\Big)^{\langle\sigma^2\rangle} \arrow[rd, "3"'] & L^{\langle\tau\rangle} \arrow[d, "3"']                                 & \Big(L^{\langle\tau\rangle}\Big)^{\langle\sigma\rangle} \arrow[ld, "3"'] & L^{\langle\sigma\rangle} \arrow[lld, "2"] & {\mathbb Q(\zeta_3^2\sqrt[3]2)} \arrow[rd, "3"'] & {\mathbb Q(\sqrt[3]2)} \arrow[d, "3"']                                                            & {\mathbb Q(\zeta_3\sqrt[3]{2})} \arrow[ld, "3"'] & \mathbb Q(\zeta_3) \arrow[lld, "2"]   \\
+		& \mathbb Q                                                              &                                                                          &                                           &                                                  & \mathbb Q                                                                                         &                                                  &                                      
+	\end{tikzcd}
+\end{example}
