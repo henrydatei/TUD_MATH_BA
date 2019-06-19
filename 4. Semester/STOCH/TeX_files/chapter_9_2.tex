@@ -1,0 +1,169 @@
+\section{Das starke Gesetz der großen Zahlen}
+(SLLN - Strong law of large numbers)\\
+\begin{definition}
+	Seien $Y,Y_1, Y_2, \dots$ reellen Zufallsvariablen auf Wahrscheinlichkeitsraum $(\O,\F,\P)$. Falls
+	\begin{align*}
+		\P(\set{\omega\colon \lim_{n\to \infty} Y_n(\omega) = Y(\omega)}) = 1
+	\end{align*}
+	so konvergiert $(Y_n)_{n\in \N}$ \begriff{$\P$-fast sicher} gegen $Y$.\\
+	Schreibweise: $Y_n \xrightarrow[n \to \infty]{\text{f.s.}} Y \oder \lim_{n\to \infty} Y_n = Y$ f.s.
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Diese Konvergenzart wurde bereits verwendet, z.B. in MINT, Konvergenzsatz von \person{Lebesgue}.
+		\item Auch bei der f.s. Konvergenz ist der Grenzwert f.s. eindeutig bestimmt:
+		\begin{align*}
+			Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y \und Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Z\\
+			\implies \P(Y=Z) = \P(\set{\lim Y_n = Y} \cap \set{\lim Y_n = Z}) = 1
+		\end{align*}
+		\item Erweiterung auf Zufallsvariablen in $\Rd$ ist offensichtlich.
+	\end{itemize}
+\end{*remark}
+\begin{lemma}
+	$Y,Y_1,Y_2 \dots$ reelle Zufallsvariablen auf $(\O,\F,\P)$. Dann
+	\begin{align*}
+		Y_n \xrightarrow[n \to \infty]{\text{f.s.}} Y \implies Y_n \xrightarrow[n \to \infty]{\P}
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Für $\epsilon > 0$ gilt
+	\begin{align*}
+		\P(\abs{Y_n - Y} > \epsilon) = \E[\underbrace{\indi_{\set{\abs{Y_n - Y}> \epsilon}}}_{=: Z_n}]
+	\end{align*}
+	Die Zufallsvariablen $Z_n$ sind gleichmäßig durch $Z \equiv 1 \in \Ln{1}(\P)$ beschränkt und $Z_n \xrightarrow[n \to \infty]{\text{f.s.}} 0$. Nach dem Konvergenzsatz von \person{Lebesgue} folgt
+	\[
+		\lim_{n\to \infty} \P(\abs{Y_n - Y}> \epsilon) = \E[\lim Z_n] = 0.
+	\]
+\end{proof}
+\begin{*remark}
+	Die Umkehrung gilt i. A. nicht: Definiere eine Folge von Zufallsvariablen auf $([0,1],\borel([0,1]), \Uni([0,1])$ durch
+	\begin{align*}
+		Y_k := \indi_{[m2^{-n},(m+1)2^{-n}]}\quad \text{ falls } k = 2^n + m \mit 0\le m < 2^n
+	\end{align*}
+	Dann gilt für alle $0 < \epsilon < 1$
+	\begin{align*}
+		\P(\abs{Y_k} > \epsilon) = 2^{-n} \xrightarrow[n \to \infty]{}
+		\intertext{Also}
+		Y_n \xrightarrow[n \to \infty]{\P} 0.
+		\intertext{Allerdings}
+		\P(\set{\omega\colon \lim Y_n(\omega) = 0}) = 0
+	\end{align*}
+	also $Y_n \not \xrightarrow[n \to \infty]{\text{f.s.}} 0$
+\end{*remark}
+\begin{erinnerung}
+	\begin{align*}
+	\omega \in \limsup_{n \to \infty} A_n = \bigcap_{k \in \N}\bigcup_{n\ge k} A_n\\
+	\Longleftrightarrow \omega \text{ ist in $\infty$ vielen der } A_n \text{ enthalten.}
+	\end{align*}
+\end{erinnerung}
+\begin{proposition}[\person{Borel}-\person{Cantelli}-Lemma]
+	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und $(A_n)_{n \in \N}$ Folge in $\F$.
+	\begin{enumerate}
+		\item Falls $\sum_{n=1}^{\infty} \P(A_n) < \infty$, so folgt $\P(\limsup_{n \to \infty} A_n) = 0$.
+		\item Falls $\sum_{n=1}^{\infty} \P(A_n) = \infty$ und die $A_n$ paarweise unabhängig sind, so folgt $\P(\limsup_{n \to \infty} A_n) = 1$
+	\end{enumerate}
+\end{proposition}
+\begin{*remark}
+	Das BC-Lemma ist ein \emph{Null-Eins-Gesetz}. (Gibt noch viel mehr davon!)
+\end{*remark}
+\begin{proof}
+	Es gilt
+	\begin{align*}
+		\omega \limsup_{n \to \infty} A_n &\Longleftrightarrow \omega \text{ ist in } \infty \text{ vielen } A_n \text{ enthalten}\\
+		&\Longleftrightarrow \sum_{n=1}^{\infty} \indi_{A_n}(\omega) = 0 \tag{$\star$} \label{bew:9_8_1}
+	\end{align*}
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+			\E[\sum_{n=1}^{\infty} \indi_{A_n}] \over{\text{BL}}&{=} \sum_{n=1} \E[\indi_{A_n}] = \sum_{n=1}\P(A_n) < \infty
+		\end{align*}
+		Die zeigt $\sum_{n=1} \indi_{A_n} < \infty$ $\P$-f.s. und mit \eqref{bew:9_8_1} $\P(\limsup A_n) = 0$
+		\item Setze $S_n = \sum_{i=1}^n \indi_{A_i}$ und $S= \lim_{n\to \infty} S_n = \sum_{i=1}^{\infty} \indi_{A_i}$. Wegen paarweiser Unabhängigkeit gilt über \person{Biennaymé}
+		\begin{align*}
+			\Var(S_n) &= \Var(\sum^n_{i=1} \indi_{A_i}) = \sum_{i=1}^n \Var(\indi_{A_i})\\
+			&\le \sum_{i=1}^n \E[\indi^2_{A_i}] = \sum_{i=1}^n \E[\indi_{A_i}] = \sum_{i=1}^n \P(A_i)\\
+			&=: m_n \xrightarrow[n \to \infty]{}\infty
+		\end{align*}
+		Da $S_n \le S$ folgt $\set{S\le \sfrac{1}{2}m_n}\subseteq \set{S_n \le \sfrac{1}{2} m_n}$ so dass
+		\begin{align*}
+			\P(S \le \sfrac{1}{2} m_n) \le \P(S_n \le \sfrac{1}{2} m_n) &= \P(S_n - m_n \le - \sfrac{1}{2} m_n) \quad m_n = \E[S_n]\\
+			&\le \P(\abs{S_n - m_n} \ge \sfrac{1}{2}m_n)
+		\end{align*}
+		und mit \person{Tschebyscheff}:
+		\begin{align*}
+			\P(S \le \sfrac{1}{2} m_n) &\le \P(\abs{S_n - m_n} \ge \sfrac{1}{2}m_n)\\
+			&\le \frac{\Var(S_n)}{m_n^2/4}\\
+			&\le \frac{4}{m_n} \xrightarrow[n \to \infty]{} 0
+		\end{align*}
+		Damit folgt mit monotoner Konvergenz
+		\begin{align*}
+			\P(S < \infty) = \P(\bigcup_{n=1}^{\infty} \set{S \le \sfrac{1}{2}m_n}) = \lim_{n\to \infty} \P(S \le \sfrac{1}{2} m_n) = 0
+		\end{align*}
+		und darauf folgt dann $\P(\limsup A_n) = 1$ mit \eqref{bew:9_8_1}.
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[SLLN, $\Ln{2}$-Version]
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X_1, X_2, \dots$ paarweise unkorrelierte (reelle) Zufallsvariablen auf $\O$ in $\Ln{2}(\P)$, so dass
+	\begin{align*}
+		v:= \sup_{i \in \N} \Var(X_i) < \infty
+		\intertext{Dann gilt}
+		\sfrac{1}{n} \sum_{i=1}^n (X_i - \E[X_i]) \xrightarrow[n \to \infty]{\text{f.s.}} 0.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Nehme oBdA an, dass $\E[X_i] = 0 \quad \forall i$, sonst betrachte
+	\[
+		X'_i = X_i = \E[X_i]
+	\]
+	Setze $Y_n = \sfrac{1}{n} \sum_{i=1}^n X_i$.\\
+	Wir zeigen zunächst $Y_n \xrightarrow[n \to \infty]{\text{f.s.}} 0$, bevor wir zu $Y_n$ übergehen. Aus \propref{9_4} (WLLN, $\Ln{2}$) ist bekannt:
+	\[
+		\forall \epsilon >0 \quad \P(\abs{Y_{n^2}}\ge \epsilon) < \infty.
+	\]
+	Insbesondere folgt
+	\[
+		\sum_{n=1}^{\infty} \P(\abs{Y_{n^2}}\ge \epsilon) < \infty.
+	\]
+	Aus \person{Borel}-\person{Cantelli} folgt
+	\[
+		\P(\limsup_{n \to \infty} \abs{Y_{n^2}} > \epsilon) \le \P(\limsup_{n \to \infty} \set{\abs{Y_{n^2}} \ge \epsilon}) = 0
+	\]
+	und für $\epsilon \to 0$ folgt
+	\begin{align*}
+		\P(\lim_{n\to \infty} Y_{n^2} \neq 0) &= \P(\limsup_{n \to \infty} \abs{Y_{n^2}} > 0)\\
+		&= \lim_{n\to \infty} \P(\limsup_{n \to \infty} \abs{Y_{n^2}} > \epsilon) = 0
+	\end{align*}
+	also gilt $Y_{n^2} \xrightarrow{\text{f.s.}} 0$. Wähle nun für jedes $m \in \N$ ein $n = n(m)$ so dass
+	\[
+		n^2 \le m < (n+1)^2
+	\]
+	Wir ``vergleichen'' $Y_m$ mit $Y_{n^2}$:
+	\begin{align*}
+		\P(\abs{m Y_m - n^2 Y_{n^2}} > \epsilon n^2) &= \P(\abs{\sum_{i = n^2+1}^m X_i} > \epsilon n^2)\\
+		&\le \frac{1}{\epsilon^2 n^2} \Var(\sum_{i = n^2+1}^m X_i) \quad \text{\person{Tschebyscheff}}\\
+		&\le \frac{v(m-n^2)}{\epsilon^2 n^4} \quad \text{\person{Bienaymé}}
+	\end{align*}
+	Es folgt
+	\begin{align*}
+		\sum_{m=1}^{\infty} \P(\abs{m Y_m - n^2 Y_{n^2}} > \epsilon n^2) &\le \frac{v}{\epsilon}\sum_m \frac{(m-n^2)}{n^4}\\
+		&= \frac{v}{\epsilon} \sum_m \frac{(m-n(m))}{n(m)^4}\\
+		&= \frac{v}{\epsilon^2} \sum_{n=1}^{\infty}\sum_{m=n^2}^{(n+1)^2-1} \frac{(m-n^2)}{n^4}\\
+		&= \frac{v}{\epsilon^2} \sum_{n=1}^{\infty} \sum_{k=0}^{2n} \frac{k}{n^4}\\
+		&= \frac{v}{\epsilon^2} \sum_{n=1}^{\infty} \frac{(2n)(2n+1)}{2n^4} < \infty
+	\end{align*}
+	und mit \person{Borel}-\person{Cantelli}:
+	\begin{align*}
+		\P(\lim_{m\to \infty} \abs{\frac{m Y_m}{n^2} - Y_{n^2} =0 ) = 1
+	\end{align*}
+	Zusammen mit $Y_{n^2} \xrightarrow{\text{f.s.}} 0$ folgt
+	\begin{align*}
+		\P(\lim_{m\to \infty} \abs{\frac{mY_m}{n^2}} = 0) = 1
+		\intertext{und da}
+		\abs{Y_m} \le \frac{m}{n^2} \abs{Y_m}
+		\intertext{impliziert das}
+		\P(\lim_{m\to \infty} \abs{Y_m} = 0) = 1.
+	\end{align*}
+\end{proof}
+\begin{*remark}
+	Das SLLN gilt auch unter dem Bedingungen von \propref{9_5} (WLLN, $\Ln{1}$). Der Beweis basiert auf einem Teilfolgen- sowie Abschneideargument. ($\nearrow$ z.B. Klenke, Schilling WT, ...)
+\end{*remark}

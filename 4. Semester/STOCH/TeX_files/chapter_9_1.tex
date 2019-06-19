@@ -1,3 +1,4 @@
+%TODO fix references ... :/
 \begin{enumerate}[label=]
 	\item \ul{Ziel:} Für $X_1, X_2, \dots$ Zufallsvariablen (u.i.v) betrachten das Langzeitmittel $Y:= \frac{1}{n} \sum_{i=1}^n X_i$ für $n \to \infty$.
 	\item  \ul{Wissen bereits:} Für $X_i \sim \Ber(p), p \in (0,1)$ unabhängig
@@ -129,7 +130,7 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 		&\le \frac{1}{n^2} \sum_{i=1}^n \E[\underbrace{(X_i^{\flat})^2}_{\le i^{\frac{1}{2}}}]\\
 		&\le \frac{1}{n^2}n n^{\frac{1}{2}} = n^{-\frac{1}{2}}
 	\end{align*}
-	Mit \person{Tschebyscheff} folgt $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$.
+	Mit \person{Tschebyscheff} folgt $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$.\\
 	Zu $Y_n^{\sharp}$: Es gilt
 	\begin{align*}
 		\E[X_i^{\sharp}] &= \E[X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}] \over{\text{i.v.}}{=} \E[X_i \indi_{\set{\abs{X_i} \le i^{\frac{1}{4}}}}]\\
