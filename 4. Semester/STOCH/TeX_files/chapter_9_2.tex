@@ -31,9 +31,9 @@
 		\P(\abs{Y_n - Y} > \epsilon) = \E[\underbrace{\indi_{\set{\abs{Y_n - Y}> \epsilon}}}_{=: Z_n}]
 	\end{align*}
 	Die Zufallsvariablen $Z_n$ sind gleichmäßig durch $Z \equiv 1 \in \Ln{1}(\P)$ beschränkt und $Z_n \xrightarrow[n \to \infty]{\text{f.s.}} 0$. Nach dem Konvergenzsatz von \person{Lebesgue} folgt
-	\[
+	\begin{align*}
 		\lim_{n\to \infty} \P(\abs{Y_n - Y}> \epsilon) = \E[\lim Z_n] = 0.
-	\]
+	\end{align*}
 \end{proof}
 \begin{*remark}
 	Die Umkehrung gilt i. A. nicht: Definiere eine Folge von Zufallsvariablen auf $([0,1],\borel([0,1]), \Uni([0,1])$ durch
@@ -75,7 +75,7 @@
 	\begin{enumerate}
 		\item 
 		\begin{align*}
-			\E[\sum_{n=1}^{\infty} \indi_{A_n}] \over{\text{BL}}&{=} \sum_{n=1} \E[\indi_{A_n}] = \sum_{n=1}\P(A_n) < \infty
+			\E[\sum_{n=1}^{\infty} \indi_{A_n}] \overset{\text{BL}}{=} \sum_{n=1} \E[\indi_{A_n}] = \sum_{n=1}\P(A_n) < \infty
 		\end{align*}
 		Die zeigt $\sum_{n=1} \indi_{A_n} < \infty$ $\P$-f.s. und mit \eqref{bew:9_8_1} $\P(\limsup A_n) = 0$
 		\item Setze $S_n = \sum_{i=1}^n \indi_{A_i}$ und $S= \lim_{n\to \infty} S_n = \sum_{i=1}^{\infty} \indi_{A_i}$. Wegen paarweiser Unabhängigkeit gilt über \person{Biennaymé}
@@ -153,7 +153,7 @@
 	\end{align*}
 	und mit \person{Borel}-\person{Cantelli}:
 	\begin{align*}
-		\P(\lim_{m\to \infty} \abs{\frac{m Y_m}{n^2} - Y_{n^2} =0 ) = 1
+		\P(\lim_{m\to \infty} \abs{\frac{m Y_m}{n^2} - Y_{n^2}} =0 ) = 1
 	\end{align*}
 	Zusammen mit $Y_{n^2} \xrightarrow{\text{f.s.}} 0$ folgt
 	\begin{align*}
