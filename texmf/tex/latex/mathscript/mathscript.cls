@@ -51,7 +51,7 @@
 	\ifluatex
 		%new lualatex needs explicit fontspec to draw properly e.g. german umlauts
 		\RequirePackage{fontspec}
-		%\RequirePackage{lua-visual-debug} %for debugging
+		\RequirePackage{lua-visual-debug} %for debugging
 	\else
 		%old pdflatex needs explicitly utf-8-support
 		\RequirePackage[utf8]{inputenc}
@@ -523,7 +523,7 @@ innerleftmargin=10pt,%
 		\ifnumcomp{\c@chapter}{=}{\zref@extract{#1}{chapternumber}}%
 		{%same chapter
 			\ifmmode 
-				\ref{#1}%
+				\text{\ref{#1}}%
 			\else
 				\mbox{\cref{#1}}%
 			\fi

@@ -1,0 +1,115 @@
+\section{Endliche Körper}
+
+Sei $K$ ein endlicher Körper mit $\chara(K) = p$ und Primkörper $\mathbb F_p$.
+
+\begin{remark}
+	\proplbl{2_3_1}
+	$K\mid \mathbb F_p$ ist endlich, insbesondere algebraisch, also o.E. $K\subset\bar{\mathbb F_p}$.
+\end{remark}
+
+\begin{lemma}
+	\proplbl{2_3_2}
+	\begin{lemmaenum}
+		\item $\# K = p^n$ für ein $n\in\mathbb N$.
+		\item $K$ ist vollkommen.
+		\item \proplbl{2_3_2_3} $K^\times\cong C_{p^n-1}$
+		\item \proplbl{2_3_2_4} $K$ ist Zerfällungskörper von $X^{p^n}- X = \prod_{\alpha\in K}(X_\alpha)$ über $\mathbb F_p$.
+	\end{lemmaenum}
+\end{lemma}
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}[topsep=-6pt,label={(\arabic*)}]
+		\item $K\cong \mathbb F_p^{[K:\bar{\mathbb F_p}]}$ als $\mathbb F_p$-Vektorraum
+		\item \propref{1_6_16}
+		\item GEO I.4.13.
+		\item $\alpha^{p^n-1} = 1$ $\forall \alpha\in K^\times$ \begin{itemize}[label={$\Rightarrow$},topsep=0pt]
+			\item jedes $\alpha\in K$ ist Nullstelle von $X(X^{p^n-1}-1)= X^{p^n}-X$
+			\item $X^{p^n}- X =\prod_{\alpha\in K}(X-\alpha)$ zerfällt über $K$ in Linearfaktoren.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_3_3}
+	Zu jeder Primpotenz $q=p^n$ gibt es bis auf Isomorphie genau einen Körper mit $\# K = q$. Ein gegebener Körper $E$ besitzt höchstens einen Teilkörper mit $\# K = q$.
+\end{proposition}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item Eindeutigkeit: \propref{2_3_2_4} + \propref{1_3_13} + \propref{1_3_14}
+		\item Existenz: $f=X^q - X\in\mathbb F_p[X]$ \begin{itemize}
+			\item $f'=-1$ $\Rightarrow$ $f$ separabel $\Rightarrow$ $f$ hat genau $q$ viele Nullstellen in $\bar{\mathbb F_p}$
+			\item Die Nullstellen von $f$ bilden einen Körper: Für $\alpha\in\bar{\mathbb F_p}$ gilt: \begin{equation*}
+				f(\alpha) = 0 \quad\Leftrightarrow\quad \alpha^{p^n} = \alpha \quad\Leftrightarrow\quad \Phi_p^n(\alpha) = \alpha\quad\Leftrightarrow\quad \alpha\in \bar{\mathbb F_p}^{\langle\Phi_p^n\rangle}
+			\end{equation*}
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{definition}
+	Man bezeichnet den eindeutig bestimmten Körper $K\subseteq \bar{\mathbb F_p}$ mit $q=p^n$ Elementen mit $\mathbb F_q$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{2_3_5}
+	Sei $L\mid \mathbb F_q$ endlich mit $[L:\mathbb F_q] = m$, $q=p^n$. Dann ist $L\mid \mathbb F_q$ einfach und galoissch mit
+	\begin{align*}
+		\Gal(L\mid \mathbb F_q) = \langle {\Phi_p|_L}^n \rangle \cong C_m
+	\end{align*}
+	mit $\Phi_p\colon \bar {\mathbb F}_p \rightarrow \bar{\mathbb F}_p$, $x\mapsto x^p$.
+\end{proposition}
+
+\pagebreak
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt,left=0pt]
+		\item einfach: \propref{2_3_2_3}
+		\item $\Phi_p|_L\in\End(L) = \Aut(L) = \Aut(L\mid \mathbb F_p)$ $\Rightarrow$ ${\Phi_p|_L}^n \in \Aut(L\mid \mathbb F_q)$
+		\item ${\Phi_p|_L}^n \in\Aut(L\mid \mathbb F_q)$, $L^{\langle {\Phi_p|_L}^n\rangle} = \mathbb F_q$ \begin{itemize}[topsep=0pt,label={$\Rightarrow$}]
+			\item[$\xRightarrow{\propref{2_1_14}}$] $L\mid \mathbb F_q$ galoissch mit $\Gal(L\mid\mathbb F_q) = \Gal(L\mid L^{\langle {\Phi_p|_L}^n\rangle}) = \langle {\Phi_p|_L}^n\rangle$
+		\end{itemize}
+		$\#\Gal(L\mid \mathbb F_q) = [L:\mathbb F_q] = m$ $\Rightarrow$ $\Gal(L\mid \mathbb F_q)\cong C_m$.
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_3_6}
+	Für $\mathbb F_q\subseteq L_1$, $L_2\subseteq \mathbb F_p$ mit $m_i := [L_i:\mathbb F_q] < \infty$ gilt: \begin{align*}
+		L_1\subseteq L_2\quad\Leftrightarrow\quad m_1\mid m_2.
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item[($\Rightarrow$)] $m_2 = [L_2:\mathbb F_q] = [L_2:L_1][L_1:\mathbb F_q] = [L_2:L_1]\cdot m_1$
+		\item[($\Leftarrow$)] $\Gal(L_2\mid \mathbb F_q)\overset{\propref{2_3_5}}{\cong} C_{m_2}$.
+		
+		$m_1\mid m_2$ \begin{itemize}[topsep=-6pt,label={$\Rightarrow$}]
+			\item ex. $H\le C_{m_2}$ mit $\# H = \frac{m_2}{m_1}$
+			\item $[L_2^H:\mathbb F_q] = (C_{m_2}:H) = m_1$
+			\item $\# L_2^H = q^{m_1} = \# L_1$
+			\item[$\xRightarrow{\propref{2_3_3}}$] $L_1 = L_2^H \subseteq L_2$.
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_3_7}
+	Zu jedem $m\in\mathbb N$ besitzt $\mathbb F_q$ genau eine Erweiterung $L\subseteq \bar{\mathbb F}_p$ vom Grad $[L:\mathbb F_q] = m$.
+\end{proposition}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item Eindeutigkeit: $L=\mathbb F_{q^m}$ nach \propref{2_3_3}
+		\item Existenz: $\mathbb F_q\subseteq F_{q^m}$ nach \propref{2_3_6} ($[\mathbb F_q:\mathbb F_p] = n\mid nm = [\mathbb F_{q^m}:\mathbb F_p]$)
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	\proplbl{2_3_8}
+	Wir sehen, dass $\bar{\mathbb F}_p = \cup_{n\in\mathbb{N}} \mathbb F_{p^n}$ eine unendliche algebraische Erweiterung von $\mathbb F_p$ ist, vgl. H88.
+\end{remark}
