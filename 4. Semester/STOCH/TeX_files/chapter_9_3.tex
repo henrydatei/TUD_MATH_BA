@@ -1,0 +1,105 @@
+\section{Der Satz von \person{Glivenko}-\person{Cantelli}}
+Gegeben seien $n$ Realisierungen $x_1 = X-1(\omega), x_2 = X_2(\omega), \dots x_n = X_n(\omega)$ von u.i.v. Zufallsvariablen $X_1,\dots, X_n$ in $\R$ auf einem Wahrscheinlichkeitsraum $(\O, \F, \P)$.\\
+Die Verteilung $F$ von $X_i$ ist unbekannt.
+\begin{enumerate}[label=]
+	\item \ul{Frage:} Wie können wir $\P_{x_i}$ bzw. die zugehörige Verteilungsfunktion $F$ bestimmen/ approximieren?
+\end{enumerate}
+\begin{definition}
+	Seien $X_1,X_2, \dots$ u.i.v. Zufallsvariablen auf $(\O,\F,\P)$ in $\R$, dann definiert
+	\begin{align*}
+		\hat{F}_n(x,\omega) := \frac{\# \set{ i\colon 1 \le i \le n \mid X_i(\omega) \le x}}{n}
+	\end{align*}
+	die \begriff{empirische Verteilungsfunktion} der \begriff{Zufallsproben} $(X_1, \dots, X_n)$.
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Für alle $\omega \in \O$ ist $\hat{F}_n(x): \R \to [0,1]$ eine Verteilungsfunktion ($\nearrow$ Übung)
+		\item $\set{\hat{F}_n, x \in \R}$ ist eine Familie von Zufallsvariablen und damit ein \begriff{stochasticher Prozess}.
+	\end{itemize}
+\end{*remark}
+\begin{proposition}[Eigenschaften der empirischen Verteilungsfunktion]
+	\proplbl{9_13} Seien $X_1, X_2, \dots$ u.i.v. Zufallsvariablen auf $(\O,\F,\P)$ in $\R$ mit Verteilungsfunktion $F$. Dann gelten:
+	\begin{enumerate}
+		\item $n \hat{F}_n(x) \sim \Bin(n,F(x)) \quad \forall x\in \R$
+		\item $\E[\hat{F}_n(x)] = F(x) \quad \forall x \in \R$
+		\item $\Var(\hat{F}_n(x)) = \frac{F(x)(1-F(x))}{n} \quad \forall x \in \R$
+		\item $\hat{F}_n(x) \xrightarrow[n \to \infty]{\text{f.s.}} F(x) \quad x \in \R$
+	\end{enumerate}
+\end{proposition}
+\begin{proof} %fix formating!
+	\begin{enumerate}
+		\item Es gilt
+		\begin{align*}
+			\hat{F}_n(x) = \frac{1}{n} \sum_{i=1}^n \indi_{\set{X_i \le x}}
+			\intertext{mit}
+			\indi_{\set{X_i \le x}} \sim \Ber(F(x)) % bernoulli
+		\end{align*}
+		Mit Unabhängigkeit der $X_i$ folgt die Behauptung.
+		\item (2\&3) folgt aus 1) $\forall x$ 
+		\begin{align*}
+			\E[n\hat{F}_n(x)] = nF(x)\\
+			\Var(n \hat{F}_n(x))(1-F(x))
+		\end{align*}
+		\item Da die Zufallsvariablen $Y_i = \indi_{\set{X_i \le x}}$ für jedes $x$ u.i.v. und in $\Ln{2}$ sind, gilt nach dem SLLN
+		\begin{align*}
+			\hat{F}_(x) &= \frac{1}{n} Y_i \xrightarrow[n \to \infty]{\text{f.s.}} \E[Y_i]\\
+			&= \E[\indi_{\set{X_i \le x}}] = \P(X_i \le x) = F(x).
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[\person{Gilvenko}-\person{Cantelli}]
+	\proplbl{9_14} $X_1,X_2, \dots$ u.i.v. Zufallsvariablen auf $(\O,\F,\P)$ in $\R$ mit Verteilungsfunktion $F$. Dann gilt
+	\begin{align*}
+		\P(\lim_{n\to \infty} \sup_{x \in \R} \abs{\hat{F}_n(x) - F(x)} = 0) = 1\\
+		\sup_{x \in \R} \abs{\hat{F}_n(x) - F(x)} \xrightarrow[n \to \infty]{\text{f.s.}} 0.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Nehme zunächst an, dass $F$ stetig ist. Für jedes $m \in \N$ existieren dann\begin{align*}
+		-\infty = z_0 < z_1 < \cdots < z_{m-1} < z_m = \infty
+		\intertext{so dass}
+		F(z_0) = \quad F(z_1) = \frac{1}{m}\quad ... F(z_k) = \frac{k}{m} \quad ... F(z_n) = 1
+	\end{align*}
+	Es folgt für jedes $z \in [z_n, z_{k+1})$
+	\begin{align*}
+		\hat{F}_n(z) - F(z) \le \hat{F}_n(z_{k+1}) - F(z_k) = \hat{F}(z_{k+1})-F(z_{k+1}) + \frac{1}{m}\\
+		\hat{F}_n(z) - F(z) \ge \hat{F}_n(z_n)-F(z_{k+1}) = \hat{F}_n(z_k) - F(z_k) - \frac{1}{m} \tag{$\star$} \label{bew:9_14:a}
+	\end{align*}
+	Setze für $k \in \set{0,1, \dots, m}, m \in \N$. Dann
+	\begin{align*}
+		A_{m,k} := \set{\omega \in \O \colon \lim_{n\to \infty} \hat{F}_n(z_k,\omega) = F(z_n)}
+	\end{align*}
+	dann gilt nach \propref{9_13} $\P(A_{m,k}) = 1\quad \forall m,k$. Für
+	\begin{align*}
+		A_m := \bigcup_{k=0}^m A_{m,k}
+		\intertext{folgt}
+		\P(A_m) = 1 - \P(A_m^C) = 1-\P(\bigcup A^C_m) \ge 1 - \sum \P(A^C_{m,k}) = 1
+	\end{align*}
+	Für jedes $\omega \in A_m$ gilbt es $N(\omega)\in \N$, so dass $\forall n \ge N(\omega)$ und $\forall k \in \set{0, \dots, m}$
+	\begin{align*}
+		\abs{\hat{F}_n(z_k, \omega) - F(z_k)} < \frac{1}{m}
+	\end{align*}
+	Zusammen mit \eqref{bew:9_14:a} folgt $\forall n \ge N(\omega)$ und alle $\omega \in A_m$
+	\begin{align*}
+		\sup_{x \in \R} \abs{\hat{F}_n(z) - F(z)} < \frac{2}{m} \tag{$\star\star$} \label{bew:9_14:b}
+	\end{align*}
+	Für $A = \bigcap_{m \in \N}A_m$ folgt (wie bei $A_m$) auch $\P(A) = 1$ und aus \eqref{bew:9_14:b}, dass für jedes $\omega \in A$ und jedes $\epsilon > 0$ ein $N(\omega,\epsilon) \in \N$ existiert, so dass $\forall n > N(\omega, \epsilon)$ gilt
+	\begin{align*}
+		\sup_{z \in \R} \abs{\hat{F}_n(z, \omega) - F(z)} < \epsilon
+	\end{align*} 
+	Für $\epsilon \to 0$ folgt die Behauptung.\\
+	Ist $F$ nicht notwendigerweise steig, so wähle für $m \in \N$
+	\begin{align*}
+		- \infty = z_0 < z_1 < \cdots < z_{m-1} < z_m = \infty
+		\intertext{so dass}
+		F(z_{k+1}^-) - F(z_k) = \lim_{y\uparrow \infty} F(y) - F(z_k) \le \frac{1}{m}
+	\end{align*}
+	Dann folgt analog zu  \eqref{bew:9_14:a} für $z \in [z_n, z_{k+1})$
+	\begin{align*}
+		\hat{F}_n(z) - F(z) \le \hat{F}_(z_{k+1}^-) - F(z_{k+1}^-) + \frac{1}{m}\\
+		\hat{F}\hat{F}_n(z) -F(z) \ge \hat{F}_n(z_n) - F(z_k) - \frac{1}{m}
+		\intertext{und damit}
+		A'_{m,k} = \set{\omega \in \O, \lim_{n\to \infty} \hat{F}_n(z_k^-,\omega) = F(z_k^-)}
+	\end{align*}
+	folgt der verbleibende Beweis analog zum stetigen Fall.
+\end{proof}
