@@ -1,0 +1,104 @@
+\begin{definition}
+	$Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen (``jede ZV darf ihren eigenen WR mitbringen''). Falls für alle $f \in C_b(\R)$ (stetig und beschränkt) gilt, dass
+	\begin{align*}
+		\lim_{n\to \infty} \E[f(Y_n)] = \E[f(Y)]
+	\end{align*} %TODO set \begriff!
+	so \emph{konvergiert} $(Y_n)_{n \in \N}$ schwach / in Verteilung gegen $Y$.\\
+	Schreibe: $Y_n \konverteil Y$ oder $Y_n \Rightarrow Y, n \to \infty$ oder $\P_{Y_n} \Rightarrow \P_Y$.
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Formal sollten wir eigentlich schreiben
+		\begin{align*}
+			\lim \E_n[f(Y_n)] = \E[f(Y)]
+		\end{align*}
+		wobei $\E_n[f(Y_n)]$ bzgl. $\P_n, Y_n$ auf $(\O_n,\F_n,\P_n)$
+		Dies wird aber in der Regeln vernachlässigt.
+		\item Für Zufallsvariablen in $\Rd$ lässt sich schwache Konvergenz mittels $f \in C_b(\Rd)$ (d.h. $f: \Rd \to \R$) definieren.
+	\end{itemize}
+\end{*remark}
+Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung}.
+\begin{lemma}
+	$Y,Z,Y_1, Y_2, \dots$ reelle Zufallsvariablen, so dass
+	\begin{align*}
+	Y_n \konverteil Y \und Y_n \konverteil Z
+	\end{align*}
+	Dann gilt: $Y \distri Z$ bzw. $P_Y = \P_Z$.
+\end{lemma}
+\begin{proof}
+	Betrachte ein fixes kompaktes Intervall $[a,b] \subset \R$. Da die kompakten Intervalle ein $\cap$-stabiler Erzeuger von $\borel(\R)$ sind, genügt es zu zeigen
+	\begin{align*}
+		\int \indi_{[a,b] \d \P_Y = \P_Y([a,b]) = \P_Z([a,b]) = \int \indi_{[a,b] \d \P_Z.
+	\end{align*}
+	Dazu konstruiere eine Folge $(f_k)_{k \in \N}$ in $C_b(\R)$, so dass $f_k \downarrow f = \indi_{[a,b]$ ($\nearrow$ Beweis zu \propref{8_13}). Dann folgt mit monotoner Konvergenz
+	\begin{align*}
+		\int \indi_{[a,b] \d \P_Y = \lim_{k \to \infty} \int f_k \d \P_Y = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
+		\intertext{und analog}
+		\int \indi_{[a,b] \d \P_Z = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
+	\end{align*}
+	Das liefert die Behauptung.
+\end{proof}
+\begin{proposition}[\person{Portmanteau}]
+	$Y,Y_1,Y_2, \dots$ reelle Zufallsvariablen. Die folgenden Aussagen sind äquivalent:
+	\begin{enumerate}
+		\item $\Y_n \konverteil Y$
+		\item $\lim_{n \to \infty} \E[f(Y_n)] = \E[f(Y)] \quad \forall f \in C_b^g(\R)$ (glm stetig und beschränkt)
+		\item $\limsup_{n \to \infty} \P(Y_n \in F) \le \P(Y \in F) \quad \forall F \subset \R$ abgeschlossen
+		\item $\liminf_{n \to \infty} \P(Y_n \in O) \ge \P(Y \in O) \quad \forall O \subset \R$ offen
+		\item $\lim_{n \to \infty} \P(Y_n \in C) = \P(Y \in C) \quad C \in \borel(\R)$ mit $\P_Y(\partial C) = 0$ (Rand von $C$)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}[label=] %TODO add labels
+		\item 1. $\implies$ 2.: ist klar
+		\item 2. $\implies$ 3.: Sei $F$ abgeschlossen und definiere für $k \in \N$
+		\begin{align*}
+			f_k(x) = (1-k \dist (x,F))^+ \mit \dist(x,F) = \inf_{y \in F} \abs{x-y}
+		\end{align*}
+		Dann ist $f_k$ beschränkt und glm. stetig, denn
+		\begin{align*}
+			\abs{f_k(y) - f_k(x)} &\le k \abs{\dist(y,F) - \dist(x,F)}\\
+			&\le k \abs{y-x} \quad \forall x,y \in \R
+			\intertext{da}
+			\dist(x,F) &= \inf_z \abs{x-z} \le \inf_z (\abs{x-z} + \abs{y-z})\\
+			&= \abs{x-y} + \dist{y,F}.
+		\end{align*}
+		Zudem gilt $f_k \le \indi_F$ und $f_k \downarrow \indi_F$, so dass
+		\begin{align*}
+			\limsup_{n \to \infty} \P(Y_n \in F) &= \limsup_{n \to \infty} \E[\indi_F(Y_n)]\\
+			&\le \lim_{n \to \infty} \E[f_k(Y_n)]\\
+			\over{\text{2.}}&{=} \E[f_k(Y)]
+		\end{align*}
+		Mit monotoner Konvergenz folgt
+		\begin{align*}
+			\limsup_{n \to \infty} \P(Y_n \in F) &\le \inf_{k \in \N} \E[f_k(Y)]\\
+			&= \E[\indi_F(Y)] = \P(Y \in F)
+		\end{align*}
+		\item 3. $\implies$ 4.: Für jedes $O \subset \R$ offen ist $O^C$ abgeschlossen, so dass
+		\begin{align*}
+			\liminf_{n \to \infty} \P(Y_n \in O) &= \liminf_{n \to \infty} (1-\P(Y_n \in O^C))\\
+			&= 1- \limsup_{n \to \infty} \P(Y_n \in O^C)\\
+			\over{\text{3.}}&{\ge} 1 - \P(Y \in O^C)\\
+			&= \P(Y \in O).
+		\end{align*}
+		\item 4. $\implies$ 3.: Analog und vertausche $\limsup$ mit $\liminf$.
+		\item 4. und 3. $\implies$ 5.: Sei $C \in \borel(\R)$ und $overset{\circ}{C}$ dass offene Innere von $C$, $\bar{C} = \overset{\circ}{C} \cup \partial C$ der Abschluss.
+		\begin{align*}
+			\lim_{n \to \infty} \p(Y_n \in C) &\le \limsup_{n \to \infty} \P(Y_n \in \bar{C})\\
+			\overset{\text{3.}}&{\le} \P(Y \in \bar{C})\\
+			&= \P(Y \in \overset{\circ}{C}) \quad (\text{ da } \P_Y(\partial C) = 0)\\
+			\overset{\text{4.}}{\le} \liminf_{n \to \infty} \P(Y_n \in \overset{\circ}{C})\\
+			&\le \limsup_{n \to \infty} \P(Y_n \in C).
+		\end{align*}
+		\item 5. $\implies$ 1.: Sei $f \in C_b(\R)$ positiv. (wenn nicht positiv: in positiven und negativen Anteil zerlegen und dann mit Linearität arbeiten). Da $\partial \set{f \ge t}  = \set{f=t}$ gilt, folgt $\P_Y(\partial\set{f \ge t}) > 0$ f[r h;chstens aby'hlbar viele $t$] und das impliziert 
+		\begin{align*}
+			\lim_{n \to \infty} \E[f(Y_n)] &= \lim_{n\to \infty} \int_{\R} f \d \P_{Y_n}\\
+			&= \lim_{n \to \infty} \int_0^{\infty} \P_{Y_n} (f\ge t)\d t \quad \text{ folgt mit Schilling MINT Satz 16.7}\\
+			&= \lim_{n \to \infty} \int_0^{\infty} \P(f(Y_n) \ge t)\d t\\
+			&= \int_0^{\infty} \lim_{n \to \infty} \P(f(Y_n) \ge t) \d t \quad \text{dom. Konvergenz}\\
+			&= \int_0^{\infty} \P(f(Y) \ge t) \d t \quad \text{ nutze 5.}\\
+			&= \E[f(Y)] \quad \text{Satz 16.7}.
+		\end{align*}
+		Für allgemeines $f$ folgt die Aussage mittels Linearität.
+	\end{enumerate}
+\end{proof}
