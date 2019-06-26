@@ -1,4 +1,4 @@
-\chapter{Grundbegriffe der Wahrscheinlichkeitstheorie}
+﻿\chapter{Grundbegriffe der Wahrscheinlichkeitstheorie}
 \label{chapter1}
 \section{Wahrscheinlichkeitsräume}
 
@@ -67,15 +67,16 @@ Aus der Definition folgen direkt:
 	\begin{enumerate}
 		\item $\probp(\emptyset) = 0$
 		\item Monotonie: $A \subseteq B \Rightarrow \probp(A) \le \probp(B)$
-		\item endliche $\sigma$-Additivität: $\probp(A\cup B) + \probp(A\cap B) = \probp(A) + \probp(B)$ und insbesondere $\probp(A) + \probp(A^C) = 1$
+		\item endliche $\sigma$-Additivität: $\probp(A\cup B) + \probp(A\cap B) = \probp(A) + \probp(B)$\\
+und insbesondere $\probp(A) + \probp(A^C) = 1$
 		\item $\sigma$-Subadditivität:
 		\begin{align}
 			\probp\left(\bigcup_{i \ge 1} A_i\right) \le \sum_{i \ge 1} \probp(A_i)\notag
 		\end{align}
 		\item $\sigma$-Stetigkeit: Wenn $A_n \uparrow A$ (d.h. $A_1 \subseteq A_2 \subseteq \cdots$ und $A = \bigcup_{i=1}^{\infty} (A_i)$) oder $A_n \downarrow A$, so gilt:
-		\begin{align}
-			\probp(A_n) \longrightarrow \probp(A), n \to \infty \notag
-		\end{align}
+		\begin{align*}
+			\probp(A_n) \xrightarrow[n \to \infty] \probp(A)
+		\end{align*}
 	\end{enumerate}
 \end{proposition}
 
@@ -103,7 +104,7 @@ Aus der Definition folgen direkt:
 		\item Folgt aus endlicher $\sigma$-Additivität, da $\probp\left(\bigcap_{i\ge 1} A_i \right) \ge 0$.
 		\item Definiere $F_1 := A_1, F_2 := A_2 \setminus A_1, \dots, F_{i+1} := A_{i+1}\setminus A_n$. Die $F_i$ Mengen sind paarweise disjunkt und damit folgt für $m \to \infty$
 		\begin{align}
-			A_m = \biguplus_{i=1}^{m} F_i \Rightarrow A = \biguplus_{i=1}^{\infty} F_i = \biguplus_{i=1}^{\infty} A_i\notag
+			A_m = \biguplus_{i=1}^{m} F_i \implies A = \biguplus_{i=1}^{\infty} F_i = \biguplus_{i=1}^{\infty} A_i\notag
 		\end{align}
 		und
 		\begin{align}
@@ -178,14 +179,14 @@ Aus der Definition folgen direkt:
 		\item Die eineindeutige Beziehung zwischen Dichte und Wahrscheinlichkeitsmaß überträgt sich nicht auf den stetigen Fall.
 		\begin{itemize}
 			\item Nicht jedes Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))  \mit \Omega \subset \Rn$ besitzt eine Dichte.
-			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge vom \person{Lebesgue}-Maß $0$ unterscheiden.
+			\item Zwei Dichtefunktionen definieren dasselbe Wahrscheinlichkeitsmaß, wenn sie sich nur auf einer Menge vom \person{Lebesgue}-Maß 0 unterscheiden.
 		\end{itemize}
-		\item Jede auf $\Omega \subset \Rn$ definiert Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0\mit x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Omega))$ lässt mit dem Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega)$ identifizieren.
-		\item Mittels Dirac-Maß $\delta_{x}$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Rn))$ intepretieren
+		\item Jede auf $\Omega \subset \Rn$ definierte Dichtefunktion $\rho$ lässt sich auf ganz $\Rn$ fortsetzen durch $\rho(x) = 0\mit x \not\in \Omega$. Das erzeugte Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Omega))$ lässt mit dem Wahrscheinlichkeitsmaß auf $(\Omega, \borel(\Omega))$ identifizieren.
+		\item Mittels Dirac-Maß $\delta_x$ können auch jedes diskrete Wahrscheinlichkeitsmaß auf $\Omega \subset \Rn$ als Wahrscheinlichkeitsmaß auf $(\Rn, \borel(\Rn))$ intepretieren
 		\begin{align*}
-			\probp(A) = \sum_{\omega \in A} \rho(\omega) = \int_{A} \diff \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\\
+			\P(A) = \sum_{\omega \in A} \rho(\omega) = \int_A \d \left( \sum_{\omega \in \Omega} \rho(\omega)\delta_{\omega} \right)\\
 			\intertext{stetige und diskrete Wahrscheinlichkeitsmaße lassen sich kombinieren z.B.}
-			\probp(A) = \frac{1}{2} \delta_{0} + \frac{1}{2} \int_{A}\indi_{[0,1]}(x)\diff x, A \in \borel(\R)
+			\P(A) = \frac{1}{2} \delta_0 + \frac{1}{2} \int_A\indi_{[0,1]}(x)\d x \quad \forall A \in \borel(\R)
 		\end{align*}
 		ist ein Wahrscheinlichkeitsmaß auf $(\R, \borel(\R))$.
 	\end{itemize}
@@ -193,9 +194,9 @@ Aus der Definition folgen direkt:
 Abschließend erinnern wir uns an:
 \begin{proposition}[Eindeutigkeitssatz für Wahrscheinlichkeitsmaße]
 	\proplbl{1_1_9}
-	Sei $(\Omega, \sigF)$ Ereignisraum und $\probp$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$. 
-	Sei $\sigF = \omega(\mathscr{G})$ für ein $\cap$-stabiles Erzeugendensystem $\mathscr{G} \subset \mathscr{P}(\Omega)$. 
-	Dann ist $\probp$ bereits durch seine Einschränkung $\probp_{\mid \mathscr{G}}$ eindeutig bestimmt.
+	Sei $(\Omega, \F)$ Ereignisraum und $\P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \F)$. 
+	Sei $\F = \sigma(\G)$ für ein $\cap$-stabiles Erzeugendensystem $\G \subset \pows(\Omega)$. 
+	Dann ist $\P$ bereits durch seine Einschränkung $\P_{\mid \G}$ eindeutig bestimmt.
 \end{proposition}
 \begin{proof}
 	$\nearrow$ Schilling MINT, Satz 4.5.
@@ -215,7 +216,7 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 \subsection*{Wahrscheinlichkeitsräume}
 
 \begin{definition}[Wahrscheinlichkeitsraum]
-	Ein Tripel $(\Omega, \sigF, \probp)$ mit $\Omega, \sigF$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\Omega, \sigF)$, nennen wir \begriff{Wahrscheinlichkeitsraum}.
+	Ein Tripel $(\O, \F, \P)$ mit $\O, \F$ Ereignisraum und $\probp$ Wahrscheinlichkeitsmaß auf $(\O, \F)$, nennen wir \begriff{Wahrscheinlichkeitsraum}.
 \end{definition}
 
 \section{Zufallsvariablen}
@@ -223,22 +224,22 @@ bereits die Exponentialverteilung aus \propref{1_1_7}.
 Zufallsvariablen dienen dazu von einem gegebenen Ereignisraum $(\Omega, \sigF)$ zu einem Modellausschnitt $\Omega', \sigF'$ überzugehen. 
 Es handelt sich also um Abbildungen $X: \Omega \to \Omega'$.
 Damit wir auch jedem Ereignis in $\sigF'$ eine Wahrscheinlichkeit zuordnen können, benötigen wir	
-\begin{align}
-	A' \in \sigF' \Rightarrow X^{-1} A' \in \sigF \notag		
-\end{align}
+\begin{align*}
+	A' \in \sigF' \Rightarrow X^{-1}(A') \in \F		
+\end{align*}
 d.h. $X$ sollte messbar sein.
 
 \begin{definition}[Zufallsvariable]
-	Seien $(\Omega, \sigF)$ und $(\Omega', \sigF')$ Ereignisräume. Dann heißt jede messbare Abbildung
-	\begin{align}
-		X: \Omega \to \Omega'\notag
-	\end{align}
-	Zufallsvariable (von $(\Omega, \sigF)$) nach $(\Omega', \sigF')$/ auf $(\Omega, \sigF)$ oder \begriff{Zufallselement}.
+	Seien $(\O, \F)$ und $(\O', \F')$ Ereignisräume. Dann heißt jede messbare Abbildung
+	\begin{align*}
+		X: \Omega \to \Omega'
+	\end{align*}
+	\begriff{Zufallsvariable} (von $(\O, \F)$) nach $(\O', \F')$/ auf $(\O, \F)$ oder \begriff{Zufallselement}.
 \end{definition}
 
 \begin{example}
 	\begin{enumerate}
-		\item Ist $\Omega$ abzählbar und $\sigF = \pows(\Omega)$, so ist jede Abbildung $X: \Omega \to \Omega'$ messbar und damit eine Zufallsvariable.
+		\item Ist $\O$ abzählbar und $\F = \pows(\Omega)$, so ist jede Abbildung $X: \Omega \to \Omega'$ messbar und damit eine Zufallsvariable.
 		\item Ist $\Omega \subset \Rn$ und $\sigF = \borel(\Omega)$, so ist jede stetige Funktion $X: \Omega \to \R$ messbar und damit eine Zufallsvariable.
 	\end{enumerate}
 \end{example}
