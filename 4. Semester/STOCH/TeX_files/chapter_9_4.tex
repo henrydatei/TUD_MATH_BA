@@ -2,7 +2,8 @@
 \begin{definition}
 	Seien $Y,Y_1,Y_2, \dots$ reelle Zufallsvariablen auf $(\O,\F\,\P)$. Falls $(Y,Y_n \in \Ln{p}(\P)), n\in \N$ für ein $p \in [1,\infty]$ und
 	\begin{align*}
-		\lim_{n \to \infty} \norm{Y-Y_n}_p := \lim_{n \to \infty} (\E[Y_n - Y]^p^{\frac{1}{p}}) = 0
+		\lim_{n \to \infty} \norm{Y-Y_n}_p := \lim_{n \to \infty} 
+		(\E[Y_n - Y]^p)^{\sfrac{1}{p}}) = 0
 	\end{align*}
 	so \begriff{konvergiert} $(Y_n)_{n \in \N}$ in $\Ln{p}$/ im $p$-ten Mittel gegen $Y$. Wir schreiben:
 	\begin{align*}
@@ -33,18 +34,18 @@
 		\item Für $1 \le p \le \infty$ setze $q = (1- 1/p)^{-1}$ mit $q = 1$ für $p = \infty$ so dass $1/p + 1/q = 1$ und mit \person{Hölder}
 		\begin{align*}
 			\norm{Y_n-Z}_1 &= \E[Y_n-Y] = \int \abs{Y_n-Y}\cdot 1 \d \P\\
-			&= \brackets{\int \abs{Y_n -Y}^p}^{1/p} \cdot \underbrace{\brackets{\int 1^q \d \P}^{1/q}_{=1}\\
+			&= \brackets{\int \abs{Y_n -Y}^p}^{1/p} \cdot \underbrace{\brackets{\int 1^q \d \P}^{1/q}}_{=1}\\
 			&= \brackets{\E[\abs{Y_n -Y}^p]}^{1/p}\\
 			&= \abs{Y_n - Y}_p \xrightarrow[n \to \infty] 0
 		\end{align*}
 		\item Mit der \person{Markov}-Ungleichung folgt $\forall \epsilon > 0$
 		\begin{align*}
-			\P(\abs{Y_n - Y} > \epsilon) \le \frac{\E[\abs{Y_n - Y}]}{\epsilon} \xrightarrow[n \to \infty] 0.
+			\P(\abs{Y_n - Y} > \epsilon) \le \frac{\E[\abs{Y_n - Y}]}{\epsilon} \xrightarrow[n \to \infty]{} 0.
 		\end{align*}
 	\end{enumerate}
 \end{proof}
 %TODO create cd for the convergence structure ... see eric!
-
+Hier fehlt die Übersicht, kann man eventuell mit tikzcd erstellen, aber keine Lust im Moment! ;)
 %\begin{tikzcd}
 %	f.s. - Konvergenz & \arrow[dd, Rightarrow]\arrow[ll, dashed] & & $\Ln{p}$-Konvergenz\\
 %	& & &\\

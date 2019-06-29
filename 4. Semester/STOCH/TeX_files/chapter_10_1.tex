@@ -28,20 +28,20 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 \begin{proof}
 	Betrachte ein fixes kompaktes Intervall $[a,b] \subset \R$. Da die kompakten Intervalle ein $\cap$-stabiler Erzeuger von $\borel(\R)$ sind, genügt es zu zeigen
 	\begin{align*}
-		\int \indi_{[a,b] \d \P_Y = \P_Y([a,b]) = \P_Z([a,b]) = \int \indi_{[a,b] \d \P_Z.
+		\int \indi_{[a,b]} \d \P_Y = \P_Y([a,b]) = \P_Z([a,b]) = \int \indi_{[a,b]} \d \P_Z.
 	\end{align*}
-	Dazu konstruiere eine Folge $(f_k)_{k \in \N}$ in $C_b(\R)$, so dass $f_k \downarrow f = \indi_{[a,b]$ ($\nearrow$ Beweis zu \propref{8_13}). Dann folgt mit monotoner Konvergenz
+	Dazu konstruiere eine Folge $(f_k)_{k \in \N}$ in $C_b(\R)$, so dass $f_k \downarrow f = \indi_{[a,b]}$ ($\nearrow$ Beweis zu \cref{8_13}). Dann folgt mit monotoner Konvergenz
 	\begin{align*}
-		\int \indi_{[a,b] \d \P_Y = \lim_{k \to \infty} \int f_k \d \P_Y = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
+		\int \indi_{[a,b]} \d \P_Y = \lim_{k \to \infty} \int f_k \d \P_Y = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
 		\intertext{und analog}
-		\int \indi_{[a,b] \d \P_Z = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
+		\int \indi_{[a,b]} \d \P_Z = \lim_{k \to \infty} \lim_{n \to \infty} \int f_k \d \P_{Y_n}
 	\end{align*}
 	Das liefert die Behauptung.
 \end{proof}
 \begin{proposition}[\person{Portmanteau}]
 	$Y,Y_1,Y_2, \dots$ reelle Zufallsvariablen. Die folgenden Aussagen sind äquivalent:
 	\begin{enumerate}
-		\item $\Y_n \konverteil Y$
+		\item $Y_n \konverteil Y$
 		\item $\lim_{n \to \infty} \E[f(Y_n)] = \E[f(Y)] \quad \forall f \in C_b^g(\R)$ (glm stetig und beschränkt)
 		\item $\limsup_{n \to \infty} \P(Y_n \in F) \le \P(Y \in F) \quad \forall F \subset \R$ abgeschlossen
 		\item $\liminf_{n \to \infty} \P(Y_n \in O) \ge \P(Y \in O) \quad \forall O \subset \R$ offen
@@ -65,9 +65,9 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 		\end{align*}
 		Zudem gilt $f_k \le \indi_F$ und $f_k \downarrow \indi_F$, so dass
 		\begin{align*}
-			\limsup_{n \to \infty} \P(Y_n \in F) &= \limsup_{n \to \infty} \E[\indi_F(Y_n)]\\
+			\limsup_{n \to \infty} \P(Y_n \in F) &= \limsup_{n \to \infty} \E[\indi_F (Y_n)]\\
 			&\le \lim_{n \to \infty} \E[f_k(Y_n)]\\
-			\over{\text{2.}}&{=} \E[f_k(Y)]
+			\over{\text{2.}}&{=} \E[f_k (Y)]
 		\end{align*}
 		Mit monotoner Konvergenz folgt
 		\begin{align*}
@@ -84,10 +84,10 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 		\item 4. $\implies$ 3.: Analog und vertausche $\limsup$ mit $\liminf$.
 		\item 4. und 3. $\implies$ 5.: Sei $C \in \borel(\R)$ und $overset{\circ}{C}$ dass offene Innere von $C$, $\bar{C} = \overset{\circ}{C} \cup \partial C$ der Abschluss.
 		\begin{align*}
-			\lim_{n \to \infty} \p(Y_n \in C) &\le \limsup_{n \to \infty} \P(Y_n \in \bar{C})\\
+			\lim_{n \to \infty} \P(Y_n \in C) &\le \limsup_{n \to \infty} \P(Y_n \in \bar{C})\\
 			\overset{\text{3.}}&{\le} \P(Y \in \bar{C})\\
 			&= \P(Y \in \overset{\circ}{C}) \quad (\text{ da } \P_Y(\partial C) = 0)\\
-			\overset{\text{4.}}{\le} \liminf_{n \to \infty} \P(Y_n \in \overset{\circ}{C})\\
+			\overset{\text{4.}}&{\le} \liminf_{n \to \infty} \P(Y_n \in \overset{\circ}{C})\\
 			&\le \limsup_{n \to \infty} \P(Y_n \in C).
 		\end{align*}
 		\item 5. $\implies$ 1.: Sei $f \in C_b(\R)$ positiv. (wenn nicht positiv: in positiven und negativen Anteil zerlegen und dann mit Linearität arbeiten). Da $\partial \set{f \ge t}  = \set{f=t}$ gilt, folgt $\P_Y(\partial\set{f \ge t}) > 0$ f[r h;chstens aby'hlbar viele $t$] und das impliziert 
