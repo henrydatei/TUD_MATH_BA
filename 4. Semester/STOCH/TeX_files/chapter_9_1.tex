@@ -17,7 +17,7 @@ G		\end{align*}
 \end{enumerate}
 \section{Schwaches Gesetz der großen Zahlen}
 (WLLN- Weak law of large numbers)\\
-Sei $X_1, X_2, \dots$ u.i.v. $\Ber(\frac{1}{2})$ Zufallsvariablen (z.B. Münzwurf). Wer erwarten, etwa bei der Hälfte der Zufallsvariablen eine Null/Eins (Kopf/Zahl) zu sehen, also
+Sei $X_1, X_2, \dots$ u.i.v. $\Ber(\frac{1}{2})$ Zufallsvariablen (z.B. Münzwurf). Wir erwarten, etwa bei der Hälfte der Zufallsvariablen eine Null/Eins (Kopf/Zahl) zu sehen, also
 \begin{align*}
 	Y_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{n \to \infty} \frac{1}{2} = \E[X_n] \quad \text{im geeigneten Sinne.}
 \end{align*}
@@ -47,12 +47,12 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 	\begin{align*}
 		Y_n \xrightarrow[\P]{n \to \infty} Y \und Y_n \xrightarrow[\P]{n \to \infty} Z
 		\intertext{so folgt}
-		Y-Z \quad \P-\text{f.s.}
+		Y=Z \quad \P-\text{f.s.}
 	\end{align*}
 \end{lemma}
 \begin{proof}
 	$\Delta$-Ungleichung: $\abs{Y-Z} \le \abs{Y-Y_n} + \abs{Y_n-Z}$. Damit
-	\begin{align*} %TODO { missing
+	\begin{align*}
 		\set{\abs{Y-Z} > 2 \epsilon} \le \set{\abs{Y-Y_n} > \epsilon} \cup \set{\abs{Y_n-Z} > \epsilon}
 		\intertext{so dass}
 		\P(\abs{Y-Z} > 2\epsilon) \le \P(\abs{Y-Y_n} > \epsilon) + \P(\abs{Y_n-Z} > \epsilon) \xrightarrow{n \to \infty} 0
@@ -76,7 +76,7 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 \begin{proof}
 	Für $\epsilon > 0$ beliebig gilt
 	\begin{align*}
-		\P(\abs{Y_n-Z_n} > \epsilon) \le \P(\abs{Y_n} < \frac{\epsilon}{2}) + \P(\abs{Z_n} > \frac{\epsilon}{2}) \xrightarrow[n \to \infty]{\P} 0.
+		\P(\abs{Y_n-Z_n} > \epsilon) \le \P(\abs{Y_n} > \frac{\epsilon}{2}) + \P(\abs{Z_n} > \frac{\epsilon}{2}) \xrightarrow[n \to \infty]{\P} 0.
 	\end{align*}
 	und andererseits, wenn $\abs{a_n} \le A$
 	\begin{align*}
