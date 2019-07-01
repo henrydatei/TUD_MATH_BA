@@ -1,4 +1,4 @@
-\section{Das starke Gesetz der großen Zahlen}
+﻿\section{Das starke Gesetz der großen Zahlen}
 (SLLN - Strong law of large numbers)\\
 \begin{definition}
 	Seien $Y,Y_1, Y_2, \dots$ reellen Zufallsvariablen auf Wahrscheinlichkeitsraum $(\O,\F,\P)$. Falls
@@ -13,8 +13,8 @@
 		\item Diese Konvergenzart wurde bereits verwendet, z.B. in MINT, Konvergenzsatz von \person{Lebesgue}.
 		\item Auch bei der f.s. Konvergenz ist der Grenzwert f.s. eindeutig bestimmt:
 		\begin{align*}
-			Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y \und Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Z\\
-			\implies \P(Y=Z) = \P(\set{\lim Y_n = Y} \cap \set{\lim Y_n = Z}) = 1
+			&Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y \und Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Z\\
+			&\implies \P(Y=Z) = \P(\set{\lim Y_n = Y} \cap \set{\lim Y_n = Z}) = 1
 		\end{align*}
 		\item Erweiterung auf Zufallsvariablen in $\Rd$ ist offensichtlich.
 	\end{itemize}
@@ -22,7 +22,7 @@
 \begin{lemma}
 	$Y,Y_1,Y_2 \dots$ reelle Zufallsvariablen auf $(\O,\F,\P)$. Dann
 	\begin{align*}
-		Y_n \xrightarrow[n \to \infty]{\text{f.s.}} Y \implies Y_n \xrightarrow[n \to \infty]{\P}
+		Y_n \xrightarrow[n \to \infty]{\text{f.s.}} Y \implies Y_n \xrightarrow[n \to \infty]{\P} Y
 	\end{align*}
 \end{lemma}
 \begin{proof}
@@ -42,7 +42,7 @@
 	\end{align*}
 	Dann gilt für alle $0 < \epsilon < 1$
 	\begin{align*}
-		\P(\abs{Y_k} > \epsilon) = 2^{-n} \xrightarrow[n \to \infty]{}
+		\P(\abs{Y_k} > \epsilon) = 2^{-n} \xrightarrow[n \to \infty]{} 0
 		\intertext{Also}
 		Y_n \xrightarrow[n \to \infty]{\P} 0.
 		\intertext{Allerdings}
@@ -50,17 +50,17 @@
 	\end{align*}
 	also $Y_n \not \xrightarrow[n \to \infty]{\text{f.s.}} 0$
 \end{*remark}
-\begin{erinnerung}
+\begin{*erinnerung}
 	\begin{align*}
 	\omega \in \limsup_{n \to \infty} A_n = \bigcap_{k \in \N}\bigcup_{n\ge k} A_n\\
 	\Longleftrightarrow \omega \text{ ist in $\infty$ vielen der } A_n \text{ enthalten.}
 	\end{align*}
-\end{erinnerung}
+\end{*erinnerung}
 \begin{proposition}[\person{Borel}-\person{Cantelli}-Lemma]
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und $(A_n)_{n \in \N}$ Folge in $\F$.
 	\begin{enumerate}
 		\item Falls $\sum_{n=1}^{\infty} \P(A_n) < \infty$, so folgt $\P(\limsup_{n \to \infty} A_n) = 0$.
-		\item Falls $\sum_{n=1}^{\infty} \P(A_n) = \infty$ und die $A_n$ paarweise unabhängig sind, so folgt $\P(\limsup_{n \to \infty} A_n) = 1$
+		\item Falls $\sum_{n=1}^{\infty} \P(A_n) = \infty$ und die $A_n$ paarweise unabhängig sind, so folgt \\$\P(\limsup_{n \to \infty} A_n) = 1$
 	\end{enumerate}
 \end{proposition}
 \begin{*remark}
@@ -99,15 +99,13 @@
 		\begin{align*}
 			\P(S < \infty) = \P(\bigcup_{n=1}^{\infty} \set{S \le \sfrac{1}{2}m_n}) = \lim_{n\to \infty} \P(S \le \sfrac{1}{2} m_n) = 0
 		\end{align*}
-		und darauf folgt dann $\P(\limsup A_n) = 1$ mit \eqref{bew:9_8_1}.
+		und daraus folgt dann $\P(\limsup A_n) = 1$ mit \eqref{bew:9_8_1}.
 	\end{enumerate}
 \end{proof}
 \begin{proposition}[SLLN, $\Ln{2}$-Version]
-	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X_1, X_2, \dots$ paarweise unkorrelierte (reelle) Zufallsvariablen auf $\O$ in $\Ln{2}(\P)$, so dass
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X_1, X_2, \dots$ paarweise unkorrelierte (reelle) Zufallsvariablen auf $\O$ in $\Ln{2}(\P)$, so dass $v:= \sup_{i \in \N} \Var(X_i) < \infty$. Dann gilt
 	\begin{align*}
-		v:= \sup_{i \in \N} \Var(X_i) < \infty
-		\intertext{Dann gilt}
-		\sfrac{1}{n} \sum_{i=1}^n (X_i - \E[X_i]) \xrightarrow[n \to \infty]{\text{f.s.}} 0.
+		\frac{1}{n} \sum_{i=1}^n (X_i - \E[X_i]) \xrightarrow[n \to \infty]{\text{f.s.}} 0.
 	\end{align*}
 \end{proposition}
 \begin{proof}
