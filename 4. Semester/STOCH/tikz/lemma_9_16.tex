@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\usepackage{tikz, amsmath}
+%	\usepackage[fleqn]{amsmath}
+	\usepackage{amssymb,amsfonts,mathtools}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\newcommand{\Ln}[1]{\mathcal{L}^{#1}} % L spaces
+
+\begin{document}
+	\begin{tikzcd}
+		\text{f.s. Konv} \arrow[d, Rightarrow, shift right] &  \arrow[l, dashed] \arrow[d, Rightarrow] $\Ln{p} $\text{-Konv.}\\
+		\text{stoch. Konv} \arrow[d, Rightarrow] \arrow[u, "\text{TF}", shift left] &  \arrow[l, Rightarrow] $\Ln{1}$\text{-Konv.}\\
+		\text{Verteilungskonv.} 
+	\end{tikzcd}
+\end{document}
