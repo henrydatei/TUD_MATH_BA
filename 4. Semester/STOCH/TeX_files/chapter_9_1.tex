@@ -1,4 +1,4 @@
-%TODO fix references ... :/
+﻿%TODO fix references ... :/
 \begin{enumerate}[label=]
 	\item \ul{Ziel:} Für $X_1, X_2, \dots$ Zufallsvariablen (u.i.v) betrachten das Langzeitmittel $Y:= \frac{1}{n} \sum_{i=1}^n X_i$ für $n \to \infty$.
 	\item  \ul{Wissen bereits:} Für $X_i \sim \Ber(p), p \in (0,1)$ unabhängig
@@ -30,14 +30,14 @@ Tatsächlich folgt mit der \person{Stirling}-Formel (\propref{7.3)}
 	&\xrightarrow{n \to \infty} 0
 \end{align*}
 Wir benötigen also einen geeigneten Grenzwertbegriff!
-\begin{definition}
+\begin{definition}[\begriff{stochastische Konvergenz}]
 	Seien $Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen auf einem Wahrscheinlihckeitsraum $(\O,\F, \P)$. Falls für alle $\epsilon > 0$ gilt
 	\begin{align*}
 		\lim_{n\to \infty} \P(\abs{Y_n - Y} \le \epsilon) = 1
 	\end{align*}
 	so konvergiert $(Y_n)_{n \in \N}$ \begriff{stochastisch} oder \begriff{in Wahrscheinlichkeit} gegen $Y$.\\
 	%TODO flip stuff in xrightarrow
-	Schreibweise: $Y_n \xrightarrow[\P]{n \to \infty} Y$ oder $\P-\lim_{n\to \infty} Y_n = Y$.
+	Schreibweise: $Y_n \xrightarrow[\P]{n \to \infty} Y$ oder $\P-\lim_{n\to \infty} Y_n = Y$. (oder auch $\plim_{n \to \infty} Y_n =Y$).
 \end{definition}
 \begin{*remark}
 	Für Zufallsvariablen in $\Rd$ gilt eine entsprechende Definition mit euklidischer Norm anstelle des Betrags.

@@ -1,6 +1,6 @@
 ﻿\section{Das starke Gesetz der großen Zahlen}
 (SLLN - Strong law of large numbers)\\
-\begin{definition}
+\begin{definition}[\begriff{$\P$ f.s. Konvergenz}]
 	Seien $Y,Y_1, Y_2, \dots$ reellen Zufallsvariablen auf Wahrscheinlichkeitsraum $(\O,\F,\P)$. Falls
 	\begin{align*}
 		\P(\set{\omega\colon \lim_{n\to \infty} Y_n(\omega) = Y(\omega)}) = 1
@@ -11,11 +11,9 @@
 \begin{*remark}
 	\begin{itemize}
 		\item Diese Konvergenzart wurde bereits verwendet, z.B. in MINT, Konvergenzsatz von \person{Lebesgue}.
-		\item Auch bei der f.s. Konvergenz ist der Grenzwert f.s. eindeutig bestimmt:
-		\begin{align*}
-			&Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y \und Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Z\\
-			&\implies \P(Y=Z) = \P(\set{\lim Y_n = Y} \cap \set{\lim Y_n = Z}) = 1
-		\end{align*}
+		\item Auch bei der f.s. Konvergenz ist der Grenzwert f.s. eindeutig bestimmt:\\
+		$Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y \und Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Z$
+		$\implies \P(Y=Z) = \P(\set{\lim Y_n = Y} \cap \set{\lim Y_n = Z}) = 1$
 		\item Erweiterung auf Zufallsvariablen in $\Rd$ ist offensichtlich.
 	\end{itemize}
 \end{*remark}
@@ -45,12 +43,11 @@
 		\P(\abs{Y_k} > \epsilon) = 2^{-n} \xrightarrow[n \to \infty]{} 0
 		\intertext{Also}
 		Y_n \xrightarrow[n \to \infty]{\P} 0.
-		\intertext{Allerdings}
-		\P(\set{\omega\colon \lim Y_n(\omega) = 0}) = 0
 	\end{align*}
+	Allerdings $\P(\set{\omega\colon \lim Y_n(\omega) = 0}) = 0$, 
 	also $Y_n \not \xrightarrow[n \to \infty]{\text{f.s.}} 0$
 \end{*remark}
-\begin{*erinnerung}
+\begin{*erinnerung} %TODO huge waste of space? fix?
 	\begin{align*}
 	\omega \in \limsup_{n \to \infty} A_n = \bigcap_{k \in \N}\bigcup_{n\ge k} A_n\\
 	\Longleftrightarrow \omega \text{ ist in $\infty$ vielen der } A_n \text{ enthalten.}
@@ -64,7 +61,7 @@
 	\end{enumerate}
 \end{proposition}
 \begin{*remark}
-	Das BC-Lemma ist ein \emph{Null-Eins-Gesetz}. (Gibt noch viel mehr davon!)
+	Das BC-Lemma ist ein \emph{Null-Eins-Gesetz}. (Gibt noch viel mehr davon! z.B. in Random Graphs, siehe Talk \emph{Logic and Random Graphs}.)
 \end{*remark}
 \begin{proof}
 	Es gilt
