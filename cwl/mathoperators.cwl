@@ -76,6 +76,7 @@
 \diag#*\math
 \GL#*\math
 \tr#*\math
+\trdeg#*\math
 \rk#*\math
 \ZR#*\math
 \SR#*\math
@@ -98,6 +99,7 @@
 \Gal#*\math
 \res#*\math
 \zwk#*\math
+\Discr#*\math
 \norm{content}#\math
 \set{content}#\math
 \abs{content}#\math

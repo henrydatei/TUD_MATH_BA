@@ -83,6 +83,8 @@
 		
 		\begin{proof}
 			Sei $L\mid\mathbb C$ endlich. Sei $M$ die normale Hülle $L\mid\mathbb R$, $G:=\Gal(M\mid \mathbb R)$, $H:= \Gal(M\mid \mathbb C)$, $S := \Syl_2(G)$, $K=M^S$
+					
+			\begin{minipage}{0.6\linewidth}
 			\begin{itemize}[topsep=-6pt,label={$\Rightarrow$},widest={$\xRightarrow{\text{GEO~I.7.9}}$},leftmargin=*]
 				\item $[K:\mathbb R] = (G:S)$ ungerade
 				\item[$\xRightarrow{\text{\ref{2_4_4_3}}}$] $K=\mathbb R$, $G=S$ ist 2-Gruppe.
@@ -92,7 +94,29 @@
 				\item[$\xRightarrow{\text{GEO~I.7.9}}$] ex. $U\le H$ mit $(H:U) = 2$
 				\item $[M^U:\underbrace{M^H}_{\mathclap{=\mathbb C}}] = (H:U)$ \Lightning\ zu \ref{2_4_4_2}
 			\end{itemize}
-			\medskip
+			\bigskip
+			\end{minipage}%
+			\hfill%
+			\begin{minipage}{0.35\linewidth}
+				\begin{tikzpicture}
+				\node at (0,0) (M) {$M$};
+				\node at (0,-1) (L) {$L$};
+				\node at (0,-2) (C) {$\mathbb{C}$};
+				\node at (0,-3) (R) {$\mathbb{R}$};
+				\node at (-2,-1.5) (K) {$K$};
+				
+				\draw (M) -- (L);
+				\draw (L) -- (C);
+				\draw (C) to node [right] {2} (R);
+				\draw (K) to [out=80,in=180] node [left] {$S$} (-0.6,0);
+				\draw (K) to [out=280,in=180] (R);
+				
+				\draw [decorate,decoration={brace,amplitude=10pt},xshift=-0.5cm,yshift=0pt]
+				(1,0) -- (1,-3) node [black,midway, xshift=0.6cm]{$G$};
+				\draw [decorate,decoration={brace,amplitude=10pt,mirror},xshift=-0.5cm,yshift=0pt]
+				(0,0) -- (0,-2) node [black,midway, xshift=-0.6cm]{$H$};
+				\end{tikzpicture}
+			\end{minipage}
 			Somit ist $\# G = 2$, $\# H=1$, $M=\mathbb C$ $\Rightarrow$ $L=\mathbb C$.
 		\end{proof}
 	\end{enumerate}

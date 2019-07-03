@@ -1,0 +1,217 @@
+\section{Das allgemeine Polynom}
+
+Sei $K$ ein Körper, $R = K[x_1,\dots,x_n]$ Polynomring in $n$ Variablen, $F = \Quot(R) = K(x_1,\dots,x_n)$ .
+
+\begin{definition}
+	Das allgemeine Polynom vom Grad $n$ ist \begin{align*}
+		f_{\mathrm{allg}} = \prod_{i=1}^n (X-X_i) = X^n + \sum_{k=1}^n s_k(X_1,\dots,X_n) X^{n-k} \in R[X],
+	\end{align*}
+	wobei
+	\begin{align*}
+		s_k(X_1,\dots,X_n) = \sum_{1\le i_1\le \ldots \le i_k \le n} X_{i_1} \dots X_{i_k} \in R
+	\end{align*}
+	das $k$-te elementarsymmetrische Polynom in $X_1$, $\dots$, $X_n$ ist (vgl. GEO II.10).
+\end{definition}
+
+\begin{example}
+	\proplbl{2_5_2}
+	$n=2$ $\Rightarrow$ $s_1 = X_1 + X_2$, $s_2 = X_1 X_2$ und \begin{align*}
+		(X-X_1)(X-X_2) = X^2 - (X_1 + X_2) X + X_1 X_2
+	\end{align*}
+\end{example}
+
+\begin{lemma}
+	\proplbl{2_5_3}
+	$S_n$ wirkt auf $R$ durch Permutation der Variablen \begin{align*}
+		f(X_1,\dots,X_n)^\sigma  = f(X_{1^\sigma},\dots,X_{n^\sigma})\quad(f\in R,\;\sigma\in S_n).
+	\end{align*}
+	Diese setzt sich fort auf $F$ durch \begin{align*}
+		\bigg( \frac fg\bigg)^\sigma = \frac{f^\sigma}{g^\sigma}\quad(f,\,g\in R,\; \sigma\in S_n).
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	Klar, siehe GEO.
+\end{proof}
+
+\begin{definition}
+	Sei $f\in F$. $f$ ist \begriff{symmetrisch} $:\Leftrightarrow$ $f^\sigma = f$ $\forall\sigma\in S_n$ und $F_{\mathrm{sym}} := \lbrace f\in F\mid f\;\text{ist symmetrisch}\rbrace$.
+\end{definition}
+
+\begin{proposition}
+	\proplbl{2_5_5}
+	$F_{\mathrm{sym}}$ ist Teilkörper von $F$, $F\mid F_{\mathrm{sym}}$ ist galoissch mit \begin{align*}
+		\Gal(F\mid F_{\mathrm{sym}}) \cong \Gal(f_{\mathrm{allg}}\mid F_{\mathrm{sym}}) \cong S_n
+	\end{align*}
+	und
+	\begin{align*}
+		F_{\mathrm{sym}} = K(s_1,\dots,s_n).
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	$S_n$ wirkt auf $F$ treu durch Automorphismen, d.h. $S_n\to \mathrm{Sym}(F)$ ist Einbettung $S_n \hookrightarrow \Aut(F)$.
+	
+	$F_{\mathrm{Sym}} = F^{S_n}$ $\Rightarrow$ $F_{\mathrm{Sym}}$ ist Körper, $F\mid F_{\mathrm{Sym}}$ galoissch mit $\Gal(F\mid F_{\mathrm{Sym}}) = S_n$ (\propref{2_1_14}).
+	
+	$s_1,\dots, s_n\in F_{\mathrm{Sym}}$
+	\begin{itemize}[topsep=-6pt,label={$\Rightarrow$}]
+		\item $f_{\mathrm{allg}} \in K(s_1,\dots,s_n)[X]\subseteq F_{\mathrm{Sym}}[X]$
+		\item $F$ ist Zerfällungskörper von $f_{\mathrm{allg}}$ über $K(s_1,\dots,s_n)$ und über $F_{\mathrm{Sym}}$, insbesondere ist \begin{align*}
+			\Gal(f_{\mathrm{allg}}\mid F_{\mathrm{Sym}}) = S_n.
+		\end{align*}
+		\item $[F:K(s_1,\dots,s_n)] \le \big(\deg(f_{\mathrm{allg}})\big)! = n! = \#S_n = [F:F_{\mathrm{Sym}}]$.
+	\end{itemize}
+	Damit folgt $K(s_1,\dots,s_n) = F_{\mathrm{Sym}}$.
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_5_6}
+	Für jede endliche Gruppe existiert eine Galoiserweiterung $M\mid L$ mit $\Gal(M\mid L) \cong G$.
+\end{conclusion}
+
+\begin{proof}
+	Nach GEO I.6.9 sei o.E. $G\le S_n$ für ein $n$. Dann ist \begin{align*}
+		\Gal(F\mid F^G) = G.
+	\end{align*}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_5_7}
+	$s_1$, $\dots$, $s_n$ sind algebraisch unabhängig über $K$, insbesondere $F_{\mathrm{Sym}}\cong K(Y_1,\dots,Y_n)$.
+\end{conclusion}
+
+\begin{proof}
+	Da $F\mid F_{\mathrm{Sym}}$ algebraisch ist, ist $\trdeg (F\mid F_{\Sym}) = 0$, somit \begin{align*}
+		\trdeg(F_{\mathrm{Sym}}\mid K) = \trdeg (F\mid K) = n.
+	\end{align*}
+	Aus $F_{\Sym}\mid K(s_1,\dots,s_n)$ algebraisch folgt dann mit \propref{1_5_11} (Satz von Steinitz), dass $s_1$, $\dots$, $s_n$ eine Transzendenzbasis von $F_{\mathrm{Sym}} \mid K$ ist.
+\end{proof}
+
+\begin{remark}
+	\proplbl{2_5_8}
+	Somit hat $f_{\mathrm{allg}}$ "`variable"' Koeffizienten: für $f = X^n + \sum_{i=1}^n Y_i X^{n-i}$ ist \begin{align*}
+		\Gal\big(f\mid K(Y_1,\dots,Y_n)\big) \cong S_n
+	\end{align*}
+	mit dem Isomorphismus \begin{align*}
+		\left\lbrace \begin{array}{@{\;}l@{\,}c@{\,}l@{}}
+			K(Y_1,\dots,Y_n) & \rightarrow & K(s_1,\dots,s_n) = F_{\mathrm{Sym}} \\
+			g(Y_1,\dots,Y_n) & \mapsto & g(s_1,\dots,s_n)
+		\end{array}\right..
+	\end{align*}
+\end{remark}
+
+\begin{conclusion}
+	\proplbl{2_5_9}
+	Ist $f\in K(X_1,\dots,X_n)$ symmetrisch, so ist \begin{align*}
+		f(X_1,\dots,X_n) = g\big(s_1(\underline{X}), \dots, s_n(\underline{X})\big)
+	\end{align*}
+	für ein eindeutig bestimmtes $g\in K(Y_1,\dots,Y_n)$.
+\end{conclusion}
+
+\begin{proof}
+	Existenz: \propref{2_5_5},
+	Eindeutigkeit: $f = g(s_1,\dots,s_n) = \tilde g(s_1,\dots,s_n)$ $\Rightarrow$ $(g - \tilde g)(s_1,\dots,s_n) = 0$ (da die $s_i$ algebraisch unabhängig sind) $\xRightarrow{\propref{2_5_7}}$ $g-\tilde g = 0$.
+\end{proof}
+
+\begin{remark}
+	\proplbl{2_5_10}
+	Vergleiche mit dem Hauptsatz über symmetrische Polynome (GEO II.10.9). Ist $f\in K[X_1,\dots,X_n]$ symmetrisch, so ist \begin{align*}
+		f(X_1,\dots,X_n) = g\big(s_1(\underline X), \dots, s_n(\underline X)\big)
+	\end{align*}
+	für ein eindeutig bestimmtes $g\in K[Y_1,\dots,Y_n]$.
+\end{remark}
+
+\begin{definition}
+	Schreibe $f\in K[X]$ als $f = c\cdot \prod_{i=1}^n (X-\alpha_i)$, $\alpha_1$, $\dots$, $\alpha_n$, $c\in K^\times$. Die \begriff{Diskriminante} von $f$ ist \begin{align*}
+		\Discr(f) = \prod_{i<j} (\alpha_i - \alpha_j)^2
+	\end{align*}
+\end{definition}
+
+\begin{remark}
+	\proplbl{2_5_12}
+	$f$ separabel $\Leftrightarrow$ $\Discr(f) \neq 0$.
+\end{remark}
+
+\begin{example}
+	\proplbl{2_5_13}
+	Für $f = X^2 + bX + c$ ist \begin{align*}
+		\Discr(f) = (\alpha_1 - \alpha_2)^2 = \alpha_1^2 + \alpha_2^2 - 2\alpha_1\alpha_2 = \alpha_1^2 + 2\alpha_1 \alpha_2 + \alpha_2^2 - 4\alpha_1\alpha_2 = b^2 - 4c
+	\end{align*}
+\end{example}
+
+\begin{proposition}
+	\proplbl{2_5_14}
+	Für $f\in K[X]$ ist $\Discr(f)\in K$.
+\end{proposition}
+
+\begin{proof}
+	O.E. sei $f$ separabel. Sei $L$ der Zerfällungskörper von $f$, $G = \Gal(L\mid K)$, $d = \Discr(f) \in L$. Für $\sigma\in G$ ist $d^\sigma = d$, da $(\alpha_i - \alpha_j)^2 = (\alpha_j - \alpha_i)^2$, und somit $d\in L^G = K$.
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_5_15}
+	Es gibt $d_n\in K[Y_1,\dots,Y_n]$ mit $\Discr(f) = d_n(a_1,\dots,a_n)$ für jedes \begin{align*}
+		f = X^n + \sum_{i=1}^n a_i X^{n-i}\in K[X]
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	$D = \prod_{i<j} (X_i - X_j)^2 \in K[X_1,\dots,X_n]$ ist symmetrisch $\xRightarrow{\propref{2_5_10}}$ $D(\underline X) = d\big(s(\underline X)\big)$ für ein $d\in K[X_1,\dots,X_n]$.
+	
+	Für $f=\prod_{i=1}^n (X-\alpha_i)  = X^n + \sum_{i=1}^n a_i X^{n-i}\in K[X]$ ist \begin{align*}
+		d(a_1,\dots,a_n) = d(s_1(\underline{\alpha}),\dots,s_n(\underline \alpha)) = D(\alpha_1,\dots,\alpha_n) = \Discr(f).
+	\end{align*}
+\end{proof}
+
+\begin{example}
+	\proplbl{2_5_16}
+	Man kann zeigen (Übung): Für $f = X^3 + aX + b$ ist \begin{align*}
+		\Discr(f) = -4a^3 - 27b.
+	\end{align*}
+\end{example}
+
+\begin{proposition}
+	\proplbl{2_5_17}
+	Sei $f\in K[X]$ separabel, $\deg(f) = n\ge 2$. Dann gilt \begin{align*}
+		\Gal(f\mid K) \le A_n \quad\Leftrightarrow\quad \Discr(f) \in (K^\times)^2
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	Sei $f = c\prod_{i=1}^n(X-\alpha_i)$, $c\in K^\times$, $\alpha_i\in\bar K$, $L$ der Zerfällungskörper von $f$ über $K$.\\
+	$\displaystyle\Rightarrow\;\Discr(f) = \delta^2,\;\delta = \prod_{i<j}(\alpha_i -\alpha_j)^2\in L^\times \quad(\text{da $f$ separabel})$
+	
+	Für $\sigma\in\Gal(L\mid K)$ ist \begin{align*}
+		\delta^\sigma = \prod_{i<j} (\alpha_i^\sigma - \alpha_j^\sigma) = (-1)^{\text{\#Fehlstände von $\sigma$}} \delta = \sgn(\delta) \delta.
+	\end{align*}
+	Somit gilt: $\Discr(f)\in (K^\times)^2$ \begin{itemize}[topsep=-6pt,label={$\Leftrightarrow$}]
+		\item $ \delta^\sigma = \delta$ $\forall\sigma\in \Gal(L\mid K)$
+		\item $\sgn(\delta) = 1$ $\forall \sigma\in\Gal(L\mid K)$
+		\item $\Gal(L\mid K) \le A_n$
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	$d = \Discr(f)$, $G = \Gal(f\mid K)\le S_n$.
+	
+	\begin{tabularx}{\linewidth}{l@{\quad}l}
+		$n=2$: &
+		{
+		 \begin{tabular}[t]{>{$}l<{$}@{$\;\Leftrightarrow\;$}>{$}l<{$}@{$\;\Leftrightarrow\;$}>{$}l<{$}}
+			d\in (K^\times)^2 & G = 1 & f\;\text{reduzibel} \\
+			d\notin (K^\times)^2 & G = S_2 & f\;\text{irreduzibel}
+		\end{tabular}
+		}
+		 \\
+		$n=3$: &
+		{
+		 \begin{tabular}[t]{@{}c@{\qquad}l@{\quad}l@{}}
+			G & $f$ irreduzibel & $f$ reduzibel \\
+			\midrule
+			$d\in (K^\times)^2$ & $=A_3$ & $=1$ \\
+			$d\notin(K^\times)^2$ & $=S_3$ & $\cong C_2$
+		\end{tabular}
+		}	
+	\end{tabularx}
+\end{example}

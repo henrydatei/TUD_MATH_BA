@@ -132,13 +132,45 @@ Sei $L\mid K$ endliche Körpererweiterung und $\alpha \in L$.
 		\quad & N_{L\mid K}(\alpha) = \Bigg( \prod_{r=1}^n \sigma_j(\alpha)\Bigg)^q,\qquad \mathrm{Sp}\,(\alpha) = q\sum_{i=1}^{r} \sigma_i(\alpha) &
 	\end{flalign*}
 \end{proposition}
-\begin{proof}
+\begin{proof}\leavevmode\\[2pt]
+	\begin{minipage}{0.5\linewidth}
 	Sei $n_1 = [K(\alpha): K] = r_1 q_1$ und $n_2 = [L:K(\alpha)] = r_2 q_2$. Schreibe \begin{flalign*}
-		\quad & f_\alpha = X^{r_1} + a_{n_1 - 1} X^{n_1 - 1} + \dots + a_0 = \prod_{i=1}^{r_1} \big( X - \tau_i(\alpha)\big)^{q_1} = g\big( X^{q_1}\big),\quad g(X) = \prod_{i=1}^{r_1} \big( X - \tau_i^{q_1}(\alpha)\big) &
+		\quad & f_\alpha = X^{r_1} + a_{n_1 - 1} X^{n_1 - 1} + \dots + a_0 = \prod_{i=1}^{r_1} \big( X - \tau_i(\alpha)\big)^{q_1} = g\big( X^{q_1}\big),&\\
+		&g(X) = \prod_{i=1}^{r_1} \big( X - \tau_i^{q_1}(\alpha)\big) &
 	\end{flalign*}
+	\smallskip
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}{0.49\linewidth}
+	\begin{tikzpicture}
+	\node at (0,0) (L) {$L$};
+	\node at (0,-1.5) (KS) {$K_s$};
+	\node at (0,-3) (K) {$K$};
+	\node at (3,-1.5) (Kalpha) {$K(\alpha)$};
+	
+	\draw (L) to node [right] {$q$} (KS);
+	\draw (KS) to node [right] {$r$} (K);
+	\draw (L) -- (Kalpha);
+	\draw (K) -- (Kalpha);
+	\draw[fill=black] (1.5,-0.75) circle (0.05);
+	\draw[fill=black] (1.5,-2.25) circle (0.05);
+	
+	\draw [decorate,decoration={brace,amplitude=10pt,mirror},xshift=-0.5cm,yshift=0pt]
+	(0,0) -- (0,-3) node [black,midway, xshift=-0.6cm]{$n$};
+	
+	\node at (0.75,-0.15) (q2) {$q_2$};
+	\node at (0.75,-2.9) (r1) {$r_1$};
+	\node at (2.25,-0.9) (r2) {$r_2$};
+	\node at (2.25,-2.1) (q1) {$q_1$};
+	
+	\draw [decorate,decoration={brace,amplitude=10pt,mirror}]
+	(0.8,-3.1) -- (2.4,-2.3);
+	\node at (1.95,-3.25) (n1) {$n_1$};
+	\end{tikzpicture}
+	\end{minipage}
 	Jedes $\tau_i$ hat genau $r_2$ viele Fortsetzungen zu einem $\sigma_j \in \hom_K(L\mid \bar K)$ (\propref{1_7_3}), sodass \begin{flalign*}
-		\quad & \Bigg(\prod_{j=1}^r \sigma_j(\alpha)\Bigg)^q = \Bigg( \prod_{i=1}^{r_1} \tau_i(\alpha)^{r_2}\Bigg)^q = \big( (-1)^{r_1} a_0\big)^{r_2 q_2} = (-1)^n a_0^{r_2} \overset{\propref{1_8_5}}{=} N_{L\mid K}(\alpha), \\
-		& q\sum_{i=1}^r \sigma_j(\alpha) = q r_2 \sum_{i=1}^{r_1} \tau_j(\alpha) = - q_2 r_1 a_{n_1 - 1} = \mathrm{Sp}_{L\mid K}(\alpha) &
+	\quad & \Bigg(\prod_{j=1}^r \sigma_j(\alpha)\Bigg)^q = \Bigg( \prod_{i=1}^{r_1} \tau_i(\alpha)^{r_2}\Bigg)^q = \big( (-1)^{r_1} a_0\big)^{r_2 q_2} = (-1)^n a_0^{r_2} \overset{\propref{1_8_5}}{=} N_{L\mid K}(\alpha), \\
+	& q\sum_{i=1}^r \sigma_j(\alpha) = q r_2 \sum_{i=1}^{r_1} \tau_j(\alpha) = - q_2 r_1 a_{n_1 - 1} = \mathrm{Sp}_{L\mid K}(\alpha) &
 	\end{flalign*}
 \end{proof}
 

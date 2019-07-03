@@ -1,0 +1,118 @@
+\section{Kreisteilungskörper}
+
+Sei $K$ ein Körper, $\chara(K) = p \ge 0$, $n\in \mathbb N$ mit $p\nmid n$.
+
+\begin{definition}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $\mu_n := \lbrace \zeta\in \overline K\mid \zeta^n = 1\rbrace \le \overline K^\times$, die Gruppe der $n$-ten Einheitswurzeln,
+		\item $\zeta\in\mu_n$ ist eine primitive $n$-te Einheitswurzel $\Leftrightarrow$ $\ord\big(\mu_n(\zeta)\big) = n$,
+		\item $K_n := K(\mu_n)$, der $n$-te \begriff{Kreisteilungskörper}.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	\proplbl{2_6_2}
+	$\mu_n\cong C_n$ und für $\zeta\in\bar K^\times$ gilt: $\mu_n = \langle \zeta\rangle$ $\Leftrightarrow$ $\zeta$ ist primitive $n$-te Einheitswurzel
+\end{proposition}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt]
+		\item $\mu_n$ zyklisch: Jede endliche Untergruppe der multiplikativen Gruppe eines Körpers ist zyklisch.
+		\item $\#\mu_n = n$: $f=X^n - 1\in K[X]$ ist separabel, $f' = nX^{n-1} \overset{p\nmid n}{\neq} 0$ $\Rightarrow$ $\ggT(f,f') = 1$
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	\proplbl{2_6_3}
+	$K_n\mid K$ ist galoissch und es gibt eine eindeutig bestimmte Einbettung \begin{align*}
+		\chi_n\colon \Gal(K_n\mid K) \hookrightarrow \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu n\mathbb Z\big)^\times
+	\end{align*}
+	mit \begin{align}
+		\label{eq:2_6_3_star}
+		\tag{$\star$}
+		\zeta^\sigma = \zeta^{\chi_n(\sigma)}\quad\text{für alle $\zeta\in \mu_n$, $\sigma\in\Gal(K_n\mid K)$}.
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	$K$ ist Zerfällungskörper des separablen Polynoms $f=X^n - 1\in K[X]$ und somit ist $K_n\mid K$ endlich galoissch. Fixiere $\zeta_n\in \mu_n$ primitiv. Für ein $\sigma\in \Gal(K_n\mid K)$ ist $\zeta_n^\sigma\in\mu_n$ wieder primitiv. Somit \begin{align*}
+		\zeta_n^\sigma = \zeta_n^{\chi_n(\sigma)} \quad\text{für ein $\chi_n(\sigma)\in \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu n\mathbb Z\big)^\times$ (oder teilerfremd zur Gruppenordnung)}
+	\end{align*}
+	\begin{itemize}[left=0pt]
+		\item $\chi_n$ erfüllt \cref{eq:2_6_3_star}: für $\zeta\in\mu_n$, $\sigma\in\Gal(K_n\mid K)$ ist $\zeta^\sigma = \Big(\zeta_n^m\Big)^\sigma = \Big(\zeta_n^{\chi_n(\sigma)}\Big) ^m = \zeta^{\chi_n(\sigma)}$
+		\item $\chi_n $ ist Homomorphismus: $\zeta_n^{\sigma\tau} = \big(\zeta_n^{\chi_n(\sigma)}\big)^\tau = \zeta_n^{\chi_n(\tau)\chi_n(\sigma)}$
+		\item $\chi_n$ ist injektiv: $\chi_n(0) = 1$ $\Rightarrow$ $\zeta^\chi = \zeta$ $\forall \zeta\in \mu_n$. Da $K_n = K(\zeta: \zeta\in\mu_n)$ folgt $\sigma = \id_{K_n}$.
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_6_4}
+	$\Gal(K_n\mid K)$ ist abelsch und $[K_n:K]\le \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu n\mathbb Z\big)^\times = \Phi(n)$.
+\end{conclusion}
+
+\begin{definition}
+	$\displaystyle \Phi_n := \prod_{\substack{\zeta\in\mu_n \\ \zeta\;\text{primitiv}}} (X-\zeta)\in K_n[X]$ ist das $n$-te Kreisteilungspolynom.
+\end{definition}
+
+\begin{lemma}
+	\proplbl{2_6_6}
+	$\Phi_n\in K[X]$ und $K_n$ ist Zerfällungskörper von $\Phi_n$ über $K$.
+\end{lemma}
+
+\begin{proof}
+	Für $\sigma\in\Gal(K_n\mid K)$ ist \begin{align*}
+		\Phi_n^\sigma = \prod_{\substack{\zeta\in\mu_n \\ \zeta\;\text{primitiv}}} (X-\zeta^\sigma) = \prod(X-\zeta) = \Phi_n,
+	\end{align*}
+	somit $\Phi_n\in K^{\Gal(K_n\mid K)}[X] = K[X]$.
+\end{proof}
+
+\begin{remark}
+	\proplbl{2_6_7}
+	Für $n=l$ prim ist $\Phi_n = \frac{X^l - 1}{X - 1} = X^{l-1} + X^{l-2} + \dots + X + 1$. Da $X^n - 1 = \prod_{d\mid n} \Phi_d$, lässt sich daraus $\Phi_n$ für ein allgemeines $n$ bestimmen, z.B. \begin{align*}
+		\Phi_6 = \frac{X^6 - 1}{\Phi_1\Phi_2\Phi_3} = \frac{X^6 - 1}{(X-1)(X+1)(X^2 + X + 1)} = X^2 - X + 1
+	\end{align*}
+\end{remark}
+
+\begin{theorem}
+	\proplbl{2_6_8}
+	Sei $K=\mathbb Q$. Dann ist $\Phi_n\in\mathbb Z[X]$ irreduzibel.
+\end{theorem}
+
+\begin{proof}
+	Da $\Phi_n$ normiert ist, und $\Phi_n\mid X^n - 1$ ist $\Phi_n\in \mathbb Z[X]$ nach dem Satz von Gauß.\\
+	Sei $\zeta\in \mu_n$ primitiv, $f = \MinPol(\zeta\mid \mathbb Q)$. Aus $\Phi_n(\zeta) = 0$ folgt, dass $f\mid\Phi_n$, also $\Phi_n = f\cdot g$, $g\in\mathbb Q[X]$. Nach dem Satz von Gauß sind $f$, $g\in\mathbb Z[X]$.
+	
+	\begin{adjustwidth}{1em}{6pt}
+	\begin{underlinedenvironment}[Behauptung]
+		Für $l\nmid n$ prim ist $f(\zeta^l) = 0$.
+	\end{underlinedenvironment}
+	\vspace{-\baselineskip}
+	\begin{proof}
+		Da $\zeta^l$ wieder primitiv ist, ist $\Phi_n(\zeta^l) = 0$. Wäre $f(\zeta^l) \neq 0$, so fölge $g(\zeta^l) = 0$. Dann ist $\zeta$ Nullstelle von $g(X^l)$, also $f\mid g(X^l)$ bzw. \begin{align*}
+			g(X^l) = f(X)\cdot n(X)\in\mathbb Z[X].
+		\end{align*}
+		Reduktion modulo $l$:\ \  $\bar\cdot\colon \mathbb Z[X]\to \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu l\mathbb Z\big)[X]$.
+		
+		$\overline{g(X^l)} = \bar g(X^l) = \big( \bar g(X)\big)^l$ \begin{itemize}[topsep=-6pt,label={$\Rightarrow$}]
+			\item $\bar g^l = \overline{f\cdot n} = \bar f\cdot \bar n$
+			\item Jede Nullstelle von $\bar f$ in $\bar {\mathbb F}_l$ ist Nullstelle von $\bar g^l$, somit auch von $\bar g$, somit eine doppelste Nullstelle von $\bar f\cdot\bar g = \bar \Phi_n$ im Widerspruch zu $\bar \Phi_n\mid X^n-1$ separabel (in $\mathbb F_l[X]$).
+		\end{itemize}
+	\end{proof}
+	\end{adjustwidth}
+	\begin{itemize}[label={$\Rightarrow$},left=0pt]
+		\item Für $m$ mit $\ggT(m,n) = 1$ ist $f(\zeta^m) = 0$, d.h. jede Nullstelle von $\Phi_n$ ist auch Nullstelle von $f$
+		\item $\Phi_n = f$ ist irreduzibel.
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	\proplbl{2_6_9}
+	Ist $\zeta_n\in\mathbb C$ eine primitive $n$-te Einheitswurzel, so ist $\mathbb Q(\zeta_n) \mid \mathbb Q$ galoissch mit \begin{align*}
+		\Gal(\mathbb Q(\zeta_n)\mid \mathbb Q) \cong \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu n\mathbb Z\big)^\times.
+	\end{align*}
+\end{conclusion}
+
+\begin{proof}
+	\propref{2_6_3}, \propref{2_6_8}, da $\deg(\Phi_n) = \phi(n) = \# \big(\mathbb Z\mskip-1mu\big\slash\mskip-1mu n\mathbb Z\big)^\times$.
+\end{proof}
