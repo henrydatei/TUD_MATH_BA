@@ -1,11 +1,18 @@
 # TU Dresden: Mathematik - Bachelor
-Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm), **Einführung in die Numerik** (Prof. Dr. Andreas Fischer), **Stochastik** (Prof. Dr. Anita Behme), **Numerische Mathematik** (Prof. Dr. Andreas Fischer) und **Algebra und Zahlentheorie** (Prof. Dr. Arno Fehm) der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Friedemann Schuricht), **Lineare Algebra und analytische Geometrie** (Prof. Dr. Arno Fehm, Prof. Dr. Ulrich Krähmer), **Programmieren für Mathematiker** (Prof. Dr. Wolfgang Walter), **Gewöhnliche Differentialgleichungen und Integration auf Mannigfaltigkeiten** (Prof. Dr. Friedemann Schuricht), **Maß und Integral** (Prof. Dr. Rene Schilling), **Geometrie** (Prof. Dr. Arno Fehm), **Einführung in die Numerik** (Prof. Dr. Andreas Fischer), **Stochastik** (Prof. Dr. Anita Behme), **Numerische Mathematik** (Prof. Dr. Andreas Fischer) und **Algebra und Zahlentheorie** (Prof. Dr. Arno Fehm) der TU Dresden
 
-### Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
+### [Fehm] Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX](https://drive.google.com/open?id=17OHpTrVX_ndNjS_Ml86IYKG2rilGh5HX)
 - Lösungen zu den Aufgaben LAAG 1: [https://drive.google.com/open?id=1jBB1ygEvdAEJzJ_mnwIfZBfrwA6Ks4CA](https://drive.google.com/open?id=1jBB1ygEvdAEJzJ_mnwIfZBfrwA6Ks4CA)
 - Lösungen zu den Aufgaben LAAG 2: [https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l](https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l)
+
+### [Krähmer] Lineare Algebra und analytische Geometrie (WS2018/19 + SS 2019)
+- Vorlesungsfolien: [https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx](https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx)
+- Aufgbenblätter LAAG 1: [https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D](https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D)
+- Probetesttat LAAG 1: [https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d](https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d)
+- Probetestat LAAG 1 (Lösung): [https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7](https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7)
+- Probeklausur LAAG 2: [https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF](https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF)
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
 Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
