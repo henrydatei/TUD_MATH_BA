@@ -252,10 +252,11 @@ Für den Beweis benötigen wir:
 \begin{proof}[\propref{10_7}]
 	Es gilt $Y_n \xrightarrow[n \to \infty]{\d} Y$, dann folgt
 	\begin{align*}
-		\varphi_{Y_n}(u) &= \E[e^{\ii \scaProd{u}{Y_n}}] = \E[\cos(\scaProd{u}{Y_n})] + \ii \E[\sin(\scaProd{u}{Y_n})]\\
-		\xrightarrow[n \to \infty]{} \E[\cos(\scaProd{u}{Y})] + \ii \E[\sin(\scaProd{u}{Y})] = \varphi_Y (u).
+		\varphi_{Y_n}(u) &= \E[e^{\ii \scaProd{u}{Y_n}}]= \E[\cos(\scaProd{u}{Y_n})] + \ii \E[\sin(\scaProd{u}{Y_n})]\\
+		&\xrightarrow[n \to \infty]{} \E[\cos(\scaProd{u}{Y})] + \ii \E[\sin(\scaProd{u}{Y})]\\
+		&= \varphi_Y (u).
 	\end{align*}
-	Gelte umgekehrt $\varphi_{Y_n}(u) \xrightarrow{} \varphi_Y(u)\forall u \in \Rd$. Nach \propref{10_8} genuügt zu zeigen, dass
+	Gelte umgekehrt $\varphi_{Y_n}(u) \xrightarrow{} \varphi_Y(u)\forall u \in \Rd$. Nach \propref{10_8} genügt zu zeigen, dass
 	\begin{align*}
 		Y_n + \sigma N \xrightarrow{\d} Y + \sigma N \quad \sigma > 0
 	\end{align*}
@@ -329,11 +330,12 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 \begin{proof}
 	Es gilt
 	\begin{align*}
-		\varphi_{\scaProd{u}{Y_n}} (t) = \E[e^{\ii \scaProd{u}{Y_n}}] = \varphi_{Y_n}(t u)\\
-		\intertext{und $\varphi_{\scaProd{u}{Y}}(t) = \varphi_{Y(tu)$}.
-		Y_n \xrightarrow[n \to \infty]{\d} \xLeftrightarrow[\text{Stetigkeitslem}]{} \varphi_{Y_n}(v) \to \varphi_{Y}(v) \quad \forall v \in \Rd\\
-		\xLeftrightarrow{\text{s.o.}} \varphi_{\scaProd{u}{Y_n}}(t) \to \varphi_{\scaProd{u}{Y}}(t) \forall t \in \R, u \in \Rd\\
-		\xLeftrightarrow[\text{Stetigkeitslem}]{} \scaProd{u}{Y_n} \xrightarrow[n \to \infty]{\d} \scaProd{u}{Y} \quad \forall u \in \Rd.
+		\varphi_{\scaProd{u}{Y_n}} (t) = \E[e^{\ii \scaProd{u}{Y_n}}] &= \varphi_{Y_n}(t u)\\
+		\intertext{und $\varphi_{\scaProd{u}{Y}}(t) = \varphi_{Y(tu)}$}
+		Y_n \xrightarrow[n \to \infty]{\d} Y 
+		&\Longleftrightarrow \varphi_{Y_n}(v) \to \varphi_{Y}(v) \quad \forall v \in \Rd \quad \text{Stetigkeitslemma}\\
+		&\xLeftrightarrow{\text{s.o.}} \varphi_{\scaProd{u}{Y_n}}(t) \to \varphi_{\scaProd{u}{Y}}(t) \quad \forall t \in \R, u \in \Rd\\
+		&\Longleftrightarrow \scaProd{u}{Y_n} \xrightarrow[n \to \infty]{\d} \scaProd{u}{Y} \quad \forall u \in \Rd \quad \text{Stetigkeitslemma}
 	\end{align*}
 \end{proof}
 \begin{proposition}[Lemma von \person{Slutsky}]
@@ -347,29 +349,29 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 \begin{proof}
 	Es gilt
 	\begin{align*}
-		\varphi_{Z_n}(u) = \E[e^{\ii \scaProd{u}{Z_n}}] = \E[e^{\ii \scaProd{u}{Z_n - Y_n}} e^{\ii \scaProd{u}{Y_n}}]\\
-		= \E[(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}] + \underbrace{\E[e^{\ii \scaProd{u}{Y_n}}]}_{\varphi_{Y_n}(u) \xrightarrow[n \to \infty]{} \varphi_{Y}(u) \quad \forall u \in \Rd}
+		\varphi_{Z_n}(u) &= \E[e^{\ii \scaProd{u}{Z_n}}] = \E[e^{\ii \scaProd{u}{Z_n - Y_n}} e^{\ii \scaProd{u}{Y_n}}]\\
+		&= \E[(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}] + \underbrace{\E[e^{\ii \scaProd{u}{Y_n}}]}_{\varphi_{Y_n}(u) \xrightarrow[n \to \infty]{} \varphi_{Y}(u) \quad \forall u \in \Rd}
 	\end{align*}
-	Es genüght zu zeigen, dass
+	Es genügt zu zeigen, dass
 	\begin{align*}
-		E:= \E[(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}] \xrightarrow[n \to \infty]{} 0
+		E&:= \E[(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}] \xrightarrow[n \to \infty]{} 0
 		\intertext{Dazu}
-		\abs{E} \le \E[\abs{(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}}]\\
-		= \E[\abs{e^{\ii \scaProd{u}{Z_n - Y_n}} -1}]
+		\abs{E} &\le \E[\abs{(e^{\ii \scaProd{u}{Z_n - Y_n}} - 1)e^{\ii \scaProd{u}{Y_n}}}]\\
+		&= \E[\abs{e^{\ii \scaProd{u}{Z_n - Y_n}} -1}]
 	\end{align*}
 	Die Funktion $z \mapsto e^{\ii \scaProd{u}{z}}, u \in \Rd$, ist lokal \person{Lipschitz}-stetig, dann für $u,y,z \in \Rd$
 	\begin{align*}
-		\abs{e^{\ii \scaProd{u}{z}} - e^{\ii \scaProd{u}{y}}} = \abs{e^{\ii \scaProd{u}{z-y} -1}}\\
-		= \abs{\int_0^{\ii \scaProd{u}{z-y}} e^{\zeta}\d \zeta}\\
-		\le \sup_{\abs{\zeta} \le \abs{\scaProd{u}{z-y}}} \abs{e^{\ii \zeta}} \cdot \abs{\ii \scaProd{u}{z-y}} = \abs{\ii \scaProd{u}{z-y}}\\
-		\le \abs{u} \cdot \abs{z-y}
+		\abs{e^{\ii \scaProd{u}{z}} - e^{\ii \scaProd{u}{y}}} &= \abs{e^{\ii \scaProd{u}{z-y} -1}}\\
+		&= \abs{\int_0^{\ii \scaProd{u}{z-y}} e^{\zeta}\d \zeta}\\
+		&\le \sup_{\abs{\zeta} \le \abs{\scaProd{u}{z-y}}} \abs{e^{\ii \zeta}} \cdot \abs{\ii \scaProd{u}{z-y}} = \abs{\ii \scaProd{u}{z-y}}\\
+		&\le \abs{u} \cdot \abs{z-y}
 	\end{align*}
 	Damit 
 	\begin{align*}
-		\abs{E} \le \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n}}} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
-		+ \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n} -1} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
-		\le \delta \abs{u} + 2 \underbrace{\P(\abs{Z_n-Y_n} \le \delta)}_{\xrightarrow[n \to \infty]{}0}\\ %TODO where comes the two from?
-		\xrightarrow[n \to \infty]{} \delta \cdot \abs{u}\\
-		\xrightarrow[\delta \to 0]{} 0.
+		\abs{E} &\le \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n}}} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
+		&+ \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n} -1} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
+		&\le \delta \abs{u} + 2 \underbrace{\P(\abs{Z_n-Y_n} \le \delta)}_{\xrightarrow[n \to \infty]{}0}\\ %TODO where comes the two from?
+		&\xrightarrow[n \to \infty]{} \delta \cdot \abs{u}\\
+		&\xrightarrow[\delta \to 0]{} 0.
 	\end{align*}
 \end{proof}
