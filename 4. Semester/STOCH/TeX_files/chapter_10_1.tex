@@ -1,3 +1,4 @@
+\section{Die Verteilungskonvergenz}
 \begin{definition}[\begriff{schwache Konvergenz}]
 	$Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen (``jede ZV darf ihren eigenen WR mitbringen''). Falls für alle $f \in C_b(\R)$ (stetig und beschränkt) gilt, dass
 	\begin{align*}
@@ -126,8 +127,8 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 	\begin{align*}
 		E_1 \overset{\eqref{eq:10_4:a}}&{\le}\epsilon \P(\abs{Y_n - Y} \le \delta)\\
 		E_2 &\le 2M \P(\abs{Y_n - Y} > \delta)\\
-		E_1 + E_2 &\le \epsilon \P(\abs{Y_n - Y} \le \delta) + 2M \P(\abs{Y_n - Y}> \delta)\\
-		&\le \epsilon + 2M \underbrace{P(\abs{Y_n -Y} > \delta)}_{\xrightarrow[n \to \infty]{}0} \to \epsilon
+		E_1 + E_2 &\le \epsilon \P(\abs{Y_n - Y} \le \delta) + 2 M \P(\abs{Y_n - Y} > \delta)\\
+		&\le \epsilon + 2 M \underbrace{P(\abs{Y_n -Y} > \delta)}_{\xrightarrow[n \to \infty]{}0} \to \epsilon
 	\end{align*}
 	Für $\epsilon \to 0$ folgt die Behauptung.
 \end{proof}
@@ -154,7 +155,7 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 \end{proof}
 \begin{proposition}
 	$Y,Y_1,Y_2,\dots$ reelle Zufallsvariablen mit Verteilungsfunktionen $F_Y,F_{Y_1},F_{Y_2}, \dots$.
-	Dan gilt $Y_n \xrightarrow[n \to \infty]{\d} Y$ genau dann wenn
+	Dann gilt $Y_n \xrightarrow[n \to \infty]{\d} Y$ genau dann wenn
 	\begin{align*}
 		\lim_{n \to \infty} F_{Y_n} = F_Y(x) \quad \forall \text{ Stetigkeitsstellen $x$ von $F_Y$}.
 	\end{align*}
@@ -192,8 +193,8 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 	(möglich, da $f$ gleichmäßig stetig und $F_Y$ wegen Monotonie nur abzählbar viele Unstetigkeitsstellen besitzt.) Das impliziert
 	\begin{align*}
 		\E[f(Y_n)] &= \sum_{i=2}^k \E[f(y_n)\indi_{\set{x_{i-1} < Y_n \le x_i}}] + \E[f(Y_n)\indi_{\set{Y_n \le x_1}\cup \set{Y_n > x_k}}]\\
-		&\le \sum_{i=2}^k (f(x_i)+\epsilon)(F_{Y_n}(x_i) - F_{Y_n}(x_{i-1})) + 2\norm{f}_{\infty}\epsilon\\
-		&\xrightarrow[n \to \infty]{} \sum_{i=2}^k (f(x_i)+ \epsilon)(F_Y(x_i)-F_Y(x_{i-1}) + 2\norm{f}_{\infty}\epsilon\\
+		&\le \sum_{i=2}^k (f(x_i)+\epsilon)(F_{Y_n}(x_i) - F_{Y_n}(x_{i-1})) + 2\epsilon\norm{f}_{\infty}\\
+		&\xrightarrow[n \to \infty]{} \sum_{i=2}^k (f(x_i)+ \epsilon)(F_Y(x_i)-F_Y(x_{i-1}) + 2\epsilon\norm{f}_{\infty}\\
 		&\le \E[f(Y)] + 2\epsilon(1+2\norm{f}_{\infty})
 	\end{align*}
 	Für $\epsilon \to 0$ folgt
@@ -285,7 +286,7 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 \begin{lemma}[\person{Poisson}approximation]
 	Sei $X_n \sim \Bin(n,p_n)$, so dass $np_n \xrightarrow[n \to \infty]{}$ dann gilt
 	\begin{align*}
-		X_n \xrightarrow[n \to \infty]{\d} X \sim \Poi(\lambda).
+		X_n \xrightarrow[n \to \infty]{\d} X \sim \Pois(\lambda).
 	\end{align*}
 \end{lemma}
 \begin{proof}
@@ -297,7 +298,7 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 	\end{align*}
 	und mit dem Stetigkeitssatz folgt die Behauptung.
 \end{proof}
-\begin{proposition}[WLLN, u,i,v-Version in $\Rd$]
+\begin{proposition}[WLLN, u.i.v-Version in $\Rd$]
 	Seien $X_1,X_2, \dots$ u.i.v $\Rd$-wertige Zufallsvariablen auf $(\O,\F,\P)$ mit $X_i \in \Ln{1}(\P)$. Dann gilt
 	\begin{align*}
 		1/n \sum_{i=1}^n \xrightarrow[n \to \infty]{\P} \E[X_1].
@@ -306,7 +307,7 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 \begin{proof}
 	Für $u \in \Rd$ gilt
 	\begin{align*}
-		\varphi_{1/n \sum X_i} (u) = \varphi_{\sum X_i}(u/n) \\
+		\varphi_{1/n \sum X_i} (u) &= \varphi_{\sum X_i}(u/n) \\
 		\overset{\text{unabh.}}&{=} \prod_{i=1}^n \varphi_{X_i} (u/n) \overset{\text{ident. verteilt}}{=} (\varphi_{X_1}(u/n))^n\\
 		\overset{\text{\person{Taylor}}}&{=} (1+ 1/n \scaProd{u}{\varphi'_{X_1}(0)} + o(\norm{u/n}))^n\\
 		&= (1 + 1/n \ii \scaProd{u}{\E[X_1]} + o(\norm{u/n}))^n \quad \propref{8_14}\\
@@ -369,7 +370,7 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 	Damit 
 	\begin{align*}
 		\abs{E} &\le \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n}}} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
-		&+ \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n} -1} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}]\\
+		&+ \E[\abs{e^{\ii \scaProd{u}{Z_n-Y_n} -1} \indi_{\set{\abs{Z_n-Y_n} \le \delta}}}]\\
 		&\le \delta \abs{u} + 2 \underbrace{\P(\abs{Z_n-Y_n} \le \delta)}_{\xrightarrow[n \to \infty]{}0}\\ %TODO where comes the two from?
 		&\xrightarrow[n \to \infty]{} \delta \cdot \abs{u}\\
 		&\xrightarrow[\delta \to 0]{} 0.

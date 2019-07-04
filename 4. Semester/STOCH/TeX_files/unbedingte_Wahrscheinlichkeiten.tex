@@ -1,4 +1,4 @@
-\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
+﻿\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
@@ -26,9 +26,8 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\P(A) = \frac{1}{2}, \quad \P(B) = \frac{1}{3} \und \P(A\cap B) = \frac{1}{6}
 	\intertext{was}
 	\P(A \cap B) = \P(A) \P(B)
-	\intertext{erfüllt}
 	\end{align*}
-	Betrachte nun
+	erfüllt. Betrachte nun
 	\begin{align*}
 	C&:= \set{(i,j) \in \O \mid i + j = 7}\\
 	D&:= \set{(i,j) \in \O \mid i = 6}
@@ -57,16 +56,13 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 		B &= \set{0,1}\times \set{1} \qquad \text{(Münzwurf: zweiter Wurf ist Zahl)}\\
 		C &= \set{(0,0), (1,1)} \qquad \text{(beide Würfe haben selbes Ergebnis)}
 	\end{align*}
-	Dann gelten
+	Dann gelten $\P(A) = \frac{1}{2} = \P(B) = \P(C)$ und
 	\begin{align*}
-		\P(A) = \frac{1}{2} = \P(B) = \P(C)
-		\intertext{und}
 		\P(A\cap B) = \P(\set{(1,1)}) = \frac{1}{4} = \P(A)\P(B)\\
 		\P(A\cap C) = \P(\set{(1,1)}) = \frac{1}{4} = \P(A)\P(C)\\
 		\P(B\cap C) = \P(\set{(1,1)}) = \frac{1}{4} = \P(B)\P(C)
 	\end{align*}
-	also paarweise Unabhängigkeit.\\
-	Aber
+	also paarweise Unabhängigkeit. Aber
 	\begin{align*}
 	\P(A\cap B \cap C) = \P(\set{(1,1)}) = \frac{1}{4} \neq \P(A)\P(B)\P(C)
 	\end{align*}

@@ -9,12 +9,12 @@
 \begin{proof}
 	Verwende den Stetigkeitssatz:
 	\begin{align*}
-		\varphi_{\sum (X_k - \mu)/\sqrt{\sigma^2 n}} (u) = \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
-		\overset{X_k \text{ unabh.}}{=} \prod_{k=1}^n \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
-		= \brackets{\E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n}}]}^n\quad X_k \text{ identisch verteilt}\\
-		= \brackets{\varphi_{X_1 - \mu} (u / \sqrt{\sigma^2 n})}^n\\
-		= \brackets{1 + \ii \frac{u}{\sigma\sqrt{\mu}} \underbrace{\E[X_1 -\mu]}_{=0} + \frac{\ii^2}{2} \underbrace{\E[(X_1 - \mu)^2]}_{\sigma^2} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2})} \quad \text{ \person{Taylor}}\\
-		= (1- \frac{1}{2} \frac{u^2}{n} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2}))^n\\
+		\varphi_{\sum (X_k - \mu)/\sqrt{\sigma^2 n}} (u) &= \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
+		\overset{X_k \text{ unabh.}}&{=} \prod_{k=1}^n \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
+		&= \brackets{\E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n}}]}^n\quad X_k \text{ identisch verteilt}\\
+		&= \brackets{\varphi_{X_1 - \mu} (u / \sqrt{\sigma^2 n})}^n\\
+		&= \brackets{1 + \ii \frac{u}{\sigma\sqrt{\mu}} \underbrace{\E[X_1 -\mu]}_{=0} + \frac{\ii^2}{2} \underbrace{\E[(X_1 - \mu)^2]}_{\sigma^2} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2})} \quad \text{ \person{Taylor}}\\
+		&= (1- \frac{1}{2} \frac{u^2}{n} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2}))^n\\
 		\xrightarrow[n \to \infty]{} \exp(-1/2 u^2) = \varphi_{\normal(0,1)}(u).
 	\end{align*}
 \end{proof}
