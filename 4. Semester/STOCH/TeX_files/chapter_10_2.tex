@@ -10,11 +10,111 @@
 	Verwende den Stetigkeitssatz:
 	\begin{align*}
 		\varphi_{\sum (X_k - \mu)/\sqrt{\sigma^2 n}} (u) &= \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
-		\overset{X_k \text{ unabh.}}&{=} \prod_{k=1}^n \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}]\\
+		&= \prod_{k=1}^n \E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n})}] \quad X_k \text{ unabh.}\\
 		&= \brackets{\E[e^{\ii u (\sum (X_k - \mu )/\sqrt{\sigma^2n}}]}^n\quad X_k \text{ identisch verteilt}\\
 		&= \brackets{\varphi_{X_1 - \mu} (u / \sqrt{\sigma^2 n})}^n\\
-		&= \brackets{1 + \ii \frac{u}{\sigma\sqrt{\mu}} \underbrace{\E[X_1 -\mu]}_{=0} + \frac{\ii^2}{2} \underbrace{\E[(X_1 - \mu)^2]}_{\sigma^2} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2})} \quad \text{ \person{Taylor}}\\
-		&= (1- \frac{1}{2} \frac{u^2}{n} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}^2}))^n\\
-		\xrightarrow[n \to \infty]{} \exp(-1/2 u^2) = \varphi_{\normal(0,1)}(u).
+		&= \brackets{1 + \ii \frac{u}{\sigma\sqrt{\mu}} \underbrace{\E[X_1 -\mu]}_{=0} + \frac{\ii^2}{2} \underbrace{\E[(X_1 - \mu)^2]}_{\sigma^2} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}}^2)} \quad \text{ \person{Taylor}}\\
+		&= (1- \frac{1}{2} \frac{u^2}{n} + o(\norm{\frac{u}{\sqrt{\sigma^2 n}}}^2))^n\\
+		&\xrightarrow[n \to \infty]{} \exp(-1/2 u^2) = \varphi_{\normal(0,1)}(u).
 	\end{align*}
+\end{proof}
+\begin{conclusion}[CLT, \person{De Moivre}-\person{Laplace}]
+	\proplbl{10_14}
+	Sei $S_n= \Bin(n,p), p \in (0,1)$, dann
+	\begin{align*}
+		\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow[n \to \infty]{\d} Z \sim \normal(0,1).
+	\end{align*}
+\end{conclusion}
+\begin{proof}
+	Es gilt: $S_n \distri X_1 + \dots + X_n$, für $X_i \sim \Ber(p)$ unabhängig, mit $\E[X_1] = p, \Var(X_1) = p(1-p)$.
+\end{proof}
+\begin{*remark}
+	Auch der lokale Grenzwertsatz von \person{De Moivre}-\person{Laplace} (\propref{7_2}) impliziert \propref{10_14}, siehe z.B. $\nearrow$ Dehling \& Haupt.
+\end{*remark}
+Die Bedingungen des CLT lassen sich abschwächen. Zum Beispiel kann ``identisch verteilt'' durch die \begriff{\person{Lindeberg}-Bedingung} ersetzt werden:
+\begin{align*}
+	\forall \epsilon > 0 \quad \lim_{n \to \infty} \frac{1}{\sum_{i=1}^n \Var(X_i)} \sum_{k=1}^n \E[(X_k \E[X_k])^2 \indi_{\set{\abs{X_k} > \epsilon \sum_{i=1}^n \Var(X_i)}}] = 0
+\end{align*}
+und dann gilt
+\begin{align*}
+	\frac{\sum_{k=1}^n (X_k - \E[X_k])}{\sqrt{\sum_{i=1}^n \Var(X_i)}} \xrightarrow[n \to \infty]{\d} Z \sim \normal(0,1)
+\end{align*}
+Der folgende CLT geht noch etwas weiter und  betrachtet die Zufallsvariablen in einem \emph{Dreiecksschema}:
+%TODO overview missing.
+%%TODO see eric
+%%\begin{align*}
+%%	\begin{matrix}
+%%		X_{1,1} & X_{1,2} &\cdots & ...
+%%	\end{matrix}
+%%\end{align*}
+\begin{proposition}[CLT, \person{Lindeberg}-\person{Feller}]
+	\proplbl{10_15}
+	Seien $\set{X_{n,k}, k=1,\dots,k(n),n \in \N}$ reelle Zufallsvariablen in einem Dreiecksschema mit $\E[X_{n,k}] = 0$ und $0 < \Var(X_{n,k}) = \sigma_{n,k}^2 < \infty$, so dass $\forall n \in \N$ die Zufallsvariablen $X_{n,1}, \dots, X_{n,k(n)}$ unabhängig sind. Zudem gelten
+	\begin{align*}
+		\sum_{k=1}^{k(n)} \sigma_{n,k}^2 \xrightarrow[n \to \infty]{} \sigma^2 \in (0,\infty)
+	\end{align*}
+	und die \person{Lindeberg}-Bedingung für Schemata:
+	\begin{align*}
+		\forall \epsilon >0 \colon \lim_{n \to \infty} \sum_{k=1}^{k(n)} \E[X_{n,k}^2 \indi_{\abs{X_{n,k}}> \epsilon}] = 0
+	\end{align*}
+	Dann gilt
+	\begin{align*}
+		\sum_{k=1}^{k(n)} X_{n,k} \xrightarrow[n \to \infty]{\d} Z \sim \normal(0, \sigma^2) 
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Wir beginnen mit einer \person{Taylor}entwicklung der charakteristischen Funktion der $X_{n,k}$:
+	\begin{align*}
+		\varphi_{X_{n,k}} = 1 + ... + \ii \underbrace{\E[X_{n,k}]}_{=0}\cdot u - \frac{1}{2} \underbrace{\E[X_{n,k}^2]}_{\sigma_{n,k}^2}u^2 + R_{n,k}(u)
+	\end{align*}
+	wobei wir $R_{n,k}$ folgendermaßen abschätzen. Für $x \in \R$ gilt
+	\begin{align*}
+		\abs{e^{\ii x} - 1 - \ii x - 1/2 (\ii x)^2} &= \abs{ \int_0^x \int_0^t (1-e^{\ii y})\d y \d t}\\
+		&\le \abs{ \int_0^{\abs{x}} \int_0^{\abs{t}} (1-e^{\ii y})\d y \d t}\\
+	\end{align*}
+	mit $\abs{1-e^{\ii y}} = \abs{\int_0^y e^{\ii z \d z}} \le \abs{y} \wedge 2$ so dass $\abs{e^{\ii x} - 1 - \ii x + 1/2 x^2} \le \sfrac{\abs{x}^3}{6} \wedge x^2$. Für $x= u X_{n,k}$ folgt im Erwartungswert
+	\begin{align*}
+		\abs{R_{n,k}(u)} 
+		&\le u^2 \E[X_{n,k}^2 \wedge \frac{\abs{u}\cdot \abs{X_{n,k}^3}}{6}]\\
+		&= u^2 \brackets{\int_{\abs{X_{n,k}> \epsilon}} (X_{n,k}^2 \wedge \frac{\abs{u}\cdot \abs{X_{n,k}^2}}{6})\d \P + \int_{\abs{X_{n,k}\le \epsilon}} (X_{n,k}^2 \wedge \frac{\abs{u}\cdot \abs{X_{n,k}^3}}{6})\d \P}\\
+		&\le = u^2 \brackets{\int_{\abs{X_{n,k}> \epsilon}} (X_{n,k}^2)\d \P + \int_{\abs{X_{n,k}\le \epsilon}}  \frac{\abs{u}\cdot \abs{X_{n,k}^3}}{6}\d \P}\\
+		&\le u^2 \E[X_{n,k}^2 \indi_{\abs{X_{n,k}>\epsilon}} + \epsilon/6 \abs{u}^3 \E[X_{n,k}^2]]
+	\end{align*}
+	Seien $\set{Y_{n,k}, k = 1,\dots, k(n), n \in \N}$ Zufallsvariablen mit $Y_{n,k} \sim \normal(0, \sigma_{n,k}^2)$, so dass $\forall n$ die Zufallsvariablen $Y_{n,1},\dots, Y_{n,k(n)}$ unabhängig sind. Dann gilt (analog zu oben)
+	\begin{align*}
+		\varphi_{Y_{n,k}}(u) &= 1- 1/2 \sigma_{n,k}^2 u^2 + \tilde{R}_{n,k}(u)
+		\intertext{mit}
+		\abs{\tilde{R}_{n,k}(u)} &\le u^2 \E[Y_{n,k}^2 \wedge \frac{\abs{u}\abs{Y_{n,k}}^3}{6}] \le \abs{u}^3 \frac{\E[\abs{Y_{n,k}^3]}}{6}\\
+		&\le \abs{u}^3 C \sigma_{n,k}^3 \quad \text{Übung und für eine Konstante } C\\
+		&\le \abs{u}^3 C\sigma_{n,k}^2 \max_{1\le k \le k(n)} \sigma_{n,k}\\	
+	\end{align*}
+	Zusammen folgt
+	\begin{align*}
+		\abs{\varphi_{X_{n,k}}(u) - \varphi_{Y_{n,k}}(u)} &\le \abs{R_{n,k}(u)} + \abs{\tilde{R}_{n,k}(u)}\\
+		& \le u^2 \underbrace{\E[X_{n,k}^2 \indi_{\abs{X_{n,k}>\epsilon}}]}_{\xrightarrow[n \to \infty]{} 0 \text{ \person{Lindeberg}}} + \underbrace{\frac{\epsilon}{6} \sigma_{n,k}^2}_{\to 0, \epsilon \to 0} + \abs{u}^3 C \underbrace{\max_{1\le k \le k(n)} \sigma_{n,k}}_{\xrightarrow[n \to \infty]{}0}
+	\end{align*}
+	(vgl. Satz 11.5) %TODO add ref
+	und mit der Unabhängigkeitsannahme:
+	\begin{align*}
+		\abs{\varphi_{X_{n,1} + ... + X_{n,k(n)}}(u) - \varphi_{Y_{n,1} + ... + Y_{n,k(n)}}(u)} &=  \abs{\prod_{k=1}^{k(n)} \varphi_{X_{n,k}}(u) - \prod_{k=1}^{k(n)}\varphi_{Y_{n,k}}(u)}\\
+		\overset{\eqref{bew:10_15:a}}&{=} \abs{\sum_{i=1}^{k(n)}(\prod_{j=1}^{n-1} \varphi_{X_{n,j}}(u))\cdot (\varphi_{X_{n,k}}(u) - \varphi_{Y_{n,k}}(u))(\prod_{j=n+1}^{k(n)} \varphi_{Y_{n,j}}(u)}\\
+		&\le \sum_{k=1}^{k(n)} \abs{\varphi_{X_{n,k}}(u) - \varphi_{Y_{n,k}} (u)} \xrightarrow[n \to \infty, \epsilon\to 0]{} 0
+	\end{align*}
+	mit \eqref{bew:10_15:a}, da
+	\begin{align*}
+		\sum_{k=1}^n (\prod_{j=1}^{k-1}a_j (a_k - b_k)\prod_{j=k-1}^n b_j) 
+		&= (a_1 - b_1) \prod_{j=2}^n b_j + a_1(a_2 - b_2)\prod_{j=3}b_j + ... + \prod_{j=1}^{n-1} a_j (a_n - b_n)\\
+	    &= \prod_{k=1}^n a_n - \prod_{k=!}^n b_n \label{bew:10_15:a}\tag{$\star$}
+	\end{align*}
+	Da
+	\begin{align*}
+		\varphi_{Y_{n+1}+...+Y_{n,k(n)}} &= \prod_{k=1}^{k(n)} \varphi_{Y_{n,k(n)}}\\
+		&= \exp(-u^2(\sigma_{n,1}^2 + ... + \sigma_{n,k(n)}^2)1/2)\\
+		&\xrightarrow{n\to \infty} e^{-u^2\sigma^2/2} \quad u \in \R
+	\end{align*}
+	folgt
+	\begin{align*}
+		\varphi_{X_{n,1} + ... + X_{n,k(n)}}(u) \xrightarrow{n \to \infty} e^{-u^2\sigma^2/2} \quad u \in R
+	\end{align*}
+	und mit Stetigkeitsatz (put ref here!) folgt die Behauptung.
 \end{proof}

@@ -1,0 +1,27 @@
+\begin{definition}
+	Eine Folge $(X_n)_{n \in \N_0}$ von reellen Zufallsvariablen auf $(\O,\F\,\P)$ heißt \begriff{Martingal}, falls
+	\begin{enumerate}
+		\item $\E[\abs{Y_n}] < \infty$ also $X_n \in \Ln{1}(\P)\forall n \in \N_0$
+		\item $\E[X_{n-1} \mid X_0, X_1, \dots, X_n] = X_0, \P\text{-f.s. }\forall n \in \N$
+	\end{enumerate}
+	Die Folge $(X_n)_{n\in \N}$ heißt \begriff{Super-/Submartingal}, falls 1. und folgendes gilt
+	\begin{enumerate}
+		\item $\E[X_{n-1} \mid X_0, X_1, \dots, X_n] \le /\ge X_0, \P\text{-f.s. }\forall n \in \N$
+	\end{enumerate} 
+\end{definition}
+\begin{example}
+	Sei $(Y_n)_{n\in \N}$ Folge von u.i.v. Zufallsvariablen auf $(\O,\F,\P)$ in $\Ln{1}(\P)$, reellwertig mit $\E[Y_1] = 0$. Dann ist $(X_n)_{n\in \N}$ mit 
+	\begin{align*}
+		X_0 = 0 \quad X_n = \sum_{k=1}^n Y_k \quad n \ge 1
+	\end{align*}
+	ein Martingal, denn
+	\begin{enumerate}
+		\item $\E[\abs{X_n}] \le \sum_{k=1}^n \E[\abs{Y_k}] < \infty$
+		\item 
+		\begin{align*}
+			\E[X_{n+1}\mid X_0, \dots, X_n] &= \E[X_n + Y_{n+1} \mid X_0 , ... , X_n] = \E[X_n \mid X_0, ... X_n] + \E[Y_{n+1} \mid X_0, ... X_n]\\
+			&= X_n + \E[Y_{n+1}] = X_n \quad \P\text{-f.s. } \forall n \in \N
+		\end{align*}
+		Für $\E[Y_1] \ge / \le 0$ erhält man dementsprechend ein Sub-/Supermartingal.
+	\end{enumerate}
+\end{example}
