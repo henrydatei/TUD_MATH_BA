@@ -31,11 +31,11 @@ Oft interessieren wir uns gar nicht für das konkrete Ergenis des Zufallsexperim
 $\longrightarrow$ Teilmenge des Ereignisraums, also Element der Potenzmenge $\mathscr{P}(\Omega)$, denen eine Wahrscheinlichkeit zugeordnet werden kann, d.h. welche \begriff{messbar} (mb) sind.
 
 \begin{definition}[Ereignisraum, messbarer Raum]
-	Sei $\Omega \neq \emptyset$ ein Ergebnisraum und $\sigF$ eine $\sigma$-Algebra auf $\Omega$, d.h. eine Familie von Teilmenge von $\Omega$, sodass
+	Sei $\O \neq \emptyset$ ein Ergebnisraum und $\F$ eine $\sigma$-Algebra auf $\O$, d.h. eine Familie von Teilmenge von $\O$, sodass
 	\begin{enumerate}
-		\item $\Omega \in \sigF$
-		\item $A \in \sigF \Rightarrow A^C \in \sigF$
-		\item $A_1, A_2, \dots \in \sigF \Rightarrow \bigcup_{i \ge 1} \in \sigF$
+		\item $\Omega \in \F$
+		\item $A \in \sigF \Rightarrow A^C \in \F$
+		\item $A_1, A_2, \dots \in \sigF \Rightarrow \bigcup_{i \ge 1} A_i \in \F$
 	\end{enumerate}
 	Dann heißt $(\Omega, \sigF)$ \begriff{Ereignisraum} bzw. \begriff{messbarer Raum}.
 \end{definition}
@@ -155,8 +155,8 @@ und insbesondere $\probp(A) + \probp(A^C) = 1$
 		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}),\; \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
 		\item $\Omega \subset \Rn, \sigF = \borel(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}
-			\item $\int_{\Omega} \rho(x)\diff x = 1$
-			\item $\set{x \in \Omega \colon f(x) \le c} \in \borel(\Omega)$ für alle $c > 0$ 
+			\item $\int_{\Omega} \rho(x)\d x = 1$
+			\item $\set{x \in \Omega \colon \rho(x) \le c} \in \borel(\Omega)$ für alle $c > 0$ 
 		\end{enumerate}
 		dann definiert $\rho$ ein Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ durch 
 		\begin{align}

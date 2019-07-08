@@ -1,4 +1,4 @@
-﻿\begin{definition}
+\begin{definition}
 	Sei $\mu \in \R, \sigma^2 > 0$. Das Wahrscheinlichkeitsmaß $\normal(\mu, \sigma^2)$ auf $(\R, \borel(\R))$ mit Dichtefunktion
 	\begin{align*}
 		g_{\mu,\sigma^2}(x) := \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad x \in \R
@@ -27,6 +27,7 @@
 \end{*remark}
 Die Popularität der Normalverteilung erklärt sich insbesondere aus dem zentralen Grenzwertsatz. Hier eine einfache Form davon
 \begin{proposition}[de \person{Moivre}-\person{Laplace}, lokaler Grenzwertsatz]
+	\proplbl{7_2}
 	Seien $p \in (0,1), B_{n,p}(k) = \binom{n}{k}p^k(1-p)^{n-k}$ Zähldichte $\Bin(n,p), g(x)$ Dichte der Standardnormalverteilung. Dann gilt für $c>0$ beliebig mit
 	\[
 		x_n(k) = \frac{k-np}{\sqrt{np(1-p)}}

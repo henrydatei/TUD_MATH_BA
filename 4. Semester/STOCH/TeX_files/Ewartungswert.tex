@@ -1,4 +1,4 @@
-\begin{enumerate}
+﻿\begin{enumerate}
 	\item \emph{Frage:} \\
 	\cref{4_2_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
 	Wie stark ist die Streuung um den Durchschnitt? $\rightsquigarrow$ Varianz
@@ -48,7 +48,7 @@
 		f: \Rn \to \R \text{ Borel-messbar}.
 	\end{align*}
 	\begin{enumerate}
-		\item \emph{diskreter Fall:} Ist $\P_X$ ein Wahrscheinlichkeitsmaß auf $(\Z, \P(\Z))$ und der Zähldichte $\rho$, so
+		\item \emph{diskreter Fall:} Ist $\P_X$ ein Wahrscheinlichkeitsmaß auf $(\Z, \pows(\Z))$ und der Zähldichte $\rho$, so
 		\begin{align*}
 			\E[f(X)] = \sum_{x \in \Z} f(x)\rho(x).
 		\end{align*}
@@ -113,9 +113,7 @@ Da der Erwartungswert ein Integral ist, übertragen sich viele Eigenschaften.
 	\proplbl{5_1_7}
 	Da für $X_1,\dots, X_n \sim \Ber(p)$ unabhängig gilt, dass $\underbrace{X_1 + \cdots + X_n}_{=X} \sim \Bin(n,p)$ folgt
 	\begin{align*}
-	  \E[X] &= \E[X_1 + \cdots + X_n]
-		&= \E[X_1] + \cdots + \E[X_n]\\
-		&= n \E[X_1]\\
+	  \E[X] &= \E[X_1 + \cdots + X_n] = \E[X_1] + \cdots + \E[X_n] = n \E[X_1]\\
 		&= n (1 \cdot \underbrace{\P(X_1 = 1)}_{=p} + 0 \cdot \P(X_1 = 0))\\
 		&= n\cdot p.
 	\end{align*}
