@@ -118,3 +118,4 @@ Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorle
 # related repos
 - andere (unvollständige?) Mitschriften von vor einem Jahr: [https://github.com/volleimer/math_scripts](https://github.com/volleimer/math_scripts)
 - Sammlung von Mitschriften zum Master in Mathematik: [https://github.com/LostInDarkMath/MatheMaster](https://github.com/LostInDarkMath/MatheMaster)
+- Diverses (Mitschriften, Hausaufgaben, Übungen): [https://github.com/oakoneric/mathTUD](https://github.com/oakoneric/mathTUD)
