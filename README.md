@@ -8,10 +8,11 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 - Lösungen zu den Aufgaben LAAG 2: [https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l](https://drive.google.com/open?id=1LKlGFgX6iF6NZfDfbA-icA2GeUtrho6l)
 
 ### [Krähmer] Lineare Algebra und analytische Geometrie (WS2018/19 + SS 2019)
-- Vorlesungsfolien: [https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx](https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx)
+- Vorlesungsfolien (LAAG 1 und 2): [https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx](https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx)
 - Aufgbenblätter LAAG 1: [https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D](https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D)
 - Probetesttat LAAG 1: [https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d](https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d)
 - Probetestat LAAG 1 (Lösung): [https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7](https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7)
+- Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN](https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN)
 - Probeklausur LAAG 2: [https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF](https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF)
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
