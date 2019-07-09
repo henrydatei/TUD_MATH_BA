@@ -10,6 +10,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 ### [Krähmer] Lineare Algebra und analytische Geometrie (WS2018/19 + SS 2019)
 - Vorlesungsfolien (LAAG 1 und 2): [https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx](https://drive.google.com/open?id=1xDDRShyMB0lm-3xD-wnPixk3xqwNWpAx)
 - Aufgbenblätter LAAG 1: [https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D](https://drive.google.com/open?id=1yh6cRDPc2B0-O1di5sj2rQrwc_V4v--D)
+- Lösungen der Übungsaufgaben LAAG 1 (nicht Hausaufgaben): [https://drive.google.com/open?id=1msP61IkZpn2Mdt0XDbbBpCqnJ2bsMD55](https://drive.google.com/open?id=1msP61IkZpn2Mdt0XDbbBpCqnJ2bsMD55)
 - Probetesttat LAAG 1: [https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d](https://drive.google.com/open?id=1LrGMr2p1X_ZrvsuCFZNqluxFYPUZTj1d)
 - Probetestat LAAG 1 (Lösung): [https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7](https://drive.google.com/open?id=1DOzmcvOcvfAEHXvQUFQfKK5OsSPfQ5O7)
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN](https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN)
