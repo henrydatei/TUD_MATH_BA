@@ -1,0 +1,152 @@
+\section{Zyklische Erweiterungen}
+Sei $L \mid K$ eine dendliche Galoiserweiterung.
+\begin{definition}
+	$L\mid K$ \begriff{zyklisch} (\begriff{abelsch}, \begriff{auflösbar}) $:\Leftrightarrow$ $Gal(L\mid K)$ zyklisch (bzw. abelsch, auflösbar).
+\end{definition}
+\begin{remark}[Erinnerung]
+	Sei $\Hom(L,\overline{K}) = \set{\sigma_1,\dots, \sigma_n}$
+	\begin{itemize}
+		\item $N_{L \mid K} = \det(\mu_{\alpha}) = \prod_{i=1}^n \sigma_i(\alpha)$
+		\item $\Tr_{L\mid K} = \Tr(\mu_{\alpha}) = \sum_{i=1}^n \sigma_i(\alpha)$
+		\item $L \mid K \implies \Hom_K(L\mid K) = \Gal(L\mid K)$
+	\end{itemize}
+	(wie üblich nehmen wir hier an, dass $L \subseteq \overline{K}$)
+\end{remark}
+\begin{proposition}[Hilbert 90, multiplikativ]
+	Sei $L \mid K$ endlich mit $\Gal(L \mid K) = \langle \sigma\rangle$. Für $b \in L$ gilt:
+	\begin{align*}
+		N_{L\mid K}(b)  = 1 \Leftrightarrow b = \frac{a}{\sigma(a)} \text{ für ein } a \in L^{\times}.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		Sei $n= [L:K]$.
+		\item $\Leftarrow$:
+		\begin{align*}
+			b &= \frac{a}{\sigma(a)} \implies N_{L\mid K} (b) = \prod_{\sigma \in \Gal(L\mid K)} \sigma(b)\\
+			&= \prod_{i=0}^{n-1} \sigma^i(b) = \frac{a}{\sigma(a)}\cdot \sigma(\frac{a}{\sigma(a)})\cdot \dots \sigma^{n-1}(\frac{a}{\sigma(a)})\\
+			&= \frac{a}{\sigma^n(a)} = \frac{a}{a} = 1.
+		\end{align*}
+		\item $\Rightarrow$: Sei $1 = N_{L\mid K}(b) = \prod_{i=0}^{n-1} \sigma^i(b)$. Nach \propref{1_8_9} sind $\sigma^0, \dots, \sigma^{n-1}$ linear unabhängig in $\Abb(L^{\times},L)$, insbesondere existiert $c \in L$ mit 
+		\begin{align*}
+			a:= \sigma^0(c) + b\sigma^1(c) + b\sigma(b)\sigma^2(c) + \dots + b \sigma(b)...\sigma^{n-2}(b)\sigma^{n-1}(c) \neq 0
+		\end{align*}
+		Es gilt $b\sigma(a) = a$, da $\sigma^n(c) = \sigma^0(c)$
+		\begin{align*}
+			b\sigma(b)\dots \sigma^{n-1}(b) = N_{L\mid K}(b) = 1
+		\end{align*}
+		Also folgt $b = \frac{a}{\sigma(a)}$.
+	\end{itemize}
+\end{proof}
+\begin{proposition}[Kummer]
+	Sei $p = \chara(K) \ge 0$ und $n \in \N$ mit $p \not\mid n$. Sei $\mu_n \subseteq K$
+	\begin{enumerate}
+		\item Ist $\alpha \in \overline{K} \mit \alpha^n = a \in K$, so ist $K(\alpha) \mid K$ eine zyklische Galoiserweiterung vom Grad $d \mid n$.
+		\item Ist $L \mid K$ zyklisch vom Grad $n$, so ist $L = K(\alpha) \mit \alpha^n \in K$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	o.E. $\alpha \neq 0$.
+	\begin{enumerate}
+		\item $\alpha$ ist Nullstelle von $f = X^n - a = \prod_{\zeta \in \mu_n} (X-\zeta \alpha)$\\
+		$\xRightarrow{\mu_n \subseteq K}$ $K(\alpha) = K(\zeta \alpha\colon \zeta \in \mu_n)$ ist $Z \mid K$ von $f$ und $f$ ist separabel, also ist $K(\alpha) \mid K$ galoissch. Betrachte $\chi: G=\Gal(K(\alpha)\mid K) \to \mu_n \mit \sigma \mapsto \frac{\sigma(\alpha)}{\alpha}$
+		\begin{itemize}
+			\item $\chi$ ist unabhängig von der Wahl von $\alpha$: $\alpha' = \zeta \alpha \mit \zeta \in \mu_n \subseteq K$\\
+			$\implies$ $\frac{\sigma(\alpha')}{\alpha'} = \frac{\sigma(\zeta\alpha)}{\zeta \alpha} = \frac{\zeta \cdot \sigma(\alpha)}{\zeta \alpha} = \frac{\sigma(\alpha)}{\alpha}$
+			\item $\chi$ ist Homomorphismus: Für $\sigma, \tau \in G$ ist
+			\begin{align*}
+				\chi(\sigma \tau) = \frac{\tau \sigma(\alpha)}{\alpha} = \frac{\sigma\tau(\alpha)}{\tau(\alpha)}\cdot \frac{\tau(\alpha)}{\alpha} = \chi(\sigma)\cdot \chi(\tau)
+			\end{align*}
+			\item $\chi$ ist injektiv:
+			\begin{align*}
+				1 = \chi(\sigma) = \frac{\sigma(\alpha)}{\alpha} \implies \sigma(\alpha) = \alpha \implies \id_{K(\alpha)}
+			\end{align*}
+			Haben somit Einbettung
+			\begin{align*}
+				G  \hookrightarrow \mu_n \cong C_n\\
+				\implies G \cong C_d \quad \text{ für ein } d\mid n
+			\end{align*}
+		\end{itemize}
+		\item Sei $\Gal(L \mid K) = \langle \sigma \rangle$. Dann
+		\begin{align*}
+			N_{L\mid K}(\zeta_n) = \zeta_n^n = 1 \xrightarrow{\propref{2_7_3}} \zeta_n = \frac{\alpha}{\sigma(\alpha)} \text{ für ein }\alpha \in L^{\times}\\
+			\sigma(\alpha^n) = \sigma(\alpha)^n = (\frac{\alpha}{3n})^n = \alpha^n\\
+			\implies \alpha^n \in L^{\Gal(L\mid K)} = K\\
+			\alpha, \sigma(\alpha),\dots,\sigma^{n-1}(\alpha) = \alpha, \zeta_n^{-1}\alpha, \dots, \zeta_n^{-n+1}\alpha \text{ sind paarweise verschieden}\\
+			\implies \deg(\alpha \mid K) \ge n\\
+			\implies L = K(\alpha)
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[Hilbert 90, additiv]
+	Sei $L\mid K$ endlich zyklisch mit $\Gal(L\mid K) = \langle \sigma \rangle$. Für $b \in L$ gilt
+	\begin{align*}
+		\Tr_{L\mid K} (b) = 0 \Longleftrightarrow b = a - \sigma(a) \text{ für ein } a \in L.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Sei $n = [L:K]$.
+	\begin{enumerate}
+		\item $\Leftarrow$: 
+		\begin{align*}
+			b &= a - \sigma(a) \implies \Tr_{L\mid K}(b) = \sum_{i=0}^{n-1}\sigma^i(b)\\
+			&= a - \sigma(a) + \sigma(a-\sigma(a)) + \dots + \sigma^{n-1}(a - \sigma(a))\\
+			&= a - \sigma^n(a) = a - a = 0 
+		\end{align*}
+		\item $\Rightarrow$: sei $0 = \Tr_{L\mid K} (b) = \sum_{i=0}^{n-1} \sigma^i(b)$. Nach \propref{2_8_10} ist $\Tr_{L\mid K} \not\equiv 0$, insbesondere existiert $c \in L$ mit $\Tr_{L\mid K}(c) \neq 0$.
+		\begin{align*}
+			a:= \Tr_{L\mid K} (c)^{-1}(b\sigma(c) + (b+\sigma(b))\sigma^2(c) + \dots + (b+\sigma(b) + \dots + \sigma^{n-2}(b))\sigma^{n-1}(c))\\
+			\implies a- \sigma(a) = (b \sigma(c)+b\sigma^2(c) + \dots + b \sigma^{n-1}(c) - \underbrace{(\sigma(b)+\sigma^2(b)+ \dots + \sigma^{n-1}(b))}_{\Tr_{L\mid K}(b)-b} \underbrace{\sigma^n(c)}_{=c}) \cdot \Tr_{L\mid K}(c)^{-1}\\
+			&= b \cdot \Tr_{L\mid K}(c)^{-1}(\sigma(c)+\sigma^2(c)+\dots+\sigma^{n-1}(c)+c) = b.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{proposition}[Artin-Schreier]
+	Sei $p = \chara(K) > 0$.
+	\begin{enumerate}
+		\item Ist $\alpha \in \overline{K}$ eine Nullstelle von $f = X^p - X - a \in K[X]$, so ist entweder $\alpha \in K$ oder $f$ ist irreduzibel und $K(\alpha)\mid K$ ist zyklisch.
+		\item Ist $L \mid K$ zyklisch vom Grad $p$, so ist $L = K(\alpha)$ mit $\alpha^p - \alpha = a \in K$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item $\alpha$ ist Nullstelle von $f = X^p - X - a = \prod_{i=1}^{p-1} (X-(\alpha + i))$\\
+		$\implies$ $K(\alpha) = K(\alpha + i, i=0, \dots, p-1)$ ist Zerfällungskörper von und $f$ ist separabel\\
+		$\implies$ $K(\alpha)\mid K$ galoissch. Betrachte $\chi: G = \Gal(K(\alpha)\mid K) \to \F_p$ mit $\sigma \mapsto \alpha - \sigma(\alpha)$.
+		\begin{itemize}
+			\item $\chi$ ist unabhängig von der Wahl von $\alpha$
+			\begin{align*}
+				\alpha' = \alpha +i, i \in \F_p \subseteq K \implies \sigma(\alpha') = \sigma(\alpha)+i\\
+				\alpha' - \sigma(\alpha') =\alpha + i - (\sigma(\alpha)+i) = \alpha - \sigma(\alpha)
+			\end{align*}
+			\item $\chi$ ist Hom.
+			\begin{align*}
+				\chi(\sigma \tau) = \alpha - \sigma \tau(\alpha) = \alpha - \tau(\alpha) + \tau(\alpha) - \sigma(\tau(\alpha))\\
+				&= \chi(\tau) + \chi(\sigma)
+			\end{align*}
+			\item $\chi$ ist injektiv: $\chi(\sigma) \neq 0 \implies \sigma(\alpha) = \alpha \implies \sigma=\id_{K(\alpha)}$.\\
+			Dies liefert Einbettung $\chi: \Gal(K(\alpha)\mid K) \hookrightarrow \F_p \cong C_p$
+			\begin{align*}
+				G \cong C_p (f \text{ separabel }) \oder G = 1 (\alpha \in K)
+			\end{align*}
+		\end{itemize}
+	\item Sei $G = \Gal(L \mid K) = \langle \sigma \rangle$ und $\# G = p$.
+		\begin{align*}
+			\Tr_{L\mid K}(-1) = p (-1) = 0 \xRightarrow{\propref{2_7_5}} -1 = \alpha - \sigma(\alpha) \text{ für ein } \alpha \in L.\\
+			\sigma(\alpha^p - \alpha) = \sigma(\alpha)^p - \sigma(\alpha) = (\alpha + 1)^p - (\alpha+1) = \alpha^p + 1^p - \alpha -1 = \alpha^p - \alpha\\
+			\implies a:= \alpha^p - \alpha\in L^{G} = K.
+		\end{align*}
+		$\alpha, \sigma(\alpha) = \alpha +1, \sigma^2(\alpha) = \alpha +2, \dots, \sigma^{p-1}(\alpha) = \alpha + p -1$ sind paarweise verschieden und damit folgt
+		$\deg(\alpha \mid K) \ge p \implies L = K(\alpha)$.
+	\end{enumerate}
+\end{proof}
+\begin{lemma}
+	Sei $F \mid K$ eine weitere Körpererweiterung. Dann $L \mid K$ zyklisch (abelsch, auflösbar) $\implies$ $LF \mid F$ zyklisch (abelsch, auflösbar).
+\end{lemma}
+\begin{proof}
+	$FL \mid L$ galoissch und
+	\begin{align*}
+		\Gal(FL \mid L) \cong \Gal(L \mid L \cap F) \le \Gal(L \mid K)
+	\end{align*}
+	Untergruppen zyklischer (abelscher, auflösbarer) Gruppen sind wieder zyklisch (abelsch, auflösbar). ($\nearrow$ section 8).
+\end{proof}
