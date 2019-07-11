@@ -1,4 +1,4 @@
-﻿\section{Der Satz von \person{Glivenko}-\person{Cantelli}}
+\section{Der Satz von \person{Glivenko}-\person{Cantelli}}
 Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_n = X_n(\omega)$ von u.i.v. Zufallsvariablen $X_1,\dots, X_n$ in $\R$ auf einem Wahrscheinlichkeitsraum $(\O, \F, \P)$. Die Verteilung $F$ von $X_i$ ist unbekannt.
 \begin{enumerate}[label=]
 	\item \ul{Frage:} Wie können wir $\P_{x_i}$ bzw. die zugehörige Verteilungsfunktion $F$ bestimmen/ approximieren?
@@ -96,9 +96,9 @@ Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_
 	Dann folgt analog zu  \eqref{bew:9_14:a} für $z \in [z_n, z_{k+1})$
 	\begin{align*}
 		\hat{F}_n(z) - F(z) \le \hat{F}_(z_{k+1}^-) - F(z_{k+1}^-) + \frac{1}{m}\\
-		\hat{F}\hat{F}_n(z) -F(z) \ge \hat{F}_n(z_n) - F(z_k) - \frac{1}{m}
+		\hat{F}_n(z) -F(z) \ge \hat{F}_n(z_n) - F(z_k) - \frac{1}{m}
 		\intertext{und damit}
-		A'_{m,k} = \set{\omega \in \O, \lim_{n\to \infty} \hat{F}_n(z_k^-,\omega) = F(z_k^-)}
+		A'_{m,k} = \set{\omega \in \O\colon \lim_{n\to \infty} \hat{F}_n(z_k^-,\omega) = F(z_k^-)}
 	\end{align*}
 	folgt der verbleibende Beweis analog zum stetigen Fall.
 \end{proof}
