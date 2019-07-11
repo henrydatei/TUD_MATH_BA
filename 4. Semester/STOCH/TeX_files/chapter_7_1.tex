@@ -1,4 +1,5 @@
 \begin{definition}
+	\proplbl{7_1}
 	Sei $\mu \in \R, \sigma^2 > 0$. Das Wahrscheinlichkeitsmaß $\normal(\mu, \sigma^2)$ auf $(\R, \borel(\R))$ mit Dichtefunktion
 	\begin{align*}
 		g_{\mu,\sigma^2}(x) := \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad x \in \R
@@ -37,5 +38,12 @@ Die Popularität der Normalverteilung erklärt sich insbesondere aus dem zentral
 	\end{align*}
 \end{proposition}
 \begin{proof}
-	$\nearrow$ pdf im Opal, bzw. später als Korollar des zentralen Grenzwertsatzes.
+	$\nearrow$ pdf im Opal, bzw. später als Korollar des zentralen Grenzwertsatzes. Wird eventuell noch ergänzt, wenn Zeit ist.
 \end{proof}
+\begin{lemma}[\person{Stirling}-Formel]
+	\proplbl{7_3}
+	Es gilt 
+	\begin{align*}
+		n! \overset{n \to \infty}{\sim} \sqrt{2\pi n}n^n e^{-n}
+	\end{align*}
+\end{lemma}

@@ -1,4 +1,4 @@
-﻿\section{Wartezeitverteilungen}
+\section{Wartezeitverteilungen}
 
 \emph{Negative Binomialverteilung}:\\
 Wir wiederholen ein Bernoulliexperiment mit Erfolgswahrscheinlichkeit $p \in [0,1]$ unendlich oft. Gesucht ist die Anzahl der Misserfolge bis zum $r$-ten Erfolg, $r \in \N$. Ein passender Ergebnisraum ist $\O = \N_0$. Für Modellierung ist es jedoch leichter in jedem Versuch erfolgt (``1'') oder Misserfolg (``0'') festzuhalten und $i$ mit dem unendlichen Produktmaß des Bernoullimaßes auf $\set{0,1}^{\N}$ zu arbeiten.\\
@@ -15,6 +15,7 @@ welche die Anzahl der Misserfolge bis zum $r$-ten Erfolg darstellt, setze
 	\P(X_r = k) &= \binom{r+k-1}{k} (1-p)^k p^r \quad r \in \N_0.
 \end{align*}
 \begin{definition}[negative Binomialverteilung, geometrische Verteilung]
+	\proplbl{4_1}
 	Sei $p \in[0,1]$ und $r \in \N$, dann heißt die Verteilung auf $\N_0$ mit Zähldichte
 	\begin{align*}
 		\rho(k) = \binom{r+k-1}{k} p^r (1-p)^k
@@ -55,22 +56,23 @@ welche die Anzahl der Misserfolge bis zum $r$-ten Erfolg darstellt, setze
 \end{enumerate}
 Unter diesen Annahmen folgt für die Wahrscheinlichkeit in $(0,t]$ mindestens $r$ Ereignisse zu beobachten
 \begin{align*}
-	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{e^{-\lambda t} \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t}  \\
-	\frac{\d}{\d t} &\brackets{1- \sum_{k=0}^{r-1} e^{-\lambda t} \frac{(\lambda t)^k}{k!}}  \\
+	\P ((0,t)) &= 1-\sum_{k=0}^{r-1} \underbrace{e^{-\lambda t} \frac{(\lambda t)^k}{k!}}_{\text{Zähldichte }\Pois(\lambda t)\text{ in }t}
+\intertext{Wegen:}
+	\frac{\d}{\d t} \brackets{1- \sum_{k=0}^{r-1} e^{-\lambda t} \frac{(\lambda t)^k}{k!}}
 	&= - (-\lambda) e^{-\lambda t} \sum_{k=0}^{r-1} \frac{(\lambda t)^k}{k!} - e^{-\lambda t} \sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{(k-1)!}  \\
 	&= e^{-\lambda t} \left(\sum_{k=0}^{r-1} \frac{\lambda^k t^{k-1}}{k!} - \sum_{l=0}^{r-1} \frac{\lambda^k t^{l-1}}{(l-1)!}\right) 
 \end{align*}
 gilt
 \begin{align*}
-	\P((0,t)) = \int_{0}^t e^{-\lambda t} \frac{\lambda^r x^{r-1}}{(r-1)!} \d x.
+	\P((0,t)) &= \int_{0}^t e^{-\lambda t} \frac{\lambda^r x^{r-1}}{(r-1)!} \d x.
 \end{align*}
 
 Wir definieren allgemeiner:
 \begin{definition}[Gammaverteilung, Gammafunktion]
+	\proplbl{4_2}
 	Seien $\lambda > 0, r>0$, dann heißt die Verteilung auf $(\R_+, \borel(\R_+))$ mit Dichte
 	\begin{align*}
-		f(x) = \frac{\lambda^r}{\Gamma(r)} x^{r-1} e^{-\lambda x},
-		\intertext{wobei}
+		f(x) = \frac{\lambda^r}{\Gamma(r)} x^{r-1} e^{-\lambda x} \mit
 		\Gamma(r) = \int_{0}^{\infty} y^{r-1}e^{-y} \d y, r>0
 	\end{align*}
 	\begriff{Gammafunktion}, \begriff{Gammaverteilung} mit Parametern $\lambda,r$. Schreibe $\Gam(\lambda,r)$.
@@ -78,7 +80,7 @@ Wir definieren allgemeiner:
 Insbesondere ist $\Gam(\lambda,1)$ gerade die \begriff{Exponentialverteilung} (vgl. Bsp 17?).\\ %TODO add ref?
 Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspricht der Wartezeit auf $r$ Ereignisse + $s$ (weitere) Ereignisse:
 \begin{lemma} % lemma 4.4
-	\proplbl{4_1_3}
+	\proplbl{4_3}
 	Seien $X \sim \Gam(\lambda,r), Y \sim \Gam(\lambda,s)$ unabhängig, dann impliziert das
 	\begin{align*}
 		X+Y \sim \Gam(\lambda,r+s)
@@ -97,6 +99,7 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 \end{proof}
 Exponentialverteilungen sind zudem \begriff{gedächtnislos}:
 \begin{lemma}[Gedächtnislosigkeit der Exponentialverteilung]
+	\proplbl{4_4}
 	Sei $X \sim \EXP(\lambda)$, dann gilt
 	\begin{align*}
 		\P(X>t) = \P(X > t+s \mid X > s) \quad t,s \ge 0. \tag{$\ast$}\label{lem:eq:gedachtnislos}
@@ -110,7 +113,7 @@ Exponentialverteilungen sind zudem \begriff{gedächtnislos}:
 	\end{align*}
 \end{proof}
 \begin{example}
-	\proplbl{4_2_5}
+	\proplbl{4_5}
 	Eine Studentin wartet morgens eine $\EXP(\sfrac{1}{5})$ verteilte Zeit $X$ auf den Bus zur Uni. Die Wahrscheinlichkeit einer Wartezeit $\ge 5$ Minuten
 	\begin{align*}
 	\P(X \ge 5) = e^{-\frac{1}{5}\cdot 5} = e^{-1} \approx 0,37.

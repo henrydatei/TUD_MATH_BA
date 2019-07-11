@@ -1,5 +1,6 @@
 \section{Varianz und höhere Momente}
 \begin{definition}[$k$-te Momente]
+	\proplbl{5_10}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: (\O,\F) \to (\R, \borel(\R))$ reelle Zufallsvariable. Dann ist für $k \in \N$
 	\begin{align*}
 		\E[X^k] = \int_{\O} X^k(\omega)\P(\omega) = \int_{\R}x^k \P(X \in \d x)
@@ -18,7 +19,7 @@
 \end{*remark}
 Von Interesse ist insbesondere das zweite Moment.
 \begin{definition}[Varianz, Standardabweichung]
-	\proplbl{5_2_11}
+	\proplbl{5_11}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y \in \Ln{2}(\P)$ reelle Zufallsvariablen.
 	\begin{enumerate}
 		\item Die \begriff{Varianz} von $X$ ist
@@ -43,7 +44,7 @@ Von Interesse ist insbesondere das zweite Moment.
 \end{definition}
 \begin{*remark}
 	\begin{itemize}
-		\item Die Endlichkeit der Ausdrücke in \propref{5_2_11} folgt aus der \person{Cauchy}-\person{Schwarz}-Ungleichung
+		\item Die Endlichkeit der Ausdrücke in \propref{5_11} folgt aus der \person{Cauchy}-\person{Schwarz}-Ungleichung
 		\[
 		\E[\abs{XY}] \le (\E\abs{X}^2)^{\frac{1}{2}}\cdot (\E\abs{Y}^2)^{\frac{1}{2}}
 		\]
@@ -56,28 +57,30 @@ Von Interesse ist insbesondere das zweite Moment.
 	\end{itemize}
 \end{*remark}
 \begin{example}
+	\proplbl{5_12}
 	Sei $X\sim\Bin(n,p)$, dann gilt
-	\begin{align*}
-		\Var(X) &= \E X^2 - \underbrace{(\E X)^2}_{=\sim p}\\
+	\begin{align*} %TODO there is still a typo in here, cant find it ... :(
+		\Var(X) &= \E X^2 - \underbrace{(\E X)^2}_{=np}\\
 		\intertext{mit}
 		\E X^2 &= \sum_{k=0}^n k^2 \binom{n}{k}p^k (1-p)^{n-k}\\
-		&= np \sum_{k=1}^n k \frac{(n-1)!}{(n-1-(k-1))!(k-1)!} p^{k-1}(1-p)^{n-1-(k-1)}\\
-		&= np\sum_{l=0}^{n-1}(l+1)\binom{n-1}{l}p^l (1-p)^{n-1-l}\\
+		&= np \sum_{k=0}^n k \frac{(n-1)!}{(n-1-(k-1))!(k-1)!} p^{k-1}(1-p)^{n-1-(k-1)}\\
+		&= np\sum_{l=0}^{n-1}(l+1)\binom{n-1}{l}p^l (1-p)^{n-1-l} \quad \mit l = k-1\\
 		&= np(1 + \sum_{l=0}^{n-1}l \binom{n-1}{l}p^l (1-p)^{n-1-l})\\
-		&= np(1+(n-1)p)\cdot 1)\\
+		&= np(1+(n-1)p)\cdot 1) \quad \text{mit Binomial Satz}\\
 		&= np + n(n-1)p^2\\
 		&= np + n^2p^2 - np^2 - n^2p^2\\
-		&= np(1-p). 
+		&= np + n(n-1)p^2. 
 	\end{align*}
-	Damit ist die $\Var(X) = np(1-p)$.
+	Damit ist die $\Var(X) = \cancel{np} + n(n-1)p^2 \cancel{- np} = np(1-p)$.
 \end{example}
 \begin{proposition}[Eigenschaften der (Ko-)varianz]
+	\proplbl{5_13}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y, X_1, \dots, X_n \in \Ln{2}(\P), a,b \in \R$.
 	\begin{enumerate}
 		\item $\Var(aX + b) = a^2\Var(X)$
 		\item  Sei $(\Cov(X,Y))^2 \le \Var X \Var Y$ und insbesondere\\
 		$\abs{\Corr(X,Y)} \le 1$
-		\item $\Var\brackets{\sum_{i=1}^n X_i} = \sum_{i=1}^n \Var(X_i) + \sum_{i=1}^n \Var(X_i,X_j)$ Sind die $X_1, \dots, X_n$ paarweise unkorreliert, so gilt die \begriff{Formel von \person{Bienaymé}}:
+		\item $\Var\brackets{\sum_{i=1}^n X_i} = \sum_{i=1}^n \Var(X_i) + \sum_{\substack{i,j=1//i\neq j}}^n \Cov(X_i,X_j)$ Sind die $X_1, \dots, X_n$ paarweise unkorreliert, so gilt die \begriff{Formel von \person{Bienaymé}}:
 		\[
 			\Var\brackets{\sum_{i=1}^n X_i} = \sum_{i=1}^n \Var(X_i)
 		\]

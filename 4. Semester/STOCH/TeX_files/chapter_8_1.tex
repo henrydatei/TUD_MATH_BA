@@ -86,7 +86,7 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 \begin{proof}
 	Sind $X,Y$ $\N_0$-wertig, so folgt dies aus \propref{8_3} und dementsprechenden Resultat für pgfs. Der allgemeine Fall folgt aus dem Resultat zu charakteristischen Funktionen (\propref{8_12}). %TODO add ref, when we are there ...
 \end{proof}
-\begin{example}[(vgl. \cref{4_1_3})]
+\begin{example}[(vgl. \cref{4_3})]
 	\proplbl{8_7}
 	Seien $X \sim \Gam(\lambda,r),Y\sim \Gam(\lambda,s)$ unabhängig, dann gilt nach \propref{8_2}
 	\begin{align*}
@@ -151,7 +151,8 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 	Analog zu \propref{8_4}.
 \end{proof}
 \begin{proposition}
-	\proplbl{8_11} Sei $X \sim \normal(\mu,\sigma^2)$, dann
+	\proplbl{8_11} 
+	Sei $X \sim \normal(\mu,\sigma^2)$, dann
 	\begin{align*}
 		\varphi_X(u) = e^{\ii \mu u - \frac{\sigma^2 u^2}{2}} \quad u \in \R
 		\intertext{und insbesondere}
@@ -182,7 +183,8 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 \end{proof}
 Die Charakteristische Funktion charakterisiert eine Verteilung eindeutig:
 \begin{proposition}
-	\proplbl{8_12} Seien $(\O,\F,\P), (\O',\F',\P')$ Wahrscheinlichkeitsräume und $X: \O \to \Rd, Y: \O' \to \Rd$ Zufallsvariablen mit charakteristischen Funktionen $\varphi_X, \varphi_Y$. Dann:
+	\proplbl{8_12} 
+	Seien $(\O,\F,\P), (\O',\F',\P')$ Wahrscheinlichkeitsräume und $X: \O \to \Rd, Y: \O' \to \Rd$ Zufallsvariablen mit charakteristischen Funktionen $\varphi_X, \varphi_Y$. Dann:
 	\begin{align*}
 		X \distri Y \Longleftrightarrow \varphi_X(u) = \varphi_Y(u) \quad \forall u \in \Rd
 	\end{align*}
@@ -245,6 +247,7 @@ Für den Beweis benötigen wir:
 \end{proof}
 Folgende Proposition is analog zu \propref{8_5}.
 \begin{proposition}
+	\proplbl{8_14}
 	$(\;\F,\P)$ Wahrscheinlichkeitsraum, $X: \O \to \Rd$ Zufallsvariable mit charakteristischer Funktion $\varphi_X$. Wenn $\E[\norm{X}^n] < \infty$ für ein $n \in \N$, dann existiert
 	\begin{align*}
 		\partial^{\alpha} = \frac{\partial^{\abs{\alpha}}}{\partial^{\alpha_1}u_1 \cdots \partial^{\alpha_d}} \varphi_X(u) \\

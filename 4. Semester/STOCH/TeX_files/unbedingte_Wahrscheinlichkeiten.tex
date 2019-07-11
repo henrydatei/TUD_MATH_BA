@@ -1,11 +1,11 @@
-﻿\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
+\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
 \end{align*}
 
 \begin{definition}[(Stochastische) Unabhängigkeit]
-	\proplbl{3_2_11}
+	\proplbl{3_11}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum. Zwei Ereignisse $A,B \in \F$ heißt \begriff{(stochastisch) unabhängig bezüglich $\P$}, falls
 	\begin{align*}
 		\P(A\cap B) = \P(A)\P(B).
@@ -13,6 +13,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	Wir schreiben auch $A \upmodels B$.
 \end{definition}
 \begin{example}
+	\proplbl{3_12}
 	Würfeln mit 2 fairen, sechsseitigen Würfeln:
 	\begin{align*}
 	\O &= \set{(i,j) \mid i,j \in\set{1,\dots,n}},\quad \F = \pows(\O), \quad \P = \Gleich(\O)
@@ -40,6 +41,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \end{example}
 
 \begin{definition}[Unabhängigkeit bezüglich $\P$]
+	\proplbl{3_13}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $I \neq \emptyset$ endliche Indexmenge. Dann heißt die Familie $(A_i)_{i \in I}$ von Ereignissen in $\F$ \begriff{unabhängig bezüglich $\P$}, falls für alle $J \subseteq I, J \neq \emptyset$ gilt:
 	\begin{align*}
 		\P\brackets{\bigcap_{i\in J}A_i} = \prod_{i\in J} \P(A_i)
@@ -48,6 +50,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \end{definition}
 
 \begin{example}[Abhängigkeit trotz paarweiser Unabhängigkeit]
+	\proplbl{3_14}
 	Betrachte zweifaches Bernoulliexperiment mit Erfolgswahrscheinlichkeit $\sfrac{1}{2}$, d.h.
 	\begin{align*}
 		\O = \set{0,1}^2, \quad \F = \pows(\O), \quad \P = \Gleich(\O)
@@ -70,8 +73,8 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \end{example}
 
 \begin{definition}[Unabhängige $\sigma$-Algebren]
-	\proplbl{3_2_15}
-	% started using \O for \Omega and \E for this special generating set E_i
+	\proplbl{3_15}
+	% started using \O for \Omega and \Gen for this special generating set E_i
 	Seien $(\O, \F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset$ Indexmenge und $(E_i, \Gen_i)$ Messräume
 	\begin{enumerate}
 		\item Die Familie $\F_i \subset \F, i \in I$, heißen \begriff{unabhängig}, wenn für die $J \subseteq I, J \neq \emptyset, \abs{J} < \infty$ gilt
@@ -87,7 +90,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \end{definition}
 
 \begin{lemma}[Zusammenhang der Definitionen]
-	\proplbl{3_2_16}
+	\proplbl{3_16}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $I \neq \emptyset, A \in \F, i \in I$. 
 	Die folgenden Aussagen sind äquivalent:
 	\begin{enumerate}
@@ -120,9 +123,9 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 		\end{align*} 
 	\end{itemize}
 \end{proof}
-Insbesondere zeigt \propref{3_2_16}, dass wir in einer Familie unabhängiger Ereignisse beliebig viele Ereignisse durch ihr Komplement, $\emptyset$ oder $\O$ ersetzen können, ohne die Unabhängigkeit zu verlieren.
+Insbesondere zeigt \propref{3_16}, dass wir in einer Familie unabhängiger Ereignisse beliebig viele Ereignisse durch ihr Komplement, $\emptyset$ oder $\O$ ersetzen können, ohne die Unabhängigkeit zu verlieren.
 \begin{proposition}
-	\proplbl{3_2_17}
+	\proplbl{3_17}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum und $\F_i \subseteq \F, i \in I$, seien $\cap$-stabile Familien von Ereignissen. Dann gilt
 	\begin{align*}
 	\F_i, i \in I \text{ unabhängig } \iff \sigma(\F_i), i \in I \text{ unabhängig}. 
@@ -153,9 +156,9 @@ Insbesondere zeigt \propref{3_2_16}, dass wir in einer Familie unabhängiger Ere
 		\end{enumerate}
 	\end{itemize}
 \end{proof}
-Mit \propref{3_2_17} folgen:
+Mit \propref{3_17} folgen:
 \begin{conclusion}
-	\proplbl{3_2_18}
+	\proplbl{3_18}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und
 	\begin{align*}
 		\F_{i,j} \subseteq \F, \quad 1 \le i \le n, 1 \le j \le m(i)
@@ -168,7 +171,7 @@ Mit \propref{3_2_17} folgen:
 	unabhängig.
 \end{conclusion}
 \begin{conclusion}
-	\proplbl{3_2_19}
+	\proplbl{3_19}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und
 	\begin{align*}
 		X_{ij}: \O \to E, \quad 1 \le i \le n, 1 \le j \le m(i)
@@ -180,6 +183,7 @@ Mit \propref{3_2_17} folgen:
 	unabhängig.
 \end{conclusion}
 \begin{example}
+	\proplbl{3_20}
 	$X_1, \dots, X_n$ unabhängige reelle Zufallsvariablen. Dann sind auch
 	\begin{align*}
 	Y_1 = X_1, Y_2 = X_2 + \cdots + X_n
@@ -187,7 +191,7 @@ Mit \propref{3_2_17} folgen:
 	unabhängig.
 \end{example}
 % % % % % % % % % % % % % % % % % 7th lecture % % % % % % % % % % % % % % % % % % %
-\begin{proof}[\propref{3_2_18}]
+\begin{proof}[\propref{3_18}]
 	OBdA sei $\Omega \in \F_{i,j} \forall i,j$. Dann sind die Familien:
 	\begin{align*}
 		\F_i^{\cap} := \set{F_{i,1} \cap \dots \cap F_{i,m(i)} \mid F_{i,j} \in \F_{i,j}, 1 \le j \le m(i)}, 1 \le i \le n
@@ -198,7 +202,7 @@ Mit \propref{3_2_17} folgen:
 		\Rightarrow \G = \sigma(\F_{i,1}, \dots, \F_{i,m(i)}) \subseteq \sigma(\F_i^{\cap}) \subseteq \G_i.
 	\end{align*}
 \end{proof}
-\begin{proof}[\propref{3_2_19}]
+\begin{proof}[\propref{3_19}]
 	Setze $\F_{i,j} = \sigma(X_{i,j})$ und $\G_i = \sigma(\F_{i,1}, \dots, \F_{i,m(i)})$, dann sind nach \propref{3_2_18} die $\G_i, i = 1,\dots,n$ unabhängig. Zudem ist
 	\begin{align*}
 	Y_i := f_i(X_{i,1}, \dots, X_{i,m(i)})
@@ -206,7 +210,7 @@ Mit \propref{3_2_17} folgen:
 	$\G_i$ messbar, also $\sigma(Y_i) \subseteq \G_i$. Damit erben die $Y_i$ die Unabhängigkeit der $\G_i$.
 \end{proof}
 \begin{proposition}[Unabhängigkeit von Zufallsvariablen]
-	\proplbl{3_2_21}
+	\proplbl{3_21}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X_1, \dots, X_n: (\O,\F) \to (E, \Gen)$ Zufallsvariablen. Dann sind die folgenden Aussagen äquivalent:
 	\begin{enumerate}
 		\item $X_1, \dots, X_n$ sind unabhängig \label{prop:unabhZV1}
@@ -242,6 +246,7 @@ Mit \propref{3_2_17} folgen:
 	\end{enumerate}
 \end{proof}
 \begin{example}
+	\proplbl{3_22}
 	Im Urnenmodell mit Zurücklegen hat der Vektor $X = (X_1, \dots, X_n)$ mit $X_i = $ Farbe im $i$-ten Zug als Zähldichte die Produktdichte der $X_i$. Die $X_1, \dots, X_n$ sind also unabhängig.
 \end{example}
 \subsection*{Konstruktion unabhängiger Zufallsvariablen}
@@ -273,7 +278,7 @@ sowie nach \propref{prop:Kolmo} $X'_1 \upmodels X'_2$.\\
 Wenn $(\O_2, \F_1, \P_1) = (\O_2, \F_2, \P_2)$, so liefert die obige Konstruktion zwei unabhängige Zufallsvariablen auf einem Wahrscheinlichkeitsraum. Andernfalls können wir auf den Produktraum ausweichen und $X'_i$ anstelle von $X_i$ betrachten. Die obige Konstruktion lässt sich direkt auf \emph{endlich} viele Zufallsvariablen übertragen.\\
 Zu \ref{konstruktionunabh:ZV:qu_2}: 
 \begin{proposition}[Satz von \person{Kolmogorov}]
-	\proplbl{prop:Kolmo}
+	\proplbl{3_23:prop:Kolmo}
 	Sei $I$ beliebige Indexmenge und $(\O_i, \F_i, \P_i), i \in I$ Wahrscheinlichkeitsräume. Setze
 	\begin{align*}
 		\O_I &:= \bigtimes_{i \in I} \O_i = \set{\omega : I \to \bigcup_{i \in I} \O_i, \omega_i \in \O_i, i \in I}\\
@@ -288,7 +293,7 @@ Zu \ref{konstruktionunabh:ZV:qu_2}:
 \begin{proof}
 	$\nearrow$ Schilling Maß und Integral, Satz 17.4.
 \end{proof}
-Sind auf den Wahrscheinlichkeitsräumen $(\O_i , \F_i , \P_i), i \in I$, nun Zufallsvariablen $X_i: \O_i \to E$ gegeben, so definieren wir wie im Satz von Kolmogorov (\propref{prop:Kolmo})
+Sind auf den Wahrscheinlichkeitsräumen $(\O_i , \F_i , \P_i), i \in I$, nun Zufallsvariablen $X_i: \O_i \to E$ gegeben, so definieren wir wie im Satz von Kolmogorov (\propref{3_23:prop:Kolmo})
 \begin{align*}
 	(\O, \F, \P) := \brackets{\O_I, \F_I, \P_I = \bigotimes_{i \in I}} \mit \omega = (\omega_i)_{i \in I}
 	\intertext{und wie im endlichen Fall}
@@ -306,7 +311,7 @@ Dann hat $(X,Y)$ die Verteilung $\P_X \otimes \P_Y$ auf $\R^2$. Andernfalls ist 
 \end{align*}
 $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \P_Y)\circ A^{-1}$.
 \begin{definition}[Faltung]
-	\proplbl{3_2_24}
+	\proplbl{3_24}
 	Seien $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\Rn, \borel(\Rn))$. Das durch
 	\begin{align*}
 		\P_1 \star \P_2(F) = \iint \indi_F (x+y) \P_1 (\d x)\P_2 (\d y)
@@ -314,7 +319,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 	definierte Wahrscheinlichkeitsmaß $\P_1 \star \P_2 = (\P_1 \otimes \P_2) \circ A^{-1}$ auf $(\Rn, \borel(\Rn))$ heißt \begriff{Faltung} von $\P_1$ und $\P_2$.
 \end{definition}
 \begin{proposition}
-	\proplbl{3_2_25}
+	\proplbl{3_25}
 	Seien $X,Y: \O \to \Rn$ unabhängige Zufallsvariablen mit Verteilungen $\P_X, \P_Y$. Dann ist
 	\begin{align*}
 		\P_{X+Y} = \P_X \star \P_Y,
@@ -326,7 +331,7 @@ $A$ ist stetig, also messbar. Die Verteilung von $X+Y$ ist dann $(\P_X \otimes \
 \end{proof}
 Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 \begin{proposition}
-	\proplbl{3_2_26}
+	\proplbl{3_26}
 	Seien $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\R, \borel(\Rn))$
 	\begin{enumerate}
 		\item Diskreter Fall: Sind $\P_1 , \P_2$ de facto Wahrscheinlichkeitsmaße auf $(\Z, \pows(\Z))$ mit Zähldichte $\rho_1 , \rho_2$. Dann ist die Faltung $\P_1 \star \P_2$ Wahrscheinlichkeitsmaß auf $(\Z, \pows(\Z))$ mit Zähldichte
@@ -356,7 +361,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	\end{enumerate}
 \end{proof}
 \begin{example}
-	\proplbl{3_2_27}
+	\proplbl{3_27}
 	Seien $X \sim \Pois(\lambda), Y \sim \Pois(\mu)$ zwei unabhängigen reellen Zufallsvariablen (mit Werten in $\N_0$). Dann ist $X+Y$ eine Zufallsvariable mit Werten in $\N_0$ und Zähldichte
 	\begin{align*}
 		\P(X+Y=k) &= \sum_{l \in \Z} \P(X=l) \P(Y = k-l)\\
@@ -372,7 +377,7 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 	Das ist aber nicht immer der Fall!
 \end{*hint}
 \begin{example}
-	\proplbl{3_2_28}
+	\proplbl{3_28}
 	Seien $X,Y \sim \Gleich([0,1])$ zwei unabhängige Zufallsvariablen mit Dichten $\rho(x) = \indi_{[0,1]}(x)$. Dann ist $X+Y$ eine Zufallsvariable mit Werten in $[0,2]$ und Dichte
 	\begin{align*}
 		\rho \star \rho(x) &= \int_{\R} \rho(y) \rho(x-y) \d x \d y\\

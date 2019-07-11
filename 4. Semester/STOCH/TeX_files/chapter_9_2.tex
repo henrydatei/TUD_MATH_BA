@@ -1,4 +1,4 @@
-﻿\section{Das starke Gesetz der großen Zahlen}
+\section{Das starke Gesetz der großen Zahlen}
 (SLLN - Strong law of large numbers)\\
 \begin{definition}[\begriff{$\P$ f.s. Konvergenz}]
 	Seien $Y,Y_1, Y_2, \dots$ reellen Zufallsvariablen auf Wahrscheinlichkeitsraum $(\O,\F,\P)$. Falls
@@ -172,20 +172,21 @@
 	\end{align*}
 \end{lemma}
 \begin{proof}
-	Nach \person{Borel}-\person{Cantelli} folgt
+	Nach \person{Borel}-\person{Cantelli} folgt 
 	\begin{align*}
 		\P(\abs{Y_n - Y} > \epsilon_n \text{ für unendliche viele }n) = 0
-		\intertext{Dies ist äquivalent zu:}
-		\P(\abs{Y_n - Y} > \epsilon_n \text{ für höchstens endliche viele }n) = 1\\
-		\Longleftrightarrow \exists \O' \colon \P(\O') = 1 \text{, so dass}\\
+	\end{align*}
+	Dies ist äquivalent zu: $\P(\abs{Y_n - Y} > \epsilon_n \text{ für höchstens endliche viele }n) = 1$ $\Longleftrightarrow \exists \O' \colon \P(\O') = 1$, so dass
+	\begin{align*}
 		\forall \omega \in \O' \exists N(\omega') \quad \forall n \ge N(\omega')\colon \abs{Y_n(\omega') -Y(\omega')} \le \epsilon_n
 		\intertext{impliziert das} 
-		\exists \O' \subseteq \O, \P(\O') = 1\text{, so dass } \abs{Y_n(\omega') -Y(\omega')} \xrightarrow[n \to \infty]{} 0\\
+		\exists \O' \subseteq \O, \P(\O') = 1\text{, so dass } \abs{Y_n(\omega') -Y(\omega')} \xrightarrow[n \to \infty]{} 0
 		\implies Y_n \xrightarrow[n \to \infty]{\text{f.s.}} Y.
 	\end{align*}
 \end{proof}
 \begin{conclusion}
-	\proplbl{9_11} $Y,Y_1,Y_2, \dots$ reelle Zufallsvariablen auf $(\O,\F,\P)$, so dass $Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y$. Dann existiert eine Teilfolge $(Y_{n_k})_{k \in \N} \subseteq (Y_n)_{n\in \N}$, so dass $Y_{n_k} \xrightarrow[k \to \infty]{\text{f.s.}} Y$.
+	\proplbl{9_11} 
+	$Y,Y_1,Y_2, \dots$ reelle Zufallsvariablen auf $(\O,\F,\P)$, so dass $Y_n \xrightarrow[n \to \infty]{\text{f.s.}}Y$. Dann existiert eine Teilfolge $(Y_{n_k})_{k \in \N} \subseteq (Y_n)_{n\in \N}$, so dass $Y_{n_k} \xrightarrow[k \to \infty]{\text{f.s.}} Y$.
 \end{conclusion}
 \begin{proof}
 	Nach Vorrausetzung gilt

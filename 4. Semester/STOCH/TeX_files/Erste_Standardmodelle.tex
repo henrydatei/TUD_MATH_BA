@@ -1,4 +1,4 @@
-﻿\chapter{Erste Standardmodelle der Wahrscheinlichkeitstheorie}
+\chapter{Erste Standardmodelle der Wahrscheinlichkeitstheorie}
 %\subsection{Diskrete Verteilungen}
 \section*{Diskrete Verteilungen}
 
@@ -97,6 +97,7 @@ Wir erhalten
 \end{align*}
 der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten beschreibt, $n$ Objekte in $l$ Gruppen aufzuteilen, so dass Gruppe $i$ gerade $k_i$ Objekte beinhaltet.
 \begin{definition}[Multinomialverteilung]
+	\proplbl{2_1}
 	Sei $l > 2, p = (p_1, \dots, p_l)$ eine Zähldichte und $n \in \N$, dann heißt die Verteilung auf \\
 	$\set{k = (k_i)_{i=1,\dots,l} \in \N_{0}^{l} : \sum_{i=1}^{l} k_i = n}$ mit Zähldichte
 	\begin{align}
@@ -105,6 +106,7 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 	\begriff{Multinomialverteilung} mit Parametern $n$ und $p$. Wir schreiben auch $\Multi(n,p)$.
 \end{definition}
 \begin{example}
+	\proplbl{2_2}
 	Eine Urne enthalte nur schwarze ``$1$'' und weiße ``$0$'' Kugeln, d.h. $E=\set{0,1}$, und es sei $\rho(1) = p$ gerade die Proportion der schwarzen Kugeln (= Wahrscheinlichkeit bei einem Zug schwarz zu ziehen), dann ist Wahrscheinlichkeit in $n$ Zügen $k$-mal schwarz zu ziehen:
 	\begin{align}
 		\binom{n}{k}\prod_{i=0,1} \rho(i)^{k_i} = \binom{n}{k} p^k (1-p)^{n-k}.\notag
@@ -113,6 +115,7 @@ der \begriff{Multinomialkoeffizient} ist, welcher die Anzahl der Möglichkeiten 
 \end{example}
 
 \begin{definition} [Binomialverteilung, Bernoulliverteilung]
+	\proplbl{2_3}
 	Sei $p \in [0,1]$ und $n \in \N$, dann heißt die Verteilung mit Zähldichte
 	\begin{align}
 		\rho(k) = \binom{n}{k}p^k (1-p)^{n-k} \mit k \in \set{0,1,\dots,n}.\notag
@@ -141,6 +144,7 @@ Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es w
 	Hausaufgabe 2.3!
 \end{proof}
 \begin{definition}[Hypergeometrische Verteilung]
+	\proplbl{2_4}
 	Seien $N \in \N, W \le N, n \le N$, dann heißt die Verteilung auf $\set{0,\dots,n}$ mit Zähldichte
 	\begin{align}
 		\rho(w) = \frac{\binom{W}{w}\binom{N-W}{n-w}}{\binom{N}{n}}, \quad w = \max\set{0,n=N+W}, \dots, \min\set{W,n},\notag
@@ -150,6 +154,7 @@ Gegeben: Urne mit $N$ Kugeln verschiedener Farben aus $E$, $\abs{E} \ge 2$. Es w
 \section{Poisson-Approximation und \person{Poisson}-Verteilung}
 $\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ mühsam auszuwerten. Für seltene Ereignisse ($n$ groß, $p$ klein) verwende daher:
 \begin{proposition}[Poisson-Approximation]
+	\proplbl{2_5}
 	Sei $\lambda > 0$ und $(p_n)_{n\in\N}$ eine Folge in $[0,1]$ mit
 	\begin{align}
 		np_n \to \lambda,\quad n \to \infty.\notag
@@ -179,6 +184,7 @@ Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn
 	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1.\notag
 \end{align}
 \begin{definition}[Poissonverteilung]
+	\proplbl{2_6}
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definierte Wahrscheinlichkeitsmaß mit
 	\begin{align}
 		\probp(\set{k}) = \frac{\lambda^k}{k!}e^{-\lambda} \quad k \in \N_{0},\notag

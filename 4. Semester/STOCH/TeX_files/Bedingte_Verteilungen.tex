@@ -1,4 +1,4 @@
-﻿In \cref{3_1_3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
+﻿In \cref{3_3}: $(\O, \F, \P), A,B \in \F$ %TODO add reference!
 \begin{align*}
 	\P(A \mid B) = \begin{cases}
 	\frac{\P(A \cap B)}{\P(B)} &\quad \P(B) > 0\\
@@ -69,7 +69,7 @@ Seien $X,Y$ Zufallsvariablen gegeben durch
 \end{itemize}
 Wir benötigen:
 \begin{proposition}[\person{Radon}-\person{Nikodym} für endliche Maße]
-	\proplbl{6_1_1:Radon}
+	\proplbl{6_1:Radon}
 	Seien $\mu, \nu$ zwei endliche Maße auf $(\O,\F)$. Dann ist $\nu$ absolut stetig bzgl. $\mu$ $(\nu \ll \mu)$ genau dann wenn $\nu$ eine messbare Dichte $f$ bezüglich $\mu$ besitzt, d.h. wenn
 	\[
 		\nu(A) = \int_A f(\omega)\d \mu(\omega)  \quad \forall A \in \F.
@@ -80,6 +80,7 @@ Wir benötigen:
 	$\nearrow$ MINT Schilling Satz 19.2.
 \end{proof}
 \begin{conclusion}
+	\proplbl{6_2}
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum und
 	\begin{align*}
 		X: (\O,\F) \to (\O_X, \F_X)\\
@@ -117,7 +118,7 @@ Wir benötigen:
 \end{proof}
 Für fixiertes $A \in \F_X$ ist die nun definierte bedingte Wahrscheinlichkeit eindeutig bis auf $\P_Y$-Nullmengen. Für fixiertes $y$ (und $A$ variierend) ist $\P(X \in A \mid Y = y)$ aber nicht immer ein Wahrscheinlichkeitsmaß!
 \begin{example}
-	\proplbl{6_1_3}
+	\proplbl{6_3}
 	Betrachte den Wahrscheinlichkeitsraum $([0,1],\borel([0,1]), \Gleich([0,1])$ und die Zufallsvariablen $X,Y$ mit $X(\omega) = Y(\omega) = \omega \quad \forall \omega \in [0,1]$. Dann
 	\begin{align*}
 		\P(X \in A, Y \in B) = \P(Y \in A \cap B) = \int_B\indi_{A}(\omega)\P_Y(\d \omega) \quad \forall B \in \F
@@ -141,14 +142,14 @@ Für fixiertes $A \in \F_X$ ist die nun definierte bedingte Wahrscheinlichkeit e
 		\P'(X\in [0,y]\mid Y = y) = \indi_{[0,y]} + \indi_{f([0,y])} = 2
 	\end{align*}
 \end{example}
-Wie können solche Maße wie im \propref{6_1_3} ausgeschlossen werden? Dadurch ist folgende Definition motiviert.
+Wie können solche Maße wie im \propref{6_3} ausgeschlossen werden? Dadurch ist folgende Definition motiviert.
 \begin{definition}[reguläre bedingte Verteilung]
-	\proplbl{6_1_4}
+	\proplbl{6_4}
 	Eine bedingte Verteilung $\P(X \in \cdot\mid Y = \cdot)$ heißt \begriff{regulär}, wenn $\P(X \in \cdot \mid Y =y)$ für alle $y \in \O_Y$ ein Wahrscheinlichkeitsmaß ist.
 \end{definition}
 Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränken uns daher auf den reellen Fall.
 \begin{proposition}
-	\proplbl{6_1_5}
+	\proplbl{6_5}
 	Sei $(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\Rd, \borel(\Rd))$, 
 	$Y: (\O, \F) \to (\O_Y, \F_Y)$ Zufallsvariablen. Dann existiert eine reguläre bedingte Verteilung
 	\[
@@ -181,9 +182,10 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{itemize}
 \end{proof}
 \begin{proposition}
+	\proplbl{6_6}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X,Y\colon (\O,\F) \to (\R, \borel(\R))$ Zufallsvariablen mit gemeinsamer Dichte $\rho_{X,Y}(x,y)$. Dann besitzen  $X \und Y$ die \begriff{Randdichten} (``Marginaldichten'')
 	\[
-		\rho_X (x) = \int_{\R} \rho_{X,Y}(x,y) \d y \quad \rho_Y (y) = \int_{\R} \rho_{X,Y}(x,y) \d x
+		\rho_X (x) = \int_{\R} \rho_{X,Y}(x,y) \d y \und \rho_Y (y) = \int_{\R} \rho_{X,Y}(x,y) \d x
 	\]
 	Zudem gilt für alle $A \in \borel(\R), y \in \R$:
 	\[
@@ -192,7 +194,7 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 		0 &\quad \sonst
 		\end{cases}
 	\]
-	Insbesondere besitzt $\P(X \in \cdot \mid Y =y)$ für alle $y \in \R\mit \rho_Y(y) = 0$ die Dichte (\begriff{bedingte Dichte})
+	Insbesondere besitzt $\P(X \in \cdot \mid Y =y)$ für alle $y \in \R\mit \rho_Y(y) > 0$ die Dichte (\begriff{bedingte Dichte})
 	\[
 		\rho_{X \mid Y} (x,y) = \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} 
 	\]
@@ -220,13 +222,13 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 		0 &\quad \sonst
 		\end{cases}
 	\end{align*}
-	nach Definition der bedingten Verteilung \propref{6_1_4}. Für $y \mit \rho_Y(y) > 0$ folgt
+	nach Definition der bedingten Verteilung \propref{6_4}. Für $y \mit \rho_Y(y) > 0$ folgt
 	\begin{align*}
-		\P(X \in \R \mid Y = y) = \int_{\R} \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \d x = \frac{1}{\rho_Y(y)} \int_{\R} \rho_{X,Y}(x,y) \d x = \frac{\rho_X(x)}{\rho_Y(y)} = 1.
+		\P(X \in \R \mid Y = y) = \int_{\R} \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \d x = \frac{1}{\rho_Y(y)} \int_{\R} \rho_{X,Y}(x,y) \d x = \frac{\rho_Y(y)}{\rho_Y(y)} = 1.
 	\end{align*}
 \end{proof}
 \begin{example}
-	\proplbl{6_1_7}
+	\proplbl{6_7}
 	Betrachte $f(x,y) = cx e^{-x(y+1)} \quad x,y > 0 \quad c \in \R$ bestimmt.
 	Damit $f$ die Dichte zweier Zufallsvariablen $X,Y$ ist, muss
 	\[

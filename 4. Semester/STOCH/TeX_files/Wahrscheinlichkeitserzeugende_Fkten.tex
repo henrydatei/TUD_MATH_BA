@@ -1,5 +1,6 @@
 ﻿\section{Wahrscheinlichkeitserzeugende Funktionen} %TODO add short title for sure
 \begin{definition}[Wahrscheinlichkeitserzeugende Funktion]
+	\proplbl{5_14}
 	\begin{enumerate}
 		\item Ist $\P$ Wahrscheinlichkeitsmaß auf $(\N_0, \pows(\N_0))$ mit Zähldichte $\rho$, so heißt
 		\[
@@ -35,13 +36,14 @@
 	\begin{align*}
 		\psi_X (s) &= \sum_{k=0}^n s^k \binom{n}{k}p^k (1-p)^{n-k}\\
 		&= \sum_{k=0}^n \binom{n}{k}(ps)^k (1-p)^{n-k}\\
-		&= (ps - (1-p))^n = (1+p(s-1))^n .
+		&= (ps - (1-p))^n = (1+p(s-1))^n . \quad \text{Binomial Satz}
 	\end{align*}
 \end{example}
 \begin{proposition}[Momentenberechnung mit der pgf]
+	\proplbl{5_16}
 	Sei $X$ eine $\N_0$-wertige Zufallsvariable, dann gilt
 	\begin{align*}
-		\E [X^n] < \infty \quad n \ge 1, \text{ genau dann, wenn } \psi_X^{(n)} = \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty.
+		\E [X^n] < \infty \quad n \ge 1 \Longleftrightarrow \psi_X^{(n)} = \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty.
 	\end{align*}
 	Insbesondere gilt dann
 	\begin{align*}
@@ -62,12 +64,13 @@
 		\psi^{(n)} (1) &= \lim_{s \uparrow 1} \frac{\psi^{(n-1)} - \psi^{(n-1}(s)}{1-s}\\
 		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-(n-1)+1) \frac{1-s^{k-(n-1)}}{1-s}\\
 		&= \lim_{s \uparrow 1} \sum_{k\in \N_0} \rho(k)k(k-1)\cdots (k-n+2) \sum_{l=0}^{k-(n-1)} s^l \quad \text{ Geo. Reihe}\\
-		\over{\text{Monotonie}}&{=} \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-n+2)(k-n+1)\\  
+		&= \sum_{k\in \N_0} \rho(k)k(k-1) \cdots (k-n+2)(k-n+1) \quad \text{ Monotonie}\\  
 		&= \E[X(X-1)\cdots (X-n+1)]
 	\end{align*}
 	Insbesondere gilt $\E X^n < \infty$ genau dann, wenn $\psi_X^{(n)}(1) < \infty \bzw \lim_{s \uparrow 1} \psi_X^{(n)} (s) < \infty$
 \end{proof}
 \begin{example}
+	\proplbl{5_17}
 	Sei $X \sim \Bin(n,p)$, dann gilt \cref{5_15}
 	\begin{align*}
 		\psi_X (s) &= (1+p(s-1))^n.
@@ -83,6 +86,7 @@
 	\end{align*}
 \end{example}
 \begin{proposition}
+	\proplbl{5_18}
 	Seien $X,Y$ unabhängige Zufallsvariablen, $\N_0$-wertig auf $(\O,\F,\P)$ Wahrscheinlichkeitsraum. Dann gilt
 	\begin{align*}
 		\psi_{X+Y} &= \E[s^{X+Y}] = \E[s^X s^Y]\\
@@ -91,6 +95,7 @@
 	\end{align*}
 \end{proposition}
 \begin{proposition}
+	\proplbl{5_19}
 	Sind $\P_1 , \P_2$ Wahrscheinlichkeitsmaße auf $(\N_0, \pows(\N_0))$, so gilt
 	\begin{align*}
 		\psi_{\P_1\star \P_2} = \psi_{\P_1}(s) \psi_{\P_2}(s) \quad 0 \le s \le 1.
