@@ -1,4 +1,4 @@
-\section{Varianz und höhere Momente}
+﻿\section{Varianz und höhere Momente}
 \begin{definition}[$k$-te Momente]
 	\proplbl{5_10}
 	$(\O,\F,\P)$ Wahrscheinlichkeitsraum, $X: (\O,\F) \to (\R, \borel(\R))$ reelle Zufallsvariable. Dann ist für $k \in \N$
@@ -63,7 +63,7 @@ Von Interesse ist insbesondere das zweite Moment.
 		\Var(X) &= \E X^2 - \underbrace{(\E X)^2}_{=np}\\
 		\intertext{mit}
 		\E X^2 &= \sum_{k=0}^n k^2 \binom{n}{k}p^k (1-p)^{n-k}\\
-		&= np \sum_{k=0}^n k \frac{(n-1)!}{(n-1-(k-1))!(k-1)!} p^{k-1}(1-p)^{n-1-(k-1)}\\
+		&= np \sum_{k=1}^n k \frac{(n-1)!}{(n-1-(k-1))!(k-1)!} p^{k-1}(1-p)^{n-1-(k-1)}\\
 		&= np\sum_{l=0}^{n-1}(l+1)\binom{n-1}{l}p^l (1-p)^{n-1-l} \quad \mit l = k-1\\
 		&= np(1 + \sum_{l=0}^{n-1}l \binom{n-1}{l}p^l (1-p)^{n-1-l})\\
 		&= np(1+(n-1)p)\cdot 1) \quad \text{mit Binomial Satz}\\
