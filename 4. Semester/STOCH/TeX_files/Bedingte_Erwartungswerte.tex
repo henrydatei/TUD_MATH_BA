@@ -1,4 +1,4 @@
-\section{Bedingte Erwartungswerte}
+﻿\section{Bedingte Erwartungswerte}
 \begin{proposition}
 	\proplbl{6_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
@@ -133,7 +133,7 @@ betrachten.
 \end{definition}
 \begin{*remark}
 	\begin{itemize}
-		\item Existenz und Eindeutigkeit (bis auf $\G$-Nullmengen) der bedingten Erwartung folgen wieder aus \person{Radon}-\person{Nikodym} (\propref{6_1_1:Radon}).
+		\item Existenz und Eindeutigkeit (bis auf $\G$-Nullmengen) der bedingten Erwartung folgen wieder aus \person{Radon}-\person{Nikodym} (\propref{6_1:Radon}).
 		\item Die Gleichung \eqref{eq:6_2_11} können wir umschreiben:
 		\begin{align*}
 			\E[\E[X \mid \G]\indi_G] = \E[X \indi_G] \quad \forall G \in \G
@@ -212,10 +212,10 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 			\E[X] = \sup_{n \in \N} \E[X_n] < \infty
 		\end{align*}
 		also $X \in \Ln{1}(\P)$ und damit existiert $\E[X \mid \G]$.
-		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_2_12}). Also
+		$\E[X_n \mid \G]$ ist monoton wachsend (\propref{6_12}). Also
 		\begin{align*}
 			\int_G \sup_{n \in \N} \E[X_n \mid \G] \d \P &= \sup_{n \in \N} \int_G \E[X_n \mid \G]\d \P\\
-			\overset{\text{\propref{6_2_11}}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
+			\overset{\text{\propref{6_11}}}&{=} \sup_{n \in \N} \int_G X_n \d \P \\
 			&= \int_G \sup_{n \in \N} X_n \d \P
 		\end{align*}
 		\item $\nearrow$ HA 8.2a
@@ -262,20 +262,20 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\item Sei
 		\begin{align*}
 			\E[\E[X\mid \G]]\overset{\text{Def. EW}}&{=} \int_{\O} \E[X \mid \G]\d \P\\
-			\overset{\propref{6_2_11}, \O\in \G}&{=} \int_{\O} X \d \P = \E[X]
+			\overset{\propref{6_11}, \O\in \G}&{=} \int_{\O} X \d \P = \E[X]
 		\end{align*}
 		\item Für $H \in \mathscr{H}$ gilt
 		\begin{align*}
-			\int_H \E[X\mid \G]\d \P  \overset{\propref{6_2_11}, H\in \G}&{=} \int_H X \d \P\\
-			 \overset{\propref{6_2_11}}&{=} \int_H \E[X \mid \mathscr{H}] \d \P
+			\int_H \E[X\mid \G]\d \P  \overset{\propref{6_11}, H\in \G}&{=} \int_H X \d \P\\
+			 \overset{\propref{6_11}}&{=} \int_H \E[X \mid \mathscr{H}] \d \P
 		\end{align*}
 		also ist $\E[X\mid \mathscr{H}]$ eine Version von $\E[\E[X\mid \G]\mid \mathscr{H}]$.
 		\item Sei zunächst $Y=\indi_B$ mit $B \in \G$. Dann folgt für $G \in \G$
 		\begin{align*}
 			\int_G Y \E[X \mid \G]\d \P &= \int_{G \cap B} \E[X \mid \G]\d \P\\
-			\overset{\propref{6_2_11}, G \cap B \in \G}&{=} \int_{G \cap B} X \d \P\\
+			\overset{\propref{6_11}, G \cap B \in \G}&{=} \int_{G \cap B} X \d \P\\
 			&=\int_G XY \d \P\\
-			\overset{\propref{6_2_11}}&{=} \int_G \E[XY\mid \G] \d\P
+			\overset{\propref{6_11}}&{=} \int_G \E[XY\mid \G] \d\P
 		\end{align*}
 		und $Y\E[X\mid \G]$ ist Version von $\E[XY\mid \G]$. Die allgemeine Aussage folgt mit maßtheoretischer Induktion.
 	\end{enumerate}
@@ -349,7 +349,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\overset{\text{Turmegs.}}&{=} \E[(\E[X \mid \G])^2] - (\E[X])^2\\
 	\end{align*}
 	\begin{align*}
-		\E[\Var(X \mid \G)] \overset{\propref{6_2_17}}&{=} \E[\E[X^2 \mid \G] - \E[X \mid \G]^2]\\
+		\E[\Var(X \mid \G)] \overset{\propref{6_17}}&{=} \E[\E[X^2 \mid \G] - \E[X \mid \G]^2]\\
 			&= \E[\E[X^2 \mid \G]] - \E[\E[X\mid \G]^2]\\
 			\overset{\text{Turm}}&{=} \E[X^2]-\E[\E[X \mid \G]^2]
 	\end{align*}
@@ -367,7 +367,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
 		&= \Var(X_i)\E[N]
 		\intertext{und}
-		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] = \E[X_1]\E[N], \propref{6_2_15}})^2] \quad \text{ Def. Varianz}\\
+		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] = \E[X_1]\E[N], \propref{6_15}})^2] \quad \text{ Def. Varianz}\\
 		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N])^2\P(N=n) \\

@@ -1,4 +1,4 @@
-\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
+﻿\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
@@ -46,7 +46,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	\begin{align*}
 		\P\brackets{\bigcap_{i\in J}A_i} = \prod_{i\in J} \P(A_i)
 	\end{align*}
-	Offensichtlich impliziert die Unabhängigkeit einer Familie die paarweise Unabhängigkeit je zweier Familienmitglieder nach \propref{3_2_11}. Umgekehrt gilt dies nicht!
+	Offensichtlich impliziert die Unabhängigkeit einer Familie die paarweise Unabhängigkeit je zweier Familienmitglieder nach \propref{3_11}. Umgekehrt gilt dies nicht!
 \end{definition}
 
 \begin{example}[Abhängigkeit trotz paarweiser Unabhängigkeit]
@@ -102,7 +102,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 \begin{proof} %TODO add ref?
 	Da die Unabhängigkeit über endliche Teilemengen definiert ist, können wir oBdA $I = \set{1, \dots, n}$ annehmen. 
 	\begin{itemize}
-		\item Da $\sigma(\indi_{A_i}) = \sigma(A_i)$ folgt die Äquivalenz von 2. und 3. direkt aus \propref{3_2_15}.
+		\item Da $\sigma(\indi_{A_i}) = \sigma(A_i)$ folgt die Äquivalenz von 2. und 3. direkt aus \propref{3_15}.
 		\item Zudem ist 2. $\to$ 1. klar!
 		\item Für 1 $\to$ 2. genügt es zu zeigen, dass
 		\begin{align*}
@@ -196,14 +196,14 @@ Mit \propref{3_17} folgen:
 	\begin{align*}
 		\F_i^{\cap} := \set{F_{i,1} \cap \dots \cap F_{i,m(i)} \mid F_{i,j} \in \F_{i,j}, 1 \le j \le m(i)}, 1 \le i \le n
 	\end{align*}
-	$\cap$-stabil, unabhängig und es gilt: $\F_{i,1}, \dots, \F_{i,m(i)} \subseteq \F_i^{\cap}$ ($\nearrow$ HA)! Nach \propref{3_2_17} sind auch $\sigma(\F_i^{\cap})$ unabhängig. Damit folgt die Behauptung, da $\sigma(\F_i^{\cap}) = \G_i$:
+	$\cap$-stabil, unabhängig und es gilt: $\F_{i,1}, \dots, \F_{i,m(i)} \subseteq \F_i^{\cap}$ ($\nearrow$ HA)! Nach \propref{3_17} sind auch $\sigma(\F_i^{\cap})$ unabhängig. Damit folgt die Behauptung, da $\sigma(\F_i^{\cap}) = \G_i$:
 	\begin{align*}
 		\F_{i,1}, \dots, \F_{i,m(i)} \subseteq \F_i^{\cap} \subseteq \sigma(\F_{i,1}, \dots, \F_{i,m(i)}) = \G_i\\
 		\Rightarrow \G = \sigma(\F_{i,1}, \dots, \F_{i,m(i)}) \subseteq \sigma(\F_i^{\cap}) \subseteq \G_i.
 	\end{align*}
 \end{proof}
 \begin{proof}[\propref{3_19}]
-	Setze $\F_{i,j} = \sigma(X_{i,j})$ und $\G_i = \sigma(\F_{i,1}, \dots, \F_{i,m(i)})$, dann sind nach \propref{3_2_18} die $\G_i, i = 1,\dots,n$ unabhängig. Zudem ist
+	Setze $\F_{i,j} = \sigma(X_{i,j})$ und $\G_i = \sigma(\F_{i,1}, \dots, \F_{i,m(i)})$, dann sind nach \propref{3_18} die $\G_i, i = 1,\dots,n$ unabhängig. Zudem ist
 	\begin{align*}
 	Y_i := f_i(X_{i,1}, \dots, X_{i,m(i)})
 	\end{align*}
@@ -231,7 +231,7 @@ Mit \propref{3_17} folgen:
 			\overset{\text{unabh}}&{=} \prod_{i=1}^n \P(X_i \in A_i)\\
 			&= \prod_{i=1}^n \P_{X_i}(A_i) = \brackets{\bigotimes_{i=1}^n \P_{X_i}} (A_1 \times \dots \times A_n) 
 		\end{align*} 
-		\item[2 $\Rightarrow$ 3:] Aus der obigen Rechnung sehen wir, dass 2 bereits 3 impliziert für alle Rechtecke: $\bigtimes_{i = 1}^n A_i$. Da die Familie der Rechtecke $\cap$-stabil ist und $\E^{\otimes n}$ erzeugt, folgt die Aussage aus dem Eindeutigkeitssatz für Maße \propref{1_1_9}.
+		\item[2 $\Rightarrow$ 3:] Aus der obigen Rechnung sehen wir, dass 2 bereits 3 impliziert für alle Rechtecke: $\bigtimes_{i = 1}^n A_i$. Da die Familie der Rechtecke $\cap$-stabil ist und $\E^{\otimes n}$ erzeugt, folgt die Aussage aus dem Eindeutigkeitssatz für Maße \propref{1_9}.
 		\item[3 $\Rightarrow$ 1:] Sei $J \subseteq \set{1,\dots,n}$ und setze
 		\begin{align*}
 			A_i &:= \begin{cases}
@@ -274,7 +274,7 @@ und damit folgt die Messbarkeit der Abbildungen $X'_1, X'_2$, d.h. $X'_1, X'_2$ 
 	\intertext{also}
 	\P(X'_i \in F_i) &= \P_i (X'_i \in F_i)
 \end{align*}
-sowie nach \propref{prop:Kolmo} $X'_1 \upmodels X'_2$.\\
+sowie nach \propref{3_23:prop:Kolmo} $X'_1 \upmodels X'_2$.\\
 Wenn $(\O_2, \F_1, \P_1) = (\O_2, \F_2, \P_2)$, so liefert die obige Konstruktion zwei unabhängige Zufallsvariablen auf einem Wahrscheinlichkeitsraum. Andernfalls können wir auf den Produktraum ausweichen und $X'_i$ anstelle von $X_i$ betrachten. Die obige Konstruktion lässt sich direkt auf \emph{endlich} viele Zufallsvariablen übertragen.\\
 Zu \ref{konstruktionunabh:ZV:qu_2}: 
 \begin{proposition}[Satz von \person{Kolmogorov}]

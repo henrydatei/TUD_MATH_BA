@@ -97,7 +97,7 @@ Wir benötigen:
 	\begin{align*}
 		\P(X \in A, Y \in \cdot) \ll \P(Y \in \cdot) = \P_Y(\cdot)
 	\end{align*}
-	Nach \propref{6_1_1:Radon} existiert eine messbare Funktion $f: (\O_Y, \F_Y) \to (\R_+, \borel(\R_+))$ mit
+	Nach \propref{6_1:Radon} existiert eine messbare Funktion $f: (\O_Y, \F_Y) \to (\R_+, \borel(\R_+))$ mit
 	\begin{align*}
 		\P(X \in A, Y \in B) = \int_B f(y)\P_Y(\d y) \quad \forall B \in \F_Y.
 	\end{align*}
@@ -208,11 +208,11 @@ Die Existenz regulärer bedingter Verteilungen ist nicht trivial. Wir beschränk
 	\end{align*}
 	Zudem gilt für $A, B \in \borel(\R)$
 	\begin{align*}
-		\P(X \in A, Y\in B) &= \int_{\R} \int_A \rho_{X,Y} (x,y) \d x \d y\\
-		&= \int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y + \\
-		&+\int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y\\
+		\P(X \in A, Y\in B) &= \int_{B} \int_A \rho_{X,Y} (x,y) \d x \d y\\
+		&= \int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) >0} \d x \d y\\
+		&+\int_B \int_A \rho_{X,Y} (x,y) \indi_{\rho_Y (y) =0} \d x \d y\\
 		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \rho_Y(y) \d y + \\
-		&+\underbrace{\int_{B \cap \rho_Y(y) >0} \underbrace{\int_A \rho_{X,Y} (x,y) \d x}_{=\int_{\R} \rho_{X,Y}(x,y) \d x = \rho_Y(y)} \d y}_{=0}\\
+		&+\underbrace{\int_{B \cap \rho_Y(y) =0} \underbrace{\int_A \rho_{X,Y} (x,y) \d x}_{\le\int_{\R} \rho_{X,Y}(x,y) \d x = \rho_Y(y)} \d y}_{=0}\\
 		&= \int_B \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \indi_{\rho_Y (y) >0} \d x \P_Y(\d y),
 		\end{align*}
 		so dass

@@ -44,10 +44,26 @@
 	\end{enumerate}
 \end{proof}
 %TODO create cd for the convergence structure ... see eric!
-Hier fehlt die Übersicht, kann man eventuell mit tikzcd erstellen, aber keine Lust im Moment! ;)
+%Hier fehlt die Übersicht, kann man eventuell mit tikzcd erstellen, aber keine Lust im Moment! ;)
 %\begin{tikzcd}
 %	f.s. - Konvergenz & \arrow[dd, Rightarrow]\arrow[ll, dashed] & & $\Ln{p}$-Konvergenz\\
 %	& & &\\
 %	stoch Konvergenz & \arrow[d, Rightarrow]\arrow[ll, Leftarrow]& & $\Ln{1}$-Konvergenz\\
 %	Verteilungsfunktion
 %\end{tikzcd}
+
+\begin{center}
+	\begin{tikzpicture}
+	\node at (0,0) (a) {f.s. Konv.};
+	\node at (4,0) (b) {$\mathscr{L}^p$-Konv.};
+	\node at (0,-2) (c) {Stoch. Konv.};
+	\node at (4,-2) (d) {$\mathscr{L}^1$-Konv.};
+	\node at (0,-4) (e) {Verteilungskonv.};
+	
+	\draw[->, dotted, -triangle 45] (b) to node [above] {\small TF} (a);
+	\draw[->, double, -triangle 45] (b) -- (d);
+	\draw[->, -triangle 45, double] (a) to node [right] {$\uparrow$ \small TF} (c);
+	\draw[->, -triangle 45, double] (d) -- (c);
+	\draw[->, -triangle 45, double] (c) -- (e);
+	\end{tikzpicture}
+\end{center}
