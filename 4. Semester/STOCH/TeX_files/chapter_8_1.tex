@@ -1,4 +1,4 @@
-\begin{enumerate}[label=]
+﻿\begin{enumerate}[label=]
 	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3). %TODO ref!
 \end{enumerate}
 \begin{definition}
@@ -44,9 +44,9 @@
 		\item $m_X(0) = 1$
 		\item $a,b \in \R$
 		\begin{align*}
-			m_{aX+b}(u) = e^{bu}m_X(au) \quad \text{ für } u \text{ so dass} m_X(au) < \infty
+			m_{aX+b}(u) = e^{bu}m_X(au) \quad \text{ für } u \text{ so dass } m_X(au) < \infty
 		\end{align*}
-		\item $X \perp Y \implies m_{X+Y}(u) = m_X(u)m_Y(u)$ $\forall u$, so dass $m_X(u), m_Y(u) < \infty$ 
+		\item $X \upmodels Y \implies m_{X+Y}(u) = m_X(u)m_Y(u)$ $\forall u$, so dass $m_X(u), m_Y(u) < \infty$ 
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -167,9 +167,9 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 		\varphi'(u) &= \int_{\R} \brackets{\frac{\d}{\d u}e^{\ii ux}}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \d x\\
 		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii x e^{\ii ux} e^{-\frac{x^2}{2}}\d x\\
 		&= \frac{1}{\sqrt{2\pi}} \int_{\R} (-\ii)e^{\ii u x} \brackets{\frac{\d}{\d x} e^{-\frac{x^2}{2}}}\d x\\
-		\over{\text{P.I.}}&{=} \underbrace{\frac{-\ii}{\sqrt{2\pi}} \sqbrackets{e^{\ii u x}e^{-\frac{x^2}{2}}}_{x=-\infty}^{\infty}}_{=0} + \frac{1}{\sqrt{2\pi}} \int_{\O} \ii \brackets{\frac{\d}{\d x} e^{\ii ux}}\d x\\
-		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \ii u e^{\ii u} e^{-\frac{x^2}{2}}\d x\\
-		&= -u \frac{1}{\sqrt{2\pi}} \int_{\R} e^{u x}e^{-\frac{x^2}{2}}\d x\\
+		\over{\text{P.I.}}&{=} \underbrace{\frac{-\ii}{\sqrt{2\pi}} \sqbrackets{e^{\ii u x}e^{-\frac{x^2}{2}}}_{x=-\infty}^{\infty}}_{=0} + \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \brackets{\frac{\d}{\d x} e^{\ii ux}}\d x\\
+		&= \frac{1}{\sqrt{2\pi}} \int_{\R} \ii \cdot \ii u e^{\ii u} e^{-\frac{x^2}{2}}\d x\\
+		&= -u \frac{1}{\sqrt{2\pi}} \int_{\R} e^{\ii u x}e^{-\frac{x^2}{2}}\d x\\
 		&= - u \varphi(u)	
 	\end{align*}
 	Die DGL $\varphi'(u) = -u\varphi(u)$ besitzt die Lösung
