@@ -32,7 +32,7 @@ Tatsächlich folgt mit der \person{Stirling}-Formel (\cref{7_3})
 Wir benötigen also einen geeigneten Grenzwertbegriff!
 \begin{definition}[\begriff{stochastische Konvergenz}]
 	\proplbl{9_1}
-	Seien $Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen auf einem Wahrscheinlihckeitsraum $(\O,\F, \P)$. Falls für alle $\epsilon > 0$ gilt
+	Seien $Y, Y_1, Y_2, \dots$ reelle Zufallsvariablen auf einem Wahrscheinlichkeitsraum $(\O,\F, \P)$. Falls für alle $\epsilon > 0$ gilt
 	\begin{align*}
 		\lim_{n\to \infty} \P(\abs{Y_n - Y} \le \epsilon) = 1
 	\end{align*}
@@ -112,7 +112,7 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 \end{proof}
 \begin{proposition}[WLLN, $\Ln{1}$-Version]
 	\proplbl{9_5}
-	$(\; \F, \P)$ Wahrscheinlichkeitsraum, $X_1, X_2, \dots$ paarweise unabhängige, identisch verteilte reelle Zufallsvariablen auf $\O$ in $\Ln{1}(\P)$. Dann gilt
+	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X_1, X_2, \dots$ paarweise unabhängige, identisch verteilte reelle Zufallsvariablen auf $\O$ in $\Ln{1}(\P)$. Dann gilt
 	\begin{align*}
 		\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow[n \to \infty]{\P} \E[X_1].
 	\end{align*}
@@ -120,13 +120,11 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 \begin{proof}
 	Wir verwenden ein Abschneideargument:\\
 	Definiere
-	\begin{align*} %TODO find a way for good {} size, also later ... if not manual maybe?!
-		X_i^2 := X_i \indi_{\set{\abs{X_i} \le i^{1/4}}}
-		\intertext{und}
-		X_i^{\sharp} := X_i - X_i^{b} = X_i \indi_{\set{\abs{X_i} \le i^{1/4}}}
+	\begin{align*}
+		X_i^{\flat} := X_i \indi_{\set{\abs{X_i} \le i^{1/4}}} \und X_i^{\sharp} := X_i \indi_{\set{\abs{X_i} > i^{1/4}}}
 		\intertext{sowie}
-		Y_n^{\flat} := \frac{1}{n} \sum_{i=1}^n (X_i^{\flat} - \E[X_i^{\flat}])\\
-		Y_n^{\sharp} := \frac{1}{n} \sum_{i=1}^n \sum_{i=1}^n (X_i^{\sharp} - \E[X_i^{\sharp}]) 
+		Y_n^{\flat} := \frac{1}{n} \sum_{i=1}^n (X_i^{\flat} - \E[X_i^{\flat}]) \und 
+		Y_n^{\sharp} := \frac{1}{n} \sum_{i=1}^n (X_i^{\sharp} - \E[X_i^{\sharp}]) 
 	\end{align*}
 	Wir zeigen $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$ und $Y_n^{\sharp} \xrightarrow[n \to \infty]{\P} 0$.
 	Mit \propref{9_3} folgt dann die Behauptung.\\
@@ -136,12 +134,11 @@ Wir benötigen also einen geeigneten Grenzwertbegriff!
 		&\le \frac{1}{n^2} \sum_{i=1}^n \E[\underbrace{(X_i^{\flat})^2}_{\le i^{1/2}}]\\
 		&\le \frac{1}{n^2}n n^{1/2} = n^{-1/2}
 	\end{align*}
-	Mit \person{Tschebyscheff} folgt $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$.\\
+	Mit \person{Tschebyscheff} (\cref{5_6}) folgt $Y_n^{\flat} \xrightarrow[n \to \infty]{\P} 0$.\\
 	Zu $Y_n^{\sharp}$: Es gilt
 	\begin{align*}
 		\E[X_i^{\sharp}] &= \E[X_i \indi_{\set{\abs{X_i} \le i^{1/4}}}] \over{\text{i.v.}}{=} \E[X_i \indi_{\set{\abs{X_i} \le i^{1/4}}}]\\
-		&= \E[X_1] - \E[X_1 \indi_{\set{\abs{X_i} \le i^{1/4}}}]\\
-		& \xrightarrow[n \to \infty]{} 0.
+		&= \E[X_1] - \E[X_1 \indi_{\set{\abs{X_i} \le i^{1/4}}}] \xrightarrow[n \to \infty]{} 0.
 	\end{align*}
 	wegen monotoner Konvergenz. Also
 	\begin{align*}
