@@ -145,13 +145,13 @@ und insbesondere $\probp(A) + \probp(A^C) = 1$
 
 \begin{proposition}[Konstruktion von Wahrscheinlichkeitsmaßen durch Dichten]
 	\proplbl{1_8}
-	Sei $(\Omega, \sigF)$ ein Eriegnisraum.
+	Sei $(\O, \F)$ ein Eriegnisraum.
 	\begin{itemize}
-		\item $\Omega$ abzählbar, $\sigF = \mathscr{P}(\Omega)$: Sei $\rho = (\rho(\omega))_{\omega \in \Omega}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
+		\item $\O$ abzählbar, $\F = \mathscr{P}(\O)$: Sei $\rho = (\rho(\omega))_{\omega \in \O}$ eine Folge in $[0,1]$ in $\sum_{\omega \in \Omega} \rho(\omega) = 1$, dann definiert
 		\begin{align*}
-			\probp(A) = \sum_{\omega \in A} \rho(\omega), A \in \F \notag
+			\probp(A) = \sum_{\omega \in A} \rho(\omega), A \in \F
 		\end{align*}
-		ein (diskretes) Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
+		ein (diskretes) Wahrscheinlichkeitsmaß $\probp$ auf $(\O, \F)$. $\rho$ wird als \begriff{Zähldichte} bezeichnet.
 		\item Umgekehrt definiert jedes Wahrscheinlichkeitsmaß $\probp$ auf $(\Omega, \sigF)$ definiert Folge $\rho(\omega) = \probp(\set{\omega}),\; \omega \in \Omega$ eine Folge $\rho$ mit den obigen Eigenschaften.
 		\item $\Omega \subset \Rn, \sigF = \borel(\Omega)$: Sei $\rho: \Omega \to [0, \infty)$ eine Funktion, sodass
 		\begin{enumerate}

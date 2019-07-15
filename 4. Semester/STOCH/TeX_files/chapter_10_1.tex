@@ -147,15 +147,14 @@ Der Grenzwert einer schwach konvergenten Folge ist eindeutig \emph{in Verteilung
 			f(0) = 0 &\quad f(x) \ge \indi_{[-\epsilon,\epsilon]^C}(x) \quad \forall x \in \R
 			\intertext{Dann}
 			\P(\abs{Y_n - Y}> \epsilon) &= \int_{[-\epsilon,\epsilon]^C} (Y_n - Y)\d \P\\
-			&\le \int F(Y_n-Y)\d \P\\
+			&\le \int f(Y_n-Y)\d \P\\
 			&= \int f(Y_n - c)\d \P\\
-			&\xrightarrow[n\to \infty]{} \int f(Y-c) \d \P\\
-			&= \int f(0)\d \P = 0.
+			&\xrightarrow[n\to \infty]{} \int f(Y-c) \d \P = \int f(0)\d \P = 0.
 		\end{align*}
 	\end{itemize}
 \end{proof}
 \begin{proposition}
-	$Y,Y_1,Y_2,\dots$ reelle Zufallsvariablen mit Verteilungsfunktionen $F_Y,F_{Y_1},F_{Y_2}, \dots$.
+	$Y,Y_1,Y_2,\dots$ reelle Zufallsvariablen mit Verteilungsfunktionen $F_Y,F_{Y_1},F_{Y_2}, \dots$.\\
 	Dann gilt $Y_n \xrightarrow[n \to \infty]{\d} Y$ genau dann wenn
 	\begin{align*}
 		\lim_{n \to \infty} F_{Y_n} = F_Y(x) \quad \forall \text{ Stetigkeitsstellen $x$ von $F_Y$}.
@@ -302,7 +301,7 @@ Mit dem Stetigkeitssatz lassen sich bekannte Resultate reproduzieren.
 \begin{proposition}[WLLN, u.i.v-Version in $\Rd$]
 	Seien $X_1,X_2, \dots$ u.i.v $\Rd$-wertige Zufallsvariablen auf $(\O,\F,\P)$ mit $X_i \in \Ln{1}(\P)$. Dann gilt
 	\begin{align*}
-		1/n \sum_{i=1}^n \xrightarrow[n \to \infty]{\P} \E[X_1].
+		1/n \sum_{i=1}^n X_i \xrightarrow[n \to \infty]{\P} \E[X_1].
 	\end{align*}
 \end{proposition}
 \begin{proof}
