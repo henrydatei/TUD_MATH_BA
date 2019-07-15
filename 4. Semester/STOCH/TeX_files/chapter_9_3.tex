@@ -1,4 +1,4 @@
-\section{Der Satz von \person{Glivenko}-\person{Cantelli}}
+﻿\section{Der Satz von \person{Glivenko}-\person{Cantelli}}
 Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_n = X_n(\omega)$ von u.i.v. Zufallsvariablen $X_1,\dots, X_n$ in $\R$ auf einem Wahrscheinlichkeitsraum $(\O, \F, \P)$. Die Verteilung $F$ von $X_i$ ist unbekannt.
 \begin{enumerate}[label=]
 	\item \ul{Frage:} Wie können wir $\P_{x_i}$ bzw. die zugehörige Verteilungsfunktion $F$ bestimmen/ approximieren?
@@ -57,21 +57,19 @@ Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_
 	Nehme zunächst an, dass $F$ stetig ist. Für jedes $m \in \N$ existieren dann\begin{align*}
 		-\infty = z_0 < z_1 < \cdots < z_{m-1} < z_m = \infty
 		\intertext{so dass}
-		F(z_0) = \quad F(z_1) = \frac{1}{m}\quad ... F(z_k) = \frac{k}{m} \quad ... F(z_n) = 1
+		F(z_0) = 0\quad F(z_1) = \frac{1}{m}\quad ... \quad F(z_k) = \frac{k}{m} \quad ... \quad F(z_n) = 1
 	\end{align*}
 	Es folgt für jedes $z \in [z_n, z_{k+1})$
 	\begin{align*}
-		\hat{F}_n(z) - F(z) \le \hat{F}_n(z_{k+1}) - F(z_k) = \hat{F}(z_{k+1})-F(z_{k+1}) + \frac{1}{m}\\
-		\hat{F}_n(z) - F(z) \ge \hat{F}_n(z_n)-F(z_{k+1}) = \hat{F}_n(z_k) - F(z_k) - \frac{1}{m} \tag{$\star$} \label{bew:9_14:a}
+		\hat{F}_n(z) - F(z) &\le \hat{F}_n(z_{k+1}) - F(z_k) = \hat{F}(z_{k+1})-F(z_{k+1}) + \frac{1}{m}\\
+		\hat{F}_n(z) - F(z) &\ge \hat{F}_n(z_n)-F(z_{k+1}) = \hat{F}_n(z_k) - F(z_k) - \frac{1}{m} \tag{$\star$} \label{bew:9_14:a}
 	\end{align*}
 	Setze für $k \in \set{0,1, \dots, m}, m \in \N$. Dann
 	\begin{align*}
 		A_{m,k} := \set{\omega \in \O \colon \lim_{n\to \infty} \hat{F}_n(z_k,\omega) = F(z_n)}
 	\end{align*}
-	dann gilt nach \propref{9_13} $\P(A_{m,k}) = 1\quad \forall m,k$. Für
+	dann gilt nach \propref{9_13} $\P(A_{m,k}) = 1\quad \forall m,k$. Für $A_m := \bigcup_{k=0}^m A_{m,k}$ folgt
 	\begin{align*}
-		A_m &:= \bigcup_{k=0}^m A_{m,k}
-		\intertext{folgt}
 		\P(A_m) &= 1 - \P(A_m^C) = 1-\P(\bigcup A^C_m) \ge 1 - \sum \P(A^C_{m,k}) = 1
 	\end{align*}
 	Für jedes $\omega \in A_m$ gilbt es $N(\omega)\in \N$, so dass $\forall n \ge N(\omega)$ und $\forall k \in \set{0, \dots, m}$
@@ -87,7 +85,7 @@ Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_
 		\sup_{z \in \R} \abs{\hat{F}_n(z, \omega) - F(z)} < \epsilon
 	\end{align*} 
 	Für $\epsilon \to 0$ folgt die Behauptung.\\
-	Ist $F$ nicht notwendigerweise steig, so wähle für $m \in \N$
+	Ist $F$ nicht notwendigerweise stetig, so wähle für $m \in \N$
 	\begin{align*}
 		- \infty = z_0 < z_1 < \cdots < z_{m-1} < z_m = \infty
 		\intertext{so dass}
@@ -95,10 +93,10 @@ Gegeben seien $n$ Realisierungen $x_1 = X_1(\omega), x_2 = X_2(\omega), \dots x_
 	\end{align*}
 	Dann folgt analog zu  \eqref{bew:9_14:a} für $z \in [z_n, z_{k+1})$
 	\begin{align*}
-		\hat{F}_n(z) - F(z) \le \hat{F}_(z_{k+1}^-) - F(z_{k+1}^-) + \frac{1}{m}\\
-		\hat{F}_n(z) -F(z) \ge \hat{F}_n(z_n) - F(z_k) - \frac{1}{m}
+		\hat{F}_n(z) - F(z) &\le \hat{F}_(z_{k+1}^-) - F(z_{k+1}^-) + \frac{1}{m}\\
+		\hat{F}_n(z) -F(z) &\ge \hat{F}_n(z_n) - F(z_k) - \frac{1}{m}
 		\intertext{und damit}
-		A'_{m,k} = \set{\omega \in \O\colon \lim_{n\to \infty} \hat{F}_n(z_k^-,\omega) = F(z_k^-)}
+		A'_{m,k} &= \set{\omega \in \O\colon \lim_{n\to \infty} \hat{F}_n(z_k^-,\omega) = F(z_k^-)}
 	\end{align*}
 	folgt der verbleibende Beweis analog zum stetigen Fall.
 \end{proof}
