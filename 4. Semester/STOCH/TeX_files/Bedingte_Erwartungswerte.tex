@@ -113,7 +113,7 @@ betrachten.
 	\proplbl{6_10}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\R, \borel(\R))$ und $Y: (\O, \F) \to (\O_Y, \F_Y)$ Zufallsvariablen, so dass $\E[X]$ existiert. Die \begriff{bedingte Erwartung von $X$ gegeben $Y$} ist die Zufallsvariable $g(Y)$ mit
 	\begin{align*}
-		\int_{\set{y \in B}} X(\omega)\P(\d \omega) &= \int_{\set{Y \in B}} g(Y)(\omega) \P(\d \omega)\\
+		\int_{\set{Y \in B}} X(\omega)\P(\d \omega) &= \int_{\set{Y \in B}} g(Y)(\omega) \P(\d \omega)\\
 		&= \int_B g(y)\P_Y(\d y) \quad \forall B \in \F_Y.
 	\end{align*}
 	Schreibe $g(Y) =: \E[X \mid Y] =: \E[X \mid \sigma(Y)]$.
@@ -364,8 +364,8 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		\E[\Var(S \mid N)] &= \sum_{n=0}^{\infty} \Var(S \mid N=n)\P(N=n)\\
 		&= \sum_{n=0}^{\infty} \Var(\sum_{i=1}^{\infty} X_i) \P(N=n)\\
 		&= \sum_{n=0}^{\infty}\sum_{i=1}^{\infty}\Var(X_i)\P(N=n) \quad \text{\person{Bienaymé} } X_i \text{ unabh.}\\
-		&= \Var(X_i)\sum_{n=0}^{\infty}n \P(N=n)\\
-		&= \Var(X_i)\E[N]
+		&= \Var(X_1)\sum_{n=0}^{\infty}n \P(N=n)\\
+		&= \Var(X_1)\E[N]
 		\intertext{und}
 		\Var(\E[S\mid N]) &= \E[(\E[S \mid N] - \underbrace{\E[\E[S \mid N]]}_{\E[S] = \E[X_1]\E[N], \propref{6_15}})^2] \quad \text{ Def. Varianz}\\
 		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
