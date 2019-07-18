@@ -1,4 +1,4 @@
-\begin{enumerate}
+﻿\begin{enumerate}
 	\item \emph{Frage:} \\
 	\cref{4_5} Durchschnittliche Wartezeit? $\rightsquigarrow$ Erwartungswert\\
 	Wie stark ist die Streuung um den Durchschnitt? $\rightsquigarrow$ Varianz
@@ -93,12 +93,12 @@ Da der Erwartungswert ein Integral ist, übertragen sich viele Eigenschaften.
 		\begin{align*}
 		\P(\set{\omega: \abs{X_n(\omega)} \le Y(\omega)}) = 1 \qquad (\abs{X} \le Y \P \text{ fast sicher})
 		\end{align*}
-		für $Y \in \Ln{1}(\P) \implies X \in \Ln{1}(\P) \und \lim_{n \to \infty} \E[X] = \E[X]$
+		für $Y \in \Ln{1}(\P) \implies X \in \Ln{1}(\P) \und \lim_{n \to \infty} \E[X_n] = \E[X]$
 		\item \ul{\person{Markov}-Ungleichung:} Sei $\epsilon > 0$, dann gilt
 		\begin{align*}
 		\P(\abs{X} \ge \epsilon) \le \frac{1}{\epsilon} \E[\abs{X}]
 		\end{align*}
-		\item \ul{\person{Hölder}-Ungleichung:} Sei $1 \le p,q = \infty, \frac{1}{p}+ \frac{1}{q} = 1$
+		\item \ul{\person{Hölder}-Ungleichung:} Sei $1 \le p,q\le \infty, \frac{1}{p}+ \frac{1}{q} = 1$
 		\begin{align*}
 		\E[\abs{XY}] \le \brackets{\E[\abs{X}^p]}^{\frac{1}{p}} \brackets{\E[\abs{Y}^q]}^{\frac{1}{q}}
 		\end{align*}
