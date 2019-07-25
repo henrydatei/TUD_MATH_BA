@@ -40,13 +40,15 @@ und dann gilt
 	\frac{\sum_{k=1}^n (X_k - \E[X_k])}{\sqrt{\sum_{i=1}^n \Var(X_i)}} \xrightarrow[n \to \infty]{\d} Z \sim \normal(0,1)
 \end{align*}
 Der folgende CLT geht noch etwas weiter und  betrachtet die Zufallsvariablen in einem \emph{Dreiecksschema}:
-%TODO overview missing.
-%%TODO see eric
-%%\begin{align*}
-%%	\begin{matrix}
-%%		X_{1,1} & X_{1,2} &\cdots & ...
-%%	\end{matrix}
-%%\end{align*}
+\begin{align*}
+\begin{matrix}
+X_{1,1} & X_{1,2} & \dots & X_{1,k(1)} &            & \\
+X_{2,1} & X_{2,2} &       &            & X_{2,k(2)} &\\
+\vdots  &         &       &            &            &\\
+X_{k,1} & X_{k,2} &       &            &            & X_{k,k(k)}\\
+\vdots  &         &       &            &            &\\
+\end{matrix} \text{ mit } k(n) \to \infty \text{ für } n \to \infty
+\end{align*}
 \begin{proposition}[CLT, \person{Lindeberg}-\person{Feller}]
 	\proplbl{10_15}
 	Seien $\set{X_{n,k}, k=1,\dots,k(n),n \in \N}$ reelle Zufallsvariablen in einem Dreiecksschema mit $\E[X_{n,k}] = 0$ und $0 < \Var(X_{n,k}) = \sigma_{n,k}^2 < \infty$, so dass $\forall n \in \N$ die Zufallsvariablen $X_{n,1}, \dots, X_{n,k(n)}$ unabhängig sind. Zudem gelten

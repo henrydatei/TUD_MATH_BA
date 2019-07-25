@@ -1,4 +1,4 @@
-﻿\section{Bedingte Erwartungswerte}
+\section{Bedingte Erwartungswerte}
 \begin{proposition}
 	\proplbl{6_8}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum und $X\colon (\O,\F) \to (\R, \borel(\R))$ und $Y\colon (\O,\F) \to (\O_Y, \F_Y)$ Zufallsvariable, so dass $\E[X]$ existiert ($X \in \Ln{1}(\P) \oder X \ge 0$). Dann existiert eine messbare Funktion $g\colon (\O_Y, \F_Y) \to (\bar{\R}, \borel(\bar{\R}))$, so dass gilt
@@ -92,7 +92,7 @@ und durch Vergleich mit Definition der bedingten Verteilung (\propref{6_4})
 	\end{align*}
 	da $X \mid Y = y_0 \sim \Gam(y_0 +1,2)$.
 \end{example}
-\subsection*{Der bedingte Erwartungswert als Zufallsvariable}
+\subsection{Der bedingte Erwartungswert als Zufallsvariable}
 \begin{enumerate}[label=]
 	\item Bisher: Bedingung der Form: $Y=y$
 	$\implies$ Sowohl bedingte Verteilung
@@ -122,7 +122,7 @@ betrachten.
 	\end{align*}
 	ist die \begriff{bedingte Wahrscheinlichkeit von $A$ gegeben $Y$}.
 \end{definition}
-\subsection*{Bedingen auf beliebige $\sigma$-Algebren} % bedingen war so in der VL und ist scheinbar kein Schreibfehler!
+\subsection{Bedingen auf beliebige $\sigma$-Algebren} % bedingen war so in der VL und ist scheinbar kein Schreibfehler!
 \begin{definition}
 	\proplbl{6_11}
 	$(\O, \F, \P)$ Wahrscheinlichkeitsraum, $X: (\O, \F) \to (\R, \borel(\R))$ Zufallsvariablen, so dass $\E[X]$ existiert und $\G \subset \F$ $\sigma$-Algebra. Die \begriff{bedingte Erwartung von $X$ gegeben $\G$} ist die $\G$-messbare Zufallsvariable $X_{\G}$ mit
@@ -371,7 +371,7 @@ a \int_G \E[X \mid \G]\d \P + b \int_G \E[Y \mid \G]\d \P\\
 		&= \sum_{n=0}^{\infty} (\E[S\mid N=n] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \sum_{n=0}^{\infty}(n\E[X_1] - \E[X_1]\E[N])^2\P(N=n)\\
 		&= \E[X_1]^2 \sum_{n=0}^{\infty}(n-\E[N])^2\P(N=n) \\
-		&= \E[X_1]^2 \cdot \underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N^2]} - 2 \E[N]\cdot \underbrace{\sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\ %TODO fix big brackets over two lines
+		&= \E[X_1]^2 \cdot \underbrace{\sum_{n=0}^{\infty} n^2 \P(N=n)}_{\E[N^2]} - 2 \E[N]\cdot \underbrace{\sum_{n=0}^{\infty}n \P(N=n)}_{\E[N]})\\
 		& + \E[N]^2 \underbrace{\sum_{n=0}^{\infty}\P(N=n)}_{=1}\\
 		&= \E[X_1]^2 (\E[N^2] - \E[N]^2) = \E[X_1]^2\Var(N)\\
 		&\implies \Var(S) = \Var(X_1)\E[N] + (\E[X_1])^2\Var(N)	

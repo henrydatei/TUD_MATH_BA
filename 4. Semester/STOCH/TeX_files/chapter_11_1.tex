@@ -168,6 +168,20 @@
 \begin{proof}
 	Ähnlich zum Beweis des CLT nach \person{Lindberg}-\person{Feller}:
 	\begin{align*}
-		\E[e^{\ii u \Delta_k}\mid \F_{k-1}] = 1+ 
+		\E[e^{\ii u \Delta_k}\mid \F_{k-1}] = 1+\ii u \underbrace{\E[\Delta_k \mid \F_{k-1}]}_{\E[X_k - X_{k-1}\mid \F_{k-1}]} - u^2 \underbrace{\E[\Delta_k^2 \mid \F_{k-1}]}_{\sigma^2_k} + R_k(u)\\
+	\end{align*}
+	wobei
+	\begin{align*}
+		\E[\Delta_k \mid \F_{k-1}] &= \E[X_k - X_{k-1}\mid \F_{k-1}]\\
+		&= X_{k-1} - X_{k-1} \quad \text{Martingale-Eigenschaft und mb. Herausziehen}\\
+		&=0
+		\intertext{mit}
+		\abs{R_k(u)} \le u^2 \E[\Delta_k^2 \indi_{\abs{\Delta_k}> \epsilon s_n} \mid \F_{k-1}] + \frac{\epsilon}{6} \abs{u}^3s_n \sigma_k^2
+	\end{align*}
+	Seien $(Y_k \sim \normal(0,\sigma^2))$ unabhängige Zufallsvariablen, unabhängig von $(X_n)_{n\in \N_0}$ mit $Y_k \sim \norm{0,\sigma_k^2}$, dann folgt (wieder analog!)
+	\begin{align*}
+		\phi_{Y_k}(u) &= 1 - \frac{1}{2} \sigma_k^2 u^2 + \tilde{R}_k(u)
+		\intertext{sodass}
+		\abs{\tilde{R}_k(u)} &\le u^2\E[Y_k^2 \indi_{\abs{Y_k}> \epsilon s_n}] 
 	\end{align*}
 \end{proof}

@@ -1,4 +1,4 @@
-﻿\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
+\section{(Un)abhängigkeit} \label{sec:unabhangigkeit}
 In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / Ereignisse, dass diese sich \emph{nicht} gegenseitig beeinflussen. Für solche $A,B \in \F$ mit $\P(A) > 0, \P(B) > 0$ sollte gelten
 \begin{align*}
 \P(A\mid B) = \P(A), \quad \P(B\mid A) = \P(B).
@@ -22,7 +22,7 @@ In vielen Fällen besagt die Intuition über verschiedene Zufallsexperimente / E
 	B:= \set{(i,j) \in \O, j \le 2}.
 	\end{align*}
 	In diesem Fall, erwarten wir intuitiv Unabhängigkeit von $A$ und $B$.\\
-	In der Tat ist % start using \P instead of \P!
+	In der Tat ist % start using \P instead of \Propb!
 	\begin{align*}
 	\P(A) = \frac{1}{2}, \quad \P(B) = \frac{1}{3} \und \P(A\cap B) = \frac{1}{6}
 	\intertext{was}
@@ -249,7 +249,7 @@ Mit \propref{3_17} folgen:
 	\proplbl{3_22}
 	Im Urnenmodell mit Zurücklegen hat der Vektor $X = (X_1, \dots, X_n)$ mit $X_i = $ Farbe im $i$-ten Zug als Zähldichte die Produktdichte der $X_i$. Die $X_1, \dots, X_n$ sind also unabhängig.
 \end{example}
-\subsection*{Konstruktion unabhängiger Zufallsvariablen}
+\subsection{Konstruktion unabhängiger Zufallsvariablen}
 Kapitel \ref{chapter1}: Zu beliebiger Wahrscheinlichkeitsverteilung $\P_X$ existiert Wahrscheinlichkeitsraum mit Zufallsvariable $X$ auf diesem Wahrscheinlichkeitsraum, so dass $X \sim \P_X$.
 \begin{enumerate}
 	\item Seien $\P_{X_1}, \dots, \P_{X_n}$ Wahrscheinlichkeitsverteilungen auf $(E, \E)$. Gibt es einen Wahrscheinlichkeitsraum $(\O, \F, \P)$ und Zufallsvariablen $X_1, X_2$ unabhängig, so dass $X_1 \sim \P_{X_1}$? \label{konstruktionunabh:ZV:qu_1}
@@ -300,7 +300,7 @@ Sind auf den Wahrscheinlichkeitsräumen $(\O_i , \F_i , \P_i), i \in I$, nun Zuf
 	X'_i : \O \to E \mit X'_i (\omega) = X_i (\omega_i).
 \end{align*}
 Da die Unabhängigkeit der Zufallsvariablen über endliche Teilfamilien definiert ist, folgt diese wie im endlichen Fall. 
-\subsection*{Faltungen}
+\subsection{Faltungen}
 Seien $X, Y$ zwei reelle und unabhängige Zufallsvariablen mit 
 \begin{align*}
 	X \sim \P_X \und Y \sim \P_Y.
@@ -385,13 +385,91 @@ Faltung von Wahrscheinlichkeitsmaßen und Dichten besitzen wieder eine Dichte.
 		&= \int_{0 \vee (x-1)}^{1 \wedge x} \d y= \begin{cases}
 		x &\quad 0 \le x \le 1\\
 		2 -x &\quad 1 \le x \le 2\\
-		0 &\quad \sonst.
+		0 &\quad \text{ sonst}.
 		\end{cases}
-	\end{align*} %TODO add pics
-%	\begin{tikzpicture}
-%	
-%	\end{tikzpicture}
-%	\begin{tikzpicture}
-%	
-%	\end{tikzpicture}
+	\end{align*}
+	\begin{center}
+		
+		
+		\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Axis 2D [id:dp8508806841135094] 
+		\draw  (50,246.9) -- (388,246.9)(83.8,75) -- (83.8,266) (381,241.9) -- (388,246.9) -- (381,251.9) (78.8,82) -- (83.8,75) -- (88.8,82)  ;
+		%Straight Lines [id:da16916887281741155] 
+		\draw    (84,160) -- (192,160) ;
+		
+		
+		%Straight Lines [id:da9049951895649381] 
+		\draw [color={rgb, 255:red, 255; green, 114; blue, 50 }  ,draw opacity=1 ]   (83.8,246.9) -- (192,160) ;
+		
+		
+		%Straight Lines [id:da21444674738376057] 
+		\draw [color={rgb, 255:red, 255; green, 114; blue, 50 }  ,draw opacity=1 ]   (192,160) -- (293,248) ;
+		
+		
+		%Straight Lines [id:da3378006631805073] 
+		\draw    (179.92,243.08) -- (180,252.67) ;
+		
+		
+		%Straight Lines [id:da715576960846674] 
+		\draw    (310.92,242.08) -- (311,251.67) ;
+		
+		
+		
+		% Text Node
+		\draw (122,150) node   {$\rho ( x)$};
+		% Text Node
+		\draw (256,174.67) node [color={rgb, 255:red, 255; green, 114; blue, 50 }  ,opacity=1 ]  {$\rho \star \rho ( x)$};
+		% Text Node
+		\draw (181,262.67) node   {$1$};
+		% Text Node
+		\draw (312,260.67) node   {$2$};
+		
+		
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		
+		
+		\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Axis 2D [id:dp9744249503209287] 
+		\draw  (31,193.9) -- (369,193.9)(64.8,22) -- (64.8,213) (362,188.9) -- (369,193.9) -- (362,198.9) (59.8,29) -- (64.8,22) -- (69.8,29)  ;
+		%Straight Lines [id:da04303841222166549] 
+		\draw [fill={rgb, 255:red, 247; green, 9; blue, 9 }  ,fill opacity=1 ]   (64.8,193.9) -- (173,107) ;
+		
+		
+		%Straight Lines [id:da9935141331554764] 
+		\draw    (173,107) -- (302.92,106.83) ;
+		
+		
+		%Curve Lines [id:da5574713559730453] 
+		\draw    (64.8,193.9) .. controls (131.92,192.83) and (188.88,115.75) .. (261.92,106.83) ;
+		
+		
+		%Straight Lines [id:da5561757729548006] 
+		\draw    (207.92,189.08) -- (208,198.67) ;
+		
+		
+		%Straight Lines [id:da41564219518446843] 
+		\draw    (301.92,189.08) -- (302,198.67) ;
+		
+		
+		
+		% Text Node
+		\draw (208.83,207.17) node   {$1$};
+		% Text Node
+		\draw (302.83,207.17) node   {$2$};
+		% Text Node
+		\draw (156.83,85.17) node  [align=left] {Verteilungsfunktion $\displaystyle F$};
+		
+		
+		\end{tikzpicture}
+	\end{center}
 \end{example}

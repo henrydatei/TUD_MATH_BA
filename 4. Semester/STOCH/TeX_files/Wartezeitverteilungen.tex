@@ -88,7 +88,7 @@ Die Gammaverteilung ist reproduktiv: Die Wartezeit auf $r+s$ Ereignisse entspric
 \end{lemma}
 \begin{proof}
 	Hier nur für $r,s \in \N$, allgemein später mit \begriff{momenterzeugende Funktionen}.\\
-	Seien $\rho(x), \rho(y)$ Dichten von $X,Y$. Nach \cref{3_2_25} folgt
+	Seien $\rho(x), \rho(y)$ Dichten von $X,Y$. Nach \cref{3_25} folgt
 \begin{align*}
 	\rho_{(X+Y)} &= \rho_X \star \rho_Y (x) = \int_{\R} \rho_X(y)\rho_Y(x-y) \d y  \\
 	&= \int_{\R} \frac{\lambda^r}{\Gamma(r)} y^{r-1} e^{-\lambda y} \frac{\lambda^s}{\Gamma(s)} (x-y)^{s-1} e^{-\lambda (x-y)} \d y  \\

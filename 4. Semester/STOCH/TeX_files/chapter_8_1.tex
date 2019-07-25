@@ -1,4 +1,4 @@
-﻿\begin{enumerate}[label=]
+\begin{enumerate}[label=]
 	\item \ul{Ziel:} ``Übersetze'' Verteilungen in Funktionen. Insbesondere einfache Faltungsoperation ($\nearrow$ 5.3). %TODO ref!
 \end{enumerate}
 \begin{definition}
@@ -84,7 +84,7 @@ Die mgf charakterisiert eine Verteilung eindeutig:
 	Seien $(\O,\F,\R),(\O',\F',\P')$ Wahrscheinlichkeitsräume, $X: \O \to \R, Y: \O' \to \R$ Zufallsvariablen mit mgfs $m_X,m_Y$. Wenn $m_X(u), m_Y(u)$ in einer Umgebung um Null definiert sind und im Definitionsbereich gilt $m_X(u) = m_Y(u)$, so haben $X \und Y$ die selben Verteilungen ($X \distri Y$, d = distribution) 
 \end{proposition}
 \begin{proof}
-	Sind $X,Y$ $\N_0$-wertig, so folgt dies aus \propref{8_3} und dementsprechenden Resultat für pgfs. Der allgemeine Fall folgt aus dem Resultat zu charakteristischen Funktionen (\propref{8_12}). %TODO add ref, when we are there ...
+	Sind $X,Y$ $\N_0$-wertig, so folgt dies aus \propref{8_3} und dementsprechenden Resultat für pgfs. Der allgemeine Fall folgt aus dem Resultat zu charakteristischen Funktionen (\propref{8_12}).
 \end{proof}
 \begin{example}[(vgl. \cref{4_3})]
 	\proplbl{8_7}
@@ -215,7 +215,7 @@ Für den Beweis benötigen wir:
 \begin{proof}[\propref{8_12}]\leavevmode
 	\begin{itemize}[topsep=-6pt,labelindent=0pt]
 		\item[($\Rightarrow$)] klar
-		\item[($\Leftarrow$)] Sei $\varphi_X(u) = \varphi_Y(u)$, $u \in \Rd$. Wir konstruieren $d$ unabhängige, identisch verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$ ($\nearrow$~\cref{3_2_19}). Zudem gilt
+		\item[($\Leftarrow$)] Sei $\varphi_X(u) = \varphi_Y(u)$, $u \in \Rd$. Wir konstruieren $d$ unabhängige, identisch verteilte (u.i.v) Zufallsvariablen $N_1,\dots, N_d \sim \normal(0,1)$ unabhängig von $X$. Dann ist auch $N:=(N_1, \dots, N_d)$ unabhängig von $X$ ($\nearrow$ \cref{3_19}). Zudem gilt
 		\begin{align*}
 			\P(\sqrt{\sigma^2}N \in \d y) &= \prod_{i=1}^d \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{y_i^2}{2\sigma^2}} \d y_i\\
 			&= (2\pi \sigma^2)^{-\frac{d}{2}} e^{-\frac{\abs{y}^2}{2\sigma^2}}\d y \quad\mit \abs{y} = \sqrt{\sum y_i^2}.
