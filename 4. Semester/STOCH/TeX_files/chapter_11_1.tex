@@ -42,9 +42,84 @@
 \end{example}
 \begin{lemma}[\person{Doob}'s Upcrossing Lemma]
 	Sei $(X_n)_{n\in \N_0}$ ein Supermartingal auf $(\O,\F,\P)$ und für $a,b \in \R,N\in \N$. Sei $U_N[a,b] = \#$ Upcrossings von $[a,b]$ durch $X$ bis zur Zeit $N$:
-%	\begin{tikzpicture}
-%	content...
-%	\end{tikzpicture}
+	\begin{center}
+		\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Axis 2D [id:dp16446481605444763] 
+		\draw  (7.94,186.76) -- (302.5,186.76)(13.28,49.42) -- (13.28,192.83) (295.5,181.76) -- (302.5,186.76) -- (295.5,191.76) (8.28,56.42) -- (13.28,49.42) -- (18.28,56.42)  ;
+		%Straight Lines [id:da28338828151955764] 
+		\draw    (13.5,159.83) -- (300.5,160.83) ;
+		
+		
+		%Straight Lines [id:da8271221523951781] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ]   (13.5,90.83) -- (300.5,90.83) ;
+		
+		
+		%Straight Lines [id:da6380294556294152] 
+		\draw    (104.5,71.83) -- (54.5,177.83) ;
+		
+		
+		%Straight Lines [id:da9952421299305323] 
+		\draw    (185.5,67.83) -- (135.5,173.83) ;
+		
+		
+		%Straight Lines [id:da9651863477189166] 
+		\draw    (55.5,181.83) -- (55.5,190.83) ;
+		
+		
+		%Straight Lines [id:da018191406991399095] 
+		\draw    (75.5,181.83) -- (75.5,190.83) ;
+		
+		
+		%Straight Lines [id:da2253324698452538] 
+		\draw    (99.5,181.83) -- (99.5,190.83) ;
+		
+		
+		%Straight Lines [id:da32014991281507543] 
+		\draw    (288.5,181.83) -- (288.5,190.83) ;
+		
+		
+		
+		% Text Node
+		\draw (6,159) node  [align=left] {a};
+		% Text Node
+		\draw (6,90) node  [align=left] {b};
+		% Text Node
+		\draw (59,167) node  [align=left] {x};
+		% Text Node
+		\draw (78,127) node  [align=left] {x};
+		% Text Node
+		\draw (101,82) node  [align=left] {x};
+		% Text Node
+		\draw (138,167) node  [align=left] {x};
+		% Text Node
+		\draw (127,67) node  [align=left] {x};
+		% Text Node
+		\draw (181,75) node  [align=left] {x};
+		% Text Node
+		\draw (212,141) node  [align=left] {x};
+		% Text Node
+		\draw (259,115) node  [align=left] {x};
+		% Text Node
+		\draw (229,111) node  [align=left] {x};
+		% Text Node
+		\draw (289,170) node  [align=left] {x};
+		% Text Node
+		\draw (54.67,201.42) node  [align=left] {1};
+		% Text Node
+		\draw (74.67,202.08) node  [align=left] {2};
+		% Text Node
+		\draw (98.67,202.08) node  [align=left] {3};
+		% Text Node
+		\draw (287.33,200.75) node  [align=left] {N};
+		% Text Node
+		\draw (118.67,202.08) node  [align=left] {...};
+		
+		\end{tikzpicture}
+	\end{center}
 	d.h.
 	\begin{align*}
 		U_N[a,b](\omega) = \{\max k\in \N_0&\colon \exists 0 \le S_1 < t_1 < S_2 <t_2 < ... < s_k < t_k \le N \\
@@ -90,7 +165,7 @@
 	\end{align*}
 	Die Folge $(\F_n)_{n\in \N}$ ist eine ``Filtration''.
 \end{proposition}
-\begin{proof} %TODO finish proof!
+\begin{proof}
 	Ähnlich zum Beweis des CLT nach \person{Lindberg}-\person{Feller}:
 	\begin{align*}
 		\E[e^{\ii u \Delta_k}\mid \F_{k-1}] = 1+ 
