@@ -1,4 +1,4 @@
-﻿\section{Bedingte Wahrscheinlichkeiten}
+\section{Bedingte Wahrscheinlichkeiten}
 \begin{example}
 	\proplbl{3_1}
 	Das Würfeln mit zwei fairen, sechsseitigen Würfeln können wir mit 
@@ -29,7 +29,7 @@
 	Das Eintreten von $B$ führt also dazu, dass das Wahrscheinlichkeitsmaß $\P$ durch ein neues Wahrscheinlichkeitsmaß $\P_{B}$ ersetzt werden muss. Hierbei sollte gelten:
 	\begin{align}
 		 &\text{Renormierung: }\P_{B}(\O) = 1\label{Renorm}\tag{R}\\
-		 &\text{Proportionalität: Für alle} A \subseteq \F \mit A \subseteq B \text{ gilt }
+		 &\text{Proportionalität: Für alle } A \in \F \mit A \subseteq B \text{ gilt }
 		 \P_{B}(A) = c_B \P(A) \text{ mit einer Konstante } c_B.\label{Prop}\tag{P}
     \end{align}
 \end{example}
@@ -43,7 +43,7 @@
 \end{lemma}
 
 \begin{proof}
-	Offenbar erfüllt $\P_{B}$ wie definiert \eqref{Renorm} und \eqref{Prop}. Umgekehrt erfüllt $\P_{B}$ \eqref{Renorm} und \eqref{Prop}. Dann folgt für $A \in \F$:
+	Offenbar erfüllt $\P_{B}$ wie definiert \eqref{Renorm} und \eqref{Prop}. Umgekehrt erfüllt $\P$ \eqref{Renorm} und \eqref{Prop}. Dann folgt für $A \in \F$: %TODO @ Umgekehrt there needs to be \P instead of \P_B, otherwise the sentence makes no sense, this was wrong in the lecture and it is also used in the following equation.
 	\begin{align}
 		\P_{B}(A) = \P_{B}(A\cap B) + \underbrace{\P_{B}(A\setminus B)}_{= 0, \text{ wegen } \eqref{Renorm}} \overset{\eqref{Prop}}{=} c_B \P(A \cap B).\notag
 	\end{align}

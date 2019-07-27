@@ -156,33 +156,38 @@ $\Bin(n,p)$ ist zwar explizit und elementar definiert, jedoch für große $n$ m�
 \begin{proposition}[Poisson-Approximation]
 	\proplbl{2_5}
 	Sei $\lambda > 0$ und $(p_n)_{n\in\N}$ eine Folge in $[0,1]$ mit
-	\begin{align}
-		np_n \to \lambda,\quad n \to \infty.\notag
-	\end{align}
+	\begin{align*}
+		np_n \to \lambda,\quad n \to \infty.
+	\end{align*}
 	Dann gilt $\forall k \in \N_0$ für die Zähldichte der $\Bin(n,p_n)$-Verteilung
-	\begin{align}
-		\lim_{n \to \infty} \binom{n}{k}p_n^k(1-p_n)^{n-k} = e^{-\lambda} \frac{\lambda^k}{k!}.\notag
-	\end{align}
+	\begin{align*}
+		\lim_{n \to \infty} \binom{n}{k}p_n^k(1-p_n)^{n-k} = e^{-\lambda} \frac{\lambda^k}{k!}.
+	\end{align*}
 \end{proposition}
 \begin{proof}
 	Sei $k \in \N_{0}$ fix, dann
-	\begin{align} %TODO fix this alignment mess and the tags!
-		\binom{n}{k} = \frac{n!}{k!(n-k)!} &= \frac{n^k}{k!}\frac{n(n-1)\cdots(n-k+1)}{n^k}\notag\\
-		&= \frac{n^k}{k!}\cdot 1 \cdot (1-\frac{1}{n}\cdots \frac{k-1}{n})\notag\\
-		\overset{n \to \infty}&{\sim} \frac{n^k}{k!},\notag
-	\end{align}
+	\begin{align*}
+		\binom{n}{k} = \frac{n!}{k!(n-k)!} &= \frac{n^k}{k!}\frac{n(n-1)\cdots(n-k+1)}{n^k}\\
+		&= \frac{n^k}{k!}\cdot 1 \cdot (1-\frac{1}{n}\cdots \frac{k-1}{n})\\
+		\overset{n \to \infty}&{\sim} \frac{n^k}{k!},
+	\end{align*}
 	wobei $a(l) \overset{l \to \infty}{\sim} b(l) \Leftrightarrow \frac{a(l)}{b(l)} \xrightarrow{l\to \infty} 1$. Damit
-	\begin{align}
-		\binom{n}{k}p^k (1-p)^{n-k} \overset{n \to \infty}&{\sim} \frac{n^k}{k!}p_n^k(1-p_n)^{n-k}\notag\\
-		\overset{n \to \infty}&{\sim} \frac{\lambda^k}{k!}(1-p_n)^n\notag\\
-		&= \frac{\lambda^n}{k!}\brackets{1 - \frac{np_n}{n}}^n\notag\\
-		&\xrightarrow{n \to \infty} \frac{\lambda^n}{k!}e^{-\lambda}.\notag
-	\end{align}
+	\begin{align*}
+		\binom{n}{k}p^k (1-p)^{n-k} \overset{n \to \infty}&{\sim} \frac{n^k}{k!}p_n^k(1-p_n)^{n-k}\\
+		\overset{n \to \infty}&{\sim} \frac{\lambda^k}{k!}(1-p_n)^n\\
+		&= \frac{\lambda^n}{k!}\brackets{1 - \frac{np_n}{n}}^n\\
+		&\xrightarrow{n \to \infty} \frac{\lambda^n}{k!}e^{-\lambda}.
+	\end{align*}
+	Der letzte Schritt hat eine verwandte Ungleichung zur \person{Bernoulli}-Ungleichung genutzt
+	\begin{align*}
+		\lim_{n \to \infty} (1-\frac{np_n}{n})^n \le  \lim_{n \to \infty} e^{\frac{-n^2p_n}{n}} =  \lim_{n \to \infty}e^{-n p_n} \sim e^{-\lambda}
+	\end{align*}
+	(Falls jemand eine Idee hat wie man die Ungleichung beweist, bitte bescheid sagen, oder einfach hinzufügen.)
 \end{proof}
 Der erhaltene Grenzwert liefert die Zähldichte auf $\N_{0}$, denn 
-\begin{align}
-	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1.\notag
-\end{align}
+\begin{align*}
+	\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!} = e^{-\lambda}e^{\lambda} = 1.
+\end{align*}
 \begin{definition}[Poissonverteilung]
 	\proplbl{2_6}
 	Sei $\lambda >0$. Dann heißt das auf $(\N_{0}, \probp(\N_{0}))$ definierte Wahrscheinlichkeitsmaß mit
