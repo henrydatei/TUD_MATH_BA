@@ -160,7 +160,24 @@ Für den Beweis von \propref{5_8} benötigen wir:
 	\end{align*}
 	also $f(X)g(Y) \in \Ln{1}(\P)$. Die Aussage folgt über die obige Rechnung. Für allgemeines $n$ folgt \propref{5_8} durch Iteration mit \cref{3_19}.
 \end{proof}
-%TODO add pic, no idea eric has picture there ...?!
-%\begin{tikzpicture}
-%content...
-%\end{tikzpicture}
+\begin{tikzpicture}
+	\begin{axis}[
+	xmin=-5, xmax=5,
+	ymin=0, ymax=0.5,
+	samples=400,
+	axis y line=none,
+	axis x line=none,
+	ticks=none,
+	]
+	\addplot+[mark=none, blue] {1/(sqrt(2*pi))*exp(-0.5*x^2)};
+	\addplot+[mark=none, blue] {1/(sqrt(2*pi*2))*exp(-0.5*x^2/2)};
+	\end{axis}
+	
+	\draw[->] (0,0) -- (7,0);
+	\draw[->] (0,0) -- (0,5);
+	\node[lime!80!black] at (3.5,-0.5) (E) {$\mathbb{E}[X]$};
+	\draw[lime!80!black] (3.5,-0.1) -- (3.5,0.1);
+	\draw [lime!80!black,decorate,decoration={brace,amplitude=10pt,mirror, raise=1pt},yshift=0pt]
+	(0,0) -- (3,0) node [lime!80!black,midway,yshift=-0.6cm] {Streuung};
+	\node at (-0.5,0) (empty) {};
+\end{tikzpicture}

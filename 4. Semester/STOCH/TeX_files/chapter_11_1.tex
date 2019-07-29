@@ -181,7 +181,67 @@
 	Seien $(Y_k \sim \normal(0,\sigma^2))$ unabhängige Zufallsvariablen, unabhängig von $(X_n)_{n\in \N_0}$ mit $Y_k \sim \norm{0,\sigma_k^2}$, dann folgt (wieder analog!)
 	\begin{align*}
 		\phi_{Y_k}(u) &= 1 - \frac{1}{2} \sigma_k^2 u^2 + \tilde{R}_k(u)
-		\intertext{sodass}
-		\abs{\tilde{R}_k(u)} &\le u^2\E[Y_k^2 \indi_{\abs{Y_k}> \epsilon s_n}] 
 	\end{align*}
+	mit
+	\begin{align*}
+		\abs{\tilde{R}_k(u)} &\le u^2\E[Y_k^2 \indi_{\abs{Y_k}> \epsilon s_n}] + \frac{\epsilon}{6}\abs{u}^3+s_n\sigma_k^2
+	\end{align*}
+	sodass
+	\begin{align*}
+		\label{proof_11_5_star}
+		\abs{\E[e^{iu\Delta_k}\mid \F_{k-1}] - \E[e^{iuY_k}]} &\le u^2\E[\Delta_k^2\mathbbm{1}_{\abs{\Delta_k}<\epsilon s_n}\mid \F_{k-1}] + u^2\E[Y_k^2\mathbbm{1}_{\abs{Y_k}>\epsilon s_n}] + \frac{\epsilon}{3} \abs{u}^3 s_n\sigma_k^2 \tag{*}
+	\end{align*}
+	zudem
+	\begin{align*}
+		z_n := \sum_{k=1}^n \sim\normal(0,\sigma_1^2)\cdot\dots\cdot \normal(0,\sigma_n^2) &= \normal\left(0,\sum_{k=1}^n \sigma_k^2\right) = \normal(0,s_n^2)
+	\end{align*}
+	sodass
+	\begin{align*}
+		\frac{z_n}{s_n} &\sim\normal(0,1)
+	\end{align*}
+	und nach \propref{8_11}
+	\begin{align*}
+		\phi_{\sfrac{z_n}{s_n}}(u) &= \exp\left(-\frac{u^2}{2}\right)
+	\end{align*}
+	Es folgt
+	\begin{align*}
+		\abs{\phi_{x_n}(u) - \phi(z_n)(u)} &= \abs{\E[e^{iux_n}] - \E[e^{iuz_n}]} \\
+		&= \abs{\E[\E[e^{iux_n} - e^{iuz_n}\mid \F_{n-1}]]} \\
+		&= \abs{\E[\E[e^{iux_{n-1}} e^{iu\Delta_n} - e^{iuz_{n-1}} e^{iuY_n} \mid \F_{n-1}]]} \\
+		&= \abs{\E[e^{iux_{n-1}} \E[e^{iu\Delta_n}\mid \F_{n-1}] - \E[e^{iuz_{n-1}}] \E[e^{iuY_n}]]} \\
+		&\le \abs{\E[e^{iux_{n-1}}(\E[e^{iu\Delta_n}\mid \F_{n-1}] - \E[e^{iuY_n}])]} \\
+		&+ \abs{\E[(e^{iux_{n-1}} - \E[e^{iuz_{n-1}}])\E[e^{iuY_n}]]} \\
+		&\le \E[\abs{\E[e^{iu\Delta_n} \mid \F_{n-1}] - \E[e^{iuY_n}]}] + \underbrace{\abs{\E[(e^{iux_{n-1}} - \E[e^{iuz_{n-1}}])]}}_{\text{wende obige Schritte an}}\cdot \underbrace{\abs{\E[e^{iuY_n}]}}_{\le 1} \\
+		&\le \sum_{k=1}^n \E[\abs{\E[e^{iu\Delta_k} \mid \F_{k-1}] - \E[e^{uiY_k}]}]
+		\end{align*}
+		Für $u=\frac{v}{s_n}$ folgt mit \eqref{proof_11_5_star}
+		\begin{align*}
+		\abs{\phi_{\sfrac{x_n}{s_n}}(v) - \phi_{\sfrac{z_n}{s_n}}(v)} &= \abs{\phi_{x_n}(u) - \phi_{z_n}(u)} \\
+		&\le \sum_{k=1}^n \E[\abs{\E[e^{iu\Delta_k} \mid \F_{k-1}] - \E[e^{iuY_k}]}] \\
+		&\le \sum_{k=1}^n \E[u^2\E[\Delta_k^2\mathbbm{1}_{\abs{\Delta_k}>\epsilon s_n} \mid \F_{k-1}] + u^2\E[Y_k^2\mathbbm{1}_{\abs{Y_k}>\epsilon s_n}] + \frac{\epsilon}{3} \abs{u}^3 s_n\sigma_k^2] \\
+		&= \underbrace{v^2\E[\frac{1}{s_n^2} \sum_{k=1}^n \E[\Delta_k^2 \mathbbm{1}_{\abs{\Delta_k} > \epsilon s_n} \mid \F_{k-1}]]}_{\to 0\text{ Lindeberg mit dom. Konvergenz\footnote{Majorante: $\frac{1}{s^2} \sum_{k=1}^n \E[\Delta_k^2 \mid \F_{k-1}] = 1$}}} \\
+		\label{proof_11_5_starstar}
+		&+ \underbrace{\frac{v^2}{s_n^2} \sum_{k=1}^n \E[Y_k^2 \mathbbm{1}_{\abs{Y_k} > \epsilon s_n}]}_{\to 0} + \underbrace{\sum_{k=1}^n \frac{\epsilon}{3} \abs{v}^3 \frac{\sigma_k^2}{s_n^2}}_{=\frac{\epsilon}{3}\abs{v}^3} \tag{**} \\
+		&\to \frac{\epsilon}{3} \abs{v}^3 \\
+		&\to 0
+	\end{align*}
+	Die Behauptung folgt mit dem Stetigkeitssatz , wenn \eqref{proof_11_5_starstar} gilt. \\
+	Dazu
+	\begin{align*}
+		\E[Y_k\mathbbm{1}_{\abs{Y_k} > \epsilon s_n}] &= \frac{1}{\sqrt{2\pi\sigma_k^2}} \int_{\abs{x}>\epsilon s_n} x^2 \exp\left(\frac{-x^2}{2\sigma_k^2}\right)\diff x \\
+		&\overset{y=\frac{x}{\sigma_k}}{=} \frac{\sigma_k^2}{\sqrt{2\pi}} \int_{\abs{y}>\epsilon s_n} y^2 \exp\left(\frac{-y^2}{2}\right) \diff y \\
+		&\le \frac{\sigma_k^2}{\sqrt{2\pi}} \int_{\abs{y}>\epsilon\min_{k\le n}\{s_n/\sigma_k\}} y^2 \exp\left(\frac{-y^2}{2}\right) \diff y \\
+		\label{proof_11_5_starstarstar} \Rightarrow \frac{1}{s_k^2} \sum_{k=1}^n \E[Y_k^2 \mathbbm{1}_{\abs{Y_k}>\epsilon s_n}] &\le \frac{1}{\sqrt{2\pi}} \int_{\abs{y}>\epsilon\min_{k\le n}\{s_n/\sigma_k\}} y^2\exp\left(\frac{-y^2}{2}\right) \diff y \tag{***}
+	\end{align*}
+	Da
+	\begin{align*}
+		\sigma_k^2 = \E[\Delta_k^2\mid \F_{k-1}] &= \E[\Delta_k^2 \mathbbm{1}_{\abs{\Delta_k}\le \epsilon s_n}\mid \F_{k-1}] + \E[\Delta_k^2 \mathbbm{1}_{\abs{\Delta_k}> \epsilon s_n}\mid \F_{k-1}] \\
+		&\le \epsilon^2 s_n^2 + \E[\Delta_k^2 \mathbbm{1}_{\abs{\Delta_k}> \epsilon s_n}\mid \F_{k-1}]
+	\end{align*}
+	\begin{flalign*}
+		\Rightarrow \max_{k\le n}\{\frac{\sigma_k^2}{s_n^2}\} \le \epsilon^2 + \frac{1}{s_n^2} \sum_{k=1}^n \E[\Delta_k^2 \mathbbm{1}_{\abs{\Delta_k}> \epsilon s_n}\mid \F_{k-1}] \xrightarrow{\text{Lindeberg}} \epsilon^2 \to 0 \\
+		\Rightarrow \min_{k\le n}\{\frac{s_n}{\sigma_k}\} \to \infty \\
+		\Rightarrow \set{\abs{y}>\epsilon \min_{k\le n}\{\frac{s_n}{\sigma_k}\}} \to \emptyset \\
+		\Rightarrow \text{mit dominierter Konvergenz folgt \eqref{proof_11_5_starstar}}
+	\end{flalign*}
 \end{proof}
