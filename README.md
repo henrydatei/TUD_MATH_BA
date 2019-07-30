@@ -16,6 +16,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN](https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN)
 - Lösungen der Übungsaufgaben LAAG 2 (nicht Hausaufgaben): [https://drive.google.com/open?id=1kluIwVG_lKq0qzV6ojlM7eLGwlIaFrII](https://drive.google.com/open?id=1kluIwVG_lKq0qzV6ojlM7eLGwlIaFrII)
 - Probeklausur LAAG 2: [https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF](https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF)
+- Klausur LAAG 2 mit Lösungen: [https://drive.google.com/open?id=1EIiX_Gi2Ayve5Gm2ZzVHbBqvN27DejtA](https://drive.google.com/open?id=1EIiX_Gi2Ayve5Gm2ZzVHbBqvN27DejtA)
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
 Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
@@ -78,17 +79,33 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 - Übungssaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
-Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm) und **Experimentalphysik 1** (Prof. Dr. Karl Leo) der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl Leo), **Rechenmethoden der Physik** (PD Dr. Dietmar Lehmann), **Statistische Datenanalyse** (Dr. Wolfgang Mader), **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm), **Experimentalphysik 2** (Prof. Dr. Karl Leo), **Experimentalphysik 3** (Prof. Dr. Karl Leo) und **Theoretische Elektrodynamik** (Prof. Dr. Walter Strunz) der TU Dresden
+
+### Theoretische Elektrodynamik (WS2018/19)
+- Aufgaben: [https://drive.google.com/open?id=1ApzAYe2VrCkgRskqIVcdlxfVCYlmBmnm](https://drive.google.com/open?id=1ApzAYe2VrCkgRskqIVcdlxfVCYlmBmnm)
+- Lösungen: [https://drive.google.com/open?id=1GozkAZGdFLw5OM3R81X0LggHIqahb3j1](https://drive.google.com/open?id=1GozkAZGdFLw5OM3R81X0LggHIqahb3j1)
+
+### Experimentalphysik 3 (WS2018/19)
+- Aufgaben: [https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC](https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC)
+
+### Experimentalphysik 2 (SS2018)
+- Kompendium: [https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl](https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl)
 
 ### Theoretische Mechanik (SS2018)
-- Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
-- Aufgaben: [https://www.magentacloud.de/lnk/VRvyM2eQ](https://www.magentacloud.de/lnk/VRvyM2eQ)
-- Lösungen: [https://www.magentacloud.de/lnk/j3vysZwR](https://www.magentacloud.de/lnk/j3vysZwR)
+- Skript: [https://drive.google.com/open?id=1ryTK2i-aemkATVy5ENN-Mt4te68fm2VM](https://drive.google.com/open?id=1ryTK2i-aemkATVy5ENN-Mt4te68fm2VM)
+- Aufgaben: [https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV](https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV)
+- Lösungen (ohne Blatt 13): [https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu](https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu)
+- Kompendium: [https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ](https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ)
+
+### Statistische Datenanalyse (WS2017/18)
+- Vorlesungsfolien: [https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T](https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T)
+
+### Rechenmethoden der Physik (WS2017/18)
+- Vorlesung: [https://drive.google.com/open?id=1dLI3CVKGfu0r8Dqb1ju9-Gi5-htMptwj](https://drive.google.com/open?id=1dLI3CVKGfu0r8Dqb1ju9-Gi5-htMptwj)
+- Aufgaben: [https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj](https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj)
 
 ### Experimentalphysik 1 (WS2017/18)
-- Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
-- Mitschrift: [https://www.magentacloud.de/lnk/MuvSMJgb](https://www.magentacloud.de/lnk/MuvSMJgb) Passwort: 123456
-- Aufgaben: [https://www.magentacloud.de/lnk/wxvyMA1u](https://www.magentacloud.de/lnk/wxvyMA1u) Passwort: 123456
+- Aufgaben: [https://drive.google.com/open?id=15wE1mURfpsxBCL9CFQm-0DFD9wLvPG4M](https://drive.google.com/open?id=15wE1mURfpsxBCL9CFQm-0DFD9wLvPG4M)
 
 # Erasmus-Semester in der University of Bristol, UK
 Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Angewandte Statistik**, **Einführung in die Künstliche Intelligenz**, **Partielle Differentialgleichungen** und **Webtechnologien**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
