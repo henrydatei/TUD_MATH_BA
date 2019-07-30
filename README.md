@@ -87,9 +87,9 @@ Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl 
 - Kompendium: [https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl](https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl)
 
 ### Theoretische Mechanik (SS2018)
-- Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
-- Aufgaben: [https://www.magentacloud.de/lnk/VRvyM2eQ](https://www.magentacloud.de/lnk/VRvyM2eQ)
-- Lösungen: [https://www.magentacloud.de/lnk/j3vysZwR](https://www.magentacloud.de/lnk/j3vysZwR)
+- Skript: [https://drive.google.com/open?id=1ryTK2i-aemkATVy5ENN-Mt4te68fm2VM](https://drive.google.com/open?id=1ryTK2i-aemkATVy5ENN-Mt4te68fm2VM)
+- Aufgaben: [https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV](https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV)
+- Lösungen (ohne Blatt 13): [https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu](https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu)
 - Kompendium: [https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ](https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ)
 
 ### Theoretische Elektrodynamik (WS2017/18)
@@ -102,9 +102,7 @@ Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl 
 - Aufgaben: [https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj](https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj)
 
 ### Experimentalphysik 1 (WS2017/18)
-- Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
-- Mitschrift: [https://www.magentacloud.de/lnk/MuvSMJgb](https://www.magentacloud.de/lnk/MuvSMJgb) Passwort: 123456
-- Aufgaben: [https://www.magentacloud.de/lnk/wxvyMA1u](https://www.magentacloud.de/lnk/wxvyMA1u) Passwort: 123456
+- Aufgaben: [https://drive.google.com/open?id=15wE1mURfpsxBCL9CFQm-0DFD9wLvPG4M](https://drive.google.com/open?id=15wE1mURfpsxBCL9CFQm-0DFD9wLvPG4M)
 
 # Erasmus-Semester in der University of Bristol, UK
 Während meines Erasmus-Aufenthaltes in Bristol, UK habe ich mir folgenden Vorlesungen angehört: **Angewandte Statistik**, **Einführung in die Künstliche Intelligenz**, **Partielle Differentialgleichungen** und **Webtechnologien**. Eine Auswahl an Mitschriften ist hier veröffentlicht.
