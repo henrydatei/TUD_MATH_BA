@@ -78,12 +78,28 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 - Übungssaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
-Skript und Aufgaben zu den Vorlesungen **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm) und **Experimentalphysik 1** (Prof. Dr. Karl Leo) der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl Leo), **Rechenmethoden der Physik** (PD Dr. Dietmar Lehmann), **Statistische Datenanalyse** (Dr. Wolfgang Mader), **Theoretische Elektrodynamik** (Prof. Dr. Walter Strunz), **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm), **Experimentalphysik 2** (Prof. Dr. Karl Leo), **Experimentalphysik 3** (Prof. Dr. Karl Leo)  der TU Dresden
+
+### Experimentalphysik 3 (WS2018/19)
+- Aufgaben: [https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC](https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC)
+
+### Experimentalphysik 2 (SS2018)
+- Kompendium: [https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl](https://drive.google.com/open?id=1KY9Plg-qqD5vwbuS1YVrQeFOieGQi5Dl)
 
 ### Theoretische Mechanik (SS2018)
 - Skript: [https://www.magentacloud.de/lnk/MAPSMZsP](https://www.magentacloud.de/lnk/MAPSMZsP)
 - Aufgaben: [https://www.magentacloud.de/lnk/VRvyM2eQ](https://www.magentacloud.de/lnk/VRvyM2eQ)
 - Lösungen: [https://www.magentacloud.de/lnk/j3vysZwR](https://www.magentacloud.de/lnk/j3vysZwR)
+- Kompendium: [https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ](https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ)
+
+### Theoretische Elektrodynamik (WS2017/18)
+- Lösungen: [https://drive.google.com/open?id=1zTZsonfbcCqodrndxm4aWYS927YBzRTf](https://drive.google.com/open?id=1zTZsonfbcCqodrndxm4aWYS927YBzRTf)
+
+### Statistische Datenanalyse (WS2017/18)
+- Vorlesungsfolien: [https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T](https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T)
+
+### Rechenmethoden der Physik (WS2017/18)
+- Aufgaben: [https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj](https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj)
 
 ### Experimentalphysik 1 (WS2017/18)
 - Zusammenfassung: [https://www.magentacloud.de/lnk/UXvys0zi](https://www.magentacloud.de/lnk/UXvys0zi) Passwort: 123456
