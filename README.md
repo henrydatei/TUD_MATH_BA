@@ -78,7 +78,11 @@ Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre
 - Übungssaufgaben: [https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN](https://drive.google.com/open?id=1QeKbJUPVIlJVJTOxm3eAIVPN0YCIdvHN)
 
 # TU Dresden: Nebenfach Physik
-Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl Leo), **Rechenmethoden der Physik** (PD Dr. Dietmar Lehmann), **Statistische Datenanalyse** (Dr. Wolfgang Mader), **Theoretische Elektrodynamik** (Prof. Dr. Walter Strunz), **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm), **Experimentalphysik 2** (Prof. Dr. Karl Leo), **Experimentalphysik 3** (Prof. Dr. Karl Leo)  der TU Dresden
+Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl Leo), **Rechenmethoden der Physik** (PD Dr. Dietmar Lehmann), **Statistische Datenanalyse** (Dr. Wolfgang Mader), **Theoretische Mechanik** (Prof. Dr. Ketzmerick, Skript von Prof. Dr. Timm), **Experimentalphysik 2** (Prof. Dr. Karl Leo), **Experimentalphysik 3** (Prof. Dr. Karl Leo) und **Theoretische Elektrodynamik** (Prof. Dr. Walter Strunz) der TU Dresden
+
+### Theoretische Elektrodynamik (WS2018/19)
+- Aufgaben: [https://drive.google.com/open?id=1ApzAYe2VrCkgRskqIVcdlxfVCYlmBmnm](https://drive.google.com/open?id=1ApzAYe2VrCkgRskqIVcdlxfVCYlmBmnm)
+- Lösungen: [https://drive.google.com/open?id=1GozkAZGdFLw5OM3R81X0LggHIqahb3j1](https://drive.google.com/open?id=1GozkAZGdFLw5OM3R81X0LggHIqahb3j1)
 
 ### Experimentalphysik 3 (WS2018/19)
 - Aufgaben: [https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC](https://drive.google.com/open?id=19zO3IPJUBaXHB9fD3sC_gVo2Oqpy7jNC)
@@ -91,9 +95,6 @@ Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl 
 - Aufgaben: [https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV](https://drive.google.com/open?id=1qDQ6HlZEBljTAea_E5kkCkGgupTtjyeV)
 - Lösungen (ohne Blatt 13): [https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu](https://drive.google.com/open?id=19ROmqrqCLK-0r6Z0YcNE3bvnAkbYhSbu)
 - Kompendium: [https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ](https://drive.google.com/open?id=1fU1WoxXnTotueb5Euxreh_Bxj2UbMFfZ)
-
-### Theoretische Elektrodynamik (WS2017/18)
-- Lösungen: [https://drive.google.com/open?id=1zTZsonfbcCqodrndxm4aWYS927YBzRTf](https://drive.google.com/open?id=1zTZsonfbcCqodrndxm4aWYS927YBzRTf)
 
 ### Statistische Datenanalyse (WS2017/18)
 - Vorlesungsfolien: [https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T](https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T)
