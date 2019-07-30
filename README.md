@@ -16,6 +16,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 - Aufgabenblätter LAAG 2: [https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN](https://drive.google.com/open?id=1VSaGJm03HoQ1fjKih8d8n73zEsAj3qEN)
 - Lösungen der Übungsaufgaben LAAG 2 (nicht Hausaufgaben): [https://drive.google.com/open?id=1kluIwVG_lKq0qzV6ojlM7eLGwlIaFrII](https://drive.google.com/open?id=1kluIwVG_lKq0qzV6ojlM7eLGwlIaFrII)
 - Probeklausur LAAG 2: [https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF](https://drive.google.com/open?id=1aytETCGJxElRnfg3pUbR-gANe8quLxFF)
+- Klausur LAAG 2 mit Lösungen: [https://drive.google.com/open?id=1EIiX_Gi2Ayve5Gm2ZzVHbBqvN27DejtA](https://drive.google.com/open?id=1EIiX_Gi2Ayve5Gm2ZzVHbBqvN27DejtA)
 
 ### Einführung in die Analysis (WS2017/18 + SS2018)
 Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier verschwunden. Wer sie haben möchte, kann ein Issue erstellen und dort seine TU-Mail-Adresse hinterlegen. Ich werde dann die Materialien an diese Adresse schicken
