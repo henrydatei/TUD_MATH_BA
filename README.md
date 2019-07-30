@@ -100,6 +100,7 @@ Skript und Aufgaben zu den Vorlesungen **Experimentalphysik 1** (Prof. Dr. Karl 
 - Vorlesungsfolien: [https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T](https://drive.google.com/open?id=1JUhOnENNwbdRxT5YTAWOw58qv7FYHP1T)
 
 ### Rechenmethoden der Physik (WS2017/18)
+- Vorlesung: [https://drive.google.com/open?id=1dLI3CVKGfu0r8Dqb1ju9-Gi5-htMptwj](https://drive.google.com/open?id=1dLI3CVKGfu0r8Dqb1ju9-Gi5-htMptwj)
 - Aufgaben: [https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj](https://drive.google.com/open?id=1ZbFDtit7WYzQDr3gRUIn-jeN3zJ1avIj)
 
 ### Experimentalphysik 1 (WS2017/18)
