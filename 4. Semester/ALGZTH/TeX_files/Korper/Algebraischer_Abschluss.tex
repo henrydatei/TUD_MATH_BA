@@ -38,31 +38,32 @@ Sei $L\mid K$ eine Körpererweiterung.
 \end{proof}
 \begin{example}
 	\begin{enumerate}[label=(\alph*)]
-		\item $\C$ ist algebraisch abgeschlossen (Fundamentalsatz der Algebra, $\nearrow$ II.) %TODO \nearrow II later
+		\item $\C$ ist algebraisch abgeschlossen (Fundamentalsatz der Algebra, \propref{2_4_4})
 		\item $\C$ ist algebraischer Abschluss von $\R$.
 		\item $\tilde{\Q} := \set{\alpha \in \C \mid \alpha \text{ algebraisch über }\Q}$ ist nach \propref{1_4_4} ein algebraischer Abschluss von $\Q$.
 	\end{enumerate}
 \end{example}
 \begin{lemma}
 	\proplbl{1_4_6}
-	Sei $L\mid K$ algebraisch, $E$ ein algebraisch abgeschlossener Körper und $\varphi \in \Hom(K,E)$. Dann existiert eine Fortsetzung von $\varphi$ auf $L$, d.h. ein $\sigma \in \Hom(L,E) \mit \sigma_{\mid K} = \varphi$.
+	Sei $L\mid K$ algebraisch, $E$ ein algebraisch abgeschlossener Körper und $\varphi \in \Hom(K,E)$. Dann existiert eine Fortsetzung von $\varphi$ auf $L$, d.h. ein $\sigma \in \Hom(L,E)$ mit $\sigma|_{K} = \varphi$.
 \end{lemma}
 \begin{proof}
 	Definiere die Halbordnung
 	\begin{flalign*}
-		\qquad &\Halb := \big\lbrace(M,\sigma) \;\big|\; K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E),\, \sigma_{\mid K} = \varphi\big\rbrace &\\
+		\qquad &\Halb := \big\lbrace(M,\sigma) \;\big|\; K \subseteq M \subseteq L \text{ Zwischenkörper, }\sigma\in \Hom(M,E),\, \sigma|_{K} = \varphi\big\rbrace &\\
 		\intertext{mit der Ordnung}
-		&(M,\sigma) \subseteq (M' , \sigma') :\mskip-4mu\iff M \subset M' \und \sigma'_{\mid M} = \sigma&
+		&(M,\sigma) \subseteq (M' , \sigma') :\mskip-4mu\iff M \subset M' \und \sigma'|_{M} = \sigma&
 	\end{flalign*}
+	Dann ist
 	\begin{itemize}
 		\item $\Halb \neq \emptyset$: $(K,\varphi) \in \Halb$
-		\item Ist $(M,\sigma)_{i \in I}$ eine Kette in $\Halb$, so definieren wir $M:= \bigcup_{i\in I} M_i$ und $\sigma\colon M \to E$ durch $\sigma(x) = \sigma_i (x)$ falls $x \in M_i$.
-		
-		Dann ist $(M,\sigma) \in \Halb$ eine obere Schranke der Kette $(M_i , \sigma_i)_{i\in I}$. Nach Lemma von \person{Zorn} existiert $(M, \sigma)$ maximal. 
-		Es ist $M = L$: Sei $\alpha \in L$, $f= \MinPol(\alpha\mid M)$. $f \in E[X]$ hat Nullstelle $\beta \in E$, da $E$ algebraisch abgeschlossen ist
-		$\xRightarrow{\propref{1_3_12}}$ existiert Fortsetzung $\sigma' \in \Hom(M(\alpha), E)$ von $\sigma$\\
-		$(M,\sigma) \le (M(\alpha), \sigma') \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha)$, $\alpha \in M.$
-	\end{itemize}
+		\item Ist $(M,\sigma)_{i \in I}$ eine Kette in $\Halb$, so definieren wir $M:= \bigcup_{i\in I} M_i$ und $\sigma\colon M \to E$ durch $\sigma(x) = \sigma_i (x)$ falls $x \in M_i$. Dann ist $(M,\sigma) \in \Halb$ eine obere Schranke der Kette $(M_i , \sigma_i)_{i\in I}$.
+\end{itemize}	
+	
+	Nach dem Lemma von \person{Zorn} existiert $(M, \sigma)$ maximal. 
+	Es ist $M = L$: Sei $\alpha \in L$, $f= \MinPol(\alpha\mid M)$. $f \in E[X]$ hat Nullstelle $\beta \in E$, da $E$ algebraisch abgeschlossen ist
+	$\xRightarrow{\propref{1_3_12}}$ existiert Fortsetzung $\sigma' \in \Hom(M(\alpha), E)$ von $\sigma$\\
+	$(M,\sigma) \le (M(\alpha), \sigma') \in \Halb \xRightarrow{(M(\alpha), \sigma) \text{ max.}} M = M(\alpha)$, $\alpha \in M.$
 \end{proof}
 \begin{theorem}[\person{Steinitz}, 1910]
 	Jeder Körper $K$ besitzt einen bis auf $K$-Isomorphie eindeutig bestimmten algebraischen Abschluss.
@@ -97,18 +98,18 @@ Sei $L\mid K$ eine Körpererweiterung.
 		\begin{proof}
 			Angenommen $I = R$. Dann existieren $f_1$, $\dots$, $f_n \in \mathscr{F}$ und $g_1$, $\dots$, $g_n \in R$ mit
 			\begin{flalign*}
-				\qquad &\sum_{i=1}^n g_i \cdot f_i (X_f{f_i}) = 1.&
+				\qquad &\sum_{i=1}^n g_i \cdot f_i (X_{f_i}) = 1.&
 			\end{flalign*}
 			Sei $L$ ein Zerfällungskörper von $f_1$, $\dots$, $f_n$. Dann existieren $\alpha_1$, $\dots$, $\alpha_n \in L$ mit $f_i(\alpha_i) = 0$ für alle $i$. Sei $\varphi: R \to L$ der Einsetzungshomomorphismus gegeben durch
 			\begin{flalign*}
-				\qquad &\varphi_{\mid K} = \id_K, \quad \varphi(X_{f_i}) = \alpha_i, \quad \varphi(X_f) = 0 \text{ für } f \in \lnkset{\mathscr{F}}{\set{f_1,\dots, f_n}}&
+				\qquad &\varphi|_{K} = \id_K, \quad \varphi(X_{f_i}) = \alpha_i, \quad \varphi(X_f) = 0 \text{ für } f \in \lnkset{\mathscr{F}}{\set{f_1,\dots, f_n}}&
 			\end{flalign*}
 			Dann folgt
 			\begingroup
 			\zeroAmsmathAlignVSpaces*
 			\begin{flalign*}
-				\qquad &1 = \varphi(1) = \sum_{i=1}^n \varphi(g_i) \cdot \varphi(f_i (X_f))
-				= \sum_{i=1}^n \varphi(g_i) \cdot f_i (\underbrace{\varphi(X_f)}_{= \alpha_i}) = \sum_{i=1}^n \varphi(g_i) \cdot \underbrace{f_i (\alpha_i)}_{=0} = 0 &
+				\qquad &1 = \varphi(1) = \sum_{i=1}^n \varphi(g_i) \cdot \varphi\big(f_i (X_{f_i})\big)
+				= \sum_{i=1}^n \varphi(g_i) \cdot f_i (\underbrace{\varphi(X_{f_i})}_{= \alpha_i}) = \sum_{i=1}^n \varphi(g_i) \cdot \underbrace{f_i (\alpha_i)}_{=0} = 0 &
 			\end{flalign*}
 			\endgroup
 		\end{proof}
@@ -165,7 +166,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 	 somit ist $\sigma \in \Aut(\bar{K}, K)$.
 \end{proof}
 \begin{definition}[konjugiert]
-	$\alpha, \beta \in \bar{K}$ sind $K$-\begriff{konjugiert} $\Longleftrightarrow$ existiert $\sigma \in \Aut(\bar{K}, K)\mit \sigma(\alpha) = \beta$.
+	$\alpha, \beta \in \bar{K}$ sind $K$-\begriff{konjugiert} $\Longleftrightarrow$ existiert $\sigma \in \Aut(\bar{K}\mid K)\mit \sigma(\alpha) = \beta$.
 \end{definition}
 \begin{remark}
 	$K$-Konjugiertheit ist eine Äquivalenzrelation auf $\bar{K}$.
@@ -176,7 +177,7 @@ Sei $L\mid K$ eine Körpererweiterung.
 \end{conclusion}
 \begin{proof}\leavevmode\vspace{\dimexpr-\baselineskip+2\lineskip}
 	\begin{itemize}
-		\item[($\Rightarrow$)] $\sigma(\alpha) = \beta \mit \sigma \in \Aut(\bar{K}\mid K)$, $f \in K[X]$, $f(\alpha) = 0 \implies 0 = \sigma(0) = \sigma(f(\alpha)) = f(\sigma(\alpha)) = f(\beta)$
+		\item[($\Rightarrow$)] $\sigma(\alpha) = \beta \mit \sigma \in \Aut(\bar{K}\mid K)$, $f \in K[X]$, $f(\alpha) = 0 \implies 0 = \sigma(0) = \sigma\big(f(\alpha)\big) = f\big(\sigma(\alpha)\big) = f(\beta)$
 		\item[($\Leftarrow$)] $\MinPol(\alpha \mid K) = \MinPol(\beta \mid K)$
 		\begin{itemize}[topsep=0pt]
 		\item[$\xRightarrow{\propref{1_3_5}}$] existiert $K$-Isomorphismus $\varphi\colon K(\alpha) \to K(\beta)$ mit $\varphi(\alpha) = \beta$
@@ -187,6 +188,6 @@ Sei $L\mid K$ eine Körpererweiterung.
 \begin{example}
 	\begin{itemize}
 		\item $\ii, -\ii \in\tilde{\Q}$ sind $\Q$-konjugiert: komplex Konjugation (eingeschränkt auf $\tilde{\Q}$)
-		\item $\sqrt{2}$, $-\sqrt{2} \in \tilde{\Q}$ sind $\Q$-konjugiert: $\MinPol(\sqrt{2}\mid \Q) = x^2 -2 = \MinPol(-\sqrt{2}\mid \Q)$
+		\item $\sqrt{2}$, $-\sqrt{2} \in \tilde{\Q}$ sind $\Q$-konjugiert: $\MinPol(\sqrt{2}\mid \Q) = X^2 -2 = \MinPol(-\sqrt{2}\mid \Q)$
 	\end{itemize}
 \end{example}

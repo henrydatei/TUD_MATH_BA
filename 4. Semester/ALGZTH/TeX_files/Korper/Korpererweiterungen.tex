@@ -4,7 +4,7 @@ Seien $K,L,M$ Körper.
 
 \begin{remark}
 	In diesem Kapitel bedeutet ``Ring'' \emph{immer} kommutativer Ring mit Einselement, und ein Ringhomomorphismus bildet stets das Einselement auf das Einselement ab.
-	Insbesondere gibt es für jeden Ring einen eindeutig bestimmten Ringhomomorphismus $\colon \Z \to R$.
+	Insbesondere gibt es für jeden Ring einen eindeutig bestimmten Ringhomomorphismus $\Z \to R$.
 \end{remark}
 
 \begin{remark}
@@ -69,7 +69,7 @@ Seien $K,L,M$ Körper.
 	Seien $L_1 \mid K$ und $L_2 \mid K$ Körpererweiterungen.
 	\begin{enumerate}[label=(\alph*)]
 		\item Ein Ringhomomorphismus $\phi\colon L_1 \to L_2$ ist ein $K$-Homomorphismus, wenn $\phi\vert_K = \id_K$ (i.Z. $\phi\colon L_1 \to_K L_2$)
-		\item $\Hom_K(L_1,L_2) = \set{\phi \mid \phi: L_1 \to L_2 \text{ ist $K$-Homomorphismus}}$
+		\item $\Hom_K(L_1,L_2) = \set{\phi \mid \phi\colon L_1 \to L_2 \text{ ist $K$-Homomorphismus}}$
 		\item $L_1$ und $L_2$ sind $K$-isomorph (i.Z. $L_1 \cong_K L_2$), wenn es einen Isomorphismus $\phi \in \Hom_K(L_1, L_2)$ gibt.
 	\end{enumerate}
 \end{definition}
@@ -86,8 +86,8 @@ Seien $K,L,M$ Körper.
 	\begin{enumerate}[label=(\alph*)]
 		\item $[K: K] = 1$
 		\item $[\C:\R] = 2$ (Basis $(1,i)$) (aber $(\C:\R) = \infty$)
-		\item $[\R:\Q] = \infty$ (mit Abzählarbarkeitsargument oder siehe §2) %TODO ref later, when we are in chap 2!
-		\item $[K(x):K] = \infty$ ($K(x) = \Quot(K[x])$ (vgl. GEO II.8)
+		\item $[\R:\Q] = \infty$ (mit Abzählarbarkeitsargument oder siehe \cref{sec:sec_2})
+		\item $[K(X):K] = \infty$ ($K(X) = \Quot(K[X])$ (vgl. GEO II.8)
 	\end{enumerate}
 \end{example}
 
@@ -97,7 +97,7 @@ Seien $K,L,M$ Körper.
 \end{proposition}
 
 \bgroup
-\begin{proof}%TODO maybe make unnumbered lemma here for the claim? add align!
+\begin{proof}
 	Für den Beweis betrachte folgende Aussage:
 	\begin{adjustwidth}{1em}{0pt}
 	\begin{underlinedenvironment}[Behauptung]
@@ -111,8 +111,8 @@ Seien $K,L,M$ Körper.
 			 \zeroAmsmathAlignVSpaces
 			 \begin{flalign*}
 			\Rightarrow\; & \sum_{j}\underbrace{\bigg[\! \sum_{i} \lambda_{ij}x_i \bigg]}_{\in L}y_j = 0 
-			\quad\; \xRightarrow{y_j L\text{-l.u.}}\; \sum_{i} \lambda_{ij} x_i = 0\quad\forall j
-			\quad\; \xRightarrow{x_i K\text{-l.u.}}\; \lambda_{ij} = 0\quad\forall i, \forall j&
+			\quad\; \xRightarrow{y_j\, L\text{-l.u.}}\; \sum_{i} \lambda_{ij} x_i = 0\quad\forall j
+			\quad\; \xRightarrow{x_i\, K\text{-l.u.}}\; \lambda_{ij} = 0\quad\forall i, \forall j&
 			\end{flalign*}
 			\hfill\proofSymbol
 	\end{underlinedenvironment}
@@ -144,8 +144,8 @@ Seien $K,L,M$ Körper.
 \begin{definition}[Unterring, Teilkörper]
 	Sei $L\mid K$ eine Körpererweiterung $a_1$, $a_2$, $\dots$, $a_n \in L$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $K[a_1,\dots,a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält (``$a_1, \dots, a_n$ über $K$ erzeugt'')
-		\item $K(a_1,\dots,a_n)$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält (``von ``$a_1$, $\dots$, $a_n$ über $K$ erzeugte'', ``$a_1$, $\dots$, $a_n$'' zu $K$ adjungieren)
+		\item $K[a_1,\dots,a_n]$ ist kleinster \begriff{Unterring} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält ("`$a_1, \dots, a_n$ über $K$ erzeugt'')
+		\item $K(a_1,\dots,a_n)$ ist kleinster \begriff{Teilkörper} von $L$, der $K \cup \set{a_1,\, \dots,\, a_n}$ enthält (von "`$a_1$, $\dots$, $a_n$ über $K$ erzeugte'', "`$a_1$, $\dots$, $a_n$'' zu $K$ adjungieren)
 		\item $L | K$ ist \begriff{endlich erzeugt} $:\Leftrightarrow$ $a_1$, $\dots$, $a_n \in L$: $L=K(a_1, \dots, a_n)$
 		\item $L | K$ ist \begriff{einfach} $:\Leftrightarrow$ existiert $a \in L$: $L=K(a)$  
 	\end{enumerate}
@@ -156,12 +156,12 @@ Seien $K,L,M$ Körper.
 	\begin{enumerate}[label=(\alph*)]
 		\item $L\mid K$ endlich $\Rightarrow L\mid K$ endlich erzeugt.
 		\item $K[a_1, \dots, a_n]$ ist das Bild des Homomorphismus
-		\begin{align}
-		\begin{cases}
-		K[x_1, \dots, x_n] &\to L\\
-		f &\mapsto f(a_1, \dots, a_n)
-		\end{cases}\notag
-		\end{align}
-		und $K(a_1, \dots , a_n) = \big\{\alpha \beta \mid \alpha, \beta \in K[a_1, \dots, a_n], \beta \neq 0\big\} \cong \Quot\big(K[a_1, \dots, a_n]\big)$
+		\begin{align*}
+		\left\lbrace\begin{array}{@{}l@{\;}c@{\;}l}
+		K[X_1, \dots, X_n] &\to& L\\
+		f &\mapsto& f(a_1, \dots, a_n)
+		\end{array}\right.
+		\end{align*}
+		und $K(a_1, \dots , a_n) = \big\{\alpha\mskip-1mu\big\slash\mskip-1mu \beta \mid \alpha, \beta \in K[a_1, \dots, a_n],\, \beta \neq 0\big\} \cong \Quot\big(K[a_1, \dots, a_n]\big)$
 	\end{enumerate}
 \end{remark}
