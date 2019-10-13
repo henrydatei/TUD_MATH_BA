@@ -1,0 +1,50 @@
+\section{Konstruktion mit Zirkel und Lineal}
+
+Sei $\mathscr P\subset \mathbb C$.
+
+\begin{definition}
+	Wir identifizieren $\mathbb C$ mit der reellen Ebenen $\mathbb C = \mathbb R^2$.
+\end{definition}
+
+\begin{definition}
+	Die Menge $\kappa(\mathscr P)$ der aus $\mathscr P$ \begriff{konstruierbaren Punkte} (oder Zahlen) ist die kleinste Menge $\mathscr P\cup \{0,1\} \subset \kappa\subset\mathbb R^2$ mit \begin{enumerate}[label={(\roman*)}]
+		\item $P_1$, $\dots$, $P_4\in\kappa$ $\Rightarrow$ $\kappa$ enthält Schnittpunkte der Geraden $P_1P_2$ und $P_3 P_4$
+		\item $P_1$, $\dots$, $P_5\in\kappa$ $\Rightarrow$ $\kappa$ enthält Schnittpunkte der Geraden $P_1P_2$ um den Kreis $P_3$ vom Radius $P_4 - P_5$.
+		\item $P_1$, $\dots$, $P_6\in\kappa$ $\Rightarrow$ $\kappa$ enthält Schnittpunkte des Kreises um $P_1$ mit Radius $P_2 - P_3$ und des Kreises um $P_4$ mit dem Radius $P_5 - P_6$
+	\end{enumerate}
+	Die Menge der konstruierbaren Punkte (oder Zahlen) ist $\kappa := \kappa(\emptyset)$.
+\end{definition}
+
+\begin{example}
+	Klassiche Konstruktionsprobleme:\begin{enumerate}[label={(\alph*)}]
+		\item Quadratur des Kreises: Konstruktion eines flächengleichen Quadrats aus einem Kreis, z.B. Einheitskreis. Ist $\sqrt\pi\in\kappa$?
+		\item Würfelverdoppelung: Konstrkution eines Würfels des doppelten Volumens. Ist $\sqrt[3]2\in\kappa$?
+		\item Winkeldreiteilung: Ist $e^{i\alpha\slash3}\in\kappa(e^{i\alpha})$ für jedes $\alpha\in [0,2\pi)$?
+		\item Konstruktion eines regelmäßigen $n$-Ecks: ist $\zeta_n = e^{2\pi i/n}\in \kappa$?
+	\end{enumerate}
+\end{example}
+
+\begin{theorem}
+	Für $z\in\mathbb C$ sind äquivalent: \begin{enumerate}[label={(\arabic*)}]
+		\item $z\in\kappa(\mathscr P)$
+		\item Es gibt Körper $\mathbb Q(P\cup \bar P) = K_0\subseteq K_1 \subseteq \dots\subseteq K_r \subseteq \mathbb C$ mit $z\in K_r$ und $[K_i : K_{i-1}] = 2$ für $i=1,\dots,r$.
+		\item Es existiert eine endliche Galoiserweiterung $L\mid \mathbb Q(\mathscr P\cup \bar{\mathscr P})$ mit $z \in L$ und $\Gal(L\mid \mathbb Q(\mathscr P\cup \bar{\mathscr P}))$ eine 2-Gruppe.
+	\end{enumerate}
+\end{theorem}
+
+\begin{conclusion}
+	$\kappa$ ist eine algebraische Körpererweiterung von $\mathbb Q$ und für $\alpha\in\kappa$ ist $\deg(\alpha\mid \mathbb Q) = 2^r$ für ein $r$.
+\end{conclusion}
+
+\begin{example}
+	\begin{enumerate}[label={\alph*)}]
+		\item $\pi$ transzendent $\Rightarrow$ $\sqrt \pi$ transzendent $\Rightarrow$ $\sqrt\pi\notin\kappa$
+		\item $\deg(\sqrt[3]2\mid \mathbb Q) = 3$ $\Rightarrow$ $\sqrt[3]2\notin\kappa$
+		\item Für $\alpha = 2\pi\mskip-1mu\big\slash\mskip-1mu 6$, also $\zeta_6 = e^{\pi i / 3}$ ist $e^{i\alpha / 3} = \zeta_{18}$.
+		
+		$\deg(\zeta_6\mid\mathbb Q) = \phi(6) = 2$ $\Rightarrow$ $\zeta_6\in \kappa$ \\
+		$\deg(\zeta_{18}\mid\mathbb Q) = \phi(18) = 6$ $\Rightarrow$ $\zeta_{18}\notin\kappa = \kappa(\zeta_6)$
+		\item $\zeta_n\in\kappa$ $\Leftrightarrow$ $\deg(\zeta_n)\mid\mathbb Q) = 2^r$ für ein $r$, z.B. für $n=p$ prim: $\deg(\zeta_n) = \phi(p) = p-1$.\\
+		\hspace*{0.5em}$\Rightarrow$ $\zeta_p\in\kappa$ für $p=3,5,17,257,65537$ ($2^{2^n}+1$, \person{Fermat}-Primzahlen)
+	\end{enumerate}
+\end{example}

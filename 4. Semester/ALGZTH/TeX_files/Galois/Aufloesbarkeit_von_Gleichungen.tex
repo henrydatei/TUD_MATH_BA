@@ -1,0 +1,183 @@
+\section{Auflösbarkeit von Gleichungen} \label{sec:2_8}
+
+Sei $K$ Körper der Charakteristik $p\ge 0$, $L\mid K$ eine endliche, separable Erweiterung
+
+\begin{definition}
+	\proplbl{2_8_1}
+	$L\mid K$ ist \begriff{Radikalerweiterung}, wenn es Körper $K = K_0 \subseteq K_1 \subseteq K_1 \subseteq \dots \subseteq K_r$ mit $L\subseteq K_r$ und für $i=1,\dots,r$ ist $K_i = K_{i-1}(\alpha_i)$ mit \begin{enumerate}[label={(\roman*)}]
+		\item $\alpha_i^{n_i}\in K_{i-1}$ für $n_i\in\mathbb N$ mit $p\nmid n_i$ \emph{oder}
+		\item $\alpha_i^p - \alpha_i\in K_{i-1}$
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\proplbl{2_8_2}
+	\begin{enumerate}[label={\alph*)}]
+		\item $K(\mu_n)\mid K$ ist Radikalerweiterung
+		\item $K(\sqrt[n]a)\mid K$, $p\nmid n$, $a\in K$ ist Radikalerweiterung
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Sei $f\in K[X]$ und $L$ der Zerfällungskörper von $f$. Man sagt, die Gleichung "`$f=0$"' ist durch \begriff{Radikale} auflösbar, wenn $L\mid K$ eine Radikalerweiterung ist.
+\end{definition}
+
+\begin{remark}
+	Genau dann ist "`$f=0$"' durch Radikale auflösbar, wenn sich alle Nullstellen von $f$ ausdrücken lassen durch \begin{itemize}
+		\item Elemente von $K$
+		\item Addition, Subtraktion, Multiplikation und Division
+		\item $n$-te Wurzeln bzw. Wurzeln von Artin-Schreyer-Polynomen
+	\end{itemize}
+\end{remark}
+
+\begin{example}
+	\begin{enumerate}[label={\alph*)}]
+		\item Die Gleichung "`$x^2 + bx + c = 0$"' ist durch Radikale auflösbar: \begin{align*}
+			x_{1,2} &= \frac12 \big(- b \pm \sqrt{b^4-4c}\big)
+		\end{align*}
+		\item Die Gleichung "`$x^3 + ax + b=0$"' ist durch Radikale auflösbar (\person{Cardano}, 1545).
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	$L\mid K$ ist \begriff{auflösbar} :$\Leftrightarrow$ $\hat L\mid K$ auflösbar
+\end{definition}
+
+\begin{remark}
+	Erinnerung: sei $G$ eine endliche Gruppe.
+	\begin{remarkenum}
+		\item $G$ ist auflösbar :$\Leftrightarrow$ alle Faktoren einer Kompositionsgruppe sind zyklisch
+		\item \label{2_8_7_b} $G$ auflösbar, $H\le G$ $\Rightarrow$ $H$ auflösbar
+		\item \label{2_8_7_c} Sei $N\unlhd G$. Dann: $G$ auflösbar $\Leftrightarrow$ $N$ und $G\mskip-1mu\big\slash\mskip-1mu N$ auflösbar
+		\item Insbesondere: $G_1,\dots,G_n$ auflösbar $\Rightarrow$ $\prod_{i=1}^n G_i$ auflösbar
+	\end{remarkenum}
+\end{remark}
+
+\begin{lemma}
+	\proplbl{2_8_8}
+	Sei $F\mid K$ eine weitere Erweiterung.
+	\begin{enumerate}[label={\alph*)}]
+		\item $L\mid K$ auflösbar $\Rightarrow$ $LF\mid K$ auflösbar
+		\item $L\mid K$ Radikalerweiterung $\Rightarrow$ $LF\mid F$ Radikalerweiterung
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}[topsep=-6pt,label={\alph*)}]
+		\item $\hat L\mid K$ auflösbar $\xRightarrow{\propref{2_7_7}}$ $F\hat L\mid F$ auflösbar \\
+		\hspace*{0.5em}$\xRightarrow{\ref{2_8_7_c}}$ $F\hat L\mid F$ auflösbar $\Rightarrow$ $FL\mid F$ auflösbar
+		
+		\item Sei $K = K_0 \subseteq \dots \subseteq K_r \supseteq L$ wie in \propref{2_8_1}.\\
+		\hspace*{0.5em}$\Rightarrow$ $F = FK_0\subseteq FK_1 \subseteq \dots \subseteq FK_r \supseteq FL$.
+		
+		Ist $K_i = K_{i-1}(\alpha_i)$, so ist $FK_i = FK_{i-1}(\alpha_i)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_8_9}
+	Seien $K\subseteq L\subseteq M\subseteq \bar K$ Körper, $M\mid K$ endlich.
+	\begin{enumerate}[label={\alph*)}]
+		\item $M\mid K$ auflösbar $\Leftrightarrow$ $M\mid L$ und $L\mid K$ auflösbar.
+		\item $M\mid K$ Radikalerweiterung $\Leftrightarrow$ $M\mid L$ und $L\mid K$ Radikalerweiterung.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}[topsep=-6pt,label={\alph*)}]
+		\item \begin{itemize}
+			\item[($\Rightarrow$)] \propref{2_8_8} mit $F=L$ und \cref{2_8_7_c}
+			\item[($\Leftarrow$)] O.E. $L\mid K$ galoissch (mit \propref{2_8_8}), $M\mid L$ galoissch. Sei $\hat M$ die normale Hülle von $M\mid K$, dann \begin{align*}
+				\hat M &= K\bigg( \bigcup_{\sigma\in\Aut(\bar K\mid K)} M^\sigma\bigg) = L\bigg( \bigcup_{\sigma\in\Gal(\hat M\mid K)} M^\sigma\bigg)
+			\end{align*}
+			Mit Ü100 folgt: $\Gal(\hat M\mid L)\rightarrow\prod_{\sigma\in\Gal(\hat M\mid K)} \Gal(M^\sigma\mid L)$, $\tau\mapsto (\tau|_{\hat M})_{\sigma}$ ist Einbettung.
+			
+			$\Gal (M^\sigma\mid L)\cong \Gal(M\mid L)$ auflösbar $\Rightarrow$ $\prod \Gal(M^\sigma\mid L)$ auflösbar $\Rightarrow$ $\Gal(\hat M\mid L)$ auflösbar.
+			
+			$\Gal(\hat M\mid L)$ auflösbar, $\Gal(L\mid K)$ auflösbar $\xRightarrow{\ref{2_8_7_c}}$ $\Gal(\hat M\mid K)$ auflösbar.
+		\end{itemize}
+		\item \begin{itemize}
+			\item[($\Rightarrow$)] \propref{2_8_8} (Spezialfall)
+			\item[($\Leftarrow$)] $K = K_0 \subseteq K_1\subseteq \dots\subseteq K_r \supset L$, $L = L_0\subseteq \dots\subseteq L_s\supseteq M$ wie in \propref{2_8_1}. O.E. $K_r = L$ (nach \propref{2_8_8}).\\
+			\hspace*{0.5em}$\Rightarrow$ $K = K_0 \subseteq \dots\subseteq K_r \subseteq L_1\subseteq \dots\subseteq L_s \supseteq M$ \\
+			\hspace*{0.5em}$\Rightarrow$ $M\mid K$ Radikalerweiterung
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	\proplbl{2_8_10}
+	Ist $L\mid K$ zyklisch vom Grad $l$ prim, so ist $L\mid K$ Radikalerweiterung.
+\end{lemma}
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt,widest={$l\neq p$:},leftmargin=*]
+		\item[$l=p$:]\propref{2_7_6}
+		\item[$l\neq p$:] Betrachte $K\subseteq K(\zeta_n)\subseteq L(\zeta_n)\supseteq L$ mit $n = l$.
+		
+		$L\mid K$ zyklisch $\xRightarrow{\propref{2_7_7}}$ $L(\zeta_n) \mid K(\zeta n)$ zyklisch $\xRightarrow{\propref{2_7_4}}$ $L(\zeta_n)\mid K(\zeta_n)$ ist Radikalerweiterung und nach \propref{2_8_2} ist $K(\zeta_n)\mid K$ Radikalerweiterung, sodass mit \propref{2_8_9} folgt, dass $L(\zeta_n)\mid K$ Radikalerweiterung ist\\
+		\hspace*{0.5em}$\xRightarrow{\propref{2_8_9}}$ $L\mid K$ Radikalerweiterung.
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}
+	\proplbl{2_8_11}
+	Für $L\mid K$ sind äquivalent: \begin{enumerate}[label={(\arabic*)}]
+		\item $L\mid K$ ist Radikalerweiterung.
+		\item $L\mid K$ ist auflösbar.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\leavevmode
+	\begin{itemize}[topsep=-6pt,widest={(1) $\Rightarrow$ (2)},leftmargin=*]
+		\item[(1) $\Rightarrow$ (2)] Sei $K= K_0\subseteq \dots\subseteq K_r\supseteq L$ wie in \propref{2_8_1}. O.E. $K_r = L$ ($L := LK_r$) (mit \propref{2_8_9}). Mit \propref{2_8_9} genügt es, $r=1$ zu betrachten, also $L=K(\alpha)$ mit (i) $\alpha^n\in K$, $p\nmid n$ oder (ii) $\alpha^p - \alpha\in K$.
+		\begin{enumerate}[label={(\roman*)}]
+			\item $K\subseteq K(\zeta_n)\subseteq L(\zeta_n) = K(\zeta_n)(\alpha)$. $K(\zeta_n)\mid K$ ist abelsch (\propref{2_6_4}), insbesondere auflösbar, $L(\zeta_n)\mid K(\zeta_n)$ zyklisch nach \propref{2_7_4} $\xRightarrow{\propref{2_8_9}}$ $L(\zeta_n)\mid K$ auflösbar $\Rightarrow$ $L\mid K$ auflösbar.
+			\item $L\mid K$ zyklisch nach \propref{2_7_6} $\Rightarrow$ $L\mid K$ auflösbar.
+		\end{enumerate}
+		\item[(2) $\Rightarrow$ (1)] O.E. $L\mid K$ galoissch (sonst $\hat L$). Sei $G = \Gal(L\mid K)$ mit Kompositionsreihe
+		\begin{align*}
+			G &= G_0\ge G_1 \ge \dots \ge G_r = 1.
+		\end{align*}
+		
+		$G$ auflösbar $\Rightarrow$ $G_{i-1}\mskip-1mu\big\slash\mskip-1mu G_i$ zyklisch von Primordnung $l_i$. Mit $K_i = L^{G_i}$ ist $K = K_0\subseteq K_1 \subseteq \dots \subseteq K_r = L$ und $K_i\mid K_{i-1}$ zyklisch vom Grad $l_i$.\\
+		\hspace*{0.5em}$\xRightarrow{\propref{2_8_10}}$ $K_i\mid K_{i-1}$ ist Radikalerweiterung\\
+		\hspace*{0.5em}$\xRightarrow{\propref{2_8_9}}$ $L\mid K$ ist Radikalerweiterung
+	\end{itemize}
+\end{proof}
+
+\begin{conclusion}
+	Jede Gleichung "`$f=0$"' vom Grad $\deg(f)\le 4$ mit $f$ separabel ist durch Radikale aufslösbar.
+\end{conclusion}
+\begin{proof}
+	$S_n$ für $n\le 4$ ist auflösbar $\xRightarrow{\ref{2_8_7_c}}$ $\Gal(f\mid K)\le S_n$ auflösbar ($n=\deg(f)$).
+\end{proof}
+
+\begin{conclusion}[Satz von \person{Abel-Ruffini}]
+	\proplbl{2_8_13}
+	Die allgemeine Gleichung vom Grad $\ge 5$ ist nicht durch Radikale auflösbar.
+\end{conclusion}
+\begin{proof}
+	$\Gal(f_{\mathrm{allg}}\mid F_{\mathrm{sym}}) \overset{\propref{2_5_5}}{\cong} S_n$, $n=\deg(f_{\mathrm{allg}})$, $S_n$ ist für $n\ge 5$ nicht auflösbar.
+\end{proof}
+
+\begin{remark}
+	Es gibt also keine Lösungsformel, die für jede Gleichung vom Grad $n\ge 5$ funktioniert. Tatsächlich gilt \propref{2_8_13} schon für einzelne Gleichungen über $\mathbb Q$.
+\end{remark}
+
+\begin{proposition}
+	Sei $f\in\mathbb Q[X]$ irreduzibel, $\deg(f) = l$ prim. Hat $f$ genau $l-2$ viele Nullstellen in $\mathbb R$, so ist $\Gal(f\mid \mathbb Q) = S_l$.
+\end{proposition}
+
+\begin{proof}
+	Komplexe Konjugation vertauscht die beiden nicht-reellen Nullstellen und fixiert die anderen\\
+	\hspace*{0.5em}$\Rightarrow$ $\Gal(f\mid \mathbb Q)\le S_l$ ist transitiv und enthält Transpositionen\\
+	\hspace*{0.5em}$\xRightarrow{\mathrm{GEO\;Z276}}$ $\Gal(f\mid Q)=S_l$
+\end{proof}
+
+\begin{example}
+	Dies trifft z.B. zu auf $f=X^5-4x-2$ (Eisenstein + Kurvendiskussion)
+\end{example}
