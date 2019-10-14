@@ -1,4 +1,4 @@
-\section{Algebraische Körpererweiterungen}
+\section{Algebraische Körpererweiterungen} \label{sec:sec_2}
 
 Sei $L \mid K$ eine Körpererweiterung.
 
@@ -25,19 +25,19 @@ Sei $L \mid K$ eine Körpererweiterung.
 \end{lemma}
 
 \begin{proof}
-	Für $\lambda_0$, $\lambda_1$, $\ldots \in K$, fast alle gleich Null, so ist
+	Sei $\lambda_0$, $\lambda_1$, $\ldots \in K$, fast alle gleich Null, so ist
 	\begin{align}
 	\sum_{i=0}^\infty \lambda_i \alpha^i = 0\quad \Leftrightarrow\quad f(\alpha) = 0 \text{ für } f = \sum_{i=0}^\infty \lambda_i X^i \in K[X]\notag
 	\end{align}
 \end{proof}
 
 \begin{lemma}
-	Betrachte den Epimorphismus \begin{flalign*}
-	\qquad&\phi_{\alpha}\colon \begin{cases}
-	K[X] &\to K[\alpha]\\
-	f &\mapsto f(\alpha).
-	\end{cases}&
-	\end{flalign*}
+	Betrachte den Epimorphismus \begin{align*}
+	\phi_{\alpha}\colon \left\lbrace\begin{array}{@{}l@{\;}c@{\;}l}
+	K[X] &\to & K[\alpha]\\
+	f &\mapsto & f(\alpha).
+	\end{array}\right.
+	\end{align*}
 	Genau dann ist $\alpha$ algebraisch über $K$, wenn $\Ker(\phi_\alpha) \neq (0)$. In diesem Fall ist $\Ker(\phi_\alpha) = (f_\alpha)$ mit einem eindeutig bestimmten irreduziblen, normierten $f_\alpha \in K$.
 \end{lemma}
 
@@ -61,7 +61,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 		\hspace*{0.5em}$\Rightarrow$ $K[\alpha] \cong K[X]$, $K(\alpha) \cong_K K(X)$, $[K(\alpha) : K] = \infty$.
 		\item \proplbl{korpererweiterungen:prop:1:2:7:b} $\alpha$ algebraisch über $K$ \\
 		\begin{tabularx}{\linewidth}{@{\hspace*{0.5em}}c@{$\;$}X}
-		$\Rightarrow$ & $K[\alpha] = K(\alpha) \cong \lnkset{K}{\MinPol(\alpha\mid K)}$ , $[ K(\alpha) \colon K)]  = \deg(\alpha \mid K) < \infty$, und\hfill\newline
+		$\Rightarrow$ & $K[\alpha] = K(\alpha) \cong \lnkset{K}{\MinPol(\alpha\mid K)}$, $[ K(\alpha) \colon K)]  = \deg(\alpha \mid K) < \infty$, und\hfill\newline
 		$1$, $\alpha$, $\dots$, $\alpha^{\deg(\alpha \mid K) -1}$ ist $K$-Basis von $K(\alpha)$. 
 		\end{tabularx}
 	\end{propenum}
@@ -76,7 +76,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 		\item Sei $f = f_\alpha = \MinPol(\alpha \mid K)$, und $n = \deg(\alpha \mid K) = \deg(f)$.
 		\begin{itemize}
 			\item $f$ irreduzibel $\Rightarrow$ $(f) \neq (0)$ prim ${\xRightarrow{\text{GEO II.4.7}}}$ $(f)$ ist maximal \\
-			$\Rightarrow$ $K[\alpha] \cong \lnkset{K[X]}{(f)}$ ist Körper $\Rightarrow$ $K[\alpha] = K(\alpha)$
+			\hspace*{0.5em}$\Rightarrow$ $K[\alpha] \cong \lnkset{K[X]}{(f)}$ ist Körper $\Rightarrow$ $K[\alpha] = K(\alpha)$
 			\item $1$, $\alpha$, $\dots$, $\alpha^{n-1}$ sind $K$-linear unabhängig: 
 			\begin{align*}
 			\sum_{i=0}^{n-1} \lambda_i \alpha^i = 0 \quad \Rightarrow \quad \sum_{i=0}^{n-1} \lambda_i X^i \in (f) \quad \xRightarrow{\deg f = n} \quad \lambda_i = 0 \enskip \forall i
@@ -99,10 +99,10 @@ Sei $L \mid K$ eine Körpererweiterung.
 \begin{example}
 	\begin{enumerate}[label=(\alph*)]
 		\item $p \in \Z$ prim $\Rightarrow$ $\sqrt{p} \in \C$ ist algebraisch über $\Q$. \\
-		Da $f(X) = X^2 - p$ irreduzibel in $\Q$ ist (GEO II.7.3), ist $\MinPol(\sqrt{p}\mid\Q) = X^2 - p$, $[\Q(\sqrt{p}) : \Q] = 2$.
+		Da $f(X) = X^2 - p$ irreduzibel in $\Q$ ist (GEO II.7.3), ist $\MinPol(\sqrt{p}\mid\Q) = X^2 - p$, und\linebreak $[\Q(\sqrt{p}) : \Q] = 2$.
 		\item Sei $\zeta_p = e^{\frac{2\pi i}{p}} \in \C$ ($p \in \N$ prim). Da $\Phi_p =  \frac{X^p-1}{X-1} = X^{p-1} + X^{p-2} + \cdots + X + 1 \in \Q$ irreduzibel in $\Q$ ist (GEO II.7.9), ist $\MinPol(\zeta_p \mid \Q) = \Phi_p$, $[\Q(\zeta_p) : \Q] = p-1$.
 		
-		Daraus folgt schließlich $[\C : \Q] \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p \Rightarrow [\C : \Q] = \infty \Rightarrow [R : \Q] = \infty$.
+		Daraus folgt schließlich $[\C : \Q] \ge [\Q(\zeta_p) : \Q] = p-1 \enskip \forall p$ $\Rightarrow$ $[\C : \Q] = \infty$ $\Rightarrow$ $[R : \Q] = \infty$.
 		\item $e$, $\pi \in \R$ sind transzendent über $\Q$ (\person{Hermite} 1873, \person{Lindemann} 1882). \\
 		Daraus folgt: $[R : \Q] \ge [\Q(\pi): \Q] = \infty$. Jedoch ist unbekannt, ob z.B. $\pi + e$ transzendent ist.
 	\end{enumerate}
@@ -131,16 +131,14 @@ Sei $L \mid K$ eine Körpererweiterung.
 	\vspace*{\dimexpr-\baselineskip+2\lineskip\relax}
 	\begin{itemize}
 		\item $n=0$: \checkmark
-		\item $n > 0$: $K_1 :=  K(\alpha_1, \dots, \alpha_{n-1})$ \\
-		\hspace*{0.5em}$\Rightarrow L=K_1(\alpha_n)$, $\alpha_n$ algebraisch über $K_1$ (\propref{1_2_3}) \\
-		\hspace*{0.5em}$\Rightarrow [L : K] = \underbrace{[K_1(\alpha_n) : K_1]}_{< \infty \text{ nach \propref{1_2_7}}}\cdot \underbrace{[K_1 : K]}_{< \infty \text{ nach IH}}$
+		\item \renewcommand*{\arraystretch}{1.0}
+		\begin{tabular}[t]{@{}l@{\;}l}
+		$n > 0$: & $K_1 :=  K(\alpha_1, \dots, \alpha_{n-1})$ \\
+				 & \hspace*{0.5em}$\Rightarrow L=K_1(\alpha_n)$, $\alpha_n$ algebraisch über $K_1$ (\propref{1_2_3}) \\
+				 & \hspace*{0.5em}$\Rightarrow [L : K] = \underbrace{[K_1(\alpha_n) : K_1]}_{< \infty \text{ nach \propref{1_2_7}}}\cdot \underbrace{[K_1 : K]}_{< \infty \text{ nach IH}}$
+	\end{tabular}
 	\end{itemize}
 \end{proof}
-
-%\begin{proof_induction}[$n$]
-%	\ianfang[$n=0$] $\checkmark$
-%	\ischritt[$n > 0$] 
-%\end{proof_induction} 
 
 \begin{conclusion}
 	Es sind äquivalent:
@@ -153,20 +151,20 @@ Sei $L \mid K$ eine Körpererweiterung.
 
 \begin{proof}
 	\leavevmode\vspace*{\dimexpr-\baselineskip+2\lineskip}
-	\begin{itemize}
-		\item (1) $\Rightarrow$ (2): \propref{1_1_15} und \propref{1_2_10}
-		\item (2) $\Rightarrow$ (3): trivial
-		\item (3) $\Rightarrow$ (1): \propref{1_2_11}
+	\begin{itemize}[widest={\ (1) $\Rightarrow$ (2)},leftmargin=*]
+		\item[(1) $\Rightarrow$ (2):] \propref{1_1_15} und \propref{1_2_10}
+		\item[(2) $\Rightarrow$ (3):] trivial
+		\item[(3) $\Rightarrow$ (1):] \propref{1_2_11}
 	\end{itemize}
 \end{proof}
 
 \begin{remark}
 	Nach \propref{1_2_7} ist
-	\begin{flalign*}
-	\qquad &\alpha \text{ algebraisch über } K :\Leftrightarrow K[\alpha] = K(\alpha). &
-	\end{flalign*}
+	\begin{align*}
+		\alpha \text{ algebraisch über } K\quad \Leftrightarrow \quad K[\alpha] = K(\alpha). &
+	\end{align*}
 	Direkter Beweis für $(\Rightarrow)$: \\
-	Sei $0 \neq \beta \in K[\alpha]$. Daraus folgt, dass $f(\beta) = 0$ für ein irreduzibles $0 \neq f = \sum_{i=0}^n a_i X^i \in K$. Durch Einsetzen von $\beta$ und Division durch $\beta$ erhält man
+	Sei $0 \neq \beta \in K[\alpha]$. Daraus folgt, dass $f(\beta) = 0$ für ein irreduzibles $0 \neq f = \sum_{i=0}^n a_i X^i \in K[X]$. Durch Einsetzen von $\beta$ und Division durch $\beta$ erhält man
 	\begin{flalign*}
 	\qquad &\xRightarrow{a_0 \neq 0}\beta^{-1} = -a_0^{-1} ( a_1 + a_2 \beta + \dots + a_n \beta^{n-1}) \in K[\beta] \subseteq K[\alpha]&
 	\end{flalign*}
@@ -184,6 +182,7 @@ Sei $L \mid K$ eine Körpererweiterung.
 	\begin{itemize}
 		\item[($\Rightarrow$)] klar, siehe \propref{1_2_3}.
 		\item[($\Leftarrow$)] Sei $\alpha \in M$. Schreibe $f=\MinPol(\alpha \mid L) = \sum_{i=0}^{n} a_i x^i$, $L_0 := K(a_0,\dots,a_n)$\\
+		\renewcommand*{\arraystretch}{1.0}
 		\begin{tabularx}{\linewidth}{@{\hspace*{0.5em}}c@{$\;$}X}
 		$\Rightarrow$ & $f \in L_0[X]$\\
 		$\Rightarrow$ & $[L_0(\alpha): L_0] \le \deg(f) < \infty$\\

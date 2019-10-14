@@ -131,7 +131,7 @@
 \newcommand{\Imag}{\operatorname{Im}} 						% Imaginary symbol
 \newcommand{\Realz}{\operatorname{Re}} 						% Real symbol
 \newcommand{\foralln}{\forall n} 							% all n
-\newcommand{\forallnset}{\forall n \in \natur} 				% all n â‚¬ |N
+\newcommand{\forallnset}{\forall n \in \natur} 				% all n Ã¢â€šÂ¬ |N
 \newcommand{\forallnz}{\forall n \geq _0} 					% all n >= n_0
 \newcommand{\conjz}{\overline{z}} 							% conjugated z
 \newcommand{\tildz}{\tilde{z}} 								% different z
@@ -188,6 +188,7 @@
 % Norms, Absolute, Scalar product
 % Source: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
 % Example: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+% binar form of this command made by https://github.com/lostindarkmath, see https://github.com/henrydatei/TUD_MATH_BA/issues/66
 \NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unar
 {
 	\NewDocumentCommand#1{som}{
@@ -216,7 +217,7 @@
 %%%%%%%%%%%%%%%%% MINT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\newcommand{\sigmalg}{$\sigma$-Algebra}
-% declares the Bourbaki’s ‘dangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
+% declares the Bourbakiâ€™s â€˜dangerous bend symbol, to highlight common Errors done with definitions, theorems, find it quite useful.
 \DeclareFontFamily{U}{stixbbit}{}
 \DeclareFontShape{U}{stixbbit}{m}{it}{<-> stix-mathbbit}{}
 \DeclareRobustCommand{\stixdanger}{%
@@ -285,7 +286,7 @@
 \DeclareMathOperator{\Fix}{Fix} 				% Fix-points for group theory
 
 %%%%%% G
-\DeclareMathOperator{\ggT}{ggT}					% Größte geimeinsamer Teiler (gcd)
+\DeclareMathOperator{\ggT}{ggT}					% GrÃ¶ÃŸte geimeinsamer Teiler (gcd)
 \DeclareMathOperator{\GL}{GL} 					% General Linear Group
 \DeclareMathOperator{\graph}{graph} 			% Graph
 \DeclareMathOperator{\grad}{grad} 				% Gradient
@@ -355,7 +356,7 @@
 
 %%%%%% XYZ
 \DeclareMathOperator{\ZR}{ZR} 					% Zeilenraum
-\DeclareMathOperator{\zwk}{Zwk}					%Zwischenkörper / ALGZTH
+\DeclareMathOperator{\zwk}{Zwk}					%ZwischenkÃ¶rper / ALGZTH
 %\DeclareMathOperator{\Z}{Z} 					% ?
 
 
@@ -366,11 +367,11 @@
 
 % words in align env %
 \renewcommand{\mit}{\text{ mit }}        		% overrides \mit - Used to turn on math italic typestyle.
-\newcommand{\bzw}{\text{ bzw. }}         		% sprachliches bzw. für Numerik
-\newcommand{\falls}{\text{falls }}       		% sprachliches falls für Fallunterscheidungen
-\newcommand{\sonst}{\text{sonst }}       		% sprachliches sonst für Fallunterscheidungen
-\newcommand{\und}{\text{ und }}          		% sprachliches und für align-Umgebungen
-\newcommand{\oder}{\text{ oder }}        		% sprachliches oder für align-Umgebungen
+\newcommand{\bzw}{\text{ bzw. }}         		% sprachliches bzw. fÃ¼r Numerik
+\newcommand{\falls}{\text{falls }}       		% sprachliches falls fÃ¼r Fallunterscheidungen
+\newcommand{\sonst}{\text{sonst }}       		% sprachliches sonst fÃ¼r Fallunterscheidungen
+\newcommand{\und}{\text{ und }}          		% sprachliches und fÃ¼r align-Umgebungen
+\newcommand{\oder}{\text{ oder }}        		% sprachliches oder fÃ¼r align-Umgebungen
 
 % overset text
 \newcommand{\defeq}{\overset{\text{Def}}{=}}    % Definition over over =
