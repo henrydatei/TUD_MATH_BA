@@ -1,0 +1,123 @@
+\begin{definition}[Halbgruppe, Monoid, Gruppe]
+	Eine \begriff{Halbgruppe} ist eine Menge $G$ mit einem \emph{assoziativen} Produkt
+	\begin{align*}
+		\cdot\colon G \times G \to G.
+	\end{align*}
+	Ein \begriff{Monoid} ist eine Halbgruppe, in der ein Element $1 \in G$ existiert mit 
+	\begin{align*}
+		1\cdot x = x\cdot 1 \quad\forall x \in G.
+	\end{align*}
+	Eine \begriff{Gruppe} ist ein Monoid, in dem für jedes $x \in G$ ein $y \in G$ existiert mit
+	\begin{align*}
+		xy = yx = 1.
+	\end{align*}
+\end{definition}
+\begin{remark} % Bem 1
+		$1$ ist eindeutig, wenn existiert $y$ ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
+\end{remark}
+\begin{definition}[Morphismus]
+	Ein Morphismus zweischen Gruppen $G,H$ ist eine Abbildung
+	\begin{align*}
+		f: G \to H \mit f(xy) = f(x)f(y) \quad\forall x,y \in G.
+	\end{align*}
+\end{definition}
+\begin{proposition}
+	Ist $f: G \to H$ ein Morphismus von Gruppen, so gilt
+	\begin{align*}
+		f(1_G) = 1_H \und f(x^{-1}) = f(x)^{-1} \quad \forall x \in G
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Für alle $x \in G$ gilt $f(x) = f(1\cdot x) = f(1)f(x)$. Gilt in einer beliebigen Gruppe jedoch $ab=b$ für zwei Elemente $a,b$, so folgt % add which prop is used here?
+	\begin{align*}
+		(ab)\cdot b^{-1} = a(bb^{-1}) = a\cdot 1 = a \mit bb^{-1} = 1
+	\end{align*}
+	Ferner gilt $f(x)\cdot f(x^{-1}) = f(x \cdot x^{-1}) = f(1) = 1$ wie schon gezeigt (und genauer $f(x^{-1})f(x) = 1$. Also $f(x^{-1}) = f(x)^{-1}$).
+\end{proof}
+\begin{example}
+	\begin{enumerate}
+		\item Sei $X$ beliebige Menge und $S_X = \set{f: X \to X \mid f \text{ bijektiv}}$ ist eine Gruppe bezüglich Komposition mit $1 = \id_X$. Insbesondere ist $S_n = \set{S_{\set{1,\dots,n}}}$ \begriff{symmetrische Gruppe} und ein Element $f \in S_n$ ist eine \begriff{Permutation}.
+		\item $\GL(V) = \set{f \in S_V \mid f \text{ linear}}$, wobei $V$ ein $R$-Modul ist mit kommutativen assoziativen Ring mit 1.
+		\item $\Z, \Z_n$ unter Addition 
+		\begin{align*}
+			U_n = \Z^{\times}_n = \set{ m \in \set{0,\dots,n-1} \mid \ggT(m,n) = 1}\quad \forall x,y \in G \colon xy = yx
+		\end{align*}
+		wobei beide Gruppen abelsch sind.
+		\item $G = U(1) = \set{z \in C \mid \abs{z} = 1} = \set{e^{it}\mid f \in [0,2\pi]}$
+		\item $G = U(1) \times \SU(2)\times \SU(3)$ Eichgruppe im Standardmodell der Elementarteilchen  
+	\end{enumerate}
+\end{example}
+\begin{definition}[Ordnung]
+	Ist $G$ endlich, so nennt man $\abs{G}$ die \begriff{Ordnung} von $G$.
+\end{definition}
+\begin{example}
+	$\abs{S_n} = n!$
+\end{example}
+\begin{definition}[$p$-Gruppe]
+	Ist $\abs{G} = p^n$ für eine Primzahl $p$, so nennt man $G$ eine \begriff{$p$-Gruppe}. ($n \in \N$)
+\end{definition}
+\begin{definition}[Untergruppe]
+	Sei $G$ Gruppe. Eine Teilmenge $H \le G$ ist eine \begriff{Untergruppe} $H < G$, wenn
+	\begin{enumerate}
+		\item Für alle $x,y \in H$ $xy \in H$
+		\item $1 \in H$
+		\item Für alle $x \in H$ $x^{-1} \in H$ 
+	\end{enumerate}
+\end{definition}
+\begin{proposition}
+	Ist $\abs{G} \le \infty$, so folgen folgen 2) aus 1)  und $H \neq \emptyset$. % link previous definition here please.
+\end{proposition}
+\begin{proof}
+	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}Y \infty$ existiert $n\neq m$ mit $x^n = x$. O.b.d.A.
+	\begin{align*}
+		 n > m &\Longleftrightarrow x^{n-n} x^m = x^n\\
+		 &\Longleftrightarrow x^{n-m} = 1
+	\end{align*}
+	Also gilt ii). Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation $t_x: G \to G \mit y \mapsto xy$ ($x \in G$ fest) injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt 1) gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_{x\mid_H}. H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_{x\mid_H}: H \to H$ surjektiv. Aber existiert $y \in H: t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
+\end{proof}
+\begin{definition}[Erzeugendensystem]
+	Ist $X \subseteq G$, so ist
+	\begin{align*}
+		\langle X \rangle = \bigcap_{\substack{H < G\\X \subset H}} H \text{ die von $X$ erzeugte Untergruppe}.
+	\end{align*}
+	Ist $\langle X \rangle = G$ nennen wir $X$ ein Erzeugendensystem.
+\end{definition}
+\begin{definition}[Konjugation]
+	Ist $H < G$ und $x \in G$, so ist $X^{-1}Hx = \set{x^{-1}Hx\mid y \in H}$ eine Untergruppe (``$x^{-1}yx$'' $y$ ist konjugiert mit $x$). Wir nennen diese zu $H$ konjugiert.
+	\begin{align*}
+		(x^{-1}yx)^{-1} = x^{-1}y^{-1}x \und x^{-1}yx\cdot x^{-1}zx = x^{-1}yzx
+	\end{align*}
+\end{definition}
+\begin{definition}[Konjugationsklasse]
+	Die Menge $\set{x^{-1}yx \mid x \in G}$ ist i.A. \emph{keine} Untergruppe und diese nennt man \begriff{Kojugationsklasse} von $y$.
+\end{definition}
+\begin{definition}[Zentralisator, Zentrum]
+	Der \begriff{Zentralisator} von $y \in G$ ist $\set{x \in G \mid xy = yx} =: Z_G(y)$. Das \begriff{Zentrum} von G ist
+	\begin{align*}
+		Z(G) = \bigcap_{y \in G} Z_G(y) = \set{x \in G \mid \forall y \in G xy=yx}.
+	\end{align*}
+\end{definition}
+\begin{example}
+	Sei $G = S_n \ni f$ Permutation, z.B.
+	\begin{align*} S_6 \in
+		\begin{pmatrix}
+		1 & 2 &3 &4 & 5 & 6\\
+		5 & 4 & 6 & 1 & 2 & 3
+		\end{pmatrix}  = (1524)(36)
+	\end{align*}
+	letzteres nennt man \begriff{Zykelnotation}. 1-Zykeln, d.h. $i \in \set{1,\dots,n}$ mit $f(i)=i$ werden meist nicht notiert, z.B.:
+	\begin{align*} S_4 \in 
+		\begin{pmatrix}
+			1&2&3&4\\
+			2&1&3&4
+		\end{pmatrix} = (12)
+	\end{align*}
+\end{example}
+\begin{remark}
+	Ein $k$-Zykel ist ein Produkt von $k-1$ Transpositionen (2-Zykel), z.B.
+	\begin{align*}
+		(12345) = (15)(14)(13)(12)
+	\end{align*}
+	ist das Produkt in $S_5$, d.h. Komposition! Also erzeugt $\set{(y)}$ die $S_n$. Jede Permutation kann also als Produkt von Transpositionen geschrieben werden. Diese Darstellung ist nicht eindeutig! (z.B. $(12)(23)(12) = (23)(12)(23)$) (``Braid relation'') % add braid picture?! braids package
+	und $(12)(12) = ()$. Allerdings kommen in jeder solcher Darstellungen entweder eine gerade oder ungerade Anzahl von Transpositionen vor. ($\to$ Fehlstände). Insbesondere bilden gerade Permutationen (gerade Anzahl an Fehlständen $\Leftrightarrow$ Produkte von zu Transpositionen) eine Untergruppe $A_n < S_n$, die sogenannte \begriff{alternierende Gruppe}.
+\end{remark}
