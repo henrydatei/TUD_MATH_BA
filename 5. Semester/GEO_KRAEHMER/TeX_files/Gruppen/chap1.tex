@@ -1,3 +1,4 @@
+\section{Wiederholung}
 \begin{definition}[Halbgruppe, Monoid, Gruppe]
 	Eine \begriff{Halbgruppe} ist eine Menge $G$ mit einem \emph{assoziativen} Produkt
 	\begin{align*}
@@ -16,7 +17,7 @@
 		$1$ ist eindeutig, wenn existiert $y$ ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
 \end{remark}
 \begin{definition}[Morphismus]
-	Ein Morphismus zweischen Gruppen $G,H$ ist eine Abbildung
+	Ein Morphismus zwischen Gruppen $G,H$ ist eine Abbildung
 	\begin{align*}
 		f: G \to H \mit f(xy) = f(x)f(y) \quad\forall x,y \in G.
 	\end{align*}
@@ -68,12 +69,12 @@
 	Ist $\abs{G} \le \infty$, so folgen folgen 2) aus 1)  und $H \neq \emptyset$. % link previous definition here please.
 \end{proposition}
 \begin{proof}
-	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}Y \infty$ existiert $n\neq m$ mit $x^n = x$. O.b.d.A.
+	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}Y \infty$ existiert $n\neq m$ mit $x^n = x^m$. O.b.d.A.
 	\begin{align*}
 		 n > m &\Longleftrightarrow x^{n-n} x^m = x^n\\
 		 &\Longleftrightarrow x^{n-m} = 1
 	\end{align*}
-	Also gilt ii). Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation $t_x: G \to G \mit y \mapsto xy$ ($x \in G$ fest) injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt 1) gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_{x\mid_H}. H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_{x\mid_H}: H \to H$ surjektiv. Aber existiert $y \in H: t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
+	Also gilt 2). Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation $t_x: G \to G \mit y \mapsto xy$ ($x \in G$ fest) injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt 1) gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_{x\mid_H}. H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_{x\mid_H}: H \to H$ surjektiv. Aber existiert $y \in H: t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
 \end{proof}
 \begin{definition}[Erzeugendensystem]
 	Ist $X \subseteq G$, so ist
@@ -121,3 +122,143 @@
 	ist das Produkt in $S_5$, d.h. Komposition! Also erzeugt $\set{(y)}$ die $S_n$. Jede Permutation kann also als Produkt von Transpositionen geschrieben werden. Diese Darstellung ist nicht eindeutig! (z.B. $(12)(23)(12) = (23)(12)(23)$) (``Braid relation'') % add braid picture?! braids package
 	und $(12)(12) = ()$. Allerdings kommen in jeder solcher Darstellungen entweder eine gerade oder ungerade Anzahl von Transpositionen vor. ($\to$ Fehlstände). Insbesondere bilden gerade Permutationen (gerade Anzahl an Fehlständen $\Leftrightarrow$ Produkte von zu Transpositionen) eine Untergruppe $A_n < S_n$, die sogenannte \begriff{alternierende Gruppe}.
 \end{remark}
+Sei $G$ eine endliche Gruppe.
+\begin{example}
+	Also $G = \GL(n,R) = $ invertierbare Matrizen mit Einträgen in $R$ (nur endliche, wenn $R^{\times} endlich$!). Untergruppen sind
+	\begin{itemize}
+		\item $\SL(n,R) = \set{g \in \GL(n,R) \mid \det g = 1}$
+		\item $O(n,R) = \set{g \in G \mid gg^T = g^T g = 1}$ mit dem Skalarprodukt $\scaProd{gv}{gw} = \scaProd{v}{w} \quad \forall v,w \in R^n$
+		\item $\SO(n,R) = \set{g \in G \mid \dots}$ % TODO
+	\end{itemize}
+	Ist $R$ Ring mit Involuten (z.B. $R = \C, z = \bar{z}$)
+	\begin{itemize}
+		\item $U(n,R) = \set{g \in \GL(n,R) \mid gg^{*} = g^{*}g = 1}$
+		\item $\SU(n,R) = \SL(n,R) \cap U(n,R)$
+	\end{itemize}
+\end{example}
+\begin{example}
+	$D_n = \set{f: \R^2 \to \R^2 \text{ linear, bjektiv} \mid f(P_n) = P_n}$, wobei $P_n \subset \R^2$ das regulär $n$-gen ist. $P_6$ ist das Hexagon % sketch? 
+	Alternativ ist $D_n \subseteq S_n$, wobei $\set{1, \dots,n}$ mit der Menge der Ecken von $P_n$ identifiziert wird und man erhält alle Permutationen, die benachbarte Ecken auf benachbarte abbilden
+	\begin{itemize}
+		\item $r = $ Rotation um $\sfrac{2\pi}{n}$ im mathematische positiven Sinn
+		\item $s = $ eine beliebige Spiegelung in $D_n$
+		Also hat man
+		\begin{align*}
+			\langle \set{s,r}\rangle = D_n = \set{s^i r^j \mid i = 0,1, j=0, \dots, n-1} \quad \abs{D_n} = 2n\\
+			srs = r^{n-1} = r^{-1} \quad r^n = 1 \quad s^2 = 1\\
+			\langle \set{r,s}\rangle= D_{\alpha} \subset S_{\Z} \quad r(z) = z+1 \quad s(z) = -z \quad r,s : \Z \to \R\\
+		\end{align*}
+	\end{itemize}
+\end{example}
+\section{Nebenklassen, Normalteiler, Isomorphiesätze}
+\begin{definition}
+	$A,B \subseteq G$ Teilmengen (nicht unbedingt Untergruppen!)
+	\begin{align*}
+		AB = \set{xy \in G \mid x \in A, y \in B} \quad A^{-1} = \set{x^{-1} \in G \mid x \in A}
+	\end{align*}
+\end{definition}
+\begin{remark}
+	$\emptyset \neq H \subseteq G$ ist Untergruppe $\Leftrightarrow HH = H, H^{-1} = H$
+\end{remark}
+\begin{definition}
+	Ist $x \in G$, so nennen wir $f_x : G \to G \mit y \mapsto x^{-1}yx$ den durch $x$ definierer inneren Automorphismus. Ist $H < G$, so nennen wir $f(H) = x^{-1}Hx$ eine zu $H$ konjugierte Untegruppe.
+\end{definition}
+\begin{proposition}
+	\begin{enumerate}
+		\item $f_x$ ist ein Endomorphismus von $G$ (d.h. ein Morphismus $G \to G$)
+		\item Das Bild $\Image f$ eines beliebigen Gruppenmorphismus $f: K \to L$ ist eine Untergruppe: $\Image f < L$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item $f_x (yz) = x^{-1}yzx = x^{-1}y(xx{^-1})zx = (x^{-1}yx)(x^{-1}zx) = f_x(y)f_x(z)$ $\forall y,z \in G$
+		\item 
+		\begin{itemize}
+			\item $\Image f$ ist abgeschlossen. Seien $f(y), f(z) \in \Image f$. Dann gilt:
+			\begin{align*}
+			f(y)f(z) = f(yz) \in \Image f
+			\end{align*}
+			\item $f(1) = 1 \implies 1 \in \Image f$
+			\item $f(x)^{-1} = f(x^{-1}) \implies (\Image f)^{-1} = \Image f$
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+\begin{definition}
+	Ist $H < G, x \in G$, so nennt man
+	\begin{align*}
+	G \supseteq x H &= \set{x}H = \set{xy \in G \mid y \in H} \quad \text{linke Nebenklasse}\\
+	G \supseteq H x &= \set{yx \in G \mid y \in H} \quad \text{rechte Nebenklasse}
+	\end{align*}
+\end{definition}
+\begin{example}
+	Sei $G = V$ Vektorraum über Körper $K$ mit $+$ als Gruppenstruktur, dann ist $H = W < V$ ein Untervektorraum und $xH = x + W \subseteq V$ affiner Unterraum, Element von $\lnkset{V}{W}$
+\end{example}
+Dies verallgemeinert sich zu
+\begin{definition}
+	Sei $H < G$, $\lnkset{G}{H} = \set{x H \mid x \in G} \subseteq \powerset(G)$
+\end{definition}
+\begin{remark}
+	$xH = yH \Leftrightarrow x \sim y$ definiert eine äquivalenzrelation und das ist äquivalent zu $\exists h \in H: x = yh \Leftrightarrow y^{-1}y \in H$. Beachte dabei $\lnkset{G}{H} = \lnkset{G}{N}$ ist die Menge aller Äquivalenzklassen $xH = [x]$. Desweiteren gibt es die kanonische Projektion $\pi : G \to \lnkset{G}{H} \mit x \mapsto xH$.
+\end{remark}
+Insbesondere ist $G$ die disjunkte Vereinigung aller Äquivalenzklassen. Speziell ist für jedes $x \in G$ definiert:
+\begin{align*}
+	t_x : G \to G \mit y \mapsto xy \text{ eine Bijektion } \quad H = 1H = [x] \to xH = [x].
+\end{align*}
+Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
+\begin{proposition}[Lagrange, Klausur!]
+	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
+\end{proposition}
+\begin{conclusion}
+	Sei $\abs{G} < \infty$, dann $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$ $x^{\abs{G}} = 1$
+\end{conclusion}
+\begin{conclusion}[Eulers Theorem]
+	$\phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}$ mit $n \in \N$.
+\end{conclusion}
+\begin{proposition}
+	... fehlt noch :()
+\end{proposition}
+\begin{proof}
+	?
+\end{proof}
+\begin{definition}[Index]
+	Sei $H < G$, dann $\abs{[G:H]} := \abs{\lnkset{G}{H}}$ Index vo $H$ in $G$.
+\end{definition}
+\begin{conclusion}
+	Sei $K < H < G$ und $\abs{G} < \infty$, dann
+	\begin{align*}
+		[G:K] = \abs{\lnkset{G}{K}} = \frac{\abs{G}}{\abs{H}}\cdot \frac{\abs{H}}{\abs{K}} = [G:H][H:K].
+	\end{align*}
+\end{conclusion}
+\section{Morphismen}
+\begin{definition}
+	Ein injektiver Morphismus $f: G \to H$ und auch Einbettung genannt. Ein Isomorphismus ist ein bijektiver Morphismus.
+\end{definition}
+\begin{example}
+	\begin{enumerate}
+		\item Betrachte die Determinate $\det: \GL(n,R) \to R^{\times}$, diese ist ein surjektiver Morphismus von Gruppen mit
+		\begin{align*}
+		\det(gh) = \det(g)\det(h)
+		\end{align*}
+		\item Die Wahl einer Basis $B$ in einem endlich erzeugten freien Modul $V$ ist ein Isomorphismus von Moduln $s_B: R^{\abs{B}} \to V$. Dieser induziert einen Gruppenisomorphismus
+		\begin{align*}
+			\GL(n,R) \to \GL(V) \mit g \mapsto s_B \circ M_g \circ s^{-1}_B
+		\end{align*}
+		\item Die Linkstranslation $t: G \to S_G \mit x \mapsto t_x$ (mit $t_x(x) = xy$) ist ein injektiver Gruppenhomomorphismus
+		\begin{align*}
+			(t_x \circ t_z)(y) = t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y) \quad \text{also}\\
+			t_x \circ t_y = t_{xz} \quad \forall x,z \in G
+		\end{align*}
+		Ist $t_x = T_z$, so gilt $t_x(1) = t_z(1)$ und daraus $x1=z1$, also $x=z$
+	\end{enumerate}
+	Also kann \emph{jede} endliche Gruppe als Untergruppe der $S_n$ verstanden werden ($n = \abs{G}$)!
+\end{example}
+\begin{example}
+	\begin{enumerate}
+		\item Setze $x \mapsto f_{x^{-1}}: G \to G$, $y \mapsto xyx^{-1}$ ist ein Morphismus $G \to \Ad(G)$ mit
+		\begin{align*}
+		f_x(y) = x^{-1}yx \quad f_z(f_x(y)) = z^{-1}(x^{-1}yx)z = (xz)^{-1}y(xz) = f
+		\end{align*}
+		\item $A$ nicht injektiv! Denke an $G$ abelsch $\Leftrightarrow f_x = \id_G \forall x \in G$
+		\item $\sgn: S_n \to \Z_2 = \set{-1,1}$
+	\end{enumerate}
+\end{example}
