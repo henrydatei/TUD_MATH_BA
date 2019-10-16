@@ -1,4 +1,4 @@
-\section{Wiederholung}
+﻿\section{Wiederholung}
 \begin{definition}[Halbgruppe, Monoid, Gruppe]
 	Eine \begriff{Halbgruppe} ist eine Menge $G$ mit einem \emph{assoziativen} Produkt
 	\begin{align*}
@@ -14,7 +14,7 @@
 	\end{align*}
 \end{definition}
 \begin{remark} % Bem 1
-		$1$ ist eindeutig, wenn existiert $y$ ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
+		1 ist eindeutig, wenn existiert $y$ ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
 \end{remark}
 \begin{definition}[Morphismus]
 	Ein Morphismus zwischen Gruppen $G,H$ ist eine Abbildung
@@ -62,16 +62,16 @@
 	\begin{enumerate}
 		\item Für alle $x,y \in H$ $xy \in H$
 		\item $1 \in H$
-		\item Für alle $x \in H$ $x^{-1} \in H$ 
+		\item Für alle $x \in H$ $\exists x^{-1} \in H$ 
 	\end{enumerate}
 \end{definition}
 \begin{proposition}
-	Ist $\abs{G} \le \infty$, so folgen folgen 2) aus 1)  und $H \neq \emptyset$. % link previous definition here please.
+	Ist $\abs{G} \le \infty$, so folgt 2) aus 1)  und $H \neq \emptyset$. % link previous definition here please.
 \end{proposition}
 \begin{proof}
-	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}Y \infty$ existiert $n\neq m$ mit $x^n = x^m$. O.b.d.A.
+	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}< \infty$ existiert $n\neq m$ mit $x^n = x^m$. O.b.d.A.
 	\begin{align*}
-		 n > m &\Longleftrightarrow x^{n-n} x^m = x^n\\
+		 n > m &\Longleftrightarrow x^{n-m} x^m = x^n\\
 		 &\Longleftrightarrow x^{n-m} = 1
 	\end{align*}
 	Also gilt 2). Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation $t_x: G \to G \mit y \mapsto xy$ ($x \in G$ fest) injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt 1) gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_{x\mid_H}. H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_{x\mid_H}: H \to H$ surjektiv. Aber existiert $y \in H: t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
@@ -212,14 +212,8 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 	Sei $\abs{G} < \infty$, dann $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$ $x^{\abs{G}} = 1$
 \end{conclusion}
 \begin{conclusion}[Eulers Theorem]
-	$\phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}$ mit $n \in \N$.
+	$\abs{U_n} = \phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{\set{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}}$ mit $n \in \N$. Also ist $m^{\phi(n)} = 1 \mod n$.
 \end{conclusion}
-\begin{proposition}
-	... fehlt noch :()
-\end{proposition}
-\begin{proof}
-	?
-\end{proof}
 \begin{definition}[Index]
 	Sei $H < G$, dann $\abs{[G:H]} := \abs{\lnkset{G}{H}}$ Index vo $H$ in $G$.
 \end{definition}
@@ -231,8 +225,11 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \end{conclusion}
 \section{Morphismen}
 \begin{definition}
-	Ein injektiver Morphismus $f: G \to H$ und auch Einbettung genannt. Ein Isomorphismus ist ein bijektiver Morphismus.
+	Ein injektiver Morphismus $f: G \to H$ wird auch Einbettung genannt. Ein Isomorphismus ist ein bijektiver Morphismus.
 \end{definition}
+\begin{*remark}
+	Ein injektiver Morphismus wird auch Monomorphismus genannt und ein surjektiver Morphismus Epimorphismus.
+\end{*remark}
 \begin{example}
 	\begin{enumerate}
 		\item Betrachte die Determinate $\det: \GL(n,R) \to R^{\times}$, diese ist ein surjektiver Morphismus von Gruppen mit
@@ -245,10 +242,10 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 		\end{align*}
 		\item Die Linkstranslation $t: G \to S_G \mit x \mapsto t_x$ (mit $t_x(x) = xy$) ist ein injektiver Gruppenhomomorphismus
 		\begin{align*}
-			(t_x \circ t_z)(y) = t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y) \quad \text{also}\\
-			t_x \circ t_y = t_{xz} \quad \forall x,z \in G
+			(t_x \circ t_z)(y) = t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y)\\
+			\text{also} t_x \circ t_y = t_{xz} \quad \forall x,z \in G
 		\end{align*}
-		Ist $t_x = T_z$, so gilt $t_x(1) = t_z(1)$ und daraus $x1=z1$, also $x=z$
+		Ist $t_x = t_z$, so gilt $t_x(1) = t_z(1)$ und daraus $x1=z1$, also $x=z$
 	\end{enumerate}
 	Also kann \emph{jede} endliche Gruppe als Untergruppe der $S_n$ verstanden werden ($n = \abs{G}$)!
 \end{example}
