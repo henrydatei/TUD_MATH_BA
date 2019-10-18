@@ -1,4 +1,4 @@
-﻿\section{Wiederholung}
+\section{Wiederholung}
 \begin{definition}[Halbgruppe, Monoid, Gruppe]
 	Eine \begriff{Halbgruppe} ist eine Menge $G$ mit einem \emph{assoziativen} Produkt
 	\begin{align*}
@@ -14,7 +14,8 @@
 	\end{align*}
 \end{definition}
 \begin{remark} % Bem 1
-		1 ist eindeutig, wenn existiert $y$ ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
+%		1 ist eindeutig, wenn  ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
+		1 ist eindeutig, wenn es genau ein $y$ existiert, was durch $x$ eindeutig bestimmt wird, da $x^{-1} := y$.
 \end{remark}
 \begin{definition}[Morphismus]
 	Ein Morphismus zwischen Gruppen $G,H$ ist eine Abbildung
@@ -208,6 +209,9 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \begin{proposition}[Lagrange, Klausur!]
 	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
 \end{proposition}
+\begin{proof}
+	?, eventuell von Fehm übernehmen?!
+\end{proof}
 \begin{conclusion}
 	Sei $\abs{G} < \infty$, dann $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$ $x^{\abs{G}} = 1$
 \end{conclusion}
