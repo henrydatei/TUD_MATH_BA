@@ -6,95 +6,125 @@
 	\end{align*}
 	Ein \begriff{Monoid} ist eine Halbgruppe, in der ein Element $1 \in G$ existiert mit 
 	\begin{align*}
-		1\cdot x = x\cdot 1 \quad\forall x \in G.
+		1\cdot x = x\cdot 1 = x \quad\forall x \in G.
 	\end{align*}
 	Eine \begriff{Gruppe} ist ein Monoid, in dem für jedes $x \in G$ ein $y \in G$ existiert mit
 	\begin{align*}
 		xy = yx = 1.
 	\end{align*}
 \end{definition}
-\begin{remark} % Bem 1
-%		1 ist eindeutig, wenn  ist durch $x$ eindeutig bestimmt $x^{-1} :=y$. % correct sentence
-		1 ist eindeutig, wenn es genau ein $y$ existiert, was durch $x$ eindeutig bestimmt wird, da $x^{-1} := y$.
+
+\begin{remark}
+		1 ist eindeutig, wenn es existiert. $y$ ist durch $x$ eindeutig bestimmt: $x^{-1} = y$.
 \end{remark}
+
 \begin{definition}[Morphismus]
-	Ein Morphismus zwischen Gruppen $G,H$ ist eine Abbildung
+	Ein Morphismus zwischen zwei Gruppen $G$ und $H$ ist eine Abbildung
 	\begin{align*}
-		f: G \to H \mit f(xy) = f(x)f(y) \quad\forall x,y \in G.
+		f\colon G \to H \quad\text{mit}\quad f(xy) = f(x)f(y) \quad\forall x,y \in G.
 	\end{align*}
 \end{definition}
+
 \begin{proposition}
-	Ist $f: G \to H$ ein Morphismus von Gruppen, so gilt
-	\begin{align*}
-		f(1_G) = 1_H \und f(x^{-1}) = f(x)^{-1} \quad \forall x \in G
-	\end{align*}
+	Ist $f\colon G \to H$ ein Morphismus von Gruppen, so gilt\begin{itemize}
+		\item $f(1) = 1$ und
+		\item $f(x^{-1}) = f(x)^{-1}$ $\forall x\in G$.
+	\end{itemize}
 \end{proposition}
 \begin{proof}
-	Für alle $x \in G$ gilt $f(x) = f(1\cdot x) = f(1)f(x)$. Gilt in einer beliebigen Gruppe jedoch $ab=b$ für zwei Elemente $a,b$, so folgt % add which prop is used here?
-	\begin{align*}
-		(ab)\cdot b^{-1} = a(bb^{-1}) = a\cdot 1 = a \mit bb^{-1} = 1
+	Für alle $x \in G$ gilt \begin{align*}
+		f(x) &= f(1\cdot x) = f(1)f(x).
 	\end{align*}
-	Ferner gilt $f(x)\cdot f(x^{-1}) = f(x \cdot x^{-1}) = f(1) = 1$ wie schon gezeigt (und genauer $f(x^{-1})f(x) = 1$. Also $f(x^{-1}) = f(x)^{-1}$).
+	Gilt in einer beliebigen Gruppe jedoch $ab=b$ für zwei Elemente $a,b$, so folgt
+	\begin{align*}
+		(ab)\cdot b^{-1} = a\big(bb^{-1}\big) = a\cdot 1 = a \quad\text{mit}\quad bb^{-1} = 1.
+	\end{align*}
+	Ferner gilt \begin{align*}
+		f(x)\cdot f\big(x^{-1}\big) = f\big(x \cdot x^{-1}\big) = f(1) = 1
+	\end{align*}
+	wie schon gezeigt (und analog $f(x^{-1})f(x) = 1$). Also ist $f(x^{-1}) = f(x)^{-1}$).
 \end{proof}
+
 \begin{example}
-	\begin{enumerate}
-		\item Sei $X$ beliebige Menge und $S_X = \set{f: X \to X \mid f \text{ bijektiv}}$ ist eine Gruppe bezüglich Komposition mit $1 = \id_X$. Insbesondere ist $S_n = \set{S_{\set{1,\dots,n}}}$ \begriff{symmetrische Gruppe} und ein Element $f \in S_n$ ist eine \begriff{Permutation}.
+	\begin{enumerate}[label={\arabic*)}]
+		\item Sei $X$ eine beliebige Menge. $S_X = \set{f\colon X \to X \mid f \text{ bijektiv}}$ ist eine Gruppe bezüglich Komposition mit $1 = \id_X$. Insbesondere ist $S_n = S_{\set{1,\dots,n}}$ die \begriff{symmetrische Gruppe} und ein Element $f \in S_n$ ist eine \begriff{Permutation}.
 		\item $\GL(V) = \set{f \in S_V \mid f \text{ linear}}$, wobei $V$ ein $R$-Modul ist mit kommutativen assoziativen Ring mit 1.
 		\item $\Z, \Z_n$ unter Addition 
 		\begin{align*}
-			U_n = \Z^{\times}_n = \set{ m \in \set{0,\dots,n-1} \mid \ggT(m,n) = 1}\quad \forall x,y \in G \colon xy = yx
+			U_n = \Z^{\times}_n = \set{ m \in \set{0,\dots,n-1} \mid \ggT(m,n) = 1}
 		\end{align*}
-		wobei beide Gruppen abelsch sind.
-		\item $G = U(1) = \set{z \in C \mid \abs{z} = 1} = \set{e^{it}\mid f \in [0,2\pi]}$
-		\item $G = U(1) \times \SU(2)\times \SU(3)$ Eichgruppe im Standardmodell der Elementarteilchen  
+		Beide Gruppen sind abelsch, d.h. \begin{align*}
+			\forall x,y \in G: xy = yx.
+		\end{align*}
+		\item $G = U(1) = \set{z \in C \mid \abs{z} = 1} = \set{e^{it}\mid t \in [0,2\pi]}$
+		\item $G = U(1) \times \SU(2)\times \SU(3)$, die Eichgruppe im Standardmodell der Elementarteilchen  
 	\end{enumerate}
 \end{example}
+
 \begin{definition}[Ordnung]
 	Ist $G$ endlich, so nennt man $\abs{G}$ die \begriff{Ordnung} von $G$.
 \end{definition}
+
 \begin{example}
 	$\abs{S_n} = n!$
 \end{example}
+
 \begin{definition}[$p$-Gruppe]
-	Ist $\abs{G} = p^n$ für eine Primzahl $p$, so nennt man $G$ eine \begriff{$p$-Gruppe}. ($n \in \N$)
+	Ist $\abs{G} = p^n$ für eine Primzahl $p$ und ein $n\in\mathbb N$, so nennt man $G$ eine \begriff{$p$-Gruppe}
 \end{definition}
+
 \begin{definition}[Untergruppe]
 	Sei $G$ Gruppe. Eine Teilmenge $H \le G$ ist eine \begriff{Untergruppe} $H < G$, wenn
-	\begin{enumerate}
-		\item Für alle $x,y \in H$ $xy \in H$
-		\item $1 \in H$
-		\item Für alle $x \in H$ $\exists x^{-1} \in H$ 
-	\end{enumerate}
+	\begin{defenum}
+		\item \label{1_1_9_i} Für alle $x,y \in H$: $xy \in H$
+		\item \label{1_1_9_ii} $1 \in H$
+		\item \label{1_1_9_iii} Für alle $x \in H$: $x^{-1} \in H$ 
+	\end{defenum}
 \end{definition}
+
 \begin{proposition}
-	Ist $\abs{G} \le \infty$, so folgt 2) aus 1)  und $H \neq \emptyset$. % link previous definition here please.
+	Ist $\abs{G} < \infty$, so folgen \cref{1_1_9_ii,1_1_9_iii} bereits aus \cref{1_1_9_i} und $H \neq \emptyset$.
 \end{proposition}
 \begin{proof}
-	Sei $x \in H$ ein beliebiges Element. Aus 1) folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G}< \infty$ existiert $n\neq m$ mit $x^n = x^m$. O.b.d.A.
-	\begin{align*}
-		 n > m &\Longleftrightarrow x^{n-m} x^m = x^n\\
-		 &\Longleftrightarrow x^{n-m} = 1
+	Sei $x \in H$ ein beliebiges Element. Aus \ref{1_1_9_i} folgt $x^n \in H$ für alle $n \in \N_{+}$. Da $\abs{G} < \infty$ existiert $n\neq m$ mit $x^n = x^m$. O.E. sei $n > m$ \begin{itemize}[label={$\Rightarrow$},topsep=-\parskip]
+		 \item $x^{n-m} x^m = x^n$
+		 \item $x^{n-m} = 1$
+		 \item \ref{1_1_9_ii}
+	\end{itemize}
+	Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation \begin{align*}
+		t_x\colon G \to G, y \mapsto xy\quad(x\in G\;\text{fest})
 	\end{align*}
-	Also gilt 2). Ferner impliziert die Existenz der inversen Elemente, dass die Linkstranslation $t_x: G \to G \mit y \mapsto xy$ ($x \in G$ fest) injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt 1) gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_{x\mid_H}. H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_{x\mid_H}: H \to H$ surjektiv. Aber existiert $y \in H: t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
+	injektiv ist, denn $(t_x)^{-1} = t_{x^{-1}}$. Ist $x \in H$, so heißt \ref{1_1_9_i} gerade $t_x(H) \subseteq H$, sprich $t_x$ kann zu $t_x\big|_H\colon H \to H$ eingeschränkt werden. Die Einschränkung einer injektiven Abbildung ist injektiv. Da $\abs{H} \le \abs{G} < \infty$, folgt $t_x\big|_H\colon H \to H$ ist surjektiv. Also existiert $y \in H$ mit $t_x(y)= 1$. Eindeutigkeit von $x^{-1}$ heißt $y = x^{-1} \in H$.
 \end{proof}
+
 \begin{definition}[Erzeugendensystem]
 	Ist $X \subseteq G$, so ist
 	\begin{align*}
-		\langle X \rangle = \bigcap_{\substack{H < G\\X \subset H}} H \text{ die von $X$ erzeugte Untergruppe}.
+		\langle X \rangle = \bigcap_{\substack{H < G\\X \subset H}} H
 	\end{align*}
-	Ist $\langle X \rangle = G$ nennen wir $X$ ein Erzeugendensystem.
+	die von $X$ erzeugte Untergruppe. Ist $\langle X \rangle = G$, nennen wir $X$ ein Erzeugendensystem.
 \end{definition}
+
 \begin{definition}[Konjugation]
-	Ist $H < G$ und $x \in G$, so ist $x^{-1}Hx = \set{x^{-1}Hx\mid y \in H}$ eine Untergruppe (``$x^{-1}yx$'' $y$ ist konjugiert mit $x$). Wir nennen diese zu $H$ konjugiert.
-	\begin{align*}
-		(x^{-1}yx)^{-1} = x^{-1}y^{-1}x \und x^{-1}yx\cdot x^{-1}zx = x^{-1}yzx
+	Ist $H < G$ und $x \in G$, so ist\begin{align*}
+		x^{-1}Hx = \set{x^{-1}Hx\mid y \in H}
 	\end{align*}
+	eine Untergruppe ("`$x^{-1}yx$"' $y$ ist konjugiert mit $x$). Wir nennen diese zu $H$ konjugiert.
+%	\begin{align*}
+%		(x^{-1}yx)^{-1} = x^{-1}y^{-1}x \und x^{-1}yx\cdot x^{-1}zx = x^{-1}yzx
+%	\end{align*}
 \end{definition}
+
 \begin{definition}[Konjugationsklasse]
-	Die Menge $\set{x^{-1}yx \mid x \in G}$ ist i.A. \emph{keine} Untergruppe und diese nennt man \begriff{Kojugationsklasse} von $y$.
+	Die Menge $\set{x^{-1}yx \mid x \in G}$ ist i.A. \emph{keine} Untergruppe und diese nennt man \begriff{Konjugationsklassen} von $y$.
 \end{definition}
+
 \begin{definition}[Zentralisator, Zentrum]
-	Der \begriff{Zentralisator} von $y \in G$ ist $\set{x \in G \mid xy = yx} =: Z_G(y)$. Das \begriff{Zentrum} von G ist
+	Der \begriff{Zentralisator} von $y \in G$ ist
+	\begin{align*}
+		\set{x \in G \mid xy = yx} =: Z_G(y).
+	\end{align*}
+	Das \begriff{Zentrum} von G ist
 	\begin{align*}
 		Z(G) = \bigcap_{y \in G} Z_G(y) = \set{x \in G \mid \forall y \in G xy=yx}.
 	\end{align*}
@@ -120,16 +150,16 @@
 	\begin{align*}
 		(12345) = (15)(14)(13)(12)
 	\end{align*}
-	ist das Produkt in $S_5$, d.h. Komposition! Also erzeugt $\set{(y)}$ die $S_n$. Jede Permutation kann also als Produkt von Transpositionen geschrieben werden. Diese Darstellung ist nicht eindeutig! (z.B. $(12)(23)(12) = (23)(12)(23)$) (``Braid relation'') % add braid picture?! braids package
-	und $(12)(12) = ()$. Allerdings kommen in jeder solcher Darstellungen entweder eine gerade oder ungerade Anzahl von Transpositionen vor. ($\to$ Fehlstände). Insbesondere bilden gerade Permutationen (gerade Anzahl an Fehlständen $\Leftrightarrow$ Produkte von zu Transpositionen) eine Untergruppe $A_n < S_n$, die sogenannte \begriff{alternierende Gruppe}.
+	ist das Produkt in $S_5$, d.h. Komposition! Also erzeugt $\set{(i,j)}$ die $S_n$. Jede Permutation kann also als Produkt von Transpositionen geschrieben werden. Diese Darstellung ist nicht eindeutig! (z.B. $(12)(23)(12) = (23)(12)(23)$) (``Braid relation'') % add braid picture?! braids package
+	und $(12)(12) = (\,)$. Allerdings kommen in jeder solcher Darstellungen entweder eine gerade oder ungerade Anzahl von Transpositionen vor ($\to$ Fehlstände). Insbesondere bilden gerade Permutationen (gerade Anzahl an Fehlständen $\Leftrightarrow$ Produkte von zu Transpositionen) eine Untergruppe $A_n < S_n$, die sogenannte \begriff{alternierende Gruppe}.
 \end{remark}
-Sei $G$ eine endliche Gruppe.
+%Sei $G$ eine endliche Gruppe.
 \begin{example}
-	Also $G = \GL(n,R) = $ invertierbare Matrizen mit Einträgen in $R$ (nur endliche, wenn $R^{\times} endlich$!). Untergruppen sind
+	Sei $G = \GL(n,R)$ die invertierbare Matrizen mit Einträgen in $R$ (nur endliche, wenn $R^{\times} endlich$!). Untergruppen sind
 	\begin{itemize}
 		\item $\SL(n,R) = \set{g \in \GL(n,R) \mid \det g = 1}$
 		\item $O(n,R) = \set{g \in G \mid gg^T = g^T g = 1}$ mit dem Skalarprodukt $\scaProd{gv}{gw} = \scaProd{v}{w} \quad \forall v,w \in R^n$
-		\item $\SO(n,R) = \set{g \in G \mid \dots}$ % TODO
+		\item $\SO(n,R) = \mathrm{SL}(n, R) \cap \mathrm O(n,R)$.
 	\end{itemize}
 	Ist $R$ Ring mit Involuten (z.B. $R = \C, z = \bar{z}$)
 	\begin{itemize}
@@ -137,53 +167,75 @@ Sei $G$ eine endliche Gruppe.
 		\item $\SU(n,R) = \SL(n,R) \cap U(n,R)$
 	\end{itemize}
 \end{example}
+
 \begin{example}
-	$D_n = \set{f: \R^2 \to \R^2 \text{ linear, bjektiv} \mid f(P_n) = P_n}$, wobei $P_n \subset \R^2$ das regulär $n$-gen ist. $P_6$ ist das Hexagon % sketch? 
-	Alternativ ist $D_n \subseteq S_n$, wobei $\set{1, \dots,n}$ mit der Menge der Ecken von $P_n$ identifiziert wird und man erhält alle Permutationen, die benachbarte Ecken auf benachbarte abbilden
+	Sei $D_n$ definiert durch\begin{align*}
+		D_n &= \set{f\colon \R^2 \to \R^2 \; \text{linear, bjektiv} \mid f(P_n) = P_n},
+	\end{align*}
+	wobei $P_n \subset \R^2$ das regulär $n$-gen ist, z.B. das Hexagon $P_6$. % sketch? 
+	Alternativ ist $D_n \subseteq S_n$, wobei $\set{1, \dots,n}$ mit der Menge der Ecken von $P_n$ identifiziert wird und man erhält alle Permutationen, die benachbarte Ecken auf benachbarte abbilden:
 	\begin{itemize}
-		\item $r = $ Rotation um $\sfrac{2\pi}{n}$ im mathematische positiven Sinn
-		\item $s = $ eine beliebige Spiegelung in $D_n$
-		Also hat man
-		\begin{align*}
-			\langle \set{s,r}\rangle = D_n = \set{s^i r^j \mid i = 0,1, j=0, \dots, n-1} \quad \abs{D_n} = 2n\\
-			srs = r^{n-1} = r^{-1} \quad r^n = 1 \quad s^2 = 1\\
-			\langle \set{r,s}\rangle= D_{\alpha} \subset S_{\Z} \quad r(z) = z+1 \quad s(z) = -z \quad r,s : \Z \to \R\\
-		\end{align*}
+		\item $r$: Rotation um $\sfrac{2\pi}{n}$ im mathematische positiven Sinn
+		\item $s$: eine beliebige Spiegelung in $D_n$
 	\end{itemize}
+	Also hat man
+	\begin{align*}
+		\langle \set{s,r}\rangle = D_n = \set{s^i r^j \mid i = 0,1, j=0, \dots, n-1}
+	\end{align*}
+	und der Mächtigkeit $\vert D_n\vert = 2n$.
+	
+	Für die erzeugenden Elemente $D_n = \langle \lbrace s,r\rbrace \rangle$ gilt:
+	\begin{itemize}
+		\item $srs = r^{n-1}$,
+		\item $r^{n-1} = r^{-1}$,
+		\item $r^n = 1$,
+		\item $s^2 = 1$.
+	\end{itemize}
+Im unendlichen Fall $D_\infty \subset S_{\mathbb Z}$ gilt z.B. $r(z) = z+1$, $s(z) = -z$, wobei $r$, $s\colon \mathbb Z\to\mathbb Z$ sind und $D_\infty$ erzeugen: $D_\infty = \langle \lbrace r,s\rbrace\rangle$.
 \end{example}
+
 \section{Nebenklassen, Normalteiler, Isomorphiesätze}
 \begin{definition}
-	$A,B \subseteq G$ Teilmengen (nicht unbedingt Untergruppen!)
-	\begin{align*}
-		AB = \set{xy \in G \mid x \in A, y \in B} \quad A^{-1} = \set{x^{-1} \in G \mid x \in A}
-	\end{align*}
+	$A,B \subseteq G$ Teilmengen (nicht unbedingt Untergruppen!), dann:
+	\begin{itemize}
+		\item $AB = \set{xy \in G \mid x \in A, y \in B}$
+		\item $A^{-1} = \set{x^{-1} \in G \mid x \in A}$
+	\end{itemize}
 \end{definition}
+
 \begin{remark}
-	$\emptyset \neq H \subseteq G$ ist Untergruppe $\Leftrightarrow HH = H, H^{-1} = H$
+	$\emptyset \neq H \subseteq G$ ist Untergruppe $\Leftrightarrow$ $HH = H$, $H^{-1} = H$
 \end{remark}
+
 \begin{definition}
-	Ist $x \in G$, so nennen wir $f_x : G \to G \mit y \mapsto x^{-1}yx$ den durch $x$ definierer inneren Automorphismus. Ist $H < G$, so nennen wir $f(H) = x^{-1}Hx$ eine zu $H$ konjugierte Untegruppe.
+	Ist $x \in G$, so nennen wir
+	\begin{align*}
+		f_x\colon G \to G \mit y \mapsto x^{-1}yx
+	\end{align*}
+	den durch $x$ definierten inneren Automorphismus. Ist $H < G$, so nennen wir $f(H) = x^{-1}Hx$ eine zu $H$ konjugierte Untergruppe.
 \end{definition}
+
 \begin{proposition}
-	\begin{enumerate}
+	\begin{itemize}
 		\item $f_x$ ist ein Endomorphismus von $G$ (d.h. ein Morphismus $G \to G$)
-		\item Das Bild $\Image f$ eines beliebigen Gruppenmorphismus $f: K \to L$ ist eine Untergruppe: $\Image f < L$
-	\end{enumerate}
+		\item Das Bild $\Image f$ eines beliebigen Gruppenmorphismus $f\colon K \to L$ ist eine Untergruppe: $\Image f < L$
+	\end{itemize}
 \end{proposition}
-\begin{proof}
-	\begin{enumerate}
+\begin{proof}\leavevmode
+	\begin{itemize}[topsep=-6pt]
 		\item $f_x (yz) = x^{-1}yzx = x^{-1}y(xx{^-1})zx = (x^{-1}yx)(x^{-1}zx) = f_x(y)f_x(z)$ $\forall y,z \in G$
-		\item 
+		\item Wir untersuchen die drei Eigenschaften:
 		\begin{itemize}
-			\item $\Image f$ ist abgeschlossen. Seien $f(y), f(z) \in \Image f$. Dann gilt:
+			\item $\Image f$ ist abgeschlossen: seien $f(y), f(z) \in \Image f$. Dann gilt:
 			\begin{align*}
 			f(y)f(z) = f(yz) \in \Image f
 			\end{align*}
 			\item $f(1) = 1 \implies 1 \in \Image f$
 			\item $f(x)^{-1} = f(x^{-1}) \implies (\Image f)^{-1} = \Image f$
 		\end{itemize}
-	\end{enumerate}
+	\end{itemize}
 \end{proof}
+
 \begin{definition}
 	Ist $H < G, x \in G$, so nennt man
 	\begin{align*}
@@ -199,12 +251,18 @@ Dies verallgemeinert sich zu
 	Sei $H < G$, $\lnkset{G}{H} = \set{x H \mid x \in G} \subseteq \powerset(G)$
 \end{definition}
 \begin{remark}
-	$xH = yH \Leftrightarrow x \sim y$ definiert eine äquivalenzrelation und das ist äquivalent zu $\exists h \in H: x = yh \Leftrightarrow y^{-1}y \in H$. Beachte dabei $\lnkset{G}{H} = \lnkset{G}{N}$ ist die Menge aller Äquivalenzklassen $xH = [x]$. Desweiteren gibt es die kanonische Projektion $\pi : G \to \lnkset{G}{H} \mit x \mapsto xH$.
+	$xH = yH \Leftrightarrow x \sim y$ definiert eine Äquivalenzrelation und das ist äquivalent zu
+	\begin{align*}
+		\exists h \in H: x = yh \Leftrightarrow y^{-1}y \in H.
+	\end{align*}
+	Beachte dabei $\lnkset{G}{H} = \lnkset{G}{N}$ ist die Menge aller Äquivalenzklassen $xH = [x]$. Desweiteren gibt es die kanonische Projektion $\pi\colon G \to \lnkset{G}{H},x \mapsto xH$.
+	
+	Insbesondere ist $G$ die disjunkte Vereinigung aller Äquivalenzklassen. Speziell ist für jedes $x \in G$ definiert:
+	\begin{align*}
+		t_x\colon G \to G, y \mapsto xy \text{ eine Bijektion,} \quad H = 1H = [x] \to xH = [x].
+	\end{align*}
 \end{remark}
-Insbesondere ist $G$ die disjunkte Vereinigung aller Äquivalenzklassen. Speziell ist für jedes $x \in G$ definiert:
-\begin{align*}
-	t_x : G \to G \mit y \mapsto xy \text{ eine Bijektion } \quad H = 1H = [x] \to xH = [x].
-\end{align*}
+
 Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \begin{proposition}[Lagrange, Klausur!]
 	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
@@ -213,54 +271,62 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 	\ul{Beweisskizze:} Äquivalenzrelation und Bijektion $xH \cong yH$.\\
 	?, eventuell von Fehm übernehmen?!
 \end{proof}
+
 \begin{conclusion}
-	Sei $\abs{G} < \infty$, dann $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$ $x^{\abs{G}} = 1$
+	Sei $\abs{G} < \infty$, dann gilt $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$:  $x^{\abs{G}} = 1$
 \end{conclusion}
+
 \begin{conclusion}[Eulers Theorem]
 	$\abs{U_n} = \phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{\set{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}}$ mit $n \in \N$. Also ist $m^{\phi(n)} = 1 \mod n$.
 \end{conclusion}
 \begin{definition}[Index]
-	Sei $H < G$, dann $\abs{[G:H]} := \abs{\lnkset{G}{H}}$ Index vo $H$ in $G$.
+	Sei $H < G$, dann ist $[G:H] := \abs{\lnkset{G}{H}}$ der Index von $H$ in $G$.
 \end{definition}
+
 \begin{conclusion}
 	Sei $K < H < G$ und $\abs{G} < \infty$, dann
 	\begin{align*}
 		[G:K] = \abs{\lnkset{G}{K}} = \frac{\abs{G}}{\abs{H}}\cdot \frac{\abs{H}}{\abs{K}} = [G:H][H:K].
 	\end{align*}
 \end{conclusion}
+
 \section{Morphismen}
 \begin{definition}
-	Ein injektiver Morphismus $f: G \to H$ wird auch Einbettung genannt. Ein Isomorphismus ist ein bijektiver Morphismus.
+	Ein injektiver Morphismus $f\colon G \to H$ wird auch Einbettung genannt. Ein Isomorphismus ist ein bijektiver Morphismus.
 \end{definition}
+
 \begin{*remark}
 	Ein injektiver Morphismus wird auch Monomorphismus genannt und ein surjektiver Morphismus Epimorphismus.
 \end{*remark}
+
 \begin{example}
-	\begin{enumerate}
-		\item Betrachte die Determinate $\det: \GL(n,R) \to R^{\times}$, diese ist ein surjektiver Morphismus von Gruppen mit
+	\begin{enumerate}[label={\arabic*)}]
+		\item Betrachte die Determinate $\det\colon \GL(n,R) \to R^{\times}$, diese ist ein surjektiver Morphismus von Gruppen mit
 		\begin{align*}
 		\det(gh) = \det(g)\det(h)
 		\end{align*}
-		\item Die Wahl einer Basis $B$ in einem endlich erzeugten freien Modul $V$ ist ein Isomorphismus von Moduln $s_B: R^{\abs{B}} \to V$. Dieser induziert einen Gruppenisomorphismus
+		\item Die Wahl einer Basis $B$ in einem endlich erzeugten freien Modul $V$ ist ein Isomorphismus von Moduln $s_B\colon R^{\abs{B}} \to V$. Dieser induziert einen Gruppenisomorphismus
 		\begin{align*}
-			\GL(n,R) \to \GL(V) \mit g \mapsto s_B \circ M_g \circ s^{-1}_B
+			\GL(n,R) \to \GL(V), g \mapsto s_B \circ M_g \circ s^{-1}_B
 		\end{align*}
-		\item Die Linkstranslation $t: G \to S_G \mit x \mapsto t_x$ (mit $t_x(x) = xy$) ist ein injektiver Gruppenhomomorphismus
+		\item Die Linkstranslation $t\colon G \to S_G \mit x \mapsto t_x$ (mit $t_x(y) = xy$) ist ein injektiver Gruppenhomomorphismus
 		\begin{align*}
-			(t_x \circ t_z)(y) = t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y)\\
-			\text{also} t_x \circ t_y = t_{xz} \quad \forall x,z \in G
+			(t_x \circ t_z)(y) &= t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y)
+			\intertext{also}
+			t_x \circ t_y &= t_{xz} \quad \forall x,z \in G
 		\end{align*}
 		Ist $t_x = t_z$, so gilt $t_x(1) = t_z(1)$ und daraus $x1=z1$, also $x=z$
+		
+		Also kann \emph{jede} endliche Gruppe als Untergruppe der $S_n$ verstanden werden ($n = \abs{G}$)!
 	\end{enumerate}
-	Also kann \emph{jede} endliche Gruppe als Untergruppe der $S_n$ verstanden werden ($n = \abs{G}$)!
 \end{example}
 \begin{example}
-	\begin{enumerate}
-		\item Setze $x \mapsto f_{x^{-1}}: G \to G$, $y \mapsto xyx^{-1}$ ist ein Morphismus $G \to \Ad(G)$ mit
+	\begin{enumerate}[label={\arabic*)}]
+		\item $x \mapsto f_{x^{-1}}\colon G \to G$, $y \mapsto xyx^{-1}$ ist ein Morphismus $G \to \mathrm{Aut}\,G$ mit
 		\begin{align*}
-		f_x(y) = x^{-1}yx \quad f_z(f_x(y)) = z^{-1}(x^{-1}yx)z = (xz)^{-1}y(xz) = f
+		f_x(y) = x^{-1}yx, \quad f_z(f_x(y)) = z^{-1}(x^{-1}yx)z = (xz)^{-1}y(xz) = f_{xz},
 		\end{align*}
-		\item $A$ nicht injektiv! Denke an $G$ abelsch $\Leftrightarrow f_x = \id_G \forall x \in G$
-		\item $\sgn: S_n \to \Z_2 = \set{-1,1}$
+		und ist i.A. nicht injektiv! Denke an $G$ abelsch $\Leftrightarrow f_x = \id_G$ $\forall x \in G$
+		\item $\sgn\colon S_n \to \Z_2 = \set{-1,1}$
 	\end{enumerate}
 \end{example}
