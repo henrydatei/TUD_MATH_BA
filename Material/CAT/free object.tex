@@ -1,0 +1,21 @@
+\documentclass{standalone}
+
+\usepackage{tikz, amsmath}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta,bending}
+
+\begin{document}
+	\begin{tikzcd}[column sep=small]
+		& UF_X \arrow[dl, "U_X"] \arrow[dr, "{\exists! U_v}"] & \\
+		X \arrow{rr} & & UA
+	\end{tikzcd}
+\end{document}
