@@ -2,12 +2,6 @@
 \usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
 
 % % % local commands
-\newcommand{\Halb}{\mathfrak{X}}            % Halbordnung
-\newcommand{\caly}{\mathcal{Y}}				% caligraphic Y
-\DeclareMathOperator{\transdeg}{tr.deg}		% transcendence degree
-\DeclareMathOperator{\Tr}{Tr}				% Trace Matrix or here for L\mid K
-\newcommand{\Zwischen}{\mathscr M}
-\DeclareMathOperator{\discr}{discr}			% discriminate
 \DeclareMathOperator{\Ad}{Ad}				% Adjoint
 
 % % % local packages
@@ -28,6 +22,10 @@
 \newlist{lemmaenum}{enumerate}{1}
 \setlist[lemmaenum]{label=(\alph*),ref=\thelemma~(\alph*)}
 \crefalias{lemmaenumi}{lemma}
+
+\newlist{defenum}{enumerate}{1}
+\setlist[defenum]{label=(\roman*),ref=\thedefinition~(\roman*)}
+\crefalias{defenumi}{definition}
 
 \title{\textbf{Geometrie WS 19/20}}
 \author{Dozent: Prof. Dr. \person{Ulrich Krähmer}}
@@ -50,7 +48,6 @@
 \input{./TeX_files/Vorwort}
 \chapter{Gruppen}
 \input{./TeX_files/Gruppen/chap1}
-%\include{./TeX_files/Korper/Alg_Korpererweiterungen}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
