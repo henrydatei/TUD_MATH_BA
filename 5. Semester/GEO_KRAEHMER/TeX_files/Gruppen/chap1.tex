@@ -265,6 +265,7 @@ Dies verallgemeinert sich zu
 
 Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \begin{proposition}[Lagrange, Klausur!]
+	\label{1_2_9_lagrange}
 	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
 \end{proposition}
 \begin{proof}
@@ -330,3 +331,101 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 		\item $\sgn\colon S_n \to \Z_2 = \set{-1,1}$
 	\end{enumerate}
 \end{example}
+\section{Normalteiler}
+% fix \lhd ==> GEO Fehm nachschaun!
+\begin{definition}[normale Untergruppe]
+	Eine Untergruppe $H < G$ ist \begriff[Gruppe]{normal} $\Leftrightarrow$ $\forall x \in G\colon xH = Hx$.
+\end{definition}
+\begin{proposition}
+	\begin{align*}
+		H < G \text{ ist normal } &\Leftrightarrow \forall x \in G x^{-1}Hx = H\\
+		&\Leftrightarrow \forall AH = HA
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	Sei $H$ normal und $x \in G$. Dann gilt $xH = Hx \implies x^{-1}xH = x^{-1}Hx$. Hier verwende $A,B \subseteq G, AB = \set{ab \mid a \in A, b \in B}$ definiert ein assoziatives Produkt $u \in \powerset(G)$, angewendet auf $A(BH) = (AB)H, A = \set{x^{-1}}, B=\set{x}$. Umgekehrt genauso $xH = Hx \implies x^{-1}xH = x^{-1}Hx$. Weiter gilt:
+	\begin{align*}
+		AH = \bigcup_{x \in A} x H, \quad HA = \bigcup_{x \in A} Hx
+	\end{align*}
+	Also $xH = Hx\quad \forall x \in G \implies AH=HA \forall A \subseteq G$. Umgekehrt: Nimm $A = \set{x}$.
+\end{proof}
+Warum relevant?\\
+Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G$
+\begin{proposition}
+	\label{1_4_3_prop}
+	Sei $H \lhd G$. Dann definiert
+	\begin{align*}
+		xH \cdot yH = (xy)H
+	\end{align*}
+	eine Gruppenstruktur auf $\lnkset{G}{H}$ und $\pi: G \to G \mit x \mapsto xH$ ist eine surjektiver Morphismus von Gruppen.
+\end{proposition}
+\begin{proof}
+	$xH \cdot yH$ kann ich in $\powerset(G)$ immer bilden. Ist $H \lhd G$, gilt $xH = Hx$, also $xH\cdot yH = HxyH = xyHH = xyH$. (oder $A=\set{x}, B = \set{y}, C,D=H$). Anders gedacht: $H \lhd G$ heißt: $H \in Z(\powerset(G))$. Sprich: $\lnkset{G}{H} \subseteq \powerset(G)$ ist eine Unterhalbgruppe, d.h. abgeschlossen unter $\cdot$. Ferner gilt: $H = 1H$ ist ein Einselement $(xH)H = x(HH) = xH, H(xH) = (Hx)H = xH=(Hx)H=(xH)H$. Ausserdem ist $\lnkset{G}{H}$ Gruppe 
+	\begin{align*}
+		xH \cdot x^{-1}H = Hx\cdot x^{-1}H = H1H = HH = H
+	\end{align*}
+	und genauso $x^{-1}HxH = H$. Sei $\pi: G \to \lnkset{G}{H} \mit x \mapsto xH$ also $\pi(xy) = \pi(x)\pi(y) \mit xyH = xH \cdot yH$.
+\end{proof}
+\begin{definition}[Kern einer Gruppe]
+	Ist $f: G \to K$ ein Morphismus von Gruppen, so definieren wir den \begriff[Gruppe]{Kern} $\ker f = \set{x \in G \mid f(x) = 1_K}$
+\end{definition}
+\begin{*remark}
+	Ist $K$ eine abelsche Gruppe, so schreibt man die Gruppenoperation oft als $+$ und 1 oft als 0.
+\end{*remark}
+\begin{proposition}
+	Es gilt $\ker(f) \lhd G$.
+\end{proposition}
+\begin{proof} %make more beautiful!!!
+	\begin{enumerate}
+		\item Sind $x,y \in \ker f$, so gilt $f(x)f(y) = f(xy)$ (und 11 = 1), also ist $ker f$ abgeschlossen unter $\cdot$.
+		\item Ferner $f(1) = 1$, da $f$ Morphismus $\implies$ $G \ni 1 \in \ker f$.
+		\item 	Zuletzt: $f(x)^{-1} = f(x^{-1})$, dann
+		\begin{align*}
+		x \in \ker f \implies f(x) = 1 \implies f(x^{-1}) = f(x)^{-1} \implies x^{-1} \in \ker f
+		\end{align*}
+		\item Ferner gilt für $x \in G, y \in \ker f$:
+		\begin{align*}
+		f(x^{-1}yx) = f(x^{-1}f(y)f(x)) = f(x^{-1})\cdot 1 f(x) = f(x^{-1}x) = f(1) = 1 \text{ also}\\
+		x^{-1} \in \ker f \subseteq \ker f \text{ also }\\
+		(x^{-1})^{-1} \ker f (x^{-1}) \subseteq \ker f \implies \ker f \subseteq x^{-1} \ker f x
+		\end{align*}
+		\item $\ker f \lhd G$.
+	\end{enumerate}
+	also 1. 2. 3. : $\ker f < G$. 
+\end{proof}
+\begin{*remark}
+	Ist $H \lhd G$, so gilt: $H = \ker \pi \mit \pi: G \to \lnkset{G}{H}$. (denn $\pi(x) = xH$, also $\ker \pi = \set{x \mid xH = H} = H$). Normalerteiler sind also die Kerne von Morphismen.
+\end{*remark}
+\begin{proposition}[1. Isomorphiesatz]
+	Ein Morphismus $f: G \to K$ von Gruppen induziert einen Isomorphismus:
+	\begin{align*}
+		\bar{f}: \lnkset{G}{\ker f} \to \Image f \mit [x] = x \ker f \mapsto f(x)
+	\end{align*}
+\end{proposition}
+\begin{proof} % fix label!!!
+	Der einzig schwere Teil ist $\bar{f}$ ist wohldefiniert. $f(xH) := f(x) \in \Image f$, also landet $\bar{f}$ in $\Image f$. Ferner gilt: Ist $x \ker f = y \ker f$, so ist $y^{-1}x \in \ker f$ (allgemein: $xH = yH \Leftrightarrow y^{-1}xH$) $\Leftrightarrow f(y^{-1}x) = 1 \Leftrightarrow f(y^{-1})f(x) = 1 \Leftrightarrow f(y)^{-1}f(x) = 1$ $\Leftrightarrow f(x) = f(y)$. Also ist $\bar{f}$ wohldefiniert und injektiv. Surjektiv ist $\bar{f}$ per Definition.\\
+	Letzter Schritt: $\bar{f}(x \ker f \cdot y \ker f) = \bar{f}(xy \cdot \ker f)$ (\propref{1_4_3_prop}). $\bar{f}(x \ker f)\bar{f}(y\ker f) = f(x)f(y) = f(xy)$. Also ist $\bar{f}$ ein Morphismus von Gruppen.
+\end{proof}
+\begin{example}
+	Sei $G = (\R, +)$, $K = (\C\setminus \set{0},\cdot)$ und $f(t) = \exp(2\pi \ii t)$, dann $f(x+y) = \exp(x) + \exp(y)$ also ein Gruppenmorphismus $G \to K$. Dann $\Image f = U(1) = S^1 = \set{z \in \C \mid \abs{z} = 1}$ und $\ker f = \Z$. Also ist $\lnkset{\R}{\Z} \cong S^1$ ($\lnkset{\R^2}{\Z^2} \cong T$ ist dann der Torus $T$, $U(n) = \set{A \in \Mat(n, \C) \mid AA^T = 1}$ unitäre Gruppe)
+\end{example}
+\begin{definition}[einfache Gruppe]
+	Eine Gruppe $G$ ist \begriff[Gruppe]{einfach}, wenn $H \lhd G \implies H = G \und H = \set{1}$.
+\end{definition}
+\begin{*remark}
+	D.h.: Ist $f: G \to K$ irgendein Morphismus, so ist $G \cong \Image f$ ($\ker f = \set{1}$) oder $\Image f = \set{1}$ ($\ker f = G$).
+\end{*remark}
+Die endlichen einfachen Gruppen sind klassifiziert!
+\begin{example}
+	\begin{enumerate}
+		\item Sei $G = \Z_p, p$ prim hat nach \person{Lagrange} (\propref{1_2_9_lagrange}) noch nicht mal irgendeine \emph{echte} Untergruppe, ist also einfach.
+		\item $\lnkset{\SL(n, \Z_p)}{Z(\SL(n, \Z_p))} = \PSL(n, \Z_p)$ (projective linear group)
+	\end{enumerate}
+\end{example}
+\begin{proposition}(Korrespondenztheorem)
+	Ist $H \lhd G$, so induziert (definiert) $\pi: G \to \lnkset{G}{H}$ einen Isomorphismus von teilgeordneten Mengen (partial ordered sets)
+	\begin{align*}
+		\set{L < G \mid H < L} \to \set{K < \lnkset{G}{H}} \mit L \mapsto \pi(L)
+	\end{align*}
+	Dieser erhält und reflektiert Normalität und auch Unterquotienten. 
+\end{proposition}
