@@ -314,7 +314,7 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 		\begin{align*}
 			(t_x \circ t_z)(y) &= t_x(t_z (y))=t_x(zy) = xzy = t_{xz}(y)
 			\intertext{also}
-			t_x \circ t_y &= t_{xz} \quad \forall x,z \in G
+			t_x \circ t_y &= t_{xy} \quad \forall x,y \in G
 		\end{align*}
 		Ist $t_x = t_z$, so gilt $t_x(1) = t_z(1)$ und daraus $x1=z1$, also $x=z$
 		
@@ -323,7 +323,7 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \end{example}
 \begin{example}
 	\begin{enumerate}[label={\arabic*)}]
-		\item $x \mapsto f_{x^{-1}}\colon G \to G$, $y \mapsto xyx^{-1}$ ist ein Morphismus $G \to \mathrm{Aut}\,G$ mit
+		\item $y \mapsto f_{x^{-1}}\colon G \to G$, $y \mapsto xyx^{-1}$ ist ein Morphismus $G \to \mathrm{Aut}\,G$ mit
 		\begin{align*}
 		f_x(y) = x^{-1}yx, \quad f_z(f_x(y)) = z^{-1}(x^{-1}yx)z = (xz)^{-1}y(xz) = f_{xz},
 		\end{align*}
