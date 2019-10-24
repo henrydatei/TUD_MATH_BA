@@ -270,7 +270,12 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \end{proposition}
 \begin{proof}
 	\ul{Beweisskizze:} Äquivalenzrelation und Bijektion $xH \cong yH$.\\
-	?, eventuell von Fehm übernehmen?!
+	Let $H < G$ a subgroup of $G$ and $xH := \set{xy \mid y \in H} \le G$ the coset of $H$ in $G$. Then we have $\lnkset{G}{H} = \set{xH \mid x \in G} \subseteq \powerset(G)$. Then
+	\begin{align*}
+		xH = \tilde{x}H \Leftrightarrow \exists y \in H \quad x = \tilde{x}y \Leftrightarrow \tilde{x}^{-1}x \in H\\
+		G = \bigcup_{xH \in \lnkset{G}{H}} xH \implies \abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}\\
+		\abs{xH} = \abs{H} \quad \forall x \in G.
+	\end{align*}
 \end{proof}
 
 \begin{conclusion}
