@@ -1,0 +1,92 @@
+\chapter{Einführung}
+\section{Zentrale Fragestellung der Finanzmathematik}
+\subsection*{\begriff{Bewertung}:}
+Bewertung von Derivaten und \emph{Absicherung} gegen aus Kauf/Verkauf entstehenden Risiken.
+
+\begin{definition}[\begriff{Derivat}]
+	FInanzprodukt, dessen auszahlungen sich vom Preis einer oder mehrer \begriff{Basisgüter} (underlying) ableitet (ableiten entspricht derivate)
+\end{definition}
+\begin{*example}
+	\begin{itemize}
+		\item Recht, in 3 Monaten 100.000 GBP gegen 125.000 EUR zu erhalten (\begriff{Call-Option}, Underlying: Wechselkur GBP/EUR)
+		\item Recht, innerhalb des nächsten Jahres 100.000 Mwh elektrischer Energie zum Preis von 30EUR/Mwh zu konsumieren mit Mindestabnahme 50.000 Mwh (\begriff{Swing-Option}, Underlying: Strompreis)
+		\item Kauf- und Verkaufsoptionen aus Aktien (Underlying: Aktienkurs)
+	\end{itemize}
+\end{*example}
+Fragestellung: Was ist der ``faire'' Preis für solch ein Derivat? (``Pricing''/Bewertung). Wie kann sicher der Verkäufer gegen eingegangenen Risiken absichern? (``Hedging''/Absicherung)
+\subsection*{\begriff{Optimale Investition}}
+Zusammenstellung von Portofolios, welche nach Risiken/Ertragsgesichtspunkten optimal sind
+\begin{itemize}
+	\item Wie wäge ich Risiken gegen Ertrag ab?
+	\item Was genau bedeutet ``optimal''?
+	\item Lösung des resultierenden Optimierungsproblems
+\end{itemize}
+\subsection*{\begriff{Risikomangement + Risikomessung}}
+\begin{itemize}
+	\item Gesetzliche Vorschriften (Basel + Solvency) sollen Stabilität des Banken-/Verischerunssystems auch angesichts verschiedener Risiken sicherstellen $\implies$ mathematische Theorie der konvexen und kohärenten Risikomaße
+\end{itemize}
+Mathematische Werkzeuge: Wtheorie + stoch. Prozesse (Dynamik in der Zeit), etwas lineare Algebra, Optimierung, Maßtheorie
+\section{Mathematisches Finanzmodell}
+Wir betrachten
+\begin{enumerate}
+	\item \emph{WRaum} $(\O,\F,\P)$, später auch weitere W-Maße $Q, \dots$ auf demselben Maßraum $(\O,\F), \omega \in \O$ Elementarereignisse bzw. ``Szenarien''
+	\item \emph{Zeitachse} $I$ entweder $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-Periode Modell (diskretes Modell) oder $I = [0,T]$ (zeitsteiges Modell), wobei $T = $ Zeithorizont\\
+	Ein \begriff{stochasticher Prozess} $S$ ist eine messbare Abbildung $S: (\O,\F) \to \Rd \mit (\omega, t) \mapsto S_t(\omega)$\\
+	insbesondere ist 
+	\begin{itemize}
+		\item $t \mapsto S_t(\omega)$ Funktion $I \to \Rd$ für jedes $\omega \in \O$ (``Pfad'')
+		\item $\omega \mapsto S_t(\omega)$ Zufallsvariable $\O \to \Rd$ für jedes $t \in I$
+	\end{itemize}
+	\item \emph{Filtration} ist Folge von $\omega$-Algebren $(\F_t)_{t \in I}$ mit der Eigenschaft $\F_S \subseteq \F_t \quad \forall s,t \in I, x \le t \und \F_t \subseteq \F\quad \forall t \in I$\\
+	Interpretation: $\F_t=$dem Marktteilnehmer zum Zeitpunkt $t$ bekannte/ verfügbare Informationen\\
+	Ereignisse $A \in \F_t$ gelten als ``zum Zeitpunkt $t$'' bekannt\\
+	Eine $\Rd$-wertige ZV $X$ heißt \begriff{$\F_t$-messbar}, wenn $E = X^{-1}(B) \in \F_t \quad \forall$ Borelmengen $B \subseteq \Rd$ (dabei ist $E$ das Urbild von $B$)
+
+\begin{*example}
+	Ein stochastischer Prozess $(S_t)_{t\in I}$ auf $(\O,\F)$ heißt \begriff[stochasticher Prozess]{adaptiert} bezüglich einer Filtration $(\F_t)_{t \in I}$, wenn gilt:
+	\begin{align*}
+		S_t \text{ ist } \F_t-\text{messbar} \quad \forall t \in I
+	\end{align*}
+\end{*example}
+Interpretation: ``der Wert $S_t$ ist zum Zeitpunkt $t$ bekannt''\\
+Warum Filtration in der Finanzmathematik (FiMa)?
+\begin{itemize}
+	\item Unterscheidung Zukunft / Vergangenheit
+	\item unterschiedliche Information (Insider/Outsider) entspricht unterschiedlicher Filtration $(\F_t)_{t \in I}$ bzw. $(\G_t)_{t\in I}$
+\end{itemize}
+	\item \begriff{Anlagegüter (assets)} $\R^{d+1}$-wertiger stochastischer Prozess mit Komponenten
+	\begin{align*}
+		S^i: (\O \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\omega) \mit i \in \set{0,1,\dots,d}
+	\end{align*} 
+	wobei $S^i_t=$ Preis des $i$-ten Anlageguts zum zeitpunkt $t$\\
+	$S^i, i \in \set{1,\dots,d}$ ist typischerweise
+	\begin{itemize}
+		\item Aktie (Stock), Unternehmsanteil
+		\item Währung (currency) bzw. Wechselkurs
+		\item Rohstoff (commodity) wie z.B. Öl, Edelmetall, Elektriziät, etc
+		\item Anleihe (bond) ... Schuldverschreibung
+	\end{itemize}
+	Hauptannahme: $S^i$ ist liquide gehandelt (z.B. an Börse), d.h. Kauf/Verkauf zum Preis $S^i_t$ jederzeit möglich\\
+	$S^0\dots$ ``Numeraire'' hat Sonderrolle: beschreibt Verzinsung von \emph{nicht} in $(S^1,\dots,S^d)$ angelegten Kapital, wird meist \emph{risikolos} betrachet
+\end{enumerate}
+\begin{definition}[Finanzmodell]
+	Ein \begriff{Finanzmodell} (FMM) mit zeitachse $I$ ist gegeben durch
+	\begin{enumerate}
+		\item einen WRaum $(\O, \F,\P)$ mit Filtration $(\F_t)_{t\in I}$
+		\item einen an $(\F_t)_{t \in I}$ adaptieren, $\R^{d+1}$-werigen stochastischen Prozess $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
+	\end{enumerate} 
+\end{definition}
+\begin{*example}[\person{Cox}-\person{Rubinstein} (CRR)-Modell (zeitdiskret)]
+	\begin{itemize}
+		\item $S^0_n = (1+r)^n$, d.h. Verzinsung mit konstanter Rate $r$
+		\item $S^1_n = S_0^1 \prod_{k=1}^n(1+Ru)$, wobei $(R_1, R_2, \dots)$ unabhängig ZVen mit zwei möglichen Werten $a < b$\\
+		Bild: ``rekonbinierter Baum'' mit Ereignissen $\omega$ entsprechen Pfaden in dem Baum
+	\end{itemize}
+\end{*example}
+\begin{*example}[\person{Block}-\person{Scholes}-Modell (zeitstetig)]
+	\begin{itemize}
+		\item $S^0_t = e^{rt}$, d.h. Verzinsung mit konstanter Rate $r$
+		\item $S_t^1 = S_0^1\cdot \exp((\mu - \frac{\sigma^2}{2}t + \sigma\beta_t) \mit \mu \in \R, \sigma > 0, S^1_0 >0$ und $\beta_t$ entspricht Brownsche Bewegung (stochastischer Prozess in stetiger Zeit) und $\mu - \frac{\omega^2}{2}$ entspricht Trendkomponente
+	\end{itemize}
+	Bild: Börsenkuve = $S_t(\omega)$, wobei zeitstetiges Modell auf unendlichen W-Raum
+\end{*example}
