@@ -1,12 +1,11 @@
 \chapter{Introduction}
-\section*{The central issue of financial mathematics}
+\section{The central issue of financial mathematics}
 \subsection*{\begriff{Valuation}:}
 Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale,
 
 \begin{*definition}[\begriff{Derivative}]
 	Financial product whose payouts are derived from price of one or more \begriff{basic goods} derived (underlying) derivative.
 \end{*definition}
-
 \begin{*example}
 	\begin{itemize}
 		\item Right to get 100,000 GBP in 3 months against 125,000 EUR (\begriff{Call-Option}, Underlying: Exchange rate GBP/EUR)
@@ -35,22 +34,18 @@ Mathematical tools: Probability Theory + stochastic processes (dynamics in time,
 \section{Mathematical Financial Market Model}
 We consider:
 \begin{enumerate}
-	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\Omega,F), \omega \in \Omega$ basic events or ''scenarios''.
-	
-	\newpage
+	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\O,\F), \omega \in \O$ basic events or ''scenarios''.
 	\item \emph{Timeline} $I$ is either $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-period model (discrete model) or $I = [0,T]$ (continious-time model), where $T = $ time-horizon\\
-	
 	A \begriff{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \R^d \mit (\omega, t) \mapsto S_t(\o)$\\
 	Especially:
 	\begin{itemize}
-		\item $t \mapsto S_t(\o)$ function $I \to R^d$ for every $\o \in \O$ (``path'')
-		\item $\omega \mapsto S_t(\o)$ random variable $\Omega \to R^d$ for every $t \in I$
+		\item $t \mapsto S_t(\o)$ function $I \to \R^d$ for every $\omega \in \O$ (``path'')
+		\item $\omega \mapsto S_t(\omega)$ random variable $\O \to \R^d$ for every $t \in I$
 	\end{itemize}
 	\item \emph{Percolation} 
 	a sequence of $\omega$-algebras $(F_t)_{t \in I}$ with the property $\F_S \subseteq F_t \quad \forall s,t \in I, x \le t$ and $F_t \subseteq F\quad \forall t \in I$\\
 	Interpretation: $F_t=$ market participant at time $t$ known/available information\\
 	Events $A \in F_t$ are considered known 'at time t'\\
-	
 	A $R^d$-valued RV $X$ is called  \begriff{$F_t$-measurable}, if $E = X^{-1}(B) \in F_t \quad \forall$ Borel sets $B \subseteq R^d$ ($E$ is actually the preimage of $B$).
 	
 	\begin{*example}
@@ -65,18 +60,17 @@ We consider:
 		\item Differentiation between future/past
 		\item Different information (Insider/Outsider) corresponds to different percolation $(F_t)_{t \in I}$ or $(G_t)_{t\in I}$
 	\end{itemize}
-	
 	\newline $S^i$= price of the i-th asset at the time t
 	\item \begriff{Assets} $R^{d+1}$-valued  stochastic process with components
 	\begin{align*}
-		S^i: (\Omega \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\o) \mit i \in \set{0,1,\dots,d}
+		S^i: (\O \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\omega) \mit i \in \set{0,1,\dots,d}
 	\end{align*} 
 	where $S^i_t=$ price of the $i$-th asset at time $t$\\
 	$S^i, i \in \set{1,\dots,d}$ is typically
 	\begin{itemize}
 		\item Stock, company share
 		\item Currency or exchange rate
-		\item Ccommodity such as oil, noble metal, electricity,..
+		\item Commodity such as oil, noble metal, electricity,..
 		\item Bond ... 
 	\end{itemize}
 	Principal assumption: $S^i$ is liquid traded (eg on exchange), ie purchase/sale for the price $S_t^i$ possible at any time.\\
