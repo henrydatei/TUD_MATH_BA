@@ -36,10 +36,10 @@ We consider:
 \begin{enumerate}
 	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\O,\F), \omega \in \O$ basic events or ''scenarios''.
 	\item \emph{Timeline} $I$ is either $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-period model (discrete model) or $I = [0,T]$ (continious-time model), where $T = $ time-horizon\\
-	A \begriff{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \R^d \mit (\omega, t) \mapsto S_t(\o)$\\
+	A \begriff{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \R^d \mit (\omega, t) \mapsto S_t(\omega)$\\
 	Especially:
 	\begin{itemize}
-		\item $t \mapsto S_t(\o)$ function $I \to \R^d$ for every $\omega \in \O$ (``path'')
+		\item $t \mapsto S_t(\omega)$ function $I \to \R^d$ for every $\omega \in \O$ (``path'')
 		\item $\omega \mapsto S_t(\omega)$ random variable $\O \to \R^d$ for every $t \in I$
 	\end{itemize}
 	\item \emph{Percolation} 
@@ -49,7 +49,7 @@ We consider:
 	A $R^d$-valued RV $X$ is called  \begriff{$F_t$-measurable}, if $E = X^{-1}(B) \in F_t \quad \forall$ Borel sets $B \subseteq R^d$ ($E$ is actually the preimage of $B$).
 	
 	\begin{*example}
-		A stochastic process  $(S_t)_{t\in I}$ on $(\Omega,F)$ is called \begriff[stochastic process]{adaptiert} regarding a percolation $(\F_t)_{t \in I}$, wenn gilt:
+		A stochastic process  $(S_t)_{t\in I}$ on $(\O,\F)$ is called \begriff[stochastic process]{adaptiert} regarding a percolation $(\F_t)_{t \in I}$, wenn gilt:
 		\begin{align*}
 			S_t \text{ is } F_t-\text{measurable} \quad \forall t \in I
 		\end{align*}
@@ -81,7 +81,7 @@ We consider:
 \begin{definition}[Finance market model]
 	A \begriff{finance market model} (FMM) with a time axis $I$ is given by
 	\begin{enumerate}
-		\item a probability space $(\Omega, F,P)$ with percolation $(F_t)_{t\in I}$
+		\item a probability space $(\O, \F,\P)$ with percolation $(F_t)_{t\in I}$
 		\item an adapted to $(F_t)_{t \in I}$, $R^{d+1}$-valued stochastic process $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
 	\end{enumerate} 
 \end{definition}
@@ -188,13 +188,13 @@ In general, it holds:
 	\end{align*}
 \end{*example}
 \subsection{Conditional expectation - measure theoretical access}
-We consider a probability space $(\Omega, F,P)$. For random variables $X: \Omega \to \R$ und $p \in [1,\infty)$ we define the $L_p$-norm
+We consider a probability space $(\O, \F,\P)$. For random variables $X: \O \to \R$ und $p \in [1,\infty)$ we define the $L_p$-norm
 \begin{align*}
 	\norm{X}_p = \E[\abs{X}^p]^{1/p} = \brackets{\int_{\O} \abs{X(\omega)}^p \d \P(\omega)}^{1/p}
 \end{align*}
-and $L_p$-space $L_p(\Omega,F,P):= \set{X: \O \to \R\colon \F-\text{measurable}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, ie $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
+and $L_p$-space $L_p(\O,\F,\P):= \set{X: \O \to \R\colon \F-\text{measurable}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, ie $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
 From measure theory it is known: (?)\\
-The spaces $L_p(\Omega,F,P)$ with norm $\norm{\cdot}_p, p \in [1,\infty)$ are always \person{Banach}-spaces (linear, complete, normed vector spaces). For $p = 2$ also hilbert spaces with inner product
+The spaces $L_p(\O,\F,\P)$ with norm $\norm{\cdot}_p, p \in [1,\infty)$ are always \person{Banach}-spaces (linear, complete, normed vector spaces). For $p = 2$ also hilbert spaces with inner product
 \begin{align*}
 	\scaProd{X}{Y} = \E[XY] = \int_{\O} X(\omega)Y(\omega)\d \P(\omega)
 \end{align*}
