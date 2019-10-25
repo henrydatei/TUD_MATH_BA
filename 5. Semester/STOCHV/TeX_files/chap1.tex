@@ -8,7 +8,7 @@ Bewertung von Derivaten und \emph{Absicherung} gegen aus Kauf/Verkauf entstehend
 \end{*definition}
 \begin{*example}
 	\begin{itemize}
-		\item Recht, in 3 Monaten 100.000 GBP gegen 125.000 EUR zu erhalten (\begriff{Call-Option}, Underlying: Wechselkur GBP/EUR)
+		\item Recht, in 3 Monaten 100.000 GBP gegen 125.000 EUR zu erhalten (\begriff{Call-Option}, Underlying: Wechselkurs GBP/EUR)
 		\item Recht, innerhalb des nächsten Jahres 100.000 Mwh elektrischer Energie zum Preis von 30EUR/Mwh zu konsumieren mit Mindestabnahme 50.000 Mwh (\begriff{Swing-Option}, Underlying: Strompreis)
 		\item Kauf- und Verkaufsoptionen aus Aktien (Underlying: Aktienkurs)
 	\end{itemize}
@@ -25,12 +25,12 @@ Zusammenstellung von Portofolios, welche nach Risiken/Ertragsgesichtspunkten opt
 \begin{itemize}
 	\item Gesetzliche Vorschriften (Basel + Solvency) sollen Stabilität des Banken-/Verischerunssystems auch angesichts verschiedener Risiken sicherstellen $\implies$ mathematische Theorie der konvexen und kohärenten Risikomaße
 \end{itemize}
-Mathematische Werkzeuge: Wtheorie + stoch. Prozesse (Dynamik in der Zeit), etwas lineare Algebra, Optimierung, Maßtheorie
+Mathematische Werkzeuge: Wtheorie + stochastische Prozesse (Dynamik in der Zeit), etwas lineare Algebra, Optimierung, Maßtheorie
 \section{Mathematisches Finanzmodell}
 Wir betrachten
 \begin{enumerate}
 	\item \emph{WRaum} $(\O,\F,\P)$, später auch weitere W-Maße $Q, \dots$ auf demselben Maßraum $(\O,\F), \omega \in \O$ Elementarereignisse bzw. ``Szenarien''
-	\item \emph{Zeitachse} $I$ entweder $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-Periode Modell (diskretes Modell) oder $I = [0,T]$ (zeitsteiges Modell), wobei $T = $ Zeithorizont\\
+	\item \emph{Zeitachse} $I$ entweder $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-Periode Modell (diskretes Modell) oder $I = [0,T]$ (zeitstetiges Modell), wobei $T = $ Zeithorizont\\
 	Ein \begriff{stochasticher Prozess} $S$ ist eine messbare Abbildung $S: (\O,\F) \to \Rd \mit (\omega, t) \mapsto S_t(\omega)$\\
 	insbesondere ist 
 	\begin{itemize}
@@ -67,13 +67,13 @@ Warum Filtration in der Finanzmathematik (FiMa)?
 		\item Anleihe (bond) ... Schuldverschreibung
 	\end{itemize}
 	Hauptannahme: $S^i$ ist liquide gehandelt (z.B. an Börse), d.h. Kauf/Verkauf zum Preis $S^i_t$ jederzeit möglich\\
-	$S^0\dots$ ``Numeraire'' hat Sonderrolle: beschreibt Verzinsung von \emph{nicht} in $(S^1,\dots,S^d)$ angelegten Kapital, wird meist \emph{risikolos} betrachet
+	$S^0\dots$ ``Numeraire'' hat Sonderrolle: beschreibt Verzinsung von \emph{nicht} in $(S^1,\dots,S^d)$ angelegten Kapital, wird meist \emph{risikolos} betrachtet
 \end{enumerate}
 \begin{definition}[Finanzmodell]
 	Ein \begriff{Finanzmodell} (FMM) mit Zeitachse $I$ ist gegeben durch
 	\begin{enumerate}
 		\item einen WRaum $(\O, \F,\P)$ mit Filtration $(\F_t)_{t\in I}$
-		\item einen an $(\F_t)_{t \in I}$ adaptieren, $\R^{d+1}$-werigen stochastischen Prozess $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
+		\item einen an $(\F_t)_{t \in I}$ adaptieren, $\R^{d+1}$-wertigen stochastischen Prozess $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
 	\end{enumerate} 
 \end{definition}
 \begin{*example}[\person{Cox}-\person{Rubinstein} (CRR)-Modell (zeitdiskret)]
@@ -199,7 +199,8 @@ Aus Hilbertraumtheorie:\\
 \eqref{eq_min_2} besitzt eine eindeutige Lösung $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ ist Optimierung (bezüglich $\scaProd{\cdot}{\cdot}$) von $X \in L_2(\O,\F,\P)$ auf abgeschlossenen Unterraum $L_2(\O,\G,\P)$\\
 Bild: eventuell von Eric (Orthogonal Projektion auf den Unterraum)\\
 Wir bezeichnen mit $G_{\ast}$ mit $\E[X\mid \G]$ bedingte Erwartungswert von $X$ bezüglich $\G$.
-\begin{theorem} %1.5
+\begin{theorem}[Eigenschaften bedingter Erwartungswert] %1.5
+	\label{1_5_eigen_bedEW}
 	Seien $X,Y \in L_2(\O,\F,\P)$ und $\G \subseteq F$ Unter-$\sigma$-Algebra. Dann gilt
 	\begin{enumerate}
 		\item (Linearität) $\E[aX+bY] = a\E[X\mid \G] + b\E[Y\mid \G]$
@@ -207,7 +208,13 @@ Wir bezeichnen mit $G_{\ast}$ mit $\E[X\mid \G]$ bedingte Erwartungswert von $X$
 		\begin{align*}
 			\E[E[X\mid \G \mid \H]] = \E[X\mid \H]
 		\end{align*}
-		\item (Pullout-Property) $\E[XZ\mid \G] = Z\E[X\mid \G]$, wenn $Z$ beschränkt und $\G$-messbar ist.
+		\item (Pullout-Property) $\E[XZ\mid \G] = Z\E[X\mid \G]$, wenn $Z$ beschränkt und $\G$-messbar ist.\\
+		zweite Version: Für $Z$ $\G$-messbar mit $\E[\abs{XZ}] < \infty$ gilt:
+		\begin{align*}
+			\E[XZ\mid \G] = Z \cdot \E[X\mid \G]
+		\intertext{insbesondere gilt}
+			X \G\text{-messbar }\implies \E[X\mid \G] = X
+		\end{align*}
 		\item (Monotonie) $X \le Y \implies \E[X\mid \G] \le \E[Y \mid \G]$
 		\item ($\Delta$-Ungleichung) $\abs{\E[X\mid \G]} \le \E[\abs{X}\mid \G]$
 		\item (Unabhängigkeit) $X$ unabhängig von $G$ $\implies$ $\E[X \mid \G] = \E[X]$
@@ -217,3 +224,140 @@ Wir bezeichnen mit $G_{\ast}$ mit $\E[X\mid \G]$ bedingte Erwartungswert von $X$
 \begin{proof}
 	(ohne Beweis, siehe VL W-Theorie mit Martingalen oder auch STOCH-Skript SS19.)
 \end{proof}
+\begin{*remark}
+	\begin{itemize}
+		\item Die für $X \in L_2(\O,\F,\P)$ definierte vedingte Erwartung $\E[X\mid \G]$ lässt sich durch Approximation auf alle $X\in L_1(\O,\F,\P)$ erweitern. Alle Eigenschaften aus Theorem \propref{1_5_eigen_bedEW} bleiben erhalten!
+		\item Sei $Y$ eine ZVe und $\G = \sigma(Y)$ die von $Y$ erzeugte $\sigma$-Algebra. Wir schreiben:
+		\begin{align*}
+		\E[X\mid Y] = \E[X \mid \sigma(Y)] \quad \sigma\text{-messbare ZVe}
+		\end{align*}
+		\item Maßtheorie: \person{Doob}-\person{Dynkin}-Lemma $\implies \exists$ messbare Funktion $g: \Rn \to \R$ sodass
+		\begin{align*}
+		\E[X\mid Y] = g(Y)
+		\end{align*}
+		Dabei ist $g$ genau die Funktion aus \eqref{eq_min_1}.
+	\end{itemize}
+\end{*remark}
+Zusammenfassung:\\
+Sei $X,Y$ aus $L_1(\O,\F,\R)$, $\G \subseteq \F$ Unter-$\sigma$-Algebra
+\begin{enumerate}
+	\item $\E[X\mid Y=y]$ ist messbare Funktion $g: \Rn \to \Rn$. Falls bedingte Dichte existiert, gilt:
+	\begin{align*}
+		\E[X\mid Y=y] = \int_{\R^m} f_{X\mid Y} (x,y) \d x
+	\end{align*}
+	\item $\E[X\mid Y]$ ist eine $\sigma(y)$-messbare ZVe, diese kann als $g(Y)$ dargestellt werden. Falls bedingte Dichte existiert, gilt
+	\begin{align*}
+		\E[X\mid Y](\omega) = \int_{\Rn}xf_{X\mid Y}(x,Y(\omega))\d x
+	\end{align*}
+	\item $\E[X \mid \G]$ ist eine $\G$-messbare ZVe. Falls $\G = \sigma(y)$ tritt 2) ein.
+\end{enumerate}
+In allgemeinen Fall kann $\bar{\E[X\mid \cdot]}$ interpretiert werden als \emph{beste Vorhersage} für $X$, gegeben
+\begin{enumerate}
+	\item punktweise Beobachtung $Y=y$
+	\item Beobachtung $Y$
+	\item Information $\G$
+\end{enumerate}
+\subsection{Martingale}
+Prototyp eines ``neutralen'' stochastischen Prozesses,der weder Aufwärts- noch Abwärtstrend besitzt. Hier nur in diskrete Zeit $Z = \N_0$.
+\begin{*definition}[Martingal ohne Filtration]
+	Sei $(X_n)_{n\in \N_0}$ stochastischer Prozess. Wenn gilt
+	\begin{enumerate}
+		\item $\E[\abs{X_n}] < \infty$ $\forall n \in \N$
+		\item $\E[X_{n+1},\dots, X_n] = X_n$ $\forall n \in \N$
+	\end{enumerate}
+	dann heißt $(X_n)$ \begriff{Martingal}. Wen wir $\F_n^{\ast} = \sigma(X_1,\dots,X_n)$ definieren, können wir 2) schreiben als
+	\begin{align*}
+		\E[X_{n+1} \mid \F_n^{\ast}] = X_n \quad \forall n \in \N
+	\end{align*}
+\end{*definition}
+Interpretation:\\
+\begin{itemize}
+	\item Beste Vorhersage für zukünftigen Wert $X_{n+1}$, basierend auf Vergangenheit $\sigma(X_1,\dots,X_n)$ ist der momentane Wert $X_n$.
+	\item Aus der Turmregel folgt
+	\begin{align*}
+		\E[X_{n+k} \mid \F_n^{\ast}] &= X_n \quad n,k \in \N_0
+		\intertext{denn}
+		\E[X_{n+k}\mid\F_n^{\ast}] &= \E[\E[X_{n+k}\mid \F_{n+k-1}\mid \F_n^{\ast}]] = \E[X_{n+k-1}\mid \F_n^{\ast}] = (k\text{-mal}) = X_n
+	\end{align*}
+\end{itemize}
+Kann von $(\F_{n})_{n \in \N}$ auf beliebige Filtrationen $(\F_n)_{n \in \N_0}$ erweitert werden.
+\begin{*definition}[Martingal mit Filtration]
+	Sei $(X_n)_{n \in \N_0}$ ein stochastischer Prozess, adaptiert an eine Filtration $(\F_n)_{n \in \N_0}$. Wenn gilt
+	\begin{enumerate}
+		\item $\E[\abs{X_n}] < \infty$ $\forall n \in \N_0$
+		\item $\E[X_{n+1} \mid \F_n] = X_n$ $\forall n \in \N_0$
+	\end{enumerate}
+	dann heißt $(X_n)_{n \in \N_0}$ \begriff{Martingal bezüglich Filtration} $(\F_n)_{n \in \N_0}$
+\end{*definition}
+Interpretation:\\
+Beste Vorhersage für zukünftige Werte $X_{n+1}$, basierend auf verfügbarer Information $\F_n$ ist momentane Wert $X_n$.
+\begin{*definition}[Supermartingal, Submartingal]
+	Falls in Punkt 2) statt ``$=$'' die Ungleichung $\le \oder \ge$ gilt, so heißt $(X_n)_{n \in \N}$ \begriff{Supermartingal} bzw. \begriff{Submartingal}.
+\end{*definition}
+Erste Beobachtung:\\
+\begin{itemize}
+	\item $X$ Martingal $\implies \E[X_n] = X_0$, d.h. $n \mapsto \E[X_n]$ ist konstant.\\
+	Begründung:
+	\begin{align*}
+		\E[X_{n+1} \mid \F_n] = X_n \implies \E[\E[X_{n+1}\mid \F_n]] = \E[X_n] = \E[X_{n+1}] \implies (n\text{-mal Anwendung } \E[X_n] = X_0)
+	\end{align*}
+	Bild: Erwartungswert konstant, aber kein Martingal.
+	\item $X$ Submartingal $\implies n \mapsto \E[X_n]$ ist monoton steigend
+	\item $X$ Supermartingal $\implies n \mapsto \E[X_n]$ ist monoton fallend
+\end{itemize}
+Um sich den Unterschied zwischen Super- und Submartingal zu merken, hier eine kleine Hilfe:\\
+``Das leben ist ein Supermartingal, die Erwartungen fallen mit der Zeit.''
+\begin{*example}
+	\begin{itemize}
+		\item Seien $(Y_n)_{n\in \N}$ unabhängige ZVen in $L_1(\O,\F,\P)$ mit $\E[Y_n] = 0$. Definiere $X_n := \sum_{k=1}^n Y_k \mit X_0 = 0$. Dann ist $(X_n)_{n \in \N_0}$ Martingal, denn
+		\begin{enumerate}
+			\item $\E[\abs{X_n}] \le \sum_{k=1}^n \E[\abs{Y_k}] < \infty \quad \forall n \in \N$ \checkmark
+			\item
+			\begin{align*}
+				\E[X_{n+1} \mid \F_n^{\ast}] &= \E[Y_{n+1} + X_n \mid \F_n^{\ast}]\\
+				&= \E[Y_{n+1} \mid \F_n^{\ast}] = \E[X_n \mid \F_n^{\ast}] \quad (\text{ Turm und $\F_n^{\ast}$-messbar})\\
+				&= \underbrace{\E[Y_{n+1}]}_{=0} + X_n = X_n \checkmark
+			\end{align*}
+		\end{enumerate}
+		\item weitere Beispiele auf dem ersten Übungsblatt!
+	\end{itemize}
+\end{*example}
+\begin{*definition}[vorhersehbar]
+	Sei $(\F_n)_{n\in \N_0}$ eine Filtration. Ein stochastischer Prozess $(X_n)_{n \in \N}$ heißt \begriff{vorhersehbar} (predictable) bezüglich $(\F_n)_{n \in \N_0}$, wenn gilt:
+	\begin{align*}
+		H_n \text{ ist } \F_{n-1}\text{-messbar} \quad \forall n \in \N
+	\end{align*}
+\end{*definition}
+\begin{*remark}
+	Stärkere Eigenschaft als ``adaptiert''.
+\end{*remark}
+\begin{*definition}[diskretes stochastische Integral]
+	Sei $X$ adaptierter und $H$ ein vorhersehbarer stochastischer Prozess bezüglich $(\F_n)_{n \in \N}$. Dann heißt
+	\begin{align*}
+		(H \bigcdot X)_n := \sum_{k=1}^n H_k (X_k - X_{k-1}) \tag{$\ast$}\label{eq_pred_stoch_process}
+	\end{align*}
+	\begriff{diskretes stochastische Integral} von $H$ bezüglich $X$.
+\end{*definition}
+\begin{*remark}
+	Summe \eqref{eq_pred_stoch_process} heissen in der Analysis \person{Riemann}-\person{Stieltjes}-Summen. Werden für Konstruktionen des RS-Integrals $\int h \d \rho$ verwendet.
+\end{*remark}
+\begin{*definition}[lokal beschränkt]
+	Ein stochastischer Prozess $(H_n)_{n \in \N}$ heißt \begriff{lokal beschränkt}, wenn eine (definierte) Folge $c_ \in \R_{\ge 0}$ existiert, sodass
+	\begin{align*}
+		\abs{H_n} \le c_n \text{ f.s. } \quad \forall n \in \N
+	\end{align*}
+\end{*definition}
+\begin{theorem}
+	Sei $X$ adaptiert stochastischer Prozess (bezüglich Filtration $(\F_n)_{n \in \N}$). Dann sind äquivalent:
+	\begin{enumerate}
+		\item $X$ ist Martingal
+		\item $(H \bigcdot X)$ ist Martingale für alle lokal beschränkten, vorhersehbaren $(H_n)_{n \in N}$
+	\end{enumerate}
+	Das heisst: stochastische Integral erhält die Martingal-Eigenschaft.
+\end{theorem}
+\begin{proof}
+	8.11.2019!
+\end{proof}
+\begin{*remark}
+	Die ZV $H$ wird später die Analagestrategie sein.
+\end{*remark}
