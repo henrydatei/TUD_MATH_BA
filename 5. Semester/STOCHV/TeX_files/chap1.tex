@@ -3,9 +3,9 @@
 \subsection*{\begriff{Bewertung}:}
 Bewertung von Derivaten und \emph{Absicherung} gegen aus Kauf/Verkauf entstehenden Risiken.
 
-\begin{definition}[\begriff{Derivat}]
+\begin{*definition}[\begriff{Derivat}]
 	FInanzprodukt, dessen auszahlungen sich vom Preis einer oder mehrer \begriff{Basisgüter} (underlying) ableitet (ableiten entspricht derivate)
-\end{definition}
+\end{*definition}
 \begin{*example}
 	\begin{itemize}
 		\item Recht, in 3 Monaten 100.000 GBP gegen 125.000 EUR zu erhalten (\begriff{Call-Option}, Underlying: Wechselkur GBP/EUR)
@@ -58,10 +58,10 @@ Warum Filtration in der Finanzmathematik (FiMa)?
 	\begin{align*}
 		S^i: (\O \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\omega) \mit i \in \set{0,1,\dots,d}
 	\end{align*} 
-	wobei $S^i_t=$ Preis des $i$-ten Anlageguts zum zeitpunkt $t$\\
+	wobei $S^i_t=$ Preis des $i$-ten Anlageguts zum Zeitpunkt $t$\\
 	$S^i, i \in \set{1,\dots,d}$ ist typischerweise
 	\begin{itemize}
-		\item Aktie (Stock), Unternehmsanteil
+		\item Aktie (Stock), Unternehmensanteil
 		\item Währung (currency) bzw. Wechselkurs
 		\item Rohstoff (commodity) wie z.B. Öl, Edelmetall, Elektriziät, etc
 		\item Anleihe (bond) ... Schuldverschreibung
@@ -70,7 +70,7 @@ Warum Filtration in der Finanzmathematik (FiMa)?
 	$S^0\dots$ ``Numeraire'' hat Sonderrolle: beschreibt Verzinsung von \emph{nicht} in $(S^1,\dots,S^d)$ angelegten Kapital, wird meist \emph{risikolos} betrachet
 \end{enumerate}
 \begin{definition}[Finanzmodell]
-	Ein \begriff{Finanzmodell} (FMM) mit zeitachse $I$ ist gegeben durch
+	Ein \begriff{Finanzmodell} (FMM) mit Zeitachse $I$ ist gegeben durch
 	\begin{enumerate}
 		\item einen WRaum $(\O, \F,\P)$ mit Filtration $(\F_t)_{t\in I}$
 		\item einen an $(\F_t)_{t \in I}$ adaptieren, $\R^{d+1}$-werigen stochastischen Prozess $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
@@ -88,5 +88,132 @@ Warum Filtration in der Finanzmathematik (FiMa)?
 		\item $S^0_t = e^{rt}$, d.h. Verzinsung mit konstanter Rate $r$
 		\item $S_t^1 = S_0^1\cdot \exp((\mu - \frac{\sigma^2}{2}t + \sigma\beta_t) \mit \mu \in \R, \sigma > 0, S^1_0 >0$ und $\beta_t$ entspricht Brownsche Bewegung (stochastischer Prozess in stetiger Zeit) und $\mu - \frac{\omega^2}{2}$ entspricht Trendkomponente
 	\end{itemize}
-	Bild: Börsenkuve = $S_t(\omega)$, wobei zeitstetiges Modell auf unendlichen W-Raum
+	Bild: Börsenkurve = $S_t(\omega)$, wobei zeitstetiges Modell auf unendlichen W-Raum
 \end{*example}
+%TODO add 2nd lecture
+\section{Bedingte Erwartungswerte und Martingale} %1.4
+\subsection{Bedingte Dichte und bedingter Erwartungswert}
+Motivation: Gegeben: Zwei ZVen $(X,Y)$ mit Werten in $\R^m \times \R^n$ und gemeinsame Dichte $f_{XY}(x,y)$. Aus $f_{XY}$ können wir ableiten:
+\begin{itemize}
+	\item $f_{Y}(y) := \int_{\R^m} f_{XY}(x,y) \d x$ mit Randverteilung von $Y$
+	\item $S_Y := \set{y \in \Rn \colon f_Y(y) > 0}$ Träger von $Y$ - Bild?
+\end{itemize}
+\begin{*definition}[Bedingte Dichte von $X$ bezüglich $Y$]
+	Bedingte Dichte von $X$ bezüglich $Y$ ist definiert als
+	\begin{align*}
+		f_{X\mid Y}(x,y) = \begin{cases}
+		\frac{f_{XY}(x,y)}{f_Y(y)} &\quad y \in S_Y\\
+		0 &\quad y\notin S_Y
+		\end{cases}
+	\end{align*}
+\end{*definition}
+Betrachte folgende Problemstellung:\\
+Was ist die beste Vorhersage von $X$ gegeben einer Beobachtung $Y = y$?\\
+Kriterium:\\
+Minimiere quadratischen Abstand/ zweite Moment/ $L_2$-Norm.\\
+Vorhersage:\\
+Messbare Funktion $g: \Rn \to \R^m \mit y \mapsto g(y)$, d.h,.
+\begin{align*}
+	\min\set{\E[(X-g(Y))]^2 \colon g \text{ messbar } \R^n \to \R^m} \tag{min-1}\label{eq_min_1}
+\end{align*}
+\begin{proposition} %1.3
+	Wenn $(X,Y)$ eine gemeinsame Dichte besitzen mit $\E[\abs{X}^2] < \infty$ gilt, dann wird \eqref{eq_min_1} minimiert durch die bedingte Erwartung
+	\begin{align*}
+		g(y) = \E[X\mid Y=y] := \int_{\R^m} x f_{X\mid Y}(x,y)\d x
+	\end{align*}
+	(wobei $\E[X\mid Y=y]$ ``Erwartungswert von $X$ bedingt auf $Y=y$'')
+\end{proposition}
+Allgemeiner gilt:
+\begin{theorem} %1.4
+	Seien $(X,Y)$ ZVen mit gemeinsamer Dichte auf $\R^m \times \Rn$, $h: \R^m \to \R^n$ messbar mit $\E[h(X,y)^2]$. Dann wird das Minimierungsproblem
+	\begin{align*}
+		\min\set{\E[(h(X,Y) - g(y))^2]} \quad g\text{messbar von $\Rn$ nach $\R$}
+		\intertext{gelöst durch}
+		g(y) = \E[h(X,Y) \mid Y=y] = \int_{\R^m} h(X,Y)f_{X\mid Y}(x,y) \d x
+	\end{align*}
+\end{theorem}
+\begin{proof}[nur Prop, Theorem analog, für $n=1$]
+	Setze $g(y) = \int_{\R} f_{X\mid Y}(x,y) \d x$. Sei $p: \R \to \R$ beliebige messbare Funktion mit $\E[p(y)^2] < \infty$. Setze $g_{\epsilon}(y) = g(y) + \epsilon p(y)$. Minimiere
+	\begin{align*}
+		F(\epsilon) &:= \E[(X-g_{\epsilon}(y))^2] = \E[(X-g(y)-\epsilon p(y))^2]\\
+		&= \E[(X-g(y))^2] - 2\epsilon\E[(X-g(y))p(y)] + \epsilon^2\E[p(y)^2]\\
+		\frac{\partial F}{\partial \epsilon}(\epsilon) &= 2 \epsilon \E[p(y)^2] - 2\E[(X-g(y))p(y)]\\
+		&\implies \epsilon_{\ast} :=\frac{\E[(X-g(y))p(y)]}{\E[p(y)^2]} = \frac{A}{B}
+		\intertext{wobei}
+		A&= \E[Xp(y)] -\E[g(y)p(y)] \\
+		&= \int_{\R \times \Rn} xp(y)f_{XY}(x,y)\d x \d y - \int_{S_y}g(y)p(y)f_Y(y) = [\text{Einsetzen von $g$ + Fubini}]\\
+		&= \int_{\R \times \Rn} xp(y)f_{XY}(x,y)\d x \d y - \int_{\R\times S_y} xp(y)\underbrace{f_{X\mid Y}(x,y)f_Y(y\d y)}_{=f_{XY}(x,y)} = 0
+	\end{align*}
+	also $\epsilon^{\ast} = 0$ unabhängig von $p$ $\implies g(y)$ minimiert \eqref{eq_min_1}.
+\end{proof}
+\begin{*example}
+	Seien $(X,Y)$ normalverteilt auf $\R\times \R$ mit 
+		\begin{align*}
+			\mu = (\mu_x, \mu_y)^T \quad \Sigma = \begin{pmatrix}
+			\sigma x^2 \rho\sigma_x \sigma_y\\
+			\rho \sigma_x \sigma_y & \sigma_y^2
+			\end{pmatrix} = \begin{pmatrix}
+				\Var(X) & \Cov(X,Y)\\
+				\Cov(X,Y) & \Var(Y)
+			\end{pmatrix} \mit \rho \in [-1,1]
+		\end{align*}
+		Dann ist die beliebige Dichte $f_{X\mid Y}(x,y)$. ($\Sigma$ Kovarianzmatrix). wieder die Dichte einer Normalverteilung mit
+		\begin{align*}
+			\E[X \mid Y=y] &= \mu_x + \rho \frac{\sigma_x}{\sigma_y}(y-\mu_y)\\
+			\Var(X\mid Y=y) &= \sigma_x^2(1-\rho^2)
+		\end{align*}
+		(ist ÜA!). Die Abbildung $y \mapsto \mu_x + g(y)\frac{\sigma_x}{\sigma_y}(y-\mu_y)$ heißt Regressionsgerade für $X$ gegeben $Y=y$.\\
+		Bild: $\mu_x,\mu_y$ sind Werte auf $x,y$-Achse und die $\sigma$'s bilden das Steigungsdreieck (Steigung im Wesentlichen durch $\rho$ bekannt)\\
+		Für diskrete ZVen, d.h. wenn $X,Y$ nur endlich viele $\set{x_1,\dots,x_m}$ bzw. $\set{y_1,\dots,y_m}$ annehmen dann erhalten wir mit ähnlichen Überlegungen als Lösung von \eqref{eq_min_1}
+		\begin{align*}
+			\E[X\mid Y=y_j] = \sum_{i=1}^m X_i \P(X=x_i \mid Y=y_j)
+		\end{align*}
+		wobei direkt die bedingten Wahrscheinlichkeiten
+		\begin{align*}
+			\P(X=x_i \mid Y=y_j) = \begin{cases}
+			\frac{\P(X=x_i \wedge Y=y_j)}{\P(Y=y_j)} &\quad \text{ wenn } \P(Y=y_j) > 0\\
+			0 &\quad \text{ wenn } \P(Y=y_j) = 0 
+			\end{cases}
+		\end{align*}
+\end{*example}
+\subsection{Bedingte Erwartung - maßtheoretischer Zugang}
+Wir betrachten WRaum $(\O, \F,\P)$. Für ZV $X: \O \to \R$ und $p \in [1,\infty)$ definieren wir die $L_p$-Norm
+\begin{align*}
+	\norm{X}_p = \E[\abs{X}^p]^{1/p} = \brackets{\int_{\O} \abs{X(\omega)}^p \d \P(\omega)}^{1/p}
+\end{align*}
+und $L_p$-Raum $L_p(\O,\F,\P):= \set{X: \O \to \R\colon \F-\text{messbar}, \norm{X}_p < \infty}$. Dabei identifzieren wir ZVen, die sich nur auf Nullmengen unterscheiden, d.h. $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
+Aus Maßtheorie bekannt: (?)\\
+Die Räume $L_p(\O,\F,\P)$ mit Norm $\norm{\cdot}_p, p \in [1,\infty)$ sind stets \person{Banach}-Räume (lineare, vollständig, normierte Vektorräume). Für $p = 2$ auch Hilbertraum mit inneren Produkt
+\begin{align*}
+	\scaProd{X}{Y} = \E[XY] = \int_{\O} X(\omega)Y(\omega)\d \P(\omega)
+\end{align*}
+Für $\G \subseteq \F$ Unter-$\sigma$-Algebra ist $L_p(\O,\F,\P) \subseteq L_p(\O,\F,\P)$ abgeschlossen Unterraum.\\
+Wir verallgemeinern ``Vorhersageproblem'' aus dem letzten Abschnitt (1.3?)\\
+Gegeben ZVe $X$ aus $L_2(\O,\F,\P)$ ist $\G \subseteq \F$ Unter-$\sigma$-Algebra.\\
+Was ist die beste $\G$-messbare Vorhersage für $Y$?
+\begin{align*}
+	\min\set{\E[(X-G)^2] \colon G \in L_2(\O,\F,\P)} \tag{min-2}\label{eq_min_2}
+\end{align*}
+wobei $\E[(X-G)^2] = \norm{X-G}^2_2$.\\
+Aus Hilbertraumtheorie:\\
+\eqref{eq_min_2} besitzt eine eindeutige Lösung $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ ist Optimierung (bezüglich $\scaProd{\cdot}{\cdot}$) von $X \in L_2(\O,\F,\P)$ auf abgeschlossenen Unterraum $L_2(\O,\G,\P)$\\
+Bild: eventuell von Eric (Orthogonal Projektion auf den Unterraum)\\
+Wir bezeichnen mit $G_{\ast}$ mit $\E[X\mid \G]$ bedingte Erwartungswert von $X$ bezüglich $\G$.
+\begin{theorem} %1.5
+	Seien $X,Y \in L_2(\O,\F,\P)$ und $\G \subseteq F$ Unter-$\sigma$-Algebra. Dann gilt
+	\begin{enumerate}
+		\item (Linearität) $\E[aX+bY] = a\E[X\mid \G] + b\E[Y\mid \G]$
+		\item (Turmregel) Für jede weitere $\sigma$-Algebra $\H \subseteq\G$ gilt
+		\begin{align*}
+			\E[E[X\mid \G \mid \H]] = \E[X\mid \H]
+		\end{align*}
+		\item (Pullout-Property) $\E[XZ\mid \G] = Z\E[X\mid \G]$, wenn $Z$ beschränkt und $\G$-messbar ist.
+		\item (Monotonie) $X \le Y \implies \E[X\mid \G] \le \E[Y \mid \G]$
+		\item ($\Delta$-Ungleichung) $\abs{\E[X\mid \G]} \le \E[\abs{X}\mid \G]$
+		\item (Unabhängigkeit) $X$ unabhängig von $G$ $\implies$ $\E[X \mid \G] = \E[X]$
+		\item (triviale $\sigma$-Algebra) $\G=\set{\emptyset, \O} \implies \E[X \mid \G] = \E[X]$ 
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	(ohne Beweis, siehe VL W-Theorie mit Martingalen oder auch STOCH-Skript SS19.)
+\end{proof}
