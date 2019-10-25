@@ -1,0 +1,66 @@
+\documentclass[ngerman,a4paper,order=firstname]{local_mathscript} %TODO local mathscript to fix counting for STOCH! temp solution.
+%{../../texmf/tex/latex/mathscript/mathscript}
+% \usepackage{../../texmf/tex/latex/mathoperators/mathoperators} 
+\usepackage{local_mathoperators}  % for ilina xD - local mathoperators
+
+%local packages
+\usepackage{cancel}
+
+\title{\textbf{Stochastikvertiefung: Finanzmathematik WS 19/20}}
+\author{Dozent: Prof. \person{Martin.Keller-Ressel}}
+
+% local commands
+\renewcommand{\F}{\mathscr F}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\O}{\Omega}
+\renewcommand{\G}{\mathscr{G}}
+\renewcommand{\H}{\mathscr{H}}
+\newcommand{\Gen}{\mathcal{E}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}\text{ar}}   % Varianz
+\newcommand{\Cov}{\mathbb{C}\text{ov}}   % Kovarianz
+\newcommand{\Corr}{\mathbb{C}\text{orr}}   % Korrelation
+%\newcommand{\Rd}{\R^d}
+\def\upmodels{\perp\!\!\!\perp}
+\newcommand{\distri}{\overset{\text{d}}{=}}
+\newcommand{\konverteil}{\xrightarrow[n \to \infty]{\d}}
+\newcommand{\normal}{\mathscr N} % Normal distribution
+\newcommand{\bigcdot}{\boldsymbol{\cdot}} % predictable stoch process product
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\plim}{plim} % stochastic convergence or convengence in probability
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+%\input{./TeX_files/Vorwort}
+
+\input{./TeX_files/chap1}
+%\input{./TeX_files/chap2}
+%\input{./TeX_files/chap3}
+
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+\nocite{*}
+\bibliography{literatur}
+\bibliographystyle{acm}
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
