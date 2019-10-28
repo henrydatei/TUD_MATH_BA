@@ -433,3 +433,129 @@ Die endlichen einfachen Gruppen sind klassifiziert!
 	\end{align*}
 	Dieser erhält und reflektiert Normalität und auch Unterquotienten. 
 \end{proposition}
+\begin{erinnerung}
+	$N \lhd G$ normal subgroups $\Leftrightarrow N < G$ is a subgroup $(NN = N, 1 \in N, N^{-1} = N)$ and the left cosets of $N$ conincides with the right cosets $(xN = Nx \forall x \in G)$ then we have $\lnkset{G}{N}$ inherits a group structure $\pi: G \to \lnkset{G}{N} \with \ker \pi = N$, so $xNyN = xyN$ and then we had the 1. Iso theorem
+\end{erinnerung}
+\begin{theorem}[correspondence theorem]
+	Let $H \lhd G$
+	\begin{align*}
+		\set{L <G \mid H < L} \xrightarrow[iso. of posets]{\cong} \set{K < \lnkset{G}{H}} \with
+		L \mapsto \pi(L)
+	\end{align*}
+	respects and reflecting normality.
+\end{theorem}
+\begin{proposition}[2. Isomorphiesatz, Klausur]
+	Let $H < G$, $K \lhd G \implies H\cap K \lhd H, K\lhd HK < G$ und 
+	\begin{align*}
+		\lnkset{H}{H \cap K} \to \lnkset{HK}{K} \with x(H\cap K) \mapsto xK
+	\end{align*}
+	ist ein Isomorphismus.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Durchschnitte von Untergruppen sind Untergruppen, also $H \cap K < H$. Ist ferner $x \in H$ und $y \in H\cap K$, so gilt $xyx^{-1} \in H$ (da $H$ Untergruppe) und $xyx^{-1} \in K$, da $x \in G$ und $y \in K$ und auch $K \lhd G$. Also gilt $xyx^{-1} \in H \cap K$.
+		\item Auch klar, da $(HK)(HK) = H(KH)K = H(HK)K = (HH)(KK) = HK$ (wobei $K \lhd G$), Bemerkung: $H,K < G$ reicht nicht, $HK$ ist i.A. \emph{keine} Untergruppe von $G$. Klar das $1 = 1\cdot 1 \in HK, 1 \in H, 1\in K$ (da $H,K < G$).
+		\begin{align*}
+			x \in H, y\in K\quad (xy)^{-1} = y^{-1}x^{-1} \implies (HK)^{-1} = K^{-1}H^{-1} = KH = KH\text{, da } K\lhd G.
+		\end{align*}
+		Also gilt $HK < G$. $K \lhd HK$, wie im ersten Punkt des Beweises.
+		\item \begin{align*}
+		\phi: \lnkset{H}{H \cap K} \to \lnkset{HK}{K} \mit (H \cap K) \mapsto xK
+		\end{align*}
+		wohldefiniert? Natürlich: Ist $x(H \cap K) = y (H\cap K)$ $x,y \in H$, so folgt $x = yz$ mit $z \in H \cap K$, also $yK = xK$, da 2. eben insbesondere in $K$ ist. Gruppenhomomorphismus auch klar, da
+		\begin{align*}
+			\phi(x(H \cap K) \cdot y(H \cap K) = \phi(xy(H \cap K)) = xyK\\
+			\phi(x(H\cap K))\phi(y(H\cap K)) = xKyK
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{lemma}
+	$\phi: G \to H$ ist injektiv genau, dann wenn $\ker \phi = \set{1}$. 
+\end{lemma}
+\begin{proof}
+	Auf diesen Fall angewendet:
+	\begin{align*}
+	\ker \phi = \set{x(H \cap K) \subset \lnkset{H}{H \cap K} \mid xK = K}
+	\end{align*}
+	$xK = K$ heisst aber nichts anderes als $x \in K$, d.h.
+	\begin{align*}
+	\ker \phi = \set{x(H \cap K) \mid x \in H \cap K} = H\cap K = 1
+	\end{align*}
+	(in der Gruppe $\lnkset{H}{H \cap K}$) und surjektiv ist klar, da $xyK = xK$ für $x \in H, y \in K$.
+\end{proof}
+\begin{proposition}[3. Isomorphiesatz]
+	Sei $H \lhd G, K \lhd G, K < H$ impliziert $\lnkset{H}{K} \lhd \lnkset{G}{H}$ und es gilt
+	\begin{align*}
+		\lnkset{G}{K} \to \lnkset{\lnkset{H}{H}}{\lnkset{H}{K}} \mit xK \mapsto (xH)\cdot \lnkset{H}{K}
+	\end{align*}
+	ist ein Isomorphismus.
+\end{proposition}
+\section{Einfache Gruppen}
+\begin{definition}
+	$G$ ist einfach, genau dann wenn $\set{1}, G$ sind die einzigen Normalteiler.
+	\begin{align*}
+		\phi: G \to H \mit \Image \phi = \lnkset{G}{\lnkset{G}{\ker \phi}}\\
+		\Image \phi \cong G \oder \Image \phi = \set{1}
+	\end{align*}
+\end{definition}
+\begin{*example}
+	$G = \Z_p,p$ prim.
+\end{*example}
+\begin{proposition}
+	\label{prop_a_n_simple}
+	$A_n$ ist einfach für $n > 4$.
+\end{proposition}
+\begin{*remark}
+	$A_4 \rhd \set{(), (12)(34),(13)(24),(14)(23)}$, d.h. $A_4$ ist nicht einfach.
+\end{*remark}
+\begin{lemma}
+	\begin{enumerate}
+		\item $S_n = \langle (i i+1)\rangle$ für $i = 1, \dots, n -1$
+		\item $A_n = \langle (ijk) \rangle$
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item 	Betrachte $(23)(12)(23) = (13)$ und $(34)(13)(34) = (14)$, per Induktion folgt 
+		\begin{align*}
+		(1i) \in \langle (i i+1)\rangle \und (1i)(1j)(1i) = (ij) \quad (i \neq j)
+		\implies (ij) = \langle (r r+1) \rangle \quad r = 1,\dots n-1
+		\end{align*}
+		damit folgt 1.
+		\item 
+		\begin{align*}
+			(ij)(jk) = (ijk) \und (ij)(kr) = (ijk)(jkr)
+		\end{align*}
+		also folgt 2.
+	\end{enumerate}
+\end{proof}
+\begin{proof}[\propref{prop_a_n_simple}]
+	Sei $N \neq \set{1}$ Normalteiler von $A_n, n> 4$
+	\begin{enumerate}
+		\item Ist $(yk) \in N$, so gilt $(abc) \in N$ für alle $a,b,c$. Ist $\sigma \in S_n$, so gilt $\sigma(ijk)\sigma^{-1} = (\sigma(i)\sigma(j)\sigma(k))$ (siehe ÜA 5, 1. Blatt) Sei $\sigma \in S_n$so, dass $\sigma(i) = a$, $\sigma(j) = b$ und natürlich $\sigma(k) = c$. Ist $\sigma \in A_n$ so folgt (da $N \lhd A_n$, $(abc) \in N$). Wenn nicht wähle $r,s$ ungleich und setze $\tilde{\sigma}:= \sigma(rs) \in A_n$. % maybe inclusion?!
+		Dann ist $\tilde{\sigma}(ijk)\tilde{\sigma}^{-1} = \sigma(rs)(ijk)(rs)\sigma^{-1} = (abc)$.
+		\item Bleibt zu zeigen: $\exists(ijk) \in N$. Sei
+		\begin{align*}
+			1 \neq \sigma=\gamma_1 \gamma_2 \dots \gamma_r \in N \text{ beliebig,}
+		\end{align*} 
+		wobei $\gamma_i$ Zykel ist und die Länge der Zykel $\gamma_i$ nicht wachse also $l(\gamma_i) \ge l(\gamma_{i+1})$. Fallunterscheidung: (Ziel ist in jedem Fall gibt es ein $(ijk) \in N$.)
+		\begin{enumerate} %TODO make nicer!
+			\item $l(\gamma_i) \ge 4$\\
+				Sei $\gamma_1 = (i_1, \dots, i_k)$ und $\pi(i_1 i_2 i_3)$ 
+				\begin{align*}
+					\implies \pi_{\gamma_j} = \gamma_j \pi \quad \forall j > 1\\
+					\sigma^{-1}\underbrace{\pi^{-1}\sigma \pi}_{\in N\text{, da } N \lhd A_n} = (i_1 i_2 i_4) \subset N
+				\end{align*}
+				also einfach Nachrechnen.
+			\item $l(\gamma_1) - l(\gamma_2) = 3$\\
+			Sei $\gamma_1=(ijk), \gamma_2 = (pqs)$. Nimm $\pi = (kpq)$ und daraus folgt $\sigma^{-1}\pi^{-1}\sigma\pi = (isk)$
+			\item $l(\gamma_1) = 3, l(\gamma_2) = 2$\\
+			$\gamma_1 = (ijk) \implies \sigma^{2} = (ikj)$
+			\item $l(\gamma_1) = l(\gamma_2) = 2, r = 2$\\
+			Sei $\gamma_1 = (ij)$, $\gamma_2 = (kl)$ $n \ge 5$ $\implies \exists m \notin \set{i,j,k,l}$ und $\pi = (ijm)$\\
+			$\sigma \pi^{-1}\sigma\pi = (imj) \in N$
+			\item $l(\gamma_i) = 2 \forall i, r > 2$\\
+			$\sigma \in A_n$, $\gamma_1 =(ij)$, $\gamma_2 = (kl)$, sowie $\gamma_3 = (pq)$, $\gamma_4 = (st)$, setze $\pi = (ip)(jk)$ und $\sigma\pi \sigma \pi = (ipl)(jkq)$ und benutze Fall 2.
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
