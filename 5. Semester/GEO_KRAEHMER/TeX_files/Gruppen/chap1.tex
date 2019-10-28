@@ -400,7 +400,7 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 \begin{*remark}
 	Ist $H \lhd G$, so gilt: $H = \ker \pi \mit \pi: G \to \lnkset{G}{H}$. (denn $\pi(x) = xH$, also $\ker \pi = \set{x \mid xH = H} = H$). Normalerteiler sind also die Kerne von Morphismen.
 \end{*remark}
-\begin{proposition}[1. Isomorphiesatz]
+\begin{proposition}[1. Isomorphiesatz, Klausur]
 	Ein Morphismus $f: G \to K$ von Gruppen induziert einen Isomorphismus:
 	\begin{align*}
 		\bar{f}: \lnkset{G}{\ker f} \to \Image f \mit [x] = x \ker f \mapsto f(x)
@@ -426,24 +426,24 @@ Die endlichen einfachen Gruppen sind klassifiziert!
 		\item $\lnkset{\SL(n, \Z_p)}{Z(\SL(n, \Z_p))} = \PSL(n, \Z_p)$ (projective linear group)
 	\end{enumerate}
 \end{example}
-\begin{proposition}(Korrespondenztheorem)
+\begin{proposition}[Korrespondenztheorem]
 	Ist $H \lhd G$, so induziert (definiert) $\pi: G \to \lnkset{G}{H}$ einen Isomorphismus von teilgeordneten Mengen (partial ordered sets)
 	\begin{align*}
 		\set{L < G \mid H < L} \to \set{K < \lnkset{G}{H}} \mit L \mapsto \pi(L)
 	\end{align*}
 	Dieser erhält und reflektiert Normalität und auch Unterquotienten. 
 \end{proposition}
-\begin{erinnerung}
-	$N \lhd G$ normal subgroups $\Leftrightarrow N < G$ is a subgroup $(NN = N, 1 \in N, N^{-1} = N)$ and the left cosets of $N$ conincides with the right cosets $(xN = Nx \forall x \in G)$ then we have $\lnkset{G}{N}$ inherits a group structure $\pi: G \to \lnkset{G}{N} \with \ker \pi = N$, so $xNyN = xyN$ and then we had the 1. Iso theorem
-\end{erinnerung}
-\begin{theorem}[correspondence theorem]
-	Let $H \lhd G$
-	\begin{align*}
-		\set{L <G \mid H < L} \xrightarrow[iso. of posets]{\cong} \set{K < \lnkset{G}{H}} \with
-		L \mapsto \pi(L)
-	\end{align*}
-	respects and reflecting normality.
-\end{theorem}
+%\begin{erinnerung}
+%	$N \lhd G$ normal subgroups $\Leftrightarrow N < G$ is a subgroup $(NN = N, 1 \in N, N^{-1} = N)$ and the left cosets of $N$ conincides with the right cosets $(xN = Nx \forall x \in G)$ then we have $\lnkset{G}{N}$ inherits a group structure $\pi: G \to \lnkset{G}{N} \with \ker \pi = N$, so $xNyN = xyN$ and then we had the 1. Iso theorem
+%\end{erinnerung}
+%\begin{theorem}[correspondence theorem]
+%	Let $H \lhd G$
+%	\begin{align*}
+%		\set{L <G \mid H < L} \xrightarrow[iso. of posets]{\cong} \set{K < \lnkset{G}{H}} \with
+%		L \mapsto \pi(L)
+%	\end{align*}
+%	respects and reflects normality.
+%\end{theorem}
 \begin{proposition}[2. Isomorphiesatz, Klausur]
 	Let $H < G$, $K \lhd G \implies H\cap K \lhd H, K\lhd HK < G$ und 
 	\begin{align*}
@@ -529,7 +529,7 @@ Die endlichen einfachen Gruppen sind klassifiziert!
 		also folgt 2.
 	\end{enumerate}
 \end{proof}
-\begin{proof}[\propref{prop_a_n_simple}]
+\begin{proof}[\cref{prop_a_n_simple}]
 	Sei $N \neq \set{1}$ Normalteiler von $A_n, n> 4$
 	\begin{enumerate}
 		\item Ist $(yk) \in N$, so gilt $(abc) \in N$ für alle $a,b,c$. Ist $\sigma \in S_n$, so gilt $\sigma(ijk)\sigma^{-1} = (\sigma(i)\sigma(j)\sigma(k))$ (siehe ÜA 5, 1. Blatt) Sei $\sigma \in S_n$so, dass $\sigma(i) = a$, $\sigma(j) = b$ und natürlich $\sigma(k) = c$. Ist $\sigma \in A_n$ so folgt (da $N \lhd A_n$, $(abc) \in N$). Wenn nicht wähle $r,s$ ungleich und setze $\tilde{\sigma}:= \sigma(rs) \in A_n$. % maybe inclusion?!
