@@ -1,4 +1,4 @@
-\chapter{Introduction}
+﻿\chapter{Introduction}
 \section{The central issue of financial mathematics}
 \subsection*{\term{Valuation}:}
 Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale.
@@ -54,7 +54,8 @@ We consider:
 		\item Differentiation between future/past
 		\item Different information (Insider/Outsider) corresponds to different percolation $(\F_t)_{t \in I}$ or $(\G_t)_{t\in I}$
 	\end{itemize}
-	\item \begriff{Anlagegüter (assets)} $\R^{d+1}$-wertiger stochastischer Prozess mit Komponenten
+	$S^i$= price of the i-th asset at the time t
+	\item \begriff{Assets} $R^{d+1}$-valued  stochastic process with components
 	\begin{align*}
 		S^i: (\O \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\omega) \mit i \in \set{0,1,\dots,d}
 	\end{align*} 
@@ -90,7 +91,125 @@ We consider:
 	\end{itemize}
 	Image: Exchange curve = $S_t(\omega)$, wherein time-continuous model for infinite probability space
 \end{*example}
-%TODO add 2nd lecture
+%TODO translate
+\section{Anleihen und grundeliegende Beispiele für Derivate}
+Hier betrachten wir immer nur ein Basisgut $S_t = S^1_t$
+\begin{enumerate}
+	\item \begriff{Anleihe}(\begriff{bond}): (genauer: Null-Coupon-Anleihe [zero-coupon-bond]) Der \begriff{Emittent} (Herausgeber) einer Anleihe mit Endfälligkeit $T$ [maturity] garantiert dem Käufer zum Zeitpunkt $T$ den Betrag $N$ (EUR/USD/...) zu zahlen.\\
+	Typische Emittenten:
+	\begin{itemize}
+		\item Staaten [government bond]
+		\item Unternehmen (als Alternative zur Kreditaufnahme)
+	\end{itemize}
+	Nach Emission werden Anleihen auf den Sekundärmarkt weiterverkauft, d.h. liquide gehandelte Wertpapiere\\
+	Preis bei Emission: $B(0,T)$\\
+	Preis bei Weiterverkauf zum Zeitpunkt $t \le T\colon B(t,T)$\\
+	Wir normieren stets $N=1 \implies B(T,T) =1$\\
+	Anleihen von West/Nord/Mitteleuropäischen Staaten + USA/Kananda werden als risikolos betrachtet (sichere Zahlung).\\
+	Sonst: Kreditrisiko\\
+	Risikofreie Anleihen können als Numerale $S^0_t = B(t,T)$ genutzt werden\\
+	Bild: kann ich gerade nicht beschreiben :/ \\
+	\item \begriff{Terminvertrag} [forward contract]\\
+	Aus Käufersicht: \emph{Vereinbarung} zu bestimmten, zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis zu kaufen (Kaufverpflichtung)\\
+	Beliebt bei Rohstoffen + Elektrizität\\
+	Auszahlunsprofil: $F_T = S_T - K$\\
+	Bild: ``Eine Gerade mit Schnittpunkt der $x$-Achse bei $K$ und Schnittpkt der $y$-Achse bei $S_T \ge 0$, ist ja nur einer Polynom 1. Ordnung''\\
+	Preis zum Zeitpunkt $t$: $F_t$
+	\item \begriff{Europäische Put-/Call-Option}:
+	Recht zu einem zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis $K$ zu verkaufen (Put) bzw. zu kaufen (Call) \textbf{keine (Ver-)Kaufsverpflichtung}\\
+	\begin{itemize}
+		\item \emph{Call}:
+		\begin{align*}
+		C_T := \begin{cases}
+		S_T - K &\quad S_T \ge K\\
+		0 &\quad S_T < K
+		\end{cases} = (S_T - K)_+ %is this really a ``+'' or a t?!
+		\end{align*}
+		\begin{*remark}
+			\begin{align*}
+			X_+ &= \max(X,0)\quad X_+ - X__ = X\\
+			X__ &= \min(X,0)\quad X_+ + X__ = \abs{X}
+			\end{align*}
+			Bild: (hockey stick function)
+		\end{*remark}
+		\item \emph{Put}:
+		\begin{align*}
+		P_t = \begin{cases}
+		0 &\quad S_T \ge K\\
+		K-S_T &\quad S_t < K
+		\end{cases} = (K-S_T)_+
+		\end{align*}
+		Bild: ``inversed'' hockey stick function xD
+	\end{itemize}
+	\item \emph{Amerikanische Put/Call-Option}: Wie Put/Call aber mit Ausübung zu beliebigen Zeitpunkt $t \in [0,T]$\\
+	Preis zum Zeitpunkt $t\colon P_t^{AM}, \; C_t^{AM}$\\
+	Auszahlungsprofil zum zeitpunkt $\tau\colon (S_{\tau}-K), (K-S_{\tau})_+$\\
+	Zeitpunkt $\tau$ muss im Allgemeinen als Lösung eines stochastischen Optimierungsproblems bestimmt werden (``\begriff{Optimales Stopproblem}'')
+\end{enumerate}
+\section{Elementare Replikations und Arbitrage-Argumente}
+Was können wir (mit elementaren Mitteln) über die ``fairen'' Preise $B(t,T), F_t, C_t, P_t$ aussagen?\\
+Wir verwenden:
+\begin{itemize}
+	\item \begriff{Replikationsprinzip}: Zwei identische zukünftige Zahlungsströme haben auch heute denselben Wert. (ein Zahlungstrom ``repliziert'' den anderen) % but what about inflation? Where comes inflation in this whole system in? 
+	\item \begriff{No-Arbitage-Prinzip}: ``Ohne Kapiteleinsatz kann sicherer Gewinn ohne Verlustrisiko erzielt werden''
+	\item \begriff{Arbitrage}: risikofreier Gewinn\\
+	\item Schwächere Form des Replikationsprinzips:\\
+	\begriff{Superpositionsprinzip}: Ist ein Zahlungsstrom in jedem Fall größer als ein anderer, so hat er auch heute den größeren Wert
+	\begin{align*}
+	\begin{matrix}
+	\text{stark} & \text{Rep. Prinzip} & \text{eingeschränkt anwendbar}\\
+	\downarrow & \text{Superrep. Prinzip} & \uparrow\\
+	\text{schwach} & \text{No-Arbitrage-Prinzip} & \text{immer anwendbar}
+	\end{matrix}
+	\end{align*}
+\end{itemize}
+\begin{lemma} %1.1 fix numbering later ;)
+	Für den preis $C_t$ des europäischen Calls gilt:
+	\begin{align*}
+	(S_t - K\cdot B(t,T))_+ \le C_t \le S_t
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item \emph{untere Schranke}: Für Widerspruch $S_t - K\cdot(B(t,T))-C_t = \epsilon > 0$\\
+		\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate tables in latex xD, but i managed it ...
+			Portofolio & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+			Kaufe Call & $C_t$ & 0 & $S_T - K$\\
+			Verkaufe Basisgut & $-S_t$ & $-S_T$ & $-S_T$\\
+			Kaufe Anleihe & $\epsilon + K\cdot B(t,T)$ & $\frac{\epsilon}{B(t,T)}+K$ & $\frac{\epsilon}{B(t,T)} + K$\\
+			$\Sigma$ & 0 & $K - S_T + \frac{\epsilon}{B(t,T)} > 0$ & $\frac{\epsilon}{B(t,T)} > 0$\\
+			& keine Anfangskapital & sicherer Gewinn & sicherer Gewinn\\
+		\end{tabular}\\
+		$\implies$ Widerspruch zu No-Arbitrage\\
+		$\implies$ $S_t - K\cdot B(t,T) \le C_t$ und Ausserdem $C_t \ge 0 \implies C_t \ge (S_t - K\cdot B(t,T))_+$
+		\item \emph{obere Schranke}: UE
+	\end{itemize}
+\end{proof}
+\begin{lemma}[Put-Call-Parität] % jeezz its 5:48 am im typing this, cant sleep ... :(
+	Für Put $P_t$, Call $C_t$ mit demselben Ausübungspreis $K$ und Basisgut $S_t$ gilt
+	\begin{align*}
+	C_t - P_t = S_t - B(t,T)K
+	\end{align*}
+	Bild: need to add ..., but should be fast to do ...
+\end{lemma}
+\begin{proof} %TODO fix tables later, for now it works ..., make them one size for better reading ...
+	mit Replikation:\\
+	\begin{tabular}{l|l|l|l} % jeezzz i fuckin know now how to make tables in latex xD
+		Portofolio 1 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+		Kaufe Call & $C_t$ & 0 & $S_T - K$\\
+		Kaufe Anleihe & $K \cdot B(t,T)$ & $K$ & $K$\\
+		Wert Portofolio 1 & $C_t + K\cdot B(t,T)$ & $K$ & $S_T$\\
+	\end{tabular}\\
+	\newline
+	\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate, but i can copy ... xD
+		Portofolio 2 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+		Kaufe Put & $P_t$ & $K-S_T$ & 0\\
+		Kaufe Basisgut & $S_t$ & $S_T$ & $S_T$\\
+		Wert Portofolio 2 & $P_t + S_t$ & $K$ & $S_T$\\
+	\end{tabular}\\
+	Replikationsprinzip: $C_t + K\cdot B(t,T) = P_t + S_t$\\
+	$\implies$ $C_t - P_t = S_t - K\cdot B(t,T)$
+\end{proof} % 5:56 am and im done with it, puh ;) hope we can talk about it in english if you like. ;)
 \section{Conditional expectation values and Martingale} %1.4
 \subsection{Conditional density and conditional expected value}
 Motivation: Given: Two random variables $(X,Y)$ with values in $\R^m \times \R^n$ and joint density $f_{XY}(x,y)$. From $f_{XY}$ we can derive:
