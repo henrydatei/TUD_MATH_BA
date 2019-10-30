@@ -1,12 +1,11 @@
 \chapter{Introduction}
-\section*{The central issue of financial mathematics}
+\section{The central issue of financial mathematics}
 \subsection*{\begriff{Valuation}:}
 Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale,
 
 \begin{*definition}[\begriff{Derivative}]
 	Financial product whose payouts are derived from price of one or more \begriff{basic goods} derived (underlying) derivative.
 \end{*definition}
-
 \begin{*example}
 	\begin{itemize}
 		\item Right to get 100,000 GBP in 3 months against 125,000 EUR (\begriff{Call-Option}, Underlying: Exchange rate GBP/EUR)
@@ -35,24 +34,22 @@ Mathematical tools: Probability Theory + stochastic processes (dynamics in time,
 \section{Mathematical Financial Market Model}
 We consider:
 \begin{enumerate}
-	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\Omega,F), \omega \in \Omega$ basic events or ''scenarios''.
-	
-	\newpage
+	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\O,\F), \omega \in \O$ basic events or ''scenarios''.
 	\item \emph{Timeline} $I$ is either $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-period model (discrete model) or $I = [0,T]$ (continious-time model), where $T = $ time-horizon\\
-	
 	A \begriff{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \R^d \mit (\omega, t) \mapsto S_t(\omega)$\\
 	Especially:
 	\begin{itemize}
-		\item $t \mapsto S_t(\o)$ function $I \to R^d$ for every $\o \in \O$ (``path'')
-		\item $\omega \mapsto S_t(\o)$ random variable $\Omega \to R^d$ for every $t \in I$
+		\item $t \mapsto S_t(\omega)$ function $I \to \R^d$ for every $\omega \in \O$ (``path'')
+		\item $\omega \mapsto S_t(\omega)$ random variable $\O \to \R^d$ for every $t \in I$
 	\end{itemize}
 	\item \emph{Percolation} 
-	a sequence of $\omega$-algebras $(\F_t)_{t \in I}$ with the property $\F_S \subseteq \F_t \quad \forall s,t \in I, x \le t$ and $\F_t \subseteq F\quad \forall t \in I$\\
+	a sequence of $\omega$-algebras $(F_t)_{t \in I}$ with the property $\F_S \subseteq F_t \quad \forall s,t \in I, x \le t$ and $F_t \subseteq F\quad \forall t \in I$\\
 	Interpretation: $F_t=$ market participant at time $t$ known/available information\\
 	Events $A \in F_t$ are considered known 'at time t'\\
 	A $R^d$-valued RV $X$ is called  \begriff{$F_t$-measurable}, if $E = X^{-1}(B) \in F_t \quad \forall$ Borel sets $B \subseteq R^d$ ($E$ is actually the preimage of $B$).
+	
 	\begin{*example}
-		A stochastic process  $(S_t)_{t\in I}$ on $(\O,F)$ is called \begriff[stochastic process]{adaptiert} regarding a percolation $(\F_t)_{t \in I}$, wenn gilt:
+		A stochastic process  $(S_t)_{t\in I}$ on $(\O,\F)$ is called \begriff[stochastic process]{adaptiert} regarding a percolation $(\F_t)_{t \in I}$, wenn gilt:
 		\begin{align*}
 			S_t \text{ is } F_t-\text{measurable} \quad \forall t \in I
 		\end{align*}
@@ -73,7 +70,7 @@ We consider:
 	\begin{itemize}
 		\item Stock, company share
 		\item Currency or exchange rate
-		\item Ccommodity such as oil, noble metal, electricity,..
+		\item Commodity such as oil, noble metal, electricity,..
 		\item Bond ... 
 	\end{itemize}
 	Principal assumption: $S^i$ is liquid traded (eg on exchange), ie purchase/sale for the price $S_t^i$ possible at any time.\\
@@ -84,7 +81,7 @@ We consider:
 \begin{definition}[Finance market model]
 	A \begriff{finance market model} (FMM) with a time axis $I$ is given by
 	\begin{enumerate}
-		\item a probability space $(\O, F,P)$ with percolation $(F_t)_{t\in I}$
+		\item a probability space $(\O, \F,\P)$ with percolation $(F_t)_{t\in I}$
 		\item an adapted to $(F_t)_{t \in I}$, $R^{d+1}$-valued stochastic process $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
 	\end{enumerate} 
 \end{definition}
@@ -104,7 +101,125 @@ We consider:
 	\end{itemize}
 	Image: Exchange curve = $S_t(\omega)$, wherein time-continuous model for infinite probability space
 \end{*example}
-%TODO add 2nd lecture
+%TODO translate
+\section{Anleihen und grundeliegende Beispiele für Derivate}
+Hier betrachten wir immer nur ein Basisgut $S_t = S^1_t$
+\begin{enumerate}
+	\item \begriff{Anleihe}(\begriff{bond}): (genauer: Null-Coupon-Anleihe [zero-coupon-bond]) Der \begriff{Emittent} (Herausgeber) einer Anleihe mit Endfälligkeit $T$ [maturity] garantiert dem Käufer zum Zeitpunkt $T$ den Betrag $N$ (EUR/USD/...) zu zahlen.\\
+	Typische Emittenten:
+	\begin{itemize}
+		\item Staaten [government bond]
+		\item Unternehmen (als Alternative zur Kreditaufnahme)
+	\end{itemize}
+	Nach Emission werden Anleihen auf den Sekundärmarkt weiterverkauft, d.h. liquide gehandelte Wertpapiere\\
+	Preis bei Emission: $B(0,T)$\\
+	Preis bei Weiterverkauf zum Zeitpunkt $t \le T\colon B(t,T)$\\
+	Wir normieren stets $N=1 \implies B(T,T) =1$\\
+	Anleihen von West/Nord/Mitteleuropäischen Staaten + USA/Kananda werden als risikolos betrachtet (sichere Zahlung).\\
+	Sonst: Kreditrisiko\\
+	Risikofreie Anleihen können als Numerale $S^0_t = B(t,T)$ genutzt werden\\
+	Bild: kann ich gerade nicht beschreiben :/ \\
+	\item \begriff{Terminvertrag} [forward contract]\\
+	Aus Käufersicht: \emph{Vereinbarung} zu bestimmten, zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis zu kaufen (Kaufverpflichtung)\\
+	Beliebt bei Rohstoffen + Elektrizität\\
+	Auszahlunsprofil: $F_T = S_T - K$\\
+	Bild: ``Eine Gerade mit Schnittpunkt der $x$-Achse bei $K$ und Schnittpkt der $y$-Achse bei $S_T \ge 0$, ist ja nur einer Polynom 1. Ordnung''\\
+	Preis zum Zeitpunkt $t$: $F_t$
+	\item \begriff{Europäische Put-/Call-Option}:
+	Recht zu einem zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis $K$ zu verkaufen (Put) bzw. zu kaufen (Call) \textbf{keine (Ver-)Kaufsverpflichtung}\\
+	\begin{itemize}
+		\item \emph{Call}:
+		\begin{align*}
+		C_T := \begin{cases}
+		S_T - K &\quad S_T \ge K\\
+		0 &\quad S_T < K
+		\end{cases} = (S_T - K)_+ %is this really a ``+'' or a t?!
+		\end{align*}
+		\begin{*remark}
+			\begin{align*}
+			X_+ &= \max(X,0)\quad X_+ - X__ = X\\
+			X__ &= \min(X,0)\quad X_+ + X__ = \abs{X}
+			\end{align*}
+			Bild: (hockey stick function)
+		\end{*remark}
+		\item \emph{Put}:
+		\begin{align*}
+		P_t = \begin{cases}
+		0 &\quad S_T \ge K\\
+		K-S_T &\quad S_t < K
+		\end{cases} = (K-S_T)_+
+		\end{align*}
+		Bild: ``inversed'' hockey stick function xD
+	\end{itemize}
+	\item \emph{Amerikanische Put/Call-Option}: Wie Put/Call aber mit Ausübung zu beliebigen Zeitpunkt $t \in [0,T]$\\
+	Preis zum Zeitpunkt $t\colon P_t^{AM}, \; C_t^{AM}$\\
+	Auszahlungsprofil zum zeitpunkt $\tau\colon (S_{\tau}-K), (K-S_{\tau})_+$\\
+	Zeitpunkt $\tau$ muss im Allgemeinen als Lösung eines stochastischen Optimierungsproblems bestimmt werden (``\begriff{Optimales Stopproblem}'')
+\end{enumerate}
+\section{Elementare Replikations und Arbitrage-Argumente}
+Was können wir (mit elementaren Mitteln) über die ``fairen'' Preise $B(t,T), F_t, C_t, P_t$ aussagen?\\
+Wir verwenden:
+\begin{itemize}
+	\item \begriff{Replikationsprinzip}: Zwei identische zukünftige Zahlungsströme haben auch heute denselben Wert. (ein Zahlungstrom ``repliziert'' den anderen) % but what about inflation? Where comes inflation in this whole system in? 
+	\item \begriff{No-Arbitage-Prinzip}: ``Ohne Kapiteleinsatz kann sicherer Gewinn ohne Verlustrisiko erzielt werden''
+	\item \begriff{Arbitrage}: risikofreier Gewinn\\
+	\item Schwächere Form des Replikationsprinzips:\\
+	\begriff{Superpositionsprinzip}: Ist ein Zahlungsstrom in jedem Fall größer als ein anderer, so hat er auch heute den größeren Wert
+	\begin{align*}
+	\begin{matrix}
+	\text{stark} & \text{Rep. Prinzip} & \text{eingeschränkt anwendbar}\\
+	\downarrow & \text{Superrep. Prinzip} & \uparrow\\
+	\text{schwach} & \text{No-Arbitrage-Prinzip} & \text{immer anwendbar}
+	\end{matrix}
+	\end{align*}
+\end{itemize}
+\begin{lemma} %1.1 fix numbering later ;)
+	Für den preis $C_t$ des europäischen Calls gilt:
+	\begin{align*}
+	(S_t - K\cdot B(t,T))_+ \le C_t \le S_t
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item \emph{untere Schranke}: Für Widerspruch $S_t - K\cdot(B(t,T))-C_t = \epsilon > 0$\\
+		\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate tables in latex xD, but i managed it ...
+			Portofolio & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+			Kaufe Call & $C_t$ & 0 & $S_T - K$\\
+			Verkaufe Basisgut & $-S_t$ & $-S_T$ & $-S_T$\\
+			Kaufe Anleihe & $\epsilon + K\cdot B(t,T)$ & $\frac{\epsilon}{B(t,T)}+K$ & $\frac{\epsilon}{B(t,T)} + K$\\
+			$\Sigma$ & 0 & $K - S_T + \frac{\epsilon}{B(t,T)} > 0$ & $\frac{\epsilon}{B(t,T)} > 0$\\
+			& keine Anfangskapital & sicherer Gewinn & sicherer Gewinn\\
+		\end{tabular}\\
+		$\implies$ Widerspruch zu No-Arbitrage\\
+		$\implies$ $S_t - K\cdot B(t,T) \le C_t$ und Ausserdem $C_t \ge 0 \implies C_t \ge (S_t - K\cdot B(t,T))_+$
+		\item \emph{obere Schranke}: UE
+	\end{itemize}
+\end{proof}
+\begin{lemma}[Put-Call-Parität] % jeezz its 5:48 am im typing this, cant sleep ... :(
+	Für Put $P_t$, Call $C_t$ mit demselben Ausübungspreis $K$ und Basisgut $S_t$ gilt
+	\begin{align*}
+	C_t - P_t = S_t - B(t,T)K
+	\end{align*}
+	Bild: need to add ..., but should be fast to do ...
+\end{lemma}
+\begin{proof} %TODO fix tables later, for now it works ..., make them one size for better reading ...
+	mit Replikation:\\
+	\begin{tabular}{l|l|l|l} % jeezzz i fuckin know now how to make tables in latex xD
+		Portofolio 1 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+		Kaufe Call & $C_t$ & 0 & $S_T - K$\\
+		Kaufe Anleihe & $K \cdot B(t,T)$ & $K$ & $K$\\
+		Wert Portofolio 1 & $C_t + K\cdot B(t,T)$ & $K$ & $S_T$\\
+	\end{tabular}\\
+	\newline
+	\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate, but i can copy ... xD
+		Portofolio 2 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
+		Kaufe Put & $P_t$ & $K-S_T$ & 0\\
+		Kaufe Basisgut & $S_t$ & $S_T$ & $S_T$\\
+		Wert Portofolio 2 & $P_t + S_t$ & $K$ & $S_T$\\
+	\end{tabular}\\
+	Replikationsprinzip: $C_t + K\cdot B(t,T) = P_t + S_t$\\
+	$\implies$ $C_t - P_t = S_t - K\cdot B(t,T)$
+\end{proof} % 5:56 am and im done with it, puh ;) hope we can talk about it in english if you like. ;)
 \section{Conditional expectation values and Martingale} %1.4
 \subsection{Conditional density and conditional expected value}
 Motivation: Given: Two random variables $(X,Y)$ with values in $\R^m \times \R^n$ and joint density $f_{XY}(x,y)$. From $f_{XY}$ we can derive:
@@ -191,13 +306,13 @@ In general, it holds:
 	\end{align*}
 \end{*example}
 \subsection{Conditional expectation - measure theoretical access}
-We consider a probability space $(\O, F,P)$. For random variables $X: \O \to \R$ und $p \in [1,\infty)$ we define the $L_p$-norm
+We consider a probability space $(\O, \F,\P)$. For random variables $X: \O \to \R$ und $p \in [1,\infty)$ we define the $L_p$-norm
 \begin{align*}
 	\norm{X}_p = \E[\abs{X}^p]^{1/p} = \brackets{\int_{\O} \abs{X(\omega)}^p \d \P(\omega)}^{1/p}
 \end{align*}
-and $L_p$-space $L_p(\O,F,P):= \set{X: \O \to \R\colon \F-\text{measurable}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, ie $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
+and $L_p$-space $L_p(\O,\F,\P):= \set{X: \O \to \R\colon \F-\text{measurable}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, ie $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
 From measure theory it is known: (?)\\
-The spaces $L_p(\O,F,P)$ with norm $\norm{\cdot}_p, p \in [1,\infty)$ are always \person{Banach}-spaces (linear, complete, normed vector spaces). For $p = 2$ also hilbert spaces with inner product
+The spaces $L_p(\O,\F,\P)$ with norm $\norm{\cdot}_p, p \in [1,\infty)$ are always \person{Banach}-spaces (linear, complete, normed vector spaces). For $p = 2$ also hilbert spaces with inner product
 \begin{align*}
 	\scaProd{X}{Y} = \E[XY] = \int_{\O} X(\omega)Y(\omega)\d \P(\omega)
 \end{align*}
@@ -210,7 +325,7 @@ What is the best $\G$-measurable forecast for $Y$?
 \end{align*}
 wobei $\E[(X-G)^2] = \norm{X-G}^2_2$.\\
 From hilbert-space theory:\\
-\eqref{eq_min_2} possesses a unique solution $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ is optimization (with respect to $\scaProd{\cdot}{\cdot}$) from $X \in L_2(\O,F,P)$ on closed subspace $L_2(\O,G,P)$\\
+\eqref{eq_min_2} possesses a unique solution $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ is optimization (with respect to $\scaProd{\cdot}{\cdot}$) from $X \in L_2(\Omega,F,P)$ on closed subspace $L_2(\Omega,G,P)$\\
 Image: maybe from Eric (Orthogonal projection on the subspace)\\
 We denote the conditioned expected value $\E[X\mid \G]$ of $X$ with recpect to $\G$ with $G_{\ast}$.
 \begin{theorem} %1.5
