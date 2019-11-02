@@ -1,93 +1,103 @@
 \chapter{Introduction}
 \section{The central issue of financial mathematics}
-\subsection*{\term{Valuation}:}
-Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale.
+\subsection*{\begriff{Valuation}:}
+Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale,
 
-\begin{*definition}[\term{Derivat}]
-	Financial product whose payouts are derived from price of one or more \term{basic goods} derived (underlying) derivative.
+\begin{*definition}[\begriff{Derivative}]
+	Financial product whose payouts are derived from price of one or more \begriff{basic goods} derived (underlying) derivative.
 \end{*definition}
 \begin{*example}
 	\begin{itemize}
-		\item Right to get 100,000 GBP in 3 months against 125,000 EUR (\term{Call-Option}, Underlying: Exchange rate GBP/EUR)
-		\item Right within the next year to consume 100,000 Mw / h of electric energy at the price of 30EUR/Mwh with minimum order quantity of 50,000 Mwh (\term{Swing-Option}, Underlying: electricity price)
+		\item Right to get 100,000 GBP in 3 months against 125,000 EUR (\begriff{Call-Option}, Underlying: Exchange rate GBP/EUR)
+		\item Right within the next year to consume 100,000 Mw / h of electric energy at the price of 30EUR/Mwh with minimum order quantity of 50,000 Mwh (\begriff{Swing-Option}, Underlying: electricity price)
 		\item buying and selling options on stock (Underlying: equity price)
 	\end{itemize}
 \end{*example}
 Issue:  What is the ''fair'' price for such a derivative? (``Pricing''). How can the sellers protect themselves against the … risks? (``Hedging'')
-\subsection*{\term{Optimal investment}}
+
+\subsection*{\begriff{Optimal investment}}
 Gathering Porftolios that are optimal for risk-return approach.
 \begin{itemize}
 	\item How do I weigh risk against profit?
-    \item What exactly is ''optimal''?
-    \item Solution of the resulting optimization problems
+	\item What exactly is ''optimal''?
+	\item Solution of the resulting optimization problems
 \end{itemize}
-\subsection*{\term{Risk management + Risk measurement}}
+\subsection*{\begriff{Risk management + Risk measurement}}
 \begin{itemize}
-	\item Legal rules (Basel + Solvency) should ensure stability of the banking system/insurance system even in the face of various risks $\implies$ Mathematical theory of convex + coherent risk measures
-\end{itemize}
+	
+	\item Legal rules (Basel + Solvency) should ensure stability of the banking system/insurance system even in the face of various risks 
+	
+	$\implies$ Mathematical theory of convex + coherent risk measures 
+\end{itemize}	 
 Mathematical tools: Probability Theory + stochastic processes (dynamics in time, some linear algebra, optimization, measure theory).
-\section{Mathematical financial market model}
+
+\section{Mathematical Financial Market Model}
 We consider:
 \begin{enumerate}
-	\item \emph{Probability space} $(\O,\F,\P)$, later also further probability measures $Q, \dots$ on the same measure space $(\O,\F), \omega \in \O$ basic events or ''scenarios''.
-	\item \emph{Time axis} $I$ either $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-periode modell (discrete model) or $I = [0,T]$ (continious model), where $T = $ is time-horizon\\
-	A \term{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \Rd \mit (\omega, t) \mapsto S_t(\omega)$\\
-	especially
+	\item \emph{Probability space} $(\O,\F,\P)$, later more probability measures $Q, \dots$ on the same measure space $(\O,\F), \omega \in \O$ basic events or ''scenarios''.
+	\item \emph{Timeline} $I$ is either $I=\set{t_0, t_1, \dots, t_N=T}$ $N$-period model (discrete model) or $I = [0,T]$ (continious-time model), where $T = $ time-horizon\\
+	A \begriff{stochastic process} $S$ is a measurable mapping $S: (\O,\F) \to \R^d \mit (\omega, t) \mapsto S_t(\omega)$\\
+	Especially:
 	\begin{itemize}
-		\item $t \mapsto S_t(\omega)$ is a function $I \to \Rd$ for every $\omega \in \O$ (``path'')
-		\item $\omega \mapsto S_t(\omega)$ is a random variable $\O \to \Rd$ for every $t \in I$
+		\item $t \mapsto S_t(\omega)$ function $I \to \R^d$ for every $\omega \in \O$ (``path'')
+		\item $\omega \mapsto S_t(\omega)$ random variable $\O \to \R^d$ for every $t \in I$
 	\end{itemize}
-	\item \emph{Percolation} is a sequence of $\omega$-algebras $(\F_t)_{t \in I}$with the property $\F_S \subseteq \F_t \quad \forall s,t \in I, x \le t \und \F_t \subseteq \F\quad \forall t \in I$\\
-	Interpretation: $\F_t=$ market participant at time $t$ known/available information\\
-	Events $A \in \F_t$ are considered known 'at time $t$'\\
-	A $\Rd$-valued random variable $X$ is called \term{$\F_t$-measurable}, if $E = X^{-1}(B) \in \F_t \quad \forall$ borel sets $B \subseteq \Rd$ ($E$ is the preimage of $B$)
+	\item \emph{Percolation} 
+	a sequence of $\omega$-algebras $(F_t)_{t \in I}$ with the property $\F_S \subseteq F_t \quad \forall s,t \in I, x \le t$ and $F_t \subseteq F\quad \forall t \in I$\\
+	Interpretation: $F_t=$ market participant at time $t$ known/available information\\
+	Events $A \in F_t$ are considered known 'at time t'\\
+	A $R^d$-valued RV $X$ is called  \begriff{$F_t$-measurable}, if $E = X^{-1}(B) \in F_t \quad \forall$ Borel sets $B \subseteq R^d$ ($E$ is actually the preimage of $B$).
 	
 	\begin{*example}
-		A stochastic process $(S_t)_{t\in I}$ on $(\O,\F)$ is called \term[stochastic process]{adapted} with respect to a percolation $(\F_t)_{t \in I}$, if it holds:
+		A stochastic process  $(S_t)_{t\in I}$ on $(\O,\F)$ is called \begriff[stochastic process]{adaptiert} regarding a percolation $(\F_t)_{t \in I}$, wenn gilt:
 		\begin{align*}
-			S_t \text{ is } \F_t-\text{measurable} \quad \forall t \in I
+			S_t \text{ is } F_t-\text{measurable} \quad \forall t \in I
 		\end{align*}
 	\end{*example}
-	Interpretation: the value $S_t$ is known at time $t$ \\
+	Interpretation: ``the value $S_t$ is known at time $t$''\\
 	Why percolation in the financial mathematics (FiMa)?
 	\begin{itemize}
 		\item Differentiation between future/past
-		\item Different information (Insider/Outsider) corresponds to different percolation $(\F_t)_{t \in I}$ or $(\G_t)_{t\in I}$
+		\item Different information (Insider/Outsider) corresponds to different percolation $(F_t)_{t \in I}$ or $(G_t)_{t\in I}$
 	\end{itemize}
 	$S^i$= price of the i-th asset at the time t
 	\item \begriff{Assets} $R^{d+1}$-valued  stochastic process with components
 	\begin{align*}
 		S^i: (\O \times I) \to \R\quad (\omega,t) \mapsto S^i_t(\omega) \mit i \in \set{0,1,\dots,d}
 	\end{align*} 
-	where $S^i_t=$ is the price of the $i$-th asset at the time $t$\\
+	where $S^i_t=$ price of the $i$-th asset at time $t$\\
 	$S^i, i \in \set{1,\dots,d}$ is typically
 	\begin{itemize}
 		\item Stock, company share
 		\item Currency or exchange rate
 		\item Commodity such as oil, noble metal, electricity,..
-		\item Bond,..
+		\item Bond ... 
 	\end{itemize}
-	Principal assumption: $S^i$ is liquid traded (eg on exchange), ie purchase/sale for the price $S^i_t$ is possible at any time\\
-	$S^0\dots$ ''numeraire'' has a special role: describes interest rate of \emph{nicht} in $(S^1,\dots,S^d)$ invested capital; is mostly considered to be \emph{risk-free}
+	Principal assumption: $S^i$ is liquid traded (eg on exchange), ie purchase/sale for the price $S_t^i$ possible at any time.\\
+	
+	$S^0\dots$ ''numeraire'' has a special role: describes interest rate of \emph{not} in $(S^1,..,S^d)$ invested capital; is mostly considered to be \emph{risk-free}.
 \end{enumerate}
-\begin{definition}[Finance model]
-	Ein \begriff{Finance model} (FMM) with time axis $I$ is given by
+
+\begin{definition}[Finance market model]
+	A \begriff{finance market model} (FMM) with a time axis $I$ is given by
 	\begin{enumerate}
-		\item a probability space $(\O, \F,\P)$ with percolation $(\F_t)_{t\in I}$
-		\item A $\R^{d+1}$-valued stochastical process $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$, which is adapted to $(\F_t)_{t \in I}$
+		\item a probability space $(\O, \F,\P)$ with percolation $(F_t)_{t\in I}$
+		\item an adapted to $(F_t)_{t \in I}$, $R^{d+1}$-valued stochastic process $S_t = (S^0_t, S_t^1, \dots, S^d_t),t \in I$
 	\end{enumerate} 
 \end{definition}
-\begin{*example}[\person{Cox}-\person{Rubinstein} (CRR)-model (discrete time)]
+
+\begin{*example}[\person{Cox}-\person{Rubinstein} (CRR)-model (discrete-time)]
 	\begin{itemize}
 		\item $S^0_n = (1+r)^n$, meaning interest at a constant rate $r$
 		\item $S^1_n = S_0^1 \prod_{k=1}^n(1+Ru)$, wobei $(R_1, R_2, \dots)$ independent random variables with two possible values $a < b$\\
-		Image: '' ``recombined tree '' with events $\omega$ which correspond to the paths in the tree
+		Image: '' ``recombined tree '' with events $\omega$ corresponding paths in the tree
 	\end{itemize}
 \end{*example}
-\begin{*example}[\person{Block}-\person{Scholes}-model (continious)]
+\begin{*example}[\person{Block}-\person{Scholes}-modell (continious-time)]
 	\begin{itemize}
-		\item $S^0_t = e^{rt}$,  meaning interest at a constant rate $r$
-		\item $S_t^1 = S_0^1\cdot \exp((\mu - \frac{\sigma^2}{2}t + \sigma\beta_t) \mit \mu \in \R, \sigma > 0, S^1_0 >0$ and $\beta_t$ corresponds to Brownian motion(stochastic process in continuous time) and $\mu - \frac{\omega^2}{2}$ corresponds to the trend component
+		\item $S^0_t = e^{rt}$, meaning interest at a constant rate $r$
+		\item $S_t^1 = S_0^1\cdot \exp((\mu - \frac{\sigma^2}{2}t + \sigma\beta_t) \mit \mu \in \R, \sigma > 0, S^1_0 >0$ und $\beta_t$ 
+		corresponds to Brownian motion(stochastic process in continuous time) and $\mu - \frac{\omega^2}{2}$ corresponds to trend component
 	\end{itemize}
 	Image: Exchange curve = $S_t(\omega)$, wherein time-continuous model for infinite probability space
 \end{*example}
@@ -217,8 +227,8 @@ Motivation: Given: Two random variables $(X,Y)$ with values in $\R^m \times \R^n
 	\item $f_{Y}(y) := \int_{\R^m} f_{XY}(x,y) \d x$ with marginal distribution of $Y$
 	\item $S_Y := \set{y \in \Rn \colon f_Y(y) > 0}$ carrier of $Y$ - Image?
 \end{itemize}
-\begin{*definition}[Conditioned image of $X$ with respect to $Y$]
-	Conditioned image of $X$ with respect to $Y$ is defined as
+\begin{*definition}[Conditional density of $X$ with respect to $Y$]
+	Conditional density from $X$ with respect to $Y$ is defined as
 	\begin{align*}
 		f_{X\mid Y}(x,y) = \begin{cases}
 			\frac{f_{XY}(x,y)}{f_Y(y)} &\quad y \in S_Y\\
@@ -229,44 +239,44 @@ Motivation: Given: Two random variables $(X,Y)$ with values in $\R^m \times \R^n
 Consider the following problem:\\
 What is the best forecast from $X$ if an observation $Y = y$ is given?\\
 Criteria:\\
-Minimize the quadratic distance/ second moment/ $L_2$-norm.\\
-Forecast:\\
-Measurable function $g: \Rn \to \R^m \mit y \mapsto g(y)$, meaning 
+Minimiye the quadratic distance/second moment/ $L_2$-norm.\\
+Vorhersage:\\
+Measurable function $g: \Rn \to \R^m \mit y \mapsto g(y)$, meaning,.
 \begin{align*}
-	\min\set{\E[(X-g(Y))]^2 \colon g \text{ measurable} \R^n \to \R^m} \tag{min-1}\label{eq_min_1}
+	\min\set{\E[(X-g(Y))]^2 \colon g \text{ messbar } \R^n \to \R^m} \tag{min-1}\label{eq_min_1}
 \end{align*}
 \begin{proposition} %1.3
-	If $(X,Y)$ have a joint density with $\E[\abs{X}^2] < \infty$, then \eqref{eq_min_1} is minimized through the conditioned expected value
+	When $(X,Y)$ have a joint density with $\E[\abs{X}^2] < \infty$, then \eqref{eq_min_1} is going to be minimized through the conditional expected value
 	\begin{align*}
 		g(y) = \E[X\mid Y=y] := \int_{\R^m} x f_{X\mid Y}(x,y)\d x
 	\end{align*}
-	(wobei $\E[X\mid Y=y]$ ``Expected value of $X$ conditioned on $Y=y$'')
+	(where $\E[X\mid Y=y]$ ``expected value of $X$ conditioned on $Y=y$'')
 \end{proposition}
-In general it holds:
+In general, it holds:
 \begin{theorem} %1.4
-	Let $(X,Y)$ be random variables with joint density on $\R^m \times \Rn$, $h: \R^m \to \R^n$ measurable with $\E[h(X,y)^2]$. Then the minimization problem is going to be 
+	Let $(X,Y)$ be random variables with joint density on$\R^m \times \Rn$, $h: \R^m \to \R^n$ measurable with $\E[h(X,y)^2]$. Then that is going to be minimisation problem
 	\begin{align*}
-		\min\set{\E[(h(X,Y) - g(y))^2]} \quad g\text{measurable from $\Rn$ to $\R$}
+		\min\set{\E[(h(X,Y) - g(y))^2]} \quad g\text{measurable from $\Rn$ towards $\R$}
 		\intertext{solved through}
 		g(y) = \E[h(X,Y) \mid Y=y] = \int_{\R^m} h(X,Y)f_{X\mid Y}(x,y) \d x
 	\end{align*}
 \end{theorem}
-\begin{proof}[only proposition, Theorem analogous for $n=1$]
+\begin{proof}[only proposition, the Theorem is analogous, for $n=1$]
 	Set $g(y) = \int_{\R} f_{X\mid Y}(x,y) \d x$. Sei $p: \R \to \R$ arbitrary measurable function with $\E[p(y)^2] < \infty$. Set $g_{\epsilon}(y) = g(y) + \epsilon p(y)$. Minimize
 	\begin{align*}
 		F(\epsilon) &:= \E[(X-g_{\epsilon}(y))^2] = \E[(X-g(y)-\epsilon p(y))^2]\\
 		&= \E[(X-g(y))^2] - 2\epsilon\E[(X-g(y))p(y)] + \epsilon^2\E[p(y)^2]\\
 		\frac{\partial F}{\partial \epsilon}(\epsilon) &= 2 \epsilon \E[p(y)^2] - 2\E[(X-g(y))p(y)]\\
 		&\implies \epsilon_{\ast} :=\frac{\E[(X-g(y))p(y)]}{\E[p(y)^2]} = \frac{A}{B}
-		\intertext{where}
+		\intertext{wobei}
 		A&= \E[Xp(y)] -\E[g(y)p(y)] \\
-		&= \int_{\R \times \Rn} xp(y)f_{XY}(x,y)\d x \d y - \int_{S_y}g(y)p(y)f_Y(y) = [\text{Apply $g$ + Fubini}]\\
+		&= \int_{\R \times \Rn} xp(y)f_{XY}(x,y)\d x \d y - \int_{S_y}g(y)p(y)f_Y(y) = [\text{Einsetzen von $g$ + Fubini}]\\
 		&= \int_{\R \times \Rn} xp(y)f_{XY}(x,y)\d x \d y - \int_{\R\times S_y} xp(y)\underbrace{f_{X\mid Y}(x,y)f_Y(y\d y)}_{=f_{XY}(x,y)} = 0
 	\end{align*}
-    therefore $\epsilon^{\ast} = 0$ independent from $p$ $\implies g(y)$ minimizes \eqref{eq_min_1}.
+	so $\epsilon^{\ast} = 0$ independent from  $p$ $\implies g(y)$ minimizes \eqref{eq_min_1}.
 \end{proof}
 \begin{*example}
-	Let $(X,Y)$ be normaly distributed on $\R\times \R$ with
+	Let $(X,Y)$ normaly distributed on $\R\times \R$ with
 	\begin{align*}
 		\mu = (\mu_x, \mu_y)^T \quad \Sigma = \begin{pmatrix}
 			\sigma x^2 \rho\sigma_x \sigma_y\\
@@ -276,66 +286,59 @@ In general it holds:
 			\Cov(X,Y) & \Var(Y)
 		\end{pmatrix} \mit \rho \in [-1,1]
 	\end{align*}
-	Then the arbitrary density is $f_{X\mid Y}(x,y)$. ($\Sigma$ covariance matrix). Once more the density of a normaly distributed random variable with 
+	Then the arbitraty density is $f_{X\mid Y}(x,y)$. ($\Sigma$ covariance matrix). Once more the density of a normaly distributed random variable with 
 	\begin{align*}
 		\E[X \mid Y=y] &= \mu_x + \rho \frac{\sigma_x}{\sigma_y}(y-\mu_y)\\
 		\Var(X\mid Y=y) &= \sigma_x^2(1-\rho^2)
 	\end{align*}
-	(is on the exercise sheet!). The mapping $y \mapsto \mu_x + g(y)\frac{\sigma_x}{\sigma_y}(y-\mu_y)$ is called regression line fo $X$ given $Y=y$.\\
+	(is ÜA!). The mapping $y \mapsto \mu_x + g(y)\frac{\sigma_x}{\sigma_y}(y-\mu_y)$ is called regression line for $X$ given $Y=y$.\\
 	Image: $\mu_x,\mu_y$ are values on $x,y$-axis and the $\sigma$'s build the Triangle slope (slope is known substantially by $\rho$)\\
-	For disrete random variables, i.e. when $X,Y$ accept only finitely many $\set{x_1,\dots,x_m}$ bzw. $\set{y_1,\dots,y_m}$ then with similar considerations we obtain as a solution of \eqref{eq_min_1}
+	For disrete random variables, i.e. when $X,Y$ accept only finitely many $\set{x_1,\dots,x_m}$ or $\set{y_1,\dots,y_m}$ annehmen then with similar considerations we obtain as a solution of \eqref{eq_min_1}
 	\begin{align*}
 		\E[X\mid Y=y_j] = \sum_{i=1}^m X_i \P(X=x_i \mid Y=y_j)
 	\end{align*}
 	wherein directly the conditional probabilities
 	\begin{align*}
 		\P(X=x_i \mid Y=y_j) = \begin{cases}
-			\frac{\P(X=x_i \wedge Y=y_j)}{\P(Y=y_j)} &\quad \text{ when } \P(Y=y_j) > 0\\
-			0 &\quad \text{ when } \P(Y=y_j) = 0 
+			\frac{\P(X=x_i \wedge Y=y_j)}{\P(Y=y_j)} &\quad \text{ wenn } \P(Y=y_j) > 0\\
+			0 &\quad \text{ wenn } \P(Y=y_j) = 0 
 		\end{cases}
 	\end{align*}
 \end{*example}
 \subsection{Conditional expectation - measure theoretical access}
-We consider a probability space $(\O, \F,\P)$. For random variables $X: \O \to \R$ and $p \in [1,\infty)$ we define the $L_p$-norm
+We consider a probability space $(\O, \F,\P)$. For random variables $X: \O \to \R$ und $p \in [1,\infty)$ we define the $L_p$-norm
 \begin{align*}
 	\norm{X}_p = \E[\abs{X}^p]^{1/p} = \brackets{\int_{\O} \abs{X(\omega)}^p \d \P(\omega)}^{1/p}
 \end{align*}
-and $L_p$-space $L_p(\O,\F,\P):= \set{X: \O \to \R\colon \F-\text{messbar}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, i.e. $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
-From measure theory it is known (?)\\
+and $L_p$-space $L_p(\O,\F,\P):= \set{X: \O \to \R\colon \F-\text{measurable}, \norm{X}_p < \infty}$. We identificate random variables which differ only at zero amounts, ie $\P(X \neq X') = 0 \implies X = X'$ (in $L_p$).\\
+From measure theory it is known: (?)\\
 The spaces $L_p(\O,\F,\P)$ with norm $\norm{\cdot}_p, p \in [1,\infty)$ are always \person{Banach}-spaces (linear, complete, normed vector spaces). For $p = 2$ also hilbert spaces with inner product
 \begin{align*}
 	\scaProd{X}{Y} = \E[XY] = \int_{\O} X(\omega)Y(\omega)\d \P(\omega)
 \end{align*}
-For $\G \subseteq \F$ Sub-$\sigma$-algebra $L_p(\O,\F,\P) \subseteq L_p(\O,\F,\P)$ is a closed subspace.\\
+Für $\G \subseteq \F$ Unter-$\sigma$-slgebra is $L_p(\O,\F,\P) \subseteq L_p(\O,\F,\P)$ closed subspace.\\
 We generalize ''prediction problem'' from the last section (1.3?)\\
-Given are random variables $X$ from $L_2(\O,\F,\P)$, $\G \subseteq \F$ is a sub-$\sigma$-algebra.\\
+Given are random variables $X$ from $L_2(\O,\F,\P)$ is $\G \subseteq \F$ Sub-$\sigma$-algebra.\\
 What is the best $\G$-measurable forecast for $Y$?
 \begin{align*}
 	\min\set{\E[(X-G)^2] \colon G \in L_2(\O,\F,\P)} \tag{min-2}\label{eq_min_2}
 \end{align*}
-where $\E[(X-G)^2] = \norm{X-G}^2_2$.\\
+wobei $\E[(X-G)^2] = \norm{X-G}^2_2$.\\
 From hilbert-space theory:\\
-\eqref{eq_min_2} possesses a unique solution $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ is optimization (with respect to $\scaProd{\cdot}{\cdot}$) from $X \in L_2(\O,\F,\P)$ on closed subspace $L_2(\O,\G,\P)$\\
+\eqref{eq_min_2} possesses a unique solution $G_{\ast} \in L_2(\F,\G,\P)$. $G_{\ast}$ is optimization (with respect to $\scaProd{\cdot}{\cdot}$) from $X \in L_2(\Omega,F,P)$ on closed subspace $L_2(\Omega,G,P)$\\
 Image: maybe from Eric (Orthogonal projection on the subspace)\\
-With $G_{\ast}$ we denote the conditioned expected value $\E[X\mid \G]$ of $X$ with respect to $\G$.
-\begin{theorem}[Properties of conditioned expected value] %1.5
-	\label{1_5_eigen_bedEW}
-	Let $X,Y \in L_2(\O,\F,\P)$ and $\G \subseteq F$ sub-$\sigma$-algebra. Then it holds
+We denote the conditioned expected value $\E[X\mid \G]$ of $X$ with recpect to $\G$ with $G_{\ast}$.
+\begin{theorem} %1.5
+	Let $X,Y \in L_2(\O,\F,\P)$ and $\G \subseteq F$ sub-$\sigma$-algebra. Then it holds 
 	\begin{enumerate}
 		\item (Linearity) $\E[aX+bY] = a\E[X\mid \G] + b\E[Y\mid \G]$
 		\item (Tower rule) For every further $\sigma$-algebra $\H \subseteq\G$ it holds
 		\begin{align*}
 			\E[E[X\mid \G \mid \H]] = \E[X\mid \H]
 		\end{align*}
-		\item (Pullout-Property) $\E[XZ\mid \G] = Z\E[X\mid \G]$, if $Z$ is bounded and $\G$-measurable.\\
-		second version: For $Z$ $\G$-measurable with $\E[\abs{XZ}] < \infty$ it holds:
-		\begin{align*}
-			\E[XZ\mid \G] = Z \cdot \E[X\mid \G]
-			\intertext{especially it holds}
-			X \G\text{-masurable }\implies \E[X\mid \G] = X
-		\end{align*}
+		\item (Pullout-Property) $\E[XZ\mid \G] = Z\E[X\mid \G]$, if $Z$ is bounded and $\G$-measurable.
 		\item (Monotonicity) $X \le Y \implies \E[X\mid \G] \le \E[Y \mid \G]$
-		\item ($\Delta$-inequality) $\abs{\E[X\mid \G]} \le \E[\abs{X}\mid \G]$
+		\item ($\Delta$-Inequality) $\abs{\E[X\mid \G]} \le \E[\abs{X}\mid \G]$
 		\item (Independence) $X$ independent from $G$ $\implies$ $\E[X \mid \G] = \E[X]$
 		\item (trivial $\sigma$-algebra) $\G=\set{\emptyset, \O} \implies \E[X \mid \G] = \E[X]$ 
 	\end{enumerate}
