@@ -1,4 +1,4 @@
-﻿\chapter{Introduction}
+\chapter{Introduction}
 \section{The central issue of financial mathematics}
 \subsection*{\term{Valuation}:}
 Valuation of derivatives and \emph{hedge} against the risks which emerges from the purchase / sale.
@@ -92,31 +92,31 @@ We consider:
 	Image: Exchange curve = $S_t(\omega)$, wherein time-continuous model for infinite probability space
 \end{*example}
 %TODO translate
-\section{Anleihen und grundeliegende Beispiele für Derivate}
-Hier betrachten wir immer nur ein Basisgut $S_t = S^1_t$
+\section{Bonds and basic examples of derivatives}
+We consider here only one basic good $S_t = S^1_t$
 \begin{enumerate}
-	\item \begriff{Anleihe}(\begriff{bond}): (genauer: Null-Coupon-Anleihe [zero-coupon-bond]) Der \begriff{Emittent} (Herausgeber) einer Anleihe mit Endfälligkeit $T$ [maturity] garantiert dem Käufer zum Zeitpunkt $T$ den Betrag $N$ (EUR/USD/...) zu zahlen.\\
-	Typische Emittenten:
+	\item \term{Bond}: (more precisely: zero-coupon bond) Der \term{issuer} of a bond with maturity $T$ guaranties to pay the buyer the amount $N$ (EUR/USD/...) at time $T$.\\
+	Typical issuers:
 	\begin{itemize}
-		\item Staaten [government bond]
-		\item Unternehmen (als Alternative zur Kreditaufnahme)
+		\item States [government bond]
+		\item Companies (as an alternative to taking a credit)
 	\end{itemize}
-	Nach Emission werden Anleihen auf den Sekundärmarkt weiterverkauft, d.h. liquide gehandelte Wertpapiere\\
-	Preis bei Emission: $B(0,T)$\\
-	Preis bei Weiterverkauf zum Zeitpunkt $t \le T\colon B(t,T)$\\
-	Wir normieren stets $N=1 \implies B(T,T) =1$\\
-	Anleihen von West/Nord/Mitteleuropäischen Staaten + USA/Kananda werden als risikolos betrachtet (sichere Zahlung).\\
-	Sonst: Kreditrisiko\\
-	Risikofreie Anleihen können als Numerale $S^0_t = B(t,T)$ genutzt werden\\
-	Bild: kann ich gerade nicht beschreiben :/ \\
-	\item \begriff{Terminvertrag} [forward contract]\\
-	Aus Käufersicht: \emph{Vereinbarung} zu bestimmten, zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis zu kaufen (Kaufverpflichtung)\\
-	Beliebt bei Rohstoffen + Elektrizität\\
-	Auszahlunsprofil: $F_T = S_T - K$\\
-	Bild: ``Eine Gerade mit Schnittpunkt der $x$-Achse bei $K$ und Schnittpkt der $y$-Achse bei $S_T \ge 0$, ist ja nur einer Polynom 1. Ordnung''\\
-	Preis zum Zeitpunkt $t$: $F_t$
-	\item \begriff{Europäische Put-/Call-Option}:
-	Recht zu einem zukünftigen Zeitpunkt $T$ eine Einheit des Basisguts $S$ zum Preis $K$ zu verkaufen (Put) bzw. zu kaufen (Call) \textbf{keine (Ver-)Kaufsverpflichtung}\\
+    After emission bonds are resold on the secondary market, ie liquid traded securities/stocks\\
+	Price of the emission: $B(0,T)$\\
+	Price of the resale at time $t \le T\colon B(t,T)$\\
+	We always standardise $N=1 \implies B(T,T) =1$\\
+	Bonds of West / North / Central European countries + USA / Cananda are regarded as risk-free (secure payment).\\
+	Otherwise: credit risk\\
+	Risk free bonds can be used as numeral $S^0_t = B(t,T)$\\
+	Image: can not describe it now:/ \\
+	\item \term{Forward contract}\\
+	From buyers view: \emph{agreement} to buy a unit of basic good $S$ for price at a certain future date $T$ (purchase required)\\
+	Popular with raw materials + electricity \\
+	Payout profile: $F_T = S_T - K$\\
+    Image: `` A straight line with the intersection of the $x$ axis at $K$ and intersection of the $y$ axis at $S_T \ ge 0$, is only a 1st order polynomial''\\
+	Price at time $t$: $F_t$
+	\item \term{European Put-/Call-Option}:
+	Right at a future time $T$ to sell (put) or to buy (call) a unit of basic good $S$ at the price $K$ \textbf{no supply/purchase obligation}\\
 	\begin{itemize}
 		\item \emph{Call}:
 		\begin{align*}
@@ -130,7 +130,7 @@ Hier betrachten wir immer nur ein Basisgut $S_t = S^1_t$
 			X_+ &= \max(X,0)\quad X_+ - X__ = X\\
 			X__ &= \min(X,0)\quad X_+ + X__ = \abs{X}
 			\end{align*}
-			Bild: (hockey stick function)
+          	Image: (hockey stick function)
 		\end{*remark}
 		\item \emph{Put}:
 		\begin{align*}
@@ -139,27 +139,27 @@ Hier betrachten wir immer nur ein Basisgut $S_t = S^1_t$
 		K-S_T &\quad S_t < K
 		\end{cases} = (K-S_T)_+
 		\end{align*}
-		Bild: ``inversed'' hockey stick function xD
+		Bild: ``inversed'' hockey stick function 
 	\end{itemize}
-	\item \emph{Amerikanische Put/Call-Option}: Wie Put/Call aber mit Ausübung zu beliebigen Zeitpunkt $t \in [0,T]$\\
-	Preis zum Zeitpunkt $t\colon P_t^{AM}, \; C_t^{AM}$\\
-	Auszahlungsprofil zum zeitpunkt $\tau\colon (S_{\tau}-K), (K-S_{\tau})_+$\\
-	Zeitpunkt $\tau$ muss im Allgemeinen als Lösung eines stochastischen Optimierungsproblems bestimmt werden (``\begriff{Optimales Stopproblem}'')
+	\item \emph{American Put/Call-Option}: As put/call but with exercising at any time $t \in [0,T]$\\
+	Price at time $t\colon P_t^{AM}, \; C_t^{AM}$\\
+	Payout profile at time $\tau\colon (S_{\tau}-K), (K-S_{\tau})_+$\\
+	Time $\tau$ must generally be determined as a solution of a stochastic optimization problem (``\term{Optimal stop problem}'')
 \end{enumerate}
-\section{Elementare Replikations und Arbitrage-Argumente}
-Was können wir (mit elementaren Mitteln) über die ``fairen'' Preise $B(t,T), F_t, C_t, P_t$ aussagen?\\
-Wir verwenden:
+\section{Elementary replications and arbitrage-arguments}
+What can we state (with elementary means) on the ``fair'' prices $B(t,T), F_T, C_T, P_t $ \\?
+We use: 
 \begin{itemize}
-	\item \begriff{Replikationsprinzip}: Zwei identische zukünftige Zahlungsströme haben auch heute denselben Wert. (ein Zahlungstrom ``repliziert'' den anderen) % but what about inflation? Where comes inflation in this whole system in? 
-	\item \begriff{No-Arbitage-Prinzip}: ``Ohne Kapiteleinsatz kann sicherer Gewinn ohne Verlustrisiko erzielt werden''
-	\item \begriff{Arbitrage}: risikofreier Gewinn\\
-	\item Schwächere Form des Replikationsprinzips:\\
-	\begriff{Superpositionsprinzip}: Ist ein Zahlungsstrom in jedem Fall größer als ein anderer, so hat er auch heute den größeren Wert
+	\item \term{Replication principle}: Two identical future cash flows have the same value even today. (A cash flow ``replicates'' the other) % but what about inflation? Where comes inflation in this whole system in? 
+	\item \term{No-arbitage-principle}: ``Without capital investment, secure profit can be achieved without risk of loss''
+	\item \term{Arbitrage}: risk-free profit\\
+	\item Weaker form of replication principle:\\
+	\begriff{Super position principle}: is a cash flow in any case greater than another, therefore also today it has the greater value
 	\begin{align*}
 	\begin{matrix}
-	\text{stark} & \text{Rep. Prinzip} & \text{eingeschränkt anwendbar}\\
-	\downarrow & \text{Superrep. Prinzip} & \uparrow\\
-	\text{schwach} & \text{No-Arbitrage-Prinzip} & \text{immer anwendbar}
+	\text{stark} & \text{Rep. principle} & \text{limited applicability}\\
+	\downarrow & \text{Super rep. principle} & \uparrow\\
+	\text{light} & \text{No-arbitrage-principle} & \text{always applicable}
 	\end{matrix}
 	\end{align*}
 \end{itemize}
@@ -171,43 +171,43 @@ Wir verwenden:
 \end{lemma}
 \begin{proof}
 	\begin{itemize}
-		\item \emph{untere Schranke}: Für Widerspruch $S_t - K\cdot(B(t,T))-C_t = \epsilon > 0$\\
+		\item \emph{lower boundary}: For contradiction $S_t - K\cdot(B(t,T))-C_t = \epsilon > 0$\\
 		\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate tables in latex xD, but i managed it ...
-			Portofolio & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
-			Kaufe Call & $C_t$ & 0 & $S_T - K$\\
-			Verkaufe Basisgut & $-S_t$ & $-S_T$ & $-S_T$\\
-			Kaufe Anleihe & $\epsilon + K\cdot B(t,T)$ & $\frac{\epsilon}{B(t,T)}+K$ & $\frac{\epsilon}{B(t,T)} + K$\\
+			Portofolio & value in $t$ & value in $T$, $S_t \le K$ & value in $T$, $S_t > K$\\
+			Buy Call & $C_t$ & 0 & $S_T - K$\\
+			Sell basic good & $-S_t$ & $-S_T$ & $-S_T$\\
+			Buy a bond & $\epsilon + K\cdot B(t,T)$ & $\frac{\epsilon}{B(t,T)}+K$ & $\frac{\epsilon}{B(t,T)} + K$\\
 			$\Sigma$ & 0 & $K - S_T + \frac{\epsilon}{B(t,T)} > 0$ & $\frac{\epsilon}{B(t,T)} > 0$\\
-			& keine Anfangskapital & sicherer Gewinn & sicherer Gewinn\\
+			& no initial capital & sure profit & sure profit\\
 		\end{tabular}\\
-		$\implies$ Widerspruch zu No-Arbitrage\\
-		$\implies$ $S_t - K\cdot B(t,T) \le C_t$ und Ausserdem $C_t \ge 0 \implies C_t \ge (S_t - K\cdot B(t,T))_+$
-		\item \emph{obere Schranke}: UE
+		$\implies$ In contradiction to no-arbitrage\\
+		$\implies$ $S_t - K\cdot B(t,T) \le C_t$ and moreover $C_t \ge 0 \implies C_t \ge (S_t - K\cdot B(t,T))_+$
+		\item \emph{upper boundary}: UE
 	\end{itemize}
 \end{proof}
-\begin{lemma}[Put-Call-Parität] % jeezz its 5:48 am im typing this, cant sleep ... :(
-	Für Put $P_t$, Call $C_t$ mit demselben Ausübungspreis $K$ und Basisgut $S_t$ gilt
+\begin{lemma}[Put-Call-parity] 
+	For put $P_t$, Call $C_t$ with the same exercise price $K$ and basic good $S_t$ it holds
 	\begin{align*}
 	C_t - P_t = S_t - B(t,T)K
 	\end{align*}
-	Bild: need to add ..., but should be fast to do ...
+	Image: need to add ..., but should be fast to do ...
 \end{lemma}
 \begin{proof} %TODO fix tables later, for now it works ..., make them one size for better reading ...
-	mit Replikation:\\
+	with replication:\\
 	\begin{tabular}{l|l|l|l} % jeezzz i fuckin know now how to make tables in latex xD
-		Portofolio 1 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
-		Kaufe Call & $C_t$ & 0 & $S_T - K$\\
-		Kaufe Anleihe & $K \cdot B(t,T)$ & $K$ & $K$\\
-		Wert Portofolio 1 & $C_t + K\cdot B(t,T)$ & $K$ & $S_T$\\
+		Portofolio 1 & value in $t$ & value in $T$, $S_t \le K$ & valuet in $T$, $S_t > K$\\
+		Buy Call & $C_t$ & 0 & $S_T - K$\\
+		Buy bond & $K \cdot B(t,T)$ & $K$ & $K$\\
+		Value portofolio 1 & $C_t + K\cdot B(t,T)$ & $K$ & $S_T$\\
 	\end{tabular}\\
 	\newline
 	\begin{tabular}{l|l|l|l} % jeezzz i fuckin hate, but i can copy ... xD
-		Portofolio 2 & Wert in $t$ & Wert in $T$, $S_t \le K$ & Wert in $T$, $S_t > K$\\
-		Kaufe Put & $P_t$ & $K-S_T$ & 0\\
-		Kaufe Basisgut & $S_t$ & $S_T$ & $S_T$\\
-		Wert Portofolio 2 & $P_t + S_t$ & $K$ & $S_T$\\
+		Portofolio 2 & value in $t$ & value in $T$, $S_t \le K$ & value in $T$, $S_t > K$\\
+		Buy put & $P_t$ & $K-S_T$ & 0\\
+		Buy basic good & $S_t$ & $S_T$ & $S_T$\\
+		Value portofolio 2 & $P_t + S_t$ & $K$ & $S_T$\\
 	\end{tabular}\\
-	Replikationsprinzip: $C_t + K\cdot B(t,T) = P_t + S_t$\\
+	Replication principle: $C_t + K\cdot B(t,T) = P_t + S_t$\\
 	$\implies$ $C_t - P_t = S_t - K\cdot B(t,T)$
 \end{proof} % 5:56 am and im done with it, puh ;) hope we can talk about it in english if you like. ;)
 \section{Conditional expectation values and Martingale} %1.4
