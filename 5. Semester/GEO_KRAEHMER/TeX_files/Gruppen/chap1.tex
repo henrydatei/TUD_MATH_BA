@@ -490,6 +490,29 @@ Die endlichen einfachen Gruppen sind klassifiziert!
 	\end{align*}
 	ist ein Isomorphismus.
 \end{proposition}
+\begin{proof}
+	\begin{align*}
+		\frac{\abs{G}}{\abs{K}} = \abs{\lnkset{G}{K}} \abs{\lnkset{\lnkset{G}{H}}{\lnkset{K}{H}}} = \frac{\abs{\lnkset{G}{H}}}{\abs{\lnkset{K}{H}}} =  \frac{\frac{\abs{G}}{\abs{K}}}{\frac{\abs{K}}{\abs{H}}}
+	\end{align*}
+	Der Isomorphismus ist durch
+	\begin{align*}
+		xK \mapsto xH \brackets{\lnkset{K}{H}}
+	\end{align*}
+	woldefiniert ist. Ist $xK=yK$ für $x,y \in G$, so ist $y^{-1}x \in K$. Zu zeigen ist
+	\begin{align*}
+		xH\brackets{\lnkset{K}{H}} = yH\brackets{\lnkset{K}{H}}\\
+		\Leftrightarrow Hx\brackets{\lnkset{K}{H}} = Hy\brackets{\lnkset{K}{H}} \quad\text{denn $H$ ist normal!}
+	\end{align*}
+	aus $xK=yK$ folgt aber $x \lnkset{K}{H} = y\lnkset{K}{H}$. Was war $\lnkset{K}{H} \subseteq \powerset(K)$, also macht das keinen Sinn. Besser: 
+	\begin{align*}
+		xH\brackets{\lnkset{K}{H}} = yH\brackets{\lnkset{K}{H}}
+	\end{align*}
+	heisst $xH \cdot zH \in yH\lnkset{K}{H}$ (und umgekehrt) für alle $z \in K$. Sprich für alle $z \in K$ existiert ein $t \in K$
+	\begin{align*}
+		xHzH = yHtH \Leftrightarrow xzHH = ytHH \Leftrightarrow xzH = ytH
+	\end{align*}
+	Dies folgt aber aus $a:= y^{-1}x \in K$, nimm $\forall z \in K \exists t \in K$ $t:= y^{-1}xz = az \in K$ und $y^{-1}xt = t$. (Alternative ein Lemma zeigen: $\phi\colon \lnkset{G}{K} \to N$ wohldefiniert, dann $x \in K$ und durch die Vorschrift auf $1 \in N$ abgebildet. Dann ist der Beweis kürzer.)
+\end{proof}
 \section{Einfache Gruppen}
 \begin{definition}
 	$G$ ist einfach, genau dann wenn $\set{1}, G$ sind die einzigen Normalteiler.
@@ -682,10 +705,17 @@ Kompositionsreihen und \person{Jordan}-\person{Hölder}.
 	\end{enumerate}
 \end{proof}
 \begin{*example}
-	$G = \Z$ hat keine Kompositionsreihe, denn
-	\begin{align*}
+	\begin{itemize}
+		\item $G = \Z$ hat keine Kompositionsreihe, denn
+		\begin{align*}
 		\Z = G_0 \triangleright G_1 \implies G_1 \cong \Z	
-	\end{align*}
+		\end{align*}
+		\item 
+		\begin{align*}
+			S_4 \rhd A_4 \rhd N \rhd \set{(),(12)(34)} \cong \Z_2 \rhd 1\\
+		\end{align*}
+		mit $\lnkset{S_4}{A_4} \cong \Z_2, N = \set{(),(12)(34),(13)(24),(14)(23)}, \lnkset{N}{\set{(),(12)(34)}} \cong \Z_2$
+	\end{itemize}
 \end{*example}
 \begin{proposition}[\person{Jordan}-\person{Hölder}]
 	Sei $G$ endliche Gruppe und seien $\set{H_i}_{i=0,\dots,p}$ und $\set{G_j}_{j=0,\dots,n}$ zwei Kompositionsreihe der Länge $p$. Dann gilt $p = n$ und ex existiert $\sigma \in S_{0,\dots, n-1}$ mit
@@ -699,12 +729,41 @@ Kompositionsreihen und \person{Jordan}-\person{Hölder}.
 		G = H_0 \triangleright H_1 \triangleright \dots \triangleright H_p = \set{1}
 	\end{align*}
 	Beweis erfolgt durch Induktion nach $m = \min(n,p)$\\
+	\begin{itemize} %TODO restructurize ...
+		\item $n=1$ klar \checkmark, da
+		\begin{align*}
+			G = G_1 \rhd G_1 = 1\text{, da } G = \lnkset{G_0}{G_1} \text{ einfach}
+		\end{align*}
+		sei nun der Satz für alle Kompositionsreihen von Gruppen kürzer Länge bewiesen. Wäre $G_1 = H_1$, so könnten wir die Induktionsannahme direkt auf $G_1 = H_1$ anwenden und wir wären fertig. Annahme $G_1 \neq H_1$, so gilt auch $H_1 \not < G_1, G_1 \not < H_1$ (mit Korrespondenztheorem, $\lnkset{G}{G_1}, \lnkset{G}{H_1}$ einfach). Also ist $H_1 \cap G_1 \lhd G_1, H_1 \cap G_1 \lhd H_1$ echte Normalteiler. ($y \in H \cap K, x\in G, dann xyx^{-1} \in H,xyx^{-1} \in K, da H,K \rhd G$). Betrachte eine Kompositionsreihe
+		\begin{align*}
+			G_1 \cap H_1 = K_2 > K_3 > \dots > K_n = 1 \text{ von } K_2 := G_1 \cap H_1
+		\end{align*}
+		Behauptung:
+		\begin{align*}
+			G_1 > K_2 > ... > K_t = 1\\
+			H_1 > K_2 > ... > K_t = 1
+		\end{align*}
+		sind Komposition, d.h. $\lnkset{G_1}{K_2},\lnkset{H_1}{K_2}$ sind einfach. Mit 2. Isomorphiesatz folgt:
+		\begin{align*}
+			\lnkset{G_1}{G_1 \cap H_1} \cong \lnkset{G_1 H_1}{H_1} = \lnkset{H_1=G}{H_1}
+		\end{align*}
+		denn aus $H_1,G_1 \lhd G$ folgt $H_1 G_1 \lhd G$ und $H_1,G_1$ wären ja maximale normale Untergruppen $\lnkset{H_0}{H_1}$ ist aber einfach. Genauer $\lnkset{H_1}{G_1\cap H_1}$ einfach also isomorph zu $\lnkset{G_0}{G_1}$. Vergleiche nun die Kompositionsreihen
+		\begin{align*}
+			G_1 > G_2 > ... > G_n = 1\\
+			G_1 > K_2 > ... > K_t = 1
+		\end{align*}
+		mit Induktion folgt $t=n$ und alles weitere. Sei $n=m$ oBdA. Genauso mit
+		\begin{align*}
+			H_1 < H_2 ...
+			H_1 < K_2 ...
+		\end{align*}
+	\end{itemize}
 	Beweise zuerst folgende Behauptung:\\
-		Ist $G = G_0 \rhd G_1 \rhd \dots \rhd G_1 = 1$ Kompositionsreihe und $N \lhd G$, so ist $N = N \cap G_0 \rhd N \cap N_1 \rhd \dots, \rhd N \cap 1 = 1$ Kompositionsreihe (gegebenenfalls nach Auslassen von $N \cap G_1 = N ßcap G_{i+1}$)
+		Ist $G = G_0 \rhd G_1 \rhd \dots \rhd G_1 = 1$ Kompositionsreihe und $N \lhd G$, so ist $N = N \cap G_0 \rhd N \cap N_1 \rhd \dots, \rhd N \cap 1 = 1$ Kompositionsreihe (gegebenenfalls nach Auslassen von $N \cap G_1 = N \cap G_{i+1}$)
 	\begin{proof}
 		\begin{align*}
 			\lnkset{N \cap G_i}{N \cap G_{i+1}} = \lnkset{N \cap G_i}{(N \cap G_i)\cap G_{i+1}} \mit (G_{i+1} < G_1!)\\
-			\cong \lnkset{(N \cap G_1)G_{i+1}}{G_{i+1}} \lhd \lnkset{G_i}{G_{i+1}} \text{ einfach }\quad \cong\text{ da 2. Isomorphiesatz}
+			\cong \lnkset{(N \cap G_1)G_{i+1}}{G_{i+1}} \lhd \lnkset{G_i}{G_{i+1}} \text{ einfach }\cong\text{ da 2. Isomorphiesatz}
 		\end{align*}
 		Also $\lnkset{N \cap G_i}{N \cap G_{i+1}} \cong \lnkset{G_i}{G_{i+1}}$ oder $\lnkset{N \cap G_i}{N \cap G_{i+1}} \Leftrightarrow N \cap G_i = N \cap G_{i+1}$.
 	\end{proof}
@@ -717,3 +776,51 @@ Kompositionsreihen und \person{Jordan}-\person{Hölder}.
 	\item Fall 2: $G_1 \neq H_1$. Dann ist $G \cap H_1 \lhd G_1$ (nicht gleich!). Beachte Nach Korrespondenztheorem ist $H_1 \le$ ... %TODO
 \end{enumerate}
 \end{proof}
+Letztes Mal: äusseres Produkt $\cong$ inneres Produkt $G = K \times L$, brauchte dazu
+\begin{align*}
+	K,L \lhd G, K\cap L = \set{1}, KL=G \Leftrightarrow K \times L \to G \mit (a,b) \mapsto ab \text{ ist bijektiv}
+\end{align*}
+Allgemeiner: Ist $G$ Gruppe, $K\lhd G, L < G$ (nicht normal), so definiert jedes $x \in L$ einen Automorphismus von $K$:
+\begin{align*}
+	\rho\colon L \to \Aut(K) \mit x \mapsto \rho_x, \rho_x(y) = xyx^{-1}, y \in K
+\end{align*}
+Ist $K \cap L = \set{1}$, so ist $KL < G$ vollständig durch $K,L,\rho$ gegeben.
+\begin{definition}[semidirekte Produkt]
+	Das \begriff{semidirekte} Produkt (äussere) zweier Gruppen $K,L$ bezüglich eines Homomorphismus
+	\begin{align*}
+		\rho\colon L \to \Aut(K)
+	\end{align*}
+	ist die Gruppe $G = K \rtimes_{\rho} L$, die $K \times L$ als Menge ist
+	\begin{align*}
+		(a,x)(b,y) = (a\rho_x(b),xy) \mit a,b \in K,x,y \in L
+	\end{align*}
+\end{definition}
+\begin{example}
+	Sei $G = D_n$
+	\begin{align*}
+		K  &= \Z_n = \set{1,r,r^2,..., r^{n-1}} \text{ (Rotationen)}\\
+		L  &= \Z_2 = \set{1,s} \text{ ($s$ irgendeine Spiegelung)}\\
+		KL &= D_n = \set{r^i,s^j \mid i = 0,...,n-1, j=0,1} = \Z_n \times \Z_2
+	\end{align*}
+	als Menge.
+\end{example}
+ Noch allgemeiner:\\
+$G$ Gruppe, $G = KL, K \cap L = \set{1}$, d.h. alle $g \in G$ können eindeutig als $xy = y$ mit $x \in K,y\in L$ geschrieben werden, aber $K\not \lhd G, L \not \lhd G$. $G$ nennt man dann ein Bieressprodukt (\person{Zappa}-\person{Zsep}-Produkt, exakt Faktorisierung) (innere Version). $K,L$ matched pair of groups (äussere Version).
+\begin{example}[\person{Iwasawa}zerlegung]
+	\begin{align*}
+		G = \SL(n,\C)\quad K = \SU(n)
+		L = \set{\begin{pmatrix}
+		\lambda_1 & \ast & \ast\\
+		0 & \ddots & \ast\\
+		0 & 0 & \lambda_n
+		\end{pmatrix} \in \SL(n,\C)\mid \lambda_1, ..., \lambda_n \in (0,\infty)}
+	\end{align*}
+\end{example}
+Ausblick: Gruppentheorie = Studium von Symmetrie, z.B. $G < S_X$ (allgemeiner $G < \Aut(X)$, $X$ könnte zum Beispiel topologischer Raum sein). Im 19. Jh. gab es nur die Transformationsgruppen $G$, mit $g \in G$ mit $g: X \to X$ Abbildung. Zum Beispiel $X= \R^3 \und G = \SO(3)=$ Rotationen im Euklidischen Raum. Abstraktion $\to$ Algebra $\supseteq$ Gruppentheorie mit Definition wie in VL1.
+\begin{definition}
+	Eine Wirkung einer Gruppe $G$ auf eine Menge $X$ ist ein Gruppenhomomorphismus 
+	\begin{align*}
+		\rho\colon G \to S_X = \set{f\colon X \to X \mid f \text{ bijektiv}} \mit g \mapsto \rho_g\colon X \to X
+	\end{align*}
+	d.h. eine Abbildung $G \times X \to X \mit (g,x) \to gx = \rho_g(x)$ mit $1x = x \forall x \in X, g(hx) = (gh)x \forall g,h \in G, x \in X$. (zb. Vektor und Matrix).
+\end{definition}
