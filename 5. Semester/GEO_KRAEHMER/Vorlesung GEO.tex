@@ -7,6 +7,26 @@
 \newcommand{\with}{\text{ with }}
 \renewcommand{\rhd}{\triangleright}
 \renewcommand{\lhd}{\triangleleft} 			% normal subgroups
+\DeclareMathOperator{\Set}{Set}				% Category of sets
+\newcommand{\Circlearrowleft}{\rotatebox{0}{$\circlearrowright$}}
+
+% get this stupid arrows:
+%\usepackage{mathabx,graphicx}  % ---> add to mathoperators
+%\def\Circlearrowleft{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowleft$}}}
+%\def\Circlearrowright{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowright$}}}
+%\def\CircleArrowleft{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowleft$}}}}
+%\def\CircleArrowright{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowright$}}}}
+%\begin{document}
+%	\Huge
+%	$\circlearrowleft \circlearrowright $
+%	
+%	$\Circlearrowleft \Circlearrowright $
+%	
+%	$\CircleArrowleft \CircleArrowright $
 
 % % % local packages
 \usepackage{braids}
@@ -52,6 +72,8 @@
 \input{./TeX_files/Vorwort}
 \chapter{Gruppen}
 \input{./TeX_files/Gruppen/chap1}
+\chapter{Permutationsdarstellungen und Gruppenoperationen}
+\input{./TeX_files/Gruppen/chap2}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
