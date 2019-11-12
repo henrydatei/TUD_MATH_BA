@@ -168,14 +168,37 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 		&\Leftrightarrow g \in G_x \quad \forall x \in X
 	\end{align*}
 \end{proof}
+\begin{definition}
+	$G \Circlearrowleft X$ ist \begriff{treu} genau dann, wenn
+	\begin{align*}
+	\theta\colon G \to S_X \text{ injektiv}\\
+	\forall g,h \in G \; (\forall x \in X \colon gx = hx) \implies g = h
+	\end{align*}
+\end{definition}
+\begin{*example}
+	$\Z \Circlearrowleft \Z_n, n \neq 0, \overline{x} \in \Z_n$, $g\overline{x} = \overline{g+x}$ nicht treu, da
+	\[
+	\begin{tikzcd}
+	G \arrow[d] \arrow[r, "\theta"] & S_X \arrow[ld, "\overline{\theta}", dashed] \\
+	\lnkset{G}{\ker \theta}            &                                            
+	\end{tikzcd}
+	\]
+\end{*example}
 \section{Transitive Operationen}
 \begin{definition}
 	$G \Circlearrowleft X$ \begriff{transitiv}, wenn es genau eine Bahn gibt
 	\begin{align*}
 		X = G \cdot x_0 \quad x_0 \in X.\\
-		\forall x,y \in X\colon \exists g \in G \mit y = yx
+		\forall x,y \in X\colon \exists g \in G \mit y = gx
 	\end{align*}
 \end{definition}
+\begin{*example}
+	Betrachte 
+	\begin{align*}
+		O(n) = \set{A \in \Mat(n,\R) \mid A^T A = 1_n} = \set{A \in \Mat(n\R)\mid \norm{Ax} = \norm{x} \forall x \in \R^n}
+	\end{align*}
+	also $O(n) \Circlearrowleft S^{n-1} = \set{x \in \R^n \mid \norm{x} = 1}$ (Drehungen und Spiegelungen in der $S^2$ zum Beispiel) transitiv.
+\end{*example}
 \begin{lemma}
 	$G \Circlearrowleft \lnkset{G}{H}$ transitiv
 \end{lemma}
@@ -184,11 +207,108 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 \end{proof}
 \begin{theorem}[Die Struktur von Gruppenoperationen]
 	\begin{enumerate}
-		\item $G \Circlearrowleft X \implies \exists H < G$ und ein $G$-Isomorphismus durch $(G,X) \cong (G, \lnkset{G}{H})$ ist \emph{transitiv}.
+		\item $G \Circlearrowleft X \implies \exists H < G$ und ein $G$-Isomorphismus durch $(G,X) \cong (G, \lnkset{G}{H})$ ist \emph{transitiv}. ($H$ muss nicht eindeutig sein)
 		\item $H,K < G$, dann
 		\begin{align*}
 			(G, \lnkset{G}{H}) \cong (G, \lnkset{G}{K}) \Leftrightarrow H \und K \text{ konjugiert} 
 		\end{align*}
-		also linke Seite $G$-Isomorph und bei der rechten Seite: $\exists g \in G\colon H = gKg^{-1}$
+		also linke Seite $G$-Isomorph und bei der rechten Seite: $\exists g_0 \in G\colon H = g_0 Kg_0^{-1}$.
 	\end{enumerate}
 \end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item 
+		\begin{itemize}
+			\item $\Leftarrow$: $H < G \colon$ $G \Circlearrowleft \lnkset{G}{H}$ transitiv.
+			\item $\Rightarrow$: Sei $G \Circlearrowleft X$ transitiv $x \in X$ beliebig und $X = Gx$. Definiere
+			\begin{align*}
+				H:= G_x \text{ und } \alpha: X \to \lnkset{G}{H} \mit gx \mapsto gH
+			\end{align*} 
+			\begin{itemize}
+				\item Ist $\alpha$ wohldefiniert? Ja, da $\forall g,h \in G$ haben wir 
+				\begin{align*}
+				gx = hx &\Leftrightarrow h^{-1}g x = x\\
+				&\Leftrightarrow h^{-1}g \in G_x = H \text{ (siehe HA1.1 gilt)}\\
+				&\Leftrightarrow gH = hH.
+				\end{align*}
+				\item $\alpha$ injektiv? $\forall g,h \in G\colon \alpha(gx) = \alpha(hx)$. (Gehe die Wohldefiniertheit rückwärts).
+				\item $\alpha$ surjektiv? $\forall g \in G \colon gH = \alpha(gx)$
+				\item Betrachte
+				\[
+					\begin{tikzcd}
+					X \arrow[r, "\alpha"] \arrow[d, "g"] & G/H \arrow[d, "g"] \\
+					X \arrow[r, "\alpha"]                & G/H               
+					\end{tikzcd}
+				\]
+				\begin{align*}
+					\forall g\in G, y \in X g \alpha(y) \overset{?}&{=} \alpha(gy)\exists h \in G, y = hx\\
+					\alpha(gy) = \alpha(g(hx)) = \alpha(ghx)\\
+					&=ghH = ghH = g\alpha(hx)\\
+					&= g \alpha(y)
+				\end{align*}
+				Also ist $\alpha$ $G$-Isomorphismus.
+			\end{itemize}
+			\item Wir müssen zuerst ein Lemma zeigen: 
+			\begin{lemma}
+				Sei $\alpha\colon X \to Y$ $G$-Isomorphismus, dann $\forall x \in X\colon G_x = G_{\alpha(x)}$
+			\end{lemma}
+			\begin{proof}
+				$\alpha$ $G$-Isomorphismus gdw $\alpha$ bijektiv und $\forall x \in X\colon g\alpha(x) = \alpha(gx)$ und $\forall g \in G$
+				\begin{align*}
+					gx = x \Leftrightarrow g\alpha(x) = \alpha(gx) = \alpha(x)\\
+					\implies g \in G_x \Leftrightarrow g \in G_{\alpha(x)}
+				\end{align*}
+			\end{proof}
+			\begin{itemize}
+				\item $\Rightarrow$: Sei $\alpha\colon \lnkset{G}{H} \to \lnkset{G}{K}$ ein $G$-Isomorphismus. Sei $g_0 \in G$, so dass $\alpha(H) = g_0 K$. Wir haben Stabilisator von $H$ in $G$
+				\begin{align*}
+					\set{g \in G \mid gH = H} = H
+				\end{align*}
+				und der Stabilisator von $gK$ in $G$
+				\begin{align*}
+					\set{g\in G \mid g \cdot g_0 K = g_0 K} = g_0 K g_0^{-1}
+				\end{align*}
+				dann haben wir
+				\begin{align*}
+					 g g_0 K = g_0 K &\Leftrightarrow g^{-1}_0 g g_0 K = K\\
+					 &\Leftrightarrow g^{-1}g g_0 \in K\\
+					 &\Leftrightarrow g \in g_0 K g^{-1}_0
+				\end{align*}
+				nun nutze das Lemma und es folgt $H = g_0 K g^{-1}_0$.
+				\item $\Leftarrow$: Sei $g_0 \in G$ und nehme an $H = g_0 K g^{-1}$. Definiere $\alpha: \lnkset{G}{H} \to \lnkset{G}{K} \mit gH \mapsto gg_0 K$.
+				\begin{itemize}
+					\item $\alpha$ wohldefiniert: $\forall h, g \in G$
+					\begin{align*}
+						gH = gH &\Leftrightarrow h^{-1}g \in H = g_0 K g_0^{-1}\\
+						&\Leftrightarrow g^{-1}_0 h^{.1} g g_0 \in K\\
+						&\Leftrightarrow (hg_0)^{-1}g g_0 \in K\\
+						&\Leftrightarrow gg_0 K = hg_0 K
+					\end{align*}
+				\item $\alpha$ injektiv
+				\item $\alpha$ surjektiv $\forall g \in G\colon$ $gK = \alpha(g g_0^{-1}H)$.
+				\item $\forall g,h \in G\colon h \alpha(gH) = h g g_0 K = \alpha(hgH)$.
+				\end{itemize}
+				Also haben wir, dass $\alpha$ $G$-Isomorphismus ist.
+			\end{itemize}
+		\end{itemize}
+		\item 
+	\end{enumerate}
+\end{proof}
+\begin{theorem}[Bahnen.Stabilisator-Satz]
+	\begin{align*}
+		G \Circlearrowleft X \implies \forall x \in X\colon \abs{Gx} = [G \colon G_x]
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	Für alle $x \in X$ gilt $G \Circlearrowleft Gx$ transitiv
+	\begin{align*}
+		(G,G_x) \cong (G,\lnkset{G}{G_x}) \quad G\text{-Isomorph}\\
+		\implies \abs{Gx} = \abs{\lnkset{G}{G_x}} = [G \colon G_x].
+	\end{align*}
+\end{proof}
+Ausblick:\\
+\begin{enumerate}
+	\item $G \Circlearrowleft G$ durch Linksmultiplikation gegeben $\forall g,h \in G\colon g\cdot h = gh$
+	\item $H< G$, $G \Circlearrowleft \lnkset{G}{H}$ durch Linksmultiplikation
+	\item 
+\end{enumerate}
