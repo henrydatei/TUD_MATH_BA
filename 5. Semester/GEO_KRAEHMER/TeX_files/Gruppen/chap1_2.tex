@@ -1,4 +1,5 @@
-\section{Allgemeines}
+\section{Permutationsdarstellungen und Gruppenoperationen}
+\subsection*{Allgemeines}
 Motivation: $H < G \implies \lnkset{G}{H}$\\
 Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
 \begin{definition}
@@ -63,7 +64,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\item $H <G \implies G \Circlearrowleft \lnkset{G}{H}$ und $aH$ mit $g(aH) = (ga)H$
 	\end{enumerate}
 \end{*example}
-\section{Morphismen}
+\subsection*{Morphismen}
 \begin{definition}
 	Ein Morphismus zwischen zwei Operationen $(G,X)$ und $(H,Y)$ ist ein Paar $(\phi, \alpha)$, wobei
 	\begin{itemize}
@@ -79,14 +80,27 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 	\end{itemize}
 \end{definition}
 \begin{*example}
+	Sei $\Z \Circlearrowleft \Z_n, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
+	\[
+		\begin{tikzcd}
+		G \arrow[r, "\theta"] \arrow[d]                       & S_X \\
+		G/\ker \theta \arrow[ru, "\overline{\theta}", dashed] &    
+		\end{tikzcd}
+	\]
+	also $\overline{\theta}$ injektiv $\implies \lnkset{G}{\ker \theta} \Circlearrowleft X$ treu.\\
+	Für $\Z \Circlearrowleft \Z_n \colon \ker \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
+	\begin{align*}
+		\overline{x}, \overline{y} \in \Z_n\quad k\in \Z, \text{ so dass } \overline{k} = \overline{x-y} \in \Z_n\\
+		k \cdot \overline{y} = \overline{k+y} = \overline{x-y+y} = \overline{x}
+	\end{align*}
 	Sei $n \in \N, n \ge 1$ und $\Z \Circlearrowleft \Z_n := \set{\overline{0}, \overline{1}, \overline{2}, ..., \overline{n-1}}$, also $D_n \Circlearrowleft P_n$.
 	\begin{align*}
-		X \in \Z \colon x \cdot \overline{y} := \overline{x+y}\\
+		x \in \Z \colon x \cdot \overline{y} := \overline{x+y}\\
 		\alpha\colon \Z_n \to P_n\\
 		\phi\colon \Z \to D_n
 	\end{align*}
 	(Als Beispiel kann man sich die $P_5$ nehmen und aufmalen ;))
-	Definiere $\phi(1)$. Drehung von Zentrum $Z$ umd den Winkel $\sfrac{2\pi}{n}$.
+	Definiere $\phi(1)$. Drehung von Zentrum $Z$ um den Winkel $\sfrac{2\pi}{n}$.
 	\begin{align*}
 		\alpha(1 \cdot \overline{0}) = \alpha(\overline{1})\\
 		\phi(1)\cdot \alpha(\overline{0}) = \alpha(\overline{1})\\
@@ -99,7 +113,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\item $(\phi, \alpha)$ ist ein Isomorphismus, wenn $\phi$ Gruppenmorphismus und $\alpha$ Bijektion
 	\end{itemize}
 \end{definition}
-\section{Bahnen}
+\subsection*{Bahnen}
 \begin{lemma}
 	Sei $G \Circlearrowleft X$. Definiere eine Relation $\sim$ auf $X$:
 	\begin{align*}
@@ -135,11 +149,21 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 \begin{*example}
 	Sei $G=(\R,+)$ und $X = \C$:
 	\begin{enumerate} % picture from Florian
-		\item Translation: $a \in \C\setminus \set{0}$ und $\forall \lambda \in \R, z \in \C\colon \lambda \cdot z := z + \lambda a$
-		\item Drehungen: $\forall \lambda \in \R, z \in \C$ und damit $\lambda \cdot z = e^{2\pi\ii \lambda}z$
+		\item Translation: $a \in \C\setminus \set{0}$ und $\forall \lambda \in \R, z \in \C\colon \lambda \cdot z := z + \lambda a$ (nicht transitiv). Ist \emph{treu}, da
+		\begin{align*}
+			\forall \lambda_1, \lambda_2 \in \R, z \in \C\colon &z + \lambda_1 a = z + \lambda_2 a\\
+			&\Leftrightarrow z + \lambda_1 a = z + \lambda_2 a\\
+			&\Leftrightarrow (\lambda_1-\lambda_2)a = 0\\
+			&\Leftrightarrow \lambda_1 = \lambda_2
+		\end{align*}
+		\item Drehungen: $\forall \lambda \in \R, z \in \C$ und damit $\lambda \cdot z = e^{2\pi\ii \lambda}z$ (nicht transitiv). Ist \emph{nicht treu}, da 
+		\begin{align*}
+			\forall \lambda \in \R, \forall k \in \Z\colon \lambda \cdot z = (\lambda + k) \cdot z,\\
+			\ker\theta = \Z \implies S^1 = \lnkset{\R}{\Z} \Circlearrowleft \C
+		\end{align*}
 	\end{enumerate}
 \end{*example}
-\section{Stabilisator}
+\subsection*{Stabilisator}
 Sei $G \Circlearrowleft X$ und $x \in X$.
 \begin{definition}
 	Definiere $G_x := \set{g \in G \mid g \cdot x = x}$ als \begriff{Stabilisator} von $x$.
@@ -175,21 +199,12 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 	\forall g,h \in G \; (\forall x \in X \colon gx = hx) \implies g = h
 	\end{align*}
 \end{definition}
-\begin{*example}
-	$\Z \Circlearrowleft \Z_n, n \neq 0, \overline{x} \in \Z_n$, $g\overline{x} = \overline{g+x}$ nicht treu, da
-	\[
-	\begin{tikzcd}
-	G \arrow[d] \arrow[r, "\theta"] & S_X \arrow[ld, "\overline{\theta}", dashed] \\
-	\lnkset{G}{\ker \theta}            &                                            
-	\end{tikzcd}
-	\]
-\end{*example}
-\section{Transitive Operationen}
+\subsection*{Transitive Operationen}
 \begin{definition}
-	$G \Circlearrowleft X$ \begriff{transitiv}, wenn es genau eine Bahn gibt
 	\begin{align*}
-		X = G \cdot x_0 \quad x_0 \in X.\\
-		\forall x,y \in X\colon \exists g \in G \mit y = gx
+		G \Circlearrowleft X \text{ \begriff{transitiv} } \Leftrightarrow \text{ gibt genau eine Bahn}\\
+		&\Leftrightarrow x_0 \in X\quad X = G \cdot x_0\\
+		&\Leftrightarrow \forall x,y \in X\colon \exists g \in G \colon y = gx
 	\end{align*}
 \end{definition}
 \begin{*example}
@@ -197,7 +212,7 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 	\begin{align*}
 		O(n) = \set{A \in \Mat(n,\R) \mid A^T A = 1_n} = \set{A \in \Mat(n\R)\mid \norm{Ax} = \norm{x} \forall x \in \R^n}
 	\end{align*}
-	also $O(n) \Circlearrowleft S^{n-1} = \set{x \in \R^n \mid \norm{x} = 1}$ (Drehungen und Spiegelungen in der $S^2$ zum Beispiel) transitiv.
+	also $O(n) \Circlearrowleft S^{n-1} = \set{x \in \R^n \mid \norm{x} = 1}$ (Drehungen und Spiegelungen in der $S^2$ zum Beispiel) ist transitiv.
 \end{*example}
 \begin{lemma}
 	$G \Circlearrowleft \lnkset{G}{H}$ transitiv
@@ -310,5 +325,6 @@ Ausblick:\\
 \begin{enumerate}
 	\item $G \Circlearrowleft G$ durch Linksmultiplikation gegeben $\forall g,h \in G\colon g\cdot h = gh$
 	\item $H< G$, $G \Circlearrowleft \lnkset{G}{H}$ durch Linksmultiplikation
-	\item 
+	\item $G \Circlearrowleft G$ durch Konjugation $\forall g,x \in G \colon x^g := gxg^{-1}$
+	\item $G \Circlearrowleft \powerset(G)$ durch Konjugation
 \end{enumerate}
