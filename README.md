@@ -60,6 +60,11 @@ Aufgrund von Prof. Schurichts Wunsch sind die Vorlesungsmaterialien von hier ver
 - Octave Skript für die T4 Aufgabe im Opal (Test 1): [https://drive.google.com/open?id=1Avbt0bViOgGjIaW4EumZWqPoMqpBjB--](https://drive.google.com/open?id=1Avbt0bViOgGjIaW4EumZWqPoMqpBjB--) (benötigt sympy!)
 - Octave Skript für die T6 Aufgabe im Opal (Test 2): [https://drive.google.com/open?id=1NDO2IpFCJMJxAaiU8PxOGIQQaT9SWNJT](https://drive.google.com/open?id=1NDO2IpFCJMJxAaiU8PxOGIQQaT9SWNJT) (benötigt sympy!)
 
+### Geometrie (WS2019/20)
+
+### Finanzmathematik (WS2019/20)
+(in deutsch und englisch)
+
 # TU Dresden: Nebenfach Volkswirtschaftslehre
 Skript und Aufgaben zu den Volesungen **Einführung in die Volkswirtschaftslehre** (Prof. Dr. Marcel Thum), **Einführung in die Mikroökonomie** (Prof. Dr. Marco Lehmann-Waffenschmidt) und **Einführung in die Makroökonomie** (Prof. Dr. Stefan Eichler) der TU Dresden
 

@@ -1,6 +1,6 @@
-\documentclass[ngerman,a4paper,order=firstname]{local_mathscript} %TODO local mathscript to fix counting for STOCH! temp solution.
-%{../../texmf/tex/latex/mathscript/mathscript}
-% \usepackage{../../texmf/tex/latex/mathoperators/mathoperators} 
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+%{local_mathscript}
+%\usepackage{../../texmf/tex/latex/mathoperators/mathoperators} 
 \usepackage{local_mathoperators}  % for ilina xD - local mathoperators
 
 %local packages
@@ -10,8 +10,9 @@
 \author{Dozent: Prof. \person{Martin.Keller-Ressel}}
 
 % local commands
-\renewcommand{\F}{\mathscr F}
+%\renewcommand{\F}{\mathscr F}
 \renewcommand{\P}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
 \renewcommand{\O}{\Omega}
 \renewcommand{\G}{\mathscr{G}}
 \renewcommand{\H}{\mathscr{H}}
@@ -30,6 +31,7 @@
 \DeclareMathOperator{\plim}{plim} % stochastic convergence or convengence in probability
 
 \begin{document}
+\renewcommand{\F}{\mathscr F}
 \pagenumbering{roman}
 \pagestyle{plain}
 
@@ -46,10 +48,11 @@
 \chapter*{Vorwort}
 %\input{./TeX_files/Vorwort}
 
+\chapter{Einführung}
 \input{./TeX_files/chap1}
+\chapter{Cox-Russ-Rubenstein-Modell}
 %\input{./TeX_files/chap2}
 %\input{./TeX_files/chap3}
-
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}

@@ -22,6 +22,16 @@
 	}
 	\edef\theoremheader@order@val{\tempa}	
 }
+\def\theoremcounter@belongingto{section}
+\DeclareOptionX{theoremcounterreset}{%
+	\let\tempa\@empty
+	\IfEq{#1}{section}{\def\tempa{section}}{%
+		\IfEq{#1}{chapter}{\def\tempa{chapter}}{%
+			\PackageWarning{mathscript}{Unknown Value for key `theoremcounterreset'}
+		}
+	}
+	\edef\theoremcounter@belongingto{\tempa}
+}
 
 %possible values: all you can imagine.
 %usefull values: theorem-names defined in this class, new theorems defined by \newmdtheoremenv
@@ -34,6 +44,12 @@
 \reset@section@after@chaptertrue
 \DeclareOptionX{sectionreset}{%
 	\reset@section@after@chapterfalse
+}
+
+\newif\ifreset@equation@number@after@section
+\reset@equation@number@after@sectiontrue
+\DeclareOptionX{equationnumberreset}{%
+	\reset@equation@number@after@sectionfalse
 }
 
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -241,7 +257,7 @@
 	innerbottommargin=\topskip,%
 	linecolor=darkgrey,%
 	backgroundcolor=lightgrey,%
-]{theorem}{Theorem}[section]
+]{theorem}{Theorem}[\theoremcounter@belongingto]
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -654,7 +670,11 @@ innerleftmargin=10pt,%
 	\let\thm@@thmline@name@numbering\relax
 	\StrCount{#5}{.}[\thm@@thmline@name@dot@number]
 	\ifnum\thm@@thmline@name@dot@number < 3%
-		\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
+		\ifnum\thm@@thmline@name@dot@number = 2%
+			\def\thm@@thmline@name@numbering{\rom #2}
+		\else
+			\def\thm@@thmline@name@tmp{\hspace*{-1em}#3}
+		\fi
 	\else%
 		\StrBetween[1,2]{#5}{.}{.}[\thm@@thmline@name@chap@num]%get the chapter number for roman transliteration
 		\def\thm@@thmline@name@numbering{\rom{\thm@@thmline@name@chap@num}.#2}
@@ -687,6 +707,7 @@ innerleftmargin=10pt,%
 	\def\texttt#1{<#1>}%
 	\def\mathbb#1{<#1>}%
 }
+%numbers of numbered equations appear on the righthand side
 \reqnos
 
 %Headings
@@ -746,7 +767,11 @@ innerleftmargin=10pt,%
 
 %change numbering of equations to be section by section
 \counterwithout{equation}{section}
-\pretocmd{\section}{\setcounter{equation}{0}}{}{}
+\ifreset@equation@number@after@section
+	\pretocmd{\section}{\setcounter{equation}{0}}{}{}
+\fi
+
+\renewcommand{\thetheorem}{\arabic{\theoremcounter@belongingto}.\arabic{theorem}}
 
 %appendix:
 \let\old@appendix\appendix
@@ -757,6 +782,13 @@ innerleftmargin=10pt,%
 	\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}%
 	\titleformat{\chapter}[hang]{\bfseries}{\LARGE\chaptername\ \thechapter:}{0.5em}{\LARGE\bfseries}%
 	\titlespacing{\chapter}{0pt}{-0.75cm}{0pt}%
+}
+
+\AtBeginDocument{%
+	\renewcommand{\F}{%
+		\PackageError{mathscript}{Im Deutschsprachigem Raum wird K anstelle von F verwendet...}{}%
+		\end{document}
+	}
 }
 
 \endinput

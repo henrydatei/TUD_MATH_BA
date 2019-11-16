@@ -1,4 +1,3 @@
-\chapter{Einführung}
 \section{Zentrale Fragestellung der Finanzmathematik}
 \subsection*{\begriff{Bewertung}:}
 Bewertung von Derivaten und \emph{Absicherung} gegen aus Kauf/Verkauf entstehenden Risiken.
@@ -472,9 +471,54 @@ Um sich den Unterschied zwischen Super- und Submartingal zu merken, hier eine kl
 	\end{enumerate}
 	Das heisst: stochastische Integral erhält die Martingal-Eigenschaft.
 \end{theorem}
-\begin{proof}
-	8.11.2019!
-\end{proof}
 \begin{*remark}
-	Die ZV $H$ wird später die Analagestrategie sein.
+	Die ZV $H$ wird später die Anlagestrategie sein.
 \end{*remark}
+%\begin{proof}
+%	\begin{itemize}
+%		\item $\Rightarrow$:
+%		\begin{itemize}
+%			\item Adaptiertheit: klar
+%			\item Integrierbarkeit: $H$ lokal beschränkt, d.h. $\abs{H_k} \le c_k < \infty$ für alle $k$.
+%			\begin{align*}
+%			\EW[\abs{H_k (X_k - X_{k-1})}] \le c_k * \brackets{\EW[\abs{x_k}] + \EW[\abs{X_{k+1}}]} < \infty
+%			\end{align*}
+%			Mit der Dreiecksungleichung folgt daraus $\EW[\abs{(H \bigcdot X)_n}] < \infty$.
+%			\item Martingaleigenschaft: 
+%			\begin{align*}
+%			\EW[(H \bigcdot X)_n \mid \F_{n-1}] &= (H \bigcdot X)_{n-1} + \EW[H_n (X_n - X{n-1}) \mid \F_{n-1}]\\
+%			&=  (H \bigcdot X)_{n-1} + H_n * \underbrace{\brackets{\EW[X_n \mid \F_{n-1}] - X{n-1}}}_{=0}\\ 
+%			&=(H \bigcdot X)_{n-1} \quad \forall n \in \N
+%			\end{align*}
+%			Damit ist also auch $(H \bigcdot X)$ ein Martingal.		
+%		\end{itemize}
+%	\end{itemize} $(H \bigcdot X)_n = \sum_{k=1}^n H_k (X_k - X_{k-1})$.
+%	\item $\Leftarrow$: Fixiere $N \in \N$. Setze $H_n := \indi_{n = N}$, dieser ist lokal beschränkt und deterministisch (also auch vorhersehbar). Man stellt fest, dass $(H \bigcdot X)_n = 0$ für alle $n \le N-1$. Für alle $n \ge N$ gilt dagegen $(H \bigcdot X)_n = X_N - X_{N-1}$. Wir überprüfen nur die Martingaleigenschaft (Integrierbarkeit folgt aus Dreiecksungleichung). Wir wissen, dass $(H \bigcdot X)$ ein Martingal ist. 
+%	\begin{align*}
+%	0 &= (H \bigcdot X)_{N-1} = \E[(H \bigcdot X)_N \mid \F_{N-1}]\\
+%	 &= \E[x_N - X_{N-1} \mid \F_{N-1}]\\ 
+%	 &= \E[X_N \mid \F_{N-1}] - X_{N-1}\\
+%	&\implies X_{N-1} = \E[X_N \mid \F_{N-1}] \mit N \in \N \text{ beliebig}
+%	\end{align*}
+%	Somit ist $X$ ein Martingal.
+%\end{proof}
+%\begin{conclusion} %1.7
+%	Sei $X = \set{X_n}{n=1 , \dots, N}$ ein adaptierter stochastischer Prozess bezüglich einer Filtration \\$\set{\F_n}{n=1 , \dots, N}$. Wenn $\E[(H \bigcdot X)_N] = 0$ für alle lokal beschränkten vorhersehbaren Prozesse $H$, dann ist $X$ ein Martingal bezüglich $\set{\F_n}{}$.
+%\end{conclusion}
+%\begin{proof}
+%	Fixiere $K \in  [N] := \set{1, 2, \dots , N}$ und eine Menge $A \in \F_{K-1}$. Definiere $H_n(\omega) = \indi_A (\omega) * \indi_{\set{n=K}}$, dieser ist lokale beschränkt und vorhersehbar.
+%	Es ist $(H \bigcdot X)_n = 0$ für alle $n \le K-1$. Für alle $n \ge K$ gilt $(H \bigcdot X)_n = \indi_A * (X_K - X_{K-1})$. 
+%	\begin{align*}
+%		0 &= \E[(H \bigcdot X)_N] = \E[\indi_A (X_K - X_{K-1})]\\ 
+%		\overset{Turm}&{=} \E[\E[\indi_A (X_K - X_{K-1}) \mid \F_{K-1}]]\\ 
+%		&= \E[\indi_A * \brackets{\underbrace{\E[X_K \mid \F_{K-1] - X_{K-1}}]}_{ Y_{K-1}}} \quad \forall A \in \F_{K-1}\\
+%		&\implies \int_A  Y_{K-1}(\omega) \d{\P(\omega)}\\ 
+%		&= \int_A X_{K-1}(\omega) \d{\P(\omega)} \quad \forall A \in \F_{K-1}\\
+%		&\implies Y_{K-1} = X_{K-1} \text{ fast sicher }\\
+%		&\implies \E[X_K \mid \F_{K-1] - X_{K-1}}] = X_{K-1}
+%	\end{align*}
+%	für beliebige $K$. Somit ist $X$ ein Martingal.
+%\end{proof}
+%\begin{*remark}
+%	Wir schreiben $[N] := \set{1, 2, \dots, N}$ und $[N]_0 := \set{0, 1, 2 , \dots , N}$.
+%\end{*remark}

@@ -1,0 +1,330 @@
+\section{Permutationsdarstellungen und Gruppenoperationen}
+\subsection*{Allgemeines}
+Motivation: $H < G \implies \lnkset{G}{H}$\\
+Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
+\begin{definition}
+	Sei $G$ Gruppe, $X \neq \emptyset$ Menge, $S_X$ Permutationsgruppe von $X$. Dann
+	\begin{enumerate}
+		\item Eine \begriff{Permutationsdarstellung} ist ein Gruppenmorphismus
+		\begin{align*}
+			\theta\colon G \to S_X
+		\end{align*}
+		\item Eine \begriff{(linke) Operation} von $G$ auf $X$ ist eine Abbildung
+		\begin{align*}
+			G\times X \to X \mit (g,x) \mapsto g\cdot x
+		\end{align*}
+		so dass: ($\forall x \in X, \forall g,h \in G$)
+		\begin{itemize}
+			\item $a \cdot x = x$
+			\item $(g\cdot h)\cdot x = g \cdot (h\cdot x)$
+		\end{itemize}
+	\end{enumerate}
+\end{definition}
+\begin{proposition}
+	Es gibt eine bijektive Korrespondenz zwischen den Operationen von $G$ auf $X$ und den Darstellungen von $G$ als Permutationen von $X$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Sei $\theta\colon G \to S_X$ eine Permutationsdarstellung. Definiere $G\times G \to X$, wobei $g \cdot x := \theta(g)(x)$
+		\begin{align*}
+			1 \cdot x = \theta(1)(x) = \id_X(x) = x\\
+			(gh)\cdot x = \theta(gh)(x) = \theta(g)\cdot\theta(h)(x) = \theta(g)(h\cdot x) = g(h\cdot x) \quad g,h \in G
+		\end{align*}
+		ist Operation von $G$ auf $X$.
+		\item Sei $G \times X \to X \mit (g,x) \mapsto g x$ eine Operation. Für jedes $g \in G$: $\theta(g):= x \mapsto g \cdot x$ und damit haben wir $\theta\colon G \to \Set(X,X)$. Sei $g,h \in G$ und $x \in X$
+		\begin{align*}
+			\theta(gh)(x) &= (gh)\cdot x\\
+			&= g \cdot (h \cdot x)\\
+			&= g\cdot (\theta(g)(x))\\
+			&= \theta(g)(\theta(h)(x))\\
+			&= \theta(g) \cdot \theta(h)(x)
+		\end{align*}
+		also gilt $\theta(gh) = \theta(g)\cdot \theta(h)$.
+		\begin{align*}
+			\theta(1)(x) = 1 \cdot x = x \quad \forall x \in X \implies \theta(1) = \id_X
+		\end{align*}
+		also $\theta$ Morphismus von Monoide.
+		\begin{align*}
+			\forall g \in G \colon \theta(g)\cdot \theta(g^{-1}) = \theta(g\cdot g^{-1}) = \theta(1) = \id_X = \theta(g^{-1}) \cdot \theta(g^{-1})
+		\end{align*}
+		und wir haben $\theta(g)$ bijektiv mit Inverse $\theta(g^{-1})$ und damit $\theta\colon G \to S_X$
+	\end{itemize}
+\end{proof}
+\begin{*example}
+	Setze Notation: $G \Circlearrowleft X$ $G$ operiert auf $X$.
+	\begin{enumerate}
+		\item $X \neq \emptyset$ Menge $\forall G < S_X \implies G$ operiert natürlich auf $X$.
+		\item $D_n$ operiert auf $P_n$ (reguläre Polygone mit $n$ Seiten)
+		\item $V$ Vektorraum $\implies$ $\GL(V)$ operiert auf $V$
+		\item $G \Circlearrowleft X \implies$
+		\begin{itemize}
+			\item $G \Circlearrowleft X^n \mit (x_1, \dots, x_n) \in X^n$ und $g\colon (x_1, \dots, x_n) := (g\cdot x_1, \dots, g \cdot x_n)$
+			\item $G \Circlearrowleft \powerset(X)$ und $A \subseteq X$, sowie $g \cdot A = \set{g\cdot a \mid a \in A}$
+		\end{itemize}
+		\item $H <G \implies G \Circlearrowleft \lnkset{G}{H}$ und $aH$ mit $g(aH) = (ga)H$
+	\end{enumerate}
+\end{*example}
+\subsection*{Morphismen}
+\begin{definition}
+	Ein Morphismus zwischen zwei Operationen $(G,X)$ und $(H,Y)$ ist ein Paar $(\phi, \alpha)$, wobei
+	\begin{itemize}
+		\item $\phi\colon G \to H$ Gruppenhomomorphismus
+		\item $\alpha\colon X \to Y$ Abbildung
+		\item $\forall g \in G \und x \in X\colon$ $\alpha(g \cdot x) = \phi(g)\cdot \alpha(x)$
+		\[
+			\begin{tikzcd}
+			X \arrow[r, "\alpha"] \arrow[d, "g"] & Y \arrow[d, "\phi(g)"] \\
+			X \arrow[r, "\alpha"]                & Y                     
+			\end{tikzcd}
+		\] 
+	\end{itemize}
+\end{definition}
+\begin{*example}
+	Sei $\Z \Circlearrowleft \Z_n, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
+	\[
+		\begin{tikzcd}
+		G \arrow[r, "\theta"] \arrow[d]                       & S_X \\
+		G/\ker \theta \arrow[ru, "\overline{\theta}", dashed] &    
+		\end{tikzcd}
+	\]
+	also $\overline{\theta}$ injektiv $\implies \lnkset{G}{\ker \theta} \Circlearrowleft X$ treu.\\
+	Für $\Z \Circlearrowleft \Z_n \colon \ker \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
+	\begin{align*}
+		\overline{x}, \overline{y} \in \Z_n\quad k\in \Z, \text{ so dass } \overline{k} = \overline{x-y} \in \Z_n\\
+		k \cdot \overline{y} = \overline{k+y} = \overline{x-y+y} = \overline{x}
+	\end{align*}
+	Sei $n \in \N, n \ge 1$ und $\Z \Circlearrowleft \Z_n := \set{\overline{0}, \overline{1}, \overline{2}, ..., \overline{n-1}}$, also $D_n \Circlearrowleft P_n$.
+	\begin{align*}
+		x \in \Z \colon x \cdot \overline{y} := \overline{x+y}\\
+		\alpha\colon \Z_n \to P_n\\
+		\phi\colon \Z \to D_n
+	\end{align*}
+	(Als Beispiel kann man sich die $P_5$ nehmen und aufmalen ;))
+	Definiere $\phi(1)$. Drehung von Zentrum $Z$ um den Winkel $\sfrac{2\pi}{n}$.
+	\begin{align*}
+		\alpha(1 \cdot \overline{0}) = \alpha(\overline{1})\\
+		\phi(1)\cdot \alpha(\overline{0}) = \alpha(\overline{1})\\
+		\implies (\phi,\alpha)\colon \text{ Morphismus}
+	\end{align*}
+\end{*example}
+\begin{definition}
+	\begin{itemize}
+		\item $H = G, \phi = \id_G$, also ist $G$-Morphismus
+		\item $(\phi, \alpha)$ ist ein Isomorphismus, wenn $\phi$ Gruppenmorphismus und $\alpha$ Bijektion
+	\end{itemize}
+\end{definition}
+\subsection*{Bahnen}
+\begin{lemma}
+	Sei $G \Circlearrowleft X$. Definiere eine Relation $\sim$ auf $X$:
+	\begin{align*}
+		\forall x,y \in X \colon x \sim y \Leftrightarrow \exists g \in G\colon y = y \cdot x
+	\end{align*}
+	Dann ist $\sim$ eine Äquivalenzrelation.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item $x \sim x$, da $x = 1 \cdot x$
+		\item $x \sim y \implies y \sim x$, da
+		\begin{align*}
+			y = y\cdot x &\implies g^{-1}y = y^{-1}(gx)\\
+			&\implies g^{-1}y = (g^{-1}y)x\\
+			& \implies g^{-1}y = x
+		\end{align*}
+		\item $x \sim y$ und $y \sim z \implies x \sim z$, da
+		\begin{align*}
+			y = g\cdot x \und z = h \cdot y \implies z = h(g\cdot x) = (hg)\cdot x
+		\end{align*}
+	\end{itemize}
+\end{proof}
+\begin{definition}
+	\begin{itemize}
+		\item Für alle $x \in X$ \begriff{Äquivalenzklassen} von $X$: $G\cdot x := \set{gx \mid g \in G}$.
+		\item $Gx$ wird \begriff{Bahn von $x$} genannt und $\abs{Gx}$ die \begriff{Länge} von $Gx$.
+		\item $\forall x,y \in X$ entweder $Gx = Gy$ oder $Gx \cap Gy = \emptyset$:
+		\begin{align*}
+			X = \bigcup_{x \in X}G \cdot x
+		\end{align*}
+	\end{itemize}
+\end{definition}
+\begin{*example}
+	Sei $G=(\R,+)$ und $X = \C$:
+	\begin{enumerate} % picture from Florian
+		\item Translation: $a \in \C\setminus \set{0}$ und $\forall \lambda \in \R, z \in \C\colon \lambda \cdot z := z + \lambda a$ (nicht transitiv). Ist \emph{treu}, da
+		\begin{align*}
+			\forall \lambda_1, \lambda_2 \in \R, z \in \C\colon &z + \lambda_1 a = z + \lambda_2 a\\
+			&\Leftrightarrow z + \lambda_1 a = z + \lambda_2 a\\
+			&\Leftrightarrow (\lambda_1-\lambda_2)a = 0\\
+			&\Leftrightarrow \lambda_1 = \lambda_2
+		\end{align*}
+		\item Drehungen: $\forall \lambda \in \R, z \in \C$ und damit $\lambda \cdot z = e^{2\pi\ii \lambda}z$ (nicht transitiv). Ist \emph{nicht treu}, da 
+		\begin{align*}
+			\forall \lambda \in \R, \forall k \in \Z\colon \lambda \cdot z = (\lambda + k) \cdot z,\\
+			\ker\theta = \Z \implies S^1 = \lnkset{\R}{\Z} \Circlearrowleft \C
+		\end{align*}
+	\end{enumerate}
+\end{*example}
+\subsection*{Stabilisator}
+Sei $G \Circlearrowleft X$ und $x \in X$.
+\begin{definition}
+	Definiere $G_x := \set{g \in G \mid g \cdot x = x}$ als \begriff{Stabilisator} von $x$.
+\end{definition}
+\begin{lemma}
+	Es gilt $G_x < G$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item $1 \in G_x\colon 1 \cdot x = x$
+		\item $\forall g,h \in G_x \implies h \in G_x$ und $(gh)x = g(hx) = gx = x$
+		\item Sei $g \in G_x \implies g^{-1} \in G_x$: $gx = x \implies g^{-1}(gx) = g^{-1}x$ und damit $x = 1 x = (g^{-1}g)x$
+	\end{itemize}
+\end{proof}
+... additions to previous example is missing, get from florian :(
+\begin{lemma}
+	$G \Circlearrowleft X$ und $\theta\colon G \to G_X$ assozierte Permutationsdarstellung. Dann
+	\begin{align*}
+	\ker \theta = \bigcup_{x \in X}G_x
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	\begin{align*}
+		g \in \ker \theta &\Leftrightarrow \theta(x) = \id_X\\
+		&\Leftrightarrow g x = x \quad \forall x \in X\\
+		&\Leftrightarrow g \in G_x \quad \forall x \in X
+	\end{align*}
+\end{proof}
+\begin{definition}
+	$G \Circlearrowleft X$ ist \begriff{treu} genau dann, wenn
+	\begin{align*}
+	\theta\colon G \to S_X \text{ injektiv}\\
+	\forall g,h \in G \; (\forall x \in X \colon gx = hx) \implies g = h
+	\end{align*}
+\end{definition}
+\subsection*{Transitive Operationen}
+\begin{definition}
+	\begin{align*}
+		G \Circlearrowleft X \text{ \begriff{transitiv} } \Leftrightarrow \text{ gibt genau eine Bahn}\\
+		&\Leftrightarrow x_0 \in X\quad X = G \cdot x_0\\
+		&\Leftrightarrow \forall x,y \in X\colon \exists g \in G \colon y = gx
+	\end{align*}
+\end{definition}
+\begin{*example}
+	Betrachte 
+	\begin{align*}
+		O(n) = \set{A \in \Mat(n,\R) \mid A^T A = 1_n} = \set{A \in \Mat(n\R)\mid \norm{Ax} = \norm{x} \forall x \in \R^n}
+	\end{align*}
+	also $O(n) \Circlearrowleft S^{n-1} = \set{x \in \R^n \mid \norm{x} = 1}$ (Drehungen und Spiegelungen in der $S^2$ zum Beispiel) ist transitiv.
+\end{*example}
+\begin{lemma}
+	$G \Circlearrowleft \lnkset{G}{H}$ transitiv
+\end{lemma}
+\begin{proof}
+	$g,h \in G$, dann $gH = gh^{-1}\cdot h H$
+\end{proof}
+\begin{theorem}[Die Struktur von Gruppenoperationen]
+	\begin{enumerate}
+		\item $G \Circlearrowleft X \implies \exists H < G$ und ein $G$-Isomorphismus durch $(G,X) \cong (G, \lnkset{G}{H})$ ist \emph{transitiv}. ($H$ muss nicht eindeutig sein)
+		\item $H,K < G$, dann
+		\begin{align*}
+			(G, \lnkset{G}{H}) \cong (G, \lnkset{G}{K}) \Leftrightarrow H \und K \text{ konjugiert} 
+		\end{align*}
+		also linke Seite $G$-Isomorph und bei der rechten Seite: $\exists g_0 \in G\colon H = g_0 Kg_0^{-1}$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item 
+		\begin{itemize}
+			\item $\Leftarrow$: $H < G \colon$ $G \Circlearrowleft \lnkset{G}{H}$ transitiv.
+			\item $\Rightarrow$: Sei $G \Circlearrowleft X$ transitiv $x \in X$ beliebig und $X = Gx$. Definiere
+			\begin{align*}
+				H:= G_x \text{ und } \alpha: X \to \lnkset{G}{H} \mit gx \mapsto gH
+			\end{align*} 
+			\begin{itemize}
+				\item Ist $\alpha$ wohldefiniert? Ja, da $\forall g,h \in G$ haben wir 
+				\begin{align*}
+				gx = hx &\Leftrightarrow h^{-1}g x = x\\
+				&\Leftrightarrow h^{-1}g \in G_x = H \text{ (siehe HA1.1 gilt)}\\
+				&\Leftrightarrow gH = hH.
+				\end{align*}
+				\item $\alpha$ injektiv? $\forall g,h \in G\colon \alpha(gx) = \alpha(hx)$. (Gehe die Wohldefiniertheit rückwärts).
+				\item $\alpha$ surjektiv? $\forall g \in G \colon gH = \alpha(gx)$
+				\item Betrachte
+				\[
+					\begin{tikzcd}
+					X \arrow[r, "\alpha"] \arrow[d, "g"] & G/H \arrow[d, "g"] \\
+					X \arrow[r, "\alpha"]                & G/H               
+					\end{tikzcd}
+				\]
+				\begin{align*}
+					\forall g\in G, y \in X g \alpha(y) \overset{?}&{=} \alpha(gy)\exists h \in G, y = hx\\
+					\alpha(gy) = \alpha(g(hx)) = \alpha(ghx)\\
+					&=ghH = ghH = g\alpha(hx)\\
+					&= g \alpha(y)
+				\end{align*}
+				Also ist $\alpha$ $G$-Isomorphismus.
+			\end{itemize}
+			\item Wir müssen zuerst ein Lemma zeigen: 
+			\begin{lemma}
+				Sei $\alpha\colon X \to Y$ $G$-Isomorphismus, dann $\forall x \in X\colon G_x = G_{\alpha(x)}$
+			\end{lemma}
+			\begin{proof}
+				$\alpha$ $G$-Isomorphismus gdw $\alpha$ bijektiv und $\forall x \in X\colon g\alpha(x) = \alpha(gx)$ und $\forall g \in G$
+				\begin{align*}
+					gx = x \Leftrightarrow g\alpha(x) = \alpha(gx) = \alpha(x)\\
+					\implies g \in G_x \Leftrightarrow g \in G_{\alpha(x)}
+				\end{align*}
+			\end{proof}
+			\begin{itemize}
+				\item $\Rightarrow$: Sei $\alpha\colon \lnkset{G}{H} \to \lnkset{G}{K}$ ein $G$-Isomorphismus. Sei $g_0 \in G$, so dass $\alpha(H) = g_0 K$. Wir haben Stabilisator von $H$ in $G$
+				\begin{align*}
+					\set{g \in G \mid gH = H} = H
+				\end{align*}
+				und der Stabilisator von $gK$ in $G$
+				\begin{align*}
+					\set{g\in G \mid g \cdot g_0 K = g_0 K} = g_0 K g_0^{-1}
+				\end{align*}
+				dann haben wir
+				\begin{align*}
+					 g g_0 K = g_0 K &\Leftrightarrow g^{-1}_0 g g_0 K = K\\
+					 &\Leftrightarrow g^{-1}g g_0 \in K\\
+					 &\Leftrightarrow g \in g_0 K g^{-1}_0
+				\end{align*}
+				nun nutze das Lemma und es folgt $H = g_0 K g^{-1}_0$.
+				\item $\Leftarrow$: Sei $g_0 \in G$ und nehme an $H = g_0 K g^{-1}$. Definiere $\alpha: \lnkset{G}{H} \to \lnkset{G}{K} \mit gH \mapsto gg_0 K$.
+				\begin{itemize}
+					\item $\alpha$ wohldefiniert: $\forall h, g \in G$
+					\begin{align*}
+						gH = gH &\Leftrightarrow h^{-1}g \in H = g_0 K g_0^{-1}\\
+						&\Leftrightarrow g^{-1}_0 h^{.1} g g_0 \in K\\
+						&\Leftrightarrow (hg_0)^{-1}g g_0 \in K\\
+						&\Leftrightarrow gg_0 K = hg_0 K
+					\end{align*}
+				\item $\alpha$ injektiv
+				\item $\alpha$ surjektiv $\forall g \in G\colon$ $gK = \alpha(g g_0^{-1}H)$.
+				\item $\forall g,h \in G\colon h \alpha(gH) = h g g_0 K = \alpha(hgH)$.
+				\end{itemize}
+				Also haben wir, dass $\alpha$ $G$-Isomorphismus ist.
+			\end{itemize}
+		\end{itemize}
+		\item 
+	\end{enumerate}
+\end{proof}
+\begin{theorem}[Bahnen.Stabilisator-Satz]
+	\begin{align*}
+		G \Circlearrowleft X \implies \forall x \in X\colon \abs{Gx} = [G \colon G_x]
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	Für alle $x \in X$ gilt $G \Circlearrowleft Gx$ transitiv
+	\begin{align*}
+		(G,G_x) \cong (G,\lnkset{G}{G_x}) \quad G\text{-Isomorph}\\
+		\implies \abs{Gx} = \abs{\lnkset{G}{G_x}} = [G \colon G_x].
+	\end{align*}
+\end{proof}
+Ausblick:\\
+\begin{enumerate}
+	\item $G \Circlearrowleft G$ durch Linksmultiplikation gegeben $\forall g,h \in G\colon g\cdot h = gh$
+	\item $H< G$, $G \Circlearrowleft \lnkset{G}{H}$ durch Linksmultiplikation
+	\item $G \Circlearrowleft G$ durch Konjugation $\forall g,x \in G \colon x^g := gxg^{-1}$
+	\item $G \Circlearrowleft \powerset(G)$ durch Konjugation
+\end{enumerate}
