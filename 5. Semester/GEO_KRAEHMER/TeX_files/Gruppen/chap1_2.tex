@@ -328,3 +328,120 @@ Ausblick:\\
 	\item $G \Circlearrowleft G$ durch Konjugation $\forall g,x \in G \colon x^g := gxg^{-1}$
 	\item $G \Circlearrowleft \powerset(G)$ durch Konjugation
 \end{enumerate}
+\begin{theorem}
+	As $G$-Space, we have $G_x \cong \lnkset{G}{G_x}$.
+\end{theorem}
+\begin{*example}
+	\begin{itemize}
+		\item $G = \SO(3)$ Rotation im $\R^3$, dann $A \in \SO(3) \ni \Mat(3,\R)$, $AA^T = 1$, $\det A = 1$, dann kann man sich das Skalarprodukt anschaun % siehe Bild
+		\begin{itemize}
+			\item (Wirkung durch Multiplikation) und nehme $x = (0 0 1)^T, G_x = S^2$ (Bahn, Orbit dieses Punkte ist $S^2$), Stabilisator $G_x = \SO(2)$
+			\item Allgemeiner: eingebettet in $\SO(3)$ durch
+			\begin{align*}
+			\gamma\colon \SO(2) \to \SO(3) \mit B \mapsto \begin{pmatrix}
+			B & 0\\
+			0 & 1
+			\end{pmatrix}			 
+			\end{align*}
+			ist Gruppenhomo. (also $S^2 \cong \lnkset{\SO(3)}{\SO(2)}$ und Erlangen Programm ...)
+		\end{itemize}
+		\item \person{Cayley}s Satz $X = G$, $\alpha$ ist Gruppenstruktur. Hier gilt:
+		\begin{align*}
+			G = \set{1}\forall x \in X = G \mit gx = x \implies g = 1
+		\end{align*}
+		durch Multiplikation von rechts mit $x^{-1}$. (Spezielle Situation, i.A. gibts \emph{kein} $xy$ für $x,y \in X$!) Insbesondere ist die Wirkung treu, also $\rho$ injektiv und wir erhalten
+		\begin{align*}
+			G \cong \rho(G) < S_G
+		\end{align*}
+		\item $G$ Gruppe, $H < G$, $X = \lnkset{G}{H}$ mit Wirkung $g(hH) := (gh)H, g,h \in G$, transitiv, da $x = hH, y= tH$ ($x,y \in X$ beliebig), dann wähle $g:= t H^{-1}$ meine Wahl ($\exists g \in G$ $t h^{-1}hH = gx = y = tH$)
+		\begin{align*}
+			G_x = \set{g \in G \mid gx = x} \und x = hH \quad gx = x \Leftrightarrow ghH = hH \implies h^{-1}gh \in H \implies g \in hHH^{-1} \in H\\
+			\text{Insbesondere }\ker \rho = \bigcap_{x \in X} G_x = \bigcap_{H \in H} hHh^{-1} \lhd G 
+		\end{align*}
+		Dies ist $= H \Leftrightarrow H \lhd G$
+		\item Adjungierte Wirkung: $X = G$ (wie oben) \emph{aber}
+		\begin{align*}
+			g \rhd x\cdot gxg^{-1}
+		\end{align*}
+		($\rhd$ neues Symbol zum unterscheiden). $G_x = $ Konjugationsklassen von $x \in X = C(x)$ und
+		\begin{align*}
+			G_x = \set{g \in G\colon gxg^{-1} = x \Leftrightarrow gx = xg} = Z(x) \text{ Zentralisator}
+		\end{align*}
+		Nutze Orbit-Stabiliser-Theorem:
+		\begin{align*}
+			\lnkset{G}{Z(x)} \cong C(x) \und \abs{C(x)} = \frac{\abs{G}}{\abs{Z(x)}}
+		\end{align*}
+		Die Konjugationsklassen mit nur einem Element bilden das Zentrum von $G$. Also gilt 
+		\begin{align*}
+			G = Z(G) \cup C(x_1) \cup \dots C(x_d)
+			\intertext{für geeignete $x_1, \dots, x_d \in G$}
+			\abs{G} = \abs{Z(G)} + \sum_{i=1}^d \frac{\abs{G}}{\abs{Z(x_i)}} \tag{class-equation}\label{eq_1_6_1_class_eq}
+		\end{align*}
+		(wobei die Vereinigung disjunkt sind) % find disjoint union symbol :S MINT?!
+	\end{itemize}
+\end{*example}
+\begin{proposition}
+	Eine endliche $p$-Gruppe hat nichttriviales Zentrum.
+\end{proposition}
+\begin{proof}
+	$\abs{G} = p^n$ mit $p=$prim und dann
+	\begin{align*}
+		p^n &= \abs{Z(G)} + \sum_{i=1}^d \frac{\abs{G}}{\abs{Z(x_i)}}\\
+		&= \abs{Z(G)} + p^{n_1} + \dots + p^{n_d} \quad n > 0
+	\end{align*}
+	Also ist $\abs{Z(G)} \ge 1$ denn $1 \in Z(G)$ und $\abs{Z(G)}$ ist teilbar durch $p$ und damit ist $\abs{Z(G)} \ge p$
+\end{proof}
+Insbesondere ist $G$ nicht einfach! ($Z(G) \lhd G$)
+\section{Die \person{Sylow}-Sätze}
+Sei $G$ eine endliche Gruppe.
+\begin{definition}
+	Eine Untergruppe von $G$ ist eine maximale $p$-Untergruppe (für eine Primzahl $p$), d.h. $H < G$ und $\exists p$ prim, $n \in \N\colon \abs{H} = p^{n+1} \nmid G$ (teil nicht).
+\end{definition}
+Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
+\begin{theorem}[alle Sylow-Sätze]
+	Mit der wie oben gilt:
+	\begin{enumerate}
+		\item Die Zahl $r$ der Sylowschen Untergruppen von $G$ ist 1 modulo $p$ ($\exists s\colon r = 1+sp$). Insbesondere ist $r \neq 0$!
+		\item Jede $p$-Untergruppe von $G$ ist in einer Sylowschen enthalten
+		\item Alle Sylowschen Untegruppen sind konjugiert zueinander. Insbesondere gilt: $r \mid m$. Also
+		\begin{align*}
+			H < G\quad \abs{H} = p^n \quad N_G = N := \set{g\in G \mid gHg^{-1} = H} \quad \abs{\lnkset{G}{N}} = r = \frac{p^n \cdot m}{p^n \cdot \lnkset{N}{H}}
+		\end{align*}
+		da $m = r \cdot \abs{\lnkset{N}{H}}$ und $\abs{N} = \abs{\lnkset{N}{H}} \cdot p^n$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Sei $X := \set{P \subseteq G \mid \abs{P} = p^n} \ni \set{x_1, \dots, x_{p^n} \mid x_j \in G}$. $G$ wirkt auf $X$ durch Multiplikation von links.
+	\begin{align*}
+		g \set{x_1, \dots, x_{p^n}} = \set{gx_1, \dots, gx_{p^n}}
+	\end{align*}
+	Gesucht ist $H \subset X$ mit $H < G$. Für ein solches $H$ ist dann $\lnkset{G}{H} \subseteq X$ eine Bahn der $G$-Wirkung mit der Länge $m = \abs{\lnkset{G}{H}} = \frac{\abs{G}}{\abs{H}} = \frac{p^n m}{p^n}$\\
+	\emph{Behauptung:} Alle Bahnen in $X$ der Länge $m$ sind von dieser Form.
+	\begin{proof}[Beweis der Behauptung]
+		Sei $GP \subseteq X$ eine Bahn mit $\abs{GP} = m$. WLOG ist $1 \in P$ (wenn nicht, wähle $x \in P$ beliebig und ersetze $P$ durch $x^{-1}P$)
+		\begin{align*}
+			G_P = \set{g \in G \mid gP = P}\quad P = \set{1, x_2, \dots, x_{p^n}}\\
+			\und gP = \set{g1, gx_2, \dots, gx_{p^n}}
+		\end{align*}
+		Also $1 \in P \implies G_P \subset P$ und daraus $\abs{G_P} \le \abs{P} = p^n$. Aber wir wissen auch:
+		\begin{align*}
+			m = \abs{GP} = \abs{\lnkset{G}{G_P}} = \frac{\abs{G}}{\abs{G_P}} = \frac{p^n m}{G_P} \implies \abs{G_P} = p^n.\tag{$\ast$}\label{eq_1_7_sylow_1}
+		\end{align*}
+		Also ist $G_P = P$. Damit folgt die Behauptung $G_p < G$.\\
+		\emph{Behauptung \eqref{eq_1_7_sylow_1}:} Alle Bahnen in $X$, deren Länge nicht durch $p$ teilbar ist, sind von der Form $\lnkset{G}{H}$
+	\end{proof}
+	Damit folgt 1.\\
+	\emph{Behauptung:} Die einzige Nebenklasse $gH$, die eine Untergruppe von $G$ ist, ist $H$ selbst ($H$ wie oben Sylowsche Untergruppe)
+	\begin{proof}
+		$gH$ Untergruppe $\implies 1 \in gH \implies g^{-1} \in H$ und daraus $g \in H$ und schließlich $gH = H$
+	\end{proof}
+	Also existiert eine Bijektion zwischen den Sylowschen $p$-Untergruppen $H < G$ und den Bahnen $GP \subseteq X$ mit $\abs{GP}$ nicht durch $p$ teilbar.\\
+	\emph{Behauptung:} Ist $[n]\in \Z_p$ die Klasse von $n \in \Z$ in $\Z_p$, so gilt
+	\begin{align*}
+		[r] = \frac{1}{[m]}\brackets{\binom{\abs{G}}{p^n}}
+	\end{align*}
+	\begin{*remark}
+		$\abs{X} = \binom{\abs{G}}{p^n}$ per Definition von $X$ als $\set{P \subseteq G \mid \abs{P} = p^n}$
+	\end{*remark}
+	Nach Behauptung 1 und Beh. 2 gilt $rm = \binom{\abs{G}}{p^n}$ modulo $p$, denn $X$ zerfällt in Bahnen da $G$-Wirkung und die Bahnen deren Länge nicht durch $p$ teilbar sind, sind von der Form $\lnkset{G}{H}$ für eine eindeutige, bestimmte Sylowgruppe $p$-Untergruppe $H$ und haben die Länge $m$ und es gibt $r$ davon. Damit ist der erste Sylow-Satz bewiesen.	
+\end{proof}
