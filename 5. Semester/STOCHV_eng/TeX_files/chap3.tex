@@ -1,101 +1,101 @@
-Ziel ist der Übergang vom CRR-Modell (zeit-diskret) zum \person{Block}-\person{Scholes} (BS-)Modell (zeit-stetig) durch Grenzwertbildung.
+THe goal is to transition from CRR-model (in discrete time) to \person{Block}-\person{Scholes} (BS-)model (in continious time) through fomation of limit.
 \begin{itemize}
-	\item Herleitung \person{Block}-\person{Scholes}-Formel für Preise von europäischen Put- und Call-Optionen
+	\item Derivation of \person{Block}-\person{Scholes}-formula for price of european put- and call-options. 
 \end{itemize}
-Beachte Zeitintervall $[0,T]$, für jedes $N \in \N$ geteilt in Schritte der Länge $\Delta_n = \frac{T}{N}$. Wähle Parameter $r \in \R, \mu \in \R$ (Trendparameter), $\sigma > 0$ (Volatitität). Definiere Folge von CRR-Modelle $(S^N)_{N \in \N}$ eingebettet in $[0,T]$ mit Parametern
+Consider the time interval $[0,T]$, for every $N \in \N$ divided in steps of length $\Delta_n = \frac{T}{N}$. Choose a parameter $r \in \R, \mu \in \R$ (trend parameter), $\sigma > 0$ (violatility). Define a sequence of CRR-models $(S^N)_{N \in \N}$ embedded in $[0,T]$ with parameters
 \begin{align*}
 	r_N = r \cdot \Delta_n \quad b_N = \mu \Delta_n + \sigma \sqrt{\Delta_n}\quad a_N = \mu \Delta_n - \sigma \sqrt{\Delta_n}\;p \in (0,1),\;s> 0
 \end{align*}
-d.h. $S^N_0 = s$, $S^N_{t_k} = s \cdot \prod_{i=1}^k (1+R_i^N)$ mit $t_k = k \cdot \Delta_n$, bzw. $\tilde{S}_0^N = s$ und damit $\tilde{S}^N_{t_k}= s \cdot \prod_{i=1}^k \frac{1+R_i^N}{1+r_N}$, wobei $\P(R^N_i = n_N) = p, \P(R^N_i = a_N) = 1-p$.
-Bezeichne diese Folge mit $\CRR_N$. Falls notwendig, interpolieren wir zwischen den Gitterpunkten mit
+i.e. $S^N_0 = s$, $S^N_{t_k} = s \cdot \prod_{i=1}^k (1+R_i^N)$ with $t_k = k \cdot \Delta_n$, or $\tilde{S}_0^N = s$ and hence $\tilde{S}^N_{t_k}= s \cdot \prod_{i=1}^k \frac{1+R_i^N}{1+r_N}$, where $\P(R^N_i = n_N) = p, \P(R^N_i = a_N) = 1-p$.
+Denote the sequence with $\CRR_N$. If its necessasry, we interpolate between the grid points with
 \begin{align*}
 	S_t^N = S^N_{t_k} \quad t \in [t_k,t_{k+1}]
 \end{align*}
-Berechne risko-neutrale Wahrscheinlichkeiten
+Calculate the risk-neutral probabilities
 \begin{align*}
 	q_N = \QQ_N(R_i^N = b_N) = \frac{r_N - a_N}{b_N - a_N} = \frac{(r-\mu)\Delta_n + \sigma \sqrt{\Delta_n}}{2\sigma\sqrt{\Delta_n}} = \frac{1}{2} - \frac{\lambda}{2}\sqrt{\Delta_n}
 \end{align*}
-mit $\lambda := \frac{\mu - r}{\sigma}$
+with $\lambda := \frac{\mu - r}{\sigma}$
 \begin{*remark}
 	\begin{itemize}
-		\item Wenn $\mu = r$, dann $q_N = \frac{1}{2}$ und im Allgemeinen $\lim_{k \to \infty}a_N = \half$
-		\item $\lambda := \frac{\mu - r}{\sigma}$ heißt ``Sharp-ratio'' oder Marktrisikopreis
+		\item If $\mu = r$, then $q_N = \frac{1}{2}$ and in generall $\lim_{k \to \infty}a_N = \half$
+		\item $\lambda := \frac{\mu - r}{\sigma}$ is called ``Sharp-ratio'' or market risk price 
 	\end{itemize}
 \end{*remark}
-Frage: Konvergenz der Verteilung von $S^N_T$ unter $\QQ_N$ für $N \to \infty$?\\
-Übergang zum Logarithmus:
+Question: convergence of the distribution of $S^N_T$ under $\QQ_N$ for $N \to \infty$?\\
+Transition to logarithm:
 \begin{align*}
 	\ZZ_N := \log(\frac{S^N_T}{S_0}) = \sum_{k=1}^N \underbrace{\log(1+R_k^N)}_{L^N_k}
 \end{align*}
-Summe von unabhängige identisch verteilte Zufallsvariablen, dann Zentraler Grenzwertsatz(ZGS)?\\
-Es liegt ein sogenanntes \emph{Dreiecksschema} vor
+Sum the independent, identically distributed random variables, then use the central convergence theorem?\\
+There exists a so-called \emph{Triangle-scheme}
 \begin{align*}
 	\begin{matrix}
 	\ZZ_1 &= L_1^1 & &\\
 	\ZZ_2 &= L_2^1 &+L^2_2 &\\
 	\ZZ_3 &= L_3^1 &+L^3_2 &+L^3_3\\
-	\end{matrix} \text{ Zufallsvariablen in einer Zeile sind stoch. unabhängig.}
+	\end{matrix} \text{Random variables in a row are stochastically independent.}
 \end{align*}
-\begin{theorem}[ZGS für Dreiecksschemata]
-	Sei für jedes $N \in \N$ ein Vektor $L^N := (L^N_1, L^N_2, \dots, L^N_N)$ von Zufallsvariablen gegeben (``Dreiecksschema'') mit folgenden Eigenschaften:
+\begin{theorem}[Central convergence theorem for triangle-scheme]
+	Let $L^N := (L^N_1, L^N_2, \dots, L^N_N)$ be a vector of random variables for every $N \in \N$ (``triangle-scheme'') with the following properties:
 	\begin{enumerate}
-		\item $\forall N \in \N$ sind $(L^n_1, \dots, L_N^N)$ unabhängig mit identischer Verteilung
-		\item $\exists$ Folge von (deterministischen) Konstanten $C_N \to 0$, sodass
+		\item $\forall N \in \N$, $(L^n_1, \dots, L_N^N)$ are independent with identicall distribution
+		\item $\exists$ Sequence of (deterministic) constants $C_N \to 0$, such that
 		\begin{align*}
 			\abs{L_k^N} \le C_N \quad \forall k \in [N]
 		\end{align*}
-		\item Mit $\ZZ_N = L^N_1 + \dots + L^N_N$ gilt
+		\item With $\ZZ_N = L^N_1 + \dots + L^N_N$ it holds
 		\begin{align*}
 			\E[\ZZ_N] \to m \in \R\\
 			\Var(\ZZ_N) \to s^2 > 0 \text{ für }N \to \infty
 		\end{align*}
 	\end{enumerate}
-	Dann konvergiert $(\ZZ_N)_{N \in \N}$ in Verteilung gegen normalverteilte Zufallsvariable $\ZZ$ mit $\E[\ZZ] = m \und \Var(\ZZ) = s^2$
+	Then $(\ZZ_N)_{N \in \N}$ converges in distribution towards the normally distributed random variable $\ZZ$ with $\E[\ZZ] = m \und \Var(\ZZ) = s^2$
 \end{theorem}
 \begin{proof}
-	Ohne Beweis, siehe z.B. Wahrscheinlichkeitstheorie mit Martingale.
+	Without a proof, see eg Probability theory with martingale.
 \end{proof}
 \begin{*remark}
-	Vergleiche 2. Übung erste Aufgabe.
+	Compare 2nd exercise sheet/ 1st exercise.
 \end{*remark}
 \begin{erinnerung} % should not count :/
-	Dichte der Standardnormalverteilung heißt hier
+	The density of the standard normal distribution is:
 	\begin{align*}
 		\phi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
 	\end{align*}
-	und die Verteilungsfunktion
+	and the distribution function:
 	\begin{align*}
 		\Phi(x) = \int_{-\infty}^x \phi(y) \d y = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-y^2/2} \d y
 	\end{align*}
-	Normalverteilung mit Erwartungswert $m$ und Varianz $s^2$ hat Verteilungsfunktion $\Phi(\frac{x-m}{s})$
+	The normal distribution with expecte value $m$ and variance $s^2$ has distribution function $\Phi(\frac{x-m}{s})$
 \end{erinnerung}
 \begin{definition}
-	Eine strikt positive Zufallsvariable $X$ heißt \begriff{lognormalverteilt} mit Parameter $m, s^2$, wenn gilt
+	A strict positive random variable $X$ is called \begriff{log-normally distributed} with parameter $m, s^2$, if it holds
 	\begin{align*}
 		\log(X) \sim \NNN(m,s^2)
 	\end{align*}
 \end{definition}
 \begin{theorem}
-	Betrachte Folge $(S^N)_{N \in \N}$ von CRR-Modellen wie in $\CRR_N$ beschrieben. Dann konvergiert $S_T^N$ unter $\QQ_N$ in Verteilung gegen eine Zufallsvariable $S_T$ und $S_T/S_0$ ist lognormalverteilt mit Parameters $n = T(r - \sigma^2/2)$ und $s^2 = T\sigma^2$. Äquivalent dazu gilt mit $\ZZ_N = \log(S_T^N / S_0)$
+	Consider the sequence $(S^N)_{N \in \N}$ of CRR-models, as described in $\CRR_N$. Then $S_T^N$ converges in distribution under $\QQ_N$ towards a random variable $S_T$ and $S_T/S_0$ is log-normally distributed with paraeters $n = T(r - \sigma^2/2)$ and $s^2 = T\sigma^2$. Equivalently it holds $\ZZ_N = \log(S_T^N / S_0)$
 	\begin{align*}
 		\QQ_N(\ZZ_N \le x) \xrightarrow{N \to \infty} \Phi\brackets{\frac{x-T(r-\sigma^2/2)}{\sigma\sqrt{T}}}
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	Das Dreiecksschema $L^N = (L^N_1, \dots, L_N^N)$ mit $L^N_k = \log(1+R^N_k)$ erfüllt (unter $\QQ_N$) offensichtlich Bedingung 1. und 2. aus Theorem 3.1 %TODO add references
-	wähle z.B.: 
+	The triangle-scheme $L^N = (L^N_1, \dots, L_N^N)$ with $L^N_k = \log(1+R^N_k)$ obviously satisfies the condition 1. and 2. from theorem 3.1, (under $\QQ_N$). %TODO add references
+	Choose as eg.: 
 	\begin{align*}
 		C_N = \max(\abs{\log(1+\mu\Delta_n + \sigma\sqrt{\Delta_n})}, \abs{\log(1+\mu \Delta_n - \sigma\sqrt{\Delta_n})})
 	\end{align*}
-	. Wir berechnen Erwartungswert und Varianz von $L^N_k$ bzw. $\ZZ_N$. Verwende die Taylorentwicklung:
+	We calculate the expected value and variance of $L^N_k$ or $\ZZ_N$. Use the Taylor expansion:
 	\begin{align*}
 		\log(1+x) = x - x^2/2 + x^3/3 + \OO(x^4) \quad (x \to 0)
 	\end{align*}
-	Das heißt
+	I.e.
 	\begin{align*}
-		\log(1+ \underbrace{\mu \Delta_n \pm \sigma\sqrt{\Delta_n}}_{b_N \text{ bzw. }a_N}) = \pm \sigma \sqrt{\Delta_n} + \mu \Delta_n - \sigma^2/2 \Delta_n + \OO(\Delta_n^{3/2})
+		\log(1+ \underbrace{\mu \Delta_n \pm \sigma\sqrt{\Delta_n}}_{b_N \text{ or }a_N}) = \pm \sigma \sqrt{\Delta_n} + \mu \Delta_n - \sigma^2/2 \Delta_n + \OO(\Delta_n^{3/2})
 	\end{align*}
-	Risiko-neutralen Wahrscheinlichkeiten sind
+	The risk-neutral probabilities are
 	\begin{align*}
 		q_N = \half - \frac{\lambda}{2}\sqrt{\Delta_n}\quad 1-q_N = \half + \frac{\lambda}{2}\sqrt{\Delta_n}
 	\end{align*}
@@ -108,30 +108,30 @@ Es liegt ein sogenanntes \emph{Dreiecksschema} vor
 		&= \sigma^2\Delta_n + \OO(\Delta_n^{3/2})\\
 		\Var^{\QQ_N}(L^N_k) &= \E^{\QQ_N}[(L^N_k)^2]-\E^{\QQ_N}[L^N_k]^2 = \sigma^2\Delta_n + \OO(\Delta_n^{3/2})
 	\end{align*}
-	Also gilt
+	So, it holds
 	\begin{align*}
 		\E^{\QQ_N}[\ZZ_N] &= N \cdot \E^{\QQ_N}[L_k^N] = (r-\sigma^2/2)T + \OO(N^{-1/2}) \xrightarrow{N \to \infty} (r-\sigma^2/2)T =: m\\
 		\Var^{\QQ_N}[\ZZ_N] &= N \cdot \Var^{\QQ_N}[L^N_k] = \sigma^2 T + \OO(N^{-1/2}) \xrightarrow{N \to \infty} \sigma^2T =:s^2
 	\end{align*}
-	Resultat folgt nun mir ZGS (Theorem 3.1).
+	The result follows with the central limit theorem (Theorem 3.1).
 \end{proof}
-\subsection*{Asymptotik von Put- und Call-Option}
-Fixiere Laufzeit $T$ und Ausübungspreis $K$ und schreiben:\\
+\subsection*{Asymptotics of put- and call-option}
+Fix the duration $T$ and the strike price $K$ and write:\\
 \begin{itemize}
-	\item $C_N(t, S_t^N)$ ... Preis einer europäischen Call-Option im $\CRR_N$ Modell in Abhängigkeit von Zeit $t$ und Basisgut $S^N_t$
-	\item $P_N(t, S_t^N)$ ... Analog für Put
+	\item $C_N(t, S_t^N)$ ... price of a european call-option in $\CRR_N$ model, dependant of time $t$ and basic good $S^N_t$
+	\item $P_N(t, S_t^N)$ ... analogously for put
 \end{itemize}
-\begin{theorem}[\person{Block}-\person{Scholes}-Formel]
-	Die Preise $C_N$, $P_N$ konvergieren fpr $N \to \infty$ gegen BS-Preis
+\begin{theorem}[\person{Block}-\person{Scholes}-formula]
+	The prices $C_N$, $P_N$ converge for $N \to \infty$ towards a BS-price
 	\begin{align*}
 		C_{BS}(t,S_t) &= \lim_{N \to \infty} C_N(t, S_t^N)\\
 		P_{BS}(t,S_t) &= \lim_{N \to \infty} P_N(t, S_t^N)
 	\end{align*}
-	und es gilt die \begriff{\person{Block}-\person{Scholes}-Formel}:
+	and the following \begriff{\person{Block}-\person{Scholes}-formula} holds:
 	\begin{align*}
 		C_{BS}(t,S_t) &= S_t \Phi(d_1) - e^{-r(T-t)} K \Phi(d_2)\\
 		P_{BS}(t,S_t) &= S_t \Phi(-d_1) - e^{-r(T-t)} K \Phi(-d_2)
-		\intertext{wobei}
+		\intertext{where}
 		d_1 &= d_1(t, S_t) = \frac{\log(S_t/K) + (r+\sigma^2/2)(T-t)}{\sigma \sqrt{T-t}}\\
 		d_2 &= d_2(t, S_t) = \frac{\log(S_t/K) + (r-\sigma^2/2)(T-t)}{\sigma \sqrt{T-t}} = d_1 - \sigma\sqrt{T-t}
 	\end{align*}

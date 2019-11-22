@@ -487,47 +487,47 @@ In order to remember the difference between super and submartingale, here's a li
 	\begin{itemize}
 		\item $\Rightarrow$:
 		\begin{itemize}
-			\item Adaptiertheit: klar
-			\item Integrierbarkeit: $H$ lokal beschränkt, d.h. $\abs{H_k} \le c_k < \infty$ für alle $k$.
+			\item Adaptability: clear
+			\item Integrability: $H$ is locally bounded, i.e. $\abs{H_k} \le c_k < \infty$ for all $k$.
 			\begin{align*}
 			\E[\abs{H_k (X_k - X_{k-1})}] \le c_k * \brackets{\E[\abs{x_k}] + \E[\abs{X_{k+1}}]} < \infty
 			\end{align*}
-			Mit der Dreiecksungleichung folgt daraus $\E[\abs{(H \bigcdot X)_n}] < \infty$.
-			\item Martingaleigenschaft: 
+			With the triangle-inequality it follows $\E[\abs{(H \bigcdot X)_n}] < \infty$.
+			\item Martignale property:
 			\begin{align*}
 			\E[(H \bigcdot X)_n \mid \F_{n-1}] &= (H \bigcdot X)_{n-1} + \E[H_n (X_n - X{n-1}) \mid \F_{n-1}]\\
 			&=  (H \bigcdot X)_{n-1} + H_n * \underbrace{\brackets{\E[X_n \mid \F_{n-1}] - X{n-1}}}_{=0}\\ 
 			&=(H \bigcdot X)_{n-1} \quad \forall n \in \N
 			\end{align*}
-			Damit ist also auch $(H \bigcdot X)$ ein Martingal.		
+			Hence, also $(H \bigcdot X)$ is a martingale. 	
 		\end{itemize}
 	\end{itemize} $(H \bigcdot X)_n = \sum_{k=1}^n H_k (X_k - X_{k-1})$.
-	\item $\Leftarrow$: Fixiere $N \in \N$. Setze $H_n := \indi_{n = N}$, dieser ist lokal beschränkt und deterministisch (also auch vorhersehbar). Man stellt fest, dass $(H \bigcdot X)_n = 0$ für alle $n \le N-1$. Für alle $n \ge N$ gilt dagegen $(H \bigcdot X)_n = X_N - X_{N-1}$. Wir überprüfen nur die Martingaleigenschaft (Integrierbarkeit folgt aus Dreiecksungleichung). Wir wissen, dass $(H \bigcdot X)$ ein Martingal ist. 
+	\item $\Leftarrow$: Fix $N \in \N$. Set $H_n := \indi_{n = N}$, this is locally bounded and deterministic (also predictable). One notices that $(H \bigcdot X)_n = 0$  for all $n \le N-1$. Conversely, for all $n \ge N$ it holds $(H \bigcdot X)_n = X_N - X_{N-1}$. We check only the martingale property (the integrability follows from the triangle-inequality). We know that $(H \bigcdot X)$ is a martingale. 
 	\begin{align*}
 	0 &= (H \bigcdot X)_{N-1} = \E[(H \bigcdot X)_N \mid \F_{N-1}]\\
 	 &= \E[x_N - X_{N-1} \mid \F_{N-1}]\\ 
 	 &= \E[X_N \mid \F_{N-1}] - X_{N-1}\\
 	&\implies X_{N-1} = \E[X_N \mid \F_{N-1}] \mit N \in \N \text{ beliebig}
 	\end{align*}
-	Somit ist $X$ ein Martingal.
+	With that, $X$ is a martingale. 
 \end{proof}
 \begin{conclusion} %1.7
-	Sei $X = \set{X_n}{n=1 , \dots, N}$ ein adaptierter stochastischer Prozess bezüglich einer Filtration \\$\set{\F_n}{n=1 , \dots, N}$. Wenn $\E[(H \bigcdot X)_N] = 0$ für alle lokal beschränkten vorhersehbaren Prozesse $H$, dann ist $X$ ein Martingal bezüglich $\set{\F_n}{}$.
+	Let $X = \set{X_n}{n=1 , \dots, N}$ be an adapted stochastic process with respect to a filtration \\$\set{\F_n}{n=1 , \dots, N}$. If $\E[(H \bigcdot X)_N] = 0$ for all locally bounded predictable processes $H$, thent $X$ is a martingale with respect to $\set{\F_n}{}$.
 \end{conclusion}
 \begin{proof}
-	Fixiere $K \in  [N] := \set{1, 2, \dots , N}$ und eine Menge $A \in \F_{K-1}$. Definiere $H_n(\omega) = \indi_A (\omega) * \indi_{\set{n=K}}$, dieser ist lokale beschränkt und vorhersehbar.
-	Es ist $(H \bigcdot X)_n = 0$ für alle $n \le K-1$. Für alle $n \ge K$ gilt $(H \bigcdot X)_n = \indi_A * (X_K - X_{K-1})$. 
+	Fix $K \in  [N] := \set{1, 2, \dots , N}$ and a set $A \in \F_{K-1}$. Define $H_n(\omega) = \indi_A (\omega) * \indi_{\set{n=K}}$, this is locally bounded and predictable. 
+	It holds $(H \bigcdot X)_n = 0$ for all $n \le K-1$. For all $n \ge K$ it holds $(H \bigcdot X)_n = \indi_A * (X_K - X_{K-1})$. 
 	\begin{align*}
 		0 &= \E[(H \bigcdot X)_N] = \E[\indi_A (X_K - X_{K-1})]\\ 
-		\overset{Turm}&{=} \E[\E[\indi_A (X_K - X_{K-1}) \mid \F_{K-1}]]\\ 
+		\overset{Tower}&{=} \E[\E[\indi_A (X_K - X_{K-1}) \mid \F_{K-1}]]\\ 
 		&= \E[\indi_A * \brackets{\underbrace{\E[X_K \mid \F_{K-1] - X_{K-1}}]}_{ Y_{K-1}}} \quad \forall A \in \F_{K-1}\\
 		&\implies \int_A  Y_{K-1}(\omega) \d{\P(\omega)}\\ 
 		&= \int_A X_{K-1}(\omega) \d{\P(\omega)} \quad \forall A \in \F_{K-1}\\
-		&\implies Y_{K-1} = X_{K-1} \text{ fast sicher }\\
+		&\implies Y_{K-1} = X_{K-1} \text{ almost surely }\\
 		&\implies \E[X_K \mid \F_{K-1] - X_{K-1}}] = X_{K-1}
 	\end{align*}
-	für beliebige $K$. Somit ist $X$ ein Martingal.
+	for arbitrary $K$. Hence, $X$ is a martingale.
 \end{proof}
 \begin{*remark}
-	Wir schreiben $[N] := \set{1, 2, \dots, N}$ und $[N]_0 := \set{0, 1, 2 , \dots , N}$.
+	We write $[N] := \set{1, 2, \dots, N}$ and $[N]_0 := \set{0, 1, 2 , \dots , N}$.
 \end{*remark}

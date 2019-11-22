@@ -19,11 +19,11 @@ We model security $\set{S_k}_{k \in N}$ and offset account $\set{S_k}_{k \in \N}
 	\item $S_0^0 = 1$ and $S_n^0 = (1+r)^n$
 	\item We define the \begriff{rate of return} $R_n(\omega)$ in the $n$-th market period with
 	\begin{align*}
-	R_n = \begin{cases} b & \mit p \\ a & \mit 1-p \end{cases}
+		R_n = \begin{cases} b & \mit p \\ a & \mit 1-p \end{cases}
 	\end{align*}
 	The rates of return $(R_1, \dots, R_N)$ are independent.
 	\begin{align*}
-	S_n = S_0 * \prod_{k=1}^n (1+R_k)
+		S_n = S_0 * \prod_{k=1}^n (1+R_k)
 	\end{align*}
 	The progress of $S$ can be represented graphically as a binomial tree: 
 	\begin{center}
@@ -39,12 +39,12 @@ We model security $\set{S_k}_{k \in N}$ and offset account $\set{S_k}_{k \in \N}
 		\item The number of upward trends $U_n := \# \set{k \in [n] \colon R_k = b}$ is binomially distributed, i.e. $U_n \sim \Bin(n,p)$.
 		\item It holds
 		\begin{align*}
-		\log\brackets{\frac{\tilde{S}_n}{S_0}} = U_n \log\brackets{\frac{1+b}{1+a}} + n \log\brackets{\frac{1+a}{1+r}}
+			\log\brackets{\frac{\tilde{S}_n}{S_0}} = U_n \log\brackets{\frac{1+b}{1+a}} + n \log\brackets{\frac{1+a}{1+r}}
 		\end{align*}
 		d.h. $\log\brackets{\frac{\tilde{S}_n}{S_0}}$ is per Skalen-Lagen-transformation binomially distributed. 
 		\item The distribution of $S_n$ is
 		\begin{align*}
-		\P\brackets{S_n = S_0 (1+b)^k (1+a)^{n-k}} = \binom{n}{k} p^k (1-p)^{n-k}
+			\P\brackets{S_n = S_0 (1+b)^k (1+a)^{n-k}} = \binom{n}{k} p^k (1-p)^{n-k}
 		\end{align*} 
 	\end{enumerate}
 \end{proposition}
@@ -54,7 +54,7 @@ We model security $\set{S_k}_{k \in N}$ and offset account $\set{S_k}_{k \in \N}
 		\item $\frac{\tilde{S}_n}{S_0} = \brackets{\frac{1+b}{1+a}}^{U_n} * \brackets{\frac{1+a}{1+r}}^n \implies \log\brackets{\frac{\tilde{S}_n}{S_0}} = U_n \log\brackets{\frac{1+b}{1+a}} + n \log\brackets{\frac{1+a}{1+r}}$
 		\item Es ist $S_n = S_0 (1+b)^{U_1}(1+a)^{n-U_n} $. Also
 		\begin{align*}
-		\P\brackets{S_n = S_0 (1+b)^k (1+a)^{n-k}} = \P(U_n = k) \overset{(a)}{=} \binom{n}{k} p^k (1-p)^{n-k}
+			\P\brackets{S_n = S_0 (1+b)^k (1+a)^{n-k}} = \P(U_n = k) \overset{(a)}{=} \binom{n}{k} p^k (1-p)^{n-k}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -67,7 +67,7 @@ We model security $\set{S_k}_{k \in N}$ and offset account $\set{S_k}_{k \in \N}
 	\begin{itemize}
 		\item The discrete value process can be represented as
 		\begin{align*}
-		\tilde{\Pi}_n = w + \sum_{k=1}^n \xi_k (\tilde{S}_k - \tilde{S}_{k-1}) = w + (\xi \bigcdot \tilde{S})_n
+			\tilde{\Pi}_n = w + \sum_{k=1}^n \xi_k (\tilde{S}_k - \tilde{S}_{k-1}) = w + (\xi \bigcdot \tilde{S})_n
 		\end{align*}
 		\item The amount $\eta_n$ is uniquely given by 
 		\begin{align*}
@@ -116,7 +116,7 @@ We are looking for a strategy which replicated $(\xi_n)_{n \in [N]}$ and initial
 	\end{enumerate}
 \end{theorem}
 \begin{conclusion}
-    The CRR-Model is complete.
+	The CRR-Model is complete.
 \end{conclusion}
 \begin{conclusion}
 	If $C$ is an european derivative, i.e. $C = h(S_N)$, with $h\colon \R \to \R$ measurable, then the following simplifications hold: It is sufficient to take $f_n \colon \R \to \R$ and it holds
@@ -134,11 +134,11 @@ We are looking for a strategy which replicated $(\xi_n)_{n \in [N]}$ and initial
 			\xi_n = \frac{\text{``Price reduction derivative''}}{\text{``Price reduction basic goods''}} \quad \text{difference quotient}
 		\end{align*}
 		\item Weitere Interpretation of $\xi_n$
-			\begin{itemize}
-				\item $\xi_n > 0$ The price change derivative has same sign as the price reduction basic good, there is no need of short sale!
-				\item $\xi_n < 0$ Price alternation derivative has opposed sign as the price reduction basic good, there is noo need of short sale!
-				\item $\xi_n \approx 0$ Price alternation derivative barely depends from the price change basic good. 
-			\end{itemize}
+		\begin{itemize}
+			\item $\xi_n > 0$ The price change derivative has same sign as the price reduction basic good, there is no need of short sale!
+			\item $\xi_n < 0$ Price alternation derivative has opposed sign as the price reduction basic good, there is noo need of short sale!
+			\item $\xi_n \approx 0$ Price alternation derivative barely depends from the price change basic good. 
+		\end{itemize}
 	\end{enumerate}
 \end{*remark}
 \begin{proof}
@@ -161,7 +161,7 @@ We are looking for a strategy which replicated $(\xi_n)_{n \in [N]}$ and initial
 				f^a_{n+1} - (1+r)\Pi_n = \xi_{n+1}S_n(a-r) \tag{II}\label{eq_2_4_II}
 			\end{align*}
 		\end{itemize}
-	$\Pi_n$ is $\xi_{n+1}$ $\F_n$-measurable, meaning independent from $R_{n-1} \implies$ \eqref{eq_2_4_II} \eqref{eq_2_4_I}
+		$\Pi_n$ is $\xi_{n+1}$ $\F_n$-measurable, meaning independent from $R_{n-1} \implies$ \eqref{eq_2_4_II} \eqref{eq_2_4_I}
 		\begin{itemize}
 			\item \eqref{eq_2_4_II} - \eqref{eq_2_4_I}: $f^b_{n+1} - f^a_{n+1} = \xi_{n+1} S_n(b-a)$, then $\xi_{n+1} = \frac{f^b_{n+1} - f^a_{n+1}}{S_n(b-a)}$ so \eqref{eq_2_3_hedge} \checkmark
 			\item in \eqref{eq_2_4_I} $f^b_{n+1}-(1+r)\Pi_n = \frac{b-r}{b-a}(f^b_{n+1}-f^a_{n+1})$, then $\Pi_n = \frac{1}{1+r} \brackets{\frac{r-a}{b-r}f^a_{n+1} + \frac{b-r}{b-a}f^a_{n+1}} \implies \eqref{eq_2_2_rep}$ \checkmark
@@ -195,9 +195,9 @@ We are looking for a strategy which replicated $(\xi_n)_{n \in [N]}$ and initial
 		b=0,3\quad a=0,3 \quad r = 0,2\quad S_0 = 100\quad K = 100
 	\end{align*}
 	Binomial tree:
-\begin{center}
-	\includegraphics[width=.5\textwidth]{tikz/stochv_2_3.pdf}
-\end{center}
+	\begin{center}
+		\includegraphics[width=.5\textwidth]{tikz/stochv_2_3.pdf}
+	\end{center}
 	\begin{align*}
 		C&=h(S_1,S_2) \mit h = f_2\\
 		h(130,169) &= (\frac{399}{3}-100)_+ = 33\\
@@ -307,7 +307,7 @@ Notation: $\E^{\QQ}[\cdot]$ expected value under $\QQ$.
 		\item $\QQ$-measure: $q_a + q_b = 1 \Leftrightarrow q_b(1+r) + q_a (1+r) = 1+r$
 		\item Martingale condition:
 		\begin{align*}
-			 (1+b)q_b + (1+a)q_a = 1-r \Leftrightarrow q_b(b-r) + q_a(a-r) = 0
+			(1+b)q_b + (1+a)q_a = 1-r \Leftrightarrow q_b(b-r) + q_a(a-r) = 0
 		\end{align*}
 		As a system of linear equations:
 		\begin{align*}
@@ -316,7 +316,7 @@ Notation: $\E^{\QQ}[\cdot]$ expected value under $\QQ$.
 				b-r & a-r
 			\end{pmatrix}
 			\begin{pmatrix}
-			q_b\\ q_a
+				q_b\\ q_a
 			\end{pmatrix} =
 			\begin{pmatrix}
 				1+r\\ 0
@@ -324,16 +324,16 @@ Notation: $\E^{\QQ}[\cdot]$ expected value under $\QQ$.
 		\end{align*}
 		is a condition for martingale measure. Compare with 
 		\begin{align*}
-		\begin{pmatrix}
-		1+r & 1+r \\
-		b-r & a-r
-		\end{pmatrix}
-		\begin{pmatrix}
-		\Pi_{n+1}\\ \xi_n \cdot S_{n-1}
-		\end{pmatrix} =
-		\begin{pmatrix}
-		f_n^b\\ f_n^a
-		\end{pmatrix}
+			\begin{pmatrix}
+				1+r & 1+r \\
+				b-r & a-r
+			\end{pmatrix}
+			\begin{pmatrix}
+				\Pi_{n+1}\\ \xi_n \cdot S_{n-1}
+			\end{pmatrix} =
+			\begin{pmatrix}
+				f_n^b\\ f_n^a
+			\end{pmatrix}
 		\end{align*}
 		the latter is again \eqref{eq_LGS_1}, the same matrix but transposed $\implies$ \begriff{duality}!
 	\end{itemize}  
