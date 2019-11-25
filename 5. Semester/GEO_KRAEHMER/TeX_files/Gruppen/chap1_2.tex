@@ -411,37 +411,93 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	Sei $X := \set{P \subseteq G \mid \abs{P} = p^n} \ni \set{x_1, \dots, x_{p^n} \mid x_j \in G}$. $G$ wirkt auf $X$ durch Multiplikation von links.
-	\begin{align*}
-		g \set{x_1, \dots, x_{p^n}} = \set{gx_1, \dots, gx_{p^n}}
-	\end{align*}
-	Gesucht ist $H \subset X$ mit $H < G$. Für ein solches $H$ ist dann $\lnkset{G}{H} \subseteq X$ eine Bahn der $G$-Wirkung mit der Länge $m = \abs{\lnkset{G}{H}} = \frac{\abs{G}}{\abs{H}} = \frac{p^n m}{p^n}$\\
-	\emph{Behauptung:} Alle Bahnen in $X$ der Länge $m$ sind von dieser Form.
-	\begin{proof}[Beweis der Behauptung]
-		Sei $GP \subseteq X$ eine Bahn mit $\abs{GP} = m$. WLOG ist $1 \in P$ (wenn nicht, wähle $x \in P$ beliebig und ersetze $P$ durch $x^{-1}P$)
+	\begin{enumerate}
+		\item Sei $X := \set{P \subseteq G \mid \abs{P} = p^n} \ni \set{x_1, \dots, x_{p^n} \mid x_j \in G}$. $G$ wirkt auf $X$ durch Multiplikation von links.
 		\begin{align*}
+		g \set{x_1, \dots, x_{p^n}} = \set{gx_1, \dots, gx_{p^n}}
+		\end{align*}
+		Gesucht ist $H \subset X$ mit $H < G$. Für ein solches $H$ ist dann $\lnkset{G}{H} \subseteq X$ eine Bahn der $G$-Wirkung mit der Länge $m = \abs{\lnkset{G}{H}} = \frac{\abs{G}}{\abs{H}} = \frac{p^n m}{p^n}$\\
+		\emph{Behauptung 1:} Alle Bahnen in $X$ der Länge $m$ sind von dieser Form.
+		\begin{proof}[Beweis der Behauptung]
+			Sei $GP \subseteq X$ eine Bahn mit $\abs{GP} = m$. WLOG ist $1 \in P$ (wenn nicht, wähle $x \in P$ beliebig und ersetze $P$ durch $x^{-1}P$)
+			\begin{align*}
 			G_P = \set{g \in G \mid gP = P}\quad P = \set{1, x_2, \dots, x_{p^n}}\\
 			\und gP = \set{g1, gx_2, \dots, gx_{p^n}}
-		\end{align*}
-		Also $1 \in P \implies G_P \subset P$ und daraus $\abs{G_P} \le \abs{P} = p^n$. Aber wir wissen auch:
-		\begin{align*}
+			\end{align*}
+			Also $1 \in P \implies G_P \subset P$ und daraus $\abs{G_P} \le \abs{P} = p^n$. Aber wir wissen auch:
+			\begin{align*}
 			m = \abs{GP} = \abs{\lnkset{G}{G_P}} = \frac{\abs{G}}{\abs{G_P}} = \frac{p^n m}{G_P} \implies \abs{G_P} = p^n.\tag{$\ast$}\label{eq_1_7_sylow_1}
+			\end{align*}
+			Also ist $G_P = P$. Damit folgt die Behauptung $G_p < G$.\\
+			\emph{Behauptung \eqref{eq_1_7_sylow_1}:} Alle Bahnen in $X$, deren Länge nicht durch $p$ teilbar ist, sind von der Form $\lnkset{G}{H}$
+		\end{proof}
+		Damit folgt 1.\\
+		\emph{Behauptung 2:} Die einzige Nebenklasse $gH$, die eine Untergruppe von $G$ ist, ist $H$ selbst ($H$ wie oben Sylowsche Untergruppe)
+		\begin{proof}
+			$gH$ Untergruppe $\implies 1 \in gH \implies g^{-1} \in H$ und daraus $g \in H$ und schließlich $gH = H$
+		\end{proof}
+		Also existiert eine Bijektion zwischen den Sylowschen $p$-Untergruppen $H < G$ und den Bahnen $GP \subseteq X$ mit $\abs{GP}$ nicht durch $p$ teilbar.\\
+		\emph{Behauptung:} Ist $[n]\in \Z_p$ die Klasse von $n \in \Z$ in $\Z_p$, so gilt
+		\begin{align*}
+		[r] = \frac{1}{[m]}\binom{\abs{G}}{p^n}
 		\end{align*}
-		Also ist $G_P = P$. Damit folgt die Behauptung $G_p < G$.\\
-		\emph{Behauptung \eqref{eq_1_7_sylow_1}:} Alle Bahnen in $X$, deren Länge nicht durch $p$ teilbar ist, sind von der Form $\lnkset{G}{H}$
-	\end{proof}
-	Damit folgt 1.\\
-	\emph{Behauptung:} Die einzige Nebenklasse $gH$, die eine Untergruppe von $G$ ist, ist $H$ selbst ($H$ wie oben Sylowsche Untergruppe)
-	\begin{proof}
-		$gH$ Untergruppe $\implies 1 \in gH \implies g^{-1} \in H$ und daraus $g \in H$ und schließlich $gH = H$
-	\end{proof}
-	Also existiert eine Bijektion zwischen den Sylowschen $p$-Untergruppen $H < G$ und den Bahnen $GP \subseteq X$ mit $\abs{GP}$ nicht durch $p$ teilbar.\\
-	\emph{Behauptung:} Ist $[n]\in \Z_p$ die Klasse von $n \in \Z$ in $\Z_p$, so gilt
+		\begin{*remark}
+			$\abs{X} = \binom{\abs{G}}{p^n}$ per Definition von $X$ als $\set{P \subseteq G \mid \abs{P} = p^n}$
+		\end{*remark}
+		Nach Behauptung 1 und Behauptung 2 gilt $rm = \binom{\abs{G}}{p^n}$ modulo $p$, denn $X$ zerfällt in Bahnen, da $G$-Wirkung und die Bahnen deren Länge nicht durch $p$ teilbar sind. Die Bahnen sind von der Form $\lnkset{G}{H}$ für eine eindeutige, bestimmte Sylow $p$-Untergruppe $H$, haben die Länge $m$ und es gibt $r$ davon. Damit ist der erste Sylow-Satz bewiesen. \\
+		Yeah its scrambled again :/
+		\begin{*remark}
+			Only $\abs{G}$ enters here, we can compute $r$ modulo $p$ using any group $G$ of the size $\abs{G}$, z.B. können wir $G = \Z_{\abs{G}}$, und in $\Z_{p^{i} m}$ gibt es genau eine Sylow $p$-Untergruppe, nämlich $\langle [m]\rangle = \set{[e], [m], [2m], \dots, [(p^{i} - 1)m]}$ (Erinnerung 1. Semester: $H \le \Z \Leftrightarrow H = a\Z \dots $) $\implies$ 1.
+		\end{*remark}
+	\item Betrachte die Konjugationswirkung von $G$ auf $X$
 	\begin{align*}
-		[r] = \frac{1}{[m]}\brackets{\binom{\abs{G}}{p^n}}
+		\Ad(g)P := \set{gx^{-1}g, \dots, gx_{p^{i}}g^{-1}}
 	\end{align*}
-	\begin{*remark}
-		$\abs{X} = \binom{\abs{G}}{p^n}$ per Definition von $X$ als $\set{P \subseteq G \mid \abs{P} = p^n}$
-	\end{*remark}
-	Nach Behauptung 1 und Beh. 2 gilt $rm = \binom{\abs{G}}{p^n}$ modulo $p$, denn $X$ zerfällt in Bahnen da $G$-Wirkung und die Bahnen deren Länge nicht durch $p$ teilbar sind, sind von der Form $\lnkset{G}{H}$ für eine eindeutige, bestimmte Sylowgruppe $p$-Untergruppe $H$ und haben die Länge $m$ und es gibt $r$ davon. Damit ist der erste Sylow-Satz bewiesen.	
+	\emph{Behauptung 3:} Ist $P \le G$ Sylow $p$-Untergruppe und $Q \le P$ eine $p$-Untergruppe, so existiert $R = gPg^{-1}$ mit $aRa^{-1}\quad \forall a \in G$ ($N_G R \ge Q$)
+	\begin{proof}
+		Betrachte den Orbit von $P$ unter der adjungierten Wirkung
+		\begin{align*}
+			\Ad(G)P := \set{gPg^{-1} \mid g \in G} \cong \lnkset{G}{N_G P} \quad \text{ orbit stabilizer}\\
+			(g \in N_G P \Leftrightarrow gPg^{-1} = P)
+		\end{align*}
+		Dann gilt noch 
+		\begin{align*}
+			p^i n = \abs{N_G P} \implies \abs{\Ad(G)P} = \frac{m}{n}\tag{$\ast \ast$}\label{eq_sylow_proof_2}
+		\end{align*}
+		\emph{nicht} durch $p$ teilbar ($P \le N_G P$). Jetzt wirken nur mit $Q$ durch Konjugation auf diesen einen Orbit $\Ad(G)P$. $Q \le G$, der eine Orbit zerfällt gegebenenfalls in mehrere. Jeder Teil ist von der Form
+		\begin{align*}
+			\set{aRa^{-1} \mid a \in Q} \quad \text{ für ein $R$ von der Form} \quad R = gPg^{-1}\tag{$\ast\ast\ast$}\label{eq_sylow_proof_3}
+		\end{align*}
+		für ein $g \in G$
+		\begin{align*}
+			\Ad(G)R \cong \lnkset{Q}{Q} \cap N_G R
+		\end{align*}
+		$\cong$ folgt aus orbit-stabilizer wieder und $N_G R$ sind die $a \in Q$ mit $a R a^{-1} = R$
+		\begin{align*}
+			\abs{\Ad(Q)R} = \frac{\abs{Q}}{\abs{Q \cap N_G R}} = p^s
+		\end{align*}
+		für ein $s$, denn $Q$ war $p$-Untergruppe nach Annahme. Wegen \eqref{eq_sylow_proof_2} muss ein $P$ existieren mit $s = 0$, d.h. $Q \subseteq N_G R$
+	\end{proof}
+	\emph{Behauptung 5:} $R$ wie im Behauptung 4 ist eine Sylowsche Untergruppe und $Q \le R$
+	\begin{proof}
+		$R$ ist Bild von $P$ unter dem (inneren) Automorphismus $x \mapsto gxg^{-1}$ mit $g$ aus \eqref{eq_sylow_proof_3} also ist $R$ eine Sylowuntergruppe, da $Q \le N_G R$ ist
+		\begin{align*}
+			\set{ab \in G \mid a \in Q,b \in R} = QR \le G \text{ eine Untergruppe}\\
+			a,a' \in Q,b,b' \in R\; ab \cdot a'b' = ... \text{ need to add still!}
+		\end{align*}
+		Dann $\abs{QR} = \lnkset{\abs{Q}\abs{R}}{\abs{Q \cap R}} = \frac{p^j p^i}{Q \cap R}$, d.h. $QR$ ist $p$-Untergruppe wegen $R \le QR$ und $R$ Sylow, also maximal, so folgt $QR = R \implies Q \le R$ und das gibt uns den zweiten Sylow Satz.
+	\end{proof}
+	\item Ist der Spezialfall, in dem $Q$ selbst eine Sylowuntergruppe war! Dann ist $Q = R$ im obigen Beweis, aber $R = gPg^{-1}$. 
+ 	\end{enumerate}
 \end{proof}
+\subsection{Anwendungen}
+\begin{enumerate}
+	\item Cauchy's Satz: $G$ endlich Gruppe $p \mid \abs{G} \implies \exists g \in G$ mit $\ord(g) = p$ (p ist prim!)
+	\begin{proof}
+		Sei $P \le G$ eine Sylow $p$-Untergruppe, $\abs{P} = p^i$. Für $x \in P$ gilt $\ord(x) \mid p^{i}$, d.h. $\ord(x) = p^s$, also hat $x^{p^{s-1}}$ die Ordnung $p$
+	\end{proof}
+	\item $\abs{G} = pg$, $p\neq q$, $p,q$ prim $\implies G$ \emph{nicht} einfach.
+	\begin{proof}
+		Sei $q < p$. Wieviele Sylow $p$-Untergruppen gibt es? Ist $r$ diese Zahl, so ist $r=1 \mod p$. jede davon hat $p$ Elemente, d.h. ist isomorphic zu $\Z_p$. Sind $P_1, P_2$ zwei solche, so folgt $P_1 \cap P_2 = \set{1}$ (denn dies ist die einzige Untergruppe in $\Z_p$). Gäbe es mehr als eine Sylow $p$-Untergruppe, also mindestens $p+1$ Stück, wären deren Vereinigung eine Menge mit 1 $\in \set{1} + (p+1)(p-1) = p^2$ Elementen und das ist ein Widerspruch also $\abs{G} = pq < p^2$.
+	\end{proof}
+\end{enumerate}
