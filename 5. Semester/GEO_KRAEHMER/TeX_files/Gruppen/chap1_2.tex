@@ -490,7 +490,7 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	\item Ist der Spezialfall, in dem $Q$ selbst eine Sylowuntergruppe war! Dann ist $Q = R$ im obigen Beweis, aber $R = gPg^{-1}$. 
  	\end{enumerate}
 \end{proof}
-\subsection{Anwendungen}
+\subsection*{Anwendungen}
 \begin{enumerate}
 	\item Cauchy's Satz: $G$ endlich Gruppe $p \mid \abs{G} \implies \exists g \in G$ mit $\ord(g) = p$ (p ist prim!)
 	\begin{proof}
@@ -501,3 +501,72 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 		Sei $q < p$. Wieviele Sylow $p$-Untergruppen gibt es? Ist $r$ diese Zahl, so ist $r=1 \mod p$. jede davon hat $p$ Elemente, d.h. ist isomorphic zu $\Z_p$. Sind $P_1, P_2$ zwei solche, so folgt $P_1 \cap P_2 = \set{1}$ (denn dies ist die einzige Untergruppe in $\Z_p$). Gäbe es mehr als eine Sylow $p$-Untergruppe, also mindestens $p+1$ Stück, wären deren Vereinigung eine Menge mit 1 $\in \set{1} + (p+1)(p-1) = p^2$ Elementen und das ist ein Widerspruch also $\abs{G} = pq < p^2$.
 	\end{proof}
 \end{enumerate}
+\begin{proposition}
+	Annahme wie oben, aber $q \nmid p-1$. Dann ist $G \cong \Z_{pq}$.
+\end{proposition}
+\begin{proof}
+	Denke zusätzlich über Sylow $q$-Gruppen nach. Deren Zahl $s$ ist 1 modulo $q$. Ausserdem teilt $\gamma, p\cdot q$, d.h. $\gamma = 1, \gamma = p, \gamma = q$ oder $s = pq$, damit die Sylowgruppen alle konjugiert sind zueinander sind. D.h. die Menge $S_q$ der Sylow $p$-Untergruppe von $G$ ist Orbit (eine Bahn) in $X = \set{P \subseteq G \mid \abs{p} = q}$ unter Konjugation. Nach dem Stabilisator-Bahnen-Satz ist die Menge der Sylow $q$-Gruppen in einer Gruppe $G$ also im Bijektion mit $\lnkset{G}{N_G H}$, wobei $H \le G$ eine beliebige Sylow $q$-Untergruppe ist und $N_G H = \set{x \in G \mid x H x^{-1} = H}$ der Normalisator (Stabilisator von $H$ unter der adjungierten Wirkung) von $H$ in $G$ ist. D.h. $\lnkset{G}{N_G H}$ ist die Menge der zu $H$ konjugierten Untergruppen.
+	\begin{align*}
+		s = \abs{\lnkset{G}{N_G H}} = \frac{\abs{G}}{\abs{N_G H}}
+	\end{align*}
+	ist also die Zahl der zu $H$ konjugierten Untergruppen. Insbesondere ist $H \le N_G H$, also $\abs{H}\abs{N_G H}$ und 
+	\begin{align*}
+		s = \frac{\lnkset{G}{H}}{\lnkset{\abs{N_G H}}{\abs{H}}}
+	\end{align*}
+	Wir haben in den Sylowsätzen 3. hinzugefügt, dass $\gamma \mid m$. Im unserer speziellen Situation heisst dies: $s$ teilt $p$
+	\begin{align*}
+		\abs{G} = pq \quad s = \#\text{ Sylow-}p\text{-Untergruppen}
+	\end{align*}
+	$H \le G$ beliebige solche Untegruppe, d.h. $\abs{H} = q$, d.h. $H \cong \Z_q$ und $H \le N_G H$
+	\begin{align*}
+		s = \frac{\lnkset{\abs{G}}{\abs{H}}}{\lnkset{\abs{N_G H}}{\abs{H}}} = \frac{(pq)/q}{n/q} = \frac{p}{n/q}
+	\end{align*}
+	(n könnte $pq$ ($s=1$) oder $q$ ($s=p$ sein). $s = \#$ Sylow $q$-Untergruppen in $G$ mit $\abs{G} = pq$ mit $p>q$. $S \mid p$ (nach Sylow 3.) folgt dann $s =1 \oder s =p$. $s = 1 \mod q$ (sylow 1.) folgt
+	\begin{align*}
+		s=1,s=q+1, s= 2q+1, \dots \tag{$\ast$}\label{eq_sylow_1_not proof}
+	\end{align*}
+	Wenn wir also noch annehmen $q \nmid p -1$, so fällt $s = p$ als Fall weg, wegen \eqref{eq_sylow_1_not proof}. Also ist $s =1$ und auch die Sylow $q$-Untergruppe ist eindeutig und somit normal.
+	\begin{align*}
+		\Z_p \cong \le G \ge Q \cong \Z_q
+	\end{align*}
+	Wir haben $H \cap Q = \set{1}$, also gilt $G \cong H \times Q \cong \Z_p \times \Z_q \cong \Z_{pq}$ $G \cong \lnkset{R}{I_1 \cap ... \cap I_d} \cong \bigtimes_{i=1}^d\lnkset{R}{I_i}$.
+\end{proof}
+\begin{proposition}
+	Sei $H$ $p$-Sylow Untergruppe von $G$, $H$ eindeutig, dann folgt damit $H$ normal.
+\end{proposition}
+\begin{proof}
+		Sei
+	\begin{align*}
+	\alpha \colon G \to G \mit y \mapsto y x y^{-1}
+	\end{align*}
+	Automorphismus und $\alpha(H) \le G$, $\abs{\alpha(H)} = \abs{H}$, dann folgt $\alpha(H) = H$
+\end{proof}
+\begin{proposition}
+	Ist $n = pq, p>q$ und $q \mid p-1$, so gibt es bis auf Isomorphie genau zwei Gruppen $G$ der Ordnung $n$, die zyklische Gruppe $\Z_{pq}$ und eine nichtabelsche Gruppe, die ein semidirektes Produkt $\Z_p \rtimes\Z_q$ ist.
+\end{proposition}
+\begin{proof}
+	Wie oben gibt es eine eindeutige Sylow $p$-Untergruppe $H \cong \Z_p$. Wir haben oben gesehen, dass es entweder $s=1$ oder $s = p$ Sylow $q$-Untergruppe gibt. Im Fall $s=1$, gibt es eine eindeutige Sylow $q$-Untergruppe $Q = \Z_q$ und $G = \Z_p \times \Z_q$ (wie oben). Im Fall $s=p$ gibt es Sylow $q$-Untergruppen $Q_1, \dots, Q_p$ und $Q_i \cong \Z_q \forall i \in [1,p]$ aber keine ist normal.\\
+	$Q_1 \cong \Z_q$ wirkt auf $H \cong \Z_p$ durch Konjugation und wie oben ist $Q_1 \cap H = \set{1}$. Also ist $HQ \le G$ Untegruppe mit $pq$ Elementen, also $HQ = G$ und dies ist ein internes semidirektes Produkt, $H \rtimes Q_1 = G$
+	\begin{align*}
+		G \cong \Z_p \times \Z_q = \Z_{pq}
+	\end{align*}
+	Noch zu zeigen: 1. dieser Fall tritt auf, egal welche $p,q$ wir betrachten.\\
+	2. und zwar auf eindeutige Weise bis auf Isomorphie.
+\end{proof}
+\begin{proposition}[\person{Burnside}]
+	Sei $\abs{G} = p^i q^j$ ($p,q$ Primzahlen). Dann $G$ auflösbar (Auf jeden Fall nicht einfach!!!)
+\end{proposition}
+\begin{proof}
+	to be done ...
+\end{proof}
+\begin{definition}
+	Ist $G$ eine Gruppe und sind $(a,b) \in G^2$, so ist deren \begriff{Kommutator}
+	\begin{align*}
+		[a,b] = aba^{-1}b^{-1}
+	\end{align*}
+	und die derivierte Gruppe $G'$ also die von allem Kommutatoren erzeugte Untergruppe $G' \lhd G$
+	\begin{align*}
+		G \rhd G' \rhd G'' \rhd ...
+	\end{align*}
+	$G$ auflösbar wenn $n$ mit $G^{(n)} = \set{1}$
+\end{definition}
