@@ -1,4 +1,4 @@
-﻿Das Cox-Ross-Rubinstein-Modell (kurz: CRR-Modell) wird auch Binomialmodell genannt und wurde 1979 von Cox, Ross und Rubinstein entwickelt.\\
+Das Cox-Ross-Rubinstein-Modell (kurz: CRR-Modell) wird auch Binomialmodell genannt und wurde 1979 von Cox, Ross und Rubinstein entwickelt.\\
 Es handelt sich dabei um ein Modell für die Preisentwicklung eines Wertpapiers plus ein Verrechnungskonto mit konstanter Verzinsung (Numeraire) in diskreter Zeit.\\
 \textbf{Parameter:}
 
@@ -356,6 +356,7 @@ Notation: $\E^{\QQ}[\cdot]$ Erwartungswert unter $\QQ$.
 	Die 3 Bedingungen nehmen wir (Arb.) % find a way to reference to all 3 :(
 \end{definition}
 \begin{theorem} %2.8
+	\propref{theo_2_8}
 	Im CRR-Modell sind äquivalent
 	\begin{enumerate}
 		\item Es existiert keine Arbitrage (NA = ``No-Arbitrage'')
@@ -378,5 +379,6 @@ Notation: $\E^{\QQ}[\cdot]$ Erwartungswert unter $\QQ$.
 			\E^{\QQ}[\tilde{\Pi}_N] = \E^{\QQ}((\xi \bigcdot \tilde{S})_N) = 0
 		\end{align*}
 		und das ist ein Widerspruch zu \eqref{eq_2_4_2_8}.
+		\item a)$ \implies$ b) klar \checkmark
 	\end{itemize}
 \end{proof}

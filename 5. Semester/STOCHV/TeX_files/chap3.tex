@@ -1,12 +1,12 @@
-Ziel ist der Übergang vom CRR-Modell (zeit-diskret) zum \person{Block}-\person{Scholes} (BS-)Modell (zeit-stetig) durch Grenzwertbildung.
+Ziel ist der Übergang vom CRR-Modell (zeit-diskret) zum \person{Black}-\person{Scholes} (BS-)Modell (zeit-stetig) durch Grenzwertbildung.
 \begin{itemize}
 	\item Herleitung \person{Block}-\person{Scholes}-Formel für Preise von europäischen Put- und Call-Optionen
 \end{itemize}
 Beachte Zeitintervall $[0,T]$, für jedes $N \in \N$ geteilt in Schritte der Länge $\Delta_n = \frac{T}{N}$. Wähle Parameter $r \in \R, \mu \in \R$ (Trendparameter), $\sigma > 0$ (Volatitität). Definiere Folge von CRR-Modelle $(S^N)_{N \in \N}$ eingebettet in $[0,T]$ mit Parametern
 \begin{align*}
-	r_N = r \cdot \Delta_n \quad b_N = \mu \Delta_n + \sigma \sqrt{\Delta_n}\quad a_N = \mu \Delta_n - \sigma \sqrt{\Delta_n}\;p \in (0,1),\;s> 0
+	r_N = r \cdot \Delta_n \quad b_N = \mu \Delta_n + \sigma \sqrt{\Delta_n}\quad a_N = \mu \Delta_n - \sigma \sqrt{\Delta_n},\;p \in (0,1),\;s> 0
 \end{align*}
-d.h. $S^N_0 = s$, $S^N_{t_k} = s \cdot \prod_{i=1}^k (1+R_i^N)$ mit $t_k = k \cdot \Delta_n$, bzw. $\tilde{S}_0^N = s$ und damit $\tilde{S}^N_{t_k}= s \cdot \prod_{i=1}^k \frac{1+R_i^N}{1+r_N}$, wobei $\P(R^N_i = n_N) = p, \P(R^N_i = a_N) = 1-p$.
+d.h. $S^N_0 = s$, $S^N_{t_k} = s \cdot \prod_{i=1}^k (1+R_i^N)$ mit $t_k = k \cdot \Delta_n$, bzw. $\tilde{S}_0^N = s$ und damit $\tilde{S}^N_{t_k}= s \cdot \prod_{i=1}^k \frac{1+R_i^N}{1+r_N}$, wobei $\P(R^N_i = b_N) = p, \P(R^N_i = a_N) = 1-p$.
 Bezeichne diese Folge mit $\CRR_N$. Falls notwendig, interpolieren wir zwischen den Gitterpunkten mit
 \begin{align*}
 	S_t^N = S^N_{t_k} \quad t \in [t_k,t_{k+1}]
@@ -46,8 +46,10 @@ Es liegt ein sogenanntes \emph{Dreiecksschema} vor
 		\end{align*}
 		\item Mit $\ZZ_N = L^N_1 + \dots + L^N_N$ gilt
 		\begin{align*}
-			\E[\ZZ_N] \to m \in \R\\
-			\Var(\ZZ_N) \to s^2 > 0 \text{ für }N \to \infty
+			\begin{matrix}
+				\E[\ZZ_N] \to m \in \R\\
+			\Var(\ZZ_N) \to s^2 > 0 
+			\end{matrix}\text{ für }N \to \infty			
 		\end{align*}
 	\end{enumerate}
 	Dann konvergiert $(\ZZ_N)_{N \in \N}$ in Verteilung gegen normalverteilte Zufallsvariable $\ZZ$ mit $\E[\ZZ] = m \und \Var(\ZZ) = s^2$
@@ -76,6 +78,7 @@ Es liegt ein sogenanntes \emph{Dreiecksschema} vor
 	\end{align*}
 \end{definition}
 \begin{theorem}
+	\proplbl{theo_3_1}
 	Betrachte Folge $(S^N)_{N \in \N}$ von CRR-Modellen wie in $\CRR_N$ beschrieben. Dann konvergiert $S_T^N$ unter $\QQ_N$ in Verteilung gegen eine Zufallsvariable $S_T$ und $S_T/S_0$ ist lognormalverteilt mit Parameters $n = T(r - \sigma^2/2)$ und $s^2 = T\sigma^2$. Äquivalent dazu gilt mit $\ZZ_N = \log(S_T^N / S_0)$
 	\begin{align*}
 		\QQ_N(\ZZ_N \le x) \xrightarrow{N \to \infty} \Phi\brackets{\frac{x-T(r-\sigma^2/2)}{\sigma\sqrt{T}}}
@@ -121,18 +124,120 @@ Fixiere Laufzeit $T$ und Ausübungspreis $K$ und schreiben:\\
 	\item $C_N(t, S_t^N)$ ... Preis einer europäischen Call-Option im $\CRR_N$ Modell in Abhängigkeit von Zeit $t$ und Basisgut $S^N_t$
 	\item $P_N(t, S_t^N)$ ... Analog für Put
 \end{itemize}
-\begin{theorem}[\person{Block}-\person{Scholes}-Formel]
-	Die Preise $C_N$, $P_N$ konvergieren fpr $N \to \infty$ gegen BS-Preis
+\begin{theorem}[\person{Black}-\person{Scholes}-Formel]
+	\proplbl{theo_BS_eq}
+	Die Preise $C_N$, $P_N$ konvergieren für $N \to \infty$ gegen BS-Preis
 	\begin{align*}
 		C_{BS}(t,S_t) &= \lim_{N \to \infty} C_N(t, S_t^N)\\
 		P_{BS}(t,S_t) &= \lim_{N \to \infty} P_N(t, S_t^N)
 	\end{align*}
-	und es gilt die \begriff{\person{Block}-\person{Scholes}-Formel}:
+	und es gilt die \begriff{\person{Black}-\person{Scholes}-Formel}:
 	\begin{align*}
 		C_{BS}(t,S_t) &= S_t \Phi(d_1) - e^{-r(T-t)} K \Phi(d_2)\\
 		P_{BS}(t,S_t) &= S_t \Phi(-d_1) - e^{-r(T-t)} K \Phi(-d_2)
 		\intertext{wobei}
 		d_1 &= d_1(t, S_t) = \frac{\log(S_t/K) + (r+\sigma^2/2)(T-t)}{\sigma \sqrt{T-t}}\\
-		d_2 &= d_2(t, S_t) = \frac{\log(S_t/K) + (r-\sigma^2/2)(T-t)}{\sigma \sqrt{T-t}} = d_1 - \sigma\sqrt{T-t}
+		d_2 &= d_2(t, S_t) = \frac{\log(S_t/K) + (r-\sigma^2/2)(T-t)}{\sigma \sqrt{T-t}} = d_1(t, S_t) - \sigma\sqrt{T-t}
 	\end{align*}
+\end{theorem}
+\begin{*remark}
+	\begin{itemize}
+		\item Geschlossener Ausdruck für Bewertung von europäischen Put- und Call-Optionen
+		\item Herleitung als Grenzwert aus dem CRR-Modell entspricht nicht der ursrünglichen Herleitung von \person{Black} \& \person{Scholes} mittels stochastische Analysis ($\implies$ VL stoch. Calculus)
+		\item Für Entwicklung von BS-Formel und BS-Modell erhielten \person{Scholes} \& \person{Merton} dem Wirtschaftsnobel(gedenk)preis 1997
+		\item Der Parameter $\sigma$ heißt Voliatitität und entspricht der Schwankungsbreite der Preisänderung
+	\end{itemize}
+\end{*remark}
+Skizze vom BS-Call-Preis (siehe Handskizze...)
+\begin{itemize}
+	\item \begriff{innere Wert}: $(S_t -K)_+$ konvergiert gegen Auszahlungsprofil: $(S_T - K)_+$, für $t \to T$
+	\item \begriff{Zeitwert}: $C_{BS}(t,S_t) - (S_t - K)_+ \ge 0$ konvergiert gegen Null für $t \to T$
+	\item 
+	\begin{itemize}
+		\item \begriff{out of the money} (OTM): Innere Wert $=0$ bei $S_t < K$
+		\item \begriff{in the money} (ITM): Innere Wert $>0$ bzw. $S_t > K$
+		\item \begriff{at the money} (ATM): Grenzfall $S_t = K$
+	\end{itemize}
+	\item Zeitwert ist am größten für ATM-Optionen
+	\item $t \mapsto C_{BS}(t,S_t)$ ist streng monoton fallend bzw.
+	\begin{align*}
+		\frac{\partial C_{BS}(t,S_t)}{\partial t} < 0
+	\end{align*}
+	\item $S_t \mapsto C_{BS}(t,S_t)$ ist streng monoton steigend und konvex bzw
+	\begin{align*}
+		\frac{\partial C_{BS}(t,S_t)}{\partial S}(t,S_t) > 0 \und \frac{\partial^2 C_{BS}}{\partial S^2}(t,S_t) > 0
+	\end{align*}
+	\item Für den Put ist das ganze Symmetrisch
+\end{itemize}
+Skizze vom BS-Call-Preis (siehe Handskizze...)
+\begin{itemize}
+	\item \begriff{innere Wert}: $(K -S_t)_+$ konvergiert gegen Auszahlungsprofil: $(K - S_T)_+$, für $t \to T$
+	\item \begriff{Zeitwert}: $P_{BS}(t,S_t) - (K - S_t)_+ \ge 0$ konvergiert gegen Null für $t \to T$
+	\item 
+	\begin{itemize}
+		\item \begriff{out of the money} (OTM): Innere Wert $=0$ bei $S_t > K$
+		\item \begriff{in the money} (ITM): Innere Wert $>0$ bzw. $S_t < K$
+		\item \begriff{at the money} (ATM): Grenzfall $S_t = K$
+	\end{itemize}
+	\item Zeitwert ist am größten für ATM-Optionen
+	\item $t \mapsto C_{BS}(t,S_t)$ ist streng monoton fallend bzw.
+	\begin{align*}
+	\frac{\partial C_{BS}(t,S_t)}{\partial t} < 0
+	\end{align*}
+	\item $S_t \mapsto C_{BS}(t,S_t)$ ist streng monoton fallend und konvex bzw
+	\begin{align*}
+	\frac{\partial C_{BS}(t,S_t)}{\partial S}(t,S_t) < 0 \und \frac{\partial^2 C_{BS}}{\partial S^2}(t,S_t) > 0
+	\end{align*}
+\end{itemize}
+\begin{proof}[\propref{theo_BS_eq}]
+	Wir beweisen das Resultat für $t = 0$: andere Zeitpunkte $t \in [0,T]$ können analog behandelt werden. 
+	\begin{itemize}
+		\item Nach \propref{theo_2_8}, gilt für Preis der Put-Option im $\CRR_N$-Modell
+		\begin{align*}
+		P^N(0, S_0^N) &= (1+r\Delta_n)^{-N}\cdot \E^{\QQ}[(K-S_T^N)_+]\\
+		&= (1+r \Delta_n)^{-N}\cdot \E^{\QQ}[(K-S_0 e^{\ZZ_N = \log(\frac{S_T^N}{S_0})})]\\
+		&= (1+ r \Delta_n)^{-N}\cdot \E^{\QQ}[f(\ZZ_N)]
+		\end{align*}
+		mit $f(z)= (K-S_0 e^z)_+$ stetig und beschränkt. Aus Stochastik ist bekannt $\ZZ_N \to \ZZ$ in Verteilung, dann folgt $\E[f(\ZZ)] \to \E[f(\ZZ)] \quad \forall f \in C_b(\R)$.
+		\begin{itemize}
+			\item $\lim_{N \to \infty}(1+r\Delta_n)^{-N} = \lim_{N \to \infty}(1+rT/N)^{-N} = e^{-rT}$
+			\item $\lim_{N \to \infty} \E^{\QQ}[f(\ZZ_N)] = \E[f(Z)]$ mit $\ZZ \sim \NNN((r-\sigma^2/2)T, \sigma^2 T) = \NNN(mT,\sigma^2 T)$
+			\begin{align*}
+			\E[f(\ZZ)] &= \frac{1}{\sqrt{2\pi}}\frac{1}{\sigma\sqrt{T}}\int_{-\infty}^{\infty}(K-S_0 e^{\ZZ})_+ \exp(- \frac{(\ZZ - mt)^2}{2 \sigma^2 T})\d z\\
+			&= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\log(K/S_0)}(K - S_0 e^{\ZZ})\exp(-\half (\frac{\ZZ-mT}{\sigma \sqrt{T}})^2) \d z\\
+			&= \begin{pmatrix}
+			y = \frac{\ZZ - mT}{\sigma \sqrt{T}}\\
+			\d y = \frac{\d \ZZ}{\sigma \sqrt{T}}
+			\end{pmatrix}\\
+			&= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-d_2} (K - S_0 \exp(y \sigma \sqrt{T} + m T) e^{y^2/2} \d y\\
+			&= K\Phi(-d_2)-S_0 \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-d_2}\exp(-y^2/2 + y \sigma\sqrt{T}+mT)\d y
+			\intertext{Nebenrechung:}
+			& y^2/2 + y \sigma\sqrt{T} (+ mT = rT - \half(y^2-2y\sigma\sqrt{T}+\sigma^2 T) = rT - \half(y-\sigma\sqrt{T})\\
+			&= K \Phi(-d_2) = S_0 e^{rT}\underbrace{\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-d_2} e^{(y-\sigma\sqrt{T})/2}\d y}_{\Phi(-d_2-\sigma\sqrt{T})}\\
+			&= K\Phi(-d_2) - S_0 e^{rT}\Phi(-d_1)\\
+			\end{align*}
+			Dann folgt $\lim_{N \to \infty} P_N(0, S_0^N) = e^{-rT}K\Phi(-d_2) - S_0\Phi(-d_1)$ und das ist die Formel für den Put \checkmark
+		\end{itemize}
+		\item Für Call: Nutze Put-Call-Parität
+		\begin{align*}
+			C^N(0,S_0) - \underbrace{P^N(0,S_0)}_{P_{BS}(0,S_0)} = \underbrace{S_0}_{S_0} - \underbrace{(1+ r\Delta_n)^{-N} K}_{\to e^{-rT}K}
+		\end{align*} 
+		\begin{align*}
+			C_{BS}(0,S_0) &= \lim_{N \to \infty}C^N(0,S_0)\\
+			&= P_{BS}(0,S_0) + S_0 - e^{rT}K\\
+			&= e^{-rT}K(\underbrace{\Phi(-d_2)-1}_{-\Phi(d_2)}) - S_0 (\underbrace{\Phi(-d_1)-1}_{-\Phi(d_1)})\\
+			&= S_0\Phi(d_1)-e^{-rT}K\Phi(d_2)
+		\end{align*}
+		wobei wir die Symmetrie der Normalverteilung: $\Phi(-x) = 1- \Phi(x)$ genutzt haben. Damit ist auch die BS-Formel für den Call gezeigt \checkmark.
+	\end{itemize}
+\end{proof}
+\emph{Wir haben gezeigt:} $\CRR_N$-Preise konvergieren gegen BS-Preise.\\
+\emph{Frage:} Was gilt für die Replikationsstrategie? Konvergiert diese auch?
+\begin{theorem} %3.4
+	Für die Replikationsstrategie $\xi_{t_N}^N$ der Put- bzw. Call-Optionen in $\CRR_N$-Modell gilt:
+	\begin{itemize}
+		\item \emph{Put:} $\lim_{N \to \infty} \xi_{t_N}^N = \frac{\partial P_{BS}}{\partial S}(t,S_t) = - \Phi(-d_1)$
+		\item \emph{Call:} $\lim_{N \to \infty} \xi_{t_N}^N = \frac{\partial C_{BS}}{\partial S}(t,S_t) = \Phi(d_1)$
+	\end{itemize}
+	Diese partielle Ableitungen heißen auch ``Delta'' des Put- bzw. Call-Preisen. 
 \end{theorem}
