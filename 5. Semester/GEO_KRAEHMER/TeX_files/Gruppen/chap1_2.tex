@@ -1,4 +1,4 @@
-\section{Permutationsdarstellungen und Gruppenoperationen}
+﻿\section{Permutationsdarstellungen und Gruppenoperationen}
 \subsection*{Allgemeines}
 Motivation: $H < G \implies \lnkset{G}{H}$\\
 Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
@@ -15,7 +15,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\end{align*}
 		so dass: ($\forall x \in X, \forall g,h \in G$)
 		\begin{itemize}
-			\item $a \cdot x = x$
+			\item $g \cdot x = x$
 			\item $(g\cdot h)\cdot x = g \cdot (h\cdot x)$
 		\end{itemize}
 	\end{enumerate}
@@ -80,7 +80,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 	\end{itemize}
 \end{definition}
 \begin{*example}
-	Sei $\Z \Circlearrowleft \Z_n, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
+	Sei $G=\Z \Circlearrowleft \Z_n=X, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
 	\[
 		\begin{tikzcd}
 		G \arrow[r, "\theta"] \arrow[d]                       & S_X \\
@@ -88,7 +88,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\end{tikzcd}
 	\]
 	also $\overline{\theta}$ injektiv $\implies \lnkset{G}{\ker \theta} \Circlearrowleft X$ treu.\\
-	Für $\Z \Circlearrowleft \Z_n \colon \ker \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
+	Für $\Z \Circlearrowleft \Z_n \colon \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
 	\begin{align*}
 		\overline{x}, \overline{y} \in \Z_n\quad k\in \Z, \text{ so dass } \overline{k} = \overline{x-y} \in \Z_n\\
 		k \cdot \overline{y} = \overline{k+y} = \overline{x-y+y} = \overline{x}
