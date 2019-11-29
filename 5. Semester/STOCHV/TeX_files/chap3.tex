@@ -198,7 +198,7 @@ Skizze vom BS-Call-Preis (siehe Handskizze...)
 		&= (1+r \Delta_n)^{-N}\cdot \E^{\QQ}[(K-S_0 e^{\ZZ_N = \log(\frac{S_T^N}{S_0})})]\\
 		&= (1+ r \Delta_n)^{-N}\cdot \E^{\QQ}[f(\ZZ_N)]
 		\end{align*}
-		mit $f(z)= (K-S_0 e^z)_+$ stetig und beschränkt. Aus Stochastik ist bekannt $\ZZ_N \to \ZZ$ in Verteilung, dann folgt $\E[f(\ZZ)] \to \E[f(\ZZ)] \quad \forall f \in C_b(\R)$.
+		mit $f(z)= (K-S_0 e^z)_+$ stetig und beschränkt. Aus Stochastik ist bekannt $\ZZ_N \to \ZZ$ in Verteilung, dann folgt $\E[f(\ZZ_N)] \to \E[f(\ZZ)] \quad \forall f \in C_b(\R)$.
 		\begin{itemize}
 			\item $\lim_{N \to \infty}(1+r\Delta_n)^{-N} = \lim_{N \to \infty}(1+rT/N)^{-N} = e^{-rT}$
 			\item $\lim_{N \to \infty} \E^{\QQ}[f(\ZZ_N)] = \E[f(Z)]$ mit $\ZZ \sim \NNN((r-\sigma^2/2)T, \sigma^2 T) = \NNN(mT,\sigma^2 T)$
@@ -241,3 +241,110 @@ Skizze vom BS-Call-Preis (siehe Handskizze...)
 	\end{itemize}
 	Diese partielle Ableitungen heißen auch ``Delta'' des Put- bzw. Call-Preisen. 
 \end{theorem}
+\begin{proof}
+	BEtrachte nur $t=0$, $t \in[0,T]$ kann analog behandelt werden. Nach \propref{th_2_3} ist $\xi_0^N$ für Put gegeben durch
+	\begin{align*}
+		\xi_0^N &= \frac{P_N(\Delta_N, S_0(1+b_N)) - P_N(\Delta_N, S_0(1+a_N))}{S_0(b_N-A_N)}\\
+		&= \frac{P_N(\Delta_N, S_0(1+\mu\Delta_n + \sigma\sqrt{\Delta_n})) - P_N(\Delta_N, S_0(1+\mu\Delta_N + \sigma\sqrt{\Delta_N}))}{2 S_0 \sigma \sqrt{\Delta_N}}
+	\end{align*}
+	Es gilt $\lim_{N \to \infty} P_N(\Delta_N, S_0(1+\mu\Delta_N)) = P_{BS}(0,S_0)$. Unter geeigneten Annahmen an gleichmäßige Konvergenz folgt
+	\begin{align*}
+		\lim_{N \to \infty} \xi_0^N = \frac{\partial P_{BS}}{\partial S}(t,S_t)
+	\end{align*}
+	und analog für Call. Wir berechnen explizit:
+	\begin{align*}
+		\frac{\partial C_{BS}}{\partial S}(t,S) &= \Phi(d_1) + S\phi(d_1)\cdot \frac{\partial d_1}{\partial S} - e^{-r(T-t)}K\phi(d_2)\frac{\partial d_1}{\partial d_2}\\
+		&= \Phi(d_1) + \frac{\partial d_1}{\partial S}(S\phi(d_1)-e^{-r(T-t)}K\phi(d_2))
+		\intertext{Nebenrechung:}
+		e^{-rt}K/S\phi(d_2) &= e^{-r\tau}\frac{1}{\sqrt{2\pi}}K/S \exp(-\half \frac{\log(S/K) + r\tau - \sigma^2 r/\tau}{\sigma \sqrt{\tau}})\\
+		&= \frac{1}{\sqrt{2\pi}} e^{-r\tau}K/S \exp(-\half \frac{(\log(S/K) + r\tau)^2}{\sigma^2 \tau} - 2 (\log(S/K) + r\tau) + \sigma^2\tau/4)\\
+		&= \frac{1}{\sqrt{2\pi}}\exp(-\half \frac{(\log(S/K) + r\tau)^2}{\sigma^2 \tau} + (\log(S/K) + r \tau + \sigma^2\tau/4)\\
+		&= \phi(d_1)
+	\end{align*}
+	also 
+	\begin{align*}
+		e^{-r(T-t)}K \phi(d_2) = S\phi(d_1)
+	\end{align*}
+	Das heißt: $\frac{\partial C_{BS}}{\partial S}(t,S) = \Phi(d_1)$. Put folgt analog oder mit Put-Call-Parität.
+\end{proof}
+\begin{*remark}
+	\begin{itemize}
+		\item $\frac{\partial C_{BS}}{\partial S}$ bzw. $\frac{\partial P_{BS}}{\partial S}$ lassen sich auch interpretieren als \begriff{Sensitivität} des Call- bzw. Put-Preises gegenüber Preisänderungen des Basisguts.
+	\end{itemize}
+\end{*remark}
+Analog lassen sich die Sensitivitäten (``\begriff{Greeks}'') nach den weiteren Parametern berechnen.
+\begin{definition}
+	Die ``Greeks'' des BS-Preises sind folgende partielle Ableitungen\\
+	\begin{tabular}{|c|c|c|c|c|} % TODO fix the table :/
+		Bezeichg. & Def. der part. Abl. & Call & Put & Bemerkungen\\
+		\hline
+		Delta & $\frac{\partial}{\partial S}$ & $\Phi(d_1)$ & $-\Phi(-d_1)$ & Bestimmt die Replikations- bzw. Hedgingstrat.\\
+		Gamma & $\frac{\partial^2}{\partial S^2}$ & $\frac{\phi(d_1)}{S\sigma\sqrt{T-t}}$ & $\frac{\phi(d_1)}{S\sigma\sqrt{T-t}}$ & Sensitivität von Delta ggü Basisgut, ``wie oft'' muss Strategie anpassen: Konvexität\\
+		Vega & $\frac{\partial}{\partial \sigma}$ & $S_t \sqrt{T-t}\phi(d_1)$ & $S_t \sqrt{T-t}\phi(d_1)$ & Sensitivität gegenüber Änderg Volatitität ($\nu >0$)\\
+		Theta & $\frac{\partial}{\partial t}$ & siehe ÜA & siehe ÜA & Änderung in der Zeit\\
+		Rho & $\frac{\partial}{\partial r}$ & $K(T-t)(e^{-r(T-t)}) \Phi(d_2)$ & $-K(T-t)(e^{-r(T-t)}) \Phi(-d_2)$ & Sensitivität ggü Änderung Zinsrate
+	\end{tabular}
+\end{definition}
+\begin{*remark}
+	``Vega'' ist kein Buchstabe des griechischen Alphabets :/
+\end{*remark}
+\begin{conclusion}
+	Der BS-Preis $C_{BS}(t,S)$ erfüllt folgende partielle DGL
+	\begin{align*}
+		\frac{\partial C_{BS}}{\partial t} + rS\frac{\partial C_{BS}}{\partial S} + \frac{\sigma^2}{2}S^2 \frac{\partial^2 C_{BS}}{\partial S^2}+rC_{BS} = 0 \tag{BS-PDE}\label{eq_3_1_BS_PDE}
+	\end{align*}
+	wobei $(t,s) \in [0,T]\times \R_{\ge 0}$. Mit Endwertbedingung
+	\begin{align*}
+		\lim_{t \to T} C_{BS}(t,S) = (S-K)_+
+	\end{align*}
+	Für $P_{BS}$ gilt die gleiche PDE mit Endwertbedingung
+	\begin{align*}
+		\lim_{t \to T} P_{BS}(t,S) = (K-S)_+
+	\end{align*}
+\end{conclusion}
+\begin{proof}
+	Siehe Übung 3.0.
+\end{proof}
+\begin{*remark}
+	In Erweiterungen des BS-Modells gibt es \emph{keine} geschlossene Ausdrücke für Put/Call-Preise, aber eine PDE ähnlich zu \eqref{eq_3_1_BS_PDE} gilt weiterhin.
+\end{*remark}
+\section{Implizite Volatilität/ Grenzen des BS-Modells}
+Wir schreiben etwas ausführlicher
+\begin{align*}
+	C_{BS}(t,S_t, T, K, \sigma) := C_{BS}(t, S_t)
+\end{align*}
+eine Abhängigkeit von $(T,K,\sigma)$ zu verdeutlichen.
+\begin{theorem}[Implizite Volatlität] %3.6
+	Sei $C_{\ast}(0,S_0,T, K)$ ein vorgegebener (beobachtbarer) Preis einer Call-Option mit Fälligkeit $T$, Ausübungspreis $K$ welcher innerhalb der Arbitragegrenzen liegt
+	\begin{align*}
+		(S_0 - e^{-rT}K)_+ < C_{\ast}(0,S_0, T,K) < S_0
+	\end{align*}
+	Dann existiert ein eindeutiges $\sigma_{\ast}(T, K) \in (0,\infty)$, die \begriff{implizite Volativilität} von $C_{\ast}$ sodass
+	\begin{align*}
+		C_{\ast}(0,S_0, T,K) = C_{BS}(0,S_0,T,K, \sigma_{\ast}(T,K))
+	\end{align*}
+	gilt.
+\end{theorem}
+\begin{*remark}
+	$\sigma_{\ast}(T,K)$ ist Lösung eines inversen Problems.
+	\begin{align*}
+		\begin{matrix}
+			\text{Vorwärtsproblem: } & \text{ Parameter }\to \text{ Call-Preis}\\
+			\text{inverses Problem: } & \text{ Call-Preis }\to \text{ Parameter}
+		\end{matrix}
+	\end{align*}
+	Kann zur impirischen Überpürfung des BS-Modells verwendet werden:
+	\begin{itemize}
+		\item BS-Modell passt gut zu Daten: $(T,K) \mapsto \sigma_{\ast}(T,K)$ ist annähernd konstant
+		\item BS-Modell passt nicht gut zu Daten: $(T,K) \mapsto \sigma_{\ast}(T,K)$ variiert stark mit $(T,K)$
+	\end{itemize}
+\end{*remark}
+Typische tatsächliche Beobachtung: siehe Handskizze :)\\
+Eigenschaften:
+\begin{itemize}
+	\item konvex
+	\item assymetrisch (höher für große K)
+	\item Minimum bei ATM
+	\item flacher für lange Laufzeiten, steiler für kurze Laufzeiten
+\end{itemize}
+Form weist daraufhin, dass BS-Modell große Preissprünge des Basisguts \emph{unterschätzt}. Form des \person{Vola}-\person{Smiles} in Modellen jeweils von BS $\implies$ \emph{aktuelles Forschungsthema}.
