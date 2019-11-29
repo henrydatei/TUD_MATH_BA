@@ -1,4 +1,4 @@
-\section{Permutationsdarstellungen und Gruppenoperationen}
+﻿\section{Permutationsdarstellungen und Gruppenoperationen}
 \subsection*{Allgemeines}
 Motivation: $H < G \implies \lnkset{G}{H}$\\
 Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
@@ -15,7 +15,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\end{align*}
 		so dass: ($\forall x \in X, \forall g,h \in G$)
 		\begin{itemize}
-			\item $a \cdot x = x$
+			\item $g \cdot x = x$
 			\item $(g\cdot h)\cdot x = g \cdot (h\cdot x)$
 		\end{itemize}
 	\end{enumerate}
@@ -80,7 +80,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 	\end{itemize}
 \end{definition}
 \begin{*example}
-	Sei $\Z \Circlearrowleft \Z_n, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
+	Sei $G=\Z \Circlearrowleft \Z_n=X, n \neq 0, \forall g \in \Z, \overline{x} \in \Z_n\colon g \cdot \overline{x} = \overline{g+x}$ ist \emph{nicht treu}, da $\forall g \in \Z \colon (g+n)\cdot \overline{x} = \overline{g+n+x} = g \cdot \overline{x}$
 	\[
 		\begin{tikzcd}
 		G \arrow[r, "\theta"] \arrow[d]                       & S_X \\
@@ -88,7 +88,7 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\end{tikzcd}
 	\]
 	also $\overline{\theta}$ injektiv $\implies \lnkset{G}{\ker \theta} \Circlearrowleft X$ treu.\\
-	Für $\Z \Circlearrowleft \Z_n \colon \ker \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
+	Für $\Z \Circlearrowleft \Z_n \colon \ker \theta = n\Z \implies \Z_n \Circlearrowleft \Z_n$ treu, da
 	\begin{align*}
 		\overline{x}, \overline{y} \in \Z_n\quad k\in \Z, \text{ so dass } \overline{k} = \overline{x-y} \in \Z_n\\
 		k \cdot \overline{y} = \overline{k+y} = \overline{x-y+y} = \overline{x}
@@ -328,3 +328,245 @@ Ausblick:\\
 	\item $G \Circlearrowleft G$ durch Konjugation $\forall g,x \in G \colon x^g := gxg^{-1}$
 	\item $G \Circlearrowleft \powerset(G)$ durch Konjugation
 \end{enumerate}
+\begin{theorem}
+	As $G$-Space, we have $G_x \cong \lnkset{G}{G_x}$.
+\end{theorem}
+\begin{*example}
+	\begin{itemize}
+		\item $G = \SO(3)$ Rotation im $\R^3$, dann $A \in \SO(3) \ni \Mat(3,\R)$, $AA^T = 1$, $\det A = 1$, dann kann man sich das Skalarprodukt anschaun % siehe Bild
+		\begin{itemize}
+			\item (Wirkung durch Multiplikation) und nehme $x = (0 0 1)^T, G_x = S^2$ (Bahn, Orbit dieses Punkte ist $S^2$), Stabilisator $G_x = \SO(2)$
+			\item Allgemeiner: eingebettet in $\SO(3)$ durch
+			\begin{align*}
+			\gamma\colon \SO(2) \to \SO(3) \mit B \mapsto \begin{pmatrix}
+			B & 0\\
+			0 & 1
+			\end{pmatrix}			 
+			\end{align*}
+			ist Gruppenhomo. (also $S^2 \cong \lnkset{\SO(3)}{\SO(2)}$ und Erlangen Programm ...)
+		\end{itemize}
+		\item \person{Cayley}s Satz $X = G$, $\alpha$ ist Gruppenstruktur. Hier gilt:
+		\begin{align*}
+			G = \set{1}\forall x \in X = G \mit gx = x \implies g = 1
+		\end{align*}
+		durch Multiplikation von rechts mit $x^{-1}$. (Spezielle Situation, i.A. gibts \emph{kein} $xy$ für $x,y \in X$!) Insbesondere ist die Wirkung treu, also $\rho$ injektiv und wir erhalten
+		\begin{align*}
+			G \cong \rho(G) < S_G
+		\end{align*}
+		\item $G$ Gruppe, $H < G$, $X = \lnkset{G}{H}$ mit Wirkung $g(hH) := (gh)H, g,h \in G$, transitiv, da $x = hH, y= tH$ ($x,y \in X$ beliebig), dann wähle $g:= t H^{-1}$ meine Wahl ($\exists g \in G$ $t h^{-1}hH = gx = y = tH$)
+		\begin{align*}
+			G_x = \set{g \in G \mid gx = x} \und x = hH \quad gx = x \Leftrightarrow ghH = hH \implies h^{-1}gh \in H \implies g \in hHH^{-1} \in H\\
+			\text{Insbesondere }\ker \rho = \bigcap_{x \in X} G_x = \bigcap_{H \in H} hHh^{-1} \lhd G 
+		\end{align*}
+		Dies ist $= H \Leftrightarrow H \lhd G$
+		\item Adjungierte Wirkung: $X = G$ (wie oben) \emph{aber}
+		\begin{align*}
+			g \rhd x\cdot gxg^{-1}
+		\end{align*}
+		($\rhd$ neues Symbol zum unterscheiden). $G_x = $ Konjugationsklassen von $x \in X = C(x)$ und
+		\begin{align*}
+			G_x = \set{g \in G\colon gxg^{-1} = x \Leftrightarrow gx = xg} = Z(x) \text{ Zentralisator}
+		\end{align*}
+		Nutze Orbit-Stabiliser-Theorem:
+		\begin{align*}
+			\lnkset{G}{Z(x)} \cong C(x) \und \abs{C(x)} = \frac{\abs{G}}{\abs{Z(x)}}
+		\end{align*}
+		Die Konjugationsklassen mit nur einem Element bilden das Zentrum von $G$. Also gilt 
+		\begin{align*}
+			G = Z(G) \cup C(x_1) \cup \dots C(x_d)
+			\intertext{für geeignete $x_1, \dots, x_d \in G$}
+			\abs{G} = \abs{Z(G)} + \sum_{i=1}^d \frac{\abs{G}}{\abs{Z(x_i)}} \tag{class-equation}\label{eq_1_6_1_class_eq}
+		\end{align*}
+		(wobei die Vereinigung disjunkt sind) % find disjoint union symbol :S MINT?!
+	\end{itemize}
+\end{*example}
+\begin{proposition}
+	Eine endliche $p$-Gruppe hat nichttriviales Zentrum.
+\end{proposition}
+\begin{proof}
+	$\abs{G} = p^n$ mit $p=$prim und dann
+	\begin{align*}
+		p^n &= \abs{Z(G)} + \sum_{i=1}^d \frac{\abs{G}}{\abs{Z(x_i)}}\\
+		&= \abs{Z(G)} + p^{n_1} + \dots + p^{n_d} \quad n > 0
+	\end{align*}
+	Also ist $\abs{Z(G)} \ge 1$ denn $1 \in Z(G)$ und $\abs{Z(G)}$ ist teilbar durch $p$ und damit ist $\abs{Z(G)} \ge p$
+\end{proof}
+Insbesondere ist $G$ nicht einfach! ($Z(G) \lhd G$)
+\section{Die \person{Sylow}-Sätze}
+Sei $G$ eine endliche Gruppe.
+\begin{definition}
+	Eine Untergruppe von $G$ ist eine maximale $p$-Untergruppe (für eine Primzahl $p$), d.h. $H < G$ und $\exists p$ prim, $n \in \N\colon \abs{H} = p^{n+1} \nmid G$ (teil nicht).
+\end{definition}
+Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
+\begin{theorem}[alle Sylow-Sätze]
+	Mit der wie oben gilt:
+	\begin{enumerate}
+		\item Die Zahl $r$ der Sylowschen Untergruppen von $G$ ist 1 modulo $p$ ($\exists s\colon r = 1+sp$). Insbesondere ist $r \neq 0$!
+		\item Jede $p$-Untergruppe von $G$ ist in einer Sylowschen enthalten
+		\item Alle Sylowschen Untegruppen sind konjugiert zueinander. Insbesondere gilt: $r \mid m$. Also
+		\begin{align*}
+			H < G\quad \abs{H} = p^n \quad N_G = N := \set{g\in G \mid gHg^{-1} = H} \quad \abs{\lnkset{G}{N}} = r = \frac{p^n \cdot m}{p^n \cdot \lnkset{N}{H}}
+		\end{align*}
+		da $m = r \cdot \abs{\lnkset{N}{H}}$ und $\abs{N} = \abs{\lnkset{N}{H}} \cdot p^n$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item Sei $X := \set{P \subseteq G \mid \abs{P} = p^n} \ni \set{x_1, \dots, x_{p^n} \mid x_j \in G}$. $G$ wirkt auf $X$ durch Multiplikation von links.
+		\begin{align*}
+		g \set{x_1, \dots, x_{p^n}} = \set{gx_1, \dots, gx_{p^n}}
+		\end{align*}
+		Gesucht ist $H \subset X$ mit $H < G$. Für ein solches $H$ ist dann $\lnkset{G}{H} \subseteq X$ eine Bahn der $G$-Wirkung mit der Länge $m = \abs{\lnkset{G}{H}} = \frac{\abs{G}}{\abs{H}} = \frac{p^n m}{p^n}$\\
+		\emph{Behauptung 1:} Alle Bahnen in $X$ der Länge $m$ sind von dieser Form.
+		\begin{proof}[Beweis der Behauptung]
+			Sei $GP \subseteq X$ eine Bahn mit $\abs{GP} = m$. WLOG ist $1 \in P$ (wenn nicht, wähle $x \in P$ beliebig und ersetze $P$ durch $x^{-1}P$)
+			\begin{align*}
+			G_P = \set{g \in G \mid gP = P}\quad P = \set{1, x_2, \dots, x_{p^n}}\\
+			\und gP = \set{g1, gx_2, \dots, gx_{p^n}}
+			\end{align*}
+			Also $1 \in P \implies G_P \subset P$ und daraus $\abs{G_P} \le \abs{P} = p^n$. Aber wir wissen auch:
+			\begin{align*}
+			m = \abs{GP} = \abs{\lnkset{G}{G_P}} = \frac{\abs{G}}{\abs{G_P}} = \frac{p^n m}{G_P} \implies \abs{G_P} = p^n.\tag{$\ast$}\label{eq_1_7_sylow_1}
+			\end{align*}
+			Also ist $G_P = P$. Damit folgt die Behauptung $G_p < G$.\\
+			\emph{Behauptung \eqref{eq_1_7_sylow_1}:} Alle Bahnen in $X$, deren Länge nicht durch $p$ teilbar ist, sind von der Form $\lnkset{G}{H}$
+		\end{proof}
+		Damit folgt 1.\\
+		\emph{Behauptung 2:} Die einzige Nebenklasse $gH$, die eine Untergruppe von $G$ ist, ist $H$ selbst ($H$ wie oben Sylowsche Untergruppe)
+		\begin{proof}
+			$gH$ Untergruppe $\implies 1 \in gH \implies g^{-1} \in H$ und daraus $g \in H$ und schließlich $gH = H$
+		\end{proof}
+		Also existiert eine Bijektion zwischen den Sylowschen $p$-Untergruppen $H < G$ und den Bahnen $GP \subseteq X$ mit $\abs{GP}$ nicht durch $p$ teilbar.\\
+		\emph{Behauptung:} Ist $[n]\in \Z_p$ die Klasse von $n \in \Z$ in $\Z_p$, so gilt
+		\begin{align*}
+		[r] = \frac{1}{[m]}\binom{\abs{G}}{p^n}
+		\end{align*}
+		\begin{*remark}
+			$\abs{X} = \binom{\abs{G}}{p^n}$ per Definition von $X$ als $\set{P \subseteq G \mid \abs{P} = p^n}$
+		\end{*remark}
+		Nach Behauptung 1 und Behauptung 2 gilt $rm = \binom{\abs{G}}{p^n}$ modulo $p$, denn $X$ zerfällt in Bahnen, da $G$-Wirkung und die Bahnen deren Länge nicht durch $p$ teilbar sind. Die Bahnen sind von der Form $\lnkset{G}{H}$ für eine eindeutige, bestimmte Sylow $p$-Untergruppe $H$, haben die Länge $m$ und es gibt $r$ davon. Damit ist der erste Sylow-Satz bewiesen. \\
+		Yeah its scrambled again :/
+		\begin{*remark}
+			Only $\abs{G}$ enters here, we can compute $r$ modulo $p$ using any group $G$ of the size $\abs{G}$, z.B. können wir $G = \Z_{\abs{G}}$, und in $\Z_{p^{i} m}$ gibt es genau eine Sylow $p$-Untergruppe, nämlich $\langle [m]\rangle = \set{[e], [m], [2m], \dots, [(p^{i} - 1)m]}$ (Erinnerung 1. Semester: $H \le \Z \Leftrightarrow H = a\Z \dots $) $\implies$ 1.
+		\end{*remark}
+	\item Betrachte die Konjugationswirkung von $G$ auf $X$
+	\begin{align*}
+		\Ad(g)P := \set{gx^{-1}g, \dots, gx_{p^{i}}g^{-1}}
+	\end{align*}
+	\emph{Behauptung 3:} Ist $P \le G$ Sylow $p$-Untergruppe und $Q \le P$ eine $p$-Untergruppe, so existiert $R = gPg^{-1}$ mit $aRa^{-1}\quad \forall a \in G$ ($N_G R \ge Q$)
+	\begin{proof}
+		Betrachte den Orbit von $P$ unter der adjungierten Wirkung
+		\begin{align*}
+			\Ad(G)P := \set{gPg^{-1} \mid g \in G} \cong \lnkset{G}{N_G P} \quad \text{ orbit stabilizer}\\
+			(g \in N_G P \Leftrightarrow gPg^{-1} = P)
+		\end{align*}
+		Dann gilt noch 
+		\begin{align*}
+			p^i n = \abs{N_G P} \implies \abs{\Ad(G)P} = \frac{m}{n}\tag{$\ast \ast$}\label{eq_sylow_proof_2}
+		\end{align*}
+		\emph{nicht} durch $p$ teilbar ($P \le N_G P$). Jetzt wirken nur mit $Q$ durch Konjugation auf diesen einen Orbit $\Ad(G)P$. $Q \le G$, der eine Orbit zerfällt gegebenenfalls in mehrere. Jeder Teil ist von der Form
+		\begin{align*}
+			\set{aRa^{-1} \mid a \in Q} \quad \text{ für ein $R$ von der Form} \quad R = gPg^{-1}\tag{$\ast\ast\ast$}\label{eq_sylow_proof_3}
+		\end{align*}
+		für ein $g \in G$
+		\begin{align*}
+			\Ad(G)R \cong \lnkset{Q}{Q} \cap N_G R
+		\end{align*}
+		$\cong$ folgt aus orbit-stabilizer wieder und $N_G R$ sind die $a \in Q$ mit $a R a^{-1} = R$
+		\begin{align*}
+			\abs{\Ad(Q)R} = \frac{\abs{Q}}{\abs{Q \cap N_G R}} = p^s
+		\end{align*}
+		für ein $s$, denn $Q$ war $p$-Untergruppe nach Annahme. Wegen \eqref{eq_sylow_proof_2} muss ein $P$ existieren mit $s = 0$, d.h. $Q \subseteq N_G R$
+	\end{proof}
+	\emph{Behauptung 5:} $R$ wie im Behauptung 4 ist eine Sylowsche Untergruppe und $Q \le R$
+	\begin{proof}
+		$R$ ist Bild von $P$ unter dem (inneren) Automorphismus $x \mapsto gxg^{-1}$ mit $g$ aus \eqref{eq_sylow_proof_3} also ist $R$ eine Sylowuntergruppe, da $Q \le N_G R$ ist
+		\begin{align*}
+			\set{ab \in G \mid a \in Q,b \in R} = QR \le G \text{ eine Untergruppe}\\
+			a,a' \in Q,b,b' \in R\; ab \cdot a'b' = ... \text{ need to add still!}
+		\end{align*}
+		Dann $\abs{QR} = \lnkset{\abs{Q}\abs{R}}{\abs{Q \cap R}} = \frac{p^j p^i}{Q \cap R}$, d.h. $QR$ ist $p$-Untergruppe wegen $R \le QR$ und $R$ Sylow, also maximal, so folgt $QR = R \implies Q \le R$ und das gibt uns den zweiten Sylow Satz.
+	\end{proof}
+	\item Ist der Spezialfall, in dem $Q$ selbst eine Sylowuntergruppe war! Dann ist $Q = R$ im obigen Beweis, aber $R = gPg^{-1}$. 
+ 	\end{enumerate}
+\end{proof}
+\subsection*{Anwendungen}
+\begin{enumerate}
+	\item Cauchy's Satz: $G$ endlich Gruppe $p \mid \abs{G} \implies \exists g \in G$ mit $\ord(g) = p$ (p ist prim!)
+	\begin{proof}
+		Sei $P \le G$ eine Sylow $p$-Untergruppe, $\abs{P} = p^i$. Für $x \in P$ gilt $\ord(x) \mid p^{i}$, d.h. $\ord(x) = p^s$, also hat $x^{p^{s-1}}$ die Ordnung $p$
+	\end{proof}
+	\item $\abs{G} = pg$, $p\neq q$, $p,q$ prim $\implies G$ \emph{nicht} einfach.
+	\begin{proof}
+		Sei $q < p$. Wieviele Sylow $p$-Untergruppen gibt es? Ist $r$ diese Zahl, so ist $r=1 \mod p$. jede davon hat $p$ Elemente, d.h. ist isomorphic zu $\Z_p$. Sind $P_1, P_2$ zwei solche, so folgt $P_1 \cap P_2 = \set{1}$ (denn dies ist die einzige Untergruppe in $\Z_p$). Gäbe es mehr als eine Sylow $p$-Untergruppe, also mindestens $p+1$ Stück, wären deren Vereinigung eine Menge mit 1 $\in \set{1} + (p+1)(p-1) = p^2$ Elementen und das ist ein Widerspruch also $\abs{G} = pq < p^2$.
+	\end{proof}
+\end{enumerate}
+\begin{proposition}
+	Annahme wie oben, aber $q \nmid p-1$. Dann ist $G \cong \Z_{pq}$.
+\end{proposition}
+\begin{proof}
+	Denke zusätzlich über Sylow $q$-Gruppen nach. Deren Zahl $s$ ist 1 modulo $q$. Ausserdem teilt $\gamma, p\cdot q$, d.h. $\gamma = 1, \gamma = p, \gamma = q$ oder $s = pq$, damit die Sylowgruppen alle konjugiert sind zueinander sind. D.h. die Menge $S_q$ der Sylow $p$-Untergruppe von $G$ ist Orbit (eine Bahn) in $X = \set{P \subseteq G \mid \abs{p} = q}$ unter Konjugation. Nach dem Stabilisator-Bahnen-Satz ist die Menge der Sylow $q$-Gruppen in einer Gruppe $G$ also im Bijektion mit $\lnkset{G}{N_G H}$, wobei $H \le G$ eine beliebige Sylow $q$-Untergruppe ist und $N_G H = \set{x \in G \mid x H x^{-1} = H}$ der Normalisator (Stabilisator von $H$ unter der adjungierten Wirkung) von $H$ in $G$ ist. D.h. $\lnkset{G}{N_G H}$ ist die Menge der zu $H$ konjugierten Untergruppen.
+	\begin{align*}
+		s = \abs{\lnkset{G}{N_G H}} = \frac{\abs{G}}{\abs{N_G H}}
+	\end{align*}
+	ist also die Zahl der zu $H$ konjugierten Untergruppen. Insbesondere ist $H \le N_G H$, also $\abs{H}\abs{N_G H}$ und 
+	\begin{align*}
+		s = \frac{\lnkset{G}{H}}{\lnkset{\abs{N_G H}}{\abs{H}}}
+	\end{align*}
+	Wir haben in den Sylowsätzen 3. hinzugefügt, dass $\gamma \mid m$. Im unserer speziellen Situation heisst dies: $s$ teilt $p$
+	\begin{align*}
+		\abs{G} = pq \quad s = \#\text{ Sylow-}p\text{-Untergruppen}
+	\end{align*}
+	$H \le G$ beliebige solche Untegruppe, d.h. $\abs{H} = q$, d.h. $H \cong \Z_q$ und $H \le N_G H$
+	\begin{align*}
+		s = \frac{\lnkset{\abs{G}}{\abs{H}}}{\lnkset{\abs{N_G H}}{\abs{H}}} = \frac{(pq)/q}{n/q} = \frac{p}{n/q}
+	\end{align*}
+	(n könnte $pq$ ($s=1$) oder $q$ ($s=p$ sein). $s = \#$ Sylow $q$-Untergruppen in $G$ mit $\abs{G} = pq$ mit $p>q$. $S \mid p$ (nach Sylow 3.) folgt dann $s =1 \oder s =p$. $s = 1 \mod q$ (sylow 1.) folgt
+	\begin{align*}
+		s=1,s=q+1, s= 2q+1, \dots \tag{$\ast$}\label{eq_sylow_1_not proof}
+	\end{align*}
+	Wenn wir also noch annehmen $q \nmid p -1$, so fällt $s = p$ als Fall weg, wegen \eqref{eq_sylow_1_not proof}. Also ist $s =1$ und auch die Sylow $q$-Untergruppe ist eindeutig und somit normal.
+	\begin{align*}
+		\Z_p \cong \le G \ge Q \cong \Z_q
+	\end{align*}
+	Wir haben $H \cap Q = \set{1}$, also gilt $G \cong H \times Q \cong \Z_p \times \Z_q \cong \Z_{pq}$ $G \cong \lnkset{R}{I_1 \cap ... \cap I_d} \cong \bigtimes_{i=1}^d\lnkset{R}{I_i}$.
+\end{proof}
+\begin{proposition}
+	Sei $H$ $p$-Sylow Untergruppe von $G$, $H$ eindeutig, dann folgt damit $H$ normal.
+\end{proposition}
+\begin{proof}
+		Sei
+	\begin{align*}
+	\alpha \colon G \to G \mit y \mapsto y x y^{-1}
+	\end{align*}
+	Automorphismus und $\alpha(H) \le G$, $\abs{\alpha(H)} = \abs{H}$, dann folgt $\alpha(H) = H$
+\end{proof}
+\begin{proposition}
+	Ist $n = pq, p>q$ und $q \mid p-1$, so gibt es bis auf Isomorphie genau zwei Gruppen $G$ der Ordnung $n$, die zyklische Gruppe $\Z_{pq}$ und eine nichtabelsche Gruppe, die ein semidirektes Produkt $\Z_p \rtimes\Z_q$ ist.
+\end{proposition}
+\begin{proof}
+	Wie oben gibt es eine eindeutige Sylow $p$-Untergruppe $H \cong \Z_p$. Wir haben oben gesehen, dass es entweder $s=1$ oder $s = p$ Sylow $q$-Untergruppe gibt. Im Fall $s=1$, gibt es eine eindeutige Sylow $q$-Untergruppe $Q = \Z_q$ und $G = \Z_p \times \Z_q$ (wie oben). Im Fall $s=p$ gibt es Sylow $q$-Untergruppen $Q_1, \dots, Q_p$ und $Q_i \cong \Z_q \forall i \in [1,p]$ aber keine ist normal.\\
+	$Q_1 \cong \Z_q$ wirkt auf $H \cong \Z_p$ durch Konjugation und wie oben ist $Q_1 \cap H = \set{1}$. Also ist $HQ \le G$ Untegruppe mit $pq$ Elementen, also $HQ = G$ und dies ist ein internes semidirektes Produkt, $H \rtimes Q_1 = G$
+	\begin{align*}
+		G \cong \Z_p \times \Z_q = \Z_{pq}
+	\end{align*}
+	Noch zu zeigen: 1. dieser Fall tritt auf, egal welche $p,q$ wir betrachten.\\
+	2. und zwar auf eindeutige Weise bis auf Isomorphie.
+\end{proof}
+\begin{proposition}[\person{Burnside}]
+	Sei $\abs{G} = p^i q^j$ ($p,q$ Primzahlen). Dann $G$ auflösbar (Auf jeden Fall nicht einfach!!!)
+\end{proposition}
+\begin{proof}
+	to be done ...
+\end{proof}
+\begin{definition}
+	Ist $G$ eine Gruppe und sind $(a,b) \in G^2$, so ist deren \begriff{Kommutator}
+	\begin{align*}
+		[a,b] = aba^{-1}b^{-1}
+	\end{align*}
+	und die derivierte Gruppe $G'$ also die von allem Kommutatoren erzeugte Untergruppe $G' \lhd G$
+	\begin{align*}
+		G \rhd G' \rhd G'' \rhd ...
+	\end{align*}
+	$G$ auflösbar wenn $n$ mit $G^{(n)} = \set{1}$
+\end{definition}
