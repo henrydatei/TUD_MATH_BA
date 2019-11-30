@@ -148,7 +148,44 @@ Fixiere Laufzeit $T$ und Ausübungspreis $K$ und schreiben:\\
 		\item Der Parameter $\sigma$ heißt Voliatitität und entspricht der Schwankungsbreite der Preisänderung
 	\end{itemize}
 \end{*remark}
-Skizze vom BS-Call-Preis (siehe Handskizze...)
+Skizze vom BS-Call-Preis:
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=1, xlabel=\scriptsize$S_t$ Preis Basisgut,
+	ymin=0, ymax=1, ylabel={\scriptsize$C_{BS}(t,S_t)$},
+	title=BS-Call-Preis,
+	samples=400,
+	axis x line=middle,
+	axis y line=middle,
+	domain=0:1,
+	yticklabels={,,},
+	xticklabels={,,},
+	xtick style={draw=none},
+	ytick style={draw=none},
+	]
+	\draw[fill=red,opacity=0.1] (axis cs: 0,0) rectangle (axis cs: 0.4,1) node[pos=0.5,black,yshift=2cm] {\scriptsize OTM};
+	\draw[fill=lime!70!black,opacity=0.1] (axis cs: 0.4,0) rectangle (axis cs: 1,1) node[pos=0.5,black,yshift=2cm] {\scriptsize ITM};
+	
+	\draw[red] (axis cs: 0,0) -- (axis cs: 0.4,0) -- (axis cs: 1,0.9);
+	\draw[blue] (axis cs: 0,0) to[out=5,in=215] (axis cs: 0.4,0.15) to[out=35,in=226] (axis cs: 1,0.92);
+	\draw[cyan] (axis cs: 0,0) to[bend right=10] (axis cs: 1,0.95);
+	
+	\node[red,align=center] at (axis cs: 0.83,0.35) {\scriptsize Auszahlungsprofil\\\scriptsize$(S_T-K)_+$};
+	\node[cyan] at (axis cs: 0.83,0.90) {\scriptsize $C(t_0,S_0)$};
+	\node[blue] at (axis cs: 0.83,0.85) {\scriptsize $C(t,S_t)$};
+	
+	\draw (axis cs: 0.4,0) -- (axis cs: 0.4,0.05);
+	\node at (axis cs: 0.4,0.07) {\scriptsize $K$};
+	
+	\draw[dotted] (axis cs: 0.5,0) -- (axis cs: 0.5,0.38);
+	\node at (axis cs: 0.62,0.12) {\scriptsize innerer Wert};
+	
+	\node[blue] at (axis cs: 0.5,0.7) {\scriptsize Zeitwert};
+	\draw[blue,->] (axis cs: 0.58,0.68) -- (axis cs: 0.7,0.5);
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 \begin{itemize}
 	\item \begriff{innere Wert}: $(S_t -K)_+$ konvergiert gegen Auszahlungsprofil: $(S_T - K)_+$, für $t \to T$
 	\item \begriff{Zeitwert}: $C_{BS}(t,S_t) - (S_t - K)_+ \ge 0$ konvergiert gegen Null für $t \to T$
@@ -169,7 +206,45 @@ Skizze vom BS-Call-Preis (siehe Handskizze...)
 	\end{align*}
 	\item Für den Put ist das ganze Symmetrisch
 \end{itemize}
-Skizze vom BS-Call-Preis (siehe Handskizze...)
+Skizze vom BS-Put-Preis:
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=1, xlabel=\scriptsize$S_t$ Preis Basisgut,
+	ymin=0, ymax=1, ylabel={\scriptsize$P_{BS}(t,S_t)$},
+	title=BS-Put-Preis,
+	samples=400,
+	axis x line=middle,
+	axis y line=middle,
+	domain=0:1,
+	yticklabels={,,},
+	xticklabels={,,},
+	xtick style={draw=none},
+	ytick style={draw=none},
+	]
+	\draw[fill=red,opacity=0.1] (axis cs: 0.6,0) rectangle (axis cs: 1,1) node[pos=0.5,black,yshift=2cm] {\scriptsize OTM};
+	\draw[fill=lime!70!black,opacity=0.1] (axis cs: 0,0) rectangle (axis cs: 0.6,1) node[pos=0.5,black,yshift=2cm] {\scriptsize ITM};
+	
+	\draw[red] (axis cs: 0,0.9) -- (axis cs: 0.6,0) -- (axis cs: 1,0);
+	\draw[blue] (axis cs: 0,0.92) to[out=-45,in=140] (axis cs: 0.6,0.15) to[out=-40,in=170] (axis cs: 1,0);
+	\draw[cyan] (axis cs: 0,0.95) to[bend right=10] (axis cs: 1,0);
+	
+	\node[red,align=center] at (axis cs: 0.17,0.32) {\scriptsize Auszahlungsprofil\\\scriptsize$(K-S_T)_+$};
+	\node[cyan] at (axis cs: 0.3,0.80) {\scriptsize $P_{BS}(t_0,S_0)$};
+	\node[blue] at (axis cs: 0.3,0.75) {\scriptsize $P_{BS}(t,S_t)$};
+	
+	\draw (axis cs: 0.6,0) -- (axis cs: 0.6,0.05);
+	\node at (axis cs: 0.6,0.07) {\scriptsize $K$};
+	
+	\draw (axis cs: 0.4,0) -- (axis cs: 0.4,0.3);
+	\draw[dotted] (axis cs: 0.4,0.3) -- (axis cs: 0.4,0.47);
+	\node at (axis cs: 0.27,0.1) {\scriptsize innerer Wert};
+	
+	\node[blue] at (axis cs: 0.6,0.5) {\scriptsize Zeitwert};
+	\draw[blue,->] (axis cs: 0.52,0.5) -- (axis cs: 0.4,0.4);
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 \begin{itemize}
 	\item \begriff{innere Wert}: $(K -S_t)_+$ konvergiert gegen Auszahlungsprofil: $(K - S_T)_+$, für $t \to T$
 	\item \begriff{Zeitwert}: $P_{BS}(t,S_t) - (K - S_t)_+ \ge 0$ konvergiert gegen Null für $t \to T$
@@ -339,7 +414,34 @@ eine Abhängigkeit von $(T,K,\sigma)$ zu verdeutlichen.
 		\item BS-Modell passt nicht gut zu Daten: $(T,K) \mapsto \sigma_{\ast}(T,K)$ variiert stark mit $(T,K)$
 	\end{itemize}
 \end{*remark}
-Typische tatsächliche Beobachtung: siehe Handskizze :)\\
+Typische tatsächliche Beobachtung:\\
+\begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, xmax=1, xlabel=$K$,
+	ymin=0, ymax=1, ylabel={$C_{BS}(T,h)$},
+	title=Volativitäts-Smile,
+	samples=400,
+	axis x line=middle,
+	axis y line=middle,
+	domain=0:1,
+	yticklabels={,,},
+	xticklabels={,,},
+	xtick style={draw=none},
+	ytick style={draw=none},
+	]
+	\addplot[mark=none,smooth,blue] {0.3*(x-0.5)*(x-0.5)+0.2};
+	\addplot[mark=none,smooth,red] {0.8*(x-0.5)*(x-0.5)+0.3};
+	\node[blue] at (axis cs: 0.7,0.15) {$T$ groß};
+	\node[red] at (axis cs: 0.7,0.4) {$T$ klein};
+	
+	\draw (axis cs: 0.5,0) -- (axis cs: 0.5,0.02);
+	\node[align=center] at (axis cs: 0.5,0.09) {\scriptsize$K=S_0$\\ \scriptsize ATM};
+	\node[align=center] at (axis cs: 0.25,0.05) {\scriptsize ITM};
+	\node[align=center] at (axis cs: 0.75,0.05) {\scriptsize OTM};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
 Eigenschaften:
 \begin{itemize}
 	\item konvex
