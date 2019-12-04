@@ -1,4 +1,4 @@
-﻿\section{Permutationsdarstellungen und Gruppenoperationen}
+\section{Permutationsdarstellungen und Gruppenoperationen}
 \subsection*{Allgemeines}
 Motivation: $H < G \implies \lnkset{G}{H}$\\
 Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
@@ -570,3 +570,116 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	\end{align*}
 	$G$ auflösbar wenn $n$ mit $G^{(n)} = \set{1}$
 \end{definition}
+\begin{*remark}
+	Sei $\alpha\colon G \to H$ Homomorphismus, also
+	\begin{align*}
+		\alpha([a,b]) = \alpha(aba^{-1}b^{-1}) = \alpha(a)\alpha(b)\alpha(a)^{-1}\alpha(b)^{-1} = [\alpha(a),\alpha(b)]
+	\end{align*}
+	Damit gilt $\alpha(G') \subseteq H'$. Insbesondere $(G=H)$, $G'$ ist eine charakteristische Untergruppe (invariant unter allen $\alpha \in \Aut(G)$) und $G' \lhd G$ $(\alpha(a) = xax^{-1})$
+\end{*remark}
+\begin{*example}
+	Wenn $G$ einfach ist, dann $G' = G$ oder $G' = 1 \Leftrightarrow G$ abelsch. Also einfach und äuflösbar $\Leftrightarrow G = \Z_p$. $\Aut(G) = \set{\alpha \colon G \to G \mid \alpha \text{ bijektiv}, \alpha(ab) = \alpha(a)\alpha(b)\forall (a,b)\in G}$. Ist $x \in G$, so ist $\alpha_2(a) = x a x^{-1}$ ein Automorphismus. Die Automorphismen dieser Form nennt man \begriff{innere Automorphismen}.
+	\begin{align*}
+		G \to \Aut(G) \mit x \mapsto \alpha_x 
+	\end{align*}
+	ist ein Gruppenhomomorphismus und es gilt
+	\begin{align*}
+		(\alpha_x \circ \alpha_y)(a) &= \alpha_x(\alpha_y(a)) = \alpha_x(g a g^{-1})\\
+		&= x(yay^{-1})x^{-1} = (xy)a(xy)^{-1}\\
+		&= \alpha_{xy}(a)
+	\end{align*}
+	für alle $a \in G$, also hat man $\alpha_x \circ \alpha_y = \alpha_{xy}$. Der Kern von $x \mapsto \alpha_x$ ist das Zentrum $Z(G)$ ($\alpha_x = \id \Leftrightarrow xa = ax \forall a \in G$). Das Bild von $x \mapsto \alpha_x$ ist die Gruppe $\Inn(G)$ der inneren Automorphismen. Diese ist normal: Ist $\beta \in \Aut(G)$, so gilt:
+	\begin{align*}
+		(\beta \circ \alpha_x \circ \beta^{-1})(a) &= \beta(\alpha_x(\beta^{-1}(a))) = \beta(x\beta^{-1}(a)x^{-1})\\
+		&= \beta(x)a\beta^{-1}(x)\\
+		&= \alpha_{\beta(x)}(a)
+	\end{align*}
+	also $\beta \circ \alpha_x \circ \beta = \alpha_{\beta(x)}$ und es gilt $\Inn(G) \lhd \Aut(G)$.
+\end{*example}
+\begin{definition}
+	$\Out(G) = \lnkset{\Aut(G)}{\Inn(G)}$ \begriff{äussere Automorphismen}.
+\end{definition}
+\begin{proposition}[Klausur!!!]
+	$G'$ ist die kleinste normale Untergruppe $N \lhd G$, für die $\lnkset{G}{N}$ ($\lnkset{G}{G'}$ abelsch) abelsch ist.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $G \lhd G$ haben wir gesehen.
+		\item $\lnkset{G}{G'}$ abelsch
+		\begin{align*}
+			ab' bG'\cdot (aG')^{-1}(bG)^{-1} &= [aG',bG']_{\lnkset{G}{G'}}\\
+			aba^{-1}b^{-1} = 1G'
+		\end{align*}
+		nach Definition $(aba^{-1}b^{-1} \in G')$ ($G$ abelsch $\Leftrightarrow \forall (ab) \in G^2\colon aba^{-1}b^{-1} = 1$). Hier $a = aG', b = bG'$ und $1 = G'$.
+		\item Ist umgekehrt $\lnkset{G}{N}$ abelsch, so folgt $[aN, bN]_{\lnkset{G}{N}} = 1_{\lnkset{G}{N}} = 1N$, also $aba^{-1}b^{-1} \in N;\ \forall (a,b) \in G^2$. Also gilt $G' \le N$.
+	\end{itemize}
+\end{proof}
+\begin{*example}
+	Sei $G = A_4$ und es gilt:
+	\begin{align*}
+		[(123),(234)] &= (123)(234)(123)^{-1}(234)^{-1}\\
+		&= (123)(234)(321)(432)\\
+		&= (14)(23)\in A'_4
+	\end{align*}
+	Ähnlich sieht man $(12)(34), (13)(24) \in A'_4$, d.h. $V \lhd A'_4$ und $\lnkset{A_4}{V} \cong \Z_3$ abelsch. Also ist $V = A'_4$, wobei $V = \set{\id, (12)(34),(13)(24),(14)(23)}$ die \begriff{kleinsche Vierergruppe} ist.
+\end{*example}
+\begin{*remark}
+	$[a,b]\cdot [c,d]$ ist im Allgemeinen kein Kommutator, man muss $G'$ schon echt erzeugen, passiert aber erst do ab $\abs{G} = 90$.
+\end{*remark}
+\begin{*example}
+	$S'_4 = A_4$, denn $A_4 \lhd S_4$, denn $A_4 = \ker \delta$ und $\delta\colon S_4 \to \Z_2 \mit \delta(a) = \pm 1$ und $\lnkset{S_4}{A_4} \cong \Z_2$ (mit ersten Isomorphiesatz $\Inn \delta = \Z_2$) ist abelsch:
+	\begin{align*}
+		S''_4 = A'_4 = V \cong \Z_2 \times \Z_2\\
+		S'''_4 = A''_4 = V' = 1
+	\end{align*}
+	Also ist $S_4$ aufösbar. Aber: $n > 4\colon S'_n = A_n$, doch $A_n$ ist einfach, also $A'_n = A_n$, $S_n$ also nicht auflösbar.
+\end{*example}
+\begin{*remark}
+	\begin{itemize}
+		\item $\abs{G} = p^i q^j \implies G$ auflösbar (\person{Burnside})
+		\item $\abs{G}$ ungerage $\implies G$ auflösbar (\person{Feit}-\person{Thompson})
+	\end{itemize}
+\end{*remark}
+\begin{proposition}[Klausur!!!]
+	\begin{enumerate}
+		\item $G$ auflösbar, $H \le G \implies H$ auflösbar.
+		\item $G$ auflösbar, $N \lhd G \implies \lnkset{G}{N}$ auflösbar
+		\item $N \lhd G$, $N$ auflösbar, $\lnkset{G}{N}$ auflösbar $\implies G$ auflösbar
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item $H' \le G' \implies H'' \le G'' \dots H^{(n)} \le 1 \implies H^{(n)} = 1$
+		\item $\pi \colon G \to \lnkset{G}{N} \mit a \mapsto aN$ surjektiver Gruppenhomomorphismus, da $\pi([a,b]) = [\pi(a), \pi(b)]$ $\implies \pi(G') = \pi (\lnkset{G}{N})'$. Nun verwende Induktion $\pi(G'') = (\lnkset{G}{N})'' \dots$
+		\item Umgekehrt: Wie in 2. projeziert die Reihe von $G$ uf die von $\lnkset{G}{N}$, also
+		\begin{align*}
+			\begin{matrix}
+				G \rhd & G' \rhd & G'' \rhd & G''' \rhd & \dots & G^{(n)}\\
+				\downarrow & \downarrow & \downarrow & \downarrow & \dots & \downarrow\\
+				\lnkset{G}{N} \rhd & (\lnkset{G}{N})' \rhd & (\lnkset{G}{N})'' \rhd & (\lnkset{G}{N})''' \rhd & \dots & (\lnkset{G}{N})^{n} = 1
+			\end{matrix}
+		\end{align*}
+		Also $(\lnkset{G}{N})' = \lnkset{G' N}{N}$ (haben wir in 2.) ausgerechnet, nun anders geschrieben. Induktion:\\
+		$\lnkset{G}{N}^{(n)} = \lnkset{G^{(n)}N}{N}$. Also $(\lnkset{G}{N})^{(n)} = 1 \Leftrightarrow G^{(n)} \subset N$. Damit folgt aber, dass $G^{(n+1)} < N$ (wie in 1.) und $G^{(n+m)}< N^{(m)}$. Da $N$ auflösbar, erhält man irgendwann 1.
+	\end{enumerate}
+\end{proof}
+\begin{proposition}
+	$G$ auflösbar und endlich $\Leftarrow$ Alle Faktoren in einer Kompositionsreihe isnd abelsch und in der Form $\Z_n$ (zyklisch)
+	\begin{align*}
+		G = G_0 \rhd G_1 \rhd G_2 \rhd \dots \rhd G_n = 1 \und \lnkset{G_i}{G_{i+1}} \text{ einfach}
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item ``$\Rightarrow$'': Induktion nach der derivaten Länge $l := \min\set{n \mid G^{(n)} = 1}$
+		\begin{itemize}
+			\item $l=1$: $G$ abelsch $\implies$ Behauptung
+			\item $l \to l+1$: Nach Korrespondenztheorem sind die Kompositionsfaktoren von $G$ die von $\lnkset{G}{G'}$ zusammen mit denen von $G'$
+		\end{itemize}
+		\item Wieder Induktion, diesmal nach der Länge $c$ einer Kompositionsreihe von $G$
+		\begin{itemize}
+			\item $c=1$: $G$ abelsch und damit auflösbar
+			\item $c \to c+1$: Sei $G = H_1 \rhd H_2 \rhd \dots \rhd H_c =1$ eine Kompositionsreihe. Dann ist $\lnkset{G}{H_2}$ abelsch nach Annahme (denn $\cong \Z_n$) und $H_2 \rhd \dots \rhd H_c =1$ ist eine kürzere Kompositionsreihe, also per Induktion $H_2$ auflösbar. Nach dem Satz ist $G$ auflösbar ($H \lhd G$ auflösbar $\implies G$ auflösbar) $\lnkset{G}{H_2}$ auflösbar.
+		\end{itemize}
+	\end{itemize}
+\end{proof}
