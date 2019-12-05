@@ -1,4 +1,4 @@
-Ziel ist der Übergang vom CRR-Modell (zeit-diskret) zum \person{Black}-\person{Scholes} (BS-)Modell (zeit-stetig) durch Grenzwertbildung.
+﻿Ziel ist der Übergang vom CRR-Modell (zeit-diskret) zum \person{Black}-\person{Scholes} (BS-)Modell (zeit-stetig) durch Grenzwertbildung.
 \begin{itemize}
 	\item Herleitung \person{Block}-\person{Scholes}-Formel für Preise von europäischen Put- und Call-Optionen
 \end{itemize}
@@ -317,7 +317,7 @@ Skizze vom BS-Put-Preis:
 	Diese partielle Ableitungen heißen auch ``Delta'' des Put- bzw. Call-Preisen. 
 \end{theorem}
 \begin{proof}
-	BEtrachte nur $t=0$, $t \in[0,T]$ kann analog behandelt werden. Nach \propref{th_2_3} ist $\xi_0^N$ für Put gegeben durch
+	Betrachte nur $t=0$, $t \in[0,T]$ kann analog behandelt werden. Nach \propref{th_2_3} ist $\xi_0^N$ für Put gegeben durch
 	\begin{align*}
 		\xi_0^N &= \frac{P_N(\Delta_N, S_0(1+b_N)) - P_N(\Delta_N, S_0(1+a_N))}{S_0(b_N-A_N)}\\
 		&= \frac{P_N(\Delta_N, S_0(1+\mu\Delta_n + \sigma\sqrt{\Delta_n})) - P_N(\Delta_N, S_0(1+\mu\Delta_N + \sigma\sqrt{\Delta_N}))}{2 S_0 \sigma \sqrt{\Delta_N}}
@@ -328,7 +328,7 @@ Skizze vom BS-Put-Preis:
 	\end{align*}
 	und analog für Call. Wir berechnen explizit:
 	\begin{align*}
-		\frac{\partial C_{BS}}{\partial S}(t,S) &= \Phi(d_1) + S\phi(d_1)\cdot \frac{\partial d_1}{\partial S} - e^{-r(T-t)}K\phi(d_2)\frac{\partial d_1}{\partial d_2}\\
+		\frac{\partial C_{BS}}{\partial S}(t,S) &= \Phi(d_1) + S\phi(d_1)\cdot \frac{\partial d_1}{\partial S} - e^{-r(T-t)}K\phi(d_2)\frac{\partial d_2}{\partial S}\\
 		&= \Phi(d_1) + \frac{\partial d_1}{\partial S}(S\phi(d_1)-e^{-r(T-t)}K\phi(d_2))
 		\intertext{Nebenrechung:}
 		e^{-rt}K/S\phi(d_2) &= e^{-r\tau}\frac{1}{\sqrt{2\pi}}K/S \exp(-\half \frac{\log(S/K) + r\tau - \sigma^2 r/\tau}{\sigma \sqrt{\tau}})\\
