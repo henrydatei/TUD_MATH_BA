@@ -1,0 +1,149 @@
+\section{Das Anlageproblem}
+\emph{Gegeben:} Vermögen $W$, Anlagegüter $S^1, \dots, S^n$ (Aktien, Anleihen, ...)\\
+\emph{Gesucht:} Optimale Verteilung $W = W_1 + ... + W_n$ auf $S^1 ... S^n$\\
+$S^1 ... S^n$ weisen unterschiedliche Beträge, Risiken und typischerweise  Korrelationen auf.\\
+\emph{Wir unterscheiden:}
+\begin{itemize}
+	\item \begriff{Einperiodenproblem}: Aufteilung wird heute $(t=0)$ festgelegt und bis zum Zeithorizont ($t=T$) beibehalten
+	\item \begriff{Mehrperiodenproblem:} Umschichten zu mehreren Zeitpunkten $\set{t_0, t_1, \dots, t_N}$ möglich
+\end{itemize}
+\emph{Einfachstes Optimalitätsprinzip}: \begriff{\person{Pareto}-Optimalität}
+\begin{itemize}
+	\item Bei gleichem Risiko wird Anlage mit größeren Ertrag bevorzugt
+	\item Bei gleichem Ertrag wird Anlage mit kleineren Risiko bevorzugt
+\end{itemize}
+d.h. \begriff{Pareto-Optimal} bedeutet, es gibt keine Anlagestrategie mit größerem Ertrag und kleinerem Risiko.\\
+Zum Aufwärmen zwei Toy-Models ($=$ stark vereinfachte Beispiele)
+\begin{itemize} %TODO fix structure 
+	\item \emph{Toy-Model I}; Einperiodenmodell, eine risikofreie und eine risikobehaftete Anlagenmodel.
+	\begin{itemize}
+		\item Zeithorizont sei $T=1$
+		\item risikofrei: $S_0^0 = 1$, $S_T^0 = (1+r)$
+		\item risikobehaftet: $S_0^1 = 1$, $S_T^1 = (1+R)$ mit $R$ stochastisch,
+		\begin{align*}
+			\mu &= \E[R] \quad \text{Ertrag}\\
+			\sigma &= \sqrt{\Var(R)} \quad \text{Risiko}
+		\end{align*}
+		\item $S=\mu -r$ Überrendite (excess return).
+		\item $S \le 0 \implies$ Investiere alles in $S^0$ (Pareto-Optimal)
+		\item $S > 0 \implies ?$
+		\item Teile $W$ in $(W_0, W-W_0)$ auf $(S^0,S^1)$ auf (Jetzt: $W=1$)
+		\begin{align*}
+			\begin{cases}
+				W-W_0 < 0 &\quad \text{Leerverkauf}\\
+				W_0 < 0 &\quad \text{Kredit}
+			\end{cases}
+		\end{align*}
+		\item Endvermögen: $P_T = W_0(1+r) + (1-W_0)(1+R)$
+		\item Erweiterte Rendite: 
+		\begin{align*}
+			\mu_p &= \E[P_T-1] = W_0(1+r)+(W-W_0)(1+\mu)\\
+			&= W_0 r + (1-W_0)\mu\\
+		\end{align*}
+		\item Risiko: $\sigma_p &= (1-W_0)\sigma$
+		\item Überrendite $S_p = (1-W_0)(\mu -r)$
+		\item \emph{Jede} Strategie ist Pareto-Optimal, d.h. Pareto-Prinzip  hilft nicht bei der Auswahl. Insbesondere ist \begriff{Sharp-Ratio} 
+		\begin{align*}
+			SR(W_0) = \frac{\text{``Überrendite''}}{\text{``Risiko''}} = \frac{S_p}{\sigma_p} = \frac{\mu -r}{\sigma} \quad \text{konstant!}
+		\end{align*}
+	\end{itemize}
+	\item \emph{Alternative} zum Pareto-Prinzip Festlegen von individueller Risikoaversion (mehr dazu später)
+	\item \emph{Toy-Model II:} Einperiodenproblem, zwei risikobehaftete Anlagemöglichkeiten
+	\begin{itemize}
+		\item Zeithorizont $T=1$, Vermögen $W=1$
+		\item 
+		\begin{align*}
+			\begin{matrix}
+				S_0^1 = 1 & S_T^1 = (1+R_1) & \text{mit $\E[R_1] = \mu$, $\Var(R_1) = \sigma_1^2 > 0$}\\
+				S_0^2 = 1 & S_T^2 = (1+R_1) & \text{mit $\E[R_2] = \mu$, $\Var(R_2) = \sigma_2^2 > 0$}
+			\end{matrix}
+		\end{align*}
+		und $R_1 \upmodels R_2$
+		\item Portofoliowert: $P_T = W_1(1+R_1) + (1-W_1)(1+R_2)$
+		\item Rendite: $\mu_p = \E[P_T -1] = W_1\E[R_1] + (1-W_1)\E[R_2] = \mu$
+		\item Risiko:
+		\begin{align*}
+			\sigma_p^2 = \Var(P_T -1) &= \Var(W_1 R_1 + (1-W_1)R_2)\\
+			&= W^2_1\cdot \sigma_1^2 + (1-W_1)^2\sigma_2^2
+		\end{align*}
+		\item Pareto-Optimales Portofolio: 
+		\begin{align*}
+			0 &= 2W_1\cdot \sigma_1^2 - 2(1-W_1)\sigma_2^2
+			\sigma_2^2 &= W_1(\sigma_1^2 + \sigma_2^2)\\
+			&\implies W_{\ast} = \frac{\sigma_2^2}{\sigma_1^2\cdot \sigma_2^2} \in (0,1)
+		\end{align*}
+		Also existiert genau eine Pareto-Optimale Strategie
+		\item Vermögen wird proportinal zum Verhältnis der Risiken aufgeteilt
+		\item Vermögen wird \emph{nicht} vollständig in risikoärmere Anlagen gesteckt, also findet eine \begriff{Diversifikation} statt
+		\item $W_{\ast}$ ist auch die Strategie mit maximaler \emph{Sharp-Ratio}
+	\end{itemize}
+\end{itemize}
+Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
+\section{Exkurs: Optimierung mit Nebenbedingung}
+\emph{Betrachte Optimierungsproblem:}
+\begin{align*}
+	\min f_0(x)\quad x \in \R^n\\
+	\intertext{unter Nebenbedingungen}
+	\begin{cases}
+		f_i(x) \le 0 &\quad i = 1, ..., m\\
+		h_i(x) = 0 &\quad i = 1, ..., p
+	\end{cases}
+	\tag{OPT}\label{eq_4_1_opt}
+\end{align*}
+\begin{itemize}
+	\item $x \in \R^n$ welches (NB) erfüllt heißt \begriff{zulässig}
+	\item $x_{\ast} \in \R^n$ welches \eqref{eq_4_1_opt} normiert heißt \begriff{Optimallösung}
+	\item $p_{\ast} = f_0(x_0)$ heißt \begriff{Minimalwert}
+\end{itemize}
+\begin{definition}
+	\begin{enumerate}
+		\item Die Funktion
+		\begin{align*}
+		\LL(x, \lambda, \nu) = f_0(x) + \sum_{i=1}^{m}\f_i(x)\lambda_i + \sum_{i=1}^p h_i(x)\nu_i
+		\end{align*}
+		mit $\lambda \in \R^m_{\ge 0}, \nu \in \R^p$ heißt \begriff{Lagrange-Zielfunktion}
+		\item Die Funktion
+		\begin{align*}
+			g(\lambda, \nu) = \inf_{x \in \R^m} \LL(x, \lambda, \nu)
+		\end{align*}
+		heißt Langrange- duale Funktion für \eqref{eq_4_1_opt}.
+	\end{enumerate}
+\end{definition}
+\begin{*remark}
+	Als Infimum von $(m, \lambda, \nu)$ lineare Funktionen ist $g$ \emph{konkav}.
+	\begin{itemize}
+		\item Die duale Funktion $g$ erzeugt \emph{untere Schranken} für $p_{\ast}$
+		\item Begründung Sei $\overline{x} \in \R^n$ zuässig für \eqref{eq_4_1_opt}, d.h.
+		\begin{align*}
+			f_i(\overline{x}) &\le 0 \quad \forall i \in [n]\\
+			h_i(\overline{x}) &= 0 \quad \forall i \in [p]
+		\end{align*}
+		\begin{align*}
+			\implies \LL(\overline{x}, \lambda, \nu) = f_0(\overline{x}) + \underbrace{\sum_{i=1} f_i(\overline{x})\lambda_i + \sum_{i=1} h_i(\overline{x})\nu_i}_{=0} \le f_0(\overline{x})
+		\end{align*}
+		Also $g(\lambda, \nu) = \inf_{x \in \R^m} \LL(x, \lambda, \nu) \le \LL(\overline{x}, \lambda, \nu) \le f_0(\overline{x}) \quad \forall \overline{x}$ zulässig und damit folgt
+		\begin{align*}
+			g(\lambda, \nu) \le p_{\ast} \qu \forall \lambda \in \R^m_{>0}, \nu \in \Rn
+		\end{align*}
+		Die beste untere Schranke erhalten wir durch \emph{maximieren} über $\lambda, \nu$
+	\end{itemize}
+\end{*remark}
+\begin{definition}
+	Das duale Optimierungsporblem zu \eqref{eq_4_1_opt} ist
+	\begin{align*}
+		\max g(\lambda, \nu) \quad \lambda \in \R^m, \nu \in \R^p
+		\intertext{unter Nebenbedingungen}
+		\lambda_i \ge 0 \quad i = 1, ... m \tag{D}\label{eq_4_2_Duality}
+	\end{align*}
+	Maximalwert: $d_{\ast}$
+\end{definition}
+\begin{itemize}
+	\item Zwischen \eqref{eq_4_1_opt} und \eqref{eq_4_2_Duality} gilt \begriff{schwache Dualität}
+	\begin{align*}
+		d_{\ast} \le p_{\ast}
+	\end{align*}
+	\item Unter bestimmten Vorraussetzungen gilt auch die \begriff{starke Dualität}
+	\begin{align*}
+		d_{\ast} = p_{\ast}
+	\end{align*}
+\end{itemize}

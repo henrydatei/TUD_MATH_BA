@@ -330,7 +330,7 @@ Skizze vom BS-Put-Preis:
 	\begin{align*}
 		\frac{\partial C_{BS}}{\partial S}(t,S) &= \Phi(d_1) + S\phi(d_1)\cdot \frac{\partial d_1}{\partial S} - e^{-r(T-t)}K\phi(d_2)\frac{\partial d_2}{\partial S}\\
 		&= \Phi(d_1) + \frac{\partial d_1}{\partial S}(S\phi(d_1)-e^{-r(T-t)}K\phi(d_2))
-		\intertext{Nebenrechung:}
+		\intertext{Nebenrechung und Setze: $\tau = T-t$}
 		e^{-rt}K/S\phi(d_2) &= e^{-r\tau}\frac{1}{\sqrt{2\pi}}K/S \exp(-\half \frac{\log(S/K) + r\tau - \sigma^2 r/\tau}{\sigma \sqrt{\tau}})\\
 		&= \frac{1}{\sqrt{2\pi}} e^{-r\tau}K/S \exp(-\half \frac{(\log(S/K) + r\tau)^2}{\sigma^2 \tau} - 2 (\log(S/K) + r\tau) + \sigma^2\tau/4)\\
 		&= \frac{1}{\sqrt{2\pi}}\exp(-\half \frac{(\log(S/K) + r\tau)^2}{\sigma^2 \tau} + (\log(S/K) + r \tau + \sigma^2\tau/4)\\
