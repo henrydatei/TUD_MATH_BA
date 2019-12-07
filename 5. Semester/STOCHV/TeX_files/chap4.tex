@@ -40,7 +40,7 @@ Zum Aufwärmen zwei Toy-Models ($=$ stark vereinfachte Beispiele)
 			\mu_p &= \E[P_T-1] = W_0(1+r)+(W-W_0)(1+\mu)\\
 			&= W_0 r + (1-W_0)\mu\\
 		\end{align*}
-		\item Risiko: $\sigma_p &= (1-W_0)\sigma$
+		\item Risiko: $\sigma_p = (1-W_0)\sigma$
 		\item Überrendite $S_p = (1-W_0)(\mu -r)$
 		\item \emph{Jede} Strategie ist Pareto-Optimal, d.h. Pareto-Prinzip  hilft nicht bei der Auswahl. Insbesondere ist \begriff{Sharp-Ratio} 
 		\begin{align*}
@@ -73,7 +73,7 @@ Zum Aufwärmen zwei Toy-Models ($=$ stark vereinfachte Beispiele)
 			&\implies W_{\ast} = \frac{\sigma_2^2}{\sigma_1^2\cdot \sigma_2^2} \in (0,1)
 		\end{align*}
 		Also existiert genau eine Pareto-Optimale Strategie
-		\item Vermögen wird proportinal zum Verhältnis der Risiken aufgeteilt
+		\item Vermögen wird proportional zum Verhältnis der Risiken aufgeteilt
 		\item Vermögen wird \emph{nicht} vollständig in risikoärmere Anlagen gesteckt, also findet eine \begriff{Diversifikation} statt
 		\item $W_{\ast}$ ist auch die Strategie mit maximaler \emph{Sharp-Ratio}
 	\end{itemize}
@@ -99,14 +99,14 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 	\begin{enumerate}
 		\item Die Funktion
 		\begin{align*}
-		\LL(x, \lambda, \nu) = f_0(x) + \sum_{i=1}^{m}\f_i(x)\lambda_i + \sum_{i=1}^p h_i(x)\nu_i
+		\LL(x, \lambda, \nu) = f_0(x) + \sum_{i=1}^{m}f_i(x)\lambda_i + \sum_{i=1}^p h_i(x)\nu_i
 		\end{align*}
 		mit $\lambda \in \R^m_{\ge 0}, \nu \in \R^p$ heißt \begriff{Lagrange-Zielfunktion}
 		\item Die Funktion
 		\begin{align*}
 			g(\lambda, \nu) = \inf_{x \in \R^m} \LL(x, \lambda, \nu)
 		\end{align*}
-		heißt Langrange- duale Funktion für \eqref{eq_4_1_opt}.
+		heißt \begriff{(Langrange-) duale Funktion} für \eqref{eq_4_1_opt}.
 	\end{enumerate}
 \end{definition}
 \begin{*remark}
@@ -123,7 +123,7 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 		\end{align*}
 		Also $g(\lambda, \nu) = \inf_{x \in \R^m} \LL(x, \lambda, \nu) \le \LL(\overline{x}, \lambda, \nu) \le f_0(\overline{x}) \quad \forall \overline{x}$ zulässig und damit folgt
 		\begin{align*}
-			g(\lambda, \nu) \le p_{\ast} \qu \forall \lambda \in \R^m_{>0}, \nu \in \Rn
+			g(\lambda, \nu) \le p_{\ast} \quad \forall \lambda \in \R^m_{>0}, \nu \in \R^n
 		\end{align*}
 		Die beste untere Schranke erhalten wir durch \emph{maximieren} über $\lambda, \nu$
 	\end{itemize}
