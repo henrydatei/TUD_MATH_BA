@@ -683,3 +683,169 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 		\end{itemize}
 	\end{itemize}
 \end{proof}
+\section{nilpotente Gruppen }
+\begin{definition}
+	Zu einer Gruppe $G$ definiert man die \begriff{untere zentrale Reihe} induktiv wie folgt
+	\begin{align*}
+		G = \Gamma_0(G) \rhd \Gamma_1(G) \rhd\Gamma_2(G)\rhd ...
+	\end{align*}
+	durch $G = \Gamma_0$. Wobei $\Gamma_{i+1}(G)$ ist die durch alle Kommutatoren $[a,b]$, $a \in \Gamma_1(G), b \in G$ erzeugte Untergruppe.
+\end{definition}
+\begin{*remark}
+	$\Gamma_1(G) = G'$. $G''$ ist nur durch die $aba^{-1}b^{-1}$ mit $a,b\in G'$ erzeugt $\Gamma_2(G)$ enthält durch $aba^{-1}b^{-1}$ mit $b \notin G'$. Durch Induktion sehen wir: $G^{(n)} < \Gamma_n(G)$.
+\end{*remark}
+\begin{definition}
+	$G$ nilpotent, genau dann wenn $\exists n\colon\Gamma_n(G) = 1$.
+\end{definition}
+\begin{remark}
+	Es gilt die Hierarchie: Abelsche Gruppen $<$ nilpotente Gruppen $<$ auflösbare Gruppen
+\end{remark}
+\begin{*example}
+	\begin{itemize}
+		\item $S_3$ ist auflösbar, aber nicht nilpotent, da
+		\begin{align*}
+			S_3' = A_3 = \set{(),(123),(132)} \cong \Z_3 \quad \text{abelsch}\quad S_3'' = A_3' = 1
+		\end{align*}
+		Aber in $\Gamma_2(S_3)$ gibt es $(123)(12)(123)(12)^{-1}= (123)(12)(132)(132)(12) = (132)$ und somit $\Gamma_2(S_3) = \Gamma_1(S_3) = A_3$ und daraus folgt $\Gamma_n(S_3)\forall n \ge 1$, damit ist $S_3$ \emph{nicht} nilpotent.
+		\item $\Z_3 \times \Z_3,S_3 \cong D_3 \cong \Z_3 \times \Z_2$
+	\end{itemize}
+\end{*example}
+\begin{proposition}
+	Untergruppen und Quotienten von nilpotenten Gruppen sind wieder nilpotent.
+\end{proposition}
+\begin{proof}
+	Siehe Beweis bei auflösbaren Gruppen.
+\end{proof}
+\begin{*remark}
+	Es gilt \emph{NICHT}: $N \rhd G$ nilpotent, $\lnkset{G}{N}$ nilpotent impliziert $G$ nilpotent
+\end{*remark}
+\begin{proposition}
+	$\Gamma_i(G\times H) = \Gamma_i(G)\times \Gamma_i(H)$ (impliziert $G,H$ nilpotent $\implies G \times H$ nilpotent)
+\end{proposition}
+\begin{proof}
+	Induktion nach $\abs{G} = p^i$. Wir haben gesehen: Eine $p$-Gruppe hat $Z(G)\neq 1$. $\abs{G} = 1$ trivial. Per Induktion ist $\lnkset{G}{Z(G)}$ nilpotent, da $\lnkset{G}{Z(G)} = \frac{\abs{G}}{\abs{Z(G)}} = \frac{p^i}{p^j} = p^s$. Also existiert $n \in \N$ mit $\Gamma_n(\lnkset{G}{Z(G)}) = 1$, d.h. $\Gamma_n(G) \subseteq Z(G)$. Schlussendlich haben wir $\Gamma_{n+1}(G) = 1$ und $G$ ist nilpotent.
+\end{proof}
+\begin{lemma}
+	$G$ nilpotent, $H \lneq G \implies H \lneq N_G(H)$.
+\end{lemma}
+\begin{proof}
+	Sei $i$ minimal mit $\Gamma_i(G) \le H$. Da $H \neq G$, ist $i \ge 1$. Es gilt 
+	\begin{align*}
+		[\Gamma_{i-1}(G),H] \le [\Gamma_{i-1},G] = \Gamma_i(G) \le H
+	\end{align*}
+	zum ersten Term in der Gleichung: von allen $aba^{-1}b^{-1}$ mit $a\in \Gamma_{i-1}(G),b \in H$ erzeugte Untergruppe, also ist $aba^{-1}b^{-1} \in H$ für $a \in \Gamma_{i-1}(G), b \in H$, d.h. $aba^{-1} \in H$ und $\Gamma_{i-1}(G) \le N_G(H)$, $\Gamma_{i-1}(G) \gneq H$.
+\end{proof}
+\begin{*example}
+	Sei $B = \set{
+		\begin{pmatrix}
+			x & y\\ 0 & z
+		\end{pmatrix} \mid x,y,z \in K}$, wobei $xz \neq 0$
+	\begin{align*}
+		\begin{pmatrix}
+			x & y\\ 0 & z
+		\end{pmatrix}
+		\begin{pmatrix}
+			u & v\\ 0 w
+		\end{pmatrix}
+		\begin{pmatrix}
+			x & y\\ 0 & z
+		\end{pmatrix}^{-1}
+		\begin{pmatrix}
+			u & v\\ 0 & w
+		\end{pmatrix}^{-1}\\
+		= \begin{pmatrix}
+		x & y\\ 0 & z
+		\end{pmatrix}
+		\begin{pmatrix}
+		u & v\\ 0 w
+		\end{pmatrix}
+		\frac{1}{xz}
+		\begin{pmatrix}
+			z & -y\\ 0 & x
+		\end{pmatrix}
+		\frac{1}{uw}
+		\begin{pmatrix}
+			w &-v\\0 & v
+		\end{pmatrix}\\
+		= \begin{pmatrix}
+			1 & \frac{1}{xzuw}(xv + yw - zv - yu)\\
+			0 & 1
+		\end{pmatrix}\\
+	\end{align*}
+	damit ist dann
+	\begin{align*}
+		B' = \set{
+			\begin{pmatrix}
+				1 & s\\ 0 & 1
+			\end{pmatrix}\mid s \in K}
+	\end{align*}
+	und $B'' = 1$, so $B$ ist solvable. However ... if u need the pictures let me know, i have them, to bored to type it.
+	
+\end{*example}
+\begin{erinnerung}
+	\begin{enumerate}
+		\item $H,G$ nilpotent $\implies G \times H$ nilpotent
+		\item $p$-Gruppen nilpotent
+		\item $G$ nilpotent, $H \le G \implies H \lneq N_G(H) = \set{x \in G \mid xyx^{-1}\in H \forall y \in H} (H \lhd G \implies N_G(H) = G)$
+	\end{enumerate}
+\end{erinnerung}
+\begin{lemma}
+	Sei $G$ endliche Gruppe, $H \le G$ Sylowgruppe. Dann gilt
+	\begin{align*}
+		N_G(N_G(H)) = N_G(H).
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Sei $x \in N_G(N_G(H))$, d.h. $xN_G(H)x^{-1} = N_G(H)$. Also gilt insbesondere
+	\begin{align*}
+		\tilde{H} := xHx^{.1} \subseteq N_G(H)
+	\end{align*}
+	dann $H, \tilde{H}$ sind dann beides Sylowgruppen von $N_G(H)$. Also existiert nach Sylowsätzen ein $n \in N_G(H)$ mit $nHn^{-1} = \tilde{H}$. Aber $n \in N_G(H)$ heisst ja $nHn^{-1} = H$, also $H = \tilde{H}$. Also $x \in N_G(H)$.
+\end{proof}
+\begin{proposition}
+	Eine endliche Gruppe ist nilpotent, genau dann wenn $G = \bigtimes_{i=1}^d H_i$, wobei die $H_d$ ihre Syllowuntergruppe sind.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item $\Leftarrow$: folgt aus den Sätzen von VL 9.12.2019, bzw. aus den ersten beiden punkten der letzten Erinnerung. %TODO add reference?
+		\item $\Rightarrow$ Sei $H \le G$ eine Sylowuntergruppe. Ein Lemma sagt: $N_G(N_G(H)) = N_G(H)$. Also sagt dritte Punkt in der letzten Erinnerung, dass $N_G(H) = G$ gilt. Also gibt es für jedes $p \mid \abs{G}$ genau eine Sylow $p$-Untergruppe, die normal ist. Sind $H_1,H_2$ zwei Sylowgruppen für verschiedene Primzahlen $p_1,p_2 \mid \abs{G}$, folgt
+		\begin{align*}
+			H_1 \cap H_2 = \set{1}
+		\end{align*}
+		denn $H_1 \cap H_2 \le H_1$, also (Lagrange) ($H_1 \cap H_2 = p^j_1$), genau aber $H_1 \cap H_2 \le H_2$, also $\abs{H_1 \cap H_2} = p_2^k$, also $j = k = 0$, d.h. $H_1H_2 = H_1 \times H_2 \lhd G$ und jetzt Induktion nutzen.
+	\end{itemize}
+\end{proof}
+\[
+	\begin{tikzcd}
+		& \text{Unendliche Gruppen} \arrow[rrd] \arrow[rd] \arrow[ld] &                               &                     \\
+		\text{geo. Gruppentheo.} \arrow[rd] &                                                             & \text{LIE-Gruppen} \arrow[ld] & \text{alg. Gruppen} \\
+		& \text{top. Gruppen}                                         &                               &                    
+	\end{tikzcd}
+\]
+\begin{itemize}
+	\item Geometrische Gruppentheorie (Thom): Zunächst sind die Gruppen selbst nur Gruppen, aber man studiert durch ihre Wirkungen auf geometrische Objekte, z.B. Graphen, topologische Räume, HILBERT-Räume, Mannigfaltigkeiten, ... \\
+	Die Gruppe $G$ sind meist durch eine Repräsentation durch Erzeuger und Relatoren gegeben.
+\end{itemize}
+\begin{enumerate}
+	\item Freie Gruppen: Bei einem Vektorraum der Form $F(B):= k^B$ (\begriff{frei} über $B$) galt
+	\begin{align*}
+		\Hom_{\Vect}(F(B),V) \cong \Hom_{\Set}(B,U(V))
+	\end{align*}
+	dann haben wir $F \colon \Set \to \Vect$ \begriff{Freie Funktor} und $U \colon \Vect \to \Set$ \begriff{Vergissfunktor}, $U(v)$ ist einfach die Menge $V$. Also bilden eine Adjunktion (siehe CAT-VL) $U \dashv F$.\\
+	Genauer gibt es:
+	\begin{align*}
+		F\colon \Set \to \Grp\\
+		U \colon \Grp \to \Set
+	\end{align*}
+	mit $\Hom_{\Grp}(F(X),G) \cong \Hom_{\Set}(X,U(G))$. Die freie Gruppe $F(X)$ ist hierbei explizit konstruiert als die Menge aller Wörter $x_1, \dots, x_d$ mit Buchstaben aus dem Alphabet $\set{a,a^{-1}\mid a \in X}$, die dann noch auf offenkundige Weise reduziert (gekürzt) werden.
+	\begin{*example}
+		$X = \set{a,b}$ $F(X)$ enthält z.B. $bab, b^3a, b^{-1}a^2, ... a^{-1}ab$ würde zu $b$ gekürzt
+	\end{*example}
+	Relationen sind vorgegebene Gleichung, die man festlegt um kleinere Gruppen als Quotienten von $F(X)$ zu definieren, also Präsentation einer Gruppe
+	\begin{align*}
+		\langle a,b \mid a^2, b^2, ababab\rangle
+	\end{align*}
+	(Bemerkung: lässt man $ababab$ weg erhält man die Gruppe der Zöpfe (Braid groups))
+	$\lnkset{F(\set{a,b})}{N}$ wobei die kleinste normale Untergruppe ist, die $a^2,b^2,ababab$ enthält $a^2 = 1$ in $\lnkset{F(\set{a,b})}{N}$.\\
+	Übung $\langle a,b \mid a^2, b^2, ababab\rangle \cong S_3$
+\end{enumerate}
