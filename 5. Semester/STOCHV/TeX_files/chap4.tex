@@ -1,7 +1,7 @@
 \section{Das Anlageproblem}
 \emph{Gegeben:} Vermögen $W$, Anlagegüter $S^1, \dots, S^n$ (Aktien, Anleihen, ...)\\
-\emph{Gesucht:} Optimale Verteilung $W = W_1 + ... + W_n$ auf $S^1 ... S^n$\\
-$S^1 ... S^n$ weisen unterschiedliche Beträge, Risiken und typischerweise  Korrelationen auf.\\
+\emph{Gesucht:} Optimale Verteilung $W = W_1 + \dots + W_n$ auf $S^1 \dots S^n$\\
+$S^1 \dots S^n$ weisen unterschiedliche Beträge, Risiken und typischerweise  Korrelationen auf.\\
 \emph{Wir unterscheiden:}
 \begin{itemize}
 	\item \begriff{Einperiodenproblem}: Aufteilung wird heute $(t=0)$ festgelegt und bis zum Zeithorizont ($t=T$) beibehalten
@@ -58,7 +58,7 @@ Zum Aufwärmen zwei Toy-Models ($=$ stark vereinfachte Beispiele)
 				S_0^2 = 1 & S_T^2 = (1+R_1) & \text{mit $\E[R_2] = \mu$, $\Var(R_2) = \sigma_2^2 > 0$}
 			\end{matrix}
 		\end{align*}
-		und $R_1 \upmodels R_2$
+		und $R_1 \upmodels R_2$ (unabhängig)
 		\item Portofoliowert: $P_T = W_1(1+R_1) + (1-W_1)(1+R_2)$
 		\item Rendite: $\mu_p = \E[P_T -1] = W_1\E[R_1] + (1-W_1)\E[R_2] = \mu$
 		\item Risiko:
@@ -69,12 +69,13 @@ Zum Aufwärmen zwei Toy-Models ($=$ stark vereinfachte Beispiele)
 		\item Pareto-Optimales Portofolio: 
 		\begin{align*}
 			0 &= 2W_1\cdot \sigma_1^2 - 2(1-W_1)\sigma_2^2
-			\sigma_2^2 &= W_1(\sigma_1^2 + \sigma_2^2)\\
+			\sigma_2^2\\
+			&= W_1(\sigma_1^2 + \sigma_2^2)\\
 			&\implies W_{\ast} = \frac{\sigma_2^2}{\sigma_1^2\cdot \sigma_2^2} \in (0,1)
 		\end{align*}
 		Also existiert genau eine Pareto-Optimale Strategie
 		\item Vermögen wird proportional zum Verhältnis der Risiken aufgeteilt
-		\item Vermögen wird \emph{nicht} vollständig in risikoärmere Anlagen gesteckt, also findet eine \begriff{Diversifikation} statt
+		\item Vermögen wird \emph{nicht} vollständig in risiko-ärmere Anlagen gesteckt, also findet eine \begriff{Diversifikation} statt
 		\item $W_{\ast}$ ist auch die Strategie mit maximaler \emph{Sharp-Ratio}
 	\end{itemize}
 \end{itemize}
@@ -133,7 +134,7 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 	\begin{align*}
 		\max g(\lambda, \nu) \quad \lambda \in \R^m, \nu \in \R^p
 		\intertext{unter Nebenbedingungen}
-		\lambda_i \ge 0 \quad i = 1, ... m \tag{D}\label{eq_4_2_Duality}
+		\lambda_i \ge 0 \quad i = 1, \dots m \tag{D}\label{eq_4_2_Duality}
 	\end{align*}
 	Maximalwert: $d_{\ast}$
 \end{definition}
@@ -147,3 +148,123 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 		d_{\ast} = p_{\ast}
 	\end{align*}
 \end{itemize}
+\begin{proof}
+	Beweis folgt später.
+\end{proof}
+\section{Die \person{Markowitz}-Modelle}
+\subsection*{Markowitz-Modell I}
+(Portofolio-Optimierung \emph{ohne} risikofreie Anlage)\\
+Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R = (R^1, \dots, R^n)$, d.h. $S_T = S_0^i(1+R^i), i \in [n]$ mit auf Analgegüter $S^1, \dots, S^n$ aufteilen $p_i$ Investitionen in $S^i$, d.h. $p_1 + \dots + p_n = W = 1$.
+\begin{itemize}
+	\item Erwartungswert: $\mu = \E[R] \in \Rn, \mu = \begin{pmatrix}
+		\mu_1\ \\ \vdots \\ \mu_n
+	\end{pmatrix}$
+	\item $\Sigma = \E[(R-\mu)(R-\mu)^T]\quad (n\times 1)(1\times n) = (\Sigma_{ij})_{i,j \in [n]}$
+	\begin{align*}
+		\Sigma_{ij} = \Var(R^i)\\
+		\Sigma_{ij} = \Cov(R^{i},R^j) \mit i \neq j
+	\end{align*}
+	\begin{itemize}
+		\item \emph{Annahme:} $\Sigma$ ist regulär, d.h. $\Sigma^{-1}$ existiert.
+		\item \emph{Ziel:} Anlagemengen $W=1$. 
+		\item \emph{Erwartete Rendite:} $\mu_p = \E[p^T R] = p^T \mu$
+		\item \emph{Risiko (Standardbereich):}
+		\begin{align*}
+			\sigma_p &= \sqrt{\Var(p^T R)} = \sqrt{\E[(p^T (R-\mu))^2]}\\
+			&=\sqrt{\E[p^T (R-\mu)(R-\mu)^Tp]} = \sqrt{p^T \Sigma p}
+		\end{align*}
+		\item \emph{Optimales Anlageproblem:} Minimiere Risiko, gegeben Zielrendite $\mu_{\ast}$
+		\begin{align*}
+			\begin{cases}
+				\min \half p^T \Sigma p & \quad\text{ über } p \in \R^n\\
+				\text{ unter NB} &\quad p^T \mu = \mu_{\ast} (\text{ Zielrendite})\\
+				&\quad p^T \indi = \indi (\indi = (1, \dots, 1) \in \Rn)
+			\end{cases} \label{eq_Markow_one}\tag{Mark_I}
+		\end{align*}
+	\end{itemize}
+	\item Die Lagrange-Zielfunktion: 
+\begin{align*}
+	\LL(p,\lambda_1, \lambda_2) = \half p^T \Sigma p + \lambda_1(\mu_{\ast} - p^T\mu) + \lambda_2(1-p^T \indi) \quad \mit \lambda_1, \lambda_2 \in \R
+\end{align*}
+	\item Die duale Funktion:
+\begin{align*}
+	g(\lambda_1, \lambda_2) &= \inf_{p \in \Rn} \LL(p, \lambda_1, \lambda_2)\\
+	\nabla_p \LL(p, \lambda_1, \lambda_2) = \Sigma - \lambda_1 \mu - \lambda_2 1 = 0\\
+	\implies p_{\ast} = \Sigma^{-1}(\lambda_1 \mu + \lambda_2 \mu)
+\end{align*}
+d.h. $g(\lambda_1, \lambda_2) = \LL(p_{\ast}, \lambda_1, \lambda_2)$
+\begin{align*}
+	\LL(p_{\ast}, \lambda_1, \lambda_2) &=
+	\half (\lambda_1 \mu + \lambda_2 1)^T \Sigma^{-1}\Sigma\Sigma^{-1}(\lambda_1\mu - \lambda_2 1) - (\lambda_1 \mu + \lambda_2 1)^T \Sigma^{-1}(\lambda_1 \mu - \lambda_2 1) + \lambda_1 \mu_{\ast} + \lambda_2\\
+	&= -\half (\lambda_1^2 a + 2 \lambda_1 \lambda_2 b + \lambda_2^2 c) + \lambda_1 \mu_{\ast} + \lambda_2
+\end{align*}
+mit
+\begin{align*}
+	a = \mu^T \Sigma^{-1}\mu, b = \mu^T\Sigma\indi, c= \indi^T\Sigma\indi
+\end{align*}
+Es gilt $a \ge 0, c \ge 0$ und (mit Cauchy-Schwarz) und damit $ac \ge b^2$
+\item Maximieren von $g$:
+	\begin{align*}
+		\frac{\partial g}{\partial \lambda_1} &= -a \lambda_1 - b \lambda_2 + \mu_{\ast} = 0 \implies a\lambda_1 + b \lambda_2 = \mu_{\ast} \tag{I}\label{eq_mark_one_I}\\
+		\frac{\partial g}{\partial \lambda_2} &= -b \lambda_1 - 1 \lambda_2 - 1 = 0 \implies b\lambda_1 + c \lambda_2 = 1 \tag{II}\label{eq_mark_one_II}
+	\end{align*}
+	\begin{align*}
+		-b\eqref{eq_mark_one_I} + a\eqref{eq_mark_one_II}:\quad (ac - b^2)\lambda_2 = a - b\mu_{\ast} &\implies \lambda^{\ast}_2 = \frac{a - b \mu_{\ast}}{ac - b^2}\\
+		c\eqref{eq_mark_one_I} -b\eqref{eq_mark_one_II}:\quad (ac - b^2)\lambda_1 = c\mu_{\ast} - b &\implies \lambda^{\ast}_2 = \frac{c\mu_{\ast} - b }{ac - b^2} \quad (\text{aber nur für } ac > b^2 )
+	\end{align*}
+\item Minimirer von \eqref{eq_Markow_one}:
+\begin{align*}
+	p_{\ast} = \lambda_1^{\ast}\Sigma^{-1}\mu + \lambda_2^{\ast}\Sigma^{-1}\indi
+\end{align*}
+\end{itemize}
+\begin{conclusion}[Tobin-Two-Fund Seperation]
+	Jeses Pareto-Optimale Portofolio für \eqref{eq_Markow_one} kann (unabhängig von $a$!) als Linearkombination der zwei Portolio
+	\begin{align*}
+		\underbrace{p^{\ast}_1 = \Sigma^{-1}\mu}_{\text{renditeorientiertes Portofolio}} \und \underbrace{p_2^{\ast} = \Sigma^{-1}\indi}_{\text{sicherheitsorientiertes Portofolio}}
+	\end{align*}
+	dargestellt werden.
+\end{conclusion}
+\begin{*remark}
+	\begin{itemize}
+		\item Gewichtung des Portofolios $p^{\ast}_1 \und p_2^{\ast}$ orientiert sich am Renditeziel $\mu_{\ast}$.
+		\item $p^{\ast}_1 \und p_2^{\ast}$ sind breit diversifiziert, d.h. nutzen alle Anlagegüter $S = (S^1, \dots, S^n)$
+		\item $p^{\ast}_1 \und p_2^{\ast}$ kann man als Anlagefunds interpretieren welche Vermögen entsprechend der Portfolio $p^{\ast}_1, p^{\ast}_2$ anlegen. Diese zwei Fonds sind ausreichend (unabhängig von $\mu_{\ast}$) um Vermögen Pareto-optimal zu investieren!
+	\end{itemize}
+\end{*remark}
+Zueletzt wollen wir noch Risiko der optimalen Strategie $p_{\ast}$ berechnen:
+\begin{align*}
+	\sigma_{\ast}_^2 &= \Var(p_{\ast}^T R) = \E[(p_{\ast}^T (R-\mu))^2] = p_{\ast}^T \Sigma p_{\ast}\\
+	&= (\lambda_1^{\ast}\mu + \lambda_2{\ast}\indi)^T \Sigma^{-1}\Sigma\Sigma^{-1}(\lambda^{\ast}\mu + \lambda_2^{\ast}\indi)\\
+	&= (\lambda_1^{\ast}^2 a) + 2 \lambda_1^{\ast}\lambda_2^{\ast} b + (\lambda_2^{\ast}^2)c\\
+	&= \frac{1}{a^2-b^2}^2 (((c\mu_{\ast} -b)^2)a + 2(\mu_{\ast} - b)(a-b \mu_{\ast})b + (a - b\mu_{\ast})^2c)\\
+	&= \frac{1}{ac-b^2}(c \mu_{\ast}^2 - 2b\mu_{\ast} +a^2)
+\end{align*}
+Graph von $(\sigma_{\ast}, \mu_{\ast})$ ist ein Hyperbel-ast:\\
+siehe picture phone ...\\
+Nennt sich ``Markowitz-Bullet''!
+\subsection*{Markowitz-Modell II}
+(Optimale Investition \emph{mit} risikofreier Anlage)\\
+\begin{itemize}
+	\item Anlagegüter $S = (S^1, \dots, S^n)$ mit ein-perioden Rendite $R = (R^1, \dots, R^n)$
+	\item Zusätzlich risikofreie Anlage $S^0$ mit Verzinsung $r$. Wegen $W=1$aufgestellt zu $1 = p_0 + p_1 + \dots p_n$. Wir setzen $p = (p_1,\vdots, p_n)^T \in \R^n$
+	\item Erwartete Rendite: $\mu = \E[p^T R + (1-pT\indi)r] = p^T(\mu - r\indi) + r$
+	\item Risko: $\sigma_{\ast} = \sqrt{\Var(p^T R)} = \sqrt{p^T \Sigma p}$
+	\item Anlageproblem
+	\begin{align*}
+		\begin{cases}
+			\min \half p^T \Sigma p & \quad p \in \R^n\\
+			\text{ unter NB} &\quad p^T (\mu-r\indi) = \mu_{\ast} -r (\text{ Zielrendite})\\
+		\end{cases} \label{eq_Markow_two}\tag{Mark_I}
+	\end{align*}
+	\item Lagrange ÜA
+	\item Optimierer: $p_{\ast} = \lambda_{\ast}\Sigma^{-1}(\mu - r \indi)$ mit $\lambda_{\ast} = \frac{\mu_{\ast} - r}{a^2 - 2br + cr^2}$
+\end{itemize}
+\begin{conclusion}[Tobin's One-Fund-Theorem]
+	Jedes Pareto-Optimale Portfolio für \eqref{eq_Markow_two} kann als Linearkombination der riskofreien Anlage und des Portf.
+	\begin{align*}
+		\Sigma^{-1}(\mu -r\indi)
+	\end{align*}
+	dargestellt werden.
+\end{conclusion}
+Graph von min. Risko $\sigma_{\ast}$ und Zielrendite $\mu_{\ast}$
+siehe phone
