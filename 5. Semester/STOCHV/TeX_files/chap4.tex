@@ -111,7 +111,7 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 	\end{enumerate}
 \end{definition}
 \begin{*remark}
-	Als Infimum von $(m, \lambda, \nu)$ lineare Funktionen ist $g$ \emph{konkav}.
+	Als Infimum von $g(\lambda, \nu)$ lineare Funktionen ist $g$ \emph{konkav}.
 	\begin{itemize}
 		\item Die duale Funktion $g$ erzeugt \emph{untere Schranken} für $p_{\ast}$
 		\item Begründung Sei $\overline{x} \in \R^n$ zulässig für \eqref{eq_4_1_opt}, d.h.
@@ -148,17 +148,119 @@ Als nächstes: Pareto-Optimale Portofolio mit $n>2$ Anlagegütern
 		d_{\ast} = p_{\ast}
 	\end{align*}
 \end{itemize}
+Das duale Problem hat auch eine Lösung $(\lambda_{\ast}, \nu_{\ast})$ und Maximalwert $d_{\ast}$
+\begin{lemma}
+	Zwischen \eqref{eq_4_1_opt} und \eqref{eq_4_2_Duality} gilt die \begriff{schwache Dualität}
+	\begin{align*}
+		d_{\ast} \le p_{\ast}\tag{WD}\label{eq_4_3_weak_Duality}
+	\end{align*}
+\end{lemma}
 \begin{proof}
-	Beweis folgt später.
+	SeSt.
+\end{proof}
+\begin{*remark}
+	\begin{itemize}
+		\item Die Differenz $p_{\ast} - d_{\ast} \ge 0$ heißt \begriff{Dualitätslücke} (duality gap).
+		\item Wenn Dualitätslücke verschwindet \begriff{starke Dualität}
+		\begin{align*}
+			d_{\ast} = p_{\ast}
+		\end{align*}
+		\item hinreichende Bedingungen für starke Dualität existieren vor allem für \emph{konvexe} Probleme
+	\end{itemize}
+\end{*remark}
+\begin{definition}
+	Optimierungsproblem\eqref{eq_4_1_opt} ist konvex wenn $f_0$ konvex ist und die Menge der zulässigen Werte konvex ist. In diesem Fall kann \eqref{eq_4_1_opt} in folgende Form gebracht werden:
+	\begin{align*}
+		\min f_0(x) \quad x \in \R^n\\
+		\intertext{unter NB}
+		\begin{cases}
+			f_i(x) \le 0 &\quad i \in [m]\\
+			Ax = b &\quad
+		\end{cases}\tag{K-OPT}\label{eq_4_4_k-opt}
+	\end{align*}
+	mit $f_0, f_1, \dots, f_m$ konvex, $A \in \R^{p\times m}, b \in \R^p$.
+\end{definition}
+\begin{theorem}[Slaters-Bedingung]
+	Betrachte das konvexe Optimierungsprobleme \eqref{eq_4_1_opt}. Wenn $x \in \R^n$ existiert mit
+	\begin{align*}
+		f_i(x) < 0 \quad \forall i \in [m] \und Ax = b
+	\end{align*}
+	dann gilt starke Dualität.
+\end{theorem}
+Für den Beweis verwende wir den Trennungssatz für konvexe Mengen.
+\begin{theorem}[Trennungssatz für konvexe Mengen]
+	Sei $A,B \subseteq \R^n$ konvex nichtleer und disjunkt, d.h.
+	\begin{align*}
+		A \cap B = \emptyset
+	\end{align*}
+	Dann existieren $a \in \R^n \setminus \set{0} \und b \in \R$, sodass
+	\begin{align*}
+		a^T x \ge b \quad \forall x \in A\\
+		a^T x \le b \quad \forall x \in B
+	\end{align*}
+	Die Hyperebene $h = \set{x \in \R^n \colon a^T x = b}$ heisst \begriff{trennende Hyperbene} für $A \und B$
+\end{theorem}
+\begin{proof}
+	Ohne Beweis.
+\end{proof}
+Skizze: 
+\begin{proof}[Theorem 4.2?]
+	Betrachte folgende Teilmengen von $\R^N = \R^{m+p+1}$, 
+	\begin{align*}
+		\G&=\set{(u,v,t) \in \R^N \colon \exists x \in \R^n \mit \begin{cases}
+			f_i(x) = u_i &\quad \forall i \in [m], Ax - b = v\\
+			f_0(x) = t &\quad
+			\end{cases}}\\
+		\AAA &= \set{(u,v,t) \in \R^N \colon \exists x \in \R^n \mit f_i(x) \le u_i \forall i \in [m], Ax-b = v, f_0(x) \le t} = \G \oplus \R^m_{\ge 0} \times \set{0}^p \times \R_{\ge 0}\\
+		\BBB &= \set{(0,0,t)\in \R^N \colon t < p_{\ast}}
+	\end{align*}
+	Es gilt $\AAA \und \BBB$ sind konvex. Nun folgt die 
+	\begin{itemize}
+		\item Behauptung: $\AAA \cap \BBB = \emptyset$. Mit Widerspruch: Angenommen es existiert $(u,v,t) \in \AAA \cap \BBB$, dann gilt\\
+		wegen $\BBB$
+		\begin{align*}
+		u=0, v = 0 \und t < p_{\ast}
+		\end{align*}
+		wegen $\AAA$
+		\begin{align*}
+		\exists x \in \R^n \mit &f_i(x) \le u_i = 0 \quad i \in [m]\\
+		& h_i(x) = v_i = 0 \quad i \in [p]\\
+		&f_0(x) \le t < p_{\ast}
+		\end{align*}
+		d.h. $x$ ist zulässig für \eqref{eq_4_4_kopt} und besser als optimal! $(f_0(x) < p_{\ast})$. Damit ist die Behauptung gezeigt und es folgt $\AAA \cap \BBB = \emptyset$.
+		\item Wende Trennungssatz an: $\exists (\lambda, \nu, v) \in \R^N \setminus \set{0}$ und $\alpha \in \R$ mit
+		\begin{align*}
+			\lambda^T u + \nu^T v + \mu t \ge \alpha \quad (u,v,t) \in \AAA \tag{I}\label{proof_eq_4_2a}\\
+			\lambda^T u + \nu^T v + \mu t \le \alpha \quad \forall (u,v,t) \in \BBB \tag{II}\label{proof_eq_4_2b}
+		\end{align*}
+		\eqref{proof_eq_4_2b} folgt $\mu t \le \alpha \forall t < p_{\ast}$ (da $a = 0, v = 0$) und damit gilt $\mu p_{\ast} \le \alpha$\\
+		Aus \eqref{proof_eq_4_2a} bekommt man $\lambda_i \ge 0 \forall i \in [m]$ und $\mu \ge 0$ (sonst Widerspruch!). Dann nimmt man \eqref{proof_eq_4_2a} und \eqref{proof_eq_4_2b} zusammen und hat $\forall x \in \R^n$
+		\begin{align*}
+			&\sum_{i=1} \lambda_i f_i(x) + \sum_{i=1} \nu_i(Ax-b) + \mu f_0(x)\\
+			&\le \lambda^T u + \nu^T v + \mu t \overset{\eqref{proof_eq_4_2a}}{\ge} \alpha \overset{\eqref{proof_eq_4_2b}}{\ge} \mu p_{\ast}\tag{$\ast$}\label{proof_eq_4_2c}
+		\end{align*}
+		Nun gibt es zwei Fälle:
+		\begin{itemize}
+			\item Fall: $\mu > 0$ Setze $\tilde{\lambda} = \lambda / mu$, $\tilde{\nu} = \nu /\mu$, damit\\
+			$\exists x \in \R^n \mit \sum_{i=1} \tilde{\lambda}_i f_i(x) + \sum_{i=1} \nu_i (Ax-b) + f_0(x) \ge p_{\ast}$ und damit folgt $g(\tilde{\lambda}, \tilde{\nu}) \ge p_{\ast}$, d.h. $d_{\ast} = \max_{(\lambda, \nu)\in \R_{\ge 0}^m \times \R^n} g(\lambda, \nu) \ge p_{\ast}$. Aber mit schwacher Dualität: $d_{\ast} \le p_{\ast}$
+			\item Fall: $\mu = 0$ (kann nicht eintreten, weil ...). Aus \eqref{proof_eq_4_2c} bekommen wir
+			\begin{align*}
+				\sum_{i=1} \lambda_i f_i(x) + \sum_{i=1} \nu_i(Ax-b) \ge 0 \quad \forall x \in \R^n
+			\end{align*}
+			Slaters-Bedingung $\exists \overline{x} \in \R^n$ mit $f_i(x) < 0, i \in [m]$ und $A\overline{x} - b = 0$ und damit
+			\begin{align*}
+				\sum_{i=1}\underbrace{\lambda_i}_{\ge 0}\underbrace{f_i(\overline{x})}_{< 0} > 0 \implies \lambda = 0
+			\end{align*}
+			$(\lambda, \nu, \mu) = (0, \nu, 0)\in \R^N \setminus \set{0}$ impliziert $\nu \neq 0$ und $\nu^T(Ax-b) = 0$, dann existiert nach $\overline{x}$ mit $\nu^T(A\overline{x} - b) < 0$ und das ist der Widerspruch, d.h. $\mu = 0$ tritt nicht ein.
+		\end{itemize}
+	\end{itemize}
 \end{proof}
 \section{Die \person{Markowitz}-Modelle}
 \subsection*{Markowitz-Modell I}
 (Portofolio-Optimierung \emph{ohne} risikofreie Anlage)\\
 Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R = (R^1, \dots, R^n)$, d.h. $S_T = S_0^i(1+R^i), i \in [n]$ mit auf Analgegüter $S^1, \dots, S^n$ aufteilen $p_i$ Investitionen in $S^i$, d.h. $p_1 + \dots + p_n = W = 1$.
 \begin{itemize}
-	\item Erwartungswert: $\mu = \E[R] \in \Rn, \mu = \begin{pmatrix}
-		\mu_1\ \\ \vdots \\ \mu_n
-	\end{pmatrix}$
+	\item Erwartungswert: $\mu = \E[R] \in \Rn, \mu = (\mu_1, dots, \mu_n)^T$
 	\item $\Sigma = \E[(R-\mu)(R-\mu)^T]\quad (n\times 1)(1\times n) = (\Sigma_{ij})_{i,j \in [n]}$
 	\begin{align*}
 		\Sigma_{ij} = \Var(R^i)\\
@@ -175,9 +277,10 @@ Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R 
 		\end{align*}
 		\item \emph{Optimales Anlageproblem:} Minimiere Risiko, gegeben Zielrendite $\mu_{\ast}$
 		\begin{align*}
+		...\\
 			\begin{cases}
-				\min \half p^T \Sigma p & \quad\text{ über } p \in \R^n\\
-				\text{ unter NB} &\quad p^T \mu = \mu_{\ast} (\text{ Zielrendite})\\
+				\min \half p^T \Sigma p & \quad\text{über } p \in \R^n\\
+				\text{ unter NB} &\quad p^T \mu = \mu_{\ast} \text{ ( Zielrendite)}\\
 				&\quad p^T \indi = \indi (\indi = (1, \dots, 1) \in \Rn)
 			\end{cases} \label{eq_Markow_one}\tag{Mark_I}
 		\end{align*}
@@ -189,8 +292,8 @@ Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R 
 	\item Die duale Funktion:
 \begin{align*}
 	g(\lambda_1, \lambda_2) &= \inf_{p \in \Rn} \LL(p, \lambda_1, \lambda_2)\\
-	\nabla_p \LL(p, \lambda_1, \lambda_2) = \Sigma - \lambda_1 \mu - \lambda_2 1 = 0\\
-	\implies p_{\ast} = \Sigma^{-1}(\lambda_1 \mu + \lambda_2 \mu)
+	\nabla_p \LL(p, \lambda_1, \lambda_2) &= \Sigma - \lambda_1 \mu - \lambda_2 1 = 0\\
+	\implies p_{\ast} &= \Sigma^{-1}(\lambda_1 \mu + \lambda_2 \mu)
 \end{align*}
 d.h. $g(\lambda_1, \lambda_2) = \LL(p_{\ast}, \lambda_1, \lambda_2)$
 \begin{align*}
@@ -233,9 +336,9 @@ Es gilt $a \ge 0, c \ge 0$ und (mit Cauchy-Schwarz) und damit $ac \ge b^2$
 \end{*remark}
 Zueletzt wollen wir noch Risiko der optimalen Strategie $p_{\ast}$ berechnen:
 \begin{align*}
-	\sigma_{\ast}_^2 &= \Var(p_{\ast}^T R) = \E[(p_{\ast}^T (R-\mu))^2] = p_{\ast}^T \Sigma p_{\ast}\\
-	&= (\lambda_1^{\ast}\mu + \lambda_2{\ast}\indi)^T \Sigma^{-1}\Sigma\Sigma^{-1}(\lambda^{\ast}\mu + \lambda_2^{\ast}\indi)\\
-	&= (\lambda_1^{\ast}^2 a) + 2 \lambda_1^{\ast}\lambda_2^{\ast} b + (\lambda_2^{\ast}^2)c\\
+	\sigma_{\ast}^2 &= \Var(p_{\ast}^T R) = \E[(p_{\ast}^T (R-\mu))^2] = p_{\ast}^T \Sigma p_{\ast}\\
+	&= (\lambda_1^{\ast}\mu + \lambda_2^{\ast}\indi)^T \Sigma^{-1}\Sigma\Sigma^{-1}(\lambda_1^{\ast}\mu + \lambda_2^{\ast}\indi)\\
+	&= (\lambda_1^{\ast 2}2 a) + 2 \lambda_1^{\ast}\lambda_2^{\ast} b + (\lambda_2^{\ast 2})c\\
 	&= \frac{1}{a^2-b^2}^2 (((c\mu_{\ast} -b)^2)a + 2(\mu_{\ast} - b)(a-b \mu_{\ast})b + (a - b\mu_{\ast})^2c)\\
 	&= \frac{1}{ac-b^2}(c \mu_{\ast}^2 - 2b\mu_{\ast} +a^2)
 \end{align*}
@@ -246,21 +349,21 @@ Nennt sich ``Markowitz-Bullet''!
 (Optimale Investition \emph{mit} risikofreier Anlage)\\
 \begin{itemize}
 	\item Anlagegüter $S = (S^1, \dots, S^n)$ mit ein-perioden Rendite $R = (R^1, \dots, R^n)$
-	\item Zusätzlich risikofreie Anlage $S^0$ mit Verzinsung $r$. Wegen $W=1$aufgestellt zu $1 = p_0 + p_1 + \dots p_n$. Wir setzen $p = (p_1,\vdots, p_n)^T \in \R^n$
-	\item Erwartete Rendite: $\mu = \E[p^T R + (1-pT\indi)r] = p^T(\mu - r\indi) + r$
-	\item Risko: $\sigma_{\ast} = \sqrt{\Var(p^T R)} = \sqrt{p^T \Sigma p}$
-	\item Anlageproblem
+	\item Zusätzlich risikofreie Anlage $S^0$ mit Verzinsung $r$. Wegen $W=1$aufgestellt zu $1 = p_0 + p_1 + \dots p_n$. Wir setzen $p = (p_1,\dots, p_n)^T \in \R^n$
+	\item Erwartete Rendite: $\mu = \E[p^T R + (1-p^T \indi)r] = p^T(\mu - r\indi) + r$
+	\item Risiko: $\sigma_{\ast} = \sqrt{\Var(p^T R)} = \sqrt{p^T \Sigma p}$
+	\item Anlageproblem:
 	\begin{align*}
-		\begin{cases}
+		\begin{cases*}
 			\min \half p^T \Sigma p & \quad p \in \R^n\\
 			\text{ unter NB} &\quad p^T (\mu-r\indi) = \mu_{\ast} -r (\text{ Zielrendite})\\
-		\end{cases} \label{eq_Markow_two}\tag{Mark_I}
+		\end{cases*}\tag{Mark_I}\label{eq_Markow_two}
 	\end{align*}
 	\item Lagrange ÜA
 	\item Optimierer: $p_{\ast} = \lambda_{\ast}\Sigma^{-1}(\mu - r \indi)$ mit $\lambda_{\ast} = \frac{\mu_{\ast} - r}{a^2 - 2br + cr^2}$
 \end{itemize}
 \begin{conclusion}[Tobin's One-Fund-Theorem]
-	Jedes Pareto-Optimale Portfolio für \eqref{eq_Markow_two} kann als Linearkombination der riskofreien Anlage und des Portf.
+	Jedes Pareto-Optimale Portfolio für \eqref{eq_Markow_two} kann als Linearkombination der risko-freien Anlage und des Portfolio
 	\begin{align*}
 		\Sigma^{-1}(\mu -r\indi)
 	\end{align*}
@@ -268,3 +371,26 @@ Nennt sich ``Markowitz-Bullet''!
 \end{conclusion}
 Graph von min. Risko $\sigma_{\ast}$ und Zielrendite $\mu_{\ast}$
 siehe phone
+\begin{*remark}[nominales vs. relatives Portfolio]
+	\begin{itemize}
+		\item $\vartheta = (\vartheta_1, \dots, \vartheta_2) \in \R^n$ mit $\vartheta_i$ Stückzahl von Anlagegut $S^i$ und Portofoliowert
+		\begin{align*}
+			V_0 = \vartheta^T S_0 = \sum_{i=1}^n \vartheta_i S_0^i = w \quad \dots \text{Anfangskapital}\\
+			V_T = \vartheta^T S_T = \sum_{i=1}\vartheta_i S_T^i
+		\end{align*}
+		\item relatives Portfolio: $p := (p_1, \dots, p_n) \in \R^n$ mit $p_i = \frac{\vartheta_i S_0^i}{W}$ Vermögensanteil in $S^i$
+		\begin{align*}
+			\sum_{i=1}^n p_i = \frac{1}{w}\sum_{i=1}^n \vartheta_i S_0^i = w/w = 1
+		\end{align*}
+		\item Renditen: 
+		\begin{itemize}
+			\item Einzelnes Anlagegut: $R_i = \frac{S_T^i - S_0^i}{S_0^i}$
+			\item Gesamtes Portfolio: 
+			\begin{align*}
+				R_p &= \frac{V_T - V_0}{V_0} = 1/w (\sum_{i=1}^n \vartheta_i S_0^i - \vartheta_i S_0^i)\\
+				&= 1/w \sum_{i=1}^n \vartheta_i(S_T^i - S_0^i) = \sum_{i=1}^n \underbrace{\frac{\vartheta_i S_0^i}{w}_{p_i}}R_i\\
+				&= \sum_{i=1}^n p_i R_i = p^T R \quad \text{... linear in }p
+			\end{align*}
+		\end{itemize}
+	\end{itemize}
+\end{*remark}
