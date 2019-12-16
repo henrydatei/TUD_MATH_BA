@@ -276,14 +276,13 @@ Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R 
 			&=\sqrt{\E[p^T (R-\mu)(R-\mu)^Tp]} = \sqrt{p^T \Sigma p}
 		\end{align*}
 		\item \emph{Optimales Anlageproblem:} Minimiere Risiko, gegeben Zielrendite $\mu_{\ast}$
-		\begin{align*}
-		...\\
+		\begin{align}
 			\begin{cases}
 				\min \half p^T \Sigma p & \quad\text{über } p \in \R^n\\
 				\text{ unter NB} &\quad p^T \mu = \mu_{\ast} \text{ ( Zielrendite)}\\
-				&\quad p^T \indi = \indi (\indi = (1, \dots, 1) \in \Rn)
-			\end{cases} \label{eq_Markow_one}\tag{Mark_I}
-		\end{align*}
+				&\quad p^T \indi = \indi (\indi = (1, \dots, 1) \in \R^n)
+			\end{cases} \label{eq_Markow_one}\tag{Mark I}
+		\end{align}
 	\end{itemize}
 	\item Die Lagrange-Zielfunktion: 
 \begin{align*}
@@ -354,10 +353,10 @@ Nennt sich ``Markowitz-Bullet''!
 	\item Risiko: $\sigma_{\ast} = \sqrt{\Var(p^T R)} = \sqrt{p^T \Sigma p}$
 	\item Anlageproblem:
 	\begin{align*}
-		\begin{cases*}
+		\begin{cases}
 			\min \half p^T \Sigma p & \quad p \in \R^n\\
 			\text{ unter NB} &\quad p^T (\mu-r\indi) = \mu_{\ast} -r (\text{ Zielrendite})\\
-		\end{cases*}\tag{Mark_I}\label{eq_Markow_two}
+		\end{cases}\tag{Mark II}\label{eq_Markow_two}
 	\end{align*}
 	\item Lagrange ÜA
 	\item Optimierer: $p_{\ast} = \lambda_{\ast}\Sigma^{-1}(\mu - r \indi)$ mit $\lambda_{\ast} = \frac{\mu_{\ast} - r}{a^2 - 2br + cr^2}$
