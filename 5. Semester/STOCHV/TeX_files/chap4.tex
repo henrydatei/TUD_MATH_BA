@@ -208,9 +208,10 @@ Skizze:
 	Betrachte folgende Teilmengen von $\R^N = \R^{m+p+1}$, 
 	\begin{align*}
 		\G&=\set{(u,v,t) \in \R^N \colon \exists x \in \R^n \mit \begin{cases}
-			f_i(x) = u_i &\quad \forall i \in [m], Ax - b = v\\
+			f_i(x) = u_i, h_i(x) = v &\quad \forall i \in [m], Ax - b = v\\
 			f_0(x) = t &\quad
 			\end{cases}}\\
+		\G&= \set{(f_1(x), \dots, f_m(x), h_1(x),h_p(x),f_0(x)) \in \R^N \colon x \in \R^n} \subseteq \AAA\\
 		\AAA &= \set{(u,v,t) \in \R^N \colon \exists x \in \R^n \mit f_i(x) \le u_i \forall i \in [m], Ax-b = v, f_0(x) \le t} = \G \oplus \R^m_{\ge 0} \times \set{0}^p \times \R_{\ge 0}\\
 		\BBB &= \set{(0,0,t)\in \R^N \colon t < p_{\ast}}
 	\end{align*}
@@ -368,7 +369,7 @@ Nennt sich ``Markowitz-Bullet''!
 	\end{align*}
 	dargestellt werden.
 \end{conclusion}
-Graph von min. Risko $\sigma_{\ast}$ und Zielrendite $\mu_{\ast}$
+Graph von min. Risiko $\sigma_{\ast}$ und Zielrendite $\mu_{\ast}$
 siehe phone
 \begin{*remark}[nominales vs. relatives Portfolio]
 	\begin{itemize}
@@ -387,9 +388,126 @@ siehe phone
 			\item Gesamtes Portfolio: 
 			\begin{align*}
 				R_p &= \frac{V_T - V_0}{V_0} = 1/w (\sum_{i=1}^n \vartheta_i S_0^i - \vartheta_i S_0^i)\\
-				&= 1/w \sum_{i=1}^n \vartheta_i(S_T^i - S_0^i) = \sum_{i=1}^n \underbrace{\frac{\vartheta_i S_0^i}{w}_{p_i}}R_i\\
+				&= 1/w \sum_{i=1}^n \vartheta_i(S_T^i - S_0^i) = \sum_{i=1}^n \underbrace{\frac{\vartheta_i S_0^i}{w_{p_i}}}R_i\\
 				&= \sum_{i=1}^n p_i R_i = p^T R \quad \dots \text{ linear in }p
 			\end{align*}
 		\end{itemize}
 	\end{itemize}
 \end{*remark}
+\section{Capital Asset Pricing Model (CAPM)}
+\begin{itemize}
+	\item Ausgangspunkt: Optimalportfolio in \eqref{eq_Markow_two} $p_{\ast} = \lambda \Sigma^{-1}(\mu - r\indi)$. Normiere $p_{\ast}^T \indi = \indi \implies \lambda_{\ast} = \frac{1}{\indi^T \Sigma^{-1} (\mu - r \indi)} = \frac{1}{b-cr}$ (Marktportfolio)
+	\item Wert des Marktportfolios: $M_0 = 1, M_T = (1+ p_{\ast}^T R)$, Rendite $R_M = p_{\ast}^T R$
+	\item Zentrale Idee des CAPM:
+	\begin{itemize}
+		\item Betrachte $M$ als \emph{beobachtbare Größe}
+		\item Aktienindex DAX oder S\&P500 sollte gute Näherung für $M$ ergeben.
+	\end{itemize}
+\end{itemize}
+\paragraph*{Wir betrachten folgende Kennzahlen:}
+\begin{itemize}
+	\item Überschussrendite: [excess return] ($\alpha$)
+	\begin{align*}
+		\alpha_i &= \E[R_i] - r = \mu_i - r \quad \dots \text{ für Wertpapiere }S^i\\
+		\alpha_M &= \E[R_M] - r = p_{\ast}^T\mu -r = \frac{\mu^T \Sigma^{-1}(\mu - r\indi)}{\indi^T\Sigma^{-1}(\mu - r \indi)} - r \\
+		&= \frac{a - rb}{b-rc} - r = \frac{a - 2rb +r^2c}{b-cr}
+	\end{align*}
+	\item \begriff{Beta-Koeffizient}
+	\begin{align*}
+		\beta_i = \frac{\Cov(R_1,R_M)}{\Var(R_M)}
+	\end{align*}
+	skalierte Kovarianz zwischen Erträgen von $S^i$ und $M$
+	\begin{itemize}
+		\item Maß für Korrelation zwischen Wertpapiere $S^i$ und Marktportfolio
+		\item Volle Kovarianzmatrix wird \emph{nicht} benötigt
+	\end{itemize}
+	\item Wir berechnen:
+	\begin{align*}
+		\beta_i &= \frac{\E[(R_i - \mu_i)(R_M-\mu_M)]}{\E[(R_M - \mu_M)^2]} = \frac{\E[e_i^T(R-\mu)(R-\mu)^Tp_{\ast}]}{\E[p_{\ast}^T(R-\mu)(R-\mu)^Tp_{\ast}]} = \frac{e_i^T \Sigma p_{\ast}}{p_{\ast}^T \Sigma p_{\ast}}\\
+		&= \frac{\lambda_{\ast} e_i^T \Sigma \Sigma^{-1}(\mu - r \indi)}{\lambda_{\ast} (\mu - r \indi)^T \Sigma^{-1}\Sigma \Sigma^{-1}(\mu - r \indi)}\\
+		&= \frac{\mu_i - r}{\lambda_{\ast}(a-2rb+r^2c)} = \frac{\mu_i -r}{\mu_M - r} \quad \mit \alpha_M := \mu_M - r
+	\end{align*}
+	d.h. es gilt CAPM-Gleichung
+	\begin{align*}
+		\beta_i(\mu_M -r) = (\mu_i-r) \quad \forall i \in [n]
+	\end{align*}
+	$\beta_i$ ist Beta-Koeffizient von $S^i$, $(\mu_M -r)$ ist Überschussrendite Marktportfolio, $(\mu_i - r)$ ist Überschussrendite von $S^i$ (alpha)
+	\begin{itemize}
+		\item Kann als Regressionsgleichung für $(\alpha_i, \beta_i)_{i \in [n]}$ interpretiert werden
+		\item Entscheidend für Attraktivität eines Wertpapieres $S^i$ ist nicht die Überrendite $\alpha_i = \mu_i -r$ \emph{alleine}, sondern \emph{in Relation} zu $\beta_i$
+		\item CAPM kann empirisch überprüft werden durch Schätzung $(\hat{\alpha}_i,\hat{\beta}_1)$ und Regression
+		\begin{align*}
+			\hat{\beta}_i\cdot (\mu_M - r) = \hat{\alpha}_i + \epsilon_i \tag{$\ast$}\label{eq_4_4_beta}
+		\end{align*}
+		Ideal, wenn $\sum_{i=1}^n \epsilon_i^2$ klein ist
+		\item sketch, see phone ...
+	\end{itemize}
+	\item Kritik am CAPM:
+	\begin{itemize}
+		\item Regression \eqref{eq_4_4_beta} empirisch im Allgemeinen nicht besonders gut (Fehler $\sum \epsilon_i^2$ groß)
+		\item Schätzung von $\mu_i, \mu_M$ schwierig
+	\end{itemize}
+	\item Erweiterungen:
+	\begin{itemize}
+		\item Ergänze Schätzer $\hat{\mu}_i \und \hat{\mu}_M$ von Expertenmeinungen und Konfidenzaussagen führt zum \person{Black}-\person{Littermann}-Modell
+		\item Erweitere Regressionsgleichung \eqref{eq_4_4_beta} um weitere Variablen und führt zum Beispiel zum \person{Fame}-\person{French}-Modell 
+	\end{itemize}
+\end{itemize}
+\section{Präferenzordnungen und Erwartungsnutzen}
+\begin{itemize}
+	\item Kritik an Markowitz:
+	\begin{itemize}
+		\item Ist Standardabweichung $\sqrt{\Var(R)}$ nicht unbedingt gutes Risikomass
+		\item Entscheidungen unter Unsicherheit meist komplexer als durch Erwartungs-Varianzprinzip beschrieben
+	\end{itemize}
+	\item Axiomatischer Zugang: Präferenzordnungen\\
+	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $L_1(\O,\F,\P)$ Raum der integrierbaren Zufallsvariablen.
+	\begin{align*}
+		\MM = \set{\text{Menge der Verteilungsfunktionen} F_X \text{ von } X \in L_1(\O,\F,\P)}
+	\end{align*}
+	Seien $X,Y \in L_1(\O)$ Interpretation risikobehafteter Auszahlungen (``\begriff{Lotterie}''). Wir wollen Ordnungsrelation ``$\vartrianglelefteq$'' mit Bedeutung:
+	\begin{align*}
+		X \vartrianglelefteq Y \Leftrightarrow Y \text{ wird bevorzugt gegenüber }X
+	\end{align*}
+	Beschränken uns auf ``verteilungsinvariante'' POs welche durch Relation auf $\MM$ erklärt werden können, d.h.
+	\begin{align*}
+		X \vartrianglelefteq Y \Leftrightarrow F_X \vartrianglelefteq F_Y
+	\end{align*}
+\end{itemize}
+\begin{definition}
+	Eine Relation ``$\vartrianglelefteq$'' auf $\MM$ heißt Praferenzordnung (PO), wenn gilt:
+	\begin{itemize}
+		\item (Reflexiv) $F \vartrianglelefteq F\quad \forall F \in \MM$
+		\item (Transitiv) $(F \vartrianglelefteq G)\vee (G \vartrianglelefteq H) \implies (F \vartrianglelefteq H)\quad \forall F,G \in \MM$
+		\item (Vollständig) $\forall F,G \in \MM$ gilt: $(F\vartrianglelefteq G)\wedge (G \vartrianglelefteq F)$
+	\end{itemize}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Menge $\MM$ ist \emph{konvex}, d.h. $\forall F,G \in \MM  \und \alpha \in [0,1]$ gilt
+		\begin{align*}
+			H - (1-\alpha)F + \alpha G \in \MM \tag{$\oplus$}\label{eq_4_5_convex_PO}
+		\end{align*}
+		\item \eqref{eq_4_5_convex_PO} lässt sich als ``Mischen'' von $F$ und $G$ interpretieren
+		\item Sei $X \sim F_X, Y \sim F_Y$ und $A \upmodels (X,Y)$ mit $\P(A=0) = \alpha, \P(A=1) = 1-\alpha$. Dann gilt:
+		\begin{align*}
+			(1-A)X + A Y \sim (1-\alpha)F_X + \alpha F_Y
+		\end{align*}
+		\item Aus gegebenen PO können wir ableiten
+		\begin{itemize}
+			\item Äquivalenzrelation $F\sim G \Leftrightarrow (F \vartrianglelefteq G)\vee (G \vartrianglelefteq F)$ ``Indifferenz zwischen $F$ und $G$''
+			\item strikte Relation $F \lhd G \Leftrightarrow (F \vartrianglelefteq G)\vee (G \vartrianglelefteq F)$ ``$G$ wird strikt gegenüber $F$ bevorzugt''
+			\item Für ``deterministische Zufallsvariablen'' $a \in \R$ ist die Verteilungsfunktion $F_a = \indi_{[a, \infty)}$
+		\end{itemize}
+	\end{itemize}
+\end{*remark}
+Eine PO kann folgende Eigenschaften besitzen:
+\begin{enumerate}
+	\item Monotonie: $\forall a,b \in \R$ mit $a\le b$ gilt $F_a \vartrianglelefteq F_b$ (``mehr besser als weniger'')
+	\item Risikoaversion: $\forall X \in L_1(X)$ gilt: $F_X F_{\E[X]}$ (``sicher besser als unsicher'')
+	\item Mittelwertseigenschaft: Sei $F,G,H \in \MM$ mit $F \vartrianglelefteq G \vartrianglelefteq H$. Dann existiert $\alpha \in [0,1]$ mit $(a-\alpha)F + \alpha H \sim G$
+	\item Unabhängigkeitsaxiom: $\forall F,G,H \in \MM$ gilt
+	\begin{align*}
+		F \vartrianglelefteq G \implies (1-\alpha)F + \alpha H \vartrianglelefteq (1-\alpha) + \alpha H \quad \forall \alpha \in [0,1]
+	\end{align*} 
+\end{enumerate}
