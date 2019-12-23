@@ -137,7 +137,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Text-related packages
 %increase line spacing
-\RequirePackage[onehalfspacing]{setspace} %increase row-space
+%\RequirePackage[onehalfspacing]{setspace} %increase row-space
 \RequirePackage{ulem} 		%better underlines
 \RequirePackage{marginnote}	%notes at the edge
 
@@ -243,7 +243,7 @@
 	skipabove=5pt,%
 	skipbelow=10pt,%
 	frametitlefont=\normalfont\bfseries\color{black},%
-	nobreak,%enforce no pagebrakes in the whole frame
+%	nobreak,%enforce no pagebrakes in the whole frame
 }
 
 %numbered environments
@@ -257,6 +257,7 @@
 	innerbottommargin=\topskip,%
 	linecolor=darkgrey,%
 	backgroundcolor=lightgrey,%
+	nobreak
 ]{theorem}{Theorem}[\theoremcounter@belongingto]
 
 \newmdtheoremenv[%
@@ -268,6 +269,7 @@
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
 	backgroundcolor=lightgrey,%
+	nobreak
 ]{proposition}[theorem]{Satz}
 
 \newmdtheoremenv[%
@@ -279,6 +281,7 @@
 	backgroundcolor=lightgrey,%
 	innertopmargin=\topskip,%
 	innerbottommargin=\topskip,%
+	nobreak
 ]{lemma}[theorem]{Lemma}
 
 %excluding background
@@ -375,7 +378,7 @@ frametitlefont=\normalfont\bfseries\color{black},%
 innerleftmargin=0pt,%
 skipabove=5pt,%
 innerleftmargin=10pt,%
-]{*erinnerung}[theorem]{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
+]{*erinnerung}{\hspace*{-10pt}$\blacktriangleright$\hspace*{\dimexpr 10pt - \blacktrianglewidth\relax}Erinnerung}
 
 \newmdtheoremenv[%
 	style=boxedtheorem,%
@@ -565,8 +568,8 @@ innerleftmargin=10pt,%
 
 %declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
-	\index{#2#3#4}%
-	\IfBooleanTF{#1}{}{\uline{#3}}%
+	\uline{#3}
+	\IfBooleanTF{#1}{}{\index{#2#3#4}}%
 }
 
 %append a new mathsymbol to the index, output if no star is given at the call position
@@ -615,14 +618,18 @@ innerleftmargin=10pt,%
 
 %redefine \overline to customize the space between text / line (currently 0.4mm + height of the content)
 %ATTENTION: when changing the 0.4mm unfortunately, in \kringel the 0.4mm need to be changed accordingly
-\let\@old@overline\overline
-\renewcommand*{\overline}[1]{%
-	\ifmmode
-		\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{$#1$}}%
-	\else
-		\bar{#1}
-	\fi
-}
+%\let\@old@overline\overline
+%\RenewDocumentCommand{\overline}{s m}{%
+%	\IfBooleanTF{#1}%
+%	{\@old@overline{#2}}%
+%	{%
+%		\ifmmode
+%			\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{$#2$}}%
+%		\else
+%			\@old@overline{\raisebox{0pt}[\dimexpr\height+0.4mm\relax]{#2}}%
+%		\fi
+%	}%
+%}
 
 %encircle some content. Arguments: border color (optional), background color (mandatory), content (mandatory)
 %two lengths to get width / height of content (important for width / height of the circle)
@@ -721,7 +728,7 @@ innerleftmargin=10pt,%
 \titlespacing{\chapter}{0pt}{0pt}{10pt}
 \titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{8pt}{\Large\bfseries}
 %\titlespacing{command}{left}{before-sep}{after-sep}
-\titlespacing{\subsection}{0pt}{0pt}{5pt}
+\titlespacing{\subsection}{0pt}{10pt}{5pt}
 
 %change appearence of heading of toc: 0 space above, bold, italic huge toc-heading
 \renewcommand{\cftbeforetoctitleskip}{0pt}
@@ -785,10 +792,6 @@ innerleftmargin=10pt,%
 }
 
 \AtBeginDocument{%
-	\renewcommand{\F}{%
-		\PackageError{mathscript}{Im Deutschsprachigem Raum wird K anstelle von F verwendet...}{}%
-		\end{document}
-	}
 }
 
 \endinput
