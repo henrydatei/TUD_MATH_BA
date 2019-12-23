@@ -5,6 +5,7 @@
 
 %local packages
 \usepackage{cancel}
+\usepackage{amssymb}
 
 \title{\textbf{Stochastikvertiefung: Finanzmathematik WS 19/20}}
 \author{Dozent: Prof. \person{Martin.Keller-Ressel}}
@@ -15,6 +16,9 @@
 \newcommand{\QQ}{\mathbb{Q}}
 \renewcommand{\O}{\Omega}
 \renewcommand{\G}{\mathscr{G}}
+\newcommand{\AAA}{\mathscr{A}}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\BBB}{\mathscr{B}}
 \renewcommand{\H}{\mathscr{H}}
 \newcommand{\Gen}{\mathcal{E}}
 \newcommand{\E}{\mathbb{E}}
@@ -31,10 +35,20 @@
 \DeclareMathOperator{\plim}{plim} % stochastic convergence or convengence in probability
 \DeclareMathOperator{\CRR}{CRR}			
 \newcommand{\half}{\frac{1}{2}}				% CRR-model sequence
-\newcommand{\ZZ}{\mathcal{Z}}				% 
-\newcommand{\NNN}{\mathcal{N}}				% normal distribution N
-\newcommand{\OO}{\mathcal{O}}				% Big Ohhhh
+\newcommand{\ZZ}{\mathcal Z }				% 
+\newcommand{\NNN}{\mathcal N }				% normal distribution N
+\newcommand{\OO}{\mathcal O }				% Big Ohhhh
 \newcommand{\LL}{\mathcal L}				% Lagrange L
+
+% % % % % % % % %
+% from https://tex.stackexchange.com/questions/319330/notation-for-proper-normal-subgroup
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{ <-6> matha5 <6-7> matha6 <7-8>
+	matha7 <8-9> matha8 <9-10> matha9 <10-12> matha10 <12-> matha12 }{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+%
+\DeclareMathSymbol{\nvartrianglelefteq}{\mathrel}{matha}{"9E}
+\DeclareMathSymbol{\vartrianglelefteq}{\mathrel}{matha}{"9C}
 
 \begin{document}
 \renewcommand{\F}{\mathscr F}
