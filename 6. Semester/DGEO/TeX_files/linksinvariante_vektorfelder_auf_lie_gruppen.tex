@@ -1,0 +1,552 @@
+\section{Linksinvariante Vektorfelder auf Lie-Gruppen}
+\begin{lemma}
+	Sei $G$ eine Lie-Gruppe. Das Tangentialbündel von $G$ ist trivial: $\T G\cong G\times \T_1 G$
+\end{lemma}
+
+\begin{proof}
+	Für jedes $g\in G$ sit die Linksverschiebung $L_g\colon G\to G$, $h\mapsto gh$ ein Diffeomorphismus. Wenn $\xi \in \T_1 G$, dann $X_\xi(g) := (L_g)_\star (\xi)\in \T_g G$ und $X_\xi \in\Gamma(\T G)$ heißt das linksinvariante Vektofeld zu $\xi$.
+	Sei nun $\psi\colon G\times \T_1 G\to \T G$, $(g,\xi)\mapsto (L_g)_\star(\xi) = X_\xi(g)$.\\
+	\emph{Behaptung}: $\psi$ ist Diffeomorphismus: die Abbidlung $\phi\colon \T G\to G\times \T_1 G$, $v\mapsto (\pi(v),(L_{\pi(v)^{-1}})_\star v)$ ist $\psi^{-1}$.
+\end{proof}
+
+\textbf{Vorsicht}: $(L_g)_\star Z\in\Gamma(\T G)$, wenn $Z\in\Gamma(\T G)$. Das funktioniert nur, weil $L_g\colon G\to G$ ein Diffeomorphismus ist. Wenn $f\colon M\to N$ glatt, beliebige Abbildung ist, dann ist $X\in \Gamma(\T M)$ und $f_\star X$ kein Vektorfeld, sondern ein Objekt unbekannte rNatur. $f_\star X(u) = f_{\star}(X(f^{-1}(u)))$ ist i.A. nicht wohldefiniert (da $f^{-1}(u)$ möglicherweise mehrere Urbilder hat).
+
+\begin{definition}
+	Sei $G$ Lie-Gruppe. Die Lie-Algebra von $G$, $\mathfrak g = \mathrm{Lie}\,(G)$, ist die Lie-Algebra der linksinvarianten Vektorfelder auf $G$.
+\end{definition}
+
+\textbf{Erinnerung}: $\mathfrak g\overset{\cong}{\underset{ev_1}{\rightarrow}} \T_1 G$ $\Rightarrow$ $\dim\mathfrak g=\dim G$.
+
+Sei $G\subset\GL(n,\K)$ eine Lie-Untergruppe. Dann ist $\mathfrak g\cong \T_1 G\subset \T_1 \GL(n,\K)\cong \Mat_N(\K)$, $\hat X_A(g) = g\cdot A\to A$.
+
+\begin{proposition}
+	Die obige Abbildung identifiziert $(g,[\,\cdot\,,\,\cdot\,])$ mit einer Lie-Unteralgebra von $(\Mat_n(\K),[\,\cdot\,,\,\cdot\,])$.
+\end{proposition}
+\begin{proof}
+	Seien $X$, $Y\in\mathfrak g$. Diese Vektorfelder, in Koordinaten geschrieben, entsprechen $\hat X\colon g\mapsto g\cdot A$ bzw. $\hat Y\colon g\mapsto gB$.  Wir wollen $\widehat{[X,Y]}$ berechnen:\begin{align*}
+		\widehat{[X,Y]}(g) &\overset{\text{Ü3 ii)}}{=}\big[ X(\hat Y) - Y(\hat X)\big](g) = (\D_g \hat Y)\big(\hat X(g)\big) - (\D_g \hat X)\big(\hat Y(g)\big) = \hat X(g)B - \hat Y(g) A = g(AB - BA),
+	\end{align*}
+	also $\widehat{[X,Y]}(1) = AB - BA = [A,B]_{\R^n}$.
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $\Lie(\GL(n,\K)) = \mathfrak {gl}(n,\K)\cong (\Mat_N(\K),[\,\cdot\,,\,\cdot\,])$ (folgt aus dem Satz)
+		\item $\mathfrak{sl}(n,\K) = \Lie\big(\SL(n,\K)\big)$.
+		
+		Brauchen $\T_1 \SL(n,\K)\subset \Mat_n(\K)$ ausrechnen. Dafür gilt: \begin{align*}
+			\SL(n,\K) = \{A\in\GL(n,\K)\mid \det A = 1\} = \det^{-1}(1),
+		\end{align*}
+		wobei $1$ regulärer Wert von $\det$ ist. Mit Ü8 folgt: \begin{align*}
+			\T_1 \SL(n,\K)\cong\ker \D_1\det = \ker(\tr\colon \Mat_n(\K)\to\K),
+		\end{align*}
+		folglich $\mathfrak{sl}(n,\K) = \{A\in\Mat_n(\K)\mid \tr(A) = 0\}$. Es sei bemerkt, dass $[\mathfrak{sl},\mathfrak{sl}] \subset\mathfrak{sl}$, da immer $\tr([A,B]=0)$ gilt.
+		
+		\item $\mathfrak o(n,\K) \cong \T_1 \Orth(n,\K) = \{\dot\gamma(0)\mid \gamma\colon I\to\Orth(n,\K),\;\gamma(0) = 1\}$.
+		
+		Sei $\gamma\colon I\to\Orth(n,\K)$\begin{itemize}[label={$\Rightarrow$},topsep=0pt]
+			\item $\transpose{\gamma(t)}\gamma(t) = 1$ 
+			\item $\transpose{\dot\gamma(0)}\gamma(0) + \transpose{\gamma(0)}\dot\gamma(0)=0$
+			\item[$\Leftrightarrow$] $\transpose{\dot\gamma(0t)}+\dot\gamma(0) = 0$.
+		\end{itemize}
+		D.h. $\T_1 \Orth(n,\K)\subset \{A\in\Mat_n(\K)\mid \transpose A+A=0\}$.
+		
+		$\boldsymbol\supset$: Sei $A\in\Mat_n(\K)$, $\transpose A+A=0$. $\gamma_A(t) = \exp(tA)\in\Orth(n,\K)$, denn \begin{align*}
+			\transpose{\exp(tA)}\exp(tA) = \exp(t\transpose A)\exp(tA) = \exp(-tA)\exp(tA) = 1.
+		\end{align*}
+		Weiterhin $\dot\gamma_A(0) = A$, $\gamma_A(0) = 1$.
+		
+		\item $\mathfrak{so}(3) \!\!:= \mathfrak{so}(3,\R)\cong \T_1\SO(3)\cong\T_1 \Orth(3) = \{A\in\Mat_3(\R)\mid \transpose A = 0\} = \!\bigg\langle\!\! \Big(\!\!\begin{smallmatrix}
+			\phantom{\scriptscriptstyle-}0 & 1 & 0 \\ \raisebox{0.2ex}{$\scriptscriptstyle-$}1 & 0 & 0\\ \phantom{\scriptscriptstyle-}0 & 0 & 0
+		\end{smallmatrix}\!\Big)\!,\!\!\Big(\!\!\begin{smallmatrix}
+			\phantom{\scriptscriptstyle-}0 & 0 & 1 \\ \phantom{\scriptscriptstyle-}0 & 0 & 0 \\ \raisebox{0.2ex}{$\scriptscriptstyle-$}1 & 0 & 0
+		\end{smallmatrix}\!\Big)\!,\!\!\Big(\!\begin{smallmatrix}
+			0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0
+		\end{smallmatrix}\!\Big)\!\!\bigg\rangle$ Weiterhin ist $\Orth(3) = \SO(3)\sqcup (-\SO(3))$ - zwei Zusammenhangskomponenten. Weiterhin gilt \begin{align*}
+			\exp(t I_z) = \begin{pmatrix}
+				\cos t & \sin t & 0 \\ -\sin t & \cos t & 0 \\ 0 & 0 & 1
+			\end{pmatrix},
+		\end{align*}
+		was aus einer blockweisen Betrachtung der Erzeuger von $\mathfrak{so}(3)$ entsteht.
+		
+		$[L_x,L_y] = L_z$, $[L_y,L_z] = L_x$ und $[L_z,L_x] = L_y$ ("`infinitesimale Rotation"').
+		
+		\item $\mathfrak{su}(2) = \T_1 \SU(2) = \{A\in\Mat_n(\C)\mid A^\star = -A,\,\tr(A) = 0\}\cong\Big\langle \underbrace{\begin{psmallmatrix*}[r]
+			i&0\\0&-i
+		\end{psmallmatrix*}}_{=u_3},\underbrace{\begin{psmallmatrix*}[r]
+			0&-1\\1&0
+		\end{psmallmatrix*}}_{=u_2},\underbrace{\begin{psmallmatrix*}[r]
+			0&i\\i&0
+		\end{psmallmatrix*}}_{=u_1}\Big\rangle$.
+		Die Kommutatoren sind $[u_1,u_2] = 2u_3$, $[u_2,u_3] = 2u_1$ und $[u_3,u_1] = 2u_2$.
+		
+		Betrachte nun \begin{align*}
+			\exp(t xy) = \begin{pmatrix}
+				e^{it} & 0\\0 & e^{-it}
+			\end{pmatrix} = g_t\in\SU(2).
+		\end{align*}
+		Es folgt \begin{enumerate}[label={\roman*)}]
+			\item $g_t u_3 g_t^{-1} = u_3$,
+			\item $\displaystyle \begin{aligned}[t]g_t u_1 g_t^{-1} &= \begin{pmatrix}
+				e^{it} & 0 \\ 0 & e^{-it}
+			\end{pmatrix}\begin{pmatrix}
+				0 & -i \\ i & 0
+			\end{pmatrix}\begin{pmatrix}
+				e^{-it} & 0 \\ 0 & e^{it}
+			\end{pmatrix}\\
+			&=\begin{pmatrix}
+				0 & ie^{2it} \\ ie^{-2it} & 0
+			\end{pmatrix}\\
+			&=\begin{pmatrix}
+				0 & i\cos 2t - \sin t2 \\ i\cos 2t + \sin 2t & 0
+			\end{pmatrix}\\
+			&= \cos 2t u_1 + \sin 2t u_2\end{aligned}$
+			\item $g_t u_2 g_t^{-1} = \cos 2t u_2 - \sin 2t u_1$.
+			
+			$M^{(u_1,u_2,u_3)}\big( g_t(\,\cdot\,)g_t^{-1}\big) = \begin{pmatrix}
+				\cos 2t & -\sin 2t & 0 \\ \sin 2t & \cos 2t & 0 \\ 0 & 0 & 1
+			\end{pmatrix}$
+		\end{enumerate}
+		$\mathfrak{su}(2)$, $\langle X,Y\rangle := \frac12\tr(X Y^\star) = -\frac12\tr(XY)$ $\Rightarrow$ Skalarprodukt $\tr(X\cdot X^\star)$ ist positiv semidefinit; $u_1$, $u_2$, $u_3$ ist Orthonormalbasis bezüglich $\langle\,\cdot\,,\,\cdot\,\rangle$ ($\mathfrak{SU}(2),\langle\,\cdot\,,\,\cdot\,\rangle)\cong(\R^3,\langle\,\cdot\,,\,\cdot\,\rangle)$).
+		
+		Sei $g\in\SU(29$. $\mathrm{Ad}(g)\colon\mathfrak{SU}(2)\to\mathfrak{su}(2)$, $X\mapsto gXg^{-1}$. Damit ist \begin{align*}
+			\langle \mathrm{Ad}\,g(x)X,\mathrm{Ad}\,(g)Y\rangle &= \frac12\tr\big(gXg^{-1}(gYg^{-1})^\star\big) \\
+			&=\frac12\tr\big(gXg^{-1}(g^{-1})^\star Y^\star g^\star\big) \\
+			&= \frac12\tr(gXg^{-1}gYg^{-1})\\
+			&=\frac12\tr(XY^\star)
+		\end{align*}
+		\emph{Übung}: $\det\big(\mathrm{Ad}\,(g)\big) = 1$.
+		
+		$\mathrm{Ad}\colon \SU(2)\xrightarrow{2:1} \SO(3)$ ist Gruppenhomomorphismus. Es ist \begin{align*}
+			\ker(\mathrm{Ad}) &= \big\{ g\in\SU(2)\;\big|\; gXg^{-1} = X\;\forall X\in\SU(2) \big\}= \left\lbrace \begin{pmatrix}
+				X & 0\\0&X
+			\end{pmatrix}\in\SU(2)\right\rbrace = \{\pm 1\}
+		\end{align*}
+		$\mathrm{Ad}$ ist surjektiv, weil alle Rotationen um $x$, $y$, $z$-Achse sind im Bild $\leadsto$ sie erzeugen ganz $\SO(3)$.
+		
+		\textbf{Fazit}: $\mathfrak{su}(2)\cong\SO(3)$ als Lie-Algebra mit $\frac12 u_1\mapsto L_x$, $\frac12 u_2\mapsto L_y$, $\frac12 u_3\mapsto L_z$. Weiterhin gilt für $\D_1\psi =\psi_\star\colon\mathfrak{su}(2)\to\mathfrak{so}(3)$: \begin{align*}
+			\frac{\mathrm d}{\mathrm dt}\bigg|_{t=0} \psi\big(e^{tu_3}\big) &= \psi_\star(u_3), & \frac{\d}{\d t}\begin{pmatrix}
+				\cos 2t & -\sin 2t & 0 \\ \sin 2t & \cos 2t & 0 \\ 0 & 0 & 1
+			\end{pmatrix} &= 2L_z,\quad\text{analog für $u_1$, $u_2$.}
+		\end{align*}
+		Insbesondere gibt es unterschiedliche Lie-Gruppen, die isomorphe Lie-Algebren haben!
+		\item $(\R,+)$, $(U(1),\,\cdot\,)$ jeweils kommutativ $\Rightarrow$ $\Lie(\R,+)\cong\Lie(U(1),\,\cdot\,)\cong\R$. $\R\to U(1)$, $t\mapsto e^{2\pi it}$ mit $\ker\psi =\Z$, also $U(1)\cong \R\slash \Z$ (Schraube über Kreis).
+		
+		$\SU(2)\cong S^3$, $\begin{psmallmatrix*}[r]
+			\alpha & \beta \\ \gamma & \delta
+		\end{psmallmatrix*}\mapsto (\alpha,\gamma)\subset\C^2\cong\R^4$, $\begin{psmallmatrix*}[r]
+			\beta\\\delta
+		\end{psmallmatrix*}\perp\begin{psmallmatrix*}[r]
+			\alpha\\\gamma
+		\end{psmallmatrix*}$
+		
+		$\R \P^n := S^n\slash \{\pm \id\}$ ist Mannigfaltigkeit, kompakt.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Sei $\K$ Körper. Der $n$-dimensionale \begriff*{projektive Raum}\index{Raum!projektiv} über $K$, ist \begin{align*}
+		\K \P^n &= \P^n(\K) = \{ 1-\text{dim UR in $\K^{n+1}$} \}\\
+		 &= \{\lambda v\mid \lambda\in\K\} = [v]\\
+		&\cong \raisebox{1ex}{$\displaystyle \K^{n+1}\setminus\{0\}$}\mskip-8mu\bigg\slash\mskip-8mu\raisebox{-1ex}{$\displaystyle v\sim \lambda v$}\quad \lambda\in\K,\;v\in V\\
+		&= \{ \underbrace{[x_0,x_1,\dots,x_n]}_{=:[x_0:{\dots}:x_n]} \mid \exists x_i\neq 0,\,\lambda\in\K: [\lambda x_0,\dots,\lambda x_n] = [x_0,\dots,x_n] \}
+	\end{align*}
+\end{definition}
+Es gilt:\begin{align*}
+	 \K \P^n&= \{[x_0:\dots:x_{n-1}{:}1] \mid x_0,\dots,x_{n-1}\in \K \}\sqcup \{x_0:\dots:x_{n-1}{:}0\mid [x_0:\dots:x_{n-1}]\in \K\P^{n-1}\}\\
+	 & = \K\sqcup \K\P^{n-1}\\
+	 \K\P^0 &= \{\star\}.\\
+\end{align*}
+sowie speziell für $\K=\R$:\begin{align*}
+	\R\P^1 &= S^1\slash \{\pm\id\} \cong S^1 \cong \R\sqcup{\star}\\
+	\R\P^3 &\cong\SO(3)
+\end{align*}
+bzw. für $\K=\C$:\begin{align*}
+	\C\P^1 &=\C\sqcup\{\infty\}\cong S^2.
+\end{align*}
+
+\begin{definition}
+	Sei $M$ eine zusammenhängende Manigfaltigkeit, $x_0\in M$. Eine \begriff{Schleife} an $x_0$ $\gamma\colon[0,1]\to M$ ist eine stetige Abbildung  mit $\gamma(0) = \gamma(1) = x_0$. Eine Schleife $\gamma\colon[0,1]\to M$ heißt \begriff{nullhomotop} bzw. \begriff{zusammenziehbar}, wenn eine Homotopie $H\colon [0,1]^2\to M$ mit $H(0,t) = \gamma(t)$, $H(1,t) = x_0$ existiert.
+\end{definition}
+
+\begin{definition}
+	$M$ heißt \begriff*{einfach zusammenhängend}\index{zusammenhängend!einfach}, wenn alle Schleifen zusammenziehbar sind.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item $\R^n$ ist einfach zusammenhängend
+		\item $S^n$ ist einfach zusammenhängend $\forall n\ge 2$.
+		\item $\R^n\setminus\{0\}$, $S^1\cong U(1)$ nicht einfach zusammenhängend, ebensowenig projektive Räume
+	\end{itemize}
+\end{example}
+
+\begin{proposition}[Lie-Algebra $\leadsto$ Lie-Gruppen]
+	Zu jeder endlich-dimensionalen Lie-Algebra $\mathfrak g$ gibt es eine eindeutig bestimmte einfach zusammenhängende Lie-Gruppe $G$ mit $\Lie(G)\cong\mathfrak g$.
+\end{proposition}
+
+\begin{example}
+	$S^n\cong \SO(n+1)\slash \SO(n)$.
+\end{example}
+
+\textbf{Frage}: Sei $G$ Lie-Gruppe, $M$ Mannigfaltigkeit, $G\overset\alpha\curvearrowright M$ durch Diffeomorphismus $\Leftrightarrow$ $\alpha\colon G\to\mathrm{Diff}\,M$. Wann ist $M\slash G$ eine einfache Mannigfaltigkeit?\begin{align*}
+	M\slash G &= \{ \Theta_m\mid m\in M \},\quad\Theta_m := G\cdot m = \Big\{ \big(\alpha(g)\big)(m)\;\Big|\;g\in G \}.
+\end{align*}
+
+\begin{example}
+	$M=\R^2$, $G=\Z\slash 3\Z\curvearrowright \R^2$ durch Potenzieren. $M\slash G$ entspricht einem Kegel mit Singularität im Kegelkopf.
+\end{example}
+
+Sei $G\curvearrowright M$ Wirkung, wobei ab jetzt gilt: Die Wirkung \begin{align*}
+	\hat\alpha\colon G\times M\to M,\; (q,m)\mapsto \big(\alpha(g)\big)(m)
+\end{align*}
+sei stets glatt. Sei $m\in M$ und betrachte die Abbildung \begin{align*}
+	\psi_m\colon G\to M,\;g\mapsto \big(\alpha(g)\big)(m)\quad\leadsto \D_1 \psi_M\colon\mathfrak g\to \T_m  M
+\end{align*}
+
+\begin{definition}
+	Das \begriff*{Killing-Vektorfeld}\index{Vektorfeld!Killing} zur Wirkung $\alpha$ und einem Element $\xi\in\mathfrak g$ ist $m\mapsto \D_1 \psi_m(\xi)$.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+	\item $X\in\Gamma(\T \pi^2)$ definiert eine Wirkung $R\curvearrowright \pi^2$, $t\mapsto \phi_t$ (vgl. HA).
+	\item $(\alpha,\beta)$ $\Q$-linear unabhängig $\Rightarrow$ Orbits nicht geschlossen, sogar dicht in $\pi^2$.
+	
+	\item Betrachte $\pi^2\slash \R$ mit Quotiententopologie: $U\in\pi^2\slash\R$ offen $\Leftrightarrow$ $q^{-1}(U)\subset\pi^2$ offen. Da jede Bahn dicht liegt, ist die Quotiententopologie nicht hausdorffsch: $U\subset\pi^2\slash\R$ offen, $\neq\emptyset$. Dann $\exists [m]\in U\colon O_m\subset q^{-1}(U)$ offen. $[m']\neq [m]\in\pi^2\slash\R$, dann sind $O_m$, $O_{m'}$ beide dicht.
+	
+	Ist $[m']\in U'$ Umgebung von $[m']$, dann sind $O_{m}\subset q^{-1}(U)$ und $O_{m'}\subset w^{-1}(U')$ beide offen in $\pi^2$, folglich $O_m\cap q^{-1}(U')\neq \emptyset$, da $O_m$ dicht, sodass $[m]\in U'$ liegt.
+	\end{itemize}
+\end{example}
+
+\begin{definition}
+	Seien $X$, $Y$ topologische Räume, $f\colon X\to Y$ stetig. $f$ heißt \begriff{eigentlich}, wenn Urbilder kompakter Mengen kompakt sind, d.h. $K\subset Y$ kompakt $\Rightarrow$ $f^{-1}(K)\subset X$ kompakt.
+\end{definition}
+
+\begin{definition}
+	Eine Lie-Gruppenwirkung $G\overset\alpha\curvearrowright M$ heißt \begriff{eigentlich}\index{eigentlich!Lie-Wirkung}, wenn die Abbildung\begin{align*}
+		G\times G\to M\times M,\; (g,m)\mapsto \Big(\big(\alpha(g)\big)(m),m\Big)
+	\end{align*}
+	eigentlich ist.
+\end{definition}
+
+\textbf{Erinnerung}: $G\curvearrowright M$ heißt \begriff{frei}\index{frei}, wenn $\Stab(m) = \{ 1 \}$, $m\in M$ ($\Leftrightarrow$ $\forall g\neq 1$, $\forall m\in M\colon \big(\alpha(g)\big)(m)\neq m$).
+
+\begin{example}
+	$G$ kompakt, dann ist jede Wirkung $G\curvearrowright M$ eigentlich.
+	
+	$K\subset M\times M$ kompakt $\Rightarrow$ $\pi^2(K)\subset M$ kompakt $\Rightarrow$ $\phi^{-1}(K)\subset G\times \pi^2(K)$ kompakt.
+\end{example}
+
+\textbf{Beobachtung}: $G\curvearrowright M$ eigentlich $\Rightarrow$ $\Stab(M)\le G$ kompakt $\forall m\in M: \Stab(M) \times\{m\}= \phi^{-1}(\{m,m\})$
+
+\begin{proposition}
+	Sei $G\curvearrowright M$ eigentlich, $m\in M$. Die Bahn von $m$, $O_m := \{gm\mid g\in G\}$ ist eine eingebettete Untermannigfaltigkeit von $M$ und es gilt \begin{align*}
+		\T_m O_m = \{ K_\xi(m)\mid \text{$K_\xi$ Killing-Vektorfeld der Wirkung zu $\xi\in\mathfrak g$} \}
+	\end{align*}
+\end{proposition}
+
+\begin{proposition}
+	\proplbl{12_18}
+	Sei $G\curvearrowright M$ eine freie und eigentliche Wirkung. Der Quotient $M\slash G$ hat eine eindeutig bestimmte glatte Struktur, sodass $q\colon M\to M\slash G$ eine Submersion ist.
+\end{proposition}
+\begin{proof}
+	Betrachte die offenbar glatte Abbildung \begin{align*}
+		\psi_m\colon G\to M,\;g\to gm.
+	\end{align*}
+	Betrachte $\rang \D_g \psi_m = \mathrm{konst}$ (unabhängig von $g$).
+	Das liegt daran, dass $hg\overset{\psi_m}\mapsto hgm$
+	\begin{itemize}[label={$\Rightarrow$},topsep=-0.25\baselineskip,itemsep=0pt]
+		\item  $\psi_m\big(L_h(g)\big)\psi_m(hg) = h\psi_m(g) = \alpha_h\big(\psi_m(g)\big)$.
+		\item[$\Leftrightarrow$] $\psi_m\circ L_h = \alpha_h \circ\psi_m$
+		\item[$\Leftrightarrow$] $\alpha_h\circ\psi_m\circ L_h^{-1}$
+		\item $\D_g \psi_m = \D_g(\alpha_h\circ \psi_m\circ L_h^{-1}) = \underbrace{\D_{h^{-1}gm} \alpha_h}_{\text{invertierbar}} \circ \D_{h^{-1}g}\psi_m\circ \underbrace{\D_g L^{-1}_{h}m}$
+		\item $\rang \D_g \psi_m = \rang(\D_{h^{-1}}g \psi_m)$.
+	\end{itemize}
+	Daher ist das Bild von $\psi_m\colon G\to M$ lokal (z.B. an $1\in G$) eine Untermannigfaltigkeit (sieht in lokalen Koordinaten aus wie der Graph einer glatten Funktion).
+	
+	$U\subset G$ Umgebung der $1$\begin{itemize}[label={$\Rightarrow$},topsep=-0.25\baselineskip,itemsep=0pt]
+		\item $\psi_m(U) = U\cdot m\subset O_m$ Umgebung von $m\in O_m$.
+		\item $\T_m O_m = \D_1 \psi_m (\underbrace{\T_1 G}_{=\mathfrak g}) = \{ K_\xi (m)\mid\xi\in G \}$
+	\end{itemize}
+
+	\emph{Behauptung}: $O_m\curvearrowright M$ Einbettung:
+	
+	Suche hinreichend kleine Umgebung $W$, $m\in W\subset M$ mit $W\cap\psi_m(G) = W\cap\psi_m(U)$.
+	
+	\emph{Bemerkung}: $M\in\Stab(m)$ $\Rightarrow$ $\psi_m(Uh) = \psi_m(1)$ $\Rightarrow$ können annehmen, dass $U\cdot\Stab(m) = U$.
+	
+	Angenommen, $\not\exists W$ mit obigen Eigenschaften. Dann existiert ein $g_k\in G\colon g_k m\to m$, $g_k\notin U$ (bezüglich $\tau_m$). ($g_k m$, $m$) ist in einer kompakte Umgebung von $(m,m)$ enthalten (weil $g_k m\to m$).
+	
+	Eigentlichkeit: $g_k\in K\subset G$ mit $K$ kompakt, heißt, $\exists g_{k_n} \xrightarrow{n\to\infty} g_\infty \in K$.\\
+	\hspace*{0.5em}$\Rightarrow$ $g_\infty\in\Stab(m)\subset U$ \Lightning~da $g_{k_n}\in U$.
+\end{proof}
+\begin{proof}[\propref{12_18}]
+	Sei $m\in M$, und \begin{align*}
+		\psi_m\colon G\to M,\; g\mapsto gm
+	\end{align*}
+	ist glatt und injektiv, sogar eine Immersion, d.h. lokale Einbettung und $\T_1 O_m\cong \mathfrak g\cong \T_1 G$.
+	
+	Lokal an $m$ gibt es eine Untermannigfaltigkeit $S\subset M$, sodass $\T_m M\cong \T_m O_m\oplus T_m S$, denn lokal sieht $O_m\subset M$ wie $\R^m\subset\R^n$ aus.
+	
+	Daher $\exists V$ mit $m\in V\subset M$ und $U\ni 1$ mit $U\subset G$, dass\begin{align*}
+		\phi\colon U\times S\to V,\; (u,s)\mapsto u\cdot s
+	\end{align*}
+	mit $\phi(g,s) = g\cdot s$, $g\in U$, $s\in S$.
+	
+	\emph{Behauptung}: für $V$, $U$ hinreichend klein ist $\phi$ ein Diffeomorphismus, denn $\phi$ ist lokal ein Diffeomorphismus: $D_{(1,m)}\phi=\id$. $\phi$ ist aber auf ganz $G$ definiert: $\hat\phi\colon G\times S\to M$, $(g,s)\mapsto g\cdot s$.
+	
+	\emph{Behauptung}: Nach eventueller Verkleinerung von $S$ ist $\hat\phi\colon g\times S\o \hat\phi(G\times S)$ ein Diffeomorphismus.
+	
+	Gestern: $\hat\phi$ hat einen konstanten Rang, d.h. für alle $(g,s)$ ist es ein lokaler Diffeomorphismus. Wenn es für beliebig kleine Untermannigfaltigkeiten $m\in S'\subset S$ keinen Diffeomorphismus wird\begin{itemize}[label={$\Rightarrow$},topsep=-0.25\baselineskip]
+		\item $\exists m_k\in 	S$, $g_k\in G$ und $m_k\to m$, $g_k m_k= m$ und $(g_k,m_k)$ konvergiert nicht \item $m_k = g_k^{-1} m$ 
+		\item $g_k^{-1}m\to m$
+		\item[$\Leftrightarrow$] $m_k = g_k^{-1} m$
+		\item $g_k^{-1} m\to m$
+	\end{itemize}
+	$M\times M\ni (m_k,k)\subset K$ (kompakt)
+	\begin{itemize}[label={$\Rightarrow$},topsep=-0.25\baselineskip,wide=0pt,leftmargin=*,align=right,widest={$\xRightarrow[\text{beliebig}]{\text{konv. TF}}$}]
+		\item[{$\xRightarrow[\text{transitiv}]{\text{Wirkung}}$}]  $(g_k^{-1}, m)\in L\subset G\times M$, $\exists g_{k_n}\to g_\infty$ Teilfolge $((g_\infty, m)\in L)$
+		\item $g_\infty m = m$
+		\item[$\xRightarrow{\text{frei}}$] $g_\infty = 1$
+		\item $g_{k_n} \to 1$
+		\item[{$\xRightarrow[\text{beliebig}]{\text{konv. TF}}$}] $g_k\to 1$ \Lightning
+	\end{itemize}
+	Die für $S$ hinreichend kleine $\hat\phi\colon G\times S\to \hat\phi(G\times S)$ ein Diffeomorphismus ist\begin{itemize}[label={$\Rightarrow$},topsep=-0.25\baselineskip]
+		\item $\hat\phi(G\times S) = G\cdot S\cong G\times S$
+		\item $G\cdot S\slash G\cong S$, $G\cdot S\xrightarrow{qs}$ ist Immersion.
+	\end{itemize}
+	Das funktioniert für jedes $m\in M$ und die glatte Struktur ist kompatibel: $G\cdot S\cap G\cdot S'\neq \emptyset$, dann ist die Vergleichsabbildung $q_{S\cap S'} (G\cdot S'\cap G\cdot S)\to q_{S'}(G\cdot S'\cap G\cdot S)$
+	
+	\begin{tikzcd}[cramped,column sep=4pt]
+		\exists !q_s\colon q_s\in G\cdot S' &                                                  &  & G\cdot S\cap G\cdot S' \arrow[rrd, bend left] \arrow[lld, bend right] &  &                                 & {\exists !q_{s'},\,s'\!\colon  q_s s' = q_{s'} s'} \\
+		G\times S \arrow[rd, "\pi_S"] \arrow[r, phantom, "\cong"]      & G\cdot S \arrow[d, "q_s"]                        &  &                                                                       &  & G\cdot S' \arrow[d, "q_{s'}"] \arrow[r, phantom, "\cong"]   & G\times S' \arrow[ld, "\pi_{S'}"]                \\
+		& S \arrow[d, phantom, "\rotatebox{90}{$\in$}" description]                   &  &                                                                       &  & S' \arrow[d, phantom, "\rotatebox{90}{$\in$}" description] &                                                  \\
+		& S \arrow[rrrr, mapsto] \arrow[luu, "{(1,s)}", bend left=49] &  &                                                                       &  & S'                              &                                                 
+	\end{tikzcd}
+	
+	Dieser Verkleinerung ist glatt als Verkettung glatter Abbildungen. $q\colon M\to M\slash G$ ist eine Submersion, weil dies eine lokale Eigenschaft ist.
+\end{proof}
+
+\begin{example}
+	$G$ Lie-Gruppe, $H\le G$ Lie-Untergruppe, dann ist $H\overset L\curvearrowright G$, $h\mapsto (g\mapsto h\cdot g)$ ist automatisch frei und eigentlich: $H\times G\to G\times G$, $(h,g)\mapsto (hg,g)$.
+	
+	Wenn $K\subset G\times G$ kompakt, dann ist $\pi_1(K)\subset G$, $\pi_2(K)\subset G$ kompakt und daher $K\subset\pi_1(K)\times\pi_2(K)$ (und oBdA ist $K=L\times L$ für ein kompaktes $L$).´
+	
+	Ist $hg\in L$, $g\in L$, dann ist $(h,g)\in L\cdot L^{-1}\times L$, wobei die rechte Seite kompakt ist. Damit ist $G\slash H$ immer Mannigfaltigkeit ($G$ Lie-Gruppe, $H\le G$ Lie-Untergruppe).
+\end{example}
+
+\begin{example}
+	\begin{itemize}
+		\item $\SO(n+1)\slash \SO(n)\cong S^n$, $\SO(n+1)\curvearrowright S^n$ transitiv, d.h. nur eine Bahn.
+		
+		$\Stab(e_1) = \begin{bmatrix}
+			1 & \boldsymbol 0 \\
+			\boldsymbol 0 & \SO(n)
+		\end{bmatrix}\cong\SO(n)$.
+		\item $\SU(n+1) \slash \SU(n) \cong S^{2n+1}$ und $\SU(n+1)\curvearrowright \{ z\in \C^{n+1}\mid \Vert z\Vert_2=1 \}\cong S^{2n+1}$.
+		\item $\GL(n,\R) = G$, $B=\{ A\in\GL(n,\R)\mid\text{$A$ ist obere Dreiecksmatrix} \}$.
+	\end{itemize}
+\end{example}
+
+\textbf{Frage}: was ist $G\slash B$? D.h. suche $X$ so, dass $G\curvearrowright X$ transitiv ist, $B=\Stab(x_0)$.
+
+Motivationsbeispiel: Betrachte \begin{align*}
+P = \Bigg\lbrace\begin{psmallmatrix}
+2 & \star & \star & \star \\0 & 2 & 0 & \star \\0 & 0 & 2 & \star \\ 0 & 0 & 0 & 2
+\end{psmallmatrix} \in\GL(4,\R) \Bigg\rbrace = \bigg\lbrace\begin{aligned}[c]&\text{alle invertierbaren Matrizen, sodass $\Span\{e_1,e_2\}$}\\
+&\text{invarianter Unterraum ist}\end{aligned}\bigg\rbrace
+\end{align*}
+Damit ergibt sich: \begin{align*}
+b\in B\quad\Leftrightarrow\quad \span(e_1)\;\text{invariant} \subset\Span\{e_1,e_2\}\;\text{invariant},\dots\,\Span\{e_1,\dots,e_n\}\;\text{invariant}
+\end{align*}
+
+\begin{definition}
+	Sei $V$ ein Vektorraum. Eine \begriff{Flagge} $F$ ist eine Kette von Untervektorräumen $0=V_0\subsetneqq V_1 \subsetneqq V_2\subsetneqq \dots\subsetneqq V_k = V$. $k$ heißt \begriff*{Länge der Flagge}\index{Flagge!Länge}. Eine \begriff*{volle Flagge}\index{Flagge!voll} ist eine Flagge mit der Länge $\dim V$.
+\end{definition}
+
+$G\slash B = \lbrace$ alle vollen Flaggen im $\R^n\,\rbrace\colon G\curvearrowright \lbrace$ volle Flagge $\rbrace$ klar, transitiv: zu jeder vollen Flagge $\mathcal F$ existiert eine Basis $v_1,\dots,v_n$ mit $\mathcal F = (0\subsetneqq \langle v_1\rangle \subsetneqq \dots \subsetneqq \langle v_1,\dots,v_{n-1}\rangle\subsetneqq V)$, $B = \Stab(0\subsetneqq \langle e_1\rangle \subsetneqq \dots \subsetneqq \langle e_1,\dots,e_{n-1}\rangle\subsetneqq \R^n)$
+
+\textbf{Frage}: wie kann man ein Vektorfeld ableiten (bzw. Ko-Vektorfeld)?
+
+\textbf{Beobachtung}: Wir wissen, wie man FUnktionen ableitet: wenn $\phi\in C^\infty(M)$, $X\in\Gamma(\T M)$ $\leadsto$ $X(\phi)\in C^\infty(M)$ (oder, an einem Punkt $m\in M$: $X_m(\phi)\in \R$)
+
+\textbf{Beobachtung}: man kann erstmal keinen Sinn aus $X(Y)\in\Gamma(\T M)$ bilden, da $X$, $y\in\Gamma(\T M)$. \begin{align*}
+	X_M(\phi) &= \lim\limits_{\epsilon\to 0} \frac{\phi(m+\epsilon\xi) - \epsilon(m)}{\epsilon}\\
+	\intertext{wenn $M=\R^n$, $X_m\in\T_m \R^n\cong\R^n\ni\xi$}
+		&	=\lim\limits_{\epsilon\to 0} \frac{\phi\big(\Phi_\epsilon^X(m)\big) - \phi(m)}{\epsilon}
+\end{align*}
+Also auf jeder Mannigfaltigkeit stimmt punktweise \begin{align*}
+	X(\phi) = \lim\limits_{\epsilon\to 0} \frac{\phi\circ \Phi^X_\epsilon-\phi}{\epsilon} = \lim\limits_{\epsilon\to 0} \frac{(\Phi_\epsilon^X)^\star-\phi}{\epsilon}
+\end{align*}
+Wenn wir's für ein Vektorfeld versuchen:\begin{align*}
+	\big[ X(Y)\big] \overset?= \lim\limits_{\epsilon\to 0} \frac{(\Phi_\epsilon)_\star(Y_m) - Y_m}{\epsilon}
+\end{align*}
+Problem: $Y_m\in \T_m M$, $(\Phi_\epsilon)_\star Y_m\in T_{\Phi_\epsilon(m)} M$ -- ergibt keinen Sinn.
+
+Korrektur, die Sinn ergibt:
+\begin{definition}
+	Sei $M$ Mannigfaltigkeit, $X$, $Y\in\Gamma(\T M)$. Die \begriff*{Lie-Ableitung}\index{Ableitung!Lie} von $Y$ nach $X$ ist defineirt als \begin{align*}
+		\big(\mathcal L_X Y\big)_m := \lim\limits_{\epsilon\to 0} \frac{(\Phi_\epsilon)_\star Y_{\Phi_\epsilon(m)} - Y_m}{\epsilon} \in T_m M
+	\end{align*}
+	$\leadsto$ $\mathcal L_X Y\in\Gamma(\T M)$.
+	
+	Analog: wenn $X\in\Gamma(\T M)$ ein Vektorfeld, $\alpha\in\Gamma(\T^\star M)$ ein Ko-Vektorfeld, dann ist \begin{align*}
+		\big(\mathcal L_X \alpha\big)_m := \lim\limits_{\epsilon\to 0} \frac{\Phi_\epsilon^\star(\alpha_{\Phi_\epsilon(m)}) -\alpha(m)() }{\epsilon}
+\end{align*}
+	wobei $\big((\Phi_\epsilon)_\star\big)^\star =: \Phi_\epsilon^\star\colon T^\star_{\Phi_{\epsilon(m)}} M\to \T_m M$
+\end{definition}
+
+\begin{proposition}
+	$X\in\Gamma(\T M)$, $Y\in\Gamma(\T M)$ $\leadsto$ $\mathcal L_X Y = [X,Y]$.
+\end{proposition}
+\begin{proof}
+	Müssen zeigen: $\forall\phi\in C^\infty(M)$: \begin{align}
+		\label{lie_ableitung_star}
+		\lim\limits_{\epsilon\to 0} \frac{\big( (\Phi_ {-\epsilon})_\star Y_{\Phi_\epsilon (m)}\big)(\phi) - Y_m(\phi)}{\epsilon} = [X,Y]_m(\phi)\tag{$\star$}
+	\end{align}
+	Weiterhin gilt \begin{align*}
+		\big((\Phi_{-\epsilon})_\star Y_{\Phi_\epsilon(m)}\big)(\phi) = Y_{\Phi_\epsilon(m)}\big(\Phi_{-\epsilon}^\star(\phi)\big) = Y_{\Phi_\epsilon(m)}(\phi\circ\Phi_{-\epsilon}^\star)
+	\end{align*}
+	Sei $U\ni m$ eine Umgebung von $m$, $I\subset\R$ ein Intervall, sdoass $\Phi\colon I\times U\to M$ existiert. Sei $f\colon I\times U\to \R$ die Funktion $f=\phi\circ\Phi-\phi$, $(t,u)\mapsto \phi\big(\Phi(t,u)\big) - \phi(u)$. Sei erfüllt $f(0,p) = 0$ und \begin{align*}
+		\frac\partial{\partial t} f_{(0,p)} =: g(p),\quad p\in U.
+	\end{align*}
+	Betrachte \begin{align*}
+		\hat g(\tau,p) &:= \int_0^1 \frac{\partial f}{\partial t} (s\tau,p)\,\d s,\\
+		\intertext{mit $\hat g(0,p) = g(p)$}
+		&= \frac1\tau\int_0^1 \frac{\partial f}{\partial t}(s\cdot\tau,p)\,\d(\tau\cdot s)\quad(\tau\neq 0) \\
+		&=\frac1\tau \big(f(t,p) - f(0,p)\big) \\
+		&=\frac1\tau f(\tau,p),\quad\tau\neq 0,
+	\end{align*}
+	also ist $f(t,p) = t\cdot\hat g(t,p)$ und $\hat g(0,p) = \frac{\partial f}{\partial t} (0, p)$.
+	
+	Es folgt: \begin{align*}
+		Y_{\phi_\epsilon(m)}(\phi\circ\Phi_{-\epsilon}) &= Y_{\Phi_\epsilon(m)}\big(f(-\epsilon,\,\cdot\,)+\phi\big)\\
+		&=Y_{\Phi_\epsilon(m)}\big(-\epsilon\cdot\hat g(-\epsilon,\,\cdot\,)+\phi\big),
+	\end{align*}
+	sodass mit \eqref{lie_ableitung_star} folgt \begin{align*}
+		(\star) &= \lim\limits_{\epsilon\to 0} \frac{-\epsilon Y_{\Phi_\epsilon (m)} \big(\hat g(-\epsilon,\,\cdot\,)\big) + Y_{\Phi_\epsilon (m)}(\pi) - Y_m(\phi)}{\epsilon} \\
+		&= \lim\limits_{\epsilon\to 0} \frac{Y_{\Phi_\epsilon(m)}(\phi) - Y_m(\phi)}{\epsilon} - \lim\limits_{\epsilon\to 0} Y_{\Phi(m)}\big(\hat g(-\epsilon,\,\cdot\,)\big) \\
+		&= \lim\limits_{\epsilon\to 0} \frac{\Big(\Phi_\epsilon^\star\big(Y(\phi)\big) - Y(\phi)\Big)(m)}{\epsilon} - Y_m\big(\hat g(0,\,\cdot\,)\big) \\
+		&= \Big(X\big(Y(phi)\big) - Y(g)\Big)(m) \\
+		&= \Big(X\big(Y(\phi)\big) - Y\big(X(\phi)\big)\Big)(m).
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	Wenn $X$, $Y\in\Gamma(\T M)$, $(\Phi_y)$, $(\psi_t)$ die Flüsse von $X$ bzw. $Y$, dann kommutieren $X$ und $Y$ genau dann, wenn ihre Flüsse kommutieren.\begin{align*}
+		[X,Y] = 0\in\Gamma(\T M)\quad\Leftrightarrow \quad\Phi_s\circ\psi_t = \psi_t\circ\Phi_s.
+	\end{align*}
+\end{proposition}
+
+\textbf{Vorbereitung}: Sei $f\colon M\to M$ lokaler Diffeomorphismus. $f\circ \Phi_t\circ f^{-1}$ gehört zum Vektorfeld $f\circ X\circ f^{-1}$, wenn $f\circ\Phi_t\circ f^{-1}=\Phi_t$ $\Rightarrow$ $f_\star\circ X\circ f^{-1} = X$.
+
+\begin{proof}
+	\leavevmode\begin{itemize}[wide=0pt,leftmargin=*,widest={($\Rightarrow$)},topsep=-6pt]
+		\item[($\Leftarrow$)] Setzte $f=\psi_s\leadsto (\psi_s)_\star\circ X\circ \psi_{-s} = X$\begin{itemize}[topsep=-0.25\baselineskip,label={$\Rightarrow$}]
+			\item $(\psi_s)_\star(X_{\psi_{-s}(m)}) = X_m$
+			\item $(\psi_s)_\star(X_{\psi_{-s}(m)}) - X_m = 0$
+			\item $\mathcal L_Y X = 0 = [X,Y]$.
+		\end{itemize}
+		\item[($\Rightarrow$)] $[Y,X] = 0$. Wir wüssen, die Funktion \begin{align*}
+			\gamma\colon I\to \T_m M,\; s\mapsto (\psi_S)_\star(X_{\psi_{-s}(m)})
+		\end{align*}
+		erfüllt $\dot\gamma(0) = 0$. Wir wollen zeigen: $\gamma(s)\equiv$ const $=X_m$. Sei dazu $s$ beliebig, $q := \psi_S(m)$. Dann gilt \begin{align*}
+			\dot\gamma(s) &= \lim\limits_{h\to 0} \frac{\gamma(s+h)-\gamma(s)}{h} \\
+			&= \lim\limits_{h\to 0} \frac{(\psi_{s+h})_\star X_{\psi_{-s+h)}(m)} - (\psi_S)_\star(X_{\psi_{-s}(m)})}h \\
+			&=\lim\limits_{h\to 0} \frac{(\psi_{s+h})_\star\circ X\circ \psi_{-(s+h)}-(\psi_s)_\star \circ X\circ Y_{-s}}{h}(m)\\
+			&= \lim\limits_{h\to 0} \big( (\psi_s)_\star\circ \frac{(\psi_h)_\star\circ X\circ \psi_{-h}-X}{h}\circ \psi_{-s}\big)(m)\\
+			&= (\psi_s)_\star\circ[Y,X]\circ \psi_{-s} = 0,
+		\end{align*}
+		folglich $\gamma(s) = \gamma(0) = X_m$ für alle $m\in M$, sodass $(psi_s)_\star\circ X\circ \psi_{-s} = X$ und folglich $\psi_s\circ\Phi_t\circ\psi_{-s} = \Phi_t$.
+	\end{itemize}
+\end{proof}
+
+Kommutatorformel (vorerst ohne Beweis):\begin{align*}
+	[X,Y] = \frac{\d}{\d t}\Big|_{t=0} (\psi_{-\sqrt t}\circ \Phi_{-\sqrt t}\circ \psi_{\sqrt t}\circ \Phi_{\sqrt t})
+\end{align*}
+
+\begin{example}
+	$M=\R^n$, $X_1 = \frac\partial{\partial x_1}$, $\dots$, $x_k = \frac{\partial}{\partial x_k}$, dann ist $[X_i,Y_j] = 0$, also linear unabhängig.
+\end{example}
+
+\begin{proposition}
+	\proplbl{proposition_vor_geradebiegen_eines_vektorfeldes}
+	Sei $M$ eine Mannigfaltigkeit, $X_1$, $\dots$, $X_k\in\Gamma(\T M)$ mit $[X_i, Y_j] = 0$ für $i,j=1,\dots,k$. Wenn ein $p\in M$ existiert, sodass $\underbrace{X_1(p),\dots, X_k(p)}_{\in\T_p M}$ linear unabhängig, dann existiert eine Karte $(U,y)$ um $p$ mit $X_i\big|_U = \frac{\partial}{\partial y_i}$ für $i=1,\dots,$k.
+\end{proposition}
+
+\begin{conclusion}[Geradebiegen eines Vektorfeldes]
+	$X\in\Gamma(\T M)$, $X(p)\neq 0$, dann existiert ein $(U,X)$ wie oben mit $X\big|_U = \frac{\partial}{\partial\hat x}$.
+\end{conclusion}
+
+\begin{proof}[\propref{proposition_vor_geradebiegen_eines_vektorfeldes}]
+	OBdA ist $M=\R^n$, $p=0\in\R^n$: Wir betrachten jetzt eine hinreichend kleine Umgebung $W$ von $0\in\R^n$ und die Abbildung \begin{align*}
+		f\colon W\to \R^n = M,\;(a_1,\dots,a_k)\mapsto \big(\Psi_{a_1}^{X_1}\circ\dots\circ\Phi_{a_k}^{X_k}\big)\begin{psmallmatrix}
+			0\\ \vdots \\ a_{k+1} \\ \vdots \\ a_n
+		\end{psmallmatrix}
+	\end{align*}
+	Sei $\phi\in C^\infty(W)$. Dann gilt \begin{align*}
+		\big(\underbrace{f_\star(\partial\slash\partial x_1)}_{\in T_a} \R^n\big)_a(\phi) &= \frac{\partial}{\partial x_1}\bigg|_a (f^\star \phi) \\
+			&= \lim\limits_{h\to 0} \frac 1h \big((\psi\circ f)(a_1+h,a_2,\dots,a_n) - (\phi\circ f)(a_1,\dots,a_n)\big) \\
+			&=\lim\limits_{h\to 0}\frac 1h \big[ \phi\circ \underbrace{\Phi_{a_1+h}^{X_1}}_{\mathclap{\Phi_h^{X_1}\circ\Phi_{a_1}^{X_1}}} \circ\dots\circ \Phi_{a_k}^{X_k}(\underbrace{0,\dots,0}_{k},a_{k+1},\dots,a_n) - (\phi\circ f)(a_1,\dots,a_n)\big] \\
+			&=\lim\limits_{h\to 0} \frac1h\big[ (\phi\circ\Phi_h^{X_1}\circ f)(a_1,\dots,a_n) - (\phi\circ f)(a_,\dots,a_n)\big] \\
+			&=\lim\limits_{h\to 0}\frac 1h\bigg[ (\phi\circ\Phi_h^{X_1})\big(f(a_1,\dots,a_n)\big) - \Big(\phi\big(f(a_1,\dots,a_n)\big)\Big)\bigg] \\
+			&= X_1(\phi)_{f(a_1,\dots,a_n)},
+	\end{align*}
+	also $f_\star \frac{\partial}{\partial X_1} = X_1\circ f$.
+	
+	Da die Flüsse kommutieren, können wir den Beweis wiederholen für $X_i$ anstelle von $X_1$, also $f_\star \frac{\partial}{\partial X_i} = X_i\circ f$ für alle $i=1,\dots,k$.
+	
+	Außerdem: $f_\star \frac{\partial}{\partial X_i} = \frac{\partial}{\partial X_i}$ für $i> k$.
+	
+	Wenn $X_i(0)\in\Span(\partial\slash\partial x_1,\dots,\partial\slash\partial x_k)$, $i=1,\dots,k$, was man immer durch geeignete Koordinatentransformation erreichen kann, ist $D_0 f$ invertierbar. Nach dem Satz von der impliziten Funktion ist $f$ lokaler Diffeomorphismus und $f^{-1} =: y$ ist die gewünschte Karte.
+\end{proof}
+
+Integralkurven gibt es immer. Seien $X_1$, $\dots$, $X_k\in\Gamma(\T M)$ Vektorfoelder, sodass für alle $p\in M$ die $X_1(p),\dots,X_k(p)$ linear unabhängig sind, existiert dann eine Untermannigfaltigkeit $N\subset M$ mit $\T_p N = \Span\big(X_1(p),\dots,X_k(p)\big)$?
+
+\textbf{Beobachtung}:\begin{enumerate}[label={(\arabic*)},topsep=-0.25\baselineskip]
+	\item Wenn $N$ existiert, dann gilt: $[X_i,Y_j](p)in\Span\big(X_1(p),\dots,X_k(p)\big) = \T_p N$.
+	\item I.A. kann man nur hoffen, dass $N$ immersiert ist (nicht eingebettet)
+	\item Was wichtig ist, ist $\Span\big(X_1(p),\dots, X_k(p)\big)$ und nicht die Vektorfelder selbst.
+\end{enumerate}
+\vspace*{0.5\baselineskip}
+
+\begin{definition}
+		Sei $M$ eine Mannigfaltigkeit. Eine \begriff{Distribution} $\Delta$ auf $M$ von Dimension $h$ ist die Zuordnung $p\mapsto \Delta_p\subset \T_p M$, die glatt ist im folgende Sinne: \begin{align*}
+			\forall  p\in M\;\exists U\ni p\;\text{Umgebung},\;\text{Vektorfelder}\, X_1,\dots,X_k\in\Gamma(\T M)\colon \Delta_p = \Span\big(X_1(p),\dots,X_k(p)\big).
+		\end{align*}
+\end{definition}
+
+\begin{definition}
+	Eine Distribution $\Delta$ heißt \begriff*{integrierbar}\index{Distibution!integrierbar}, wenn für alle $X_i$'s aus der Definition von $\Delta$ gilt: $[X_i,X_j]_p\in\Delta p$ $\forall i,j$, $\forall p\in M$.
+\end{definition}
+
+\begin{definition}
+	Eine immersierte Untermannigfaltigkeit $N\subset M$ heißt \begriff*{Integralmannigfaltigkeit}\index{Integralmannigfaltigket} von $\Delta_p$, wenn $\T_p N=\Delta_p$ für $P\in N$.
+\end{definition}
+
+\begin{proposition}[Frobenius]
+	Wenn $\Delta$ eine integrierbare Distribution ist, dann existiert für jdes $P\in M$ eine eindeutig bestimmte, maximale Integralmannigfaltigkeit von $\Delta$ durch $p$.
+\end{proposition}
+\begin{proof}
+	Wenn $[X_i,X_j]=0$, dann ist alles gut. $X_i = \partial \slash\partial X_i$ für $i=1,\dots,k$ lokal $\rightarrow$ $\R^n\hookrightarrow \R^n$.
+	
+	Wir führen den allgemeinen Fall auf diesen zurück. Sei $P\in M$, $Y_1,\dots,Y_n$ definierende Vektorfelder für $\Delta$ an $p$: $\Delta_p = \Span\big(Y_1(p),\dots,Y_n(p)\big)$. Wir können nun $p$ in Umgebung $U$ von $p$ in Koordinaten $\hat X_1,\dots,\hat X_n$ so wählen, dass $Y_i(p) = \partial\slash\partial x_i\Big|_p$, $i=1,\dots,k$.
+	
+	Sei $\pi\colon U\to\R^k$, $q\mapsto \big(x^1(q),\dots,x^k(q)\big)$ $\leadsto$ $\pi_\star\colon\T U\to\T \R^k$, sodass \begin{align*}
+		 \pi_\star\Bigg(\sum_{j=1}^n v^i\frac{\partial}{\partial x_i}\Big|_q\Bigg) = \sum_{i=1}^k v^i \frac{\partial}{\partial X^i}\Big|_{\pi(q)}\quad(v_i\in\R)
+	\end{align*}
+	$\Pi_\star\Big|_{\T_p U\cong \T_p M}\colon \T_p M\to \T_{\pi(p)} \R^k$ Projektion, wird zu einem Isomorphismus, wenn eingeschränkt auf \begin{align*}
+		\Delta_p\colon \pi_\star\big|_{\Delta p}\colon\Delta_p\to \T_{\pi(p)} \R^k,\;Y_i(p)\mapsto \partial\slash\partial x_i\big|_p.
+	\end{align*}
+	Aus Stetigkeitsgründen ist $\pi_\star\big|_{\Delta_p}\colon\Delta q\mapsto \T_{\pi(q)} \R^k$ ein isomorphismus für $q\in W$, $W$ Umgebung von $p$.
+	
+	Definiere jetzt $X_i(q) := \Big(\pi_\star\big|_{\Delta q}\Big)^{-1}\Big(\frac{\partial}{\partial x_i}\Big|_{\pi(q)}\Big)\in\Delta q$ ($i=1,\dots,k$). Die Vektorfelder spannen $\Delta q$ für $q\in W$ auf.
+	
+	\emph{Behauptung}: $[X_i,X_j]=0$, denn \begin{align*}
+		\pi_\star\Big(\underbrace{[X_i,X_j]}_{\in\Delta q}\Big)=\Big[\frac{\partial}{\partial X_i},\dots,\frac{\partial}{\partial x_j}\Big]_[\pi(q)] = 0,
+	\end{align*}
+	$\pi_\star\big|_{\Delta q}$ injektiv, also $[X_i,X_j] = 0$.
+	
+	Die Maximalität wird analog zu Picard-Linelöff gezeigt.
+\end{proof}

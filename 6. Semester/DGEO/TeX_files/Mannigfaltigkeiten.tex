@@ -1,0 +1,57 @@
+\section{Mannigfaltigkeiten}
+\begin{definition}
+	Eine \begriff*{topologische Mannigfaltigkeit}\index{Mannigfaltigkeit!topologisch} von Dimension $n\in\N$ ist ein zweitabzählbarer Haudroff-Raum $M$ mit der Eigenschaft, dass jedes $p\in M$ eine offene Umgebung $p\in U\subset M$ hat, die homöomorph zu $\R^n$ ist (d.h. $\exists x\colon U\to\R^n$, stetig, bijektiv, $x^{-1}\colon \R^n\to U$ auch stetig).
+\end{definition}
+
+\begin{remark}
+	Da $\R^n\cong B(0,1)\subset\R^n$, könnte man auch $B(0,1)$ oder beliebige offene Teilmengen vom $\R^n$ statt $\R^n$ verwenden. Das führt auf äquivalente Definitionen.
+\end{remark}
+
+\begin{definition}
+	Sei $M$ topologische Mannigfaltigkeit von Dimension $n$. Ein \begriff*{differenzierbarer Atlas}\index{Atlas} $\mathcal A$ auf $M$ ist eine Familie $\mathcal A = \{(U,x)\mid U\subset M\;\text{offen},\,x\colon U\xrightarrow{\cong}\R^n\;\text{Homöomorphismus}\}$ mit folgenden Eigenschaften: \begin{enumerate}[label={(\arabic*)}]
+		\item die $U$ überdecken $M$: $\bigcup_{(U,x)\in\mathcal A} U = M$,
+		\item Wenn $(U,x)$, $(V,y)\in\mathcal A$, $U\cap V\neq \emptyset$, dann gilt: \begin{align*}
+			y\circ x^{-1}\colon x(U\cap V)\subset\R^n\to y(U\cap V)\subset\R^n
+		\end{align*}
+		ist glatt.
+	\end{enumerate}
+	Elemente eines Atlas' heißen \begriff*{Karten}\index{Karte}.
+\end{definition}
+
+\begin{definition}
+	Zwei Atlanten $\mathcal A$, $\mathcal A'$ heißen \begriff*{äquivalent}\index{Atlas!äquivalent}, wenn $\mathcal A\cup\mathcal A'$ ein Atlas ist.
+	
+	Äquivalent: $\forall (U,x)\in \mathcal A$, $(V,y)\in\mathcal A'$ ist $y\circ x^{-1}\colon x(U\cap V)\to y(U\cap V)$ glatt.
+\end{definition}
+
+\begin{definition}
+	Eine \begriff*{glatte Mannigfaltigkeit}\index{Mannigfaltigkeit!glatt} $M$ ist eine topologische Mannigfaltigkeit zusammen mit einer Äquivalenzklasse von Atlanten (diese wird auch \begriff*{glatte Struktur} genannt).
+\end{definition}
+
+\begin{example}
+	$\R$ ist eine 1-dimensionale topologische Mannigfaltigkeit: \begin{itemize}
+		\item $\mathcal A := \{ (R,\id\colon \R\to \R) \}$
+		\item $\mathcal A' = \{ (\R,\sqrt[3]{\,\cdot\,}\colon\R\to\R \}$.
+	\end{itemize}
+	Diese Atlanten sind nicht äquivalent.
+\end{example}
+
+\begin{example}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $\R^n$: $\mathcal A = \{ (\R^n,\id) \}$ ist eine $n$-dimensionale Mannigfaltigkeit.
+		\item $M$ Mannigfaltigkeit, $U\subset M$ offen. Dann ist auch $U$ eine Mannigfaltigkeit (schneide $U$ mit allen Kartenumgebungen).
+		\item Ist $V$ ein $\R$-Vektorraum der Dimension $n$, dann ist $V$ eine $n$-dimensionale Mannigfaltigkeit. Die Wahl einer Basis definiert eine Karte $V\to\R^n$; und zwei solche Karten sind kompatibel, weil die Vergleichsabbildung durch Multiplikation mit der Basiswechselmatrix gegeben ist:
+		
+		$S^n = \{x\in\R^{n+1}\mid \Vert x\Vert_2 = 1\}\subset\R^{n+1}$. Sei $V_i^{\pm} = \{x\in S^n\mid \pm x_i > 0\}\subset S^n$ ist offen, $\bigcup_{i=1}^{n+1} (V_i\cup V_i^-) = S^n$. Dann ist \begin{align*}
+			\pi_i\colon V_i^{\pm}\to B(0,1)\subset \R^n,\;(x_1,\dots,x_{n+1})\mapsto (x_1,\dots,\hat x_i,\dots,x_{n+1})
+		\end{align*}
+		ein Homöomorphismus mit der Umkehrabbildung \begin{align*}
+			(x_1,\dots, x_i,\dots,x_{n+1})\mapsto (x_1,\dots,x_{i-1},\pm\sqrt{1-\sum_{j=1}^n x_j^2},x_{i+1},\dots,x_n).
+		\end{align*}
+		Was ist $\pi_i\circ \pi_j^{-1}$ wo es definiert ist?: \begin{align*}
+			(x_1,\dots,\hat x_j,\dots,x_{n+1})\mapsto (x_1,\dots,\hat x_i,\dots,\pm\sqrt{1-\sum_{k\neq j} x_k^2},\dots,x_{n+1}).
+		\end{align*}
+		\item $\GL(n,\R) = \{ A\subset \Mat_n(\R)\mid \det A\neq 0\}\subset \R^{n^2}$ offen, ist Mannigfaltigkeit von Dimension $n^2$.
+		\item $(M,\mathcal A_M)$, $(N,\mathcal A_n)$ Mannigfaltigkeiten. Dann ist auhc $(M\times N, \mathcal A_M\times \mathcal A_N)$ Mannigfaltigkeit.
+	\end{enumerate}
+\end{example}

@@ -1,0 +1,47 @@
+\section{Tangentialraum}
+\begin{definition}
+	Sei $p\in M$. Der \begriff{Tangentialraum} von $M$ an $P$ ist definiert als der Raum der Derivationen von $C^\infty(M)$ an $p$. \begin{align*}
+		\T_p M = \{\partial \colon C^\infty(M)\to\R\mid\partial\;\text{linear},\,\partial(fg) = f_p\partial(g)+g_p\partial(f)\}.
+	\end{align*}
+\end{definition}
+
+Sei $(U,x)$ eine Karte von $M$ mit $p\in U$:\begin{itemize}[label={$\Rightarrow$}]
+	\item $x(U)=\R^n$, $x\colon U\xrightarrow\cong \R^n$ Diffeomorphismus (Übung)
+	\item $x^\star\colon C^\infty(\R^n)\xrightarrow\cong C^\infty(U)$ Isomorphismus
+	\item $\T_p U\cong T_{x(p)} \R^n$ mit $\partial\mapsto\partial\circ x^\star$.
+\end{itemize}
+
+\textbf{Fazit}: $\T_p Ucong T_{x(p)} \R^n\cong \R^n$ mit Basis $\partial\slash\partial x_1\Big|_p$, $\dots$, $\partial\slash\partial x_n\big|_p$ (formal:  $(x^\star)^\star(\partial\slash\partial x_i\big|_{x(p)})$.
+
+\begin{proposition}
+	Die Inklusionsabbildung $\iota\colon U\hookrightarrow M$ induziert einen Isomorphismus $(\iota^\star)^\star\colon \T_p U\to \T_p M$.
+	
+	($\iota^\star\colon C^\infty(M)\to C^\infty(U)$ die Restriktionsabbildung, $(\iota^\star)^\star(\partial) = \partial\circ \iota^\star$).
+\end{proposition}
+\begin{proof}
+	Dem Fall $M=\R^n$ haben wir schon behandelt, der Beweis bleibt der Gleiche.\begin{itemize}
+		\item $(\iota^\star)^\star$ injektiv: $\partial\circ \iota = 0$ $\Leftrightarrow$ $\partial(f) = 0$ $\forall f\in C^\infty(U)$, die Einschränkungen von Funktionen auf $M$ sind.
+		
+		Da $\partial = \sum x_i\partial\slash\partial x_i\big|_p$, reicht es aus zu zeigen, dass alle $x_i$ NUll sind. Seien $\tilde x_i\in C^\infty(U)$ mit folgenden Eigenschaften: \begin{enumerate}[label={\arabic*)}]
+			\item $\tilde x_i \equiv x_i$ in einer Umgebung von $p$,
+			\item $\sup\tilde x_i$ kompakt.
+		\end{enumerate}
+	Zur Konstruktion der $\tilde x_i$ benutze Abschneidefunktion $\tilde\rho$ wie früher. Es gilt: $\partial(\tilde x_i) = x_i$ und $\tilde x_i$ sind offensichtlich auf $M$ glatt (durch 0) fortsetzbar.
+	\item $(\iota^\star)^\star$ surjektiv: Suchen $\partial\in\T_p U$ mit $\hat \partial = \partial\circ \iota^\star$. Wir suchen also $x_i\in\R$, sodass $\hat\partial =\sum_{i=1}^n x_i\partial\slash\partial x_i\big|_p$.
+	
+	Sei $x_i := \hat\partial(\hat x_i)$, $i=1,\dots,n$. Wir wollen zeigen, dass \begin{align*}
+		\partial(f) = \sum_{i=1}^n x_i\frac{\partial f}{\partial x_i}\bigg|_p,\quad f\in C^\infty(M).
+	\end{align*}
+	
+	\emph{Trick}: benutze wieder die Abschneidefunktion $\tilde\rho\colon U\to [0,1]$ mit $\tilde p=1$ in einer Umgebung von $p$, $\sup\tilde\rho$ kompakt, und sodass $\hat\partial(\tilde f) = 0$ ($\nnearrow$Beweis für $M=\R^n$)\begin{itemize}[label={$\Rightarrow$}]
+		\item $\hat\partial (f) = \hat\partial(\tilde\rho f)$ (wegen Leibnitz-Regel).
+		
+		$\tilde\rho\cdot f$ ist nur getragen in $C^\infty(U)$ und $C^\infty(U)\cong C^\infty(\R^n)$, insbesondere ist $\tilde\rho$ darstellbar als $f(p) + \sum_{i=1}^n x_i f_i(x)$
+		\item $\hat\partial(f) = \sum_{i=1}^n x_i\frac{\partial f}{\partial x_i}\!\big|_p$.
+	\end{itemize}
+	\end{itemize}
+\end{proof}
+
+\textbf{Fazit:}\begin{conclusion}
+	Wenn $\dim M=n$, gilt $\T_p M\cong \R^n$, $p\in M$. Wenn $(U,x)$ eine Karte mit $p\in U$ ist, dann ist eine Basis von $\T_p M$ durch $\partial\slash x_1\big|_p$, $\dots,$ $\partial\slash\partial x_n\big|_p$ gegeben.
+\end{conclusion}

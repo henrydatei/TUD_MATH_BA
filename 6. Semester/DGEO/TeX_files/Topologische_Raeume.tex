@@ -1,0 +1,41 @@
+\section{Intermezzo: Toplogische Räume}
+\begin{definition}
+	Ein topologischer Raum $(x,\tau)$ ist ein Paar aus einer Menge $X$ und einem System von Teilmengen von $X$ (sie werden offene Mengen gennant), mit folgenden Eigenschaften: \begin{enumerate}[label={(\arabic*)}]
+		\item $\emptyset$, $X\in\tau$,
+		\item $(\phi_i)_{i\in I}\subset\tau$ $\Rightarrow$ $\bigcup_{i\in I} U_i\in\tau$,
+		\item $U_1$, $\dots$, $U_n\in\tau$ $\Rightarrow$ $\bigcap_{k=1}^n U_i\in\tau$.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $(X,d)$ metrischer Raum, dann ist $\tau_d = \{ U\subset X\mid \forall x\in U\,\exists r>0\colon B(x,r)\subset U\}$ $\rightsquigarrow$ Topologie induziert durch Metrik $d$.
+		\item $(\R^n, d_2(x,y))$ mit $d_2(x,y) = \Vert x-y\Vert_2$ $\rightsquigarrow$ $(R^n,\tau_{d_2})$ ist topologischer Raum, $(R^n, d_1(x,y))$ mit $d_1(x,y) = \Vert x-y\Vert_1$ $\rightsquigarrow$ $(R^n,\tau_{d_1})$, wobei beide Topologien gleich sind.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Ein topologischer Raum $X$ heißt Hausdorffsch, wenn $\forall x$, $y\in X$ mit $x\neq y$ gilt: $\exists U_x$, $U_y$ offen mit $U_x\cap U_y = \emptyset$.
+\end{definition}
+
+\begin{definition}
+	Ein Hausdorff-Raum $X$ heißt kompakt, wen jeder offenen Überdeckung von $X$ eine endliche Teilüberdeckung besitzt, wenn also gilt: \begin{align*}
+		\bigcup_{i\in I} U_i = X,\, U_i\;\text{offen}\quad\Rightarrow\quad\exists i_1,dots,i_n\in I: \bigcup_{k=1}^n U_{i_k}=X.
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+	Sei $X$ toplogoischer Raum. Ein System $B\subset\tau$ heißt Basis der Toplogie, falls $\forall U\in\tau: U=\bigcup_{i\in I} B_i$.
+\end{definition}
+
+\begin{example}
+	$(\R^n,\tau_{\text{euklidisch}})$ hat Basis $\{ (x,r)\mid x\in\Q^n,\,r\in\Q > 0\}$
+\end{example}
+
+\begin{definition}
+	Ein topologischer Raum $X$ ist zweitabzählbar, wenn es eine abzählbare Basis der Topologie gibt.
+\end{definition}
+
+\begin{example}
+	$(\R^n,\tau_\text{euklidisch})$.
+\end{example}

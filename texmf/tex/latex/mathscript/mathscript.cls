@@ -568,7 +568,7 @@ innerleftmargin=10pt,%
 
 %declare new term to the index, output if no star is given to call position
 \NewDocumentCommand{\begriff}{s O{} m O{}}{%
-	\uline{#3}
+	\uline{#3}%
 	\IfBooleanTF{#1}{}{\index{#2#3#4}}%
 }
 

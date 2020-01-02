@@ -1,0 +1,196 @@
+\section{Tangentialvektoren im \texorpdfstring{$\R^n$}{Rn}}
+
+\textbf{Notation}: $D_\alpha f$ (Ableitung)\begin{itemize}
+	\item Alle Abbildungen $\R^n\to\R^n$ werden ab jetzt glatt vorausgesetzt
+	\item $f\colon U\to V$ ($U$, $V$ offene Teilmengen), \begin{align*}
+		\mathrm D_{x_{ij}} f &= \frac{\partial f_i(x)}{\partial x_j},\\
+		\mathrm D f &= \frac{\partial f_i}{\partial x_j}\in \Mat_{m\times n}(C^\infty(U,\R)).
+	\end{align*}
+\end{itemize}
+
+Naive Vorstellung: ein Tangentialvektor an $p\in\R^n$ ist ein (gewähltes) Element $\xi\in\R^n$. Alle möglichen Tangentialvektoren an allen Punkten sind dann identifiziert mit $\T\R^n = \R^n\times \R^n\ni (p,\xi)$.
+
+Basiswechselmatrix: $T^E_F$ von $F$ zu $E$, $B^{-1} p_E = p_F$.
+
+$\partial_\xi \phi = [D_p \phi]\cdot\xi = D_p \phi(\xi)\in \R$.
+
+\textbf{Idee}: benutze das als Definition: Ein Tangentialvektor ist das, was Funktionen ableitet. Oder: Tangentialvektor = Richtungsableitung.\begin{definition}
+	Sei $P\in\R^n$. Eine \begriff*{Derivation}\index{Derivation} an $p$ ist eine lineare Abbildung $\partial\colon C^\infty(\R^n)\to\R$ mit folgender Eigenschaft:\begin{itemize}
+		\item $\partial(\phi\cdot\psi) = \phi(p)\partial(\psi) + \psi(p)\partial(\phi)$ (Leibnitz-Regel an $p$\index{Leibnitz!Regel})
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	$\partial_{(p,\xi)}$ ist eine Derivation an $p$ $\forall (p,\xi)\in\R^n\times\R^n$.
+\end{example}
+
+\begin{proposition}
+	Jede Derivation $\partial\colon C^\infty(\mathbb R^n,\mathbb R)\to\R$ an $p\in \R^n$ ist von der Form $\partial = \partial_{(p,\xi)}$ für ein $\xi\in\R^n$, das eindeutig bestimmt ist.
+\end{proposition}
+
+\begin{proof}
+	Seien $x_i\colon\R^n\to\R$, $(x_1,\dots,x_n)\mapsto x_i$ die Koordinatenfunktionen. Setzte $\xi_i:=\partial(x_i)\in\R$, $i=1,\dots,n$.
+	
+	Zu Zeigen: $\partial = \partial_{(p,\xi)}$ mit $\xi=(\xi_1,\dots,\xi_n)$.\\
+	\textbf{Trick}: ein beliebiges $\phi\in C^\infty(\R^n)$ kann dargestellt werden als \begin{align*}
+		\phi(x) &= \phi(p) + \sum_{i=1}^n \phi_i(x)\cdot (x_i-p_i)
+	\end{align*}
+	für gewisse $\phi_i\in C^\infty(\R^n)$.
+	\begin{proof}[Trick]
+		Betrachte \begin{align*}
+			\phi(x)-\phi(p) &= \int_0^1\frac{\partial \phi\big(p+t(x-p)\big)}{\partial t}\,\mathrm dt \\
+			&=\sum_{i=1}^n\int_0^1\frac{\partial\phi}{\partial x_i}\big( p+t(x-p)\big)\cdot(x_i-p_i)\,\mathrm dt\\
+			&= \sum_{i=1}^n\underbrace{\bigg[\!\int_0^1 \frac{\partial\phi}{\partial x_i}\big(p+t(x-p)\big)\,\mathrm dt\!\bigg]}_{=:\phi_i(x)}(x_i-p_i)
+		\end{align*}
+	\end{proof}
+	\emph{Beobachtung}: $\partial(1) = \partial(1\cdot 1) = 1\partial(1) + 1\partial(1) = 2\partial(1)$,  also $\partial(1) = 0$. Somit \begin{align*}
+		\partial(\phi) &= \partial\Big(\phi(p)\cdot 1 + \sum_{i=1}^n\phi_i(x)(x_i-p_i)\Big) \\
+		&=\sum_{i=1}^n \partial\big(\phi_i(x)(x_i-p_i)\big)\\
+		&= \sum_{i=1}^n\phi_i(p)\partial(x_i-p_i) + \sum_{i=1}^n (p^i - p^i)\partial(\phi_i)\\
+		&= \sum_{i=1}^n \phi_i(p)\cdot\xi^i = \sum_{i=1}^n \xi^i\frac{\partial\phi}{\partial x_i}(p)
+	\end{align*}
+	\emph{Eindeutigkeit}: folgt, wenn $\partial_{(p,\xi)} = \partial_{(p,\xi')}$, dann ist \begin{align*}
+		0 = \partial_{(p,\xi - \xi')}(x^i) = \xi^i - \xi^i,\quad i=1,\dots,n.
+	\end{align*}
+\end{proof}
+
+\textbf{Fazit}: wir können an jedem Punkt $p\in\R^n$ als Derivationen an $p$ beschreiben.
+
+\begin{definition}
+	Der \begriff{Tangentialraum}\index{Tangentialraum} von $\R^n$ an $p$ ist \begin{align*}
+		\T_p\R^n := \{ \partial\colon C^\infty(\R^n)\to\R\mid \text{$\partial$ ist eine Derivation an $p$} \}.
+	\end{align*}
+	$T_p$ ist Vektorraum, weil Derivationen linear sind. $\dim\T_p\R^n = n$, und die Konstruktion aus dem Satz liefert gerade einen Isomorphismus\begin{align*}
+		\T_p\R^n\cong\R^n,\,\xi\mapsto(p,\xi)\quad(\text{\begriff{Koordinatensystem}\index{Koordinatensystem}})
+	\end{align*}
+\end{definition}
+
+\textbf{Frage}: Sei $P\in U\subset\R^n$: Was ist $\T_p U:= \{\partial\colon C^\infty(U)\to\R\mid\text{$\partial$ Derivation an $p$}\}$?\\
+\emph{Behauptung}: $T_p U\cong T_p\R^n$, $U\subset\R^n$, $p\in U$ mit \begin{align*}&\partial\mapsto \big(\phi\mapsto\partial(\phi\big|_U)\big) \intertext{bzw.} &\partial\mapsto \partial\circ\epsilon\quad \text{mit}\quad \epsilon\colon C^\infty(\R^n)\to C^\infty(U),\, \phi\mapsto\phi\big|_U.
+\end{align*}
+
+\emph{Behauptung}: $\epsilon^\star$ ist Isomorphismus:\begin{itemize}
+	\item Surjektiv: $\T_p U\xrightarrow{\epsilon^\star} T_p\R^n\cong\R^n$, $\partial_{(p,\xi)}\mapsto \partial_{(p,\xi)}\mapsto \xi$
+	\item Injektiv: Sei $\partial\in\ker\epsilon^\star$. Dann ist $\partial\circ\epsilon = 0$ $\Leftrightarrow$ $\partial(\phi\big|_U) = 0$, $\phi\in C^\infty(\R^n)$.
+	
+	Zu Zeigen: $\forall\psi\in C^\infty(U)$ $\exists\phi\in C^\infty(\R^n)\colon \partial(\psi) = \partial(\phi\big|_U)$. Dies würde Injektivität implizieren.
+	
+	Dazu: verwende \emph{Hügelfunktionen} mit \begin{align*}
+		\chi(x) &= \begin{cases}
+			0,&\Vert x\Vert\ge 1\\
+			\exp\Big(\frac{1}{x^2-1}\Big),&\text{sonst}.
+		\end{cases}
+	\end{align*}
+	Definiere dazu \begin{align*}
+		\rho(x) := \frac{\int_{-\infty}^x f(t)\,\mathrm dt}{\int_{-\infty}^\infty \chi(x)\,\mathrm dt},\quad\rho\in C^\infty(\R).
+	\end{align*}
+	Da $U$ offen, $p\in U$ $\exists r > 0$: $B(p,r)\subset U$. Sei $\tilde\rho\colon\R^n\to\R$ mit \begin{align*}
+		x\mapsto\begin{cases}
+			\rho\Big( 3 - \frac{\vert x-p\vert}{r}\Big),&x\in U\\
+			0,&\text{sonst}.
+		\end{cases}
+	\end{align*}
+	$\tilde\rho\in C^\infty(\R^n,\R)$, $\tilde \rho\equiv 1$ in einer Umgebung $V\subset U$ von $p$, $\tilde\rho \equiv 0$ außerhalb von $U$. Setzte \begin{align*}
+		\phi(x) = \begin{cases}
+			\psi(x)\cdot\tilde\rho(x),&x\in U,\,\phi\in C^\infty(\R^n)\\0,&\text{sonst}.
+		\end{cases}
+	\end{align*}
+	Damit gilt dann \begin{align*}
+		\partial(\phi\big|_U) = \partial(\tilde\rho\cdot\psi) = \underbrace{\tilde\rho(p)}_{=1}\partial(\psi)+\partial(\tilde\rho) \psi(p) = \partial(\psi) + \partial(\tilde\rho)\cdot\psi(p) = \partial(\psi)
+	\end{align*}
+	Da $\partial(\tilde\rho) = 0$ (da $\tilde\rho^2\equiv\tilde\rho=1$ in Umgebung von $p$), wähle $\tilde{\tilde\rho}$ mit $\tilde{\tilde\rho}=0$ außerhalb von $V$, sodass \begin{align*}
+		0 = \partial\big(\tilde\rho(1-\tilde{\tilde\rho}) = \partial(\tilde{\tilde\rho}\tilde\rho) - \partial(\tilde\rho) = \partial(\tilde{\tilde\rho})\underbrace{\tilde\rho}_{=1}+\partial(\tilde\rho)\underbrace{\tilde{\tilde\rho}}_{=1} - \partial(\tilde\rho),
+	\end{align*}
+	also ist $\partial(\tilde{\tilde\rho})=0$. Analog $\partial\big(\tilde\rho(1-\tilde{\tilde\rho})\big)$, daher $\partial(\tilde\rho) = 0$.
+\end{itemize}
+
+\textbf{Fazit}: $\epsilon^\star\colon\T_p U\to \T_p\R^n$ ist ein Isomorphismus.
+
+\begin{definition}
+	Sei $U\subset\R^n$, $V\subset\R^n$ offen, $f\colon U\to V$ glatt. Die \begriff{Pullback-Abbildung}\index{Pullback} zu $f$ ist \begin{align*}
+		f^\star\colon C^\infty(V)\to C^\infty(U),\,\phi\mapsto\phi\circ f.
+	\end{align*}
+\end{definition}
+\emph{Beobachtung}: $f^\star$ ist ein Algebrenhomomorphismus (d.h. ist linear und respektiert Produkte).
+
+\begin{definition}
+	Sei $P\in U$. Das Differential von $f$ an $p$ ist die Abbildung \begin{align*}
+		\D_p f\colon \T_p U\to T_{f(p)} V,\,\partial\mapsto \partial\circ f^\star,
+	\end{align*}
+	d.h. $\big[ (\D_p f)(\partial)\big](\phi) = \partial(\phi\circ f) = \partial(f^\star \phi)$.
+\end{definition}
+\begin{tikzcd}
+	f\colon U\to V,\;C^\infty(V) \arrow[r, "f^\star"] \arrow[rr, "(\D_p f)(\phi)"', bend right] & C^\infty(U) \arrow[r, "\partial"] & \R
+\end{tikzcd}
+$\D_p f)(\phi)$ ist nach Definition linear. Müssen die Leibnitz-Regel überprüfen:\begin{align*}
+	\big[(\D_p f)(\phi)\big](\phi\cdot\psi) &= \partial\big(f^\star(\phi\cdot\psi)\big) \\
+	&= \partial\big(f^\star(\phi)\cdot f^\star(\psi)\big) \\
+	&= (f^\star \phi)(p) \cdot \partial(f^\star \psi) + (f^\star\psi)(p)\partial(f^\star \phi) \\
+	&= \phi\big(f(p)\big) \big[ (\D_p f)(\partial)\big](\psi) + \psi\big( f(p)\big) \big[ (\D_p f)(\partial)\big](\psi).
+\end{align*}
+
+\begin{tikzcd}[cramped, column sep=4pt]
+	\T_p U \arrow[rrrr, "\D_p f"', bend right] \arrow[r, phantom, "\cong"] & \T_p \R^n \arrow[r, phantom, "\cong"] & \R^n \arrow[rrrr, "{[\partial f_i\slash\partial x_j]_{i\mskip2mu=1,\dots n}^{j=1,\dots,n}}", bend left] & \quad & \T_p V \arrow[r, phantom, "\cong"] & \T_p \R^m \arrow[r, phantom, "\cong"] & \R^m
+\end{tikzcd}
+Für die Koordinatenabbildungen gelten \begin{align*}
+	\big[ (\D_p f) (\partial\slash\partial x_j)\big](\phi) = \frac{\partial}{\partial x_j}(f^\star \phi) = \frac{\partial}{\partial x_j}(\phi\circ f) = \sum_{i=1}^m \frac{\partial \phi}{\partial y_i}\frac{\partial f_i}{\partial x_j} = \Bigg[\! \sum_{i=1}^m \frac{\partial f_i}{\partial x_j}\frac{\partial}{\partial y_j}\!\Bigg](\phi).
+\end{align*}
+
+\emph{Kettenregel}: $U\xrightarrow{f} V\xrightarrow{g} W\xrightarrow{\phi}\R$: \begin{align*}
+	\D_p(g\circ f) = \D_{f(p)} g\circ \D_p f.
+\end{align*}
+Dazu betrachte ausgehend von beiden Seiten \begin{align*}
+	\Big[ \big(\!\D_p (g\circ f)\big)(\partial)\Big](\partial) &= \partial(\phi\circ g\circ f) \\
+	\big[( D_{f(p)}\mskip2mu g\circ \D_p f)(\partial)\big](\phi) &= \big( [\D_{f(p)} g](\partial)\big)(\phi) = \partial'(\phi\circ g) = \big[ (\D_p f)(\partial)\big](\phi\circ g) = \partial(\phi\circ g\circ f),
+\end{align*}
+wobei $\partial' = (\D_p f)(\phi)$.
+
+Interpretation von Tangentialvektoren als Geschwindigkeit: Sei $\gamma\colon I\subset \R \to \R^n$ eine glatte Kurve. $\R^n\ni p=\gamma(t_0)$. $\dot \gamma(t_0) := \big(D_{t_0} \gamma\big)(\partial\slash\partial t)$.
+
+Übung: $\{ \dot\gamma(t_0)\mid \gamma\colon I\subset \R\to \R^n\;\text{glatte Kurve mit $\gamma(t_0)=p$} \}$.
+
+\begin{proposition}[Inverse Funktion]
+	Sei $f\colon U\subset \R^n\to V\subset \R^n$ glatt, $p\in U$, sodass $\D_p f\colon \T_p U\to \}T_p V$ invertierbar. Dann ist $f$ lokal Diffeomorphismus: $\exists U'\subset U$, $V'\subset V$ offen, $p\in V'$, sodass \begin{align*}
+		f\big|_{U'}\colon U'\xrightarrow{\cong} V'
+	\end{align*}
+	ein Diffeomorphismus ist..
+\end{proposition}
+
+Wir wollen jetzt Abbildungen $f\colon W\subset \R^n\to V\subset \R^m$ verstehen: \begin{align*}
+		\D_p f\colon \T_p U\subset \R^n\to \T_p V\subset \R^m.
+\end{align*}
+Was ist die "`bestmögliche Bedingung"' an so ein $\D_p f$, die schönes über $f$ implizieren sollte? Die richtige Bedignung an $\D_f$ ist, vollen Rang zu haben: $\rang = \min\{m,n\}$. Also gibt es zwei Varianten dieser Bedingung: \begin{enumerate}[label={(\arabic*)}]
+	\item $n\le m$, $\rang \D_p f = n\;$ $\Leftrightarrow$ $n\le m$, $D_p f$ injektiv,
+	\item $m\le n$, $\rang \D_p f = m$ $\Leftrightarrow$ $m\le n$, $\D_p f$ surjektiv
+\end{enumerate}
+
+\begin{example}
+\begin{enumerate}[label={für (\arabic*)},wide=0pt,leftmargin=*]
+	\item $\iota\colon \R^n\hookrightarrow \R^m$, $N\le m$ (Einbettung in die ersten $n$ Koordinaten),
+	\item $\pi\colon \R^n\twoheadrightarrow \R^m$, $m\le n$ (Projektion auf die ersten $n$ Koordinaten)
+\end{enumerate}
+\end{example}
+
+\begin{proposition}[über implizite Funktionen]
+	Sei $f\colon U\subset \R^n\hookrightarrow V\subset \R^m$, $U$, $V$ offen, $f$ glatt, $0\in U$, $f(0)=0\in V$.\begin{enumerate}[label={(\arabic*)}]
+		\item Wenn $n\le m$, $\rang \D_0 f = n$ ($\Leftrightarrow$ $n\le m$, $\D_0 f$ injektiv), dann existiert eine Umgebung $U'$ offen, $V'\subset V$, $0\in V'$ und ein Diffeomorphismus $g\colon V'\subset\R^m\to V''\subset \R^m$, $g(0)=0$ mit \begin{align*}
+			g\circ f = \iota,
+		\end{align*}
+		(d.h., nach einem Koordinatenwechsel $g$ wird $f$ zur kanonischen Einbettung $\iota$).
+		\item Wenn $m\le n$, $\rang D_0 f = m$ ($\Leftrightarrow$ $m\le n$, $D_0 f$ surjektiv), dann existiert eine Umgebung $U'\subset U$ offen, $0\in U'$ und ein Diffeomorphismus $h\colon U''\to U'$, $h(0)=0$ mit $f\circ h = \pi_n$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\leavevmode\begin{enumerate}[label={zu (\arabic*)},wide=0pt,leftmargin=*]
+		\item $D_0 f = \raisebox{0.3ex}{$\scriptscriptstyle m$}\overset{\scriptscriptstyle n}{\big[\quad\big]}$ Nach eventueller Permutation von Koordianten im $\R^n$ können wir annehmen, dass\begin{align*}
+			\D_0 f = \Big[ \substack{\displaystyle A\\ \rule{0pt}{1em}\raisebox{0.3ex}{$\star$}}\Big],\quad A\in\R^{m\times m},\;\det A\neq 0
+		\end{align*}
+		(es folgt dann, dass $\D_x f$ ähnlich darstellbar ist Umgebung von $0$). Definiere $F\colon U\subset\R^{m-n}\to \R^m$, $(x_1,\dots,x_m)\mapsto f(x_1,\dots,x_n) + (0,\dots,0,x_{n+1},\dots,x_m)$. Dann\begin{align*}
+			D_0 F = \begin{pmatrix}
+				A & 0 \\ \star & \mathbbm{1}
+			\end{pmatrix},
+		\end{align*}
+		also ist $F$ nach dem Satz über inverse Funktionen lokal invertierbar mit der (lokalen) Inversen $g$. Entsprechend $g\circ f = g\circ F\circ \iota = \iota$.
+	\end{enumerate}
+\end{proof}

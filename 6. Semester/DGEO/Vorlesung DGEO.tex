@@ -1,7 +1,14 @@
 \documentclass[ngerman,a4paper,order=firstname,sectionreset]{../../texmf/tex/latex/mathscript/mathscript}
 \usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
 
-\title{\textbf{Differentialgeometrie WS2018/19 + SS2019}}
+\DeclareMathOperator{\T}{T}
+\undef\D
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Lie}{Lie}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\P}{\mathbb P}
+
+\title{\textbf{Differentialgeometrie WS2019/20 + SS2020}}
 \author{Dozent: Dr. Vadim Alekseev}
 
 \begin{document}
@@ -21,8 +28,20 @@
 \chapter*{Vorwort}
 \input{./TeX_files/Vorwort}
 
-\chapter{Kurven, Länge von Kurven, Parametrisierung}
-\input{./TeX_files/Kurven}
+\chapter{Einführung}
+\input{./TeX_files/Tangentialvektoren_im_Rn}
+\input{./TeX_files/Topologische_Raeume}
+\input{./TeX_files/Mannigfaltigkeiten}
+\input{./TeX_files/Glatte_Abbildungen}
+\input{./TeX_files/Tangentialraum}
+\input{./TeX_files/Differential_einer_Abbildung}
+\pagebreak
+\input{./TeX_files/Tangentialbuendel}
+\input{./TeX_files/Vektorbündel}
+\input{./TeX_files/Vektorfelder_und_ihre_Fluesse}
+\input{./TeX_files/Fluesse_von_Vektorfelder}
+\input{./TeX_files/Lie_Gruppen}
+\input{./TeX_files/linksinvariante_vektorfelder_auf_lie_gruppen}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
@@ -38,7 +57,6 @@
 \theoremlisttype{optname}
 \listtheorems{proposition}
 
-%\printglossary[type=\acronymtype]
 
 \printindex
 

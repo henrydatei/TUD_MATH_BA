@@ -1,0 +1,29 @@
+\section{Differential einer Abbildung}
+\begin{definition}
+	Seien $M$, $N$ Mannigfaltigkeiten, $f\colon M\to N$ glatt. Sei $p\in M$. Das Differential von $f$ an $p$ ist die lineare Abbildung.\begin{align*}
+		\D_p f = (f_\star)_p\colon \T_p M\to \T_{f(p)} N,\; v\mapsto v\circ f^\star
+	\end{align*}
+	wobei $v\colon C^\infty(M)\to \R$, $v\circ f^\star\colon C^\infty(N)\xrightarrow{f^\star} C^\infty(M)\xrightarrow v \R$, $v\circ f^\star\in T_{f(p)} N$.
+\end{definition}
+
+Damit ergibt sich \begin{align*}
+	(v\circ f^\star)(\phi\cdot\psi) &= v\big(f^\star(\phi\cdot\phi)\big)\\
+	&= v\big(f^\star(\phi)\cdot f^\star(\psi)\big)\\
+	&= \big(f^\star(\phi)\big)(p)\cdot v\big( f^\star(\psi)\big) + \big(f^\star(\psi)\big)(p)\cdot v\big(f^\star(\phi)\big)\\
+	&= \phi\big(f(p)\big)(v\circ f^\star)(\psi) + \psi\big(f(p)\big)\cdot (v\circ f^\star)(\phi)
+\end{align*}
+
+\begin{definition}
+	Sei $\phi\in C^\infty(M)$, $p\in M$. Das Differential von $\phi$ an $p$ ist eine lineare Abbildung $\mathrm d\phi(p)\colon \T_p M\to \R$, $v\mapsto v(\phi)$.
+	
+	Also: $\mathrm d\phi(p)\in (\T_p M)^\star =: T^\star_p M$.
+\end{definition}
+
+\begin{definition}
+	$T^\star p M := (\T_P M)^\star$ heißt \begriff{Kotangentialraum}.
+\end{definition}
+
+Wenn $(U,x)$ eine Karte von $p$ ist, folgt auch $T^\star_p U\cong \T_p^\star M$. Ist $\mathrm dx_1,\dots,\mathrm dx_n$ eine Basis in $\T_p^\star M$, dann ist es tatsächlich die Dualbasis zu $\partial\slash\partial x_1\big|_p,\dots,\partial\slash\partial x_n\big|_p$, denn \begin{align*}
+	\mathrm dx(\id)\bigg(\frac{\partial}{\partial x_j}\bigg|_p\bigg) = \frac{\partial x_i}{\partial x_j}\bigg|_p = \delta_{ij},
+\end{align*}
+und $\mathrm d\phi(p) = \sum_{i=1}^n \frac{\partial \phi}{\partial x_i}\Big|_p \mathrm dx_i$, weil die Koordinaten des Vektors $\mathrm d\phi(p)$ in der Basis $\mathrm dx_1,\dots,\mathrm dx_n$ genau durch Anwenden der dualen Basisvektoren entstehen.
