@@ -259,9 +259,9 @@ Skizze:
 \section{Die \person{Markowitz}-Modelle}
 \subsection*{Markowitz-Modell I}
 (Portfolio-Optimierung \emph{ohne} risikofreie Anlage)\\
-Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R = (R^1, \dots, R^n)$, d.h. $S_T = S_0^i(1+R^i), i \in [n]$ mit auf Analgegüter $S^1, \dots, S^n$ aufteilen $p_i$ Investitionen in $S^i$, d.h. $p_1 + \dots + p_n = W = 1$.
+Anlagegüter $S = (S^1, \dots, S^n)$ mit stochastische ein-perioden Renditen $R = (R^1, \dots, R^n)$, d.h. $S_T = S_0^i(1+R^i), i \in [n]$ mit auf Anlagegüter $S^1, \dots, S^n$ aufteilen $p_i$ Investitionen in $S^i$, d.h. $p_1 + \dots + p_n = W = 1$.
 \begin{itemize}
-	\item Erwartungswert: $\mu = \E[R] \in \Rn, \mu = (\mu_1, dots, \mu_n)^T$
+	\item Erwartungswert: $\mu = \E[R] \in \Rn, \mu = (\mu_1, \dots, \mu_n)^T$
 	\item $\Sigma = \E[(R-\mu)(R-\mu)^T]\quad (n\times 1)(1\times n) = (\Sigma_{ij})_{i,j \in [n]}$
 	\begin{align*}
 		\Sigma_{ij} = \Var(R^i)\\
@@ -463,7 +463,7 @@ siehe phone
 	\item Axiomatischer Zugang: Präferenzordnungen\\
 	Sei $(\O,\F,\P)$ Wahrscheinlichkeitsraum, $L_1(\O,\F,\P)$ Raum der integrierbaren Zufallsvariablen.
 	\begin{align*}
-		\MM = \set{\text{Menge der Verteilungsfunktionen} F_X \text{ von } X \in L_1(\O,\F,\P)}
+		\MM = \set{\text{Menge der Verteilungsfunktionen } F_X \text{ von } X \in L_1(\O,\F,\P)}
 	\end{align*}
 	Seien $X,Y \in L_1(\O)$ Interpretation risikobehafteter Auszahlungen (``\begriff{Lotterie}''). Wir wollen Ordnungsrelation ``$\vartrianglelefteq$'' mit Bedeutung:
 	\begin{align*}
@@ -501,13 +501,156 @@ siehe phone
 		\end{itemize}
 	\end{itemize}
 \end{*remark}
-Eine PO kann folgende Eigenschaften besitzen:
+Eine Präferenzordnung kann folgende Eigenschaften besitzen:
 \begin{enumerate}
 	\item Monotonie: $\forall a,b \in \R$ mit $a\le b$ gilt $F_a \vartrianglelefteq F_b$ (``mehr besser als weniger'')
-	\item Risikoaversion: $\forall X \in L_1(X)$ gilt: $F_X F_{\E[X]}$ (``sicher besser als unsicher'')
+	\item Risikoaversion: $\forall X \in L_1(X)$ gilt: $F_X \vartrianglelefteq F_{\E[X]}$ (``sicher besser als unsicher'')
 	\item Mittelwertseigenschaft: Sei $F,G,H \in \MM$ mit $F \vartrianglelefteq G \vartrianglelefteq H$. Dann existiert $\alpha \in [0,1]$ mit $(a-\alpha)F + \alpha H \sim G$
 	\item Unabhängigkeitsaxiom: $\forall F,G,H \in \MM$ gilt
 	\begin{align*}
 		F \vartrianglelefteq G \implies (1-\alpha)F + \alpha H \vartrianglelefteq (1-\alpha) + \alpha H \quad \forall \alpha \in [0,1]
 	\end{align*} 
 \end{enumerate}
+\begin{definition}[Erwartungsnutzen]
+	Sei $U\colon \R \to [-\infty, \infty)$ eine monotone steigende und konkave (``\person{Bernoulli}sche Nutzenfunktion''). Dann definiert
+	\begin{align*}
+		F \vartrianglelefteq_{U} G \Leftrightarrow \int U \d F \le \int U \d G \tag{$\ast$} \label{eq_4_5_ERWnutzen}
+	\end{align*}
+	eine Präferenzordnung auf $\MM$. Wir sagen ``$\vartrianglelefteq_U$'' folgt den Erwartungsnutzenprinzip (ENP).
+\end{definition}
+\begin{*remark}
+	Wenn wir \eqref{eq_4_5_ERWnutzen} für Zufallsvariablen $X,Y \in L_1$ formulieren, erhalten wir
+		\begin{align*}
+			X \vartrianglelefteq_U Y \Leftrightarrow \E[U(X)] \le \E[U(Y)]
+		\end{align*}
+\end{*remark}
+\begin{*example}
+	Wichtige Beispiele für Nutzenfunktionen
+	\begin{itemize}
+		\item logarithmische Nutzen:
+		\begin{align*}
+			U(x) = \begin{cases}
+			\log(x) &\quad x > 0\\
+			-\infty &\quad x \le 0
+			\end{cases}
+		\end{align*}
+		\item Potenznutzen, mit $\alpha \in(0,\infty\setminus \set{1})$
+		\begin{align*}
+			U(x) = \begin{cases}
+				\frac{x^{1-\alpha}}{1-\alpha} &\quad x\ge 0\\
+				-\infty &\quad x\le 0
+			\end{cases}
+		\end{align*}
+		\item Exponentialnutzen mit $\gamma \in \R$
+		\begin{align*}
+			U(x) = -\gamma \exp(-\gamma x)
+		\end{align*}
+	\end{itemize}
+\end{*example}
+\begin{theorem}[Satz von \person{von Neumann} und \person{Morgenstern}, 1953] %4.5
+	Sei $\abs{\O} < \infty$ und $\vartrianglelefteq$ eine Präferenzordnung auf $\MM_{\O}$. Dann sind äquivalent:
+	\begin{enumerate}
+		\item Die Präferenzordnung erfüllt Eigenschaften 1.-4.
+		\item Die Präferenzordnung folgt den Erwartungsprinzip
+	\end{enumerate} 
+\end{theorem}
+\begin{*remark}
+	\begin{itemize}
+		\item Werden in den 50ern als starke Rechtfertigung für ENP wahrgenommen
+		\item (Empirische) Kritik Ende der 70er durch die Psychologen \person{Kehnemann} und \person{Tversky} ($\implies$ ``Prospect Theory'')
+	\end{itemize}
+\end{*remark}
+\begin{proof}
+	\begin{itemize}
+		\item 2. $\implies$ 1.: Es müssen die Eigenschaften 1. -4. nachgewiesen werden. Dann gilt:\\
+		\begin{itemize}
+			\item Zeige erste Eigenschaft:
+			\begin{align*}
+			\int U \d F_a = U(a) \overset{U \text{ stetig}}{\le} U(b) = \int U\d F_b \implies F_a \vartrianglelefteq F_b \checkmark 
+			\end{align*}
+			\item Sei $X \in L_1$. Es gilt
+			\begin{align*}
+				\int U \d F_X &= \int_{\R} U(x)\d F_X\\
+				&\le U (\int_{\R} x \d F_X) \quad \text{\person{Jensen}'sche Ungleichung}\\
+				&= U(\E[X]) = \int U\d F_{\E[X]} \implies F_X \vartrianglelefteq F_{\E[X]} \checkmark
+			\end{align*}
+			(oder $\E[U(X)] \le U(\E[X]$, wobei Jensen gilt.)
+			\item Sei $F \vartrianglelefteq G \vartrianglelefteq H$. Zu zeigen: $\exists \alpha \in [0,1]$ mit $(1-\alpha)F + \alpha H \sim G$ und setze
+			\begin{align*}
+				\alpha_{\ast} = \frac{\int U \d G - \int U \d F}{\int U \d H - \int U \d F} \in [0,1]
+			\end{align*}
+			Es gilt:
+			\begin{align*}
+				&\int U ((1-\alpha_{\ast})\d F + \alpha_{\ast} \d H) = (1-\alpha_{\ast})\int U \d F + \alpha_{\ast} \int U \d H\\
+				&\int U \d F + \alpha_{\ast}(\int U \d H - \int \d F) = \int U \d G \checkmark
+			\end{align*}
+			\item Zu zeigen $F \vartrianglelefteq G \implies (1-\alpha)F + \alpha H \vartrianglelefteq (1-\alpha)G + \alpha H$
+			\begin{align*}
+				\int U((1-\alpha)\d F + \alpha H) &= (1-\alpha)\int U\d F + \alpha \int U \d H\\
+				\overset{F \vartrianglelefteq G}&{\le} (1-\alpha)\int U \d G + \alpha \int U \d H\\
+				&= \int U((1-\alpha)\d G + \alpha \d H)\checkmark
+			\end{align*}
+		\end{itemize}
+	1. $\implies$ 2.: Ist recht schwierig, für interessierte siehe Literatur.
+	\end{itemize}
+\end{proof}
+\begin{definition}
+	Sei $U$ Bern. Nutzenfunktion und $\vartrianglelefteq_U$ die zugehörige Präferenzordnung
+	\begin{enumerate}
+		\item Für $X \in L_1$ heisst $c:= c_{\ast}(X,U) \in \R$ mit $c \sim_U X$ das \begriff{certainly equivalent} von $X$.
+		\item Für $U \in C^2$ heissen
+		\begin{align*}
+			A_U(x) = - \frac{U''(x)}{U'(x)} \quad R_U(x) = -\frac{xU''(x)}{U'(x)}
+		\end{align*}
+		die \begriff{\person{Arrow}-\person{Pratt}-Koeffizienten} der absoluten bzw. relative Risikoaversion.
+	\end{enumerate}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item Für $U$ streng monoton steigend gilt
+		\begin{align*}
+			c_{\ast}(U,X) = U^{-1}(\E[U(X)])
+		\end{align*}
+		denn $c \sim_U X \implies U(c) = \E[U(X)]$
+		\item Motivation für $A_U(x)$: Person mit Vermögen $x \in \R$ wird ``Lotterie'' $\epsilon y$ angeboten (mit $\epsilon$ klein). Nach dem ENP sollte die Person annehmen wenn $\E[U(x+ \epsilon Y)] \ge U(x)$. Taylor:
+		\begin{align*}
+			\E[U(x+\epsilon Y)] - U(x) = \E[\epsilon y]U'(x) + \frac12 \E[\epsilon^2 y^2]U''(x) + \dots
+		\end{align*}
+		Person sollte annehmen, wenn
+		\begin{align*}
+			2\frac{\E[\epsilon y]}{\E[\epsilon^2 y^2]} = \frac{\text{``Erw. Gewinn''}}{\text{``Risiko''}} \ge \frac{U''(x)}{U'(x)} = A_U(x)
+		\end{align*}
+		
+	\end{itemize}
+\end{*remark}
+Klassisches Beispiel zum ``certainty equivalent''.
+\begin{*example}[St. Petersburger Paradoxon (Nicholas Bernoulli, 1713)]
+	\begin{itemize}
+		\item Spiel: faire Münze geworfen bis in der $N$-ten Runde das erste Mal ``Zahl'' fällt. Gewinn ist $2^{N-1}$ Euro
+		\item Wie hoch soll der Einsatz sein um am Spiel teilzunehmen?
+		\item Antwort I: Einsatz gleich erwarteter Gewinn und $N$ ist geometrisch verteilt, d.h. $\P(N = k) = (\frac12)^k, k \in \N$ und
+		\begin{align*}
+			\E[2^{N-1}] = \sum_{k=1}^{\infty}(\frac12)^k 2^{k-1} = \sum_{k=1}^{\infty}(\frac12) = + \infty
+		\end{align*}
+		\item Die Antworten II und III von Gabriel Cramèr und Daniel Bernoulli entsprechen dem ``certainty equivalent'' mit Nutzenfunktion
+		\begin{align*}
+			U_1(x) &= \sqrt{x} \quad \text{(Cramer)}\\
+			U_2(x) &= \log(x) \quad \text{(D. Bernoulli)}
+		\end{align*}
+		\item Antwort II (Cramer): $C_1 = C_{\ast}(2^{N-1}, U_1) = U^{-1}_1(\E[U_1(2^{N-1})])$
+		\begin{align*}
+			\E[U_1(2^{N-1})] = \sum_{k=1}^{\infty}(\frac{1}{2})^k \sqrt{2^{k-1}} &= \sum_{k=1}^{\infty}2^{-k + \frac{k-1}{2}}\\
+			&= \frac{1}{\sqrt{2}}\sum_{k=1}^{\infty}2^{-\frac k 2} = \frac{1}{\sqrt{2}} \sum_{k=1}^{\infty}(\frac{1}{\sqrt{2}})^k\\
+			&= \frac{1}{\sqrt{2}}\frac{1/\sqrt{2}}{1- 1/\sqrt{2}} = \frac{1}{2-\sqrt{2}}
+		\end{align*}
+		also $c_1 = (\frac{1}{2-\sqrt{2}})^2 \approx 2,914$ also fairer Einsatz: 2,91 Euro
+		\item Antwort III (D. Bernoulli): $c_2 = c_{\ast}(2^{N-1},U_2)$
+		\begin{align*}
+			\E[U_2(2^{N-1})] &= \sum_{k=1}^{\infty}(\frac 1 2)^k \log(2^{k-1}) = \log(2)\sum_{k=1}^{\infty}2^{-k}(k-1)\\
+			&= \frac{\log(2)}{2} \sum_{k=1}^{\infty}k\cdot 2^{-k} = \frac{\log(2)}{4}\frac{1}{(1-1/2)^2} = \log(2)
+			\intertext{NR:}
+			\sum_{k=0}^{\infty}z^k &= \frac{1}{1-z} \xRightarrow{\partial_z} \sum_{k=0}^{\infty}k \cdot z^{k-1} = \frac{1}{(1-z)^2}
+		\end{align*}
+		$c_2 = e^{\log(2)} = 2$, also ist der faire Einsatz: 2 Euro.
+	\end{itemize}
+\end{*example}
