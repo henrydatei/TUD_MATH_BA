@@ -1,0 +1,179 @@
+\section{Vektorbündel}
+\begin{definition}
+	Sei $M$ Mannigfaltigkeit. Ein \begriff{Vektorbündel} $E$ von Dimension $m$ über $M$ ist eine Mannigfaltigkeit $E$ zusammen mit einer surjektiven, glatten Abbildung $\pi\colon E\to M$ (Projektionsabbildung), sodass folgende Eigenschaften erfüllt sind:\begin{enumerate}[label={(\arabic*)}]
+		\item Jede Faser $E_p := \pi^{-1}(p)$, $p\in M$ ist ein $\R$-Vektorraum von Dimension $m$,
+		\item \begriff{lokale Trivialität}: für jeden Punkt $p\in M$ existiert eine Umgebung $U$, sodass \begin{align*}
+			\pi^{-1}(U)\xrightarrow[\psi]\cong U\times \R^m\quad\text{Diffeo- und Isomorphismus},
+		\end{align*}
+		sodass für jedes $q\in U$ gilt: \begin{align*}
+			\psi(q,\,\cdot\,)\colon E_q\to \R^m
+		\end{align*}
+		ist ein Vektorraum-Isomorphismus.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item Das triviale $m$-dimensionale Vektorbündel über $M$ ist $E=M\times\R^m$, $\pi$ projiziert in die erste Komponente.
+		\item $\T M$, $\T^\star M$ sind Vektorbündel über $M$ von Dimension $\dim M$.
+		\item Wenn $E$ und $F$ Vektorbündel über $M$ sind, so ist \begin{align*}
+			E\oplus F = \bigsqcup_{p\in M} E_p\oplus F_p
+		\end{align*}
+		auch ein Vektorbündel.
+		
+		Übung: überprüfe, dass es eine Struktur trägt, der Mannigfaltigkeit und lokal trivial ist.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Sei $\pi\colon E\to M$ ein Vektorbündel. Ein \begriff{Schnitt} von $E$ ist eine glatte Abbildung $s\colon M\to E$ mit $\pi\circ s = \id_M$, \begin{align*}
+		\Gamma(E) &= \{s\colon M\to E\mid \text{$s$ ist Schnitt von $E$}\}.
+	\end{align*}
+\end{definition}
+
+
+Wenn $s\in\Gamma(E)$, dann gilt $s(p)\in E_p = \pi^{-1})(p)$, d.h. $\Gamma(E)$ ist ein Vektorraum mit punktweisen Operationen: \begin{align*}
+	(s_1+s_2)(p) &:= s_1(p) + s_2(p),\\
+	(\lambda s)(p) &= \lambda s(p),
+\end{align*}
+wobei $p\in M$, $\lambda\in \R$.
+
+\begin{remark}
+	Wenn $E=M\times\R^m$, dann ist $\Gamma(E) = C^\infty(M,\R^n)$. Wenn nun $s\in\Gamma(E)$, $\phi\in C^\infty(M)$, dann ist $(\phi\cdot s)(p) = \phi(p)\cdot s(p)$. Das macht $\Gamma(E)$ zu eine $C^\infty(M)$-Modul.
+\end{remark}
+
+\begin{definition}
+	Seien $\pi_E\mskip-4mu\underset{\scriptscriptstyle M}{\overset{\scriptscriptstyle E}{\scalebox{0.6}{$\downarrow$}}}$ und $\pi_F\mskip-4mu\underset{\scriptscriptstyle M}{\overset{\scriptscriptstyle F}{\scalebox{0.6}{$\downarrow$}}}$ zwei Vektorbündel. Ein \begriff*{Homomorphismus} $f\colon E\to F$ ist eine glatte Abbildung mit $\pi_f\circ f = \pi_E$ und sodass $f\big|_{E_p}\!\colon E_p \to F_p$ linear ist.
+	\begin{center}
+		\begin{tikzcd}
+			E \arrow[r, "f"] \arrow[d, "\pi_E"] & F \arrow[d, "\pi_F"] \\
+			M \arrow[r, "\id"]                  & M                   
+		\end{tikzcd}
+	\end{center}
+\end{definition}
+
+\begin{definition}
+	$\underset{\scriptscriptstyle M}{\overset{\scriptscriptstyle E}{\scalebox{0.6}{$\downarrow$}}}$ und $\underset{\scriptscriptstyle M}{\overset{\scriptscriptstyle F}{\scalebox{0.6}{$\downarrow$}}}$ heißen \begriff*{isomorph}, wenn es Vektorbündelhomomorphismen $f\colon E\to F$, $g\colon F\to E$ gibt mit $g\circ f=\id_E$, $f\circ g = \id_F$.
+\end{definition}
+
+Wichtige Erkenntnis (annociert): nicht jedes Vektorbündel ist trivial! (isomorph zu $M\times \R^n$, z.B. $\T S^2$ (Man kann den Igel nicht kämmen)).
+
+\textbf{Frage}: wo kriegt man Mannigfaltigkeiten her?
+\begin{example}[Definition durch Gleichung]
+	Sei $M$ eine Mannigfaltigkeit, $f\colon M\to\R^m$ glatt, $q\in\R^n$, \begin{align*}
+		f^{-1}(q) = \{p\in M\mid f(p) = q\}\subset M.
+	\end{align*}
+	Wir sind dann vor die Fragen gestellt: \begin{enumerate}[label={(\arabic*)}]
+		\item Was ist eine sinnvolle Definition von Untermannigfaltigkeit?
+		\item Wann ist $f^{-1}(q)$ Untermannigfaltigkeit?
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Seien $M$, $N$ Mannigfaltigkeiten. Eine Abbildung $\iota: M\to N$ heißt \begriff{Immersion}, wenn $\D_p \iota$ injektiv ist für alle $p\in M$.
+\end{definition}
+
+\begin{definition}
+	Eine (injektive) Immersion $\iota\colon M\to N$ heißt \begriff{Einbettung}, wenn $\iota\colon M\to \iota(M)\subset N$ ein Homöomorphismus ist.
+\end{definition}
+
+\textbf{Beachte}: Untermannigfaltigkeit kann "`injektive"' Immersion oder "`Einbettung"' heißen - nicht äquivalent. Für uns heißt "`M ist Untermannigfaltigkeit von $N$"' soviel wie "`Wir fixieren eine \emph{Einbettung}"' $\iota\colon M\to N$.
+
+\begin{example}
+	\begriff*{Torus}: $\iota\colon\R\to\Pi^2 = (\R\slash\Z)^2$, $\iota(x) = (x,ax) + \Z^2$ ($a\in \R$ konstant).
+	
+	Ist $a=\frac pq\in \Q$, dann gilt für $x=q$: \begin{align*}
+		\iota(x) = (q,p) + \Z^2 = 0\in\Pi^2.
+	\end{align*}
+	Dann wird die Abbildung $j\colon R\slash q\Z\cong \Pi^2\to \Pi^2$ mit $j(x+q\Z) := \iota(x)$ eine Einbettung, d.h. $j(\Pi)\subset\Pi^2$ ist eingebettete Untermannigfaltigkeit.
+	
+	Ist $a\in\R\setminus\Q$, so ist $\iota(\R)\subset\Pi^2$ dicht. Dann ist $\iota(\R)$ keine eingebettete Untermannigfaltigkeit.
+\end{example}
+
+\begin{definition}
+	Für $f\colon\R^n\to\R^n\in C^\infty$ sagen wir, dass $f$ \begriff*{maximalen Rang} in $p\in\R^n$ hat, falls $\rang \D_p(f) = \min(k,n)$.
+	
+	Es gibt zwei Varianten: \begin{enumerate}[label={\arabic*)}]
+		\item $n\le m$, $\rang (\D_p f) = n$ $\Leftrightarrow$ $n\le m$, $\D_p f$ injektiv.
+		
+		Beispiel: $\iota\colon\R^n\hookrightarrow \R^n$, $n\le m$ Einbettung in die ersten Koordinaten.
+		\item $m\le n$, $\rang(\D_p f) = m$ $\Leftrightarrow$ $N\ge m$, $\D_p f$ surjektiv.
+		
+		Beispiel: $\pi\colon\R^n\to\R^n$, $m\le n$ Projektion auf die zweite Koordinate.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[implizite Funktion]
+	\proplbl{1_2}
+	Sei $U\subset\R^n$ offen, $0\in U$, $f\colon U\to\R^n$ glatt, $f(0) = 0$.\begin{enumerate}[label={(\roman*)}]
+		\item Falls $n\le k$ und $f$ maximalen Rang in $0$ hat, gibt es eine Karte $g$ von $\R^n$ an $0$ mit $g\circ f = \iota$ auf einer Umgebung von $0\in\R^n$.
+		\item Gilt $k\le n$ und hat $f$ maximalen Rang in $0$, dann gibt es eine Karte $h$ von $\R^n$ an $0$ mit $f\circ h^{-1} = \pi$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Übung ($\nnearrow$ Theorem 5.3, Walschap).
+\end{proof}
+
+Jede Immersion ist lokal eine Einbettung.
+\begin{proposition}
+	Sei $\iota\colon N\to M$ Immersion, $\dim N = n$, $\dim M=m$ ($n\le m$). Dann gilt: für alle $p\in N$ gibt es eine Umgebung $V$ von $p$ und Karte $(U,g)$ mit $\iota(p)\in U\subset M$, sodass \begin{enumerate}[label={\roman*)}]
+		\item $q\in i(V)\cap U$ genau dann, wenn $y^{n+1}(q) = \dots = q^{m}(q) = 0$.
+		
+		Anders gesagt: $y(i(V)\cap U) = (R^n\times 0_{m-n})\cap y(U)$.
+		\item $\iota\big|_V$ ist eine Einbettung.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Sei $x$ Kartenabbildung umj $p$ mit $x(p) = 0$, $(\tau,U)$ eine Karte an $i(p)$ mit $\tilde(y)(i(p)) = 0$. Dann hat $f\colon \tilde y\circ i\circ x^{-1}$ maximalen Rang ($=n$) an $0=x(p)$, also gibt es nach \propref{1_2} (i) eine Karte $g$ von $\R^m$ und eine Umgebung $W$ von $0\in R^n$ mit \begin{align*}
+		g\circ f\big|_W = 0\big|_W = g\circ\tilde g\circ i\circ x^{-1}\big|_W.
+	\end{align*}
+	Sei $V:= x^{-1}(W)\subset N$, $y := g\circ\tilde y$. Dann gilt I) nach Konstruktion $y\big|_W = y\circ i\circ x^{-1}\big|_W$.
+	
+	ii) folgt, weil $i\big|_V = g^{-1}\circ \iota\circ x\big|_V$ eine Komposition von Einbettungen ist, also ist $i\big|_V$ wieder eine Einbettung.
+\end{proof}
+
+Der Satz vom regulären Wert ist von Bedeutung in der Differentialgeometrie, weil man damit Untermannigfaltigkeiten konstruieren kann.
+
+\begin{definition}
+	Seien $M$, $N$ Mannigfaltigkeiten, $\dim M = n$, $\dim N = k$, $k\le n$, $f\colon M\to N$ glatt. Ein Punkt $p\in M$ heißt \begriff*{regulär}\index{Punkt!regulär}, wenn $\rang(\D_p f) = k$, sonst heißt $p$ 
+	\begriff*{kritischer Punkt}\index{Punkt!kritisch} von $f$. Ein Punkt $q\in N$ heißt \begriff{regulärer Wert}, falls $f^{-1}(q)$ nur reguläre Punkte enthält, sonst heißt $q$ \begriff*{kritischer Wert}.
+\end{definition}
+
+\begin{example}
+	$q\notin f(M)$ ist regulärer Wert.
+\end{example}
+
+\begin{proposition}[Satz vom regulären Wert]
+	Seien $M$, $N$ Mannigfaltigkeiten von Dimension $n$ bzw. $k$, $n\ge k$, $f$ ist eine Submersion. Wenn $q\in f(M)$ ein regulärer Wert ist, dann ist $f^{-1}(q) =: A\subset M$ (die Faser von $f$an $q$) eine Untermannigfaltigkeit von $M$.
+\end{proposition}
+\begin{proof}
+	Sei $y\colon V\to\R^k$ Karte an $q\in N$, $g(q) = 0$. Sei $p\in A=^{-1}(q)$ und $x\colon U\to\R^n$ Karten von $p\in M$, $x(p) = 0$. Zerlege $\R^n=\R^k\times R^{n-k}$ und seien $\pi_1$, $\pi_2$ die entsprechenden Projektionsabbildungen ($\pi_1(a,b) = a$, $\pi_2(a,b) = b$). Sei weiter $\iota-2\colon\R^{n-k}\to \R^k$ die Einbettung $\iota_2(a_1,\dots,a_{n-k}=(0,\dots,0,a_1,\dots,a_{n-k})$.
+	
+	Da $y\circ f\circ x^{-1}$ maximalen Rang an $0\in \R^n$ hat, gibt es nach \propref{1_2} (ii) eine Karte $(W,h)$ um $0\in\R^n$ mit $y\circ f\circ x^{-1}\circ f\big|_W = \pi_1\big|_W$. Sei $\tilde w := \pi_2(W)\cap W)$. DAnn ist $\tilde W$ offen (Übung) im $\R^{n-k}$.
+	
+	Weiter gilt: $y\circ f\circ x^{-1}\circ h\circ\iota_2 = \pi_1\circ\iota_2=0$ auf $\tilde W$, d.h. wenn $z:= x^{-1}\circ h\circ\iota_2\big|_{\tilde W}$, dann folgt\begin{align*}
+		Z(\tilde w) \subset A = f^{-1}(q),
+	\end{align*}
+	(da auf $\tilde W$ gilt: $y\circ f\circ Z(\tilde W) = 0$ $\Leftrightarrow$ $f\circ Z(\tilde W) = q$).
+	
+	Wir behaupten, dass $Z(\tilde W) = A\cap (x^{-1}\circ h)(w)$, sodass $Z$ ein Homöomorphismus auf sein Bild ist.
+	
+	Zunächst gilt: $Z(\tilde W)\subset A\cap(x^{-1}\circ h)(W)$. Für die andere Inklusion wähle $p\in A\cap (x^{-1}\circ h)(W)$. Dann ist $\tilde p = (x^{-1}\circ h)(U)$ für ein eindeutiges $u\in W$ und \begin{align*}
+		0 = (y\circ f)(\tilde p) = (y\circ f\circ x^{-1}\circ h)(u) = \pi_1(u)\quad(u\in W).
+	\end{align*}
+	Also: $u=(0,u)\in\{0\}\times\tilde W$.
+	
+	Dann gilt aber: \begin{align*}\tilde p = (x^{-1}\circ h)(u) = (\hat x\circ h)(0,a) = (x^{-1}\circ h\circ\iota_2)(a) = Z(a)\in Z(\tilde W).
+	\end{align*}
+	Damit ist die Gleichheit $Z(\tilde W) = A\cap (X^{-1}\circ h)(w)$ gezeigt.
+	
+	Es folgt $\iota:A\to M$ ist topologische Einbettung. Wir versehen $A$ mit der glatten Struktur, die durch die Karten $(Z(\tilde W), Z^{-1})$ induziert wird, wenn $p$ die Menge $A$ durchläuft.
+	
+	Dann ist $\iota\colon A\hookrightarrow M$ sogar glatt: $x\circ \iota\circ (Z^{-1})^{-1} = h\circ\iota_2$.
+\end{proof}
+
+\begin{example}
+	$f\colon R^{n+1}\to \R$, $x\mapsto \Vert x\Vert_2^2$. Dann ist $\D_a f = 2(a_1,\dots,a_{n+1})$, hat also Rang 1 falls $a\neq 0$. Also ist jedes $r\in \R$ ein reguzlärer Wert von $f$, $f^{-1}(r)=$ Sphäre vom Radius $\sqrt r$.
+\end{example}

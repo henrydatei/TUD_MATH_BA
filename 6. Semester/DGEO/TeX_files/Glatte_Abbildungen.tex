@@ -1,0 +1,44 @@
+\section{Glatte Abbildungen}
+\begin{definition}
+	Seien $M$, $N$ zwei Mannigfaltigkeiten. Eine Abbildung $f\colon M\to N$ heißt \begriff{glatt}, wenn für je zwei Paare von Karten $(U,x)$ bzw. $(V,y)$ auf $M$ bzw. $N$ gilt: $y\circ f\circ x^{-1}$ ist glatt, also folgendes Diagramm kommutiert:
+	\begin{center}
+	\begin{tikzcd}
+		M\subset U \arrow[d, "x"'] \arrow[r, "f"] & N\subset V \arrow[d, "y"] \\
+		\R^n \arrow[r, "y\circ f\circ x^{-1}"]    & \R^m                     
+	\end{tikzcd}
+	\end{center}
+\end{definition}
+
+\textbf{Übung}: $M\xrightarrow{f}N$, $N\xrightarrow{g}P$ glatt $\Rightarrow$ $g\circ f$ glatt.
+
+\textbf{Notation}: $C^\infty(M,N) = \{f\colon M\to N$ glatt$\}$, $C^\infty(M) := C^\infty (M,\R)$.
+
+\textbf{Übung}: $C^\infty$ ist eine $\R$-Algebra, d.h. Summen, Vielfache glatter Funktionen sind glatt.
+
+\begin{definition}
+	Eine glatte Abbildung $f\colon M\to N$ heißt \begriff{Diffeomorphismus}, wenn ein $g\colon N\to M$ glatt existiert mit $g\circ f =\id_m$ und $f\circ g = \id_N$.
+	
+	Wenn ein Diffeomorphismus $f\colon M\to N$ existiert, heißen $M$, $N$ diffeomorph.
+	
+	Notation: $M\cong N$, $M\xrightarrow[f]{\cong¸} N$
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}[label={(\arabic*)}]
+		\item $B(0,1)\subset\R^n\cong\R^n$, $x\mapsto x\cdot\tan(\frac\pi2 \Vert x\Vert)$
+		\item $(R,\mathcal A_1 = \{(\R,\id)\})\cong (\R,\mathcal A_2 = \{(\R,\sqrt[3]{\,\cdot\,})\})$
+		\begin{center}
+			\begin{tikzcd}
+				\R \arrow[r, "f(x)=x^3"] \arrow[d, "\id"'] & \R \arrow[d, "{\sqrt[3]{\cdot}}"] \\
+				\R \arrow[r, "\id"]                        & \R                                   
+			\end{tikzcd}
+		\end{center}
+		\item Zwei Atlanten $\mathcal A_1$, $\mathcal A_2$ auf $M$ sind äquivalent, wenn $\id\colon (M,\mathcal A_1)\to (M,\mathcal A_2)$ ein Diffeomorphismus ist und anders herum.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	$f\colon M\to N$ glatt $\rightsquigarrow$ $f^\star\colon C^\infty(N)\to C^\infty(M)$, $\phi\mapsto \phi\circ f$ heißt \begriff{Pullback}. Es ist ein Algebren-Homomorphismus.
+\end{definition}
+
+\emph{Beobachtung:} $(g\circ f)^\star = f^\star\circ g^\star$, $M\xrightarrow f N\xrightarrow g P \xrightarrow\phi \R$, $\id^\star = \id$ $\Rightarrow$ $f$ Diffeomorphismus $\Rightarrow$ $f^\star$ ist ein Isomorphismus.

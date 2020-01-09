@@ -1,0 +1,86 @@
+\section{Flüsse von Vektorfeldern}
+Wir möchten eine Funktion $\phi\colon M\times[0,t]\to M$, besser $\phi\colon M\times (-t_1,t_2)\to M$ (Vektorfeld konstant)! untersuchen. Wir wollen $\phi(p,0) = p$, $\partial\phi\slash\partial t(p,t_1) = x_{\phi(p,t)}$ (Differentialgleichung) dazu lösen.
+
+\begin{repetition}[Picard-Lindelöff]
+	Sei $U\subset\R^n$ offen, $F\colon U\to \R^m$ glatt. Dann existiert $\forall a\in U$ eine Umgebung $W$ von $a$, ein offenes Intervall $I$ mit $0\in I$ und eine eindeutige bestimmte glatte Funktion $\psi\colon W\times I\to U$, sodass \begin{align*}
+		\psi(U,0) = u\quad\text{und}\quad\frac{\partial\psi}{\partial t}(u,t) = F(\psi(u,t)).
+	\end{align*}
+	
+	Eindeutigkeit heißt: wenn $\psi_1\colon W_1\times I_1\to U$ und $\psi_2\colon W_2\times I_2\to U$ die Bedingungen erfüllen, so sind sie gleich auf $(W_1\times I_1)\cap (W_2\times I_2)$.
+\end{repetition}
+
+\begin{conclusion}
+	Sei $M$ Mannigfaltigkeit, $X$ ein Vektorfeld auf $M$. Dann existiert für alle $q\in M$ eine Umgebung $V$ von $q$, ein offenes Intervall $I$ mit $0\in I$ und eine glatte Abbildung $\phi\colon I\times V\to M$, sodass $\phi(p,0) = p$ und $\partial\phi\slash\partial t(p,t) = X(\phi(p,t))$.
+\end{conclusion}
+\begin{proof}
+	Sei $(U,x)$ Karte um $q$. Setzte $ G:= X(u)$, $a = X(q)$ und $F:=\big(\mathrm dx^1(X),\dots,\mathrm d X^n(X)\big)\circ x^{-1}$. Verwende nun Picard-Lindelöff. Die resultierende Funktion $\psi$ erfüllt die Bedingungen.
+\end{proof}
+
+\begin{remark}
+	$\psi$ bzw. $\phi$ heißt \begriff*{lokaler Fluss}\index{Fluss!lokal}.
+\end{remark}
+
+\begin{proposition}
+	Sei $M$ eine Mannigfaltigkeit, $X$ Vektorfeld auf $M$. Dann existiert eine maximal offene Teilmenge $W\subset \R\times M$, $\{0\}\times M\subset W$ und $\phi\colon W\to M$ glatt, sodass $\phi(t,p) = p$, $\partial \phi\slash\partial t(t,p) = X(\phi(t,p))$ und für alle $p\in M$ ist $Wcap(\R\times \{0\})= I_p\times \{p\}$, wobei $I_p$ offenes Intervall mit $0\in I_p$ ist.
+\end{proposition}
+\begin{proof}
+	Aus dem vorherigen Satz bekommen wir $W_0 = \bigcup_ {q\in M} I_q\times V_q$ und $\phi_0\colon W_0\to M$ mit dem gewünschten Eigenschaften.
+	Sei $\mathcal W := \{(W_i,\phi_i),\,i\in I\}$ die Menge der $W_i$, $\phi_i\colon W_i\to M$ die diese Eigenschaften erfüllen. Wir nehmen $W = \bigcup_{i\in I} W_i$, $\phi = \bigcup_{i\in I}\phi_i$.
+\end{proof}
+
+\emph{Übung}: Für $M$ kompakt können wir in der Zeitrichtung immer bis $\pm\infty$ gehen.
+
+\begin{remark}
+	Sei der Fluss für alle Zeitpunkte definiert. Für alle $t\in \R$ haben wir $\phi_t\colon M\to M$ mit \begin{align*}
+		\phi_{t_1+t_2} = \phi_{t_1}\circ\phi_{t_2}\quad(\nnearrow\!\!\text{Gruppenhomomorphismus})
+	\end{align*}
+	1-Parameter-Gruppen und Umkehrabbildung $\phi_{-t}$ (Diffeomorphismus).
+\end{remark}
+
+\begin{definition}
+	Ein Vektorfeld $X$ auf $M$ heißt \begriff*{vollständig}\index{Vektorfeld!vollständig}, wenn der maximale Fluss von $X$ auf ganz $R\times M$ definiert ist (=Integralkurve existiert ewig).
+\end{definition}
+
+\begin{example}
+	$M=\R$; $X=\xi(x)\partial\slash\partial x$, Differentialgleichung $\dot x = \xi(x)$ beschreibt den Fluss \begin{align*}
+		\dot x = x^2,\quad \mathrm dx = x^2\,\mathrm dx,\quad \mathrm dx\slash x^2 = \mathrm dt,\quad -\frac1c = t+c,\quad x=-\frac1{t+c},\quad x(0) = x_0\,\Leftrightarrow x_0=-\frac1c
+	\end{align*}
+	$\leadsto$ Integralkurve mit $x(0) = x_0$ sieht aus: \begin{align*}
+		x(t) = -\frac{1}{t-1\slash x_0} = \frac{x_0}{1-x_0 t}
+	\end{align*}
+\end{example}
+
+\begin{remark}
+	Für dieses Gegenbeispiel ist es wichtig, dass $\R$ nicht kompakt ist.
+\end{remark}
+
+\emph{Übung}: Jedes Vektorfeld auf einer kompakten Mannigfaltigkeit ist vollständig. Sei $X$ ein vollständiges Vektorfeld, definiere $\phi_E\colon M\to M$, $p\mapsto \phi(t,p)$, $t\in \R$.
+
+\begin{proposition}
+	Es gilt: $\phi_{t_1+t_2} = \phi_{t_1}\circ\phi_{t_2}$, $t_1$, $t_2\in\R$.
+\end{proposition}
+\begin{proof}
+	$\phi_{t_1+t_2}(p)$ ist der Wert an $t=t_1+t_2$ der Integralkurve $\gamma_p(t)$ von $X$ mit $\gamma_p(0) = p$ (entsprüchend für $\phi_{t_2}$. $\phi_{t_1}(\phi_{t_2}(p))$ ist der Wert an $t=t_1$ der Integralkurve $\gamma_{\phi_{t_2}(p)}(t)$ mit Anfangswert $\phi_{t_2}(p)$.
+	
+	Nach dem Eindeutigkeitssatz ist $\gamma_{\phi_{t_2}(p)}(t) = \gamma_p(t+t_2)$. Ihr Wert an $t=t_1$ ist genau $\gamma_p(t_1+t_2) = \phi_{t_1+t_2}(p)$.
+\end{proof}
+
+\begin{conclusion}
+	$\phi_E\colon M\to M$ ist ein Diffeomophismus für alle $t\in \R$.
+\end{conclusion}
+
+\begin{conclusion}
+	$\phi_\cdot\colon (\R,t)\to \mathrm{Diff}(M)$, $t\mapsto \phi_E$ ist ein Gruppenhomomorphismus (=$\{\phi_t\}_{t\in\R}$ ist eine 1-Parameter-Gruppe von Diffeomorphismen).
+\end{conclusion}
+
+\begin{lemma}
+	Wenn $\phi\colon \R\times M\to M$ eine glatte Abbildung ist, sodass \begin{enumerate}[label={\arabic*)}]
+		\item $\forall t\in \R$: $\phi_E\colon M\to M$, $p\mapsto \phi(t,p)$ Diffeomorphismus,
+		\item $\phi_{t_1+t_2} = \phi_{t_1}\circ\phi_{t_2}$, $t_1$, $t_2\in\R$
+	\end{enumerate}
+	\hspace*{0.5em}$\Rightarrow$ existiert ein vollständiges Vektorfeld $X$ auf $M$, dessen Fluss $\phi$ ist.
+\end{lemma}
+
+\begin{proof}
+	$X(p) = \frac{\partial \phi_E(p)}{\partial t}\Big|_{t=0}$.
+\end{proof}

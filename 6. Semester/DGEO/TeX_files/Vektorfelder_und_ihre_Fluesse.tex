@@ -1,0 +1,23 @@
+\section{Vektorfelder und ihre Flüsse}
+\begin{example}
+	Wind auf der Erde, stetiges Verhalten.
+\end{example}
+
+\begin{definition}
+	Sei $M$ Mannigfaltigkeit, $\T M$ das Tangentialbündel mit Projektion $\pi\colon \T M\to M$. Ein \begriff{Vektorfeld} auf $M$ ist ein Schnitt des Tangentialbündels, d.h. eine glatte Abbildung $X\colon M\to \T M$, sodass $\pi\circ X = \id_M$. $X(p)\in \T M$ (auch $X_p$) bezeichne den Wert von $X$ an der Stelle $p\in M$.
+\end{definition}
+
+\begin{remark}
+\begin{enumerate}[label={\arabic*)}]
+	\item Die Vektorfelder über $M$ bilden einen Vektorraum. Wir nennen in $\Gamma(\T M)$, $\mathfrak X$.
+	\item Man kann Vektorfelder mit glatten Faktoren $M\to \R$ multiplizieren.
+	\item Man kann eine glatte Funktion $f\colon M\to \R$ entlang eines VEktorfeldes $X\colon M\to \T M$ ableiten und bekommt dann eine neue Funktion $X(f)\colon M\to \R$.
+	\item Ist $(U,x)$ Karte um $p\in M$, so definiert sie \begriff*{Koordinatenvektorfelder} $\partial\slash\partial x_i$ auf $U$. Jedes Vektorfeld $X$ auf $U$ kann geschrieben werden als \begin{align*}
+		X = \sum_{i=1}^n \underbrace{X(x^i)}_{U\to \R}\frac{\partial}{\partial x_i}.
+	\end{align*}
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+	Wenn $M=\R^n$, so ist $\T M\cong \R^n\times \R^n$ und Vektorfeld auf $M$ entsprechen Funktionen $\R^n\to \R^n$.
+\end{example}

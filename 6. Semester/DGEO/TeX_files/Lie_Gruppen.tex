@@ -1,0 +1,201 @@
+\section{Lie-Gruppen}
+$\GL(n,\R) = \{A\in \Mat(\R)\mid \det A\neq 0\}\subset\R^n$ ist offen, Mannigfaltigkeit. Gleichzeitig ist es aber Gruppe:\begin{itemize}
+	\item $m\colon \GL(n,\R)\times\GL(n,\R)\to\GL(n,\R)$, $(A,B)\mapsto A\cdot B$,
+	\item $\iota\colon \GL(n,\R)\to\GL(n,\R)$, $A\mapsto A^{-1}$
+\end{itemize}
+
+\textbf{Behauptung}: $m$, $\iota$ sind glatt:\begin{itemize}
+	\item $(m(A,B))_{ik} = \sum_{j=1}^n A_{ij}B_{jk}$ $\rightarrow$ glatte Funktion von $A_{ij}$, $B_{jk}$ (sogar Polynome)
+	\item $\displaystyle \iota(I(A))_{ij} = \frac{\mathrm{cof}\,(A)_{ji}}{\det A}$, wobei $\mathrm{cof}\,(A)_{ij} = (-1)^{i+j}\det A_{ij}$ ($A_{ij}$ ist Matrix mit Spalte $j$, Zeile $i$ gestrichen)
+\end{itemize}
+
+\begin{definition}
+	Eine \begriff*{Lie-Gruppe}\index{Lie!Gruppe} $G$ ist eine Mannigfaltigkeit zusammen mit glatten Abbildungen $\cot\colon G\times G\to G$, $(\,\cdot\,)\colon G\to G$, sodass $(G,\,\cdot\,,(\,\cdot\,)^{-1})$ eine Gruppe ist.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item $GL(n,\R)$, $\GL(n,\C)$ sind Lie-Gruppen.
+		\item $(\R^n,+)$ ist Lie-Gruppe.
+		\item $\SL(n,\R) = \{A\in\Mat_n(\R)\det A=1\}$ ist Lie-Gruppe (da Multiplikation und Invertieren von $\GL_n(\R)$ vererbt sind, reicht es zu zeigen, dass $\SL_n(\R)\subset\GL(n,\R)$ eine Untermannigfaltigkeit ist. Dazu: nutze Satz vom regulären Wert.
+		
+		Zu zeigen: $\forall A\in\SL_N(\R)$ gilt: $\D_A \det$ hat vollen Rang $\Leftrightarrow$ $\D_A \det \neq 0$.
+		
+		$\hat X(g) = (L_g)_\star \hat X(1) = (L_g)_\star A = g\cdot A$. $L_g$ ist die Matrixmultiplikation von links: \begin{align*}
+			L_g\colon \Mat_N(\K)\to \Mat_N(\K),\;y\mapsto g Y, \quad g\in\GL(n,\K)
+		\end{align*}
+		Linear $\Rightarrow$ $(L_g)_\star = yg.$
+	\end{itemize}
+\end{example}
+
+\textbf{Fazit}: Linksinvariante Vektorfelder sind alle von der Form $\hat X_A(g) = g\cdot A$, $A\in T_1 G\subset T_1 \GL(n,\K)\cong \Mat_n(\K)$.
+
+\emph{Erinnerung / Übung}: $\Gamma(\T M) \cong \mathrm{Der}\,(C^\infty(M))$, $\delta_1$, $\delta_2\in\mathrm{Der}\,(A)$ $\Rightarrow$ $[\delta_1,\delta_2]\in\mathrm{Der}\, A$ und $[\delta_1,[\delta_2,\delta_3]]=0$ (Jacobi-Identität)
+
+\begin{definition}
+	Eine \begriff*{Lie-Algebra}\index{Lie!Algebra} $(K,[\,\cdot\,,\,\cdot\,])$ ist ein Vektorraum $V$ mit einer bilinearen Abbildung $[\,\cdot\,,\,\cdot\,]\colon V\times V\to V$, die die Jacobi-Identität erfüllt: \begin{align*}
+		[v_1,[v_2,v_3]] + [v_2,[v_3,v_1]] + [v_3,[v_1,v_2]] = 0,\quad v_1,\,v_2,\,v_3\in V.
+	\end{align*}
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item $\Mat_N(\K)$, $[A,B] = AB - BA$ ist eine Lie-Algebra.
+		\item $A$, $[a,b] = ab-ba]$
+		\item $\mathrm{Der}\,(A)$ ist eine Lie-Algebra, wenn $A$ assoziative (unitäre) Algebra ist.
+		\item $\Gamma(\T M)\cong \mathrm{Der}\,(C^\infty(M))$ ist Lie-Algebra.
+		\item Die linksinvarianten Vektorfelder auf einer Lie-Gruppe.
+	\end{itemize}
+\end{example}
+
+\begin{lemma}
+	Sie $G$ eine Lie-Gruppe, $X$, $Y\in\Gamma(\T G)$ linksinvariant. Dann ist auch $[X,Y]$ linksinvariant.
+\end{lemma}
+
+\begin{proof}
+	Sei $Z\in\Gamma(\T G)$, $f\in C^\infty(G)$.
+	\begin{align*}
+		\Big[\big[(L_g)_\star Z\big](\phi)\Big](k) &= \Big[\big((L_g)_\star Z\big)(k)\Big](\phi) = \Big[(L g)\big(Z (g^{-1}h\big)\Big](\phi) = \big( Z(g^{-1} h)\big)(L^\star_g \phi) = \big(Z(h)\big)(L_g^\star \phi) \\
+		&= \underbrace{\Big[\big[(L_g)_\star Z\big](\phi)\Big]}_{=:\psi}\\
+		\big(L_g^\star(\psi)\big)(h) &= \Big[L_g^\star\big((L_g)_\star Z\big)(\psi)\Big](h),
+	\end{align*}
+	also $L^\star_g \Big[\big((L_g)_\star Z\big)(\phi)\Big] = Z(L_g^\star \phi)$, folglich $(L_g)_\star Z = L_g^\star \circ Z\circ L_g^\star$
+	\begin{center}
+	\begin{tikzcd}
+		C^\infty(M) \arrow[d, "Z"'] \arrow[r, "L_g^\star", "\cong"'] & C^\infty(M) \arrow[d, "?"] \\
+		C^\infty(M) \arrow[r, "L_g^\star", "\cong"']                 & C^\infty(M)               
+	\end{tikzcd}
+	\end{center}
+	\begin{align*}
+		(L_g)_\star[X,Y](\phi) &= (L_{g^{-1}}^\star\circ [X,Y]\circ L_g^\star)(\phi)\\
+		&= L_{g^{-1}}^\star\Big(X\big(L_g^\star \phi)\big) - Y\big(X(L_g^\star \phi)\big)\Big) \\
+		&= L_{g^{-1}}^\star [ X\circ L_g^\star\circ \underbrace{L_{g^{-1}}^\star \circ Y\circ L_g^\star}_{=(L_g)_\star Y = Y}(\phi) - Y\circ L_g^\star \circ \underbrace{L_{g^{-1}}^\star\circ X\circ L_g^\star}_{=(L_g)_\star X=X}(\phi)] \\
+		&= (\underbrace{L_{g^{-1}}^\star \circ X\circ L_g^\star}_{=(L_g)_\star X = X} \circ Y)(\phi) - (\underbrace{L_{g^{-1}}^\star \circ Y\circ L_g^\star}_{=(L_g)_\star Y=Y} \circ X)(\phi)\\
+		&= (X\circ Y)(\phi) - (Y\circ X)(\phi) = [X,Y]
+	\end{align*}
+\end{proof}
+
+\begin{definition}
+	Das Vektorfeld $X_\xi$, $g\mapsto (L_g)_\star \xi$ heißt das \begriff*{linksinvariante Vektorfeld}\index{Vektorfeld!linksinvariant} zu $\xi\in \T_1 G$.
+\end{definition}
+
+\begin{definition}
+	Ein Vektorfeld $X\in\Gamma(\T G)$ heißt \begriff*{linksinvariant}, wenn \begin{align*}
+		\forall h\in G\colon (L_h)_\star = X,
+	\end{align*}
+	d.h. $(L_h)_\star X(g) = X(L_h g) = X(h g)$.
+\end{definition}
+
+\begin{lemma}
+	$X_\xi$ ist linksinvariant.
+\end{lemma}
+\begin{proof}
+	$(L_h)_\star X_\xi(g) = (L_h)_\star (L_g)_\star \xi = (L_{hg})_\star \xi = X_\xi (hg)$.
+\end{proof}
+
+\begin{lemma}
+	Jedes linksinvariante Vektorfeld $X\in\Gamma(\T G)$ ist von der Vorm $X_\xi$ für ein eindeutig bestimmtes $\xi\in \T_1 G$.
+	
+	Genauer: die Auswertungsabbildung $ev_1$ {linksinvariantes Vektorfeld} $\to \T_1 G$ ist ein Isomorphismus von Vektorräumen.
+\end{lemma}
+\begin{proof}
+	Die Abbildung $\xi\to X_\xi$ ist invers zu $ev_1$:\begin{itemize}
+		\item injektiv, weil $X_\xi(1)=\xi$,
+		\item surjektiv: wenn $X$ linksinvariant ist, gilt \begin{align*}
+			X(g) = (L_\xi)_\star X(1)\quad\Rightarrow\quad X=X_{X(1)}
+		\end{align*}
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item $(\R^n,+)$: linksinvariant, entspricht konstant, denn: \begin{align*}
+			(L_g)_\star = \begin{pmatrix}
+				1 & 0 \\ 0 & 1
+			\end{pmatrix}.
+		\end{align*}
+		\item $(\R_+^\times,\,\cdot\,)$: $(L_a)_\star = a$.
+		\item $(U(1),\,\cdot\,)\cong (S^1,\,\cdot\,)\subset (\C^\star,\,\cdot\,)$.
+		\item $(C^\star,\,\cdot\,)$: $(L_z)_\star = z$.
+	\end{itemize}
+\end{example}
+
+Sei $\K=\R$ oder $\K=\C$, $G=\GL(n,\K)\subset\K^{n^2}$ offen. Wir benutzen die Einträge der Matrix als Koordinaten, d.h. $X\in\Gamma(\T G)$ wird eindeutig beschrieben durch eine Funktion $\hat X_i\colon G\to\Mat_N(\K)$. Welche $\hat X$ entsprechen links-invarianten Vektorfeldern?
+
+\textbf{Erinnerung}: wenn $X$ linksinvariant ist, ist es eindeutig durch $X(1)\in \T_1 G$ bestimmt $\leadsto$ $\hat X$ ist eindeutig bestimmt durch $\hat X(1) =: A\in\Mat_N(\K)$ bestimmt. Sei $X\in \T_A(\R^{n^2})$. \begin{align*}
+	\D_A \det(X) &= \lim\limits_{\epsilon\to 0} \frac{\det(A+\epsilon X) - \det(1)}{\epsilon} = \det(A)\lim\limits_{\epsilon\to 0} \frac{\det(\mathbbm 1 + \epsilon \overbrace{A^{-1} X}^{=:Y})-1}{\epsilon} = \det A\tr(A^{-1} X)
+\end{align*}
+Somit hat $\D_A \det$ tatsälich den Rang 1, weil z.B. $\D_A \det(A) = n$. \begin{itemize}
+	\item $\Orth(n) = \{A\in\Mat_n(\R)\mid \transpose{A}A = \mathbbm 1\}$, $\SO(n) = \{A\in\Orth(n)\mid \det(A) = 1\}$
+	\item $\Uni(n) = \{A\in \Mat_n(\C)\mid \det(A) = 1\}$, $\SU(n) = \{A\in \Uni(n)\mid \det(A) = 1\}$
+	\item $\Orth(n,\C) = \{A\in\Mat_n(\C)\mid \transpose{A}A = \mathbbm 1\}$, $\SO(n,\C) = \{A\in\Orth(n,\C)\mid \det A=1\}$
+	\item $\Orth(p,q) = \{A\in\Mat_{p+q}(\R)\mid \langle Ax,Ay\rangle_{p,q} = \langle x,y\rangle_{p,q}\}$ mit \begin{align*}
+		\langle x,y\rangle_{p,q} := \sum_{j=1}^p x_i y_i - \sum_{j=1}^q x_{p+j} y_{p+j}\quad\forall x,y\in\R^n.
+	\end{align*}
+
+\begin{example}
+	$\Orth(1,3)$ enthält die quadratische Form $t^2-x^2-y^2-z^2$ (Minkowski-Raum, SRT).
+\end{example}
+	\item $S^1 = \{z\in\C\mid \vert z\vert = 1\}\subset \C^\star$ ($S^1 = \Uni(1)$)
+	\item $\Pi^n = \underbrace{S^1\times \cdot \times S^1}_{n}$ ist auch Lie-Gruppe.
+\end{itemize}
+
+\begin{proposition}[Cartan]
+	Sei $G$ eine Lie-Gruppe, $H\le G$ abgeschlossene Untergruppe (bezüglich der Topologie auf $G$). Dann ist $H$ Untermannigfaltigkeit (und somit automatisch Lie-Gruppe).
+\end{proposition}
+
+Warum ist $\SO(n)$ zusammenhängend?
+
+\emph{Erinnerung}: $G\overset{\alpha}{\curvearrowright} X$ Gruppenwirkung $\Leftrightarrow$ $G\xrightarrow\alpha \Sym(X)$
+
+\begin{definition}
+	Sei $G$ eine Lie-Gruppe, $U$ eine Mannigfaltigkeit. Eine (glatte) \begriff{Wirkung} $G\overset{\alpha}{\curvearrowright} M$ ist ein Homomorphismus $\alpha\colon G\to \mathrm{Diff}\,(M)$
+\end{definition}
+
+\textbf{Idee}(Erlangen-Programm) 1872, Felix Klein: studiere Mannigfaltigkeiten durch Symmetrie-Gruppen $(S^n, d)\subset (\R^{n+1}, d_{\mathrm{endl}})$ mit der "`Runden Metrik"'.
+
+\textbf{Fakt}: Iso $m(S^n,d)\cong \Orth(n+1)$ Insbesondere $\Orth(n+1)\curvearrowright S(n)$. (wirkt transitiv [Basiswechsel])
+
+\begin{tabularx}{\linewidth}{ll}
+	$G\curvearrowright X$ transitiv & $H\le G$ \\$x\in X\colon G\to X,\; g\mapsto gx$ & $G\curvearrowright G\slash H$ \\ $H = \{g\in G\mid gx=x\} = \Stab(X)$ & $X_g(K\cdot H) = gk H$
+\end{tabularx}
+
+\begin{proposition}[Hauptsatz über Wirkung]
+	Jede transitive Wirkung $G\curvearrowright X$ ist isomorph zu einer Wirkung $(G\curvearrowright G\slash H)$ für eine Untergruppe $H$.
+	
+	Der Isomorphismus geht so: wähle "`Anfangspunkt"' $x\in X$, $H:=\Stab(X)$. Der Isomorphismus ist $gH\mapsto gx$.
+\end{proposition}
+
+\begin{*example}
+	$\Orth(n+1)\curvearrowright S^n$ transitiv, \begin{align*}
+	\Stab(\transpose{(1,0,\dots,0)}) = \begin{pmatrix}
+		1 & 0 \\ 0 & \Orth(n)
+	\end{pmatrix},
+	\end{align*}
+	also $S^n\cong\Orth(n+1)\slash \Orth(n)$. Alternativ $S^n\cong \SO(n+1)\slash \SO(n)$ (Wähle positiv orientierte Basis).
+\end{*example}
+
+\textbf{Beobachtung}: $S^n\cong \SO(n+1)\slash \SO(n)$ zusammenhängend.
+
+\textbf{Frage}: Sei $G$ Lie-Gruppe, $H\le G$ Lie-Untergruppe. Wie macht man $G\slash H$ zu einer Mannigfaltigkeit? \begin{enumerate}
+	\item[\circled{1}] Topologie: Quotiententopologie haben $q\colon G\to G\slash H$, definiere $\tau := \{ U\subset G\slash H\mid q^{-1} (U)\,\text{offen}\, \}$
+	\item[\circled{2}] glatte Struktur: kommt später.
+\end{enumerate}
+
+\textbf{Erinnerung}: zusammenhängend = "`nicht zerlegbar"' in zwei nichtleere offene Teilmenge.
+
+\begin{lemma}
+	Sei $G$ Lie-Gruppe, $H\le G$ abgeschlossene Untergruppe. Sidn $H$, $G\slash H$ zusammenhängend, so ist auch $G$ zusammenhängend.
+\end{lemma}
+
+\begin{proof}
+	Angenommen, $G= A\sqcup B$, $A$, $B$ offen, nicht leer. ObdA sei $1\in A$. Jede Nebenklasse $gH$ ist zusammenhängend, $gH = (gH\cap A)\sqcup (gH\cap B)$ $\Rightarrow$ eines ist leer $\Rightarrow$ Jede Nebenklasse von $H$ liegt vollständig in $A$ oder $B$.
+	
+	Nun gilt:\begin{align*}
+		G = \bigsqcup_{[g]\in G\slash H} gH \quad\Rightarrow q(A)\sqcup g(B) = G\slash H.
+	\end{align*}
+	($q\colon G\twoheadrightarrow G\slash H$ Quotientenabbildung) ist diskunkte Vereinigung von offenen Teilmengen, wei $q^{-1}(q(A)) = A$ $\Rightarrow$ \Lightning~zu $G\slash H$ zusammenhängend.
+\end{proof}
+
+\textbf{Behauptung}: $\SO(n)$ zusammenhängend $\forall n\ge 1$.\\
+\emph{Beweis}: Induktion: $n=1$ $\SO(1) = \{1\}$ (klar). $\SO(n+1)\slash \SO(n)\cong S^n$ zusammenhängend

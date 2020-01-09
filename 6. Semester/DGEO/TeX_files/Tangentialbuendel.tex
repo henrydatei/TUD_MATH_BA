@@ -1,0 +1,41 @@
+\section{Tangentialbündel}
+\begin{definition}
+	Ein \begriff{Tangentialbündel} ist die Menge \begin{align*}
+		\T M := \bigsqcup_{p\in M} \T_p M,
+	\end{align*}
+	mit $\pi\colon \T M \to M$, $\pi(v) = p$.
+\end{definition}
+\begin{proposition}
+	$\T M$ trägt eine glatte Struktur, die durch die glatte Struktur von $M$ induziert ist. Unter dieser ist $\T M$ eine Mannigfaltigkeit von Dimension $2n$.
+\end{proposition}
+\begin{proof}
+	Sei $(U,x)$ eine Karte von $M$. Definierte \begin{align*}
+		\tilde U &:= \pi^{-1}(U) = \bigsqcup_{p\in U} \T_p M,\\
+		\tilde x&\colon \tilde U\to \R^{2n} = \R^n\times \R^n,\;v\mapsto \bigg( x\big(\pi(v)\big),\big(\mathrm dx_1(\pi(v))\big)(v),\dots,\underbrace{\mathrm dx_n\pi(v)}_{\mathclap{=(\mathrm dx_n (\pi(v)))(v)}}\bigg).
+	\end{align*}
+	Definiere eine Topologie auf $\T M$ durch die Forderung, dass alle $\tilde x$'s Homöomorphismen sind. Wir müssen überprüfen, dass $\{(\tilde U,\tilde x)\mid (U,x)\in\mathcal A\}$ einen Atlas bilden.
+	
+	Seien $(\tilde U,\tilde x)$, $(\tilde V,\tilde y)$ zwei solche Karten, sodass $\tilde U\cap \tilde V\neq \emptyset$, d.h. $U\cap V\neq\emptyset$.
+	
+	Wenn $(a,b)\in\R^n\times \R^n$, gilt \begin{align*}
+		(\tilde y\circ\tilde x^{-1})(a,b) = \big( y\circ x^{-1}(a),\D_a(y\circ x^{-1})(b)\big)
+	\end{align*}
+	glatt.
+\end{proof}
+
+\begin{remark}
+	Analog ist $\T^\star M = \bigsqcup_{p\in M} \T^\star_p M$ eine $2n$-dimensionale Mannigfaltigkeit.
+\end{remark}
+
+Diese Erkenntnis liefert: Sei $f\colon M\to N$ glatt. Das Differential von $f$ wird jetzt zu einer Abbildung \begin{align*}
+	\D f = f_\star\colon \T M\to \T n,\;v\mapsto \D_{\pi(v)} f(v).
+\end{align*}
+$f_\star$ ist glatt, wenn wenn $(U,x)$ bzw. $(V,y)$ Karten auf $M$ bzw. $N$ sind, $\leadsto$ $(\tilde U,\tilde x)$ $(\tilde V,\tilde y)$ Karten für $\T M$, $\T N$.\begin{align*}
+	(\tilde y\circ f_\star \circ \tilde x^{-1})\colon \R^{2n}\to \R^{2n},\;(a,b)\mapsto \big( (y\circ f\circ x^{-1})(a),\D_a (y\circ f\circ x^{-1})(b)\big),
+\end{align*}
+also glatt. Aus der Definition von $\D f = f_\star$ folgt: $\pi_{\T N}\circ f_\star = f\circ\pi_{\T M}$, d.h. folgendes Diagramm kommutiert:\begin{center}
+	\begin{tikzcd}
+		\T M \arrow[d, "\pi_{\T\!M}"] \arrow[r, "\D f = f_\star"] & \T N \arrow[d, "\pi_{\T\! N}"] \\
+		M \arrow[r, "f_\star"]                                   & N                           
+	\end{tikzcd}
+\end{center}
