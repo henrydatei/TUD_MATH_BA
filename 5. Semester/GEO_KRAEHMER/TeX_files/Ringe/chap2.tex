@@ -1,0 +1,190 @@
+$R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
+\begin{erinnerung}
+	Ist $X$ eine Menge, so kann man ein
+	\begin{align*}
+		R^{\times} = \set{f\colon X \to R \mid f(x) = 0, \text{ für fast alle }x \in X}
+	\end{align*}
+	definieren Modul mit
+	\begin{align*}
+		+ \colon R^X \times R^X \to R^X \mit (f+g)(x) = f(x)+g(x)\quad x \in X, f,g \in R^X\\
+		\cdot\colon R \times R^X \to R^X \mit (rf)(x) = r\cdot f(x)
+	\end{align*}
+	Ist $V$ ein $R$-Modul und $X \subseteq V$ ($X$ nicht unbedingt Untermodul), so erhält man einen Morphismus von $R$-Moduln ($R$-lineare Abbildungen)
+	\begin{align*}
+		S_x\colon R^X \to V \mit f \mapsto \sum_{x\in X}f(x)\cdot x
+	\end{align*}
+	Also ist $\Image(S_X)$ die Menge aller Linearkombinationen von Elementen von $X$, d.h. $\Span_R X$ bzw. der von $X$ erzeugte Untermodul von $V$. $X$ ist ein Erzeugendensystem von $V$, wenn $\Image(S_X) = V$ ist. Ein Modul heißt endlich erzeugt, wenn es ein $X \subseteq V$ mit $\Image(S_X) = V$ und $\abs{X} < \infty$.\\
+	$X$ ist linear unabhängig, wenn $S_X$ injektiv ist, also $\ker S_X = 0$. Ist $S_X$ bijektiv, also $X$ ein linearer unabhängiges Erzeugendensystem, so nennt man $X$ Basis von $V$. Ein Modul $V$ der eine Basis enthält ist frei $V \cong R^X$. Also $R$ Körper $\implies$ Jeder Modul (= VR) ist frei und $R^X \cong R^V \Leftrightarrow \abs{X} = \abs{Y} = \dim R^X$
+\end{erinnerung}
+\begin{example}
+	Sei $R = \Z$, dann $\Z$-Moduln sind abelsche Gruppen, also $(4x = x+x+x+x)$ durch $+$ in $V$ festgelegt. $V = \Z_2 = \lnkset{\Z}{2 \Z}, X = \set{1 + 2\Z} = \set{[1]}$ ist Erzeugendensystem (sogar minimal). Aber $X$ ist keine Basis, denn es ist nicht linear unabhängig, da $2 \cdot [1] = [0]$
+\end{example}
+\begin{definition}
+	Ein $R$-Modul $V$ ist \begriff{projektiv} $\Leftrightarrow$ für jede Epimorphismus (surjektiv) $\alpha \colon M \to N$ von $R$-Moduln und jeden Morphismus $\gamma \colon V \to N$ gibt es einen Morphismus $\beta \colon V \to M$ mit $\alpha \circ \beta = \gamma$
+	\[
+		\begin{tikzcd}
+		& V \arrow[ld, "\exists \beta"', dashed] \\
+		M \arrow[r, "\alpha"', two heads] & N \arrow[u, "\gamma"', hook]          
+		\end{tikzcd}
+	\]
+\end{definition}
+\begin{proposition}
+	\proplbl{prop_2_1_1}
+	Für einen $R$-Modul $V$ sind äquivalent
+	\begin{enumerate}
+		\item $V$ ist projektiv
+		\item Jeder Epimorphismus $\pi\colon M \to N$ ist \begriff{split}, d.h. $\exists \iota \colon V \to M$ mit $\pi \circ \iota = \id$ ($M$ $R$-Modul)
+		\item Es existiert ein $R$-Modul $W$ mit $V \oplus W$, der frei ist
+	\end{enumerate}
+\end{proposition}
+\begin{remark}
+	$W \subseteq V$ ist Komplement zu $U \subseteq V \Leftrightarrow \pi \colon V \to \lnkset{V}{U}$ ist isomorph und $\pi_{\mid W}\colon W \to \lnkset{V}{U}$
+\end{remark}
+\begin{example}
+	$\pi \colon \Z \to Z$ splittet nicht als $\Z$-Modulmorphismus. Also ist $\Z_2$ nicht projektiv.
+\end{example}
+\begin{proof}[\propref{prop_2_1_1}]
+	\begin{enumerate}
+		\item 1 $\implies$ 2: Betrachte ($N = V$, $\gamma = \id_V$, $\alpha = \pi$)
+		\[
+			\begin{tikzcd}
+			& V \arrow[ld, "\exists \iota"', dashed] \\
+			M \arrow[r, "\pi", two heads] & N \arrow[u, "\gamma = \id_V"', hook]  
+			\end{tikzcd}
+		\]
+		\item 2 $\implies$ 3: Jeder Modul $V$ hat ein Erzeugendensystem, z.B. $V = X$ selbst. $S_X\colon R^X \to V$ ist ein Epimorphismus ($R^X$ ist frei! $X$ ist Basis bzw. $\set{\delta_x}_{x \in X}$ ist Basis ($f = \sum_{x\in X} f(x)\delta_x$)). $V$ projektiv, existiert ein Splitting $\iota \colon V \to R^X$ mit $\pi \circ \iota = \id_X$, $\tilde{V} = \Image \iota$ ist dann ein Untermodul von $R^X$, der Isomorphismus zu $V$ ist. Betrachte nun $\epsilon = \iota \circ \pi \colon R^X \to R^X$. Dies ist ein idempotenter Morphismus, d.h. 
+		\begin{align*}
+			\epsilon \circ \epsilon &= (\iota \circ \pi)(\iota \circ)\\
+			&= \iota \circ (\pi \circ \iota)\circ \pi\\
+			&= \iota \circ \id \circ \pi = \epsilon.
+		\end{align*}
+		Somit gilt aber $R^X \cong \ker \epsilon \oplus \Image \epsilon \mit f \mapsto (f - \epsilon(f), \epsilon(f))$ und $\ker \epsilon \cap \Image \epsilon = 0$ % could be \emptyset is meant here ...
+		$f = \epsilon(g), \epsilon(f) = 0$ heißt $\epsilon(\epsilon(g)) = \epsilon(g) = f$. Also gilt $\Image \epsilon = \Image \iota = \tilde{V} \cong V$. Denn $\epsilon(f) = (\iota \circ \pi)(f) = \iota(\pi(f))$, also $\Image \epsilon \subseteq \Image \iota$ und da $\pi$ surjektiv ist gilt Gleichheit. $V = \tilde{V}$, da $\iota$ injekti ist, da ($\pi \circ \iota = \id_V$) also $\ker \iota = 0$ und $V \cong \lnkset{V}{\ker \iota} \cong \Image \iota = \tilde{V}$. Also ist
+		\begin{align*}
+			V \oplus W \cong \tilde{V} \oplus W \mit W = \ker \epsilon
+		\end{align*}
+		\item 3 $\implies$ 1: Sei $V \oplus W \cong R^X$ frei und ein Diagramm der Form
+		\[
+			\begin{tikzcd}[ampersand replacement=\&]
+			\& V \arrow[d, "\gamma"] \\
+			M \arrow[r, "\alpha", two heads] \& N                    
+			\end{tikzcd}
+		\]
+		folgt
+		\[
+			\begin{tikzcd}[ampersand replacement=\&]
+			\& R^X \arrow[ld, "\exists \rho", bend right] \arrow[d, "\pi"] \\
+			M \arrow[rd, two heads, bend right] \& V \arrow[d, "\gamma"]                                       \\
+			\& N                                                          
+			\end{tikzcd}
+		\]
+		($\alpha$ Epimorphismus $R^X = V \oplus W$, $\pi \colon R^X \to V$, 1. Komponente $V \cong \lnkset{R^X}{W}$)\\
+		Für jedes Basiselement $\delta_x \in R^X (x \in X)$ existiert ein $m_x \in M$ mit $\alpha(m_x) = \gamma(\pi(\delta_x))$ (dann ist $\alpha$ surjektiv). Jetzt kommt die Freiheit: Jede Abbildung $\set{\delta_x}_{x \in X} \to M$ kann zu einer linearen Abbildung (eindeutig) $\begin{tikzcd}[cramped, sep=small]
+		R^X \arrow[r, "\rho"] & M
+		\end{tikzcd}$ festgesetzt werden.
+		\begin{align*}
+			\Mod_R(R^X, M) \cong \Set(X,M)
+		\end{align*}
+		Sprich $\exists! \rho \colon R^X \to M$ mit $\rho(\delta_x) = m_x$. Die Einschränkung von $\rho$ auf das Untermodul $V \subseteq R^X$ (bzw. wenn man die Einbettung $V \to R^X$) mit $\iota$ bezeichnet $\rho \circ \iota$)  liefert dies das gewünschte $\beta\colon V \to M$.
+	\end{enumerate}
+\end{proof}
+\begin{example}
+	$R \in C^{\infty}(\R, \R)$ stetige Funktion von $\R \to \R$, $S \subseteq \R$ Teilmenge, z.B. $S = [0,1]$,\\ $V = \set{f \in C^{\infty}(\R, \R) \mid f(x) = \text{ für }x \notin S}$ Untermodul von $R$ selbst ist, d.h. $V \lhd R$ ist Ideal und sogar Hauptideal.
+	\begin{align*}
+		V = p \cdot R, p = \chi_S, p(x) = \begin{cases}
+		0 \quad x \notin S\\
+		1 \quad x \in S
+		\end{cases}\\
+		p^2 = p, (1-p)^2 = (1-p) = \chi_{R \setminus S}
+	\end{align*}
+	damit ergibt sich $R = p \cdot R \oplus (1-p)R = V \oplus W$ 
+\end{example}
+\begin{erinnerung}
+	\begin{itemize}
+		\item Morphismus $R^n \to R^n$ ist gegeben durch Matrixmultiplikation. Die Projektion auf $V$ ($\epsilon \colon R^n = V \oplus W \to R^n \with (v,w) \mapsto v$) korrespondiert zu einer idempotenten Matrix. $e \in \Mat(n,R), e^2 = e$ und $V = e\cdot R = \set{e x \mid x \in R} = \Image(\epsilon)$. 
+		\item projektiv gdw für alle Endomorphismen $\begin{tikzcd}[cramped, sep=small]
+		M \arrow[r, "\pi"] & V
+		\end{tikzcd}$ split, also $M \cong V \oplus \ker(\pi)$ ($V$ ist $\Image(\pi)$, Kern-Bild-Formel). Wenn $V$ endlich erzeugt ist $V = \Span\set{x_1, \dots, x_n}$
+		\item $\pi \colon V \with (v_1, \dots, v_n)^T \mapsto \sum_{i=1}^n v_i x_i$ surjektiv. Also $V \cong \lnkset{R^n}{ker(\pi)}$
+	\end{itemize}
+\end{erinnerung}
+\begin{example}
+	Sei $R = \C$, dann
+	\begin{enumerate}
+		\item $\Z$-Modul ist abelsche Gruppe
+		\item $\C(t)$-Modul ist $\C$-Vektorraum $V$ und $\C$-lineare Abbildung $\pi\colon V \to V$
+	\end{enumerate}
+	beide sind Hauptidealringe $(\Z, C(t))$ (HIR).
+\end{example}
+\begin{definition}
+	$R$ ist ein HIR $\Leftrightarrow$ $R$ ist Integritätsbereich (eng. integral domain, nullteilerfrei) (ID) und jedes Ideal $I \lhd R$ ist ein Hauptideal, d..h. es existiert $a \in R$ mit
+	\begin{align*}
+		I = R \cdot a = \set{ra \mid r \in R} = \set{s \in R \mid a \mid s}
+	\end{align*}
+	($a \mid s$, entspricht $a$ teilt $s$)
+\end{definition}
+Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompositon) $V = R \oplus T$ mit $F$ frei und $T$ Torsion.
+\begin{definition}
+	Sei $R$ ID, $V$ $R$-Modul
+	\begin{enumerate}
+		\item $x \in V$ ist ein Torsionselement $\Leftrightarrow \exists r \in R, r \neq 0, r\cdot x = 0$
+		\item $T(V) = \set{x \in V \mid x \text{ ist Torsionselement}} \le V$
+		\item $V$ ist torsionsfrei, wenn $T(V) = 0$
+		\item Annihilator $\Ann_R (V) := \set{r \in R \mid rx = 0 \forall x \in V} \lhd R$
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	\begin{enumerate}
+		\item Da $R$ ID ist, ist ein freier Modul torsionsfrei:\\
+		$f \in R^{\times}, r \in R, r \neq 0, r \cdot f = 0$ heißt $(rf)(x) = r \cdot f(x) = 0 \forall x \in X \Leftrightarrow f(x) = 0 \forall x \in X$
+		\item Ist $R = \Z$ und $V$ eine endliche abelsche Gruppe, so gilt $\abs{V}\cdot x = 0\quad \forall x \in V$ ($\ord(x) \mid \ord(V)$). Also ist $V = T(V)$.
+	\end{enumerate}
+\end{example}
+\begin{*remark}
+	$T(V) \le V$ ist Untermodul (Übung!)
+\end{*remark}
+\begin{lemma}\proplbl{2_2_1}
+	$\lnkset{V}{T(V)}$ ist torsionsfrei. ($R$ ID für den Rest der heutigen VL :S)
+\end{lemma}
+\begin{proof}
+	Sei $X \in \lnkset{V}{T}$ Torsionselement $x$ ist von der Form $X = [v] = v + T$ für ein $v\in V$. $T := T(V)$ $x$ ist Torsionselement heißt: $\exists r \in R \setminus \set{0}\colon r \cdot x = 0$, d.h. $[rv] = [0]$, also $r \cdot v \in T$. Damit ergibt sich $\exists s \in R \setminus \set{0}\colon s(rv) = 0$ also $(sr)v = 0$. Da $R$ ID ist, ist $t:= sr \neq 0$, also ist $v \in T(V) = T$ und da bedeutet $[v] = x = 0$.
+\end{proof}
+\begin{lemma}
+	Sind $N \le M$ Moduln, so gilt $M$ ist Torsions ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
+\end{lemma}
+\begin{proof}
+	Analog zu \propref{2_2_1}.
+\end{proof}
+\begin{proposition}\proplbl{2_2_2}
+	Sei $V$ endlich erzeugter, torsionsfreier $R$-Modul, $V = Span\set{x_1, \dots, x_n}$ und $V \neq 0$.
+	\begin{enumerate}
+		\item $\exists i_1, \dots, i_k \colon F = R\sum_{j=1}^k x_{i_j}$ ist frei mit Basis $\set{x_{i_1}, \dots, x_{i_k}}$
+		\item $\lnkset{V}{F}$ ist Torsionsmodul: $\lnkset{V}{F} = T\brackets{\lnkset{V}{F}}$
+		\item Existiert ein Morphismus, der injektiv ist $L \colon \begin{tikzcd}[cramped, sep=small]
+		V \arrow[r, hook] & F
+		\end{tikzcd}$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Induktion nach $n$: (Beweis die ersten zwei Aussagen)
+	\begin{itemize}
+		\item $n=1$: $V = R\cdot x \cong R$, da torsionsfrei, $V = Rx$ heißt es existiert ein Endomorphismus $\pi\colon R \to V \mit r \cdot x$ und wenn $x$ kein Torsionselement ist, ist $\ker \pi = 0$ ($\not \exists r \neq 0 \colon rx = 0$, also ist $\pi$ isomorph) und damit gilt \propref{2_2_2}.
+		\item $n-1 \to n$: OBdA ist $\set{x_1, \dots, x_n}$ keine Basis, sonst wären wir fertig. (Mit $F = V$). Also existiert eine Linearkombination $0 = \sum_{i=1}^n r_i x_n$ oBdA mit $r \neq 0$, d.h. $\exists r = r_n \in R \setminus{0}$ mit $r\cdot x_n \in \Span\set{x_1, \dots, x_{n-1}} := W$.\\
+		Behauptung: $\lnkset{V}{W}$ ist Torsion: Denn ein Element in $\lnkset{V}{F}$ ist von der Form: $[s x_n] = s[x_n]$ und $r[s x_n] = s[r x_n] = 0$, da $r x_n \in W$, also $[r x_n] = 0$ in $\lnkset{V}{W}$. Nach Induktionsannahme existiert Teilmenge $B \subseteq \set{x_1, \dots, x_{n-1}}$, die einen freien Untermodul $G \subseteq W$ aufspannt und $\lnkset{W}{G}$ ist Torsion. Nach dem 3. Isomorphiesatz gilt:
+		\begin{align*}
+			\lnkset{\lnkset{V}{G}}{\lnkset{W}{G}} \cong \lnkset{V}{W}
+		\end{align*}
+		Also ist $\lnkset{V}{G}$ ein Torsionmodul ($\lnkset{W}{G}$ Torsion, $\lnkset{V}{W}$ und \propref{2_2_1}) und damit haben wir $F = V$.
+		\item Nun zu der 3. Aussage: Da $\lnkset{V}{F}$ Torsion ist existiert für jedes $x_i$ ein $r_i \in R\setminus{0}$ mit $r_i x_i \in F$, $r_i[x_i] = [r_i x_i] = [0] \Leftrightarrow r_i x_i \in F$. Sei $r := \prod_{j=i}^n r_j \neq 0$. Definiere $L\colon V \to F \mit x \mapsto rx$. Da $R$ kommutativ ist, ist $L$ $R$-linear. Da $V$ torsionsfrei ist, ist $L$ injektiv. Das Bild ist in $F$, da $V = \Span_R\set{x_1, \dots, x_n}$ und
+		\begin{align*}
+			r\brackets{\prod_{j=1}^n r_j x_j} = \prod_{j=1}^n r_j = a_1 r_2\cdots r_n (\underbrace{r_1 x_1}_{\in F}) + a_2 r_1 r_3 \cdots r_n(\underbrace{r_2 x_2}_{\in F}) + \dots \in F.
+		\end{align*}
+	\end{itemize}
+\end{proof}
+\begin{conclusion}
+	Sei $V$ endlich erzeugter $R$-Modul. Entweder ist $V$ Torsion, $V = T(V)$ oder $V$ enthält einen freien Untermodul $F$ mit $\lnkset{V}{F}$ Torsion.
+\end{conclusion}
+\begin{proof}
+	still TODO.
+\end{proof}
