@@ -62,7 +62,10 @@
 \end{example}
 
 \begin{definition}[Ordnung]
-	Ist $G$ endlich, so nennt man $\abs{G}$ die \begriff{Ordnung} von $G$.
+	\begin{itemize}
+		\item Ist $G$ endlich, so nennt man $\abs{G}$ die \begriff{Ordnung} von $G$.
+		\item die Ordnung eines Elements, ist einfach die wiederholt aufeinander Ausführung des Elements, bis sich wieder die Identität ergibt.
+	\end{itemize}
 \end{definition}
 
 \begin{example}
@@ -263,28 +266,6 @@ Dies verallgemeinert sich zu
 	\end{align*}
 \end{remark}
 
-Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
-\begin{proposition}[Lagrange, Klausur!]
-	\label{1_2_9_lagrange}
-	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
-\end{proposition}
-\begin{proof}
-	\ul{Beweisskizze:} Äquivalenzrelation und Bijektion $xH \cong yH$.\\
-	Let $H < G$ a subgroup of $G$ and $xH := \set{xy \mid y \in H} \le G$ the coset of $H$ in $G$. Then we have $\lnkset{G}{H} = \set{xH \mid x \in G} \subseteq \powerset(G)$. Then
-	\begin{align*}
-		xH = \tilde{x}H \Leftrightarrow \exists y \in H \quad x = \tilde{x}y \Leftrightarrow \tilde{x}^{-1}x \in H\\
-		G = \bigcup_{xH \in \lnkset{G}{H}} xH \implies \abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}\\
-		\abs{xH} = \abs{H} \quad \forall x \in G.
-	\end{align*}
-\end{proof}
-
-\begin{conclusion}
-	Sei $\abs{G} < \infty$, dann gilt $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$:  $x^{\abs{G}} = 1$
-\end{conclusion}
-
-\begin{conclusion}[Eulers Theorem]
-	$\abs{U_n} = \phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{\set{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}}$ mit $n \in \N$. Also ist $m^{\phi(n)} = 1 \mod n$.
-\end{conclusion}
 \begin{definition}[Index]
 	Sei $H < G$, dann ist $[G:H] := \abs{\lnkset{G}{H}}$ der Index von $H$ in $G$.
 \end{definition}
@@ -292,8 +273,45 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \begin{conclusion}
 	Sei $K < H < G$ und $\abs{G} < \infty$, dann
 	\begin{align*}
-		[G:K] = \abs{\lnkset{G}{K}} = \frac{\abs{G}}{\abs{H}}\cdot \frac{\abs{H}}{\abs{K}} = [G:H][H:K].
+	[G:K] = \abs{\lnkset{G}{K}} = \frac{\abs{G}}{\abs{H}}\cdot \frac{\abs{H}}{\abs{K}} = [G:H][H:K].
 	\end{align*}
+\end{conclusion}
+
+Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
+\begin{proposition}[Lagrange, Klausur!]
+	\label{1_2_9_lagrange}
+	Sei $\abs{G} < \infty$ und $H < G$. Dann gilt $\abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}$. Insbesondere ist $\abs{G}$ durch $\abs{H}$ teilbar.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item \ul{Beweisskizze:} Äquivalenzrelation und Bijektion $xH \cong yH$.\\
+		Let $H < G$ a subgroup of $G$ and $xH := \set{xy \mid y \in H} \le G$ the coset of $H$ in $G$. Then we have $\lnkset{G}{H} = \set{xH \mid x \in G} \subseteq \powerset(G)$. Then
+		\begin{align*}
+		xH = \tilde{x}H \Leftrightarrow \exists y \in H \quad x = \tilde{x}y \Leftrightarrow \tilde{x}^{-1}x \in H\\
+		G = \bigcup_{xH \in \lnkset{G}{H}} xH \implies \abs{G} = \abs{\lnkset{G}{H}}\cdot \abs{H}\\
+		\abs{xH} = \abs{H} \quad \forall x \in G.
+		\end{align*}
+		\item \ul{Wikipedia}:
+		This can be shown using the concept of left cosets of $H$ in $G$. The left cosets are the equivalence classes of a certain equivalence relation on G and therefore form a partition of $G$. Specifically, $x$ and $y$ in $G$ are related iff there exists $h$ in $H$ such that $x = yh$. If we can show that all cosets of $H$ have the same number of elements, then each coset of $H$ has precisely $\abs{H}$ elements. We are then done since the order of $H$ times the number of cosets is equal to the number of elements in $G$, thereby proving that the order of $H$ divides the order of $G$.
+		
+		To show any two left cosets have the same cardinality, it suffices to demonstrate a bijection between them. Suppose $aH$ and $bH$ are two left cosets of $H$. Then define a map $f \colon aH \to bH$ by setting $f(x) = ba^{-1}x$. This map is bijective because it has an inverse given by $f^{-1}(y) = ab^{-1}y$. 
+	\end{itemize}
+\end{proof}
+
+\begin{*remark}
+	This proof also shows that the quotient of the orders $\lnkset{\abs{G}}{\abs{H}}$ is equal to the index $[G \colon H]$ (the number of left cosets of $H$ in $G$). If we allow $G$ and $H$ to be infinite, and write this statement as
+	\begin{align*}
+	\abs{G} = [G\colon H] \cdot \abs{H}
+	\end{align*}
+	then, seen as a statement about cardinal numbers, it is equivalent to the axiom of choice.
+\end{*remark}
+
+\begin{conclusion}
+	Sei $\abs{G} < \infty$, dann gilt $\abs{x} \mid \abs{G}$ für alle $x \in G$. Dabei ist $\abs{x} = \abs{\langle \set{x}\rangle} = \min\set{n \mid x^n = 1}$. Also z.B. $\langle \set{x} \rangle \cong (\Z_{\abs{x}},+)$. Insbesondere gilt für alle $x \in G$:  $x^{\abs{G}} = 1$
+\end{conclusion}
+
+\begin{conclusion}[Eulers Theorem]
+	$\abs{U_n} = \phi(n) = \abs{\set{m \in \set{1, \dots,n} \mid \ggT(n,m) = 1}} = \abs{\set{(\Z_n^{\times}, \cdot) \mid \ggT(n,m) = 1}}$ mit $n \in \N$. Also ist $m^{\phi(n)} = 1 \mod n$.
 \end{conclusion}
 
 \section{Morphismen}
@@ -339,7 +357,7 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \section{Normalteiler}
 % fix \lhd ==> GEO Fehm nachschaun!
 \begin{definition}[normale Untergruppe]
-	Eine Untergruppe $H < G$ ist \begriff[Gruppe]{normal} $\Leftrightarrow$ $\forall x \in G\colon xH = Hx$.
+	Eine Untergruppe $H < G$ ist \begriff[Gruppe]{normal} $\Leftrightarrow$ $\forall x \in G\colon xH = Hx$. Notation: $H \lhd G$.
 \end{definition}
 \begin{proposition}
 	\begin{align*}
