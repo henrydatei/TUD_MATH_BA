@@ -2,7 +2,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 \begin{erinnerung}
 	Ist $X$ eine Menge, so kann man ein
 	\begin{align*}
-		R^{X} = \set{f\colon X \to R \mid f(x) = 0, \text{ für fast alle }x \in X}
+		R^{\times} = \set{f\colon X \to R \mid f(x) = 0, \text{ für fast alle }x \in X}
 	\end{align*}
 	definieren Modul mit
 	\begin{align*}
@@ -67,7 +67,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 		\[
 			\begin{tikzcd}[ampersand replacement=\&]
 			\& V \arrow[d, "\gamma"] \\
-			M \arrow[r, "\alpha", two heads] \& N
+			M \arrow[r, "\alpha", two heads] \& N                    
 			\end{tikzcd}
 		\]
 		folgt
@@ -117,7 +117,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 	beide sind Hauptidealringe $(\Z, C(t))$ (HIR).
 \end{example}
 \begin{definition}
-	$R$ ist ein HIR $\Leftrightarrow$ $R$ ist \begriff{Integritätsbereich} (eng. integral domain, nullteilerfrei) (ID) und jedes Ideal $I \lhd R$ ist ein Hauptideal, d..h. es existiert $a \in R$ mit
+	$R$ ist ein HIR $\Leftrightarrow$ $R$ ist Integritätsbereich (eng. integral domain, nullteilerfrei) (ID) und jedes Ideal $I \lhd R$ ist ein Hauptideal, d..h. es existiert $a \in R$ mit
 	\begin{align*}
 		I = R \cdot a = \set{ra \mid r \in R} = \set{s \in R \mid a \mid s}
 	\end{align*}
@@ -127,10 +127,10 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 \begin{definition}
 	Sei $R$ ID, $V$ $R$-Modul
 	\begin{enumerate}
-		\item $x \in V$ ist ein \begriff{Torsionselement} $\Leftrightarrow \exists r \in R, r \neq 0, r\cdot x = 0$
+		\item $x \in V$ ist ein Torsionselement $\Leftrightarrow \exists r \in R, r \neq 0, r\cdot x = 0$
 		\item $T(V) = \set{x \in V \mid x \text{ ist Torsionselement}} \le V$
-		\item $V$ ist \begriff{torsionsfrei}, wenn $T(V) = 0$
-		\item \begriff{Annihilator} $\Ann_R (V) := \set{r \in R \mid rx = 0 \forall x \in V} \lhd R$
+		\item $V$ ist torsionsfrei, wenn $T(V) = 0$
+		\item Annihilator $\Ann_R (V) := \set{r \in R \mid rx = 0 \forall x \in V} \lhd R$
 	\end{enumerate}
 \end{definition}
 \begin{example}
@@ -150,7 +150,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 	Sei $X \in \lnkset{V}{T}$ Torsionselement $x$ ist von der Form $X = [v] = v + T$ für ein $v\in V$. $T := T(V)$ $x$ ist Torsionselement heißt: $\exists r \in R \setminus \set{0}\colon r \cdot x = 0$, d.h. $[rv] = [0]$, also $r \cdot v \in T$. Damit ergibt sich $\exists s \in R \setminus \set{0}\colon s(rv) = 0$ also $(sr)v = 0$. Da $R$ ID ist, ist $t:= sr \neq 0$, also ist $v \in T(V) = T$ und da bedeutet $[v] = x = 0$.
 \end{proof}
 \begin{lemma}
-	Sind $N \le M$ Moduln, so gilt $M$ ist Torsion ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
+	Sind $N \le M$ Moduln, so gilt $M$ ist Torsions ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
 \end{lemma}
 \begin{proof}
 	Analog zu \propref{2_2_1}.
@@ -165,6 +165,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 		\end{tikzcd}$
 	\end{enumerate}
 \end{proposition}
+
 \begin{proof}
 	Induktion nach $n$: (Beweis die ersten zwei Aussagen)
 	\begin{itemize}
@@ -174,7 +175,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 		\begin{align*}
 			\lnkset{\lnkset{V}{G}}{\lnkset{W}{G}} \cong \lnkset{V}{W}
 		\end{align*}
-		Also ist $\lnkset{V}{G}$ ein Torsionsmodul ($\lnkset{W}{G}$ Torsion, $\lnkset{V}{W}$ und \propref{2_2_1}) und damit haben wir $F = V$.
+		Also ist $\lnkset{V}{G}$ ein Torsionmodul ($\lnkset{W}{G}$ Torsion, $\lnkset{V}{W}$ und \propref{2_2_1}) und damit haben wir $F = V$.
 		\item Nun zu der 3. Aussage: Da $\lnkset{V}{F}$ Torsion ist existiert für jedes $x_i$ ein $r_i \in R\setminus{0}$ mit $r_i x_i \in F$, $r_i[x_i] = [r_i x_i] = [0] \Leftrightarrow r_i x_i \in F$. Sei $r := \prod_{j=i}^n r_j \neq 0$. Definiere $L\colon V \to F \mit x \mapsto rx$. Da $R$ kommutativ ist, ist $L$ $R$-linear. Da $V$ torsionsfrei ist, ist $L$ injektiv. Das Bild ist in $F$, da $V = \Span_R\set{x_1, \dots, x_n}$ und
 		\begin{align*}
 			r\brackets{\prod_{j=1}^n r_j x_j} = \prod_{j=1}^n r_j = a_1 r_2\cdots r_n (\underbrace{r_1 x_1}_{\in F}) + a_2 r_1 r_3 \cdots r_n(\underbrace{r_2 x_2}_{\in F}) + \dots \in F.
@@ -187,51 +188,3 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 \begin{proof}
 	still TODO.
 \end{proof}
-three lectures missing :/
-\begin{theorem}
-	$M(p) = M_1 \oplus \cdots \oplus M_k$ mit $M \cong \lnkset{R}{Rp^n_i}$ zyklisch und $\Ann_R(x) = \set{a \in R \mid ax = 0} \lhd R$
-\end{theorem}
-\begin{*remark}
-	Also sieht das so aus
-	\begin{align*}
-		M = R^s \oplus \brackets{\bigoplus_{i=1}^n \lnkset{R}{Rp_i^{m_i}}}
-	\end{align*}
-	mit $p$ prim und $m_i \ge 0$
-\end{*remark}
-\begin{proof}
-	Induktion nach Zahl $t$ der Erzeuger $m_1, \dots, m_t$ von $M=M(p)$. Wir sind im Induktionsschritt und haben $n_1,\dots, n_t$ gewählt mit $\Ann_R(m_i) = Rp^{n_i}$, d.h. $n_i = \min\set{n \in \N \mid p^n m_i = 0, p^{n-1}m_i \neq 0}$, also
-	$n = \max\set{n_1, \dots, n_t}$, oBdA $n = n_1$. Dann gilt insbesondere $p^n x = 0$ für alle $x \in M$.\\
-	\ul{Trick} Betrachte $\lnkset{M}{Rm_1}$. Dies ist ein $t-1$ erzeugter $p$-primärer $R$-Modul, also zieht die Induktionsannahme. Also ist $\lnkset{M}{R m_i} = R \cdot \bigoplus_{i=1}^k[x_i]$, wobei $[x_i] = x + Rm_i \subset \lnkset{M}{R m_i}, x_i \in M$ und $\Ann_R([x_i]) = Rp^{s_i}$. Sei $a \in \Ann_R([x_i]) \Leftrightarrow a[x_i] = 0$ in $\lnkset{M}{Rm_i} \Leftrightarrow [ax_i = 0]$ in $\lnkset{M}{Rm_i} \Leftrightarrow ax_i \in Rm_i$. Also haben wir $p^{s_i}x_i = r_i m_1$ ($\ast$) für irgendwelche $r_1, \dots, r_k \in R$.\\
-	Erinnerung: $p^n x_i = 0$ (denn $p^n \in \Ann_R(M)$), daraus folgt $r_i = r'_i \cdot p^{s_i}$. Setze $y_i := x_i - r'_i m_1$. Dann ist $[x_i] = [y_i]$. Dann gilt $p^{s_i}y_i = p^{s_i}x_i - p^{s_i}r'_i m_1 = p^{s_i}x_i - r_i m_1 \overset{(\ast)}{=} p^{s_i} x_i - r_i m_1 = 0$. Betrachte $p^{s_i -1}y_i = p^{s_i - 1}x_i - p^{s_i - 1}r'_i m_1 \neq 0$, denn ansonsten wäre $p^{s_i - 1}x_i \in Rm_1$, also $p^{s_i - 1} \in \Ann_R([x_i]) = Rp^{s_i}$. Also ist $\Ann_R(y_i) = \Ann_R([y_i]) = Rp^{s_i}$, wobei $\Ann_R(y_i)$ in $M$ und $\Ann_R([y_i])$ in $\lnkset{M}{Rm_1}$ betrachtet wird. Es gilt nun
-	\begin{align*}
-		\lnkset{M}{Rm_1} = R \bigoplus_{i=1}^n [y_i]
-		\intertext{also}
-		M = Rm_1 + Ry_1 + \dots + Ry_k
-	\end{align*}
-	Es blibt noch zu zeigen, das die Summe direkt ist! Setze $y_0 := m_1$. Sei $x \in Ry_i \cap \sum_{j\neq i} Ry_j$, dann ist zu zeigen, dass $x = 0$ ist. Also existiert $s_0, \dots, s_k \in R$, sodass $x = (-s_i y_i) = \sum_{j\neq i}s_j y_j$, daraus folgt $\sum_{j=0}^k s_j y_j = 0$. Insbesondere gilt dies modulo $Rm_1$:
-	\begin{align*}
-		s_1[y_1] + \cdots + s_k [y_k] &= 0 \quad ([y_0] = [m_1] = 0)\\
-		[s_1 y_1 + \cdots + s_k y_k] &= 0
-	\end{align*}
-	Aber:
-	\begin{align*}
-		\lnkset{M}{R m_1} = R\bigoplus_{i=1}^k [y_i]
-	\end{align*}
-	hier eine direkte Summe. Also gilt schon $[s_j y_j] = 0$ für jedes $j = 1, \dots, k$ allein. Also $s_j \in \Ann_R([b_j]) = \Ann_R(b_j)$ (``Das war der Witz!'' $\implies x = 0$) und $s_j y_j = 0$ für $j \ge 1$.
-\end{proof}
-\begin{proposition}
-	Ist $M$ ein endlich erzeugter Modul über einem HIR $R$, so existieren $s, s_1, \dots, s_k \in \N$ und $p_1, \dots, p_k \in R$ prim mie 
-	\begin{align*}
-		M \cong R^s \oplus \brackets{\bigoplus_{i=1}^k \lnkset{R}{Rp_i^{s_i}}}
-	\end{align*}
-	Anders gesagt: Es existiert Erzeuger $e_1, \dots, e_{s+k}$ in $M$ mit $\sum_{i=1}^{s+k} r_i e_i = 0 \Leftrightarrow r_i e_i = 0$ für alle $i$ genau, dann wenn $r_1 = \dots = r_s = 0$ und $r_{s+j} \in Rp_j^{s_j}$ für $j = 1, \dots, k$. 
-\end{proposition}
-\begin{example}
-	\begin{itemize}
-		\item $R = \Z$, dann folgt $R$-Moduln sind dasselbe wie abelsche Gruppen. Also erhalten wir eine Klassifikation der endlich erzeugten abelschen Gruppen. Hier ist $R^s = \Z^s, \lnkset{R}{Rp_j^{s_j}} = \Z_{p_j^{s_j}}$. Also $\Z_p \times \Z_q \cong \Z_{pq}$ (Chinesischer Restsatz!). Insbesondere haben wir alle endlichen abelschen Gruppen klassifiziert! (endlich $\Leftrightarrow s = 0 \Leftrightarrow M$ ist Torsion)
-		\item Abelsche Gruppe der Ordnung 6. Gibt es nur eine $\Z_6 \cong \Z_2 \times \Z_2$, andererseits Ab. Gruppe der Ordnung 4. Gibt es zwei! $\Z_4 \not\cong \Z_2 \times \Z_2$. Also
-		\begin{align*}
-			\abs{\bigtimes_{i=1}^k\Z_{p_i^{s_i}}} = \abs{\Z_{p_1^{s_1}}} \cdots \abs{\Z_{p_n^{s_n}}} = p_1^{s_1} \cdots p_k^{s_k}
-		\end{align*}
-	\end{itemize}
-\end{example}
