@@ -188,3 +188,113 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 \begin{proof}
 	still TODO.
 \end{proof}
+three lectures missing :/
+\begin{theorem}
+	$M(p) = M_1 \oplus \cdots \oplus M_k$ mit $M \cong \lnkset{R}{Rp^n_i}$ zyklisch und $\Ann_R(x) = \set{a \in R \mid ax = 0} \lhd R$
+\end{theorem}
+\begin{*remark}
+	Also sieht das so aus
+	\begin{align*}
+	M = R^s \oplus \brackets{\bigoplus_{i=1}^n \lnkset{R}{Rp_i^{m_i}}}
+	\end{align*}
+	mit $p$ prim und $m_i \ge 0$
+\end{*remark}
+\begin{proof}
+	Induktion nach Zahl $t$ der Erzeuger $m_1, \dots, m_t$ von $M=M(p)$. Wir sind im Induktionsschritt und haben $n_1,\dots, n_t$ gewählt mit $\Ann_R(m_i) = Rp^{n_i}$, d.h. $n_i = \min\set{n \in \N \mid p^n m_i = 0, p^{n-1}m_i \neq 0}$, also
+	$n = \max\set{n_1, \dots, n_t}$, oBdA $n = n_1$. Dann gilt insbesondere $p^n x = 0$ für alle $x \in M$.\\
+	\ul{Trick} Betrachte $\lnkset{M}{Rm_1}$. Dies ist ein $t-1$ erzeugter $p$-primärer $R$-Modul, also zieht die Induktionsannahme. Also ist $\lnkset{M}{R m_i} = R \cdot \bigoplus_{i=1}^k[x_i]$, wobei $[x_i] = x + Rm_i \subset \lnkset{M}{R m_i}, x_i \in M$ und $\Ann_R([x_i]) = Rp^{s_i}$. Sei $a \in \Ann_R([x_i]) \Leftrightarrow a[x_i] = 0$ in $\lnkset{M}{Rm_i} \Leftrightarrow [ax_i = 0]$ in $\lnkset{M}{Rm_i} \Leftrightarrow ax_i \in Rm_i$. Also haben wir $p^{s_i}x_i = r_i m_1$ ($\ast$) für irgendwelche $r_1, \dots, r_k \in R$.\\
+	Erinnerung: $p^n x_i = 0$ (denn $p^n \in \Ann_R(M)$), daraus folgt $r_i = r'_i \cdot p^{s_i}$. Setze $y_i := x_i - r'_i m_1$. Dann ist $[x_i] = [y_i]$. Dann gilt $p^{s_i}y_i = p^{s_i}x_i - p^{s_i}r'_i m_1 = p^{s_i}x_i - r_i m_1 \overset{(\ast)}{=} p^{s_i} x_i - r_i m_1 = 0$. Betrachte $p^{s_i -1}y_i = p^{s_i - 1}x_i - p^{s_i - 1}r'_i m_1 \neq 0$, denn ansonsten wäre $p^{s_i - 1}x_i \in Rm_1$, also $p^{s_i - 1} \in \Ann_R([x_i]) = Rp^{s_i}$. Also ist $\Ann_R(y_i) = \Ann_R([y_i]) = Rp^{s_i}$, wobei $\Ann_R(y_i)$ in $M$ und $\Ann_R([y_i])$ in $\lnkset{M}{Rm_1}$ betrachtet wird. Es gilt nun
+	\begin{align*}
+	\lnkset{M}{Rm_1} = R \bigoplus_{i=1}^n [y_i]
+	\intertext{also}
+	M = Rm_1 + Ry_1 + \dots + Ry_k
+	\end{align*}
+	Es blibt noch zu zeigen, das die Summe direkt ist! Setze $y_0 := m_1$. Sei $x \in Ry_i \cap \sum_{j\neq i} Ry_j$, dann ist zu zeigen, dass $x = 0$ ist. Also existiert $s_0, \dots, s_k \in R$, sodass $x = (-s_i y_i) = \sum_{j\neq i}s_j y_j$, daraus folgt $\sum_{j=0}^k s_j y_j = 0$. Insbesondere gilt dies modulo $Rm_1$:
+	\begin{align*}
+	s_1[y_1] + \cdots + s_k [y_k] &= 0 \quad ([y_0] = [m_1] = 0)\\
+	[s_1 y_1 + \cdots + s_k y_k] &= 0
+	\end{align*}
+	Aber:
+	\begin{align*}
+	\lnkset{M}{R m_1} = R\bigoplus_{i=1}^k [y_i]
+	\end{align*}
+	hier eine direkte Summe. Also gilt schon $[s_j y_j] = 0$ für jedes $j = 1, \dots, k$ allein. Also $s_j \in \Ann_R([b_j]) = \Ann_R(b_j)$ (``Das war der Witz!'' $\implies x = 0$) und $s_j y_j = 0$ für $j \ge 1$.
+\end{proof}
+\begin{proposition}
+	Ist $M$ ein endlich erzeugter Modul über einem HIR $R$, so existieren $s, s_1, \dots, s_k \in \N$ und $p_1, \dots, p_k \in R$ prim mie 
+	\begin{align*}
+	M \cong R^s \oplus \brackets{\bigoplus_{i=1}^k \lnkset{R}{Rp_i^{s_i}}}
+	\end{align*}
+	Anders gesagt: Es existiert Erzeuger $e_1, \dots, e_{s+k}$ in $M$ mit $\sum_{i=1}^{s+k} r_i e_i = 0 \Leftrightarrow r_i e_i = 0$ für alle $i$ genau, dann wenn $r_1 = \dots = r_s = 0$ und $r_{s+j} \in Rp_j^{s_j}$ für $j = 1, \dots, k$. 
+\end{proposition}
+\begin{example}
+	\begin{itemize}
+		\item $R = \Z$, dann folgt $R$-Moduln sind dasselbe wie abelsche Gruppen. Also erhalten wir eine Klassifikation der endlich erzeugten abelschen Gruppen. Hier ist $R^s = \Z^s, \lnkset{R}{Rp_j^{s_j}} = \Z_{p_j^{s_j}}$. Also $\Z_p \times \Z_q \cong \Z_{pq}$ (Chinesischer Restsatz!). Insbesondere haben wir alle endlichen abelschen Gruppen klassifiziert! (endlich $\Leftrightarrow s = 0 \Leftrightarrow M$ ist Torsion)
+		\item Abelsche Gruppe der Ordnung 6. Gibt es nur eine $\Z_6 \cong \Z_2 \times \Z_2$, andererseits Ab. Gruppe der Ordnung 4. Gibt es zwei! $\Z_4 \not\cong \Z_2 \times \Z_2$. Also
+		\begin{align*}
+		\abs{\bigtimes_{i=1}^k\Z_{p_i^{s_i}}} = \abs{\Z_{p_1^{s_1}}} \cdots \abs{\Z_{p_n^{s_n}}} = p_1^{s_1} \cdots p_k^{s_k}
+		\end{align*}
+	\end{itemize}
+\end{example}
+\section*{Polynomring als $R$-Modul}
+\begin{example}
+	Sei $R = K[t]$, $K$ Körper, $K[t] = \set{f \colon \N \to K \mid f(n) = 0 \text{ für fast alle }n}$. Wir schreiben $f$ auch als $f = \sum_{i=0}^{\infty} f(i)t^{i}$. Mit folgenden Eigenschaften
+	\begin{itemize}
+		\item $(f\cdot g)(n) = \sum_{i=0}^n f(i)g(n-i)$
+		\item $(f+g)(n) = f(n) + g(n)$
+	\end{itemize}
+	Haben gezeigt, dass $R$ HIR ist. $R$-Moduln sind die dieselben wie $K$-Vektorräume $M$ mit einem gewählten Endomorphismus ($K$-linearen Abbildungen) $\tau \colon M \to M$.Denn:\\
+	$K \le R$ (eingebettet als die $f$ mit $f(n) = 0, n > 0$, d.h. die ``konstanten'' Polynome vom Grad $\deg f = \max\set{n \mid f(n) \neq 0} = 0$)
+	\begin{align*}
+		f = f(0)t^0 + 0t^1 + 0t^2 + \dots 
+	\end{align*} 
+	Also wir ein $R$-Modul $M$ uch ein $K$-Modul=$K$-Vektorraum und Multiplikation mit $t$ definiert eine $K$-lineare Abbildung $\tau \tau \colon M \to M \mit m \mapsto tm$ und umgekehrt liegt der Vektorraum und $\tau$ den Modul fest:
+	\begin{align*}
+		fm &:= f(\tau)(m) \mit f(\tau) = \sum_{i=0}^{\infty}f(i)\tau' \subset \Vect(M,M)
+	\end{align*}
+\end{example}
+\begin{proposition}
+	Ein endlich erzeugter $R$-Modul ist Torsionsmodul $\Leftrightarrow \dim_K M < \infty$
+\end{proposition}
+\begin{proof}
+	Sei $M$ endlich erzeugt, dann haben wir
+	\begin{align*}
+		M \cong R^{n_0} \oplus \lnkset{R}{Rp_{1}^{n_1}} \oplus \cdots \oplus \lnkset{R}{Rp_{d}^{n_d}}
+	\end{align*}
+	$\dim_K R^{n_0} = \infty$ für $n_0 > 0$, dann $\dim_K R = \infty$, da $\set{t^0, t^1, t^2, \dots}$ ist Basis und $\dim_K M = \infty$, falls $n_0 > 0$. Umgekehrt ist $\dim_K M < \infty$, so ist $\chi_{\tau} = 0$ in $\Vect(M,M)$ (``$\tau$'' erfüllt sein eigenes charakteristisches Polynom $\chi_{\tau} = \det(\tau - t\id_M)$. Abstrakter: Für den $R$-Modul $M$ gilt
+	\begin{align*}
+		\set{a \in R \mid ax = 0 \forall x \in M} = \Ann M = R \cdot \chi_{\tau}
+	\end{align*}
+	Also ist jedes $x \in M$ Torsion, denn $\chi_{\tau} x = 0$. Also Lineare Algebra ist also Theorie der endlichen Torsionsmoduln über $R = K[t]$.
+	\begin{align*}
+		M \cong \lnkset{R}{Rp_{1}^{n_1}} \oplus \cdots \plus \lnkset{R}{Rp_{d}^{n_d}}
+	\end{align*}
+	\begin{itemize}
+		\item Wann ist $p \in R = K[t]$ prim = irreduzibel? Allgemein: Schwer!!! Polynome vom Grad 1 sind immer $f = t-\lambda$, $\lambda \in K$, aber $t^2 +1$ ist irreduzibel in $\Q[t]$ oder $\R[t]$, $t^2+2$ ist irreduzibel in $\Q[t]$, reduzibel in $\R[t]$. Leicht ist aber dagegen, wenn $K = \bar{K}$ algebraisch abgeschlossen (z.B. $K = \C$), so ist $f \in K[t]$ irreduzibel genau dann, wenn $f = t - \lambda$ mit $\lambda \in K$. Also jetzt $K = \bar{K}$
+		\begin{align*}
+			\lnkset{R}{Rp_{j}^{n_j}} \cong \lnkset{K[t]}{(t-\lambda_j)^{n_j}K[t]} \quad \text{ für ein }\lambda_j \in K
+		\end{align*}
+		Als Vektorraum über $K$ hat dieser Modul die Basis
+		\begin{align*}
+			e_r &:= (t-\lambda_j)^r + (t-\lambda_j)^{n_j}K[t] = [(t-\lambda_j)^r]_{r = 0, \dots, n_j -1}\quad e_r := (t-\lambda_j)^r + (t-\lambda_j)^{n_j}K[t]\\
+			&= [(t-\lambda_j)^r]_{r = 0, \dots, n_j -1}$ (\person{Taylor}).
+		\end{align*} 
+		Nun $\tau(e_r) = te_r = \lambda_j e_r + e_{r+1}$ ($r < n_j -1$) bzw. $t e_{n_j - 1} = \lambda_j e_{n_j -1}$
+		\begin{align*}
+			(t-\lambda_j)e_r = \begin{cases}
+			e_{r+1} \quad & r<n_j -1\\
+			0 \quad & r = n_j -1
+			\end{cases}
+		\end{align*}
+		denn $e_r = [(t-\lambda_j)^r]$ also $(t - \lambda_j)[(t-\lambda_j)^r] = [(t-\lambda_j)^{r+1}]$. Bezüglich der Basis $e_0, \dots, e{n_j -1}$ hat $\tau_{\mid S}$ mit $S = \lnkset{R}{Rp_j^{n_j}}$ also die darstellende Matrix
+		\begin{align*} %TODO fix matrix!!!
+			\begin{pmatrix}
+			\lambda_j & & & & & \\
+			1 &\lambda_j & & & &\\
+			0 &1 &\lambda_j & & &\\
+			& & & 1&\lambda_j\\
+			\end{pmatrix} = \diag(\lambda_j, \dots, \lambda_j)
+		\end{align*}
+		und Nebendiagonale mit 1en ... Die zyklischen primären Komponenten sind also die Jordanblöcke von $\tau$.
+	\end{itemize}
+\end{proof}
