@@ -1,0 +1,181 @@
+\documentclass[]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{marvosym}
+\usepackage{amssymb}
+%\usepackage{pdfpages}
+%\usepackage[locale=DE]{siunitx}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\<}{\trianglelefteq}
+\newcommand{\abs}[1]{\vert #1\vert}
+\DeclareMathOperator{\Mat}{Mat}
+
+%opening
+\title{Probeklausur GEO}
+\author{Robin Richter}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+Seien G, H Gruppen.
+\begin{enumerate}[label=(\alph*)]
+	\item Definiere den Begriff eines Morphismus von Gruppen $f\colon G \to H$.
+	\item Beweise: Ist $f$ ein Morphismus von Gruppen, so ist $Ker(f) \< G$.
+	\item Gib für $G=H=\Z$ ein Beispiel einer Abbildung an, die kein Morphismus von Gruppen ist.
+\end{enumerate}
+\textit{Lösung:}
+\begin{enumerate}[label=zu (\alph*):]
+	\item Seien $(G,\ast)$ und $(H,\bullet)$ Gruppen.
+		\begin{equation*}
+			f\colon G \to H \text{ ist Gruppenhomom.} :\Leftrightarrow \forall g_1,g_2 \in G \colon f(g_1 \ast g_2)=f(g_1) \bullet f(g_2)
+		\end{equation*}
+	\item Sei $x \in Ker(f)$. Für alle $g \in G$ gilt:
+		\begin{align*}
+			f(g \ast x \ast g^{-1}) &\overset{f \in Hom(G,H)}{=} f(g) \bullet f(x) \bullet f(g^{-1}) \overset{x \in Ker(f)}{=} f(g) \bullet id_H \bullet f(g^{-1}) \\
+			&\overset{f \in Hom(G,H)}{=} f(\underbrace{g \ast g^{-1}}_{=id_G}) \overset{f \in Hom(G,H)}{=} id_H
+		\end{align*}
+		$\Rightarrow \forall g \in G \; \forall x \in Ker(f)\colon gxg^{-1} \in Ker(f)$ \\
+		$\Rightarrow Ker(f) \< G$
+	\item Betrachte $f\colon \Z \to \Z,\; x \mapsto x+5$. Offenbar gilt:
+		\begin{equation*}
+			f(x+y)=(x+y)+5=x+y+5 \boldsymbol{\ne} x+y+10=(x+5)+(y+5)=f(x)+f(y)
+		\end{equation*}
+		Daraus folgt, dass die Abbildung $f$ kein Morphismus ist.
+\end{enumerate}
+
+\pagebreak
+
+\section*{Aufgabe 2}
+Sei $R$ ein (kommutativer) Ring und $M$ ein $R$-Modul.
+\begin{enumerate}[label=(\alph*)]
+	\item Definiere den Torsionsuntermodul $T(M)$ von $M$.
+	\item Beweise: $T(M) \leq M$.
+	\item Bestimme $T(M)$ für $R = \Z$, $M=\Z_{24}=\Z/24\Z$.
+\end{enumerate}
+\textit{Lösung:}
+\begin{enumerate}[label=zu (\alph*):]
+	\item $T(M)=\{x \in M \mid \exists 0 \ne r \in R \colon r\cdot x=0\}$
+	\item
+		\begin{enumerate}[label=(\roman*)]
+			\item $T(M)\ne \emptyset : \text{ offenbar } 0 \in T(M) \text{, da } \forall r\in R\colon r\cdot 0 =0$
+			\item $x,y\in T(M) \Rightarrow x+y\in T(M):$\\
+				Sei $x,y\in T(M).$\\
+				$\begin{aligned}[t]
+					&\Rightarrow \exists r_1,r_2\in R\colon r_1\cdot x=0,\, r_2\cdot y=0 \\
+					&\Rightarrow (r_1\cdot r_2)(x+y)=r_1\cdot r_2\cdot x+r_1\cdot r_2\cdot y=r_2\cdot \underbrace{r_1\cdot x}_{=0} +\, r_1\cdot \underbrace{r_2\cdot y}_{=0}=0 \\
+					&\Rightarrow \exists 0\ne r\in R: r(x+y)=0, \text{ nämlich } r:=r_1r_2 \\
+					&\Rightarrow x+y\in T(M)
+				\end{aligned}$
+			\item $x\in T(M), a \in R \Rightarrow ax \in T(M):$\\
+				Sei $a\in R$, $x\in T(M)$.\\
+				$\begin{aligned}[t]
+					&\Rightarrow \exists \tilde{r}\in R\colon \tilde{r}\cdot x=0 \\
+					&\Rightarrow \tilde{r}\cdot a\cdot x=a\cdot \underbrace{\tilde{r}\cdot x}_{=0}=0 \\
+					&\Rightarrow ax\in T(M)
+				\end{aligned}$
+		\end{enumerate}
+	$\Rightarrow T(M) \leq M$
+	\item $T(M)=\{x\in \Z_{24}\colon x\mid 24\}\cup\{0\}=\{0,1,2,3,4,6,8,12\}$
+\end{enumerate}
+\pagebreak
+\section*{Aufgabe 3}
+Sei $R$ ein (kommutativer) Ring und gelte $R^n \cong R^m$ als $R$-Modul. Dann gilt $n=m$.
+\textit{Lösung:}\\
+Zu zeigen ist: $R^n \cong R^m \Rightarrow n=m.$\\
+Seien dazu $f\colon R^n \to R^m$ und $g\colon R^m \to R^n$ Homomorphismen mit den zugehörigen Abbildungsmatrizen $F\in \Mat_{m\times n}(R)$ und $G\in \Mat_{n\times m}(R)$. Wähle dazu eine beliebige feste Basis des $R^n$ und eine des $R^m$. $f$ soll ein Isomorphismus sein, d.h.\ es muss gelten:
+\begin{align*}
+	&F\cdot G=1\in \Mat_{m\times m}(R)\\
+	&G\cdot F=1\in \Mat_{n\times n}(R)
+\end{align*}
+Da $R^n \cong R^m$ gilt, muss $F\cdot G=G\cdot M=1\in \Mat_{\max\{m,n\}}(R)$ gelten.
+Sei oBdA $m>n$. Betrachte $G\cdot F=1\in \Mat_{\max\{m,n\}}(R)=\Mat_{m}(R)$. Da $G\in \Mat_{n\times m}(R)$ und $F\in \Mat_{m\times n}(R)$, müssen die beiden Matrizen zu $m\times m$-Matrizen erweitert werden:
+\[
+\sbox0{$\begin{matrix}
+	0_{1,n+1}&\cdots&0_{1,m}\\%
+	\vdots&\ddots&\vdots\\%
+	0_{m,n+1}&\cdots&0_{m,m}%
+	\end{matrix}$}
+\sbox1{$\begin{matrix}
+	0_{n+1,1}&\cdots&0_{n+1,m}\\%
+	\vdots&\ddots&\vdots\\%
+	0_{m,1}&\cdots&0_{m,m}%
+	\end{matrix}$}
+G_{new}=\left(
+\begin{array}{c}
+\makebox[\wd0]{\large $G$}\\
+\hline
+\usebox{1}
+\end{array}\right),\quad
+F_{new}=\left(
+\begin{array}{c|c}
+\makebox[\wd0]{\large $F$}&\usebox{0}
+\end{array}\right).
+\]\\
+$\Rightarrow G_{new}\cdot F_{new}=\left(
+\begin{array}{c|c}
+	F\cdot G&0\\
+	\hline
+	0&0
+\end{array}\right)
+\ne 1_{m\times m}\;\Rightarrow\; \mbox{\Lightning}$\\
+$\Rightarrow m=n$
+
+\pagebreak
+
+\section*{Aufgabe 4}
+Sei $G$ eine Gruppe der Ordung $\abs{G}=30$.
+\begin{enumerate}[label=(\alph*)]
+	\item Definiere den Begriff einer Sylow $p$-Untergruppe von $G$.
+	\item Beweise: $s_5\in \{1,6\}$.
+	\item Beweise: $s_5=6 \Rightarrow G$ enthält $24$ Elemente der Ordnung $5$.
+	\item Beweise: $G$ ist nicht einfach.
+\end{enumerate}
+\textit{Lösung:}
+\begin{enumerate}[label=zu (\alph*):]
+	\item $H\leq G$ ist eine $p$-Sylowgruppe von $G$, wenn $H$ eine $p$-Gruppe ist, d.h.\ $\abs{H}=p^n$ für ein $n\in\N_0$, und $p\nmid(G\colon H)=\abs{ G/H}=\abs{\{gH\colon g\in G\}}$.
+	\item $\abs{G}=30 =2\cdot 3\cdot 5=5^1\cdot 6$\\
+			$\overset{\text{Sylow-Sätze}}{\Rightarrow}\left.
+			\begin{array}{rll}
+				s_5\mid6 &\Rightarrow s_5\in \{1,2,3,6\}\\
+				s_5\equiv 1\text{ mod }5 &\Rightarrow s_5\in \{1,6,11,\dots\}
+			\end{array}
+			\right\}\Rightarrow s_5\in\{1,6\}$
+	\item Sei $s_5=6$, so schreibe $N_1,N_2,N_3,N_4,N_5,N_6$ für diese sechs $5$-Sylowgruppen.  Da $\abs{N_i}=5, i=1,\dots 6$ und $\abs{N_i\cap N_j}=1$, enthält jeder $5$-Sylowgruppe $4$ Elemente der Ordnung $5$, die nicht in eine der Anderen liegen. Daraus folgt, dass $G$ mindestens $6\cdot 4=24$ Elemente der Ordnung $5$ enthält.\\
+		Hinweis:
+		Seien $H,K$ $p$-Gruppen (p prim). So gilt $H\cap K\leq H$ bzw.\ $K$ und somit $\abs{H\cap K}\in\{1,p\}$ nach dem Satz von Lagrange, denn
+		\begin{equation*}
+			p=\abs{H}=\big(H\colon (H\cap K)\big)\cdot \abs{H\cap K}
+		\end{equation*} (analog für $K$), d.h.\ $(H\cap K)\mid p$. Daraus ergibt sich:
+		\begin{align*}
+			H=K &\Leftrightarrow \abs{H\cap K}=p\\
+			H\ne K &\Leftrightarrow \abs{H\cap K}=1.
+		\end{align*}
+	\item Sei $s_5=6$. Daraus folgt nach (c), dass $G$ mindestens 24 Elemente der Ordnung 5 Enthält. Betrachte nun $s_3$:\\
+	$\abs{G}=3^1\cdot 10$
+	$\overset{\text{Sylow-}}{\underset{\text{Sätze}}{\Rightarrow}}\left.
+	\begin{array}{rll}
+		s_3\mid 10 &\Rightarrow s_3\in \{1,2,5,10\}\\
+		s_3\equiv 1\text{ mod }5 &\Rightarrow s_3\in \{1,4,7,10,13,\dots\}
+	\end{array}
+	\right\}\Rightarrow s_3\in\{1,10\}$\\
+	Angenommen $s_3=10$, dann enthält $G$ mindestens $10\cdot 2=20$ Elemente der Ordnung 3 (analog zu (c)).
+	\begin{align*}
+		&\Rightarrow \underbrace{24}_{\text{Elemente der Ordnung 5}}+\underbrace{20}_{\text{Elemente der Ordnung 3}}=44> \underbrace{30}_{=\abs{G}} \Rightarrow \mbox{\Lightning}\\
+		&\Rightarrow s_5=1 \lor s_3=1 \text{, oBdA mindestens} s_3=1 \\
+		&\Rightarrow N_3\<G \Rightarrow \text{G ist nicht einfach}
+	\end{align*}
+	Hinweis: Anstatt der Bedingung $s_p\mid m$ für Gruppen mit $\abs{G}=p^k\cdot m$ und $p\nmid m$, lieber $s_p\le \frac{\abs{G}}{p-1}$ nutzen. Für eine Begründung der Gültigkeit dieser Abschätzung vgl.\ (c).
+\end{enumerate}
+\end{document}
