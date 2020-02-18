@@ -1,4 +1,4 @@
-\section{Wiederholung}
+﻿\section{Wiederholung}
 \begin{definition}[Halbgruppe, Monoid, Gruppe]
 	Eine \begriff{Halbgruppe} ist eine Menge $G$ mit einem \emph{assoziativen} Produkt
 	\begin{align*}
@@ -110,7 +110,7 @@
 
 \begin{definition}[Konjugation]
 	Ist $H < G$ und $x \in G$, so ist\begin{align*}
-		x^{-1}Hx = \set{x^{-1}Hx\mid y \in H}
+		x^{-1}Hx = \set{x^{-1}yx\mid y \in H}
 	\end{align*}
 	eine Untergruppe ("`$x^{-1}yx$"' $y$ ist konjugiert mit $x$). Wir nennen diese zu $H$ konjugiert.
 %	\begin{align*}
@@ -119,7 +119,7 @@
 \end{definition}
 
 \begin{definition}[Konjugationsklasse]
-	Die Menge $\set{x^{-1}yx \mid x \in G}$ ist i.A. \emph{keine} Untergruppe und diese nennt man \begriff{Konjugationsklassen} von $y$.
+	Die Menge $\Cl(y) = \set{x^{-1}yx \mid x \in G}$ ist i.A. \emph{keine} Untergruppe und diese nennt man \begriff{Konjugationsklasse} von $y$. Die \begriff{Klassennummer} von $G$ nennt man die Anzahl der nicht-äquivalenten Konjugationsklassen.
 \end{definition}
 
 \begin{definition}[Zentralisator, Zentrum]
@@ -256,7 +256,7 @@ Dies verallgemeinert sich zu
 \begin{remark}
 	$xH = yH \Leftrightarrow x \sim y$ definiert eine Äquivalenzrelation und das ist äquivalent zu
 	\begin{align*}
-		\exists h \in H: x = yh \Leftrightarrow y^{-1}y \in H.
+		\exists h \in H: x = yh \Leftrightarrow y^{-1}x \in H.
 	\end{align*}
 	Beachte dabei $\lnkset{G}{H} = \lnkset{G}{N}$ ist die Menge aller Äquivalenzklassen $xH = [x]$. Desweiteren gibt es die kanonische Projektion $\pi\colon G \to \lnkset{G}{H},x \mapsto xH$.
 	
@@ -361,7 +361,7 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 \end{definition}
 \begin{proposition}
 	\begin{align*}
-		H < G \text{ ist normal } &\Leftrightarrow \forall x \in G x^{-1}Hx = H \Leftrightarrow AH = HA \quad \forall A \subseteq G
+		H < G \text{ ist normal } &\Leftrightarrow \forall x \in G, x^{-1}Hx = H \Leftrightarrow AH = HA \quad \forall A \subseteq G
 	\end{align*}
 \end{proposition}
 \begin{proof}
@@ -374,7 +374,7 @@ Alle $xH$ haben also die gleiche Kardinalität und wir erhalten:
 Warum relevant?\\
 Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G$
 \begin{proposition}
-	\label{1_4_3_prop}
+	\proplbl{1_4_3_prop}
 	Sei $H \lhd G$. Dann definiert
 	\begin{align*}
 		xH \cdot yH = (xy)H
@@ -398,6 +398,7 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 	Es gilt $\ker(f) \lhd G$.
 \end{proposition}
 \begin{proof} %make more beautiful!!!
+	Es ist zu zeigen, dass $\ker f < G$ und das $\ker f$ normal ist in $G$.
 	\begin{enumerate}
 		\item Sind $x,y \in \ker f$, so gilt $f(x)f(y) = f(xy)$ (und 11 = 1), also ist $ker f$ abgeschlossen unter $\cdot$.
 		\item Ferner $f(1) = 1$, da $f$ Morphismus $\implies$ $G \ni 1 \in \ker f$.
@@ -409,11 +410,14 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 		\begin{align*}
 		f(x^{-1}yx) = f(x^{-1}f(y)f(x)) = f(x^{-1})\cdot 1 f(x) = f(x^{-1}x) = f(1) = 1 \text{ also}\\
 		x^{-1} \in \ker f \subseteq \ker f \text{ also }\\
-		(x^{-1})^{-1} \ker f (x^{-1}) \subseteq \ker f \implies \ker f \subseteq x^{-1} \ker f x
+		(x^{-1})^{-1} \ker f (x^{-1}) \subseteq \ker f \implies \ker f \subseteq x^{-1} \ker f x,
 		\end{align*}
-		\item $\ker f \lhd G$.
+		oder kürzer und übersichtlicher:
+		\begin{align*}
+		f(x^{-1}yx) = f(x^{-1})f(y)f(x) = f(x)^{-1}\cdot 1 \cdot f(x) = 1
+		\end{align*}
+		Da $y \in \ker f$ war gilt $f(y) = 1$. Damit liegt $x^{-1}yx \in \ker f$ und damit haben wir bewiesen, das $\ker f \lhd G$ gilt.
 	\end{enumerate}
-	also 1. 2. 3. : $\ker f < G$. 
 \end{proof}
 \begin{*remark}
 	Ist $H \lhd G$, so gilt: $H = \ker \pi \mit \pi: G \to \lnkset{G}{H}$. (denn $\pi(x) = xH$, also $\ker \pi = \set{x \mid xH = H} = H$). Normalerteiler sind also die Kerne von Morphismen.
@@ -425,8 +429,11 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 	\end{align*}
 \end{proposition}
 \begin{proof} % fix label!!!
-	Der einzig schwere Teil ist $\bar{f}$ ist wohldefiniert. $f(xH) := f(x) \in \Image f$, also landet $\bar{f}$ in $\Image f$. Ferner gilt: Ist $x \ker f = y \ker f$, so ist $y^{-1}x \in \ker f$ (allgemein: $xH = yH \Leftrightarrow y^{-1}xH$) $\Leftrightarrow f(y^{-1}x) = 1 \Leftrightarrow f(y^{-1})f(x) = 1 \Leftrightarrow f(y)^{-1}f(x) = 1$ $\Leftrightarrow f(x) = f(y)$. Also ist $\bar{f}$ wohldefiniert und injektiv. Surjektiv ist $\bar{f}$ per Definition.\\
-	Letzter Schritt: $\bar{f}(x \ker f \cdot y \ker f) = \bar{f}(xy \cdot \ker f)$ (\propref{1_4_3_prop}). $\bar{f}(x \ker f)\bar{f}(y\ker f) = f(x)f(y) = f(xy)$. Also ist $\bar{f}$ ein Morphismus von Gruppen.
+	\begin{itemize}
+	\item Der einzig schwere Teil ist zu zeigen, dass $\bar{f}$ wohldefiniert ist. $f(xH) := f(x) \in \Image f$, also landet $\bar{f}$ in $\Image f$.
+	\item injektiv und surjektiv: Ist $x \ker f = y \ker f$, so ist $y^{-1}x \in \ker f$ (allgemein: $xH = yH \Leftrightarrow y^{-1}xH$) $\Leftrightarrow f(y^{-1}x) = 1 \Leftrightarrow f(y^{-1})f(x) = 1 \Leftrightarrow f(y)^{-1}f(x) = 1$ $\Leftrightarrow f(x) = f(y)$. Also ist $\bar{f}$ und injektiv. Surjektiv ist $\bar{f}$ per Definition.
+	\item Im letzten Schritt muss noch gezeigt werden, dass $\bar{f}$ ein Gruppenhomorphismus ist: $\bar{f}(x \ker f \cdot y \ker f) = \bar{f}(xy \cdot \ker f)$ (\propref{1_4_3_prop}). $\bar{f}(x \ker f)\bar{f}(y\ker f) = f(x)f(y) = f(xy)$. Also ist $\bar{f}$ ein Morphismus von Gruppen.
+	\end{itemize}
 \end{proof}
 \begin{example}
 	Sei $G = (\R, +)$, $K = (\C\setminus \set{0},\cdot)$ und $f(t) = \exp(2\pi \ii t)$, dann $f(x+y) = \exp(x) + \exp(y)$ also ein Gruppenmorphismus $G \to K$. Dann $\Image f = U(1) = S^1 = \set{z \in \C \mid \abs{z} = 1}$ und $\ker f = \Z$. Also ist $\lnkset{\R}{\Z} \cong S^1$ ($\lnkset{\R^2}{\Z^2} \cong T$ ist dann der Torus $T$, $U(n) = \set{A \in \Mat(n, \C) \mid AA^T = 1}$ unitäre Gruppe)
@@ -435,9 +442,11 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 	Eine Gruppe $G$ ist \begriff[Gruppe]{einfach}, wenn $H \lhd G \implies H = G \und H = \set{1}$.
 \end{definition}
 \begin{*remark}
-	D.h.: Ist $f: G \to K$ irgendein Morphismus, so ist $G \cong \Image f$ ($\ker f = \set{1}$) oder $\Image f = \set{1}$ ($\ker f = G$).
+	\begin{itemize}
+	\item D.h.: Ist $f: G \to K$ irgendein Morphismus, so ist $G \cong \Image f$ ($\ker f = \set{1}$) oder $\Image f = \set{1}$ ($\ker f = G$).
+	\item Die endlichen einfachen Gruppen sind klassifiziert! 
+	\end{itemize}
 \end{*remark}
-Die endlichen einfachen Gruppen sind klassifiziert!
 \begin{example}
 	\begin{enumerate}
 		\item Sei $G = \Z_p, p$ prim hat nach \person{Lagrange} (\cref{1_2_9_lagrange}) noch nicht mal irgendeine \emph{echte} Untergruppe, ist also einfach.
