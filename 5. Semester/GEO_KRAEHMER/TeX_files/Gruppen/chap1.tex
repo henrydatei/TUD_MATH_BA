@@ -511,15 +511,15 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 	(in der Gruppe $\lnkset{H}{H \cap K}$) und surjektiv ist klar, da $xyK = xK$ für $x \in H, y \in K$.
 \end{proof}
 \begin{proposition}[3. Isomorphiesatz]
-	Sei $H \lhd G, K \lhd G, K < H$ impliziert $\lnkset{H}{K} \lhd \lnkset{G}{H}$ und es gilt
+	Sei $H \lhd G, K \lhd G, K < H$ $\implies$ $\lnkset{H}{K} \lhd \lnkset{G}{H}$ und es gilt
 	\begin{align*}
-		\lnkset{G}{K} \to \lnkset{\lnkset{H}{H}}{\lnkset{H}{K}} \mit xK \mapsto (xH)\cdot \lnkset{H}{K}
+		\lnkset{G}{K} \to \lnkset{\brackets{\lnkset{G}{H}}}{\brackets{\lnkset{H}{K}}} \mit xK \mapsto (xH)\cdot \lnkset{H}{K}
 	\end{align*}
 	ist ein Isomorphismus.
 \end{proposition}
 \begin{proof}
 	\begin{align*}
-		\frac{\abs{G}}{\abs{K}} = \abs{\lnkset{G}{K}} \abs{\lnkset{\lnkset{G}{H}}{\lnkset{K}{H}}} = \frac{\abs{\lnkset{G}{H}}}{\abs{\lnkset{K}{H}}} =  \frac{\frac{\abs{G}}{\abs{K}}}{\frac{\abs{K}}{\abs{H}}}
+		\frac{\abs{G}}{\abs{K}} = \abs{\lnkset{G}{K}} \abs{\lnkset{\brackets{\lnkset{G}{H}}}{\brackets{\lnkset{K}{H}}}} = \frac{\abs{\lnkset{G}{H}}}{\abs{\lnkset{K}{H}}} =  \frac{\frac{\abs{G}}{\abs{K}}}{\frac{\abs{K}}{\abs{H}}}
 	\end{align*}
 	Der Isomorphismus ist durch
 	\begin{align*}
@@ -540,16 +540,18 @@ Weil $\lnkset{G}{H}$ eine Gruppenstruktur von $G$ erbt $\Leftrightarrow H \lhd G
 	\end{align*}
 	Dies folgt aber aus $a:= y^{-1}x \in K$, nimm $\forall z \in K \exists t \in K$ $t:= y^{-1}xz = az \in K$ und $y^{-1}xt = t$. (Alternative ein Lemma zeigen: $\phi\colon \lnkset{G}{K} \to N$ wohldefiniert, dann $x \in K$ und durch die Vorschrift auf $1 \in N$ abgebildet. Dann ist der Beweis kürzer.)
 \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einfache Gruppen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}
 	$G$ ist einfach, genau dann wenn $\set{1}, G$ sind die einzigen Normalteiler.
 	\begin{align*}
-		\phi: G \to H \mit \Image \phi = \lnkset{G}{\lnkset{G}{\ker \phi}}\\
+		\phi: G \to H \mit \Image \phi = \lnkset{G}{\brackets{\lnkset{G}{\ker \phi}}}\\
 		\Image \phi \cong G \oder \Image \phi = \set{1}
 	\end{align*}
 \end{definition}
 \begin{*example}
-	$G = \Z_p,p$ prim.
+	$G = \Z_p,p$ prim, da es keine \emph{echten} Untergruppen gibt. (\propref{def_p-group})
 \end{*example}
 \begin{proposition}
 	\label{prop_a_n_simple}

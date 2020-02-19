@@ -502,7 +502,7 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	\end{proof}
 \end{enumerate}
 \begin{proposition}
-	Annahme wie oben, aber $q \nmid p-1$. Dann ist $G \cong \Z_{pq}$.
+	Sei $\abs{G} = pq$, $p>q$ und aber $q \nmid p-1$. Dann ist $G \cong \Z_{pq}$.
 \end{proposition}
 \begin{proof}
 	Denke zusätzlich über Sylow $q$-Gruppen nach. Deren Zahl $s$ ist 1 modulo $q$. Ausserdem teilt $\gamma, p\cdot q$, d.h. $\gamma = 1, \gamma = p, \gamma = q$ oder $s = pq$, damit die Sylowgruppen alle konjugiert sind zueinander sind. D.h. die Menge $S_q$ der Sylow $p$-Untergruppe von $G$ ist Orbit (eine Bahn) in $X = \set{P \subseteq G \mid \abs{p} = q}$ unter Konjugation. Nach dem Stabilisator-Bahnen-Satz ist die Menge der Sylow $q$-Gruppen in einer Gruppe $G$ also im Bijektion mit $\lnkset{G}{N_G H}$, wobei $H \le G$ eine beliebige Sylow $q$-Untergruppe ist und $N_G H = \set{x \in G \mid x H x^{-1} = H}$ der Normalisator (Stabilisator von $H$ unter der adjungierten Wirkung) von $H$ in $G$ ist. D.h. $\lnkset{G}{N_G H}$ ist die Menge der zu $H$ konjugierten Untergruppen.
@@ -604,7 +604,7 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-		\item $G \lhd G$ haben wir gesehen.
+		\item $G' \lhd G$ haben wir gesehen.
 		\item $\lnkset{G}{G'}$ abelsch
 		\begin{align*}
 			ab' bG'\cdot (aG')^{-1}(bG)^{-1} &= [aG',bG']_{\lnkset{G}{G'}}\\
