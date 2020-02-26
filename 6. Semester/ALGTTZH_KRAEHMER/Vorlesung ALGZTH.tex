@@ -1,0 +1,93 @@
+\documentclass[ngerman,a4paper,order=firstname]{../../texmf/tex/latex/mathscript/mathscript}
+\usepackage{../../texmf/tex/latex/mathoperators/mathoperators}
+
+% % % local commands
+\DeclareMathOperator{\Ad}{Ad}				% Adjoint
+\DeclareMathOperator{\PSL}{PSL} 			% projective linear group 
+\newcommand{\with}{\text{ with }}
+\renewcommand{\rhd}{\triangleright}
+\renewcommand{\lhd}{\triangleleft} 			% normal subgroups
+\DeclareMathOperator{\Set}{Set}				% Category of sets
+\DeclareMathOperator{\Vect}{Vect}			% Category of vector spaces
+\DeclareMathOperator{\Grp}{Grp}				% Category of groups
+\DeclareMathOperator{\Mod}{Mod}				% Cat of moduls
+\DeclareMathOperator{\Ann}{Ann}				% annihilator
+\newcommand{\Circlearrowleft}{\rotatebox{180}{$\circlearrowright$}}
+\DeclareMathOperator{\Cl}{Cl}				% conjugation class of something.
+
+% get this stupid arrows:
+%\usepackage{mathabx,graphicx}  % ---> add to mathoperators
+%\def\Circlearrowleft{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowleft$}}}
+%\def\Circlearrowright{\ensuremath{%
+%		\rotatebox[origin=c]{180}{$\circlearrowright$}}}
+%\def\CircleArrowleft{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowleft$}}}}
+%\def\CircleArrowright{\ensuremath{%
+%		\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowright$}}}}
+%\begin{document}
+%	\Huge
+%	$\circlearrowleft \circlearrowright $
+%	
+%	$\Circlearrowleft \Circlearrowright $
+%	
+%	$\CircleArrowleft \CircleArrowright $
+
+% % % local packages
+\usepackage{braids}
+
+\newlist{remarkenum}{enumerate}{1}
+\setlist[remarkenum]{label=(\alph*),ref=\theremark~(\alph*)}
+\crefalias{remarkenumi}{remark}
+
+\newlist{propenum}{enumerate}{1}
+\setlist[propenum]{label=(\alph*),ref=\theproposition~(\alph*)}
+\crefalias{propenumi}{proposition}
+
+\newlist{expenum}{enumerate}{1}
+\setlist[expenum]{label=(\alph*),ref=\theexample~(\alph*)}
+\crefalias{expenumi}{example}
+
+\newlist{lemmaenum}{enumerate}{1}
+\setlist[lemmaenum]{label=(\alph*),ref=\thelemma~(\alph*)}
+\crefalias{lemmaenumi}{lemma}
+
+\newlist{defenum}{enumerate}{1}
+\setlist[defenum]{label=(\roman*),ref=\thedefinition~(\roman*)}
+\crefalias{defenumi}{definition}
+
+\title{\textbf{Elemente der Algebraischen Zahlentheorie SS 2020}}
+\author{Dozent: Prof. Dr. \person{Ulrich Krähmer}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
+\chapter{Gruppen}
+\input{./TeX_files/chap1}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+\nocite{*}
+\bibliography{literatur}
+\bibliographystyle{acm}
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
