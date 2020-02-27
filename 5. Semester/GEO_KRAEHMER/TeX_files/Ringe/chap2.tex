@@ -2,7 +2,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 \begin{erinnerung}
 	Ist $X$ eine Menge, so kann man ein
 	\begin{align*}
-		R^{\times} = \set{f\colon X \to R \mid f(x) = 0, \text{ für fast alle }x \in X}
+		R^X = \set{f\colon X \to R \mid f(x) = 0, \text{ für fast alle }x \in X}
 	\end{align*}
 	definieren Modul mit
 	\begin{align*}
@@ -33,7 +33,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 	Für einen $R$-Modul $V$ sind äquivalent
 	\begin{enumerate}
 		\item $V$ ist projektiv
-		\item Jeder Epimorphismus $\pi\colon M \to N$ ist \begriff{split}, d.h. $\exists \iota \colon V \to M$ mit $\pi \circ \iota = \id$ ($M$ $R$-Modul)
+		\item Jeder Epimorphismus $\pi\colon M \to N$ ist \begriff{split}, d.h. $\exists \iota \colon V \to M$ mit $\pi \circ \iota = \id$ ($M,N$ $R$-Modul)
 		\item Es existiert ein $R$-Modul $W$ mit $V \oplus W$, der frei ist
 	\end{enumerate}
 \end{proposition}
@@ -41,7 +41,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 	$W \subseteq V$ ist Komplement zu $U \subseteq V \Leftrightarrow \pi \colon V \to \lnkset{V}{U}$ ist isomorph und $\pi_{\mid W}\colon W \to \lnkset{V}{U}$
 \end{remark}
 \begin{example}
-	$\pi \colon \Z \to Z$ splittet nicht als $\Z$-Modulmorphismus. Also ist $\Z_2$ nicht projektiv.
+	$\pi \colon \Z \to \Z$ splittet nicht als $\Z$-Modulmorphismus. Also ist $\Z_2$ nicht projektiv.
 \end{example}
 \begin{proof}[\propref{prop_2_1_1}]
 	\begin{enumerate}
@@ -117,9 +117,9 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 	beide sind Hauptidealringe $(\Z, C(t))$ (HIR).
 \end{example}
 \begin{definition}
-	$R$ ist ein HIR $\Leftrightarrow$ $R$ ist Integritätsbereich (eng. integral domain, nullteilerfrei) (ID) und jedes Ideal $I \lhd R$ ist ein Hauptideal, d..h. es existiert $a \in R$ mit
+	$R$ ist ein HIR $\Leftrightarrow$ $R$ ist Integritätsbereich (eng. integral domain, nullteilerfrei) (ID) und jedes Ideal $I \lhd R$ ist ein Hauptideal, d.h. es existiert $a \in R$ mit
 	\begin{align*}
-		I = R \cdot a = \set{ra \mid r \in R} = \set{s \in R \mid a \mid s}
+		I = R \cdot a = \set{ra \colon r \in R} = \set{s \in R \colon a \mid s}
 	\end{align*}
 	($a \mid s$, entspricht $a$ teilt $s$)
 \end{definition}
@@ -136,7 +136,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 \begin{example}
 	\begin{enumerate}
 		\item Da $R$ ID ist, ist ein freier Modul torsionsfrei:\\
-		$f \in R^{\times}, r \in R, r \neq 0, r \cdot f = 0$ heißt $(rf)(x) = r \cdot f(x) = 0 \forall x \in X \Leftrightarrow f(x) = 0 \forall x \in X$
+		$f \in R^X, r \in R, r \neq 0, r \cdot f = 0$ heißt $(rf)(x) = r \cdot f(x) = 0 \forall x \in X \Leftrightarrow f(x) = 0 \forall x \in X$
 		\item Ist $R = \Z$ und $V$ eine endliche abelsche Gruppe, so gilt $\abs{V}\cdot x = 0\quad \forall x \in V$ ($\ord(x) \mid \ord(V)$). Also ist $V = T(V)$.
 	\end{enumerate}
 \end{example}
@@ -147,7 +147,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 	$\lnkset{V}{T(V)}$ ist torsionsfrei. ($R$ ID für den Rest der heutigen VL :S)
 \end{lemma}
 \begin{proof}
-	Sei $X \in \lnkset{V}{T}$ Torsionselement $x$ ist von der Form $X = [v] = v + T$ für ein $v\in V$. $T := T(V)$ $x$ ist Torsionselement heißt: $\exists r \in R \setminus \set{0}\colon r \cdot x = 0$, d.h. $[rv] = [0]$, also $r \cdot v \in T$. Damit ergibt sich $\exists s \in R \setminus \set{0}\colon s(rv) = 0$ also $(sr)v = 0$. Da $R$ ID ist, ist $t:= sr \neq 0$, also ist $v \in T(V) = T$ und da bedeutet $[v] = x = 0$.
+	Sei $x \in \lnkset{V}{T}$ Torsionselement $x$ ist von der Form $x = [v] = v + T$ für ein $v\in V$. Setze $T := T(V)$ ,$x$ ist Torsionselement heißt: $\exists r \in R^{\times}\colon r \cdot x = 0$, d.h. $[rv] = [0]$, also ist $r \cdot v \in T$. Damit $\exists s \in R^{\times}\colon s(rv) = 0$ also $(sr)v = 0$. Da $R$ ID ist, ist $t:= sr \neq 0$, also ist $v \in T(V) = T$ und damit $[v] = x = 0$.
 \end{proof}
 \begin{lemma}
 	Sind $N \le M$ Moduln, so gilt $M$ ist Torsions ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
@@ -186,7 +186,121 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 	Sei $V$ endlich erzeugter $R$-Modul. Entweder ist $V$ Torsion, $V = T(V)$ oder $V$ enthält einen freien Untermodul $F$ mit $\lnkset{V}{F}$ Torsion.
 \end{conclusion}
 \begin{proof}
-	still TODO.
+	$V = T(V)$ ist schon fertig.\\
+	Anderfalls ist $V/T(V) \neq 0$ torsionsfreier, endlicher erzeugter Modul und es existiert ein freier Modul $G \le V/T(V) \mit \lnkset{(\lnkset{V}{T(V)})}{G}$ Torsion ($\alpha$). Nach Korrespondenztheorem korrespondiert $G$ zu einem Untermodul $H \le V$, $H \ge T = T(V)$, das heisst $G \cong H/T$. Da $G$ frei und somit projektiv, splittet dieser Quotient und wir können $G$ als Untermodul in $H$ realisieren $H \cong G \oplus G/T$. Damit ist $V/G$ also unser freier Untermodul und $V/G$ ist Torsion da ($\alpha$) gilt und $T$ Torsion.
+\end{proof}
+\begin{conclusion}
+	Endlich erzeugte freie Moduln sind isomorph zu $R^d$, wobei $d$ die Kardinalität der Basis ist.
+\end{conclusion}
+\begin{conclusion}
+	Aus frei folgt projektiv.
+\end{conclusion}
+Ab hier: $R$ ist HIR bzw. PID (Integritätsbereich bzw. integral domain)
+\begin{example}
+	\begin{itemize}
+		\item Sei $R$ Körper $\F$, dann hat nur die trivialen Ideale $0$ und $\F$
+		\item Sei $R = \Z$ (ord $\abs{\cdot}$), $R = \F[t]$ (Grad = deg), dann sind das euklidische Bereiche (teilen mit Rest möglich)
+	\end{itemize}
+\end{example}
+\begin{erinnerung}
+	In HIR sind für $a \in R^{\times}$, die folgenden Aussage sind äquivalent:
+	\begin{enumerate}
+		\item $a$ ist irreduzibel, d.h. $\forall b,c \in R \colon a = b\cdot c \implies b \oder c \in R^{\times}$
+		\item $a$ ist prim, d.h. $\forall b,c \in R \colon a \mid bc \implies a \mid b \oder a\mid c$ (Es gilt: prim impliziert irreduzibel, gilt in allen kommutativen Ringen - Beweis: $a = ub$ für ein $u \in R^{\times}$ impliziert $a \mid b$ und $b\mid a$ und daraus $Ra = Rb$)
+		\item $Ra = \set{b \in R \mid a \mid b} = \set{ac \mid c \in R} \lhd R$ ist maximales Ideal, d.h. $\lnkset{R}{Ra}$ ist Körper.
+	\end{enumerate}
+\end{erinnerung}
+\begin{example}
+	\begin{itemize}
+		\item Sei $R = \Z, a = 7$ dann folgt $\Z_7 = \lnkset{\Z}{7\Z}$ Körper
+		\item Sei $R = \Q[t]$, $a = t^2 -3$, dann folgt $\lnkset{R}{aR} = \Q(\sqrt{3})$, wobei $[t] = t + aR = \sqrt{3}$
+	\end{itemize}
+\end{example}
+\begin{definition}
+	Zwei Elemente $a,b \in R$ (Integritatätsbereich) sind assoziert genau, dann wenn gilt
+	\begin{align*}
+		\exists u \in R^{\times}\colon a = ub \Leftrightarrow Ra = Rb \quad (a \sim b)
+	\end{align*}
+\end{definition}
+\begin{lemma}
+	Sind in $R$ alle irreduziblen Elemente prim, so folgt die Eindeutigkeit der Primfaktorzerlegung aus der Existenz einer Zerlegung.
+\end{lemma}
+\begin{proof}
+	Sei $p_1 \dots p_d = q_1\dots q_r$ mit $r$ minimal und oBdA $p \nmid q_j$ für alle $j$. Dann $p_1 \mid ab$ mit $a = q_1,b=q_2\dots q_4 \xRightarrow{\text{irr $\implies$ prim}} p_r \mid q_1$ oder $p_1 \mid q_2 \dots q_r$. Wenn $p_1 \mid q_1$, also $q_1 = u p_1$ dann folgt, das $q_i$ irreduzibel und invertierbar, also $p_1 \sim q_1$ ist Widerspruch! Ansonsten induktiv weiter: $p_1\mid q_2 \dots q_r \implies p_1 \mid q_i$ für ein $i$ (weil prim),
+\end{proof}
+\begin{lemma}
+	In einem HIR ist jedes $a \in R$ Produkt von irreduziblen Elementen.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item Sei $R = \Z, a = 7$ dann folgt $\Z_7 = \lnkset{\Z}{7\Z}$ Körper
+		\item Sei $a$ nicht irreduzibel, dann folgt $a = a_1 a_2 \dots$ mit $a_1, a_2$ nicht invertierbar. Wenn beide $(a_1,a_2)$ als $a_1=p_1\dots p_d, a_1 = q_1\dots q_r$ mit $p_i, p_j$ irreduzibel dargestellt werden können, so auch $a = p_1 \dots p_q q_1 \dots q_r$ \checkmark\\
+		Wenn nicht ist oBdA $a_2$ nicht irreduzibel, $a_2 = a_3 a_4 \dots$\\
+		$a = a_1 a_2 = a_1 a_3 a_4 = a_1 a_3 a_5 a_6  = \dots $ Also $Ra \subseteq Ra_2 \subseteq Ra_4 \subseteq Ra_6 \subseteq \dots$ Folge von Idealen. Setze $I := \bigcup Ra_{2i} \lhd R$. Da $R$ HIR, ist $I = xR$ für ein $x \in I$, d.h. $x \in Ra_{2i}$ für ein $i$ und $Ra_{2i} \subset X = Rx$, also $a_{2i} \sim x$ und damit $Ra_{2i} = Ra_{2i + 2} = \dots = Rx$. Somit ist $a_{2i + 2}$ invertierbar, was ein Widerspruch ist!
+	\end{itemize}
+\end{proof}
+\begin{conclusion}
+	Jeder HIR ist faktoriell. (Folgerung aus vorherigen Satz)
+\end{conclusion}
+\begin{proposition}
+	\proplbl{chap2_2_2_base_modul}
+	Sei $F$ endliche erzeugter freier $R$-Modul mit Basis von $n$ Elementen und $R$ ist HIR. Dann ist jeder Untermodul $G \le F$ auch frei mit einer Basis von höchstens $n$ Elementen.
+\end{proposition}
+\begin{proof}
+	Induktion über $n$. Sei $\set{x_i}_{1,\dots,n}$ Basis von $F$.
+	\begin{enumerate}
+		\item $n=1$: $F\cong Rx$, ist isomorph als Modul zu $R$ selbst, die Abbildung 
+		\begin{align*}
+			\varphi\colon R \to F \mit a \mapsto ax
+		\end{align*}
+		ist Isomorphismus, da $R$ nullteilerfrei ist.
+		\item $n-1 \to n$: $F = \bigoplus_{i=1}^n Rx_i$ und wir betrachten die letzte Koordinate $\Phi_n\colon R \to R \mit \sum_{i=1}a_i x_i \mapsto a_n$. Diese Abbildung ist ein R-Moduln-Morphismus. Also $\Phi_n \in F^X = \Mod_R(F,R)$. Sei $G \le F$. Falls $G \le \Span_R\set{x_i}_{1,\dots,n-1} = \ker \Phi_n$. Dann ist $G$ nach Induktionshypothese frei mit höchstens $n-1$ Erzeugern \checkmark.\\
+		Wenn nicht: $\Phi_n(G) \neq 0$, $\Phi_n(G) \lhd R$ ist ``endlicher'' Modul. Dann folgt Fall $n=1$, also ist $\Phi_n(G)$ frei und Basis aus genau einem Element. Nach 1. Isomorphiesatz haben wir
+		\begin{align*}
+			\lnkset{G}{\brackets{G\cap \ker \Phi_n(G)}} \cong \Phi_n(G) \cong R \quad \text{validate!!!}
+		\end{align*} 
+		Da $R$ frei $\implies$ projektiv $\implies$ $G \cong G \cap \ker \Phi_n(G) \oplus R$. $G \cap \ker \Phi_n(G)$ ist Untermodul von $\ker \Phi_n(G)$, also frei mit höchstens $n-1$ Erzeugern.
+	\end{enumerate}
+\end{proof}
+\begin{conclusion}
+	Ist $M$ ein endlich erzeugter $R$-Modul, so gilt $M \cong F \oplus T(M)$, $T(M)$ Untermodul aller Torsionselemente und $F$ frei.
+\end{conclusion}
+\begin{proof}
+	Setze $T(M) = \set{x \in M \mid \exists a \in R^{\times}\colon ax = 0}$. Dann ist $M/T(M)$ torsionsfrei und Untermodul eines freien endlichen erzeugten $R$-Moduls und nach \propref{chap2_2_2_base_modul} ist $M/T$ ebenfalls frei, somit auch projektiv und es gilt
+	\begin{align*}
+		M \cong T \oplus \underbrace{M/T}_{=: F}
+	\end{align*} 
+\end{proof}
+\begin{conclusion}
+	Sei $M = \Span_R\set{x_1, \dots, x_d}$ endlich erzeugter $R$-Modul. Sei $0 \neq N \le M$. Dann existierten $y_1, \dots, y_d$ mit $N = \Span_R\set{y_1, \dots, y_r}_{r \le d}$.
+\end{conclusion}
+\begin{proof}
+	Setze $M = \Span_R\set{x_1, \dots, x_d}$ heißt existiert Epimorphismus (surjektive linear Abbildung) durch 
+	\begin{align*}
+		S\colon R^d \to M \mit (a_1, \dots, a_d)^T \mapsto \sum_{i=1}^d a_i x_i
+	\end{align*}
+	Sei $F\colon S^{-1}(N) \le R^d$ das Urbild von $N$ und
+	\begin{align*}
+		F = \set{(a_1, \dots, a_d)^T \mid \sum_{i=1}a_i x_i \in M}
+	\end{align*}
+	Satz impliziert $F$ frei mit Basis aus höchstens $d$ Elementen $v_1, \dots, v_r$. Setze nun $y_i := S(v_i)$.
+\end{proof}
+Wie sehen Torsionsmoduln über PIDs = HIRs aus?
+\begin{definition}
+	Sei $M$ $R$-Modul ($R$ HIR), $p \in R$ prim. Die $p$-primäre Komponente von $M$ ist
+	\begin{align*}
+		M(p) := \set{x \in M \mid \exists n \ge 0, p^n x = 0}
+	\end{align*}
+\end{definition}
+\begin{remark}
+	$px = 0, x \neq 0$, dann $(Rp)x = 0 \Leftrightarrow Rp \subset \Ann_R(x) = \set{a \in R \colon ax = 0}$. Sei $p$ prim $\Leftrightarrow Rp$ maximal, d.h. $px = 0 \Leftrightarrow Rp = \Ann_R(x)$. Dann $R/Rp = K$ ist dann Körper, $\langle x \rangle = Rx \le M$, ist zu Körper ismorph. Setze $\varphi\colon R \to M \mit a \mapsto ax$, $\Image \varphi = Rx$, $\ker \varphi = \Ann_R(x) = Rp \implies Rx \cong K$.
+\end{remark}
+\begin{proposition}
+	Ist $M$ endlich erzeugter Torsionsmodul über $R$, so existieren $p_1, \dots, p_d$ prim in $R$ mit $Rp_i \neq Rp_j$ und $M = \bigoplus_{i=1}^d M(p_i)$.
+\end{proposition}
+\begin{proof}
+	Wenn $M = 0$ oder $M = M(p)$ \checkmark.\\
+	Nehme also an, das $M \neq 0$, $M \neq M(p)$ für alle $p \in R$ prim. TODO still
 \end{proof}
 three lectures missing :/
 \begin{theorem}
