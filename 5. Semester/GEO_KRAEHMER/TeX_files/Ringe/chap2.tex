@@ -1,3 +1,4 @@
+\section{Moduln}
 $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 \begin{erinnerung}
 	Ist $X$ eine Menge, so kann man ein
@@ -102,7 +103,7 @@ $R$ sie kommutativer Ring mit 1-Element und $V$ ein $R$-Modul.
 \begin{erinnerung}
 	\begin{itemize}
 		\item Morphismus $R^n \to R^n$ ist gegeben durch Matrixmultiplikation. Die Projektion auf $V$ ($\epsilon \colon R^n = V \oplus W \to R^n \with (v,w) \mapsto v$) korrespondiert zu einer idempotenten Matrix. $e \in \Mat(n,R), e^2 = e$ und $V = e\cdot R = \set{e x \mid x \in R} = \Image(\epsilon)$. 
-		\item projektiv gdw für alle Endomorphismen $\begin{tikzcd}[cramped, sep=small]
+		\item projektiv genau, dann wenn für alle Endomorphismen $\begin{tikzcd}[cramped, sep=small]
 		M \arrow[r, "\pi"] & V
 		\end{tikzcd}$ split, also $M \cong V \oplus \ker(\pi)$ ($V$ ist $\Image(\pi)$, Kern-Bild-Formel). Wenn $V$ endlich erzeugt ist $V = \Span\set{x_1, \dots, x_n}$
 		\item $\pi \colon V \with (v_1, \dots, v_n)^T \mapsto \sum_{i=1}^n v_i x_i$ surjektiv. Also $V \cong \lnkset{R^n}{ker(\pi)}$
@@ -150,7 +151,7 @@ Ziel dabei ist: Endlich erzeugte Moduln über HIR haben eine Zerlegung (decompos
 	Sei $x \in \lnkset{V}{T}$ Torsionselement $x$ ist von der Form $x = [v] = v + T$ für ein $v\in V$. Setze $T := T(V)$ ,$x$ ist Torsionselement heißt: $\exists r \in R^{\times}\colon r \cdot x = 0$, d.h. $[rv] = [0]$, also ist $r \cdot v \in T$. Damit $\exists s \in R^{\times}\colon s(rv) = 0$ also $(sr)v = 0$. Da $R$ ID ist, ist $t:= sr \neq 0$, also ist $v \in T(V) = T$ und damit $[v] = x = 0$.
 \end{proof}
 \begin{lemma}
-	Sind $N \le M$ Moduln, so gilt $M$ ist Torsions ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
+	Sind $N \le M$ Moduln, so gilt $M$ ist Torsion ($(M = T(M))$) $\Leftrightarrow N$ ist Torsion ($N = T(N)$) und $\lnkset{M}{n} = T\brackets{\lnkset{M}{N}}$.
 \end{lemma}
 \begin{proof}
 	Analog zu \propref{2_2_1}.
@@ -300,9 +301,55 @@ Wie sehen Torsionsmoduln über PIDs = HIRs aus?
 \end{proposition}
 \begin{proof}
 	Wenn $M = 0$ oder $M = M(p)$ \checkmark.\\
-	Nehme also an, das $M \neq 0$, $M \neq M(p)$ für alle $p \in R$ prim. TODO still
+	Nehme also an, das $M \neq 0$, $M \neq M(p)$ für alle $p \in R$ prim. Sei $M = \Span_R\set{x_1, \dots, x_n}$ und $M= T(M)$ Torsionsmodul, also existiert $a_1, \dots, a_n \in R^{\times}$ mit $a_i x _i = 0$. Sei $a:= a_1\cdots a_n \in \R^{\times}$, dann gilt $ax = 0\forall x \in M$. Außerdem ist $a$ nicht invertierbar (sonst $M=0$). Also (HIR $\implies$ Faktorring). Existiert Darstellung $a = q_1\dots q_k$ mit $q_i$ prim. Sei $Rq_i = Rq_j$ für $i=j$, d.h. $q_i = u \cdot q_j$, $u$ invertierbar also $q_i q_j = u\cdot q_j^2$ und damit WLOG $a = p_1^{n_1}\cdots p_k^{n_k}$ und $Rp_i \neq Rp_j$.
+	\begin{itemize}
+		\item Fall $k=1$: Dann gilt $p_1^{n_1}x = 0\forall x \in M$, also ist $M = M(p_i)$ hatten wir abgeschlossen.
+		\item Fall $k>1$: Dann gitl $R = Rp_2^{n_2}\cdots p_k^{n_k}+Rp_1^{n_1}p_3^{n_3}\cdots p_k^{n_k} + \cdots + Rp_1^{n_1}\cdots p_{k-1}^{n_{k-1}}$, d.h. es existieren $b_1,\dots, b_k \in R$, so dass $1 = b_1 p_2^{n_2}\cdot p_k^{n_k}+\cdots + b_k p_1^{n_1}\cdots p_{k-1}^{n_{k-1}}$. Ist $x\in M$, so folgt
+		\begin{align*}
+			x = b_1p_2^{n_2}\cdots p_k^{n_k}x + \cdots + b_k p_1^{n_1}\cdots p_{k-1}^{n_{k-1}}x \text{ und } b_i p_i^{n_i}\cdots p_{i-1}^{n_{i-1}}\cdot p_{i+1}^{n_{i+1}}\cdots p_k^{n_k} x \in M(p_i)
+		\end{align*}
+		denn $p_i^{n_i} x_i = a_x = 0$. Also gilt $M = \prod_{j=i}^k M(p_j)$. Sei also $u \in M(p_i) \cap (\sum_{i=1}^k M(p_i))$. Wir müssen noch zeigen, dass $0=u = \sum_{j\neq i} v_j \mit v_j \in M(p_j)$. Wobei $u \in M(p_i)$ heißt es existiert $n$ mit $p_i^n \cdot u = 0$ und $\exists m_j \mit p_j^{m_j} v_j = 0$. Sei $q := p_1^{m_1}\cdot p_{i+1}^{m_{i+1}}\cdots p_k^{m_k}$. Dann gilt $q \cdot v_j = 0$ für $j \neq i$, also auch $q\cdot u = 0$ und $u = \sum_{s=1, s\neq i}^k v_s$. Also gilt für alle $z \in R p_i^n + R q$, dass $z \cdot u = 0$. Nach Übung ist $R p_i^{n_i} + Rq = R$ (Tipp $\ggT$!) Also gibt es $a,b \in R$ mit $1 = a p_i ^{n_i} + bq$ und wir erhalten $u = 1\cdot u = a\cdot p_i^n u + b\cdot q \cdot u = 0$.
+	\end{itemize}
 \end{proof}
-three lectures missing :/
+Wie sieht $M(p_i)$ genau aus?
+\begin{lemma}
+	\proplbl{lemma_for_prop_2_p_primaer_modul}
+	Ist $M$ $p$-primär, so existiert für alle $x \in M \exists n \in \N$ mit $\Ann_R(x) = \set{ a \in R \mit ax = 0} = Rp^n$, $\Ann_R \lhd R$.
+\end{lemma}
+\begin{proof}
+	$M$ ist $p$-primär, $x \in M$, also existiert kleinstmögliches $n \in \N$ mit $p^ \cdot x = 0$. Sei nun $\Ann_R(x) = Ra$ ($R$ ist HIR, $\Ann_R(x)$ Ideal). Wir haben $p^n \cdot x = 0 \implies p^n \in \Ann_R(x)$, das impliziert $p^ = a\cdot b$ für ein $b \in R, p^n \in R, x \in M$. Daraus folgt $a = p^m\cdot u$ für $u \in R^{\times}$, WLOG $u=1$ denn $Ra = Ra u^{-1}$. Also gilt $m=n$, denn $p^ \in \Ann_R(x)$ und $n$ war kleinstmöglich.
+\end{proof}
+Wenn $R$ HIR, $p\in R$ prim, $a \neq 0 \in R$ und $a \mid p^n \implies a = u\cdot p^n$ für $u \in R^{times}$, $m \le n$, siehe Ünung!
+\begin{erinnerung}
+	$R$-Modul $N$ ist zyklisch, wenn $\exists x \in N \mit R\cdot x = N$. Es gibt dann einen surjektiven Morphismus $\phi\colon R \to N \mit A \mapsto ax$ und $\ker \phi = \Ann_R(x)$. Also ist ein zyklisches Modul von der Form $\lnkset{R}{I}$ für ein Ideal  $I \lhd R$, nämlich $I = \Ann_R(x)$ (benutze 1. Isomorphiesatz) %TODO add reference!
+	Umgekehrt ist $N = \lnkset{R}{I}, I \lhd R$ Ideal, zyklisch und $x = [1] = 1 + I \in N$ erzeugt durch $N$. Also gilt äquivalent, dass ein endlich erzeugter $p$-primärer Modul $M$ ist von der Form $M \cong \lnkset{R}{\bigoplus_{i=1}^k Rp^{n_i}}$
+\end{erinnerung}
+\begin{proposition}
+	\proplbl{prop_2_p_primaer_modul}
+	Ist $M$ $p$-primär, so ist $M \cong \bigoplus_{i=1}^r M_i$, wo bei allen $M_i$ zyklisch, $p$-primär $R$-Moduln sind. ($M$ endlich erzeugt).
+\end{proposition}
+\begin{proof}[\propref{prop_2_p_primaer_modul}]
+	Sei $M$ von $x_1, \dots, x_t$ erzeugt. Induziere über $t$
+	\begin{itemize}
+		\item $t = 1$: klar nach oben!
+		\item $t -1 \to t$: WLOG $x_i \neq 0$ (sonst würde $t-1$ reichen!). Für jedes $x_i \exists n_i$ mit $p^{n_i} x_i= 0$ und $\Ann_R(x) = Rp^{n_i}$. Sei $n = \max\set{n_i}$. Dann gilt $p^n \in \Ann_R(M)$, d.h. $p^n x = 0\forall x \in M$ und es gibt ein $j$ mit $p^{n-1} x_j \neq 0$. WLOG $j=1$. Dann gilt also $\Ann_R(x) = R\cdot p^n$. Betrachte $\lnkset{M}{R x_1} \cong \bigoplus_{i=1}^n N_i$ zyklisch, d.h. von $y + Rx_i = [y]$ erzuegt. $N_n \cong R\cdot (y_k + R x_1) \le \lnkset{M}{R x_1}$. Nach \propref{lemma_for_prop_2_p_primaer_modul} gilt $\Ann_R(y_k + Rx_1) = Rp^{s_k}$ für $s_k > 0$. Das heißt $p^{s_k} y_k \in Rx$ (impliziert $p^{s_k}[y_k] = [p^{s_k}y_k] = 0$). Also existiert $a_k \in R$, sodass $p^{s_k} y_k = a_k \cdot x_1$.\\
+		Erinnerung: $p^n x_i = 0 \forall i$, d.h. $p^n y_k = 0 \mit p^n \in \Ann_R(M)$.\\
+		Also $0 = p^n y_k = p^{n-s_k}(p^{s_k}y_k) = p^{n-s_k}a_k$ für irgendwelche $b_k$, dann $a_k = p^{s_k}b_k$. Also haben wir $p^{s_k}y_k = p^{s_k} b_k x_1 \implies p^{s_k}(y_k-b_k x_1) = 0$.
+	\end{itemize}
+\end{proof}
+\begin{erinnerung}
+	$M(p) = \set{x \in M \mid \exists n \ge 0\colon p^n x = 0}$ mit $p$ primäre Komponente von $M$. $M$ Modul über $R$ HIR, dann
+	\begin{align*}
+		M = \bigoplus_{i=1}^d M(p_i)\oplus R^s
+	\end{align*}
+	wobei $p_i$ prim und $R^s$ frei und $Rp_i \neq R p_j$.
+\end{erinnerung}
+\begin{lemma}
+	Für $x \in M(p)$ ist $\Ann_R(x) = R p^m$ für ein $m$.
+\end{lemma}
+\begin{proof}
+	SeSt.
+\end{proof}
 \begin{theorem}
 	$M(p) = M_1 \oplus \cdots \oplus M_k$ mit $M \cong \lnkset{R}{Rp^n_i}$ zyklisch und $\Ann_R(x) = \set{a \in R \mid ax = 0} \lhd R$
 \end{theorem}
@@ -381,7 +428,7 @@ three lectures missing :/
 	\end{align*}
 	Also ist jedes $x \in M$ Torsion, denn $\chi_{\tau} x = 0$. Also Lineare Algebra ist also Theorie der endlichen Torsionsmoduln über $R = K[t]$.
 	\begin{align*}
-		M \cong \lnkset{R}{Rp_{1}^{n_1}} \oplus \cdots \plus \lnkset{R}{Rp_{d}^{n_d}}
+		M \cong \lnkset{R}{Rp_{1}^{n_1}} \oplus \cdots \oplus \lnkset{R}{Rp_{d}^{n_d}}
 	\end{align*}
 	\begin{itemize}
 		\item Wann ist $p \in R = K[t]$ prim = irreduzibel? Allgemein: Schwer!!! Polynome vom Grad 1 sind immer $f = t-\lambda$, $\lambda \in K$, aber $t^2 +1$ ist irreduzibel in $\Q[t]$ oder $\R[t]$, $t^2+2$ ist irreduzibel in $\Q[t]$, reduzibel in $\R[t]$. Leicht ist aber dagegen, wenn $K = \bar{K}$ algebraisch abgeschlossen (z.B. $K = \C$), so ist $f \in K[t]$ irreduzibel genau dann, wenn $f = t - \lambda$ mit $\lambda \in K$. Also jetzt $K = \bar{K}$
@@ -391,7 +438,7 @@ three lectures missing :/
 		Als Vektorraum über $K$ hat dieser Modul die Basis
 		\begin{align*}
 			e_r &:= (t-\lambda_j)^r + (t-\lambda_j)^{n_j}K[t] = [(t-\lambda_j)^r]_{r = 0, \dots, n_j -1}\quad e_r := (t-\lambda_j)^r + (t-\lambda_j)^{n_j}K[t]\\
-			&= [(t-\lambda_j)^r]_{r = 0, \dots, n_j -1}$ (\person{Taylor}).
+			&= [(t-\lambda_j)^r]_{r = 0, \dots, n_j -1} (\person{Taylor}).
 		\end{align*} 
 		Nun $\tau(e_r) = te_r = \lambda_j e_r + e_{r+1}$ ($r < n_j -1$) bzw. $t e_{n_j - 1} = \lambda_j e_{n_j -1}$
 		\begin{align*}
