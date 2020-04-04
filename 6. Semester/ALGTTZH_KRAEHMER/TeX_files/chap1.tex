@@ -1,0 +1,124 @@
+% !TeX spellcheck = en_GB
+\section{Polynomials}
+Let $R$ be a commutative ring.
+\begin{*remark}
+Here means ``ring'' $R$ unital associative commutative ring.
+	\begin{itemize}
+		\item \emph{unital}: a ring with a multiplicative identity, such that $1x = x = x1, \forall x \in R$
+		\item \emph{associative}: $R$ forms an abelian group with operation $+\colon R^2 \to R$ with identity 0, and a $(R,\cdot)$ forms \emph{monoid} and $R$ satisfies the two \emph{distributivity} laws:
+		\begin{align*}
+			a\cdot (b+c) &= (a\cdot b)+(a\cdot c)\forall a,b,c \in R\\
+			(a + b)\cdot c &= (a\cdot c)+(b\cdot c)\forall a,b,c \in R
+		\end{align*}
+		and \emph{associativity}: $a\cdot (b\cdot c) = (a\cdot b)\cdot c\forall a,b,c \in R$
+		\item $R$ is \emph{commutative}, if $a\cdot b = b \cdot a$ holds.
+		\item \emph{ring homomorphism}: Let $R \nd S$ be rings and $\phi\colon R \to S$ a ring homomorphism with $f(ab) = f(a)f(b)$, and $f(1_R) = 1_S$ for $a,b \in R$.
+	\end{itemize}
+\end{*remark}
+\begin{definition}[polynomial of degree $n$]
+	\begin{itemize}
+		\item \begriff{Polynomial of degree $n$} with coefficients in a ring $R$ is an expression of the form
+		\begin{align*}
+		f(x) = \sum_{i=0}^n a_i x^i\quad a_i \in R\nd a_i \neq 0
+		\end{align*}
+		\item $f(x)$ is called \begriff{monic}, if $a_n = 1$
+		\item an element $c \in R$ is called \begriff{root} of $f(x)$, if
+		\begin{align*}
+			f(c) = \sum_{i=0}^n a_i c^i \overset{\text{!}}{=} 0
+		\end{align*}
+		\item \begriff{zero-polynomial} (identity according to the ab. group $(R[x],+)$) is defined as $0(x) = a_0 x^0$, where $a_0 = 0$, with $\deg(0) = -\infty$. A \begriff{constant polynimial} is $a_0 \neq 0$ for $0(x)$. Then \begriff{non-constant polynomial} means that $\deg f > 0$. 
+	\end{itemize}
+	with that all we defined the set of all polynomial forms, which is a ring, which we denote by $R[x]$.
+\end{definition}
+\begin{definition}
+	A field $R$ is \begriff{algebraically closed} if every nonconstant polynomial (with $deg f >0$) in $R[x]$ has at least one root.
+\end{definition}
+How to find out, how many roots a polynomial has?
+\begin{example}
+	Let $x^n \in \C[x]$ has the single root $c=0$ with multiplicity $n$.
+\end{example}
+\begin{theorem}
+	\begin{enumerate}
+		\item If a polynomial $f(x)$ has degree $n$ and coefficients in a field $R$, then $f(x)$ has at most $n$ roots (counted with multiplicity)
+		\item If $R$ is additional algebraicially closed, then $f$ has exactly $n$ roots. 
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item Use polynomial division and do induction over the degree of $n$.
+		\item still todo %TODO finish proof
+	\end{enumerate}
+\end{proof}
+\begin{theorem}[fundamental theorem of algebra]
+	\proplbl{theorem_1_5_funda_theo_alg}
+	The field $\C$ of complex numbers is algebraically closed.
+\end{theorem}
+\begin{*remark}
+	Let collect some complex analysis definitions here:
+	\begin{itemize}
+		\item Let $\O \subseteq \C$ open, $z_0 \in \O$, $f\colon \O \to \C$, $f$ called in $z_0$ (complex) differentiable iff
+		\begin{align*}
+			\exists f'(z_0) := \lim_{\substack{z \to z_0\\ z \neq z_0}} \frac{f(z)-f(z_0)}{z-z_0}
+		\end{align*}
+		$f'(z_0)$ is called derivative of $f$ in $z_0$.
+		\item $f$ called (in $\O$) \begriff{holomorphic} iff $f$ in every point $z_0 \in \O$ differentiable.
+		\item A function $f\colon \C \to \C$ is called \begriff{entire}, if $f$ is holomorphic at all finite points over the whole complex plane. (e.g. exponential function, trigonometric function, products, sums and composition of these)
+		\item \person{Liouville}
+		\begin{proposition}
+			\proplbl{prop_1_1_liouville}
+			Every bounded entire function is constant.
+		\end{proposition}
+	\begin{proof}
+		Take a look at the power series $f(z) = \sum_{i=0}^n a_i z^i$ $\forall z \in \C$. For all $r> 0$ holds ($f\colon \O \to \C$ holomorphic)
+		\begin{align*}
+			\abs{a_i} &\le \frac{1}{r^i}\cdot \max\set{\abs{f(z)}\mid \abs{z} = r}\\
+			&\le \frac{1}{r^i}\cdot (c_1 + c_2\abs{r}^n) \xrightarrow{i>n} 0 \quad (r \to \infty) 
+		\end{align*}
+		Also $a_i = 0$ for $i >n$.
+	\end{proof}
+	\end{itemize}
+\end{*remark}
+\begin{proof}[\propref{theorem_1_5_funda_theo_alg}]
+	Assume $f(x) \in \C[x]$ is nonconstant polynomial. This defines a holomorphic function $f\colon \C \to \C$. Assume $f$ has no zeros. Then $g(x) = \sfrac{1}{f(x)}$ defines a holomorphic function $g$ on $\C$. Since $f$ is nonconstant we get that
+	\begin{align*}
+		\lim_{\abs{z} \to \infty} \abs{f(z)} = \infty
+	\end{align*}
+	with that follows that $g$ is bounded. Hence $g$ must be a constant function with the help of \propref{prop_1_1_liouville}, which is contradicting that $f$ was non-constant.
+\end{proof}
+\subsection{Linear equations}
+case $n=1$, equations of this form 
+\begin{align*}
+	f(x) = x+a_0 = 0
+\end{align*}
+ have a the unique solution $x= -a_0$. 
+\subsection{Quadratic equations}
+case $n=2$, equations of the form
+\begin{align*}
+	f(x) = x^2 + a_1 x + a_0 = 0
+\end{align*}
+can be solved with the completiing the square method. Let us rewrite the equation
+\begin{align*}
+	\brackets{x + \frac{a_1}{2}}^2 - \frac{a_1^2}{4} + a_0 = 0
+	\intertext{find the solutions}
+	x = -\frac{a_1}{2}\pm \sqrt{\underbracket{\frac{a_1^2}{4} - a_0}_{\text{maybe } \notin\C}}.
+\end{align*}
+\subsection{Cubic equations}
+case $n=3$, equations of the form
+\begin{align*}
+	f(x) = x^3 + a_2 x^2 + a_1 x + a_0 = 0
+\end{align*}
+again completion of the square. In details this goes like this
+\begin{align*}
+	x^3 + a_2 x^2 &= -a_1 x - a_0\\
+	\intertext{rewrite to}
+	\brackets{x+\frac{a_2}{3}}^3 &= \frac{a^2_2}{3}x + \frac{a_2^3}{27} - a_1 x + a_0 = \brackets{\frac{a^2_2}{3} - a_1}x + \frac{a_2^3}{27} -a_0
+	\intertext{Set $y= x+\sfrac{a_2}{3}$, we obtain}
+	y^3 = \brackets{\frac{a_2^2}{3}-a_1}\brackets{y- \frac{a_2}{3}} + \frac{a_2^3}{27} - a_0 &= \brackets{\frac{a_2^2}{3} - a_1}y - \frac{2a_2^3}{27} + x+\frac{a_1 a_2}{3} -a_0.
+\end{align*}
+we can substitue: $p = a_1 - \sfrac{a_2}{3} \nd q = a_0 - \sfrac{a_1 a_2}{3} + \sfrac{2a_2^3}{27}$, we arrive at
+\begin{align*}
+	y^3 + py + q = 0.
+\end{align*}
+This we arrive at \begriff{Tschirnhaus transformation}. still todo
+\subsection{Quartic equation}
+%TODO still to finish here!
