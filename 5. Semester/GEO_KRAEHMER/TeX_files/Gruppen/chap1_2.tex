@@ -1,4 +1,4 @@
-﻿\section{Permutationsdarstellungen und Gruppenoperationen}
+\section{Permutationsdarstellungen und Gruppenoperationen}
 \subsection*{Allgemeines}
 Motivation: $H < G \implies \lnkset{G}{H}$\\
 Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}yg$ $\Leftrightarrow \exists h \in G\colon x = hyh^{-1}$
@@ -121,8 +121,8 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 	\end{align*}
 	Dann ist $\sim$ eine Äquivalenzrelation.
 \end{lemma}
-\begin{proof}
-	\begin{itemize}
+\begin{proof} Wir müssen die drei Eigenschaften der Äquivalenzrelation $\sim$ zeigen
+	\begin{enumeration}
 		\item $x \sim x$, da $x = 1 \cdot x$
 		\item $x \sim y \implies y \sim x$, da
 		\begin{align*}
@@ -134,7 +134,8 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\begin{align*}
 			y = g\cdot x \und z = h \cdot y \implies z = h(g\cdot x) = (hg)\cdot x
 		\end{align*}
-	\end{itemize}
+	\end{enumeration}
+	Dann definiert $\sim$ eine Äquivalenzrelation auf $X$.
 \end{proof}
 \begin{definition}
 	\begin{itemize}
@@ -152,14 +153,13 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 		\item Translation: $a \in \C\setminus \set{0}$ und $\forall \lambda \in \R, z \in \C\colon \lambda \cdot z := z + \lambda a$ (nicht transitiv). Ist \emph{treu}, da
 		\begin{align*}
 			\forall \lambda_1, \lambda_2 \in \R, z \in \C\colon &z + \lambda_1 a = z + \lambda_2 a\\
-			&\Leftrightarrow z + \lambda_1 a = z + \lambda_2 a\\
+			\Leftrightarrow z + \lambda_1 a = z + \lambda_2 a\\
 			&\Leftrightarrow (\lambda_1-\lambda_2)a = 0\\
 			&\Leftrightarrow \lambda_1 = \lambda_2
 		\end{align*}
 		\item Drehungen: $\forall \lambda \in \R, z \in \C$ und damit $\lambda \cdot z = e^{2\pi\ii \lambda}z$ (nicht transitiv). Ist \emph{nicht treu}, da 
 		\begin{align*}
-			\forall \lambda \in \R, \forall k \in \Z\colon \lambda \cdot z = (\lambda + k) \cdot z,\\
-			\ker\theta = \Z \implies S^1 = \lnkset{\R}{\Z} \Circlearrowleft \C
+			\forall \lambda \in \R, \forall k \in \Z\colon \lambda \cdot z = (\lambda + k) \cdot z,	\ker\theta = \Z \implies S^1 = \lnkset{\R}{\Z} \Circlearrowleft \C
 		\end{align*}
 	\end{enumerate}
 \end{*example}
@@ -172,11 +172,12 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 	Es gilt $G_x < G$.
 \end{lemma}
 \begin{proof}
-	\begin{itemize}
+	Es sind Untergruppenaxiome zu zeigen:
+	\begin{enumerate}
 		\item $1 \in G_x\colon 1 \cdot x = x$
 		\item $\forall g,h \in G_x \implies h \in G_x$ und $(gh)x = g(hx) = gx = x$
 		\item Sei $g \in G_x \implies g^{-1} \in G_x$: $gx = x \implies g^{-1}(gx) = g^{-1}x$ und damit $x = 1 x = (g^{-1}g)x$
-	\end{itemize}
+	\end{enumerate}
 \end{proof}
 ... additions to previous example is missing, get from florian :(
 \begin{lemma}
@@ -195,17 +196,16 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 \begin{definition}
 	$G \Circlearrowleft X$ ist \begriff{treu} genau dann, wenn
 	\begin{align*}
-	\theta\colon G \to S_X \text{ injektiv}\\
-	\forall g,h \in G \; (\forall x \in X \colon gx = hx) \implies g = h
+	\theta\colon G \to S_X \text{ injektiv}\quad \forall g,h \in G \; (\forall x \in X \colon gx = hx) \implies g = h
 	\end{align*}
 \end{definition}
 \subsection*{Transitive Operationen}
 \begin{definition}
-	\begin{align*}
-		G \Circlearrowleft X \text{ \begriff{transitiv} } \Leftrightarrow \text{ gibt genau eine Bahn}\\
-		&\Leftrightarrow x_0 \in X\quad X = G \cdot x_0\\
-		&\Leftrightarrow \forall x,y \in X\colon \exists g \in G \colon y = gx
-	\end{align*}
+	Sei $G \Circlearrowleft X$ transitiv $\implies$ gibt genau eine Bahn und es sind äquivalent
+	\begin{enumerate}
+		\item $\Leftrightarrow x_0 \in X\quad X = G \cdot x_0$
+		\item $\Leftrightarrow \forall x,y \in X\colon \exists g \in G \colon y = gx$ 
+	\end{enumerate}
 \end{definition}
 \begin{*example}
 	Betrachte 
@@ -248,7 +248,7 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 				\end{align*}
 				\item $\alpha$ injektiv? $\forall g,h \in G\colon \alpha(gx) = \alpha(hx)$. (Gehe die Wohldefiniertheit rückwärts).
 				\item $\alpha$ surjektiv? $\forall g \in G \colon gH = \alpha(gx)$
-				\item Betrachte
+				\item Betrachte das kommutative Diagramm
 				\[
 					\begin{tikzcd}
 					X \arrow[r, "\alpha"] \arrow[d, "g"] & G/H \arrow[d, "g"] \\
@@ -309,13 +309,14 @@ Sei $G \Circlearrowleft X$ und $x \in X$.
 		\item 
 	\end{enumerate}
 \end{proof}
-\begin{theorem}[Bahnen.Stabilisator-Satz]
+\begin{theorem}[Bahnen-Stabilisator-Satz]
+	
 	\begin{align*}
 		G \Circlearrowleft X \implies \forall x \in X\colon \abs{Gx} = [G \colon G_x]
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	Für alle $x \in X$ gilt $G \Circlearrowleft Gx$ transitiv
+	Für alle $x \in X$ gilt $G \Circlearrowleft G x$ transitiv
 	\begin{align*}
 		(G,G_x) \cong (G,\lnkset{G}{G_x}) \quad G\text{-Isomorph}\\
 		\implies \abs{Gx} = \abs{\lnkset{G}{G_x}} = [G \colon G_x].
