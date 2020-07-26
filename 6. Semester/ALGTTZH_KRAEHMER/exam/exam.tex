@@ -1,0 +1,311 @@
+\documentclass[]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{marvosym}
+\usepackage{polynom}
+%\usepackage{pdfpages}
+%\usepackage[locale=DE]{siunitx}
+
+\renewcommand*{\proofname}{proof}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\<}{\trianglelefteq}
+\newcommand{\abs}[1]{\vert #1\vert}
+\DeclareMathOperator{\Mat}{Mat}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}    					% imaginary unit
+\DeclareMathOperator{\MinPol}{MinPol}
+
+%opening
+\title{Exam questions ALGZTH}
+\author{ScyllaHide}
+
+\begin{document}
+
+\maketitle
+
+Let $p \in \N$ prime, $K \subseteq E \subseteq F$ fields, $[E\colon K] < \infty$ and $m \in K[x]$ the minimal polynomial of $\alpha \in E$.
+prove the follwoing claims:
+\begin{itemize}
+	\item[(1A)] \underline{There exists a field with 4 elements.} Add some context, we have $\F_p$ with $p$ prime and field with 4 elements ($2^2$, with $m = 2$) and $\F_2 \subseteq K$ field ext.
+	\begin{proof}[proof]
+		We need $f \in \F_2[x]$ monic, irreducible, degree 2. We find $f = x^2+x+1$, it is irreducible bcs $f(0) = 1 \wedge f(1) = 1$, since $\F_2 = \{0,1\}$! With Theorem 3.13 from lecture we have that
+		\begin{align*}
+			\F_2[x]/ (x^2+x+1)
+		\end{align*} 
+		is a field again and thats our field with 4 elements we claimed above.
+		theorem 3.13:\\
+		
+		Let $ K $ be a field and let $ f(x) \in K[x] $ be a nonconstant polynomial. Then the following conditions are equivalent. 
+		\begin{item}
+			\item[a)] $ f(x) $ is irreducible. 
+			\item[b)] $ K[x]/(f(x)) $ is an integral domain. 
+			\item[c)] $ K[x]/(f(x)) $ is a field.
+		\end{item}
+	\end{proof}
+	\item[(1B)] \underline{$f(x) = x^6 +1 \in \Q[x]$ consists of two irreducible factors.}
+	\begin{proof}[proof]
+		We do polynomial division and find that $f$ is represented by 
+		\[
+			\polylongdiv{(x^6+1)}{(x^2+1)}
+		\]
+		now we need to show that these are both irreducible.
+		\begin{itemize}
+			\item The polynomial $f(x)$ is irreducible if and only if $f(x+1)$ is irreducible. But in your case,
+			$f(x+1)=(x+1)2+1=x2+2x+2$
+			is irreducible by EISENSTEIN's criterion (with $p=2$.)
+			\item here we can substitute with $z = x^2$ and get $z^2+z-1 = 0$ use $p-q$-formula
+			\begin{align*}
+				x_{1/2} = - p/2 \pm \sqrt{p^4/2 - q}
+			\end{align*}
+			we can see that here the sqrt-term is complex, this holds even if we sub back in.
+		\end{itemize}
+		this will give us the desired result.
+	\end{proof}
+	\item[(2A)] \underline{GAUSS's Lemma}: % f(x) needs to be nonconstant, see wiki and fehm script.
+		% https://en.wikipedia.org/wiki/Gauss%27s_lemma_(polynomial)
+		Let $ f(x) $ be non-constant. Let  $f(x) \in \Z[x] $ be irreducible over $ \Z $. Then $ f(x) $ is also irreducible over $ \Q $. 
+	\begin{proof}[proof]
+		Assume that $ f(x) = g(x) h(x) $ for some polynomials $ g(x), h(x) \in \mathbb{Q}[x] $ of smaller degree. 
+		Multiplying both sides by the product of all denominators of the coefficients of $ g(x) $ and $ h(x) $ we can write 
+		$ n f(x) = g'(x) h'(x) $ where now 
+		$ g'(x), h'(x) \in \Z[x] $.
+		
+		We now inductively cancel out prime factors of $n$: 
+		let $ p $ be a prime factor of $ n $. 
+		We claim that if we write 
+		$$
+		g'(x) = g_0 + g_1 x + \cdots g_r x^r, \qquad 
+		h'(x) = h_0 + h_1 x + \cdots h_s x^s
+		$$ 
+		then $ p $ divides all coefficients $ g_i $ or 
+		all coefficients $ h_j $. To prove this assume that 
+		the assertion is wrong. Then there exist smallest values 
+		$ i $ and $ j $ such that 
+		$ p $ does neither divide $ g_i $ nor $ h_j $. However, since $ p $ divides all coefficients of $ n f(x) = g'(x) h'(x) $ 
+		we know that $ p $ divides the coefficient of $ x^{i + j} $ in $ g'(x) h'(x) $, which is given by 
+		$$
+		g_0 h_{i + j} + g_1 h_{i + j - 1} + \cdots + g_i h_j + \cdots g_{i + j} h_0. 
+		$$
+		By our choice of $ i $ and $ j $, the prime $ p $ divides every term in this expression except $ g_i h_j $. 
+		This is a contradiction to the fact that the entire sum is divisible by $ p $. 
+		
+		We may therefore assume without loss of generality that $ p $ divides all coefficients of $ g'(x) $. 
+		Hence we can write $ g'(x) = p g''(x) $ where $ g''(x) $ is again contained in $ \Z[x] $. 
+		We may now divide the equation $ n f(x) = p g''(x) h'(x) $ by $ p $, and still remain within 
+		$ \Z[x] $. Proceeding in this way we see that we can factorise $ f(x) $ over $ \Z[x] $.
+	\end{proof}
+	\begin{proof}[proof sketch]
+		%TODO
+	\end{proof}
+	\item[(2B)] EISENSTEIN Let 
+	$$ 
+	f(x) = a_n x^n + a_{n - 1}x^{n - 1} + \cdots + a_1 x + a_0 \in \mathbb{Z}[x] 
+	$$ 
+	be a polynomial with integer coefficients. Assume that there exists a prime $ p \in \mathbb{N} $ 
+	such that 
+	\begin{item} 
+		\item[a)] $ a_0, a_1, \dots a_{n - 1} $ are divisible by $ p $. 
+		\item[b)] $ a_n $ is not divisible by $ p $. 
+		\item[c)] $ a_0 $ is not divisible by $ p^2 $. 
+	\end{item} 
+	Then $ f(x) $ is irreducible over $ \mathbb{Q} $. 
+	\begin{proof}[proof]
+		Due to GAUSS Lemma it 
+		suffices to show that $ f(x) $ is irreducible over $ \mathbb{Z} $. To prove 
+		this, assume that $ f(x) = g(x) h(x) $ where 
+		$$
+		g(x) = g_0 + g_1 x + \cdots g_r x^r, \qquad h(x) = h_0 + h_1 x + \cdots h_s x^s
+		$$ 
+		are polynomials in $ \mathbb{Z}[x] $ of degree smaller than $ \deg(f(x)) $. Then clearly $ r, s \geq 1 $ and 
+		$ r + s = n $. Now $ g_0 h_0 = a_0 $ and 
+		i%$g_0 h_1+ g_1 h_0 = a_1$ and 
+		using
+		assumptions $ a) $ and $ c) $ we see that $ p $ divides 
+		precisely one of $ g_0 $ and $ h_0 $. 
+		Without loss of generality let us assume that $ p $
+		divides $ g_0 $ but not $h_0$. 
+		If all coeffients $ g_i $ were divisible by $ p $ then $ a_n $ would be divisible by $ p $, which 
+		contradicts assumption $ b) $. Hence there exists a smallest 
+		index $ j < n $ such that $ g_j $ is 
+		not divisible by $ p $. Observe that  
+		$$
+		a_j = g_0 h_j + g_1 h_{j - 1} + \cdots + g_j h_0 
+		\Rightarrow 
+		g_j h_0 = 
+		-g_0 h_j - g_1 h_{j - 1} - \cdots - g_{j-1} h_1 +
+		a_j
+		$$
+		is divisible by $ p $ due to $ a) $, so since $g_j$ is
+		not divisble by $p$, 
+		$ h_0 $ is divisible by $ p $, 
+		which contradicts our previous observation that only
+		one of $g_0,h_0$ is divisible by $p$. 
+	\end{proof}
+	\begin{proof}[proof sketch]
+		%TODO
+	\end{proof}
+	\item[(3A)] Tower-law: $[F \colon K] = [F\colon E][E\colon K]$. Let $ K \subset E \subset F $ be field extensions. If $ F|E $ and $ E|K $ are finite then $ F|K $ is finite and 
+	$$
+	[F:K] = [F:E][E:K]. 
+	$$
+	Moreover $ [F:K] $ is infinite iff $ [F:E] $ or $ [E:K] $ is infinite.  
+\begin{proof}[proof]
+	Assume first that $ F|E $ and $ E|K $ are finite. Let $ \alpha_1, \dots, \alpha_m $ be a $ K $-basis of $ E $ 
+	and let $ \beta_1, \dots, \beta_n $ be an $ E $-basis of $ F $. Then the elements $ \alpha_i \beta_j $ for $ 1 \leq i \leq m $ 
+	and $ 1 \leq j \leq n $ form a $ K $-basis of $ F $. Indeed, every element $ \gamma $ of $ F $ can be written as a linear combination 
+	$$
+	\gamma = \sum_{j = 1}^n \lambda_j \beta_j
+	$$
+	where $ \lambda_j \in E $ for every $ j $. Therefore we can write 
+	$$
+	\lambda_j = \sum_{i = 1}^m \mu_{ij} \alpha_i
+	$$
+	for uniquely determined elements $ \mu_{ij} \in K $, and we obtain 
+	$$
+	\gamma = \sum_{j = 1}^n \sum_{i = 1}^m \mu_{ij} \alpha_i \beta_j. 
+	$$
+	This shows that the vectors $ \alpha_i \beta_j $ form a generating set for $ F $ as a $ K $-vector space. 
+	
+	Now assume that 
+	$$
+	\sum_{j = 1}^n \sum_{i = 1}^m \mu_{ij} \alpha_i \beta_j = 0 
+	$$
+	for some coefficients $ \mu_{ij} \in K $. Since the $ \beta_j $ form an $ E $-basis of $ F $ we conclude 
+	$$
+	\sum_{i = 1}^m \mu_{ij} \alpha_i = 0 
+	$$
+	for all $ j = 1, \dots, n $. Since the $ \alpha_i $ form a $ K $-basis of $ E $ it follows that $ \mu_{ij} = 0 $ 
+	for all $ i, j $. This means that the vectors $ \alpha_i \beta_j $ are linearly independent.
+	
+	The same arguments work with minor modifications if $ F|E $ or $ E|K $ are infinite. In particular, we obtain 
+	a $ K $-basis of infinite length for $ F $ if one of $ [E:F] $ or $ [E:K] $ are infinite.
+\end{proof}
+	\begin{proof}[proof sketch]
+		test 
+	\end{proof}
+	\item[(3B)] $[F\colon K] = p$, then $F|K$ simple.
+		%https://math.stackexchange.com/questions/1325156/field-extension-of-prime-degree
+		see link ...
+	\item[(4A)] minimal polynomial of $\exp(\ii \pi/4) \in \C$ over $\Q$ is $x^4+1$.
+	\begin{proof}[solution]
+		okay when we take $\exp(\ii \pi/4) \in \C$, we find it is a root of $x^4+1$, it is irreducible when we take a look at the automorphisms $f(x+1) = (x+1)^4 + 1 = x^4+4x^3+6x^2+4x +2$, so use EISENSTEIN for $p=2$, there u gooooo!
+		
+		why is this an autmorphism? well we can use the universal property of polynomial rings. %TODO add here
+	\end{proof}
+	\item[(4B)] $\Z_p$ is splitting field of $x^p - x \in \Z[x]$.
+	\begin{proof}[proof]
+		
+	\end{proof}
+	\item[(5A)] $\Q(\sqrt{2} + \sqrt{3}) \cong \Q(\sqrt{2},\sqrt{3})$.
+	\begin{proof}[proof]
+		\begin{itemize}
+			\item $\Q(\sqrt{2} + \sqrt{3}) \subseteq \Q(\sqrt{2},\sqrt{3})$:
+			$\Q$ conjugate of $\sqrt{2}\colon \MinPol(\sqrt{2} \mid \Q) = x^2-2$ and $\alpha_1 = -\sqrt{2} \wedge \alpha_2 = \sqrt{2}$\\
+			$\Q$ conjugate of $\sqrt{3}\colon \MinPol(\sqrt{2} \mid \Q) = x^2-3$ and $\alpha_1 = -\sqrt{3} \wedge \alpha_2 = \sqrt{3}$.
+			then we can construct a
+			\begin{align*}
+				c \neq \frac{\alpha_i - \alpha}{\beta - \beta_j}
+			\end{align*}
+			such that 
+			\begin{align*}
+				c \notin \{\frac{-\sqrt{2} - \sqrt{2}}{+\sqrt{3} + \sqrt{3}} = -\frac{\sqrt{2}}{\sqrt{3}}, \frac{\sqrt{2} - \sqrt{2}}{\dots} = 0\}
+			\end{align*}
+			so $\gamma = \sqrt{2} + c\sqrt{3} \implies \Q(\sqrt{2}, \sqrt{3}) \overset{(\ast)}{=} \Q(\gamma)$, so $c = 1$!, where we use the primitive element theorem ($\ast$)
+			\item $\Q(\sqrt{2} + \sqrt{3}) \supseteq \Q(\sqrt{2},\sqrt{3})$:
+		    bcs of closure (field property) $(\sqrt{2}+\sqrt{3}) \in \mathbb{Q}(\sqrt{2},\sqrt{3})$.
+		\end{itemize} 
+	\end{proof}
+	\item[(5B)] Is $E = K(\alpha)$, then holds $E \cong K[x]/(m)$.
+	\item[(6A)] some constructible shit ...
+	\item[(6B)] some constructible shit ... :(
+	\item[(7A)] $E|K$ is normal $\Longleftrightarrow E$ is splitting field of $f \in K[x]$. prop 5.13
+	\begin{proof}[proof]
+		$ a) \Rightarrow b) $ Since $ E|K $ is finite we can write $ E = K(\alpha_1, \dots, \alpha_n) $ for some elements 
+		$ \alpha_1, \dots, \alpha_n \in E $. If $ f_j(x) $ is the minimal polynomial of $ \alpha_j $ then $ f_j(x) $ splits 
+		over $ E $ into linear factors by normality. We
+		conclude that $ E|K $ is the splitting field of $ f(x)
+		= f_1(x) f_2(x) \cdots f_n(x) $. 
+		
+		$ b) \Rightarrow a) $ Assume that $ E $ is the splitting field of $ f(x) \in K[x] $. Let $ g(x) \in K[x] $ be any irreducible polynomial 
+		with a zero in $ E $. We have to show that $ g(x) $ splits in $ E[x] $. To this end let $ F $ be a splitting field of $ f(x) g(x) $ 
+		such that $ E \subset F $ (e.g.~view 
+		$g(x)$ as an element of $E[x]$ and adjoin the zeros of
+		$g(x)$ in an algebraic closure $\bar E$ to $E$). Moreover let $ \beta_1,
+		\beta_2 \in F $ be zeros of $ g(x) $. We claim that 
+		\begin{equation} \label{normeq1}
+		[E(\beta_1): E] = [E(\beta_2): E]. 
+		\end{equation}
+		This is proved as follows. Consider the towers of fields 
+		\begin{align*}
+		K &\subset K(\beta_1) \subset E(\beta_1) \subset F \\
+		K &\subset K(\beta_2) \subset E(\beta_2) \subset F.  
+		\end{align*}
+		For $ j = 1,2 $ we have 
+		\begin{equation} \label{normeq2}
+		[E(\beta_j): E][E: K] = [E(\beta_j): K] = [E(\beta_j): K(\beta_j)][K(\beta_j): K].
+		\end{equation}
+		Since $ g(x) \in K[x] $ is irreducible we have a $ K
+		$-isomorphism $ K(\beta_1) \cong K(\beta_2) $ according
+		to Corollary \ref{simpleextcor}, in particular 
+		\begin{equation} \label{normeq3}
+		[K(\beta_1): K] = [K(\beta_2): K]. 
+		\end{equation}
+		Now $ E(\beta_j) $ is the splitting field of $ f(x) $
+		over $ K(\beta_j) $, and by Theorem \ref{splittingfieldiso} we conclude that 
+		$ E(\beta_1) \cong E(\beta_2) $ and 
+		\begin{equation} \label{normeq4}
+		[E(\beta_1): K(\beta_1)] = [E(\beta_2): K(\beta_2)]. 
+		\end{equation}
+		Combining equations (\ref{normeq4}), (\ref{normeq2}) and (\ref{normeq3}) we obtain equation (\ref{normeq1}) as desired. 
+		
+		Now if $ \beta_1 \in E $ then $ E(\beta_1) = E $ and therefore $ [E(\beta_1): E] = 1 $. By our above considerations we deduce
+		$ [E(\beta_2): E] = 1 $, which in turn means $ \beta_2 \in E $. That is, if $ g(x) $ has a zero in $ E $ then 
+		every other zero of $ g(x) $ will be contained in $ E $ as well. This means that $ E|K $ is normal.
+	\end{proof}
+	\item[(7B)] primitive element theorem. (use FEHM version here!)
+	Let $ E|K $ be a finite separable extension ($[K\colon E] < \infty$). Then there exists $ \alpha \in E $ such that $ E = K(\alpha) $.
+	\begin{proof}[proof]
+		It is enuff $E = K(\alpha, \beta)$ with $\beta$ separable over $K$ to consider. Let $\alpha = \alpha_1, \dots, \alpha_n$ and $\beta = \beta_1, \dots, \beta_m$ the $K$ conjugated of $\alpha$ and $\beta$. Because $K$ is infinite can we find a $c \in K$ with 
+		\begin{align*}
+		content...
+		\end{align*}
+		todo
+%		Es genügt, L = K(α,β) mit β separabel über K zu betrachten. Seien α =
+%		α 1 ,...,α n und β = β 1 ,...,β m die K-Konjugierten von α bzw. β. Da K unendlich ist,
+%		können wir c ∈ K mit c 6=
+%		α i −α
+%		β−β j
+%		für i = 1,...,n;j = 2,...,m wählen. Mit γ := α+cβ, f =
+%		MinPol(α|K), g := MinPol(β|K) und h := MinPol(β|K(γ)) haben g(X) und f(γ − cX)
+%		nur β als gemeinsame Nullstelle, woraus man mit der Separabilität von β dann deg(h) = 1
+%		schließt. Es folgt, dass L = K(γ).
+	\end{proof}
+	\item[(8A)] The galois group of $x^4 +1 \in \Q[x]$ is $\Z_2 \times \Z_2$ 
+	\item[(8B)] Lemma 7.15 from lecture notes
+\end{itemize}
+
+list of of important definitions and shit:
+\begin{itemize}
+	\item polynomial
+	\item irreducible
+	\item degree of field extension
+	\item minimal polynomial and splitting field
+	\item simple field extension
+	\item $n$- labllabl
+	\item normal and separable field extension
+	\item galois extension and galois group / might add galois correspondence here.
+\end{itemize}
+
+\end{document}
