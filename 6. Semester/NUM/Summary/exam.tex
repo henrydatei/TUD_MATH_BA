@@ -1,0 +1,116 @@
+\documentclass[]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{marvosym}
+\usepackage{polynom}
+%\usepackage{pdfpages}
+%\usepackage[locale=DE]{siunitx}
+
+\renewcommand*{\proofname}{proof}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\<}{\trianglelefteq}
+\newcommand{\abs}[1]{\vert #1\vert}
+\newcommand{\norm}[2]{\Vert #1 \Vert_{#2}}
+\DeclareMathOperator{\Mat}{Mat}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}    					% imaginary unit
+\DeclareMathOperator{\MinPol}{MinPol}
+\DeclareMathOperator{\Aut}{Aut}
+
+%opening
+\title{Summary Numerics (II)}
+\author{ScyllaHide}
+
+\begin{document}
+
+\maketitle
+
+Let $A \in \Mat(n,\F)$, where we have most of the time $\F = \R$ or sometimes $\C$. We are in $n$-dimensional vector space $V$ over a field $\F$.
+
+\section*{properties of matrices}
+\begin{itemize}
+	\item diagonal dominant? strict diagonal dominant
+	\item symmetric positive definit
+	\item symmetric, orthogonal, unitary
+	\item not singulary, regulary matrix?
+	\item spectral radius of a metrix $\rho(A) = ?$
+	\item 
+\end{itemize}
+
+\section*{norms of matrices}
+\begin{itemize}
+	\item column-norm, row-norm and supremum-norm, max-norm, $\norm{A}{\infty}$
+	\item 
+\end{itemize}
+
+\section*{GAUSS-SEIDEL-method}
+\begin{itemize}
+	\item when can we use it?\\ Well when the diag-elements of the matrix $A$ are $\neq 0$!!!
+	\item How looks the algo?\\
+\end{itemize}
+
+\section*{JACOBI-method}
+\begin{itemize}
+	\item when can we use it?\\
+	\item how looks the algo?\\
+\end{itemize}
+
+\section*{CG-method}
+what is it? KYRLOV-space?
+\begin{itemize}
+	\item when can we use it?\\
+	\item how looks the algo?\\
+\end{itemize}
+
+\section*{What r interation matrices?}
+blabla?
+
+\section*{EULER-method for a ODE?}
+probably better to have an example here?
+\begin{itemize}
+	\item when can we use it?\\
+	\item how looks the algo?\\
+\end{itemize}
+
+\section*{Linear-step-method (Mehrschrittverfahren)}
+What is important here? consistency order
+\begin{itemize}
+	\item when can we use it?\\
+	\item how looks the algo?\\
+\end{itemize}
+
+\section*{RUNGE-KUTTA-method}
+What is important here? consistency order
+\begin{itemize}
+	\item when can we use it?\\
+	\item how looks the algo?\\
+\end{itemize}
+
+convergence of the methods? (like GS, CG, JACOBI, RK)?
+
+\section*{Analytic Sh!t to know}
+\begin{itemize}
+	\item TAYLOR-exp
+	\item IVT
+	\item ROLLE
+	\item PICARD und LINDELOEF
+	\item continuity, $L$-contunity
+	\item BANACH-fix point theorem
+	\item consistency order
+	\item 
+\end{itemize}
+
+
+\end{document}
