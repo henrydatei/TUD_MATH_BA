@@ -16,6 +16,7 @@
 \renewcommand*{\proofname}{proof}
 
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
@@ -25,6 +26,11 @@
 \newcommand{\abs}[1]{\vert #1\vert}
 \newcommand{\norm}[2]{\Vert #1 \Vert_{#2}}
 \DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\cond}{cond}
+
 \newcommand{\ii}{\mathrm{i}\mkern1mu}    					% imaginary unit
 \DeclareMathOperator{\MinPol}{MinPol}
 \DeclareMathOperator{\Aut}{Aut}
@@ -37,15 +43,33 @@
 
 \maketitle
 
-Let $A \in \Mat(n,\F)$, where we have most of the time $\F = \R$ or sometimes $\C$. We are in $n$-dimensional vector space $V$ over a field $\F$.
+\section*{Disclaimer}
+This document is very informal and may even contain very bad errors, it is just a way to prepare for the NUM exam in summer term 2020.\\
+
+Let $A \in \GL(n,\F)$, where we have most of the time $\F = \R$ or sometimes $\C$. We are in $n$-dimensional vector space $V$ over a field $\F$.
 
 \section*{properties of matrices}
+for here: $A = (a_{ij}) \in \Mat(n,\R)$.
 \begin{itemize}
-	\item diagonal dominant? strict diagonal dominant
-	\item symmetric positive definit
-	\item symmetric, orthogonal, unitary
+	\item diagonal dominant($\ge$)? strict diagonal dominant ($>$),
+	\begin{align*}
+		\abs{a_{ii}} \overset{>}{\ge} \sum_{\stackrel{j=1}{j\neq i}}^n \abs{a_{ij}}
+	\end{align*}
+	\item positive definit
+	\begin{align*}
+		x^T Ax > 0 \quad \forall 0\neq x \in \R^n
+	\end{align*}
+	\item orthogonal, symmetric, unitary
+	\begin{itemize}
+		\item $Q \in \GL(n,\R,\C), Q^T Q = Q Q^T = I$ implies $Q^T = Q^{-1}$ and unitary: $Q^{-1} = Q^{\ast}$, $\det$ is $\pm 1$. ohh orthogonal matrices preserve the inner product, act as isometry on $\EE^n$
+		\item okay symmetric is easy:
+		\begin{align*}
+			\dots
+		\end{align*}
+	\end{itemize}
 	\item not singulary, regulary matrix?
-	\item spectral radius of a metrix $\rho(A) = ?$
+	okay if A singulary, then $A \notin \GL(n,\F)$, but in $\Mat(n, \F)$, so $A$ is invertible in the ring $\Mat$.
+	\item spectral radius of a matrix $\rho(A) = ?$
 	\item 
 \end{itemize}
 
@@ -55,33 +79,167 @@ Let $A \in \Mat(n,\F)$, where we have most of the time $\F = \R$ or sometimes $\
 	\item 
 \end{itemize}
 
+What are $L,R,D$ from a matrix $A$?
+$D = \diag(A)$, $L$ lower part of the matrix w/o diag and $R$ upper diagonal part of $A$ 
+
 \section*{GAUSS-SEIDEL-method}
 \begin{itemize}
+	\item Convergence of GS, if $A$ symmetric positive-definite or strctly or irreducibly diagonally dominant (GS-emthods sometimes converge even if theose conditions are not satisfied!)
+	\item iteration matrix: $M_{GS} = -(L+D)^{-1}R$
 	\item when can we use it?\\ Well when the diag-elements of the matrix $A$ are $\neq 0$!!!
-	\item How looks the algo?\\
+	\item How looks the algo? we start with $A,b$ in the form $Ax = b$
+	\begin{enumerate}
+		\item we will use the equation,  
+		\begin{align}
+			x^{k+1} &= L_{\ast}^{-1}(b-Ux) \label{eq_GS1}\tag{GS1}
+			\intertext{which we can reformulate to}
+			x^{k+1} &= Tx^{k} + C \label{eq_GS2}\tag{GS2}
+		\end{align}
+		, where $T = -L_{\ast}^{-1} U$ and $C = L_{\ast}^{-1}b$, remember $L_{\ast}^{-1}$ is $L + D$! and $U$ is strict upper triangle matrix!
+		\item then we can calc $T$ and $C$
+		\item choose $x^{0}$, but thats for sure an initial guess again and given in exam and then we repeat pluging results into the next iteration with \eqref{eq_GS2}. like this
+		\begin{align*}
+			x^0 &= ?\\
+			x^1 &= Tx^0 + C\\
+			x^2 &= Tx^1 + C\\
+			&:
+		\end{align*}
+		\item then we can an approximation $x = A^{-1}b \approx ?$
+	\end{enumerate}
 \end{itemize}
 
 \section*{JACOBI-method}
 \begin{itemize}
-	\item when can we use it?\\
-	\item how looks the algo?\\
+	\item the method converges if the spectral radius is strict smaller then 1! Well this looks like that
+	\begin{align*}
+		\rho(D^{-1}(L+U)) = \rho(G) < 1
+	\end{align*}
+	this condition is only sufficient, but not necessary for the method to converge, the matrix A needs also to be stricty or irreducibly diagonally dominant. this can be checked with row diagonal dominance,
+	\begin{align*}
+		\abs{a_{ii}} > \sum_{j \neq i} \abs{a_{ij}}
+	\end{align*}
+	J-meth sometimes converges even if these conditions are not satisfied. WTF :|
+	Here as a counterexample: the J-meth. doesnt converge for every s.p.d matrix.
+	\begin{align*}
+		\begin{pmatrix}
+			29 & 2 & 1\\
+			2 & 6 & 1\\
+			1&1&1/5
+		\end{pmatrix} \implies G =
+		\begin{pmatrix}
+			0 & 2/29 & 1/29\\
+			1/3 & 0 & 1/6\\
+			5&5&0
+		\end{pmatrix} \implies \rho(G)\approx 1.0661.
+	\end{align*}
+	\item iteration matrix: $M_J = -D^{-1}(L+R)$
+	\item when can we use it?
+	\item how looks the algo?
+	\begin{enumerate}
+		\item we have again $A,b$ with an initial guess $x^0$
+		\item use the equation
+		\begin{align}
+			x^{k+1} = D^{-1}(b-(L+U)x^k) \label{eq_J1}\tag{J1}
+			\intertext{lets rewrite}
+			D^{-1}(b-(L+U)x^k) = Tx^k + C \label{eq_J2}\tag{J2}
+		\end{align}
+		where $T = - D^{-1}(L+U)$ and $C = D^{-1}b$, $L,U$ are strict lower/upper triangle matrices
+		\item then we can start iterating with $T,C$ calced
+		\begin{align*}
+			x^0 &= ?\\
+			x^1 &= Tx^0 + C\\
+			x^2 &= Tx^1 + C
+		\end{align*}
+		this will be repeated until $\norm{A x^n - b}{} < \epsilon$, some small enuff $\epsilon > 0$.
+	\end{enumerate}
 \end{itemize}
 
 \section*{CG-method}
 what is it? KYRLOV-space?
 \begin{itemize}
-	\item when can we use it?\\
-	\item how looks the algo?\\
+	\item when can we use it? /convergence
+	\begin{itemize}
+		\item The conjugate gradient method can theoretically be viewed as a direct method, as it produces the exact solution after a finite number of iterations, which is not larger than the size of the matrix, in the absence of round-off error. However, the conjugate gradient method is unstable with respect to even small perturbations, e.g., most directions are not in practice conjugate, and the exact solution is never obtained. Fortunately, the conjugate gradient method can be used as an iterative method as it provides monotonically improving approximations $x_k$ to the exact solution, which may reach the required tolerance after a relatively small (compared to the problem size) number of iterations.
+		The improvement is typically linear and its speed is determined by the condition number $\kappa(A)$ of the system matrix $A$ the larger $\kappa(A)$ is, the slower the improvement.\\
+		If $\kappa (A)$ is large, preconditioning is used to replace the original system $Ax-b = 0$ with $M^{-1}(Ax-b)= 0)$ such that $\kappa(M^{-1}A) < \kappa(A)$.
+		remind, preconditioning, there exists a matrix $P$, such that $P^{-1}A$ is smaller than $A$'s condition number, let us remind on conditioning ($A \in GL(n,\R)$) 
+		\begin{align*}
+			\cond(A) := \norm{A}{}\norm{A^{-1}}{}
+		\end{align*}
+		with a good norm, well row, column, matrix norm should work, remmember, we are finite dim, all norms are equivalent!! Also $r^T_i r_j = \delta_{ij}$ and $p_i^T A p_j = 0$ for $i \neq j$. 
+	\end{itemize}
+	\item how looks the algo? okay thats a 2 iterations example, so $n = 2$. %see https://en.wikipedia.org/wiki/Conjugate_gradient_method#Solution
+	\begin{enumerate}
+		\item the system we want to solve looks like that:
+		\begin{align*}
+			Ax = b \text{ with an initial guess } x_0 = ?
+		\end{align*}
+		\item on this base we can calc $r_0$, this loks like this
+		\begin{align*}
+			Ax_0 - b = r_0
+		\end{align*}
+		\item the next step will scale the shit
+		\begin{align*}
+			\alpha_0 = \frac{r^T_0 r_0}{r_0^T A r_0}
+		\end{align*}
+		at this part it isnt clear how i can find $p_0$? well they renamed it, so $r_0 = p_0$ for whatever reason, probably for later, when we scale stuff? %TODO find out
+		\item calc $x_1$, the next point
+		\begin{align*}
+			x_1 = x_0 + \alpha_0 p_0
+		\end{align*}
+		\item now can get the next $r_1$
+		\begin{align*}
+			r_1 = r_0 - \alpha_0 A p_0
+		\end{align*}
+		\item another scaling
+		\begin{align*}
+			\beta_0 = \frac{r_1^T r_1}{r^T r_0}
+		\end{align*}
+		\item and again we calc $p_1$
+		\begin{align*}
+			p_1 = r_1 + \beta_0 r_1
+		\end{align*}
+		\item scale the shit again
+		\begin{align*}
+			\alpha_1 = \frac{r_1^T r_1}{p_1^T A p_1}
+		\end{align*}
+		\item and we find $x_2$, the same way we found $x_1$
+		\begin{align*}
+			x_2 = x_1 + \alpha_1 p_1
+		\end{align*}
+	\end{enumerate}
 \end{itemize}
 
 \section*{What r interation matrices?}
-blabla?
+see Def 8.1, the matrix $I-CA$ is called iteration matrix of the method.
 
 \section*{EULER-method for a ODE?}
-probably better to have an example here?
+probably better to have an example here? well i guess we could use $y = e^{\lambda x}$ here? with $\lambda \in \R$
 \begin{itemize}
-	\item when can we use it?\\
-	\item how looks the algo?\\
+	\item thast the forward standard EULER, which is not stable. What means nurmerical stable?\\
+	The Euler method can also be numerically unstable, especially for stiff equations, meaning that the numerical solution grows very large for equations where the exact solution does not. check
+	\begin{align*}
+		y' = -2.3y \quad y(0) = 1, \text{ solution is } y = e^{2/3 t}
+	\end{align*}
+	but this decays for $t \to \infty$ to 0, but for $h = 1$, we get an oscillation and grow. For $h = 0.7$ it decays to zero. So okay we might usable values for all step sizes? Naice. Well forward EULER just fails for very stiff equations, eg
+	\item when can we use it?
+	\item how looks the algo?
+	\begin{enumerate}
+		\item we have the problem $y(t) = f(x(t))$ with IV $y(t_0) = x_0$, then we can find a solution to the ODE ;)
+		\item we set a $h$ value, which is the difference between two $t$ values, like $h = t_j - t_i$ with $i< j \in \N$, then we find the formula
+		\begin{align*}
+			y_{n+1} = y_n + hf(t_n,y_n) \label{eq_euler}\tag{Euler}
+		\end{align*}
+		so then $f(t_0,y_0) = x_0$
+		\item then lets take a look at a few steps, we repeatly throw \eqref{eq_euler} into, thats why EULER-meth is a special case of RUNGE-KUTTA method
+		\begin{align*}
+			y_1 &= y_0 +hf(y_0)\\
+			y_2 & = y_1 + hf(y_1)\\
+			y_3 &= y_2 + hf(y_2)\\
+			&: 
+		\end{align*}
+	\end{enumerate}
+	\item how can i calc the consistency order of EULER? what is the consistency order in general? maybe helpful for RK-methods in general?
 \end{itemize}
 
 \section*{Linear-step-method (Mehrschrittverfahren)}
@@ -102,15 +260,31 @@ convergence of the methods? (like GS, CG, JACOBI, RK)?
 
 \section*{Analytic Sh!t to know}
 \begin{itemize}
-	\item TAYLOR-exp
-	\item IVT
-	\item ROLLE
-	\item PICARD und LINDELOEF
+	\item TAYLOR-exp, Let $f \in C^{\infty}(\R)$ in $a$, then we have the power series
+	\begin{align*}
+		\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n \quad \text{with } (x-a)^0 \wedge 0! = 1!
+	\end{align*}
+	we can simplify by $a=0$, then we have only
+	\begin{align*}
+		\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}x \quad \text{with } (x-a)^0 \wedge 0! = 1!
+	\end{align*}
+	\item IVT, $I = [a,b] \subset \R$, $f \in C^0(I,\R) \implies$
+	\begin{align*}
+		f(a) < u < f(b), \min\{f(a), f(b)\} < u <\max\{f(a),f(b)\}
+	\end{align*}
+	then there is a $c \in (a,b) \colon f(c) = u$
+	\item ROLLE real valued function $f \in C^0([a,b],\R)$ diff on $(a,b), f(a) = f(b)$ $\implies \exists$ atleast one $c \in (a,b)$, $f'(c) = 0$.
 	\item continuity, $L$-contunity
+	\item PICARD und LINDELOEF: 
+	
 	\item BANACH-fix point theorem
 	\item consistency order
 	\item 
 \end{itemize}
 
+\section*{WOLFRAMALPHA stuff}
+\begin{itemize}
+	\item \texttt{characteristic polynomial {{1, -5, 8}, {1, -2, 1}, {2, -1, -5}}} solves and gives u the $\chi_A$!
+\end{itemize}
 
 \end{document}
