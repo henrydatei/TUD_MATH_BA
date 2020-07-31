@@ -69,7 +69,7 @@ for here: $A = (a_{ij}) \in \Mat(n,\R)$.
 	\end{itemize}
 	\item not singulary, regulary matrix?
 	okay if A singulary, then $A \notin \GL(n,\F)$, but in $\Mat(n, \F)$, so $A$ is invertible in the ring $\Mat$.
-	\item spectral radius of a matrix $\rho(A) = ?$
+	\item spectral radius of a matrix $\rho(A) = ?$ looks like the maximum of the abs. values of the eigentvalues of matrix $A$
 	\item 
 \end{itemize}
 
@@ -79,12 +79,24 @@ for here: $A = (a_{ij}) \in \Mat(n,\R)$.
 	\item 
 \end{itemize}
 
+\section*{consistency order}
+thats a local property and only stuff like RK has it.
+\begin{itemize}
+	\item what is it? how its defined? example?
+\end{itemize}
+
+\section*{convergence of methods in general}
+all methods do have this property, its a global prop. maybe list proof sketches for the methods here?
+\begin{itemize}
+	\item ...
+\end{itemize}
+
 What are $L,R,D$ from a matrix $A$?
 $D = \diag(A)$, $L$ lower part of the matrix w/o diag and $R$ upper diagonal part of $A$ 
 
 \section*{GAUSS-SEIDEL-method}
 \begin{itemize}
-	\item Convergence of GS, if $A$ symmetric positive-definite or strctly or irreducibly diagonally dominant (GS-emthods sometimes converge even if theose conditions are not satisfied!)
+	\item Convergence of GS, if $A$ symmetric positive-definite or strictly or irreducibly diagonally dominant (GS-methods sometimes converge even if theose conditions are not satisfied!) or if the diag-elements are not 0!
 	\item iteration matrix: $M_{GS} = -(L+D)^{-1}R$
 	\item when can we use it?\\ Well when the diag-elements of the matrix $A$ are $\neq 0$!!!
 	\item How looks the algo? we start with $A,b$ in the form $Ax = b$
@@ -114,7 +126,7 @@ $D = \diag(A)$, $L$ lower part of the matrix w/o diag and $R$ upper diagonal par
 	\begin{align*}
 		\rho(D^{-1}(L+U)) = \rho(G) < 1
 	\end{align*}
-	this condition is only sufficient, but not necessary for the method to converge, the matrix A needs also to be stricty or irreducibly diagonally dominant. this can be checked with row diagonal dominance,
+	this condition is only sufficient, but not necessary for the method to converge, the matrix A needs also to be strictly or irreducibly diagonally dominant. this can be checked with row diagonal dominance,
 	\begin{align*}
 		\abs{a_{ii}} > \sum_{j \neq i} \abs{a_{ij}}
 	\end{align*}
@@ -193,7 +205,7 @@ what is it? KYRLOV-space?
 		\end{align*}
 		\item another scaling
 		\begin{align*}
-			\beta_0 = \frac{r_1^T r_1}{r^T r_0}
+			\beta_0 = \frac{r_1^T r_1}{r^T_0 r_0}
 		\end{align*}
 		\item and again we calc $p_1$
 		\begin{align*}
@@ -239,18 +251,18 @@ probably better to have an example here? well i guess we could use $y = e^{\lamb
 			&: 
 		\end{align*}
 	\end{enumerate}
-	\item how can i calc the consistency order of EULER? what is the consistency order in general? maybe helpful for RK-methods in general?
+	\item how can i calc the consistency order of EULER? what is the consistency order in general? maybe helpful for RK-methods in general? see sander script page: 166p, prop 10.5
 \end{itemize}
 
 \section*{Linear-step-method (Mehrschrittverfahren)}
-What is important here? consistency order
+What is important here? consistency order, RK is a special case fo this i guess.
 \begin{itemize}
 	\item when can we use it?\\
 	\item how looks the algo?\\
 \end{itemize}
 
 \section*{RUNGE-KUTTA-method}
-What is important here? consistency order
+What is important here? consistency order(CO), apparently here is some stuff missing about characteristic polynomials, which can help to explain stability for example, also some conditions for CO, i could add, maybe later^^ 
 \begin{itemize}
 	\item when can we use it?\\
 	\item how looks the algo?\\
