@@ -3,7 +3,7 @@ Skript und Aufgaben zu den Vorlesungen **Grundlagen der Analysis** (Prof. Dr. Fr
 
 ![Code size](https://img.shields.io/github/languages/code-size/henrydatei/TUD_MATH_BA.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/henrydatei/TUD_MATH_BA.svg)
-![Lines of Code](https://tokei.rs/b1/github/henrydatei/TUD_MATH_BA?category=code)
+[![](https://tokei.rs/b1/github/henrydatei/TUD_MATH_BA)](https://github.com/XAMPPRocky/tokei)
 
 ### [Fehm] Lineare Algebra und analytische Geometrie (WS2017/18 + SS2018)
 - Aufgabenblätter LAAG 1: [https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k](https://drive.google.com/open?id=1hNMVAKpV9sRSbxDKy5ip1qxs27v6nl_k)
