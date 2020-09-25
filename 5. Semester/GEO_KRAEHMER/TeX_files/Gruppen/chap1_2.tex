@@ -122,19 +122,19 @@ Notation: $x,y \in G$ konjugiert $\Leftrightarrow \exists g \in G \colon g^{-1}y
 	Dann ist $\sim$ eine Äquivalenzrelation.
 \end{lemma}
 \begin{proof} Wir müssen die drei Eigenschaften der Äquivalenzrelation $\sim$ zeigen
-	\begin{enumeration}
+	\begin{enumerate}
 		\item $x \sim x$, da $x = 1 \cdot x$
 		\item $x \sim y \implies y \sim x$, da
 		\begin{align*}
 			y = y\cdot x &\implies g^{-1}y = y^{-1}(gx)\\
-			&\implies g^{-1}y = (g^{-1}y)x\\
-			& \implies g^{-1}y = x
+			&\implies g^{-1} y = (g^{-1}y) x\\
+			& \implies g^{-1} y = x
 		\end{align*}
 		\item $x \sim y$ und $y \sim z \implies x \sim z$, da
 		\begin{align*}
 			y = g\cdot x \und z = h \cdot y \implies z = h(g\cdot x) = (hg)\cdot x
 		\end{align*}
-	\end{enumeration}
+	\end{enumerate}
 	Dann definiert $\sim$ eine Äquivalenzrelation auf $X$.
 \end{proof}
 \begin{definition}
@@ -558,7 +558,7 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	Sei $\abs{G} = p^i q^j$ ($p,q$ Primzahlen). Dann $G$ auflösbar (Auf jeden Fall nicht einfach!!!)
 \end{proposition}
 \begin{proof}
-	to be done ...
+	to be done ... its also very long and well u could make a whole one term lecture on this alone.
 \end{proof}
 \begin{definition}
 	Ist $G$ eine Gruppe und sind $(a,b) \in G^2$, so ist deren \begriff{Kommutator}
@@ -851,5 +851,74 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	Übung $\langle a,b \mid a^2, b^2, ababab\rangle \cong S_3$
 \end{enumerate}
 \section{Exkurs: LIE-Algebra}
+\subsection{Gruppen und ihre Wirkungen in Geometrie und Physik}
+\begin{proposition}
+	Wirkt eine Gruppe $G$ auf eine Menge $X$, so definiert die 
+	\begin{align*}
+		\Abb \colon G/H \to GX \mit gH \to gx
+	\end{align*}
+	einen Isomorphismus von $G$-Mengen.
+\end{proposition}
+Hier ist: $H := \set{g \in G \mid gx = x}$ Stabilisator von $x \in X \leq$\\
+$Gx := \set{gx \mid g \in G}$ Orbit von $x \in X \subseteq X$
+Schauen wir uns dazu ein Beispiel an.
+\begin{example}
+	\begin{itemize}
+		\item Sei $G = \SU(2,\C) = \set{M \in \Mat(2,\C) \mid M\cdot M^{\ast} = \indi, \det M = 1}$, das ist die Spezielle unitäre Gruppe, bei der
+		\begin{align*}
+		M^{-1} = \frac{1}{ad-bc} \cdot \begin{pmatrix}
+		d & -b \\ -c & a
+		\end{pmatrix} = M^{\ast} = \begin{pmatrix}
+		\bar{a} & \bar{b}\\ \bar{c} & \bar{d}
+		\end{pmatrix} \mit \det M = ad - bc = 1
+		\end{align*}
+		Also haben wir $d = \bar{a}, c = -\bar{b}$ und $a\bar{a} + b\bar{b} = 1$, wenn
+		\begin{align*}
+		M = \begin{pmatrix}
+		a & b\\ c & d
+		\end{pmatrix}\\
+		\intertext{Das gibt uns:}
+		\SU(2,\C) = \set{\begin{pmatrix}
+			a & b \\ -\bar{b} & \bar{a}
+			\end{pmatrix}\mid a,b \in \C, \abs{a}^2 + \abs{b}^2 = 1}
+		\end{align*}
+		Nun setzen wir
+		\begin{align*}
+		a = x + \ii y \quad b = z + \ii t \mit x,y,z,t \in \R\\
+		\text{dabei } \abs{a}^2 + \abs{b}^2 = x^2 + y^2 + z^2 + t^2
+		\end{align*}
+		Also ist $\SU(2,\C) \cong S^3 \subseteq\R^4$, die 3-dim Späre aller der Länge 1 im $\R^4$.
+		\item Erinnerung: $S^n \subseteq \R^{n-1}$ ist Einkompaktifizierung des $\R^n$
+		\item stereographische Projektion: $s \colon S^n \setminus \set{(0 \dots 0 1)^T} \to \R^n$ bijektiv ($N$ entspricht unendlich $\notin \R^n$)
+		\item Also ist $\SU(2,\C) \cong S^3$ entspricht $\R^3 \cup \set{\infty}$
+		\item Definiere
+		\begin{align*}
+			H:= \UU(1,\C) = \set{\begin{pmatrix}
+				a & 0 \\ 0 &\bar{a}
+				\end{pmatrix} \mid a = e^{\ii \phi}, \phi \in [a, 2\pi)} \cong S^1
+		\end{align*}
+		Unter stereographischer Projektion wird $H$ die $z$-Achse im $\R^3$
+		\item Wie sieht dann $G/H$ genau aus?
+		\begin{align*}
+			G/H \in gH = \set{gh \mid h \in H}\quad g = \begin{pmatrix}
+			a & b \\ -\bar{b} & \bar{a}
+			\end{pmatrix}\quad h = \begin{pmatrix}
+			e^{\ii \phi} & \\ 0 & e^{-\ii \phi}
+			\end{pmatrix}
+			\intertext{dann ist}
+			gh = \begin{pmatrix}
+				a e^{\ii \phi} & be^{-\ii \phi}\\ -\bar{b}e^{\ii \phi} & \bar{a} e^{-\ii \phi}
+			\end{pmatrix}
+		\end{align*}
+		(In der $xy$-Ebene sieht das Ganze, wie zwei Ladungspunkte($gH,g'H$) aus, die im gleichen Abstand von der $z$-Achse liegen, diese rotieren um die $z$-Achse.) Oder noch genauer $gH$ windet sich um einen solchen Torus in $\R^3$ und durchstößt die Einheitsscheibe $D$ in genau einen Punkt $p$
+		\item Also ist $G/H \cong S^2$. Der innere Punkt $p \in D$ korrespondiert 1:1 zu dein Nebenklassen $gH$ ($p = 0$ entspricht $H$ selbst). Dann gibt es noch den Rand $\delta D$, der eine einzige Nebenklasse $g'H$ bildet, d.h. einen Punkt in $G/H$
+		\begin{align*}
+			G = \SU(2,\C) \cong S^3 \quad H = \UU(1,\C) \cong S^1\\
+			G/H = \SU(2,\C)/\UU(1,\C) \cong S^2
+		\end{align*}
+		Dies kann man verallgemeinern zu Fahnenmannigfaltigkeiten und insbesondere den hermitisch symmetrischen Räumen.
+	\end{itemize}
+\end{example}
+Dies führt zu folgender Idee: $G/H$ (gegebenenfalls mit $G,H$ geeignet $=$ irgendwelche Zusatzeigenschaften wie kompakt, einfach, $\dots$) sind Modelle und fundamentale Beispiele von Geometrien. Das führt auf KLEIN's ERLANGER Programm und BERGEL's Liste.
 %TODO see anna pics
-i will add this, when there is some time left, but it was really extra and relevant for the exam ...
+There is still one picture to tex, which connects to very interesting mathematical physics!
