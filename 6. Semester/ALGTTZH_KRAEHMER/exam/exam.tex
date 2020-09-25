@@ -26,6 +26,7 @@
 \DeclareMathOperator{\Mat}{Mat}
 \newcommand{\ii}{\mathrm{i}\mkern1mu}    					% imaginary unit
 \DeclareMathOperator{\MinPol}{MinPol}
+\DeclareMathOperator{\Aut}{Aut}
 
 %opening
 \title{Exam questions ALGZTH}
@@ -198,6 +199,15 @@ prove the follwoing claims:
 	\item[(3B)] $[F\colon K] = p$, then $F|K$ simple.
 		%https://math.stackexchange.com/questions/1325156/field-extension-of-prime-degree
 		see link ...
+		or just take this one:
+		\begin{proof}[proof]
+			\begin{itemize}
+				\item Let $\alpha \in F\setminus K$, exists bcs $F \subsetneq K$
+				\item $p = [F \colon K(\alpha)][K(\alpha)\colon K] = [F \colon K]$ we have and thats tower law too
+				\item $\alpha \notin K \implies [K(\alpha)\colon K] > 1 \implies [K(\alpha) \colon K] = p$, bcs $p$ prime and $[F \colon K(\alpha)] = 1$
+				\item $\implies F = K(\alpha)$ simple, so we are done.
+			\end{itemize}
+		\end{proof}
 	\item[(4A)] minimal polynomial of $\exp(\ii \pi/4) \in \C$ over $\Q$ is $x^4+1$.
 	\begin{proof}[solution]
 		okay when we take $\exp(\ii \pi/4) \in \C$, we find it is a root of $x^4+1$, it is irreducible when we take a look at the automorphisms $f(x+1) = (x+1)^4 + 1 = x^4+4x^3+6x^2+4x +2$, so use EISENSTEIN for $p=2$, there u gooooo!
@@ -228,8 +238,9 @@ prove the follwoing claims:
 		\end{itemize} 
 	\end{proof}
 	\item[(5B)] Is $E = K(\alpha)$, then holds $E \cong K[x]/(m)$.
-	\item[(6A)] some constructible shit ...
-	\item[(6B)] some constructible shit ... :(
+	\item[(6A) \& (6B)] regular n-gon, is constructable if and only if $n = 2^k\cdot q$ with $q = 1$ or is a product of fermat prime numbers, 8 is one and 11 nawwwwtttt. thats probably Bullshit, i will fix later lol or like that: \\
+	
+	Was erzählst du Uli denn, wenn er nach der Nichtkonstruierbarkeit eines Elfecks fragt? Mit Gauß-Wantzel ist klar, dass\\ $n=2^k*{Produkt verschiedener Fermat-Primzahlen}$ gelten muss, was nicht erfüllt ist, aber was lässt sich dazu noch sagen?
 	\item[(7A)] $E|K$ is normal $\Longleftrightarrow E$ is splitting field of $f \in K[x]$. prop 5.13
 	\begin{proof}[proof]
 		$ a) \Rightarrow b) $ Since $ E|K $ is finite we can write $ E = K(\alpha_1, \dots, \alpha_n) $ for some elements 
@@ -293,6 +304,9 @@ prove the follwoing claims:
 %		schließt. Es folgt, dass L = K(γ).
 	\end{proof}
 	\item[(8A)] The galois group of $x^4 +1 \in \Q[x]$ is $\Z_2 \times \Z_2$ 
+	\begin{proof}[proof]
+		We know that $K := \Q[x]/(x^4 +1)$ and $K | \Q$ is a galois extension and $\Aut(K |\Q)$ has order 4. After the classification of small groups we can only find that $\Z_4$ and $\Z_2 \times \Z_2$ work. Bcs we map inverses to inverses, the $\Z_2^2$ the klein four group is the right one. and the conjugate roots are not cyclic permutations. (und die konjugierten Wurzeln sind kein zyklische pERMUTATION)
+	\end{proof}
 	\item[(8B)] Lemma 7.15 from lecture notes
 \end{itemize}
 
