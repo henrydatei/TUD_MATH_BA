@@ -734,15 +734,16 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 	\begin{align*}
 		[\Gamma_{i-1}(G),H] \le [\Gamma_{i-1},G] = \Gamma_i(G) \le H
 	\end{align*}
-	zum ersten Term in der Gleichung: von allen $aba^{-1}b^{-1}$ mit $a\in \Gamma_{i-1}(G),b \in H$ erzeugte Untergruppe, also ist $aba^{-1}b^{-1} \in H$ für $a \in \Gamma_{i-1}(G), b \in H$, d.h. $aba^{-1} \in H$ und $\Gamma_{i-1}(G) \le N_G(H)$, $\Gamma_{i-1}(G) \gneq H$.
+	zum ersten Term in der Gleichung: von allen $aba^{-1}b^{-1}$ mit $a\in \Gamma_{i-1}(G),b \in H$ erzeugte Untergruppe, also ist $aba^{-1}b^{-1} \in H$ für $a \in \Gamma_{i-1}(G), b \in H$, d.h. $aba^{-1} \in H$ und $\Gamma_{i-1}(G) \le N_G(H)$, $\Gamma_{i-1}(G) \gneq H$. 
 \end{proof}
 \begin{*example}
-	Sei $B = \set{
-		\begin{pmatrix}
-			x & y\\ 0 & z
-		\end{pmatrix} \mid x,y,z \in K}$, wobei $xz \neq 0$
+	Let
 	\begin{align*}
-		\begin{pmatrix}
+		B &= \set{
+			\begin{pmatrix}
+			x & y\\ 0 & z
+			\end{pmatrix} \mid x,y,z \in K} \mit xz \neq 0
+		&\begin{pmatrix}
 			x & y\\ 0 & z
 		\end{pmatrix}
 		\begin{pmatrix}
@@ -754,7 +755,7 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 		\begin{pmatrix}
 			u & v\\ 0 & w
 		\end{pmatrix}^{-1}\\
-		= \begin{pmatrix}
+		&= \begin{pmatrix}
 		x & y\\ 0 & z
 		\end{pmatrix}
 		\begin{pmatrix}
@@ -768,20 +769,64 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 		\begin{pmatrix}
 			w &-v\\0 & v
 		\end{pmatrix}\\
-		= \begin{pmatrix}
+		&= \begin{pmatrix}
 			1 & \frac{1}{xzuw}(xv + yw - zv - yu)\\
 			0 & 1
-		\end{pmatrix}\\
-	\end{align*}
-	damit ist dann
-	\begin{align*}
-		B' = \set{
+		\end{pmatrix}
+		\intertext{damit ist dann}
+		B' &= \set{
 			\begin{pmatrix}
 				1 & s\\ 0 & 1
 			\end{pmatrix}\mid s \in K}
 	\end{align*}
-	und $B'' = 1$, so $B$ ist solvable. However ... if u need the pictures let me know, i have them, to bored to type it.
-	
+	and $B'' = 1$, so $B$ is solvable.
+	The group $B'$ is isomorphic to the additive group
+	\begin{align*}
+		(k,t,0) \colon s \mapsto \begin{pmatrix}
+		1 & s\\ 0 & 1
+		\end{pmatrix}
+	\end{align*}
+	is an isomorphism,
+	\begin{align*}
+		\begin{pmatrix}
+			1 & s\\ 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 & t\\ 0 & 1
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			1 & s+t\\ 0 & 1
+		\end{pmatrix}
+	\end{align*}
+	in particular, $B'$ is abelian. However
+	\begin{align*}
+		&\begin{pmatrix}
+			1 & s\\ 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+			x & y\\ 0 & z
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 &-s\\ 0 & 1
+		\end{pmatrix}
+		\frac{1}{xz}\begin{pmatrix}
+			z & -y\\ 0 & x
+		\end{pmatrix}\\
+		&= \begin{pmatrix}
+			x & y +sz\\ 0 & z
+		\end{pmatrix}
+		\frac{1}{xz}\begin{pmatrix}
+			z & -y-sx\\ 0 & x
+		\end{pmatrix}\\
+		&= \begin{pmatrix}
+			1 & \frac{1}{xz} (-xy + xy -xs + xzs)\\ 0 & z
+		\end{pmatrix}
+		= \begin{pmatrix}
+			1 & \frac{(x-z)s}{xz}\\ 0 & 1
+		\end{pmatrix}
+	\end{align*}
+	so $\Gamma_n(B) = B'$ for all $n \ge 1$, so $B$ is not nilpotent (but $B'$ is nilpotent!).
 \end{*example}
 \begin{erinnerung}
 	\begin{enumerate}
@@ -808,8 +853,8 @@ Also $\abs{G} = p^n \cdot m$ und $p \nmid m$.
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-		\item $\Leftarrow$: folgt aus den Sätzen von VL 9.12.2019, bzw. aus den ersten beiden punkten der letzten Erinnerung. %TODO add reference?
-		\item $\Rightarrow$ Sei $H \le G$ eine Sylowuntergruppe. Ein Lemma sagt: $N_G(N_G(H)) = N_G(H)$. Also sagt dritte Punkt in der letzten Erinnerung, dass $N_G(H) = G$ gilt. Also gibt es für jedes $p \mid \abs{G}$ genau eine Sylow $p$-Untergruppe, die normal ist. Sind $H_1,H_2$ zwei Sylowgruppen für verschiedene Primzahlen $p_1,p_2 \mid \abs{G}$, folgt
+		\item $\Leftarrow$: folgt aus den Sätzen von VL 9.12.2019, bzw. aus den ersten beiden Punkten der letzten Erinnerung. %TODO add reference?
+		\item $\Rightarrow$ Sei $H \le G$ eine Sylowuntergruppe. Ein Lemma sagt: $N_G(N_G(H)) = N_G(H)$. Also sagt der dritte Punkt in der letzten Erinnerung, dass $N_G(H) = G$ gilt. Also gibt es für jedes $p \mid \abs{G}$ genau eine Sylow $p$-Untergruppe, die normal ist. Sind $H_1,H_2$ zwei Sylowgruppen für verschiedene Primzahlen $p_1,p_2 \mid \abs{G}$, folgt
 		\begin{align*}
 			H_1 \cap H_2 = \set{1}
 		\end{align*}
@@ -919,6 +964,73 @@ Schauen wir uns dazu ein Beispiel an.
 		Dies kann man verallgemeinern zu Fahnenmannigfaltigkeiten und insbesondere den hermitisch symmetrischen Räumen.
 	\end{itemize}
 \end{example}
-Dies führt zu folgender Idee: $G/H$ (gegebenenfalls mit $G,H$ geeignet $=$ irgendwelche Zusatzeigenschaften wie kompakt, einfach, $\dots$) sind Modelle und fundamentale Beispiele von Geometrien. Das führt auf KLEIN's ERLANGER Programm und BERGEL's Liste.
-%TODO see anna pics
-There is still one picture to tex, which connects to very interesting mathematical physics!
+Dies führt zu folgender Idee: $G/H$ (gegebenenfalls mit $G,H$ geeignet $=$ irgendwelche Zusatzeigenschaften wie kompakt, einfach, $\dots$) sind Modelle und fundamentale Beispiele von Geometrien. Das führt auf KLEIN's ERLANGER Programm und BERGEL's Liste. Die Wirkung von $G$ ist die geometrische Struktur des Raumes $G/H$.
+\begin{definition}[Fahne]
+	\begin{enumerate}
+		\item Eine \begriff{Fahne} in einem Vektorraum ist eine Folge von Untervektorräumen
+		\begin{align*}
+		0 = V_0 \subseteq V_1 \subseteq \cdots \subseteq V_d = V \mit \dim V_i = i
+		\end{align*}
+		\item Allgemein definiert man \begriff[Fahne]{partielle Fahne}
+		\begin{align*}
+		V_{i_1} \subseteq V_{i_2} \subseteq \cdots \subseteq V_{i_R} \subseteq V \mit \dim V_{i_j} = i_j\\
+		\text{und } (i_1, \dots, i_R) \text{ fest, sowie } 0 \le i_1 \le i_2 \le \cdots \le i_R \le d
+		\end{align*}
+		\item Für feste $(i_1, \dots, i_R)$ bildet die Menge all dieser Fahnen $F(i_1,\dots, i_R)$ einen homgenen Raum $G/H$.
+	\end{enumerate}
+\end{definition}
+\begin{definition}[Homogener Raum]
+	$X$ homogen (bzw. homogener Raum), genau dann, wenn eine Gruppe $G$ existiert, die transitiv auf $X$ wirkt.
+\end{definition} 
+\begin{example}
+	\begin{enumerate}
+		\item Sei $G = \GL(d,\F)$ und $X = \F^d$ wirkt auf $\F^d$ durch $gx = g\cdot x$ (beachte hierbei, das es sich um Matrix $\cdot$ Vektor handelt). Dies definiert eine transitive Wirkung auf $F(i_1,\dots, i_R)$ (Wähle Basen und ergänze).
+		\item Ziel: Stelle $F(i_1,\dots, i_R)$ als $G/H$ dar, wobei $G=\GL(d,\F)$.
+		\item Dazu müssen wir einfach ein $x\in F(\dots)$ wählen und den Stabilisator $H$ finden, z.B. $x = (V_{i_1}, \dots, V_{i_R})$ mit $V_{i_j} = \Span_{\F}\set{e_1, \dots, e_{i_j}}$. Dann ist
+		\begin{align*}
+			H(i_1, \dots, i_R) = H = \set{\begin{pmatrix}
+				\phantom{} & \phantom{} & 3 i_1 & i_2\\
+				0 & \phantom{} & \phantom{} & \phantom{}\\
+				i_2 & 0 & \phantom{} & \\
+				i_2 & \phantom{} & 0 & \phantom{}
+				\end{pmatrix}} \subseteq \GL(d,\F)
+			\intertext{Das gibt uns:}
+			F(\dots) \cong \GL(d,\F)/H(\dots)
+		\end{align*}
+		\item insbesondere $R = 1$, dann $F(i_R)$ ist Menge der $i_R$-dim Unterverktorräume von $\F^d$ und das führt auf die \person{Grassmann}varietät $\Grass(i_R,d)$ (Grassmanian)
+		\item noch spezieller $i_R = 1$, dann $k\cdot p^{d-1}$ $d-1$-dim. projektiver Raum
+		\item noch spezieller $d = 2, \F = \R$, dann $\R P^1$ ist Menge der Geraden durch 0 im $\R^2$
+	\end{enumerate}
+\end{example}
+Ein Computertomographie liefert eine Funktion $\R P^1 \to \R$ nämlich zu jeder Geraden die Absorption entlang dieser, Geraden und \person{Radon} hatte sich seit 1917 überlegt, wie man die ursprüngliche Absorption $a\colon D \to \R$ zurückberechnet.
+\begin{align*}
+	a \colon D \to \R,\quad f\colon \R P^1 \to \R \text{,wobei } f(L) = \int_L a(x,y) \d x\d y \quad f := R(a)
+\end{align*}
+das ist die \begriff{Radontransformation}.
+\begin{example}
+	Sei $d=2, \F = \C$, dann
+	\begin{align*}
+		\C P^1 = \GL(2,\C)/\set{\begin{pmatrix}
+			\ast & \ast \\ 0 &\ast
+			\end{pmatrix}}
+	\end{align*}
+	Hier zeigt man mit linearer Algebra leicht, dass $\SU(2,\C) \cong \GL(2,\C)$ wirkt auch transitiv auf $\C P^1$. Also gilt
+	\begin{align*}
+		\C P^1 \cong \SU(2,\C)/\hat{H} \mit \hat{H} = H \cap \SU(2,\C) = \UU(1,\C)\\
+		\intertext{Damit haben wir die komplexe Struktur auf $S^2$ gefunden}
+		\SU(2,\C)/\UU(1,\C) \cong S^2
+	\end{align*}
+\end{example}
+Wenn wir $x$ als $G/H$ darstellen, definiert dies eine Geometrie. Ferner liefert diese Darstellung bestimmte Vektorbündel über $X$. Hierzu sucht man nach Darstellung von $H$ durch ``lineare Abbildungen auf $V$''
+\begin{align*}
+	d \colon H \to \GL(V)
+	\intertext{Funktionen}
+	f \colon G \to V \mit f(gh)d(h^{-1})f(g) \quad \forall g\in G,h\in H
+\end{align*}
+definiere Felder in solchen Vektorbündel. Diese Felder werden in der Physik (Standardmodell der Elementarteilchen) zur Modellierung von Materie verwendet. Die Krümmung bzw. Wirkung des Bundels modelliert Kräfte (Bosonen z.B. elektromagnetischer Felder). Zur Behandelung des einfachsten nichttrivialsten Beispiel $\R^n, H = \SU(2,\C)$ ``\person{Yang}-\person{Mills}-Theorie'' all das und viel mehr, $\R^k \subseteq S^4 \to \Grass(2,4) = \SU(4,\C)/H$.
+\begin{align*}
+	\text{Twistorraum } \xLeftrightarrow[Transformation]{\text{\person{Radon}-\person{Penrose}-}} \text{ \person{Minkowski}}
+\end{align*}
+\begin{example}
+	Möbiusband mit $X = S^1$, siehe Vorlesung algebraische Topologie. In jedem Punkt klebt ein fester Vektorraum $V$, hier $\R$, aber insgesamt sind Fasern gegeneinander verdreht.
+\end{example}
