@@ -122,7 +122,7 @@ Sei $R$ ein Ring. (Die meisten Beweise finden sich wieder im LAAG 1+2 Skript!)
 	\begin{enumerate}[label=(\alph*)]
 		\item $I$ ist \begriff[Ideal!]{prim} $:\Leftrightarrow I \neq R$ und für $a,b \in R$ gilt:
 		\begin{align}
-			ab \in I \Rightarrow a \in I \vee b \in I\notag
+			ab \in I \Rightarrow a \in I \text{ oder } b \in I\notag
 		\end{align}
 		\item $I$ ist \begriff[Ideal!]{maximal} $:\Leftrightarrow I \neq R$ und ist $J \unlhd R$ mit $I \subseteq J \subsetneq R$, so ist $I=J$.
 	\end{enumerate}
@@ -143,7 +143,7 @@ Sei $R$ ein Ring. (Die meisten Beweise finden sich wieder im LAAG 1+2 Skript!)
 		\begin{itemize}
 			\item Hinrichtung: $a,b \in R$, $\pi_I(a)\cdot\pi_I(b) = 0\Rightarrow\pi_I(ab)=0$\\
 			$\Rightarrow ab \in I \xRightarrow{I \text{ prim}} a \in I \vee b \in I\Rightarrow \pi_I(a) = 0 \vee \pi_I(b) = 0$
-			\item Rückrichtung: $I$ nicht prim $\Rightarrow$ es existieren $a,b \in R$ mit $ab \in I$, $a \not\in I$, $b \not \in I\Rightarrow$ $0 = \pi_I(ab) = \underbrace{\pi_I(a)}_{\neq 0}\underbrace{\pi_I(n)}_{\neq 0}$\\
+			\item Rückrichtung: $I$ nicht prim $\Rightarrow$ es existieren $a,b \in R$ mit $ab \in I$, $a \not\in I$, $b \not \in I\Rightarrow$ $0 = \pi_I(ab) = \underbrace{\pi_I(a)}_{\neq 0}\underbrace{\pi_I(b)}_{\neq 0}$\\
 			$\Rightarrow \lnkset{R}{I}$ ist nicht nullteilerfrei
 		\end{itemize}
 		\item $I$ maximal $\xLeftrightarrow{\propref{2_2_9}b)} \lnkset{R}{I}$ hat nur die Ideale $(0) = \pi_I(1)$ und $(1) = \pi_I(R)$ $\xLeftrightarrow{\propref{2_2_3}d)}\lnkset{R}{I}$ ist Körper
