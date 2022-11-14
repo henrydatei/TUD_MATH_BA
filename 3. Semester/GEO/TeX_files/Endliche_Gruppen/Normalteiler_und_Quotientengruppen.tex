@@ -3,7 +3,7 @@
 Sei $G$ eine Gruppe.
 
 \begin{definition}[normal, Normalteiler]
-	Eine Untergruppe $H\le G$ ist \begriff{normal} (in Zeichen $H\unlhd G$), wenn $g^{-1}hg\in H$ für alle $h\in H$ und $g\in G$. Ein \begriff{Normalteiler} von $G$ ist eine normale Untergruppe von $G$.
+	Eine Untergruppe $H\le G$ ist \begriff{normal} (in Zeichen $H\unlhd G$), wenn $g^{-1}hg\in H$ für alle $h\in H$ und $g\in G$. Ein \begriff{Normalteiler} von $G$ ist (auch eine) Untergruppe von $G$.
 \end{definition}
 
 \begin{example}
@@ -18,7 +18,7 @@ Sei $G$ eine Gruppe.
 	\proplbl{1_3_3}
 	Sei $H\le G$ und $N\unlhd G$.
 	\begin{enumerate}[label=(\alph*)]
-		\item $H\unlhd G\Leftrightarrow gH=Hg$ für alle $g\in G$
+		\item $N\unlhd G\Leftrightarrow gN=Ng$ für alle $g\in G$
 		\item $HN=NH$, $HN\le G$, $N\unlhd HN$, $H\cap N\le N$, $H\cap N\unlhd H$
 		\item Sind $N,H\unlhd G$, so ist $H\cap N\unlhd G$, $HN\unlhd G$
 		\item Für $g,g'\in G$ ist $gN\cdot g'N=gg'N$
@@ -26,10 +26,24 @@ Sei $G$ eine Gruppe.
 \end{lemma}
 \begin{proof}
 	\begin{enumerate}[label=(\alph*)]
-		\item Hinrichtung: $\forall g\in G$, $\forall h\in H$: $g^{-1}hg\in H\Rightarrow gHg^{-1}\subseteq H\Rightarrow Hg=gH$ und $g^{-1}H\subseteq Hg^{-1}\Rightarrow gH=Hg$ \\
-		Rückrichtung: $\forall g\in G$: $gH=Hg \Rightarrow\exists h'\in H$: $gh'=hg\Rightarrow g^{-1}hg=h\in H$
+		\item Hinrichtung: $\forall g\in G$, $\forall n\in N$: $g^{-1}ng\in N\Rightarrow gNg^{-1}\subseteq N\Rightarrow Ng=gN$ und $g^{-1}N\subseteq Ng^{-1}\Rightarrow gN=Ng$ \\
+		Rückrichtung: $\forall g\in G$: $gN=Ng \Rightarrow\exists n'\in N$: $gn'=ng\Rightarrow g^{-1}ng=n\in N$
 		\item \begin{itemize}
-			\item $HN=\bigcup_{n\in\natur} hN=\bigcup_{n\in\natur} Nh=NH$
+			\item $HN=\bigcup_{h\in H} hN=\bigcup_{h\in H} Nh=NH$. Alternative: Sei $HN = \set{hn \mid h \in H, n \in N}$ und $NH = \set{nh \mid n\in , h\in H}$. Seien $n \in N$ und $h \in H$.
+			Wir haben zwei Inklusionen zu zeigen:
+			\begin{itemize}
+				\item $HN\subset NH$: Wenn $n \in N, h \in H$, dann haben wir $HN \ni hn = hne = hnh^{-1}h \in NH$, da $N$ normal ist.
+				\item $HN\subset NH$: Wenn $n \in N, h \in H$, dann haben wir $HN \ni nh = ehn = hh^{-1}nh \in HN$, da $N$ normal ist.
+			\end{itemize}
+			Damit folgt dann die geforderte Gleichheit.
+			\item $HN \le G$: Müssen die (Unter-) Gruppendefinition abprüfen: 
+				\begin{itemize}
+					\item Wir haben $HN \subset G$ klar.
+					\item Seien $h_1,h_2 \in H$, $n_1, n_2 \in N$, dann folgt $h_1 n_1 h_2 n_2 = h_1 h_2 (h_2^{-1} n_1 h_2)n_2 \in N$.
+					\item $1 \in HN$ klar
+					\item Seien $h \in h, n \in N$, dann folgt $hn \in HN$ und wir haben $(hn)^{-1} = n^{-1}h^{-1} \in NH = HN$.
+				\end{itemize}
+			Also gilt $HN \le G$.
 			\item $HN\cdot NH=H\cdot NH\cdot N=H\cdot HN\cdot N=HN$ \\
 			$(HN)^{-1}=N^{-1}H^{-1}=NH=HN$
 			\item $N\unlhd HN$: klar
@@ -67,10 +81,9 @@ Sei $G$ eine Gruppe.
 \begin{lemma}
 	\proplbl{1_3_7}
 	Sei $N\unlhd G$. Für $H\le G$ ist $\pi_N(H)=\lnkset{HN}{N}\le\lnkset{G}{N}$, und $H\mapsto \pi(H)$ liefert eine Bijektion zwischen 
-	\begin{itemize}
-		\item den $H\le G$ mit $N\le H$ und
-		\item den $H\le\lnkset{G}{N}$
-	\end{itemize}
+	\begin{align*}
+		H\le G \text{ mit }N\le H \leftrightarrow H\le\lnkset{G}{N}
+	\end{align*}
 \end{lemma}
 \begin{proof}
 	\begin{itemize}
